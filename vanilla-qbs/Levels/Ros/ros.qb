@@ -1,0 +1,3690 @@
+NodeArray = 
+#00001  
+        ARRAY(
+          STRUCT{
+            Position = VECTOR[5873.868; 3718.3762; -4066.8943] 
+            Angles = VECTOR[1.010908; 0.824829; -0.0] 
+            Name = Spot02 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[5873.868; 3718.3762; 5283.334] 
+            Angles = VECTOR[1.027832; 2.356206; 0.0] 
+            Name = Spot03 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-9049.75; 3718.3762; 5283.334] 
+            Angles = VECTOR[1.020478; -2.373047; -0.0] 
+            Name = Spot04 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-9049.75; 3718.3762; -5168.0547] 
+            Angles = VECTOR[1.057167; -0.693346; 0.0] 
+            Name = Spot05 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-4468.4263; 3718.3762; -5168.0547] 
+            Angles = VECTOR[1.057167; -0.693346; 0.0] 
+            Name = Spot06 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-4468.4263; 3718.3762; 5283.334] 
+            Angles = VECTOR[1.020478; -2.373047; -0.0] 
+            Name = Spot07 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-8380.876; 575.2827; -3791.8767] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = Omni01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[2337.6865; 1131.1688; -6322.306] 
+            Angles = VECTOR[0.98894; 1.570796; 0.0] 
+            Name = Spot01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[636.38403; -118.34882; -3030.6108] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRGP_SkRos_GarageInv01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[636.38403; -196.70148; -3324.0623] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRGP_SkRos_GarageVis02 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[636.38403; -196.70148; -3318.0623] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRGP_SkRos_GarageInv02 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-1854.0007; -196.70148; -2938.6843] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRGP_SkRos_AutopsyInv01 
+            Class = EnvironmentObject 
+            CreatedAtStart TriggerScript = RosTRGP_SkRos_AutopsyInv01Script 
+            }
+          STRUCT{
+            Position = VECTOR[-3284.3857; -42.56519; -2418.8843] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRGP_SkRos_AutopsyInv02 
+            Class = EnvironmentObject 
+            CreatedAtStart TriggerScript = RosTRGP_SkRos_AutopsyInv02Script 
+            }
+          STRUCT{
+            Position = VECTOR[636.38403; -202.70149; -2940.7937] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRGP_SkRos_GarageInv03 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-1866.0007; -196.70148; -2938.6843] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRGP_SkRos_AutopsyInv03 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-3284.3857; -42.56519; -2430.8843] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRGP_SkRos_AutopsyInv04 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[636.38403; -202.70149; -2952.7937] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRGP_SkRos_GarageInv04 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[258.04837; 342.8602; -1578.9686] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRGP_SkRos_Gap_MB01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[1236.8735; -60.099426; -1583.2538] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRGP_SkRos_Gap_MB02 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[3.74E-4; 0.0; 153.19897] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_RestartP1 
+            Class = Restart 
+            Type = UserDefined 
+            CreatedAtStart RestartName = "UD: P1 Restart" 
+            restart_types = ARRAY(
+              
+              Player1 MultiPlayer Horse 
+            )
+            TriggerScript = RosTRG_Ros_RestartP1Script 
+            }
+          STRUCT{
+            Position = VECTOR[-3323.6655; -164.28061; -1905.9161] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail01 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_RailWall01 
+            }
+          STRUCT{
+            Position = VECTOR[-3323.6655; -164.28061; -1245.6642] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail02 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_RailWall01 
+            Links = ARRAY(
+              
+              20 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-3320.2893; -212.01228; -633.0095] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail03 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_RailWall03 
+            Links = ARRAY(
+              
+              24 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-3323.666; -212.01227; -941.446] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail04 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_RailWall03 
+            Links = ARRAY(
+              
+              22 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-3249.5088; -212.01228; -446.7442] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail05 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_RailWall03 
+            Links = ARRAY(
+              
+              25 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-3106.2825; -212.0123; -300.5252] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail06 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_RailWall03 
+            Links = ARRAY(
+              
+              26 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-2926.4626; -212.01231; -217.63004] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail07 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_RailWall03 
+            TriggerScript = RosTRG_Ros_Rail07Script 
+            Links = ARRAY(
+              
+              27 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-2569.767; -212.01231; -211.44499] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail08 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_RailWall03 
+            }
+          STRUCT{
+            Position = VECTOR[-3323.6655; -115.69493; -2412.8843] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail09 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_TripleRailWall01 
+            TriggerScript = RosTRG_Ros_Rail09Script 
+            Links = ARRAY(
+              
+              29 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-3323.6655; -115.69493; -2170.238] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail10 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_TripleRailWall01 
+            }
+          STRUCT{
+            Position = VECTOR[-3281.4458; -203.69887; -1905.9163] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail11 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_QP01 
+            }
+          STRUCT{
+            Position = VECTOR[-3281.4458; -203.69887; -1245.6643] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail12 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_QP01 
+            Links = ARRAY(
+              
+              30 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-1936.1721; -257.8312; -1580.6672] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail13 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_RailWall05 
+            TriggerScript = RosTRG_Ros_Rail13Script 
+            Links = ARRAY(
+              
+              33 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-2453.8804; -257.8312; -1580.6672] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail14 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_RailWall05 
+            }
+          STRUCT{
+            Position = VECTOR[-1684.1014; -171.6516; -1580.6672] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail15 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_RailWall05 
+            Links = ARRAY(
+              
+              32 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-1545.7721; -131.56041; -1804.5146] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail16 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_RailWall06 
+            }
+          STRUCT{
+            Position = VECTOR[-1545.7721; -131.56036; -1659.0107] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail17 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_RailWall06 
+            TriggerScript = RosTRG_Ros_Rail17Script 
+            Links = ARRAY(
+              
+              35 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-1545.7721; -131.56036; -1357.1226] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail18 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_RailWall07 
+            TriggerScript = RosTRG_Ros_Rail18Script 
+            Links = ARRAY(
+              
+              38 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-1545.7721; -131.56041; -1502.6265] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail19 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_RailWall07 
+            }
+          STRUCT{
+            Position = VECTOR[-1383.78; -127.99974; -1580.4656] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail20 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_RailWall11 
+            Links = ARRAY(
+              
+              40 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-1419.7246; -108.766174; -1580.5995] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail21 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_RailWall11 
+            }
+          STRUCT{
+            Position = VECTOR[-1337.2827; -128.12265; -1580.6672] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail22 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_RailWall11 
+            Links = ARRAY(
+              
+              39 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-1022.983; -13.782578; -1580.6672] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail23 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_RailWall11 
+            Links = ARRAY(
+              
+              41 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-846.7201; -13.816803; -1580.6672] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail24 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_RailWall11 
+            Links = ARRAY(
+              
+              42 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-660.1561; -72.12692; -1580.4656] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail25 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_RailWall11 
+            Links = ARRAY(
+              
+              43 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-846.72015; -96.15356; -2019.0197] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail26 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_MetalRamp02 
+            Links = ARRAY(
+              
+              46 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[423.36002; -96.153496; -2019.0219] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail27 
+            Class = RailNode 
+            Type = Wood 
+            CreatedAtStart TerrainType = TERRAIN_WOOD 
+            TrickObject Cluster = SkRos_RampSide02 
+            Links = ARRAY(
+              
+              57 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[423.36032; -96.153496; -2719.978] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail28 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_MetalRamp06 
+            TriggerScript = RosTRG_Ros_Rail28Script 
+            Links = ARRAY(
+              
+              48 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-846.71985; -96.15356; -2719.976] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail29 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_MetalRamp06 
+            }
+          STRUCT{
+            Position = VECTOR[-752.5035; -23.693048; -1248.9573] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail30 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_WoodRamp13 
+            Links = ARRAY(
+              
+              50 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-752.5035; -23.693026; -1468.9648] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail31 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_WoodRamp13 
+            }
+          STRUCT{
+            Position = VECTOR[-752.5035; -23.693026; -1688.9724] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail32 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_WoodRamp15 
+            Links = ARRAY(
+              
+              52 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-752.5035; -23.693048; -1908.98] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail33 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_WoodRamp15 
+            }
+          STRUCT{
+            Position = VECTOR[258.04834; 42.860226; -1248.9574] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail34 
+            Class = RailNode 
+            Type = Wood 
+            CreatedAtStart TerrainType = TERRAIN_WOOD 
+            TrickObject Cluster = SkRos_WoodRamp17 
+            Links = ARRAY(
+              
+              54 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[258.04825; 42.860275; -1908.9799] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail35 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = SkRos_WoodRamp17 
+            Links = ARRAY(
+              
+              55 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[321.79236; 42.86028; -1908.9799] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail36 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = SkRos_WoodRamp17 
+            Links = ARRAY(
+              
+              56 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[321.79236; 42.86028; -1248.9573] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail37 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = SkRos_WoodRamp17 
+            Links = ARRAY(
+              
+              53 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[423.35983; -96.1535; -1142.3334] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail38 
+            Class = RailNode 
+            Type = Wood 
+            CreatedAtStart TerrainType = TERRAIN_WOOD 
+            TrickObject Cluster = SkRos_WoodRamp22 
+            Links = ARRAY(
+              
+              58 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-282.23953; -96.1535; -1142.3314] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail39 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_MetalRamp07 
+            Links = ARRAY(
+              
+              59 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-846.72034; -96.1535; -1142.331] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail40 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_RampSide01 
+            Links = ARRAY(
+              
+              112 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[846.72003; -96.15351; -2719.9785] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail41 
+            Class = RailNode 
+            Type = Wood 
+            CreatedAtStart TerrainType = TERRAIN_WOOD 
+            TrickObject Cluster = SkRos_WoodRamp04 
+            }
+          STRUCT{
+            Position = VECTOR[947.1641; -96.15346; -2693.065] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail42 
+            Class = RailNode 
+            Type = Wood 
+            CreatedAtStart TerrainType = TERRAIN_WOOD 
+            TrickObject Cluster = SkRos_WoodRamp04 
+            TriggerScript = RosTRG_Ros_Rail42Script 
+            Links = ARRAY(
+              
+              60 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[1020.6943; -96.153435; -2619.535] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail43 
+            Class = RailNode 
+            Type = Wood 
+            CreatedAtStart TerrainType = TERRAIN_WOOD 
+            TrickObject Cluster = SkRos_WoodRamp04 
+            Links = ARRAY(
+              
+              61 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[1047.6085; -96.1534; -2519.0908] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail44 
+            Class = RailNode 
+            Type = Wood 
+            CreatedAtStart TerrainType = TERRAIN_WOOD 
+            TrickObject Cluster = SkRos_WoodRamp04 
+            Links = ARRAY(
+              
+              62 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[1047.608; -96.15355; -642.2713] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail45 
+            Class = RailNode 
+            Type = Wood 
+            CreatedAtStart TerrainType = TERRAIN_WOOD 
+            TrickObject Cluster = SkRos_WoodRamp04 
+            Links = ARRAY(
+              
+              63 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[1020.6945; -96.15353; -541.8272] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail46 
+            Class = RailNode 
+            Type = Wood 
+            CreatedAtStart TerrainType = TERRAIN_WOOD 
+            TrickObject Cluster = SkRos_WoodRamp04 
+            Links = ARRAY(
+              
+              64 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[947.16437; -96.15347; -468.29706] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail47 
+            Class = RailNode 
+            Type = Wood 
+            CreatedAtStart TerrainType = TERRAIN_WOOD 
+            TrickObject Cluster = SkRos_WoodRamp04 
+            Links = ARRAY(
+              
+              65 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[846.72046; -96.15346; -441.383] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail48 
+            Class = RailNode 
+            Type = Wood 
+            CreatedAtStart TerrainType = TERRAIN_WOOD 
+            TrickObject Cluster = SkRos_WoodRamp04 
+            TriggerScript = RosTRG_Ros_Rail48Script 
+            Links = ARRAY(
+              
+              66 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[282.24017; -96.15355; -441.38324] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail49 
+            Class = RailNode 
+            Type = Wood 
+            CreatedAtStart TerrainType = TERRAIN_WOOD 
+            TrickObject Cluster = SkRos_WoodRamp19 
+            TriggerScript = RosTRG_Ros_Rail49Script 
+            Links = ARRAY(
+              
+              67 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-282.2398; -96.15354; -441.38275] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail50 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_MetalRamp01 
+            }
+          STRUCT{
+            Position = VECTOR[-846.7196; -96.15351; -441.38235] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail51 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_MetalRamp01 
+            TriggerScript = RosTRG_Ros_Rail51Script 
+            Links = ARRAY(
+              
+              69 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-1270.0797; -96.15351; -441.38232] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail52 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_WoodRamp24 
+            Links = ARRAY(
+              
+              70 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-1270.0797; -96.15351; -292.3226] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail53 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = main_ramp_outer_a 
+            }
+          STRUCT{
+            Position = VECTOR[-1707.5364; -297.24942; -292.3223] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail54 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = main_ramp_outer_a 
+            Links = ARRAY(
+              
+              72 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[535.6162; -236.78438; -1801.4023] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail55 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_RailWall13 
+            }
+          STRUCT{
+            Position = VECTOR[535.6162; -236.78433; -1359.9558] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail56 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_RailWall13 
+            Links = ARRAY(
+              
+              74 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[796.0764; -227.49033; -3612.0024] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail57 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = Ros_Hangar_Pool02 
+            TriggerScript = RosTRG_Ros_Rail57Script 
+            Links = ARRAY(
+              
+              133 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[960.9588; -225.84706; -3610.5432] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail58 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = Ros_Hangar_Pool02 
+            TriggerScript = RosTRG_Ros_Rail58Script 
+            Links = ARRAY(
+              
+              136 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[1037.5531; -225.84705; -3631.1016] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail59 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = Ros_Hangar_Pool02 
+            Links = ARRAY(
+              
+              135 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[1093.613; -225.84705; -3687.1533] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail60 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = Ros_Hangar_Pool02 
+            Links = ARRAY(
+              
+              134 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[1114.1471; -225.84709; -3763.824] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail61 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = Ros_Hangar_Pool03 
+            Links = ARRAY(
+              
+              81 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[1114.1455; -225.84706; -4279.6416] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail62 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = Ros_Hangar_Pool04 
+            Links = ARRAY(
+              
+              130 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[1093.6116; -225.84702; -4356.3213] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail63 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = Ros_Hangar_Pool04 
+            Links = ARRAY(
+              
+              131 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[1037.5516; -225.84702; -4412.3726] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail64 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = Ros_Hangar_Pool04 
+            Links = ARRAY(
+              
+              132 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[960.95557; -225.84705; -4432.8965] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail65 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = Ros_Hangar_Pool04 
+            Links = ARRAY(
+              
+              85 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[311.82108; -225.84708; -4432.8965] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail66 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = Ros_Hangar_Pool04 
+            Links = ARRAY(
+              
+              129 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[235.22513; -225.84705; -4412.373] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail67 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = Ros_Hangar_Pool04 
+            Links = ARRAY(
+              
+              128 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[179.16516; -225.84705; -4356.322] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail68 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = Ros_Hangar_Pool04 
+            Links = ARRAY(
+              
+              127 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[158.63037; -225.8471; -4279.6963] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail69 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = Ros_Hangar_Pool05 
+            Links = ARRAY(
+              
+              89 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[158.62933; -225.84708; -3763.8245] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail70 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = Ros_Hangar_Pool01 
+            Links = ARRAY(
+              
+              126 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[179.16467; -225.84702; -3687.1895] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail71 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = Ros_Hangar_Pool01 
+            Links = ARRAY(
+              
+              125 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[272.12363; -225.84703; -3615.1638] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail72 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = Ros_Hangar_Pool01 
+            Links = ARRAY(
+              
+              92 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[311.81885; -225.8471; -3610.6494] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail73 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = Ros_Hangar_Pool01 
+            TriggerScript = RosTRG_Ros_Rail73Script 
+            Links = ARRAY(
+              
+              123 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[476.6994; -227.49033; -3612.0024] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail74 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = Ros_Hangar_Pool01 
+            Links = ARRAY(
+              
+              138 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[1236.8735; -96.15347; -2440.961] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail75 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_RailWall08 
+            }
+          STRUCT{
+            Position = VECTOR[1236.8732; -60.15347; -2219.9119] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail76 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_RailWall08 
+            TriggerScript = RosTRG_Ros_Rail76Script 
+            Links = ARRAY(
+              
+              94 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[1236.8738; -60.15349; -1924.295] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail77 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_RailWall08 
+            Links = ARRAY(
+              
+              95 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[1236.8749; -36.045383; -1900.295] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail78 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_RailWall08 
+            }
+          STRUCT{
+            Position = VECTOR[1236.8745; -36.045326; -1261.0635] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail79 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_RailWall08 
+            Links = ARRAY(
+              
+              97 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[1236.8739; -60.15345; -1237.0635] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail80 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_RailWall08 
+            }
+          STRUCT{
+            Position = VECTOR[1236.8739; -60.15345; -941.448] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail81 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_RailWall08 
+            TriggerScript = RosTRG_Ros_Rail81Script 
+            Links = ARRAY(
+              
+              99 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[1236.8735; -96.15354; -725.5464] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail82 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_RailWall08 
+            TriggerScript = RosTRG_Ros_Rail82Script 
+            Links = ARRAY(
+              
+              100 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-3460.1267; -155.11322; -2170.238] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail83 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = autopsy_hall_exit_porch 
+            }
+          STRUCT{
+            Position = VECTOR[-3096.6462; -155.11319; -2170.2383] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail84 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = autopsy_hall_exit_porch 
+            Links = ARRAY(
+              
+              102 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-3096.6465; -155.11324; -2400.9844] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail85 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = autopsy_hall_exit_porch 
+            Links = ARRAY(
+              
+              103 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[846.7202; -96.153496; -2915.3237] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail86 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = garage_hall_entry_ramp_gap02 
+            Links = ARRAY(
+              
+              106 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[733.6318; 12.551822; -2965.588] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail87 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = garage_hall_entry_ramp_gap02 
+            Links = ARRAY(
+              
+              107 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[539.1445; 12.551819; -2965.588] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail88 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = garage_hall_entry_ramp_gap02 
+            Links = ARRAY(
+              
+              108 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[423.3603; -96.153534; -2915.3198] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail89 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = garage_hall_entry_ramp_gap02 
+            }
+          STRUCT{
+            Position = VECTOR[-3281.4458; -215.69887; -1580.6796] 
+            Angles = VECTOR[1.570796; 1.570796; 0.0] 
+            Name = TRG_Ros_Restart_Multi01 
+            Class = Restart 
+            Type = UserDefined 
+            CreatedAtStart RestartName = "UD: Towards Big Deck" 
+            restart_types = ARRAY(
+              
+              MultiPlayer Horse 
+            )
+            TriggerScript = RosTRG_Ros_Restart_Multi01Script 
+            }
+          STRUCT{
+            Position = VECTOR[-211.67957; -108.15352; -2719.9749] 
+            Angles = VECTOR[1.570796; 3.141593; 0.0] 
+            Name = TRG_Ros_Restart_Multi02 
+            Class = Restart 
+            Type = UserDefined 
+            CreatedAtStart RestartName = "UD: Metal HP" 
+            restart_types = ARRAY(
+              
+              MultiPlayer Horse 
+            )
+            TriggerScript = RosTRG_Ros_Restart_Multi02Script 
+            }
+          STRUCT{
+            Position = VECTOR[636.38837; -239.49028; -4431.508] 
+            Angles = VECTOR[1.570796; 3.141593; 0.0] 
+            Name = TRG_Ros_Restart_Multi04 
+            Class = Restart 
+            Type = UserDefined 
+            CreatedAtStart RestartName = "UD: Pool Room" 
+            restart_types = ARRAY(
+              
+              MultiPlayer Horse 
+            )
+            TriggerScript = RosTRG_Ros_Restart_Multi04Script 
+            }
+          STRUCT{
+            Position = VECTOR[-846.7201; -96.1535; -1563.0083] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail90 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_RampSide01 
+            }
+          STRUCT{
+            Position = VECTOR[-846.72034; -96.1535; -1598.2262] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail91 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkRos_RampSide01 
+            Links = ARRAY(
+              
+              45 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[258.04828; 30.86026; -1578.9686] 
+            Angles = VECTOR[1.570796; -1.570796; 0.0] 
+            Name = TRG_Ros_Restart_Multi05 
+            Class = Restart 
+            Type = UserDefined 
+            CreatedAtStart RestartName = "UD: On Big Deck" 
+            restart_types = ARRAY(
+              
+              MultiPlayer Horse 
+            )
+            TriggerScript = RosTRG_Ros_Restart_Multi05Script 
+            }
+          STRUCT{
+            Position = VECTOR[-3323.6655; -155.1132; -2936.104] 
+            Angles = VECTOR[0.0; 3.141593; 0.0] 
+            Name = TRG_Ros_Restart_Multi06 
+            Class = Restart 
+            Type = UserDefined 
+            CreatedAtStart RestartName = "UD: ET" 
+            restart_types = ARRAY(
+              
+              MultiPlayer Horse 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-2541.197; -349.58377; -941.4735] 
+            Angles = VECTOR[-0.0; 3.141593; -0.0] 
+            Name = Particle_Press_Steam01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[2.44E-4; 143.84647; -441.3828] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Crown01 
+            Class = GenericNode 
+            Type = Crown 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[1236.8748; 35.954636; -1580.6792] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Crown02 
+            Class = GenericNode 
+            Type = Crown 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[258.04828; 282.86026; -1578.9686] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Crown03 
+            Class = GenericNode 
+            Type = Crown 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[636.3883; 12.509705; -4431.508] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Crown04 
+            Class = GenericNode 
+            Type = Crown 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-2758.5835; -95.113174; -2938.688] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Crown05 
+            Class = GenericNode 
+            Type = Crown 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-2541.7183; -59.617416; -941.69556] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Crown06 
+            Class = GenericNode 
+            Type = Crown 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[448.64764; -225.8471; -3610.6143] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail95 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = Ros_Hangar_Pool01 
+            Links = ARRAY(
+              
+              93 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[235.22449; -225.84702; -3631.1377] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail96 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = Ros_Hangar_Pool01 
+            Links = ARRAY(
+              
+              91 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[202.7284; -225.8471; -3654.1768] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail97 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = Ros_Hangar_Pool01 
+            Links = ARRAY(
+              
+              124 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[164.79568; -225.84702; -3719.5647] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail98 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = Ros_Hangar_Pool01 
+            Links = ARRAY(
+              
+              90 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[163.19992; -225.84705; -4322.6016] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail99 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = Ros_Hangar_Pool04 
+            Links = ARRAY(
+              
+              88 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[201.81738; -225.84705; -4389.473] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail100 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = Ros_Hangar_Pool04 
+            Links = ARRAY(
+              
+              87 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[268.26917; -225.84705; -4427.643] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail101 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = Ros_Hangar_Pool04 
+            Links = ARRAY(
+              
+              86 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[1109.8301; -225.84702; -4322.861] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail102 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = Ros_Hangar_Pool04 
+            Links = ARRAY(
+              
+              82 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[1070.6848; -225.84702; -4389.051] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail103 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = Ros_Hangar_Pool04 
+            Links = ARRAY(
+              
+              83 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[1001.6808; -225.84702; -4427.194] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail104 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = Ros_Hangar_Pool04 
+            Links = ARRAY(
+              
+              84 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[824.1281; -225.84708; -3610.6145] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail105 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = Ros_Hangar_Pool02 
+            Links = ARRAY(
+              
+              77 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[1109.0668; -225.84705; -3724.206] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail106 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = Ros_Hangar_Pool02 
+            Links = ARRAY(
+              
+              80 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[1068.8677; -225.84705; -3653.3389] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail107 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = Ros_Hangar_Pool02 
+            Links = ARRAY(
+              
+              79 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[1002.6146; -225.84705; -3615.734] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail108 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = Ros_Hangar_Pool02 
+            Links = ARRAY(
+              
+              78 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[796.0764; -227.49033; -3470.4924] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail109 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = Ros_Hangar_Pool02 
+            Links = ARRAY(
+              
+              76 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[476.69968; -227.49033; -3470.4927] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail110 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = Ros_Hangar_Pool01 
+            }
+          STRUCT{
+            Position = VECTOR[-1350.9113; -297.04947; -1290.3357] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkRos_Crack01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[1517.2761; -210.09009; 887.88965] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = surrounding_ground04 
+            Class = EnvironmentObject 
+            CreatedAtStart TriggerScript = Rossurrounding_ground04Script 
+            Links = ARRAY(
+              
+              19 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-2033.8115; -297.24945; 749.24286] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = DMT_Helipad01 
+            Class = EnvironmentObject 
+            CreatedAtStart TriggerScript = RosDMT_Helipad01Script 
+            Links = ARRAY(
+              
+              19 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[798.8993; 89.229774; 353.3773] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = Radar02 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-1963.6509; -215.78513; 808.0904] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = copter02 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-4158.778; -182.59866; 3.230896] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = rig01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-2401.3733; -173.1373; 762.28625] 
+            Angles = VECTOR[-0.0; 0.0; 0.0] 
+            Name = Spidey_Chopper_Rotor_Main 
+            Class = GameObject 
+            CreatedAtStart IgnoredLights = ARRAY(
+              
+              0 1 2 
+            )
+            TriggerScript = RosSpidey_Chopper_Rotor_MainScript 
+            }
+          STRUCT{
+            Position = VECTOR[-3614.5747; -297.24942; -178.41505] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = Obj_Spot01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-1676.3553; -173.1373; 770.8483] 
+            Angles = VECTOR[-0.0; 0.0; 0.0] 
+            Name = Spidey_Chopper_Rotor_Main01 
+            Class = GameObject 
+            CreatedAtStart IgnoredLights = ARRAY(
+              
+              0 1 2 
+            )
+            TriggerScript = RosSpidey_Chopper_Rotor_Main01Script 
+            }
+          STRUCT{
+            Position = VECTOR[-4459.7524; -160.14868; -2253.4673] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = surrounding_ground02 
+            Class = EnvironmentObject 
+            CreatedAtStart TriggerScript = Rossurrounding_ground02Script 
+            Links = ARRAY(
+              
+              109 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-2756.8225; 78.44646; 887.8899] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = surrounding_ground03 
+            Class = EnvironmentObject 
+            CreatedAtStart TriggerScript = Rossurrounding_ground03Script 
+            Links = ARRAY(
+              
+              19 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[2388.0444; -210.09009; -2549.9038] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = surrounding_ground05 
+            Class = EnvironmentObject 
+            CreatedAtStart TriggerScript = Rossurrounding_ground05Script 
+            Links = ARRAY(
+              
+              19 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-1797.1084; -210.09012; -4320.346] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = surrounding_ground06 
+            Class = EnvironmentObject 
+            CreatedAtStart TriggerScript = Rossurrounding_ground06Script 
+            Links = ARRAY(
+              
+              110 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-3236.979; -134.04854; -2390.9612] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkRos_Rail_Col05 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject }
+          STRUCT{
+            Position = VECTOR[-3572.4207; -134.5777; -3001.3276] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = autopsy_room_hazmat_can 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-3302.415; -100.45812; -3185.0925] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = autopsy_room_pc 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-3323.6655; -135.40405; -2291.5613] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkRos_TripleRailWall01 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject }
+          STRUCT{
+            Position = VECTOR[-3415.7134; -66.71472; -3070.6753] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = autopsy_room 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-2775.0781; -137.78279; -2877.6648] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = autopsy_corridor_a 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-1933.3248; -196.81425; -2938.6882] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = DMT_shit92 
+            Class = EnvironmentObject 
+            CreatedAtStart TriggerScript = RosDMT_shit92Script 
+            }
+          STRUCT{
+            Position = VECTOR[-3551.9897; -135.33899; -3066.0688] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = DMT_autopsy_table02 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-3434.7534; -135.78192; -3092.5098] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = DMT_op_table01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-3388.544; -133.26349; -3216.949] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = Box03 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-3242.5137; -85.46819; -3193.103] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = DMT_autopsy_Xray 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-3303.543; -135.33899; -3183.9841] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = DMT_autopsy_table03 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-3398.7905; -107.04486; -3209.3147] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = DMT_shit93 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-3551.6943; -115.47796; -3065.9163] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = Object88 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-3489.462; -38.942863; -3012.7742] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = DMT_lamp01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-3494.8335; -141.19702; -2958.2188] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = DMT_shit19 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-3429.059; -107.07684; -3089.0366] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = autopsy_room_alien 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-2054.4722; -208.85095; -2858.8445] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = Obj_SkRos_AutopsyDoor_Right01 
+            Class = EnvironmentObject 
+            }
+          STRUCT{
+            Position = VECTOR[-2054.4717; -285.24942; -2938.6882] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = Object90 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-3284.3867; -143.1132; -2605.3477] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = Object91 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-3284.3867; -155.11322; -2383.0898] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = DMT_shit17 
+            Class = EnvironmentObject 
+            CreatedAtStart TriggerScript = RosDMT_shit17Script 
+            }
+          STRUCT{
+            Position = VECTOR[-3284.3867; -53.625744; -2504.413] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = Object87 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-2054.4717; -208.85094; -2938.688] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkRos_DoorFrig02 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-3284.3875; -66.71466; -2605.348] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkRos_DoorFrig03 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-2708.4573; 131.22115; -3146.0608] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = surrounding_ground01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-3336.0688; -115.56944; -2986.519] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = DMT_sign03 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-3556.2942; -111.45447; -3215.4163] 
+            Angles = VECTOR[0.0; 0.785398; 0.0] 
+            Name = autopsy_fakehallway 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-3242.6438; -85.46819; -3192.8425] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = DMT_autopsy_Xrayflicker01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-3306.911; -100.1465; -3185.0925] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = DMT_autopsy_Compflicker01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-3476.8745; -79.157974; -3018.0508] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = autopsy_light01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-3302.5083; -93.28536; -3180.5713] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = autopsy_comptext01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-3575.7773; -101.734055; -3002.0635] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = autopsy_trashglow01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-2054.4722; -208.85095; -3018.532] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = Obj_SkRos_AutopsyDoor_Right02 
+            Class = EnvironmentObject 
+            }
+          STRUCT{
+            Position = VECTOR[-3399.7356; -45.153606; -3138.6167] 
+            Angles = VECTOR[1.078498; 1.557068; 0.853154] 
+            Name = autopsy_toetag01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[636.3879; -236.07788; -3625.8384] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = garage_alien_fossil_dig 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[476.6995; -284.41718; -3556.0217] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = garage_entry_corridor 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TrickObject Cluster = Ros_Hangar_Pool01 
+            }
+          STRUCT{
+            Position = VECTOR[636.38776; 112.079185; -4021.7556] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = garage_walls01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[636.3882; 775.6487; -4021.7551] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = garage_ceiling 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[1249.5859; -112.029785; -4021.7554] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = Collision_Garage_Laser_Fences01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[635.4136; 693.4391; -4024.2314] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = DMT_girders06 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[1469.0454; -152.55054; -4035.6785] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = DMT_tank01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[638.751; -153.53128; -4795.287] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = Obj_SkRos_Saucer01 
+            Class = GameObject 
+            CreatedAtStart IgnoredLights = ARRAY(
+              
+              0 1 2 
+            )
+            TriggerScript = RosObj_SkRos_Saucer01Script 
+            }
+          STRUCT{
+            Position = VECTOR[644.56006; 62.23852; -4615.34] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = DMT_aileneyes01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-198.76257; -124.029785; -4022.1248] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = garage_port_c 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-210.97885; -216.60786; -3956.8218] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = DMT_Crate04 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-146.47781; -205.4278; -4131.146] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = DMT_Crate05 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-184.75166; -216.60785; -4111.782] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = DMT_Crate06 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-223.46083; -192.68747; -4103.5093] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = Object89 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[637.8303; 95.97038; -4665.2915] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = Object92 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[636.3878; -236.07791; -4021.7554] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = fuckingshit 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[636.3882; -349.48367; -3614.1492] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = garage_entry_corridor01 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject }
+          STRUCT{
+            Position = VECTOR[563.04016; 62.23852; -3410.585] 
+            Angles = VECTOR[0.0; 3.141593; 0.0] 
+            Name = DMT_aileneyes02 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[483.25348; 54.547363; -3401.9146] 
+            Angles = VECTOR[0.0; 3.141593; 0.0] 
+            Name = Rectangle06room01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[569.7699; 95.97038; -3378.2192] 
+            Angles = VECTOR[0.0; 3.141593; 0.0] 
+            Name = Object93 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[844.01605; 54.547363; -3385.3896] 
+            Angles = VECTOR[0.0; 3.141593; 0.0] 
+            Name = Rectangle06room02 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[1460.3804; -102.80923; -4016.5635] 
+            Angles = VECTOR[0.0; -2.600541; 0.0] 
+            Name = Obj_Ros_Turret01 
+            Class = GameObject 
+            CreatedAtStart IgnoredLights = ARRAY(
+              
+              0 1 2 
+            )
+            TriggerScript = RosObj_Ros_Turret01Script 
+            }
+          STRUCT{
+            Position = VECTOR[556.54425; -184.552; -3135.834] 
+            Angles = VECTOR[0.0; 1.570796; 0.0] 
+            Name = Obj_SkRos_GarageDoor_Right01 
+            Class = EnvironmentObject 
+            }
+          STRUCT{
+            Position = VECTOR[716.23175; -184.552; -3135.834] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = Obj_SkRos_GarageDoor_Left01 
+            Class = EnvironmentObject 
+            }
+          STRUCT{
+            Position = VECTOR[636.38806; -208.85094; -3135.834] 
+            Angles = VECTOR[0.0; 1.570796; 0.0] 
+            Name = SkRos_DoorFrig01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[636.3883; -285.24942; -3135.834] 
+            Angles = VECTOR[0.0; 1.570796; 0.0] 
+            Name = Object31 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[637.46094; -124.029785; -4800.9707] 
+            Angles = VECTOR[0.0; 1.570796; 0.0] 
+            Name = garage_port_b 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[637.45776; -124.47622; -4592.442] 
+            Angles = VECTOR[0.0; 1.570796; 0.0] 
+            Name = dt_laserglow_near 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[1471.5385; -124.02975; -4022.1248] 
+            Angles = VECTOR[0.0; -3.141593; 0.0] 
+            Name = garage_port_a 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[636.38837; -227.49036; -4366.5645] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = Ros_Hangar_Pool06 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TrickObject Cluster = Ros_Hangar_Pool04 
+            }
+          STRUCT{
+            Position = VECTOR[636.38794; 95.9704; -3460.0842] 
+            Angles = VECTOR[1.570796; 0.0; 0.0] 
+            Name = garage_alien_fossil_reflect01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[636.4629; -186.79651; -3304.687] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = garage_entry_corridor02 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject }
+          STRUCT{
+            Position = VECTOR[293.44067; -227.49037; -3677.0308] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = Ros_Hangar_Pool07 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TrickObject Cluster = Ros_Hangar_Pool01 
+            }
+          STRUCT{
+            Position = VECTOR[149.78375; -227.49039; -4021.7468] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = Ros_Hangar_Pool08 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TrickObject Cluster = Ros_Hangar_Pool05 
+            }
+          STRUCT{
+            Position = VECTOR[1122.9558; -227.49039; -4021.746] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = Ros_Hangar_Pool09 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TrickObject Cluster = Ros_Hangar_Pool03 
+            }
+          STRUCT{
+            Position = VECTOR[979.3356; -227.49039; -3677.0315] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = Ros_Hangar_Pool10 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TrickObject Cluster = Ros_Hangar_Pool02 
+            }
+          STRUCT{
+            Position = VECTOR[1.98E-4; -148.62476; -415.73462] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkRos_WoodRamp01 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject }
+          STRUCT{
+            Position = VECTOR[-1545.7721; -151.28015; -1429.7323] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkRos_RailWall07 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject }
+          STRUCT{
+            Position = VECTOR[-2541.7163; -268.4334; -941.44604] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = missle_silo_cover 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject }
+          STRUCT{
+            Position = VECTOR[512.3621; -267.01688; -1580.679] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkRos_RailWall13 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject }
+          STRUCT{
+            Position = VECTOR[-1488.8081; -196.70149; -177.65335] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = main_ramp_outer_a 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject }
+          STRUCT{
+            Position = VECTOR[947.1645; -196.70143; -1580.6788] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkRos_WoodRamp04 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TriggerScript = RosSkRos_WoodRamp04Script 
+            }
+          STRUCT{
+            Position = VECTOR[-1743.9722; -234.12471; -1580.6776] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkRos_WoodRamp08 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TriggerScript = RosSkRos_WoodRamp08Script 
+            }
+          STRUCT{
+            Position = VECTOR[-1199.246; -234.12473; -1072.7566] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkRos_WoodRamp10 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TriggerScript = RosSkRos_WoodRamp10Script 
+            }
+          STRUCT{
+            Position = VECTOR[-2968.0417; -274.34003; -570.018] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = rail_triple_curved_c 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject }
+          STRUCT{
+            Position = VECTOR[590.79114; 207.98643; -3517.4526] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = gov_building_f 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-1545.7721; -151.28015; -1731.7627] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkRos_RailWall06 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject }
+          STRUCT{
+            Position = VECTOR[-3348.8738; -132.73694; -1310.2463] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkRos_Fence01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-3323.881; -250.47418; -1575.7902] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkRos_QP01 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TriggerScript = RosSkRos_QP01Script 
+            }
+          STRUCT{
+            Position = VECTOR[-1798.1394; -61.52291; -112.79346] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkRos_FencePost01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-2091.3123; -270.13895; -46.657] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = DMT_Wheel01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-1199.246; -170.99994; -1580.6766] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = DMT_piece011 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-1041.0746; -92.46064; -1580.6672] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkRos_RailWall11 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject }
+          STRUCT{
+            Position = VECTOR[-2541.7163; -410.43634; -941.4461] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = missle_silo_cover02 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-1025.2094; -58.34131; -2021.248] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = DMT_sign01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[564.48035; -196.70146; -541.827] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkRos_WoodRamp19 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TriggerScript = RosSkRos_WoodRamp19Script 
+            }
+          STRUCT{
+            Position = VECTOR[70.56006; -196.70148; -1041.8894] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkRos_WoodRamp22 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject }
+          STRUCT{
+            Position = VECTOR[-1065.4479; -196.70154; -2938.687] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkRos_WoodRamp23 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject }
+          STRUCT{
+            Position = VECTOR[77.96442; -48.076775; -695.7399] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = DMT_backramp07 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[1236.874; -66.04537; -1583.2537] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkRos_RailWall08 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject }
+          STRUCT{
+            Position = VECTOR[-3323.6655; -183.98975; -1575.7902] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkRos_RailWall01 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject }
+          STRUCT{
+            Position = VECTOR[-1058.3995; -196.70148; -541.8259] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkRos_WoodRamp24 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject }
+          STRUCT{
+            Position = VECTOR[-1021.5198; 54.059402; -1706.8993] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = DMT_lite01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-1117.289; -121.89328; -1650.7854] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = new_sign01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-211.6802; -96.10486; -1580.6765] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkRos_MainDeckFloor01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-2949.1477; -231.72142; -574.0143] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkRos_RailWall03 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject }
+          STRUCT{
+            Position = VECTOR[-564.4797; -196.70149; -541.82623] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkRos_MetalRamp01 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TriggerScript = RosSkRos_MetalRamp01Script 
+            }
+          STRUCT{
+            Position = VECTOR[-343.42087; -148.62476; 63.10707] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = New_backwall01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-846.72; -184.23413; -1580.6749] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkRos_RampSide01 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject }
+          STRUCT{
+            Position = VECTOR[423.36; -196.70148; -1580.6785] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkRos_RampSide02 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject }
+          STRUCT{
+            Position = VECTOR[635.0402; -41.800842; -3020.874] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = garage_hall_entry_ramp_gap02 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject }
+          STRUCT{
+            Position = VECTOR[289.64502; -96.1535; -2353.5537] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = DMT_backramp01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-2335.6863; -297.24948; -2353.55] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = floor02 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-2335.6865; -297.24942; -821.8317] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = floor03 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-1760.0029; -32.189034; -2769.6606] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkRos_Fence02 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[571.88477; 116.43581; -1268.9749] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkRos_Fence03 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-1753.9303; 15.887863; -135.28821] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkRos_Fence04 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-1760.0034; -61.523033; -2769.665] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkRos_FencePost02 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-3316.7695; -139.16144; -1287.7488] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkRos_FencePost03 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[495.56873; 87.10173; -1268.9747] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkRos_FencePost04 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-0.005859; 136.9938; 61.999756] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = DMT_sign02 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-2541.7163; -619.56757; -941.44604] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = missle_silo_warhead 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-2541.8132; -505.4968; -941.53326] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = Silo_Light_Funnel 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-2541.7163; -410.43634; -941.4461] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = silo_lights02 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-1199.2457; -234.12473; -2088.5952] 
+            Angles = VECTOR[0.0; 3.141593; 0.0] 
+            Name = SkRos_WoodRamp25 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TriggerScript = RosSkRos_WoodRamp25Script 
+            }
+          STRUCT{
+            Position = VECTOR[-2541.8132; -505.4968; -941.53326] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = Silo_Light_Funnel02 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-2062.713; -234.45053; -1580.6672] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkRos_Rail_Col01 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject }
+          STRUCT{
+            Position = VECTOR[-2060.3777; -222.45053; -1591.7784] 
+            Angles = VECTOR[0.0; 3.141593; 0.0] 
+            Name = SkRos_Rail_Col02 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject }
+          STRUCT{
+            Position = VECTOR[-1041.0746; -92.46064; -1580.6672] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkRos_Rail_Col03 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject }
+          STRUCT{
+            Position = VECTOR[512.3621; -267.01688; -1580.679] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkRos_Rail_Col04 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject }
+          STRUCT{
+            Position = VECTOR[-3218.3003; -170.63422; -1466.3872] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkRos_Rail_Col06 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject }
+          STRUCT{
+            Position = VECTOR[-3218.2869; -206.36592; -501.917] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkRos_Rail_Col07 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject }
+          STRUCT{
+            Position = VECTOR[-3284.3862; -226.18137; -2322.8955] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = autopsy_hall_exit_porch 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject }
+          STRUCT{
+            Position = VECTOR[1590.3257; 86.71966; -3180.5054] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = Box01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[1590.3257; 388.5457; -3180.5054] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = Box02 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-211.67969; -196.70148; -2619.5308] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkRos_MetalRamp06 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TriggerScript = RosSkRos_MetalRamp06Script 
+            }
+          STRUCT{
+            Position = VECTOR[-211.67993; -196.70148; -2119.4648] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkRos_MetalRamp02 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject }
+          STRUCT{
+            Position = VECTOR[-352.52625; -148.62477; -1552.2594] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkRos_RampSide06 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-218.72778; -297.24945; -1749.917] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = floor01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[635.04047; -196.70149; -2822.7576] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = garage_hall_entry_ramp_gap01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[182.5769; -26.646633; -1578.9686] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkRos_WoodRamp17 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TriggerScript = RosSkRos_WoodRamp17Script 
+            }
+          STRUCT{
+            Position = VECTOR[-564.4798; -196.70146; -1041.8877] 
+            Angles = VECTOR[0.0; 3.141593; 0.0] 
+            Name = SkRos_MetalRamp07 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TriggerScript = RosSkRos_MetalRamp07Script 
+            }
+          STRUCT{
+            Position = VECTOR[-645.30164; -46.71404; -1798.9762] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkRos_WoodRamp15 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TriggerScript = RosSkRos_WoodRamp15Script 
+            }
+          STRUCT{
+            Position = VECTOR[-645.30164; -46.71404; -1361.0565] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkRos_WoodRamp13 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TriggerScript = RosSkRos_WoodRamp13Script 
+            }
+          STRUCT{
+            Position = VECTOR[820.38257; 461.3369; 794.28894] 
+            Angles = VECTOR[0.0; 2.356194; 0.0] 
+            Name = SkRos_BigLight02 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject Cluster = ParkingLotTensionWire 
+            }
+          STRUCT{
+            Position = VECTOR[732.0963; 746.6465; 707.87024] 
+            Angles = VECTOR[0.0; 2.356194; 0.0] 
+            Name = SkRos_BigLight02b 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject Cluster = ParkingLotTensionWire 
+            }
+          STRUCT{
+            Position = VECTOR[-3599.5571; 461.3369; -496.33862] 
+            Angles = VECTOR[0.0; -2.356194; 0.0] 
+            Name = SkRos_BigLight03 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject Cluster = ParkingLotTensionWire 
+            }
+          STRUCT{
+            Position = VECTOR[1853.5311; 382.08746; -2207.1506] 
+            Angles = VECTOR[0.0; 0.785398; 0.0] 
+            Name = SkRos_BigLight01 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject Cluster = ParkingLotTensionWire 
+            }
+          STRUCT{
+            Position = VECTOR[-292.96536; -168.50902; -4029.4385] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = Box01Edwina 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[1767.1122; 667.39703; -2118.8643] 
+            Angles = VECTOR[0.0; 0.785398; 0.0] 
+            Name = SkRos_BigLight01b 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject Cluster = ParkingLotTensionWire 
+            }
+          STRUCT{
+            Position = VECTOR[-4474.9946; 156.35631; -1704.4891] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = DMT_lite02 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-2775.0781; -137.78279; -2877.6648] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = Mesh01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[815.1534; -208.42401; -2829.8008] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = sign 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[637.46075; -124.55474; -4592.164] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = dt_laser04 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[632.24744; 0.0; -4588.7153] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = LOD01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[637.45776; -124.47622; -4592.442] 
+            Angles = VECTOR[0.0; 1.570796; 0.0] 
+            Name = dt_laserglow_distant01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[652.65594; 0.0; -4588.7153] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = LOD02 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[1262.7822; -124.55474; -4021.21] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = dt_laser05 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[1259.3337; 0.0; -4026.423] 
+            Angles = VECTOR[0.0; 1.570796; 0.0] 
+            Name = LOD03 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[1262.7822; -124.47062; -4021.21] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = dt_laserglow_distant02 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[1259.3337; 0.0; -4006.0146] 
+            Angles = VECTOR[0.0; 1.570796; 0.0] 
+            Name = LOD04 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[1262.7822; -124.47062; -4021.21] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = dt_laserglow_near01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[13.307032; 0.0; -4016.9285] 
+            Angles = VECTOR[0.0; -1.570796; 0.0] 
+            Name = LOD05 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[9.580469; -124.47622; -4022.1387] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = dt_laserglow_distant03 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[13.307032; 0.0; -4037.337] 
+            Angles = VECTOR[0.0; -1.570796; 0.0] 
+            Name = LOD06 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[9.580469; -124.47622; -4022.1387] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = dt_laserglow_near02 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[9.580469; -124.47622; -4022.1387] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = dt_laser06 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[637.45776; -124.47622; -4592.442] 
+            Angles = VECTOR[0.0; 1.570796; 0.0] 
+            Name = dt_laserglow_VeryDistant01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[636.38776; 112.079185; -4021.7556] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = Object02 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[636.38824; -440.8031; -4020.949] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = dig01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[636.38824; -440.8031; -4020.949] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = dig03 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[636.38824; -428.8031; -4020.949] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = Blockers 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[636.38824; -440.8031; -4020.949] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = dt_onlookers01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-2062.713; -234.45053; -1580.6672] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkRos_RailWall05 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject }
+          STRUCT{
+            Position = VECTOR[-6575.872; 382.08746; -3232.2854] 
+            Angles = VECTOR[0.0; -1.160644; 0.0] 
+            Name = Mesh03 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[473.28342; -314.60413; -3684.52] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = Ros_Hangar_Pool01 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TrickObject Cluster = Ros_Hangar_Pool01 
+            TriggerScript = RosRos_Hangar_Pool01Script 
+            }
+          STRUCT{
+            Position = VECTOR[231.15552; -314.60413; -4023.1826] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = Ros_Hangar_Pool05 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TrickObject Cluster = Ros_Hangar_Pool05 
+            }
+          STRUCT{
+            Position = VECTOR[636.3877; -314.60416; -4360.4175] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = Ros_Hangar_Pool04 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TrickObject Cluster = Ros_Hangar_Pool04 
+            }
+          STRUCT{
+            Position = VECTOR[1041.6205; -314.60416; -4023.1821] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = Ros_Hangar_Pool03 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TrickObject Cluster = Ros_Hangar_Pool03 
+            }
+          STRUCT{
+            Position = VECTOR[959.1808; -314.60416; -3684.52] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = Ros_Hangar_Pool02 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TrickObject Cluster = Ros_Hangar_Pool02 
+            TriggerScript = RosRos_Hangar_Pool02Script 
+            }
+          STRUCT{
+            Position = VECTOR[-2394.1282; -239.61742; -793.8579] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail111 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = missle_silo_cover 
+            Links = ARRAY(
+              
+              327 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-2541.7163; -239.61742; -732.72485] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail112 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = missle_silo_cover 
+            Links = ARRAY(
+              
+              328 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-2689.3044; -239.61742; -793.85785] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail113 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = missle_silo_cover 
+            Links = ARRAY(
+              
+              329 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-2750.4375; -239.61742; -941.44604] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail114 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = missle_silo_cover 
+            Links = ARRAY(
+              
+              330 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-2689.3044; -239.61742; -1089.0342] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail115 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = missle_silo_cover 
+            Links = ARRAY(
+              
+              331 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-2541.7163; -239.61742; -1150.1674] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail116 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = missle_silo_cover 
+            Links = ARRAY(
+              
+              332 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-2394.1282; -239.61742; -1089.0342] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail117 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = missle_silo_cover 
+            Links = ARRAY(
+              
+              333 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-2332.995; -239.61742; -941.44604] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ros_Rail118 
+            Class = RailNode 
+            Type = Concrete 
+            CreatedAtStart TerrainType = TERRAIN_CONCSMOOTH 
+            TrickObject Cluster = missle_silo_cover 
+            Links = ARRAY(
+              
+              326 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[796.07654; -284.41718; -3556.0217] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = garage_entry_corridor03 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TrickObject Cluster = Ros_Hangar_Pool02 
+            }
+          STRUCT{
+            Position = VECTOR[637.2272; -400.42578; -4016.6895] 
+            Angles = VECTOR[0.0; -3.141593; 0.0] 
+            Name = TRG_CTF_Team1 
+            Class = GenericNode 
+            Type = CTF_1 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-2947.0366; -296.81833; -514.1652] 
+            Angles = VECTOR[0.0; 0.785398; 0.0] 
+            Name = TRG_CTF_Team02 
+            Class = GenericNode 
+            Type = CTF_2 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[1131.408; -225.69366; -4469.2134] 
+            Angles = VECTOR[0.0; -3.141593; 0.0] 
+            Name = TRG_CTF1_Restart_1P 
+            Class = Restart 
+            Type = MultiPlayer 
+            CreatedAtStart RestartName = "Multi: Restart" 
+            restart_types = ARRAY(
+              
+              MultiPlayer CTF_1 
+            )
+            TriggerScript = RosTRG_CTF1_Restart_1PScript 
+            }
+          STRUCT{
+            Position = VECTOR[-2220.5232; -225.69366; -588.8476] 
+            Angles = VECTOR[0.0; 0.785398; 0.0] 
+            Name = TRG_CTF2_Restart_1P 
+            Class = Restart 
+            Type = MultiPlayer 
+            CreatedAtStart RestartName = "Multi: Restart" 
+            restart_types = ARRAY(
+              
+              MultiPlayer CTF_2 
+            )
+            TriggerScript = RosTRG_CTF2_Restart_1PScript 
+            }
+          STRUCT{
+            Position = VECTOR[-3411.609; -201.07648; -1414.9655] 
+            Angles = VECTOR[0.0; -0.0; 0.0] 
+            Name = TRG_CTF2_Restart_2P 
+            Class = Restart 
+            Type = MultiPlayer 
+            CreatedAtStart RestartName = "Multi: Restart" 
+            restart_types = ARRAY(
+              
+              MultiPlayer CTF_2 
+            )
+            TriggerScript = RosTRG_CTF2_Restart_2PScript 
+            }
+          STRUCT{
+            Position = VECTOR[-1205.9891; -72.23369; -397.0304] 
+            Angles = VECTOR[0.0; 1.570796; 0.0] 
+            Name = TRG_CTF2_Restart_3P 
+            Class = Restart 
+            Type = MultiPlayer 
+            CreatedAtStart RestartName = "Multi: Restart" 
+            restart_types = ARRAY(
+              
+              MultiPlayer CTF_2 
+            )
+            TriggerScript = RosTRG_CTF2_Restart_3PScript 
+            }
+          STRUCT{
+            Position = VECTOR[-2939.9216; -292.19803; -2312.2183] 
+            Angles = VECTOR[0.0; 1.570796; 0.0] 
+            Name = TRG_CTF2_Restart_4P 
+            Class = Restart 
+            Type = MultiPlayer 
+            CreatedAtStart RestartName = "Multi: Restart" 
+            restart_types = ARRAY(
+              
+              MultiPlayer CTF_2 
+            )
+            TriggerScript = RosTRG_CTF2_Restart_4PScript 
+            }
+          STRUCT{
+            Position = VECTOR[1136.01; -90.317764; -2898.5325] 
+            Angles = VECTOR[0.0; -3.141593; 0.0] 
+            Name = TRG_CTF1_Restart_2P 
+            Class = Restart 
+            Type = MultiPlayer 
+            CreatedAtStart RestartName = "Multi: Restart" 
+            restart_types = ARRAY(
+              
+              MultiPlayer CTF_1 
+            )
+            TriggerScript = RosTRG_CTF1_Restart_2PScript 
+            }
+          STRUCT{
+            Position = VECTOR[368.0913; -90.317764; -2817.9092] 
+            Angles = VECTOR[0.0; -1.570796; 0.0] 
+            Name = TRG_CTF1_Restart_3P 
+            Class = Restart 
+            Type = MultiPlayer 
+            CreatedAtStart RestartName = "Multi: Restart" 
+            restart_types = ARRAY(
+              
+              MultiPlayer CTF_1 
+            )
+            TriggerScript = RosTRG_CTF1_Restart_3PScript 
+            }
+          STRUCT{
+            Position = VECTOR[-74.49685; -90.317764; -1945.7297] 
+            Angles = VECTOR[0.0; -1.570796; 0.0] 
+            Name = TRG_CTF1_Restart_4P 
+            Class = Restart 
+            Type = MultiPlayer 
+            CreatedAtStart RestartName = "Multi: Restart" 
+            restart_types = ARRAY(
+              
+              MultiPlayer CTF_1 
+            )
+            TriggerScript = RosTRG_CTF1_Restart_4PScript 
+            }
+          STRUCT{
+            Position = VECTOR[0.369072; 189.82852; -453.74527] 
+            Angles = VECTOR[0.0; -3.141593; 0.0] 
+            Name = TRG_ZONE_CONTROL1 
+            Class = GenericNode 
+            Type = Zone 
+            CreatedAtStart Zone_Multiplier = 3 
+            }
+          STRUCT{
+            Position = VECTOR[258.11578; 345.90942; -1578.9884] 
+            Angles = VECTOR[0.0; -1.570796; 0.0] 
+            Name = TRG_ZONE_CONTROL02 
+            Class = GenericNode 
+            Type = Zone 
+            CreatedAtStart Zone_Multiplier = 2 
+            }
+          STRUCT{
+            Position = VECTOR[-3209.256; -93.76503; -2857.288] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_ZONE_CONTROL03 
+            Class = GenericNode 
+            Type = Zone 
+            CreatedAtStart Zone_Multiplier = 1 
+            }
+          STRUCT{
+            Position = VECTOR[639.32117; 7.085716; -3608.0967] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_ZONE_CONTROL04 
+            Class = GenericNode 
+            Type = Zone 
+            CreatedAtStart Zone_Multiplier = 2 
+            }
+          STRUCT{
+            Position = VECTOR[-211.87271; 125.511475; -2705.305] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_ZONE_CONTROL05 
+            Class = GenericNode 
+            Type = Zone 
+            CreatedAtStart Zone_Multiplier = 1 
+            }
+          STRUCT{
+            Position = VECTOR[-2542.0547; -59.388615; -957.6939] 
+            Angles = VECTOR[0.0; -3.141593; 0.0] 
+            Name = TRG_ZONE_CONTROL06 
+            Class = GenericNode 
+            Type = Zone 
+            CreatedAtStart Zone_Multiplier = 1 
+            }
+          STRUCT{
+            Position = VECTOR[-3280.2073; 67.7719; -1580.4106] 
+            Angles = VECTOR[0.0; 1.570796; 0.0] 
+            Name = TRG_ZONE_KEY 
+            Class = GenericNode 
+            Type = ZONE_KEY 
+            CreatedAtStart Zone_Multiplier = 1 
+            }
+          
+        )
+        
+#03512  TriggerScripts = 
+#03514  
+        ARRAY(
+          LoadTerrain RosTRGP_SkRos_AutopsyInv01Script RosTRGP_SkRos_AutopsyInv02Script RosTRG_Ros_RestartP1Script RosTRG_Ros_Rail07Script RosTRG_Ros_Rail09Script RosTRG_Ros_Rail13Script RosTRG_Ros_Rail17Script RosTRG_Ros_Rail18Script RosTRG_Ros_Rail28Script RosTRG_Ros_Rail42Script RosTRG_Ros_Rail48Script RosTRG_Ros_Rail49Script RosTRG_Ros_Rail51Script RosTRG_Ros_Rail57Script RosTRG_Ros_Rail58Script RosTRG_Ros_Rail73Script RosTRG_Ros_Rail76Script RosTRG_Ros_Rail81Script RosTRG_Ros_Rail82Script RosTRG_Ros_Restart_Multi01Script RosTRG_Ros_Restart_Multi02Script RosTRG_Ros_Restart_Multi04Script RosTRG_Ros_Restart_Multi05Script Rossurrounding_ground04Script RosDMT_Helipad01Script RosSpidey_Chopper_Rotor_MainScript RosSpidey_Chopper_Rotor_Main01Script Rossurrounding_ground02Script Rossurrounding_ground03Script Rossurrounding_ground05Script Rossurrounding_ground06Script RosDMT_shit92Script RosDMT_shit17Script RosObj_SkRos_Saucer01Script RosObj_Ros_Turret01Script RosSkRos_WoodRamp04Script RosSkRos_WoodRamp08Script RosSkRos_WoodRamp10Script RosSkRos_QP01Script RosSkRos_WoodRamp19Script RosSkRos_MetalRamp01Script RosSkRos_WoodRamp25Script RosSkRos_MetalRamp06Script RosSkRos_WoodRamp17Script RosSkRos_MetalRamp07Script RosSkRos_WoodRamp15Script RosSkRos_WoodRamp13Script RosRos_Hangar_Pool01Script RosRos_Hangar_Pool02Script RosTRG_CTF1_Restart_1PScript RosTRG_CTF2_Restart_1PScript RosTRG_CTF2_Restart_2PScript RosTRG_CTF2_Restart_3PScript RosTRG_CTF2_Restart_4PScript RosTRG_CTF1_Restart_2PScript RosTRG_CTF1_Restart_3PScript RosTRG_CTF1_Restart_4PScript 
+        )
+        
+#03574  FUNCTION RosTRGP_SkRos_AutopsyInv01Script 
+#03576  END FUNCTION
+          
+#03577  FUNCTION RosTRGP_SkRos_AutopsyInv02Script 
+#03580  END FUNCTION
+          
+#03581  FUNCTION RosTRG_Ros_RestartP1Script 
+#03584    MakeSkaterGoto StartSkating1 
+#03585  END FUNCTION
+          
+#03586  FUNCTION RosTRG_Ros_Rail07Script 
+#03589    StartGap GapID = JKU_Ros_GAP_ID_ET02 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL 
+          )
+          
+#03590    EndGap GapID = JKU_Ros_GAP_ID_ET01 
+          score = 500 
+          text = "ET Grind" 
+          
+#03591  END FUNCTION
+          
+#03592  FUNCTION RosTRG_Ros_Rail09Script 
+#03595    StartGap GapID = JKU_Ros_GAP_ID_ET01 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL 
+          )
+          
+#03596    EndGap GapID = JKU_Ros_GAP_ID_ET02 
+          score = 1000 
+          text = "ET Rewind" 
+          
+#03597    StartGap GapID = JKU_Ros_GAP_ID_BigGrind02 
+          flags = ARRAY(
+            
+            CANCEL_GROUND 
+          )
+          
+#03598    EndGap GapID = JKU_Ros_GAP_ID_BigGrind01 
+          score = 2000 
+          text = "Ring Around the Roswell" 
+          
+#03599  END FUNCTION
+          
+#03600  FUNCTION RosTRG_Ros_Rail13Script 
+#03603    EndGap GapID = JKU_Ros_DeckGrind01 
+          score = 800 
+          text = "Deck Grind" 
+          
+#03604  END FUNCTION
+          
+#03605  FUNCTION RosTRG_Ros_Rail17Script 
+#03608    EndGap GapID = JKU_Ros_DeckGrind01 
+          score = 800 
+          text = "Deck Grind" 
+          
+#03609  END FUNCTION
+          
+#03610  FUNCTION RosTRG_Ros_Rail18Script 
+#03613    EndGap GapID = JKU_Ros_DeckGrind01 
+          score = 800 
+          text = "Deck Grind" 
+          
+#03614  END FUNCTION
+          
+#03615  FUNCTION RosTRG_Ros_Rail28Script 
+#03618    StartGap GapID = JKU_Ros_GAP_ID_HangarChannelRail02 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL 
+          )
+          
+#03619    EndGap GapID = JKU_Ros_GAP_ID_HangarChannelRail01 
+          score = 200 
+          text = "Hangar Channel" 
+          
+#03620    StartGap GapID = JKU_Ros_GAP_ID_BigGrind01 
+          flags = ARRAY(
+            
+            CANCEL_GROUND 
+          )
+          
+#03621    EndGap GapID = JKU_Ros_GAP_ID_BigGrind02 
+          score = 2000 
+          text = "Ring Around the Roswell" 
+          
+#03622  END FUNCTION
+          
+#03623  FUNCTION RosTRG_Ros_Rail42Script 
+#03626    StartGap GapID = JKU_Ros_GAP_ID_HangarChannelRail01 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL 
+          )
+          
+#03627    EndGap GapID = JKU_Ros_GAP_ID_HangarChannelRail02 
+          score = 200 
+          text = "Hangar Channel" 
+          
+#03628  END FUNCTION
+          
+#03629  FUNCTION RosTRG_Ros_Rail48Script 
+#03632  END FUNCTION
+          
+#03634  FUNCTION RosTRG_Ros_Rail49Script 
+#03637    StartGap GapID = JKU_Ros_GAP_ID_RollinChannelGrind02 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL 
+          )
+          
+#03638    EndGap GapID = JKU_Ros_GAP_ID_RollinChannelGrind01 
+          score = 500 
+          text = "Rollin Channel" 
+          
+#03639  END FUNCTION
+          
+#03640  FUNCTION RosTRG_Ros_Rail51Script 
+#03643    StartGap GapID = JKU_Ros_GAP_ID_RollinChannelGrind01 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL 
+          )
+          
+#03644    EndGap GapID = JKU_Ros_GAP_ID_RollinChannelGrind02 
+          score = 500 
+          text = "Rollin Channel" 
+          
+#03645  END FUNCTION
+          
+#03646  FUNCTION RosTRG_Ros_Rail57Script 
+#03649    StartGap GapID = JKU_Ros_GAP_ID_Pool02 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_AIR 
+          )
+          
+#03650    EndGap GapID = JKU_Ros_GAP_ID_Pool01 
+          score = 2000 
+          text = "Pool Grind" 
+          
+#03651  END FUNCTION
+          
+#03652  FUNCTION RosTRG_Ros_Rail58Script 
+#03655  END FUNCTION
+          
+#03657  FUNCTION RosTRG_Ros_Rail73Script 
+#03660    StartGap GapID = JKU_Ros_GAP_ID_Pool01 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_AIR 
+          )
+          
+#03661    EndGap GapID = JKU_Ros_GAP_ID_Pool02 
+          score = 2000 
+          text = "Pool Grind" 
+          
+#03662  END FUNCTION
+          
+#03663  FUNCTION RosTRG_Ros_Rail76Script 
+#03666    StartGap GapID = JKU_Ros_GAP_ID_BHouse02 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL 
+          )
+          
+#03667    EndGap GapID = JKU_Ros_GAP_ID_BHouse01 
+          score = 500 
+          text = "BHouse Rail" 
+          
+#03668  END FUNCTION
+          
+#03669  FUNCTION RosTRG_Ros_Rail81Script 
+#03672  END FUNCTION
+          
+#03674  FUNCTION RosTRG_Ros_Rail82Script 
+#03677    StartGap GapID = JKU_Ros_GAP_ID_BHouse01 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL 
+          )
+          
+#03678    EndGap GapID = JKU_Ros_GAP_ID_BHouse02 
+          score = 500 
+          text = "BHouse Rail" 
+          
+#03679  END FUNCTION
+          
+#03680  FUNCTION RosTRG_Ros_Restart_Multi01Script 
+#03683    MakeSkaterGoto DropIn 
+#03684  END FUNCTION
+          
+#03685  FUNCTION RosTRG_Ros_Restart_Multi02Script 
+#03688    MakeSkaterGoto DropIn 
+#03689  END FUNCTION
+          
+#03690  FUNCTION RosTRG_Ros_Restart_Multi04Script 
+#03693    MakeSkaterGoto DropIn 
+#03694  END FUNCTION
+          
+#03695  FUNCTION RosTRG_Ros_Restart_Multi05Script 
+#03698    MakeSkaterGoto DropIn 
+#03699  END FUNCTION
+          
+#03700  FUNCTION Rossurrounding_ground04Script 
+#03703    Sk3_KillSkater 
+#03704  END FUNCTION
+          
+#03705  FUNCTION RosDMT_Helipad01Script 
+#03708    Sk3_KillSkater 
+#03709  END FUNCTION
+          
+#03710  FUNCTION RosSpidey_Chopper_Rotor_MainScript 
+#03713    Obj_RotY speed = 2000 
+          
+#03714  END FUNCTION
+          
+#03715  FUNCTION RosSpidey_Chopper_Rotor_Main01Script 
+#03718    Obj_RotY speed = 2000 
+          
+#03719  END FUNCTION
+          
+#03720  FUNCTION Rossurrounding_ground02Script 
+#03723    Sk3_KillSkater 
+#03724  END FUNCTION
+          
+#03725  FUNCTION Rossurrounding_ground03Script 
+#03728    Sk3_KillSkater 
+#03729  END FUNCTION
+          
+#03730  FUNCTION Rossurrounding_ground05Script 
+#03733    Sk3_KillSkater 
+#03734  END FUNCTION
+          
+#03735  FUNCTION Rossurrounding_ground06Script 
+#03738    Sk3_KillSkater 
+#03739  END FUNCTION
+          
+#03740  FUNCTION RosDMT_shit92Script 
+#03743    IF TriggerType TRIGGER_SKATE_ONTO 
+#03744      EndGap STRUCT{
+              GapID = JKU_Ros_AlienManual02 
+              score = 500 
+              text = "Grey Manual" 
+              }
+            
+#03749    END IF 
+#03750    IF TriggerType TRIGGER_SKATE_OFF 
+#03751      StartGap GapID = JKU_Ros_AlienManual01 
+            flags = PURE_MANUAL 
+            
+#03752    END IF 
+#03753  END FUNCTION
+          
+#03754  FUNCTION RosDMT_shit17Script 
+#03757    IF TriggerType TRIGGER_SKATE_ONTO 
+#03758      EndGap STRUCT{
+              GapID = JKU_Ros_AlienManual01 
+              score = 500 
+              text = "Grey Manual" 
+              }
+            
+#03763    END IF 
+#03764    IF TriggerType TRIGGER_SKATE_OFF 
+#03765      StartGap GapID = JKU_Ros_AlienManual02 
+            flags = PURE_MANUAL 
+            
+#03766    END IF 
+#03767  END FUNCTION
+          
+#03768  FUNCTION RosObj_SkRos_Saucer01Script 
+#03771    Obj_MoveToRelPos VECTOR[0.0; 5.0; 0.0] acceleration = 0.2 
+          speed = 0.3 
+          
+#03773    Obj_WaitMove 
+#03774    LOOP 
+#03775      Obj_MoveToRelPos VECTOR[0.0; -10.0; 0.0] acceleration = 0.2 
+            speed = 0.3 
+            
+#03776      Obj_WaitMove 
+#03777      Obj_MoveToRelPos VECTOR[0.0; 10.0; 0.0] acceleration = 0.2 
+            speed = 0.3 
+            
+#03778      Obj_WaitMove 
+#03779    END LOOP 
+#03780  END FUNCTION
+          
+#03781  FUNCTION RosObj_Ros_Turret01Script 
+#03784    LOOP 
+#03785      Obj_LookAtObject Type = skater 
+            
+#03786      wait 1 gameframes 
+#03787    END LOOP 
+#03788  END FUNCTION
+          
+#03789  FUNCTION RosSkRos_WoodRamp04Script 
+#03792    IF TriggerType TRIGGER_LAND_ON 
+#03793      EndGap STRUCT{
+              GapID = JKU_Ros_Channel05 
+              score = 200 
+              text = "Hangar Channel" 
+              }
+            
+#03798    END IF 
+#03799    IF TriggerType ARRAY(
+              TRIGGER_JUMP_OFF TRIGGER_SKATE_OFF_EDGE 
+            )
+            
+#03800      StartGap GapID = JKU_Ros_Channel06 
+            flags = ARRAY(
+              
+              CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL CANCEL_RAIL 
+            )
+            
+#03801    END IF 
+#03802  END FUNCTION
+          
+#03803  FUNCTION RosSkRos_WoodRamp08Script 
+#03806    EndGap GapID = JKU_Ros_Deck01 
+          score = 500 
+          text = "Deck Gap" 
+          
+#03807  END FUNCTION
+          
+#03808  FUNCTION RosSkRos_WoodRamp10Script 
+#03811    IF TriggerType TRIGGER_LAND_ON 
+#03812      EndGap STRUCT{
+              GapID = JKU_Ros_LowDeck02 
+              score = 1500 
+              text = "Low Deck Gap" 
+              }
+            
+#03817    END IF 
+#03818    IF TriggerType ARRAY(
+              TRIGGER_JUMP_OFF TRIGGER_SKATE_OFF_EDGE 
+            )
+            
+#03819      StartGap GapID = JKU_Ros_LowDeck01 
+            flags = ARRAY(
+              
+              CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL CANCEL_RAIL 
+            )
+            
+#03820    END IF 
+#03821  END FUNCTION
+          
+#03822  FUNCTION RosSkRos_QP01Script 
+#03825    IF TriggerType TRIGGER_LAND_ON 
+#03826      EndGap STRUCT{
+              GapID = JKU_Ros_NoGround01 
+              score = 1000 
+              text = "No Ground For You" 
+              }
+            
+#03831    END IF 
+#03832    IF TriggerType TRIGGER_LAND_ON 
+#03833      StartGap GapID = JKU_Ros_NoGround02 
+            flags = ARRAY(
+              
+              CANCEL_GROUND 
+            )
+            
+#03834    END IF 
+#03835  END FUNCTION
+          
+#03836  FUNCTION RosSkRos_WoodRamp19Script 
+#03839    IF TriggerType TRIGGER_LAND_ON 
+#03840      EndGap STRUCT{
+              GapID = JKU_Ros_Channel01 
+              score = 1000 
+              text = "Rollin Channel" 
+              }
+            
+#03845    END IF 
+#03846    IF TriggerType ARRAY(
+              TRIGGER_JUMP_OFF TRIGGER_SKATE_OFF_EDGE 
+            )
+            
+#03847      StartGap GapID = JKU_Ros_Channel02 
+            flags = ARRAY(
+              
+              CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL CANCEL_RAIL 
+            )
+            
+#03848    END IF 
+#03849  END FUNCTION
+          
+#03850  FUNCTION RosSkRos_MetalRamp01Script 
+#03853    IF TriggerType TRIGGER_LAND_ON 
+#03854      EndGap STRUCT{
+              GapID = JKU_Ros_Channel02 
+              score = 1000 
+              text = "Rollin Channel" 
+              }
+            
+#03859    END IF 
+#03860    IF TriggerType ARRAY(
+              TRIGGER_JUMP_OFF TRIGGER_SKATE_OFF_EDGE 
+            )
+            
+#03861      StartGap GapID = JKU_Ros_Channel01 
+            flags = ARRAY(
+              
+              CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL CANCEL_RAIL 
+            )
+            
+#03862    END IF 
+#03863  END FUNCTION
+          
+#03864  FUNCTION RosSkRos_WoodRamp25Script 
+#03867    IF TriggerType TRIGGER_LAND_ON 
+#03868      EndGap STRUCT{
+              GapID = JKU_Ros_LowDeck01 
+              score = 1500 
+              text = "Low Deck Gap" 
+              }
+            
+#03873    END IF 
+#03874    IF TriggerType ARRAY(
+              TRIGGER_JUMP_OFF TRIGGER_SKATE_OFF_EDGE 
+            )
+            
+#03875      StartGap GapID = JKU_Ros_LowDeck02 
+            flags = ARRAY(
+              
+              CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL CANCEL_RAIL 
+            )
+            
+#03876    END IF 
+#03877  END FUNCTION
+          
+#03878  FUNCTION RosSkRos_MetalRamp06Script 
+#03881    IF TriggerType TRIGGER_LAND_ON 
+#03882      EndGap STRUCT{
+              GapID = JKU_Ros_Channel06 
+              score = 200 
+              text = "Hangar Channel" 
+              }
+            
+#03887    END IF 
+#03888    IF TriggerType ARRAY(
+              TRIGGER_JUMP_OFF TRIGGER_SKATE_OFF_EDGE 
+            )
+            
+#03889      StartGap GapID = JKU_Ros_Channel05 
+            flags = ARRAY(
+              
+              CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL CANCEL_RAIL 
+            )
+            
+#03890    END IF 
+#03891  END FUNCTION
+          
+#03892  FUNCTION RosSkRos_WoodRamp17Script 
+#03895    IF TriggerType TRIGGER_LAND_ON 
+#03896      EndGap STRUCT{
+              GapID = JKU_Ros_NoGround02 
+              score = 1000 
+              text = "No Ground For You" 
+              }
+            
+#03901    END IF 
+#03902    IF TriggerType TRIGGER_LAND_ON 
+#03903      StartGap GapID = JKU_Ros_NoGround01 
+            flags = ARRAY(
+              
+              CANCEL_GROUND 
+            )
+            
+#03904    END IF 
+#03905  END FUNCTION
+          
+#03906  FUNCTION RosSkRos_MetalRamp07Script 
+#03909    IF TriggerType TRIGGER_LAND_ON 
+#03910      EndGap STRUCT{
+              GapID = JKU_Ros_Channel02 
+              score = 1000 
+              text = "Rollin Channel" 
+              }
+            
+#03915    END IF 
+#03916    IF TriggerType ARRAY(
+              TRIGGER_JUMP_OFF TRIGGER_SKATE_OFF_EDGE 
+            )
+            
+#03917      StartGap GapID = JKU_Ros_Channel01 
+            flags = ARRAY(
+              
+              CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL CANCEL_RAIL 
+            )
+            
+#03918    END IF 
+#03919  END FUNCTION
+          
+#03920  FUNCTION RosSkRos_WoodRamp15Script 
+#03923    IF TriggerType ARRAY(
+              TRIGGER_JUMP_OFF TRIGGER_SKATE_OFF_EDGE 
+            )
+            
+#03924      StartGap GapID = JKU_Ros_Deck01 
+            flags = ARRAY(
+              
+              CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL CANCEL_RAIL 
+            )
+            
+#03925      StartGap GapID = JKU_Ros_DeckGrind01 
+            flags = ARRAY(
+              
+              CANCEL_GROUND CANCEL_MANUAL 
+            )
+            
+#03926    END IF 
+#03927  END FUNCTION
+          
+#03928  FUNCTION RosSkRos_WoodRamp13Script 
+#03931    IF TriggerType ARRAY(
+              TRIGGER_JUMP_OFF TRIGGER_SKATE_OFF_EDGE 
+            )
+            
+#03932      StartGap GapID = JKU_Ros_Deck01 
+            flags = ARRAY(
+              
+              CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL CANCEL_RAIL 
+            )
+            
+#03933      StartGap GapID = JKU_Ros_DeckGrind01 
+            flags = ARRAY(
+              
+              CANCEL_GROUND CANCEL_MANUAL 
+            )
+            
+#03934    END IF 
+#03935  END FUNCTION
+          
+#03936  FUNCTION RosRos_Hangar_Pool01Script 
+#03939    IF TriggerType TRIGGER_LAND_ON 
+#03940      EndGap STRUCT{
+              GapID = JKU_Ros_Channel03 
+              score = 200 
+              text = "Channel Gap" 
+              }
+            
+#03945    END IF 
+#03946    IF TriggerType ARRAY(
+              TRIGGER_JUMP_OFF TRIGGER_SKATE_OFF_EDGE 
+            )
+            
+#03947      StartGap GapID = JKU_Ros_Channel04 
+            flags = ARRAY(
+              
+              CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL CANCEL_RAIL 
+            )
+            
+#03948    END IF 
+#03949  END FUNCTION
+          
+#03950  FUNCTION RosRos_Hangar_Pool02Script 
+#03953    IF TriggerType TRIGGER_LAND_ON 
+#03954      EndGap STRUCT{
+              GapID = JKU_Ros_Channel04 
+              score = 200 
+              text = "Channel Gap" 
+              }
+            
+#03959    END IF 
+#03960    IF TriggerType ARRAY(
+              TRIGGER_JUMP_OFF TRIGGER_SKATE_OFF_EDGE 
+            )
+            
+#03961      StartGap GapID = JKU_Ros_Channel03 
+            flags = ARRAY(
+              
+              CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL CANCEL_RAIL 
+            )
+            
+#03962    END IF 
+#03963  END FUNCTION
+          
+#03964  FUNCTION RosTRG_CTF1_Restart_1PScript 
+#03967    MakeSkaterGoto StartSkating1 
+#03968  END FUNCTION
+          
+#03969  FUNCTION RosTRG_CTF2_Restart_1PScript 
+#03972    MakeSkaterGoto StartSkating1 
+#03973  END FUNCTION
+          
+#03974  FUNCTION RosTRG_CTF2_Restart_2PScript 
+#03977    MakeSkaterGoto StartSkating1 
+#03978  END FUNCTION
+          
+#03979  FUNCTION RosTRG_CTF2_Restart_3PScript 
+#03982    MakeSkaterGoto StartSkating1 
+#03983  END FUNCTION
+          
+#03984  FUNCTION RosTRG_CTF2_Restart_4PScript 
+#03987    MakeSkaterGoto StartSkating1 
+#03988  END FUNCTION
+          
+#03989  FUNCTION RosTRG_CTF1_Restart_2PScript 
+#03992    MakeSkaterGoto StartSkating1 
+#03993  END FUNCTION
+          
+#03994  FUNCTION RosTRG_CTF1_Restart_3PScript 
+#03997    MakeSkaterGoto StartSkating1 
+#03998  END FUNCTION
+          
+#03999  FUNCTION RosTRG_CTF1_Restart_4PScript 
+#04002    MakeSkaterGoto StartSkating1 
+#04003  END FUNCTION
+          
+#04004  FUNCTION LoadTerrain 
+#04007    SetTerrainDefault 
+#04008    SetTerrainConcSmooth 
+#04009    SetTerrainMetalSmooth 
+#04010    SetTerrainMetalCorrugated 
+#04011    SetTerrainMetalGrating 
+#04012    SetTerrainWood 
+#04013    SetTerrainWoodMasonite 
+#04014    SetTerrainWoodPlywood 
+#04015    SetTerrainTile 
+#04016    SetTerrainDirt 
+#04017    SetTerrainPlexiglass 
+#04018    SetTerrainChainlink 
+#04019    SetTerrainMetalFuture 
+#04020  END FUNCTION
+          
+#04021  

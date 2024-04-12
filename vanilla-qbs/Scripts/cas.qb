@@ -1,0 +1,112 @@
+
+#00001  FUNCTION possibly_replace_male_skullcap 
+#00012    IF GotParam GLOBAL.look_for_param 
+            
+#00013      VerifyParam param = skullcap_texture 
+            func = possibly_replace_male_skullcap 
+            NULL 
+#00014      IF GotParam light_face 
+#00015        ReplaceSkinTexture replace = "cs_nn_face_M_W_01.png" 
+              with = GLOBAL.skullcap_texture 
+              image_dir = "textures\skater_m" 
+              
+#00016      ELSE 
+#00017        IF GotParam tan_face 
+#00018          ReplaceSkinTexture replace = "cs_nn_face_M_A_01.png" 
+                with = GLOBAL.skullcap_texture 
+                image_dir = "textures\skater_m" 
+                
+#00019        ELSE 
+#00020          IF GotParam dark_face 
+#00021            ReplaceSkinTexture replace = "cs_nn_face_M_B_01.png" 
+                  with = GLOBAL.skullcap_texture 
+                  image_dir = "textures\skater_m" 
+                  
+#00022          ELSE 
+#00023            script_assert "Couldn't find face flag" 
+#00024          END IF 
+#00025        END IF 
+#00026      END IF 
+#00027    END IF 
+#00028  END FUNCTION
+          
+#00029  FUNCTION possibly_replace_female_skullcap 
+#00031    IF GotParam GLOBAL.look_for_param 
+            
+#00032      VerifyParam param = skullcap_texture 
+            func = possibly_replace_female_skullcap 
+            NULL 
+#00033      ReplaceSkinTexture replace = "CS_NH_F_Wht_face_exotic.png" 
+            with = GLOBAL.skullcap_texture 
+            image_dir = "textures\skater_m" 
+            
+#00034    END IF 
+#00035  END FUNCTION
+          
+#00036  FUNCTION replace_male_skullcap 
+#00038    ForEachIn male_skullcap_list do = possibly_replace_male_skullcap 
+          params = NULL 
+          
+#00039  END FUNCTION
+          
+#00040  FUNCTION replace_female_skullcap 
+#00042    ForEachIn female_skullcap_list do = possibly_replace_female_skullcap 
+          params = NULL 
+          
+#00043  END FUNCTION
+          
+#00044  FUNCTION replace_shoe 
+#00050    ReplaceSkinTexture STRUCT{
+            replace = "hawk_shoe.png" 
+            with = GLOBAL.texture 
+            image_dir = "textures/skater_m" 
+            }
+          
+#00055  END FUNCTION
+          
+#00056  FUNCTION replace_boardsup 
+#00058    ReplaceSkinTexture STRUCT{
+            replace = "CS_NH_griptape.png" 
+            with = GLOBAL.texture 
+            image_dir = "textures/boards" 
+            }
+          
+#00063  END FUNCTION
+          
+#00064  FUNCTION replace_boardsdown 
+#00066    ReplaceSkinTexture STRUCT{
+            replace = "CS_NH_board.png" 
+            with = GLOBAL.texture 
+            image_dir = "textures/boards" 
+            }
+          
+#00071  END FUNCTION
+          
+#00072  FUNCTION replace_hatlogo 
+#00074    ReplaceSkinTexture STRUCT{
+            replace = "CS_NN_hatlogo_None.png" 
+            with = GLOBAL.texture 
+            image_dir = "textures/logos" 
+            }
+          
+#00079  END FUNCTION
+          
+#00080  FUNCTION replace_frontlogo 
+#00082    ReplaceSkinTexture STRUCT{
+            replace = "CS_NH_logo_none.png" 
+            with = GLOBAL.texture 
+            image_dir = "textures/logos" 
+            }
+          
+#00087  END FUNCTION
+          
+#00088  FUNCTION replace_backlogo 
+#00090    ReplaceSkinTexture STRUCT{
+            replace = "CS_NH_logo_none2.png" 
+            with = GLOBAL.texture 
+            image_dir = "textures/logos" 
+            }
+          
+#00095  END FUNCTION
+          
+#00096  

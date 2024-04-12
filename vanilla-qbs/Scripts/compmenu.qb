@@ -1,0 +1,161 @@
+
+#00001  judge_screen_left = 180.0 
+        
+#00008  judge_screen_width = 280.0 
+        
+#00009  judge_screen_left_col_width = 140.0 
+        
+#00010  judge_screen_right_col_width = 140.0 
+        
+#00011  judge_screen_left_col = 180.0 
+        
+#00012  judge_screen_right_col = 320.0 
+        
+#00013  judge_screen_ranking_ypos = 60.0 
+        
+#00014  judge_screen_header_ypos = 120.0 
+        
+#00015  judge_screen_stats_ypos = 160.0 
+        
+#00016  judge_screen_prompt_ypos = 400.0 
+        
+#00017  comp_menu_properties = STRUCT{
+          just_center_x just_center_y not_rounded }
+        
+#00023  FUNCTION comp_menu_create 
+#00025    createmenu STRUCT{
+            type = menucontainer 
+            id = judge_screen 
+            show_all_children }
+          
+#00031    createmenu STRUCT{
+            type = verticalmenu 
+            id = judge_screen_title 
+            x = judge_screen_left 
+            w = judge_screen_width 
+            y = judge_screen_ranking_ypos 
+            h = 260.0 
+            stats_menu_properties blue_top children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "scores" 
+                drawer = title 
+                static dont_gray }
+              
+            )
+            }
+          
+#00051    createmenu STRUCT{
+            type = verticalmenu 
+            id = judge_screen_positions_title 
+            x = judge_screen_left_col 
+            w = judge_screen_left_col_width 
+            y = judge_screen_header_ypos 
+            h = 260.0 
+            stats_menu_properties children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Judge" 
+                static dont_gray }
+              
+            )
+            }
+          
+#00069    createmenu STRUCT{
+            type = verticalmenu 
+            id = judge_screen_scores_title 
+            x = judge_screen_right_col 
+            w = judge_screen_right_col_width 
+            y = judge_screen_header_ypos 
+            h = 260.0 
+            stats_menu_properties children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "score" 
+                static dont_gray }
+              
+            )
+            }
+          
+#00105    createmenu STRUCT{
+            type = verticalmenu 
+            id = judge_screen_names 
+            x = judge_screen_left_col 
+            w = judge_screen_left_col_width 
+            y = judge_screen_stats_ypos 
+            h = 260.0 
+            stats_menu_properties children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Larry" 
+                static dont_gray }
+              
+            )
+            }
+          
+#00123    createmenu STRUCT{
+            type = verticalmenu 
+            id = judge_screen_scores 
+            x = judge_screen_right_col 
+            w = judge_screen_right_col_width 
+            y = judge_screen_stats_ypos 
+            h = 260.0 
+            stats_menu_properties children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "99" 
+                static dont_gray }
+              
+            )
+            }
+          
+#00159    createmenu STRUCT{
+            type = verticalmenu 
+            id = judge_screen_prompt 
+            x = judge_screen_left 
+            w = judge_screen_width 
+            y = judge_screen_prompt_ypos 
+            h = 260.0 
+            stats_menu_properties children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Continue" 
+                target = "unpause_game_flow" 
+                kill_menu }
+              
+            )
+            }
+          
+#00177    attachchild parent = contain1 
+          child = judge_screen 
+          
+#00179    attachchild parent = judge_screen 
+          child = judge_screen_title 
+          
+#00180    attachchild parent = judge_screen 
+          child = judge_screen_positions_title 
+          
+#00181    attachchild parent = judge_screen 
+          child = judge_screen_scores_title 
+          
+#00182    attachchild parent = judge_screen 
+          child = judge_screen_names 
+          
+#00183    attachchild parent = judge_screen 
+          child = judge_screen_scores 
+          
+#00184    attachchild parent = judge_screen 
+          child = judge_screen_prompt 
+          
+#00185  END FUNCTION
+          
+#00187  FUNCTION run_comp_menu 
+#00189  END FUNCTION
+          
+#00191  

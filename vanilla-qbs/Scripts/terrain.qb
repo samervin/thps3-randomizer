@@ -1,0 +1,1896 @@
+
+#00001  TERRAIN_DEFAULT = 0 
+        
+#00008  TERRAIN_CONCSMOOTH = 1 
+        
+#00009  TERRAIN_CONCROUGH = 2 
+        
+#00010  TERRAIN_METALSMOOTH = 3 
+        
+#00011  TERRAIN_MEATALSMOOTH = 3 
+        
+#00012  TERRAIN_METALROUGH = 4 
+        
+#00013  TERRAIN_METALCORRUGATED = 5 
+        
+#00014  TERRAIN_METALGRATING = 6 
+        
+#00015  TERRAIN_METALTIN = 7 
+        
+#00016  TERRAIN_WOOD = 8 
+        
+#00017  TERRAIN_WOODMASONITE = 9 
+        
+#00018  TERRAIN_WOODPLYWOOD = 10 
+        
+#00019  TERRAIN_WOODFLIMSY = 11 
+        
+#00020  TERRAIN_WOODSHINGLE = 12 
+        
+#00021  TERRAIN_WOODPIER = 13 
+        
+#00022  TERRAIN_BRICK = 14 
+        
+#00023  TERRAIN_TILE = 15 
+        
+#00024  TERRAIN_ASPHALT = 16 
+        
+#00025  TERRAIN_ROCK = 17 
+        
+#00026  TERRAIN_GRAVEL = 18 
+        
+#00027  TERRAIN_SIDEWALK = 19 
+        
+#00028  TERRAIN_GRASS = 20 
+        
+#00029  TERRAIN_GRASSDRIED = 21 
+        
+#00030  TERRAIN_DIRT = 22 
+        
+#00031  TERRAIN_DIRTPACKED = 23 
+        
+#00032  TERRAIN_WATER = 24 
+        
+#00033  TERRAIN_ICE = 25 
+        
+#00034  TERRAIN_SNOW = 26 
+        
+#00035  TERRAIN_SAND = 27 
+        
+#00036  TERRAIN_PLEXIGLASS = 28 
+        
+#00037  TERRAIN_FIBERGLASS = 29 
+        
+#00038  TERRAIN_CARPET = 30 
+        
+#00039  TERRAIN_CONVEYOR = 31 
+        
+#00040  TERRAIN_CHAINLINK = 32 
+        
+#00041  TERRAIN_METALFUTURE = 33 
+        
+#00042  TERRAIN_GENERIC1 = 34 
+        
+#00043  TERRAIN_GENERIC2 = 35 
+        
+#00044  TERRAIN_WHEELS = 36 
+        
+#00045  TERRAIN_WETCONC = 37 
+        
+#00046  TERRAIN_METALFENCE = 38 
+        
+#00047  TERRAIN_GRINDTRAIN = 39 
+        
+#00048  TERRAIN_GRINDROPE = 40 
+        
+#00049  FUNCTION SetTerrainDefaults 
+#00051    LoadSound "FallWater" pitch = 35 
+          vol = 100 
+          
+#00053    LoadSound "FallPungee" 
+#00054    LoadSound "BonkBush" 
+#00055    SetTerrainDefault 
+#00056    SetTerrainConcSmooth 
+#00057    SetTerrainConcRough 
+#00058    SetTerrainMetalSmooth 
+#00059    SetTerrainMetalRough 
+#00060    SetTerrainMetalCorrugated 
+#00061    SetTerrainMetalGrating 
+#00062    SetTerrainMetalTin 
+#00063    SetTerrainWood 
+#00064    SetTerrainWoodMasonite 
+#00065    SetTerrainWoodPlywood 
+#00066    SetTerrainWoodFlimsy 
+#00067    SetTerrainWoodShingle 
+#00068    SetTerrainWoodPier 
+#00069    SetTerrainBrick 
+#00070    SetTerrainTile 
+#00071    SetTerrainAsphalt 
+#00072    SetTerrainRock 
+#00073    SetTerrainGravel 
+#00074    SetTerrainSidewalk 
+#00075    SetTerrainGrass 
+#00076    SetTerrainGrassDried 
+#00077    SetTerrainDirt 
+#00078    SetTerrainDirtPacked 
+#00079    SetTerrainWater 
+#00080    SetTerrainIce 
+#00081    SetTerrainSnow 
+#00082    SetTerrainSand 
+#00083    SetTerrainPlexiglass 
+#00084    SetTerrainFiberglass 
+#00085    SetTerrainCarpet 
+#00086    SetTerrainConveyor 
+#00087    SetTerrainChainlink 
+#00088    SetTerrainMetalFuture 
+#00089    SetTerrainGeneric1 
+#00090    SetTerrainGeneric2 
+#00091    SetTerrainWetConcrete 
+#00092    SetTerrainMetalFence 
+#00093    SetTerrainGrindTrain 
+#00094    SetTerrainGrindRope 
+#00095  END FUNCTION
+          
+#00096  RollConcSmoothValues = STRUCT{
+          maxPitch = 120 
+          minPitch = 30 
+          }
+        
+#00098  RollConcRoughValues = STRUCT{
+          maxPitch = 120 
+          minPitch = 10 
+          }
+        
+#00099  OllieConcValues = STRUCT{
+          maxVol = 140 
+          minVol = 70 
+          }
+        
+#00100  LandConcValues = STRUCT{
+          maxVol = 140 
+          minVol = 70 
+          }
+        
+#00101  BonkConcValues = STRUCT{
+          maxVol = 140 
+          minVol = 70 
+          }
+        
+#00102  RollMetalSmoothValues = STRUCT{
+          maxPitch = 120 
+          minPitch = 30 
+          }
+        
+#00104  RollMetalRoughValues = STRUCT{
+          maxPitch = 120 
+          minPitch = 30 
+          maxVol = 100 
+          minVol = 20 
+          }
+        
+#00105  RollMetalCorrugatedValues = STRUCT{
+          maxPitch = 250 
+          minPitch = 150 
+          }
+        
+#00106  OllieMetalValues = STRUCT{
+          maxVol = 140 
+          minVol = 70 
+          }
+        
+#00107  LandMetalValues = STRUCT{
+          maxPitch = 30 
+          minPitch = 30 
+          maxVol = 100 
+          minVol = 40 
+          }
+        
+#00108  BonkMetalValues = STRUCT{
+          maxVol = 100 
+          minVol = 30 
+          }
+        
+#00109  RollWoodValues = STRUCT{
+          maxPitch = 120 
+          minPitch = 30 
+          maxVol = 100 
+          minVol = 20 
+          }
+        
+#00111  RollWoodShingleValues = STRUCT{
+          maxPitch = 80 
+          minPitch = 20 
+          maxVol = 100 
+          minVol = 20 
+          }
+        
+#00112  OllieWoodValues = STRUCT{
+          maxVol = 120 
+          minVol = 60 
+          }
+        
+#00113  LandWoodValues = STRUCT{
+          maxVol = 120 
+          minVol = 60 
+          }
+        
+#00114  BonkWoodValues = STRUCT{
+          maxVol = 90 
+          minVol = 30 
+          }
+        
+#00115  FUNCTION SetTerrainDefault 
+#00117  END FUNCTION
+          
+#00118  FUNCTION SetTerrainConcSmooth 
+#00120    LoadSound "Terrains\RollConcSmooth" vol = 70 
+          
+#00121    LoadSound "Terrains\OllieConc" 
+#00122    LoadSound "Terrains\LandConc" vol = 100 
+          
+#00123    LoadSound "Terrains\GrindConc" 
+#00124    LoadSound "Terrains\SlideConc" vol = 100 
+          
+#00125    LoadSound "Skater\RevertConc" vol = 300 
+          
+#00126    SetTerrainSfxProperties RollConcSmooth STRUCT{
+            Terrain = TERRAIN_CONCSMOOTH 
+            Table = SK3SFX_TABLE_WHEELROLL 
+            maxPitch = 120 
+            minPitch = 50 
+            }
+          
+#00128    SetTerrainSfxProperties OllieConc STRUCT{
+            Terrain = TERRAIN_CONCSMOOTH 
+            Table = SK3SFX_TABLE_JUMP 
+            OllieConcValues }
+          
+#00130    SetTerrainSfxProperties LandConc STRUCT{
+            Terrain = TERRAIN_CONCSMOOTH 
+            Table = SK3SFX_TABLE_LAND 
+            LandConcValues }
+          
+#00132    SetTerrainSfxProperties LandConc STRUCT{
+            Terrain = TERRAIN_CONCSMOOTH 
+            Table = SK3SFX_TABLE_BONK 
+            LandConcValues }
+          
+#00134    SetTerrainSfxProperties GrindConc STRUCT{
+            Terrain = TERRAIN_CONCSMOOTH 
+            Table = SK3SFX_TABLE_GRIND 
+            maxPitch = 100 
+            minPitch = 60 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00136    SetTerrainSfxProperties OllieConc STRUCT{
+            Terrain = TERRAIN_CONCSMOOTH 
+            Table = SK3SFX_TABLE_GRINDJUMP 
+            OllieConcValues }
+          
+#00138    SetTerrainSfxProperties LandConc STRUCT{
+            Terrain = TERRAIN_CONCSMOOTH 
+            Table = SK3SFX_TABLE_GRINDLAND 
+            maxVol = 150 
+            minVol = 100 
+            }
+          
+#00140    SetTerrainSfxProperties SlideConc STRUCT{
+            Terrain = TERRAIN_CONCSMOOTH 
+            Table = SK3SFX_TABLE_SLIDE 
+            maxPitch = 100 
+            minPitch = 60 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00142    SetTerrainSfxProperties OllieConc STRUCT{
+            Terrain = TERRAIN_CONCSMOOTH 
+            Table = SK3SFX_TABLE_SLIDEJUMP 
+            OllieConcValues }
+          
+#00144    SetTerrainSfxProperties LandConc STRUCT{
+            Terrain = TERRAIN_CONCSMOOTH 
+            Table = SK3SFX_TABLE_SLIDELAND 
+            maxVol = 120 
+            minVol = 80 
+            }
+          
+#00146    SetTerrainSfxProperties RevertConc STRUCT{
+            Terrain = TERRAIN_CONCSMOOTH 
+            Table = SK3SFX_TABLE_CESS 
+            }
+          
+#00148  END FUNCTION
+          
+#00150  FUNCTION SetTerrainConcRough 
+#00152    LoadSound "Terrains\RollConcRough" vol = 100 
+          
+#00153    LoadSound "Terrains\OllieConc" 
+#00154    LoadSound "Terrains\LandConc" vol = 100 
+          
+#00155    LoadSound "Skater\RevertConc" vol = 300 
+          
+#00156    SetTerrainSfxProperties RollConcRough STRUCT{
+            Terrain = TERRAIN_CONCROUGH 
+            Table = SK3SFX_TABLE_WHEELROLL 
+            maxPitch = 120 
+            minPitch = 50 
+            }
+          
+#00158    SetTerrainSfxProperties OllieConc STRUCT{
+            Terrain = TERRAIN_CONCROUGH 
+            Table = SK3SFX_TABLE_JUMP 
+            OllieConcValues }
+          
+#00160    SetTerrainSfxProperties LandConc STRUCT{
+            Terrain = TERRAIN_CONCROUGH 
+            Table = SK3SFX_TABLE_LAND 
+            LandConcValues }
+          
+#00162    SetTerrainSfxProperties LandConc STRUCT{
+            Terrain = TERRAIN_CONCROUGH 
+            Table = SK3SFX_TABLE_BONK 
+            LandConcValues }
+          
+#00164    SetTerrainSfxProperties RevertConc STRUCT{
+            Terrain = TERRAIN_CONCROUGH 
+            Table = SK3SFX_TABLE_CESS 
+            }
+          
+#00166  END FUNCTION
+          
+#00167  FUNCTION SetTerrainMetalSmooth 
+#00169    LoadSound "Terrains\RollMetalSmooth" 
+#00170    LoadSound "Terrains\OllieMetal" vol = 120 
+          
+#00171    LoadSound "Terrains\LandMetal" 
+#00172    LoadSound "Terrains\BonkMetal" vol = 100 
+          
+#00173    LoadSound "Terrains\GrindMetal" 
+#00174    LoadSound "Terrains\GrindMetalOn" 
+#00175    LoadSound "Terrains\GrindMetalOff" 
+#00176    LoadSound "Terrains\SlideMetal" 
+#00177    LoadSound "Skater\RevertMetal" vol = 300 
+          
+#00178    SetTerrainSfxProperties RollMetalSmooth STRUCT{
+            Terrain = TERRAIN_METALSMOOTH 
+            Table = SK3SFX_TABLE_WHEELROLL 
+            maxPitch = 120 
+            minPitch = 50 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00180    SetTerrainSfxProperties OllieMetal STRUCT{
+            Terrain = TERRAIN_METALSMOOTH 
+            Table = SK3SFX_TABLE_JUMP 
+            OllieMetalValues }
+          
+#00182    SetTerrainSfxProperties LandMetal STRUCT{
+            Terrain = TERRAIN_METALSMOOTH 
+            Table = SK3SFX_TABLE_LAND 
+            LandMetalValues }
+          
+#00184    SetTerrainSfxProperties BonkMetal STRUCT{
+            Terrain = TERRAIN_METALSMOOTH 
+            Table = SK3SFX_TABLE_BONK 
+            BonkMetalValues }
+          
+#00186    SetTerrainSfxProperties GrindMetal STRUCT{
+            Terrain = TERRAIN_METALMOOTH 
+            Table = SK3SFX_TABLE_GRIND 
+            maxPitch = 120 
+            minPitch = 80 
+            maxVol = 80 
+            minVol = 50 
+            }
+          
+#00188    SetTerrainSfxProperties GrindMetalOff STRUCT{
+            Terrain = TERRAIN_METALMOOTH 
+            Table = SK3SFX_TABLE_GRINDJUMP 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00190    SetTerrainSfxProperties GrindMetalOn STRUCT{
+            Terrain = TERRAIN_METALMOOTH 
+            Table = SK3SFX_TABLE_GRINDLAND 
+            maxVol = 100 
+            minVol = 50 
+            }
+          
+#00192    SetTerrainSfxProperties SlideMetal STRUCT{
+            Terrain = TERRAIN_METALMOOTH 
+            Table = SK3SFX_TABLE_SLIDE 
+            maxPitch = 120 
+            minPitch = 80 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00194    SetTerrainSfxProperties GrindMetalOff STRUCT{
+            Terrain = TERRAIN_METALMOOTH 
+            Table = SK3SFX_TABLE_SLIDEJUMP 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00196    SetTerrainSfxProperties GrindMetalOn STRUCT{
+            Terrain = TERRAIN_METALMOOTH 
+            Table = SK3SFX_TABLE_SLIDELAND 
+            maxVol = 100 
+            minVol = 50 
+            }
+          
+#00198    SetTerrainSfxProperties RevertMetal STRUCT{
+            Terrain = TERRAIN_METALSMOOTH 
+            Table = SK3SFX_TABLE_CESS 
+            }
+          
+#00200  END FUNCTION
+          
+#00202  FUNCTION SetTerrainMetalRough 
+#00204    LoadSound "Terrains\RollMetalRough" 
+#00205    LoadSound "Terrains\OllieMetal" vol = 120 
+          
+#00206    LoadSound "Terrains\LandMetal" 
+#00207    LoadSound "Terrains\BonkMetal" vol = 100 
+          
+#00208    LoadSound "Skater\RevertMetal" vol = 300 
+          
+#00209    SetTerrainSfxProperties RollMetalRough STRUCT{
+            Terrain = TERRAIN_METALROUGH 
+            Table = SK3SFX_TABLE_WHEELROLL 
+            maxPitch = 120 
+            minPitch = 50 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00211    SetTerrainSfxProperties OllieMetal STRUCT{
+            Terrain = TERRAIN_METALROUGH 
+            Table = SK3SFX_TABLE_JUMP 
+            OllieMetalValues }
+          
+#00213    SetTerrainSfxProperties LandMetal STRUCT{
+            Terrain = TERRAIN_METALROUGH 
+            Table = SK3SFX_TABLE_LAND 
+            LandMetalValues }
+          
+#00215    SetTerrainSfxProperties BonkMetal STRUCT{
+            Terrain = TERRAIN_METALROUGH 
+            Table = SK3SFX_TABLE_BONK 
+            BonkMetalValues }
+          
+#00217    SetTerrainSfxProperties RevertMetal STRUCT{
+            Terrain = TERRAIN_METALROUGH 
+            Table = SK3SFX_TABLE_CESS 
+            }
+          
+#00219  END FUNCTION
+          
+#00220  FUNCTION SetTerrainMetalCorrugated 
+#00222    LoadSound "Terrains\RollMetalCorrugated" 
+#00223    LoadSound "Terrains\OllieMetal" vol = 120 
+          
+#00224    LoadSound "Terrains\LandMetal" 
+#00225    LoadSound "Terrains\BonkMetal" vol = 100 
+          
+#00226    LoadSound "Skater\RevertMetal" vol = 300 
+          
+#00227    SetTerrainSfxProperties RollMetalCorrugated STRUCT{
+            Terrain = TERRAIN_METALCORRUGATED 
+            Table = SK3SFX_TABLE_WHEELROLL 
+            maxPitch = 120 
+            minPitch = 50 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00229    SetTerrainSfxProperties OllieMetal STRUCT{
+            Terrain = TERRAIN_METALCORRUGATED 
+            Table = SK3SFX_TABLE_JUMP 
+            OllieMetalValues }
+          
+#00231    SetTerrainSfxProperties LandMetal STRUCT{
+            Terrain = TERRAIN_METALCORRUGATED 
+            Table = SK3SFX_TABLE_LAND 
+            LandMetalValues }
+          
+#00233    SetTerrainSfxProperties BonkMetal STRUCT{
+            Terrain = TERRAIN_METALCORRUGATED 
+            Table = SK3SFX_TABLE_BONK 
+            BonkMetalValues }
+          
+#00235    SetTerrainSfxProperties RevertMetal STRUCT{
+            Terrain = TERRAIN_METALCORRUGATED 
+            Table = SK3SFX_TABLE_CESS 
+            }
+          
+#00237  END FUNCTION
+          
+#00238  FUNCTION SetTerrainMetalGrating 
+#00241    LoadSound "Terrains\RollMetalGrating" 
+#00242    LoadSound "Terrains\OllieMetal" vol = 120 
+          
+#00243    LoadSound "Terrains\LandMetal" 
+#00244    LoadSound "Terrains\BonkMetal" vol = 100 
+          
+#00245    LoadSound "Skater\RevertMetal" vol = 300 
+          
+#00246    SetTerrainSfxProperties RollMetalGrating STRUCT{
+            Terrain = TERRAIN_METALGRATING 
+            Table = SK3SFX_TABLE_WHEELROLL 
+            maxPitch = 120 
+            minPitch = 50 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00248    SetTerrainSfxProperties OllieMetal STRUCT{
+            Terrain = TERRAIN_METALGRATING 
+            Table = SK3SFX_TABLE_JUMP 
+            OllieMetalValues }
+          
+#00250    SetTerrainSfxProperties LandMetal STRUCT{
+            Terrain = TERRAIN_METALGRATING 
+            Table = SK3SFX_TABLE_LAND 
+            LandMetalValues }
+          
+#00252    SetTerrainSfxProperties BonkMetal STRUCT{
+            Terrain = TERRAIN_METALGRATING 
+            Table = SK3SFX_TABLE_BONK 
+            BonkMetalValues }
+          
+#00254    SetTerrainSfxProperties RevertMetal STRUCT{
+            Terrain = TERRAIN_METALGRATING 
+            Table = SK3SFX_TABLE_CESS 
+            }
+          
+#00256  END FUNCTION
+          
+#00257  FUNCTION SetTerrainMetalTin 
+#00259    LoadSound "Terrains\RollMetalTin" 
+#00260    LoadSound "Terrains\OllieMetal" vol = 120 
+          
+#00261    LoadSound "Terrains\LandMetal" 
+#00262    LoadSound "Terrains\BonkMetal" vol = 100 
+          
+#00263    LoadSound "Skater\RevertMetal" vol = 300 
+          
+#00264    SetTerrainSfxProperties RollMetalTin STRUCT{
+            Terrain = TERRAIN_METALTIN 
+            Table = SK3SFX_TABLE_WHEELROLL 
+            maxPitch = 120 
+            minPitch = 50 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00266    SetTerrainSfxProperties OllieMetal STRUCT{
+            Terrain = TERRAIN_METALTIN 
+            Table = SK3SFX_TABLE_JUMP 
+            OllieMetalValues }
+          
+#00268    SetTerrainSfxProperties LandMetal STRUCT{
+            Terrain = TERRAIN_METALTIN 
+            Table = SK3SFX_TABLE_LAND 
+            LandMetalValues }
+          
+#00270    SetTerrainSfxProperties BonkMetal STRUCT{
+            Terrain = TERRAIN_METALTIN 
+            Table = SK3SFX_TABLE_BONK 
+            BonkMetalValues }
+          
+#00272    SetTerrainSfxProperties RevertMetal STRUCT{
+            Terrain = TERRAIN_METALTIN 
+            Table = SK3SFX_TABLE_CESS 
+            }
+          
+#00274  END FUNCTION
+          
+#00275  FUNCTION SetTerrainWood 
+#00277    LoadSound "Terrains\RollWood" vol = 50 
+          
+#00278    LoadSound "Terrains\OllieWood" 
+#00279    LoadSound "Terrains\LandWood" vol = 100 
+          
+#00280    LoadSound "Terrains\BonkWood" vol = 100 
+          
+#00281    LoadSound "Terrains\GrindWood" vol = 100 
+          
+#00282    LoadSound "Terrains\SlideWood" vol = 100 
+          
+#00283    LoadSound "Skater\RevertWood" vol = 300 
+          
+#00284    SetTerrainSfxProperties RollWood STRUCT{
+            Terrain = TERRAIN_WOOD 
+            Table = SK3SFX_TABLE_WHEELROLL 
+            maxPitch = 120 
+            minPitch = 50 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00286    SetTerrainSfxProperties OllieWood STRUCT{
+            Terrain = TERRAIN_WOOD 
+            Table = SK3SFX_TABLE_JUMP 
+            OllieWoodValues }
+          
+#00288    SetTerrainSfxProperties LandWood STRUCT{
+            Terrain = TERRAIN_WOOD 
+            Table = SK3SFX_TABLE_LAND 
+            LandWoodValues }
+          
+#00290    SetTerrainSfxProperties BonkWood STRUCT{
+            Terrain = TERRAIN_WOOD 
+            Table = SK3SFX_TABLE_BONK 
+            BonkWoodValues }
+          
+#00292    SetTerrainSfxProperties GrindWood STRUCT{
+            Terrain = TERRAIN_WOOD 
+            Table = SK3SFX_TABLE_GRIND 
+            maxPitch = 100 
+            minPitch = 60 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00294    SetTerrainSfxProperties OllieWood STRUCT{
+            Terrain = TERRAIN_WOOD 
+            Table = SK3SFX_TABLE_GRINDJUMP 
+            OllieWoodValues }
+          
+#00296    SetTerrainSfxProperties LandWood STRUCT{
+            Terrain = TERRAIN_WOOD 
+            Table = SK3SFX_TABLE_GRINDLAND 
+            maxVol = 100 
+            minVol = 60 
+            }
+          
+#00298    SetTerrainSfxProperties SlideWood STRUCT{
+            Terrain = TERRAIN_WOOD 
+            Table = SK3SFX_TABLE_SLIDE 
+            maxPitch = 100 
+            minPitch = 60 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00300    SetTerrainSfxProperties OllieWood STRUCT{
+            Terrain = TERRAIN_WOOD 
+            Table = SK3SFX_TABLE_SLIDEJUMP 
+            OllieWoodValues }
+          
+#00302    SetTerrainSfxProperties LandWood STRUCT{
+            Terrain = TERRAIN_WOOD 
+            Table = SK3SFX_TABLE_SLIDELAND 
+            maxVol = 120 
+            minVol = 80 
+            }
+          
+#00304    SetTerrainSfxProperties RevertWood STRUCT{
+            Terrain = TERRAIN_WOOD 
+            Table = SK3SFX_TABLE_CESS 
+            }
+          
+#00306  END FUNCTION
+          
+#00307  FUNCTION SetTerrainWoodMasonite 
+#00309    LoadSound "Terrains\RollWoodMasonite" pitch = 50 
+          vol = 80 
+          
+#00310    LoadSound "Terrains\OllieWood" 
+#00311    LoadSound "Terrains\LandWood" vol = 100 
+          
+#00312    LoadSound "Terrains\BonkWood" vol = 100 
+          
+#00313    LoadSound "Skater\RevertWood" vol = 300 
+          
+#00314    SetTerrainSfxProperties RollWoodMasonite STRUCT{
+            Terrain = TERRAIN_WOODMASONITE 
+            Table = SK3SFX_TABLE_WHEELROLL 
+            maxPitch = 120 
+            minPitch = 50 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00316    SetTerrainSfxProperties OllieWood STRUCT{
+            Terrain = TERRAIN_WOODMASONITE 
+            Table = SK3SFX_TABLE_JUMP 
+            OllieWoodValues }
+          
+#00318    SetTerrainSfxProperties LandWood STRUCT{
+            Terrain = TERRAIN_WOODMASONITE 
+            Table = SK3SFX_TABLE_LAND 
+            LandWoodValues }
+          
+#00320    SetTerrainSfxProperties BonkWood STRUCT{
+            Terrain = TERRAIN_WOODMASONITE 
+            Table = SK3SFX_TABLE_BONK 
+            BonkWoodValues }
+          
+#00322    SetTerrainSfxProperties RevertWood STRUCT{
+            Terrain = TERRAIN_WOODMASONITE 
+            Table = SK3SFX_TABLE_CESS 
+            }
+          
+#00324  END FUNCTION
+          
+#00325  FUNCTION SetTerrainWoodPlywood 
+#00327    LoadSound "Terrains\RollWoodPlywood" vol = 80 
+          
+#00328    LoadSound "Terrains\OllieWood" 
+#00329    LoadSound "Terrains\LandWood" vol = 100 
+          
+#00330    LoadSound "Terrains\BonkWood" vol = 100 
+          
+#00331    LoadSound "Skater\RevertWood" vol = 300 
+          
+#00332    SetTerrainSfxProperties RollWoodPlywood STRUCT{
+            Terrain = TERRAIN_WOODPLYWOOD 
+            Table = SK3SFX_TABLE_WHEELROLL 
+            maxPitch = 120 
+            minPitch = 80 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00334    SetTerrainSfxProperties OllieWood STRUCT{
+            Terrain = TERRAIN_WOODPLYWOOD 
+            Table = SK3SFX_TABLE_JUMP 
+            OllieWoodValues }
+          
+#00336    SetTerrainSfxProperties LandWood STRUCT{
+            Terrain = TERRAIN_WOODPLYWOOD 
+            Table = SK3SFX_TABLE_LAND 
+            LandWoodValues }
+          
+#00338    SetTerrainSfxProperties BonkWood STRUCT{
+            Terrain = TERRAIN_WOODPLYWOOD 
+            Table = SK3SFX_TABLE_BONK 
+            BonkWoodValues }
+          
+#00340    SetTerrainSfxProperties RevertWood STRUCT{
+            Terrain = TERRAIN_WOODPLYWOOD 
+            Table = SK3SFX_TABLE_CESS 
+            }
+          
+#00342  END FUNCTION
+          
+#00343  FUNCTION SetTerrainWoodFlimsy 
+#00345    LoadSound "Terrains\RollWoodFlimsy" vol = 80 
+          
+#00346    LoadSound "Terrains\OllieWood" 
+#00347    LoadSound "Terrains\LandWood" vol = 100 
+          
+#00348    LoadSound "Terrains\BonkWood" vol = 100 
+          
+#00349    LoadSound "Skater\RevertWood" vol = 300 
+          
+#00350    SetTerrainSfxProperties RollWoodFlimsy STRUCT{
+            Terrain = TERRAIN_WOODFLIMSY 
+            Table = SK3SFX_TABLE_WHEELROLL 
+            maxPitch = 120 
+            minPitch = 80 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00352    SetTerrainSfxProperties OllieWood STRUCT{
+            Terrain = TERRAIN_WOODFLIMSY 
+            Table = SK3SFX_TABLE_JUMP 
+            OllieWoodValues }
+          
+#00354    SetTerrainSfxProperties LandWood STRUCT{
+            Terrain = TERRAIN_WOODFLIMSY 
+            Table = SK3SFX_TABLE_LAND 
+            LandWoodValues }
+          
+#00356    SetTerrainSfxProperties BonkWood STRUCT{
+            Terrain = TERRAIN_WOODFLIMSY 
+            Table = SK3SFX_TABLE_BONK 
+            BonkWoodValues }
+          
+#00358    SetTerrainSfxProperties RevertWood STRUCT{
+            Terrain = TERRAIN_WOODFLIMSY 
+            Table = SK3SFX_TABLE_CESS 
+            }
+          
+#00360  END FUNCTION
+          
+#00361  FUNCTION SetTerrainWoodShingle 
+#00363    LoadSound "Terrains\RollWoodShingle" vol = 80 
+          
+#00364    LoadSound "Terrains\OllieWood" 
+#00365    LoadSound "Terrains\LandWood" vol = 100 
+          
+#00366    LoadSound "Terrains\BonkWood" vol = 100 
+          
+#00367    LoadSound "Skater\RevertWood" vol = 300 
+          
+#00368    SetTerrainSfxProperties RollWoodShingle STRUCT{
+            Terrain = TERRAIN_WOODSHINGLE 
+            Table = SK3SFX_TABLE_WHEELROLL 
+            maxPitch = 80 
+            minPitch = 50 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00370    SetTerrainSfxProperties OllieWood STRUCT{
+            Terrain = TERRAIN_WOODSHINGLE 
+            Table = SK3SFX_TABLE_JUMP 
+            OllieWoodValues }
+          
+#00372    SetTerrainSfxProperties LandWood STRUCT{
+            Terrain = TERRAIN_WOODSHINGLE 
+            Table = SK3SFX_TABLE_LAND 
+            LandWoodValues }
+          
+#00374    SetTerrainSfxProperties BonkWood STRUCT{
+            Terrain = TERRAIN_WOODSHINGLE 
+            Table = SK3SFX_TABLE_BONK 
+            BonkWoodValues }
+          
+#00376    SetTerrainSfxProperties RevertWood STRUCT{
+            Terrain = TERRAIN_WOODSHINGLE 
+            Table = SK3SFX_TABLE_CESS 
+            }
+          
+#00378  END FUNCTION
+          
+#00379  FUNCTION SetTerrainWoodPier 
+#00381    LoadSound "Terrains\RollWoodPier" vol = 80 
+          
+#00382    LoadSound "Terrains\OllieWood" 
+#00383    LoadSound "Terrains\LandWood" vol = 100 
+          
+#00384    LoadSound "Terrains\BonkWood" vol = 100 
+          
+#00385    LoadSound "Skater\RevertWood" vol = 300 
+          
+#00386    SetTerrainSfxProperties RollWoodPier STRUCT{
+            Terrain = TERRAIN_WOODPIER 
+            Table = SK3SFX_TABLE_WHEELROLL 
+            maxPitch = 120 
+            minPitch = 80 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00388    SetTerrainSfxProperties OllieWood STRUCT{
+            Terrain = TERRAIN_WOODPIER 
+            Table = SK3SFX_TABLE_JUMP 
+            OllieWoodValues }
+          
+#00390    SetTerrainSfxProperties LandWood STRUCT{
+            Terrain = TERRAIN_WOODPIER 
+            Table = SK3SFX_TABLE_LAND 
+            LandWoodValues }
+          
+#00392    SetTerrainSfxProperties BonkWood STRUCT{
+            Terrain = TERRAIN_WOODPIER 
+            Table = SK3SFX_TABLE_BONK 
+            BonkWoodValues }
+          
+#00394    SetTerrainSfxProperties RevertWood STRUCT{
+            Terrain = TERRAIN_WOODPIER 
+            Table = SK3SFX_TABLE_CESS 
+            }
+          
+#00396  END FUNCTION
+          
+#00397  FUNCTION SetTerrainBrick 
+#00400    LoadSound "Terrains\RollBrick" vol = 80 
+          
+#00401    LoadSound "Terrains\OllieConc" 
+#00402    LoadSound "Terrains\LandConc" vol = 100 
+          
+#00403    LoadSound "Skater\RevertConc" vol = 300 
+          
+#00404    SetTerrainSfxProperties RollBrick STRUCT{
+            Terrain = TERRAIN_BRICK 
+            Table = SK3SFX_TABLE_WHEELROLL 
+            maxPitch = 120 
+            minPitch = 80 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00406    SetTerrainSfxProperties OllieConc STRUCT{
+            Terrain = TERRAIN_BRICK 
+            Table = SK3SFX_TABLE_JUMP 
+            OllieConcValues }
+          
+#00408    SetTerrainSfxProperties LandConc STRUCT{
+            Terrain = TERRAIN_BRICK 
+            Table = SK3SFX_TABLE_LAND 
+            LandConcValues }
+          
+#00410    SetTerrainSfxProperties RevertConc STRUCT{
+            Terrain = TERRAIN_BRICK 
+            Table = SK3SFX_TABLE_CESS 
+            }
+          
+#00412  END FUNCTION
+          
+#00413  FUNCTION SetTerrainTile 
+#00415    LoadSound "Terrains\RollTile" vol = 80 
+          
+#00416    LoadSound "Terrains\OllieConc" 
+#00417    LoadSound "Terrains\LandConc" vol = 100 
+          
+#00418    LoadSound "Skater\RevertConc" vol = 300 
+          
+#00419    SetTerrainSfxProperties RollTile STRUCT{
+            Terrain = TERRAIN_TILE 
+            Table = SK3SFX_TABLE_WHEELROLL 
+            maxPitch = 120 
+            minPitch = 80 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00421    SetTerrainSfxProperties OllieConc STRUCT{
+            Terrain = TERRAIN_TILE 
+            Table = SK3SFX_TABLE_JUMP 
+            OllieConcValues }
+          
+#00423    SetTerrainSfxProperties LandConc STRUCT{
+            Terrain = TERRAIN_TILE 
+            Table = SK3SFX_TABLE_LAND 
+            LandConcValues }
+          
+#00425    SetTerrainSfxProperties RevertConc STRUCT{
+            Terrain = TERRAIN_TILE 
+            Table = SK3SFX_TABLE_CESS 
+            }
+          
+#00427  END FUNCTION
+          
+#00428  FUNCTION SetTerrainAsphalt 
+#00430    LoadSound "Terrains\RollAsphalt" vol = 100 
+          
+#00431    LoadSound "Terrains\OllieConc" 
+#00432    LoadSound "Terrains\LandConc" vol = 100 
+          
+#00433    LoadSound "Skater\RevertConc" vol = 300 
+          
+#00434    SetTerrainSfxProperties RollAsphalt STRUCT{
+            Terrain = TERRAIN_ASPHALT 
+            Table = SK3SFX_TABLE_WHEELROLL 
+            maxPitch = 120 
+            minPitch = 80 
+            }
+          
+#00436    SetTerrainSfxProperties OllieConc STRUCT{
+            Terrain = TERRAIN_ASPHALT 
+            Table = SK3SFX_TABLE_JUMP 
+            OllieConcValues }
+          
+#00438    SetTerrainSfxProperties LandConc STRUCT{
+            Terrain = TERRAIN_ASPHALT 
+            Table = SK3SFX_TABLE_LAND 
+            LandConcValues }
+          
+#00440    SetTerrainSfxProperties RevertConc STRUCT{
+            Terrain = TERRAIN_ASPHALT 
+            Table = SK3SFX_TABLE_CESS 
+            }
+          
+#00442  END FUNCTION
+          
+#00443  FUNCTION SetTerrainRock 
+#00445    LoadSound "Terrains\RollRock" vol = 200 
+          
+#00446    LoadSound "Terrains\OllieConc" 
+#00447    LoadSound "Terrains\LandConc" vol = 100 
+          
+#00448    LoadSound "Skater\RevertConc" vol = 300 
+          
+#00449    SetTerrainSfxProperties RollRock STRUCT{
+            Terrain = TERRAIN_ROCK 
+            Table = SK3SFX_TABLE_WHEELROLL 
+            maxPitch = 120 
+            minPitch = 80 
+            }
+          
+#00451    SetTerrainSfxProperties OllieConc STRUCT{
+            Terrain = TERRAIN_ROCK 
+            Table = SK3SFX_TABLE_JUMP 
+            maxPitch = 100 
+            minPitch = 60 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00453    SetTerrainSfxProperties LandConc STRUCT{
+            Terrain = TERRAIN_ROCK 
+            Table = SK3SFX_TABLE_LAND 
+            LandConcValues }
+          
+#00455    SetTerrainSfxProperties RevertConc STRUCT{
+            Terrain = TERRAIN_ROCK 
+            Table = SK3SFX_TABLE_CESS 
+            }
+          
+#00457  END FUNCTION
+          
+#00458  FUNCTION SetTerrainGravel 
+#00460    LoadSound "Terrains\RollGravel" vol = 200 
+          
+#00461    LoadSound "Terrains\OllieConc" 
+#00462    LoadSound "Terrains\LandConc" vol = 100 
+          
+#00463    LoadSound "Skater\RevertConc" vol = 300 
+          
+#00464    SetTerrainSfxProperties RollGravel STRUCT{
+            Terrain = TERRAIN_GRAVEL 
+            Table = SK3SFX_TABLE_WHEELROLL 
+            maxPitch = 120 
+            minPitch = 80 
+            }
+          
+#00466    SetTerrainSfxProperties OllieConc STRUCT{
+            Terrain = TERRAIN_GRAVEL 
+            Table = SK3SFX_TABLE_JUMP 
+            OllieConcValues }
+          
+#00468    SetTerrainSfxProperties LandConc STRUCT{
+            Terrain = TERRAIN_GRAVEL 
+            Table = SK3SFX_TABLE_LAND 
+            LandConcValues }
+          
+#00470    SetTerrainSfxProperties RevertConc STRUCT{
+            Terrain = TERRAIN_GRAVEL 
+            Table = SK3SFX_TABLE_CESS 
+            }
+          
+#00472  END FUNCTION
+          
+#00473  FUNCTION SetTerrainSidewalk 
+#00475    LoadSound "Terrains\RollSidewalk" vol = 100 
+          
+#00476    LoadSound "Terrains\OllieConc" 
+#00477    LoadSound "Terrains\LandConc" vol = 100 
+          
+#00478    LoadSound "Skater\RevertConc" vol = 300 
+          
+#00479    SetTerrainSfxProperties RollSidewalk STRUCT{
+            Terrain = TERRAIN_SIDEWALK 
+            Table = SK3SFX_TABLE_WHEELROLL 
+            maxPitch = 90 
+            minPitch = 50 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00481    SetTerrainSfxProperties OllieConc STRUCT{
+            Terrain = TERRAIN_SIDEWALK 
+            Table = SK3SFX_TABLE_JUMP 
+            OllieConcValues }
+          
+#00483    SetTerrainSfxProperties LandConc STRUCT{
+            Terrain = TERRAIN_SIDEWALK 
+            Table = SK3SFX_TABLE_LAND 
+            LandConcValues }
+          
+#00485    SetTerrainSfxProperties RevertConc STRUCT{
+            Terrain = TERRAIN_SIDEWALK 
+            Table = SK3SFX_TABLE_CESS 
+            }
+          
+#00487  END FUNCTION
+          
+#00488  FUNCTION SetTerrainGrass 
+#00490    LoadSound "Terrains\RollGrass" 
+#00491    LoadSound "Terrains\LandDirt" 
+#00492    LoadSound "Skater\RevertConc" vol = 300 
+          
+#00493    SetTerrainSfxProperties RollGrass STRUCT{
+            Terrain = TERRAIN_GRASS 
+            Table = SK3SFX_TABLE_WHEELROLL 
+            maxPitch = 90 
+            minPitch = 60 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00495    SetTerrainSfxProperties LandDirt STRUCT{
+            Terrain = TERRAIN_GRASS 
+            Table = SK3SFX_TABLE_JUMP 
+            maxPitch = 120 
+            minPitch = 80 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00497    SetTerrainSfxProperties LandDirt STRUCT{
+            Terrain = TERRAIN_GRASS 
+            Table = SK3SFX_TABLE_LAND 
+            maxPitch = 100 
+            minPitch = 60 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00499    SetTerrainSfxProperties RevertConc STRUCT{
+            Terrain = TERRAIN_GRASS 
+            Table = SK3SFX_TABLE_CESS 
+            }
+          
+#00501    SetTerrainParticleProperties STRUCT{
+            Terrain = TERRAIN_GRASS 
+            num = 200 
+            start_col = -15259859 
+            end_col = 931772970 
+            emit_w = 2.0 
+            emit_h = 2.1 
+            size = 6 
+            aspect_ratio = 1 
+            growth = 1.0 
+            angle = -50.0 
+            speed = 60.0 
+            speed_range = 60.0 
+            life = 0.9 
+            grav = -0.5 
+            name = "Grass_1.png" 
+            }
+          
+#00505  END FUNCTION
+          
+#00506  FUNCTION SetTerrainGrassDried 
+#00508    LoadSound "Terrains\RollGrassDried" 
+#00509    LoadSound "Terrains\LandDirt" 
+#00510    LoadSound "Skater\RevertConc" vol = 300 
+          
+#00511    SetTerrainSfxProperties RollGrassDried STRUCT{
+            Terrain = TERRAIN_GRASSDRIED 
+            Table = SK3SFX_TABLE_WHEELROLL 
+            maxPitch = 50 
+            minPitch = 30 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00513    SetTerrainSfxProperties LandDirt STRUCT{
+            Terrain = TERRAIN_GRASSDRIED 
+            Table = SK3SFX_TABLE_JUMP 
+            maxPitch = 120 
+            minPitch = 80 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00515    SetTerrainSfxProperties LandDirt STRUCT{
+            Terrain = TERRAIN_GRASSDRIED 
+            Table = SK3SFX_TABLE_LAND 
+            maxPitch = 100 
+            minPitch = 60 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00517    SetTerrainSfxProperties RevertConc STRUCT{
+            Terrain = TERRAIN_GRASSDRIED 
+            Table = SK3SFX_TABLE_CESS 
+            }
+          
+#00519    SetTerrainParticleProperties STRUCT{
+            Terrain = TERRAIN_GRASSDRIED 
+            num = 200 
+            start_col = -15259859 
+            end_col = 931772970 
+            emit_w = 2.0 
+            emit_h = 2.1 
+            size = 6 
+            aspect_ratio = 1 
+            growth = 1.0 
+            angle = -50.0 
+            speed = 60.0 
+            speed_range = 60.0 
+            life = 0.9 
+            grav = -0.5 
+            name = "Grass_1.png" 
+            }
+          
+#00523  END FUNCTION
+          
+#00524  FUNCTION SetTerrainDirt 
+#00526    LoadSound "Terrains\RollDirt" vol = 100 
+          
+#00527    LoadSound "Terrains\LandDirt" 
+#00528    LoadSound "Skater\RevertConc" vol = 300 
+          
+#00529    SetTerrainSfxProperties RollDirt STRUCT{
+            Terrain = TERRAIN_DIRT 
+            Table = SK3SFX_TABLE_WHEELROLL 
+            maxPitch = 100 
+            minPitch = 60 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00531    SetTerrainSfxProperties LandDirt STRUCT{
+            Terrain = TERRAIN_DIRT 
+            Table = SK3SFX_TABLE_JUMP 
+            maxPitch = 120 
+            minPitch = 20 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00533    SetTerrainSfxProperties LandDirt STRUCT{
+            Terrain = TERRAIN_DIRT 
+            Table = SK3SFX_TABLE_LAND 
+            maxPitch = 120 
+            minPitch = 80 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00535    SetTerrainSfxProperties RevertConc STRUCT{
+            Terrain = TERRAIN_DIRT 
+            Table = SK3SFX_TABLE_CESS 
+            }
+          
+#00537    SetTerrainParticleProperties STRUCT{
+            Terrain = TERRAIN_DIRT 
+            num = 20 
+            start_col = 1516740274 
+            end_col = 6793906 
+            emit_w = 1.0 
+            emit_h = 1.0 
+            size = 25 
+            aspect_ratio = 1.0 
+            growth = 2.0 
+            angle = 90.0 
+            speed = 30.0 
+            speed_range = 50.0 
+            life = 0.6 
+            grav = 0.5 
+            name = "breath.png" 
+            }
+          
+#00541  END FUNCTION
+          
+#00542  FUNCTION SetTerrainDirtPacked 
+#00544    LoadSound "Terrains\RollDirtPacked" vol = 75 
+          
+#00545    LoadSound "Terrains\LandDirt" 
+#00546    LoadSound "Terrains\OllieWood" vol = 100 
+          
+#00547    LoadSound "Skater\RevertConc" vol = 300 
+          
+#00548    SetTerrainSfxProperties RollDirtPacked STRUCT{
+            Terrain = TERRAIN_DIRTPACKED 
+            Table = SK3SFX_TABLE_WHEELROLL 
+            maxPitch = 100 
+            minPitch = 60 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00550    SetTerrainSfxProperties OllieWood STRUCT{
+            Terrain = TERRAIN_DIRTPACKED 
+            Table = SK3SFX_TABLE_JUMP 
+            }
+          
+#00552    SetTerrainSfxProperties LandDirt STRUCT{
+            Terrain = TERRAIN_DIRTPACKED 
+            Table = SK3SFX_TABLE_LAND 
+            maxPitch = 120 
+            minPitch = 80 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00554    SetTerrainSfxProperties RevertConc STRUCT{
+            Terrain = TERRAIN_DIRTPACKED 
+            Table = SK3SFX_TABLE_CESS 
+            }
+          
+#00556    SetTerrainParticleProperties STRUCT{
+            Terrain = TERRAIN_DIRTPACKED 
+            num = 20 
+            start_col = 1516740274 
+            end_col = 6793906 
+            emit_w = 1.0 
+            emit_h = 1.0 
+            size = 25 
+            aspect_ratio = 1.0 
+            growth = 2.0 
+            angle = 90.0 
+            speed = 30.0 
+            speed_range = 50.0 
+            life = 0.6 
+            grav = 0.5 
+            name = "breath.png" 
+            }
+          
+#00560  END FUNCTION
+          
+#00561  FUNCTION SetTerrainWater 
+#00563    LoadSound "Terrains\RollWater" vol = 150 
+          
+#00564    LoadSound "Terrains\OllieWater" vol = 100 
+          
+#00565    LoadSound "Terrains\LandWater" vol = 100 
+          
+#00566    SetTerrainSfxProperties RollWater STRUCT{
+            Terrain = TERRAIN_WATER 
+            Table = SK3SFX_TABLE_WHEELROLL 
+            maxPitch = 120 
+            minPitch = 50 
+            }
+          
+#00568    SetTerrainSfxProperties OllieWater STRUCT{
+            Terrain = TERRAIN_WATER 
+            Table = SK3SFX_TABLE_JUMP 
+            OllieConcValues }
+          
+#00570    SetTerrainSfxProperties LandWater STRUCT{
+            Terrain = TERRAIN_WATER 
+            Table = SK3SFX_TABLE_LAND 
+            LandConcValues }
+          
+#00572    SetTerrainParticleProperties STRUCT{
+            Terrain = TERRAIN_WATER 
+            num = 200 
+            start_col = -1008349527 
+            end_col = 166055593 
+            emit_w = 2.0 
+            emit_h = 5.0 
+            size = 3 
+            aspect_ratio = 0.45 
+            growth = 2.0 
+            angle = 45.0 
+            speed = 90.0 
+            speed_range = 60.0 
+            life = 0.6 
+            grav = 0.0 
+            name = "breath.png" 
+            }
+          
+#00580  END FUNCTION
+          
+#00581  FUNCTION SetTerrainIce 
+#00583    LoadSound "Terrains\RollIce" vol = 70 
+          
+#00584    LoadSound "Terrains\LandDirt" 
+#00585    LoadSound "Skater\RevertWood" vol = 300 
+          
+#00586    SetTerrainSfxProperties RollIce STRUCT{
+            Terrain = TERRAIN_ICE 
+            Table = SK3SFX_TABLE_WHEELROLL 
+            maxPitch = 100 
+            minPitch = 60 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00588    SetTerrainSfxProperties LandDirt STRUCT{
+            Terrain = TERRAIN_ICE 
+            Table = SK3SFX_TABLE_JUMP 
+            maxPitch = 120 
+            minPitch = 80 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00590    SetTerrainSfxProperties LandDirt STRUCT{
+            Terrain = TERRAIN_ICE 
+            Table = SK3SFX_TABLE_LAND 
+            maxPitch = 120 
+            minPitch = 80 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00592    SetTerrainSfxProperties RevertWood STRUCT{
+            Terrain = TERRAIN_ICE 
+            Table = SK3SFX_TABLE_CESS 
+            }
+          
+#00594  END FUNCTION
+          
+#00595  FUNCTION SetTerrainSnow 
+#00597    LoadSound "Terrains\RollSnow" vol = 70 
+          
+#00598    LoadSound "Terrains\LandDirt" 
+#00599    LoadSound "Skater\RevertConc" vol = 300 
+          
+#00600    SetTerrainSfxProperties RollSnow STRUCT{
+            Terrain = TERRAIN_SNOW 
+            Table = SK3SFX_TABLE_WHEELROLL 
+            maxPitch = 120 
+            minPitch = 80 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00602    SetTerrainSfxProperties LandDirt STRUCT{
+            Terrain = TERRAIN_SNOW 
+            Table = SK3SFX_TABLE_JUMP 
+            maxPitch = 120 
+            minPitch = 80 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00604    SetTerrainSfxProperties LandDirt STRUCT{
+            Terrain = TERRAIN_SNOW 
+            Table = SK3SFX_TABLE_LAND 
+            maxPitch = 120 
+            minPitch = 80 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00606    SetTerrainSfxProperties RevertConc STRUCT{
+            Terrain = TERRAIN_SNOW 
+            Table = SK3SFX_TABLE_CESS 
+            }
+          
+#00608    SetTerrainParticleProperties STRUCT{
+            Terrain = TERRAIN_SNOW 
+            num = 20 
+            start_col = 1526327776 
+            end_col = 217704928 
+            emit_w = 1.0 
+            emit_h = 1.0 
+            size = 21 
+            aspect_ratio = 0.7 
+            growth = 2.0 
+            angle = 60.0 
+            speed = 30.0 
+            speed_range = 50.0 
+            life = 0.7 
+            grav = 2 
+            name = "breath.png" 
+            }
+          
+#00612  END FUNCTION
+          
+#00613  FUNCTION SetTerrainSand 
+#00615    LoadSound "Terrains\RollSand" vol = 80 
+          
+#00616    LoadSound "Terrains\LandDirt" 
+#00617    LoadSound "Skater\RevertConc" vol = 300 
+          
+#00618    SetTerrainSfxProperties RollSand STRUCT{
+            Terrain = TERRAIN_SAND 
+            Table = SK3SFX_TABLE_WHEELROLL 
+            maxPitch = 120 
+            minPitch = 80 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00620    SetTerrainSfxProperties LandDirt STRUCT{
+            Terrain = TERRAIN_SAND 
+            Table = SK3SFX_TABLE_JUMP 
+            maxPitch = 120 
+            minPitch = 80 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00622    SetTerrainSfxProperties LandDirt STRUCT{
+            Terrain = TERRAIN_SAND 
+            Table = SK3SFX_TABLE_LAND 
+            maxPitch = 120 
+            minPitch = 80 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00624    SetTerrainSfxProperties RevertConc STRUCT{
+            Terrain = TERRAIN_SAND 
+            Table = SK3SFX_TABLE_CESS 
+            }
+          
+#00626    SetTerrainParticleProperties STRUCT{
+            Terrain = TERRAIN_SAND 
+            num = 20 
+            start_col = 1516740274 
+            end_col = 6793906 
+            emit_w = 1.0 
+            emit_h = 1.0 
+            size = 25 
+            aspect_ratio = 1.0 
+            growth = 2.0 
+            angle = 90.0 
+            speed = 30.0 
+            speed_range = 50.0 
+            life = 0.6 
+            grav = 0.5 
+            name = "breath.png" 
+            }
+          
+#00630  END FUNCTION
+          
+#00631  FUNCTION SetTerrainPlexiglass 
+#00633    LoadSound "Terrains\RollPlexiglass" vol = 50 
+          
+#00634    LoadSound "Terrains\OllieConc" 
+#00635    LoadSound "Terrains\LandConc" 
+#00636    LoadSound "Skater\RevertConc" vol = 300 
+          
+#00637    SetTerrainSfxProperties RollPlexiglass STRUCT{
+            Terrain = TERRAIN_PLEXIGLASS 
+            Table = SK3SFX_TABLE_WHEELROLL 
+            maxPitch = 120 
+            minPitch = 80 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00639    SetTerrainSfxProperties OllieConc STRUCT{
+            Terrain = TERRAIN_PLEXIGLASS 
+            Table = SK3SFX_TABLE_JUMP 
+            OllieConcValues }
+          
+#00641    SetTerrainSfxProperties LandConc STRUCT{
+            Terrain = TERRAIN_PLEXIGLASS 
+            Table = SK3SFX_TABLE_LAND 
+            LandConcValues }
+          
+#00643    SetTerrainSfxProperties RevertConc STRUCT{
+            Terrain = TERRAIN_PLEXIGLASS 
+            Table = SK3SFX_TABLE_CESS 
+            }
+          
+#00645  END FUNCTION
+          
+#00646  FUNCTION SetTerrainFiberglass 
+#00648    LoadSound "Terrains\RollFiberglass" vol = 50 
+          
+#00649    LoadSound "Terrains\OllieConc" 
+#00650    LoadSound "Terrains\LandConc" vol = 100 
+          
+#00651    LoadSound "Skater\RevertWood" vol = 300 
+          
+#00652    SetTerrainSfxProperties RollFiberglass STRUCT{
+            Terrain = TERRAIN_FIBERGLASS 
+            Table = SK3SFX_TABLE_WHEELROLL 
+            maxPitch = 120 
+            minPitch = 80 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00654    SetTerrainSfxProperties OllieConc STRUCT{
+            Terrain = TERRAIN_FIBERGLASS 
+            Table = SK3SFX_TABLE_JUMP 
+            OllieConcValues }
+          
+#00656    SetTerrainSfxProperties LandConc STRUCT{
+            Terrain = TERRAIN_FIBERGLASS 
+            Table = SK3SFX_TABLE_LAND 
+            LandConcValues }
+          
+#00658    SetTerrainSfxProperties RevertConc STRUCT{
+            Terrain = TERRAIN_FIBERGLASS 
+            Table = SK3SFX_TABLE_CESS 
+            }
+          
+#00660  END FUNCTION
+          
+#00661  FUNCTION SetTerrainCarpet 
+#00663    LoadSound "Terrains\RollCarpet" vol = 100 
+          
+#00664    LoadSound "Terrains\OllieConc" 
+#00665    LoadSound "Terrains\LandConc" vol = 100 
+          
+#00666    LoadSound "Skater\RevertWood" vol = 300 
+          
+#00667    SetTerrainSfxProperties RollCarpet STRUCT{
+            Terrain = TERRAIN_CARPET 
+            Table = SK3SFX_TABLE_WHEELROLL 
+            RollConcSmoothValues }
+          
+#00669    SetTerrainSfxProperties OllieConc STRUCT{
+            Terrain = TERRAIN_CARPET 
+            Table = SK3SFX_TABLE_JUMP 
+            OllieConcValues }
+          
+#00671    SetTerrainSfxProperties LandConc STRUCT{
+            Terrain = TERRAIN_CARPET 
+            Table = SK3SFX_TABLE_LAND 
+            LandConcValues }
+          
+#00673    SetTerrainSfxProperties RevertWood STRUCT{
+            Terrain = TERRAIN_CARPET 
+            Table = SK3SFX_TABLE_CESS 
+            }
+          
+#00675  END FUNCTION
+          
+#00676  FUNCTION SetTerrainConveyor 
+#00678    LoadSound "Terrains\RollConveyor" vol = 70 
+          
+#00679    LoadSound "Terrains\OllieConc" 
+#00680    LoadSound "Terrains\LandConc" vol = 100 
+          
+#00681    LoadSound "Skater\RevertMetal" vol = 300 
+          
+#00682    SetTerrainSfxProperties RollConveyor STRUCT{
+            Terrain = TERRAIN_CONVEYOR 
+            Table = SK3SFX_TABLE_WHEELROLL 
+            RollConcSmoothValues }
+          
+#00684    SetTerrainSfxProperties OllieConc STRUCT{
+            Terrain = TERRAIN_CONVEYOR 
+            Table = SK3SFX_TABLE_JUMP 
+            OllieConcValues }
+          
+#00686    SetTerrainSfxProperties LandConc STRUCT{
+            Terrain = TERRAIN_CONVEYOR 
+            Table = SK3SFX_TABLE_LAND 
+            LandConcValues }
+          
+#00688    SetTerrainSfxProperties RevertConc STRUCT{
+            Terrain = TERRAIN_CONVEYOR 
+            Table = SK3SFX_TABLE_CESS 
+            }
+          
+#00690  END FUNCTION
+          
+#00691  FUNCTION SetTerrainChainlink 
+#00694    LoadSound "Terrains\BonkChainlink" vol = 100 
+          
+#00695    SetTerrainSfxProperties BonkChainlink STRUCT{
+            Terrain = TERRAIN_CHAINLINK 
+            Table = SK3SFX_TABLE_BONK 
+            maxPitch = 120 
+            minPitch = 80 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00697  END FUNCTION
+          
+#00698  FUNCTION SetTerrainMetalFuture 
+#00700    LoadSound "Terrains\RollMetalFuture" vol = 700 
+          
+#00701    LoadSound "Terrains\OllieMetalFuture" vol = 200 
+          
+#00702    LoadSound "Terrains\LandMetalFuture" vol = 200 
+          
+#00703    LoadSound "Skater\RevertMetal" vol = 300 
+          
+#00704    SetTerrainSfxProperties RollMetalFuture STRUCT{
+            Terrain = TERRAIN_METALFUTURE 
+            Table = SK3SFX_TABLE_WHEELROLL 
+            RollMetalSmoothValues }
+          
+#00706    SetTerrainSfxProperties OllieMetalFuture STRUCT{
+            Terrain = TERRAIN_METALFUTURE 
+            Table = SK3SFX_TABLE_JUMP 
+            OllieMetalValues }
+          
+#00708    SetTerrainSfxProperties LandMetalFuture STRUCT{
+            Terrain = TERRAIN_METALFUTURE 
+            Table = SK3SFX_TABLE_LAND 
+            LandMetalValues }
+          
+#00710    SetTerrainSfxProperties RevertMetal STRUCT{
+            Terrain = TERRAIN_METALSMOOTH 
+            Table = SK3SFX_TABLE_CESS 
+            }
+          
+#00712  END FUNCTION
+          
+#00713  FUNCTION SetTerrainGeneric1 
+#00716    LoadSound "Terrains\BonkMetalOutdoor" vol = 100 
+          
+#00717    SetTerrainSfxProperties BonkMetalOutdoor STRUCT{
+            Terrain = TERRAIN_GENERIC1 
+            Table = SK3SFX_TABLE_BONK 
+            BonkMetalValues }
+          
+#00719  END FUNCTION
+          
+#00720  FUNCTION SetTerrainGeneric2 
+#00722  END FUNCTION
+          
+#00723  FUNCTION SetTerrainWetConc 
+#00725    LoadSound "Terrains\RollWetConc" vol = 70 
+          
+#00726    LoadSound "Terrains\OllieConc" 
+#00727    LoadSound "Terrains\LandWater" vol = 100 
+          
+#00728    LoadSound "Terrains\GrindConc" 
+#00729    LoadSound "Terrains\SlideConc" vol = 100 
+          
+#00730    LoadSound "Terrains\LandConc" 
+#00731    LoadSound "Skater\RevertConc" vol = 300 
+          
+#00732    SetTerrainSfxProperties RollWetConc STRUCT{
+            Terrain = TERRAIN_WETCONC 
+            Table = SK3SFX_TABLE_WHEELROLL 
+            maxPitch = 120 
+            minPitch = 50 
+            }
+          
+#00734    SetTerrainSfxProperties LandWater STRUCT{
+            Terrain = TERRAIN_WETCONC 
+            Table = SK3SFX_TABLE_JUMP 
+            OllieConcValues }
+          
+#00736    SetTerrainSfxProperties LandWater STRUCT{
+            Terrain = TERRAIN_WETCONC 
+            Table = SK3SFX_TABLE_LAND 
+            LandConcValues }
+          
+#00738    SetTerrainSfxProperties LandConc STRUCT{
+            Terrain = TERRAIN_WETCONC 
+            Table = SK3SFX_TABLE_BONK 
+            LandConcValues }
+          
+#00740    SetTerrainSfxProperties GrindConc STRUCT{
+            Terrain = TERRAIN_WETCONC 
+            Table = SK3SFX_TABLE_GRIND 
+            maxPitch = 100 
+            minPitch = 60 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00742    SetTerrainSfxProperties OllieConc STRUCT{
+            Terrain = TERRAIN_WETCONC 
+            Table = SK3SFX_TABLE_GRINDJUMP 
+            OllieConcValues }
+          
+#00744    SetTerrainSfxProperties LandConc STRUCT{
+            Terrain = TERRAIN_WETCONC 
+            Table = SK3SFX_TABLE_GRINDLAND 
+            maxVol = 150 
+            minVol = 100 
+            }
+          
+#00746    SetTerrainSfxProperties SlideConc STRUCT{
+            Terrain = TERRAIN_WETCONC 
+            Table = SK3SFX_TABLE_SLIDE 
+            maxPitch = 100 
+            minPitch = 60 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00748    SetTerrainSfxProperties OllieConc STRUCT{
+            Terrain = TERRAIN_WETCONC 
+            Table = SK3SFX_TABLE_SLIDEJUMP 
+            OllieConcValues }
+          
+#00750    SetTerrainSfxProperties LandConc STRUCT{
+            Terrain = TERRAIN_WETCONC 
+            Table = SK3SFX_TABLE_SLIDELAND 
+            maxVol = 120 
+            minVol = 80 
+            }
+          
+#00752    SetTerrainSfxProperties RevertConc STRUCT{
+            Terrain = TERRAIN_WETCONC 
+            Table = SK3SFX_TABLE_CESS 
+            }
+          
+#00754    SetTerrainParticleProperties STRUCT{
+            Terrain = TERRAIN_WATER 
+            num = 200 
+            start_col = -1008349527 
+            end_col = 166055593 
+            emit_w = 2.0 
+            emit_h = 5.0 
+            size = 3 
+            aspect_ratio = 0.45 
+            growth = 2.0 
+            angle = 45.0 
+            speed = 90.0 
+            speed_range = 60.0 
+            life = 0.6 
+            grav = 0.0 
+            name = "breath.png" 
+            }
+          
+#00758  END FUNCTION
+          
+#00759  FUNCTION SetTerrainMetalFence 
+#00761    LoadSound "Terrains\BonkMetalFence" vol = 400 
+          
+#00762    SetTerrainSfxProperties BonkMetalFence STRUCT{
+            Terrain = TERRAIN_METALFENCE 
+            Table = SK3SFX_TABLE_BONK 
+            BonkMetalValues }
+          
+#00764  END FUNCTION
+          
+#00765  FUNCTION SetTerrainGrindTrain 
+#00767    LoadSound "Terrains\GrindTrain" vol = 100 
+          
+#00768    SetTerrainSfxProperties GrindTrain STRUCT{
+            Terrain = TERRAIN_GRINDTRAIN 
+            Table = SK3SFX_TABLE_GRIND 
+            maxPitch = 100 
+            minPitch = 60 
+            maxVol = 200 
+            minVol = 80 
+            }
+          
+#00770  END FUNCTION
+          
+#00771  FUNCTION SetTerrainGrindRope 
+#00773    LoadSound "Terrains\GrindRope" vol = 50 
+          pitch = 70 
+          
+#00774    LoadSound "Terrains\OllieWood" vol = 80 
+          
+#00775    LoadSound "Terrains\LandWood" vol = 80 
+          
+#00776    LoadSound "Terrains\Bonkwood" vol = 80 
+          
+#00777    SetTerrainSfxProperties GrindRope STRUCT{
+            Terrain = TERRAIN_GRINDROPE 
+            Table = SK3SFX_TABLE_GRIND 
+            maxPitch = 100 
+            minPitch = 60 
+            maxVol = 200 
+            minVol = 80 
+            }
+          
+#00779    SetTerrainSfxProperties OllieWood STRUCT{
+            Terrain = TERRAIN_GRINDROPE 
+            Table = SK3SFX_TABLE_JUMP 
+            OllieWoodValues }
+          
+#00781    SetTerrainSfxProperties LandWood STRUCT{
+            Terrain = TERRAIN_GRINDROPE 
+            Table = SK3SFX_TABLE_LAND 
+            LandWoodValues }
+          
+#00783    SetTerrainSfxProperties BonkWood STRUCT{
+            Terrain = TERRAIN_GRINDROPE 
+            Table = SK3SFX_TABLE_BONK 
+            BonkWoodValues }
+          
+#00785    SetTerrainSfxProperties OllieWood STRUCT{
+            Terrain = TERRAIN_GRINDROPE 
+            Table = SK3SFX_TABLE_GRINDJUMP 
+            OllieWoodValues }
+          
+#00787    SetTerrainSfxProperties LandWood STRUCT{
+            Terrain = TERRAIN_GRINDROPE 
+            Table = SK3SFX_TABLE_GRINDLAND 
+            maxVol = 100 
+            minVol = 60 
+            }
+          
+#00789    SetTerrainSfxProperties GrindRope STRUCT{
+            Terrain = TERRAIN_GRINDROPE 
+            Table = SK3SFX_TABLE_SLIDE 
+            maxPitch = 100 
+            minPitch = 60 
+            maxVol = 100 
+            minVol = 20 
+            }
+          
+#00791    SetTerrainSfxProperties OllieWood STRUCT{
+            Terrain = TERRAIN_GRINDROPE 
+            Table = SK3SFX_TABLE_SLIDEJUMP 
+            OllieWoodValues }
+          
+#00793    SetTerrainSfxProperties LandWood STRUCT{
+            Terrain = TERRAIN_GRINDROPE 
+            Table = SK3SFX_TABLE_SLIDELAND 
+            maxVol = 120 
+            minVol = 80 
+            }
+          
+#00795  END FUNCTION
+          
+#00796  

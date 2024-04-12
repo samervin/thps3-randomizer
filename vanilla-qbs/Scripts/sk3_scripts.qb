@@ -1,0 +1,809 @@
+
+#00001  FUNCTION ScottKills 
+#00002    sk3_killskater deathsound = boneless09 
+          message1 = "poopoo" 
+          message2 = "waaaaa" 
+          message3 = "yowsers" 
+          message4 = "Uyeda likes ass" 
+          r = 0 
+          g = 255 
+          b = 0 
+          
+#00003  END FUNCTION
+          
+#00004  FUNCTION sk3_killskater 
+#00010    IF Obj_FlagNotSet FLAG_SKATER_KILLING 
+#00011      Obj_SetFlag FLAG_SKATER_KILLING 
+#00012      InBail 
+#00013      IF GotParam deathsound 
+#00014        PlaySound GLOBAL.deathsound 
+              
+#00015      ELSE 
+#00016        PlaySound hitbody02 pitch = 90 
+              vol = 150 
+              
+#00017        PlaySound bail_knee1 pitch = 90 
+              vol = 50 
+              
+#00018      END IF 
+#00019      IF GotParam message1 
+#00020        LaunchPanelMessage properties = panel_message_death 
+              RANDOM[4][17; 29; 41; 53]
+              
+#00021        GLOBAL.message1 
+              
+#00022        JUMP 0x26000000 GLOBAL.message2 
+              
+#00023        JUMP 0x16000000 GLOBAL.message3 
+              
+#00024        JUMP 0x06000000 GLOBAL.message4 
+              
+#00025      ELSE 
+#00026        LaunchPanelMessage properties = panel_message_death 
+              RANDOM[7][29; 53; 82; 106; 130; 151; 172]
+              
+#00027        "&c1You suck!" 
+#00028        JUMP 0xa2000000 "&c1Dont do drugs!" 
+#00029        JUMP 0x81000000 "&c1Nice one!" 
+#00030        JUMP 0x65000000 "&c1Good one!" 
+#00031        JUMP 0x49000000 "&c1Hmm..." 
+#00032        JUMP 0x30000000 "&c1Loser!" 
+#00033        JUMP 0x17000000 "&c1Out of bounds!" 
+#00034      END IF 
+#00035      SK3_Killskater_Finish NULL 
+#00036    END IF 
+#00037  END FUNCTION
+          
+#00038  FUNCTION SK3_KillSkater_Water 
+#00040    IF Obj_FlagNotSet FLAG_SKATER_KILLING 
+#00041      Obj_SetFlag FLAG_SKATER_KILLING 
+#00042      PlaySound FallWater 
+#00043      LaunchPanelMessage properties = panel_message_death 
+            RANDOM[6][25; 47; 75; 104; 130; 158]
+            
+#00044      "&c1All wet" 
+#00045      JUMP 0x95000000 "&c1You big drip!" 
+#00046      JUMP 0x75000000 "&c1WATER...BAAAD!" 
+#00047      JUMP 0x54000000 "&c1No swimming" 
+#00048      JUMP 0x36000000 "&c1I'm drowning!" 
+#00049      JUMP 0x16000000 "&c1You're hosed!" 
+#00050      SK3_Killskater_Finish poopoo r = 100 
+            g = 100 
+            b = 200 
+            NULL 
+#00051    END IF 
+#00052  END FUNCTION
+          
+#00053  FUNCTION SK3_KillSkater_Pungee 
+#00055    IF Obj_FlagNotSet FLAG_SKATER_KILLING 
+#00056      Obj_SetFlag FLAG_SKATER_KILLING 
+#00057      PlaySound FallPungee 
+#00058      LaunchPanelMessage properties = panel_message_death 
+            RANDOM[5][21; 51; 82; 115; 142]
+            
+#00059      "&c1You got shafted" 
+#00060      JUMP 0x89000000 "&c1Who built that?!" 
+#00061      JUMP 0x66000000 "&c1Serve, set, spike!" 
+#00062      JUMP 0x41000000 "&c1Shish kabob?" 
+#00063      JUMP 0x22000000 "&c1Don't build this at home!" 
+#00064      SK3_Killskater_Finish r = 150 
+            g = 50 
+            b = 50 
+            NULL 
+#00065    END IF 
+#00066  END FUNCTION
+          
+#00067  FUNCTION SK3_Killskater_Finish r = 255 
+          g = 255 
+          b = 255 
+          
+#00073    printstruct 
+#00074    ClearExceptions 
+#00075    DisablePlayerInput 
+#00076    IF GotParam Bail 
+#00077      MakeSkaterGoto Killskater_Bail 
+#00078    END IF 
+#00079    BlendPeriodOut 0 
+#00080    DoFlash STRUCT{
+            duration = 0.25 
+            start_r = GLOBAL.r 
+            start_g = GLOBAL.g 
+            start_b = GLOBAL.b 
+            start_a = 0 
+            end_r = GLOBAL.r 
+            end_g = GLOBAL.g 
+            end_b = GLOBAL.b 
+            end_a = 100 
+            }
+          
+#00084    Wait 0.25 seconds 
+#00085    ClearTrickQueues 
+#00086    Wait 1 gameframe 
+#00087    Killskater 
+#00088    ClearGapTricks 
+#00089    ClearEventBuffer 
+#00090    ClearPanel_Bailed 
+#00091    DoFlash STRUCT{
+            duration = 0.75 
+            start_r = GLOBAL.r 
+            start_g = GLOBAL.g 
+            start_b = GLOBAL.b 
+            start_a = 100 
+            end_r = GLOBAL.r 
+            end_g = GLOBAL.g 
+            end_b = GLOBAL.b 
+            end_a = 0 
+            }
+          
+#00094    Wait 0.75 seconds 
+#00095    NotInBail 
+#00096    Obj_ClearFlag FLAG_SKATER_KILLING 
+#00097  END FUNCTION
+          
+#00098  FUNCTION Killskater_Bail 
+#00100    PlayAnim Anim = SlipForwards 
+          BlendPeriod = 0.3 
+          
+#00101  END FUNCTION
+          
+#00102  panel_message_death = STRUCT{
+          font = "small.fnt" 
+          just = PAIR[0.0; 0.0] 
+          dims = PAIR[320.0; 80.0] 
+          colors = ARRAY(
+            
+            STRUCT{
+              VECTOR[110.0; 20.0; 20.0] alpha = 255 
+              }
+            STRUCT{
+              VECTOR[110.0; 20.0; 20.0] alpha = 255 
+              }
+            
+          )
+          key_points = ARRAY(
+            
+            STRUCT{
+              pos = PAIR[330.0; 110.0] 
+              alpha = 0 
+              scale = 4 
+              time = 0 
+              }
+            STRUCT{
+              scale = 1.2 
+              alpha = 90 
+              time = 0.4 
+              }
+            STRUCT{
+              time = 2 
+              }
+            STRUCT{
+              scale = 0 
+              alpha = 0 
+              time = 2.5 
+              }
+            
+          )
+          }
+        
+#00118  FUNCTION TeleportSkaterUp dist = 2000 
+          
+#00122    SpawnSkaterScript MoveSkaterZ params = STRUCT{
+            dist = GLOBAL.dist 
+            }
+          
+#00124  END FUNCTION
+          
+#00126  FUNCTION TeleportSkaterDown dist = -2000 
+          
+#00129    SpawnSkaterScript MoveSkaterZ params = STRUCT{
+            dist = GLOBAL.dist 
+            }
+          
+#00130  END FUNCTION
+          
+#00132  FUNCTION MoveSkaterZ dist = 0 
+          
+#00134    IF ProfileEquals is_named = demoness 
+            
+#00135      BloodParticlesOff bone = "left_wrist" 
+            
+#00136      BloodParticlesOff bone = "right_wrist" 
+            
+#00137      printf "Particles turning off..........................................." 
+#00138    END IF 
+#00139    SparksOff 
+#00140    Move y = GLOBAL.dist 
+          
+#00141  END FUNCTION
+          
+#00142  FLAG_TRAFFICLIGHT_GREEN = 0 
+        
+#00149  FLAG_TRAFFICLIGHT_YELLOW = 1 
+        
+#00150  FLAG_TRAFFICLIGHT_RED = 2 
+        
+#00151  FLAG_CAR_GENERIC_STOPPED = 3 
+        
+#00152  FLAG_CAR_GENERIC_NOSOUND = 4 
+        
+#00153  FLAG_CAR_GENERIC_TURNING = 5 
+        
+#00154  FLAG_CAR_SOUND_FRANTICSTOP = 6 
+        
+#00155  FLAG_CAR_TYPE_BUS = 7 
+        
+#00156  FUNCTION SK3_TrafficLight01 
+#00158    Obj_SetFlag FLAG_TRAFFICLIGHT_GREEN 
+#00159    create name = GLOBAL.Green 
+          
+#00160    Wait 0x30 PAIR[5000.0; 12000.0] 
+#00161    LOOP 
+#00162      Obj_SetFlag FLAG_TRAFFICLIGHT_YELLOW 
+#00163      Obj_ClearFlag FLAG_TRAFFICLIGHT_GREEN 
+#00164      kill name = GLOBAL.Green 
+            
+#00165      create name = GLOBAL.Yellow 
+            
+#00166      Wait 3000 
+#00167      Obj_SetFlag FLAG_TRAFFICLIGHT_RED 
+#00168      Obj_ClearFlag FLAG_TRAFFICLIGHT_YELLOW 
+#00169      kill name = GLOBAL.Yellow 
+            
+#00170      create name = GLOBAL.Red 
+            
+#00171      Wait 0x30 PAIR[9000.0; 15000.0] 
+#00172      Obj_SetFlag FLAG_TRAFFICLIGHT_GREEN 
+#00173      Obj_ClearFlag FLAG_TRAFFICLIGHT_RED 
+#00174      kill name = GLOBAL.Red 
+            
+#00175      create name = GLOBAL.Green 
+            
+#00176      Wait 0x30 PAIR[7000.0; 12000.0] 
+#00177    END LOOP 
+#00178  END FUNCTION
+          
+#00179  FUNCTION Car_Generic01 TurnDist = 20 
+          
+#00181    Obj_StickToGround off 
+#00182    Obj_SetGroundOffset 0.1 
+#00183    Obj_SetPathVelocity 45 mph 
+#00184    Obj_SetPathTurnDist GLOBAL.TurnDist 
+          
+#00185    Obj_FollowPathLinked 
+#00186    Obj_SetPathAcceleration 30 mphps 
+#00187    Obj_SetPathDeceleration 20 mphps 
+#00188    Obj_SetPathMinStopVel 5 
+#00189    Obj_SpawnScript Car_CheckForOtherCar01 params = STRUCT{
+            PathNum = GLOBAL.PathNum 
+            }
+          
+#00190    IF GotParam NoSound 
+#00191      Obj_SetFlag FLAG_CAR_GENERIC_NOSOUND 
+#00192    ELSE 
+#00193      Obj_PlaySound carloop 
+#00194    END IF 
+#00195    IF GotParam NoSkater 
+#00196    ELSE 
+#00197      Obj_SpawnScript Car_CheckForSkater01 
+#00198    END IF 
+#00199    IF GotParam Bus 
+#00200      Obj_SetFlag FLAG_CAR_TYPE_BUS 
+#00201    END IF 
+#00202  END FUNCTION
+          
+#00203  FUNCTION Car_CheckForSkater01 
+#00205    LOOP 
+#00206      Wait 10 gameframes 
+#00207      IF Obj_FlagNotSet FLAG_CAR_GENERIC_STOPPED 
+#00208        IF Obj_ObjectInRect dist = 70 
+                width = 20 
+                height = 40 
+                type = ARRAY(
+                  
+                  skater 
+                )
+                offset = VECTOR[0.0; 0.0; 0.0] 
+                
+#00209          Car_Sound_FranticStop01 
+#00210          Obj_StopAlongPath 8 
+#00211          LOOP 
+#00212            Wait 90 gameframes 
+#00213            IF Obj_ObjectInRect dist = 70 
+                    width = 40 
+                    height = 20 
+                    type = ARRAY(
+                      
+                      skater 
+                    )
+                    offset = VECTOR[0.0; 0.0; 0.0] 
+                    
+#00214              Wait 60 gameframes 
+#00215              Car_Sound_RandomHonk01 
+#00216            ELSE 
+#00217              Obj_StartAlongPath 
+#00218              BREAK
+                    
+#00219            END IF 
+#00220          END LOOP 
+#00221        END IF 
+#00222      END IF 
+#00223    END LOOP 
+#00224  END FUNCTION
+          
+#00225  FUNCTION Car_CheckForOtherCar01 
+#00227    LOOP 
+#00228      Wait 10 gameframes 
+#00229      IF Obj_FlagNotSet FLAG_CAR_GENERIC_STOPPED 
+#00230        IF Obj_FlagSet FLAG_CAR_TYPE_BUS 
+#00231          IF Obj_ObjectInRect dist = 100 
+                  width = 55 
+                  height = 20 
+                  prefix = GLOBAL.PathNum 
+                  offset = VECTOR[0.0; 0.0; 0.0] 
+                  
+#00232            Obj_SpawnScript Car_DecelForOtherCar01 
+#00233            IF Obj_ObjectInRect dist = 80 
+                    width = 55 
+                    height = 20 
+                    prefix = GLOBAL.PathNum 
+                    offset = VECTOR[0.0; 0.0; 0.0] 
+                    
+#00234              Car_StopForBus01 PathNum = GLOBAL.PathNum 
+                    
+#00235            END IF 
+#00236          END IF 
+#00237        ELSE 
+#00238          IF Obj_ObjectInRect dist = 70 
+                  width = 50 
+                  height = 20 
+                  prefix = GLOBAL.PathNum 
+                  offset = VECTOR[0.0; 0.0; 0.0] 
+                  
+#00239            Obj_SpawnScript Car_DecelForOtherCar01 
+#00240            IF Obj_ObjectInRect dist = 50 
+                    width = 50 
+                    height = 20 
+                    prefix = GLOBAL.PathNum 
+                    offset = VECTOR[0.0; 0.0; 0.0] 
+                    
+#00241              Car_StopForOtherCar01 PathNum = GLOBAL.PathNum 
+                    
+#00242            END IF 
+#00243          END IF 
+#00244        END IF 
+#00245      END IF 
+#00246    END LOOP 
+#00247  END FUNCTION
+          
+#00248  FUNCTION Car_CheckWhenTurning01 
+#00250    LOOP 
+#00251      IF Obj_FlagNotSet FLAG_CAR_GENERIC_STOPPED 
+#00252        IF Obj_ObjectInRect dist = 50 
+                width = 50 
+                height = 40 
+                type = ARRAY(
+                  
+                  skater 
+                )
+                offset = VECTOR[0.0; 0.0; 0.0] 
+                
+#00253          Car_Sound_FranticStop01 
+#00254          Obj_StopAlongPath 4 
+#00255          LOOP 
+#00256            Wait 90 gameframes 
+#00257            IF Obj_ObjectInRect dist = 50 
+                    width = 50 
+                    height = 40 
+                    type = ARRAY(
+                      
+                      skater 
+                    )
+                    offset = VECTOR[0.0; 0.0; 0.0] 
+                    
+#00258              Wait 60 gameframes 
+#00259              Car_Sound_RandomHonk01 
+#00260            ELSE 
+#00261              Obj_StartAlongPath 
+#00262              BREAK
+                    
+#00263            END IF 
+#00264          END LOOP 
+#00265        END IF 
+#00266        IF Obj_FlagNotSet FLAG_CAR_GENERIC_TURNING 
+#00267          BREAK
+                
+#00268        END IF 
+#00269      END IF 
+#00270      Wait 20 gameframes 
+#00271    END LOOP 
+#00272  END FUNCTION
+          
+#00273  FUNCTION Car_Sound_Accel01 
+#00275    IF Obj_FlagNotSet FLAG_CAR_GENERIC_NOSOUND 
+#00276      Obj_AdjustSound carloop volumePercent = 100 
+            volumeStep = 0.7 
+            pitchPercent = 100 
+            pitchStep = 0.7 
+            
+#00277    END IF 
+#00278  END FUNCTION
+          
+#00279  FUNCTION Car_Sound_Decel01 
+#00281    IF Obj_FlagNotSet FLAG_CAR_GENERIC_NOSOUND 
+#00282      Obj_AdjustSound carloop volumePercent = 80 
+            volumeStep = 2 
+            pitchPercent = 50 
+            pitchStep = 1 
+            
+#00283      Obj_PlaySound Car_BrakeSqueal vol = 0x30 
+            PAIR[5.0; 20.0] pitch = 0x30 
+            PAIR[60.0; 80.0] 
+#00284    END IF 
+#00285  END FUNCTION
+          
+#00286  FUNCTION Car_Sound_Stop01 
+#00288    IF Obj_FlagNotSet FLAG_CAR_GENERIC_NOSOUND 
+#00289      Obj_AdjustSound carloop volumePercent = 50 
+            volumeStep = 1.5 
+            pitchPercent = 30 
+            pitchStep = 1.5 
+            
+#00290      Obj_PlaySound Car_BrakeSqueal vol = 0x30 
+            PAIR[50.0; 70.0] pitch = 80 
+            
+#00291    END IF 
+#00292  END FUNCTION
+          
+#00293  FUNCTION Car_Sound_FranticStop01 
+#00295    IF Obj_FlagNotSet FLAG_CAR_GENERIC_NOSOUND 
+#00296      IF Obj_FlagNotSet FLAG_CAR_SOUND_FRANTICSTOP 
+#00297        printf "frantic stop" 
+#00298        Obj_PlaySound LA_Skid vol = 0x30 
+              PAIR[30.0; 60.0] 
+#00299        RANDOM[3][8; 9; 10]
+              JUMP 0x34000000 JUMP 0x2f000000 
+#00300        Obj_PlaySound carhorn vol = 0x30 
+              PAIR[30.0; 70.0] pitch = 0x30 
+              PAIR[80.0; 100.0] 
+#00301      END IF 
+#00302    END IF 
+#00303    Obj_SpawnScript Car_Counter_FranticStop01 
+#00304  END FUNCTION
+          
+#00305  FUNCTION Car_Counter_FranticStop01 
+#00307    Obj_SetFlag FLAG_CAR_SOUND_FRANTICSTOP 
+#00308    Wait 120 gameframes 
+#00309    Obj_ClearFlag FLAG_CAR_SOUND_FRANTICSTOP 
+#00310  END FUNCTION
+          
+#00311  FUNCTION Car_Sound_RandomHonk01 
+#00313    IF Obj_FlagNotSet FLAG_CAR_GENERIC_NOSOUND 
+#00314      RANDOM[24][92; 93; 94; 95; 96; 97; 98; 99; 100; 101; 102; 103; 104; 105; 106; 107; 108; 109; 110; 111; 112; 113; 114; 120]
+            JUMP 0x9d000000 JUMP 0x98000000 JUMP 0x93000000 JUMP 0x8e000000 JUMP 0x89000000 JUMP 0x84000000 JUMP 0x7f000000 JUMP 0x7a000000 JUMP 0x75000000 JUMP 0x70000000 JUMP 0x6b000000 JUMP 0x66000000 JUMP 0x61000000 JUMP 0x5c000000 JUMP 0x57000000 JUMP 0x52000000 JUMP 0x4d000000 JUMP 0x48000000 JUMP 0x43000000 JUMP 0x3e000000 JUMP 0x39000000 JUMP 0x34000000 
+#00315      JUMP 0x2a000000 Obj_PlaySound carhorn vol = 0x30 
+            PAIR[30.0; 70.0] pitch = 0x30 
+            PAIR[80.0; 100.0] 
+#00316    END IF 
+#00317  END FUNCTION
+          
+#00318  FUNCTION Car_Accel01 
+#00322    Obj_SetPathVelocity 0x30 PAIR[40.0; 55.0] mph 
+#00323    Car_Sound_Accel01 
+#00324    Wait 60 gameframes 
+#00327    Obj_ClearFlag FLAG_CAR_GENERIC_TURNING 
+#00328  END FUNCTION
+          
+#00329  FUNCTION Car_AccelAfterDecelForCar01 
+#00331    Obj_SetPathVelocity 0x30 PAIR[40.0; 55.0] mph 
+#00332    Car_Sound_Accel01 
+#00333  END FUNCTION
+          
+#00334  FUNCTION Car_Decel01 
+#00336    Obj_SetPathVelocity 0x30 PAIR[25.0; 30.0] mph 
+#00337    Car_Sound_Decel01 
+#00338  END FUNCTION
+          
+#00339  FUNCTION Car_DecelForTurn01 
+#00341    Obj_SetPathVelocity 0x30 PAIR[25.0; 30.0] mph 
+#00342    Car_Sound_Decel01 
+#00343    Obj_SetFlag FLAG_CAR_GENERIC_TURNING 
+#00347    Obj_SpawnScript Car_CheckWhenTurning01 params = STRUCT{
+            PathNum = GLOBAL.PathNum 
+            }
+          
+#00348  END FUNCTION
+          
+#00349  FUNCTION Car_DecelTrafficLight01 
+#00351    Obj_SetFlag FLAG_CAR_GENERIC_TURNING 
+#00353    IF Obj_ObjectNotInRect dist = 50 
+            type = ARRAY(
+              
+              skater car 
+            )
+            
+#00354      IF QueryFlag name = GLOBAL.LightNode 
+              FLAG_TRAFFICLIGHT_GREEN 
+#00355        goto Car_DecelForTurn01 params = STRUCT{
+                PathNum = GLOBAL.PathNum 
+                }
+              
+#00356      END IF 
+#00358      IF QueryFlag name = GLOBAL.LightNode 
+              FLAG_TRAFFICLIGHT_YELLOW 
+#00359        RANDOM[4][17; 53; 89; 125]
+              
+#00360        goto Car_BlowYellow01 params = STRUCT{
+                PathNum = GLOBAL.PathNum 
+                }
+              
+#00361        JUMP 0x7a000000 goto Car_BlowYellow01 params = STRUCT{
+                PathNum = GLOBAL.PathNum 
+                }
+              
+#00362        JUMP 0x52000000 goto Car_BlowYellow01 params = STRUCT{
+                PathNum = GLOBAL.PathNum 
+                }
+              
+#00363        JUMP 0x2a000000 goto Car_Stop01 params = STRUCT{
+                LightNode = GLOBAL.LightNode 
+                PathNum = GLOBAL.PathNum 
+                }
+              
+#00364      END IF 
+#00365      IF QueryFlag name = GLOBAL.LightNode 
+              FLAG_TRAFFICLIGHT_RED 
+#00366        goto Car_Stop01 params = STRUCT{
+                LightNode = GLOBAL.LightNode 
+                PathNum = GLOBAL.PathNum 
+                }
+              
+#00367      END IF 
+#00368    ELSE 
+#00369    END IF 
+#00371  END FUNCTION
+          
+#00372  FUNCTION Car_DecelForOtherCar01 
+#00374    Car_Decel01 
+#00375    Wait 120 gameframes 
+#00376    Car_AccelAfterDecelForCar01 
+#00377  END FUNCTION
+          
+#00378  FUNCTION Car_Start01 
+#00380    Wait 0x30 PAIR[800.0; 1200.0] 
+#00382    Obj_ClearFlag FLAG_CAR_GENERIC_STOPPED 
+#00383    Obj_StartAlongPath 
+#00384    Car_Sound_Accel01 
+#00385  END FUNCTION
+          
+#00386  FUNCTION Car_StartForOtherCar01 
+#00388    Obj_ClearFlag FLAG_CAR_GENERIC_STOPPED 
+#00389    Obj_SetPathVelocity 30 mph 
+#00390    Obj_StartAlongPath 
+#00391    Car_Sound_Accel01 
+#00392    IF Obj_FlagSet FLAG_CAR_GENERIC_TURNING 
+#00393      Obj_SpawnScript Car_CheckWhenTurning01 params = STRUCT{
+              PathNum = GLOBAL.PathNum 
+              }
+            
+#00394    END IF 
+#00395  END FUNCTION
+          
+#00396  FUNCTION Car_Stop01 
+#00398    Obj_StopAlongPath 0x30 PAIR[25.0; 30.0] feet 
+#00399    Obj_SetFlag FLAG_CAR_GENERIC_STOPPED 
+#00400    Car_Sound_Stop01 
+#00401    LOOP 
+#00402      Wait 20 gameframes 
+#00403      IF QueryFlag name = GLOBAL.LightNode 
+              FLAG_TRAFFICLIGHT_GREEN 
+#00404        Car_Start01 
+#00405        BREAK
+              
+#00406      END IF 
+#00407    END LOOP 
+#00408    Obj_SpawnScript Car_CheckWhenTurning01 params = STRUCT{
+            PathNum = GLOBAL.PathNum 
+            }
+          
+#00409  END FUNCTION
+          
+#00410  FUNCTION Car_StopForOtherCar01 
+#00412    Obj_SetFlag FLAG_CAR_GENERIC_STOPPED 
+#00413    Obj_StopAlongPath 7 
+#00414    Car_Sound_Stop01 
+#00415    Car_InchUpAfterStop 
+#00416    LOOP 
+#00417      IF Obj_FlagNotSet FLAG_CAR_GENERIC_NOSOUND 
+#00420        Car_Sound_RandomHonk01 
+#00421      END IF 
+#00422      IF Obj_ObjectNotInRect dist = 50 
+              width = 50 
+              height = 20 
+              prefix = GLOBAL.PathNum 
+              offset = VECTOR[0.0; 0.0; 0.0] 
+              
+#00423        Car_StartForOtherCar01 PathNum = GLOBAL.PathNum 
+              
+#00424        BREAK
+              
+#00425      END IF 
+#00426      Wait 60 gameframes 
+#00427    END LOOP 
+#00428  END FUNCTION
+          
+#00429  FUNCTION Car_StopForBus01 
+#00431    Obj_SetFlag FLAG_CAR_GENERIC_STOPPED 
+#00432    Obj_StopAlongPath 7 
+#00433    Car_Sound_Stop01 
+#00434    LOOP 
+#00435      IF Obj_FlagNotSet FLAG_CAR_GENERIC_NOSOUND 
+#00438        Car_Sound_RandomHonk01 
+#00439      END IF 
+#00440      IF Obj_ObjectNotInRect dist = 80 
+              width = 55 
+              height = 20 
+              prefix = GLOBAL.PathNum 
+              offset = VECTOR[0.0; 0.0; 0.0] 
+              
+#00441        Car_StartForOtherCar01 PathNum = GLOBAL.PathNum 
+              
+#00442        BREAK
+              
+#00443      END IF 
+#00444      Wait 60 gameframes 
+#00445    END LOOP 
+#00446  END FUNCTION
+          
+#00447  FUNCTION Car_BlowYellow01 
+#00449    Obj_SetPathVelocity 50 mph 
+#00450    IF Obj_FlagNotSet FLAG_CAR_GENERIC_NOSOUND 
+#00451      Obj_AdjustSound carloop volumePercent = 130 
+            volumeStep = 4 
+            pitchPercent = 130 
+            pitchStep = 4 
+            
+#00452      Obj_PlaySound LA_Skid vol = 100 
+            
+#00453    END IF 
+#00454    Obj_SpawnScript Car_CheckWhenTurning01 params = STRUCT{
+            PathNum = GLOBAL.PathNum 
+            }
+          
+#00455  END FUNCTION
+          
+#00456  FUNCTION Car_InchUpAfterStop 
+#00458    IF Obj_ObjectNotInRect dist = 35 
+            width = 50 
+            height = 40 
+            type = ARRAY(
+              
+              car skater 
+            )
+            offset = VECTOR[0.0; 0.0; 0.0] 
+            
+#00459      Obj_StartAlongPath 
+#00460      Wait 1 gameframes 
+#00461      Obj_StopAlongPath 20 
+#00462      IF Obj_FlagNotSet FLAG_CAR_GENERIC_NOSOUND 
+#00463        Obj_PlaySound Car_BrakeSqueal vol = 10 
+              pitch = 80 
+              
+#00464      END IF 
+#00465    END IF 
+#00466  END FUNCTION
+          
+#00467  FUNCTION Ped_Generic01 
+#00471    Obj_FollowPathLinked 
+#00472    Obj_RandomPathMode On 
+#00473    Obj_SetPathAcceleration 10 
+#00474    Obj_SetPathDeceleration 10 
+#00475  END FUNCTION
+          
+#00481  FUNCTION Ped_StopAtNode01 
+#00483    Obj_SetAnimCycleMode off 
+#00484    Obj_WaitAnimFinished 
+#00485    Obj_PlayAnim Anim = WalkToIdle 
+          
+#00486    Wait 2 gameframes 
+#00487    Obj_StopAlongPath 
+#00488    Obj_WaitAnimFinished 
+#00489  END FUNCTION
+          
+#00490  FUNCTION Ped_BackOnPath01 
+#00492    printf "backonpath" 
+#00493    Obj_StartAlongPath 
+#00494    Obj_FollowPathStored 
+#00495  END FUNCTION
+          
+#00496  FUNCTION Ped_WalkToNextNode01 
+#00498    RANDOM[2][9; 82]
+          
+#00499    Obj_SetPathVelocity 4 
+#00500    Obj_StartAlongPath 
+#00501    Obj_CycleAnim Anim = IdleToWalk 
+          
+#00502    Obj_PlayAnim Anim = Walk1 
+          cycle 
+#00503    JUMP 0x43000000 Obj_SetPathVelocity 4 
+#00504    Obj_StartAlongPath 
+#00505    Obj_CycleAnim Anim = IdleToWalk 
+          
+#00506    Obj_PlayAnim Anim = Walk2 
+          cycle 
+#00507  END FUNCTION
+          
+#00517  FUNCTION Ped_Crosswalk01 
+#00519    Ped_StopAtNode01 
+#00520    LOOP 
+#00522      IF QueryFlag name = GLOBAL.LightNode 
+              FLAG_TRAFFICLIGHT_YELLOW 
+#00525        Obj_PlayAnim Anim = Idle 
+              cycle 
+#00526        LOOP 
+#00527          IF QueryFlag name = GLOBAL.LightNode 
+                  FLAG_TRAFFICLIGHT_RED 
+#00528            Obj_SetAnimCycleMode off 
+#00529            Obj_WaitAnimFinished 
+#00530            Wait 0x30 PAIR[0.0; 300.0] 
+#00531            goto Ped_WalkToNextNode01 
+#00533          END IF 
+#00534          Wait 30 gameframes 
+#00535        END LOOP 
+#00536      ELSE 
+#00537        Ped_Idle01 
+#00538      END IF 
+#00539    END LOOP 
+#00540  END FUNCTION
+          
+#00541  FUNCTION Ped_RandomWaitAtNode01 
+#00543    Ped_StopAtNode01 
+#00544    Obj_CycleAnim Anim = Idle 
+          
+#00545    LOOP 
+#00546      RANDOM[2][9; 20]
+            
+#00547      Ped_Idle01 
+#00548      JUMP 0x0a000000 goto Ped_WalkToNextNode01 
+#00549    END LOOP 
+#00550  END FUNCTION
+          
+#00551  FUNCTION Ped_Idle01 
+#00553    RANDOM[13][53; 75; 97; 119; 141; 163; 185; 207; 229; 251; 273; 295; 359]
+          
+#00554    Obj_CycleAnim Anim = ScratchChin 
+          
+#00555    JUMP 0x82010000 Obj_CycleAnim Anim = LookAtWatch 
+          
+#00556    JUMP 0x68010000 Obj_CycleAnim Anim = LookLeftRight 
+          
+#00557    JUMP 0x4e010000 Obj_CycleAnim Anim = LookRight 
+          
+#00558    JUMP 0x34010000 Obj_CycleAnim Anim = LookLeftDown 
+          
+#00559    JUMP 0x1a010000 Obj_CycleAnim Anim = Talk 
+          
+#00560    JUMP 0x00010000 Obj_CycleAnim Anim = Talk2 
+          
+#00561    JUMP 0xe6000000 Obj_CycleAnim Anim = Idle 
+          
+#00562    JUMP 0xcc000000 Obj_CycleAnim Anim = Idle 
+          
+#00563    JUMP 0xb2000000 Obj_CycleAnim Anim = Idle 
+          
+#00564    JUMP 0x98000000 Obj_CycleAnim Anim = Idle 
+          
+#00565    JUMP 0x7e000000 Obj_CycleAnim Anim = IdleToIdle2 
+          
+#00566    Obj_CycleAnim Anim = Idle2 
+          
+#00567    Obj_CycleAnim Anim = Idle2ToIdle 
+          
+#00568    JUMP 0x3a000000 Obj_CycleAnim Anim = IdleToIdle3 
+          
+#00569    Obj_CycleAnim Anim = Idle3 
+          
+#00570    Obj_CycleAnim Anim = Idle3ToIdle 
+          
+#00571  END FUNCTION
+          
+#00572  

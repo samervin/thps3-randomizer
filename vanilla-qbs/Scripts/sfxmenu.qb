@@ -1,0 +1,400 @@
+FUNCTION SkipTrack 
+#00001    SkipMusicTrack 
+#00002  END FUNCTION
+          
+#00003  FUNCTION SetCDToMusic 
+#00005    SetMusicMode 1 
+#00006  END FUNCTION
+          
+#00007  FUNCTION SetCDToAmbience 
+#00009    SetMusicMode 0 
+#00010  END FUNCTION
+          
+#00011  FUNCTION PlaySongsRandomly 
+#00013    SetRandomMode 1 
+#00014  END FUNCTION
+          
+#00015  FUNCTION PlaySongsInOrder 
+#00017    SetRandomMode 0 
+#00018  END FUNCTION
+          
+#00019  FUNCTION SoundOptions_ShowEvent 
+#00021    IF InFrontEnd 
+#00022      DestroyElement Id = sfxmenu_skip_track 
+            
+#00023    ELSE 
+#00024      PauseStream 1 
+#00026      PauseMusic 0 
+#00027      helper_hide 
+#00028      helper_select_choose_back x1 = 167 
+            x2 = 282 
+            x3 = 392 
+            
+#00029      SetMenuElementText Id = helper_menu_1 
+            "безг Select" 
+#00030    END IF 
+#00031  END FUNCTION
+          
+#00032  FUNCTION set_sound_level_slider 
+#00034    VerifyParam param = Id 
+          func = set_sound_level_slider 
+          NULL 
+#00035    SetVolumeFromValue Id = GLOBAL.Id 
+          GLOBAL.whichParam 
+          
+#00036  END FUNCTION
+          
+#00037  FUNCTION play_sound_on_sfx_volume_adjustment 
+#00039    PlaySound HUD_specialtrickAA 
+#00040  END FUNCTION
+          
+#00041  FUNCTION get_sound_level_slider 
+#00043    GetValueFromVolume GLOBAL.whichParam 
+          
+#00044    VerifyParam param = Id 
+          func = get_sound_level_slider 
+          NULL 
+#00045    VerifyParam param = value 
+          func = get_sound_level_slider 
+          NULL 
+#00046    SetSliderValue Id = GLOBAL.Id 
+          value = GLOBAL.value 
+          
+#00047  END FUNCTION
+          
+#00048  FUNCTION Playlist_ShowEvent 
+#00050    IF InFrontEnd 
+#00051    ELSE 
+#00052      helper_hide 
+#00053      helper_select_choose_back x1 = 100 
+            x2 = 270 
+            x3 = 450 
+            
+#00054      SetMenuElementText Id = helper_menu_2 
+            "м Toggle/Accept" 
+#00055    END IF 
+#00056  END FUNCTION
+          
+#00057  FUNCTION sfx_menu_create 
+#00059    CreateMenu STRUCT{
+            type = menucontainer 
+            Id = sfx_menu_container 
+            }
+          
+#00063    CreateAndAttachMenu STRUCT{
+            type = verticalmenu 
+            Id = sfx_menu 
+            parent = sfx_menu_container 
+            x = 160.0 
+            y = 120.0 
+            w = 320.0 
+            h = 336.0 
+            just_center_x just_center_y88 blue_top eventhandlers = ARRAY(
+              
+              STRUCT{
+                type = showeventhandler 
+                target = "SoundOptions_ShowEvent" 
+                }
+              
+            )
+            children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Sound Options" 
+                static dont_gray drawer = title 
+                }
+              STRUCT{
+                type = textmenuelement 
+                Id = cd_so_menu 
+                text = "Song Order" 
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler 
+                  link = cdso_menu 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                Id = sfxmenu_skip_track 
+                text = "SkipTrack" 
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler 
+                  target = "SkipTrack" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                Id = playlist_button_menu 
+                text = "Playlist" 
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler 
+                  link = playlist_menu 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                Id = cd_sound_menu 
+                text = "Music or Ambience" 
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler 
+                  link = cdsound_menu 
+                  }
+                }
+              STRUCT{
+                type = slidermenuelement 
+                Id = master_level_slider 
+                text = "Master Level:" 
+                lower = 0 
+                upper = 10 
+                delta = 1 
+                start = 5 
+                wrap = 0 
+                right_side_w = 80 
+                eventhandlers = ARRAY(
+                  
+                  STRUCT{
+                    type = showeventhandler 
+                    target = "get_sound_level_slider" 
+                    params = STRUCT{
+                      whichParam = mastervol 
+                      }
+                    }
+                  STRUCT{
+                    type = ContentsChangedEventHandler 
+                    target = "set_sound_level_slider" 
+                    params = STRUCT{
+                      whichParam = mastervol 
+                      Id = master_level_slider 
+                      }
+                    }
+                  
+                )
+                }
+              STRUCT{
+                type = slidermenuelement 
+                Id = music_level_slider 
+                text = "Music Level:" 
+                lower = 0 
+                upper = 10 
+                delta = 1 
+                start = 5 
+                wrap = 0 
+                right_side_w = 80 
+                eventhandlers = ARRAY(
+                  
+                  STRUCT{
+                    type = showeventhandler 
+                    target = "get_sound_level_slider" 
+                    params = STRUCT{
+                      whichParam = cdvol 
+                      }
+                    }
+                  STRUCT{
+                    type = ContentsChangedEventHandler 
+                    target = "set_sound_level_slider" 
+                    params = STRUCT{
+                      whichParam = cdvol 
+                      Id = music_level_slider 
+                      }
+                    }
+                  
+                )
+                }
+              STRUCT{
+                type = slidermenuelement 
+                Id = sfx_level_slider 
+                text = "Sound Level:" 
+                lower = 0 
+                upper = 10 
+                delta = 1 
+                start = 5 
+                wrap = 0 
+                right_side_w = 80 
+                eventhandlers = ARRAY(
+                  
+                  STRUCT{
+                    type = showeventhandler 
+                    target = "get_sound_level_slider" 
+                    params = STRUCT{
+                      whichParam = sfxvol 
+                      }
+                    }
+                  STRUCT{
+                    type = ContentsChangedEventHandler 
+                    target = "set_sound_level_slider" 
+                    params = STRUCT{
+                      whichParam = sfxvol 
+                      Id = sfx_level_slider 
+                      }
+                    }
+                  STRUCT{
+                    type = ContentsChangedEventHandler 
+                    target = "play_sound_on_sfx_volume_adjustment" 
+                    }
+                  
+                )
+                }
+              STRUCT{
+                type = textmenuelement 
+                Id = sfx_menu_done 
+                text = "Done" 
+                target = "go_back" 
+                params = STRUCT{
+                  Id = sfx_menu_container 
+                  }
+                }
+              
+            )
+            }
+          
+#00129    CreateAndAttachMenu STRUCT{
+            type = verticalmenu 
+            Id = playlist_menu 
+            parent = sfx_menu_container 
+            x = 115.0 
+            y = 60.0 
+            w = 410.0 
+            h = 336.0 
+            just_center_x just_center_y blue_top eventhandler = STRUCT{
+              type = showeventhandler 
+              target = "Playlist_ShowEvent" 
+              }
+            children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "playlist" 
+                static dont_gray drawer = title 
+                }
+              STRUCT{
+                type = menucontainer 
+                Id = playlist_multi_container 
+                show_all_children }
+              STRUCT{
+                type = textmenuelement 
+                Id = playlist_bottom 
+                text = " " 
+                implemented_property static dont_gray lock_layout y = 304.0 
+                }
+              
+            )
+            }
+          
+#00161    DestroyElement Id = playlist_names_menu 
+          
+#00163    DestroyElement Id = playlist_on_off_menu 
+          
+#00164    CreateAndAttachMenu STRUCT{
+            type = scrollingmenu 
+            Id = playlist_names_menu 
+            parent = playlist_multi_container 
+            x = 0.0 
+            y = 0.0 
+            w = 370.0 
+            h = 336.0 
+            num_visible = 12 
+            just_left just_center_y not_rounded }
+          
+#00175    CreateAndAttachMenu STRUCT{
+            type = scrollingmenu 
+            Id = playlist_on_off_menu 
+            follow_menu = playlist_names_menu 
+            parent = playlist_multi_container 
+            x = 370.0 
+            y = 0.0 
+            w = 40.0 
+            h = 336.0 
+            num_visible = 12 
+            just_center_x just_center_y not_rounded static dont_gray }
+          
+#00188    CreateAndAttachMenu STRUCT{
+            type = verticalmenu 
+            Id = cdsound_menu 
+            parent = sfx_menu_container 
+            x = 160.0 
+            y = 120.0 
+            w = 320.0 
+            h = 336.0 
+            just_center_x just_center_y blue_top children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "CD Sound Mode" 
+                static dont_gray drawer = title 
+                }
+              STRUCT{
+                type = textmenuelement 
+                Id = cd_sound_music_menu 
+                text = "Music" 
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler 
+                  target = "SetCdToMusic" 
+                  link = sfx_menu 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                Id = cd_sound_ambience_menu 
+                text = "Ambience" 
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler 
+                  target = "SetCdToAmbience" 
+                  link = sfx_menu 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                Id = cdsound_menu_done 
+                text = "Done" 
+                target = "go_back" 
+                params = STRUCT{
+                  Id = cdsound_menu 
+                  }
+                }
+              
+            )
+            }
+          
+#00217    CreateAndAttachMenu STRUCT{
+            type = verticalmenu 
+            Id = cdso_menu 
+            parent = sfx_menu_container 
+            x = 150.0 
+            y = 120.0 
+            w = 320.0 
+            h = 336.0 
+            just_center_x just_center_y blue_top children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Song Order" 
+                static dont_gray drawer = title 
+                }
+              STRUCT{
+                type = textmenuelement 
+                Id = cd_s_o_menu 
+                text = "In Order" 
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler 
+                  target = "PlaySongsInOrder" 
+                  link = sfx_menu 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                Id = cd_s_r_menu 
+                text = "Random" 
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler 
+                  target = "PlaySongsRandomly" 
+                  link = sfx_menu 
+                  }
+                }
+              
+            )
+            }
+          
+#00242    InitializeSFXMenus 
+#00244  END FUNCTION
+          
+#00245  

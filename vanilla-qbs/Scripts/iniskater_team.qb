@@ -1,0 +1,721 @@
+
+#00001  JA_head_structure = STRUCT{
+          mesh = "models/skater_m/Head_M_W_Bald.skn" 
+          desc = "Jeremy Andersen" 
+          texture = "CS_never_JA_01.png" 
+          target = "AddJeremyHead1" 
+          flags = STRUCT{
+            JA_skin light_face }
+          hidden }
+        
+#00012  JA_hair_exception = STRUCT{
+          look_for_param = JA_skin 
+          skullcap_texture = "CS_never_JA_H01.png" 
+          }
+        
+#00017  IB_head_structure = STRUCT{
+          mesh = "models/skater_m/Head_M_W_Bald.skn" 
+          desc = "Isaac Burns" 
+          texture = "CS_never_IB_01.png" 
+          target = "AddMaleHead1" 
+          flags = STRUCT{
+            IB_skin light_face }
+          hidden }
+        
+#00029  IB_hair_exception = STRUCT{
+          look_for_param = IB_skin 
+          skullcap_texture = "CS_never_IB_H01.png" 
+          }
+        
+#00034  AC_head_structure = STRUCT{
+          mesh = "models/skater_m/Head_M_W_Bald.skn" 
+          desc = "Aaron Cammarata" 
+          texture = "CS_never_AC_01.png" 
+          target = "AddMaleHead1" 
+          flags = STRUCT{
+            AC_skin light_face }
+          hidden }
+        
+#00046  AC_hair_exception = STRUCT{
+          look_for_param = AC_skin 
+          skullcap_texture = "CS_never_AC_H01.png" 
+          }
+        
+#00051  DC_head_structure = STRUCT{
+          mesh = "models/skater_m/Head_M_W_Bald.skn" 
+          desc = "Dave Cowling" 
+          texture = "CS_never_DC_01.png" 
+          target = "AddMaleHead1" 
+          flags = STRUCT{
+            DC_skin light_face }
+          hidden }
+        
+#00064  DC_hair_exception = STRUCT{
+          look_for_param = DC_skin 
+          skullcap_texture = "CS_never_DC_H01.png" 
+          }
+        
+#00069  RD_head_structure = STRUCT{
+          mesh = "models/skater_m/Head_M_W_Bald.skn" 
+          desc = "Ralph D'Amato" 
+          texture = "CS_never_RD_01.png" 
+          target = "AddMaleHead1" 
+          flags = STRUCT{
+            RD_skin light_face }
+          hidden }
+        
+#00082  RD_hair_exception = STRUCT{
+          look_for_param = RD_skin 
+          skullcap_texture = "CS_never_RD_H01.png" 
+          }
+        
+#00087  LD_head_structure = STRUCT{
+          desc = "Lisa Davies" 
+          texture = "CS_never_LD_01.png" 
+          target = "AddFemaleHead1" 
+          flags = STRUCT{
+            LD_skin }
+          hidden }
+        
+#00099  LD_hair_exception = STRUCT{
+          look_for_param = LD_skin 
+          skullcap_texture = "CS_never_LD_H01.png" 
+          }
+        
+#00104  PD_head_structure = STRUCT{
+          mesh = "models/skater_m/Head_M_W_Bald.skn" 
+          desc = "Pete Day" 
+          texture = "CS_never_PD_01.png" 
+          target = "AddMaleHead1" 
+          flags = STRUCT{
+            PD_skin light_face }
+          hidden }
+        
+#00117  PD_hair_exception = STRUCT{
+          look_for_param = PD_skin 
+          skullcap_texture = "CS_never_PD_H01.png" 
+          }
+        
+#00122  RDy_head_structure = STRUCT{
+          desc = "Rachael Day" 
+          texture = "CS_never_RDy_H01.png" 
+          target = "AddFemaleHead1" 
+          flags = STRUCT{
+            RDy_skin }
+          hidden }
+        
+#00133  RDy_hair_exception = STRUCT{
+          look_for_param = RDy_skin 
+          skullcap_texture = "CS_never_RDy_01.png" 
+          }
+        
+#00138  MDy_head_structure = STRUCT{
+          mesh = "models/skater_m/Head_M_W_Bald.skn" 
+          desc = "Matthew Day" 
+          texture = "CS_never_MDy_01.png" 
+          target = "AddMaleHead1" 
+          flags = STRUCT{
+            MDy_skin light_face }
+          hidden }
+        
+#00150  MDy_hair_exception = STRUCT{
+          look_for_param = MDy_skin 
+          skullcap_texture = "CS_never_MDy_H01.png" 
+          }
+        
+#00155  MD_head_structure = STRUCT{
+          mesh = "models/skater_m/Head_M_W_Bald.skn" 
+          desc = "Matt Duncan" 
+          texture = "CS_never_MD_01.png" 
+          target = "AddMaleHead1" 
+          flags = STRUCT{
+            MD_skin light_face }
+          hidden }
+        
+#00168  MD_hair_exception = STRUCT{
+          look_for_param = MD_skin 
+          skullcap_texture = "CS_never_MD_H01.png" 
+          }
+        
+#00173  CF_head_structure = STRUCT{
+          mesh = "models/skater_m/Head_M_A_Bald.skn" 
+          desc = "Chad Findley" 
+          texture = "CS_never_CF_01.png" 
+          target = "AddMaleHead2" 
+          flags = STRUCT{
+            CF_skin tan_face }
+          hidden }
+        
+#00186  CF_hair_exception = STRUCT{
+          look_for_param = CF_skin 
+          skullcap_texture = "CS_never_CF_H01.png" 
+          }
+        
+#00191  AF_head_structure = STRUCT{
+          mesh = "models/skater_m/Head_M_W_Bald.skn" 
+          desc = "Alan Flores" 
+          texture = "CS_never_AF_01.png" 
+          target = "AddMaleHead1" 
+          flags = STRUCT{
+            AF_skin light_face }
+          hidden }
+        
+#00204  AF_hair_exception = STRUCT{
+          look_for_param = AF_skin 
+          skullcap_texture = "CS_never_AF_H01.png" 
+          }
+        
+#00209  EF_head_structure = STRUCT{
+          mesh = "models/skater_m/Head_M_A_Bald.skn" 
+          desc = "Edwin Fong" 
+          texture = "CS_never_EF_01.png" 
+          target = "AddMaleHead2" 
+          flags = STRUCT{
+            EF_skin tan_face }
+          hidden }
+        
+#00222  EF_hair_exception = STRUCT{
+          look_for_param = EF_skin 
+          skullcap_texture = "CS_never_EF_H01.png" 
+          }
+        
+#00227  SG_head_structure = STRUCT{
+          mesh = "models/skater_m/Head_M_A_Bald.skn" 
+          desc = "Steve Ganem" 
+          texture = "CS_never_SG_01.png" 
+          target = "AddMaleHead2" 
+          flags = STRUCT{
+            SG_skin tan_face }
+          hidden }
+        
+#00240  SG_hair_exception = STRUCT{
+          look_for_param = SG_skin 
+          skullcap_texture = "CS_never_SG_H01.png" 
+          }
+        
+#00245  CG_head_structure = STRUCT{
+          mesh = "models/skater_m/Head_M_W_Bald.skn" 
+          desc = "Chris Glenn" 
+          texture = "CS_never_CG_01.png" 
+          target = "AddMaleHead1" 
+          flags = STRUCT{
+            CG_skin light_face }
+          hidden }
+        
+#00258  CG_hair_exception = STRUCT{
+          look_for_param = CG_skin 
+          skullcap_texture = "CS_never_CG_H01.png" 
+          }
+        
+#00263  KH_head_structure = STRUCT{
+          mesh = "models/skater_m/Head_M_W_Bald.skn" 
+          desc = "Kendall Harrison" 
+          texture = "CS_never_KH_01.png" 
+          target = "AddMaleHead1" 
+          flags = STRUCT{
+            KH_skin light_face }
+          hidden }
+        
+#00276  KH_hair_exception = STRUCT{
+          look_for_param = KH_skin 
+          skullcap_texture = "CS_never_KH_H01.png" 
+          }
+        
+#00281  NH_head_structure = STRUCT{
+          mesh = "models/skater_m/Head_M_B_Fade.skn" 
+          desc = "Noel Hines" 
+          texture = "CS_NH_hines_head.png" 
+          target = "AddMaleHead3" 
+          flags = STRUCT{
+            NH_skin dark_face no_hair is_pro_head no_headgear }
+          hidden }
+        
+#00294  BJ_head_structure = STRUCT{
+          mesh = "models/skater_m/Head_M_W_Bald.skn" 
+          desc = "Brian Jennings" 
+          texture = "CS_never_BJ_01.png" 
+          target = "AddMaleHead1" 
+          flags = STRUCT{
+            BJ_skin light_face }
+          hidden }
+        
+#00312  BJ_hair_exception = STRUCT{
+          look_for_param = BJ_skin 
+          skullcap_texture = "CS_never_BJ_H01.png" 
+          }
+        
+#00317  GJ_head_structure = STRUCT{
+          mesh = "models/skater_m/Head_M_A_Bald.skn" 
+          desc = "Gary Jesdanun" 
+          texture = "CS_never_GJ_01.png" 
+          target = "AddMaleHead2" 
+          flags = STRUCT{
+            GJ_skin tan_face }
+          hidden }
+        
+#00330  GJ_hair_exception = STRUCT{
+          look_for_param = GJ_skin 
+          skullcap_texture = "CS_never_GJ_H01.png" 
+          }
+        
+#00335  JJ_head_structure = STRUCT{
+          mesh = "models/skater_m/Head_M_W_Bald.skn" 
+          desc = "Joel Jewett" 
+          texture = "CS_never_JJ_01.png" 
+          target = "AddMaleHead1" 
+          flags = STRUCT{
+            JJ_skin light_face }
+          hidden }
+        
+#00348  JJ_hair_exception = STRUCT{
+          look_for_param = JJ_skin 
+          skullcap_texture = "CS_never_JJ_H01.png" 
+          }
+        
+#00353  SJ_head_structure = STRUCT{
+          desc = "Sandy Jewett" 
+          texture = "CS_never_SJ_H01.png" 
+          target = "AddFemaleHead1" 
+          flags = STRUCT{
+            SJ_skin }
+          hidden }
+        
+#00365  SJ_hair_exception = STRUCT{
+          look_for_param = SJ_skin 
+          skullcap_texture = "CS_never_SJ_01.png" 
+          }
+        
+#00370  HJ_head_structure = STRUCT{
+          mesh = "models/skater_m/Head_M_A_Bald.skn" 
+          desc = "Henry Ji" 
+          texture = "CS_never_HJ_01.png" 
+          target = "AddMaleHead2" 
+          flags = STRUCT{
+            HJ_skin tan_face }
+          hidden }
+        
+#00383  HJ_hair_exception = STRUCT{
+          look_for_param = HJ_skin 
+          skullcap_texture = "CS_never_HJ_H01.png" 
+          }
+        
+#00388  RM_head_structure = STRUCT{
+          mesh = "models/skater_m/Head_M_W_Bald.skn" 
+          desc = "Ryan McMahon" 
+          texture = "CS_never_RM_01.png" 
+          target = "AddMaleHead1" 
+          flags = STRUCT{
+            RM_skin light_face }
+          hidden }
+        
+#00401  RM_hair_exception = STRUCT{
+          look_for_param = RM_skin 
+          skullcap_texture = "CS_never_RM_H01.png" 
+          }
+        
+#00406  KM_head_structure = STRUCT{
+          mesh = "models/skater_m/Head_M_W_Bald.skn" 
+          desc = "Kevin Mulhall" 
+          texture = "CS_never_KM_01.png" 
+          target = "AddMaleHead1" 
+          flags = STRUCT{
+            KM_skin light_face }
+          hidden }
+        
+#00419  KM_hair_exception = STRUCT{
+          look_for_param = KM_skin 
+          skullcap_texture = "CS_never_KM_H01.png" 
+          }
+        
+#00424  NN_head_structure = STRUCT{
+          mesh = "models/skater_m/Head_M_W_Bald.skn" 
+          desc = "Nolan Nelson" 
+          texture = "CS_never_NN_01.png" 
+          target = "AddMaleHead1" 
+          flags = STRUCT{
+            NN_skin light_face }
+          hidden }
+        
+#00437  NN_hair_exception = STRUCT{
+          look_for_param = NN_skin 
+          skullcap_texture = "CS_never_NN_H01.png" 
+          }
+        
+#00442  AN_head_structure = STRUCT{
+          mesh = "models/skater_m/Head_M_W_Bald.skn" 
+          desc = "Andy Nelson" 
+          texture = "CS_never_AN_01.png" 
+          target = "AddMaleHead1" 
+          flags = STRUCT{
+            AN_skin light_face }
+          hidden }
+        
+#00454  AN_hair_exception = STRUCT{
+          look_for_param = AN_skin 
+          skullcap_texture = "CS_never_AN_H01.png" 
+          }
+        
+#00459  JO_head_structure = STRUCT{
+          mesh = "models/skater_m/Head_M_A_Bald.skn" 
+          desc = "Johnny Ow" 
+          texture = "CS_never_JO_01.png" 
+          target = "AddMaleHead2" 
+          flags = STRUCT{
+            JO_skin tan_face }
+          hidden }
+        
+#00472  JO_hair_exception = STRUCT{
+          look_for_param = JO_skin 
+          skullcap_texture = "CS_never_JO_H01.png" 
+          }
+        
+#00477  SP_head_structure = STRUCT{
+          mesh = "models/skater_m/Head_M_W_Bald.skn" 
+          desc = "Scott Pease" 
+          texture = "CS_never_SP_01.png" 
+          target = "AddMaleHead1" 
+          flags = STRUCT{
+            SP_skin light_face }
+          hidden }
+        
+#00490  SP_hair_exception = STRUCT{
+          look_for_param = SP_skin 
+          skullcap_texture = "CS_never_SP_H01.png" 
+          }
+        
+#00495  CR_head_structure = STRUCT{
+          mesh = "models/skater_m/Head_M_W_Bald.skn" 
+          desc = "Chris Rausch" 
+          texture = "CS_never_CR_01.png" 
+          target = "AddMaleHead1" 
+          flags = STRUCT{
+            CR_skin light_face }
+          hidden }
+        
+#00508  CR_hair_exception = STRUCT{
+          look_for_param = CR_skin 
+          skullcap_texture = "CS_never_CR_H01.png" 
+          }
+        
+#00513  SRa_head_structure = STRUCT{
+          mesh = "models/skater_m/Head_M_W_Bald.skn" 
+          desc = "Steven Rausch" 
+          texture = "CS_never_SRa_01.png" 
+          target = "AddMaleHead1" 
+          flags = STRUCT{
+            SRa_skin light_face }
+          hidden }
+        
+#00525  SRa_hair_exception = STRUCT{
+          look_for_param = SRa_skin 
+          skullcap_texture = "CS_never_SRa_H01.png" 
+          }
+        
+#00530  JRa_head_structure = STRUCT{
+          mesh = "models/skater_m/Head_M_W_Bald.skn" 
+          desc = "James Rausch" 
+          texture = "CS_never_JRa_01.png" 
+          target = "AddMaleHead1" 
+          flags = STRUCT{
+            JRa_skin light_face }
+          hidden }
+        
+#00542  JRa_hair_exception = STRUCT{
+          look_for_param = JRa_skin 
+          skullcap_texture = "CS_never_JRa_H01.png" 
+          }
+        
+#00547  ARa_head_structure = STRUCT{
+          mesh = "models/skater_m/Head_M_W_Bald.skn" 
+          desc = "Andrew Rausch" 
+          texture = "CS_never_ARa_01.png" 
+          target = "AddMaleHead1" 
+          flags = STRUCT{
+            ARa_skin light_face }
+          hidden }
+        
+#00559  ARa_hair_exception = STRUCT{
+          look_for_param = ARa_skin 
+          skullcap_texture = "CS_never_ARa_H01.png" 
+          }
+        
+#00564  PR_head_structure = STRUCT{
+          mesh = "models/skater_m/Head_M_W_Bald.skn" 
+          desc = "Paul Robinson" 
+          texture = "CS_never_PR_01.png" 
+          target = "AddMaleHead1" 
+          flags = STRUCT{
+            PR_skin light_face }
+          hidden }
+        
+#00577  PR_hair_exception = STRUCT{
+          look_for_param = PR_skin 
+          skullcap_texture = "CS_never_PR_H01.png" 
+          }
+        
+#00582  JS_head_structure = STRUCT{
+          mesh = "models/skater_m/Head_M_A_Bald.skn" 
+          desc = "Junki Saita" 
+          texture = "CS_never_JS_01.png" 
+          target = "AddMaleHead2" 
+          flags = STRUCT{
+            JS_skin tan_face }
+          hidden }
+        
+#00595  JS_hair_exception = STRUCT{
+          look_for_param = JS_skin 
+          skullcap_texture = "CS_never_JS_H01.png" 
+          }
+        
+#00600  MS_head_structure = STRUCT{
+          mesh = "models/skater_m/Head_M_W_Bald.skn" 
+          desc = "Mark Scott" 
+          texture = "CS_never_MS_01.png" 
+          target = "AddMaleHead1" 
+          flags = STRUCT{
+            MS_skin light_face }
+          hidden }
+        
+#00613  MS_hair_exception = STRUCT{
+          look_for_param = MS_skin 
+          skullcap_texture = "CS_never_MS_H01.png" 
+          }
+        
+#00618  AS_head_structure = STRUCT{
+          mesh = "models/skater_m/Head_M_W_Bald.skn" 
+          desc = "Aaron Skillman" 
+          texture = "CS_never_AS_01.png" 
+          target = "AddMaleHead1" 
+          flags = STRUCT{
+            AS_skin light_face }
+          hidden }
+        
+#00631  AS_hair_exception = STRUCT{
+          look_for_param = AS_skin 
+          skullcap_texture = "CS_never_AS_H01.png" 
+          }
+        
+#00636  DT_head_structure = STRUCT{
+          mesh = "models/skater_m/Head_M_W_Bald.skn" 
+          desc = "Darren Thorne" 
+          texture = "CS_never_DT_01.png" 
+          target = "AddMaleHead1" 
+          flags = STRUCT{
+            DT_skin light_face }
+          hidden }
+        
+#00649  DT_hair_exception = STRUCT{
+          look_for_param = DT_skin 
+          skullcap_texture = "CS_never_DT_H01.png" 
+          }
+        
+#00654  JU_head_structure = STRUCT{
+          mesh = "models/skater_m/Head_M_A_Bald.skn" 
+          desc = "Jason Uyeda" 
+          texture = "CS_never_JU_01.png" 
+          target = "AddMaleHead2" 
+          flags = STRUCT{
+            JU_skin tan_face }
+          hidden }
+        
+#00667  JU_hair_exception = STRUCT{
+          look_for_param = JU_skin 
+          skullcap_texture = "CS_never_JU_H01.png" 
+          }
+        
+#00672  CW_head_structure = STRUCT{
+          mesh = "models/skater_m/Head_M_W_Bald.skn" 
+          desc = "Chris Ward" 
+          texture = "CS_never_CW_01.png" 
+          target = "AddMaleHead1" 
+          flags = STRUCT{
+            CW_skin light_face }
+          hidden }
+        
+#00685  CW_hair_exception = STRUCT{
+          look_for_param = CW_skin 
+          skullcap_texture = "CS_never_CW_H01.png" 
+          }
+        
+#00690  MW_head_structure = STRUCT{
+          mesh = "models/skater_m/Head_M_W_Bald.skn" 
+          desc = "Mick West" 
+          texture = "CS_never_MW_01.png" 
+          target = "AddMaleHead1" 
+          flags = STRUCT{
+            MW_skin light_face }
+          hidden }
+        
+#00703  MW_hair_exception = STRUCT{
+          look_for_param = MW_skin 
+          skullcap_texture = "CS_never_MW_H01.png" 
+          }
+        
+#00708  RH_head_structure = STRUCT{
+          mesh = "models/skater_m/Head_M_W_Bald.skn" 
+          desc = "Riley Hawk" 
+          texture = "CS_never_RH_01.png" 
+          target = "AddMaleHead1" 
+          flags = STRUCT{
+            RH_skin light_face }
+          hidden }
+        
+#00720  RH_hair_exception = STRUCT{
+          look_for_param = RH_skin 
+          skullcap_texture = "CS_never_RH_H01.png" 
+          }
+        
+#00725  SH_head_structure = STRUCT{
+          mesh = "models/skater_m/Head_M_W_Bald.skn" 
+          desc = "Spencer Hawk" 
+          texture = "CS_never_SH_01.png" 
+          target = "AddMaleHead1" 
+          flags = STRUCT{
+            SH_skin light_face }
+          hidden }
+        
+#00737  SH_hair_exception = STRUCT{
+          look_for_param = SH_skin 
+          skullcap_texture = "CS_never_SH_H01.png" 
+          }
+        
+#00742  WP_head_structure = STRUCT{
+          mesh = "models/skater_m/Head_M_A_Bald.skn" 
+          desc = "William Pease" 
+          texture = "CS_never_WP_01.png" 
+          target = "AddMaleHead2" 
+          flags = STRUCT{
+            WP_skin light_face }
+          hidden }
+        
+#00754  WP_hair_exception = STRUCT{
+          look_for_param = WP_skin 
+          skullcap_texture = "CS_never_WP_H01.png" 
+          }
+        
+#00759  CJ_head_structure = STRUCT{
+          mesh = "models/skater_m/Head_M_W_Bald.skn" 
+          desc = "Connor Jewett" 
+          texture = "CS_never_CJ_01.png" 
+          target = "AddMaleHead1" 
+          flags = STRUCT{
+            CJ_skin light_face }
+          hidden }
+        
+#00773  CJ_hair_exception = STRUCT{
+          look_for_param = CJ_skin 
+          skullcap_texture = "CS_never_CJ_H01.png" 
+          }
+        
+#00778  RP_head_structure = STRUCT{
+          mesh = "models/skater_m/Head_M_B_Bald.skn" 
+          desc = "Rastapopolous" 
+          texture = "CS_NN_Face_M_B_01.png" 
+          target = "AddMaleHead3" 
+          flags = STRUCT{
+            RP_skin dark_face }
+          hidden }
+        
+#00791  RP_hair_exception = STRUCT{
+          look_for_param = RP_skin 
+          skullcap_texture = "CS_NN_Face_M_B_H01.png" 
+          }
+        
+#00796  BS_head_structure = STRUCT{
+          mesh = "models/skater_m/Head_M_W_Bald.skn" 
+          desc = "Ben Scott" 
+          texture = "CS_never_BS_01.png" 
+          target = "AddMaleHead1" 
+          flags = STRUCT{
+            BS_skin light_face }
+          hidden }
+        
+#00810  BS_hair_exception = STRUCT{
+          look_for_param = BS_skin 
+          skullcap_texture = "CS_never_BS_H01.png" 
+          }
+        
+#00815  NWv_head_structure = STRUCT{
+          desc = "Nicole Willick" 
+          texture = "CS_never_NWv_H01.png" 
+          target = "AddFemaleHead1" 
+          flags = STRUCT{
+            NWv_skin }
+          hidden }
+        
+#00829  NWv_hair_exception = STRUCT{
+          look_for_param = NWv_skin 
+          skullcap_texture = "CS_never_NWv_01.png" 
+          }
+        
+#00834  SDv_head_structure = STRUCT{
+          desc = "Stacey Drellishak" 
+          texture = "CS_never_SDv_H01.png" 
+          target = "AddFemaleHead1" 
+          flags = STRUCT{
+            SDv_skin }
+          hidden }
+        
+#00845  SDv_hair_exception = STRUCT{
+          look_for_param = SDv_skin 
+          skullcap_texture = "CS_never_SDv_01.png" 
+          }
+        
+#00850  DSv_head_structure = STRUCT{
+          mesh = "models/skater_m/Head_M_W_Bald.skn" 
+          desc = "Dave Stohl" 
+          texture = "CS_never_DSv_01.png" 
+          target = "AddMaleHead1" 
+          flags = STRUCT{
+            DSv_skin light_face }
+          hidden }
+        
+#00864  DSv_hair_exception = STRUCT{
+          look_for_param = DSv_skin 
+          skullcap_texture = "CS_never_DSv_H01.png" 
+          }
+        
+#00869  MWv_head_structure = STRUCT{
+          mesh = "models/skater_m/Head_M_W_Bald.skn" 
+          desc = "Mike Ward" 
+          texture = "CS_never_MWv_01.png" 
+          target = "AddMaleHead1" 
+          flags = STRUCT{
+            MWv_skin light_face }
+          hidden }
+        
+#00881  MWv_hair_exception = STRUCT{
+          look_for_param = MWv_skin 
+          skullcap_texture = "CS_never_MWv_H01.png" 
+          }
+        
+#00886  TSv_head_structure = STRUCT{
+          mesh = "models/skater_m/Head_M_W_Bald.skn" 
+          desc = "Trey Smith" 
+          texture = "CS_never_TSv_01.png" 
+          target = "AddMaleHead1" 
+          flags = STRUCT{
+            TSv_skin light_face }
+          hidden }
+        
+#00898  TSv_hair_exception = STRUCT{
+          look_for_param = TSv_skin 
+          skullcap_texture = "CS_never_TSv_H01.png" 
+          }
+        
+#00903  Brain_Hat = STRUCT{
+          mesh = "models/skater_m/hat_Brainhat.skn" 
+          desc = "Brain Hat" 
+          }
+        
+#00912  FUNCTION AddJeremyHead1 
+#00917    AddMaleHead1 NULL 
+#00918    ReplaceSkinTexture STRUCT{
+            replace = "CS_NH_M_Wht_torso.png" 
+            with = "CS_NN_JA_torso.png" 
+            image_dir = "textures/skater_m" 
+            }
+          
+#00923  END FUNCTION
+          
+#00925  

@@ -1,0 +1,35 @@
+NodeArray = 
+#00001  
+        ARRAY(
+          STRUCT{
+            Position = VECTOR[2255.8557; 1709.1218; -665.4082] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = Sky_Can 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[2553.379; -138.50565; -410.714] 
+            Angles = VECTOR[0.0; -3.141589; 0.0] 
+            Name = Background_Mountains01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-1644.722; -449.85565; -4173.796] 
+            Angles = VECTOR[0.0; -3.141589; 0.0] 
+            Name = Urban_Treeline01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          
+        )
+        
+#00027  TriggerScripts = 
+#00029  
+        ARRAY(
+          LoadTerrain 
+        )
+        
+#00032  FUNCTION LoadTerrain 
+#00034    SetTerrainDefault 
+#00035  END FUNCTION
+          
+#00036  

@@ -1,0 +1,602 @@
+
+#00001  FirstTimeInSplitscreen = 1 
+        
+#00003  FirstTimeFromSkateshop = 0 
+        
+#00004  graffitiColors = ARRAY(
+          
+          VECTOR[192.0; 0.0; 0.0] VECTOR[0.0; 0.0; 192.0] VECTOR[192.0; 192.0; 0.0] VECTOR[0.0; 127.0; 0.0] VECTOR[48.0; 192.0; 192.0] VECTOR[192.0; 96.0; 0.0] VECTOR[140.0; 97.0; 35.0] VECTOR[192.0; 0.0; 192.0] 
+        )
+        
+#00015  __graffitiColors = ARRAY(
+          
+          VECTOR[0.0; 1.0; 1.0] VECTOR[240.0; 1.0; 1.0] VECTOR[60.0; 1.0; 1.0] VECTOR[120.0; 0.8; 0.7] VECTOR[45.0; 1.0; 1.0] VECTOR[225.0; 1.0; 1.0] VECTOR[135.0; 1.0; 1.0] VECTOR[315.0; 1.0; 1.0] 
+        )
+        
+#00026  splitscreen_game_type_info = ARRAY(
+          
+          STRUCT{
+            name = "Free skate" 
+            checksum = freeskate2p 
+            }
+          STRUCT{
+            name = "Trick Attack" 
+            checksum = trickattack 
+            }
+          STRUCT{
+            name = "Graffiti" 
+            checksum = graffiti 
+            }
+          STRUCT{
+            name = "Slap!" 
+            checksum = slap 
+            }
+          STRUCT{
+            name = "Horse" 
+            checksum = horse 
+            }
+          STRUCT{
+            name = "King of the Hill" 
+            checksum = king 
+            }
+          
+        )
+        
+#00035  time_limit_options = ARRAY(
+          
+          STRUCT{
+            name = "None" 
+            checksum = time_0 
+            time = 0 
+            }
+          STRUCT{
+            name = "30 seconds" 
+            checksum = time_30 
+            time = 30 
+            }
+          STRUCT{
+            name = "1 minute" 
+            checksum = time_60 
+            time = 60 
+            }
+          STRUCT{
+            name = "2 minutes" 
+            checksum = time_120 
+            time = 120 
+            }
+          STRUCT{
+            name = "5 minutes" 
+            checksum = time_300 
+            time = 300 
+            }
+          STRUCT{
+            name = "10 minutes" 
+            checksum = time_600 
+            time = 600 
+            }
+          
+        )
+        
+#00044  horse_time_limit_options = ARRAY(
+          
+          STRUCT{
+            name = "10 seconds" 
+            checksum = horse_time_10 
+            time = 10 
+            }
+          STRUCT{
+            name = "20 seconds" 
+            checksum = horse_time_20 
+            time = 20 
+            }
+          STRUCT{
+            name = "30 seconds" 
+            checksum = horse_time_30 
+            time = 30 
+            }
+          
+        )
+        
+#00050  player_handicap_options = ARRAY(
+          
+          STRUCT{
+            name = "+5 to stats" 
+            checksum = player_handicap_5 
+            time = 5 
+            }
+          STRUCT{
+            name = "+4 to stats" 
+            checksum = player_handicap_4 
+            time = 4 
+            }
+          STRUCT{
+            name = "+3 to stats" 
+            checksum = player_handicap_3 
+            time = 3 
+            }
+          STRUCT{
+            name = "+2 to stats" 
+            checksum = player_handicap_2 
+            time = 2 
+            }
+          STRUCT{
+            name = "+1 to stats" 
+            checksum = player_handicap_1 
+            time = 1 
+            }
+          STRUCT{
+            name = "No change to stats" 
+            checksum = player_handicap_0 
+            time = 0 
+            }
+          STRUCT{
+            name = "-1 to stats" 
+            checksum = player_handicap_minus_1 
+            time = -1 
+            }
+          STRUCT{
+            name = "-2 to stats" 
+            checksum = player_handicap_minus_2 
+            time = -2 
+            }
+          STRUCT{
+            name = "-3 to stats" 
+            checksum = player_handicap_minus_3 
+            time = -3 
+            }
+          STRUCT{
+            name = "-4 to stats" 
+            checksum = player_handicap_minus_4 
+            time = -4 
+            }
+          STRUCT{
+            name = "-5 to stats" 
+            checksum = player_handicap_minus_5 
+            time = -5 
+            }
+          
+        )
+        
+#00064  viewport_options = ARRAY(
+          
+          STRUCT{
+            name = "Vertical" 
+            checksum = viewport_type_vertical 
+            }
+          STRUCT{
+            name = "Horizontal" 
+            checksum = viewport_type_horizontal 
+            }
+          
+        )
+        
+#00069  default_splitscreen_preferences = STRUCT{
+          game_type = STRUCT{
+            ui_string = "Trick Attack" 
+            checksum = trickattack 
+            }
+          time_limit = STRUCT{
+            ui_string = "2 minutes" 
+            checksum = time_120 
+            time = 120 
+            }
+          horse_time_limit = STRUCT{
+            ui_string = "10 seconds" 
+            checksum = horse_time_10 
+            time = 10 
+            }
+          player1_handicap = STRUCT{
+            ui_string = "No change to stats" 
+            checksum = player_handicap_0 
+            time = 0 
+            }
+          player2_handicap = STRUCT{
+            ui_string = "No change to stats" 
+            checksum = player_handicap_0 
+            time = 0 
+            }
+          viewport_type = STRUCT{
+            ui_string = "Vertical" 
+            checksum = viewport_type_vertical 
+            }
+          horse_word = STRUCT{
+            ui_string = "Horse" 
+            }
+          }
+        
+#00079  FUNCTION do_victorycondition_highestscore 
+#00081    OverrideGameModeOptions STRUCT{
+            victory_conditions = ARRAY(
+              
+              STRUCT{
+                type = highest_score 
+                }
+              
+            )
+            }
+          
+#00086  END FUNCTION
+          
+#00087  FUNCTION do_victorycondition_target10000 
+#00089    OverrideGameModeOptions STRUCT{
+            victory_conditions = ARRAY(
+              
+              STRUCT{
+                type = target_score 
+                score = 10000 
+                }
+              
+            )
+            }
+          
+#00094  END FUNCTION
+          
+#00095  FUNCTION do_victorycondition_target50000 
+#00097    OverrideGameModeOptions STRUCT{
+            victory_conditions = ARRAY(
+              
+              STRUCT{
+                type = target_score 
+                score = 50000 
+                }
+              
+            )
+            }
+          
+#00102  END FUNCTION
+          
+#00103  FUNCTION StartSplitScreenGame 
+#00113    ApplySplitScreenOptions 
+#00116    unpause_game_flow 
+#00119    IF IsTrue FirstTimeInSplitscreen 
+#00121    ELSE 
+#00122      do_backend_retry 
+#00123    END IF 
+#00124  END FUNCTION
+          
+#00125  FUNCTION RefreshSplitScreenMenu 
+#00127    DestroyElement id = ssm_time_limit_title 
+          
+#00130    DestroyElement id = ssm_time_limit_display 
+          
+#00131    DestroyElement id = ssm_player1_handicap_title 
+          
+#00132    DestroyElement id = ssm_player1_handicap_display 
+          
+#00133    DestroyElement id = ssm_player2_handicap_title 
+          
+#00134    DestroyElement id = ssm_player2_handicap_display 
+          
+#00135    DestroyElement id = ssm_screenmode_title 
+          
+#00136    DestroyElement id = ssm_screenmode_display 
+          
+#00137    DestroyElement id = ssm_horse_time_limit_title 
+          
+#00138    DestroyElement id = ssm_horse_time_limit_display 
+          
+#00139    DestroyElement id = ssm_horse_word_title 
+          
+#00140    DestroyElement id = ssm_horse_word_display 
+          
+#00141    DestroyElement id = ssm_start_game 
+          
+#00142    IF PreferenceEquals prefs = splitscreen 
+            field = game_type 
+            equals = freeskate2p 
+            
+#00144    ELSE 
+#00146      IF PreferenceEquals prefs = splitscreen 
+              field = game_type 
+              equals = horse 
+              
+#00147        AddLine STRUCT{
+                id = ssm_horse_time_limit_title 
+                parent = splitscreen_setup_menu 
+                text = "Time Limit" 
+                link = horse_time_limit_menu 
+                }
+              
+#00154        AddLine STRUCT{
+                id = ssm_horse_time_limit_display 
+                parent = splitscreen_setup_menu 
+                text = "Dummy Horse Time Limit" 
+                static dont_gray drawer = keyboard_property 
+                }
+              
+#00161        AttachEventHandler STRUCT{
+                object = ssm_horse_time_limit_display 
+                type = showeventhandler 
+                target = "set_ui_from_preferences" 
+                params = STRUCT{
+                  prefs = splitscreen 
+                  field = "horse_time_limit" 
+                  }
+                }
+              
+#00167      ELSE 
+#00168        AddLine STRUCT{
+                id = ssm_time_limit_title 
+                parent = splitscreen_setup_menu 
+                text = "Time Limit" 
+                link = splitscreen_time_limit_menu 
+                }
+              
+#00175        AddLine STRUCT{
+                id = ssm_time_limit_display 
+                parent = splitscreen_setup_menu 
+                text = "Dummy Time Limit" 
+                static dont_gray drawer = keyboard_property 
+                }
+              
+#00182        AttachEventHandler STRUCT{
+                object = ssm_time_limit_display 
+                type = showeventhandler 
+                target = "set_ui_from_preferences" 
+                params = STRUCT{
+                  prefs = splitscreen 
+                  field = "time_limit" 
+                  }
+                }
+              
+#00188      END IF 
+#00189    END IF 
+#00190    AddLine STRUCT{
+            id = ssm_player1_handicap_title 
+            parent = splitscreen_setup_menu 
+            text = "Player 1 Handicap" 
+            link = splitscreen_player1_handicap_menu 
+            }
+          
+#00198    AddLine STRUCT{
+            id = ssm_player1_handicap_display 
+            parent = splitscreen_setup_menu 
+            text = "Dummy Handicap 1" 
+            static dont_gray drawer = keyboard_property 
+            }
+          
+#00205    AttachEventHandler STRUCT{
+            object = ssm_player1_handicap_display 
+            type = showeventhandler 
+            target = "set_ui_from_preferences" 
+            params = STRUCT{
+              prefs = splitscreen 
+              field = "player1_handicap" 
+              }
+            }
+          
+#00211    AddLine STRUCT{
+            id = ssm_player2_handicap_title 
+            parent = splitscreen_setup_menu 
+            text = "Player 2 Handicap" 
+            link = splitscreen_player2_handicap_menu 
+            }
+          
+#00218    AddLine STRUCT{
+            id = ssm_player2_handicap_display 
+            parent = splitscreen_setup_menu 
+            text = "Dummy Handicap 2" 
+            static dont_gray drawer = keyboard_property 
+            }
+          
+#00225    AttachEventHandler STRUCT{
+            object = ssm_player2_handicap_display 
+            type = showeventhandler 
+            target = "set_ui_from_preferences" 
+            params = STRUCT{
+              prefs = splitscreen 
+              field = "player2_handicap" 
+              }
+            }
+          
+#00231    IF PreferenceEquals prefs = splitscreen 
+            field = game_type 
+            equals = horse 
+            
+#00233    ELSE 
+#00234      AddLine STRUCT{
+              id = ssm_screenmode_title 
+              parent = splitscreen_setup_menu 
+              text = "Screen Mode" 
+              link = splitscreen_viewport_type_menu 
+              }
+            
+#00240      AddLine STRUCT{
+              id = ssm_screenmode_display 
+              parent = splitscreen_setup_menu 
+              text = "Dummy Screen Mode" 
+              static dont_gray drawer = keyboard_property 
+              }
+            
+#00247      AttachEventHandler STRUCT{
+              object = ssm_screenmode_display 
+              type = showeventhandler 
+              target = "set_ui_from_preferences" 
+              params = STRUCT{
+                prefs = splitscreen 
+                field = "viewport_type" 
+                }
+              }
+            
+#00253    END IF 
+#00254    IF PreferenceEquals prefs = splitscreen 
+            field = game_type 
+            equals = horse 
+            
+#00256      AddLine STRUCT{
+              id = ssm_horse_word_title 
+              parent = splitscreen_setup_menu 
+              text = "Horse Word" 
+              link = horse_keyboard_control 
+              }
+            
+#00262      AddLine STRUCT{
+              id = ssm_horse_word_display 
+              parent = splitscreen_setup_menu 
+              text = "Dummy Horse Word" 
+              static dont_gray drawer = keyboard_property 
+              }
+            
+#00269      AttachEventHandler STRUCT{
+              object = ssm_horse_word_display 
+              type = showeventhandler 
+              target = "set_ui_from_preferences" 
+              params = STRUCT{
+                prefs = splitscreen 
+                field = "horse_word" 
+                }
+              }
+            
+#00275    ELSE 
+#00276    END IF 
+#00278    AddLine STRUCT{
+            id = ssm_start_game 
+            parent = splitscreen_setup_menu 
+            text = "Start Game" 
+            target = "StartSplitScreenGame" 
+            kill_menu }
+          
+#00287    IF IsTrue FirstTimeInSplitscreen 
+#00290      EndOfRun_Helper 
+#00291    ELSE 
+#00292      helper_select_choose_back_centered 
+#00293    END IF 
+#00294  END FUNCTION
+          
+#00296  FUNCTION create_splitscreen_menu 
+#00298    CreateAndAttachMenu STRUCT{
+            type = verticalmenu 
+            id = splitscreen_setup_menu 
+            parent = contain1 
+            x = 170.0 
+            y = 90.0 
+            w = 300.0 
+            h = 400.0 
+            just_center_x just_center_y blue_top eventhandlers = ARRAY(
+              
+              STRUCT{
+                type = showeventhandler 
+                target = "RefreshSplitScreenMenu" 
+                }
+              
+            )
+            children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "2 Player Setup" 
+                static dont_gray drawer = title 
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Game Type" 
+                link = splitscreen_game_type_menu 
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = game_type_display 
+                text = "Current Game" 
+                static dont_gray drawer = keyboard_property 
+                eventhandler = STRUCT{
+                  type = showeventhandler 
+                  target = "set_ui_from_preferences" 
+                  params = STRUCT{
+                    prefs = splitscreen 
+                    field = "game_type" 
+                    }
+                  }
+                }
+              
+            )
+            }
+          
+#00332    create_and_attach_generic_array_menu STRUCT{
+            menu_id = splitscreen_game_type_menu 
+            array_name = splitscreen_game_type_info 
+            field = game_type 
+            title = "Game Type" 
+            prefs = splitscreen 
+            x = 170.0 
+            y = 90.0 
+            w = 300.0 
+            h = 400.0 
+            }
+          
+#00343    AttachEventHandler STRUCT{
+            object = splitscreen_game_type_menu 
+            type = showeventhandler 
+            target = "helper_select_choose_back_centered" 
+            }
+          
+#00349    create_and_attach_generic_array_menu STRUCT{
+            menu_id = splitscreen_time_limit_menu 
+            array_name = time_limit_options 
+            field = time_limit 
+            title = "Time Limit" 
+            prefs = splitscreen 
+            x = 170.0 
+            y = 90.0 
+            w = 300.0 
+            h = 400.0 
+            }
+          
+#00360    AttachEventHandler STRUCT{
+            object = splitscreen_time_limit_menu 
+            type = showeventhandler 
+            target = "helper_select_choose_back_centered" 
+            }
+          
+#00366    create_and_attach_generic_array_menu STRUCT{
+            menu_id = splitscreen_player1_handicap_menu 
+            array_name = player_handicap_options 
+            field = player1_handicap 
+            title = "Player 1 Handicap" 
+            prefs = splitscreen 
+            x = 135.0 
+            y = 90.0 
+            w = 370.0 
+            h = 400.0 
+            }
+          
+#00377    AttachEventHandler STRUCT{
+            object = splitscreen_player1_handicap_menu 
+            type = showeventhandler 
+            target = "helper_select_choose_back_centered" 
+            }
+          
+#00383    create_and_attach_generic_array_menu STRUCT{
+            menu_id = splitscreen_player2_handicap_menu 
+            array_name = player_handicap_options 
+            field = player2_handicap 
+            title = "Player 2 Handicap" 
+            prefs = splitscreen 
+            x = 135.0 
+            y = 90.0 
+            w = 370.0 
+            h = 400.0 
+            }
+          
+#00394    AttachEventHandler STRUCT{
+            object = splitscreen_player2_handicap_menu 
+            type = showeventhandler 
+            target = "helper_select_choose_back_centered" 
+            }
+          
+#00400    CreateAndAttachMenu STRUCT{
+            type = verticalmenu 
+            id = splitscreen_viewport_type_menu 
+            x = 170.0 
+            y = 90.0 
+            w = 300.0 
+            h = 400.0 
+            just_center_x just_center_y parent = contain1 
+            }
+          
+#00409    AttachEventHandler STRUCT{
+            object = splitscreen_viewport_type_menu 
+            type = showeventhandler 
+            target = "helper_select_choose_back_centered" 
+            }
+          
+#00415  END FUNCTION
+          

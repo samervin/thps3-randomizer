@@ -1,0 +1,30 @@
+NodeArray = 
+#00001  
+        ARRAY(
+          STRUCT{
+            Position = VECTOR[-1.202393; -77.71753; -4.979492] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = sky 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-1.202393; -77.71753; -4.979492] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = S_SeaFloor 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          
+        )
+        
+#00019  TriggerScripts = 
+#00021  
+        ARRAY(
+          LoadTerrain 
+        )
+        
+#00024  FUNCTION LoadTerrain 
+#00026    SetTerrainDefault 
+#00027    SetTerrainWater 
+#00028  END FUNCTION
+          
+#00029  

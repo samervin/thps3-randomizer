@@ -1,0 +1,531 @@
+
+#00001  FUNCTION MaybeMakeStatic 
+#00002    IF GetGlobalFlag Flag = GLOBAL.Flag 
+            
+#00003    ELSE 
+#00004      MakeTextMenuElementStatic GLOBAL.ElementId 
+            
+#00005    END IF 
+#00006  END FUNCTION
+          
+#00007  FUNCTION MaybeDestroy 
+#00009    IF GetGlobalFlag Flag = GLOBAL.Flag 
+            
+#00010    ELSE 
+#00011      DestroyElement id = GLOBAL.ElementId 
+            
+#00012    END IF 
+#00013  END FUNCTION
+          
+#00014  FUNCTION playmovie_script_temp 
+#00017  END FUNCTION
+          
+#00018  FUNCTION PlayAllMovies 
+#00020    spawnscript _PlayAllMovies 
+#00021  END FUNCTION
+          
+#00022  FUNCTION _PlayAllMovies 
+#00024    playmovie_script "movies\THPS3" waitforfinish 
+#00025    IF GetGlobalFlag Flag = MOVIE_UNLOCKED_PRO_BAILS1 
+            
+#00026      playmovie_script "movies\bails01" waitforfinish 
+#00027    END IF 
+#00028    IF GetGlobalFlag Flag = MOVIE_UNLOCKED_HAWK 
+            
+#00029      playmovie_script "movies\tony" waitforfinish 
+#00030    END IF 
+#00031    IF GetGlobalFlag Flag = MOVIE_UNLOCKED_CABALLERO 
+            
+#00032      playmovie_script "movies\cab" waitforfinish 
+#00033    END IF 
+#00034    IF GetGlobalFlag Flag = MOVIE_UNLOCKED_CAMPBELL 
+            
+#00035      playmovie_script "movies\kareem" waitforfinish 
+#00036    END IF 
+#00037    IF GetGlobalFlag Flag = MOVIE_UNLOCKED_GLIFBERG 
+            
+#00038      playmovie_script "movies\rune" waitforfinish 
+#00039    END IF 
+#00040    IF GetGlobalFlag Flag = MOVIE_UNLOCKED_KOSTON 
+            
+#00041      playmovie_script "movies\koston" waitforfinish 
+#00042    END IF 
+#00043    IF GetGlobalFlag Flag = MOVIE_UNLOCKED_LASEK 
+            
+#00044      playmovie_script "movies\bucky" waitforfinish 
+#00045    END IF 
+#00046    IF GetGlobalFlag Flag = MOVIE_UNLOCKED_MARGERA 
+            
+#00047      playmovie_script "movies\bam" waitforfinish 
+#00048    END IF 
+#00049    IF GetGlobalFlag Flag = MOVIE_UNLOCKED_MULLEN 
+            
+#00050      playmovie_script "movies\mullen" waitforfinish 
+#00051    END IF 
+#00052    IF GetGlobalFlag Flag = MOVIE_UNLOCKED_MUSKA 
+            
+#00053      playmovie_script "movies\muska" waitforfinish 
+#00054    END IF 
+#00055    IF GetGlobalFlag Flag = MOVIE_UNLOCKED_REYNOLDS 
+            
+#00056      playmovie_script "movies\andrew" waitforfinish 
+#00057    END IF 
+#00058    IF GetGlobalFlag Flag = MOVIE_UNLOCKED_ROWLEY 
+            
+#00059      playmovie_script "movies\rowley" waitforfinish 
+#00060    END IF 
+#00061    IF GetGlobalFlag Flag = MOVIE_UNLOCKED_STEAMER 
+            
+#00062      playmovie_script "movies\elissa" waitforfinish 
+#00063    END IF 
+#00064    IF GetGlobalFlag Flag = MOVIE_UNLOCKED_THOMAS 
+            
+#00065      playmovie_script "movies\thomas" waitforfinish 
+#00066    END IF 
+#00067    IF GetGlobalFlag Flag = MOVIE_UNLOCKED_CAS 
+            
+#00068      playmovie_script "movies\bails02" waitforfinish 
+#00069    END IF 
+#00070    IF GetGlobalFlag Flag = MOVIE_UNLOCKED_JEDIKNIGHT 
+            
+#00071      playmovie_script "movies\NSbails" waitforfinish 
+#00072    END IF 
+#00073    IF GetGlobalFlag Flag = MOVIE_UNLOCKED_WOLVERINE 
+            
+#00074      playmovie_script "movies\NSmakes" waitforfinish 
+#00075    END IF 
+#00076    IF GetGlobalFlag Flag = MOVIE_UNLOCKED_DICK 
+            
+#00077      playmovie_script "movies\proret" waitforfinish 
+#00078    END IF 
+#00079    IF GetGlobalFlag Flag = MOVIE_UNLOCKED_CARRERA 
+            
+#00080      playmovie_script "movies\kflip" waitforfinish 
+#00081    END IF 
+#00082    IF GetGlobalFlag Flag = MOVIE_UNLOCKED_BUM 
+            
+#00083      playmovie_script "movies\friends" waitforfinish 
+#00084    END IF 
+#00085    IF GetGlobalFlag Flag = MOVIE_UNLOCKED_SLATER 
+            
+#00086      playmovie_script "movies\slater" waitforfinish 
+#00087    END IF 
+#00088    IF GetGlobalFlag Flag = MOVIE_UNLOCKED_DEMONESS 
+            
+#00089      playmovie_script "movies\nsret" waitforfinish 
+#00090    END IF 
+#00091    IF GetGlobalFlag Flag = MOVIE_UNLOCKED_Eyeball 
+            
+#00092      playmovie_script "movies\day" waitforfinish 
+#00093    END IF 
+#00094    IF GetGlobalFlag Flag = SKATER_UNLOCKED_DOOMGUY 
+            
+#00095      playmovie_script "movies\day" waitforfinish 
+#00096    END IF 
+#00097  END FUNCTION
+          
+#00098  FUNCTION movies_menu_create 
+#00101    DestroyElement id = movies_menu 
+          
+#00102    createmenu STRUCT{
+            type = verticalmenu 
+            id = movies_menu 
+            x = 150.0 
+            y = 90.0 
+            w = 340.0 
+            h = 400.0 
+            just_center_x just_center_y blue_top children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Movies" 
+                static dont_gray drawer = title 
+                }
+              STRUCT{
+                type = scrollingmenu 
+                id = movies_scrolling_menu 
+                num_visible = 10 
+                just_left_x just_center_y not_rounded x = 0.0 
+                y = 0.0 
+                w = 340.0 
+                h = 400.0 
+                children = ARRAY(
+                  
+                  STRUCT{
+                    type = textmenuelement 
+                    id = Movie_THPS3 
+                    text = "THPS3 Intro" 
+                    target = "playmovie_script" 
+                    params = STRUCT{
+                      "movies\THPS3" }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = Movie_GearboxLogo 
+                    text = "Gearbox logo" 
+                    target = "playmovie_script" 
+                    params = STRUCT{
+                      "movies\gearbox" }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = Movie_NeversoftLogo 
+                    text = "Neversoft logo" 
+                    target = "playmovie_script" 
+                    params = STRUCT{
+                      "movies\NSlogo" }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = Movie_ActivisionLogo 
+                    text = "O2 logo" 
+                    target = "playmovie_script" 
+                    params = STRUCT{
+                      "movies\ATVI" }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = Movie_ProBails 
+                    text = "Pro Bails" 
+                    target = "playmovie_script" 
+                    params = STRUCT{
+                      "movies\bails01" }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = Movie_Hawk 
+                    text = "Tony Hawk" 
+                    target = "playmovie_script" 
+                    params = STRUCT{
+                      "movies\tony" }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = Movie_Caballero 
+                    text = "Steve Caballero" 
+                    target = "playmovie_script" 
+                    params = STRUCT{
+                      "movies\cab" }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = Movie_Campbell 
+                    text = "Kareem Campbell" 
+                    target = "playmovie_script" 
+                    params = STRUCT{
+                      "movies\Kareem" }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = Movie_Glifberg 
+                    text = "Rune Glifberg" 
+                    target = "playmovie_script" 
+                    params = STRUCT{
+                      "movies\rune" }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = Movie_Koston 
+                    text = "Eric Koston" 
+                    target = "playmovie_script" 
+                    params = STRUCT{
+                      "movies\koston" }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = Movie_Lasek 
+                    text = "Bucky Lasek" 
+                    target = "playmovie_script" 
+                    params = STRUCT{
+                      "movies\bucky" }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = Movie_Margera 
+                    text = "Bam Margera" 
+                    target = "playmovie_script" 
+                    params = STRUCT{
+                      "movies\bam" }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = Movie_Mullen 
+                    text = "Rodney Mullen" 
+                    target = "playmovie_script" 
+                    params = STRUCT{
+                      "movies\mullen" }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = Movie_Muska 
+                    text = "Chad Muska" 
+                    target = "playmovie_script" 
+                    params = STRUCT{
+                      "movies\muska" }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = Movie_Reynolds 
+                    text = "Andrew Reynolds" 
+                    target = "playmovie_script" 
+                    params = STRUCT{
+                      "movies\andrew" }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = Movie_Rowley 
+                    text = "Geoff Rowley" 
+                    target = "playmovie_script" 
+                    params = STRUCT{
+                      "movies\rowley" }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = Movie_Steamer 
+                    text = "Elissa Steamer" 
+                    target = "playmovie_script" 
+                    params = STRUCT{
+                      "movies\elissa" }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = Movie_Thomas 
+                    text = "Jamie Thomas" 
+                    target = "playmovie_script" 
+                    params = STRUCT{
+                      "movies\thomas" }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = Movie_CAS 
+                    text = "Pro Bails 2" 
+                    target = "playmovie_script" 
+                    params = STRUCT{
+                      "movies\bails02" }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = Movie_JediKnight 
+                    text = "Neversoft Bails" 
+                    target = "playmovie_script" 
+                    params = STRUCT{
+                      "movies\nsbails" }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = Movie_Wolverine 
+                    text = "Neversoft Makes" 
+                    target = "playmovie_script" 
+                    params = STRUCT{
+                      "movies\nsmakes" }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = Movie_Dick 
+                    text = "Pro Retro" 
+                    target = "playmovie_script" 
+                    params = STRUCT{
+                      "movies\proret" }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = Movie_Carrera 
+                    text = "Kickflip Contest" 
+                    target = "playmovie_script" 
+                    params = STRUCT{
+                      "movies\kflip" }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = Movie_Bum 
+                    text = "Neversoft Friends" 
+                    target = "playmovie_script" 
+                    params = STRUCT{
+                      "movies\friends" }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = Movie_Slater 
+                    text = "Slater" 
+                    target = "playmovie_script" 
+                    params = STRUCT{
+                      "movies\slater" }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = Movie_Demoness 
+                    text = "Neversoft Retro" 
+                    target = "playmovie_script" 
+                    params = STRUCT{
+                      "movies\nsret" }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = Movie_Eyeball 
+                    text = "Day in the Life" 
+                    target = "playmovie_script" 
+                    params = STRUCT{
+                      "movies\Day" }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = Movie_GBX_Tribute 
+                    text = "Gearbox Tribute" 
+                    target = "playmovie_script" 
+                    params = STRUCT{
+                      "movies\gbxtribute" }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = Movie_PlayAllMovies 
+                    text = "Play Unlocked Movies" 
+                    target = "PlayAllMovies" 
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = movies_menu_done 
+                    text = "Done" 
+                    target = "go_back" 
+                    params = STRUCT{
+                      id = movies_menu 
+                      }
+                    }
+                  
+                )
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = " " 
+                static lock_layout y = 222 
+                }
+              
+            )
+            }
+          
+#00259    MaybeMakeStatic ElementId = Movie_Hawk 
+          Flag = MOVIE_UNLOCKED_HAWK 
+          
+#00262    MaybeMakeStatic ElementId = Movie_Caballero 
+          Flag = MOVIE_UNLOCKED_CABALLERO 
+          
+#00263    MaybeMakeStatic ElementId = Movie_Campbell 
+          Flag = MOVIE_UNLOCKED_CAMPBELL 
+          
+#00264    MaybeMakeStatic ElementId = Movie_Glifberg 
+          Flag = MOVIE_UNLOCKED_GLIFBERG 
+          
+#00265    MaybeMakeStatic ElementId = Movie_Koston 
+          Flag = MOVIE_UNLOCKED_KOSTON 
+          
+#00266    MaybeMakeStatic ElementId = Movie_Lasek 
+          Flag = MOVIE_UNLOCKED_LASEK 
+          
+#00267    MaybeMakeStatic ElementId = Movie_Margera 
+          Flag = MOVIE_UNLOCKED_MARGERA 
+          
+#00268    MaybeMakeStatic ElementId = Movie_Mullen 
+          Flag = MOVIE_UNLOCKED_MULLEN 
+          
+#00269    MaybeMakeStatic ElementId = Movie_Muska 
+          Flag = MOVIE_UNLOCKED_MUSKA 
+          
+#00270    MaybeMakeStatic ElementId = Movie_Reynolds 
+          Flag = MOVIE_UNLOCKED_REYNOLDS 
+          
+#00271    MaybeMakeStatic ElementId = Movie_Rowley 
+          Flag = MOVIE_UNLOCKED_ROWLEY 
+          
+#00272    MaybeMakeStatic ElementId = Movie_Steamer 
+          Flag = MOVIE_UNLOCKED_STEAMER 
+          
+#00273    MaybeMakeStatic ElementId = Movie_Thomas 
+          Flag = MOVIE_UNLOCKED_THOMAS 
+          
+#00274    MaybeMakeStatic ElementId = Movie_ProBails 
+          Flag = MOVIE_UNLOCKED_PRO_BAILS1 
+          
+#00275    MaybeMakeStatic ElementId = Movie_GBX_Tribute 
+          Flag = SKATER_UNLOCKED_DOOMGUY 
+          
+#00276    MaybeDestroy ElementId = Movie_CAS 
+          Flag = MOVIE_UNLOCKED_CAS 
+          
+#00280    MaybeDestroy ElementId = Movie_JediKnight 
+          Flag = MOVIE_UNLOCKED_JEDIKNIGHT 
+          
+#00281    MaybeDestroy ElementId = Movie_Wolverine 
+          Flag = MOVIE_UNLOCKED_WOLVERINE 
+          
+#00282    MaybeDestroy ElementId = Movie_Dick 
+          Flag = MOVIE_UNLOCKED_DICK 
+          
+#00283    MaybeDestroy ElementId = Movie_Carrera 
+          Flag = MOVIE_UNLOCKED_CARRERA 
+          
+#00284    MaybeDestroy ElementId = Movie_Bum 
+          Flag = MOVIE_UNLOCKED_BUM 
+          
+#00285    MaybeDestroy ElementId = Movie_Slater 
+          Flag = MOVIE_UNLOCKED_SLATER 
+          
+#00286    MaybeDestroy ElementId = Movie_Demoness 
+          Flag = MOVIE_UNLOCKED_DEMONESS 
+          
+#00287    MaybeDestroy ElementId = Movie_Eyeball 
+          Flag = MOVIE_UNLOCKED_Eyeball 
+          
+#00288    attachchild parent = contain1 
+          child = movies_menu 
+          
+#00291  END FUNCTION
+          
+#00292  FUNCTION playmovie_script 
+#00295    IF InFrontEnd 
+#00297      cas_unload_pre_files 
+#00299      UnloadPreFile BoardsPre dont_assert 
+#00300    END IF 
+#00306    mempushcontext 0 
+#00308    playmovie NULL 
+#00309    IF GotParam waitforfinish 
+#00311      wait movie 
+#00312    END IF 
+#00313    mempopcontext 
+#00315    IF InFrontEnd 
+#00318      SetArenaSize fe_arena_size 
+#00323      cas_load_pre prefile_name = "cas_shared_fe.pre" 
+            
+#00327    END IF 
+#00329  END FUNCTION
+          
+#00331  FUNCTION cleanup_play_movie 
+#00334    cleanup preserve_skaters 
+#00335    mempushcontext 0 
+#00340    playmovie NULL 
+#00341    mempopcontext 
+#00342  END FUNCTION
+          
+#00343  FUNCTION ingame_play_movie 
+#00347    KillMessages 
+#00348    wait 10 frames 
+#00349    mempushcontext 0 
+#00350    playmovie NULL 
+#00351    mempopcontext 
+#00352    wait movie 
+#00353    wait 1 seconds 
+#00354  END FUNCTION
+          
+#00355  FUNCTION __ffooo 
+#00357    cleanup_play_movie NULL 
+#00358    mempushcontext 0 
+#00359    DisplayLoadingScreen "images\loadscrn_generic.png" 
+#00360    mempopcontext 
+#00361    GetCurrentLevel 
+#00362    loadlevel NULL 
+#00363    HookUpSkaters 
+#00364    HideLoadingScreen 
+#00365    ResetSkaters 
+#00366    PauseSkaters 
+#00367    UnpauseGame 
+#00368  END FUNCTION
+          
+#00369  

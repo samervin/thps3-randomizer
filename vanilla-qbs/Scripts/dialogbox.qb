@@ -1,0 +1,57 @@
+FUNCTION dialog_menu_create 
+#00001    createmenu STRUCT{
+            type = verticalmenu 
+            id = dialog_menu_container 
+            blue_top just_center_x just_center_y x = 150.0 
+            y = 150.0 
+            w = 300.0 
+            h = 260.0 
+            children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                id = dialog_title 
+                text = "Dialog Box" 
+                static dont_gray drawer = title 
+                }
+              STRUCT{
+                type = textlineselement 
+                id = dialog_text_item 
+                static dont_gray text = ARRAY(
+                  
+                  "Do you want some candy you little girl who sits on the lawn until dawn and yawns?" 
+                )
+                }
+              STRUCT{
+                type = verticalmenu 
+                id = dialog_menu_element 
+                stats_menu_properties }
+              
+            )
+            }
+          
+#00033    attachchild parent = contain1 
+          child = dialog_menu_container 
+          
+#00035  END FUNCTION
+          
+#00037  FUNCTION test_yes 
+#00039    printf "test_yes script called" 
+#00040  END FUNCTION
+          
+#00041  FUNCTION test_no 
+#00043    printf "test_no script called" 
+#00044  END FUNCTION
+          
+#00045  FUNCTION test_maybe 
+#00047    printf "test_maybe script called" 
+#00048  END FUNCTION
+          
+#00049  FUNCTION test_maybe_not 
+#00051    printf "test_maybe_not script called" 
+#00052  END FUNCTION
+          
+#00053  FUNCTION test_dunno 
+#00055    printf "test_dunno script called" 
+#00056  END FUNCTION
+          

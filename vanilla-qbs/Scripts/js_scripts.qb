@@ -1,0 +1,5523 @@
+
+#00001  TOK_SECRET_AREA_OPEN = 21 
+        
+#00004  FUNCTION Tok_Startup 
+#00010    LoadStreamHeader "streams\tok\streams" 
+#00011    LoadSound "Shared\GlassPane2X" vol = 100 
+          dropoff = 40 
+          pitch = 100 
+          posupdateWithDoppler 
+#00012    LoadSound "Shared\FallWater" vol = 100 
+          pitch = 100 
+          
+#00013    LoadSound "Shared\FallPungee" vol = 100 
+          pitch = 100 
+          
+#00014    LoadSound "Shared\GoaldOne" vol = 100 
+          pitch = 100 
+          
+#00015    LoadSound "Shared\GapSound" vol = 100 
+          pitch = 100 
+          
+#00016    LoadSound "Tok\Tok_Blimp1" vol = 100 
+          dropoff = 100 
+          pitch = 120 
+          posupdateWithDoppler 
+#00019    LoadSound "Tok\Tok_Blimp1a" vol = 70 
+          dropoff = 50 
+          pitch = 100 
+          posupdateWithDoppler 
+#00020    LoadSound "Tok\Tok_Blimp2" vol = 100 
+          dropoff = 100 
+          pitch = 120 
+          posupdateWithDoppler 
+#00021    LoadSound "Tok\Tok_hitlantern" vol = 100 
+          dropoff = 40 
+          pitch = 100 
+          posupdateWithDoppler 
+#00022    LoadSound "Tok\Tok_holoprojector1" vol = 100 
+          dropoff = 100 
+          pitch = 100 
+          posupdateWithDoppler 
+#00023    LoadSound "Tok\Tok_jet" vol = 75 
+          dropoff = 1500 
+          pitch = 100 
+          posupdateWithDoppler 
+#00024    LoadSound "Tok\Tok_Sign3" vol = 100 
+          dropoff = 200 
+          pitch = 100 
+          posupdateWithDoppler 
+#00025    LoadSound "Tok\Tok_Train4" vol = 75 
+          dropoff = 100 
+          pitch = 100 
+          posupdateWithDoppler 
+#00026    LoadSound "Tok\Tok_Train5a" vol = 75 
+          dropoff = 3000 
+          pitch = 100 
+          posupdateWithDoppler 
+#00027    LoadSound "Tok\TOK_trainapproach" vol = 75 
+          dropoff = 2000 
+          pitch = 100 
+          posupdate 
+#00028    LoadSound "Tok\crowdC01" vol = 30 
+          dropoff = 250 
+          posupdate 
+#00029    LoadSound "Tok\crowdC02" vol = 30 
+          dropoff = 250 
+          posupdate 
+#00030    LoadSound "Tok\crowdC03" vol = 30 
+          dropoff = 250 
+          posupdate 
+#00031    LoadSound "Tok\crowdC05" vol = 20 
+          dropoff = 250 
+          posupdate 
+#00032    LoadSound "Tok\TOK_secret4" vol = 100 
+          dropoff = 100 
+          pitch = 100 
+          posupdateWithDoppler 
+#00033    LoadSound "Tok\TOK_secret5" vol = 100 
+          dropoff = 100 
+          pitch = 100 
+          posupdateWithDoppler 
+#00034    SpawnScript Tok_NetGame 
+#00035    SetTerrainGrindTrain 
+#00036  END FUNCTION
+          
+#00037  FUNCTION Tok_NetGame 
+#00039    IF InNetGame 
+#00040      SetParticleSysVisibility system = "Tok_Mid_PlanterParticle01" 
+            visible = 0 
+            
+#00041      SetParticleSysVisibility system = "Tok_Mid_PlanterParticle02" 
+            visible = 0 
+            
+#00042      SetParticleSysVisibility system = "Tok_Mid_PlanterParticle03" 
+            visible = 0 
+            
+#00043      SetParticleSysVisibility system = "Tok_Mid_PlanterParticle04" 
+            visible = 0 
+            
+#00044      Kill prefix = "Tok_JS_Ped_N_Stands" 
+            
+#00045      Kill prefix = "Tok_JS_Ped_S_Stands" 
+            
+#00046      Kill prefix = "TrP_Mid_Lamp" 
+            
+#00047    END IF 
+#00048  END FUNCTION
+          
+#00049  TokCompParams = STRUCT{
+          Comp_Start_Script = NullScript 
+          Comp_StartComplete_Script = NullScript 
+          Comp_Run1_Script = NullScript 
+          Comp_Run1Complete_Script = NullScript 
+          Comp_Run2_Script = NullScript 
+          Comp_Run2Complete_Script = NullScript 
+          Comp_Run3_Script = NullScript 
+          Comp_Run3Complete_Script = NullScript 
+          Comp_End_Script = NullScript 
+          Comp_EndComplete_Script = NullScript 
+          Comp_Start_Script = NullScript 
+          Comp_StartComplete_Script = JS_StartComplete_Script 
+          Comp_Run1_Script = NullScript 
+          Comp_Run1Complete_Script = NullScript 
+          Comp_Run2_Script = NullScript 
+          Comp_Run2Complete_Script = NullScript 
+          Comp_Run3_Script = NullScript 
+          Comp_Run3Complete_Script = NullScript 
+          Comp_End_Script = JS_End_Script_Script 
+          Comp_EndComplete_Script = NullScript 
+          Comp_CamRulesRuns_Script = JS_CamRulesRuns_Support 
+          Comp_CamRulesBails_Script = JS_CamRulesBails_Support 
+          Comp_CamRulesScores_Script = JS_CamRulesScores_Support 
+          Comp_CamRulesMedals_Script = JS_CamRulesMedals_Support 
+          Comp_CamRulesList_Script = JS_CamRulesList_Support 
+          Comp_CamEndCrowd_Script = JS_CamEndCrowd_Support 
+          Comp_CamEndFinal_Script = JS_CamEndFinal_Support 
+          Comp_CamJudged_Script = JS_CamJudged_Support 
+          Comp_CamJudgedHold_Script = JS_CamJudgedHold_Support 
+          Comp_CamJudgedChange_Script = JS_CamJudgedChange_Support 
+          Comp_CamJudgedEnd_Script = JS_CamJudgedEnd_Support 
+          NetPlayScript = NullScript 
+          CareerPlayScript = NullScript 
+          CameraCompRules_Runs = "Cam_CompRules_Runs" 
+          CameraCompRules_Bails = "Cam_CompRules_Bails" 
+          CameraCompRules_Scores = "Cam_CompRules_Scores" 
+          CameraCompRules_Medals = "Cam_CompRules_Medals" 
+          CameraCompRules_List = "Cam_CompRules_List" 
+          CameraCompEnd_Crowd = "Cam_CompEnd_Crowd" 
+          CameraCompEnd_Win = "Cam_CompEnd_Win" 
+          CameraCompEnd_Final = "Cam_CompEnd_Final" 
+          CameraSkaterJudged = "Cam_Skater_Judged" 
+          CameraCompEnd_Hold = "Cam_CompEnd_Hold" 
+          CameraJudgeFlyBy = "Cam_CompJudge_FlyBy" 
+          CompIntroPeds = "Ped_CompIntro" 
+          CompRun1JudgedPeds = "Ped_CompRun1" 
+          CompRun2JudgedPeds = "Ped_CompRun2" 
+          CompRun3JudgesPeds = "Ped_CompRun3" 
+          CompEndPeds = "Ped_End_" 
+          CompNormalPeds = "Tok_JS_Ped" 
+          Comp1stPlaceSkaterPed = "Ped_1stPlaceSkater" 
+          Comp2ndPlaceSkaterPed = "Ped_2ndPlaceSkater" 
+          Comp3rdPlaceSkaterPed = "Ped_3rdPlaceSkater" 
+          CompSkaterWaitStart = SkaterWaitForRunIn 
+          CompWaypointStart = TRG_Restart_Single 
+          Bronze_Score = 100000 
+          Bronze = 90 
+          Silver_Score = 250000 
+          Silver = 92.5 
+          Gold_Score = 500000 
+          Gold = 95 
+          Bail = 0.5 
+          }
+        
+#00141  FUNCTION JS_CamRulesRuns_Support 
+#00145    visible prefix = "Tok_North_X" 
+          
+#00146    visible prefix = "Tok_South_X" 
+          
+#00147    invisible prefix = "Tok_ShinkansenX" 
+          
+#00148    invisible prefix = "Tok_Secret_X1" 
+          
+#00149    invisible prefix = "Tok_Secret_X2" 
+          
+#00150    invisible prefix = "Jow_ExtB_X" 
+          
+#00151    invisible prefix = "Jow_ExtC_X" 
+          
+#00152    Kill prefix = "Trg_CarN" 
+          
+#00153    Kill prefix = "Trg_CarS" 
+          
+#00154    Kill prefix = "TRG_JS_Ped_N_Stands" 
+          
+#00155    Kill prefix = "TRG_JS_Ped_N_Judge" 
+          
+#00156    Kill prefix = "TRG_JS_Ped_S_Stands" 
+          
+#00157    Kill name = TRG_Prox_Ped_N_Stands 
+          
+#00158    Kill name = TRG_Prox_Ped_S_Stands 
+          
+#00159  END FUNCTION
+          
+#00160  FUNCTION JS_CamRulesBails_Support 
+#00162    visible prefix = "Tok_North_X" 
+          
+#00163    visible prefix = "Tok_South_X" 
+          
+#00164    invisible prefix = "Tok_ShinkansenX" 
+          
+#00165    invisible prefix = "Tok_Secret_X1" 
+          
+#00166    invisible prefix = "Tok_Secret_X2" 
+          
+#00167    invisible prefix = "Jow_ExtB_X" 
+          
+#00168    invisible prefix = "Jow_ExtC_X" 
+          
+#00169    Kill prefix = "Trg_CarN" 
+          
+#00170    Kill prefix = "Trg_CarS" 
+          
+#00171    Kill prefix = "TRG_JS_Ped_N_Stands" 
+          
+#00172    Kill prefix = "TRG_JS_Ped_N_Judge" 
+          
+#00173    Kill prefix = "TRG_JS_Ped_S_Stands" 
+          
+#00174    create prefix = "Trg_CarN" 
+          
+#00175  END FUNCTION
+          
+#00176  FUNCTION JS_CamRulesScores_Support 
+#00178    visible prefix = "Tok_North_X" 
+          
+#00179    visible prefix = "Jow_ExtB_X" 
+          
+#00180    invisible prefix = "Tok_South_X" 
+          
+#00181    invisible prefix = "Tok_ShinkansenX" 
+          
+#00182    invisible prefix = "Tok_Secret_X1" 
+          
+#00183    invisible prefix = "Tok_Secret_X2" 
+          
+#00184    invisible prefix = "Jow_ExtC_X" 
+          
+#00185    Kill prefix = "Trg_CarS" 
+          
+#00186    Kill prefix = "TRG_JS_Ped_N_Stands" 
+          
+#00187    Kill prefix = "TRG_JS_Ped_N_Judge" 
+          
+#00188    Kill prefix = "TRG_JS_Ped_S_Stands" 
+          
+#00189    create prefix = "TRG_JS_Ped_N_Stands" 
+          
+#00190    create prefix = "TRG_JS_Ped_N_Judge" 
+          
+#00191    visible prefix = "Tok_JS_Ped_N_Stands" 
+          
+#00192  END FUNCTION
+          
+#00193  FUNCTION JS_CamRulesMedals_Support 
+#00195    visible prefix = "Tok_South_X" 
+          
+#00196    invisible prefix = "Tok_North_X" 
+          
+#00197    invisible prefix = "Tok_ShinkansenX" 
+          
+#00198    invisible prefix = "Tok_Secret_X1" 
+          
+#00199    invisible prefix = "Tok_Secret_X2" 
+          
+#00200    invisible prefix = "Jow_ExtB_X" 
+          
+#00201    invisible prefix = "Jow_ExtC_X" 
+          
+#00202    Kill prefix = "Trg_CarS" 
+          
+#00203    Kill prefix = "TRG_JS_Ped_N_Stands" 
+          
+#00204    Kill prefix = "TRG_JS_Ped_N_Judge" 
+          
+#00205    Kill prefix = "TRG_JS_Ped_S_Stands" 
+          
+#00206    create prefix = "TRG_JS_Ped_S_Stands" 
+          
+#00207    visible prefix = "Tok_JS_Ped_S_Stands" 
+          
+#00208  END FUNCTION
+          
+#00209  FUNCTION JS_CamRulesList_Support 
+#00211    visible prefix = "Tok_North_X" 
+          
+#00212    visible prefix = "Tok_South_X" 
+          
+#00213    visible prefix = "Jow_ExtB_X" 
+          
+#00214    visible prefix = "Jow_ExtC_X" 
+          
+#00215    visible prefix = "Tok_ShinkansenX" 
+          
+#00216    visible prefix = "Tok_JS_Ped_N_Stands" 
+          
+#00217    invisible prefix = "Tok_Secret_X1" 
+          
+#00218    invisible prefix = "Tok_Secret_X2" 
+          
+#00219    invisible prefix = "Tok_South_X_BowlUnder" 
+          
+#00220    Kill prefix = "TRG_JS_Ped_N_Stands" 
+          
+#00221    Kill prefix = "TRG_JS_Ped_N_Judge" 
+          
+#00222    Kill prefix = "TRG_JS_Ped_S_Stands" 
+          
+#00223    Kill name = TRG_Prox_Ped_N_Stands 
+          
+#00224    Kill name = TRG_Prox_Ped_S_Stands 
+          
+#00225    create prefix = "TRG_JS_Ped_N_Stands" 
+          
+#00226    create prefix = "TRG_JS_Ped_N_Judge" 
+          
+#00227    create name = TRG_Prox_Ped_N_Stands 
+          
+#00228    create name = TRG_Prox_Ped_S_Stands 
+          
+#00229  END FUNCTION
+          
+#00230  FUNCTION JS_StartComplete_Script 
+#00232    visible prefix = "Tok_South_X_BowlUnder" 
+          
+#00233  END FUNCTION
+          
+#00234  FUNCTION JS_End_Script_Script 
+#00236    Kill prefix = "Trg_CarN" 
+          
+#00237    create prefix = "Trg_CarN" 
+          
+#00238  END FUNCTION
+          
+#00239  FUNCTION JS_CamEndCrowd_Support 
+#00241    visible prefix = "Tok_North_X" 
+          
+#00242    visible prefix = "Jow_ExtB_X" 
+          
+#00243    visible prefix = "Tok_South_X" 
+          
+#00244    visible prefix = "Tok_JS_Ped_N_Stands" 
+          
+#00245    invisible prefix = "Tok_ShinkansenX" 
+          
+#00246    invisible prefix = "Tok_Secret_X1" 
+          
+#00247    invisible prefix = "Tok_Secret_X2" 
+          
+#00248    invisible prefix = "Jow_ExtC_X" 
+          
+#00249    invisible prefix = "Tok_JS_Ped_S_Stands" 
+          
+#00250    Kill prefix = "Trg_CarS" 
+          
+#00251    Kill prefix = "TRG_JS_Ped_N_Stands" 
+          
+#00252    Kill prefix = "TRG_JS_Ped_N_Judge" 
+          
+#00253    Kill prefix = "TRG_JS_Ped_S_Stands" 
+          
+#00254    Kill name = TRG_Prox_Ped_N_Stands 
+          
+#00255    Kill name = TRG_Prox_Ped_S_Stands 
+          
+#00256    create prefix = "TRG_JS_Ped_N_Stands" 
+          
+#00257  END FUNCTION
+          
+#00258  FUNCTION JS_CamEndFinal_Support 
+#00260    visible prefix = "Tok_North_X" 
+          
+#00261    visible prefix = "Jow_ExtB_X" 
+          
+#00262    visible prefix = "Tok_JS_Ped_N_Stands" 
+          
+#00263    invisible prefix = "Tok_South_X" 
+          
+#00264    invisible prefix = "Tok_ShinkansenX" 
+          
+#00265    invisible prefix = "Tok_Secret_X1" 
+          
+#00266    invisible prefix = "Tok_Secret_X2" 
+          
+#00267    invisible prefix = "Jow_ExtC_X" 
+          
+#00268    invisible prefix = "Tok_JS_Ped_S_Stands" 
+          
+#00269    Kill prefix = "Trg_CarS" 
+          
+#00270    Kill prefix = "TRG_JS_Ped_N_Judge" 
+          
+#00271    Kill prefix = "TRG_JS_Ped_S_Stands" 
+          
+#00272    Kill prefix = "Trg_Shinkansen" 
+          
+#00273    Kill name = TRG_Prox_Ped_N_Stands 
+          
+#00274    Kill name = TRG_Prox_Ped_S_Stands 
+          
+#00275  END FUNCTION
+          
+#00276  FUNCTION JS_CamJudged_Support 
+#00278    visible prefix = "Tok_North_X" 
+          
+#00279    visible prefix = "Jow_ExtB_X" 
+          
+#00280    invisible prefix = "Tok_South_X" 
+          
+#00281    invisible prefix = "Tok_ShinkansenX" 
+          
+#00282    invisible prefix = "Tok_Secret_X1" 
+          
+#00283    invisible prefix = "Tok_Secret_X2" 
+          
+#00284    invisible prefix = "Jow_ExtC_X" 
+          
+#00285    invisible prefix = "Tok_JS_Ped_S_Stands" 
+          
+#00286    Kill prefix = "Trg_CarN" 
+          
+#00287    Kill prefix = "Trg_CarS" 
+          
+#00288    Kill prefix = "TRG_JS_Ped_N_Stands" 
+          
+#00289    Kill prefix = "TRG_JS_Ped_N_Judge" 
+          
+#00290    Kill prefix = "TRG_JS_Ped_S_Stands" 
+          
+#00291    Kill name = TRG_Prox_Ped_N_Stands 
+          
+#00292    Kill name = TRG_Prox_Ped_S_Stands 
+          
+#00293    create prefix = "Trg_CarN" 
+          
+#00294    create prefix = "TRG_JS_Ped_N_Stands" 
+          
+#00295    create prefix = "Trg_JS_Ped_Hi_Judge" 
+          
+#00296    visible prefix = "Tok_JS_Ped_N_Stands" 
+          
+#00297    create prefix = "TRG_JudgeNoises" 
+          
+#00298  END FUNCTION
+          
+#00299  FUNCTION JS_CamJudgedHold_Support 
+#00301    Wait 240 Frames 
+#00302    Kill prefix = "Trg_CarN" 
+          
+#00303    Kill prefix = "TRG_JS_Ped_N_Stands" 
+          
+#00304    invisible prefix = "Tok_JS_Ped_N_Stands" 
+          
+#00305  END FUNCTION
+          
+#00306  FUNCTION JS_CamJudgedChange_Support 
+#00308    visible prefix = "Tok_South_X" 
+          
+#00309    invisible prefix = "Tok_North_X" 
+          
+#00310    invisible prefix = "Jow_ExtB_X" 
+          
+#00311    invisible prefix = "Tok_ShinkansenX" 
+          
+#00312    invisible prefix = "Tok_Secret_X1" 
+          
+#00313    invisible prefix = "Tok_Secret_X2" 
+          
+#00314    invisible prefix = "Jow_ExtC_X" 
+          
+#00315    invisible prefix = "Tok_JS_Ped_N_Stands" 
+          
+#00316    invisible prefix = "Tok_JS_Ped_S_Stands" 
+          
+#00317    Kill prefix = "Trg_CarN" 
+          
+#00318    Kill prefix = "Trg_CarS" 
+          
+#00319    Kill prefix = "TRG_JS_Ped_N_Stands" 
+          
+#00320    Kill prefix = "TRG_JS_Ped_N_Judge" 
+          
+#00321    Kill prefix = "TRG_JS_Ped_S_Stands" 
+          
+#00322    Kill prefix = "Trg_JS_Ped_Hi_Judge" 
+          
+#00323  END FUNCTION
+          
+#00324  FUNCTION JS_CamJudgedEnd_Support 
+#00326    visible prefix = "Tok_North_X" 
+          
+#00327    visible prefix = "Jow_ExtB_X" 
+          
+#00328    visible prefix = "Tok_South_X" 
+          
+#00329    visible prefix = "Tok_JS_Ped_N_Stands" 
+          
+#00330    invisible prefix = "Tok_ShinkansenX" 
+          
+#00331    invisible prefix = "Tok_Secret_X1" 
+          
+#00332    invisible prefix = "Tok_Secret_X2" 
+          
+#00333    invisible prefix = "Jow_ExtC_X" 
+          
+#00334    Kill prefix = "Trg_CarN" 
+          
+#00335    Kill prefix = "Trg_CarS" 
+          
+#00336    Kill prefix = "TRG_JS_Ped_N_Stands" 
+          
+#00337    Kill prefix = "TRG_JS_Ped_N_Judge" 
+          
+#00338    Kill prefix = "TRG_JS_Ped_S_Stands" 
+          
+#00339    Kill prefix = "Trg_JS_Ped_Hi_Judge" 
+          
+#00340    create prefix = "Trg_CarN" 
+          
+#00341    create name = TRG_Prox_Ped_N_Stands 
+          
+#00342    create name = TRG_Prox_Ped_S_Stands 
+          
+#00343    Kill prefix = "TRG_JudgeNoises" 
+          
+#00344  END FUNCTION
+          
+#00345  FUNCTION JS_BulletTrainWestControl 
+#00349    Wait RANDOM[4][12; 18; 24; 30]
+          4 JUMP 0x19000000 6 JUMP 0x0f000000 8 JUMP 0x05000000 10 seconds 
+#00350    Die 
+#00351    create name = TRG_shinkansenwest 
+          
+#00352  END FUNCTION
+          
+#00353  FUNCTION JS_BulletTrainEastControl 
+#00355    Wait RANDOM[4][12; 18; 24; 30]
+          4 JUMP 0x19000000 6 JUMP 0x0f000000 8 JUMP 0x05000000 10 seconds 
+#00356    Die 
+#00357    create name = TRG_shinkansenEast 
+          
+#00358  END FUNCTION
+          
+#00359  FUNCTION JS_BulletTrainWest 
+#00361    Obj_SetGroundOffset 0 feet 
+#00362    Obj_StickToGround off 
+#00363    Obj_SetPathTurnDist 10 feet 
+#00364    Obj_PathHeading On 
+#00365    Obj_SetPathVelocity 700 mph 
+#00366    Obj_SetPathAcceleration 700 mphps 
+#00367    Obj_FollowPathLinked 
+#00368    Obj_PlaySound Tok_Train5a 
+#00369  END FUNCTION
+          
+#00370  FUNCTION JS_BulletTrainEast 
+#00372    Obj_SetGroundOffset 0 feet 
+#00373    Obj_StickToGround off 
+#00374    Obj_SetPathTurnDist 10 feet 
+#00375    Obj_PathHeading On 
+#00376    Obj_SetPathVelocity 800 mph 
+#00377    Obj_SetPathAcceleration 800 mphps 
+#00378    Obj_FollowPathLinked 
+#00379    Obj_PlaySound Tok_Train5a 
+#00380    Obj_PlaySound TOK_trainapproach 
+#00381    printf "JS_BulletTrainEast - Playing train sound" 
+#00382  END FUNCTION
+          
+#00383  FUNCTION JS_TrainApproach 
+#00385    LOOP 
+#00386      PlaySound TOK_trainapproach 
+#00387      printf "JS_BulletTrainEast - Playing train sound" 
+#00388    END LOOP 2 
+#00389  END FUNCTION
+          
+#00390  FUNCTION JS_Train_Rail00 
+#00392    create name = TRG_GS_SRail_00 
+          
+#00393    Wait 0.5 seconds 
+#00394    Kill name = TRG_GS_SRail_00 
+          
+#00395  END FUNCTION
+          
+#00396  FUNCTION JS_Train_Rail01 
+#00398    create name = TRG_SRail_01 
+          
+#00399    Wait 0.5 seconds 
+#00400    Kill name = TRG_SRail_01 
+          
+#00401  END FUNCTION
+          
+#00402  FUNCTION JS_Train_Rail02 
+#00404    create name = TRG_SRail_02 
+          
+#00405    Wait 0.5 seconds 
+#00406    Kill name = TRG_SRail_02 
+          
+#00407  END FUNCTION
+          
+#00408  FUNCTION JS_Train_Rail03 
+#00410    create name = TRG_SRail_03 
+          
+#00411    Wait 0.5 seconds 
+#00412    Kill name = TRG_SRail_03 
+          
+#00413  END FUNCTION
+          
+#00414  FUNCTION JS_Train_Rail04 
+#00416    create name = TRG_SRail_04 
+          
+#00417    Wait 0.5 seconds 
+#00418    Kill name = TRG_SRail_04 
+          
+#00419  END FUNCTION
+          
+#00420  FUNCTION JS_Train_Rail05 
+#00422    create name = TRG_SRail_05 
+          
+#00423    Wait 0.5 seconds 
+#00424    Kill name = TRG_SRail_05 
+          
+#00425  END FUNCTION
+          
+#00426  FUNCTION JS_Train_Rail06 
+#00428    create name = TRG_SRail_06 
+          
+#00429    Wait 0.5 seconds 
+#00430    Kill name = TRG_SRail_06 
+          
+#00431  END FUNCTION
+          
+#00432  FUNCTION JS_Train_Rail07 
+#00434    create name = TRG_SRail_07 
+          
+#00435    Wait 0.5 seconds 
+#00436    Kill name = TRG_SRail_07 
+          
+#00437  END FUNCTION
+          
+#00438  FUNCTION JS_Train_Rail08 
+#00440    create name = TRG_SRail_08 
+          
+#00441    Wait 0.5 seconds 
+#00442    Kill name = TRG_SRail_08 
+          
+#00443  END FUNCTION
+          
+#00444  FUNCTION JS_Train_Rail09 
+#00446    create name = TRG_SRail_09 
+          
+#00447    Wait 0.5 seconds 
+#00448    Kill name = TRG_SRail_09 
+          
+#00449  END FUNCTION
+          
+#00450  FUNCTION JS_Train_Rail10 
+#00452    create name = TRG_SRail_10 
+          
+#00453    Wait 0.5 seconds 
+#00454    Kill name = TRG_SRail_10 
+          
+#00455  END FUNCTION
+          
+#00456  FUNCTION JS_Train_Rail11 
+#00458    create name = TRG_SRail_11 
+          
+#00459    Wait 0.5 seconds 
+#00460    Kill name = TRG_SRail_11 
+          
+#00461  END FUNCTION
+          
+#00462  FUNCTION JS_Train_Rail12 
+#00464    create name = TRG_SRail_12 
+          
+#00465    Wait 0.5 seconds 
+#00466    Kill name = TRG_SRail_12 
+          
+#00467  END FUNCTION
+          
+#00468  FUNCTION JS_Train_Rail13 
+#00470    create name = TRG_SRail_13 
+          
+#00471    Wait 0.5 seconds 
+#00472    Kill name = TRG_SRail_13 
+          
+#00473  END FUNCTION
+          
+#00474  FUNCTION JS_Train_Rail14 
+#00476    create name = TRG_SRail_14 
+          
+#00477    Wait 0.5 seconds 
+#00478    Kill name = TRG_SRail_14 
+          
+#00479  END FUNCTION
+          
+#00480  FUNCTION JS_Train_Rail15 
+#00482    create name = TRG_SRail_15 
+          
+#00483    Wait 0.5 seconds 
+#00484    Kill name = TRG_SRail_15 
+          
+#00485  END FUNCTION
+          
+#00486  FUNCTION JS_Train_Rail16 
+#00488    create name = TRG_SRail_16 
+          
+#00489    Wait 0.5 seconds 
+#00490    Kill name = TRG_SRail_16 
+          
+#00491  END FUNCTION
+          
+#00492  FUNCTION JS_PlaneNorthWest 
+#00494    Obj_SetGroundOffset 0 feet 
+#00495    Obj_StickToGround off 
+#00496    Obj_SetPathTurnDist 10 feet 
+#00497    Obj_PathHeading On 
+#00498    Obj_SetPathVelocity 200 mph 
+#00499    Obj_SetPathAcceleration 500 mphps 
+#00500    Obj_FollowPathLinked 
+#00501    Obj_PlaySound Tok_jet 
+#00502  END FUNCTION
+          
+#00503  FUNCTION JS_PlaneSouthWest 
+#00505    Obj_SetGroundOffset 0 feet 
+#00506    Obj_StickToGround off 
+#00507    Obj_SetPathTurnDist 10 feet 
+#00508    Obj_PathHeading On 
+#00509    Obj_SetPathVelocity 100 mph 
+#00510    Obj_SetPathAcceleration 400 mphps 
+#00511    Obj_FollowPathLinked 
+#00512    Obj_PlaySound Tok_jet 
+#00513  END FUNCTION
+          
+#00514  FUNCTION JS_PlaneEast 
+#00516    Obj_SetGroundOffset 0 feet 
+#00517    Obj_StickToGround off 
+#00518    Obj_SetPathTurnDist 10 feet 
+#00519    Obj_PathHeading On 
+#00520    Obj_SetPathVelocity 70 mph 
+#00521    Obj_SetPathAcceleration 400 mphps 
+#00522    Obj_FollowPathLinked 
+#00523    Obj_PlaySound Tok_jet 
+#00524  END FUNCTION
+          
+#00525  FUNCTION JS_PlaneSound 
+#00527    LOOP 
+#00528      PlaySound Tok_jet 
+#00529      Wait 2 second 
+#00530    END LOOP 
+#00531  END FUNCTION
+          
+#00532  FUNCTION JS_NorthCars_On 
+#00534    create prefix = "Trg_CarN" 
+          
+#00535  END FUNCTION
+          
+#00536  FUNCTION JS_NorthCars_Off 
+#00538    Kill prefix = "Trg_CarN" 
+          
+#00539  END FUNCTION
+          
+#00540  FUNCTION JS_SouthCars_On 
+#00542    create prefix = "Trg_CarS" 
+          
+#00543  END FUNCTION
+          
+#00544  FUNCTION JS_SouthCars_Off 
+#00546    Kill prefix = "Trg_CarS" 
+          
+#00547  END FUNCTION
+          
+#00548  FUNCTION JS_Car_100 
+#00550    Obj_SetGroundOffset 0 feet 
+#00551    Obj_StickToGround off 
+#00552    Obj_SetPathTurnDist 10 feet 
+#00553    Obj_PathHeading On 
+#00554    Obj_SetPathVelocity 50 mph 
+#00555    Obj_SetPathAcceleration 100 mphps 
+#00556    Obj_FollowPathLinked 
+#00557  END FUNCTION
+          
+#00558  FUNCTION JS_Car_120 
+#00560    Obj_SetGroundOffset 0 feet 
+#00561    Obj_StickToGround off 
+#00562    Obj_SetPathTurnDist 10 feet 
+#00563    Obj_PathHeading On 
+#00564    Obj_SetPathVelocity 70 mph 
+#00565    Obj_SetPathAcceleration 120 mphps 
+#00566    Obj_FollowPathLinked 
+#00567  END FUNCTION
+          
+#00568  FUNCTION JS_Car_150 
+#00570    Obj_SetGroundOffset 0 feet 
+#00571    Obj_StickToGround off 
+#00572    Obj_SetPathTurnDist 10 feet 
+#00573    Obj_PathHeading On 
+#00574    Obj_SetPathVelocity 100 mph 
+#00575    Obj_SetPathAcceleration 150 mphps 
+#00576    Obj_FollowPathLinked 
+#00577  END FUNCTION
+          
+#00578  FUNCTION JS_CarAmbient 
+#00580    LOOP 
+#00581      PlaySound Fart vol = 100 
+            pitch = 120 
+            
+#00582      Wait 1 second 
+#00583    END LOOP 
+#00584  END FUNCTION
+          
+#00585  FUNCTION JS_Crowd 
+#00589    LOOP 
+#00597      Obj_CycleAnim anim = RANDOM[6][20; 26; 32; 38; 44; 50]
+            
+            CrowdIdleMove JUMP 0x2d000000 CrowdIdle JUMP 0x23000000 CrowdClapMove JUMP 0x19000000 CrowdClap JUMP 0x0f000000 CrowdWildMove JUMP 0x05000000 CrowdWild 
+#00598      Wait RANDOM[3][8; 14; 20]
+            0.25 JUMP 0x0f000000 0.5 JUMP 0x05000000 1 seconds 
+#00599    END LOOP 
+#00600  END FUNCTION
+          
+#00601  FUNCTION JS_Crowd_Bail 
+#00603  END FUNCTION
+          
+#00610  FUNCTION JS_Crowd_Lander 
+#00613  END FUNCTION
+          
+#00634  FUNCTION JS_CrowdOff_N 
+#00636    Obj_ClearExceptions 
+#00637    Obj_SetInnerRadius 300 
+#00638    Obj_SetException ex = SkaterInRadius 
+          scr = JS_CrowdOn_N 
+          
+#00639    Kill prefix = "TRG_JS_Ped_N_Stands" 
+          
+#00640    Kill prefix = "TRG_JS_Ped_N_Judge" 
+          
+#00641    invisible prefix = "Tok_JS_Ped_N_Stands" 
+          
+#00642  END FUNCTION
+          
+#00644  FUNCTION JS_CrowdOn_N 
+#00646    Obj_ClearExceptions 
+#00647    Obj_SetOuterRadius 350 
+#00648    Obj_SetException ex = SkaterOutOfRadius 
+          scr = JS_CrowdOff_N 
+          
+#00649    create prefix = "TRG_JS_Ped_N_Stands" 
+          
+#00650    create prefix = "TRG_JS_Ped_N_Judge" 
+          
+#00651    visible prefix = "Tok_JS_Ped_N_Stands" 
+          
+#00652  END FUNCTION
+          
+#00654  FUNCTION JS_CrowdOff_S 
+#00656    Obj_ClearExceptions 
+#00657    Obj_SetInnerRadius 300 
+#00658    Obj_SetException ex = SkaterInRadius 
+          scr = JS_CrowdOn_S 
+          
+#00659    Kill prefix = "TRG_JS_Ped_S_Stands" 
+          
+#00660    invisible prefix = "Tok_JS_Ped_S_Stands" 
+          
+#00661  END FUNCTION
+          
+#00663  FUNCTION JS_CrowdOn_S 
+#00665    Obj_ClearExceptions 
+#00666    Obj_SetOuterRadius 350 
+#00667    Obj_SetException ex = SkaterOutOfRadius 
+          scr = JS_CrowdOff_S 
+          
+#00668    create prefix = "TRG_JS_Ped_S_Stands" 
+          
+#00669    visible prefix = "Tok_JS_Ped_S_Stands" 
+          
+#00670  END FUNCTION
+          
+#00672  FUNCTION JS_Crowd_Frig 
+#00676  END FUNCTION
+          
+#00690  FUNCTION JS_Crowd_Bail_Frig 
+#00692  END FUNCTION
+          
+#00699  FUNCTION JS_Crowd_Lander_Frig 
+#00702  END FUNCTION
+          
+#00724  FUNCTION JS_Comp_Ped_Cheer 
+#00729    LOOP 
+#00730      Obj_PlayAnim anim = Idle 
+            Cycle 
+#00731      Wait RANDOM[3][8; 14; 25]
+            0.25 JUMP 0x19000000 0.5 seconds JUMP 0x0a000000 1 seconds 
+#00732      Obj_CycleAnim anim = RANDOM[3][8; 14; 20]
+            
+            Cheering JUMP 0x0f000000 Clap JUMP 0x05000000 GrommetChickenCall 
+#00733    END LOOP 
+#00734  END FUNCTION
+          
+#00735  FUNCTION JS_Comp_Ped_Judge 
+#00737    LOOP 
+#00738      Obj_PlayAnim anim = Judge_Idle 
+            Cycle 
+#00739      Wait RANDOM[3][8; 14; 25]
+            0.25 JUMP 0x19000000 0.5 seconds JUMP 0x0a000000 1 seconds 
+#00740      Obj_CycleAnim anim = RANDOM[3][8; 14; 20]
+            
+            Judge_Left JUMP 0x0f000000 Judge_Right JUMP 0x05000000 Judge_Check 
+#00741    END LOOP 
+#00742  END FUNCTION
+          
+#00743  FUNCTION JS_Comp_Ped_JudgeLeftHand 
+#00745    LOOP 
+#00746      Obj_PlayAnim anim = Judge_Idle 
+            Cycle 
+#00747      Wait RANDOM[3][8; 14; 25]
+            0.25 JUMP 0x19000000 0.5 seconds JUMP 0x0a000000 1 seconds 
+#00748      Obj_CycleAnim anim = RANDOM[2][4; 10]
+            
+            Judge_Right JUMP 0x05000000 Judge_Check 
+#00749    END LOOP 
+#00750  END FUNCTION
+          
+#00751  FUNCTION JS_Comp_Ped_JudgeRightHand 
+#00753    LOOP 
+#00754      Obj_PlayAnim anim = Judge_Idle 
+            Cycle 
+#00755      Wait RANDOM[3][8; 14; 25]
+            0.25 JUMP 0x19000000 0.5 seconds JUMP 0x0a000000 1 seconds 
+#00756      Obj_CycleAnim anim = RANDOM[2][4; 10]
+            
+            Judge_Left JUMP 0x05000000 Judge_Check 
+#00757    END LOOP 
+#00758  END FUNCTION
+          
+#00759  FUNCTION JS_NorthWest_Crowd 
+#00761    LOOP 
+#00762      create name = Tok_NorthWest_Crowd2 
+            
+#00763      Kill name = Tok_NorthWest_Crowd1 
+            
+#00764      Wait 1 second 
+#00765      create name = Tok_NorthWest_Crowd1 
+            
+#00766      Kill name = Tok_NorthWest_Crowd2 
+            
+#00767    END LOOP 
+#00768  END FUNCTION
+          
+#00769  FUNCTION JS_NorthPeds_On 
+#00771    create prefix = "Trg_JS_Ped_N" 
+          
+#00772  END FUNCTION
+          
+#00773  FUNCTION JS_NorthPeds_Off 
+#00775    Kill prefix = "Trg_JS_Ped_N" 
+          
+#00776  END FUNCTION
+          
+#00777  FUNCTION JS_MidNorthPeds_On 
+#00779    create prefix = "Trg_JS_Ped_MN" 
+          
+#00780  END FUNCTION
+          
+#00781  FUNCTION JS_MidNorthPeds_Off 
+#00783    Kill prefix = "Trg_JS_Ped_MN" 
+          
+#00784  END FUNCTION
+          
+#00785  FUNCTION JS_MidSouthPeds_On 
+#00787    create prefix = "Trg_JS_Ped_MS" 
+          
+#00788  END FUNCTION
+          
+#00789  FUNCTION JS_MidSouthPeds_Off 
+#00791    Kill prefix = "Trg_JS_Ped_MS" 
+          
+#00792  END FUNCTION
+          
+#00793  FUNCTION JS_SouthPeds_On 
+#00795    create prefix = "Trg_JS_Ped_S" 
+          
+#00796  END FUNCTION
+          
+#00797  FUNCTION JS_SouthPeds_Off 
+#00799    Kill prefix = "Trg_JS_Ped_S" 
+          
+#00800  END FUNCTION
+          
+#00801  FUNCTION JS_CamPeds_On 
+#00803    create prefix = "TRG_JS_Ped_M_Cam" 
+          
+#00804    create prefix = "TRG_JS_Ped_N_Cam" 
+          
+#00805  END FUNCTION
+          
+#00806  FUNCTION JS_CamPeds_Off 
+#00808    Kill prefix = "TRG_JS_Ped_M_Cam" 
+          
+#00809    Kill prefix = "TRG_JS_Ped_N_Cam" 
+          
+#00810  END FUNCTION
+          
+#00811  FUNCTION JS_Ped_Stands_Idle 
+#00815    LOOP 
+#00816      Obj_LookAtObject Type = skater 
+            
+#00817      Obj_CycleAnim anim = RANDOM[6][20; 26; 32; 38; 44; 50]
+            
+            ScratchChin JUMP 0x2d000000 Talk JUMP 0x23000000 Talk2 JUMP 0x19000000 Idle JUMP 0x0f000000 Idle2 JUMP 0x05000000 Idle3 
+#00818    END LOOP 
+#00819  END FUNCTION
+          
+#00820  FUNCTION JS_Ped_Stands_ProxTrigger_N 
+#00822    LOOP 
+#00823      IF Obj_ObjectNotInRadius Radius = 310 
+              Type = skater 
+              
+#00824        IF Obj_ObjectInRadius Radius = 310 
+                Type = skater 
+                
+#00826          create prefix = "TRG_JS_Ped_N_Stands" 
+                
+#00827        END IF 
+#00828        Kill prefix = "TRG_JS_Ped_N_Stands" 
+              
+#00829      END IF 
+#00830    END LOOP 
+#00831  END FUNCTION
+          
+#00832  FUNCTION JS_Ped_Stands_ProxTrigger_S 
+#00834    LOOP 
+#00835      IF Obj_ObjectNotInRadius Radius = 310 
+              Type = skater 
+              
+#00836        IF Obj_ObjectInRadius Radius = 310 
+                Type = skater 
+                
+#00838          create prefix = "TRG_JS_Ped_S_Stands" 
+                
+#00839        END IF 
+#00840        Kill prefix = "TRG_JS_Ped_S_Stands" 
+              
+#00841      END IF 
+#00842    END LOOP 
+#00843  END FUNCTION
+          
+#00844  FUNCTION JS_KillSkater_Tok 
+#00848    IF Obj_FlagNotSet FLAG_SKATER_KILLING 
+#00849      Obj_SetFlag FLAG_SKATER_KILLING 
+#00850      PlaySound FallPungee 
+#00851      LaunchPanelMessage properties = panel_message_death 
+            RANDOM[4][17; 42; 78; 110]
+            
+#00852      "&c1WRONG WAY!" 
+#00853      JUMP 0x5b000000 "&c1GET BACK TO THE COMP!" 
+#00854      JUMP 0x33000000 "&c1YOU ARE A STUPID!" 
+#00855      JUMP 0x0f000000 "&c1FOCUS!" 
+#00856      SK3_Killskater_Finish poopoo r = 150 
+            g = 50 
+            b = 50 
+            
+#00857    END IF 
+#00858  END FUNCTION
+          
+#00859  FUNCTION JS_Loop_Anim_On 
+#00863    IF OnGround 
+#00864      MakeSkaterGoto Loop 
+#00865    END IF 
+#00866  END FUNCTION
+          
+#00867  FUNCTION JS_Loop_Anim_Off 
+#00869    MakeSkaterGoto LoopLand 
+#00871  END FUNCTION
+          
+#00873  FUNCTION JS_North_Sign_Bat 
+#00875    invisible prefix = "Tok_North_Sign_Bat" 
+          
+#00876    LOOP 
+#00877      visible name = Tok_North_Sign_Bat_01 
+            
+#00878      Obj_PlaySound Tok_Sign3 
+#00879      Wait 1 second 
+#00880      visible name = Tok_North_Sign_Bat_02 
+            
+#00881      invisible name = Tok_North_Sign_Bat_01 
+            
+#00882      Obj_PlaySound Tok_Sign3 
+#00883      Wait 1 second 
+#00884      visible name = Tok_North_Sign_Bat_03 
+            
+#00885      invisible name = Tok_North_Sign_Bat_02 
+            
+#00886      Obj_PlaySound Tok_Sign3 
+#00887      Wait 1 second 
+#00888      visible name = Tok_North_Sign_Bat_04 
+            
+#00889      invisible name = Tok_North_Sign_Bat_03 
+            
+#00890      Obj_PlaySound Tok_Sign3 
+#00891      Wait 1 second 
+#00892      visible name = Tok_North_Sign_Bat_05 
+            
+#00893      invisible name = Tok_North_Sign_Bat_04 
+            
+#00894      Obj_PlaySound Tok_Sign3 
+#00895      Wait 1 second 
+#00896      visible name = Tok_North_Sign_Bat_04 
+            
+#00897      invisible name = Tok_North_Sign_Bat_05 
+            
+#00898      Obj_PlaySound Tok_Sign3 
+#00899      Wait 1 second 
+#00900      visible name = Tok_North_Sign_Bat_05 
+            
+#00901      invisible name = Tok_North_Sign_Bat_04 
+            
+#00902      Obj_PlaySound Tok_Sign3 
+#00903      Wait 1 second 
+#00904      visible name = Tok_North_Sign_Bat_04 
+            
+#00905      invisible name = Tok_North_Sign_Bat_05 
+            
+#00906      Obj_PlaySound Tok_Sign3 
+#00907      Wait 1 second 
+#00908      invisible name = Tok_North_Sign_Bat_04 
+            
+#00909      Obj_PlaySound Tok_Sign3 
+#00910    END LOOP 
+#00911  END FUNCTION
+          
+#00912  FUNCTION JS_Vis_MainArea 
+#00914    visible prefix = "Tok_North_X" 
+          
+#00915    visible prefix = "Tok_South_X" 
+          
+#00916    visible name = Jow_ExtB_X_Reflect01 
+          
+#00917  END FUNCTION
+          
+#00918  FUNCTION JS_InVis_MainArea 
+#00920    invisible prefix = "Tok_North_X" 
+          
+#00921    invisible prefix = "Tok_South_X" 
+          
+#00922    invisible name = Jow_ExtB_X_Reflect01 
+          
+#00923  END FUNCTION
+          
+#00924  FUNCTION JS_Vis_SecretArea_X1 
+#00926    visible prefix = "Tok_Secret_X1" 
+          
+#00927  END FUNCTION
+          
+#00928  FUNCTION JS_InVis_SecretArea_X1 
+#00930    invisible prefix = "Tok_Secret_X1" 
+          
+#00931  END FUNCTION
+          
+#00932  FUNCTION JS_Vis_SecretArea_X2 
+#00934    visible prefix = "Tok_Secret_X2" 
+          
+#00935  END FUNCTION
+          
+#00936  FUNCTION JS_InVis_SecretArea_X2 
+#00938    invisible prefix = "Tok_Secret_X2" 
+          
+#00939  END FUNCTION
+          
+#00940  FUNCTION JS_Vis_NorthernPeriphery 
+#00942    visible prefix = "Jow_ExtB_X" 
+          
+#00943  END FUNCTION
+          
+#00944  FUNCTION JS_InVis_NorthernPeriphery 
+#00946    invisible prefix = "Jow_ExtB_X" 
+          
+#00947  END FUNCTION
+          
+#00948  FUNCTION JS_Vis_SouthernPeriphery 
+#00950    visible prefix = "Jow_ExtC_X" 
+          
+#00951    visible prefix = "Tok_ShinkansenX" 
+          
+#00952  END FUNCTION
+          
+#00953  FUNCTION JS_InVis_SouthernPeriphery 
+#00955    invisible prefix = "Jow_ExtC_X" 
+          
+#00956    invisible prefix = "Tok_ShinkansenX" 
+          
+#00957  END FUNCTION
+          
+#00958  FUNCTION JS_Prox_VisInvis_SecretArea_X1 
+#00960    IF inside 
+#00961      JS_Vis_SecretArea_X1 
+#00962      JS_InVis_MainArea 
+#00963      JS_Vis_SouthernPeriphery 
+#00964      JS_Vis_NorthernPeriphery 
+#00965    ELSE 
+#00966      JS_Vis_MainArea 
+#00967      JS_InVis_SecretArea_X1 
+#00968      JS_InVis_SouthernPeriphery 
+#00969      JS_InVis_NorthernPeriphery 
+#00970    END IF 
+#00971  END FUNCTION
+          
+#00972  FUNCTION JS_Prox_Vis_SecretArea_X2 
+#00974    IF inside 
+#00975      JS_Vis_SecretArea_X2 
+#00976    ELSE 
+#00977      JS_InVis_SecretArea_X2 
+#00978    END IF 
+#00979  END FUNCTION
+          
+#00980  FUNCTION JS_Prox_InVis_SecretArea_X2 
+#00982    IF inside 
+#00983      JS_InVis_SecretArea_X2 
+#00984    END IF 
+#00985  END FUNCTION
+          
+#00986  FUNCTION JS_Prox_VisInvis_NorthPeriphery 
+#00988    IF InMultiplayerGame 
+#00989      IF inside 
+#00990        JS_Vis_NorthernPeriphery 
+#00991      ELSE 
+#00992        JS_InVis_NorthernPeriphery 
+#00993      END IF 
+#00994    ELSE 
+#00995      IF inside 
+#00996        JS_Vis_NorthernPeriphery 
+#00997        JS_NorthCars_On 
+#00998      ELSE 
+#00999        JS_InVis_NorthernPeriphery 
+#01000        JS_NorthCars_Off 
+#01001      END IF 
+#01002    END IF 
+#01003  END FUNCTION
+          
+#01004  FUNCTION JS_Prox_VisInvis_SouthPeriphery 
+#01006    IF InMultiplayerGame 
+#01007      IF inside 
+#01008        JS_Vis_SouthernPeriphery 
+#01009      ELSE 
+#01010        JS_InVis_SouthernPeriphery 
+#01011      END IF 
+#01012    ELSE 
+#01013      IF inside 
+#01014        JS_Vis_SouthernPeriphery 
+#01015        JS_SouthCars_On 
+#01016      ELSE 
+#01017        JS_InVis_SouthernPeriphery 
+#01018        JS_SouthCars_Off 
+#01019      END IF 
+#01020    END IF 
+#01021  END FUNCTION
+          
+#01022  FUNCTION JS_Gap_SmashTrigNHaji 
+#01042    StartGap GapID = JS_Tok_SmashTrig_N 
+          flags = ARRAY(
+            
+            cancel_lip 
+          )
+          
+#01043  END FUNCTION
+          
+#01044  FUNCTION JS_Gap_SmashTrigNOwa 
+#01046    EndGap GapID = JS_Tok_SmashTrig_N 
+          gapscript = JS_Gap_SmashN 
+          NetEnabled Permanent 
+#01047  END FUNCTION
+          
+#01048  FUNCTION JS_Gap_SmashTrigSHaji 
+#01050    StartGap GapID = JS_Tok_SmashTrig_S 
+          flags = ARRAY(
+            
+            cancel_lip 
+          )
+          
+#01051  END FUNCTION
+          
+#01052  FUNCTION JS_Gap_SmashTrigSOwa 
+#01054    EndGap GapID = JS_Tok_SmashTrig_S 
+          gapscript = JS_Gap_SmashS 
+          NetEnabled Permanent 
+#01055  END FUNCTION
+          
+#01056  FUNCTION JS_Gap_SmashN 
+#01058    JS_Gap_SmashTrigger 
+#01059    JS_Mid_SmasherN 
+#01060    JS_Mid_Smasher_SkaterControl 
+#01061  END FUNCTION
+          
+#01062  FUNCTION JS_Gap_SmashS 
+#01064    JS_Gap_SmashTrigger 
+#01065    JS_Mid_SmasherS 
+#01066    JS_Mid_Smasher_SkaterControl 
+#01067  END FUNCTION
+          
+#01068  FUNCTION JS_Gap_SmashTrigger 
+#01070    PlaySound HUD_JumpGap vol = 100 
+          
+#01071    StartGap GapID = SmashTrigger 
+          
+#01072    Wait 1 frame 
+#01073    EndGap GapID = SmashTrigger 
+          text = "MEGA MECHA MAYHEM!!!" 
+          score = 2000 
+          
+#01074  END FUNCTION
+          
+#01076  FUNCTION JS_Mid_Smasher_CareerControl 
+#01080    IF IsCareerMode 
+#01081      SetFlag flag = TOK_SECRET_AREA_OPEN 
+            
+#01082    END IF 
+#01083  END FUNCTION
+          
+#01084  FUNCTION JS_Mid_Smasher_CareerRestart 
+#01086    IF IsCareerMode 
+#01087      IF GetFlag flag = TOK_SECRET_AREA_OPEN 
+              
+#01088        JS_Mid_Smasher_CareerOpener 
+#01089      END IF 
+#01090    END IF 
+#01091  END FUNCTION
+          
+#01092  FUNCTION JS_Mid_Smasher_CareerOpener 
+#01094    create prefix = "Tok_Secret_Building00_1" 
+          
+#01097    create prefix = "Tok_Secret_Building00_2" 
+          
+#01098    create prefix = "Tok_Mid_Sign_Destroyed" 
+          
+#01099    create prefix = "Trg_Ring" 
+          
+#01100    create prefix = "Trg_Secret" 
+          
+#01101    Kill name = Tok_Mid_Sign 
+          
+#01102    Kill prefix = "Gap_Mid_Smasher" 
+          
+#01103    Kill prefix = "Tok_Mid_Building05_1" 
+          
+#01104    Kill name = Tok_Mid_SignSmasherCableN00 
+          
+#01105    Kill name = Tok_Mid_SignSmasherCableS00 
+          
+#01106    Kill name = TRG_1739 
+          
+#01107  END FUNCTION
+          
+#01108  FUNCTION JS_Mid_Smasher_SkaterControl 
+#01110    IF InMultiplayerGame 
+#01111    ELSE 
+#01112      SpawnScript JS_Mid_Smasher_CareerControl 
+#01113      PauseSkaters 
+#01114      MoveSkaterZ dist = -2000 
+            
+#01115      PlaySkaterCamAnim skater = 0 
+            name = "Cam_Mid_Smasher" 
+            
+#01116      Wait 1.1 seconds 
+#01117      SetSkaterCamAnimSkippable skater = 0 
+            Skippable = 1 
+            
+#01118      LOOP 
+#01119        IF SkaterCamAnimFinished skater = 0 
+                name = "Cam_Mid_Smasher" 
+                
+#01120          BREAK
+                
+#01121        END IF 
+#01122        Wait 1 gameframe 
+#01123      END LOOP 300 
+#01124      LOOP 
+#01125        IF SkaterCamAnimFinished skater = 0 
+                name = "Cam_Mid_Smasher" 
+                
+#01126          BREAK
+                
+#01127        END IF 
+#01128        Wait 1 gameframe 
+#01129      END LOOP 180 
+#01130      UnPauseSkaters 
+#01131      MoveSkaterZ dist = 2000 
+            
+#01132    END IF 
+#01133  END FUNCTION
+          
+#01134  FUNCTION JS_Mid_SmasherN 
+#01136    Kill prefix = "Gap_Mid_Smasher" 
+          
+#01137    create name = Tok_Mid_Sign_Smasher 
+          
+#01138    Kill name = Tok_Mid_Sign 
+          
+#01139    SpawnScript JS_Mid_CableControllerN 
+#01142    Wait 0.1 seconds 
+#01143    SpawnScript JS_Mid_CableControllerS 
+#01144  END FUNCTION
+          
+#01145  FUNCTION JS_Mid_SmasherS 
+#01147    Kill prefix = "Gap_Mid_Smasher" 
+          
+#01148    create name = Tok_Mid_Sign_Smasher 
+          
+#01149    Kill name = Tok_Mid_Sign 
+          
+#01150    SpawnScript JS_Mid_CableControllerS 
+#01153    Wait 0.1 seconds 
+#01154    SpawnScript JS_Mid_CableControllerN 
+#01155  END FUNCTION
+          
+#01156  FUNCTION JS_Mid_Smasher_Controller 
+#01158    PlaySound TOK_secret4 
+#01159    Obj_RotY angle = 65 
+          speed = 100 
+          acceleration = 100 
+          FLAG_MAX_COORDS 
+#01160    Obj_WaitRotate 
+#01161    create prefix = "Tok_Secret_Building00_1" 
+          
+#01162    create prefix = "Tok_Secret_Building00_2" 
+          
+#01163    Kill prefix = "Tok_Mid_Building05_1" 
+          
+#01164    create name = Tok_Mid_Building05ShatterTarget 
+          
+#01165    Shatter name = Tok_Mid_Building05ShatterTarget 
+          area = 10000.0 
+          variance = 2.0 
+          vel_x = 0.0 
+          vel_y = -100.0 
+          vel_z = 0.0 
+          spread = -5.0 
+          
+#01166    Kill name = Tok_Mid_Building05ShatterTarget 
+          
+#01167    PlaySound TOK_secret5 
+#01168    Obj_RotY angle = -20 
+          speed = 80 
+          deceleration = 200 
+          FLAG_MAX_COORDS 
+#01169    Obj_WaitRotate 
+#01170    PlaySound TOK_secret4 
+#01171    Obj_RotY angle = 15.333329 
+          speed = 100 
+          acceleration = 200 
+          FLAG_MAX_COORDS 
+#01172    Obj_WaitRotate 
+#01173    PlaySound GlassPane2X 
+#01174    create name = Tok_Mid_SignShatterTarget 
+          
+#01175    Shatter name = Tok_Mid_SignShatterTarget 
+          area = 15000.0 
+          variance = 2.0 
+          vel_x = 0.0 
+          vel_y = -20.0 
+          vel_z = 0.0 
+          spread = -5.0 
+          
+#01176    PlaySound TOK_secret5 
+#01177    Kill name = Tok_Mid_SignShatterTarget 
+          
+#01178    create prefix = "Tok_Mid_Sign_Destroyed" 
+          
+#01179    create prefix = "Trg_Ring" 
+          
+#01180    create prefix = "Trg_Secret" 
+          
+#01181    Kill name = TRG_1739 
+          
+#01182    Die 
+#01183  END FUNCTION
+          
+#01184  FUNCTION JS_Mid_CableControllerN 
+#01186    PlaySound bitchslap2 vol = 200 
+          pitch = 500 
+          
+#01187    Kill name = Tok_Mid_SignSmasherCableN00 
+          
+#01188    create name = Tok_Mid_SignCableSparkN 
+          
+#01189    Shatter name = Tok_Mid_SignCableSparkN 
+          area = 10000.0 
+          variance = 8.0 
+          vel_x = -10.0 
+          vel_y = -2.0 
+          vel_z = 0.0 
+          spread = 0.1 
+          
+#01190    Kill name = Tok_Mid_SignCableSparkN 
+          
+#01191    create name = Tok_Mid_SignSmasherCableN01 
+          
+#01192    Wait 0.02 seconds 
+#01193    Kill name = Tok_Mid_SignSmasherCableN01 
+          
+#01194    create name = Tok_Mid_SignSmasherCableN02 
+          
+#01195    Wait 0.02 seconds 
+#01196    Kill name = Tok_Mid_SignSmasherCableN02 
+          
+#01197    create name = Tok_Mid_SignSmasherCableN03 
+          
+#01198    Wait 0.02 seconds 
+#01199    Kill name = Tok_Mid_SignSmasherCableN03 
+          
+#01200    create name = Tok_Mid_SignSmasherCableN04 
+          
+#01201    Wait 0.02 seconds 
+#01202    Kill name = Tok_Mid_SignSmasherCableN04 
+          
+#01203    create name = Tok_Mid_SignSmasherCableN05 
+          
+#01204    Wait 0.02 seconds 
+#01205    Kill name = Tok_Mid_SignSmasherCableN05 
+          
+#01206    create name = Tok_Mid_SignSmasherCableN06 
+          
+#01207    Wait 0.02 seconds 
+#01208    Kill name = Tok_Mid_SignSmasherCableN06 
+          
+#01209    create name = Tok_Mid_SignSmasherCableN07 
+          
+#01210    Wait 0.02 seconds 
+#01211    Kill name = Tok_Mid_SignSmasherCableN07 
+          
+#01212    create name = Tok_Mid_SignSmasherCableN08 
+          
+#01213    Wait 0.02 seconds 
+#01214    Kill name = Tok_Mid_SignSmasherCableN08 
+          
+#01215    create name = Tok_Mid_SignSmasherCableN09 
+          
+#01216    Wait 0.02 seconds 
+#01217    Kill name = Tok_Mid_SignSmasherCableN09 
+          
+#01218    create name = Tok_Mid_SignSmasherCableN10 
+          
+#01219    Wait 0.03 seconds 
+#01220    Kill name = Tok_Mid_SignSmasherCableN10 
+          
+#01221    create name = Tok_Mid_SignSmasherCableN11 
+          
+#01222    Wait 0.03 seconds 
+#01223    Kill name = Tok_Mid_SignSmasherCableN11 
+          
+#01224    create name = Tok_Mid_SignSmasherCableN12 
+          
+#01225    Wait 0.03 seconds 
+#01226    Kill name = Tok_Mid_SignSmasherCableN12 
+          
+#01227    create name = Tok_Mid_SignSmasherCableN13 
+          
+#01228    Wait 0.04 seconds 
+#01229    Kill name = Tok_Mid_SignSmasherCableN13 
+          
+#01230    create name = Tok_Mid_SignSmasherCableN14 
+          
+#01231    Wait 0.04 seconds 
+#01232    Kill name = Tok_Mid_SignSmasherCableN14 
+          
+#01233    create name = Tok_Mid_SignSmasherCableN15 
+          
+#01234    Wait 0.05 seconds 
+#01235    Kill name = Tok_Mid_SignSmasherCableN15 
+          
+#01236    create name = Tok_Mid_SignSmasherCableN16 
+          
+#01237    Wait 0.05 seconds 
+#01238    Kill name = Tok_Mid_SignSmasherCableN16 
+          
+#01239    create name = Tok_Mid_SignSmasherCableN17 
+          
+#01240    Wait 0.05 seconds 
+#01241    Kill name = Tok_Mid_SignSmasherCableN17 
+          
+#01242    create name = Tok_Mid_SignSmasherCableGON 
+          
+#01243  END FUNCTION
+          
+#01244  FUNCTION JS_Mid_CableControllerS 
+#01246    PlaySound bitchslap2 vol = 200 
+          pitch = 500 
+          
+#01247    Kill name = Tok_Mid_SignSmasherCableS00 
+          
+#01248    create name = Tok_Mid_SignCableSparkS 
+          
+#01249    Shatter name = Tok_Mid_SignCableSparkS 
+          area = 10000.0 
+          variance = 8.0 
+          vel_x = -10.0 
+          vel_y = -2.0 
+          vel_z = 0.0 
+          spread = 0.1 
+          
+#01250    Kill name = Tok_Mid_SignCableSparkS 
+          
+#01251    create name = Tok_Mid_SignSmasherCableS01 
+          
+#01252    Wait 0.02 seconds 
+#01253    Kill name = Tok_Mid_SignSmasherCableS01 
+          
+#01254    create name = Tok_Mid_SignSmasherCableS02 
+          
+#01255    Wait 0.02 seconds 
+#01256    Kill name = Tok_Mid_SignSmasherCableS02 
+          
+#01257    create name = Tok_Mid_SignSmasherCableS03 
+          
+#01258    Wait 0.02 seconds 
+#01259    Kill name = Tok_Mid_SignSmasherCableS03 
+          
+#01260    create name = Tok_Mid_SignSmasherCableS04 
+          
+#01261    Wait 0.02 seconds 
+#01262    Kill name = Tok_Mid_SignSmasherCableS04 
+          
+#01263    create name = Tok_Mid_SignSmasherCableS05 
+          
+#01264    Wait 0.02 seconds 
+#01265    Kill name = Tok_Mid_SignSmasherCableS05 
+          
+#01266    create name = Tok_Mid_SignSmasherCableS06 
+          
+#01267    Wait 0.02 seconds 
+#01268    Kill name = Tok_Mid_SignSmasherCableS06 
+          
+#01269    create name = Tok_Mid_SignSmasherCableS07 
+          
+#01270    Wait 0.02 seconds 
+#01271    Kill name = Tok_Mid_SignSmasherCableS07 
+          
+#01272    create name = Tok_Mid_SignSmasherCableS08 
+          
+#01273    Wait 0.02 seconds 
+#01274    Kill name = Tok_Mid_SignSmasherCableS08 
+          
+#01275    create name = Tok_Mid_SignSmasherCableS09 
+          
+#01276    Wait 0.02 seconds 
+#01277    Kill name = Tok_Mid_SignSmasherCableS09 
+          
+#01278    create name = Tok_Mid_SignSmasherCableS10 
+          
+#01279    Wait 0.03 seconds 
+#01280    Kill name = Tok_Mid_SignSmasherCableS10 
+          
+#01281    create name = Tok_Mid_SignSmasherCableS11 
+          
+#01282    Wait 0.03 seconds 
+#01283    Kill name = Tok_Mid_SignSmasherCableS11 
+          
+#01284    create name = Tok_Mid_SignSmasherCableS12 
+          
+#01285    Wait 0.03 seconds 
+#01286    Kill name = Tok_Mid_SignSmasherCableS12 
+          
+#01287    create name = Tok_Mid_SignSmasherCableS13 
+          
+#01288    Wait 0.04 seconds 
+#01289    Kill name = Tok_Mid_SignSmasherCableS13 
+          
+#01290    create name = Tok_Mid_SignSmasherCableS14 
+          
+#01291    Wait 0.04 seconds 
+#01292    Kill name = Tok_Mid_SignSmasherCableS14 
+          
+#01293    create name = Tok_Mid_SignSmasherCableS15 
+          
+#01294    Wait 0.05 seconds 
+#01295    Kill name = Tok_Mid_SignSmasherCableS15 
+          
+#01296    create name = Tok_Mid_SignSmasherCableS16 
+          
+#01297    Wait 0.05 seconds 
+#01298    Kill name = Tok_Mid_SignSmasherCableS16 
+          
+#01299    create name = Tok_Mid_SignSmasherCableS17 
+          
+#01300    Wait 0.05 seconds 
+#01301    Kill name = Tok_Mid_SignSmasherCableS17 
+          
+#01302    create name = Tok_Mid_SignSmasherCableGOS 
+          
+#01303  END FUNCTION
+          
+#01304  FUNCTION JS_Mid_CableControllerNX 
+#01306    PlaySound bitchslap2 vol = 200 
+          pitch = 500 
+          
+#01307    Kill name = Tok_Mid_SignSmasherCableN00 
+          
+#01308    create name = Tok_Mid_SignCableSparkN 
+          
+#01309    Shatter name = Tok_Mid_SignCableSparkN 
+          area = 10000.0 
+          variance = 8.0 
+          vel_x = -10.0 
+          vel_y = -2.0 
+          vel_z = 0.0 
+          spread = 0.1 
+          
+#01310    Kill name = Tok_Mid_SignCableSparkN 
+          
+#01311    create name = Tok_Mid_SignSmasherCableN01 
+          
+#01312    Wait 0.03 seconds 
+#01313    Kill name = Tok_Mid_SignSmasherCableN01 
+          
+#01314    create name = Tok_Mid_SignSmasherCableN02 
+          
+#01315    Wait 0.03 seconds 
+#01316    Kill name = Tok_Mid_SignSmasherCableN02 
+          
+#01317    create name = Tok_Mid_SignSmasherCableN03 
+          
+#01318    Wait 0.03 seconds 
+#01319    Kill name = Tok_Mid_SignSmasherCableN03 
+          
+#01320    create name = Tok_Mid_SignSmasherCableN04 
+          
+#01321    Wait 0.03 seconds 
+#01322    Kill name = Tok_Mid_SignSmasherCableN04 
+          
+#01323    create name = Tok_Mid_SignSmasherCableN05 
+          
+#01324    Wait 0.03 seconds 
+#01325    Kill name = Tok_Mid_SignSmasherCableN05 
+          
+#01326    create name = Tok_Mid_SignSmasherCableN06 
+          
+#01327    Wait 0.03 seconds 
+#01328    Kill name = Tok_Mid_SignSmasherCableN06 
+          
+#01329    create name = Tok_Mid_SignSmasherCableN07 
+          
+#01330    Wait 0.03 seconds 
+#01331    Kill name = Tok_Mid_SignSmasherCableN07 
+          
+#01332    create name = Tok_Mid_SignSmasherCableN08 
+          
+#01333    Wait 0.03 seconds 
+#01334    Kill name = Tok_Mid_SignSmasherCableN08 
+          
+#01335    create name = Tok_Mid_SignSmasherCableN09 
+          
+#01336    Wait 0.03 seconds 
+#01337    Kill name = Tok_Mid_SignSmasherCableN09 
+          
+#01338    create name = Tok_Mid_SignSmasherCableN10 
+          
+#01339    Wait 0.03 seconds 
+#01340    Kill name = Tok_Mid_SignSmasherCableN10 
+          
+#01341    create name = Tok_Mid_SignSmasherCableN11 
+          
+#01342    Wait 0.04 seconds 
+#01343    Kill name = Tok_Mid_SignSmasherCableN11 
+          
+#01344    create name = Tok_Mid_SignSmasherCableN12 
+          
+#01345    Wait 0.04 seconds 
+#01346    Kill name = Tok_Mid_SignSmasherCableN12 
+          
+#01347    create name = Tok_Mid_SignSmasherCableN13 
+          
+#01348    Wait 0.05 seconds 
+#01349    Kill name = Tok_Mid_SignSmasherCableN13 
+          
+#01350    create name = Tok_Mid_SignSmasherCableN14 
+          
+#01351    Wait 0.05 seconds 
+#01352    Kill name = Tok_Mid_SignSmasherCableN14 
+          
+#01353    create name = Tok_Mid_SignSmasherCableN15 
+          
+#01354    Wait 0.05 seconds 
+#01355    Kill name = Tok_Mid_SignSmasherCableN15 
+          
+#01356    create name = Tok_Mid_SignSmasherCableN16 
+          
+#01357    Wait 0.05 seconds 
+#01358    Kill name = Tok_Mid_SignSmasherCableN16 
+          
+#01359    create name = Tok_Mid_SignSmasherCableN17 
+          
+#01360    Wait 0.05 seconds 
+#01361    Kill name = Tok_Mid_SignSmasherCableN17 
+          
+#01362    create name = Tok_Mid_SignSmasherCableGON 
+          
+#01363  END FUNCTION
+          
+#01364  FUNCTION JS_Mid_CableControllerSX 
+#01366    PlaySound bitchslap2 vol = 200 
+          pitch = 500 
+          
+#01367    Kill name = Tok_Mid_SignSmasherCableS00 
+          
+#01368    create name = Tok_Mid_SignCableSparkS 
+          
+#01369    Shatter name = Tok_Mid_SignCableSparkS 
+          area = 10000.0 
+          variance = 8.0 
+          vel_x = -10.0 
+          vel_y = -2.0 
+          vel_z = 0.0 
+          spread = 0.1 
+          
+#01370    Kill name = Tok_Mid_SignCableSparkS 
+          
+#01371    create name = Tok_Mid_SignSmasherCableS01 
+          
+#01372    Wait 0.03 seconds 
+#01373    Kill name = Tok_Mid_SignSmasherCableS01 
+          
+#01374    create name = Tok_Mid_SignSmasherCableS02 
+          
+#01375    Wait 0.03 seconds 
+#01376    Kill name = Tok_Mid_SignSmasherCableS02 
+          
+#01377    create name = Tok_Mid_SignSmasherCableS03 
+          
+#01378    Wait 0.03 seconds 
+#01379    Kill name = Tok_Mid_SignSmasherCableS03 
+          
+#01380    create name = Tok_Mid_SignSmasherCableS04 
+          
+#01381    Wait 0.03 seconds 
+#01382    Kill name = Tok_Mid_SignSmasherCableS04 
+          
+#01383    create name = Tok_Mid_SignSmasherCableS05 
+          
+#01384    Wait 0.03 seconds 
+#01385    Kill name = Tok_Mid_SignSmasherCableS05 
+          
+#01386    create name = Tok_Mid_SignSmasherCableS06 
+          
+#01387    Wait 0.03 seconds 
+#01388    Kill name = Tok_Mid_SignSmasherCableS06 
+          
+#01389    create name = Tok_Mid_SignSmasherCableS07 
+          
+#01390    Wait 0.03 seconds 
+#01391    Kill name = Tok_Mid_SignSmasherCableS07 
+          
+#01392    create name = Tok_Mid_SignSmasherCableS08 
+          
+#01393    Wait 0.03 seconds 
+#01394    Kill name = Tok_Mid_SignSmasherCableS08 
+          
+#01395    create name = Tok_Mid_SignSmasherCableS09 
+          
+#01396    Wait 0.03 seconds 
+#01397    Kill name = Tok_Mid_SignSmasherCableS09 
+          
+#01398    create name = Tok_Mid_SignSmasherCableS10 
+          
+#01399    Wait 0.03 seconds 
+#01400    Kill name = Tok_Mid_SignSmasherCableS10 
+          
+#01401    create name = Tok_Mid_SignSmasherCableS11 
+          
+#01402    Wait 0.04 seconds 
+#01403    Kill name = Tok_Mid_SignSmasherCableS11 
+          
+#01404    create name = Tok_Mid_SignSmasherCableS12 
+          
+#01405    Wait 0.04 seconds 
+#01406    Kill name = Tok_Mid_SignSmasherCableS12 
+          
+#01407    create name = Tok_Mid_SignSmasherCableS13 
+          
+#01408    Wait 0.05 seconds 
+#01409    Kill name = Tok_Mid_SignSmasherCableS13 
+          
+#01410    create name = Tok_Mid_SignSmasherCableS14 
+          
+#01411    Wait 0.05 seconds 
+#01412    Kill name = Tok_Mid_SignSmasherCableS14 
+          
+#01413    create name = Tok_Mid_SignSmasherCableS15 
+          
+#01414    Wait 0.05 seconds 
+#01415    Kill name = Tok_Mid_SignSmasherCableS15 
+          
+#01416    create name = Tok_Mid_SignSmasherCableS16 
+          
+#01417    Wait 0.05 seconds 
+#01418    Kill name = Tok_Mid_SignSmasherCableS16 
+          
+#01419    create name = Tok_Mid_SignSmasherCableS17 
+          
+#01420    Wait 0.05 seconds 
+#01421    Kill name = Tok_Mid_SignSmasherCableS17 
+          
+#01422    create name = Tok_Mid_SignSmasherCableGOS 
+          
+#01423  END FUNCTION
+          
+#01424  FUNCTION JS_Mid_Smasher_CableGON 
+#01426    Obj_RotX angle = -120 
+          speed = 150 
+          FLAG_MAX_COORDS 
+#01427    Obj_WaitRotate 
+#01428    Die 
+#01429  END FUNCTION
+          
+#01430  FUNCTION JS_Mid_Smasher_CableGOS 
+#01432    Obj_RotX angle = -120 
+          speed = 150 
+          FLAG_MAX_COORDS 
+#01433    Obj_WaitRotate 
+#01434    Die 
+#01435  END FUNCTION
+          
+#01436  JS_MID_LAMP_SHAKE = 1 
+        
+#01440  FUNCTION JS_Mid_Lamp_WaitForSignal 
+#01442    LOOP 
+#01443      IF Obj_FlagSet JS_MID_LAMP_SHAKE clear 
+#01444        JS_Mid_Lamp_ShakeViolently 
+#01445      END IF 
+#01446      Wait 6 gameframes 
+#01447    END LOOP 
+#01448  END FUNCTION
+          
+#01449  FUNCTION JS_Mid_Lamp_ShakeViolently 
+#01451    LOOP 
+#01452      Obj_PlaySound Tok_hitlantern pitch = RANDOM[5][16; 22; 28; 34; 40]
+            
+            60 JUMP 0x23000000 80 JUMP 0x19000000 100 JUMP 0x0f000000 120 JUMP 0x05000000 140 
+#01453      Obj_RotY angle = 20 
+            speed = 500 
+            FLAG_MAX_COORDS 
+#01454      Obj_WaitRotate 
+#01455      Obj_RotY angle = -40 
+            speed = 500 
+            FLAG_MAX_COORDS 
+#01456      Obj_WaitRotate 
+#01457      Obj_RotY angle = 20 
+            speed = 500 
+            FLAG_MAX_COORDS 
+#01458      Obj_WaitRotate 
+#01459    END LOOP 4 
+#01460  END FUNCTION
+          
+#01461  FUNCTION JS_Mid_Lamp_ShakeTrigger 
+#01463    SendFlag JS_MID_LAMP_SHAKE links 
+#01464  END FUNCTION
+          
+#01465  FUNCTION JS_Mid_Blimpie 
+#01468    create name = Tok_Mid_BlimpMeter00 
+          
+#01469    Obj_PlaySound Tok_Blimp1a 
+#01470    Wait 0.02 seconds 
+#01471    Kill name = Tok_Mid_BlimpMeter00 
+          
+#01472    create name = Tok_Mid_BlimpMeter01 
+          
+#01473    Obj_PlaySound Tok_Blimp1a 
+#01474    Wait 0.02 seconds 
+#01475    Kill name = Tok_Mid_BlimpMeter01 
+          
+#01476    create name = Tok_Mid_BlimpMeter02 
+          
+#01477    Obj_PlaySound Tok_Blimp1a 
+#01478    Wait 0.02 seconds 
+#01479    Kill name = Tok_Mid_BlimpMeter02 
+          
+#01480    create name = Tok_Mid_BlimpMeter03 
+          
+#01481    Obj_PlaySound Tok_Blimp1a 
+#01482    Wait 0.02 seconds 
+#01483    Kill name = Tok_Mid_BlimpMeter03 
+          
+#01484    create name = Tok_Mid_BlimpMeter04 
+          
+#01485    Obj_PlaySound Tok_Blimp1a 
+#01486    Wait 0.02 seconds 
+#01487    Kill name = Tok_Mid_BlimpMeter04 
+          
+#01488    create name = Tok_Mid_BlimpMeter05 
+          
+#01489    Obj_PlaySound Tok_Blimp1a 
+#01490    Wait 0.02 seconds 
+#01491    Kill name = Tok_Mid_BlimpMeter05 
+          
+#01492    create name = Tok_Mid_BlimpMeter06 
+          
+#01493    Obj_PlaySound Tok_Blimp1a 
+#01494    Wait 0.02 seconds 
+#01495    Kill name = Tok_Mid_BlimpMeter06 
+          
+#01496    create name = Tok_Mid_BlimpMeter07 
+          
+#01497    Obj_PlaySound Tok_Blimp1a 
+#01498    Wait 0.02 seconds 
+#01499    Kill name = Tok_Mid_BlimpMeter07 
+          
+#01500    create name = Tok_Mid_BlimpMeter08 
+          
+#01501    Obj_PlaySound Tok_Blimp1a 
+#01502    Wait 0.02 seconds 
+#01503    Kill name = Tok_Mid_BlimpMeter08 
+          
+#01504    create name = Tok_Mid_BlimpMeter09 
+          
+#01505    Obj_PlaySound Tok_Blimp1a 
+#01506    Wait 0.02 seconds 
+#01507    Kill name = Tok_Mid_BlimpMeter09 
+          
+#01508    create name = Tok_Mid_BlimpMeter10 
+          
+#01509    Obj_PlaySound Tok_Blimp1a 
+#01510    Wait 0.02 seconds 
+#01511    Kill name = Tok_Mid_BlimpMeter10 
+          
+#01512    create name = Tok_Mid_BlimpMeter11 
+          
+#01513    Obj_PlaySound Tok_Blimp1a 
+#01514    Wait 0.02 seconds 
+#01515    Kill name = Tok_Mid_BlimpMeter11 
+          
+#01516    create name = Tok_Mid_BlimpMeter12 
+          
+#01517    Obj_PlaySound Tok_Blimp1a 
+#01518    Wait 0.02 seconds 
+#01519    Kill name = Tok_Mid_BlimpMeter12 
+          
+#01520    create name = Tok_Mid_BlimpMeter13 
+          
+#01521    Obj_PlaySound Tok_Blimp1a 
+#01522    Wait 0.02 seconds 
+#01523    Kill name = Tok_Mid_BlimpMeter13 
+          
+#01524    create name = Tok_Mid_BlimpMeter14 
+          
+#01525    Obj_PlaySound Tok_Blimp1a 
+#01526    Wait 0.02 seconds 
+#01527    Kill name = Tok_Mid_BlimpMeter14 
+          
+#01528    create name = Tok_Mid_BlimpMeter15 
+          
+#01529    Obj_PlaySound Tok_Blimp1a 
+#01530    Wait 0.02 seconds 
+#01531    Kill name = Tok_Mid_BlimpMeter15 
+          
+#01532  END FUNCTION
+          
+#01533  FUNCTION JS_Mid_Blimpie_Rev 
+#01535    create name = Tok_Mid_BlimpMeter15 
+          
+#01536    Obj_PlaySound Tok_Blimp1a 
+#01537    Wait 0.02 seconds 
+#01538    Kill name = Tok_Mid_BlimpMeter15 
+          
+#01539    create name = Tok_Mid_BlimpMeter14 
+          
+#01540    Obj_PlaySound Tok_Blimp1a 
+#01541    Wait 0.02 seconds 
+#01542    Kill name = Tok_Mid_BlimpMeter14 
+          
+#01543    create name = Tok_Mid_BlimpMeter13 
+          
+#01544    Obj_PlaySound Tok_Blimp1a 
+#01545    Wait 0.02 seconds 
+#01546    Kill name = Tok_Mid_BlimpMeter13 
+          
+#01547    create name = Tok_Mid_BlimpMeter12 
+          
+#01548    Obj_PlaySound Tok_Blimp1a 
+#01549    Wait 0.02 seconds 
+#01550    Kill name = Tok_Mid_BlimpMeter12 
+          
+#01551    create name = Tok_Mid_BlimpMeter11 
+          
+#01552    Obj_PlaySound Tok_Blimp1a 
+#01553    Wait 0.02 seconds 
+#01554    Kill name = Tok_Mid_BlimpMeter11 
+          
+#01555    create name = Tok_Mid_BlimpMeter10 
+          
+#01556    Obj_PlaySound Tok_Blimp1a 
+#01557    Wait 0.02 seconds 
+#01558    Kill name = Tok_Mid_BlimpMeter10 
+          
+#01559    create name = Tok_Mid_BlimpMeter09 
+          
+#01560    Obj_PlaySound Tok_Blimp1a 
+#01561    Wait 0.02 seconds 
+#01562    Kill name = Tok_Mid_BlimpMeter09 
+          
+#01563    create name = Tok_Mid_BlimpMeter08 
+          
+#01564    Obj_PlaySound Tok_Blimp1a 
+#01565    Wait 0.02 seconds 
+#01566    Kill name = Tok_Mid_BlimpMeter08 
+          
+#01567    create name = Tok_Mid_BlimpMeter07 
+          
+#01568    Obj_PlaySound Tok_Blimp1a 
+#01569    Wait 0.02 seconds 
+#01570    Kill name = Tok_Mid_BlimpMeter07 
+          
+#01571    create name = Tok_Mid_BlimpMeter06 
+          
+#01572    Obj_PlaySound Tok_Blimp1a 
+#01573    Wait 0.02 seconds 
+#01574    Kill name = Tok_Mid_BlimpMeter06 
+          
+#01575    create name = Tok_Mid_BlimpMeter05 
+          
+#01576    Obj_PlaySound Tok_Blimp1a 
+#01577    Wait 0.02 seconds 
+#01578    Kill name = Tok_Mid_BlimpMeter05 
+          
+#01579    create name = Tok_Mid_BlimpMeter04 
+          
+#01580    Obj_PlaySound Tok_Blimp1a 
+#01581    Wait 0.02 seconds 
+#01582    Kill name = Tok_Mid_BlimpMeter04 
+          
+#01583    create name = Tok_Mid_BlimpMeter03 
+          
+#01584    Obj_PlaySound Tok_Blimp1a 
+#01585    Wait 0.02 seconds 
+#01586    Kill name = Tok_Mid_BlimpMeter03 
+          
+#01587    create name = Tok_Mid_BlimpMeter02 
+          
+#01588    Obj_PlaySound Tok_Blimp1a 
+#01589    Wait 0.02 seconds 
+#01590    Kill name = Tok_Mid_BlimpMeter02 
+          
+#01591    create name = Tok_Mid_BlimpMeter01 
+          
+#01592    Obj_PlaySound Tok_Blimp1a 
+#01593    Wait 0.02 seconds 
+#01594    Kill name = Tok_Mid_BlimpMeter01 
+          
+#01595    create name = Tok_Mid_BlimpMeter00 
+          
+#01596    Obj_PlaySound Tok_Blimp1a 
+#01597    Wait 0.02 seconds 
+#01598    Kill name = Tok_Mid_BlimpMeter00 
+          
+#01599  END FUNCTION
+          
+#01600  FUNCTION JS_Mid_BlimpMeter00 
+#01602    create name = Tok_Mid_BlimpMeter00 
+          
+#01603    Obj_PlaySound Tok_Blimp1a 
+#01604    Wait 0.5 seconds 
+#01605    Kill name = Tok_Mid_BlimpMeter00 
+          
+#01606  END FUNCTION
+          
+#01607  FUNCTION JS_Mid_BlimpMeter01 
+#01609    create name = Tok_Mid_BlimpMeter01 
+          
+#01610    Obj_PlaySound Tok_Blimp1a 
+#01611    Wait 0.5 seconds 
+#01612    Kill name = Tok_Mid_BlimpMeter01 
+          
+#01613  END FUNCTION
+          
+#01614  FUNCTION JS_Mid_BlimpMeter02 
+#01616    create name = Tok_Mid_BlimpMeter02 
+          
+#01617    Obj_PlaySound Tok_Blimp1a 
+#01618    Wait 0.5 seconds 
+#01619    Kill name = Tok_Mid_BlimpMeter02 
+          
+#01620  END FUNCTION
+          
+#01621  FUNCTION JS_Mid_BlimpMeter03 
+#01623    create name = Tok_Mid_BlimpMeter03 
+          
+#01624    Obj_PlaySound Tok_Blimp1a 
+#01625    Wait 0.5 seconds 
+#01626    Kill name = Tok_Mid_BlimpMeter03 
+          
+#01627  END FUNCTION
+          
+#01628  FUNCTION JS_Mid_BlimpMeter04 
+#01630    create name = Tok_Mid_BlimpMeter04 
+          
+#01631    Obj_PlaySound Tok_Blimp1a 
+#01632    Wait 0.5 seconds 
+#01633    Kill name = Tok_Mid_BlimpMeter04 
+          
+#01634  END FUNCTION
+          
+#01635  FUNCTION JS_Mid_BlimpMeter05 
+#01637    create name = Tok_Mid_BlimpMeter05 
+          
+#01638    Obj_PlaySound Tok_Blimp1a 
+#01639    Wait 0.5 seconds 
+#01640    Kill name = Tok_Mid_BlimpMeter05 
+          
+#01641  END FUNCTION
+          
+#01642  FUNCTION JS_Mid_BlimpMeter06 
+#01644    create name = Tok_Mid_BlimpMeter06 
+          
+#01645    Obj_PlaySound Tok_Blimp1a 
+#01646    Wait 0.5 seconds 
+#01647    Kill name = Tok_Mid_BlimpMeter06 
+          
+#01648  END FUNCTION
+          
+#01649  FUNCTION JS_Mid_BlimpMeter07 
+#01651    create name = Tok_Mid_BlimpMeter07 
+          
+#01652    Obj_PlaySound Tok_Blimp1a 
+#01653    Wait 0.5 seconds 
+#01654    Kill name = Tok_Mid_BlimpMeter07 
+          
+#01655  END FUNCTION
+          
+#01656  FUNCTION JS_Mid_BlimpMeter08 
+#01658    create name = Tok_Mid_BlimpMeter08 
+          
+#01659    Obj_PlaySound Tok_Blimp1a 
+#01660    Wait 0.5 seconds 
+#01661    Kill name = Tok_Mid_BlimpMeter08 
+          
+#01662  END FUNCTION
+          
+#01663  FUNCTION JS_Mid_BlimpMeter09 
+#01665    create name = Tok_Mid_BlimpMeter09 
+          
+#01666    Obj_PlaySound Tok_Blimp1a 
+#01667    Wait 0.5 seconds 
+#01668    Kill name = Tok_Mid_BlimpMeter09 
+          
+#01669  END FUNCTION
+          
+#01670  FUNCTION JS_Mid_BlimpMeter10 
+#01672    create name = Tok_Mid_BlimpMeter10 
+          
+#01673    Obj_PlaySound Tok_Blimp1a 
+#01674    Wait 0.5 seconds 
+#01675    Kill name = Tok_Mid_BlimpMeter10 
+          
+#01676  END FUNCTION
+          
+#01677  FUNCTION JS_Mid_BlimpMeter11 
+#01679    create name = Tok_Mid_BlimpMeter11 
+          
+#01680    Obj_PlaySound Tok_Blimp1a 
+#01681    Wait 0.5 seconds 
+#01682    Kill name = Tok_Mid_BlimpMeter11 
+          
+#01683  END FUNCTION
+          
+#01684  FUNCTION JS_Mid_BlimpMeter12 
+#01686    create name = Tok_Mid_BlimpMeter12 
+          
+#01687    Obj_PlaySound Tok_Blimp1a 
+#01688    Wait 0.5 seconds 
+#01689    Kill name = Tok_Mid_BlimpMeter12 
+          
+#01690  END FUNCTION
+          
+#01691  FUNCTION JS_Mid_BlimpMeter13 
+#01693    create name = Tok_Mid_BlimpMeter13 
+          
+#01694    Obj_PlaySound Tok_Blimp1a 
+#01695    Wait 0.5 seconds 
+#01696    Kill name = Tok_Mid_BlimpMeter13 
+          
+#01697  END FUNCTION
+          
+#01698  FUNCTION JS_Mid_BlimpMeter14 
+#01700    create name = Tok_Mid_BlimpMeter14 
+          
+#01701    Obj_PlaySound Tok_Blimp1a 
+#01702    Wait 0.5 seconds 
+#01703    Kill name = Tok_Mid_BlimpMeter14 
+          
+#01704  END FUNCTION
+          
+#01705  FUNCTION JS_Mid_BlimpMeter15 
+#01707    create name = Tok_Mid_BlimpMeter15 
+          
+#01708    Obj_PlaySound Tok_Blimp1a 
+#01709    Wait 0.5 seconds 
+#01710    Kill name = Tok_Mid_BlimpMeter15 
+          
+#01711  END FUNCTION
+          
+#01712  FUNCTION JS_Tok_NetObserver 
+#01716    JS_Invis_NetObserver 
+#01720  END FUNCTION
+          
+#01721  FUNCTION JS_Invis_NetObserver 
+#01723  END FUNCTION
+          
+#01726  FUNCTION JS_Gap_CaliforniaRollInRailWest 
+#01732    StartGap GapID = JS_Tok_WRollin2ERollin 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#01733    EndGap GapID = JS_Tok_ERollin2WRollin 
+          gapscript = JS_CaliforniaRollInRail 
+          
+#01734  END FUNCTION
+          
+#01735  FUNCTION JS_Gap_CaliforniaRollInRailEast 
+#01737    StartGap GapID = JS_Tok_ERollin2WRollin 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#01738    EndGap GapID = JS_Tok_WRollin2ERollin 
+          gapscript = JS_CaliforniaRollInRail 
+          
+#01739  END FUNCTION
+          
+#01740  FUNCTION JS_CaliforniaRollInRail 
+#01742    PlaySound HUD_JumpGap vol = 100 
+          
+#01743    StartGap GapID = CaliforniaRollInRail 
+          
+#01744    Wait 1 frame 
+#01745    EndGap GapID = CaliforniaRollInRail 
+          text = "WEAK ASSED CALIFORNIA ROLLIN RAIL" 
+          score = 50 
+          
+#01747  END FUNCTION
+          
+#01748  FUNCTION JS_Gap_ConDom_RampNorth 
+#01752    StartGap GapID = JS_Tok_NWRamp2NW3Ledge 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#01753    EndGap GapID = JS_Tok_NW3Ledge2NWRamp 
+          gapscript = JS_Gap_ConDom_Ramp 
+          
+#01754  END FUNCTION
+          
+#01755  FUNCTION JS_Gap_ConDom_RampSouth 
+#01757    StartGap GapID = JS_Tok_NW3Ledge2NWRamp 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#01758    EndGap GapID = JS_Tok_NWRamp2NW3Ledge 
+          gapscript = JS_Gap_ConDom_Ramp 
+          
+#01759  END FUNCTION
+          
+#01760  FUNCTION JS_Gap_ConDom_Ramp 
+#01762    PlaySound HUD_JumpGap vol = 100 
+          
+#01763    StartGap GapID = ConDomRamp 
+          
+#01764    Wait 1 frame 
+#01765    EndGap GapID = ConDomRamp 
+          text = "HAMAGURI GAP" 
+          score = 50 
+          
+#01766  END FUNCTION
+          
+#01767  FUNCTION JS_Gap_ConDom_LedgeNorth 
+#01771    StartGap GapID = JS_Tok_NW2Ledge2NW3Ledge 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#01772    EndGap GapID = JS_Tok_NW3Ledge2NW2Ledge 
+          gapscript = JS_ConDom_Ledge 
+          
+#01773  END FUNCTION
+          
+#01774  FUNCTION JS_Gap_ConDom_LedgeSouth 
+#01776    StartGap GapID = JS_Tok_NW3Ledge2NW2Ledge 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#01777    EndGap GapID = JS_Tok_NW2Ledge2NW3Ledge 
+          gapscript = JS_ConDom_Ledge 
+          
+#01778  END FUNCTION
+          
+#01779  FUNCTION JS_ConDom_Ledge 
+#01781    PlaySound HUD_JumpGap vol = 100 
+          
+#01782    StartGap GapID = ConDomLedge 
+          
+#01783    Wait 1 frame 
+#01784    EndGap GapID = ConDomLedge 
+          text = "TAIRAGAI GAP" 
+          score = 150 
+          
+#01785  END FUNCTION
+          
+#01786  FUNCTION JS_Gap_ConDom_CrazyNorth 
+#01790    StartGap GapID = JS_Tok_NW3Ledge2MW1Ledge 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#01791    EndGap GapID = JS_Tok_MW1Ledge2NW3Ledge 
+          gapscript = JS_Gap_ConDom_Crazy 
+          
+#01792  END FUNCTION
+          
+#01793  FUNCTION JS_Gap_ConDom_CrazySouth 
+#01795    StartGap GapID = JS_Tok_MW1Ledge2NW3Ledge 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#01796    EndGap GapID = JS_Tok_NW3Ledge2MW1Ledge 
+          gapscript = JS_Gap_ConDom_Crazy 
+          
+#01797  END FUNCTION
+          
+#01798  FUNCTION JS_Gap_ConDom_Crazy 
+#01800    PlaySound HUD_JumpGap vol = 100 
+          
+#01801    StartGap GapID = ConDomCrazy 
+          
+#01802    Wait 1 frame 
+#01803    EndGap GapID = ConDomCrazy 
+          text = "GYOZA GAP" 
+          score = 50 
+          
+#01804  END FUNCTION
+          
+#01805  FUNCTION JS_Gap_Crazy_BusNorth 
+#01809    StartGap GapID = JS_Tok_MW1Ledge2MBusStop 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#01810    EndGap GapID = JS_Tok_MBusStop2MW1Ledge 
+          gapscript = JS_Gap_Crazy_Bus 
+          
+#01811  END FUNCTION
+          
+#01812  FUNCTION JS_Gap_Crazy_BusSouth 
+#01814    StartGap GapID = JS_Tok_MBusStop2MW1Ledge 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#01815    EndGap GapID = JS_Tok_MW1Ledge2MBusStop 
+          gapscript = JS_Gap_Crazy_Bus 
+          
+#01816  END FUNCTION
+          
+#01817  FUNCTION JS_Gap_Crazy_Bus 
+#01819    PlaySound HUD_JumpGap vol = 100 
+          
+#01820    StartGap GapID = CrazyBus 
+          
+#01821    Wait 1 frame 
+#01822    EndGap GapID = CrazyBus 
+          text = "SHUMAI GAP" 
+          score = 50 
+          
+#01823  END FUNCTION
+          
+#01824  FUNCTION JS_Gap_Bus_PastryNorth 
+#01828    StartGap GapID = JS_Tok_MBusStop2MW3Ledge 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL 
+          )
+          
+#01829    EndGap GapID = JS_Tok_MW3Ledge2MBusStop 
+          gapscript = JS_Gap_Bus_Pastry 
+          
+#01830  END FUNCTION
+          
+#01831  FUNCTION JS_Gap_Bus_PastrySouth 
+#01833    StartGap GapID = JS_Tok_MW3Ledge2MBusStop 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL 
+          )
+          
+#01834    EndGap GapID = JS_Tok_MBusStop2MW3Ledge 
+          gapscript = JS_Gap_Bus_Pastry 
+          
+#01835  END FUNCTION
+          
+#01836  FUNCTION JS_Gap_Bus_Pastry 
+#01838    PlaySound HUD_JumpGap vol = 100 
+          
+#01839    StartGap GapID = BusPastry 
+          
+#01840    Wait 1 frame 
+#01841    EndGap GapID = BusPastry 
+          text = "CHAKINZUSHI GAP" 
+          score = 75 
+          
+#01842  END FUNCTION
+          
+#01843  FUNCTION JS_Gap_FunBun_DropNorth 
+#01847    StartGap GapID = JS_Tok_NW3Ledge22Drop 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#01848  END FUNCTION
+          
+#01849  FUNCTION JS_Gap_FunBun_DropSouth 
+#01851    EndGap GapID = JS_Tok_NW3Ledge22Drop 
+          gapscript = JS_Gap_FunBun_Drop 
+          
+#01852  END FUNCTION
+          
+#01853  FUNCTION JS_Gap_FunBun_Drop 
+#01855    PlaySound HUD_JumpGap vol = 100 
+          
+#01856    StartGap GapID = FunBunDrop 
+          
+#01857    Wait 1 frame 
+#01858    EndGap GapID = FunBunDrop 
+          text = "TORIGAI GAP" 
+          score = 250 
+          
+#01859  END FUNCTION
+          
+#01860  FUNCTION JS_Gap_StandW_LedgeNorth 
+#01864    StartGap GapID = JS_Tok_StandRear2NW2Ledge 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#01865    EndGap GapID = JS_Tok_NW2Ledge2StandRear 
+          gapscript = JS_Gap_StandW_Ledge 
+          
+#01866  END FUNCTION
+          
+#01867  FUNCTION JS_Gap_StandW_LedgeSouth 
+#01869    StartGap GapID = JS_Tok_NW2Ledge2StandRear 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#01870    EndGap GapID = JS_Tok_StandRear2NW2Ledge 
+          gapscript = JS_Gap_StandW_Ledge 
+          
+#01871  END FUNCTION
+          
+#01872  FUNCTION JS_Gap_StandW_Ledge 
+#01874    PlaySound HUD_JumpGap vol = 100 
+          
+#01875    StartGap GapID = StandWLedge 
+          
+#01876    Wait 1 frame 
+#01877    EndGap GapID = StandWLedge 
+          text = "HIDARI AOYAGI" 
+          score = 150 
+          
+#01878  END FUNCTION
+          
+#01879  FUNCTION JS_Gap_StandW_StandMWest 
+#01883    StartGap GapID = JS_Tok_StandW2StandM 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#01884    EndGap GapID = JS_Tok_StandM2StandW 
+          gapscript = JS_Gap_StandW_StandM 
+          
+#01885  END FUNCTION
+          
+#01886  FUNCTION JS_Gap_StandW_StandMEast 
+#01888    StartGap GapID = JS_Tok_StandM2StandW 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#01889    EndGap GapID = JS_Tok_StandW2StandM 
+          gapscript = JS_Gap_StandW_StandM 
+          
+#01890  END FUNCTION
+          
+#01891  FUNCTION JS_Gap_StandW_StandM 
+#01893    PlaySound HUD_JumpGap vol = 100 
+          
+#01894    StartGap GapID = StandWStandM 
+          
+#01895    Wait 1 frame 
+#01896    EndGap GapID = StandWStandM 
+          text = "HIDARI MEN" 
+          score = 250 
+          
+#01897  END FUNCTION
+          
+#01898  FUNCTION JS_Gap_StandE_StandMEast 
+#01902    StartGap GapID = JS_Tok_StandE2StandM 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#01903    EndGap GapID = JS_Tok_StandM2StandE 
+          gapscript = JS_Gap_StandE_StandM 
+          
+#01904  END FUNCTION
+          
+#01905  FUNCTION JS_Gap_StandE_StandMWest 
+#01907    StartGap GapID = JS_Tok_StandM2StandE 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#01908    EndGap GapID = JS_Tok_StandE2StandM 
+          gapscript = JS_Gap_StandE_StandM 
+          
+#01909  END FUNCTION
+          
+#01910  FUNCTION JS_Gap_StandE_StandM 
+#01912    PlaySound HUD_JumpGap vol = 100 
+          
+#01913    StartGap GapID = StandEStandM 
+          
+#01914    Wait 1 frame 
+#01915    EndGap GapID = StandEStandM 
+          text = "MIGI MEN" 
+          score = 250 
+          
+#01916  END FUNCTION
+          
+#01917  FUNCTION JS_Gap_StandE_LedgeNorth 
+#01921    StartGap GapID = JS_Tok_StandRear2NE2Sign 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#01922    EndGap GapID = JS_Tok_NE2Sign2StandRear 
+          gapscript = JS_Gap_StandE_Ledge 
+          
+#01923  END FUNCTION
+          
+#01924  FUNCTION JS_Gap_StandE_LedgeSouth 
+#01926    StartGap GapID = JS_Tok_NE2Sign2StandRear 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#01927    EndGap GapID = JS_Tok_StandRear2NE2Sign 
+          gapscript = JS_Gap_StandE_Ledge 
+          
+#01928  END FUNCTION
+          
+#01929  FUNCTION JS_Gap_StandE_Ledge 
+#01931    PlaySound HUD_JumpGap vol = 100 
+          
+#01932    StartGap GapID = StandELedge 
+          
+#01933    Wait 1 frame 
+#01934    EndGap GapID = StandELedge 
+          text = "MIGI AOYAGI" 
+          score = 150 
+          
+#01935  END FUNCTION
+          
+#01936  FUNCTION JS_Gap_Stand_PlatRailLo 
+#01940    StartGap GapID = JS_Tok_Stand2PlatRail 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL 
+          )
+          
+#01941  END FUNCTION
+          
+#01942  FUNCTION JS_Gap_Stand_PlatRailHi 
+#01944    EndGap GapID = JS_Tok_Stand2PlatRail 
+          gapscript = JS_Gap_Stand_PlatRail 
+          
+#01945  END FUNCTION
+          
+#01946  FUNCTION JS_Gap_Stand_PlatRail 
+#01948    PlaySound HUD_JumpGap vol = 100 
+          
+#01949    StartGap GapID = StandPlatRail 
+          
+#01950    Wait 1 frame 
+#01951    EndGap GapID = StandPlatRail 
+          text = "MEN AGARI" 
+          score = 1500 
+          
+#01952  END FUNCTION
+          
+#01953  FUNCTION JS_Gap_DaiKi_RampNorth 
+#01957    StartGap GapID = JS_Tok_NERamp2NE3Sign 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#01958    EndGap GapID = JS_Tok_NE3Sign2NERamp 
+          gapscript = JS_Gap_DaiKi_Ramp 
+          
+#01959  END FUNCTION
+          
+#01960  FUNCTION JS_Gap_DaiKi_RampSouth 
+#01962    StartGap GapID = JS_Tok_NE3Sign2NERamp 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#01963    EndGap GapID = JS_Tok_NERamp2NE3Sign 
+          gapscript = JS_Gap_DaiKi_Ramp 
+          
+#01964  END FUNCTION
+          
+#01965  FUNCTION JS_Gap_DaiKi_Ramp 
+#01967    PlaySound HUD_JumpGap vol = 100 
+          
+#01968    StartGap GapID = DaiKiRamp 
+          
+#01969    Wait 1 frame 
+#01970    EndGap GapID = DaiKiRamp 
+          text = "HOKKIGAI GAP" 
+          score = 50 
+          
+#01971  END FUNCTION
+          
+#01972  FUNCTION JS_Gap_Bat_DaiKiNorth 
+#01976    StartGap GapID = JS_Tok_NE2Sign2NE3Ledge 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#01977    EndGap GapID = JS_Tok_NE3Ledge2NE2Sign 
+          gapscript = JS_Gap_Bat_DaiKi 
+          
+#01978  END FUNCTION
+          
+#01979  FUNCTION JS_Gap_Bat_DaiKiSouth 
+#01981    StartGap GapID = JS_Tok_NE3Ledge2NE2Sign 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#01982    EndGap GapID = JS_Tok_NE2Sign2NE3Ledge 
+          gapscript = JS_Gap_Bat_DaiKi 
+          
+#01983  END FUNCTION
+          
+#01984  FUNCTION JS_Gap_Bat_DaiKi 
+#01986    PlaySound HUD_JumpGap vol = 100 
+          
+#01987    StartGap GapID = BatDaiki 
+          
+#01988    Wait 1 frame 
+#01989    EndGap GapID = BatDaiki 
+          text = "AKAGAI GAP" 
+          score = 150 
+          
+#01990  END FUNCTION
+          
+#01991  FUNCTION JS_Gap_DaiKi_MatsubitaUeNorth 
+#02012    StartGap GapID = JS_Tok_NE3Ledge2NE4Ledge 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL 
+          )
+          
+#02013    EndGap GapID = JS_Tok_NE4Ledge2NE3Ledge 
+          gapscript = JS_Gap_DaiKi_MatsubitaUe 
+          
+#02014  END FUNCTION
+          
+#02015  FUNCTION JS_Gap_DaiKi_MatsubitaUeSouth 
+#02017    StartGap GapID = JS_Tok_NE4Ledge2NE3Ledge 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL 
+          )
+          
+#02018    EndGap GapID = JS_Tok_NE3Ledge2NE4Ledge 
+          gapscript = JS_Gap_DaiKi_MatsubitaUe 
+          
+#02019  END FUNCTION
+          
+#02020  FUNCTION JS_Gap_DaiKi_MatsubitaUe 
+#02022    PlaySound HUD_JumpGap vol = 100 
+          
+#02023    StartGap GapID = DaiKiMatsubitaUe 
+          
+#02024    Wait 1 frame 
+#02025    EndGap GapID = DaiKiMatsubitaUe 
+          text = "HAMO GAP" 
+          score = 100 
+          
+#02026  END FUNCTION
+          
+#02027  FUNCTION JS_Gap_Matsubita_MonNorth 
+#02031    StartGap GapID = JS_Tok_NE4Ledge2MELedgeWall 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL 
+          )
+          
+#02032    EndGap GapID = JS_Tok_MELedge2NE4LedgeWall 
+          gapscript = JS_Gap_Matsubita_Mon 
+          
+#02033  END FUNCTION
+          
+#02034  FUNCTION JS_Gap_Matsubita_MonSouth 
+#02036    StartGap GapID = JS_Tok_MELedge2NE4LedgeWall 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL 
+          )
+          
+#02037    EndGap GapID = JS_Tok_NE4Ledge2MELedgeWall 
+          gapscript = JS_Gap_Matsubita_Mon 
+          
+#02038  END FUNCTION
+          
+#02039  FUNCTION JS_Gap_Matsubita_Mon 
+#02041    PlaySound HUD_JumpGap vol = 100 
+          
+#02042    StartGap GapID = MatsubitaMon 
+          
+#02043    Wait 1 frame 
+#02044    EndGap GapID = MatsubitaMon 
+          text = "KAPPA MAKI" 
+          score = 75 
+          
+#02045  END FUNCTION
+          
+#02046  FUNCTION JS_Gap_Kiddie_DaiKiNorth 
+#02050    StartGap GapID = JS_Tok_NE3Sign2NE4Ledge 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL 
+          )
+          
+#02051    EndGap GapID = JS_Tok_NE4Ledge2NE3Sign 
+          gapscript = JS_Gap_Kiddie_DaiKi 
+          
+#02052  END FUNCTION
+          
+#02053  FUNCTION JS_Gap_Kiddie_DaiKiSouth 
+#02055    StartGap GapID = JS_Tok_NE4Ledge2NE3Sign 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL 
+          )
+          
+#02056    EndGap GapID = JS_Tok_NE3Sign2NE4Ledge 
+          gapscript = JS_Gap_Kiddie_DaiKi 
+          
+#02057  END FUNCTION
+          
+#02058  FUNCTION JS_Gap_Kiddie_DaiKi 
+#02060    PlaySound HUD_JumpGap vol = 100 
+          
+#02061    StartGap GapID = KiddieDaiKi 
+          
+#02062    Wait 1 frame 
+#02063    EndGap GapID = KiddieDaiKi 
+          text = "KANPACHI GAP" 
+          score = 50 
+          
+#02064  END FUNCTION
+          
+#02065  FUNCTION JS_Gap_Kiddie_MonNorth 
+#02069    StartGap GapID = JS_Tok_NE4Ledge2MELedgeWall 
+          flags = ARRAY(
+            
+            REQUIRE_WALL CANCEL_GROUND CANCEL_MANUAL 
+          )
+          
+#02070  END FUNCTION
+          
+#02071  FUNCTION JS_Gap_Kiddie_MonSouth 
+#02073    EndGap GapID = JS_Tok_NE4Ledge2MELedgeWall 
+          gapscript = JS_Gap_Kiddie_Mon 
+          
+#02074  END FUNCTION
+          
+#02075  FUNCTION JS_Gap_Kiddie_Mon 
+#02077    PlaySound HUD_JumpGap vol = 100 
+          
+#02078    StartGap GapID = KiddieMon 
+          
+#02079    Wait 1 frame 
+#02080    EndGap GapID = KiddieMon 
+          text = "CHUTORO MAKI" 
+          score = 75 
+          
+#02081  END FUNCTION
+          
+#02082  FUNCTION JS_Gap_LampRail_RampSouth 
+#02105    StartGap GapID = JS_Tok_LampRail2NWRamp 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02106  END FUNCTION
+          
+#02107  FUNCTION JS_Gap_LampRail_RampNorth 
+#02109    EndGap GapID = JS_Tok_LampRail2NWRamp 
+          gapscript = JS_Gap_LampRail_Ramp 
+          
+#02110  END FUNCTION
+          
+#02111  FUNCTION JS_Gap_LampRail_Ramp 
+#02113    PlaySound HUD_JumpGap vol = 100 
+          
+#02114    StartGap GapID = LampRailRamp 
+          
+#02115    Wait 1 frame 
+#02116    EndGap GapID = LampRailRamp 
+          text = "TOSHIKOSHI SOBA OTOSHI" 
+          score = 400 
+          
+#02117  END FUNCTION
+          
+#02118  FUNCTION JS_Gap_Crazy_SkaboNorth 
+#02122    StartGap GapID = JS_Tok_MW1LedgeUp2MW2Ledge 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL 
+          )
+          
+#02123    EndGap GapID = JS_Tok_MW2LedgeDown2MW1Ledge 
+          gapscript = JS_Gap_Crazy_Skabo 
+          
+#02124  END FUNCTION
+          
+#02125  FUNCTION JS_Gap_Crazy_SkaboSouth 
+#02127    StartGap GapID = JS_Tok_MW2LedgeDown2MW1Ledge 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL 
+          )
+          
+#02128    EndGap GapID = JS_Tok_MW1LedgeUp2MW2Ledge 
+          gapscript = JS_Gap_Crazy_Skabo 
+          
+#02129  END FUNCTION
+          
+#02130  FUNCTION JS_Gap_Crazy_Skabo 
+#02132    PlaySound HUD_JumpGap vol = 100 
+          
+#02133    StartGap GapID = CrazySkabo 
+          
+#02134    Wait 1 frame 
+#02135    EndGap GapID = CrazySkabo 
+          text = "AMAEBI GAP" 
+          score = 200 
+          
+#02136  END FUNCTION
+          
+#02137  FUNCTION JS_Gap_Skabo_LedgeNorth 
+#02141    StartGap GapID = JS_Tok_MW2Ledge2MW3Ledge 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL 
+          )
+          
+#02142    EndGap GapID = JS_Tok_MW3Ledge2MW2Ledge 
+          gapscript = JS_Gap_Skabo_Ledge 
+          
+#02143  END FUNCTION
+          
+#02144  FUNCTION JS_Gap_Skabo_LedgeSouth 
+#02146    StartGap GapID = JS_Tok_MW3Ledge2MW2Ledge 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL 
+          )
+          
+#02147    EndGap GapID = JS_Tok_MW2Ledge2MW3Ledge 
+          gapscript = JS_Gap_Skabo_Ledge 
+          
+#02148  END FUNCTION
+          
+#02149  FUNCTION JS_Gap_Skabo_Ledge 
+#02151    PlaySound HUD_JumpGap vol = 100 
+          
+#02152    StartGap GapID = SkaboLedge 
+          
+#02153    Wait 1 frame 
+#02154    EndGap GapID = SkaboLedge 
+          text = "EDOMAE GAP" 
+          score = 75 
+          
+#02155  END FUNCTION
+          
+#02156  FUNCTION JS_Gap_Pastry_Ledge1North 
+#02160    StartGap GapID = JS_Tok_MW3Ledge2MW4Ledge 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02161  END FUNCTION
+          
+#02162  FUNCTION JS_Gap_Pastry_Ledge1South 
+#02164    EndGap GapID = JS_Tok_MW3Ledge2MW4Ledge 
+          gapscript = JS_Gap_Pastry_Ledge1 
+          
+#02165  END FUNCTION
+          
+#02166  FUNCTION JS_Gap_Pastry_Ledge1 
+#02168    PlaySound HUD_JumpGap vol = 100 
+          
+#02169    StartGap GapID = PastryLedge1 
+          
+#02170    Wait 1 frame 
+#02171    EndGap GapID = PastryLedge1 
+          text = "MEJI GAP" 
+          score = 100 
+          
+#02172  END FUNCTION
+          
+#02173  FUNCTION JS_Gap_Pastry_Ledge2North 
+#02177    StartGap GapID = JS_Tok_MW3Ledge2MW4Ledge2 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL 
+          )
+          
+#02178    EndGap GapID = JS_Tok_MW4Ledge2MW3Ledge2 
+          gapscript = JS_Gap_Pastry_Ledge2 
+          
+#02179  END FUNCTION
+          
+#02180  FUNCTION JS_Gap_Pastry_Ledge2South 
+#02182    StartGap GapID = JS_Tok_MW4Ledge2MW3Ledge2 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL 
+          )
+          
+#02183    EndGap GapID = JS_Tok_MW3Ledge2MW4Ledge2 
+          gapscript = JS_Gap_Pastry_Ledge2 
+          
+#02184  END FUNCTION
+          
+#02185  FUNCTION JS_Gap_Pastry_Ledge2 
+#02187    PlaySound HUD_JumpGap vol = 100 
+          
+#02188    StartGap GapID = PastryLedge2 
+          
+#02189    Wait 1 frame 
+#02190    EndGap GapID = PastryLedge2 
+          text = "MAGURO GAP" 
+          score = 200 
+          
+#02191  END FUNCTION
+          
+#02192  FUNCTION JS_Gap_Pastry_Ledge3North 
+#02196    StartGap GapID = JS_Tok_MW3Ledge2MW4Ledge3 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL 
+          )
+          
+#02197    EndGap GapID = JS_Tok_MW4Ledge2MW3Ledge3 
+          gapscript = JS_Gap_Pastry_Ledge3 
+          
+#02198  END FUNCTION
+          
+#02199  FUNCTION JS_Gap_Pastry_Ledge3South 
+#02201    StartGap GapID = JS_Tok_MW4Ledge2MW3Ledge3 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL 
+          )
+          
+#02202    EndGap GapID = JS_Tok_MW3Ledge2MW4Ledge3 
+          gapscript = JS_Gap_Pastry_Ledge3 
+          
+#02203  END FUNCTION
+          
+#02204  FUNCTION JS_Gap_Pastry_Ledge3 
+#02206    PlaySound HUD_JumpGap vol = 100 
+          
+#02207    StartGap GapID = PastryLedge3 
+          
+#02208    Wait 1 frame 
+#02209    EndGap GapID = PastryLedge3 
+          text = "TORO GAP" 
+          score = 300 
+          
+#02210  END FUNCTION
+          
+#02211  FUNCTION JS_Gap_Skabo_PastryNorth 
+#02215    StartGap GapID = JS_Tok_MW2LedgeDown2MW3Ledge 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02216  END FUNCTION
+          
+#02217  FUNCTION JS_Gap_Skabo_PastrySouth 
+#02219    EndGap GapID = JS_Tok_MW2LedgeDown2MW3Ledge 
+          gapscript = JS_Gap_Skabo_Pastry 
+          
+#02220  END FUNCTION
+          
+#02221  FUNCTION JS_Gap_Skabo_Pastry 
+#02223    PlaySound HUD_JumpGap vol = 100 
+          
+#02224    StartGap GapID = SkaboPastry 
+          
+#02225    Wait 1 frame 
+#02226    EndGap GapID = SkaboPastry 
+          text = "NIGIRI GAP" 
+          score = 100 
+          
+#02227  END FUNCTION
+          
+#02228  FUNCTION JS_Gap_Tokion_ShojiN 
+#02232    StartGap GapID = JS_Tok_TokSign_ShojiN 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL 
+          )
+          
+#02233    EndGap GapID = JS_Tok_TokSign_ShojiS 
+          gapscript = JS_Gap_Tokion_Shoji 
+          
+#02234  END FUNCTION
+          
+#02235  FUNCTION JS_Gap_Tokion_ShojiS 
+#02237    StartGap GapID = JS_Tok_TokSign_ShojiS 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL 
+          )
+          
+#02238    EndGap GapID = JS_Tok_TokSign_ShojiN 
+          gapscript = JS_Gap_Tokion_Shoji 
+          
+#02239  END FUNCTION
+          
+#02240  FUNCTION JS_Gap_Tokion_Shoji 
+#02242    PlaySound HUD_JumpGap vol = 100 
+          
+#02243    StartGap GapID = TokionShoji 
+          
+#02244    Wait 1 frame 
+#02245    EndGap GapID = TokionShoji 
+          text = "TAKOYAKI GAP" 
+          score = 1000 
+          
+#02246  END FUNCTION
+          
+#02247  FUNCTION JS_Gap_Tokion_UpSouth 
+#02251    StartGap GapID = JS_Tok_TokSignUp 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02252  END FUNCTION
+          
+#02253  FUNCTION JS_Gap_Tokion_UpNorth 
+#02255    EndGap GapID = JS_Tok_TokSignUp 
+          gapscript = JS_Gap_Tokion_Up 
+          
+#02256  END FUNCTION
+          
+#02257  FUNCTION JS_Gap_Tokion_DownNorth 
+#02259    StartGap GapID = JS_Tok_TokSignDown 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02260  END FUNCTION
+          
+#02261  FUNCTION JS_Gap_Tokion_DownSouth 
+#02263    EndGap GapID = JS_Tok_TokSignDown 
+          gapscript = JS_Gap_Tokion_Up 
+          
+#02264  END FUNCTION
+          
+#02265  FUNCTION JS_Gap_Tokion_Up 
+#02267    PlaySound HUD_JumpGap vol = 100 
+          
+#02268    StartGap GapID = RampTokion 
+          
+#02269    Wait 1 frame 
+#02270    EndGap GapID = RampTokion 
+          text = "CHILI CHEESE OKONOMIYAKI" 
+          score = 500 
+          
+#02271  END FUNCTION
+          
+#02272  FUNCTION JS_Gap_Ramp_TokionSouth 
+#02276    StartGap GapID = JS_Tok_SouthRamp2TokSign 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02277  END FUNCTION
+          
+#02278  FUNCTION JS_Gap_Ramp_TokionNorth 
+#02280    EndGap GapID = JS_Tok_SouthRamp2TokSign 
+          gapscript = JS_Gap_Ramp_Tokion 
+          
+#02281  END FUNCTION
+          
+#02282  FUNCTION JS_Gap_Ramp_Tokion 
+#02284    PlaySound HUD_JumpGap vol = 100 
+          
+#02285    StartGap GapID = RampTokion 
+          
+#02286    Wait 1 frame 
+#02287    EndGap GapID = RampTokion 
+          text = "OKONOMIYAKI GAP" 
+          score = 75 
+          
+#02288  END FUNCTION
+          
+#02289  FUNCTION JS_Gap_Tori_Ledge2North 
+#02293    StartGap GapID = JS_Tok_MW3Ledge2SW00Ledge2 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02294    EndGap GapID = JS_Tok_SW00Ledge2MW3Ledge2 
+          gapscript = JS_Gap_Tori_Ledge2 
+          
+#02295  END FUNCTION
+          
+#02296  FUNCTION JS_Gap_Tori_Ledge2South 
+#02298    StartGap GapID = JS_Tok_SW00Ledge2MW3Ledge2 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02299    EndGap GapID = JS_Tok_MW3Ledge2SW00Ledge2 
+          gapscript = JS_Gap_Tori_Ledge2 
+          
+#02300  END FUNCTION
+          
+#02301  FUNCTION JS_Gap_Tori_Ledge2 
+#02303    PlaySound HUD_JumpGap vol = 100 
+          
+#02304    StartGap GapID = ToriLedge2 
+          
+#02305    Wait 1 frame 
+#02306    EndGap GapID = ToriLedge2 
+          text = "FUGU JUJU GAP" 
+          score = 150 
+          
+#02307  END FUNCTION
+          
+#02308  FUNCTION JS_Gap_Tori_Ledge3North 
+#02312    StartGap GapID = JS_Tok_MW3Ledge2SW00Ledge3 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02313    EndGap GapID = JS_Tok_SW00Ledge2MW3Ledge3 
+          gapscript = JS_Gap_Tori_Ledge3 
+          
+#02314  END FUNCTION
+          
+#02315  FUNCTION JS_Gap_Tori_Ledge3South 
+#02317    StartGap GapID = JS_Tok_SW00Ledge2MW3Ledge3 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02318    EndGap GapID = JS_Tok_MW3Ledge2SW00Ledge3 
+          gapscript = JS_Gap_Tori_Ledge3 
+          
+#02319  END FUNCTION
+          
+#02320  FUNCTION JS_Gap_Tori_Ledge3 
+#02322    PlaySound HUD_JumpGap vol = 100 
+          
+#02323    StartGap GapID = ToriLedge3 
+          
+#02324    Wait 1 frame 
+#02325    EndGap GapID = ToriLedge3 
+          text = "KAME HAME GAP" 
+          score = 200 
+          
+#02326  END FUNCTION
+          
+#02327  FUNCTION JS_Gap_Tori_LampRailSouth 
+#02331    StartGap GapID = JS_Tok_SW00Ledge2LampRail 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02332  END FUNCTION
+          
+#02333  FUNCTION JS_Gap_Tori_LampRailNorth 
+#02335    EndGap GapID = JS_Tok_SW00Ledge2LampRail 
+          gapscript = JS_Gap_Tori_LampRail 
+          
+#02336  END FUNCTION
+          
+#02337  FUNCTION JS_Gap_Tori_LampRail 
+#02339    PlaySound HUD_JumpGap vol = 100 
+          
+#02340    StartGap GapID = ToriLampRail 
+          
+#02341    Wait 1 frame 
+#02342    EndGap GapID = ToriLampRail 
+          text = "ZARUSOBA GAP" 
+          score = 200 
+          
+#02343  END FUNCTION
+          
+#02344  FUNCTION JS_Gap_Draft_ToriSouth 
+#02348    StartGap GapID = JS_Tok_SW01Sign2SW00Ledge3 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02349    EndGap GapID = JS_Tok_SW00Ledge2SW01Sign3 
+          gapscript = JS_Gap_Draft_Tori 
+          
+#02350  END FUNCTION
+          
+#02351  FUNCTION JS_Gap_Draft_ToriNorth 
+#02353    StartGap GapID = JS_Tok_SW00Ledge2SW01Sign3 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02354    EndGap GapID = JS_Tok_SW01Sign2SW00Ledge3 
+          gapscript = JS_Gap_Draft_Tori 
+          
+#02355  END FUNCTION
+          
+#02356  FUNCTION JS_Gap_Draft_Tori 
+#02358    PlaySound HUD_JumpGap vol = 100 
+          
+#02359    StartGap GapID = DraftTori 
+          
+#02360    Wait 1 frame 
+#02361    EndGap GapID = DraftTori 
+          text = "AMAZAKE GAP" 
+          score = 500 
+          
+#02362  END FUNCTION
+          
+#02363  FUNCTION JS_Gap_Draft_BridgeNorth 
+#02367    StartGap GapID = JS_Tok_SW01Sign2Bridge 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02368  END FUNCTION
+          
+#02369  FUNCTION JS_Gap_Draft_BridgeSouth 
+#02371    EndGap GapID = JS_Tok_SW01Sign2Bridge 
+          gapscript = JS_Gap_Draft_Bridge 
+          
+#02372  END FUNCTION
+          
+#02373  FUNCTION JS_Gap_Draft_Bridge 
+#02375    PlaySound HUD_JumpGap vol = 100 
+          
+#02376    StartGap GapID = DraftBridge 
+          
+#02377    Wait 1 frame 
+#02378    EndGap GapID = DraftBridge 
+          text = "SHOCHU GAP" 
+          score = 200 
+          
+#02379  END FUNCTION
+          
+#02380  FUNCTION JS_Gap_Shita_KishaNorth 
+#02384    StartGap GapID = JS_Tok_BridgeRail2Train 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02385    EndGap GapID = JS_Tok_Train2BridgeRail 
+          gapscript = JS_Gap_Shita_Kisha 
+          
+#02386  END FUNCTION
+          
+#02387  FUNCTION JS_Gap_Shita_KishaSouth 
+#02389    StartGap GapID = JS_Tok_Train2BridgeRail 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02390    EndGap GapID = JS_Tok_BridgeRail2Train 
+          gapscript = JS_Gap_Shita_Kisha 
+          
+#02391  END FUNCTION
+          
+#02392  FUNCTION JS_Gap_Shita_Kisha 
+#02394    PlaySound HUD_JumpGap vol = 100 
+          
+#02395    StartGap GapID = BridgeRailKisha 
+          
+#02396    Wait 1 frame 
+#02397    EndGap GapID = BridgeRailKisha 
+          text = "KICHIGAI KISHA GAP" 
+          score = 1000 
+          
+#02398  END FUNCTION
+          
+#02399  FUNCTION JS_Gap_WalkwayRailNSSoto 
+#02403    StartGap GapID = JS_Tok_WalkwayNSSotoNaka 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02404    EndGap GapID = JS_Tok_WalkwayNSNakaSoto 
+          gapscript = JS_Gap_WalkwayRail 
+          
+#02405  END FUNCTION
+          
+#02406  FUNCTION JS_Gap_WalkwayRailNSNaka 
+#02408    StartGap GapID = JS_Tok_WalkwayNSNakaSoto 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02409    EndGap GapID = JS_Tok_WalkwayNSSotoNaka 
+          gapscript = JS_Gap_WalkwayRail 
+          
+#02410  END FUNCTION
+          
+#02411  FUNCTION JS_Gap_WalkwayRailEWSoto 
+#02413    StartGap GapID = JS_Tok_WalkwayEWSotoNaka 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02414    EndGap GapID = JS_Tok_WalkwayEWNakaSoto 
+          gapscript = JS_Gap_WalkwayRail 
+          
+#02415  END FUNCTION
+          
+#02416  FUNCTION JS_Gap_WalkwayRailEWNaka 
+#02418    StartGap GapID = JS_Tok_WalkwayEWNakaSoto 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02419    EndGap GapID = JS_Tok_WalkwayEWSotoNaka 
+          gapscript = JS_Gap_WalkwayRail 
+          
+#02420  END FUNCTION
+          
+#02421  FUNCTION JS_Gap_WalkwayRailNSEW 
+#02423    StartGap GapID = JS_Tok_WalkwayNSEW 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02424    EndGap GapID = JS_Tok_WalkwayEWNS 
+          gapscript = JS_Gap_WalkwayRail 
+          
+#02425  END FUNCTION
+          
+#02426  FUNCTION JS_Gap_WalkwayRailEWNS 
+#02428    StartGap GapID = JS_Tok_WalkwayEWNS 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02429    EndGap GapID = JS_Tok_WalkwayNSEW 
+          gapscript = JS_Gap_WalkwayRail 
+          
+#02430  END FUNCTION
+          
+#02431  FUNCTION JS_Gap_WalkwayRail 
+#02433    PlaySound HUD_JumpGap vol = 100 
+          
+#02434    StartGap GapID = WalkwayRail 
+          
+#02435    Wait 1 frame 
+#02436    EndGap GapID = WalkwayRail 
+          text = "WARIBASHI GAP" 
+          score = 50 
+          
+#02437  END FUNCTION
+          
+#02438  FUNCTION JS_Gap_Walkway_BusEast 
+#02442    StartGap GapID = JS_Tok_MWRail2MBusStop 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02443    EndGap GapID = JS_Tok_MBusStop2MWRail 
+          gapscript = JS_Gap_Walkway_Bus 
+          
+#02444  END FUNCTION
+          
+#02445  FUNCTION JS_Gap_Walkway_BusWest 
+#02447    StartGap GapID = JS_Tok_MBusStop2MWRail 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02448    EndGap GapID = JS_Tok_MWRail2MBusStop 
+          gapscript = JS_Gap_Walkway_Bus 
+          
+#02449  END FUNCTION
+          
+#02450  FUNCTION JS_Gap_Walkway_Bus 
+#02452    PlaySound HUD_JumpGap vol = 100 
+          
+#02453    StartGap GapID = WalkwayBus 
+          
+#02454    Wait 1 frame 
+#02455    EndGap GapID = WalkwayBus 
+          text = "HIRAME GAP" 
+          score = 50 
+          
+#02456  END FUNCTION
+          
+#02457  FUNCTION JS_Gap_Walkway_LedgeWest 
+#02461    StartGap GapID = JS_Tok_MWRail2MBusStop 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02462    EndGap GapID = JS_Tok_MBusStop2MWRail 
+          gapscript = JS_Gap_Walkway_Ledge 
+          
+#02463  END FUNCTION
+          
+#02464  FUNCTION JS_Gap_Walkway_LedgeEast 
+#02466    StartGap GapID = JS_Tok_MBusStop2MWRail 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02467    EndGap GapID = JS_Tok_MWRail2MBusStop 
+          gapscript = JS_Gap_Walkway_Ledge 
+          
+#02468  END FUNCTION
+          
+#02469  FUNCTION JS_Gap_Walkway_Ledge 
+#02471    PlaySound HUD_JumpGap vol = 100 
+          
+#02472    StartGap GapID = WalkwayLedge 
+          
+#02473    Wait 1 frame 
+#02474    EndGap GapID = WalkwayLedge 
+          text = "TSUBUGAI GAP" 
+          score = 50 
+          
+#02475  END FUNCTION
+          
+#02476  FUNCTION JS_Gap_Walkway_RampSouth 
+#02480    StartGap GapID = JS_Tok_SW00Ledge2Ramp 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02481  END FUNCTION
+          
+#02482  FUNCTION JS_Gap_Walkway_RampNorth 
+#02484    EndGap GapID = JS_Tok_SW00Ledge2Ramp 
+          gapscript = JS_Gap_Walkway_Ramp 
+          
+#02485  END FUNCTION
+          
+#02486  FUNCTION JS_Gap_Walkway_Ramp 
+#02488    PlaySound HUD_JumpGap vol = 100 
+          
+#02489    StartGap GapID = WalkwayRamp 
+          
+#02490    Wait 1 frame 
+#02491    EndGap GapID = WalkwayRamp 
+          text = "SUNAGIMO GAP" 
+          score = 150 
+          
+#02492  END FUNCTION
+          
+#02493  FUNCTION JS_Gap_Walkway_RoadRailHi 
+#02497    StartGap GapID = JS_Tok_SW00Ledge2RoadRail 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02498  END FUNCTION
+          
+#02499  FUNCTION JS_Gap_Walkway_RoadRailLo 
+#02501    EndGap GapID = JS_Tok_SW00Ledge2RoadRail 
+          gapscript = JS_Gap_Walkway_RoadRail 
+          
+#02502  END FUNCTION
+          
+#02503  FUNCTION JS_Gap_Walkway_RoadRail 
+#02505    PlaySound HUD_JumpGap vol = 100 
+          
+#02506    StartGap GapID = WalkwayRoadRail 
+          
+#02507    Wait 1 frame 
+#02508    EndGap GapID = WalkwayRoadRail 
+          text = "SUZUME GAP" 
+          score = 150 
+          
+#02509  END FUNCTION
+          
+#02510  FUNCTION JS_Gap_RoadRail_CrazyBoxSouth 
+#02514    StartGap GapID = JS_Tok_MRoadRail2MEFunRail 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02515    EndGap GapID = JS_Tok_MEFunRail2MRoadRail 
+          gapscript = JS_Gap_RoadRail_CrazyBox 
+          
+#02516  END FUNCTION
+          
+#02517  FUNCTION JS_Gap_RoadRail_CrazyBoxNorth 
+#02519    StartGap GapID = JS_Tok_MEFunRail2MRoadRail 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02520    EndGap GapID = JS_Tok_MRoadRail2MEFunRail 
+          gapscript = JS_Gap_RoadRail_CrazyBox 
+          
+#02521  END FUNCTION
+          
+#02522  FUNCTION JS_Gap_RoadRail_CrazyBox 
+#02524    PlaySound HUD_JumpGap vol = 100 
+          
+#02525    StartGap GapID = RoadRailCrazyBox 
+          
+#02526    Wait 1 frame 
+#02527    EndGap GapID = RoadRailCrazyBox 
+          text = "HASAMI GAP" 
+          score = 50 
+          
+#02528  END FUNCTION
+          
+#02529  FUNCTION JS_Gap_CrazyBox_WalkwaySouth 
+#02533    StartGap GapID = JS_Tok_MEFunRail2WalkwayRail 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02534    EndGap GapID = JS_Tok_WalkwayRail2MEFunRail 
+          gapscript = JS_Gap_CrazyBox_Walkway 
+          
+#02535  END FUNCTION
+          
+#02536  FUNCTION JS_Gap_CrazyBox_WalkwayNorth 
+#02538    StartGap GapID = JS_Tok_WalkwayRail2MEFunRail 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02539    EndGap GapID = JS_Tok_MEFunRail2WalkwayRail 
+          gapscript = JS_Gap_CrazyBox_Walkway 
+          
+#02540  END FUNCTION
+          
+#02541  FUNCTION JS_Gap_CrazyBox_Walkway 
+#02543    PlaySound HUD_JumpGap vol = 100 
+          
+#02544    StartGap GapID = CrazyBoxWalkway 
+          
+#02545    Wait 1 frame 
+#02546    EndGap GapID = CrazyBoxWalkway 
+          text = "MOTSU GAP" 
+          score = 50 
+          
+#02547  END FUNCTION
+          
+#02548  FUNCTION JS_Gap_Bus_BusSoto 
+#02552    StartGap GapID = JS_Tok_BusRailS2SBusRailN 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02553    EndGap GapID = JS_Tok_BusRailN2SBusRailS 
+          gapscript = JS_Gap_Bus_Bus 
+          
+#02554  END FUNCTION
+          
+#02555  FUNCTION JS_Gap_Bus_BusNaka 
+#02557    StartGap GapID = JS_Tok_BusRailN2SBusRailS 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02558    EndGap GapID = JS_Tok_BusRailS2SBusRailN 
+          gapscript = JS_Gap_Bus_Bus 
+          
+#02559  END FUNCTION
+          
+#02560  FUNCTION JS_Gap_Bus_Bus 
+#02562    PlaySound HUD_JumpGap vol = 100 
+          
+#02563    StartGap GapID = BusBus 
+          
+#02564    Wait 1 frame 
+#02565    EndGap GapID = BusBus 
+          text = "YAKITORI GAP" 
+          score = 50 
+          
+#02566  END FUNCTION
+          
+#02567  FUNCTION JS_Gap_Bus_WalkwayNaka 
+#02571    StartGap GapID = JS_Tok_BusRail2Walkway 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02572  END FUNCTION
+          
+#02573  FUNCTION JS_Gap_Bus_WalkwaySoto 
+#02575    EndGap GapID = JS_Tok_BusRail2Walkway 
+          gapscript = JS_Gap_Bus_Walkway 
+          
+#02576  END FUNCTION
+          
+#02577  FUNCTION JS_Gap_Bus_Walkway 
+#02579    PlaySound HUD_JumpGap vol = 100 
+          
+#02580    StartGap GapID = BusWalkway 
+          
+#02581    Wait 1 frame 
+#02582    EndGap GapID = BusWalkway 
+          text = "TEBASAKI GAP" 
+          score = 150 
+          
+#02583  END FUNCTION
+          
+#02584  FUNCTION JS_Gap_Bus_CrazyBoxHaji 
+#02588    StartGap GapID = JS_Tok_NBusRail2MWFunRail 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02589  END FUNCTION
+          
+#02590  FUNCTION JS_Gap_Bus_CrazyBoxOwa 
+#02592    EndGap GapID = JS_Tok_NBusRail2MWFunRail 
+          gapscript = JS_Gap_Bus_CrazyBox 
+          
+#02593  END FUNCTION
+          
+#02594  FUNCTION JS_Gap_Bus_CrazyBox 
+#02596    PlaySound HUD_JumpGap vol = 100 
+          
+#02597    StartGap GapID = BusCrazyBox 
+          
+#02598    Wait 1 frame 
+#02599    EndGap GapID = BusCrazyBox 
+          text = "NEGIMA GAP" 
+          score = 50 
+          
+#02600  END FUNCTION
+          
+#02601  FUNCTION JS_Gap_Hump_HumpNorth 
+#02605    StartGap GapID = JS_Tok_MHNFunRail2MHSFunRail 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02606    EndGap GapID = JS_Tok_MHSFunRail2MHNFunRail 
+          gapscript = JS_Gap_Hump_Hump 
+          
+#02607  END FUNCTION
+          
+#02608  FUNCTION JS_Gap_Hump_HumpSouth 
+#02610    StartGap GapID = JS_Tok_MHSFunRail2MHNFunRail 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02611    EndGap GapID = JS_Tok_MHNFunRail2MHSFunRail 
+          gapscript = JS_Gap_Hump_Hump 
+          
+#02612  END FUNCTION
+          
+#02613  FUNCTION JS_Gap_Hump_Hump 
+#02615    PlaySound HUD_JumpGap vol = 100 
+          
+#02616    StartGap GapID = HumpHump 
+          
+#02617    Wait 1 frame 
+#02618    EndGap GapID = HumpHump 
+          text = "AGEDASHI TOFU GAP" 
+          score = 75 
+          
+#02619  END FUNCTION
+          
+#02620  FUNCTION JS_Gap_FRail_FrailNorth 
+#02624    StartGap GapID = JS_Tok_MANFunRail2MASFunRail 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02625    EndGap GapID = JS_Tok_MASFunRail2MANFunRail 
+          gapscript = JS_Gap_FRail_Frail 
+          
+#02626  END FUNCTION
+          
+#02627  FUNCTION JS_Gap_FRail_FrailSouth 
+#02629    StartGap GapID = JS_Tok_MASFunRail2MANFunRail 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02630    EndGap GapID = JS_Tok_MANFunRail2MASFunRail 
+          gapscript = JS_Gap_FRail_Frail 
+          
+#02631  END FUNCTION
+          
+#02632  FUNCTION JS_Gap_FRail_Frail 
+#02634    PlaySound HUD_JumpGap vol = 100 
+          
+#02635    StartGap GapID = FrailFrail 
+          
+#02636    Wait 1 frame 
+#02637    EndGap GapID = FrailFrail 
+          text = "ONIGIRI GAP" 
+          score = 100 
+          
+#02638  END FUNCTION
+          
+#02639  FUNCTION JS_Gap_Walkway_LampRailHaji 
+#02643    StartGap GapID = JS_Tok_Walkway2LampRail 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02644  END FUNCTION
+          
+#02645  FUNCTION JS_Gap_Walkway_LampRailOwa 
+#02647    EndGap GapID = JS_Tok_Walkway2LampRail 
+          gapscript = JS_Gap_Walkway_LampRail 
+          
+#02648  END FUNCTION
+          
+#02649  FUNCTION JS_Gap_Walkway_LampRail 
+#02651    PlaySound HUD_JumpGap vol = 100 
+          
+#02652    StartGap GapID = Walkway2LampRail 
+          
+#02653    Wait 1 frame 
+#02654    EndGap GapID = Walkway2LampRail 
+          text = "YAKISOBA GAP" 
+          score = 150 
+          
+#02655  END FUNCTION
+          
+#02656  FUNCTION JS_Gap_Mon_VidNorth 
+#02660    StartGap GapID = JS_Tok_MELedge2SE1Ledge 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL 
+          )
+          
+#02661    EndGap GapID = JS_Tok_SE1Ledge2MELedge 
+          gapscript = JS_Gap_Mon_Vid 
+          
+#02662  END FUNCTION
+          
+#02663  FUNCTION JS_Gap_Mon_VidSouth 
+#02665    StartGap GapID = JS_Tok_SE1Ledge2MELedge 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL 
+          )
+          
+#02666    EndGap GapID = JS_Tok_MELedge2SE1Ledge 
+          gapscript = JS_Gap_Mon_Vid 
+          
+#02667  END FUNCTION
+          
+#02668  FUNCTION JS_Gap_Mon_Vid 
+#02670    PlaySound HUD_JumpGap vol = 100 
+          
+#02671    StartGap GapID = MonVid 
+          
+#02672    Wait 1 frame 
+#02673    EndGap GapID = MonVid 
+          text = "NORI MAKI GAP" 
+          score = 50 
+          
+#02674  END FUNCTION
+          
+#02675  FUNCTION JS_Gap_Vid_CSNorth 
+#02679    StartGap GapID = JS_Tok_SE1Ledge2SE2Ledge 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL 
+          )
+          
+#02680    EndGap GapID = JS_Tok_SE2Ledge2SE1Ledge 
+          gapscript = JS_Gap_Vid_CS 
+          
+#02681  END FUNCTION
+          
+#02682  FUNCTION JS_Gap_Vid_CSSouth 
+#02684    StartGap GapID = JS_Tok_SE2Ledge2SE1Ledge 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02685    EndGap GapID = JS_Tok_SE1Ledge2SE2Ledge 
+          gapscript = JS_Gap_Vid_CS 
+          
+#02686  END FUNCTION
+          
+#02687  FUNCTION JS_Gap_Vid_CS 
+#02689    PlaySound HUD_JumpGap vol = 100 
+          
+#02690    StartGap GapID = VidCS 
+          
+#02691    Wait 1 frame 
+#02692    EndGap GapID = VidCS 
+          text = "MIRUGAI GAP" 
+          score = 50 
+          
+#02693  END FUNCTION
+          
+#02694  FUNCTION JS_Gap_CS_RampNorth 
+#02698    StartGap GapID = JS_Tok_SE2Ledge2SouthRamp 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02699    EndGap GapID = JS_Tok_SouthRamp2SE2Ledge 
+          gapscript = JS_Gap_CS_Ramp 
+          
+#02700  END FUNCTION
+          
+#02701  FUNCTION JS_Gap_CS_RampSouth 
+#02703    StartGap GapID = JS_Tok_SouthRamp2SE2Ledge 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02704    EndGap GapID = JS_Tok_SE2Ledge2SouthRamp 
+          gapscript = JS_Gap_CS_Ramp 
+          
+#02705  END FUNCTION
+          
+#02706  FUNCTION JS_Gap_CS_Ramp 
+#02708    PlaySound HUD_JumpGap vol = 100 
+          
+#02709    StartGap GapID = CSRamp 
+          
+#02710    Wait 1 frame 
+#02711    EndGap GapID = CSRamp 
+          text = "TENDON GAP" 
+          score = 50 
+          
+#02712  END FUNCTION
+          
+#02713  FUNCTION JS_Gap_Mon_CSHaji 
+#02717    StartGap GapID = JS_Tok_MELedge2SE2LedgeWall 
+          flags = ARRAY(
+            
+            REQUIRE_WALL CANCEL_GROUND CANCEL_MANUAL 
+          )
+          
+#02718  END FUNCTION
+          
+#02719  FUNCTION JS_Gap_Mon_CSOwa 
+#02721    EndGap GapID = JS_Tok_MELedge2SE2LedgeWall 
+          gapscript = JS_Gap_Mon_CS 
+          
+#02722  END FUNCTION
+          
+#02723  FUNCTION JS_Gap_Mon_CS 
+#02725    PlaySound HUD_JumpGap vol = 100 
+          
+#02726    StartGap GapID = MonCS 
+          
+#02727    Wait 1 frame 
+#02728    EndGap GapID = MonCS 
+          text = "FUTO MAKI GAP" 
+          score = 150 
+          
+#02729  END FUNCTION
+          
+#02730  FUNCTION JS_Gap_Ledge_BowlWNorth 
+#02734    StartGap GapID = JS_Tok_MW4Ledge2SouthRamp 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02735    EndGap GapID = JS_Tok_SouthRamp2MW4Ledge 
+          gapscript = JS_Gap_Ledge_BowlW 
+          
+#02736  END FUNCTION
+          
+#02737  FUNCTION JS_Gap_Ledge_BowlWSouth 
+#02739    StartGap GapID = JS_Tok_SouthRamp2MW4Ledge 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02740    EndGap GapID = JS_Tok_MW4Ledge2SouthRamp 
+          gapscript = JS_Gap_Ledge_BowlW 
+          
+#02741  END FUNCTION
+          
+#02742  FUNCTION JS_Gap_Ledge_BowlW 
+#02744    PlaySound HUD_JumpGap vol = 100 
+          
+#02745    StartGap GapID = LedgeBowlW 
+          
+#02746    Wait 1 frame 
+#02747    EndGap GapID = LedgeBowlW 
+          text = "KATSUDON GAP" 
+          score = 50 
+          
+#02748  END FUNCTION
+          
+#02749  FUNCTION JS_Gap_BowlA 
+#02753    StartGap GapID = JS_Tok_BowlA 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02754    EndGap GapID = JS_Tok_BowlB 
+          gapscript = JS_Gap_Bowl 
+          
+#02755  END FUNCTION
+          
+#02756  FUNCTION JS_Gap_BowlB 
+#02758    StartGap GapID = JS_Tok_BowlB 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02759    EndGap GapID = JS_Tok_BowlA 
+          gapscript = JS_Gap_Bowl 
+          
+#02760  END FUNCTION
+          
+#02761  FUNCTION JS_Gap_BowlC 
+#02763    StartGap GapID = JS_Tok_BowlC 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02764    EndGap GapID = JS_Tok_BowlD 
+          gapscript = JS_Gap_Bowl 
+          
+#02765  END FUNCTION
+          
+#02766  FUNCTION JS_Gap_BowlD 
+#02768    StartGap GapID = JS_Tok_BowlD 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02769    EndGap GapID = JS_Tok_BowlC 
+          gapscript = JS_Gap_Bowl 
+          
+#02770  END FUNCTION
+          
+#02771  FUNCTION JS_Gap_BowlE 
+#02773    StartGap GapID = JS_Tok_BowlE 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02774    EndGap GapID = JS_Tok_BowlF 
+          gapscript = JS_Gap_Bowl 
+          
+#02775  END FUNCTION
+          
+#02776  FUNCTION JS_Gap_BowlF 
+#02778    StartGap GapID = JS_Tok_BowlF 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02779    EndGap GapID = JS_Tok_BowlE 
+          gapscript = JS_Gap_Bowl 
+          
+#02780  END FUNCTION
+          
+#02781  FUNCTION JS_Gap_Bowl 
+#02783    PlaySound HUD_JumpGap vol = 100 
+          
+#02784    StartGap GapID = Bowl 
+          
+#02785    Wait 1 frame 
+#02786    EndGap GapID = Bowl 
+          text = "UNAGIDON GAP" 
+          score = 50 
+          
+#02787  END FUNCTION
+          
+#02788  FUNCTION JS_Gap_BannerRailLengthHaji 
+#02792    StartGap GapID = JS_Tok_BannerRailLength 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02793  END FUNCTION
+          
+#02794  FUNCTION JS_Gap_BannerRailLengthOwa 
+#02796    EndGap GapID = JS_Tok_BannerRailLength 
+          gapscript = JS_Gap_BannerRailLength 
+          
+#02797  END FUNCTION
+          
+#02798  FUNCTION JS_Gap_BannerRailLength 
+#02800    PlaySound HUD_JumpGap vol = 100 
+          
+#02801    StartGap GapID = BannerRailLength 
+          
+#02802    Wait 1 frame 
+#02803    EndGap GapID = BannerRailLength 
+          text = "SOMEN GAP" 
+          score = 800 
+          
+#02804  END FUNCTION
+          
+#02805  FUNCTION JS_Gap_LampRailLengthHajiS 
+#02809    StartGap GapID = JS_Tok_LampRailLengthS 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02810  END FUNCTION
+          
+#02811  FUNCTION JS_Gap_LampRailLengthOwaS 
+#02813    EndGap GapID = JS_Tok_LampRailLengthS 
+          gapscript = JS_Gap_LampRailLength 
+          
+#02814  END FUNCTION
+          
+#02815  FUNCTION JS_Gap_LampRailLengthHajiN 
+#02817    StartGap GapID = JS_Tok_LampRailLengthN 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02818  END FUNCTION
+          
+#02819  FUNCTION JS_Gap_LampRailLengthOwaN 
+#02821    EndGap GapID = JS_Tok_LampRailLengthN 
+          gapscript = JS_Gap_LampRailLength 
+          
+#02822  END FUNCTION
+          
+#02823  FUNCTION JS_Gap_LampRailLength 
+#02825    PlaySound HUD_JumpGap vol = 100 
+          
+#02826    StartGap GapID = LampRailLength 
+          
+#02827    Wait 1 frame 
+#02828    EndGap GapID = LampRailLength 
+          text = "TOSHIKOSHI SOBA GAP" 
+          score = 500 
+          
+#02829  END FUNCTION
+          
+#02830  FUNCTION JS_Gap_Blimp_LoopHaji 
+#02834    StartGap GapID = JS_Tok_Blimp2Loop 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02835  END FUNCTION
+          
+#02836  FUNCTION JS_Gap_Blimp_LoopOwa 
+#02838    EndGap GapID = JS_Tok_Blimp2Loop 
+          gapscript = JS_Gap_Blimp_Loop 
+          
+#02839  END FUNCTION
+          
+#02840  FUNCTION JS_Gap_Blimp_Loop 
+#02842    PlaySound HUD_JumpGap vol = 100 
+          
+#02843    StartGap GapID = BlimpLoop 
+          
+#02844    Wait 1 frame 
+#02845    EndGap GapID = BlimpLoop 
+          text = "FUGU HARUMAKI GAP" 
+          score = 5000 
+          
+#02846  END FUNCTION
+          
+#02847  FUNCTION JS_Gap_Vert_BlimpRailHaji 
+#02851    StartGap GapID = JS_Tok_Vert2BlimpRail 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02852  END FUNCTION
+          
+#02853  FUNCTION JS_Gap_Vert_BlimpRailOwa 
+#02855    EndGap GapID = JS_Tok_Vert2BlimpRail 
+          gapscript = JS_Gap_Vert_BlimpRail 
+          
+#02856  END FUNCTION
+          
+#02857  FUNCTION JS_Gap_Vert_BlimpRail 
+#02859    PlaySound HUD_JumpGap vol = 100 
+          
+#02860    StartGap GapID = VertBlimpRail 
+          
+#02861    Wait 1 frame 
+#02862    EndGap GapID = VertBlimpRail 
+          text = "FUGU NO HONE GAP" 
+          score = 1500 
+          
+#02863  END FUNCTION
+          
+#02864  FUNCTION JS_Gap_Vert_BlimpHaji 
+#02868    StartGap GapID = JS_Tok_Vert2BlimpRail 
+          flags = ARRAY(
+            
+            pure_air 
+          )
+          
+#02869  END FUNCTION
+          
+#02870  FUNCTION JS_Gap_Vert_BlimpOwa 
+#02872    EndGap GapID = JS_Tok_Vert2BlimpRail 
+          gapscript = JS_Gap_Vert_Blimp 
+          
+#02873  END FUNCTION
+          
+#02874  FUNCTION JS_Gap_Vert_Blimp 
+#02876    PlaySound HUD_JumpGap vol = 100 
+          
+#02877    StartGap GapID = VertBlimp 
+          
+#02878    Wait 1 frame 
+#02879    EndGap GapID = VertBlimp 
+          text = "FUGU GAP" 
+          score = 500 
+          
+#02880  END FUNCTION
+          
+#02881  FUNCTION JS_Gap_North_BoxHaji 
+#02885    StartGap GapID = JS_Tok_Northbox 
+          flags = ARRAY(
+            
+            CANCEL_GROUND cancel_rail CANCEL_WALL cancel_lip CANCEL_MANUAL 
+          )
+          
+#02886  END FUNCTION
+          
+#02887  FUNCTION JS_Gap_North_BoxOwa 
+#02889    EndGap GapID = JS_Tok_Northbox 
+          gapscript = JS_Gap_North_Box 
+          
+#02890  END FUNCTION
+          
+#02891  FUNCTION JS_Gap_North_Box 
+#02893    PlaySound HUD_JumpGap vol = 100 
+          
+#02894    StartGap GapID = NorthBox 
+          
+#02895    Wait 1 frame 
+#02896    EndGap GapID = NorthBox 
+          text = "BENTO BOX GAP" 
+          score = 50 
+          
+#02898  END FUNCTION
+          
+#02899  FUNCTION JS_Gap_Crazy_SkaboRollHaji 
+#02903    StartGap GapID = JS_Tok_MW1LedgeUp2MW2 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_WALL cancel_lip 
+          )
+          
+#02904  END FUNCTION
+          
+#02905  FUNCTION JS_Gap_Crazy_SkaboRollOwa 
+#02907    EndGap GapID = JS_Tok_MW1LedgeUp2MW2 
+          gapscript = JS_Gap_Crazy_SkaboRoll 
+          
+#02908  END FUNCTION
+          
+#02909  FUNCTION JS_Gap_Crazy_SkaboRoll 
+#02911    PlaySound HUD_JumpGap vol = 100 
+          
+#02912    StartGap GapID = CrazySkaboRoll 
+          
+#02913    Wait 1 frame 
+#02914    EndGap GapID = CrazySkaboRoll 
+          text = "EBI GAP" 
+          score = 150 
+          
+#02915  END FUNCTION
+          
+#02916  FUNCTION JS_Gap_Skabo_LedgeRollHaji 
+#02920    StartGap GapID = JS_Tok_MW2Up2MW3Ledge 
+          flags = ARRAY(
+            
+            CANCEL_GROUND cancel_rail CANCEL_WALL cancel_lip 
+          )
+          
+#02921  END FUNCTION
+          
+#02922  FUNCTION JS_Gap_Skabo_LedgeRollOwa 
+#02924    EndGap GapID = JS_Tok_MW2Up2MW3Ledge 
+          gapscript = JS_Gap_Skabo_LedgeRoll 
+          
+#02925  END FUNCTION
+          
+#02926  FUNCTION JS_Gap_Skabo_LedgeRoll 
+#02928    PlaySound HUD_JumpGap vol = 100 
+          
+#02929    StartGap GapID = SkaboLedgeRoll 
+          
+#02930    Wait 1 frame 
+#02931    EndGap GapID = SkaboLedgeRoll 
+          text = "SHAKO GAP" 
+          score = 150 
+          
+#02932  END FUNCTION
+          
+#02933  FUNCTION JS_Gap_ConDom_Ledge2Haji 
+#02937    StartGap GapID = JS_Tok_NW3Up2MW1Ledge 
+          flags = ARRAY(
+            
+            CANCEL_GROUND cancel_rail CANCEL_WALL cancel_lip 
+          )
+          
+#02938  END FUNCTION
+          
+#02939  FUNCTION JS_Gap_ConDom_Ledge2Owa 
+#02941    EndGap GapID = JS_Tok_NW3Up2MW1Ledge 
+          gapscript = JS_Gap_ConDom_Ledge2 
+          
+#02942  END FUNCTION
+          
+#02943  FUNCTION JS_Gap_ConDom_Ledge2 
+#02945    PlaySound HUD_JumpGap vol = 100 
+          
+#02946    StartGap GapID = ConDomLedge2 
+          
+#02947    Wait 1 frame 
+#02948    EndGap GapID = ConDomLedge2 
+          text = "KAZUNOKO GAP" 
+          score = 150 
+          
+#02949  END FUNCTION
+          
+#02950  FUNCTION JS_Gap_CaliforniaRollin_AirHaji 
+#02954    StartGap GapID = JS_Tok_RollinAir 
+          flags = ARRAY(
+            
+            CANCEL_GROUND cancel_rail CANCEL_WALL cancel_lip CANCEL_MANUAL 
+          )
+          
+#02955  END FUNCTION
+          
+#02956  FUNCTION JS_Gap_CaliforniaRollin_AirOwa 
+#02958    EndGap GapID = JS_Tok_RollinAir 
+          gapscript = JS_Gap_CaliforniaRollin_Air 
+          
+#02959  END FUNCTION
+          
+#02960  FUNCTION JS_Gap_CaliforniaRollin_Air 
+#02962    PlaySound HUD_JumpGap vol = 100 
+          
+#02963    StartGap GapID = CaliforniaRollinAir 
+          
+#02964    Wait 1 frame 
+#02965    EndGap GapID = CaliforniaRollinAir 
+          text = "WEAK ASSED CALIFORNIA ROLLIN TRANSFER" 
+          score = 50 
+          
+#02967  END FUNCTION
+          
+#02968  FUNCTION JS_Gap_MidFBVert2Vert_AirHaji 
+#02972    StartGap GapID = JS_Tok_MFBVrt2VrtAir 
+          flags = ARRAY(
+            
+            CANCEL_GROUND cancel_rail CANCEL_WALL cancel_lip CANCEL_MANUAL 
+          )
+          
+#02973  END FUNCTION
+          
+#02974  FUNCTION JS_Gap_MidFBVert2Vert_AirOwa 
+#02976    EndGap GapID = JS_Tok_MFBVrt2VrtAir 
+          gapscript = JS_Gap_MidFBVert2Vert_Air 
+          
+#02977  END FUNCTION
+          
+#02978  FUNCTION JS_Gap_MidFBVert2Vert_Air 
+#02980    PlaySound HUD_JumpGap vol = 100 
+          
+#02981    StartGap GapID = MFBVert2VertAir 
+          
+#02982    Wait 1 frame 
+#02983    EndGap GapID = MFBVert2VertAir 
+          text = "TRICKY ONIGIRI TRANSFER" 
+          score = 75 
+          
+#02984  END FUNCTION
+          
+#02985  FUNCTION JS_Gap_MidFBKickOverWalkHaji 
+#02989    StartGap GapID = JS_Tok_MFBKickOvaWalk 
+          flags = ARRAY(
+            
+            CANCEL_GROUND cancel_rail CANCEL_WALL cancel_lip CANCEL_MANUAL 
+          )
+          
+#02990  END FUNCTION
+          
+#02991  FUNCTION JS_Gap_MidFBKickOverWalkOwa 
+#02993    EndGap GapID = JS_Tok_MFBKickOvaWalk 
+          gapscript = JS_Gap_MidFBKickOverWalk 
+          
+#02994  END FUNCTION
+          
+#02995  FUNCTION JS_Gap_MidFBKickOverWalk 
+#02997    PlaySound HUD_JumpGap vol = 100 
+          
+#02998    StartGap GapID = MFBKickOvaWalk 
+          
+#02999    Wait 1 frame 
+#03000    EndGap GapID = MFBKickOvaWalk 
+          text = "ONIGIRI LAUNCH" 
+          score = 75 
+          
+#03001  END FUNCTION
+          
+#03002  FUNCTION JS_Gap_LoopVertOverWalkHaji 
+#03006    StartGap GapID = JS_Tok_LoopVertOvaWalk 
+          flags = ARRAY(
+            
+            CANCEL_GROUND cancel_rail CANCEL_WALL cancel_lip CANCEL_MANUAL 
+          )
+          
+#03007  END FUNCTION
+          
+#03008  FUNCTION JS_Gap_LoopVertOverWalkOwa 
+#03010    EndGap GapID = JS_Tok_LoopVertOvaWalk 
+          gapscript = JS_Gap_LoopVertOverWalk 
+          
+#03011  END FUNCTION
+          
+#03012  FUNCTION JS_Gap_LoopVertOverWalk 
+#03014    PlaySound HUD_JumpGap vol = 100 
+          
+#03015    StartGap GapID = LoopVertOvaWalk 
+          
+#03016    Wait 1 frame 
+#03017    EndGap GapID = LoopVertOvaWalk 
+          text = "HARUMAKI LAUNCH" 
+          score = 75 
+          
+#03018  END FUNCTION
+          
+#03019  FUNCTION JS_Gap_LoopVert2VertLightHaji 
+#03023    StartGap GapID = JS_Tok_LoopVert2VertLight 
+          flags = ARRAY(
+            
+            CANCEL_GROUND cancel_rail CANCEL_WALL cancel_lip CANCEL_MANUAL 
+          )
+          
+#03024  END FUNCTION
+          
+#03025  FUNCTION JS_Gap_LoopVert2VertLightOwa 
+#03027    EndGap GapID = JS_Tok_LoopVert2VertLight 
+          gapscript = JS_Gap_LoopVert2VertLight 
+          
+#03028  END FUNCTION
+          
+#03029  FUNCTION JS_Gap_LoopVert2VertLight 
+#03031    PlaySound HUD_JumpGap vol = 100 
+          
+#03032    StartGap GapID = LoopVert2VertLight 
+          
+#03033    Wait 1 frame 
+#03034    EndGap GapID = LoopVert2VertLight 
+          text = "WUSSY HARUMAKI TRANSFER" 
+          score = 100 
+          
+#03035  END FUNCTION
+          
+#03036  FUNCTION JS_Gap_LoopVert2VertHardHaji 
+#03040    StartGap GapID = JS_Tok_LoopVert2VertHard 
+          flags = ARRAY(
+            
+            CANCEL_GROUND cancel_rail CANCEL_WALL cancel_lip CANCEL_MANUAL 
+          )
+          
+#03041  END FUNCTION
+          
+#03042  FUNCTION JS_Gap_LoopVert2VertHardOwa 
+#03044    EndGap GapID = JS_Tok_LoopVert2VertHard 
+          gapscript = JS_Gap_LoopVert2VertHard 
+          
+#03045  END FUNCTION
+          
+#03046  FUNCTION JS_Gap_LoopVert2VertHard 
+#03048    PlaySound HUD_JumpGap vol = 100 
+          
+#03049    StartGap GapID = LoopVert2VertHard 
+          
+#03050    Wait 1 frame 
+#03051    EndGap GapID = LoopVert2VertHard 
+          text = "LUCKY HARUMAKI TRANSFER" 
+          score = 250 
+          
+#03052  END FUNCTION
+          
+#03053  FUNCTION JS_Gap_SFBVert2Vert_AirHaji 
+#03057    StartGap GapID = JS_Tok_SFBVert2Vert_Air 
+          flags = ARRAY(
+            
+            CANCEL_GROUND cancel_rail CANCEL_WALL cancel_lip CANCEL_MANUAL 
+          )
+          
+#03058  END FUNCTION
+          
+#03059  FUNCTION JS_Gap_SFBVert2Vert_AirOwa 
+#03061    EndGap GapID = JS_Tok_SFBVert2Vert_Air 
+          gapscript = JS_Gap_SFBVert2Vert_Air 
+          
+#03062  END FUNCTION
+          
+#03063  FUNCTION JS_Gap_SFBVert2Vert_Air 
+#03065    PlaySound HUD_JumpGap vol = 100 
+          
+#03066    StartGap GapID = SFBVert2VertAir 
+          
+#03067    Wait 1 frame 
+#03068    EndGap GapID = SFBVert2VertAir 
+          text = "COCKY SUKIYAKI TRANSFER" 
+          score = 800 
+          
+#03069  END FUNCTION
+          
+#03070  FUNCTION JS_Gap_SBowl2Bowl_AirHaji 
+#03074    StartGap GapID = JS_Tok_SBowl2Bowl_Air 
+          flags = ARRAY(
+            
+            CANCEL_GROUND cancel_rail CANCEL_WALL cancel_lip CANCEL_MANUAL 
+          )
+          
+#03075  END FUNCTION
+          
+#03076  FUNCTION JS_Gap_SBowl2Bowl_AirOwa 
+#03078    EndGap GapID = JS_Tok_SBowl2Bowl_Air 
+          gapscript = JS_Gap_SBowl2Bowl_Air 
+          
+#03079  END FUNCTION
+          
+#03080  FUNCTION JS_Gap_SBowl2Bowl_Air 
+#03082    PlaySound HUD_JumpGap vol = 100 
+          
+#03083    StartGap GapID = SBowl2BowlAir 
+          
+#03084    Wait 1 frame 
+#03085    EndGap GapID = SBowl2BowlAir 
+          text = "DONBURI TO DONBURI TRANSFER" 
+          score = 75 
+          
+#03086  END FUNCTION
+          
+#03087  FUNCTION JS_Gap_Lip_SBowl2TrainHaji 
+#03091    StartGap GapID = JS_Tok_SBowl2TrainLip 
+          flags = ARRAY(
+            
+            CANCEL_MANUAL CANCEL_GROUND 
+          )
+          
+#03093  END FUNCTION
+          
+#03094  FUNCTION JS_Gap_Lip_SBowl2TrainOwa 
+#03097    IF Triggertype ARRAY(
+              TRIGGER_LIP_ON 
+            )
+            
+#03098      EndGap GapID = JS_Tok_SBowl2TrainLip 
+            text = "MOCHI AGE GAP" 
+            score = 100 
+            
+#03099    END IF 
+#03100  END FUNCTION
+          
+#03101  FUNCTION JS_Gap_Lip_MidVert2Haji 
+#03105    StartGap GapID = JS_Tok_MidVert2Lip 
+          flags = ARRAY(
+            
+            CANCEL_MANUAL CANCEL_GROUND 
+          )
+          
+#03107  END FUNCTION
+          
+#03108  FUNCTION JS_Gap_Lip_MidVert2Owa 
+#03111    IF Triggertype ARRAY(
+              TRIGGER_LIP_ON 
+            )
+            
+#03112      EndGap GapID = JS_Tok_MidVert2Lip 
+            text = "KAIBASHIRA AGE GAP" 
+            score = 1000 
+            
+#03113    END IF 
+#03114  END FUNCTION
+          
+#03115  FUNCTION JS_Gap_Lip_NVert2LineHaji 
+#03119    StartGap GapID = JS_Tok_NVert2Line 
+          flags = ARRAY(
+            
+            CANCEL_MANUAL CANCEL_GROUND 
+          )
+          
+#03121  END FUNCTION
+          
+#03122  FUNCTION JS_Gap_Lip_NVert2LineOwa 
+#03125    IF Triggertype ARRAY(
+              TRIGGER_LIP_ON 
+            )
+            
+#03126      EndGap GapID = JS_Tok_NVert2Line 
+            text = "GESO KARA AGE GAP" 
+            score = 1000 
+            
+#03127    END IF 
+#03128  END FUNCTION
+          
+#03129  FUNCTION JS_Gap_Lip_NVert2RailHaji 
+#03133    StartGap GapID = JS_Tok_NVert2Rail 
+          flags = ARRAY(
+            
+            CANCEL_MANUAL CANCEL_GROUND 
+          )
+          
+#03135  END FUNCTION
+          
+#03136  FUNCTION JS_Gap_Lip_NVert2RailOwa 
+#03139    IF Triggertype ARRAY(
+              TRIGGER_LIP_ON 
+            )
+            
+#03140      EndGap GapID = JS_Tok_NVert2Rail 
+            text = "TORI KARA AGE GAP" 
+            score = 250 
+            
+#03141    END IF 
+#03142  END FUNCTION
+          
+#03143  FUNCTION JS_Gap_Lip_SBowl2LedgeHaji 
+#03147    StartGap GapID = JS_Tok_Bowl2Ledge 
+          flags = ARRAY(
+            
+            CANCEL_MANUAL CANCEL_GROUND 
+          )
+          
+#03148  END FUNCTION
+          
+#03149  FUNCTION JS_Gap_Lip_SBowl2LedgeOwa 
+#03152    IF Triggertype ARRAY(
+              TRIGGER_LIP_ON 
+            )
+            
+#03153      EndGap GapID = JS_Tok_Bowl2Ledge 
+            text = "KAREI KARA AGE GAP" 
+            score = 500 
+            
+#03154    END IF 
+#03155  END FUNCTION
+          
+#03156  FUNCTION JS_Gap_Lip_SVert2LedgeHaji 
+#03160    StartGap GapID = JS_Tok_SVert2Ledge 
+          flags = ARRAY(
+            
+            CANCEL_MANUAL CANCEL_GROUND 
+          )
+          
+#03161  END FUNCTION
+          
+#03162  FUNCTION JS_Gap_Lip_SVert2LedgeOwa 
+#03165    IF Triggertype ARRAY(
+              TRIGGER_LIP_ON 
+            )
+            
+#03166      EndGap GapID = JS_Tok_SVert2Ledge 
+            text = "HIRAME KARA AGE GAP" 
+            score = 250 
+            
+#03167    END IF 
+#03168  END FUNCTION
+          
+#03169  FUNCTION JS_Gap_BlimpManN 
+#03173    StartGap GapID = JS_Tok_BlimpManN 
+          flags = ARRAY(
+            
+            require_manual cancel_rail CANCEL_WALL cancel_lip 
+          )
+          
+#03174    EndGap GapID = JS_Tok_BlimpManS 
+          gapscript = JS_Gap_BlimpMan 
+          
+#03175  END FUNCTION
+          
+#03176  FUNCTION JS_Gap_BlimpManS 
+#03178    StartGap GapID = JS_Tok_BlimpManS 
+          flags = ARRAY(
+            
+            require_manual cancel_rail CANCEL_WALL cancel_lip 
+          )
+          
+#03179    EndGap GapID = JS_Tok_BlimpManN 
+          gapscript = JS_Gap_BlimpMan 
+          
+#03180  END FUNCTION
+          
+#03181  FUNCTION JS_Gap_BlimpMan 
+#03183    PlaySound HUD_JumpGap vol = 100 
+          
+#03184    StartGap GapID = BlimpMan 
+          
+#03185    Wait 1 frame 
+#03186    EndGap GapID = BlimpMan 
+          text = "FUGU NO NAKA GAP" 
+          score = 1000 
+          
+#03187  END FUNCTION
+          
+#03188  FUNCTION JS_Gap_BowlGapHaji 
+#03230    StartGap GapID = JS_Tok_BowlG2BowlG 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#03231  END FUNCTION
+          
+#03232  FUNCTION JS_Gap_BowlGapOwa 
+#03234    EndGap GapID = JS_Tok_BowlG2BowlG 
+          gapscript = JS_Gap_BowlGap 
+          
+#03235  END FUNCTION
+          
+#03236  FUNCTION JS_Gap_BowlGap 
+#03238    PlaySound HUD_JumpGap vol = 100 
+          
+#03239    StartGap GapID = BowlGap 
+          
+#03240    Wait 1 frame 
+#03241    EndGap GapID = BowlGap 
+          text = "DONBURI WARI GAP" 
+          score = 75 
+          
+#03242  END FUNCTION
+          
+#03243  FUNCTION JS_Gap_NekoRail_1 
+#03247    StartGap GapID = JS_Tok_NekoRail_1 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL 
+          )
+          
+#03248    EndGap GapID = JS_Tok_NekoRail_2 
+          gapscript = JS_Gap_NekoRail 
+          
+#03249  END FUNCTION
+          
+#03250  FUNCTION JS_Gap_NekoRail_2 
+#03252    StartGap GapID = JS_Tok_NekoRail_2 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL 
+          )
+          
+#03253    EndGap GapID = JS_Tok_NekoRail_1 
+          gapscript = JS_Gap_NekoRail 
+          
+#03254  END FUNCTION
+          
+#03255  FUNCTION JS_Gap_NekoRail_3 
+#03257    StartGap GapID = JS_Tok_NekoRail_3 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL 
+          )
+          
+#03258    EndGap GapID = JS_Tok_NekoRail_4 
+          gapscript = JS_Gap_NekoRail 
+          
+#03259  END FUNCTION
+          
+#03260  FUNCTION JS_Gap_NekoRail_4 
+#03262    StartGap GapID = JS_Tok_NekoRail_4 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL 
+          )
+          
+#03263    EndGap GapID = JS_Tok_NekoRail_3 
+          gapscript = JS_Gap_NekoRail 
+          
+#03264  END FUNCTION
+          
+#03265  FUNCTION JS_Gap_NekoRail 
+#03267    PlaySound HUD_JumpGap vol = 100 
+          
+#03268    StartGap GapID = NekoRail 
+          
+#03269    Wait 1 frame 
+#03270    EndGap GapID = NekoRail 
+          text = "HAMACHI NO MICHI RAIL" 
+          score = 400 
+          
+#03271  END FUNCTION
+          
+#03272  FUNCTION JS_Gap_HamaKamaGap_1 
+#03276    StartGap GapID = JS_Tok_HamaKamaGap_1 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL 
+          )
+          
+#03277    EndGap GapID = JS_Tok_NekoRail_2 
+          gapscript = JS_Gap_HamaKamaGap 
+          
+#03278  END FUNCTION
+          
+#03279  FUNCTION JS_Gap_HamaKamaGap_2 
+#03281    StartGap GapID = JS_Tok_HamaKamaGap_2 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL 
+          )
+          
+#03282    EndGap GapID = JS_Tok_HamaKamaGapl_1 
+          gapscript = JS_Gap_HamaKamaGap 
+          
+#03283  END FUNCTION
+          
+#03284  FUNCTION JS_Gap_HamaKamaGap 
+#03286    PlaySound HUD_JumpGap vol = 100 
+          
+#03287    StartGap GapID = HamaKamaGap 
+          
+#03288    Wait 1 frame 
+#03289    EndGap GapID = HamaKamaGap 
+          text = "HAMACHI KAMA GAP" 
+          score = 1000 
+          
+#03290  END FUNCTION
+          
+#03291  FUNCTION JS_Gap_HoloGap_Haji 
+#03295    StartGap GapID = JS_Tok_HoloGap 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL 
+          )
+          
+#03296  END FUNCTION
+          
+#03297  FUNCTION JS_Gap_HoloGap_Owa 
+#03299    EndGap GapID = JS_Tok_HoloGap 
+          gapscript = JS_Gap_HoloGap 
+          
+#03300  END FUNCTION
+          
+#03301  FUNCTION JS_Gap_HoloGap 
+#03303    PlaySound HUD_JumpGap vol = 100 
+          
+#03304    StartGap GapID = HoloGap 
+          
+#03305    Wait 1 frame 
+#03306    EndGap GapID = HoloGap 
+          text = "SHABU SHABU GAP" 
+          score = 250 
+          
+#03307  END FUNCTION
+          
+#03308  FUNCTION JS_Gap_Lip_SecretAreaHaji 
+#03312    StartGap GapID = JS_Tok_SecretAreaLip 
+          flags = ARRAY(
+            
+            REQUIRE_LIP CANCEL_MANUAL CANCEL_GROUND 
+          )
+          
+#03313  END FUNCTION
+          
+#03314  FUNCTION JS_Gap_Lip_SecretAreaOwa 
+#03317    IF Triggertype ARRAY(
+              TRIGGER_LIP_ON 
+            )
+            
+#03318      EndGap GapID = JS_Tok_SecretAreaLip 
+            text = "DOJO NABE" 
+            score = 400 
+            
+#03319    ELSE 
+#03322      EndGap GapID = JS_Tok_SecretAreaLip 
+            text = "YANAGAWA NABE GAP" 
+            score = 400 
+            
+#03323    END IF 
+#03324  END FUNCTION
+          
+#03325  FUNCTION JS_Gap_SecretRailFer01 
+#03329    StartGap GapID = JS_Tok_SecretRailFer1 
+          flags = ARRAY(
+            
+            cancel_lip CANCEL_WALL CANCEL_MANUAL CANCEL_GROUND 
+          )
+          
+#03330    EndGap GapID = JS_Tok_SecretRailFer2 
+          gapscript = JS_Gap_SecretRailFer 
+          
+#03331  END FUNCTION
+          
+#03332  FUNCTION JS_Gap_SecretRailFer02 
+#03335    StartGap GapID = JS_Tok_SecretRailFer2 
+          flags = ARRAY(
+            
+            cancel_lip CANCEL_WALL CANCEL_MANUAL CANCEL_GROUND 
+          )
+          
+#03336    EndGap GapID = JS_Tok_SecretRailFer1 
+          gapscript = JS_Gap_SecretRailFer 
+          
+#03337  END FUNCTION
+          
+#03338  FUNCTION JS_Gap_SecretRailFer 
+#03340    PlaySound HUD_JumpGap vol = 100 
+          
+#03341    StartGap GapID = SecretRailFer 
+          
+#03342    Wait 1 frame 
+#03343    EndGap GapID = SecretRailFer 
+          text = "UDON SUKI NABE GAP" 
+          score = 1500 
+          
+#03344  END FUNCTION
+          
+#03345  FUNCTION JS_Gap_SecretRailGapShort01 
+#03349    StartGap GapID = JS_Tok_SecretRailGapShort1 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#03350    EndGap GapID = JS_Tok_SecretRailGapShort2 
+          gapscript = JS_Gap_SecretRailGapShort 
+          
+#03351  END FUNCTION
+          
+#03352  FUNCTION JS_Gap_SecretRailGapShort02 
+#03354    StartGap GapID = JS_Tok_SecretRailGapShort2 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#03355    EndGap GapID = JS_Tok_SecretRailGapShort1 
+          gapscript = JS_Gap_SecretRailGapShort 
+          
+#03356  END FUNCTION
+          
+#03357  FUNCTION JS_Gap_SecretRailGapShort 
+#03359    PlaySound HUD_JumpGap vol = 100 
+          
+#03360    StartGap GapID = SecretRailGapShort 
+          
+#03361    Wait 1 frame 
+#03362    EndGap GapID = SecretRailGapShort 
+          text = "CHIRI NABE GAP" 
+          score = 500 
+          
+#03363  END FUNCTION
+          
+#03364  FUNCTION JS_Gap_SecretRailGapLong01 
+#03368    StartGap GapID = JS_Tok_SecretRailGapLong1 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#03369    EndGap GapID = JS_Tok_SecretRailGapLong2 
+          gapscript = JS_Gap_SecretRailGapLong 
+          
+#03370  END FUNCTION
+          
+#03371  FUNCTION JS_Gap_SecretRailGapLong02 
+#03373    StartGap GapID = JS_Tok_SecretRailGapLong2 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#03374    EndGap GapID = JS_Tok_SecretRailGapLong1 
+          gapscript = JS_Gap_SecretRailGapLong 
+          
+#03375  END FUNCTION
+          
+#03376  FUNCTION JS_Gap_SecretRailGapLong 
+#03378    PlaySound HUD_JumpGap vol = 100 
+          
+#03379    StartGap GapID = SecretRailGapLong 
+          
+#03380    Wait 1 frame 
+#03381    EndGap GapID = SecretRailGapLong 
+          text = "TARA CHIRI NABE GAP" 
+          score = 1000 
+          
+#03382  END FUNCTION
+          
+#03383  FUNCTION JS_Gap_SecretRailUpShort01 
+#03387    StartGap GapID = JS_Tok_SecretRailUpShort1 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#03388    EndGap GapID = JS_Tok_SecretRailUpShort2 
+          gapscript = JS_Gap_SecretRailUpShort 
+          
+#03389  END FUNCTION
+          
+#03390  FUNCTION JS_Gap_SecretRailUpShort02 
+#03392    StartGap GapID = JS_Tok_SecretRailUpShort2 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#03393    EndGap GapID = JS_Tok_SecretRailUpShort1 
+          gapscript = JS_Gap_SecretRailUpShort 
+          
+#03394  END FUNCTION
+          
+#03395  FUNCTION JS_Gap_SecretRailUpShort 
+#03397    PlaySound HUD_JumpGap vol = 100 
+          
+#03398    StartGap GapID = SecretRailUpShort 
+          
+#03399    Wait 1 frame 
+#03400    EndGap GapID = SecretRailUpShort 
+          text = "MIZUTAKI GAP" 
+          score = 500 
+          
+#03401  END FUNCTION
+          
+#03402  FUNCTION JS_Gap_SecretRailBowlEnd01 
+#03406    StartGap GapID = JS_Tok_SecretRailBowlEnd1 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#03407    EndGap GapID = JS_Tok_SecretRailBowlEnd2 
+          gapscript = JS_Gap_SecretRailBowlEnd 
+          
+#03408  END FUNCTION
+          
+#03409  FUNCTION JS_Gap_SecretRailBowlEnd02 
+#03411    StartGap GapID = JS_Tok_SecretRailBowlEnd2 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#03412    EndGap GapID = JS_Tok_SecretRailBowlEnd1 
+          gapscript = JS_Gap_SecretRailBowlEnd 
+          
+#03413  END FUNCTION
+          
+#03414  FUNCTION JS_Gap_SecretRailBowlEnd 
+#03416    PlaySound HUD_JumpGap vol = 100 
+          
+#03417    StartGap GapID = SecretRailBowlEnd 
+          
+#03418    Wait 1 frame 
+#03419    EndGap GapID = SecretRailBowlEnd 
+          text = "KAMO NABE GAP" 
+          score = 1000 
+          
+#03420  END FUNCTION
+          
+#03421  FUNCTION JS_Gap_SecretRailUpDwnXfer01 
+#03425    StartGap GapID = JS_Tok_SecretRailUpDwnXfer1 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#03426    EndGap GapID = JS_Tok_SecretRailUpDwnXfer2 
+          gapscript = JS_Gap_SecretRailUpDwnXfer 
+          
+#03427  END FUNCTION
+          
+#03428  FUNCTION JS_Gap_SecretRailUpDwnXfer02 
+#03430    StartGap GapID = JS_Tok_SecretRailUpDwnXfer2 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#03431    EndGap GapID = JS_Tok_SecretRailUpDwnXfer1 
+          gapscript = JS_Gap_SecretRailUpDwnXfer 
+          
+#03432  END FUNCTION
+          
+#03433  FUNCTION JS_Gap_SecretRailUpDwnXfer 
+#03435    PlaySound HUD_JumpGap vol = 100 
+          
+#03436    StartGap GapID = SecretRailUpDwnXfer 
+          
+#03437    Wait 1 frame 
+#03438    EndGap GapID = SecretRailUpDwnXfer 
+          text = "ANKO NABE GAP" 
+          score = 1500 
+          
+#03439  END FUNCTION
+          
+#03440  FUNCTION JS_Gap_SecretRailXOver01 
+#03444    StartGap GapID = JS_Tok_SecretRailXOver1 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#03445    EndGap GapID = JS_Tok_SecretRailXOver2 
+          gapscript = JS_Gap_SecretRailXOver 
+          
+#03446  END FUNCTION
+          
+#03447  FUNCTION JS_Gap_SecretRailXOver02 
+#03449    StartGap GapID = JS_Tok_SecretRailXOver2 
+          flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#03450    EndGap GapID = JS_Tok_SecretRailXOver1 
+          gapscript = JS_Gap_SecretRailXOver 
+          
+#03451  END FUNCTION
+          
+#03452  FUNCTION JS_Gap_SecretRailXOver 
+#03454    PlaySound HUD_JumpGap vol = 100 
+          
+#03455    StartGap GapID = SecretRailXOver 
+          
+#03456    Wait 1 frame 
+#03457    EndGap GapID = SecretRailXOver 
+          text = "ISHIKARI NABE GAP" 
+          score = 1500 
+          
+#03458  END FUNCTION
+          
+#03459  FUNCTION JS_Gap_SecretAirOverHaji 
+#03463    StartGap GapID = JS_Tok_SecretAirOver1 
+          flags = ARRAY(
+            
+            pure_air 
+          )
+          
+#03464  END FUNCTION
+          
+#03465  FUNCTION JS_Gap_SecretAirOverOwa 
+#03467    EndGap GapID = JS_Tok_SecretAirOver1 
+          gapscript = JS_Gap_SecretAirOver 
+          
+#03468  END FUNCTION
+          
+#03469  FUNCTION JS_Gap_SecretAirOver 
+#03471    PlaySound HUD_JumpGap vol = 100 
+          
+#03472    StartGap GapID = SecretAirOver 
+          
+#03473    Wait 1 frame 
+#03474    EndGap GapID = SecretAirOver 
+          text = "CHANKO NABE GAP" 
+          score = 1000 
+          
+#03475  END FUNCTION
+          
+#03476  FUNCTION JS_Gap_SecretAirHumpHaji 
+#03480    StartGap GapID = JS_Tok_SecretAirHump1 
+          flags = ARRAY(
+            
+            pure_air 
+          )
+          
+#03481  END FUNCTION
+          
+#03482  FUNCTION JS_Gap_SecretAirHumpOwa 
+#03484    EndGap GapID = JS_Tok_SecretAirHump1 
+          gapscript = JS_Gap_SecretAirHump 
+          
+#03485  END FUNCTION
+          
+#03486  FUNCTION JS_Gap_SecretAirHump 
+#03488    PlaySound HUD_JumpGap vol = 100 
+          
+#03489    StartGap GapID = SecretAirHump 
+          
+#03490    Wait 1 frame 
+#03491    EndGap GapID = SecretAirHump 
+          text = "SUPPON NABE GAP" 
+          score = 500 
+          
+#03492  END FUNCTION
+          
+#03493  FUNCTION JS_Gap_SecretAirHiGap01 
+#03497    StartGap GapID = JS_Tok_SecretAirHiGap1 
+          flags = ARRAY(
+            
+            pure_air 
+          )
+          
+#03498    EndGap GapID = JS_Tok_SecretAirHiGap2 
+          gapscript = JS_Gap_SecretAirHiGap 
+          
+#03499  END FUNCTION
+          
+#03500  FUNCTION JS_Gap_SecretAirHiGap02 
+#03502    StartGap GapID = JS_Tok_SecretAirHiGap2 
+          flags = ARRAY(
+            
+            pure_air 
+          )
+          
+#03503    EndGap GapID = JS_Tok_SecretAirHiGap1 
+          gapscript = JS_Gap_SecretAirHiGap 
+          
+#03504  END FUNCTION
+          
+#03505  FUNCTION JS_Gap_SecretAirHiGap 
+#03507    PlaySound HUD_JumpGap vol = 100 
+          
+#03508    StartGap GapID = SecretAirHiGap 
+          
+#03509    Wait 1 frame 
+#03510    EndGap GapID = SecretAirHiGap 
+          text = "INOSHISHI NABE GAP" 
+          score = 500 
+          
+#03511  END FUNCTION
+          
+#03512  FUNCTION JS_Gap_SecretAirLoGap01 
+#03516    StartGap GapID = JS_Tok_SecretAirLoGap1 
+          flags = ARRAY(
+            
+            pure_air 
+          )
+          
+#03517    EndGap GapID = JS_Tok_SecretAirLoGap2 
+          gapscript = JS_Gap_SecretAirLoGap 
+          
+#03518  END FUNCTION
+          
+#03519  FUNCTION JS_Gap_SecretAirLoGap02 
+#03521    StartGap GapID = JS_Tok_SecretAirLoGap2 
+          flags = ARRAY(
+            
+            pure_air 
+          )
+          
+#03522    EndGap GapID = JS_Tok_SecretAirLoGap1 
+          gapscript = JS_Gap_SecretAirLoGap 
+          
+#03523  END FUNCTION
+          
+#03524  FUNCTION JS_Gap_SecretAirLoGap 
+#03526    PlaySound HUD_JumpGap vol = 100 
+          
+#03527    StartGap GapID = SecretAirLoGap 
+          
+#03528    Wait 1 frame 
+#03529    EndGap GapID = SecretAirLoGap 
+          text = "BOTAN NABE GAP" 
+          score = 500 
+          
+#03530  END FUNCTION
+          
+#03531  FUNCTION JS_Gap_SecretAirMidGap01 
+#03535    StartGap GapID = JS_Tok_SecretAirMidGap1 
+          flags = ARRAY(
+            
+            pure_air 
+          )
+          
+#03536    EndGap GapID = JS_Tok_SecretAirMidGap2 
+          gapscript = JS_Gap_SecretAirMidGap 
+          
+#03537  END FUNCTION
+          
+#03538  FUNCTION JS_Gap_SecretAirMidGap02 
+#03540    StartGap GapID = JS_Tok_SecretAirMidGap2 
+          flags = ARRAY(
+            
+            pure_air 
+          )
+          
+#03541    EndGap GapID = JS_Tok_SecretAirMidGap1 
+          gapscript = JS_Gap_SecretAirMidGap 
+          
+#03542  END FUNCTION
+          
+#03543  FUNCTION JS_Gap_SecretAirMidGap 
+#03545    PlaySound HUD_JumpGap vol = 100 
+          
+#03546    StartGap GapID = SecretAirMidGap 
+          
+#03547    Wait 1 frame 
+#03548    EndGap GapID = SecretAirMidGap 
+          text = "SAKURA NABE GAP" 
+          score = 1500 
+          
+#03549  END FUNCTION
+          
+#03550  FUNCTION JS_Gap_SecretAirEMidGap01 
+#03554    StartGap GapID = JS_Tok_SecretAirEMidGap1 
+          flags = ARRAY(
+            
+            pure_air 
+          )
+          
+#03555    EndGap GapID = JS_Tok_SecretAirEMidGap2 
+          gapscript = JS_Gap_SecretAirEMidGap 
+          
+#03556  END FUNCTION
+          
+#03557  FUNCTION JS_Gap_SecretAirEMidGap02 
+#03559    StartGap GapID = JS_Tok_SecretAirEMidGap2 
+          flags = ARRAY(
+            
+            pure_air 
+          )
+          
+#03560    EndGap GapID = JS_Tok_SecretAirEMidGap1 
+          gapscript = JS_Gap_SecretAirEMidGap 
+          
+#03561  END FUNCTION
+          
+#03562  FUNCTION JS_Gap_SecretAirEMidGap 
+#03564    PlaySound HUD_JumpGap vol = 100 
+          
+#03565    StartGap GapID = SecretAirEMidGap 
+          
+#03566    Wait 1 frame 
+#03567    EndGap GapID = SecretAirEMidGap 
+          text = "TORI NIKU GAP" 
+          score = 500 
+          
+#03568  END FUNCTION
+          
+#03569  FUNCTION JS_Gap_SecretAirEHMidGap01 
+#03573    StartGap GapID = JS_Tok_SecretAirEHMidGap1 
+          flags = ARRAY(
+            
+            pure_air 
+          )
+          
+#03574    EndGap GapID = JS_Tok_SecretAirEHMidGap2 
+          gapscript = JS_Gap_SecretAirEHMidGap 
+          
+#03575  END FUNCTION
+          
+#03576  FUNCTION JS_Gap_SecretAirEHMidGap02 
+#03578    StartGap GapID = JS_Tok_SecretAirEHMidGap2 
+          flags = ARRAY(
+            
+            pure_air 
+          )
+          
+#03579    EndGap GapID = JS_Tok_SecretAirEHMidGap1 
+          gapscript = JS_Gap_SecretAirEHMidGap 
+          
+#03580  END FUNCTION
+          
+#03581  FUNCTION JS_Gap_SecretAirEHMidGap 
+#03583    PlaySound HUD_JumpGap vol = 100 
+          
+#03584    StartGap GapID = SecretAirEHMidGap 
+          
+#03585    Wait 1 frame 
+#03586    EndGap GapID = SecretAirEHMidGap 
+          text = "BUTA NIKU GAP" 
+          score = 500 
+          
+#03587  END FUNCTION
+          
+#03588  FUNCTION JS_Gap_SecretAirWMidGap01 
+#03592    StartGap GapID = JS_Tok_SecretAirWMidGap1 
+          flags = ARRAY(
+            
+            pure_air 
+          )
+          
+#03593    EndGap GapID = JS_Tok_SecretAirWMidGap2 
+          gapscript = JS_Gap_SecretAirWMidGap 
+          
+#03594  END FUNCTION
+          
+#03595  FUNCTION JS_Gap_SecretAirWMidGap02 
+#03597    StartGap GapID = JS_Tok_SecretAirWMidGap2 
+          flags = ARRAY(
+            
+            pure_air 
+          )
+          
+#03598    EndGap GapID = JS_Tok_SecretAirWMidGap1 
+          gapscript = JS_Gap_SecretAirWMidGap 
+          
+#03599  END FUNCTION
+          
+#03600  FUNCTION JS_Gap_SecretAirWMidGap 
+#03602    PlaySound HUD_JumpGap vol = 100 
+          
+#03603    StartGap GapID = SecretAirWMidGap 
+          
+#03604    Wait 1 frame 
+#03605    EndGap GapID = SecretAirWMidGap 
+          text = "GYU NIKU GAP" 
+          score = 500 
+          
+#03606  END FUNCTION
+          
+#03607  

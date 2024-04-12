@@ -1,0 +1,45 @@
+FUNCTION view_model 
+#00001    IF GotParam model 
+#00002      Cleanup 
+#00003      SetCasViewer 0 
+#00004      LoadLevelGeometry Level = GLOBAL.model 
+            sky = "" 
+            
+#00005      SetBG 
+#00006    ELSE 
+#00007      script_assert "No model specified" 
+#00008    END IF 
+#00009  END FUNCTION
+          
+#00010  FUNCTION view_createdskater 
+#00012    Cleanup 
+#00013    RemoveAllSkaters 
+#00014    ViewSkaterModel 
+#00015    SetBG 
+#00016  END FUNCTION
+          
+#00017  FUNCTION SetBG 
+#00019    SetBackgroundColor STRUCT{
+            r = 120 
+            g = 120 
+            b = 120 
+            alpha = 0 
+            }
+          
+#00020    SetBSPAmbientColor STRUCT{
+            r = 0 
+            g = 0 
+            b = 0 
+            alpha = 0 
+            }
+          
+#00021    SetDFFAmbientColor STRUCT{
+            r = 120 
+            g = 120 
+            b = 120 
+            alpha = 0 
+            }
+          
+#00022  END FUNCTION
+          
+#00023  

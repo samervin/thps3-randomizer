@@ -1,0 +1,889 @@
+SkaterIgnoredLights = ARRAY(
+          
+          2 
+        )
+        
+#00001  FUNCTION SetUpViewerLights 
+#00003    SetUpCanadaLights 
+#00004  END FUNCTION
+          
+#00005  FUNCTION SetUpSkateShopLights 
+#00007    SetDFFDirectColor lightIndex = 0 
+          r = 100 
+          g = 100 
+          b = 100 
+          alpha = 0 
+          
+#00008    SetDFFDirectRotation lightIndex = 0 
+          pitch = 55.0 
+          heading = 120.0 
+          
+#00009    SetDFFDirectActive lightIndex = 0 
+          activated = 1 
+          
+#00010    SetDFFDirectColor lightIndex = 1 
+          r = 83 
+          g = 75 
+          b = 72 
+          alpha = 0 
+          
+#00012    SetDFFDirectRotation lightIndex = 1 
+          pitch = 28.0 
+          heading = 300.0 
+          
+#00013    SetDFFDirectActive lightIndex = 1 
+          activated = 1 
+          
+#00014    SetDFFDirectColor lightIndex = 2 
+          r = 200 
+          g = 200 
+          b = 240 
+          alpha = 0 
+          
+#00016    SetDFFDirectRotation lightIndex = 2 
+          pitch = 125.0 
+          heading = 350.0 
+          
+#00017    SetDFFDirectActive lightIndex = 2 
+          activated = 1 
+          
+#00018    SetDFFAmbientColor STRUCT{
+            r = 59 
+            g = 61 
+            b = 61 
+            alpha = 0 
+            }
+          
+#00020    SetDynamicLightModulationFactor ambient value = 0.0 
+          
+#00022    SetDynamicLightModulationFactor directional = 0 
+          value = 0.0 
+          
+#00023    SetDynamicLightModulationFactor directional = 1 
+          value = 0.0 
+          
+#00024    SetDynamicLightModulationFactor directional = 2 
+          value = 0.0 
+          
+#00025  END FUNCTION
+          
+#00026  FUNCTION SetUpBasicLights 
+#00028    SetDFFDirectColor lightIndex = 0 
+          r = 74 
+          g = 74 
+          b = 74 
+          alpha = 0 
+          
+#00029    SetDFFDirectRotation lightIndex = 0 
+          pitch = 0.0 
+          heading = 0.0 
+          
+#00030    SetDFFDirectActive lightIndex = 0 
+          activated = 1 
+          
+#00031  END FUNCTION
+          
+#00032  FUNCTION SetUpSk3EdLights 
+#00035    SetDFFDirectColor lightIndex = 2 
+          r = 255 
+          g = 255 
+          b = 255 
+          alpha = 0 
+          
+#00036    SetDFFDirectRotation lightIndex = 2 
+          pitch = 22.0 
+          heading = 235.0 
+          
+#00037    SetDFFDirectActive lightIndex = 2 
+          activated = 1 
+          
+#00038    SetDFFAmbientColor STRUCT{
+            r = 84 
+            g = 84 
+            b = 84 
+            alpha = 0 
+            }
+          
+#00040  END FUNCTION
+          
+#00041  FUNCTION SetUpCanadaLights 
+#00043    SetDFFDirectColor lightIndex = 0 
+          r = 146 
+          g = 148 
+          b = 158 
+          alpha = 0 
+          
+#00044    SetDFFDirectRotation lightIndex = 0 
+          pitch = 100.0 
+          heading = 0.0 
+          
+#00045    SetDFFDirectActive lightIndex = 0 
+          activated = 1 
+          
+#00046    SetDFFDirectColor lightIndex = 1 
+          r = 55 
+          g = 58 
+          b = 63 
+          alpha = 0 
+          
+#00048    SetDFFDirectRotation lightIndex = 1 
+          pitch = 290.0 
+          heading = 0.0 
+          
+#00049    SetDFFDirectActive lightIndex = 1 
+          activated = 1 
+          
+#00050    SetDFFDirectColor lightIndex = 2 
+          r = 200 
+          g = 200 
+          b = 240 
+          alpha = 0 
+          
+#00052    SetDFFDirectRotation lightIndex = 2 
+          pitch = 125.0 
+          heading = 320.0 
+          
+#00053    SetDFFDirectActive lightIndex = 2 
+          activated = 1 
+          
+#00054    SetDFFAmbientColor STRUCT{
+            r = 72 
+            g = 72 
+            b = 75 
+            alpha = 0 
+            }
+          
+#00056    SetDynamicLightModulationFactor ambient value = 0.3 
+          
+#00058    SetDynamicLightModulationFactor directional = 0 
+          value = 0 
+          5 
+#00059    SetDynamicLightModulationFactor directional = 1 
+          value = 1.0 
+          
+#00060    SetDynamicLightModulationFactor directional = 2 
+          value = 0.0 
+          
+#00061  END FUNCTION
+          
+#00062  FUNCTION SetUpFoundryLights 
+#00065    SetDFFDirectColor lightIndex = 0 
+          r = 103 
+          g = 106 
+          b = 108 
+          alpha = 0 
+          
+#00066    SetDFFDirectRotation lightIndex = 0 
+          pitch = 90.0 
+          heading = 140.0 
+          
+#00067    SetDFFDirectActive lightIndex = 0 
+          activated = 1 
+          
+#00068    SetDFFDirectColor lightIndex = 1 
+          r = 103 
+          g = 68 
+          b = 19 
+          alpha = 0 
+          
+#00070    SetDFFDirectRotation lightIndex = 1 
+          pitch = 310.0 
+          heading = 0.0 
+          
+#00071    SetDFFDirectActive lightIndex = 1 
+          activated = 1 
+          
+#00072    SetDFFDirectColor lightIndex = 2 
+          r = 142 
+          g = 116 
+          b = 98 
+          alpha = 0 
+          
+#00074    SetDFFDirectRotation lightIndex = 2 
+          pitch = 45.0 
+          heading = 0.0 
+          
+#00075    SetDFFDirectActive lightIndex = 2 
+          activated = 1 
+          
+#00076    SetDFFAmbientColor STRUCT{
+            r = 51 
+            g = 47 
+            b = 44 
+            alpha = 0 
+            }
+          
+#00078    SetDynamicLightModulationFactor ambient value = 0.1 
+          
+#00080    SetDynamicLightModulationFactor directional = 0 
+          value = 0.4 
+          
+#00081    SetDynamicLightModulationFactor directional = 1 
+          value = 1.0 
+          
+#00082    SetDynamicLightModulationFactor directional = 2 
+          value = 0.1 
+          
+#00083  END FUNCTION
+          
+#00084  FUNCTION SetUpSkatersIslandLights 
+#00087    SetDFFDirectColor lightIndex = 0 
+          r = 130 
+          g = 129 
+          b = 136 
+          alpha = 0 
+          
+#00089    SetDFFDirectRotation lightIndex = 0 
+          pitch = 90.0 
+          heading = 0.0 
+          
+#00090    SetDFFDirectActive lightIndex = 0 
+          activated = 1 
+          
+#00091    SetDFFDirectColor lightIndex = 1 
+          r = 81 
+          g = 68 
+          b = 47 
+          alpha = 128 
+          
+#00093    SetDFFDirectRotation lightIndex = 1 
+          pitch = 255.0 
+          heading = 85.0 
+          
+#00094    SetDFFDirectActive lightIndex = 1 
+          activated = 1 
+          
+#00095    SetDFFDirectColor lightIndex = 2 
+          r = 140 
+          g = 139 
+          b = 146 
+          alpha = 0 
+          
+#00097    SetDFFDirectRotation lightIndex = 2 
+          pitch = 90.0 
+          heading = 0.0 
+          
+#00098    SetDFFDirectActive lightIndex = 2 
+          activated = 1 
+          
+#00099    SetDFFAmbientColor STRUCT{
+            r = 74 
+            g = 74 
+            b = 79 
+            alpha = 0 
+            }
+          
+#00101    SetDynamicLightModulationFactor ambient value = 0.4 
+          
+#00103    SetDynamicLightModulationFactor directional = 0 
+          value = 0.6 
+          
+#00104    SetDynamicLightModulationFactor directional = 1 
+          value = 1.0 
+          
+#00105    SetDynamicLightModulationFactor directional = 2 
+          value = 0.0 
+          
+#00106  END FUNCTION
+          
+#00107  FUNCTION SetUpLosAngelesLights 
+#00110    SetDFFDirectColor lightIndex = 0 
+          r = 162 
+          g = 150 
+          b = 133 
+          alpha = 0 
+          
+#00111    SetDFFDirectRotation lightIndex = 0 
+          pitch = 58.0 
+          heading = 135.0 
+          
+#00112    SetDFFDirectActive lightIndex = 0 
+          activated = 1 
+          
+#00113    SetDFFDirectColor lightIndex = 1 
+          r = 70 
+          g = 70 
+          b = 70 
+          alpha = 0 
+          
+#00115    SetDFFDirectRotation lightIndex = 1 
+          pitch = 283.0 
+          heading = 0.0 
+          
+#00116    SetDFFDirectActive lightIndex = 1 
+          activated = 0 
+          
+#00117    SetDFFDirectColor lightIndex = 2 
+          r = 170 
+          g = 162 
+          b = 169 
+          alpha = 0 
+          
+#00119    SetDFFDirectRotation lightIndex = 2 
+          pitch = 45.0 
+          heading = 135.0 
+          
+#00120    SetDFFDirectActive lightIndex = 2 
+          activated = 1 
+          
+#00121    SetDFFAmbientColor STRUCT{
+            r = 85 
+            g = 83 
+            b = 82 
+            alpha = 0 
+            }
+          
+#00123    SetDynamicLightModulationFactor ambient value = 0.5 
+          
+#00125    SetDynamicLightModulationFactor directional = 0 
+          value = 0.9 
+          
+#00126    SetDynamicLightModulationFactor directional = 1 
+          value = 0.0 
+          
+#00127    SetDynamicLightModulationFactor directional = 2 
+          value = 0.0 
+          
+#00128  END FUNCTION
+          
+#00129  FUNCTION SetUpSuburbiaLights 
+#00132    SetDFFDirectColor lightIndex = 0 
+          r = 159 
+          g = 122 
+          b = 109 
+          alpha = 0 
+          
+#00133    SetDFFDirectRotation lightIndex = 0 
+          pitch = 55.0 
+          heading = 90.0 
+          
+#00134    SetDFFDirectActive lightIndex = 0 
+          activated = 1 
+          
+#00135    SetDFFDirectColor lightIndex = 1 
+          r = 70 
+          g = 70 
+          b = 70 
+          alpha = 0 
+          
+#00137    SetDFFDirectRotation lightIndex = 1 
+          pitch = 283.0 
+          heading = 0.0 
+          
+#00138    SetDFFDirectActive lightIndex = 1 
+          activated = 0 
+          
+#00139    SetDFFDirectColor lightIndex = 2 
+          r = 101 
+          g = 82 
+          b = 105 
+          alpha = 0 
+          
+#00141    SetDFFDirectRotation lightIndex = 2 
+          pitch = 45.0 
+          heading = 0.0 
+          
+#00142    SetDFFDirectActive lightIndex = 2 
+          activated = 1 
+          
+#00143    SetDFFAmbientColor STRUCT{
+            r = 85 
+            g = 87 
+            b = 89 
+            alpha = 0 
+            }
+          
+#00145    SetDynamicLightModulationFactor ambient value = 0.5 
+          
+#00147    SetDynamicLightModulationFactor directional = 0 
+          value = 0.9 
+          
+#00148    SetDynamicLightModulationFactor directional = 1 
+          value = 0.1 
+          
+#00149    SetDynamicLightModulationFactor directional = 2 
+          value = 0.1 
+          
+#00150  END FUNCTION
+          
+#00151  FUNCTION SetUpShipLights 
+#00154    SetDFFDirectColor lightIndex = 0 
+          r = 125 
+          g = 141 
+          b = 153 
+          alpha = 0 
+          
+#00155    SetDFFDirectRotation lightIndex = 0 
+          pitch = 105.0 
+          heading = 0.0 
+          
+#00156    SetDFFDirectActive lightIndex = 0 
+          activated = 1 
+          
+#00157    SetDFFDirectColor lightIndex = 1 
+          r = 70 
+          g = 70 
+          b = 70 
+          alpha = 0 
+          
+#00159    SetDFFDirectRotation lightIndex = 1 
+          pitch = 283.0 
+          heading = 0.0 
+          
+#00160    SetDFFDirectActive lightIndex = 1 
+          activated = 0 
+          
+#00161    SetDFFDirectColor lightIndex = 2 
+          r = 120 
+          g = 121 
+          b = 143 
+          alpha = 0 
+          
+#00163    SetDFFDirectRotation lightIndex = 2 
+          pitch = 45.0 
+          heading = 0.0 
+          
+#00164    SetDFFDirectActive lightIndex = 2 
+          activated = 1 
+          
+#00165    SetDFFAmbientColor STRUCT{
+            r = 95 
+            g = 98 
+            b = 95 
+            alpha = 0 
+            }
+          
+#00167    SetDynamicLightModulationFactor ambient value = 0.5 
+          
+#00169    SetDynamicLightModulationFactor directional = 0 
+          value = 1.0 
+          
+#00170    SetDynamicLightModulationFactor directional = 1 
+          value = 0.1 
+          
+#00171    SetDynamicLightModulationFactor directional = 2 
+          value = 0.1 
+          
+#00172  END FUNCTION
+          
+#00173  FUNCTION SetUpTokyoLights 
+#00176    SetDFFDirectColor lightIndex = 0 
+          r = 220 
+          g = 220 
+          b = 245 
+          alpha = 0 
+          
+#00177    SetDFFDirectRotation lightIndex = 0 
+          pitch = 65.0 
+          heading = 0.0 
+          
+#00178    SetDFFDirectActive lightIndex = 0 
+          activated = 1 
+          
+#00179    SetDFFDirectColor lightIndex = 1 
+          r = 70 
+          g = 70 
+          b = 70 
+          alpha = 0 
+          
+#00181    SetDFFDirectRotation lightIndex = 1 
+          pitch = 283.0 
+          heading = 0.0 
+          
+#00182    SetDFFDirectActive lightIndex = 1 
+          activated = 0 
+          
+#00183    SetDFFDirectColor lightIndex = 2 
+          r = 121 
+          g = 89 
+          b = 74 
+          alpha = 0 
+          
+#00185    SetDFFDirectRotation lightIndex = 2 
+          pitch = 45.0 
+          heading = 0.0 
+          
+#00186    SetDFFDirectActive lightIndex = 2 
+          activated = 1 
+          
+#00187    SetDFFAmbientColor STRUCT{
+            r = 50 
+            g = 67 
+            b = 67 
+            alpha = 0 
+            }
+          
+#00189    SetDynamicLightModulationFactor ambient value = 0.1 
+          
+#00191    SetDynamicLightModulationFactor directional = 0 
+          value = 0.9 
+          
+#00192    SetDynamicLightModulationFactor directional = 1 
+          value = 0.0 
+          
+#00193    SetDynamicLightModulationFactor directional = 2 
+          value = 0.0 
+          
+#00194  END FUNCTION
+          
+#00195  FUNCTION SetUpOilLights 
+#00198    SetDFFDirectColor lightIndex = 0 
+          r = 145 
+          g = 106 
+          b = 88 
+          alpha = 0 
+          
+#00199    SetDFFDirectRotation lightIndex = 0 
+          pitch = 65.0 
+          heading = 0.0 
+          
+#00200    SetDFFDirectActive lightIndex = 0 
+          activated = 1 
+          
+#00201    SetDFFDirectColor lightIndex = 1 
+          r = 70 
+          g = 70 
+          b = 70 
+          alpha = 0 
+          
+#00203    SetDFFDirectRotation lightIndex = 1 
+          pitch = 283.0 
+          heading = 0.0 
+          
+#00204    SetDFFDirectActive lightIndex = 1 
+          activated = 0 
+          
+#00205    SetDFFDirectColor lightIndex = 2 
+          r = 121 
+          g = 89 
+          b = 74 
+          alpha = 0 
+          
+#00207    SetDFFDirectRotation lightIndex = 2 
+          pitch = 45.0 
+          heading = 0.0 
+          
+#00208    SetDFFDirectActive lightIndex = 2 
+          activated = 1 
+          
+#00209    SetDFFAmbientColor STRUCT{
+            r = 38 
+            g = 48 
+            b = 55 
+            alpha = 0 
+            }
+          
+#00211    SetDynamicLightModulationFactor ambient value = 0.1 
+          
+#00213    SetDynamicLightModulationFactor directional = 0 
+          value = 0.9 
+          
+#00214    SetDynamicLightModulationFactor directional = 1 
+          value = 0.0 
+          
+#00215    SetDynamicLightModulationFactor directional = 2 
+          value = 0.0 
+          
+#00216  END FUNCTION
+          
+#00217  FUNCTION SetUpRioDeJaneiroLights 
+#00220    SetDFFDirectColor lightIndex = 0 
+          r = 160 
+          g = 149 
+          b = 127 
+          alpha = 0 
+          
+#00221    SetDFFDirectRotation lightIndex = 0 
+          pitch = 110.0 
+          heading = 280.0 
+          
+#00222    SetDFFDirectActive lightIndex = 0 
+          activated = 1 
+          
+#00223    SetDFFDirectColor lightIndex = 1 
+          r = 70 
+          g = 70 
+          b = 70 
+          alpha = 0 
+          
+#00225    SetDFFDirectRotation lightIndex = 1 
+          pitch = 283.0 
+          heading = 0.0 
+          
+#00226    SetDFFDirectActive lightIndex = 1 
+          activated = 0 
+          
+#00227    SetDFFDirectColor lightIndex = 2 
+          r = 101 
+          g = 102 
+          b = 118 
+          alpha = 0 
+          
+#00229    SetDFFDirectRotation lightIndex = 2 
+          pitch = 45.0 
+          heading = 160.0 
+          
+#00230    SetDFFDirectActive lightIndex = 2 
+          activated = 1 
+          
+#00231    SetDFFAmbientColor STRUCT{
+            r = 73 
+            g = 73 
+            b = 74 
+            alpha = 0 
+            }
+          
+#00233    SetDynamicLightModulationFactor ambient value = 0.5 
+          
+#00235    SetDynamicLightModulationFactor directional = 0 
+          value = 0.5 
+          
+#00236    SetDynamicLightModulationFactor directional = 1 
+          value = 0.1 
+          
+#00237    SetDynamicLightModulationFactor directional = 2 
+          value = 0.1 
+          
+#00238  END FUNCTION
+          
+#00239  FUNCTION SetUpAirportLights 
+#00242    SetDFFDirectColor lightIndex = 0 
+          r = 126 
+          g = 130 
+          b = 149 
+          alpha = 0 
+          
+#00243    SetDFFDirectRotation lightIndex = 0 
+          pitch = 120.0 
+          heading = 0.0 
+          
+#00244    SetDFFDirectActive lightIndex = 0 
+          activated = 1 
+          
+#00245    SetDFFDirectColor lightIndex = 1 
+          r = 70 
+          g = 70 
+          b = 70 
+          alpha = 0 
+          
+#00247    SetDFFDirectRotation lightIndex = 1 
+          pitch = 283.0 
+          heading = 0.0 
+          
+#00248    SetDFFDirectActive lightIndex = 1 
+          activated = 0 
+          
+#00249    SetDFFDirectColor lightIndex = 2 
+          r = 101 
+          g = 102 
+          b = 118 
+          alpha = 0 
+          
+#00251    SetDFFDirectRotation lightIndex = 2 
+          pitch = 45.0 
+          heading = 0.0 
+          
+#00252    SetDFFDirectActive lightIndex = 2 
+          activated = 1 
+          
+#00253    SetDFFAmbientColor STRUCT{
+            r = 83 
+            g = 83 
+            b = 84 
+            alpha = 0 
+            }
+          
+#00255    SetDynamicLightModulationFactor ambient value = 0.2 
+          
+#00257    SetDynamicLightModulationFactor directional = 0 
+          value = 0.8 
+          
+#00258    SetDynamicLightModulationFactor directional = 1 
+          value = 0.0 
+          
+#00259    SetDynamicLightModulationFactor directional = 2 
+          value = 0.0 
+          
+#00260  END FUNCTION
+          
+#00261  FUNCTION SetUpWareLights 
+#00263    SetDFFDirectColor lightIndex = 0 
+          r = 255 
+          g = 251 
+          b = 194 
+          alpha = 0 
+          
+#00264    SetDFFDirectRotation lightIndex = 0 
+          pitch = 55.0 
+          heading = 90.0 
+          
+#00265    SetDFFDirectActive lightIndex = 0 
+          activated = 1 
+          
+#00266    SetDFFDirectColor lightIndex = 1 
+          r = 122 
+          g = 91 
+          b = 49 
+          alpha = 0 
+          
+#00268    SetDFFDirectRotation lightIndex = 1 
+          pitch = 270.0 
+          heading = 90.0 
+          
+#00269    SetDFFDirectActive lightIndex = 1 
+          activated = 1 
+          
+#00270    SetDFFDirectColor lightIndex = 2 
+          r = 101 
+          g = 82 
+          b = 105 
+          alpha = 0 
+          
+#00272    SetDFFDirectRotation lightIndex = 2 
+          pitch = 45.0 
+          heading = 0.0 
+          
+#00273    SetDFFDirectActive lightIndex = 2 
+          activated = 0 
+          
+#00274    SetDFFAmbientColor STRUCT{
+            r = 44 
+            g = 44 
+            b = 49 
+            alpha = 0 
+            }
+          
+#00276    SetDynamicLightModulationFactor ambient value = 0.3 
+          
+#00278    SetDynamicLightModulationFactor directional = 0 
+          value = 0.9 
+          
+#00279    SetDynamicLightModulationFactor directional = 1 
+          value = 0.8 
+          
+#00280    SetDynamicLightModulationFactor directional = 2 
+          value = 0.0 
+          
+#00281  END FUNCTION
+          
+#00282  FUNCTION SetUpBurnLights 
+#00284    SetDFFDirectColor lightIndex = 0 
+          r = 245 
+          g = 220 
+          b = 178 
+          alpha = 0 
+          
+#00285    SetDFFDirectRotation lightIndex = 0 
+          pitch = 45.0 
+          heading = 92.0 
+          
+#00286    SetDFFDirectActive lightIndex = 0 
+          activated = 1 
+          
+#00287    SetDFFDirectColor lightIndex = 1 
+          r = 80 
+          g = 80 
+          b = 81 
+          alpha = 0 
+          
+#00289    SetDFFDirectRotation lightIndex = 1 
+          pitch = 153.0 
+          heading = 56.0 
+          
+#00290    SetDFFDirectActive lightIndex = 1 
+          activated = 1 
+          
+#00291    SetDFFDirectColor lightIndex = 2 
+          r = 170 
+          g = 162 
+          b = 169 
+          alpha = 0 
+          
+#00293    SetDFFDirectRotation lightIndex = 2 
+          pitch = 45.0 
+          heading = 135.0 
+          
+#00294    SetDFFDirectActive lightIndex = 2 
+          activated = 1 
+          
+#00295    SetDFFAmbientColor STRUCT{
+            r = 53 
+            g = 53 
+            b = 55 
+            alpha = 0 
+            }
+          
+#00297    SetDynamicLightModulationFactor ambient value = 0.5 
+          
+#00299    SetDynamicLightModulationFactor directional = 0 
+          value = 0.96 
+          
+#00300    SetDynamicLightModulationFactor directional = 1 
+          value = 0.2 
+          
+#00301    SetDynamicLightModulationFactor directional = 2 
+          value = 0.0 
+          
+#00302  END FUNCTION
+          
+#00303  FUNCTION SetUpRoswellLights 
+#00306    SetDFFDirectColor lightIndex = 0 
+          r = 103 
+          g = 106 
+          b = 108 
+          alpha = 0 
+          
+#00307    SetDFFDirectRotation lightIndex = 0 
+          pitch = 90.0 
+          heading = 140.0 
+          
+#00308    SetDFFDirectActive lightIndex = 0 
+          activated = 1 
+          
+#00309    SetDFFDirectColor lightIndex = 1 
+          r = 34 
+          g = 34 
+          b = 44 
+          alpha = 0 
+          
+#00311    SetDFFDirectRotation lightIndex = 1 
+          pitch = 310.0 
+          heading = 0.0 
+          
+#00312    SetDFFDirectActive lightIndex = 1 
+          activated = 1 
+          
+#00313    SetDFFDirectColor lightIndex = 2 
+          r = 142 
+          g = 116 
+          b = 98 
+          alpha = 0 
+          
+#00315    SetDFFDirectRotation lightIndex = 2 
+          pitch = 45.0 
+          heading = 0.0 
+          
+#00316    SetDFFDirectActive lightIndex = 2 
+          activated = 1 
+          
+#00317    SetDFFAmbientColor STRUCT{
+            r = 51 
+            g = 47 
+            b = 44 
+            alpha = 0 
+            }
+          
+#00319    SetDynamicLightModulationFactor ambient value = 0.1 
+          
+#00321    SetDynamicLightModulationFactor directional = 0 
+          value = 0.4 
+          
+#00322    SetDynamicLightModulationFactor directional = 1 
+          value = 1.0 
+          
+#00323    SetDynamicLightModulationFactor directional = 2 
+          value = 0.1 
+          
+#00324  END FUNCTION
+          
+#00325  

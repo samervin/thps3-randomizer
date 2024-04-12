@@ -1,0 +1,1023 @@
+FUNCTION helper_menu_create 
+#00001    createmenu STRUCT{
+            type = textmenuelement 
+            id = helper_menu_1 
+            x = 90.0 
+            y = 350.0 
+            w = 150.0 
+            h = 250.0 
+            just_center_x just_center_y text = "бвгдежзийклм" 
+            static dont_gray drawer = helper_text 
+            DontDrawRect }
+          
+#00011    createmenu STRUCT{
+            type = textmenuelement 
+            id = helper_menu_2 
+            x = 250.0 
+            y = 350.0 
+            w = 150.0 
+            h = 250.0 
+            just_center_x just_center_y text = "бвгдежзийклм" 
+            static dont_gray drawer = helper_text 
+            DontDrawRect }
+          
+#00021    createmenu STRUCT{
+            type = textmenuelement 
+            id = helper_menu_3 
+            x = 410.0 
+            y = 350.0 
+            w = 150.0 
+            h = 250.0 
+            just_center_x just_center_y text = "бвгдежзийклм" 
+            static dont_gray drawer = helper_text 
+            DontDrawRect }
+          
+#00031    createmenu STRUCT{
+            type = textmenuelement 
+            id = helper_menu_4 
+            x = 410.0 
+            y = 350.0 
+            w = 150.0 
+            h = 250.0 
+            just_center_x just_center_y text = "бвгдежзийклм" 
+            static dont_gray drawer = helper_text 
+            DontDrawRect }
+          
+#00041    createmenu STRUCT{
+            type = textmenuelement 
+            id = helper_menu_5 
+            x = 410.0 
+            y = 350.0 
+            just_left_x just_center_y text = "Full" 
+            static dont_gray drawer = small_helper 
+            DontDrawRect }
+          
+#00050    createmenu STRUCT{
+            type = textmenuelement 
+            id = helper_menu_6 
+            x = 410.0 
+            y = 350.0 
+            just_left_x just_center_y text = "Empty" 
+            static dont_gray drawer = small_helper 
+            DontDrawRect }
+          
+#00059    attachchild parent = contain1 
+          child = helper_menu_1 
+          
+#00061    attachchild parent = contain1 
+          child = helper_menu_2 
+          
+#00062    attachchild parent = contain1 
+          child = helper_menu_3 
+          
+#00063    attachchild parent = contain1 
+          child = helper_menu_4 
+          
+#00064    attachchild parent = contain1 
+          child = helper_menu_5 
+          
+#00065    attachchild parent = contain1 
+          child = helper_menu_6 
+          
+#00066  END FUNCTION
+          
+#00067  FUNCTION helper_set_positions y = 410 
+          x1 = 45 
+          w1 = 100 
+          x2 = 160 
+          w2 = 100 
+          x3 = 270 
+          w3 = 80 
+          
+#00069    MoveMenu id = helper_menu_1 
+          x = GLOBAL.x1 
+          y = GLOBAL.y 
+          w = GLOBAL.w1 
+          
+#00070    MoveMenu id = helper_menu_2 
+          x = GLOBAL.x2 
+          y = GLOBAL.y 
+          w = GLOBAL.w2 
+          
+#00071    MoveMenu id = helper_menu_3 
+          x = GLOBAL.x3 
+          y = GLOBAL.y 
+          w = GLOBAL.w3 
+          
+#00072    MoveMenu id = helper_menu_4 
+          x = GLOBAL.x4 
+          y = GLOBAL.y 
+          w = GLOBAL.w4 
+          
+#00073  END FUNCTION
+          
+#00074  FUNCTION helper_show 
+#00076  END FUNCTION
+          
+#00080  FUNCTION helper_hide 
+#00082  END FUNCTION
+          
+#00087  FUNCTION helper_park_editor_building 
+#00089    helper_hide 
+#00090    helper_show 
+#00091    helper_set_positions x1 = 45 
+          x2 = 220 
+          x3 = 400 
+          
+#00092    SetMenuElementText id = helper_menu_1 
+          "L1/L2 Raise/Lower" 
+#00093    SetMenuElementText id = helper_menu_2 
+          "D-Pad change piece" 
+#00094    SetMenuElementText id = helper_menu_3 
+          "м place piece" 
+#00095    MoveMenu id = helper_menu_4 
+          x = 515 
+          y = 410 
+          w = 80 
+          
+#00097    SetMenuElementText id = helper_menu_4 
+          "к erase" 
+#00098    MoveMenu id = helper_menu_5 
+          x = 565 
+          y = 75 
+          w = 80 
+          
+#00101    SetMenuElementText id = helper_menu_5 
+          "full" 
+#00102    MoveMenu id = helper_menu_6 
+          x = 565 
+          y = 390 
+          w = 80 
+          
+#00105    SetMenuElementText id = helper_menu_6 
+          "empty" 
+#00106  END FUNCTION
+          
+#00107  FUNCTION helper_select_choose_back 
+#00109    helper_show 
+#00110    helper_set_positions NULL 
+#00111    SetMenuElementText id = helper_menu_1 
+          "бе Select" 
+#00112    SetMenuElementText id = helper_menu_2 
+          "м Accept" 
+#00113    SetMenuElementText id = helper_menu_3 
+          "к Back" 
+#00114  END FUNCTION
+          
+#00115  FUNCTION helper_select_choose_back_delete 
+#00118    helper_show 
+#00119    helper_set_positions x1 = 122 
+          x2 = 237 
+          x3 = 347 
+          
+#00120    SetMenuElementText id = helper_menu_1 
+          "бе Select" 
+#00121    SetMenuElementText id = helper_menu_2 
+          "м Accept" 
+#00122    SetMenuElementText id = helper_menu_3 
+          "к Back" 
+#00123    MoveMenu id = helper_menu_4 
+          x = 425 
+          y = 410 
+          
+#00126    SetMenuElementText id = helper_menu_4 
+          "й Delete" 
+#00127  END FUNCTION
+          
+#00128  FUNCTION helper_select_choose_rotate_back x1 = 67 
+          x2 = 192 
+          x3 = 345 
+          x4 = 480 
+          
+#00130    printf "launching helper text helper_select_choose_rotate_back ------------------" 
+#00132    helper_show 
+#00133    helper_set_positions NULL 
+#00134    SetMenuElementText id = helper_menu_1 
+          "бе Select" 
+#00135    SetMenuElementText id = helper_menu_2 
+          "м Accept" 
+#00136    SetMenuElementText id = helper_menu_3 
+          "й/л Rotate Skater" 
+#00137    SetMenuElementText id = helper_menu_4 
+          "к Back" 
+#00139    IF MenuIsShown SelectChooseBackRotateMenus 
+#00144      WaitForMenuToDisappear SelectChooseBackRotateMenus 
+#00145    END IF 
+#00146  END FUNCTION
+          
+#00147  FUNCTION helper_select_lr_choose_back_centered 
+#00150    helper_show 
+#00151    helper_set_positions x1 = 25 
+          x2 = 120 
+          x3 = 452 
+          x4 = 235 
+          
+#00152    SetMenuElementText id = helper_menu_1 
+          "м Accept" 
+#00153    SetMenuElementText id = helper_menu_2 
+          "к Back" 
+#00154    SetMenuElementText id = helper_menu_3 
+          "з Change Skater г" 
+#00155    SetMenuElementText id = helper_menu_4 
+          "й/л Rotate Skater" 
+#00157  END FUNCTION
+          
+#00158  FUNCTION helper_select_toggle_back 
+#00161    helper_show 
+#00162    helper_set_positions x1 = 100 
+          x2 = 270 
+          x3 = 430 
+          
+#00163    SetMenuElementText id = helper_menu_1 
+          "бе Select" 
+#00164    SetMenuElementText id = helper_menu_2 
+          "м Toggle/Accept" 
+#00165    SetMenuElementText id = helper_menu_3 
+          "к Back" 
+#00166  END FUNCTION
+          
+#00167  FUNCTION helper_leftrightselect_choose_back 
+#00169    helper_show 
+#00170    helper_set_positions NULL 
+#00171    SetMenuElementText id = helper_menu_1 
+          "зг Select" 
+#00172    SetMenuElementText id = helper_menu_2 
+          "м Accept" 
+#00173    SetMenuElementText id = helper_menu_3 
+          "к Back" 
+#00174  END FUNCTION
+          
+#00175  FUNCTION helper_level_select 
+#00177    helper_hide 
+#00178    helper_show 
+#00179    helper_set_positions x1 = 170 
+          x2 = 285 
+          x3 = 395 
+          
+#00180    SetMenuElementText id = helper_menu_1 
+          "зг Select" 
+#00181    SetMenuElementText id = helper_menu_2 
+          "м Accept" 
+#00182    SetMenuElementText id = helper_menu_3 
+          "к Back" 
+#00183    IF TestRequestedGameType Career 
+#00184    ELSE 
+#00185      helper_set_positions x1 = 70 
+            x2 = 190 
+            x3 = 450 
+            x4 = 290 
+            
+#00186      SetMenuElementText id = helper_menu_4 
+            "бе Records" 
+#00188    END IF 
+#00189  END FUNCTION
+          
+#00193  FUNCTION helper_pro_leftright 
+#00195    MoveMenu id = helper_menu_4 
+          x = 465 
+          y = 410 
+          w = 80 
+          
+#00197    SetMenuElementText id = helper_menu_4 
+          "з Change Skater г" 
+#00198  END FUNCTION
+          
+#00200  FUNCTION helper_level_records 
+#00206    helper_hide 
+#00207    SetMenuElementText id = helper_menu_1 
+          "зе Select бг" 
+#00210    SetMenuElementText id = helper_menu_2 
+          "к Back" 
+#00211    helper_set_positions x1 = 130 
+          x2 = 350 
+          
+#00212  END FUNCTION
+          
+#00213  FUNCTION helper_please_insert_card 
+#00216    helper_hide 
+#00217    SetMenuElementText id = helper_menu_1 
+          "к Back" 
+#00219    MoveMenu id = helper_menu_1 
+          x = 270 
+          y = 410 
+          
+#00220  END FUNCTION
+          
+#00221  FUNCTION helper_on_trick_right_menu 
+#00225    helper_hide 
+#00226    SetMenuElementText id = helper_menu_1 
+          "бе Select" 
+#00230    SetMenuElementText id = helper_menu_2 
+          "м Choose Button Combo" 
+#00231    SetMenuElementText id = helper_menu_3 
+          "к Back" 
+#00232    helper_set_positions x1 = 80 
+          x2 = 270 
+          x3 = 450 
+          
+#00233    IF InFrontEnd 
+#00234      WaitForMenuToDisappear trick_right_menu 
+#00235    END IF 
+#00236  END FUNCTION
+          
+#00237  FUNCTION helper_on_trick_available_menu 
+#00241    printf "helper_on_trick_available_menu" 
+#00242    helper_hide 
+#00243    SetMenuElementText id = helper_menu_1 
+          "бе Select" 
+#00247    SetMenuElementText id = helper_menu_2 
+          "м Choose Trick" 
+#00248    SetMenuElementText id = helper_menu_3 
+          "к Back" 
+#00249    IF InFrontEnd 
+#00251      WaitForMenuToDisappear trick_available_menu 
+#00252    END IF 
+#00253  END FUNCTION
+          
+#00254  FUNCTION helper_on_special_trickname_menu 
+#00257    printf "helper_on_special_trickname_menu" 
+#00258    helper_hide 
+#00259    SetMenuElementText id = helper_menu_1 
+          "бе Select" 
+#00264    SetMenuElementText id = helper_menu_2 
+          "м Choose Trick Slot" 
+#00265    SetMenuElementText id = helper_menu_3 
+          "й Unassign Trick" 
+#00266    SetMenuElementText id = helper_menu_4 
+          "к Back" 
+#00267    helper_set_positions x1 = 25 
+          x2 = 180 
+          x3 = 380 
+          x4 = 480 
+          
+#00268    IF InFrontEnd 
+#00269      WaitForMenuToDisappear special_trickname_menu 
+#00270    END IF 
+#00271  END FUNCTION
+          
+#00272  FUNCTION helper_on_available_specials_menu 
+#00276    helper_hide 
+#00277    SetMenuElementText id = helper_menu_1 
+          "бе Select" 
+#00281    SetMenuElementText id = helper_menu_2 
+          "м Choose Special Trick" 
+#00282    SetMenuElementText id = helper_menu_3 
+          "к Back" 
+#00283    helper_set_positions x1 = 80 
+          x2 = 270 
+          x3 = 450 
+          
+#00284    IF InFrontEnd 
+#00285      WaitForMenuToDisappear available_specials_menu callback = check_for_trickslots_menu 
+            
+#00286    END IF 
+#00287  END FUNCTION
+          
+#00288  FUNCTION check_for_trickslots_menu 
+#00295    IF MenuIsShown available_trickslots_menu 
+#00296      goto helper_on_available_trickslots_menu 
+#00297    END IF 
+#00298  END FUNCTION
+          
+#00299  FUNCTION helper_on_available_trickslots_menu 
+#00303    helper_hide 
+#00304    SetMenuElementText id = helper_menu_1 
+          "бе Select" 
+#00308    SetMenuElementText id = helper_menu_2 
+          "м Choose Button Combo" 
+#00309    SetMenuElementText id = helper_menu_3 
+          "к Back" 
+#00310    helper_set_positions x1 = 80 
+          x2 = 270 
+          x3 = 450 
+          
+#00311    IF InFrontEnd 
+#00312      WaitForMenuToDisappear available_trickslots_menu 
+#00313    END IF 
+#00314  END FUNCTION
+          
+#00315  FUNCTION helper_on_stat_menu 
+#00319    IF IsTrue EnteringStatsMenuFromGameFlow 
+#00320      helper_on_cas_select_change_accept 
+#00321    ELSE 
+#00322      helper_on_cas_select_change_accept_back 
+#00323    END IF 
+#00324  END FUNCTION
+          
+#00325  FUNCTION helper_on_keyboard_control 
+#00327    helper_hide 
+#00328    helper_set_positions x1 = 167 
+          x2 = 282 
+          x3 = 392 
+          
+#00332    SetMenuElementText id = helper_menu_1 
+          "безг Select" 
+#00333    SetMenuElementText id = helper_menu_2 
+          "м Accept" 
+#00334    SetMenuElementText id = helper_menu_3 
+          "к Back" 
+#00335    IF InFrontEnd 
+#00336      WaitForMenuToDisappear KeyboardControlMenus 
+#00337    ELSE 
+#00338      IF EditingPark 
+#00339        WaitForMenuToDisappear KeyboardControlMenus 
+#00340      END IF 
+#00341    END IF 
+#00342  END FUNCTION
+          
+#00343  FUNCTION helper_on_keyboard_control_linear 
+#00346    helper_hide 
+#00347    helper_set_positions x1 = 190 
+          x2 = 350 
+          
+#00350    SetMenuElementText id = helper_menu_1 
+          "безг Select" 
+#00351    SetMenuElementText id = helper_menu_2 
+          "м Accept" 
+#00352    IF InFrontEnd 
+#00353      WaitForMenuToDisappear KeyboardControlLinearMenus 
+#00354    END IF 
+#00355  END FUNCTION
+          
+#00356  FUNCTION helper_on_keyboard_control_no_gui 
+#00358    helper_hide 
+#00359  END FUNCTION
+          
+#00362  SelectChooseBackMenus = 
+#00364  
+        ARRAY(
+          pre_trick_menu 
+        )
+        
+#00367  SelectChooseBackRotateMenus = 
+#00369  
+        ARRAY(
+          pre_cas_main_menu career_menu single_session_menu free_skate_menu player_one_menu net_type_menu create_new_warning 
+        )
+        
+#00378  SelectChooseBackCenteredMenus = 
+#00381  
+        ARRAY(
+          palmer_warning net_pppoe_setup_menu net_broadband_setup_menu net_device_type_menu net_dialup_setup_menu net_advanced_menu net_dialup_authentication_control net_options_use_defaults_menu options_main_menu net_network_setup_menu cdsound_menu cdso_menu movies_menu controller_config_menu replay_menu controller_select_primary 
+        )
+        
+#00399  CasSelectChooseBackMenus = 
+#00401  
+        ARRAY(
+          cas_push_menu cas_stance_menu cas_sex_menu heads_menu hair_menu jaws_menu hats_menu hat_logos_menu glasses_menu torsos_menu front_logos_menu back_logos_menu backpacks_menu accessories_menu chest_tattoos_menu back_tattoos_menu left_arm_tattoos_menu right_arm_tattoos_menu legs_menu socks_menu shoes_menu left_leg_tattoos_menu right_leg_tattoos_menu helmets_menu helmet_logos_menu elbowpads_menu kneepads_menu 
+        )
+        
+#00430  CasChangeBackMenus = 
+#00432  
+        ARRAY(
+          cas_age_menu cas_height_menu cas_weight_menu hair_hsv_menu hats_hsv_menu jaws_hsv_menu torsos_hsv_menu backpacks_hsv_menu legs_hsv_menu helmets_hsv_menu elbowpads_hsv_menu kneepads_hsv_menu 
+        )
+        
+#00446  SelectChooseBackChangeMenus = 
+#00448  
+        ARRAY(
+          
+        )
+        
+#00450  KeyboardControlMenus = 
+#00455  
+        ARRAY(
+          cas_name_keyboard_control cas_hometown_keyboard_control cheat_keyboard_control net_password_control net_ip_address_control net_gateway_control net_network_id_control net_server_name_control net_dialup_number_control net_dialup_username_control net_dialup_password_control net_subnet_control net_dns_control net_dns_control2 net_host_name_control net_domain_name_control gapname_keyboard_control mem_card_keyboard_control park_editor_keyboard_control sfx_menu 
+        )
+        
+#00490  KeyboardControlLinearMenus = 
+#00494  
+        ARRAY(
+          enter_password_control 
+        )
+        
+#00497  ToggleChooseBackMenus = 
+#00499  
+        ARRAY(
+          controller_config_1 controller_config_2 playlist_menu 
+        )
+        
+#00504  FUNCTION helper_scanner 
+#00506    helper_hide 
+#00507    LOOP 
+#00509      IF MenuIsSelected rr 
+#00511        goto helper_on_server_list 
+#00512      END IF 
+#00513      IF MenuIsShown cassette_menu 
+#00515        goto helper_on_cassette_menu 
+#00516      END IF 
+#00517      IF MenuIsShown SelectChooseBackMenus 
+#00519        goto helper_on_main_menu 
+#00520      END IF 
+#00521      IF MenuIsShown frontend_menu 
+#00523        goto helper_on_fe_menu 
+#00524      END IF 
+#00525      IF MenuIsShown SelectChooseBackRotateMenus 
+#00527        goto helper_select_choose_rotate_back 
+#00528      END IF 
+#00529      IF MenuIsShown SelectChooseBackCenteredMenus 
+#00531        goto helper_on_main_menu_centered 
+#00532      END IF 
+#00533      IF IsTrue MemCardYesNoMenuVisible 
+#00535        goto helper_on_mem_card_yes_no 
+#00536      END IF 
+#00537      IF IsTrue AutoLoadRetryContinueVisible 
+#00539        goto helper_on_autoload_retry_continue 
+#00540      END IF 
+#00541      IF MenuIsShown memcard_files_menu 
+#00543        goto helper_on_mem_card_files_menu 
+#00544      END IF 
+#00545      IF MenuIsShown pro_menu 
+#00547        goto helper_on_pro_menu 
+#00548      END IF 
+#00549      IF MenuIsShown KeyboardControlMenus 
+#00551        goto helper_on_keyboard_control 
+#00552      END IF 
+#00553      IF MenuIsShown KeyboardControlLinearMenus 
+#00555        goto helper_on_keyboard_control_linear 
+#00556      END IF 
+#00557      IF MenuIsShown cas_menu_container 
+#00559        IF MenuIsShown CasSelectChooseBackMenus 
+#00560          goto helper_on_cas_select_choose_back 
+#00561        END IF 
+#00562        IF MenuIsShown CasChangeBackMenus 
+#00564          helper_on_cas_change_back 
+#00565          WaitForMenuToDisappear CasChangeBackMenus 
+#00566        END IF 
+#00567        IF MenuIsShown cas_stats_menu 
+#00569          IF MenuIsSelected cas_left_container 
+#00570          ELSE 
+#00571            helper_on_cas_select_change_back 
+#00572            WaitForMenuToSelect cas_left_container 
+#00573          END IF 
+#00574        END IF 
+#00575        IF MenuIsShown cas_multi_menu 
+#00577          goto helper_on_cas_select_choose_back_4_arrows 
+#00578        END IF 
+#00579      END IF 
+#00580      IF MenuIsShown SelectChooseBackChangeMenus 
+#00582        goto helper_on_career_menu 
+#00583      END IF 
+#00584      IF MenuIsShown ToggleChooseBackMenus 
+#00586        goto helper_on_controller_config_menus 
+#00587      END IF 
+#00588      IF MenuIsShown player_two_menu 
+#00590        goto helper_on_player_two_menu 
+#00591      END IF 
+#00592      IF MenuIsShown boardshop_menu 
+#00594        goto helper_on_boardshop_menu 
+#00595      END IF 
+#00596      IF MenuIsShown wheel_color_menu 
+#00598        goto helper_on_wheel_color_menu 
+#00599      END IF 
+#00600      IF MenuIsShown deck_menu 
+#00602        goto helper_on_deck_menu 
+#00603      END IF 
+#00604      IF MenuIsSelected trick_menu_container 
+#00606        IF MenuIsShown trick_right_menu 
+#00607          goto helper_on_trick_right_menu 
+#00608        END IF 
+#00609        IF MenuIsShown trick_available_menu 
+#00611          goto helper_on_trick_available_menu 
+#00612        END IF 
+#00613        IF MenuIsShown special_trickname_menu 
+#00615          goto helper_on_special_trickname_menu 
+#00617        END IF 
+#00618        IF MenuIsShown available_specials_menu 
+#00620          goto helper_on_available_specials_menu 
+#00622        END IF 
+#00623      END IF 
+#00624      IF MenuIsShown ParkEditorMenus 
+#00626        goto helper_on_park_editor_select_choose_back_centered 
+#00627      END IF 
+#00628      wait 1 gameframe 
+#00630    END LOOP 
+#00631  END FUNCTION
+          
+#00632  FUNCTION helper_on_cassette_menu 
+#00634    LOOP 
+#00635      IF SkaterCamAnimHeld skater = 0 
+              
+#00636        helper_level_select 
+#00637        BREAK
+              
+#00638      END IF 
+#00639      wait 1 gameframe 
+#00640    END LOOP 
+#00641    LOOP 
+#00642      IF MenuIsShown cassette_menu 
+#00643        IF SkaterCamAnimHeld skater = 0 
+                
+#00644        ELSE 
+#00645          goto helper_scanner 
+#00646        END IF 
+#00647      ELSE 
+#00648        goto helper_scanner 
+#00649      END IF 
+#00650      wait 1 gameframe 
+#00651    END LOOP 
+#00652  END FUNCTION
+          
+#00654  FUNCTION WaitForMenuToDisappear 
+#00656    LOOP 
+#00657      IF GotParam callback 
+#00662        GLOBAL.callback 
+              
+#00663      END IF 
+#00664      IF MenuIsShown NULL 
+#00667      ELSE 
+#00668        goto helper_scanner 
+#00669      END IF 
+#00670      wait 1 gameframe 
+#00671    END LOOP 
+#00672  END FUNCTION
+          
+#00673  FUNCTION WaitForMenuToSelect 
+#00675    LOOP 
+#00676      IF MenuIsSelected NULL 
+#00677        goto helper_scanner 
+#00678      END IF 
+#00679      wait 1 gameframe 
+#00680    END LOOP 
+#00681  END FUNCTION
+          
+#00682  FUNCTION WaitForMenuToDeSelect 
+#00684    LOOP 
+#00685      IF MenuIsSelected NULL 
+#00686      ELSE 
+#00687        goto helper_scanner 
+#00688      END IF 
+#00689      wait 1 gameframe 
+#00690    END LOOP 
+#00691  END FUNCTION
+          
+#00692  FUNCTION helper_on_main_menu 
+#00694    helper_hide 
+#00695    IF MenuIsShown pre_trick_menu 
+#00699      IF CurrentSkaterProfileIs 1 
+#00700        helper_select_choose_back x1 = 295 
+              x2 = 410 
+              x3 = 520 
+              
+#00701      ELSE 
+#00702        helper_select_choose_back 
+#00703      END IF 
+#00704    ELSE 
+#00705      helper_select_choose_back 
+#00706    END IF 
+#00707    WaitForMenuToDisappear SelectChooseBackMenus 
+#00709  END FUNCTION
+          
+#00710  FUNCTION helper_on_fe_menu 
+#00712    helper_hide 
+#00713    helper_set_positions x1 = 80 
+          x2 = 210 
+          
+#00716    SetMenuElementText id = helper_menu_1 
+          "бе Select" 
+#00717    SetMenuElementText id = helper_menu_2 
+          "м Accept" 
+#00718    WaitForMenuToDisappear frontend_menu 
+#00719  END FUNCTION
+          
+#00720  FUNCTION helper_on_pro_menu 
+#00723    helper_select_lr_choose_back_centered 
+#00724    WaitForMenuToDisappear pro_menu 
+#00725  END FUNCTION
+          
+#00726  FUNCTION helper_select_choose_back_centered 
+#00728    helper_hide 
+#00729    helper_select_choose_back x1 = 167 
+          x2 = 282 
+          x3 = 392 
+          
+#00730  END FUNCTION
+          
+#00731  FUNCTION helper_on_main_menu_centered 
+#00733    helper_select_choose_back x1 = 167 
+          x2 = 282 
+          x3 = 392 
+          
+#00734    WaitForMenuToDisappear SelectChooseBackCenteredMenus 
+#00735  END FUNCTION
+          
+#00736  FUNCTION helper_on_mem_card_yes_no 
+#00739    helper_select_choose_back x1 = 167 
+          x2 = 282 
+          x3 = 392 
+          
+#00740    LOOP 
+#00741      IF MenuIsSelected ARRAY(
+                ken_line4 ken_line5 ken_line6 ken_line8 ken_line9 
+              )
+              
+#00747      ELSE 
+#00748        change MemCardYesNoMenuVisible = 0 
+              
+#00749        goto helper_scanner 
+#00750      END IF 
+#00751      wait 1 gameframe 
+#00752    END LOOP 
+#00753  END FUNCTION
+          
+#00754  FUNCTION helper_on_autoload_retry_continue 
+#00756    helper_select_choose_back x1 = 187 
+          x2 = 332 
+          
+#00757    LOOP 
+#00759      IF MenuIsSelected ARRAY(
+                ken_line10 ken_line11 
+              )
+              
+#00761      ELSE 
+#00762        change AutoLoadRetryContinueVisible = 0 
+              
+#00763        goto helper_scanner 
+#00764      END IF 
+#00765      wait 1 gameframe 
+#00766    END LOOP 
+#00767  END FUNCTION
+          
+#00768  FUNCTION helper_on_mem_card_files_menu 
+#00771    IF FilesMenuIsSave 
+#00772      helper_select_choose_back_delete 
+#00773    ELSE 
+#00774      helper_select_choose_back x1 = 167 
+            x2 = 282 
+            x3 = 392 
+            
+#00775    END IF 
+#00776    WaitForMenuToDisappear memcard_files_menu 
+#00777  END FUNCTION
+          
+#00778  FUNCTION helper_on_cas_select_choose_back 
+#00781    helper_select_choose_rotate_back x1 = 67 
+          x2 = 192 
+          x3 = 345 
+          
+#00782    WaitForMenuToDisappear CasSelectChooseBackMenus 
+#00783  END FUNCTION
+          
+#00784  FUNCTION helper_on_cas_select_choose_back_4_arrows 
+#00786    helper_select_choose_rotate_back 
+#00787    SetMenuElementText id = helper_menu_1 
+          "безг Select" 
+#00788    LOOP 
+#00789      IF MenuIsShown CasSelectChooseBackMenus 
+#00790        goto helper_scanner 
+#00791      ELSE 
+#00792        IF MenuIsShown CasChangeBackMenus 
+#00793          goto helper_scanner 
+#00794        ELSE 
+#00795          IF MenuIsShown cas_stats_menu 
+#00796            IF MenuIsSelected cas_left_container 
+#00797            ELSE 
+#00798              goto helper_scanner 
+#00799            END IF 
+#00800          END IF 
+#00801          IF MenuIsShown cas_multi_menu 
+#00803          ELSE 
+#00804            goto helper_scanner 
+#00805          END IF 
+#00806        END IF 
+#00807      END IF 
+#00808      wait 1 gameframe 
+#00809    END LOOP 
+#00810  END FUNCTION
+          
+#00811  FUNCTION helper_on_cas_change_back 
+#00813    helper_set_positions 
+#00816    MoveMenu id = helper_menu_1 
+          x = 90 
+          
+#00817    MoveMenu id = helper_menu_2 
+          x = 260 
+          
+#00818    SetMenuElementText id = helper_menu_1 
+          "з Change г" 
+#00819    SetMenuElementText id = helper_menu_2 
+          "к Back" 
+#00820  END FUNCTION
+          
+#00821  FUNCTION helper_on_cas_select_change_back 
+#00823    helper_set_positions 
+#00827    MoveMenu id = helper_menu_1 
+          x = 90 
+          
+#00828    MoveMenu id = helper_menu_2 
+          x = 221 
+          
+#00829    MoveMenu id = helper_menu_3 
+          x = 335 
+          
+#00830    SetMenuElementText id = helper_menu_1 
+          "бе Select" 
+#00831    SetMenuElementText id = helper_menu_2 
+          "з Change г" 
+#00832    SetMenuElementText id = helper_menu_3 
+          "к Back" 
+#00833  END FUNCTION
+          
+#00834  FUNCTION helper_on_cas_select_change_accept 
+#00836    helper_set_positions x1 = 167 
+          x2 = 282 
+          x3 = 392 
+          
+#00840    SetMenuElementText id = helper_menu_1 
+          "бе Select" 
+#00841    SetMenuElementText id = helper_menu_2 
+          "з Change г" 
+#00842    SetMenuElementText id = helper_menu_3 
+          "м Accept" 
+#00843  END FUNCTION
+          
+#00844  FUNCTION helper_on_cas_select_change_accept_back 
+#00846    helper_set_positions 
+#00851    MoveMenu id = helper_menu_1 
+          x = 90 
+          
+#00852    MoveMenu id = helper_menu_2 
+          x = 221 
+          
+#00853    MoveMenu id = helper_menu_3 
+          x = 335 
+          
+#00854    MoveMenu id = helper_menu_4 
+          x = 400 
+          
+#00855    SetMenuElementText id = helper_menu_1 
+          "бе Select" 
+#00856    SetMenuElementText id = helper_menu_2 
+          "з Change г" 
+#00857    SetMenuElementText id = helper_menu_3 
+          "м Accept" 
+#00858    SetMenuElementText id = helper_menu_4 
+          "к Back" 
+#00859  END FUNCTION
+          
+#00860  FUNCTION helper_on_career_menu 
+#00862    helper_select_choose_back 
+#00863    WaitForMenuToDisappear SelectChooseBackChangeMenus 
+#00865  END FUNCTION
+          
+#00866  FUNCTION helper_on_player_two_menu 
+#00868    helper_select_choose_rotate_back 
+#00869    WaitForMenuToDisappear player_two_menu 
+#00870  END FUNCTION
+          
+#00871  FUNCTION helper_on_controller_config_menus 
+#00873    helper_select_toggle_back 
+#00874    WaitForMenuToDisappear ToggleChooseBackMenus 
+#00875  END FUNCTION
+          
+#00876  FUNCTION helper_on_boardshop_menu 
+#00878    LOOP 
+#00879      IF SkaterCamAnimHeld skater = 0 
+              
+#00880        helper_select_choose_back 
+#00881        BREAK
+              
+#00882      END IF 
+#00883      wait 1 gameframe 
+#00884    END LOOP 
+#00885    helper_set_positions x1 = 221 
+          x2 = 360 
+          x3 = 470 
+          y = 390 
+          
+#00887    WaitForMenuToDisappear boardshop_menu 
+#00888  END FUNCTION
+          
+#00889  FUNCTION helper_on_deck_menu 
+#00891    helper_show 
+#00892    helper_set_positions x1 = 221 
+          x2 = 360 
+          x3 = 470 
+          y = 390 
+          
+#00893    SetMenuElementText id = helper_menu_1 
+          "згбе Select" 
+#00894    SetMenuElementText id = helper_menu_2 
+          "м Accept" 
+#00895    SetMenuElementText id = helper_menu_3 
+          "к Back" 
+#00896    WaitForMenuToDisappear deck_menu 
+#00897  END FUNCTION
+          
+#00898  FUNCTION helper_on_wheel_color_menu 
+#00900    helper_show 
+#00901    helper_set_positions x1 = 221 
+          x4 = 335 
+          x3 = 470 
+          x2 = 50 
+          y = 390 
+          
+#00903    SetMenuElementText id = helper_menu_1 
+          "бе Select" 
+#00904    SetMenuElementText id = helper_menu_2 
+          "зг Change" 
+#00905    SetMenuElementText id = helper_menu_3 
+          "к Back" 
+#00906    SetMenuElementText id = helper_menu_4 
+          "м Accept" 
+#00908    WaitForMenuToDisappear wheel_color_menu 
+#00909  END FUNCTION
+          
+#00910  FUNCTION helper_on_server_list 
+#00912    helper_hide 
+#00913    IF InInternetMode 
+#00915    END IF 
+#00917    IF InInternetMode 
+#00920      helper_set_positions x1 = 445 
+            x2 = 525 
+            y = 400 
+            
+#00921    ELSE 
+#00922      helper_set_positions x2 = 470 
+            y = 400 
+            
+#00923    END IF 
+#00924    IF InInternetMode 
+#00926      SetMenuElementText id = helper_menu_1 
+            "зг Sort" 
+#00927    END IF 
+#00928    SetMenuElementText id = helper_menu_2 
+          "к Back" 
+#00929    WaitForMenuToDeSelect rr 
+#00930  END FUNCTION
+          
+#00931  ParkEditorHelper1x = 20 
+        ParkEditorHelper1y = 410 
+        
+#00941  ParkEditorHelper2x = 190 
+        ParkEditorHelper2y = 410 
+        
+#00942  ParkEditorHelper3x = 375 
+        ParkEditorHelper3y = 410 
+        
+#00943  ParkEditorHelper4x = 515 
+        ParkEditorHelper4y = 410 
+        
+#00944  ParkEditorHelper5x = 580 
+        ParkEditorHelper5y = 115 
+        
+#00946  ParkEditorHelper6x = 560 
+        ParkEditorHelper6y = 390 
+        
+#00947  ParkEditorHelper0x = 220 
+        
+#00952  ParkEditorHelper0y = 385 
+        
+#00953  ParkEditorGapMoveText1 = "Select Piece to Gap from" 
+        
+#00954  ParkEditorGapMoveText2 = "Select Piece to Gap to" 
+        
+#00955  ParkEditorGapMoveHelper4x = 490 
+        
+#00958  ParkEditorGapAdjustHelper1x = 25 
+        
+#00961  ParkEditorGapAdjustHelper2x = 145 
+        
+#00962  ParkEditorGapAdjustHelper3x = 295 
+        
+#00963  ParkEditorGapAdjustHelper4x = 490 
+        
+#00964  ParkEditorGapAdjustHelpery = 410 
+        
+#00965  ParkEditorGapAdjustText = "╜/╛/┐/║ Scale Gap" 
+        
+#00966  FUNCTION helper_park_editor 
+#00969    KillSpawnedScript id = helper_scanner 
+          
+#00971    SpawnScript helper_scanner id = helper_scanner 
+          
+#00972  END FUNCTION
+          
+#00973  ParkEditorMenus = 
+#00975  
+        ARRAY(
+          parked_main_menu parked_load_menu parked_save_menu parked_clear_menu parked_theme_menu parked_gap_menu parked_gap_score_menu parked_test_menu parked_yesno_menu1 parked_yesno_menu2 parked_yesno_menu3 parked_yesno_menu4 parked_zone_menu parked_zone_multiplier_menu parked_modify_menu 
+        )
+        
+#00992  FUNCTION helper_on_park_editor_select_choose_back_centered 
+#00994    helper_select_choose_back x1 = 210 
+          x2 = 330 
+          
+#00996    IF EditingPark 
+#00998      DrawFullEmpty 
+#01000    END IF 
+#01001    WaitForMenuToDisappear ParkEditorMenus 
+#01003  END FUNCTION
+          
+#01004  FUNCTION DrawFullEmpty 
+#01006    MoveMenu id = helper_menu_5 
+          x = 578 
+          y = 112 
+          
+#01009    MoveMenu id = helper_menu_6 
+          x = 558 
+          y = 387 
+          
+#01012  END FUNCTION
+          
+#01013  

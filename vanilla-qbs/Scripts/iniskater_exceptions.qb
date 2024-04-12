@@ -1,0 +1,287 @@
+cas_general_exceptions = ARRAY(
+          
+          STRUCT{
+            condition = STRUCT{
+              flag = is_pro_head 
+              }
+            disqualify = ARRAY(
+              
+              STRUCT{
+                hair }
+              STRUCT{
+                jaw }
+              STRUCT{
+                glasses "i-Patch" }
+              
+            )
+            }
+          STRUCT{
+            condition = STRUCT{
+              flag = no_headgear 
+              }
+            disqualify = ARRAY(
+              
+              STRUCT{
+                hat }
+              STRUCT{
+                helmet }
+              
+            )
+            }
+          STRUCT{
+            condition = STRUCT{
+              flag = no_hair 
+              }
+            disqualify = STRUCT{
+              hair }
+            }
+          STRUCT{
+            condition = STRUCT{
+              head "Elissa Steamer" }
+            disqualify = ARRAY(
+              
+              STRUCT{
+                flag = shows_panties 
+                }
+              STRUCT{
+                torso "Snow Jacket 2" }
+              STRUCT{
+                torso "Snow Jacket 1" }
+              STRUCT{
+                torso "Padded Jacket" }
+              STRUCT{
+                torso "Vest" }
+              STRUCT{
+                torso "Vest - Camo" }
+              STRUCT{
+                torso "Vest - Padded" }
+              STRUCT{
+                torso "Vest - Two-Tone" }
+              STRUCT{
+                torso "Denim Jacket" }
+              
+            )
+            }
+          STRUCT{
+            condition = STRUCT{
+              head "Steve Caballero" }
+            disqualify = ARRAY(
+              
+              STRUCT{
+                hair }
+              STRUCT{
+                glasses }
+              STRUCT{
+                hat }
+              
+            )
+            }
+          STRUCT{
+            condition = STRUCT{
+              torso flag_is_not = supports_front_logo 
+              }
+            disqualify = STRUCT{
+              front_logo }
+            }
+          STRUCT{
+            condition = STRUCT{
+              torso flag_is_not = supports_back_logo 
+              }
+            disqualify = STRUCT{
+              back_logo }
+            }
+          STRUCT{
+            condition = STRUCT{
+              socks flag_is_not = supports_leg_tattoos 
+              }
+            disqualify = ARRAY(
+              
+              STRUCT{
+                left_leg_tattoo }
+              STRUCT{
+                right_leg_tattoo }
+              
+            )
+            }
+          STRUCT{
+            condition = STRUCT{
+              legs flag_is_not = supports_kneepads 
+              }
+            disqualify = STRUCT{
+              kneepads }
+            }
+          STRUCT{
+            condition = STRUCT{
+              flag = covers_elbows 
+              }
+            disqualify = STRUCT{
+              elbowpads }
+            }
+          STRUCT{
+            condition = STRUCT{
+              flag = covers_arms 
+              }
+            disqualify = ARRAY(
+              
+              STRUCT{
+                accessories }
+              STRUCT{
+                left_arm_tattoo }
+              STRUCT{
+                right_arm_tattoo }
+              
+            )
+            }
+          STRUCT{
+            condition = STRUCT{
+              flag = no_backpack 
+              }
+            disqualify = STRUCT{
+              backpack }
+            }
+          STRUCT{
+            condition = STRUCT{
+              flag = no_arm_tattoos 
+              }
+            disqualify = ARRAY(
+              
+              STRUCT{
+                left_arm_tattoo }
+              STRUCT{
+                right_arm_tattoo }
+              
+            )
+            }
+          STRUCT{
+            condition = STRUCT{
+              flag = no_leg_tattoos 
+              }
+            disqualify = ARRAY(
+              
+              STRUCT{
+                left_leg_tattoo }
+              STRUCT{
+                right_leg_tattoo }
+              
+            )
+            }
+          STRUCT{
+            condition = STRUCT{
+              flag = no_back_tattoo 
+              }
+            disqualify = STRUCT{
+              back_tattoo }
+            }
+          STRUCT{
+            condition = STRUCT{
+              flag = no_glasses 
+              }
+            disqualify = STRUCT{
+              glasses }
+            }
+          STRUCT{
+            condition = STRUCT{
+              flag = no_socks 
+              }
+            disqualify = STRUCT{
+              socks }
+            }
+          STRUCT{
+            condition = STRUCT{
+              helmet flag_is_not = supports_hair 
+              }
+            disqualify = STRUCT{
+              hair }
+            }
+          STRUCT{
+            condition = STRUCT{
+              flag = is_helmet 
+              }
+            disqualify = STRUCT{
+              hat }
+            }
+          STRUCT{
+            condition = STRUCT{
+              helmet flag_is_not = supports_hat_logo 
+              }
+            disqualify = STRUCT{
+              helmet_logo }
+            }
+          STRUCT{
+            condition = STRUCT{
+              hat flag_is_not = supports_hair 
+              }
+            disqualify = STRUCT{
+              hair }
+            }
+          STRUCT{
+            condition = STRUCT{
+              hat flag_is_not = supports_hat_logo 
+              }
+            disqualify = STRUCT{
+              hat_logo }
+            }
+          STRUCT{
+            condition = STRUCT{
+              flag = has_big_hair 
+              }
+            disqualify = ARRAY(
+              
+              STRUCT{
+                torso "Sweat - Up/Stripe" }
+              STRUCT{
+                torso "Sweat - Hood Up" }
+              
+            )
+            }
+          STRUCT{
+            condition = STRUCT{
+              flag = no_Chest_tattoo 
+              }
+            disqualify = STRUCT{
+              Chest_tattoo }
+            }
+          STRUCT{
+            condition = STRUCT{
+              flag = no_bam_hat_support 
+              }
+            disqualify = ARRAY(
+              
+              STRUCT{
+                hat "AdVisor" }
+              STRUCT{
+                hat "Retro Banned" }
+              
+            )
+            }
+          STRUCT{
+            condition = STRUCT{
+              torso flag_is_not = supports_Chest_Tattoos 
+              }
+            disqualify = STRUCT{
+              Chest_tattoo }
+            }
+          STRUCT{
+            condition = STRUCT{
+              torso flag_is_not = supports_Back_Tattoos 
+              }
+            disqualify = STRUCT{
+              back_tattoo }
+            }
+          STRUCT{
+            condition = STRUCT{
+              flag = no_arm_tattoos 
+              }
+            disqualify = ARRAY(
+              
+              STRUCT{
+                left_arm_tattoo }
+              STRUCT{
+                right_arm_tattoo }
+              
+            )
+            }
+          
+        )
+        
+#00212  

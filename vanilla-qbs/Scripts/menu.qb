@@ -1,0 +1,197 @@
+FUNCTION MenuLaunchCommand 
+#00001    LaunchCommand NULL 
+#00002  END FUNCTION
+          
+#00003  FUNCTION makemenu 
+#00006    setdefaultproperty type = textdrawer 
+          name = main 
+          
+#00008    createmenu STRUCT{
+            type = menucontainer 
+            id = contain1 
+            dynamic_children = ARRAY(
+              
+              STRUCT{
+                id = sfx_menu_container 
+                target_script = sfx_menu_create 
+                }
+              STRUCT{
+                id = cas_menu_container 
+                target_script = cas_menu_create 
+                }
+              STRUCT{
+                id = trick_menu_container 
+                target_script = trick_menu_create 
+                }
+              
+            )
+            }
+          
+#00021    main_menu_create 
+#00023    debug_menu_create 
+#00024    options_menu_create 
+#00025    level_menu_create 
+#00026    movies_menu_create 
+#00027    net_menu_create root_container = contain1 
+          
+#00028  END FUNCTION
+          
+#00030  FUNCTION firemessages 
+#00037  END FUNCTION
+          
+#00068  panel_message_prop1 = STRUCT{
+          font = "large.fnt" 
+          just = PAIR[0.0; 0.0] 
+          dims = PAIR[320.0; 112.0] 
+          colors = ARRAY(
+            
+            STRUCT{
+              VECTOR[128.0; 128.0; 128.0] alpha = 128 
+              }
+            STRUCT{
+              VECTOR[0.0; 128.0; 128.0] alpha = 150 
+              }
+            STRUCT{
+              VECTOR[128.0; 128.0; 0.0] alpha = 150 
+              }
+            
+          )
+          key_points = ARRAY(
+            
+            STRUCT{
+              pos = PAIR[820.0; 224.0] 
+              alpha = 0 
+              scale = 0.5 
+              time = 0 
+              }
+            STRUCT{
+              pos = PAIR[320.0; 224.0] 
+              alpha = 128 
+              time = 0.5 
+              }
+            STRUCT{
+              scale = 1 
+              time = 1 
+              }
+            STRUCT{
+              time = 6 
+              }
+            STRUCT{
+              scale = 0.5 
+              time = 6.5 
+              }
+            STRUCT{
+              pos = PAIR[820.0; 224.0] 
+              alpha = 0 
+              time = 7 
+              }
+            
+          )
+          }
+        
+#00089  panelcombo = STRUCT{
+          font = "small.fnt" 
+          just = PAIR[0.0; 0.0] 
+          dims = PAIR[5.0; 5.0] 
+          colors = ARRAY(
+            
+            STRUCT{
+              VECTOR[255.0; 245.0; 0.0] alpha = 128 
+              }
+            STRUCT{
+              VECTOR[110.0; 20.0; 20.0] alpha = 255 
+              }
+            
+          )
+          key_points = ARRAY(
+            
+            STRUCT{
+              pos = PAIR[100.0; 250.0] 
+              alpha = 0 
+              scale = 0 
+              time = 0 
+              }
+            STRUCT{
+              scale = 1.05 
+              alpha = 90 
+              time = 0.5 
+              }
+            STRUCT{
+              time = 1 
+              }
+            STRUCT{
+              alpha = 0 
+              time = 2 
+              }
+            
+          )
+          }
+        
+#00106  panelcombo_scale = 
+#00108  
+        STRUCT{
+          key_points = ARRAY(
+            
+            STRUCT{
+              pos = PAIR[100.0; 250.0] 
+              alpha = 0 
+              scale = 0 
+              time = 0 
+              }
+            STRUCT{
+              scale = 1 
+              alpha = 90 
+              time = 0.5 
+              }
+            STRUCT{
+              time = 1 
+              }
+            STRUCT{
+              alpha = 0 
+              scale = 2 
+              time = 1.25 
+              }
+            
+          )
+          }
+        
+#00116  panelcombo2 = STRUCT{
+          font = "small.fnt" 
+          just = PAIR[0.0; 0.0] 
+          dims = PAIR[5.0; 5.0] 
+          colors = ARRAY(
+            
+            STRUCT{
+              VECTOR[255.0; 245.0; 0.0] alpha = 128 
+              }
+            STRUCT{
+              VECTOR[110.0; 20.0; 20.0] alpha = 255 
+              }
+            
+          )
+          key_points = ARRAY(
+            
+            STRUCT{
+              pos = PAIR[100.0; 280.0] 
+              alpha = 0 
+              scale = 0 
+              time = 0 
+              }
+            STRUCT{
+              scale = 1 
+              alpha = 90 
+              time = 0.5 
+              }
+            STRUCT{
+              time = 1 
+              }
+            STRUCT{
+              alpha = 0 
+              scale = 1 
+              time = 2 
+              }
+            
+          )
+          }
+        
+#00132  

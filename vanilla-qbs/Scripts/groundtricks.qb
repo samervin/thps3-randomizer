@@ -1,0 +1,1939 @@
+
+#00001  TRICK_PRELOAD_TIME = 160 
+        
+#00006  Jumptricks0 = 
+#00008  
+        ARRAY(
+          STRUCT{
+            Trigger = STRUCT{
+              TapOnceRelease Up X 300 }
+            Scr = NoComply 
+            Params = STRUCT{
+              Name = 'No Comply' 
+              Score = 100 
+              }
+            }
+          
+        )
+        
+#00009  Jumptricks = 
+#00012  
+        ARRAY(
+          STRUCT{
+            Trigger = STRUCT{
+              TapTwiceRelease Up X 500 }
+            TrickSlot = JumpSlot 
+            }
+          
+        )
+        
+#00013  Trick_Boneless = STRUCT{
+          Scr = Boneless 
+          Params = STRUCT{
+            Name = 'Boneless' 
+            Score = 250 
+            }
+          }
+        
+#00016  Trick_Fastplant = STRUCT{
+          Scr = Boneless 
+          Params = STRUCT{
+            Name = 'Fastplant' 
+            Score = 250 
+            }
+          }
+        
+#00017  Trick_Beanplant = STRUCT{
+          Scr = Boneless 
+          Params = STRUCT{
+            Name = 'Beanplant' 
+            Score = 250 
+            }
+          }
+        
+#00018  GroundTricks = 
+#00022  
+        ARRAY(
+          STRUCT{
+            Trigger = STRUCT{
+              Press R2 20 }
+            Scr = ToggleSwitchRegular 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              Press L2 20 }
+            Scr = ToggleNollieRegular 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TapOnceRelease Up X 300 }
+            Scr = NoComply 
+            Params = STRUCT{
+              Name = 'No Comply' 
+              Score = 100 
+              }
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              HoldTwoAndPress R1 L1 Triangle 500 }
+            Scr = Props 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              HoldTwoAndPress R1 L1 Square 500 }
+            Scr = Taunt 
+            Params = STRUCT{
+              Anim = Taunt1 
+              PanelMessage = "Who's your daddy?" 
+              }
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              HoldTwoAndPress R1 L1 Circle 500 }
+            Scr = Taunt 
+            Params = STRUCT{
+              Anim = Taunt2 
+              PanelMessage = "No way" 
+              }
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              HoldTwoAndPress R1 L1 Triangle 500 }
+            Scr = Props 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              HoldTwoAndPress R1 L1 Square 500 }
+            Scr = Taunt 
+            Params = STRUCT{
+              Anim = Taunt3 
+              PanelMessage = "Come get some" 
+              }
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              HoldTwoAndPress R1 L1 Circle 500 }
+            Scr = Taunt 
+            Params = STRUCT{
+              Anim = Taunt2 
+              PanelMessage = "No way" 
+              }
+            }
+          
+        )
+        
+#00037  NoTricks = 
+#00040  
+        ARRAY(
+          
+        )
+        
+#00042  SpecialManualTricks = 
+#00046  
+        ARRAY(
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Up Right Triangle 400 }
+            Duration = 700 
+            TrickSlot = SpMan_U_R_Triangle 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Up Down Triangle 400 }
+            Duration = 700 
+            TrickSlot = SpMan_U_D_Triangle 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Up Left Triangle 400 }
+            Duration = 700 
+            TrickSlot = SpMan_U_L_Triangle 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Right Up Triangle 400 }
+            Duration = 700 
+            TrickSlot = SpMan_R_U_Triangle 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Right Down Triangle 400 }
+            Duration = 700 
+            TrickSlot = SpMan_R_D_Triangle 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Right Left Triangle 400 }
+            Duration = 700 
+            TrickSlot = SpMan_R_L_Triangle 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Down Up Triangle 400 }
+            Duration = 700 
+            TrickSlot = SpMan_D_U_Triangle 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Down Right Triangle 400 }
+            Duration = 700 
+            TrickSlot = SpMan_D_R_Triangle 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Down Left Triangle 400 }
+            Duration = 700 
+            TrickSlot = SpMan_D_L_Triangle 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Left Up Triangle 400 }
+            Duration = 700 
+            TrickSlot = SpMan_L_U_Triangle 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Left Right Triangle 400 }
+            Duration = 700 
+            TrickSlot = SpMan_L_R_Triangle 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Left Down Triangle 400 }
+            Duration = 700 
+            TrickSlot = SpMan_L_D_Triangle 
+            }
+          
+        )
+        
+#00064  Trick_Sproing = STRUCT{
+          Scr = Manual 
+          Params = STRUCT{
+            Name = 'Sproing' 
+            Score = 1500 
+            InitAnim = Sproing 
+            FromAirAnim = Sproing 
+            BalanceAnim = Manual_Range 
+            OffMeterTop = ManualBail 
+            OffMeterBottom = ManualLand 
+            ExtraTricks = ManualBranches 
+            IsSpecial SproingFlip }
+          }
+        
+#00068  Trick_ClawDrag = STRUCT{
+          Scr = Manual 
+          Params = STRUCT{
+            Name = 'The Claw Drag' 
+            UnlockFlag = SKATER_UNLOCKED_WOLVERINE 
+            OnlyWith = Wolverine 
+            Score = 1000 
+            Sparks InitAnim = Clawdrag_Init 
+            FromAirAnim = Clawdrag_Init 
+            BalanceIdle = Clawdrag_Idle 
+            OffMeterTop = ManualBail 
+            OffMeterBottom = NoseManualBail 
+            IsSpecial ExtraTricks = FlatlandBranches 
+            }
+          }
+        
+#00069  Trick_LazyAss = STRUCT{
+          Scr = Manual 
+          Params = STRUCT{
+            Name = 'Lazy Ass Manual' 
+            UnlockFlag = SKATER_UNLOCKED_DICK 
+            Score = 1500 
+            InitAnim = LazyAss_Init 
+            FromAirAnim = LazyAss_Init 
+            BalanceIdle = LazyAss_Idle 
+            OutAnim = LazyAss_Out 
+            OffMeterTop = ManualBail 
+            OffMeterBottom = NoseManualBail 
+            Friction = 0.5 
+            IsSpecial WaitOnOlliePercent = 10 
+            ExtraTricks = FlatlandBranches 
+            }
+          }
+        
+#00070  Trick_HandStand50Flip = STRUCT{
+          Scr = Manual 
+          Params = STRUCT{
+            Name = 'HandStand 360 Hand Flip' 
+            Score = 1400 
+            InitAnim = HandStand50Flip_Init 
+            FromAirAnim = HandStand50Flip_Init 
+            BalanceAnim = HandStand50Flip_Range 
+            OutAnim = HandStand50Flip_Out 
+            OffMeterTop = ManualBail 
+            OffMeterBottom = NoseManualBail 
+            Friction = 0.5 
+            IsSpecial WaitOnOlliePercent = 20 
+            ExtraTricks = FlatlandBranches 
+            }
+          }
+        
+#00071  Trick_HandstandDoubleFlip = STRUCT{
+          Scr = Manual 
+          Params = STRUCT{
+            Name = 'HandStand Double Flip' 
+            Score = 1400 
+            InitAnim = HandstandHandFlip_Init 
+            FromAirAnim = HandstandHandFlip_Init 
+            BalanceAnim = HandstandHandFlip_Range 
+            OutAnim = HandStandDoubleFlip 
+            OffMeterTop = NoseManualBail 
+            OffMeterBottom = ManualBail 
+            Friction = 0.5 
+            IsSpecial WaitOnOlliePercent = 40 
+            ExtraTricks = FlatlandBranches 
+            ExtraTricks2 = HandstandBranches 
+            }
+          }
+        
+#00072  Trick_ReemoSlide = STRUCT{
+          Scr = Manual 
+          Params = STRUCT{
+            Name = 'Reemo Slide' 
+            Score = 1300 
+            InitAnim = ReemoSlide_Init 
+            FromAirAnim = ReemoSlide_Init 
+            BalanceAnim = ReemoSlide_Range 
+            OutAnim = ReemoSlide_out 
+            OffMeterTop = NoseManualBail 
+            OffMeterBottom = ManualBail 
+            Friction = 0.5 
+            IsSpecial BoardRotate ExtraTricks = FlatlandBranches 
+            }
+          }
+        
+#00073  Trick_Handstand = STRUCT{
+          Scr = Manual 
+          Params = STRUCT{
+            Name = 'HandStand' 
+            Score = 1250 
+            InitAnim = HandstandHandFlip_Init 
+            FromAirAnim = HandstandHandFlip_Init 
+            BalanceAnim = HandstandHandFlip_Range 
+            OutAnim = HandstandHandFlip_out 
+            OffMeterTop = NoseManualBail 
+            OffMeterBottom = ManualBail 
+            Friction = 0.5 
+            IsSpecial WaitOnOlliePercent = 10 
+            ExtraTricks = FlatlandBranches 
+            ExtraTricks2 = HandstandBranches 
+            }
+          }
+        
+#00074  Trick_AntiCasper = STRUCT{
+          Scr = Manual 
+          Params = STRUCT{
+            Name = 'Anti Casper' 
+            Score = 1350 
+            InitAnim = AntiCasper_Init 
+            FromAirAnim = AntiCasper_Init 
+            BalanceAnim = AntiCasper_Range 
+            OutAnim = AntiCasper_out 
+            OffMeterTop = ManualLand 
+            OffMeterBottom = NoseManualBail 
+            Friction = 0.5 
+            BoardRotate IsSpecial Nollie ExtraTricks = FlatlandBranches 
+            }
+          }
+        
+#00075  Trick_Casper = STRUCT{
+          Scr = Manual 
+          Params = STRUCT{
+            Name = 'Casper' 
+            Score = 1250 
+            InitAnim = Casper_Init 
+            FromAirAnim = Casper_Init 
+            BalanceAnim = Casper_Range 
+            OutAnim = Casper_out 
+            OffMeterTop = ManualBail 
+            OffMeterBottom = ManualLand 
+            Friction = 0.5 
+            BoardRotate IsSpecial ExtraTricks = FlatlandBranches 
+            ExtraTricks2 = CasperBranches 
+            }
+          }
+        
+#00076  Trick_PrimoSlide = STRUCT{
+          Scr = Manual 
+          Params = STRUCT{
+            Name = 'Primo' 
+            Score = 1200 
+            InitAnim = Primo_Init 
+            FromAirAnim = Primo_Init 
+            BalanceAnim = Primo_Range 
+            OutAnim = Primo_out 
+            OffMeterTop = NoseManualBail 
+            OffMeterBottom = ManualBail 
+            Friction = 0.5 
+            IsSpecial ExtraTricks = FlatlandBranches 
+            ExtraTricks2 = ToRail_Branches 
+            }
+          }
+        
+#00077  Trick_Truckstand = STRUCT{
+          Scr = Manual 
+          Params = STRUCT{
+            Name = 'Truckstand' 
+            Score = 1300 
+            InitAnim = Truckstand_Init 
+            FromAirAnim = Truckstand_Init 
+            BalanceAnim = Truckstand_Range 
+            OutAnim = Truckstand_Out 
+            OffMeterTop = NoseManualBail 
+            OffMeterBottom = ManualBail 
+            Friction = 1 
+            IsSpecial ExtraTricks = FlatlandBranches 
+            ExtraTricks2 = TruckstandBranches 
+            }
+          }
+        
+#00078  Trick_OneFootOneWheel = STRUCT{
+          Scr = Manual 
+          Params = STRUCT{
+            Name = 'One Wheel Nosemanual' 
+            Score = 1400 
+            InitAnim = OneFootOneWheel_Init 
+            FromAirAnim = OneFootOneWheel_Init 
+            BalanceAnim = OneFootOneWheel_Range 
+            OutAnim = OneFootOneWheel_Init 
+            OffMeterTop = ManualLand 
+            OffMeterBottom = NoseManualBail 
+            Friction = 0.5 
+            IsSpecial Nollie ExtraTricks = NoseManualBranches 
+            PutDownAnim = PutDownOneWheel 
+            }
+          }
+        
+#00079  Trick_ZZZZManual = STRUCT{
+          Scr = Manual 
+          Params = STRUCT{
+            Name = 'ZZZZ Manual' 
+            UnlockFlag = SKATER_UNLOCKED_BUM 
+            Score = 1400 
+            InitAnim = ZZZZManual_init 
+            FromAirAnim = ZZZZManual_init 
+            BalanceIdle = ZZZZManual_idle 
+            OffMeterTop = ManualBail 
+            OffMeterBottom = NoseManualBail 
+            Friction = 0.5 
+            IsSpecial ExtraTricks = FlatlandBranches 
+            }
+          }
+        
+#00080  Trick_DanceParty = STRUCT{
+          Scr = Manual 
+          Params = STRUCT{
+            Name = 'Ahhh yeahhh!' 
+            Score = 1400 
+            UnlockFlag = SKATER_UNLOCKED_CARRERA 
+            InitAnim = DanceParty_Init 
+            FromAirAnim = DanceParty_Init 
+            BalanceIdle = DanceParty_Idle 
+            OffMeterTop = ManualBail 
+            OffMeterBottom = NoseManualBail 
+            Friction = 20 
+            IsSpecial ExtraTricks = FlatlandBranches 
+            }
+          }
+        
+#00081  Trick_NinjaManual = STRUCT{
+          Scr = Manual 
+          Params = STRUCT{
+            Name = 'Sith Saber Spin' 
+            UnlockFlag = SKATER_UNLOCKED_MAUL 
+            OnlyWith = Maul 
+            Score = 1400 
+            FlipFrame = 24 
+            InitAnim = MaulNinjaManual_Init 
+            FromAirAnim = MaulNinjaManual_Init 
+            BalanceIdle = MaulNinjaManual_Idle 
+            OffMeterTop = ManualBail 
+            OffMeterBottom = NoseManualBail 
+            Friction = 0.5 
+            IsSpecial BlendPeriod = 0.0 
+            ExtraTricks = FlatlandBranches 
+            }
+          }
+        
+#00082  Trick_DuckDive = STRUCT{
+          Scr = Manual 
+          Params = STRUCT{
+            Name = 'Duck Dive Shark Attack' 
+            UnlockFlag = SKATER_UNLOCKED_SLATER 
+            Score = 1400 
+            InitAnim = DuckDive_Init 
+            FromAirAnim = DuckDive_Init 
+            BalanceIdle = DuckDive_Idle 
+            OutAnim = DuckDive_Out 
+            OffMeterTop = ManualBail 
+            OffMeterBottom = NoseManualBail 
+            IsSpecial WaitOnOlliePercent = 0 
+            }
+          }
+        
+#00083  Trick_VisitingHome = STRUCT{
+          Scr = Manual 
+          Params = STRUCT{
+            Name = 'Visiting Home' 
+            Score = 2000 
+            UnlockFlag = SKATER_UNLOCKED_DEMONESS 
+            OnlyWith = Demoness 
+            InitAnim = VisitingHome_Init 
+            FromAirAnim = VisitingHome_Init 
+            BalanceIdle = VisitingHome_Idle 
+            OutAnim = VisitingHome_Out 
+            OffMeterTop = NoseManualBail 
+            OffMeterBottom = NoseManualBail 
+            IsSpecial WaitOnOlliePercent = 1 
+            }
+          }
+        
+#00084  Trick_WorkForFoodManual = STRUCT{
+          Scr = Manual 
+          Params = STRUCT{
+            Name = 'Can Ya Spare a Dime?' 
+            UnlockFlag = SKATER_UNLOCKED_BUM 
+            OnlyWith = Ollie 
+            Score = 1500 
+            InitAnim = WorkForFood_Init 
+            FromAirAnim = WorkForFood_Init 
+            BalanceIdle = WorkForFood_Idle 
+            OffMeterTop = ManualBail 
+            OffMeterBottom = NoseManualBail 
+            Friction = 0.5 
+            IsSpecial ExtraTricks = FlatlandBranches 
+            }
+          }
+        
+#00085  ManualTricks = 
+#00089  
+        ARRAY(
+          STRUCT{
+            Trigger = STRUCT{
+              InOrder Up Down 400 }
+            Duration = 700 
+            Trick_Manual }
+          STRUCT{
+            Trigger = STRUCT{
+              InOrder Down Up 400 }
+            Duration = 700 
+            Trick_NoseManual }
+          
+        )
+        
+#00096  GroundManualTricks = 
+#00098  
+        ARRAY(
+          STRUCT{
+            Trigger = STRUCT{
+              InOrder Up Down 220 }
+            Trick_Manual }
+          STRUCT{
+            Trigger = STRUCT{
+              InOrder Down Up 220 }
+            Trick_NoseManual }
+          
+        )
+        
+#00103  Trick_Manual = STRUCT{
+          Scr = Manual 
+          Params = STRUCT{
+            Name = 'Manual' 
+            Score = 100 
+            InitAnim = Manual 
+            FromAirAnim = ManualFromAir 
+            BalanceAnim = Manual_Range 
+            OffMeterTop = ManualBail 
+            OffMeterBottom = ManualLand 
+            ExtraTricks = ManualBranches 
+            }
+          }
+        
+#00106  Trick_NoseManual = STRUCT{
+          Scr = Manual 
+          Params = STRUCT{
+            Name = 'Nose Manual' 
+            Score = 100 
+            InitAnim = Nosemanual 
+            FromAirAnim = NoseManualFromAir 
+            BalanceAnim = NoseManual_Range 
+            Nollie OffMeterTop = ManualLand 
+            OffMeterBottom = NoseManualBail 
+            ExtraTricks = NoseManualBranches 
+            }
+          }
+        
+#00107  Reverts = 
+#00109  
+        ARRAY(
+          STRUCT{
+            Trigger = STRUCT{
+              Press R2 200 }
+            TrickSlot = ExtraSlot1 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              Press L2 200 }
+            TrickSlot = ExtraSlot2 
+            }
+          
+        )
+        
+#00113  ToRail_Branches = 
+#00117  
+        ARRAY(
+          STRUCT{
+            Trigger = STRUCT{
+              AirTrickLogic Left Square 500 }
+            Scr = ManualLink 
+            Params = STRUCT{
+              Name = 'Rail Flip' 
+              Score = 500 
+              Anim = RailFlip 
+              BalanceAnim = Primo_Range 
+              ExtraTricks = FlatlandBranches 
+              ExtraTricks2 = ToRail_Branches 
+              Trickslack = 0 
+              IsExtra }
+            }
+          
+        )
+        
+#00118  CasperBranches = 
+#00120  
+        ARRAY(
+          STRUCT{
+            Trigger = STRUCT{
+              AirTrickLogic Left Square 500 }
+            Scr = ManualLink 
+            Params = STRUCT{
+              Name = 'Casper Flip' 
+              Score = 500 
+              Extrapercent = 100 
+              Anim = CasperFlip 
+              BalanceAnim = Casper_Range 
+              OutAnim = Casper_out 
+              ExtraTricks = FlatlandBranches 
+              ExtraTricks2 = CasperBranches 
+              Trickslack = 0 
+              BoardRotate IsExtra }
+            }
+          
+        )
+        
+#00121  TruckstandBranches = 
+#00124  
+        ARRAY(
+          STRUCT{
+            Trigger = STRUCT{
+              AirTrickLogic Left Square 500 }
+            Scr = ManualLink 
+            Params = STRUCT{
+              Name = 'Truckstand Flip' 
+              Score = 500 
+              Anim = Truckstand_Flip 
+              BalanceAnim = Truckstand_Range 
+              OutAnim = Truckstand_Out 
+              ExtraTricks = FlatlandBranches 
+              ExtraTricks2 = TruckstandBranches 
+              Trickslack = 0 
+              IsExtra }
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Right Right Triangle 500 }
+            Scr = ManualLink 
+            Params = STRUCT{
+              Name = 'Truck Spin' 
+              Score = 1000 
+              Anim = Truckstand_Init 
+              BalanceAnim = Truckstand_Range 
+              OutAnim = Truckstand_Out 
+              ExtraTricks = FlatlandBranches 
+              ExtraTricks2 = TruckstandBranches 
+              Trickslack = 0 
+              IsExtra }
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              HoldTwoAndPress R2 L2 Triangle 500 }
+            Scr = ManualLink 
+            Params = STRUCT{
+              Name = 'Pogo to Hair Flip' 
+              RodneyOnly Score = 1500 
+              Anim = Sweet 
+              BalanceAnim = Truckstand_Range 
+              OutAnim = Truckstand_Out 
+              ExtraTricks = FlatlandBranches 
+              ExtraTricks2 = TruckstandBranches 
+              Trickslack = 0 
+              IsExtra }
+            }
+          
+        )
+        
+#00128  HandstandBranches = 
+#00130  
+        ARRAY(
+          STRUCT{
+            Trigger = STRUCT{
+              AirTrickLogic Left Square 500 }
+            Scr = ManualLink 
+            Params = STRUCT{
+              Name = 'Handflip' 
+              Score = 500 
+              Anim = HStandFliptoHStand 
+              BalanceAnim = HandstandHandFlip_Range 
+              OutAnim = HandstandHandFlip_out 
+              ExtraTricks = FlatlandBranches 
+              ExtraTricks2 = HandstandBranches 
+              Trickslack = 0 
+              IsExtra }
+            }
+          
+        )
+        
+#00131  FlatlandBranches = 
+#00134  
+        ARRAY(
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Left Right Triangle 500 }
+            Trick_AntiCasper }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Right Left Triangle 500 }
+            Trick_Casper }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Left Left Triangle 500 }
+            Trick_ToRail }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Right Right Triangle 500 }
+            Trick_Truckstand }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Right Right Circle 500 }
+            Trick_Handstand }
+          
+        )
+        
+#00141  NoseManualBranches = 
+#00142  
+        ARRAY(
+          STRUCT{
+            Trigger = STRUCT{
+              Press R2 200 }
+            Trick_Gturn }
+          
+        )
+        
+#00143  ManualBranches = 
+#00145  
+        ARRAY(
+          STRUCT{
+            Trigger = STRUCT{
+              Press R2 200 }
+            Trick_Gturn2 }
+          
+        )
+        
+#00146  ManualBranches2 = 
+#00148  
+        ARRAY(
+          STRUCT{
+            Trigger = STRUCT{
+              Press R2 200 }
+            Trick_Gturn3 }
+          
+        )
+        
+#00149  NoseManualBranches2 = 
+#00151  
+        ARRAY(
+          STRUCT{
+            Trigger = STRUCT{
+              Press R2 200 }
+            Trick_Gturn4 }
+          
+        )
+        
+#00152  Trick_ToRail = STRUCT{
+          Scr = Manual 
+          Params = STRUCT{
+            Name = 'To Rail' 
+            Score = 500 
+            InitAnim = Primo_Init 
+            FromAirAnim = Primo_Init 
+            BalanceAnim = Primo_Range 
+            OutAnim = Primo_out 
+            OffMeterTop = NoseManualBail 
+            OffMeterBottom = ManualBail 
+            Friction = 1.0 
+            ExtraTricks = FlatlandBranches 
+            ExtraTricks2 = ToRail_Branches 
+            IsExtra }
+          }
+        
+#00154  Trick_Gturn = STRUCT{
+          Trigger = STRUCT{
+            Press R2 200 }
+          Scr = ManualLink 
+          Params = STRUCT{
+            Name = 'Nose Pivot' 
+            Score = 250 
+            Anim = GTurn 
+            BalanceAnim = Manual 
+            FlipAfter BalanceAnim = Manual_Range 
+            Trickslack = 0 
+            PlayCessSound Extrapercent = 100 
+            ExtraTricks = ManualBranches 
+            TimeAdd = 2 
+            SpeedMult = 1.2 
+            OffMeterTop = ManualBail 
+            OffMeterBottom = ManualLand 
+            }
+          }
+        
+#00155  Trick_Gturn2 = STRUCT{
+          Trigger = STRUCT{
+            Press R2 200 }
+          Scr = ManualLink 
+          Params = STRUCT{
+            Name = 'Pivot' 
+            Score = 250 
+            Anim = GTurn2 
+            BalanceAnim = Manual 
+            FlipAfter BalanceAnim = NoseManual_Range 
+            Trickslack = 0 
+            PlayCessSound Extrapercent = 100 
+            ExtraTricks = NoseManualBranches 
+            Nollie TimeAdd = 2 
+            SpeedMult = 1.2 
+            OffMeterTop = ManualLand 
+            OffMeterBottom = NoseManualBail 
+            }
+          }
+        
+#00156  FUNCTION Manual BlendPeriod = 0.3 
+          
+#00165    ClearLipCombos 
+#00166    ClearExceptions 
+#00167    KillExtraTricks 
+#00168    SetException Ex = GroundGone 
+          Scr = GroundGone 
+          Params = STRUCT{
+            NoBoneless }
+          
+#00169    SetException Ex = MadeOtherSkaterBail 
+          Scr = MadeOtherSkaterBail_Called 
+          CallInsteadOfGoto 
+#00170    IF GotParam Nollie 
+#00171      SetException Ex = Ollied 
+            Scr = NollieNoDisplay 
+            Params = STRUCT{
+              NULL }
+            
+#00172      NollieOn 
+#00173    ELSE 
+#00174      SetException Ex = Ollied 
+            Scr = Ollie 
+            Params = STRUCT{
+              NULL }
+            
+#00175    END IF 
+#00176    SetException Ex = FlailHitWall 
+          Scr = FlailHitWall 
+          
+#00177    SetException Ex = FlailLeft 
+          Scr = FlailLeft 
+          
+#00178    SetException Ex = FlailRight 
+          Scr = FlailRight 
+          
+#00179    SetException Ex = OffMeterTop 
+          Scr = GLOBAL.OffMeterTop 
+          Params = STRUCT{
+            NULL }
+          
+#00180    SetException Ex = OffMeterBottom 
+          Scr = GLOBAL.OffMeterBottom 
+          Params = STRUCT{
+            NULL }
+          
+#00181    SetException Ex = Carplant 
+          Scr = Carplant 
+          
+#00182    SetException Ex = CarBail 
+          Scr = CarBail 
+          
+#00183    SetException Ex = SkaterCollideBail 
+          Scr = SkaterCollideBail 
+          
+#00184    OnExceptionRun ManualOut 
+#00185    SetQueueTricks NoTricks 
+#00186    IF GotParam IsSpecial 
+#00192      SetManualTricks NoTricks 
+#00193    ELSE 
+#00194      IF GotParam IsExtra 
+#00195        SetManualTricks NoTricks 
+#00196      ELSE 
+#00197        SetManualTricks NoTricks Special = SpecialManualTricks 
+              
+#00198      END IF 
+#00199    END IF 
+#00200    StartBalanceTrick 
+#00202    Vibrate Actuator = 1 
+          Percent = 25 
+          
+#00203    IF GotParam Friction 
+#00204      SetRollingFriction GLOBAL.Friction 
+            
+#00205    END IF 
+#00206    IF GotParam IsSpecial 
+#00207      IF GotParam Nollie 
+#00208        DoBalanceTrick ButtonA = Up 
+              ButtonB = Down 
+              Type = Nosemanual 
+              Tweak = 5 
+              
+#00209      ELSE 
+#00210        DoBalanceTrick ButtonA = Up 
+              ButtonB = Down 
+              Type = Manual 
+              Tweak = 5 
+              
+#00211      END IF 
+#00212    ELSE 
+#00213      IF GotParam Nollie 
+#00214        DoBalanceTrick ButtonA = Up 
+              ButtonB = Down 
+              Type = Nosemanual 
+              Tweak = 1 
+              
+#00215      ELSE 
+#00216        DoBalanceTrick ButtonA = Up 
+              ButtonB = Down 
+              Type = Manual 
+              Tweak = 1 
+              
+#00217      END IF 
+#00218    END IF 
+#00219    IF GotParam FromAir 
+#00220      PlayAnim Anim = GLOBAL.FromAirAnim 
+            BlendPeriod = 0.0 
+            
+#00221    ELSE 
+#00222      PlayAnim Anim = GLOBAL.InitAnim 
+            BlendPeriod = 0.3 
+            
+#00223    END IF 
+#00224    IF Obj_FlagSet FLAG_SKATER_MANUALCHEESE 
+#00226      IF AirTimeLessThan 1 second 
+#00227        AdjustBalance TimeAdd = 2 
+              SpeedMult = 1.2 
+              
+#00228        IF CD 
+#00229        ELSE 
+#00230          LaunchSpecialMessage text = "Cheeseball" 
+                
+#00231        END IF 
+#00232      END IF 
+#00233    ELSE 
+#00234      Obj_SetFlag FLAG_SKATER_MANUALCHEESE 
+#00235    END IF 
+#00236    IF Speedgreaterthan 300 
+#00237      Obj_ClearFlag FLAG_SKATER_MANUALCHEESE 
+#00238    END IF 
+#00239    WaitAnim 50 Percent 
+#00240    IF GotParam IsSpecial 
+#00246    ELSE 
+#00247      IF GotParam IsExtra 
+#00248      ELSE 
+#00249        donextmanualtrick 
+#00250      END IF 
+#00251    END IF 
+#00252    IF GotParam IsSpecial 
+#00254      LaunchSpecialMessage 
+#00255    END IF 
+#00256    IF GotParam IsExtra 
+#00257      LaunchExtraMessage 
+#00258    END IF 
+#00259    IF GotParam ExtraTricks2 
+#00260      SetExtraTricks GLOBAL.ExtraTricks2 
+            GLOBAL.ExtraTricks 
+            ignore = GLOBAL.Name 
+            
+#00261    ELSE 
+#00262      IF GotParam ExtraTricks 
+#00263        SetExtraTricks GLOBAL.ExtraTricks 
+              ignore = GLOBAL.Name 
+              
+#00264      END IF 
+#00265    END IF 
+#00266    IF AnimEquals WorkForFood_Init 
+#00267      SpawnSkaterScript Ollie_Signage 
+#00268    END IF 
+#00269    WaitAnimFinished 
+#00270    SetTrickName GLOBAL.Name 
+          
+#00271    SetTrickScore GLOBAL.Score 
+          
+#00272    Display Blockspin 
+#00273    IF GotParam SproingFlip 
+#00274      BlendPeriodOut 0 
+#00275      FlipAfter 
+#00276    END IF 
+#00277    IF GotParam BalanceIdle 
+#00278      PlayAnim Anim = GLOBAL.BalanceIdle 
+            cycle BlendPeriod = GLOBAL.BlendPeriod 
+            
+#00279    ELSE 
+#00280      PlayAnim Anim = GLOBAL.BalanceAnim 
+            wobble 
+#00281    END IF 
+#00282    IF AnimEquals VisitingHome_Idle 
+#00284      SwitchOnAtomic special_item 
+#00285      SwitchOffAtomic skin 
+#00286      SwitchOffBoard 
+#00287      Obj_Attachframe bone = "right_fingers" 
+            
+#00288      Obj_Attachframe bone = "left_fingers" 
+            
+#00289      LOOP 
+#00290        BloodParticlesOn Name = "breath.png" 
+              start_col = 1426128895 
+              end_col = 153 
+              blend_mode = 72 
+              num = 25 
+              emit_w = 1.0 
+              emit_h = 1.0 
+              angle = 10 
+              size = 40.0 
+              bone = "right_fingers" 
+              growth = 0 
+              time = 5 
+              speed = 40 
+              grav = 0 
+              life = 3 
+              
+#00292        BloodParticlesOn Name = "breath.png" 
+              start_col = 1429221424 
+              end_col = 4671303 
+              num = 25 
+              emit_w = 2.0 
+              emit_h = 2.0 
+              angle = 20 
+              size = 20.0 
+              bone = "left_fingers" 
+              growth = 1.5 
+              time = 5 
+              speed = 50 
+              grav = 0 
+              life = 3 
+              
+#00293        Wait 0.5 second 
+#00295      END LOOP 
+#00296    END IF 
+#00297    IF GotParam Sparks 
+#00298      LOOP 
+#00299        ClawSparks 
+#00300        Wait 0.5 frames 
+#00301      END LOOP 
+#00302    END IF 
+#00303    IF AnimEquals LazyAss_Idle 
+#00304      LOOP 
+#00305        IF frameis 20 
+#00306          PlaySound bitchslap2 
+#00307        END IF 
+#00308        Wait 1 Frame 
+#00309      END LOOP 
+#00310    END IF 
+#00311    IF AnimEquals MaulNinjaManual_Idle 
+#00312      LOOP 
+#00313        IF Flipped 
+#00314          PlayAnim Anim = CessSlide180_FS 
+                
+#00315          PlayCessSound 
+#00316          WaitAnimFinished 
+#00317          Flip 
+#00318          PlayAnim Anim = GLOBAL.BalanceIdle 
+                cycle BlendPeriod = GLOBAL.BlendPeriod 
+                
+#00319        END IF 
+#00320        IF frameis 1 
+#00321          PlaySound sabertwirl5 
+#00322        END IF 
+#00323        Wait 1 Frame 
+#00324      END LOOP 
+#00325    END IF 
+#00326  END FUNCTION
+          
+#00327  FUNCTION SpecialManualSFX 
+#00329  END FUNCTION
+          
+#00330  FUNCTION ClawSparks 
+#00332    IF ProfileEquals is_named = Wolverine 
+            
+#00333      Obj_Attachframe bone = "left_fingers" 
+            
+#00334      Obj_Attachframe bone = "right_fingers" 
+            
+#00335      BloodParticlesOn Name = "Grass_1.png" 
+            start_col = -16711681 
+            end_col = -2013265665 
+            blend_mode = 68 
+            num = 10 
+            emit_w = 2.0 
+            emit_h = 2.1 
+            angle = -50 
+            size = 1.0 
+            bone = "left_fingers" 
+            growth = 3 
+            time = 0.25 
+            speed = 150 
+            grav = 0 
+            life = 0.25 
+            
+#00338      BloodParticlesOn Name = "Grass_1.png" 
+            start_col = -16711681 
+            end_col = -2013265665 
+            blend_mode = 68 
+            num = 10 
+            emit_w = 2.0 
+            emit_h = 2.1 
+            angle = -50 
+            size = 1.0 
+            bone = "right_fingers" 
+            growth = 3 
+            time = 0.25 
+            speed = 150 
+            grav = 0 
+            life = 0.25 
+            
+#00339    END IF 
+#00341  END FUNCTION
+          
+#00345  FUNCTION ManualOut 
+#00347    IF GotParam MadeOtherSkaterBail 
+#00348    ELSE 
+#00349      KillExtraTricks 
+#00350    END IF 
+#00351    IF ProfileEquals is_named = Demoness 
+            
+#00352      SwitchOffAtomic special_item 
+#00353      SwitchOnAtomic skin 
+#00354      SwitchOnBoard 
+#00355    END IF 
+#00356  END FUNCTION
+          
+#00357  FUNCTION ManualLand 
+#00359    SetException Ex = RunHasEnded 
+          Scr = EndOfRun 
+          
+#00360    ClearPanel_Landed 
+#00361    ClearManualTrick 
+#00362    ClearEventBuffer 
+#00363    ClearTrickQueue 
+#00364    KillExtraTricks 
+#00365    IF GotParam PutDownAnim 
+#00366      PlayAnim Anim = GLOBAL.PutDownAnim 
+            BlendPeriod = 0.0 
+            
+#00367    ELSE 
+#00368      IF GotParam Nollie 
+#00369        PlayAnim Anim = PutDownNosemanual 
+              BlendPeriod = 0.0 
+              
+#00370      ELSE 
+#00371        PlayAnim Anim = PutDownManual 
+              BlendPeriod = 0.0 
+              
+#00372      END IF 
+#00373    END IF 
+#00374    WaitAnimWhilstChecking 
+#00379    Goto OnGroundAi 
+#00380  END FUNCTION
+          
+#00381  FUNCTION ManualLink grindslack = 25 
+          Trickslack = 10 
+          displaypercent = 50 
+          Extrapercent = 50 
+          TimeAdd = 0 
+          SpeedMult = 1 
+          
+#00388    IF GotParam RodneyOnly 
+#00389      IF ProfileEquals is_named = mullen 
+              
+#00390      ELSE 
+#00391        Goto ManualLink Params = STRUCT{
+                Name = 'Truck Spin' 
+                Score = 1000 
+                Anim = Truckstand_Init 
+                BalanceAnim = Truckstand_Range 
+                OutAnim = Truckstand_Out 
+                ExtraTricks = FlatlandBranches 
+                ExtraTricks2 = TruckstandBranches 
+                Trickslack = 0 
+                IsExtra }
+              
+#00392      END IF 
+#00393    END IF 
+#00394    IF GotParam Nollie 
+#00395      NollieOn 
+#00396      SetException Ex = Ollied 
+            Scr = NollieNoDisplay 
+            
+#00397    ELSE 
+#00399      NollieOff 
+#00400      SetException Ex = Ollied 
+            Scr = Ollie 
+            
+#00401    END IF 
+#00403    IF GotParam OffMeterTop 
+#00404      SetException Ex = OffMeterTop 
+            Scr = GLOBAL.OffMeterTop 
+            Params = STRUCT{
+              NULL }
+            
+#00405      SetException Ex = OffMeterBottom 
+            Scr = GLOBAL.OffMeterBottom 
+            Params = STRUCT{
+              NULL }
+            
+#00406    END IF 
+#00407    KillExtraTricks 
+#00408    OnExceptionRun ManualOut 
+#00409    BailOn 
+#00410    SetTrickName GLOBAL.Name 
+          
+#00411    SetTrickScore GLOBAL.Score 
+          
+#00412    AdjustBalance TimeAdd = GLOBAL.TimeAdd 
+          SpeedMult = GLOBAL.SpeedMult 
+          
+#00414    PlayAnim Anim = GLOBAL.Anim 
+          BlendPeriod = 0.3 
+          
+#00417    IF GotParam FlipAfter 
+#00422      FlipAfter 
+#00423      BlendPeriodOut 0 
+#00424      BoardRotateAfter 
+#00425    END IF 
+#00426    Wait 5 frames 
+#00427    IF GotParam PlayCessSound 
+#00428      PlayCessSound 
+#00429    END IF 
+#00430    IF GotParam IsExtra 
+#00432      LaunchExtraMessage 
+#00433    END IF 
+#00434    IF GotParam IsSpecial 
+#00435      LaunchSpecialMessage 
+#00436    END IF 
+#00437    WaitAnim GLOBAL.displaypercent 
+          
+#00438    IF GotParam NoDisplay 
+#00439    ELSE 
+#00440      Display 
+#00441    END IF 
+#00442    WaitAnim GLOBAL.Extrapercent 
+          Percent 
+#00443    IF GotParam ExtraTricks2 
+#00444      SetExtraTricks GLOBAL.ExtraTricks2 
+            GLOBAL.ExtraTricks 
+            
+#00445    ELSE 
+#00446      IF GotParam ExtraTricks 
+#00447        IF GotParam NoDisplay 
+#00448          SetExtraTricks tricks = GLOBAL.ExtraTricks 
+                
+#00449        ELSE 
+#00450          SetExtraTricks tricks = GLOBAL.ExtraTricks 
+                
+#00451        END IF 
+#00452      END IF 
+#00453    END IF 
+#00454    WaitAnim GLOBAL.grindslack 
+          frames fromend 
+#00455    Bailoff 
+#00456    WaitAnim GLOBAL.Trickslack 
+          frames fromend 
+#00457    WaitAnimFinished 
+#00458    IF GotParam BalanceIdle 
+#00464      PlayAnim Anim = GLOBAL.BalanceIdle 
+            cycle 
+#00465    ELSE 
+#00466      PlayAnim Anim = GLOBAL.BalanceAnim 
+            wobble 
+#00467    END IF 
+#00468    IF AnimEquals LazyAss_Idle 
+#00469      LOOP 
+#00470        IF frameis 20 
+#00471          PlaySound bitchslap2 
+#00472        END IF 
+#00473        WaitoneGameFrame 
+#00474      END LOOP 
+#00475    END IF 
+#00476  END FUNCTION
+          
+#00477  FUNCTION Loop Name = 'Loop Balance' 
+          Score = 1000 
+          InitAnim = CrouchIdle 
+          FromAirAnim = ManualFromAir 
+          BalanceAnim = CrouchIdle 
+          OffMeterTop = ManualBail 
+          OffMeterBottom = ManualBail 
+          
+#00495    ClearExceptions 
+#00496    IF InAir 
+#00497      Goto LoopOllie 
+#00498    END IF 
+#00499    Obj_SetFlag FLAG_SKATER_INLOOP 
+#00500    OnExceptionRun LoopException 
+#00501    SetException Ex = Ollied 
+          Scr = LoopOllie 
+          
+#00502    ClearLipCombos 
+#00503    SetException Ex = GroundGone 
+          Scr = LoopOllie 
+          
+#00504    SetException Ex = MadeOtherSkaterBail 
+          Scr = MadeOtherSkaterBail_Called 
+          
+#00505    SetException Ex = OffMeterTop 
+          Scr = NoseManualBail 
+          
+#00506    SetException Ex = OffMeterBottom 
+          Scr = ManualBail 
+          
+#00507    SetException Ex = SkaterCollideBail 
+          Scr = SkaterCollideBail 
+          
+#00508    SetQueueTricks NoTricks 
+#00509    SetManualTricks NoTricks 
+#00511    StartBalanceTrick 
+#00512    Vibrate Actuator = 1 
+          Percent = 25 
+          
+#00513    SetRollingFriction 2 
+#00514    PlayAnim Anim = Loop_Range 
+          wobble 
+#00516    SetTrickName GLOBAL.Name 
+          
+#00517    SetTrickScore 5000 
+#00518    Display Blockspin 
+#00519    LOOP 
+#00520      IF SpeedLessThan 400 
+#00521        Obj_ClearFlag FLAG_SKATER_INLOOP 
+#00522        IF InSplitScreenGame 
+#00523        ELSE 
+#00524          LaunchPanelMessage "&C1Not Enough Speed" properties = panelcombo 
+                
+#00525        END IF 
+#00526        LoopOllie 
+#00527      END IF 
+#00528      WaitoneGameFrame 
+#00529    END LOOP 
+#00530  END FUNCTION
+          
+#00531  FUNCTION LoopException 
+#00533    Obj_ClearFlag FLAG_SKATER_INLOOP 
+#00535  END FUNCTION
+          
+#00536  FUNCTION LoopOllie 
+#00538    ClearExceptions 
+#00539    Obj_ClearFlag FLAG_SKATER_INLOOP 
+#00540    IF AbsolutePitchGreaterThan 80 
+#00541      Move y = 13 
+            
+#00542      SetSpeed 0 
+#00543    END IF 
+#00544    SetState Air 
+#00545    InBail 
+#00546    ClearExceptions 
+#00547    SetException Ex = SkaterCollideBail 
+          Scr = SkaterCollideBail 
+          
+#00548    SetException Ex = Landed 
+          Scr = BackwardFaceSlam 
+          
+#00549    SetQueueTricks NoTricks 
+#00550    DisablePlayerInput AllowCameraControl 
+#00551    PlayAnim Anim = StretchtoFlailingFall 
+          BlendPeriod = 0.3 
+          
+#00552    ClearGapTricks 
+#00553    ClearPanel_Bailed 
+#00554    IF AbsolutePitchGreaterThan 40 
+#00555      SetSpeed 1 
+#00556    END IF 
+#00557    WaitAnim 90 Percent 
+#00558    SwitchOffBoard 
+#00559    WaitAnimFinished 
+#00560    PlayAnim Anim = FlailingFall 
+          cycle 
+#00561  END FUNCTION
+          
+#00562  FUNCTION LoopLand 
+#00565    IF Obj_FlagSet FLAG_SKATER_INLOOP 
+#00566      StopBalanceTrick 
+#00567      IF InSplitScreenGame 
+#00568      ELSE 
+#00569        LaunchPanelMessage "Loop Bonus!" properties = panelcombo 
+              
+#00570      END IF 
+#00571      PlaySound HUD_specialtrickAA Vol = 500 
+            
+#00572      SetLandedFromVert 
+#00573      Goto Land Params = STRUCT{
+              RevertTime = 30 
+              }
+            
+#00574    ELSE 
+#00575      Goto LoopOllie 
+#00576    END IF 
+#00577  END FUNCTION
+          
+#00578  FUNCTION Revert FSName = 'FS Revert' 
+          BSName = 'BS Revert' 
+          FSAnim = RevertFS 
+          BSAnim = RevertBS 
+          
+#00581    ClearLipCombos 
+#00582    KillExtraTricks 
+#00583    SetTrickScore 100 
+#00584    IF InSplitScreenGame 
+#00585    ELSE 
+#00586      LaunchPanelMessage "Landing Trick" properties = panelcombo 
+            
+#00587    END IF 
+#00588    OnGroundExceptions_NoEndRun 
+#00589    SetQueueTricks NoTricks 
+#00590    SetManualTricks Special = SpecialManualTricks 
+          ManualTricks 
+#00591    Vibrate Actuator = 0 
+          Percent = 80 
+          Duration = 0.5 
+          
+#00593    Vibrate Actuator = 1 
+          Percent = 80 
+          Duration = 0.1 
+          
+#00594    NollieOff 
+#00595    PlayCessSound 
+#00596    IF Obj_FlagSet FLAG_SKATER_REVERTFS 
+#00597      Obj_ClearFlag FLAG_SKATER_REVERTFS 
+#00598      PlayAnim Anim = GLOBAL.FSAnim 
+            
+#00599      SetTrickName GLOBAL.FSName 
+            
+#00600    ELSE 
+#00601      IF Obj_FlagSet FLAG_SKATER_REVERTBS 
+#00602        Obj_ClearFlag FLAG_SKATER_REVERTBS 
+#00603        PlayAnim Anim = GLOBAL.BSAnim 
+              
+#00604        SetTrickName GLOBAL.BSName 
+              
+#00605      ELSE 
+#00606        IF LastSpinWas Frontside 
+#00607          PlayAnim Anim = GLOBAL.FSAnim 
+                
+#00608          SetTrickName GLOBAL.FSName 
+                
+#00609        ELSE 
+#00610          PlayAnim Anim = GLOBAL.BSAnim 
+                
+#00611          SetTrickName GLOBAL.BSName 
+                
+#00612        END IF 
+#00613      END IF 
+#00614    END IF 
+#00615    Display Blockspin 
+#00616    FlipAfter 
+#00617    BoardRotateAfter 
+#00618    BlendPeriodOut 0.0 
+#00619    SetSpecialFriction ARRAY(
+            0 10 20 30 50 
+          )
+          
+#00620    LOOP 
+#00621      IF AnimFinished 
+#00622        BREAK
+              
+#00623      END IF 
+#00624      WaitoneGameFrame 
+#00625    END LOOP 
+#00626    SetRollingFriction default 
+#00627    donextmanualtrick FromAir 
+#00628    OnGroundExceptions 
+#00629    CheckGapTricks 
+#00630    ClearPanel_Landed 
+#00631    ClearEventBuffer 
+#00632    ClearManualTrick 
+#00633    IF Crouched 
+#00634      PlayAnim Anim = CrouchIdle 
+            BlendPeriod = 0.3 
+            
+#00635    ELSE 
+#00636      PlayAnim Anim = CrouchIdle 
+            BlendPeriod = 0.3 
+            
+#00637    END IF 
+#00638    WaitAnimWhilstChecking AndManuals 
+#00639    Goto OnGroundAi 
+#00640  END FUNCTION
+          
+#00641  FUNCTION ToggleSwitchRegular 
+#00647    OnGroundExceptions 
+#00648    SetException Ex = Ollied 
+          Scr = Ollie 
+          Params = STRUCT{
+            NoDoNextTrick }
+          
+#00649    Vibrate Actuator = 0 
+          Percent = 80 
+          Duration = 0.5 
+          
+#00650    Vibrate Actuator = 1 
+          Percent = 80 
+          Duration = 0.1 
+          
+#00651    NollieOff 
+#00652    PlayCessSound 
+#00653    DoNextTrick 
+#00654    IF LeftPressed 
+#00655      IF Flipped 
+#00656        PlayAnim Anim = CessSlide180_FS 
+              
+#00657      ELSE 
+#00658        PlayAnim Anim = CessSlide180_BS 
+              
+#00659      END IF 
+#00660    ELSE 
+#00661      IF RightPressed 
+#00662        IF Flipped 
+#00663          PlayAnim Anim = CessSlide180_BS 
+                
+#00664        ELSE 
+#00665          PlayAnim Anim = CessSlide180_FS 
+                
+#00666        END IF 
+#00667      ELSE 
+#00668        PlayAnim Anim = CessSlide180_FS 
+              
+#00669      END IF 
+#00670    END IF 
+#00671    WaitAnim 50 Percent 
+#00675    FlipAfter 
+#00676    BoardRotateAfter 
+#00677    BlendPeriodOut 0.0 
+#00678    WaitAnimWhilstChecking AndManuals 
+#00679    IF CanKick 
+#00680      PlayAnim Anim = PushCycle 
+            cycle BlendPeriod = 0.0 
+            
+#00681    ELSE 
+#00682      IF AnimFinished 
+#00683        PlayAnim Anim = Idle 
+              cycle BlendPeriod = 0.0 
+              
+#00684      END IF 
+#00685    END IF 
+#00686    ClearTrickQueue 
+#00687    Goto OnGroundAi 
+#00688  END FUNCTION
+          
+#00689  FUNCTION ToggleNollieRegular 
+#00694    ClearExceptions 
+#00695    SetException Ex = GroundGone 
+          Scr = GroundGone 
+          
+#00696    SetException Ex = Ollied 
+          Scr = Nollie 
+          Params = STRUCT{
+            NoDoNextTrick }
+          
+#00697    SetException Ex = OntoRail 
+          Scr = OntoRail 
+          
+#00698    SetException Ex = FlailHitWall 
+          Scr = FlailHitWall 
+          
+#00699    SetException Ex = FlailLeft 
+          Scr = FlailLeft 
+          
+#00700    SetException Ex = FlailRight 
+          Scr = FlailRight 
+          
+#00701    SetException Ex = Carplant 
+          Scr = Carplant 
+          
+#00702    SetException Ex = CarBail 
+          Scr = CarBail 
+          
+#00703    SetException Ex = SkaterCollideBail 
+          Scr = SkaterCollideBail 
+          
+#00704    SetQueueTricks GroundTricks 
+#00705    DoNextTrick 
+#00706    IF InNollie 
+#00707      NollieOff 
+#00708      IF Crouched 
+#00709        PlayAnim Anim = CrouchToNollie 
+              BlendPeriod = 0.1 
+              Backwards 
+#00710      ELSE 
+#00711        PlayAnim Anim = SkatingToNollie 
+              BlendPeriod = 0.1 
+              Backwards 
+#00712      END IF 
+#00713    ELSE 
+#00714      NollieOn 
+#00715      IF Crouched 
+#00716        PlayAnim Anim = CrouchToNollie 
+              BlendPeriod = 0.1 
+              
+#00717      ELSE 
+#00718        PlayAnim Anim = SkatingToNollie 
+              BlendPeriod = 0.1 
+              
+#00719      END IF 
+#00720    END IF 
+#00721    WaitAnimWhilstChecking AndManuals 
+#00722    Goto OnGroundNollieAI 
+#00723  END FUNCTION
+          
+#00724  FUNCTION Nollie 
+#00730    IF GotParam NoDoNextTrick 
+#00731    ELSE 
+#00732      DoNextTrick 
+#00733    END IF 
+#00734    ClearTrickQueue 
+#00735    ClearEventBuffer Buttons = Dpad 
+          OlderThan = TRICK_PRELOAD_TIME 
+          
+#00736    Jump 
+#00737    InAirExceptions 
+#00738    Vibrate Actuator = 1 
+          Percent = 50 
+          Duration = 0.05 
+          
+#00739    NollieOn 
+#00740    PlayAnim Anim = Nollie 
+          BlendPeriod = 0.1 
+          
+#00741    IF ProfileEquals stance = regular 
+            
+#00742      IF Flipped 
+#00743        SetTrickName 'Nollie' 
+#00744        SetTrickScore 200 
+#00745      ELSE 
+#00746        SetTrickName 'Fakie Ollie' 
+#00747        SetTrickScore 200 
+#00748      END IF 
+#00749    ELSE 
+#00750      IF Flipped 
+#00751        SetTrickName 'Fakie Ollie' 
+#00752        SetTrickScore 200 
+#00753      ELSE 
+#00754        SetTrickName 'Nollie' 
+#00755        SetTrickScore 200 
+#00756      END IF 
+#00757    END IF 
+#00758    Display 
+#00759    Bailoff 
+#00760    WaitAnimWhilstChecking 
+#00761    Goto Airborne 
+#00762  END FUNCTION
+          
+#00763  FUNCTION NollieNoDisplay 
+#00765    ClearTrickQueue 
+#00766    ClearEventBuffer Buttons = Dpad 
+          OlderThan = TRICK_PRELOAD_TIME 
+          
+#00767    SetTrickName 'Nollie' 
+#00768    SetTrickScore 100 
+#00769    Display Deferred 
+#00770    Jump 
+#00771    InAirExceptions 
+#00772    Vibrate Actuator = 1 
+          Percent = 80 
+          Duration = 0.05 
+          
+#00773    NollieOn 
+#00774    IF GotParam OutAnim 
+#00775      PlayAnim Anim = GLOBAL.OutAnim 
+            BlendPeriod = 0.3 
+            
+#00776    ELSE 
+#00777      PlayAnim Anim = Nollie 
+            BlendPeriod = 0.1 
+            
+#00778    END IF 
+#00779    IF GotParam BoardRotate 
+#00780      BlendPeriodOut 0 
+#00781      BoardRotateAfter 
+#00782    END IF 
+#00783    Bailoff 
+#00784    WaitAnimWhilstChecking 
+#00785    Goto Airborne 
+#00786  END FUNCTION
+          
+#00787  Dpad = ARRAY(
+          
+          Up Down Left Right Upright UpLeft DownRight DownLeft 
+        )
+        
+#00792  FUNCTION Ollie 
+#00794    IF GotParam NoDoNextTrick 
+#00795    ELSE 
+#00796      DoNextTrick 
+#00797    END IF 
+#00798    SetTrickName 'Ollie' 
+#00799    SetTrickScore 100 
+#00800    Display Deferred 
+#00801    ClearTrickQueue 
+#00806    ClearEventBuffer Buttons = Dpad 
+          OlderThan = TRICK_PRELOAD_TIME 
+          
+#00810    Jump 
+#00811    InAirExceptions 
+#00812    Vibrate Actuator = 1 
+          Percent = 50 
+          Duration = 0.05 
+          
+#00813    IF GotParam FromLip 
+#00814      printf "came from lip==================" 
+#00815      PlayAnim Anim = GLOBAL.OutAnim 
+            BlendPeriod = 0.0 
+            
+#00816      BlendPeriodOut 0 
+#00817    ELSE 
+#00818      IF GotParam OutAnim 
+#00819        PlayAnim Anim = GLOBAL.OutAnim 
+              BlendPeriod = 0.3 
+              
+#00820      ELSE 
+#00821        PlayAnim Anim = Ollie 
+              BlendPeriod = 0.0 
+              NoRestart 
+#00822      END IF 
+#00823    END IF 
+#00824    IF GotParam BoardRotate 
+#00825      BlendPeriodOut 0 
+#00826      BoardRotateAfter 
+#00827    END IF 
+#00828    IF GotParam RotateAfter 
+#00829      RotateAfter 
+#00830    END IF 
+#00831    IF GotParam FlipAfter 
+#00832      printf "=========flipping the skater in Ollie" 
+#00833      FlipAfter 
+#00834    END IF 
+#00835    IF GotParam WaitOnOlliePercent 
+#00836      BailOn 
+#00837      WaitAnim GLOBAL.WaitOnOlliePercent 
+            Percent 
+#00839    END IF 
+#00841    Bailoff 
+#00842    WaitAnimWhilstChecking 
+#00843    Goto Airborne 
+#00844  END FUNCTION
+          
+#00845  FUNCTION NoComply 
+#00850    ClearTrickQueue 
+#00852    ClearEventBuffer Buttons = Dpad 
+          OlderThan = TRICK_PRELOAD_TIME 
+          
+#00856    Jump 
+#00857    InAirExceptions 
+#00858    Vibrate Actuator = 1 
+          Percent = 80 
+          Duration = 0.05 
+          
+#00859    SetTrickName GLOBAL.Name 
+          
+#00860    SetTrickScore GLOBAL.Score 
+          
+#00861    Display 
+#00862    Bailoff 
+#00863    PlayAnim Anim = NoComply 
+          BlendPeriod = 0.2 
+          
+#00864    WaitAnimWhilstChecking 
+#00865    Goto Airborne 
+#00866  END FUNCTION
+          
+#00867  FUNCTION Beanplant 
+#00871    ClearTrickQueue 
+#00873    ClearEventBuffer Buttons = Dpad 
+          OlderThan = TRICK_PRELOAD_TIME 
+          
+#00877    Jump BonelessHeight 
+#00878    InAirExceptions 
+#00879    Vibrate Actuator = 1 
+          Percent = 80 
+          Duration = 0.1 
+          
+#00880    PlaySound boneless09 pitch = 85 
+          
+#00881    SetTrickName GLOBAL.Name 
+          
+#00882    SetTrickScore GLOBAL.Score 
+          
+#00883    Display 
+#00884    PlayAnim Anim = Beanplant 
+          BlendPeriod = 0.2 
+          
+#00885    WaitAnimWhilstChecking 
+#00886    Goto Airborne 
+#00887  END FUNCTION
+          
+#00888  FUNCTION Fastplant 
+#00892    ClearTrickQueue 
+#00894    ClearEventBuffer Buttons = Dpad 
+          OlderThan = TRICK_PRELOAD_TIME 
+          
+#00898    Jump BonelessHeight 
+#00899    InAirExceptions 
+#00900    Vibrate Actuator = 1 
+          Percent = 80 
+          Duration = 0.1 
+          
+#00901    SetTrickName GLOBAL.Name 
+          
+#00902    SetTrickScore GLOBAL.Score 
+          
+#00903    Display 
+#00904    PlayAnim Anim = Fastplant 
+          BlendPeriod = 0.2 
+          
+#00905    Bailoff 
+#00906    WaitAnimWhilstChecking 
+#00907    Goto Airborne 
+#00908  END FUNCTION
+          
+#00909  FUNCTION Boneless 
+#00913    ClearTrickQueue 
+#00915    ClearEventBuffer Buttons = Dpad 
+          OlderThan = TRICK_PRELOAD_TIME 
+          
+#00919    Jump BonelessHeight 
+#00920    InAirExceptions 
+#00921    Vibrate Actuator = 1 
+          Percent = 80 
+          Duration = 0.1 
+          
+#00922    PlaySound boneless09 pitch = 85 
+          
+#00923    IF GotParam Name 
+#00924      SetTrickName GLOBAL.Name 
+            
+#00925      SetTrickScore GLOBAL.Score 
+            
+#00926      Display 
+#00927    END IF 
+#00928    PlayAnim Anim = Boneless 
+          BlendPeriod = 0.2 
+          
+#00929    Bailoff 
+#00930    WaitAnimWhilstChecking 
+#00931    Goto Airborne 
+#00932  END FUNCTION
+          
+#00933  FUNCTION BonelessWaitAnimWhilstChecking 
+#00935    LOOP 
+#00936      DoNextTrick 
+#00937      IF GotParam AndManuals 
+#00938        donextmanualtrick 
+#00939      END IF 
+#00940      IF AnimFinished 
+#00941        BREAK
+              
+#00942      END IF 
+#00943      WaitoneGameFrame 
+#00944      IF OnGround 
+#00945        Goto Land 
+#00946      END IF 
+#00947    END LOOP 
+#00948  END FUNCTION
+          
+#00949  FUNCTION Taunt 
+#00951    OnGroundExceptions 
+#00952    PlayAnim Anim = GLOBAL.Anim 
+          BlendPeriod = 0.3 
+          
+#00953    LaunchPanelMessage GLOBAL.PanelMessage 
+          
+#00954    IF SpeedLessThan 1 
+#00955      SetRollingFriction 100 
+#00956      WaitAnimWhilstChecking AndManuals 
+#00957      Goto Handbrake 
+#00958    ELSE 
+#00959      WaitAnimWhilstChecking AndManuals 
+#00960      Goto OnGroundAi 
+#00961    END IF 
+#00962  END FUNCTION
+          
+#00963  FUNCTION Props 
+#00966    OnGroundExceptions 
+#00967    PlayAnim RANDOM[2][4; 16]
+          Anim = Prop 
+          JUMP 0x0b000000 Anim = Cheer1 
+          BlendPeriod = 0.3 
+          
+#00968    LaunchPanelMessage "Props" 
+#00969    IF SpeedLessThan 1 
+#00970      SetRollingFriction 100 
+#00971      WaitAnimWhilstChecking AndManuals 
+#00972      Goto Handbrake 
+#00973    ELSE 
+#00974      WaitAnimWhilstChecking AndManuals 
+#00975      Goto OnGroundAi 
+#00976    END IF 
+#00977  END FUNCTION
+          
+#00978  FUNCTION Taunt1 
+#00980    OnGroundExceptions 
+#00981    PlayAnim Anim = Taunt1 
+          NoRestart BlendPeriod = 0.3 
+          
+#00982    LaunchPanelMessage "Who's your Daddy?" 
+#00983    WaitAnimWhilstChecking AndManuals 
+#00984    Goto OnGroundAi 
+#00985  END FUNCTION
+          
+#00986  FUNCTION Taunt2 
+#00988    OnGroundExceptions 
+#00989    PlayAnim Anim = Taunt2 
+          NoRestart BlendPeriod = 0.3 
+          
+#00990    LaunchPanelMessage "No F-ckin' way" 
+#00991    WaitAnimWhilstChecking AndManuals 
+#00992    Goto OnGroundAi 
+#00993  END FUNCTION
+          
+#00994  FUNCTION Taunt3 
+#00996    OnGroundExceptions 
+#00997    PlayAnim Anim = Taunt3 
+          NoRestart BlendPeriod = 0.3 
+          
+#00998    LaunchPanelMessage "Come get some" 
+#00999    WaitAnimWhilstChecking AndManuals 
+#01000    Goto OnGroundAi 
+#01001  END FUNCTION
+          
+#01002  FUNCTION BitchSlap 
+#01004    OnGroundExceptions 
+#01005    PlayAnim Anim = Slapright 
+          NoRestart BlendPeriod = 0.3 
+          
+#01006    WaitAnimWhilstChecking AndManuals 
+#01007    Goto OnGroundAi 
+#01008  END FUNCTION
+          
+#01009  

@@ -1,0 +1,657 @@
+statistics_title_props = STRUCT{
+          Font = "title.fnt" 
+          Just = PAIR[0.0; 0.0] 
+          Dims = PAIR[600.0; 112.0] 
+          Colors = ARRAY(
+            
+            STRUCT{
+              VECTOR[128.0; 128.0; 128.0] Alpha = 128 
+              }
+            
+          )
+          Key_Points = ARRAY(
+            
+            STRUCT{
+              Pos = PAIR[320.0; 50.0] 
+              Alpha = 128 
+              Scale = 1.24 
+              Time = 0 
+              }
+            STRUCT{
+              Time = 1000000000 
+              }
+            
+          )
+          }
+        
+#00010  statistics_default_box_props = STRUCT{
+          box_color = STRUCT{
+            VECTOR[40.0; 40.0; 40.0] Alpha = 100 
+            }
+          box_pos_rel = PAIR[0.0; -1.0] 
+          box_w = 270 
+          box_h = 18 
+          }
+        
+#00018  statistics_box_1_props = STRUCT{
+          statistics_default_box_props box_pos_rel = PAIR[-8.0; -1.0] 
+          box_w = 180 
+          }
+        
+#00025  statistics_box_2_props = STRUCT{
+          statistics_default_box_props box_pos_rel = PAIR[-4.0; -1.0] 
+          box_w = 268 
+          }
+        
+#00031  statistics_top_box_props = STRUCT{
+          statistics_default_box_props box_w = 390 
+          box_pos_rel = PAIR[-8.0; -1.0] 
+          }
+        
+#00041  statistics_font_props = STRUCT{
+          Font = "small.fnt" 
+          Just = PAIR[0.0; 0.0] 
+          Dims = PAIR[640.0; 448.0] 
+          Colors = ARRAY(
+            
+            STRUCT{
+              VECTOR[128.0; 128.0; 128.0] Alpha = 128 
+              }
+            STRUCT{
+              VECTOR[128.0; 128.0; 0.0] Alpha = 128 
+              }
+            
+          )
+          Key_Points = ARRAY(
+            
+            STRUCT{
+              Pos = PAIR[0.0; 0.0] 
+              Alpha = 0 
+              Scale = 1.0 
+              Time = 0 
+              }
+            STRUCT{
+              Alpha = 128 
+              Time = 0 
+              }
+            STRUCT{
+              Time = 10000000 
+              }
+            
+          )
+          }
+        
+#00057  statistics_left_x = 100 
+        
+#00061  statistics_mid_x = 300 
+        
+#00062  statistics_combo_x = 60 
+        
+#00063  statistics_box_3_props = STRUCT{
+          statistics_default_box_props box_pos_rel = PAIR[-4.0; -1.0] 
+          box_w = 550 
+          }
+        
+#00069  FUNCTION statistics_line 
+#00073    LaunchLocalMessage id = GLOBAL.id1 
+          GLOBAL.n1 
+          statistics_font_props base_x = 40 
+          base_y = GLOBAL.line_y 
+          Just = PAIR[-1.0; 0.0] 
+          statistics_box_1_props 
+#00074    LaunchLocalMessage id = GLOBAL.id2 
+          GLOBAL.n2 
+          statistics_font_props base_x = 300 
+          base_y = GLOBAL.line_y 
+          Just = PAIR[-1.0; 0.0] 
+          statistics_box_2_props 
+#00075    LaunchLocalMessage id = GLOBAL.id3 
+          GLOBAL.n3 
+          statistics_font_props base_x = 365 
+          base_y = GLOBAL.line_y 
+          Just = PAIR[-1.0; 0.0] 
+          statistics_box_2_props 
+#00076    wait 0.1 seconds 
+#00079  END FUNCTION
+          
+#00080  FUNCTION statistics_display 
+#00083    LaunchLocalMessage id = StatisticsTitle 
+          "Statistics" statistics_title_props 
+#00084    LaunchLocalMessage id = rec01 
+          "Total Score:" statistics_font_props base_x = statistics_left_x 
+          base_y = 100 
+          Just = PAIR[-1.0; 0.0] 
+          statistics_box_1_props 
+#00086    LaunchLocalMessage id = rec02 
+          0 statistics_font_props base_x = statistics_mid_x 
+          base_y = 100 
+          Just = PAIR[-1.0; 0.0] 
+          statistics_box_2_props 
+#00087    LaunchLocalMessage id = rec11 
+          "High Score:" statistics_font_props base_x = statistics_left_x 
+          base_y = 120 
+          Just = PAIR[-1.0; 0.0] 
+          statistics_box_1_props 
+#00089    LaunchLocalMessage id = rec12 
+          1 statistics_font_props base_x = statistics_mid_x 
+          base_y = 120 
+          Just = PAIR[-1.0; 0.0] 
+          statistics_box_2_props 
+#00090    LaunchLocalMessage id = rec21 
+          "Longest Grind:" statistics_font_props base_x = statistics_left_x 
+          base_y = 140 
+          Just = PAIR[-1.0; 0.0] 
+          statistics_box_1_props 
+#00092    LaunchLocalMessage id = rec22 
+          2 statistics_font_props base_x = statistics_mid_x 
+          base_y = 140 
+          Just = PAIR[-1.0; 0.0] 
+          statistics_box_2_props 
+#00093    LaunchLocalMessage id = rec31 
+          "Longest Manual:" statistics_font_props base_x = statistics_left_x 
+          base_y = 160 
+          Just = PAIR[-1.0; 0.0] 
+          statistics_box_1_props 
+#00095    LaunchLocalMessage id = rec32 
+          3 statistics_font_props base_x = statistics_mid_x 
+          base_y = 160 
+          Just = PAIR[-1.0; 0.0] 
+          statistics_box_2_props 
+#00096    LaunchLocalMessage id = rec41 
+          "Longest Lip:" statistics_font_props base_x = statistics_left_x 
+          base_y = 180 
+          Just = PAIR[-1.0; 0.0] 
+          statistics_box_1_props 
+#00098    LaunchLocalMessage id = rec42 
+          4 statistics_font_props base_x = statistics_mid_x 
+          base_y = 180 
+          Just = PAIR[-1.0; 0.0] 
+          statistics_box_2_props 
+#00099    LaunchLocalMessage id = rec51 
+          "Longest Combo:" statistics_font_props base_x = statistics_left_x 
+          base_y = 200 
+          Just = PAIR[-1.0; 0.0] 
+          statistics_box_1_props 
+#00102    LaunchLocalMessage id = rec52 
+          5 statistics_font_props base_x = statistics_mid_x 
+          base_y = 200 
+          Just = PAIR[-1.0; 0.0] 
+          statistics_box_2_props 
+#00103    LaunchLocalMessage id = rec61 
+          "Best Combo:" statistics_font_props base_x = statistics_left_x 
+          base_y = 220 
+          Just = PAIR[-1.0; 0.0] 
+          statistics_box_1_props 
+#00105    LaunchLocalMessage id = rec62 
+          6 statistics_font_props base_x = statistics_mid_x 
+          base_y = 220 
+          Just = PAIR[-1.0; 0.0] 
+          statistics_box_2_props 
+#00106    LaunchLocalMessage id = rec71 
+          7 statistics_font_props base_x = statistics_combo_x 
+          base_y = 240 
+          Just = PAIR[-1.0; 0.0] 
+          statistics_box_3_props 
+#00109    LaunchLocalMessage id = rec81 
+          8 statistics_font_props base_x = statistics_combo_x 
+          base_y = 260 
+          Just = PAIR[-1.0; 0.0] 
+          statistics_box_3_props 
+#00110    LaunchLocalMessage id = rec91 
+          9 statistics_font_props base_x = statistics_combo_x 
+          base_y = 280 
+          Just = PAIR[-1.0; 0.0] 
+          statistics_box_3_props 
+#00111    LaunchLocalMessage id = rec101 
+          10 statistics_font_props base_x = statistics_combo_x 
+          base_y = 300 
+          Just = PAIR[-1.0; 0.0] 
+          statistics_box_3_props 
+#00112    LaunchLocalMessage id = rec111 
+          11 statistics_font_props base_x = statistics_combo_x 
+          base_y = 320 
+          Just = PAIR[-1.0; 0.0] 
+          statistics_box_3_props 
+#00113    LaunchLocalMessage id = rec121 
+          12 statistics_font_props base_x = statistics_combo_x 
+          base_y = 340 
+          Just = PAIR[-1.0; 0.0] 
+          statistics_box_3_props 
+#00114  END FUNCTION
+          
+#00118  record_font_props = STRUCT{
+          statistics_font_props Just = PAIR[-1.0; 0.0] 
+          }
+        
+#00124  record_title_props = STRUCT{
+          statistics_title_props }
+        
+#00128  records_col_1 = 90 
+        
+#00132  records_col_2 = 180 
+        
+#00133  records_col_3 = 285 
+        
+#00134  combo_col_1 = 370 
+        
+#00136  combo_col_2 = 460 
+        
+#00137  combo_col_3 = 565 
+        
+#00138  line_col_1 = 130 
+        
+#00140  line_col_2 = 385 
+        
+#00141  line_col_3 = 515 
+        
+#00142  records_col_4 = 380 
+        
+#00146  record_box_0_props = STRUCT{
+          statistics_default_box_props box_pos_rel = PAIR[-8.0; -1.0] 
+          box_w = 200 
+          }
+        
+#00152  record_box_1_props = STRUCT{
+          statistics_default_box_props box_pos_rel = PAIR[-8.0; -1.0] 
+          box_w = 40 
+          }
+        
+#00159  record_box_2_props = STRUCT{
+          statistics_default_box_props box_pos_rel = PAIR[-4.0; -1.0] 
+          box_w = 50 
+          }
+        
+#00165  record_box_3_props = STRUCT{
+          record_box_2_props box_w = 100 
+          }
+        
+#00170  record_box_4_props = STRUCT{
+          statistics_default_box_props record_box_2_props box_w = 55 
+          }
+        
+#00176  record_box_5_props = STRUCT{
+          statistics_default_box_props record_box_2_props box_w = 55 
+          }
+        
+#00182  FUNCTION record_table_line 
+#00185    LaunchLocalMessage id = GLOBAL.id1 
+          GLOBAL.rank 
+          record_font_props base_x = records_col_1 
+          Just = PAIR[-1.0; 0.0] 
+          record_box_1_props NULL 
+#00186    LaunchLocalMessage id = GLOBAL.id2 
+          GLOBAL.n3 
+          record_font_props base_x = records_col_2 
+          Just = PAIR[1.0; 0.0] 
+          record_box_2_props NULL 
+#00187    LaunchLocalMessage id = GLOBAL.id3 
+          GLOBAL.n1 
+          record_font_props base_x = records_col_3 
+          Just = PAIR[1.0; 0.0] 
+          record_box_3_props NULL 
+#00188  END FUNCTION
+          
+#00190  FUNCTION combo_table_line 
+#00192    LaunchLocalMessage id = GLOBAL.id1 
+          GLOBAL.rank 
+          record_font_props base_x = combo_col_1 
+          Just = PAIR[-1.0; 0.0] 
+          record_box_1_props NULL 
+#00193    LaunchLocalMessage id = GLOBAL.id2 
+          GLOBAL.n3 
+          record_font_props base_x = combo_col_2 
+          Just = PAIR[1.0; 0.0] 
+          record_box_2_props NULL 
+#00194    LaunchLocalMessage id = GLOBAL.id3 
+          GLOBAL.n1 
+          record_font_props base_x = combo_col_3 
+          Just = PAIR[1.0; 0.0] 
+          record_box_3_props NULL 
+#00195  END FUNCTION
+          
+#00197  FUNCTION record_line x_col_1 = line_col_1 
+          x_col_2 = line_col_2 
+          x_col_3 = line_col_3 
+          
+#00199    LaunchLocalMessage id = GLOBAL.id1 
+          GLOBAL.text 
+          record_font_props base_x = GLOBAL.x_col_1 
+          Just = PAIR[-1.0; 0.0] 
+          record_box_0_props NULL 
+#00200    LaunchLocalMessage id = GLOBAL.id2 
+          GLOBAL.n3 
+          record_font_props base_x = GLOBAL.x_col_2 
+          Just = PAIR[1.0; 0.0] 
+          record_box_2_props NULL 
+#00201    LaunchLocalMessage id = GLOBAL.id3 
+          GLOBAL.n1 
+          record_font_props base_x = GLOBAL.x_col_3 
+          Just = PAIR[1.0; 0.0] 
+          record_box_3_props NULL box_w = 125 
+          
+#00202  END FUNCTION
+          
+#00204  FUNCTION records_display x_col_1 = line_col_1 
+          x_col_2 = line_col_2 
+          x_col_3 = line_col_3 
+          Heading = "Level Records" 
+          
+#00209    LaunchLocalMessage id = StatisticsTitle 
+          GLOBAL.Heading 
+          record_title_props 
+#00210    LaunchLocalMessage id = rec01 
+          "High Scores" record_font_props base_x = records_col_1 
+          base_y = 100 
+          Just = PAIR[-1.0; 0.0] 
+          record_box_0_props 
+#00211    record_table_line rank = "1st" 
+          id1 = r11 
+          id2 = r20 
+          id3 = r21 
+          id4 = r22 
+          n1 = 20 
+          n2 = 21 
+          n3 = 22 
+          base_y = 120 
+          
+#00213    record_table_line rank = "2nd" 
+          id1 = r12 
+          id2 = r23 
+          id3 = r24 
+          id4 = r25 
+          n1 = 23 
+          n2 = 24 
+          n3 = 25 
+          base_y = 140 
+          
+#00214    record_table_line rank = "3rd" 
+          id1 = r13 
+          id2 = r26 
+          id3 = r27 
+          id4 = r28 
+          n1 = 26 
+          n2 = 27 
+          n3 = 28 
+          base_y = 160 
+          
+#00215    record_table_line rank = "4th" 
+          id1 = r14 
+          id2 = r29 
+          id3 = r30 
+          id4 = r31 
+          n1 = 29 
+          n2 = 30 
+          n3 = 31 
+          base_y = 180 
+          
+#00216    record_table_line rank = "5th" 
+          id1 = r15 
+          id2 = r32 
+          id3 = r33 
+          id4 = r34 
+          n1 = 32 
+          n2 = 33 
+          n3 = 34 
+          base_y = 200 
+          
+#00217    LaunchLocalMessage id = com01 
+          "Best Combos" record_font_props base_x = combo_col_1 
+          base_y = 100 
+          Just = PAIR[-1.0; 0.0] 
+          record_box_0_props 
+#00219    combo_table_line rank = "1st" 
+          id1 = c11 
+          id2 = c20 
+          id3 = c21 
+          id4 = c22 
+          n1 = 35 
+          n2 = 36 
+          n3 = 37 
+          base_y = 120 
+          
+#00221    combo_table_line rank = "2nd" 
+          id1 = c12 
+          id2 = c23 
+          id3 = c24 
+          id4 = c25 
+          n1 = 38 
+          n2 = 39 
+          n3 = 40 
+          base_y = 140 
+          
+#00222    combo_table_line rank = "3rd" 
+          id1 = c13 
+          id2 = c26 
+          id3 = c27 
+          id4 = c28 
+          n1 = 41 
+          n2 = 42 
+          n3 = 43 
+          base_y = 160 
+          
+#00223    combo_table_line rank = "4th" 
+          id1 = c14 
+          id2 = c29 
+          id3 = c30 
+          id4 = c31 
+          n1 = 44 
+          n2 = 45 
+          n3 = 46 
+          base_y = 180 
+          
+#00224    combo_table_line rank = "5th" 
+          id1 = c15 
+          id2 = c32 
+          id3 = c33 
+          id4 = c34 
+          n1 = 47 
+          n2 = 48 
+          n3 = 49 
+          base_y = 200 
+          
+#00225    record_line text = "Longest Grind:" 
+          id1 = x15 
+          id2 = x32 
+          id3 = x37 
+          id4 = x34 
+          n1 = 50 
+          n2 = 51 
+          n3 = 52 
+          base_y = 240 
+          x_col_1 = GLOBAL.x_col_1 
+          x_col_2 = GLOBAL.x_col_2 
+          x_col_3 = GLOBAL.x_col_3 
+          
+#00228    record_line text = "Longest Manual:" 
+          id1 = x16 
+          id2 = x33 
+          id3 = x38 
+          id4 = x34 
+          n1 = 53 
+          n2 = 54 
+          n3 = 55 
+          base_y = 260 
+          x_col_1 = GLOBAL.x_col_1 
+          x_col_2 = GLOBAL.x_col_2 
+          x_col_3 = GLOBAL.x_col_3 
+          
+#00229    record_line text = "Longest Lip:" 
+          id1 = x17 
+          id2 = x34 
+          id3 = x39 
+          id4 = x34 
+          n1 = 56 
+          n2 = 57 
+          n3 = 58 
+          base_y = 280 
+          x_col_1 = GLOBAL.x_col_1 
+          x_col_2 = GLOBAL.x_col_2 
+          x_col_3 = GLOBAL.x_col_3 
+          
+#00230    record_line text = "Longest Combo:" 
+          id1 = x18 
+          id2 = x35 
+          id3 = x3a 
+          id4 = x34 
+          n1 = 59 
+          n2 = 60 
+          n3 = 61 
+          base_y = 300 
+          x_col_1 = GLOBAL.x_col_1 
+          x_col_2 = GLOBAL.x_col_2 
+          x_col_3 = GLOBAL.x_col_3 
+          
+#00231  END FUNCTION
+          
+#00235  FUNCTION X_to_continue 
+#00239    SpawnScript Comp_BlinkXContinue 
+#00240    LOOP 
+#00241      IF Held X 
+#00242        BREAK
+              
+#00243      END IF 
+#00244      wait 1 GameFrames 
+#00245    END LOOP 
+#00246    KillSpawnedScript Name = Comp_BlinkXContinue 
+          
+#00247  END FUNCTION
+          
+#00248  FUNCTION stats_screen_task 
+#00250    debounce X Time = 1.0 
+          
+#00251    statistics_display 
+#00252    LaunchLocalMessage id = BottomInfo 
+          "Press ¬ to Continue" panel_message_XtoContinue 
+#00253    WaitForControllerPressedX 
+#00254    LaunchLocalMessage id = BottomInfo 
+          " " panel_message_XtoContinue 
+#00255    unpausegameflow 
+#00257  END FUNCTION
+          
+#00258  FUNCTION records_screen_task 
+#00261    debounce X Time = 1.0 
+          
+#00262    records_display 
+#00263    LaunchLocalMessage id = BottomInfo 
+          "Press ¬ to Continue" panel_message_XtoContinue 
+#00264    WaitForControllerPressedX 
+#00265    LaunchLocalMessage id = BottomInfo 
+          " " panel_message_XtoContinue 
+#00266    unpausegameflow 
+#00268  END FUNCTION
+          
+#00269  FUNCTION create_initials_keyboard 
+#00272    DestroyElement id = initials_keyboard_control 
+          
+#00273    CreateAndAttachMenu STRUCT{
+            type = keyboardcontrol 
+            id = initials_keyboard_control 
+            X = 160.0 
+            y = 56.0 
+            w = 320.0 
+            h = 336.0 
+            just_center_x just_center_y num_columns = 13 
+            alphanumeric_charset min_chars = 1 
+            max_chars = 3 
+            kill_on_close default_to_accept title_string = "New Record.  Enter Initials" 
+            default_string = "" 
+            eventhandlers = ARRAY(
+              
+              STRUCT{
+                type = showeventhandler 
+                target = "start_initials" 
+                params = STRUCT{
+                  prefs = records 
+                  field = "initials" 
+                  }
+                }
+              STRUCT{
+                type = contentschangedeventhandler 
+                target = "end_initials" 
+                params = STRUCT{
+                  prefs = records 
+                  field = "initials" 
+                  }
+                }
+              STRUCT{
+                type = showeventhandler 
+                target = "helper_on_keyboard_control_linear" 
+                }
+              
+            )
+            parent = contain1 
+            }
+          
+#00305  END FUNCTION
+          
+#00306  FUNCTION start_initials 
+#00309    GetInitialsString 
+#00310    printf GLOBAL.string 
+          
+#00311    LaunchEvent type = SetContents 
+          target = initials_keyboard_control 
+          NULL 
+#00312  END FUNCTION
+          
+#00313  FUNCTION end_initials 
+#00315    printf "new initials" 
+#00316    printf GLOBAL.string 
+          
+#00317    SetInitialsString string = GLOBAL.string 
+          
+#00318    unpause_game_flow 
+#00319  END FUNCTION
+          
+#00320  FUNCTION destroy_initials_keyboard 
+#00323    DestroyElement id = initials_keyboard_control 
+          
+#00325  END FUNCTION
+          
+#00326  FUNCTION new_record_screen 
+#00329    create_initials_keyboard 
+#00330    SwitchToMenu menu = initials_keyboard_control 
+          
+#00331    pause_game_flow 
+#00332    SwitchOffMenu id = initials_keyboard_control 
+          
+#00334  END FUNCTION
+          
+#00335  FUNCTION statistics_screen 
+#00341    printf ".......................statistics_screen" 
+#00342    PauseGame 
+#00343    KillMessages 
+#00344    GetRecordText 
+#00345    spawnskaterscript stats_screen_task 
+#00346    pause_game_flow 
+#00347    UnPauseGame 
+#00348    KillMessages 
+#00350    IF NewRecord 
+#00352      new_record_screen 
+#00353      UpdateInitials 
+#00354    END IF 
+#00355    Records_screen 
+#00358    KillMessages 
+#00360  END FUNCTION
+          
+#00361  FUNCTION Records_screen 
+#00364    KillMessages 
+#00365    GetRecordText 
+#00366    PauseGame 
+#00367    spawnskaterscript records_screen_task 
+#00369    pause_game_flow 
+#00371    UnPauseGame 
+#00372    KillMessages 
+#00376  END FUNCTION
+          
+#00377  FUNCTION records_test 
+#00380    GetRecordText 
+#00381    LOOP 
+#00382      KillMessages 
+#00383      printf "hmm" 
+#00384      records_display 
+#00385      wait 1 gameframe 
+#00386      wait 0.5 seconds 
+#00387    END LOOP 
+#00388  END FUNCTION
+          
+#00389  

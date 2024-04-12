@@ -1,0 +1,218 @@
+FUNCTION pro_menu_create 
+#00001    attach_new_stats_menu STRUCT{
+            menu_id = pro_menu 
+            container_id = contain1 
+            is_pro_menu left_container_id = pro_left_container 
+            right_container_id = pro_right_container 
+            stats_left_width = 145 
+            stats_right_width = 150 
+            }
+          
+#00011    AttachEventHandler STRUCT{
+            type = showeventhandler 
+            object = pro_menu 
+            target = "pro_on_show" 
+            }
+          
+#00017    AttachEventHandler STRUCT{
+            type = moveeventhandler 
+            object = pro_menu 
+            target = "pro_on_move" 
+            }
+          
+#00023    LaunchEvent type = disable 
+          target = pro_menu 
+          
+#00026    CreateAndAttachMenu STRUCT{
+            LeftArrowIconElement id = pro_left_arrow 
+            parent = pro_menu 
+            eventhandlers = ARRAY(
+              
+              STRUCT{
+                type = ChooseEventHandler 
+                target = "go_back" 
+                params = STRUCT{
+                  controller_only id = pro_menu 
+                  }
+                }
+              STRUCT{
+                type = ChooseEventHandler 
+                target = "do_prev_pro_skater" 
+                params = STRUCT{
+                  mouse_only }
+                }
+              STRUCT{
+                type = genericeventhandler 
+                eventtype = button 
+                target = "go_back_if_shown" 
+                object = pro_left_arrow 
+                params = STRUCT{
+                  menu_id = pro_menu 
+                  btn = 2 
+                  }
+                }
+              
+            )
+            }
+          
+#00038    CreateAndAttachMenu STRUCT{
+            RightArrowIconElement id = pro_right_arrow 
+            parent = pro_menu 
+            eventhandlers = ARRAY(
+              
+              STRUCT{
+                type = ChooseEventHandler 
+                target = "go_back" 
+                params = STRUCT{
+                  controller_only id = pro_menu 
+                  }
+                }
+              STRUCT{
+                type = ChooseEventHandler 
+                target = "do_next_pro_skater" 
+                params = STRUCT{
+                  mouse_only }
+                }
+              STRUCT{
+                type = genericeventhandler 
+                eventtype = button 
+                target = "go_back_if_shown" 
+                object = pro_left_arrow 
+                params = STRUCT{
+                  menu_id = pro_menu 
+                  btn = 2 
+                  }
+                }
+              
+            )
+            }
+          
+#00050    AttachEventHandler STRUCT{
+            type = genericeventhandler 
+            eventtype = button 
+            object = pro_menu 
+            target = "go_back_if_shown" 
+            params = STRUCT{
+              menu_id = pro_menu 
+              btn = 0 
+              }
+            }
+          
+#00061  END FUNCTION
+          
+#00063  FUNCTION go_back_if_shown 
+#00083    printstruct NULL 
+#00084    VerifyParam param = menu_id 
+          func = go_back_if_shown 
+          NULL 
+#00085    IF MenuIsShown GLOBAL.menu_id 
+            
+#00086      IF IntegerEquals a = GLOBAL.button 
+              b = GLOBAL.btn 
+              
+#00087        go_back id = GLOBAL.menu_id 
+              
+#00088      END IF 
+#00089    END IF 
+#00090  END FUNCTION
+          
+#00091  FUNCTION update_pro_display_info 
+#00093  END FUNCTION
+          
+#00098  FUNCTION next_pro_skater 
+#00100    IF IntegerEquals a = GLOBAL.press 
+            b = 0 
+            
+#00101      printf "Left was pressed" 
+#00102      do_prev_pro_skater 
+#00103    END IF 
+#00104    IF IntegerEquals a = GLOBAL.press 
+            b = 1 
+            
+#00105      printf "Right was pressed" 
+#00106      do_next_pro_skater 
+#00107    END IF 
+#00108  END FUNCTION
+          
+#00109  FUNCTION do_prev_pro_skater 
+#00111    PlayChooseSkaterSound 
+#00112    movemenu id = career_info 
+          x = 45 
+          
+#00115    LoadNextUnlockedPro incVal = -1 
+          
+#00116    IF MenuIsShown pro_menu 
+#00119      UpdateStatsElements 
+#00120    END IF 
+#00121    IF IsTrue ShouldShowCareerInfo 
+#00123      CareerMenuShow 
+#00124    ELSE 
+#00125      SliderShow 
+#00126    END IF 
+#00127    IF CurrentSkaterProfileIs 1 
+#00129      SyncPlayer2Profile 
+#00130    END IF 
+#00131  END FUNCTION
+          
+#00132  FUNCTION do_next_pro_skater 
+#00134    PlayChooseSkaterSound 
+#00135    movemenu id = career_info 
+          x = 45 
+          
+#00138    LoadNextUnlockedPro incVal = 1 
+          
+#00139    IF MenuIsShown pro_menu 
+#00142      UpdateStatsElements 
+#00143    END IF 
+#00144    IF IsTrue ShouldShowCareerInfo 
+#00146      CareerMenuShow 
+#00147    ELSE 
+#00148      SliderShow 
+#00149    END IF 
+#00150    IF CurrentSkaterProfileIs 1 
+#00152      SyncPlayer2Profile 
+#00153    END IF 
+#00154  END FUNCTION
+          
+#00155  FUNCTION pro_on_move 
+#00157    IF MenuIsShown pro_menu 
+#00158      next_pro_skater NULL 
+#00159    END IF 
+#00160  END FUNCTION
+          
+#00161  FUNCTION pro_on_show 
+#00163    IF CurrentSkaterProfileIs 1 
+#00164      movemenu id = pro_menu 
+            x = 295 
+            y = 80 
+            
+#00165      movemenu id = pro_left_arrow 
+            x = -270 
+            y = 130 
+            
+#00166      movemenu id = pro_right_arrow 
+            x = -90 
+            y = 130 
+            
+#00167    ELSE 
+#00168      movemenu id = pro_menu 
+            x = 50 
+            y = 80 
+            
+#00169      movemenu id = pro_left_arrow 
+            x = 335 
+            y = 130 
+            
+#00170      movemenu id = pro_right_arrow 
+            x = 525 
+            y = 130 
+            
+#00171    END IF 
+#00172    IF IsTrue ShouldShowCareerInfo 
+#00174      CareerMenuShow 
+#00175    ELSE 
+#00176      SliderShow 
+#00177    END IF 
+#00178  END FUNCTION
+          
+#00179  

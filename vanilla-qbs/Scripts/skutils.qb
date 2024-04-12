@@ -1,0 +1,627 @@
+
+#00001  FUNCTION PrintState 
+#00008    IF InAir 
+#00009      printf "In air" 
+#00010    END IF 
+#00011    IF OnGround 
+#00013      printf "On ground" 
+#00014    END IF 
+#00015    IF OnWall 
+#00017      printf "On wall" 
+#00018    END IF 
+#00019    IF OnLip 
+#00021      printf "On lip" 
+#00022    END IF 
+#00023    IF OnRail 
+#00025      printf "OnRail" 
+#00026    END IF 
+#00027  END FUNCTION
+          
+#00029  FUNCTION DefaultGapScript 
+#00035    PlaySound HUD_jumpgap 
+#00037  END FUNCTION
+          
+#00038  FUNCTION SetAllStats value = 3 
+          
+#00045    setstat stat = STATS_AIR 
+          value = GLOBAL.value 
+          
+#00046    setstat stat = STATS_HANGTIME 
+          value = GLOBAL.value 
+          
+#00047    setstat stat = STATS_SPEED 
+          value = GLOBAL.value 
+          
+#00048    setstat stat = STATS_OLLIE 
+          value = GLOBAL.value 
+          
+#00049    setstat stat = STATS_SPIN 
+          value = GLOBAL.value 
+          
+#00050    setstat stat = STATS_LANDING 
+          value = GLOBAL.value 
+          
+#00051    setstat stat = STATS_SWITCH 
+          value = GLOBAL.value 
+          
+#00052    setstat stat = STATS_RAILBALANCE 
+          value = GLOBAL.value 
+          
+#00053    setstat stat = STATS_LIPBALANCE 
+          value = GLOBAL.value 
+          
+#00054    setstat stat = STATS_MANUAL 
+          value = GLOBAL.value 
+          
+#00055  END FUNCTION
+          
+#00056  FUNCTION MaxAllStats 
+#00058    SetAllStats value = 10 
+          
+#00059  END FUNCTION
+          
+#00060  FUNCTION SetKingStats 
+#00062    SetAllStats value = 0 
+          
+#00063  END FUNCTION
+          
+#00064  FUNCTION Set8Stats 
+#00066    SetAllStats value = 7 
+          
+#00067  END FUNCTION
+          
+#00068  FUNCTION ToggleMinMetrics 
+#00070    ToggleMetricItem item = METRIC_TIME 
+          
+#00071    ToggleMetricItem item = METRIC_TOTALPOLYS 
+          
+#00073    ToggleMetricItem item = METRIC_VERTS 
+          
+#00075    ToggleMetricItem item = METRIC_RESOURCEALLOCS 
+          
+#00076    ToggleMetricItem item = METRIC_TEXTUREUPLOADS 
+          
+#00077    ToggleMetricItem item = METRIC_VU1 
+          
+#00078    ToggleMetricItem item = METRIC_DMA1 
+          
+#00079    ToggleMetricItem item = METRIC_DMA2 
+          
+#00080    ToggleMetricItem item = METRIC_IHANDLERTIME 
+          
+#00083    ToggleMetricItem item = METRIC_SKYCACHE 
+          
+#00084    ToggleMetricItem item = METRIC_VIDEOMODE 
+          
+#00085    ToggleMetricItem item = METRIC_MEMFREE 
+          
+#00088    ToggleMetricItem item = METRIC_REGIONINFO 
+          
+#00089  END FUNCTION
+          
+#00090  FUNCTION MaybePause Button = r1 
+          
+#00092    IF held GLOBAL.Button 
+            
+#00093      LOOP 
+#00094      END LOOP 800000 
+#00095    END IF 
+#00096  END FUNCTION
+          
+#00097  FUNCTION goto 
+#00104    JumpToScript NULL 
+#00105  END FUNCTION
+          
+#00106  FUNCTION WaitOneGameFrame 
+#00112    Wait 1 gameframes 
+#00113  END FUNCTION
+          
+#00114  FUNCTION WaitAnimFinished 
+#00119    LOOP 
+#00120      IF AnimFinished 
+#00122        BREAK
+              
+#00123      END IF 
+#00124      WaitOneGameFrame 
+#00125    END LOOP 
+#00126  END FUNCTION
+          
+#00127  FUNCTION WaitAnimWhilstChecking 
+#00129    LOOP 
+#00130      DoNextTrick 
+#00131      IF GotParam AndManuals 
+#00132        DoNextManualTrick 
+#00133      END IF 
+#00134      IF AnimFinished 
+#00135        BREAK
+              
+#00136      END IF 
+#00137      WaitOneGameFrame 
+#00138    END LOOP 
+#00139  END FUNCTION
+          
+#00140  FUNCTION WaitForever 
+#00145    LOOP 
+#00146      WaitOneGameFrame 
+#00147    END LOOP 
+#00148  END FUNCTION
+          
+#00149  FUNCTION Reverse 
+#00154    PlayAnim Anim = Current 
+          From = Current 
+          To = 0 
+          
+#00155  END FUNCTION
+          
+#00156  FUNCTION Obj_WaitForFlag 
+#00161    LOOP 
+#00162      IF Obj_FlagSet NULL 
+#00163        BREAK
+              
+#00164      END IF 
+#00165      WaitOneGameFrame 
+#00166    END LOOP 
+#00167  END FUNCTION
+          
+#00168  FUNCTION PollUntilFinished 
+#00177    IF GotParam Func 
+#00178      LOOP 
+#00179        IF GLOBAL.Func 
+                NULL 
+#00180          BREAK
+                
+#00181        END IF 
+#00182        Wait 1 gameframe 
+#00183      END LOOP 
+#00184    ELSE 
+#00185      LOOP 
+#00186        printf "AAAAAAAARGH !!!!  PollUntilFinished needs a Func parameter !" 
+#00187        Wait 1 gameframe 
+#00188      END LOOP 
+#00189    END IF 
+#00190  END FUNCTION
+          
+#00191  FUNCTION autolaunch 
+#00199    IF GotParam level 
+#00200      setservermode on 
+#00201      request_level level = GLOBAL.level 
+            
+#00202      IF GotParam game 
+#00203        SetGameType GLOBAL.game 
+              
+#00204      ELSE 
+#00205        SetGameType freeskate 
+#00206      END IF 
+#00207      SetGameState on 
+#00208      printf "script autolaunch\n" 
+#00210      IF TestGameType parkeditor 
+#00211        launchmenuscreen screen = parked_menu 
+              
+#00212      ELSE 
+#00213        launchmenuscreen screen = game_menu 
+              
+#00214      END IF 
+#00215    ELSE 
+#00216      printf "Usage:  autolaunch level=level_foun [game=freeskate]" 
+#00217      script_assert "No level param specified for autolaunching" 
+#00218    END IF 
+#00219  END FUNCTION
+          
+#00220  FUNCTION VerifyParam 
+#00228    IF GotParam GLOBAL.param 
+            
+#00229    ELSE 
+#00230      printf "Required param not found in script function:" 
+#00231      printf GLOBAL.param 
+            
+#00232      printf GLOBAL.Func 
+            
+#00233      script_assert "Terminating..." 
+#00234    END IF 
+#00235  END FUNCTION
+          
+#00236  TRIGGER_THROUGH = 0 
+        
+#00241  TRIGGER_SKATE_OFF_EDGE = 1 
+        
+#00242  TRIGGER_JUMP_OFF = 2 
+        
+#00243  TRIGGER_LAND_ON = 3 
+        
+#00244  TRIGGER_SKATE_OFF = 4 
+        
+#00245  TRIGGER_SKATE_ONTO = 5 
+        
+#00246  TRIGGER_BONK = 6 
+        
+#00247  TRIGGER_LIP_ON = 7 
+        
+#00248  TRIGGER_LIP_OFF = 8 
+        
+#00249  TRIGGER_LIP_JUMP = 9 
+        
+#00250  CANCEL_GROUND = 1 
+        
+#00254  CANCEL_AIR = 2 
+        
+#00255  CANCEL_RAIL = 4 
+        
+#00256  CANCEL_WALL = 8 
+        
+#00257  CANCEL_LIP = 16 
+        
+#00258  CANCEL_MANUAL = 32 
+        
+#00259  PURE_GROUND = 62 
+        
+#00263  PURE_AIR = 61 
+        
+#00264  PURE_RAIL = 59 
+        
+#00265  PURE_WALL = 55 
+        
+#00266  PURE_LIP = 47 
+        
+#00267  PURE_MANUAL = 31 
+        
+#00268  REQUIRE_GROUND = 256 
+        
+#00272  REQUIRE_AIR = 512 
+        
+#00273  REQUIRE_RAIL = 1024 
+        
+#00274  REQUIRE_WALL = 2048 
+        
+#00275  REQUIRE_LIP = 4096 
+        
+#00276  REQUIRE_MANUAL = 8192 
+        
+#00277  FUNCTION StartAirGap 
+#00281    StartGap NULL flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_WALL CANCEL_MANUAL CANCEL_LIP CANCEL_RAIL 
+          )
+          
+#00282  END FUNCTION
+          
+#00283  FUNCTION StartRailGap 
+#00285    StartGap NULL flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_WALL CANCEL_MANUAL CANCEL_LIP CANCEL_AIR 
+          )
+          
+#00286  END FUNCTION
+          
+#00287  FUNCTION StartManualGap 
+#00289    StartGap NULL flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_WALL CANCEL_LIP CANCEL_RAIL CANCEL_AIR 
+          )
+          
+#00290  END FUNCTION
+          
+#00291  FUNCTION StartWallGap 
+#00293    StartGap NULL flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_LIP CANCEL_RAIL CANCEL_AIR 
+          )
+          
+#00294  END FUNCTION
+          
+#00295  FUNCTION CareerRestartLevel 
+#00303    CareerStartLevel level = -1 
+          
+#00304  END FUNCTION
+          
+#00305  FUNCTION DefaultHiScoreScript 
+#00307  END FUNCTION
+          
+#00309  FUNCTION DefaultProScoreScript 
+#00311  END FUNCTION
+          
+#00313  FUNCTION DisablePause 
+#00315    AllowPause off 
+#00316  END FUNCTION
+          
+#00317  FUNCTION EnablePause 
+#00319    AllowPause 
+#00320  END FUNCTION
+          
+#00321  FUNCTION LaunchLocalMessage 
+#00325    LaunchLocalPanelMessage message_prop_default NULL 
+#00326  END FUNCTION
+          
+#00327  default_box_props = STRUCT{
+          box_color = STRUCT{
+            VECTOR[40.0; 40.0; 40.0] alpha = 100 
+            }
+          box_pos_rel = PAIR[0.0; -1.0] 
+          box_w = 180 
+          box_h = 18 
+          }
+        
+#00339  blue_box_props = STRUCT{
+          default_box_props box_color = STRUCT{
+            VECTOR[40.0; 40.0; 140.0] alpha = 100 
+            }
+          }
+        
+#00344  tricktip_props = STRUCT{
+          font = "small.fnt" 
+          just = PAIR[0.0; -1.0] 
+          dims = PAIR[640.0; 448.0] 
+          colors = ARRAY(
+            
+            STRUCT{
+              VECTOR[255.0; 245.0; 0.0] alpha = 128 
+              }
+            STRUCT{
+              VECTOR[110.0; 20.0; 20.0] alpha = 255 
+              }
+            
+          )
+          key_points = ARRAY(
+            
+            STRUCT{
+              pos = PAIR[-200.0; 50.0] 
+              alpha = 0 
+              time = 0 
+              }
+            STRUCT{
+              pos = PAIR[140.0; 50.0] 
+              scale = 1 
+              alpha = 90 
+              time = 0.75 
+              }
+            STRUCT{
+              time = 7 
+              }
+            STRUCT{
+              pos = PAIR[-200.0; 50.0] 
+              alpha = 0 
+              scale = 1 
+              time = 8 
+              }
+            
+          )
+          }
+        
+#00361  FUNCTION TrickTip 
+#00364    spawnscript TrickTipTask params = STRUCT{
+            line1 = "" 
+            line2 = "" 
+            line3 = "" 
+            line4 = "" 
+            line5 = "" 
+            NULL }
+          
+#00365  END FUNCTION
+          
+#00366  FUNCTION TrickTipTask 
+#00369    LaunchLocalMessage id = mess1 
+          GLOBAL.line1 
+          base_pos = PAIR[0.0; 100.0] 
+          tricktip_props blue_box_props 
+#00370    Wait 0.2 seconds 
+#00371    LaunchLocalMessage id = mess2 
+          GLOBAL.line2 
+          base_pos = PAIR[0.0; 120.0] 
+          tricktip_props default_box_props 
+#00372    Wait 0.2 seconds 
+#00373    LaunchLocalMessage id = mess3 
+          GLOBAL.line3 
+          base_pos = PAIR[0.0; 140.0] 
+          tricktip_props default_box_props 
+#00374    Wait 0.2 seconds 
+#00375    LaunchLocalMessage id = mess4 
+          GLOBAL.line4 
+          base_pos = PAIR[0.0; 160.0] 
+          tricktip_props default_box_props 
+#00376    Wait 0.2 seconds 
+#00377    LaunchLocalMessage id = mess5 
+          GLOBAL.line5 
+          base_pos = PAIR[0.0; 180.0] 
+          tricktip_props default_box_props 
+#00378  END FUNCTION
+          
+#00379  FUNCTION tt_test1 
+#00381    TrickTip line1 = "use speed" 
+          line2 = "as an enemy" 
+          line3 = "of time" 
+          line4 = "to overcome" 
+          line5 = "defficency" 
+          
+#00382  END FUNCTION
+          
+#00383  FUNCTION tt_test2 
+#00385    TrickTip line1 = "skate over people" 
+          line2 = "as they would" 
+          line3 = "walk all over you" 
+          
+#00386  END FUNCTION
+          
+#00387  default_create_box_props = STRUCT{
+          box_color = STRUCT{
+            VECTOR[40.0; 40.0; 40.0] alpha = 100 
+            }
+          box_pos_rel = PAIR[0.0; 0.0] 
+          box_w = 100 
+          box_h = 100 
+          key_points = ARRAY(
+            
+            STRUCT{
+              pos = PAIR[0.0; 0.0] 
+              time = 0 
+              }
+            STRUCT{
+              time = 100000000 
+              }
+            
+          )
+          just = PAIR[-1.0; -1.0] 
+          }
+        
+#00399  default_destroy_box_props = STRUCT{
+          key_points = ARRAY(
+            
+            STRUCT{
+              time = 0 
+              }
+            
+          )
+          }
+        
+#00404  FUNCTION CreateBox 
+#00408    LaunchLocalMessage "" id = default_box_id 
+          default_create_box_props NULL 
+#00409  END FUNCTION
+          
+#00410  FUNCTION DestroyBox 
+#00412    ChangeLocalMessage id = default_box_id 
+          default_destroy_box_props NULL 
+#00413  END FUNCTION
+          
+#00414  FUNCTION AddLine 
+#00420    destroyelement NULL 
+#00421    createmenu type = textmenuelement 
+          NULL 
+#00422    attachchild child = GLOBAL.id 
+          NULL 
+#00423  END FUNCTION
+          
+#00424  FUNCTION SimpleMenuWithDefaults 
+#00427    destroyelement id = GLOBAL.menu_id 
+          
+#00428    createmenu STRUCT{
+            type = verticalmenu 
+            id = GLOBAL.menu_id 
+            x = GLOBAL.x 
+            y = GLOBAL.y 
+            w = GLOBAL.w 
+            h = GLOBAL.h 
+            just_center_x just_center_y blue_top eventhandler = GLOBAL.eventhandler 
+            EventHandlers = GLOBAL.EventHandlers 
+            children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = GLOBAL.header 
+                static dont_gray drawer = title 
+                }
+              
+            )
+            }
+          
+#00443    attachchild parent = contain1 
+          child = GLOBAL.menu_id 
+          
+#00444  END FUNCTION
+          
+#00445  FUNCTION AddSimpleLine 
+#00447    AddLine parent = simple_menu 
+          NULL 
+#00448  END FUNCTION
+          
+#00449  FUNCTION CreateSimpleMenu 
+#00452    SimpleMenuWithDefaults menu_id = simple_menu 
+          x = 150 
+          y = 70.0 
+          w = 320.0 
+          h = 336.0 
+          header = "menu" 
+          NULL 
+#00453  END FUNCTION
+          
+#00454  FUNCTION CreateSimpleMenuLines 
+#00457    CreateSimpleMenu NULL 
+#00458    ForEachIn GLOBAL.lines 
+          do = AddSimpleLine 
+          params = NULL 
+          
+#00459  END FUNCTION
+          
+#00460  FUNCTION SwitchToSimpleMenu2 
+#00463    switchtomenu DoNotMakeRoot menu = GLOBAL.menu_id 
+          
+#00464  END FUNCTION
+          
+#00465  FUNCTION SwitchToSimpleMenu 
+#00467    SwitchToSimpleMenu2 menu_id = simple_menu 
+          NULL 
+#00468  END FUNCTION
+          
+#00469  FUNCTION LaunchSimpleMenu 
+#00474    CreateSimpleMenuLines NULL 
+#00475    SwitchToSimpleMenu menu_id = simple_menu 
+          NULL 
+#00476  END FUNCTION
+          
+#00477  FUNCTION SelectElement 
+#00479    launchevent type = deselect 
+          target = contain1 
+          
+#00480    launchevent type = select 
+          target = GLOBAL.id 
+          
+#00481  END FUNCTION
+          
+#00482  FUNCTION AJC_FormatCard 
+#00519    LaunchSimpleMenu STRUCT{
+            x = 95 
+            y = 80 
+            w = 450 
+            lines = ARRAY(
+              
+              STRUCT{
+                id = AJC_line1 
+                text = "" 
+                static dont_gray }
+              STRUCT{
+                id = AJC_line2 
+                text = "FORMAT memory card?" 
+                static dont_gray }
+              STRUCT{
+                id = AJC_line2A 
+                text = "(ALL memory will be lost!)" 
+                static dont_gray }
+              STRUCT{
+                id = AJC_line3 
+                text = "" 
+                static dont_gray }
+              STRUCT{
+                id = AJC_line5 
+                text = "No" 
+                params = STRUCT{
+                  EndScr = GLOBAL.EndScr 
+                  }
+                }
+              STRUCT{
+                id = AJC_line4 
+                text = "Yes" 
+                target = "AJC_KillCard" 
+                params = STRUCT{
+                  NULL }
+                }
+              
+            )
+            }
+          
+#00531  END FUNCTION
+          
+#00532  FUNCTION AJC_KillCard 
+#00534    IF FormatCard 
+#00535      LaunchConsoleMessage "FORMAT SUCCEEDED" 
+#00536      LaunchConsoleMessage "FORMAT SUCCEEDED" 
+#00537      LaunchConsoleMessage "FORMAT SUCCEEDED" 
+#00538      LaunchConsoleMessage "FORMAT SUCCEEDED" 
+#00539      LaunchConsoleMessage "FORMAT SUCCEEDED" 
+#00540    ELSE 
+#00541      LaunchConsoleMessage "FORMAT FAILED" 
+#00542      LaunchConsoleMessage "FORMAT FAILED" 
+#00543      LaunchConsoleMessage "FORMAT FAILED" 
+#00544      LaunchConsoleMessage "FORMAT FAILED" 
+#00545      LaunchConsoleMessage "FORMAT FAILED" 
+#00546    END IF 
+#00547  END FUNCTION
+          
+#00548  

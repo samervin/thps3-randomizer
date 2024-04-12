@@ -1,0 +1,466 @@
+
+#00001  FUNCTION PlayYouTieScoreSound 
+#00005    PlaySound copinghit3 
+#00006  END FUNCTION
+          
+#00007  FUNCTION PlayYouBeatScoreSound 
+#00009    PlaySound HUDtrickperfect 
+#00010  END FUNCTION
+          
+#00011  FUNCTION PlayYouGetLetterSound 
+#00013    PlaySound HUDtrickslopC 
+#00014  END FUNCTION
+          
+#00015  FUNCTION PlayYouLoseSound 
+#00017    PlaySound horselose 
+#00018  END FUNCTION
+          
+#00019  FUNCTION PlayNoScoreSetSound 
+#00021    PlaySound GUI_buzzer01 
+#00022  END FUNCTION
+          
+#00023  FUNCTION play_appropriate_horse_sound 
+#00025    IF HorseEnded 
+#00026      PlayYouLoseSound 
+#00027    END IF 
+#00028    IF HorseStatusEquals GotLetter 
+#00029      PlayYouGetLetterSound 
+#00030    END IF 
+#00031    IF HorseStatusEquals TieScore 
+#00032      PlayYouTieScoreSound 
+#00033    END IF 
+#00034    IF HorseStatusEquals BeatScore 
+#00035      PlayYouBeatScoreSound 
+#00036    END IF 
+#00037    IF HorseStatusEquals NoScoreSet 
+#00038      PlayNoScoreSetSound 
+#00039    END IF 
+#00040  END FUNCTION
+          
+#00041  FUNCTION WaitForPanelDone 
+#00047    LOOP 
+#00049      IF ControllerPressed X 
+#00050        KillMessages all_panels 
+#00051        BREAK
+              
+#00052      END IF 
+#00053      IF PanelMessagesOnscreen 
+#00054        wait 1 gameframe 
+#00055      ELSE 
+#00056        BREAK
+              
+#00057      END IF 
+#00058    END LOOP 
+#00059  END FUNCTION
+          
+#00060  FUNCTION launch_panel_message 
+#00063    LaunchPanelMessage NULL 
+#00064  END FUNCTION
+          
+#00065  player1_horsecolor = ARRAY(
+          
+          STRUCT{
+            VECTOR[128.0; 32.0; 32.0] alpha = 128 
+            }
+          
+        )
+        
+#00083  player2_horsecolor = ARRAY(
+          
+          STRUCT{
+            VECTOR[32.0; 32.0; 128.0] alpha = 128 
+            }
+          
+        )
+        
+#00087  horse_top_key_points = ARRAY(
+          
+          STRUCT{
+            pos = PAIR[320.0; 204.0] 
+            alpha = 0 
+            scale = 1.0 
+            time = 0 
+            }
+          STRUCT{
+            alpha = 128 
+            time = 2.0 
+            }
+          
+        )
+        
+#00092  horse_middle_key_points = ARRAY(
+          
+          STRUCT{
+            pos = PAIR[320.0; 224.0] 
+            alpha = 0 
+            scale = 1.0 
+            time = 0 
+            }
+          STRUCT{
+            alpha = 128 
+            time = 2.0 
+            }
+          
+        )
+        
+#00097  horse_bottom_key_points = ARRAY(
+          
+          STRUCT{
+            pos = PAIR[320.0; 244.0] 
+            alpha = 0 
+            scale = 1.0 
+            time = 0 
+            }
+          STRUCT{
+            alpha = 128 
+            time = 2.0 
+            }
+          
+        )
+        
+#00102  horse_bottomfinal_key_points = ARRAY(
+          
+          STRUCT{
+            pos = PAIR[340.0; 300.0] 
+            alpha = 0 
+            scale = 2.0 
+            time = 0 
+            }
+          STRUCT{
+            alpha = 128 
+            time = 5.0 
+            }
+          
+        )
+        
+#00107  horse_topfinal_key_points = ARRAY(
+          
+          STRUCT{
+            pos = PAIR[320.0; 204.0] 
+            alpha = 0 
+            scale = 1.0 
+            time = 0 
+            }
+          STRUCT{
+            alpha = 128 
+            time = 5.0 
+            }
+          
+        )
+        
+#00111  player1_default_horseprop = STRUCT{
+          font = "title.fnt" 
+          just = PAIR[0.0; 0.0] 
+          dims = PAIR[320.0; 112.0] 
+          colors = player1_horsecolor 
+          key_points = horse_middle_key_points 
+          }
+        
+#00121  player2_default_horseprop = STRUCT{
+          font = "title.fnt" 
+          just = PAIR[0.0; 0.0] 
+          dims = PAIR[320.0; 112.0] 
+          colors = player2_horsecolor 
+          key_points = horse_middle_key_points 
+          }
+        
+#00130  player1_top_horseprop = STRUCT{
+          player1_default_horseprop key_points = horse_top_key_points 
+          }
+        
+#00139  player2_top_horseprop = STRUCT{
+          player2_default_horseprop key_points = horse_top_key_points 
+          }
+        
+#00144  player1_bottom_horseprop = STRUCT{
+          player1_default_horseprop key_points = horse_bottom_key_points 
+          }
+        
+#00149  player2_bottom_horseprop = STRUCT{
+          player2_default_horseprop key_points = horse_bottom_key_points 
+          }
+        
+#00154  player1_topfinal_horseprop = STRUCT{
+          player1_default_horseprop key_points = horse_topfinal_key_points 
+          }
+        
+#00159  player2_topfinal_horseprop = STRUCT{
+          player2_default_horseprop key_points = horse_topfinal_key_points 
+          }
+        
+#00164  player1_bottomfinal_horseprop = STRUCT{
+          player1_default_horseprop key_points = horse_bottomfinal_key_points 
+          }
+        
+#00169  player2_bottomfinal_horseprop = STRUCT{
+          player2_default_horseprop key_points = horse_bottomfinal_key_points 
+          }
+        
+#00174  horse_final_prop_default = STRUCT{
+          font = "title.fnt" 
+          just = PAIR[0.0; 0.0] 
+          dims = PAIR[320.0; 112.0] 
+          colors = ARRAY(
+            
+            STRUCT{
+              VECTOR[128.0; 128.0; 128.0] alpha = 128 
+              }
+            STRUCT{
+              VECTOR[255.0; 245.0; 0.0] alpha = 128 
+              }
+            STRUCT{
+              VECTOR[195.0; 20.0; 20.0] alpha = 128 
+              }
+            
+          )
+          key_points = ARRAY(
+            
+            STRUCT{
+              pos = PAIR[320.0; 224.0] 
+              alpha = 0 
+              scale = 1.0 
+              time = 0 
+              }
+            STRUCT{
+              alpha = 128 
+              time = 5.0 
+              }
+            
+          )
+          }
+        
+#00191  FUNCTION horse_menu_create 
+#00197    create_and_attach_generic_array_menu STRUCT{
+            menu_id = horse_time_limit_menu 
+            array_name = horse_time_limit_options 
+            field = horse_time_limit 
+            title = "Time Limit" 
+            prefs = splitscreen 
+            X = 170.0 
+            y = 90.0 
+            w = 300.0 
+            h = 400.0 
+            }
+          
+#00208    AttachEventHandler STRUCT{
+            object = horse_time_limit_menu 
+            type = showeventhandler 
+            target = "helper_select_choose_back_centered" 
+            }
+          
+#00214    CreateAndAttachMenu STRUCT{
+            type = keyboardcontrol 
+            id = horse_keyboard_control 
+            X = 160.0 
+            y = 56.0 
+            w = 320.0 
+            h = 336.0 
+            just_center_x just_center_y num_columns = 13 
+            horse_charset min_chars = 3 
+            max_chars = 10 
+            title_string = "Enter horse word:" 
+            default_string = "" 
+            eventhandlers = ARRAY(
+              
+              STRUCT{
+                type = showeventhandler 
+                target = "set_ui_from_preferences" 
+                params = STRUCT{
+                  prefs = splitscreen 
+                  field = "horse_word" 
+                  }
+                }
+              STRUCT{
+                type = contentschangedeventhandler 
+                target = "set_preferences_from_ui" 
+                params = STRUCT{
+                  prefs = splitscreen 
+                  field = "horse_word" 
+                  }
+                }
+              STRUCT{
+                type = showeventhandler 
+                target = "helper_on_keyboard_control" 
+                }
+              
+            )
+            parent = contain1 
+            }
+          
+#00245  END FUNCTION
+          
+#00247  FUNCTION remove_skater_from_world 
+#00253    RemoveSkaterFromWorld 
+#00254  END FUNCTION
+          
+#00255  FUNCTION add_skater_to_world 
+#00257    AddSkaterToWorld 
+#00258  END FUNCTION
+          
+#00259  FUNCTION print_horse_string 
+#00263    IF IsCurrentHorseSkater 0 
+#00264      IF GotParam Top 
+#00265        ApplyToHorsePanelString STRUCT{
+                whichString = GLOBAL.whichString 
+                callback = LaunchPanelMessage 
+                properties = player1_top_horseprop 
+                }
+              
+#00270      ELSE 
+#00271        IF GotParam Bottom 
+#00272          ApplyToHorsePanelString STRUCT{
+                  whichString = GLOBAL.whichString 
+                  callback = LaunchPanelMessage 
+                  properties = player1_bottom_horseprop 
+                  }
+                
+#00277        ELSE 
+#00279          IF GotParam Topfinal 
+#00280            ApplyToHorsePanelString STRUCT{
+                    whichString = GLOBAL.whichString 
+                    callback = LaunchPanelMessage 
+                    properties = player1_topfinal_horseprop 
+                    }
+                  
+#00285          ELSE 
+#00286            IF GotParam Bottomfinal 
+#00287              ApplyToHorsePanelString STRUCT{
+                      whichString = GLOBAL.whichString 
+                      callback = LaunchPanelMessage 
+                      properties = player1_bottomfinal_horseprop 
+                      }
+                    
+#00292            ELSE 
+#00294              ApplyToHorsePanelString STRUCT{
+                      whichString = GLOBAL.whichString 
+                      callback = LaunchPanelMessage 
+                      properties = player1_default_horseprop 
+                      }
+                    
+#00299            END IF 
+#00300          END IF 
+#00301        END IF 
+#00302      END IF 
+#00303    ELSE 
+#00304      IF GotParam Top 
+#00305        ApplyToHorsePanelString STRUCT{
+                whichString = GLOBAL.whichString 
+                callback = LaunchPanelMessage 
+                properties = player2_top_horseprop 
+                }
+              
+#00310      ELSE 
+#00311        IF GotParam Bottom 
+#00312          ApplyToHorsePanelString STRUCT{
+                  whichString = GLOBAL.whichString 
+                  callback = LaunchPanelMessage 
+                  properties = player2_bottom_horseprop 
+                  }
+                
+#00317        ELSE 
+#00318          IF GotParam Topfinal 
+#00319            ApplyToHorsePanelString STRUCT{
+                    whichString = GLOBAL.whichString 
+                    callback = LaunchPanelMessage 
+                    properties = player2_topfinal_horseprop 
+                    }
+                  
+#00324          ELSE 
+#00325            IF GotParam Bottomfinal 
+#00326              ApplyToHorsePanelString STRUCT{
+                      whichString = GLOBAL.whichString 
+                      callback = LaunchPanelMessage 
+                      properties = player2_bottomfinal_horseprop 
+                      }
+                    
+#00331            ELSE 
+#00333              ApplyToHorsePanelString STRUCT{
+                      whichString = GLOBAL.whichString 
+                      callback = LaunchPanelMessage 
+                      properties = player2_default_horseprop 
+                      }
+                    
+#00338            END IF 
+#00339          END IF 
+#00340        END IF 
+#00341      END IF 
+#00342    END IF 
+#00343  END FUNCTION
+          
+#00344  FUNCTION horse_start_run 
+#00346    StartHorseRun 
+#00350    disable_inactive_horse_player 
+#00353    WaitForPanelDone 
+#00356    PauseGame 
+#00359    print_horse_string STRUCT{
+            whichString = playerName 
+            Top }
+          
+#00360    print_horse_string STRUCT{
+            whichString = horseprerun 
+            Bottom }
+          
+#00361    WaitForPanelDone 
+#00363    UnpauseGame 
+#00365    wait 1 gameframe 
+#00368  END FUNCTION
+          
+#00371  FUNCTION disable_inactive_horse_player 
+#00373    IF IsCurrentHorseSkater 0 
+#00376      printf "Teleporting skater 1" 
+#00377      MakeSkaterGosub add_skater_to_world skater = 0 
+            
+#00378      MakeSkaterGosub remove_skater_from_world skater = 1 
+            
+#00379      PauseSkater 1 
+#00381      UnpauseSkater 0 
+#00382      SetFrontEndPad 0 
+#00385    ELSE 
+#00386      IF IsCurrentHorseSkater 1 
+#00387        printf "Teleporting skater 0" 
+#00388        MakeSkaterGosub add_skater_to_world skater = 1 
+              
+#00389        MakeSkaterGosub remove_skater_from_world skater = 0 
+              
+#00390        PauseSkater 0 
+#00392        UnpauseSkater 1 
+#00393        SetFrontEndPad 1 
+#00396      END IF 
+#00397    END IF 
+#00398  END FUNCTION
+          
+#00401  FUNCTION horse_end_run 
+#00403    LoadSound "skater\horselose" 
+#00404    EndHorseRun 
+#00408    WaitForPanelDone 
+#00412    PauseGame 
+#00415    play_appropriate_horse_sound 
+#00417    IF HorseEnded 
+#00419      print_horse_string STRUCT{
+              whichString = youarea 
+              Topfinal }
+            
+#00420      print_horse_string STRUCT{
+              whichString = finalword 
+              Bottomfinal }
+            
+#00421      wait 120 gameframes 
+#00422    ELSE 
+#00423      print_horse_string STRUCT{
+              whichString = playerName 
+              Top }
+            
+#00424      print_horse_string STRUCT{
+              whichString = horsepostrun 
+              Bottom }
+            
+#00425    END IF 
+#00426    WaitForPanelDone 
+#00428    UnpauseGame 
+#00429    wait 1 gameframe 
+#00431  END FUNCTION
+          
+#00434  FUNCTION horse_uninit 
+#00436    UseBothPadsInFrontEnd 
+#00437  END FUNCTION
+          

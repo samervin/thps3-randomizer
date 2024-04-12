@@ -1,0 +1,203 @@
+
+#00001  MusicVolume = 60 
+        
+#00003  FUNCTION LoadPermSounds 
+#00009    LoadPermSFX 
+#00010    LoadPermSongs 
+#00011  END FUNCTION
+          
+#00012  FUNCTION LoadPermSFX 
+#00014    LoadPreFile "skater_sounds.pre" 
+#00015    LoadSound "Skater\wheels01" FLAG_PERM vol = 10 
+          
+#00016    LoadSound "Skater\bail04" FLAG_PERM vol = 50 
+          
+#00018    LoadSound "Skater\bail05" FLAG_PERM vol = 50 
+          
+#00019    LoadSound "Skater\bodysmackA" FLAG_PERM vol = 50 
+          
+#00020    LoadSound "Skater\headsmackB" FLAG_PERM 
+#00021    LoadSound "Skater\HUD_jumpgap" FLAG_PERM 
+#00022    LoadSound "Skater\HUD_specialtrickAA" FLAG_PERM 
+#00023    LoadSound "Skater\hitdumpsterX" FLAG_PERM 
+#00024    LoadSound "Skater\hitvehicle3" FLAG_PERM 
+#00025    LoadSound "Skater\boneless09" FLAG_PERM 
+#00026    LoadSound "Skater\boardbail01" FLAG_PERM vol = 50 
+          
+#00030    LoadSound "Skater\boardbail02" FLAG_PERM vol = 50 
+          
+#00031    LoadSound "Skater\foleymove01" FLAG_PERM vol = 50 
+          
+#00034    LoadSound "Skater\foleyslide04" FLAG_PERM vol = 50 
+          
+#00039    LoadSound "Skater\footstep03" FLAG_PERM vol = 50 
+          
+#00043    LoadSound "Skater\hitblood01" FLAG_PERM vol = 50 
+          
+#00044    LoadSound "Skater\hitblood02" FLAG_PERM vol = 50 
+          
+#00045    LoadSound "Skater\hitblood04" FLAG_PERM vol = 50 
+          
+#00047    LoadSound "Skater\hitblood05" FLAG_PERM vol = 50 
+          
+#00048    LoadSound "Skater\hitbody03" FLAG_PERM vol = 50 
+          
+#00053    LoadSound "Skater\hitbody04" FLAG_PERM vol = 50 
+          
+#00054    LoadSound "Skater\hitface01" FLAG_PERM vol = 50 
+          
+#00055    LoadSound "Skater\hitface02" FLAG_PERM vol = 50 
+          
+#00056    LoadSound "Skater\bail_knee1" FLAG_PERM 
+#00058    LoadSound "Skater\bail_backward1" FLAG_PERM 
+#00059    LoadSound "Skater\Bailrunoutflip" FLAG_PERM 
+#00060    LoadSound "Skater\Nosemanualbail" FLAG_PERM 
+#00061    LoadSound "Skater\bitchslap2" FLAG_PERM 
+#00062    LoadSound "Skater\HUDtrickslopC" FLAG_PERM 
+#00063    LoadSound "Skater\HUDtrickperfect" FLAG_PERM pitch = 80 
+          
+#00064    LoadSound "Skater\hitbody02" FLAG_PERM 
+#00065    LoadSound "Skater\OllieMetalFuture" FLAG_PERM 
+#00066    LoadSound "Skater\select2b" FLAG_PERM 
+#00067    LoadSound "Skater\RevertWood" FLAG_PERM 
+#00068    LoadSound "Skater\Saberhit1" FLAG_PERM 
+#00069    LoadSound "Skater\SaberTwirl5" FLAG_PERM 
+#00070    LoadSound "Skater\GUI_stat03" FLAG_PERM 
+#00072    LoadSound "Skater\timeoutA" FLAG_PERM vol = 50 
+          
+#00073    LoadSound "Skater\copinghit3" FLAG_PERM vol = 100 
+          
+#00074    LoadSound "Skater\pedprops" FLAG_PERM vol = 100 
+          
+#00075    LoadSound "Skater\GUI_click06" FLAG_PERM vol = 100 
+          
+#00076    LoadSound "Skater\GUI_type02" FLAG_PERM vol = 100 
+          
+#00077    LoadSound "Skater\horselose" FLAG_PERM vol = 100 
+          
+#00078    LoadSound "Skater\GUI_buzzer01" FLAG_PERM vol = 100 
+          
+#00079    UnloadPreFile "skater_sounds.pre" 
+#00092  END FUNCTION
+          
+#00093  FUNCTION LoadPermSongs 
+#00095    IF istrue Xbox 
+#00096      AddMusicTrack "cky" FLAG_PERM TrackTitle = "96 Quite Bitter Beings" 
+            
+#00099      AddMusicTrack "adol" FLAG_PERM TrackTitle = "Amoeba" 
+            
+#00100      AddMusicTrack "pharside" FLAG_PERM 
+#00101    ELSE 
+#00103      IF istrue TestMusicFromHost 
+#00105        LoadMusicHeader "music\music" 
+#00106        AddMusicTrack "music\afi" FLAG_PERM TrackTitle = "A.F.I.: The Boy Who Destroyed The World" 
+              
+#00107        AddMusicTrack "music\adol" FLAG_PERM TrackTitle = "Adolescents: Amoeba" 
+              
+#00108        AddMusicTrack "music\antfarm" FLAG_PERM TrackTitle = "Alien Ant Farm: Wish" 
+              
+#00109        AddMusicTrack "music\bodyjar" FLAG_PERM TrackTitle = "Bodyjar: Not The Same" 
+              
+#00110        AddMusicTrack "music\cky" FLAG_PERM TrackTitle = "CKY: 96 Quite Bitter Beings" 
+              
+#00111        AddMusicTrack "music\del" FLAG_PERM TrackTitle = "Del The Funky Homosapien: If You Must" 
+              
+#00112        AddMusicTrack "music\gutter" FLAG_PERM TrackTitle = "Guttermouth: I'm Destroying The World" 
+              
+#00113        AddMusicTrack "music\pain" FLAG_PERM TrackTitle = "House of Pain: I'm A Swing It" 
+              
+#00114        AddMusicTrack "music\krs" FLAG_PERM TrackTitle = "KRS One: Hush" 
+              
+#00115        AddMusicTrack "music\mad" FLAG_PERM TrackTitle = "Mad Capsule Markets: N Pulse" 
+              
+#00116        AddMusicTrack "music\ace" FLAG_PERM TrackTitle = "Motorhead: Ace Of Spades" 
+              
+#00117        AddMusicTrack "music\next" FLAG_PERM TrackTitle = "Nextmen: Amongst Madness" 
+              
+#00118        AddMusicTrack "music\ozo" FLAG_PERM TrackTitle = "Ozomatli: Cut Chemist Suite" 
+              
+#00119        AddMusicTrack "music\ramones" FLAG_PERM TrackTitle = "Ramones: Blitzkrieg Bop" 
+              
+#00120        AddMusicTrack "music\chilis" FLAG_PERM TrackTitle = "Red Hot Chili Peppers: Fight Like A Brave" 
+              
+#00121        AddMusicTrack "music\redman" FLAG_PERM TrackTitle = "Redman: Let's Get Dirty" 
+              
+#00122        AddMusicTrack "music\rev" FLAG_PERM TrackTitle = "Reverend Horton Heat: I Can't Surf" 
+              
+#00123        AddMusicTrack "music\rollins" FLAG_PERM TrackTitle = "Rollins Band: What's The Matter Man" 
+              
+#00124        AddMusicTrack "music\Xzibit" FLAG_PERM TrackTitle = "Xzibit: Paparazzi" 
+              
+#00125        AddMusicTrack "music\zebra" FLAG_PERM TrackTitle = "Zebrahead: Check" 
+              
+#00126      END IF 
+#00127    ELSE 
+#00129      IF CD 
+#00131        LoadMusicHeader "music\music" 
+#00132        AddMusicTrack "music\afi" FLAG_PERM TrackTitle = "A.F.I.: The Boy Who Destroyed The World" 
+              
+#00133        AddMusicTrack "music\adol" FLAG_PERM TrackTitle = "Adolescents: Amoeba" 
+              
+#00134        AddMusicTrack "music\antfarm" FLAG_PERM TrackTitle = "Alien Ant Farm: Wish" 
+              
+#00135        AddMusicTrack "music\bodyjar" FLAG_PERM TrackTitle = "Bodyjar: Not The Same" 
+              
+#00136        AddMusicTrack "music\cky" FLAG_PERM TrackTitle = "CKY: 96 Quite Bitter Beings" 
+              
+#00137        AddMusicTrack "music\del" FLAG_PERM TrackTitle = "Del The Funky Homosapien: If You Must" 
+              
+#00138        AddMusicTrack "music\gutter" FLAG_PERM TrackTitle = "Guttermouth: I'm Destroying The World" 
+              
+#00139        AddMusicTrack "music\pain" FLAG_PERM TrackTitle = "House of Pain: I'm A Swing It" 
+              
+#00140        AddMusicTrack "music\krs" FLAG_PERM TrackTitle = "KRS One: Hush" 
+              
+#00141        AddMusicTrack "music\mad" FLAG_PERM TrackTitle = "Mad Capsule Markets: N Pulse" 
+              
+#00142        AddMusicTrack "music\ace" FLAG_PERM TrackTitle = "Motorhead: Ace Of Spades" 
+              
+#00143        AddMusicTrack "music\next" FLAG_PERM TrackTitle = "Nextmen: Amongst Madness" 
+              
+#00144        AddMusicTrack "music\ozo" FLAG_PERM TrackTitle = "Ozomatli: Cut Chemist Suite" 
+              
+#00145        AddMusicTrack "music\ramones" FLAG_PERM TrackTitle = "Ramones: Blitzkrieg Bop" 
+              
+#00146        AddMusicTrack "music\chilis" FLAG_PERM TrackTitle = "Red Hot Chili Peppers: Fight Like A Brave" 
+              
+#00147        AddMusicTrack "music\redman" FLAG_PERM TrackTitle = "Redman: Let's Get Dirty" 
+              
+#00148        AddMusicTrack "music\rev" FLAG_PERM TrackTitle = "Reverend Horton Heat: I Can't Surf" 
+              
+#00149        AddMusicTrack "music\rollins" FLAG_PERM TrackTitle = "Rollins Band: What's The Matter Man" 
+              
+#00150        AddMusicTrack "music\Xzibit" FLAG_PERM TrackTitle = "Xzibit: Paparazzi" 
+              
+#00151        AddMusicTrack "music\zebra" FLAG_PERM TrackTitle = "Zebrahead: Check" 
+              
+#00152      END IF 
+#00154    END IF 
+#00156  END FUNCTION
+          
+#00157  SK3SFX_TABLE_WHEELROLL = 0 
+        
+#00162  SK3SFX_TABLE_GRIND = 1 
+        
+#00163  SK3SFX_TABLE_JUMP = 2 
+        
+#00164  SK3SFX_TABLE_LAND = 3 
+        
+#00165  SK3SFX_TABLE_BONK = 4 
+        
+#00166  SK3SFX_TABLE_GRINDJUMP = 5 
+        
+#00167  SK3SFX_TABLE_GRINDLAND = 6 
+        
+#00168  SK3SFX_TABLE_SLIDE = 7 
+        
+#00169  SK3SFX_TABLE_SLIDEJUMP = 8 
+        
+#00170  SK3SFX_TABLE_SLIDELAND = 9 
+        
+#00171  SK3SFX_TABLE_CESS = 10 
+        
+#00172  

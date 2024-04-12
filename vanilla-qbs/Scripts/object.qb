@@ -1,0 +1,140 @@
+
+#00001  X_AXIS = 1 
+        
+#00003  Y_AXIS = 2 
+        
+#00004  Z_AXIS = 4 
+        
+#00005  XY_AXIS = 3 
+        
+#00007  XZ_AXIS = 5 
+        
+#00008  YZ_AXIS = 6 
+        
+#00009  BOUNCEOBJ_REST_TOP_OR_BOTTOM = 1 
+        
+#00012  BOUNCEOBJ_REST_ANY_SIDE = 2 
+        
+#00013  BOUNCEOBJ_REST_TRAFFIC_CONE = 3 
+        
+#00014  GameObjExceptions = 
+#00016  
+        ARRAY(
+          SkaterLanded SkaterBailed SkaterInRadius SkaterOutOfRadius 
+        )
+        
+#00022  AnimatingObjectExceptions = 
+#00024  
+        ARRAY(
+          SkaterInRadius SkaterOutOfRadius 
+        )
+        
+#00028  CarExceptions = 
+#00030  
+        ARRAY(
+          SkaterInRadius SkaterOutOfRadius 
+        )
+        
+#00034  BouncyObjExceptions = 
+#00036  
+        ARRAY(
+          SkaterInRadius SkaterOutOfRadius Bounce DoneBouncing 
+        )
+        
+#00042  FUNCTION Obj_WaitPlayerDist interval = 3 
+          
+#00044    LOOP 
+#00045      IF Obj_ObjectInRadius radius = GLOBAL.radius 
+              type = skater 
+              
+#00046        BREAK
+              
+#00047      ELSE 
+#00048        wait GLOBAL.interval 
+              gameframes 
+#00049      END IF 
+#00050    END LOOP 
+#00051  END FUNCTION
+          
+#00052  FUNCTION Obj_CycleAnim numCycles = 1 
+          
+#00054    LOOP 
+#00055      Obj_PlayAnim NULL 
+#00056      Obj_WaitAnimFinished 
+#00057    END LOOP GLOBAL.numCycles 
+          
+#00058  END FUNCTION
+          
+#00059  FUNCTION EmptyScript 
+#00061  END FUNCTION
+          
+#00062  FUNCTION Ped_CheckForAvoidSkater_NoStore scriptToCallWhenFinished = EmptyScript 
+          myAvoidSkater = DefaultAvoidSkater 
+          
+#00090    Obj_KillSpawnedScript name = Ped_CheckForAvoidSkater 
+          
+#00091    Obj_KillSpawnedScript name = Ped_CheckForAvoidSkater_NoStore 
+          
+#00092    LOOP 
+#00093      IF Obj_ObjectInRadius type = skater 
+              radius = 20 
+              
+#00094        LOOP 
+#00095          wait 4 gamegrames 
+#00096          IF Obj_ObjectInRadius type = skater 
+                  radius = 8 
+                  
+#00097            Obj_SwitchScript DoAvoidSkaterStuff_NoStore params = STRUCT{
+                    scriptToCallWhenFinished = GLOBAL.scriptToCallWhenFinished 
+                    myAvoidSkater = GLOBAL.myAvoidSkater 
+                    }
+                  
+#00098            goto EmptyScript 
+#00099          END IF 
+#00100        END LOOP 
+#00101      END IF 
+#00102      wait 15 gameframes 
+#00103    END LOOP 
+#00104  END FUNCTION
+          
+#00105  FUNCTION DoAvoidSkaterStuff 
+#00107    Obj_StorePos 
+#00108    Obj_StoreNode 
+#00109    DoAvoidSkaterStuff_NoStore scriptToCallWhenFinished = GLOBAL.scriptToCallWhenFinished 
+          myAvoidSkater = GLOBAL.myAvoidSkater 
+          
+#00110  END FUNCTION
+          
+#00111  FUNCTION DefaultAvoidSkater 
+#00113    Ped_AvoidSkater 
+#00114  END FUNCTION
+          
+#00115  FUNCTION DoAvoidSkaterStuff_NoStore 
+#00117    Obj_StopMovingAndRotating 
+#00118    GLOBAL.myAvoidSkater 
+          
+#00119    obj_spawnscript Ped_CheckForAvoidSkater_NoStore params = STRUCT{
+            scriptToCallWhenFinished = GLOBAL.scriptToCallWhenFinished 
+            myAvoidSkater = GLOBAL.myAvoidSkater 
+            }
+          
+#00120    Obj_LookAtPosStored time = 0.5 
+          
+#00121    Obj_WaitRotate 
+#00122    Obj_MoveToPosStored speed = 2.5 
+          
+#00123    Obj_PlayAnim Anim = Walk1 
+          Cycle 
+#00126    Obj_WaitMove 
+#00127    Obj_PlayAnim Anim = Idle 
+          
+#00128    obj_spawnscript Ped_CheckForAvoidSkater params = STRUCT{
+            scriptToCallWhenFinished = GLOBAL.scriptToCallWhenFinished 
+            myAvoidSkater = GLOBAL.myAvoidSkater 
+            }
+          
+#00129    goto GLOBAL.scriptToCallWhenFinished 
+          
+#00130  END FUNCTION
+          
+#00131  

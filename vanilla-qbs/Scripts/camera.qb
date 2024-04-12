@@ -1,0 +1,49 @@
+PreRunCameraName = 
+#00001  
+        STRUCT{
+          name = "CameraPreRun" 
+          }
+        
+#00004  PostRunCameraName = 
+#00006  
+        STRUCT{
+          name = "CameraPostRun" 
+          }
+        
+#00009  DetailsCameraName = 
+#00011  
+        STRUCT{
+          name = "CameraDetails" 
+          }
+        
+#00014  FUNCTION RunScriptedCameraForAllSkaters 
+#00016    PlaySkaterCamAnim skater = 0 
+          name = GLOBAL.name 
+          focus_skater 
+#00017    PlaySkaterCamAnim skater = 1 
+          name = GLOBAL.name 
+          focus_skater 
+#00018    PlaySkaterCamAnim skater = 2 
+          name = GLOBAL.name 
+          focus_skater 
+#00019    PlaySkaterCamAnim skater = 3 
+          name = GLOBAL.name 
+          focus_skater 
+#00020    PlaySkaterCamAnim skater = 4 
+          name = GLOBAL.name 
+          focus_skater 
+#00021    PlaySkaterCamAnim skater = 5 
+          name = GLOBAL.name 
+          focus_skater 
+#00022    PlaySkaterCamAnim skater = 6 
+          name = GLOBAL.name 
+          focus_skater 
+#00023    PlaySkaterCamAnim skater = 7 
+          name = GLOBAL.name 
+          focus_skater 
+#00024  END FUNCTION
+          
+#00025  FUNCTION TestCameraScript 
+#00027    printf "TestCameraScript called" 
+#00028  END FUNCTION
+          

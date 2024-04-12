@@ -1,0 +1,976 @@
+
+#00001  Skater_Default_Stats = 5.0 
+        
+#00026  STATS_AIR = 0 
+        
+#00031  STATS_HANGTIME = 1 
+        
+#00032  STATS_OLLIE = 2 
+        
+#00033  STATS_SPEED = 3 
+        
+#00034  STATS_SPIN = 4 
+        
+#00035  STATS_LANDING = 5 
+        
+#00036  STATS_SWITCH = 6 
+        
+#00037  STATS_RAILBALANCE = 7 
+        
+#00038  STATS_LIPBALANCE = 8 
+        
+#00039  STATS_MANUAL = 9 
+        
+#00040  standard_switch = PAIR[0.9; 1.0] 
+        
+#00042  no_switch = PAIR[1.0; 1.0] 
+        
+#00043  Skater_Max_Standing_Kick_Speed_Stat = STRUCT{
+          PAIR[355.0; 496.0] limit = 900 
+          STATS_SPEED switch = PAIR[0.8; 1.0] 
+          }
+        
+#00046  Skater_Max_Crouched_Kick_Speed_Stat = STRUCT{
+          PAIR[475.0; 675.0] limit = 900 
+          STATS_SPEED switch = PAIR[0.8; 1.0] 
+          }
+        
+#00047  Physics_Standing_Acceleration_Stat = STRUCT{
+          PAIR[600.0; 700.0] STATS_SPEED switch = standard_switch 
+          }
+        
+#00048  Physics_Crouching_Acceleration_stat = STRUCT{
+          PAIR[1000.0; 1200.0] STATS_SPEED switch = standard_switch 
+          }
+        
+#00049  Skater_Max_Speed_Stat = STRUCT{
+          PAIR[700.0; 900.0] STATS_SPEED switch = no_switch 
+          }
+        
+#00050  Skater_Max_Max_Speed_Stat = STRUCT{
+          PAIR[900.0; 1100.0] STATS_SPEED switch = no_switch 
+          }
+        
+#00051  Physics_Jump_Speed_Stat = STRUCT{
+          PAIR[400.0; 450.0] STATS_OLLIE switch = standard_switch 
+          }
+        
+#00059  Physics_Jump_Speed_min_Stat = STRUCT{
+          PAIR[350.0; 350.0] STATS_OLLIE switch = standard_switch 
+          }
+        
+#00060  Physics_Boneless_Jump_Speed_Stat = STRUCT{
+          PAIR[475.0; 525.0] STATS_OLLIE switch = standard_switch 
+          }
+        
+#00063  Physics_Boneless_Jump_Speed_min_Stat = STRUCT{
+          PAIR[400.0; 400.0] STATS_OLLIE switch = standard_switch 
+          }
+        
+#00064  Physics_Air_Jump_Speed_Stat = STRUCT{
+          PAIR[220.0; 275.0] STATS_AIR switch = standard_switch 
+          }
+        
+#00067  Physics_Air_Jump_Speed_min_Stat = STRUCT{
+          PAIR[100.0; 100.0] STATS_AIR switch = standard_switch 
+          }
+        
+#00068  Physics_Boneless_Air_Jump_Speed_Stat = STRUCT{
+          PAIR[240.0; 300.0] STATS_AIR switch = standard_switch 
+          }
+        
+#00070  Physics_Boneless_Air_Jump_Speed_min_Stat = STRUCT{
+          PAIR[200.0; 200.0] STATS_AIR switch = standard_switch 
+          }
+        
+#00071  Physics_Air_Rotation_stat = STRUCT{
+          PAIR[6.5; 7.75] STATS_SPIN switch = standard_switch 
+          }
+        
+#00073  Physics_air_tap_turn_speed_stat = STRUCT{
+          PAIR[6.5; 7.75] STATS_SPIN switch = standard_switch 
+          }
+        
+#00074  Physics_Air_Lean_stat = STRUCT{
+          PAIR[1.0; 1.0] STATS_SPIN switch = standard_switch 
+          }
+        
+#00077  Physics_Air_hang_Stat = STRUCT{
+          PAIR[1.0; 1.0] STATS_HANGTIME switch = standard_switch 
+          }
+        
+#00083  Physics_Vert_hang_Stat = STRUCT{
+          PAIR[1.0; 1.1] STATS_HANGTIME switch = standard_switch 
+          }
+        
+#00084  skater_upright_sideways_speed = -60.0 
+        
+#00091  physics_break_air_forward_boost = 300 
+        
+#00093  physics_break_air_speed_scale = 0.5 
+        
+#00095  Skater_Break_Vert_forward_tilt = 45 
+        
+#00096  Skater_Vert_Allow_break_Time = 200 
+        
+#00098  Skater_vert_push_time = 130 
+        
+#00099  Skater_vert_active_up_time = 250 
+        
+#00100  Physics_Air_Gravity = -1350 
+        
+#00103  Physics_Ground_Gravity = -1000 
+        
+#00104  Physics_Rail_Gravity = -2000 
+        
+#00105  Wall_Ride_Gravity = -969 
+        
+#00106  Rail_Speed_Boost = 150 
+        
+#00108  Physics_Standing_Air_Friction = 1.0E-5 
+        
+#00110  Physics_Crouched_Air_Friction = 2.0E-6 
+        
+#00111  Physics_Brake_Acceleration = 700.0 
+        
+#00114  Skater_Drift_Upright_Speed = 0.3 
+        
+#00116  Physics_Vert_Push_Out = 3 
+        
+#00118  Physics_Rolling_Friction = 1.0E-5 
+        
+#00123  Physics_Heavy_Air_Friction = 1.0E-5 
+        
+#00133  Skater_Flip_Speed = 1.0 
+        
+#00136  Skater_Late_Jump_Slop = 333 
+        
+#00141  Skater_max_tense_time = 200 
+        
+#00143  Skater_autoturn_speed = 3.0 
+        
+#00148  skater_autoturn_cancel_time = 300 
+        
+#00149  skater_autoturn_vert_angle = 5 
+        
+#00150  Skater_Cam_Focal_Length = 0.035 
+        
+#00156  Skater_Cam_Behind = 14 
+        
+#00157  Skater_Cam_Above = 4.0 
+        
+#00158  Skater_Cam_Tilt = 0.18 
+        
+#00159  Skater_Cam_Slerp = 0.08 
+        
+#00162  Skater_Cam_Vert_Air_Slerp = 0.025 
+        
+#00163  Skater_Origin_Offset = 3.5 
+        
+#00165  Skater_Camera_Undefined = STRUCT{
+          focal_length = 0.0 
+          behind = 0.0 
+          above = 0.0 
+          tilt = 0.0 
+          slerp = 0.0 
+          vert_air_slerp = 0.0 
+          vert_air_landed_slerp = 0.0 
+          zoom_lerp = 0.0625 
+          big_air_trick_zoom = 0.0 
+          grind_zoom = 0.0 
+          origin_offset = 0.0 
+          name = "undefined" 
+          }
+        
+#00169  Skater_Camera_Standard_Medium = STRUCT{
+          focal_length = 0.035 
+          behind = 12.0 
+          above = 4.3 
+          tilt = 0.18 
+          slerp = 0.04 
+          vert_air_slerp = 0.04 
+          vert_air_landed_slerp = 0.375 
+          lerp_xz = 0.25 
+          lerp_y = 0.75 
+          vert_air_lerp_xz = 1.0 
+          vert_air_lerp_y = 1.0 
+          zoom_lerp = 0.0625 
+          big_air_trick_zoom = 0.7 
+          lip_trick_zoom = 1.0 
+          lip_trick_tilt = -0.8 
+          lip_trick_above = 0.4 
+          grind_zoom = 1.0 
+          origin_offset = 0.2 
+          name = "standard" 
+          }
+        
+#00170  Skater_Camera_Standard_Far = STRUCT{
+          focal_length = 0.035 
+          behind = 14.0 
+          above = 6.0 
+          tilt = 0.3 
+          slerp = 0.08 
+          vert_air_slerp = 0.025 
+          vert_air_landed_slerp = 0.375 
+          lerp_xz = 0.25 
+          lerp_y = 0.75 
+          vert_air_lerp_xz = 1.0 
+          vert_air_lerp_y = 1.0 
+          zoom_lerp = 0.0625 
+          big_air_trick_zoom = 0.6 
+          lip_trick_zoom = 1.0 
+          lip_trick_tilt = -0.8 
+          lip_trick_above = 0.4 
+          grind_zoom = 1.0 
+          origin_offset = 0.2 
+          name = "far" 
+          }
+        
+#00171  Skater_Camera_Standard_Near = STRUCT{
+          focal_length = 0.035 
+          behind = 7.0 
+          above = 2.0 
+          tilt = 0.18 
+          slerp = 0.08 
+          vert_air_slerp = 0.025 
+          vert_air_landed_slerp = 0.375 
+          lerp_xz = 0.25 
+          lerp_y = 0.75 
+          vert_air_lerp_xz = 1.0 
+          vert_air_lerp_y = 1.0 
+          zoom_lerp = 0.0625 
+          big_air_trick_zoom = 0.9 
+          lip_trick_zoom = 1.6 
+          lip_trick_tilt = -0.8 
+          lip_trick_above = 0.4 
+          grind_zoom = 1.0 
+          origin_offset = 0.2 
+          name = "near" 
+          }
+        
+#00172  Skater_Camera_Standard_Medium_LTG = STRUCT{
+          focal_length = 0.035 
+          behind = 14.0 
+          above = 2.0 
+          tilt = 0.15 
+          slerp = 0.08 
+          vert_air_slerp = 0.025 
+          vert_air_landed_slerp = 0.375 
+          lerp_xz = 0.25 
+          lerp_y = 0.75 
+          vert_air_lerp_xz = 1.0 
+          vert_air_lerp_y = 1.0 
+          zoom_lerp = 0.0625 
+          big_air_trick_zoom = 0.6 
+          lip_trick_zoom = 1.0 
+          lip_trick_tilt = -0.8 
+          lip_trick_above = 0.4 
+          grind_zoom = 1.0 
+          origin_offset = 0.2 
+          name = "standard ltg" 
+          }
+        
+#00173  Skater_Camera_2P_Vert_Medium = STRUCT{
+          focal_length = 0.035 
+          behind = 14.0 
+          above = 4.3 
+          tilt = 0.18 
+          slerp = 0.04 
+          vert_air_slerp = 0.04 
+          vert_air_landed_slerp = 0.375 
+          lerp_xz = 0.25 
+          lerp_y = 0.75 
+          vert_air_lerp_xz = 1.0 
+          vert_air_lerp_y = 1.0 
+          zoom_lerp = 0.0625 
+          big_air_trick_zoom = 0.7 
+          lip_trick_zoom = 1.0 
+          lip_trick_tilt = -0.8 
+          lip_trick_above = 0.4 
+          grind_zoom = 1.0 
+          origin_offset = 0.2 
+          name = "standard" 
+          }
+        
+#00175  Skater_Camera_2P_Vert_Far = STRUCT{
+          focal_length = 0.035 
+          behind = 22.0 
+          above = 6.0 
+          tilt = 0.3 
+          slerp = 0.08 
+          vert_air_slerp = 0.025 
+          vert_air_landed_slerp = 0.375 
+          lerp_xz = 0.25 
+          lerp_y = 0.75 
+          vert_air_lerp_xz = 1.0 
+          vert_air_lerp_y = 1.0 
+          zoom_lerp = 0.0625 
+          big_air_trick_zoom = 0.6 
+          lip_trick_zoom = 1.0 
+          lip_trick_tilt = -0.8 
+          lip_trick_above = 0.4 
+          grind_zoom = 1.0 
+          origin_offset = 0.2 
+          name = "far" 
+          }
+        
+#00176  Skater_Camera_2P_Vert_Near = STRUCT{
+          focal_length = 0.035 
+          behind = 6 
+          above = 2.0 
+          tilt = 0.18 
+          slerp = 0.08 
+          vert_air_slerp = 0.025 
+          vert_air_landed_slerp = 0.375 
+          lerp_xz = 0.25 
+          lerp_y = 0.75 
+          vert_air_lerp_xz = 1.0 
+          vert_air_lerp_y = 1.0 
+          zoom_lerp = 0.0625 
+          big_air_trick_zoom = 0.9 
+          lip_trick_zoom = 1.6 
+          lip_trick_tilt = -0.8 
+          lip_trick_above = 0.4 
+          grind_zoom = 1.0 
+          origin_offset = 0.2 
+          name = "near" 
+          }
+        
+#00177  Skater_Camera_2P_Vert_Medium_LTG = STRUCT{
+          focal_length = 0.035 
+          behind = 14.0 
+          above = 3.0 
+          tilt = 0.15 
+          slerp = 0.08 
+          vert_air_slerp = 0.025 
+          vert_air_landed_slerp = 0.375 
+          lerp_xz = 0.25 
+          lerp_y = 0.75 
+          vert_air_lerp_xz = 1.0 
+          vert_air_lerp_y = 1.0 
+          zoom_lerp = 0.0625 
+          big_air_trick_zoom = 0.6 
+          lip_trick_zoom = 1.0 
+          lip_trick_tilt = -0.8 
+          lip_trick_above = 0.4 
+          grind_zoom = 1.0 
+          origin_offset = 0.2 
+          name = "standard ltg" 
+          }
+        
+#00178  Skater_Camera_2P_Horiz_Medium = STRUCT{
+          focal_length = 0.035 
+          behind = 15.0 
+          above = 3.0 
+          tilt = 0.2 
+          slerp = 0.08 
+          vert_air_slerp = 0.025 
+          vert_air_landed_slerp = 0.375 
+          lerp_xz = 0.25 
+          lerp_y = 0.75 
+          vert_air_lerp_xz = 1.0 
+          vert_air_lerp_y = 1.0 
+          zoom_lerp = 0.0625 
+          big_air_trick_zoom = 0.6 
+          lip_trick_zoom = 1.0 
+          lip_trick_tilt = -0.8 
+          lip_trick_above = 0.4 
+          grind_zoom = 1.0 
+          origin_offset = 0.2 
+          name = "far" 
+          }
+        
+#00180  Skater_Camera_2P_Horiz_Far = STRUCT{
+          focal_length = 0.035 
+          behind = 25.0 
+          above = 3.5 
+          tilt = 0.3 
+          slerp = 0.04 
+          vert_air_slerp = 0.04 
+          vert_air_landed_slerp = 0.375 
+          lerp_xz = 0.25 
+          lerp_y = 0.75 
+          vert_air_lerp_xz = 1.0 
+          vert_air_lerp_y = 1.0 
+          zoom_lerp = 0.0625 
+          big_air_trick_zoom = 0.7 
+          lip_trick_zoom = 1.0 
+          lip_trick_tilt = -0.8 
+          lip_trick_above = 0.4 
+          grind_zoom = 1.0 
+          origin_offset = 0.2 
+          name = "standard" 
+          }
+        
+#00181  Skater_Camera_2P_Horiz_Medium_LTG = STRUCT{
+          focal_length = 0.035 
+          behind = 15.0 
+          above = 3.0 
+          tilt = 0.15 
+          slerp = 0.08 
+          vert_air_slerp = 0.025 
+          vert_air_landed_slerp = 0.375 
+          lerp_xz = 0.25 
+          lerp_y = 0.75 
+          vert_air_lerp_xz = 1.0 
+          vert_air_lerp_y = 1.0 
+          zoom_lerp = 0.0625 
+          big_air_trick_zoom = 0.6 
+          lip_trick_zoom = 1.0 
+          lip_trick_tilt = -0.8 
+          lip_trick_above = 0.4 
+          grind_zoom = 1.0 
+          origin_offset = 0.2 
+          name = "standard ltg" 
+          }
+        
+#00182  Skater_Camera_2P_Horiz_Near = STRUCT{
+          focal_length = 0.035 
+          behind = 8.0 
+          above = 3.2 
+          tilt = 0.18 
+          slerp = 0.08 
+          vert_air_slerp = 0.025 
+          vert_air_landed_slerp = 0.375 
+          lerp_xz = 0.25 
+          lerp_y = 0.75 
+          vert_air_lerp_xz = 1.0 
+          vert_air_lerp_y = 1.0 
+          zoom_lerp = 0.0625 
+          big_air_trick_zoom = 1.0 
+          lip_trick_zoom = 1.6 
+          lip_trick_tilt = -0.8 
+          lip_trick_above = 0.4 
+          grind_zoom = 1.0 
+          origin_offset = 0.2 
+          name = "near" 
+          }
+        
+#00183  Skater_Camera_Replay_Front = STRUCT{
+          focal_length = 0.035 
+          behind = 18.0 
+          above = 4.0 
+          tilt = 0.2 
+          slerp = 0.08 
+          vert_air_slerp = 0.04 
+          vert_air_landed_slerp = 0.375 
+          lerp_xz = 0.25 
+          lerp_y = 0.75 
+          vert_air_lerp_xz = 1.0 
+          vert_air_lerp_y = 1.0 
+          zoom_lerp = 0.0625 
+          big_air_trick_zoom = 0.7 
+          lip_trick_zoom = 1.0 
+          lip_trick_tilt = -0.8 
+          lip_trick_above = 0.4 
+          grind_zoom = 1.0 
+          origin_offset = 0.2 
+          name = "standard" 
+          }
+        
+#00185  Skater_Camera_Replay_Front_Zoom = STRUCT{
+          focal_length = 0.035 
+          behind = 10.0 
+          above = 4.0 
+          tilt = 0.3 
+          slerp = 0.08 
+          vert_air_slerp = 0.04 
+          vert_air_landed_slerp = 0.375 
+          lerp_xz = 0.25 
+          lerp_y = 0.75 
+          vert_air_lerp_xz = 1.0 
+          vert_air_lerp_y = 1.0 
+          zoom_lerp = 0.0625 
+          big_air_trick_zoom = 0.5 
+          lip_trick_zoom = -1.5 
+          lip_trick_tilt = 0.6 
+          lip_trick_above = 0.8 
+          grind_zoom = 1.0 
+          origin_offset = 0.2 
+          name = "standard" 
+          }
+        
+#00186  Skater_Camera_Replay_Left = STRUCT{
+          focal_length = 0.035 
+          behind = 18.0 
+          above = 4.0 
+          tilt = 0.2 
+          slerp = 0.08 
+          vert_air_slerp = 0.04 
+          vert_air_landed_slerp = 0.375 
+          lerp_xz = 0.25 
+          lerp_y = 0.75 
+          vert_air_lerp_xz = 1.0 
+          vert_air_lerp_y = 1.0 
+          zoom_lerp = 0.0625 
+          big_air_trick_zoom = 0.7 
+          lip_trick_zoom = 1.0 
+          lip_trick_tilt = -0.8 
+          lip_trick_above = 0.4 
+          grind_zoom = 1.0 
+          origin_offset = 0.2 
+          name = "standard" 
+          }
+        
+#00187  Skater_Camera_Replay_Left_Zoom = STRUCT{
+          focal_length = 0.035 
+          behind = 10.0 
+          above = 4.0 
+          tilt = 0.3 
+          slerp = 0.08 
+          vert_air_slerp = 0.04 
+          vert_air_landed_slerp = 0.375 
+          lerp_xz = 0.25 
+          lerp_y = 0.75 
+          vert_air_lerp_xz = 1.0 
+          vert_air_lerp_y = 1.0 
+          zoom_lerp = 0.0625 
+          big_air_trick_zoom = 0.7 
+          lip_trick_zoom = 1.0 
+          lip_trick_tilt = -0.8 
+          lip_trick_above = 0.4 
+          grind_zoom = 1.0 
+          origin_offset = 0.2 
+          name = "standard" 
+          }
+        
+#00188  Skater_Camera_Replay_Behind = STRUCT{
+          focal_length = 0.035 
+          behind = 18.0 
+          above = 4.0 
+          tilt = 0.2 
+          slerp = 0.08 
+          vert_air_slerp = 0.04 
+          vert_air_landed_slerp = 0.375 
+          lerp_xz = 0.25 
+          lerp_y = 0.75 
+          vert_air_lerp_xz = 1.0 
+          vert_air_lerp_y = 1.0 
+          zoom_lerp = 0.0625 
+          big_air_trick_zoom = 0.7 
+          lip_trick_zoom = 1.0 
+          lip_trick_tilt = -0.8 
+          lip_trick_above = 0.4 
+          grind_zoom = 1.0 
+          origin_offset = 0.2 
+          name = "standard" 
+          }
+        
+#00189  Skater_Camera_Replay_Behind_Zoom = STRUCT{
+          focal_length = 0.035 
+          behind = 10.0 
+          above = 4.0 
+          tilt = 0.3 
+          slerp = 0.08 
+          vert_air_slerp = 0.04 
+          vert_air_landed_slerp = 0.375 
+          lerp_xz = 0.25 
+          lerp_y = 0.75 
+          vert_air_lerp_xz = 1.0 
+          vert_air_lerp_y = 1.0 
+          zoom_lerp = 0.0625 
+          big_air_trick_zoom = 0.7 
+          lip_trick_zoom = 1.0 
+          lip_trick_tilt = -0.8 
+          lip_trick_above = 0.4 
+          grind_zoom = 1.0 
+          origin_offset = 0.2 
+          name = "standard" 
+          }
+        
+#00190  Skater_Camera_Replay_Right = STRUCT{
+          focal_length = 0.035 
+          behind = 18.0 
+          above = 4.0 
+          tilt = 0.2 
+          slerp = 0.08 
+          vert_air_slerp = 0.04 
+          vert_air_landed_slerp = 0.375 
+          lerp_xz = 0.25 
+          lerp_y = 0.75 
+          vert_air_lerp_xz = 1.0 
+          vert_air_lerp_y = 1.0 
+          zoom_lerp = 0.0625 
+          big_air_trick_zoom = 0.7 
+          lip_trick_zoom = 1.0 
+          lip_trick_tilt = -0.8 
+          lip_trick_above = 0.4 
+          grind_zoom = 1.0 
+          origin_offset = 0.2 
+          name = "standard" 
+          }
+        
+#00191  Skater_Camera_Replay_Right_Zoom = STRUCT{
+          focal_length = 0.035 
+          behind = 10.0 
+          above = 4.0 
+          tilt = 0.3 
+          slerp = 0.08 
+          vert_air_slerp = 0.04 
+          vert_air_landed_slerp = 0.375 
+          lerp_xz = 0.25 
+          lerp_y = 0.75 
+          vert_air_lerp_xz = 1.0 
+          vert_air_lerp_y = 1.0 
+          zoom_lerp = 0.0625 
+          big_air_trick_zoom = 0.7 
+          lip_trick_zoom = 1.0 
+          lip_trick_tilt = -0.8 
+          lip_trick_above = 0.4 
+          grind_zoom = 1.0 
+          origin_offset = 0.2 
+          name = "standard" 
+          }
+        
+#00192  Skater_Camera_Array = ARRAY(
+          
+          Skater_Camera_Undefined Skater_Camera_Standard_Near Skater_Camera_Standard_Medium Skater_Camera_Standard_Far Skater_Camera_Standard_Medium_LTG Skater_Camera_Replay_Front Skater_Camera_Replay_Front_Zoom Skater_Camera_Replay_Left Skater_Camera_Replay_Left_Zoom Skater_Camera_Replay_Behind Skater_Camera_Replay_Behind_Zoom Skater_Camera_Replay_Right Skater_Camera_Replay_Right_Zoom 
+        )
+        
+#00207  Skater_Camera_2P_Vert_Array = ARRAY(
+          
+          Skater_Camera_Undefined Skater_Camera_2P_Vert_Near Skater_Camera_2P_Vert_Medium Skater_Camera_2P_Vert_Far Skater_Camera_2P_Vert_Medium_LTG 
+        )
+        
+#00213  Skater_Camera_2P_Horiz_Array = ARRAY(
+          
+          Skater_Camera_Undefined Skater_Camera_2P_Horiz_Near Skater_Camera_2P_Horiz_Medium Skater_Camera_2P_Horiz_Far Skater_Camera_2P_Horiz_Medium_LTG 
+        )
+        
+#00220  Skater_default_head_height = 77 
+        
+#00225  Physics_Ground_Snap_Up = 13 
+        
+#00227  Physics_Air_Snap_Up = 15 
+        
+#00228  Skater_First_Forward_Collision_Height = 8.1 
+        
+#00231  Physics_Ground_Snap_Down = 8.2 
+        
+#00236  Skater_First_Forward_Collision_Length = 10 
+        
+#00237  Skater_Min_Distance_To_Wall = 10 
+        
+#00239  Skater_side_collide_height = 16 
+        
+#00241  Skater_side_collide_length = 15 
+        
+#00242  Skater_air_extra_side_col = 12 
+        
+#00243  Physics_Ground_Rotation = 1.8 
+        
+#00249  Physics_Ground_Sharp_Rotation = 3.6 
+        
+#00250  Physics_Air_No_Rotate_Time = 100 
+        
+#00252  Physics_Air_Ramp_Rotate_Time = 50 
+        
+#00253  Physics_Air_No_Lean_Time = 200 
+        
+#00255  Physics_Air_Ramp_Lean_Time = 200 
+        
+#00256  spin_count_slop = 60 
+        
+#00258  Normal_Lerp_Speed = 0.1 
+        
+#00263  Normal_Lerp_Velocity_Scale = 250.0 
+        
+#00264  Ground_stick_angle = 30 
+        
+#00267  Ground_stick_angle_forward = 60 
+        
+#00268  Rail_Max_Snap = 40.0 
+        
+#00273  Rail_jump_rerail_time = 300 
+        
+#00276  Rail_minimum_rerail_time = 500 
+        
+#00277  Rail_Corner_Leave_Angle = 50 
+        
+#00279  Rail_Jump_Angle = 15 
+        
+#00281  Rail_Tolerance = 0.7 
+        
+#00285  Rail_Bad_Ledge_Side_Dist = 5 
+        
+#00287  Rail_Bad_Ledge_Drop_Down_Dist = 3 
+        
+#00288  Wall_Bounce_Angle_Multiplier = 1.1 
+        
+#00293  Wall_Bounce_Dont_Slow_Angle = 30 
+        
+#00300  Wall_Non_Skatable_Angle = 25 
+        
+#00307  Wall_Ride_Max_Incident_Angle = 60 
+        
+#00311  Wall_Ride_Max_Tilt = 68.5 
+        
+#00312  Wall_Ride_Upside_Down_Angle = 53 
+        
+#00313  Wall_Ride_Triangle_Window = 0.333 
+        
+#00314  Wall_Ride_Delay = 0.666 
+        
+#00315  Wall_Ride_Down_Collision_Check_Length = -10 
+        
+#00316  Wall_Ride_Turn_Speed = 0.004 
+        
+#00319  Wall_Ride_Jump_Out_Speed = 70 
+        
+#00320  Wall_Ride_Jump_Up_Speed = 60 
+        
+#00321  Skater_max_sloped_turn_speed = 300.0 
+        
+#00330  Skater_max_sloped_turn_cosine = 0.5 
+        
+#00331  Skater_Slow_Turn_on_slopes = 3.0 
+        
+#00332  BalanceIgnoreButtonPeriod = 0 
+        
+#00339  BalanceSafeButtonPeriod = 1000 
+        
+#00342  ManualParams = 
+#00346  
+        STRUCT{
+          Cheese = STRUCT{
+            PAIR[700.0; 700.0] STATS_MANUAL switch = standard_switch 
+            }
+          CheeseFrames = STRUCT{
+            PAIR[100.0; 100.0] STATS_MANUAL switch = standard_switch 
+            }
+          Lean_Gravity_Stat = STRUCT{
+            PAIR[0.02; 0.02] STATS_MANUAL switch = standard_switch 
+            }
+          Instable_Rate = STRUCT{
+            PAIR[0.11; 0.07] STATS_MANUAL switch = standard_switch 
+            }
+          Instable_Base = STRUCT{
+            PAIR[1.0; 1.0] STATS_MANUAL switch = standard_switch 
+            }
+          Lean_Min_Speed = STRUCT{
+            PAIR[5.0; 5.0] STATS_MANUAL switch = standard_switch 
+            }
+          Lean_Rnd_Speed = STRUCT{
+            PAIR[20.0; 20.0] STATS_MANUAL switch = standard_switch 
+            }
+          Repeat_Min = STRUCT{
+            PAIR[1.0; 1.0] STATS_MANUAL switch = standard_switch 
+            }
+          Repeat_Multiplier = STRUCT{
+            PAIR[0.25; 0.25] STATS_MANUAL switch = standard_switch 
+            }
+          Lean_Repeat_Multiplier = STRUCT{
+            PAIR[0.8; 0.8] STATS_MANUAL switch = standard_switch 
+            }
+          Lean_Acc = STRUCT{
+            PAIR[10.0; 10.0] STATS_MANUAL switch = standard_switch 
+            }
+          Lean_Bail_Angle = STRUCT{
+            PAIR[4000.0; 4000.0] STATS_MANUAL switch = standard_switch 
+            }
+          WobbleAmpA = STRUCT{
+            PAIR[0.05; 0.05] STATS_MANUAL switch = standard_switch 
+            }
+          WobbleAmpB = STRUCT{
+            PAIR[0.04; 0.04] STATS_MANUAL switch = standard_switch 
+            }
+          WobbleK1 = STRUCT{
+            PAIR[0.0022; 0.0022] STATS_MANUAL switch = standard_switch 
+            }
+          WobbleK2 = STRUCT{
+            PAIR[0.0017; 0.0017] STATS_MANUAL switch = standard_switch 
+            }
+          SpazFactor = STRUCT{
+            PAIR[1.0; 1.0] STATS_MANUAL switch = standard_switch 
+            }
+          }
+        
+#00406  GrindParams = 
+#00408  
+        STRUCT{
+          Cheese = STRUCT{
+            PAIR[2500.0; 2500.0] STATS_RAILBALANCE switch = standard_switch 
+            }
+          CheeseFrames = STRUCT{
+            PAIR[30.0; 30.0] STATS_RAILBALANCE switch = standard_switch 
+            }
+          Lean_Gravity_Stat = STRUCT{
+            PAIR[0.02; 0.02] STATS_RAILBALANCE switch = standard_switch 
+            }
+          Instable_Rate = STRUCT{
+            PAIR[0.11; 0.09] STATS_RAILBALANCE switch = standard_switch 
+            }
+          Instable_Base = STRUCT{
+            PAIR[1.0; 1.0] STATS_RAILBALANCE switch = standard_switch 
+            }
+          Lean_Min_Speed = STRUCT{
+            PAIR[5.0; 5.0] STATS_RAILBALANCE switch = standard_switch 
+            }
+          Lean_Rnd_Speed = STRUCT{
+            PAIR[7.5; 6.0] limit = 6 
+            STATS_RAILBALANCE switch = standard_switch 
+            }
+          Repeat_Min = STRUCT{
+            PAIR[1.0; 1.0] STATS_RAILBALANCE switch = standard_switch 
+            }
+          Repeat_Multiplier = STRUCT{
+            PAIR[0.4; 0.1] STATS_RAILBALANCE switch = standard_switch 
+            }
+          Lean_Repeat_Multiplier = STRUCT{
+            PAIR[0.65; 0.5] STATS_RAILBALANCE switch = standard_switch 
+            }
+          Lean_Acc = STRUCT{
+            PAIR[10.0; 10.0] STATS_RAILBALANCE switch = standard_switch 
+            }
+          Lean_Bail_Angle = STRUCT{
+            PAIR[4000.0; 4000.0] STATS_RAILBALANCE switch = standard_switch 
+            }
+          Same_Grind_Add_Time = STRUCT{
+            PAIR[2.0; 2.0] STATS_RAILBALANCE switch = standard_switch 
+            }
+          New_Grind_Sub_Time = STRUCT{
+            PAIR[-0.4; 0.0] STATS_RAILBALANCE switch = standard_switch 
+            }
+          WobbleAmpA = STRUCT{
+            PAIR[0.05; 0.05] STATS_RAILBALANCE switch = standard_switch 
+            }
+          WobbleAmpB = STRUCT{
+            PAIR[0.04; 0.04] STATS_RAILBALANCE switch = standard_switch 
+            }
+          WobbleK1 = STRUCT{
+            PAIR[0.0022; 0.0022] STATS_RAILBALANCE switch = standard_switch 
+            }
+          WobbleK2 = STRUCT{
+            PAIR[0.0017; 0.0017] STATS_RAILBALANCE switch = standard_switch 
+            }
+          SpazFactor = STRUCT{
+            PAIR[1.0; 1.0] STATS_RAILBALANCE switch = standard_switch 
+            }
+          }
+        
+#00482  LipParams = 
+#00484  
+        STRUCT{
+          Cheese = STRUCT{
+            PAIR[3000.0; 1000.0] STATS_LIPBALANCE switch = standard_switch 
+            }
+          CheeseFrames = STRUCT{
+            PAIR[180.0; 180.0] STATS_LIPBALANCE switch = standard_switch 
+            }
+          Lean_Gravity_Stat = STRUCT{
+            PAIR[0.02; 0.02] STATS_LIPBALANCE switch = standard_switch 
+            }
+          Instable_Rate = STRUCT{
+            PAIR[1.0; 0.5] STATS_LIPBALANCE switch = standard_switch 
+            }
+          Instable_Base = STRUCT{
+            PAIR[1.0; 1.0] STATS_LIPBALANCE switch = standard_switch 
+            }
+          Lean_Min_Speed = STRUCT{
+            PAIR[5.0; 5.0] STATS_LIPBALANCE switch = standard_switch 
+            }
+          Lean_Rnd_Speed = STRUCT{
+            PAIR[20.0; 20.0] STATS_LIPBALANCE switch = standard_switch 
+            }
+          Repeat_Min = STRUCT{
+            PAIR[1.0; 1.0] STATS_LIPBALANCE switch = standard_switch 
+            }
+          Repeat_Multiplier = STRUCT{
+            PAIR[1.0; 1.0] STATS_LIPBALANCE switch = standard_switch 
+            }
+          Lean_Repeat_Multiplier = STRUCT{
+            PAIR[1.0; 1.0] STATS_LIPBALANCE switch = standard_switch 
+            }
+          Lean_Acc = STRUCT{
+            PAIR[10.0; 10.0] STATS_LIPBALANCE switch = standard_switch 
+            }
+          Lean_Bail_Angle = STRUCT{
+            PAIR[4000.0; 4000.0] STATS_LIPBALANCE switch = standard_switch 
+            }
+          WobbleAmpA = STRUCT{
+            PAIR[0.05; 0.05] STATS_MANUAL }
+          WobbleAmpB = STRUCT{
+            PAIR[0.04; 0.04] STATS_MANUAL }
+          WobbleK1 = STRUCT{
+            PAIR[0.0022; 0.0022] STATS_MANUAL }
+          WobbleK2 = STRUCT{
+            PAIR[0.0017; 0.0017] STATS_MANUAL }
+          SpazFactor = STRUCT{
+            PAIR[1.0; 1.0] STATS_MANUAL }
+          }
+        
+#00544  BashPeriod = 400 
+        
+#00549  BashSpeedupFactor = 0.2 
+        
+#00550  BashMaxPercentSpeedup = 100 
+        
+#00551  SkateInAble_HorizOffset = 30 
+        
+#00556  SkateInAble_DownOffset = 7 
+        
+#00557  LipAllowAngle = 15 
+        
+#00561  LipPlayerHorizontalAngle = 47 
+        
+#00562  LipRampVertAngle = 68.5 
+        
+#00563  CarPlant_Forward_boost = 400 
+        
+#00567  CarPlant_Upward_boost = 100 
+        
+#00568  min_car_height_diff = 60 
+        
+#00569  min_car_height_downwards = 30 
+        
+#00570  NewSpecial = 1 
+        
+#00575  Skate_min_wall_lean_push_speed = 1000 
+        
+#00580  Skate_wall_lean_push_time = 0.4 
+        
+#00581  Skate_wall_lean_push_length = 35 
+        
+#00582  Skate_wall_lean_push_height = 30 
+        
+#00583  SnowBoard_Friction = 0.04 
+        
+#00590  Snowboard_turn_multiplier = 1.5 
+        
+#00591  Matrix_speed = 0.15 
+        
+#00593  Sim_speed = 1.25 
+        
+#00595  Moon_gravity = 0.5 
+        
+#00597  rubber_acc = 0.001 
+        
+#00599  rubber_friction = 0.04 
+        
+#00600  rubber_limit = 1000 
+        
+#00601  InternetClientCollCoefficient = 180.0 
+        
+#00609  InternetServerCollCoefficient = 120.0 
+        
+#00610  InternetClientCollRadius = 120.0 
+        
+#00611  InternetServerCollRadius = 94.0 
+        
+#00612  LanClientCollCoefficient = 20.0 
+        
+#00614  LanServerCollCoefficient = 20.0 
+        
+#00615  LanClientCollRadius = 70.0 
+        
+#00616  LanServerCollRadius = 70.0 
+        
+#00617  ClientCollCoefficient = 20.0 
+        
+#00619  ServerCollCoefficient = 20.0 
+        
+#00620  ClientCollRadius = 70.0 
+        
+#00621  ServerCollRadius = 70.0 
+        
+#00622  

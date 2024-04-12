@@ -1,0 +1,213 @@
+FUNCTION start_game 
+#00001    printf "here 1" 
+#00002    set_network_mode no_net_mode 
+#00003    printf "here 2" 
+#00004    SetServerMode On 
+#00005    printf "here 3" 
+#00006    setcurrentgametype 
+#00008    printf "here 4" 
+#00009    setgamestate On 
+#00010    printf "here 5" 
+#00011    LaunchMenuScreen screen = game_menu 
+          not_active 
+#00013    printf "here 6" 
+#00014  END FUNCTION
+          
+#00015  FUNCTION immediately_start_game 
+#00017    request_level level = GLOBAL.level 
+          
+#00024    start_game 
+#00026    printf "script immediately_start_game\n" 
+#00032  END FUNCTION
+          
+#00034  FUNCTION start_replay_game 
+#00036    setReplayMode REPLAY_MODE_PLAY_SAVED 
+#00038    start_game 
+#00039  END FUNCTION
+          
+#00040  FUNCTION change_level 
+#00042    IF InNetGame 
+#00043      HideMenu 
+#00044    END IF 
+#00045    IF InFrontEnd 
+#00047      setgametype freeskate 
+#00048      immediately_start_game NULL 
+#00049    ELSE 
+#00050      IF istrue run_viewer 
+#00051        IF FirstTimeThisIsCalled 
+#00052          setgametype freeskate 
+#00053          immediately_start_game NULL 
+#00054        ELSE 
+#00055          request_level level = GLOBAL.level 
+                
+#00056          ChangeLevel NULL 
+#00057        END IF 
+#00058      ELSE 
+#00059        request_level level = GLOBAL.level 
+              
+#00060        ChangeLevel NULL 
+#00061      END IF 
+#00062    END IF 
+#00063  END FUNCTION
+          
+#00064  FUNCTION level_menu_create 
+#00066    CreateAndAttachMenu STRUCT{
+            type = verticalmenu 
+            id = level_main_menu 
+            x = 300.0 
+            y = 90.0 
+            w = 300.0 
+            h = 400.0 
+            just_center_x just_center_y blue_top eventhandlers = ARRAY(
+              
+              STRUCT{
+                type = backeventhandler 
+                target = "LevelSelectToPlayer1CamAnim" 
+                }
+              STRUCT{
+                type = showeventhandler 
+                target = "populate_level_menu" 
+                params = STRUCT{
+                  choose_script = "change_level" 
+                  parent_menu = level_main_menu 
+                  }
+                }
+              
+            )
+            children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Levels" 
+                static dont_gray drawer = title 
+                }
+              
+            )
+            parent = contain1 
+            }
+          
+#00090  END FUNCTION
+          
+#00098  FUNCTION add_level_menu_item 
+#00100    IF GotParam notPS2_level 
+#00101      IF cd 
+#00102      ELSE 
+#00103        add_level_menu_item2 NULL 
+#00104      END IF 
+#00105    ELSE 
+#00106      IF GotParam unlock_flag 
+#00107        IF GetGlobalFlag flag = GLOBAL.unlock_flag 
+                
+#00108          add_level_menu_item2 NULL 
+#00109        ELSE 
+#00110          IF istrue AllLevelsUnlocked 
+#00111            add_level_menu_item2 NULL 
+#00112          ELSE 
+#00113            IF GotParam special_flag 
+#00114              IF GetGlobalFlag flag = SPECIAL_HAS_SEEN_SHIP 
+                      
+#00115                IF IsCareerMode 
+#00116                  add_level_menu_item2 NULL static 
+#00117                ELSE 
+#00118                  CheckForAnyPro_Unlock NULL 
+#00119                END IF 
+#00120              ELSE 
+#00121              END IF 
+#00122            ELSE 
+#00123              IF GotParam secret_level 
+#00124              ELSE 
+#00125                IF IsCareerMode 
+#00126                  add_level_menu_item2 NULL static 
+#00127                ELSE 
+#00128                  CheckForAnyPro_Unlock NULL 
+#00129                END IF 
+#00130              END IF 
+#00131            END IF 
+#00132          END IF 
+#00133        END IF 
+#00134      ELSE 
+#00135        add_level_menu_item2 NULL 
+#00136      END IF 
+#00137    END IF 
+#00138  END FUNCTION
+          
+#00139  FUNCTION CheckForAnyPro_Unlock 
+#00143    IF GotParam unlock_flag 
+#00144      IF GetGlobalFlag flag = GLOBAL.unlock_flag 
+              AnyPro 
+#00145        printf "some other pro has unlocked this level" 
+#00146        add_level_menu_item2 NULL 
+#00147      ELSE 
+#00148        printf "NO pro has unlocked this level" 
+#00149        add_level_menu_item2 NULL static 
+#00150      END IF 
+#00151    ELSE 
+#00152      add_level_menu_item2 NULL 
+#00153    END IF 
+#00154  END FUNCTION
+          
+#00155  FUNCTION add_level_menu_item2 
+#00157    IF GotParam GLOBAL.mask 
+            
+#00158      VerifyParam param = level_name 
+            func = add_level_menu_item 
+            NULL 
+#00159      VerifyParam param = load_script 
+            func = add_level_menu_item 
+            NULL 
+#00160      VerifyParam param = target_script 
+            func = add_level_menu_item 
+            NULL 
+#00161      VerifyParam param = parent_menu 
+            func = add_level_menu_item 
+            NULL 
+#00162      DestroyElement id = GLOBAL.level_id 
+            
+#00165      IF GotParam static 
+#00166        CreateAndAttachMenu STRUCT{
+                type = textmenuelement 
+                id = GLOBAL.level_id 
+                text = GLOBAL.level_name 
+                target = GLOBAL.target_script 
+                static kill_menu params = STRUCT{
+                  level = GLOBAL.load_script 
+                  String = GLOBAL.level_name 
+                  }
+                parent = GLOBAL.parent_menu 
+                }
+              
+#00177      ELSE 
+#00178        IF IsCareerMode 
+#00179          IF GotParam NoCareer 
+#00180          ELSE 
+#00181            CreateAndAttachMenu STRUCT{
+                    type = textmenuelement 
+                    id = GLOBAL.level_id 
+                    text = GLOBAL.level_name 
+                    target = GLOBAL.target_script 
+                    kill_menu params = STRUCT{
+                      level = GLOBAL.load_script 
+                      String = GLOBAL.level_name 
+                      }
+                    parent = GLOBAL.parent_menu 
+                    }
+                  
+#00191          END IF 
+#00192        ELSE 
+#00193          CreateAndAttachMenu STRUCT{
+                  type = textmenuelement 
+                  id = GLOBAL.level_id 
+                  text = GLOBAL.level_name 
+                  target = GLOBAL.target_script 
+                  params = STRUCT{
+                    level = GLOBAL.load_script 
+                    String = GLOBAL.level_name 
+                    }
+                  parent = GLOBAL.parent_menu 
+                  }
+                
+#00203        END IF 
+#00204      END IF 
+#00205    END IF 
+#00206  END FUNCTION
+          

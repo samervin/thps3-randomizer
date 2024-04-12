@@ -1,0 +1,1809 @@
+
+#00001  FUNCTION SkaterInit 
+#00039    NotInBail 
+#00041    NotifyBailDone 
+#00042    SetSkaterCamLerpReductionTimer time = 0 
+          
+#00043    ClearLipCombos 
+#00044    AllowRailTricks 
+#00045    ResetLandedFromVert 
+#00046    BlendperiodOut 0 
+#00047    Obj_Attachframe bone = "head" 
+          
+#00048    SetException Ex = RunHasEnded 
+          Scr = EndOfRun 
+          
+#00050    StopBalanceTrick 
+#00051    SwitchOffAtomic special_item 
+#00052    IF InNetGame 
+#00053    ELSE 
+#00054      ClearSkaterCamOverride 
+#00055    END IF 
+#00056    ClearSkaterFlags 
+#00057    printf "Clearing skaters flags ==============" 
+#00058    SetExceptionThatPreservesBalanceTrick MadeOtherSkaterBail 
+#00059    IF ProfileEquals is_named = demoness 
+            
+#00062      Obj_Attachframe bone = "left_wrist" 
+            
+#00063      Obj_Attachframe bone = "right_wrist" 
+            
+#00064      BloodParticlesOn name = "breath.png" 
+            start_col = 1426128895 
+            end_col = 153 
+            blend_mode = 72 
+            num = 40 
+            emit_w = 1.0 
+            emit_h = 1.0 
+            angle = 10 
+            size = 20.0 
+            bone = "left_wrist" 
+            growth = 0 
+            time = 10000 
+            speed = 50 
+            grav = 0 
+            life = 0.5 
+            
+#00067      BloodParticlesOn name = "breath.png" 
+            start_col = 1426128895 
+            end_col = 153 
+            blend_mode = 72 
+            num = 40 
+            emit_w = 1.0 
+            emit_h = 1.0 
+            angle = 10 
+            size = 20.0 
+            bone = "right_wrist" 
+            growth = 0 
+            time = 10000 
+            speed = 50 
+            grav = 0 
+            life = 0.5 
+            
+#00068    END IF 
+#00070    PlayAnim Anim = Idle 
+          
+#00071    SetBalanceTrickParams ManualParams 
+#00072    goto OnGroundAI 
+#00074  END FUNCTION
+          
+#00075  FUNCTION ClientSkaterInit 
+#00078    SwitchOffAtomic special_item 
+#00080  END FUNCTION
+          
+#00081  FUNCTION SkaterRetryScript 
+#00083    SkaterInit 
+#00084  END FUNCTION
+          
+#00085  FUNCTION ClearSkaterFlags 
+#00087    Obj_ClearFlag FLAG_SKATER_KILLING 
+#00088    Obj_ClearFlag FLAG_SKATER_REVERTFS 
+#00089    Obj_ClearFlag FLAG_SKATER_REVERTBS 
+#00090    Obj_ClearFlag FLAG_SKATER_INLOOP 
+#00091    Obj_ClearFlag FLAG_SKATER_LIPCOMBO 
+#00092    Obj_ClearFlag FLAG_SKATER_MANUALCHEESE 
+#00093  END FUNCTION
+          
+#00094  FUNCTION Demoness_FlameOn 
+#00096    BloodParticlesOn name = "breath.png" 
+          start_col = 1426128895 
+          end_col = 153 
+          blend_mode = 72 
+          num = 40 
+          emit_w = 1.0 
+          emit_h = 1.0 
+          angle = 10 
+          size = 20.0 
+          bone = "left_wrist" 
+          growth = 0 
+          time = 10000 
+          speed = 50 
+          grav = 0 
+          life = 0.5 
+          
+#00097    BloodParticlesOn name = "breath.png" 
+          start_col = 1426128895 
+          end_col = 153 
+          blend_mode = 72 
+          num = 40 
+          emit_w = 1.0 
+          emit_h = 1.0 
+          angle = 10 
+          size = 20.0 
+          bone = "right_wrist" 
+          growth = 0 
+          time = 10000 
+          speed = 50 
+          grav = 0 
+          life = 0.5 
+          
+#00098  END FUNCTION
+          
+#00099  Exceptions = 
+#00101  
+        ARRAY(
+          RunHasEnded SkaterCollideBail MadeOtherSkaterBail Ollied GroundGone Landed OntoRail OffRail FlailHitWall FlailLeft FlailRight OffMeterTop OffMeterBottom WallRideLeft WallRideRight WallRideBail CarBail CarPlant WonGame LostGame 
+        )
+        
+#00123  FUNCTION OnGroundExceptions 
+#00128    IF GotParam NoClear 
+#00129    ELSE 
+#00130      ClearExceptions 
+#00131    END IF 
+#00132    IF GotParam NoEndRun 
+#00133    ELSE 
+#00134      SetException Ex = RunHasEnded 
+            Scr = EndOfRun 
+            
+#00135    END IF 
+#00136    SetException Ex = GroundGone 
+          Scr = GroundGone 
+          
+#00137    SetException Ex = Ollied 
+          Scr = Ollie 
+          
+#00138    SetException Ex = FlailHitWall 
+          Scr = FlailHitWall 
+          
+#00139    SetException Ex = FlailLeft 
+          Scr = FlailLeft 
+          
+#00140    SetException Ex = FlailRight 
+          Scr = FlailRight 
+          
+#00141    SetException Ex = CarPlant 
+          Scr = CarPlant 
+          
+#00142    SetException Ex = CarBail 
+          Scr = CarBail 
+          
+#00143    SetException Ex = SkaterCollideBail 
+          Scr = SkaterCollideBail 
+          
+#00144    SetException Ex = MadeOtherSkaterBail 
+          Scr = MadeOtherSkaterBail 
+          
+#00145    SetQueueTricks Jumptricks GroundTricks 
+#00146    SetExtraGrindTricks special = SpecialGrindTricks 
+          GrindTricks 
+#00148    SetManualTricks special = SpecialManualTricks 
+          GroundManualTricks 
+#00149    VibrateOff 
+#00151    SwitchOnBoard 
+#00152    EnablePlayerInput 
+#00153    BailOff 
+#00154    BashOff 
+#00155    SetRollingFriction default 
+#00156    CanSpin 
+#00157    AllowRailTricks 
+#00158    SetSkaterCamLerpReductionTimer time = 0 
+          
+#00159    Obj_ClearFlag FLAG_SKATER_MANUALCHEESE 
+#00160    IF GotParam NoEndRun 
+#00161    ELSE 
+#00162      ResetLandedFromVert 
+#00163    END IF 
+#00164  END FUNCTION
+          
+#00165  FUNCTION OnGroundExceptions_NoClear 
+#00170    OnGroundExceptions NoClear 
+#00171  END FUNCTION
+          
+#00172  FUNCTION OnGroundExceptions_NoEndRun 
+#00174    OnGroundExceptions NoEndRun 
+#00175  END FUNCTION
+          
+#00176  FUNCTION InAirExceptions 
+#00181    ClearExceptions 
+#00182    SetException Ex = Landed 
+          Scr = Land 
+          
+#00185    SetException Ex = WallRideLeft 
+          Scr = WallRide 
+          Params = STRUCT{
+            Left }
+          
+#00186    SetException Ex = WallRideRight 
+          Scr = WallRide 
+          Params = STRUCT{
+            Right }
+          
+#00187    SetException Ex = WallRideBail 
+          Scr = WallRideBail 
+          
+#00188    SetException Ex = CarPlant 
+          Scr = CarPlant 
+          CallInsteadofGoto 
+#00189    SetException Ex = CarBail 
+          Scr = CarBail 
+          
+#00190    SetException Ex = SkaterCollideBail 
+          Scr = SkaterCollideBail 
+          
+#00191    SetException Ex = MadeOtherSkaterBail 
+          Scr = MadeOtherSkaterBailAir 
+          CallInsteadofGoto 
+#00192    SetQueueTricks special = SpecialTricks 
+          AirTricks 
+#00193    SetExtraGrindTricks special = SpecialGrindTricks 
+          GrindTricks 
+#00194    SetManualTricks special = SpecialManualTricks 
+          ManualTricks 
+#00195    VibrateOff 
+#00196    EnablePlayerInput 
+#00197    BailOff 
+#00198    BashOff 
+#00199    SetRollingFriction default 
+#00200    SetState Air 
+#00201    CanSpin 
+#00202  END FUNCTION
+          
+#00203  FUNCTION ClearTrickQueues 
+#00206    ClearTrickQueue 
+#00207    ClearManualTrick 
+#00208    ClearExtraGrindTrick 
+#00209  END FUNCTION
+          
+#00210  FUNCTION WallRide 
+#00216    ClearExceptions 
+#00217    SetException Ex = Landed 
+          Scr = Land 
+          
+#00218    SetException Ex = Ollied 
+          Scr = Wallie 
+          
+#00219    SetException Ex = GroundGone 
+          Scr = WallrideEnd 
+          
+#00220    SetException Ex = SkaterCollideBail 
+          Scr = SkaterCollideBail 
+          
+#00221    Vibrate Actuator = 1 
+          Percent = 40 
+          
+#00222    IF GotParam Left 
+#00224      move x = 36 
+            
+#00225    ELSE 
+#00226      move x = -36 
+            
+#00227    END IF 
+#00228    NollieOff 
+#00229    SetTrickScore 200 
+#00230    PlayCessSound 
+#00231    IF GotParam Left 
+#00232      IF Flipped 
+#00233        SetTrickName 'BS Wallride' 
+#00234        PlayAnim Anim = WallRideBackTrans 
+              BlendPeriod = 0.0 
+              
+#00235        WaitAnimFinished 
+#00236        PlayAnim Anim = WallRideBackLoop 
+              BlendPeriod = 0.1 
+              Cycle 
+#00237      ELSE 
+#00238        SetTrickName 'FS Wallride' 
+#00239        PlayAnim Anim = WallRideFrontTrans 
+              BlendPeriod = 0.0 
+              
+#00240        WaitAnimFinished 
+#00241        PlayAnim Anim = WallRideFrontLoop 
+              BlendPeriod = 0.1 
+              Cycle 
+#00242      END IF 
+#00243    ELSE 
+#00244      IF Flipped 
+#00245        SetTrickName 'FS Wallride' 
+#00246        PlayAnim Anim = WallRideFrontTrans 
+              BlendPeriod = 0.0 
+              
+#00247        WaitAnimFinished 
+#00248        PlayAnim Anim = WallRideFrontLoop 
+              BlendPeriod = 0.1 
+              Cycle 
+#00249      ELSE 
+#00250        SetTrickName 'BS Wallride' 
+#00251        PlayAnim Anim = WallRideBackTrans 
+              BlendPeriod = 0.0 
+              
+#00252        WaitAnimFinished 
+#00253        PlayAnim Anim = WallRideBackLoop 
+              BlendPeriod = 0.1 
+              Cycle 
+#00254      END IF 
+#00255    END IF 
+#00256    Display 
+#00257  END FUNCTION
+          
+#00258  FUNCTION WallrideEnd 
+#00262    BlendperiodOut 0 
+#00263    ClearExceptions 
+#00264    InAirExceptions 
+#00265    SetState Air 
+#00266    goto Airborne stretchtime = 10 
+          BlendPeriod = 0 
+          
+#00267  END FUNCTION
+          
+#00268  FUNCTION Wallie 
+#00272    InAirExceptions 
+#00273    Vibrate Actuator = 1 
+          Percent = 50 
+          Duration = 0.1 
+          
+#00274    PlayAnim Anim = Ollie 
+          BlendPeriod = 0.0 
+          
+#00275    SetTrickName "Wallie" 
+#00276    SetTrickScore 250 
+#00277    Display 
+#00278    Jump 
+#00279    WaitAnimWhilstChecking 
+#00280    goto Airborne stretchtime = 10 
+          BlendPeriod = 0 
+          
+#00281  END FUNCTION
+          
+#00282  FUNCTION WallRideBail 
+#00286  END FUNCTION
+          
+#00288  FUNCTION OnGroundAI 
+#00294    SetState Ground 
+#00295    OnGroundExceptions 
+#00296    SetRollingFriction default 
+#00297    EnablePlayerInput 
+#00298    NollieOff 
+#00299    LOOP 
+#00300      IF LeftPressed 
+#00301        IF Crouched 
+#00302          IF Flipped 
+#00303            IF AnimEquals CrouchTurnRightIdle 
+#00304            ELSE 
+#00305              PlayAnim Anim = CrouchTurnRight 
+                    NoRestart 
+#00306              IF AnimFinished 
+#00307                PlayAnim Anim = CrouchTurnRightIdle 
+                      Cycle NoRestart 
+#00308              END IF 
+#00309            END IF 
+#00310          ELSE 
+#00311            IF AnimEquals CrouchTurnLeftIdle 
+#00312            ELSE 
+#00313              PlayAnim Anim = CrouchTurnLeft 
+                    NoRestart 
+#00314              IF AnimFinished 
+#00315                PlayAnim Anim = CrouchTurnLeftIdle 
+                      Cycle NoRestart 
+#00316              END IF 
+#00317            END IF 
+#00318          END IF 
+#00319        ELSE 
+#00320          IF Flipped 
+#00321            IF AnimEquals TurnRightIdle 
+#00322            ELSE 
+#00323              PlayAnim Anim = TurnRight 
+                    NoRestart 
+#00324              IF AnimFinished 
+#00325                PlayAnim Anim = TurnRightIdle 
+                      Cycle NoRestart 
+#00326              END IF 
+#00327            END IF 
+#00328          ELSE 
+#00329            IF AnimEquals TurnLeftIdle 
+#00330            ELSE 
+#00331              PlayAnim Anim = TurnLeft 
+                    NoRestart 
+#00332              IF AnimFinished 
+#00333                PlayAnim Anim = TurnLeftIdle 
+                      Cycle NoRestart 
+#00334              END IF 
+#00335            END IF 
+#00336          END IF 
+#00337        END IF 
+#00338      ELSE 
+#00339        IF RightPressed 
+#00340          IF Crouched 
+#00341            IF Flipped 
+#00342              IF AnimEquals CrouchTurnLeftIdle 
+#00343              ELSE 
+#00344                PlayAnim Anim = CrouchTurnLeft 
+                      NoRestart 
+#00345                IF AnimFinished 
+#00346                  PlayAnim Anim = CrouchTurnLeftIdle 
+                        Cycle NoRestart 
+#00347                END IF 
+#00348              END IF 
+#00349            ELSE 
+#00350              IF AnimEquals CrouchTurnRightIdle 
+#00351              ELSE 
+#00352                PlayAnim Anim = CrouchTurnRight 
+                      NoRestart 
+#00353                IF AnimFinished 
+#00354                  PlayAnim Anim = CrouchTurnRightIdle 
+                        Cycle NoRestart 
+#00355                END IF 
+#00356              END IF 
+#00357            END IF 
+#00358          ELSE 
+#00359            IF Flipped 
+#00360              IF AnimEquals TurnLeftIdle 
+#00361              ELSE 
+#00362                PlayAnim Anim = TurnLeft 
+                      NoRestart 
+#00363                IF AnimFinished 
+#00364                  PlayAnim Anim = TurnLeftIdle 
+                        Cycle NoRestart 
+#00365                END IF 
+#00366              END IF 
+#00367            ELSE 
+#00368              IF AnimEquals TurnRightIdle 
+#00369              ELSE 
+#00370                PlayAnim Anim = TurnRight 
+                      NoRestart 
+#00371                IF AnimFinished 
+#00372                  PlayAnim Anim = TurnRightIdle 
+                        Cycle NoRestart 
+#00373                END IF 
+#00374              END IF 
+#00375            END IF 
+#00376          END IF 
+#00377        ELSE 
+#00378          IF Crouched 
+#00379            PlayAnim Anim = CrouchIdle 
+                  Cycle NoRestart 
+#00380          ELSE 
+#00381            IF Braking 
+#00382              IF SpeedLessThan 1 
+#00383                PlayAnim Anim = Idle 
+                      NoRestart 
+#00384                IF HeldLongerThan Button = down 
+                        2 second 
+#00386                  goto HandBrake 
+#00387                END IF 
+#00388              ELSE 
+#00391                IF HeldLongerThan Button = down 
+                        0.2 second 
+#00392                  CessBrake 
+#00393                ELSE 
+#00394                  PlayAnim Anim = Idle 
+                        NoRestart 
+#00395                END IF 
+#00396              END IF 
+#00397            ELSE 
+#00398              IF CanKick 
+#00399                IF AutoKickIsOff 
+#00400                  IF ShouldMongo 
+#00402                    PlayAnim Anim = MongoPush 
+                          NoRestart 
+#00403                    WaitAnimFinished 
+#00404                    PlayAnim Anim = MongoPushCycle 
+                          NoRestart 
+#00405                    WaitAnimFinished 
+#00406                    PlayAnim Anim = Idle 
+                          Cycle NoRestart 
+#00407                  ELSE 
+#00408                    PlayAnim Anim = PushCycle 
+                          NoRestart 
+#00409                    WaitAnimFinished 
+#00410                    PlayAnim Anim = Idle 
+                          Cycle NoRestart 
+#00411                  END IF 
+#00412                ELSE 
+#00413                  IF ShouldMongo 
+#00414                    IF AnimEquals MongoPushCycle 
+#00415                      PlayAnim Anim = MongoPushCycle 
+                            Cycle NoRestart 
+#00416                    ELSE 
+#00417                      PlayAnim Anim = MongoPush 
+                            NoRestart 
+#00418                      WaitAnimFinished 
+#00419                      PlayAnim Anim = MongoPushCycle 
+                            Cycle NoRestart 
+#00420                    END IF 
+#00421                  ELSE 
+#00422                    PlayAnim Anim = PushCycle 
+                          Cycle NoRestart 
+#00423                  END IF 
+#00424                END IF 
+#00425              ELSE 
+#00426                IF AutoKickIsOff 
+#00427                  IF held square 
+#00428                    IF ShouldMongo 
+#00429                      PlayAnim Anim = MongoPushCycle 
+                            Cycle NoRestart 
+#00430                    ELSE 
+#00431                      PlayAnim Anim = PushCycle 
+                            Cycle NoRestart 
+#00432                    END IF 
+#00433                  ELSE 
+#00434                    IF AnimEquals ARRAY(
+                              PushCycle MongoPushCycle MongoPush 
+                            )
+                            
+#00435                    ELSE 
+#00436                      PlayAnim Anim = Idle 
+                            Cycle NoRestart 
+#00437                    END IF 
+#00438                  END IF 
+#00439                ELSE 
+#00440                  IF AnimFinished 
+#00441                    PlayAnim Anim = Idle 
+                          Cycle NoRestart 
+#00442                  END IF 
+#00443                END IF 
+#00444              END IF 
+#00445            END IF 
+#00446          END IF 
+#00447        END IF 
+#00448      END IF 
+#00449      DoNextTrick 
+#00450      DoNextManualTrick 
+#00451      WaitOneGameFrame 
+#00452      IF InNetGame 
+#00453        CheckforNetBrake 
+#00454      END IF 
+#00455    END LOOP 
+#00456  END FUNCTION
+          
+#00457  FUNCTION CheckforNetBrake 
+#00462    IF InNetGame 
+#00463      IF MenuOnScreen 
+#00464        goto NetBrake 
+#00465      END IF 
+#00466    END IF 
+#00467  END FUNCTION
+          
+#00468  FUNCTION CessBrake 
+#00472    ClearEventBuffer 
+#00473    IF SpeedGreaterThan 300 
+#00474      PlayAnim Anim = CessSlide180_FS 
+            From = Start 
+            To = 28 
+            speed = 1.2 
+            
+#00475      WaitAnim Frame 5 
+#00476      PlayCessSound 
+#00477      WaitAnim Frame 25 
+#00478      PlayAnim Anim = CessSlide180_FS 
+            From = 27 
+            To = Start 
+            speed = 1.2 
+            
+#00479      WaitAnimFinished 
+#00480    END IF 
+#00481    PlayAnim Anim = Idle 
+          Cycle NoRestart 
+#00482  END FUNCTION
+          
+#00483  FUNCTION NetBrake 
+#00486    SetRollingFriction 20 
+#00487    OnExceptionRun NetBrake_out 
+#00488    CessBrake 
+#00489    LOOP 
+#00490      IF SpeedLessThan 5 
+#00491        IF ShouldMongo 
+#00492          PlayAnim Anim = MongoBrakeIdle 
+                Cycle NoRestart 
+#00493        ELSE 
+#00494          PlayAnim Anim = BrakeIdle 
+                Cycle NoRestart 
+#00495        END IF 
+#00496      END IF 
+#00497      IF MenuOnScreen 
+#00498        WaitOneGameFrame 
+#00499      ELSE 
+#00500        BREAK
+              
+#00501      END IF 
+#00502    END LOOP 
+#00503    SetRollingFriction default 
+#00504    IF InNollie 
+#00506      goto OnGroundNollieAI 
+#00507    ELSE 
+#00508      goto OnGroundAI 
+#00509    END IF 
+#00510  END FUNCTION
+          
+#00511  FUNCTION NetBrake_out 
+#00513    SetRollingFriction default 
+#00514  END FUNCTION
+          
+#00515  FUNCTION HandBrake 
+#00521    ClearEventBuffer 
+#00522    OnExceptionRun BrakeDone 
+#00523    SetRollingFriction 100 
+#00524    LOOP 
+#00525      IF AutoKickIsOff 
+#00527        IF held square 
+#00528          WaitOneGameFrame 
+#00529          BREAK
+                
+#00530        END IF 
+#00531      ELSE 
+#00532        IF held up 
+#00533          BREAK
+                
+#00534        END IF 
+#00535        IF Crouched 
+#00536          BREAK
+                
+#00537        END IF 
+#00538      END IF 
+#00539      IF RightPressed 
+#00541        IF Flipped 
+#00542          PlayAnim Anim = TurnLeft 
+                NoRestart 
+#00543          IF AnimFinished 
+#00544            PlayAnim Anim = TurnLeftIdle 
+                  Cycle 
+#00545          END IF 
+#00546        ELSE 
+#00547          PlayAnim Anim = TurnRight 
+                NoRestart 
+#00548          IF AnimFinished 
+#00549            PlayAnim Anim = TurnRightIdle 
+                  Cycle 
+#00550          END IF 
+#00551        END IF 
+#00552      ELSE 
+#00553        IF LeftPressed 
+#00554          IF Flipped 
+#00555            PlayAnim Anim = TurnRight 
+                  NoRestart 
+#00556            IF AnimFinished 
+#00557              PlayAnim Anim = TurnRightIdle 
+                    Cycle 
+#00558            END IF 
+#00559          ELSE 
+#00560            PlayAnim Anim = TurnLeft 
+                  NoRestart 
+#00561            IF AnimFinished 
+#00562              PlayAnim Anim = TurnLeftIdle 
+                    Cycle 
+#00563            END IF 
+#00564          END IF 
+#00565        ELSE 
+#00566          IF ShouldMongo 
+#00567            PlayAnim Anim = MongoBrakeIdle 
+                  Cycle NoRestart 
+#00568          ELSE 
+#00569            PlayAnim Anim = BrakeIdle 
+                  Cycle NoRestart 
+#00570          END IF 
+#00571        END IF 
+#00572      END IF 
+#00573      WaitOneGameFrame 
+#00574      DoNextTrick 
+#00575      DoNextManualTrick 
+#00576    END LOOP 
+#00577    SetRollingFriction default 
+#00578    IF InNollie 
+#00580      goto OnGroundNollieAI 
+#00581    ELSE 
+#00582      goto OnGroundAI 
+#00583    END IF 
+#00584  END FUNCTION
+          
+#00585  FUNCTION BrakeDone 
+#00587    SetRollingFriction default 
+#00588  END FUNCTION
+          
+#00589  FUNCTION OnGroundNollieAI 
+#00594    SetState Ground 
+#00595    EnablePlayerInput 
+#00596    ClearExceptions 
+#00597    OnGroundExceptions 
+#00598    SetException Ex = Ollied 
+          Scr = Nollie 
+          
+#00599    SetQueueTricks Jumptricks GroundTricks 
+#00600    SetManualTricks special = SpecialManualTricks 
+          GroundManualTricks 
+#00601    NollieOn 
+#00602    LOOP 
+#00603      IF LeftPressed 
+#00604        IF Crouched 
+#00605          IF Flipped 
+#00606            PlayAnim Anim = NollieCrouchTurnRight 
+                  NoRestart 
+#00607          ELSE 
+#00608            PlayAnim Anim = NollieCrouchTurnLeft 
+                  NoRestart 
+#00609          END IF 
+#00610        ELSE 
+#00611          IF Flipped 
+#00612            PlayAnim Anim = NollieSkatingTurnRight 
+                  NoRestart 
+#00613          ELSE 
+#00614            PlayAnim Anim = NollieSkatingTurnLeft 
+                  NoRestart 
+#00615          END IF 
+#00616        END IF 
+#00617      ELSE 
+#00618        IF RightPressed 
+#00619          IF Crouched 
+#00620            IF Flipped 
+#00621              PlayAnim Anim = NollieCrouchTurnLeft 
+                    NoRestart 
+#00622            ELSE 
+#00623              PlayAnim Anim = NollieCrouchTurnRight 
+                    NoRestart 
+#00624            END IF 
+#00625          ELSE 
+#00626            IF Flipped 
+#00627              PlayAnim Anim = NollieSkatingTurnLeft 
+                    NoRestart 
+#00628            ELSE 
+#00629              PlayAnim Anim = NollieSkatingTurnRight 
+                    NoRestart 
+#00630            END IF 
+#00631          END IF 
+#00632        ELSE 
+#00633          IF Crouched 
+#00634            PlayAnim Anim = NollieCrouchIdle 
+                  Cycle NoRestart 
+#00635          ELSE 
+#00636            IF Braking 
+#00637              IF SpeedLessThan 1 
+#00638                PlayAnim Anim = NollieSkatingIdle 
+                      NoRestart 
+#00639                IF HeldLongerThan Button = down 
+                        2 second 
+#00640                  goto HandBrake 
+#00641                END IF 
+#00642              ELSE 
+#00643                IF HeldLongerThan Button = down 
+                        0.2 second 
+#00644                  CessBrake 
+#00645                ELSE 
+#00646                  PlayAnim Anim = Idle 
+                        NoRestart 
+#00647                END IF 
+#00648              END IF 
+#00649            ELSE 
+#00650              IF CanKick 
+#00651                IF AutoKickIsOff 
+#00652                  IF ShouldMongo 
+#00654                    IF AnimEquals MongoPushCycle 
+#00655                      PlayAnim Anim = MongoPushCycle 
+                            NoRestart 
+#00656                    ELSE 
+#00657                      PlayAnim Anim = MongoPush 
+                            NoRestart 
+#00658                      WaitAnimFinished 
+#00659                      PlayAnim Anim = MongoPushCycle 
+                            NoRestart 
+#00660                    END IF 
+#00661                  ELSE 
+#00662                    PlayAnim Anim = PushCycle 
+                          NoRestart 
+#00663                  END IF 
+#00664                ELSE 
+#00665                  IF ShouldMongo 
+#00666                    IF AnimEquals MongoPushCycle 
+#00667                      PlayAnim Anim = MongoPushCycle 
+                            Cycle NoRestart 
+#00668                    ELSE 
+#00669                      PlayAnim Anim = MongoPush 
+                            NoRestart 
+#00670                      WaitAnimFinished 
+#00671                      PlayAnim Anim = MongoPushCycle 
+                            Cycle NoRestart 
+#00672                    END IF 
+#00673                  ELSE 
+#00674                    PlayAnim Anim = PushCycle 
+                          Cycle NoRestart 
+#00675                  END IF 
+#00676                END IF 
+#00677              ELSE 
+#00678                IF AnimFinished 
+#00679                  PlayAnim Anim = NollieSkatingIdle 
+                        Cycle NoRestart 
+#00680                END IF 
+#00681              END IF 
+#00682            END IF 
+#00683          END IF 
+#00684        END IF 
+#00685      END IF 
+#00686      DoNextTrick 
+#00687      DoNextManualTrick 
+#00688      CheckforNetBrake 
+#00689      WaitOneGameFrame 
+#00690    END LOOP 
+#00691  END FUNCTION
+          
+#00692  FUNCTION FlailExceptions 
+#00697    NollieOff 
+#00698    SetException Ex = CarBail 
+          Scr = CarBail 
+          
+#00700    SetException Ex = SkaterCollideBail 
+          Scr = SkaterCollideBail 
+          
+#00701    SetException Ex = RunHasEnded 
+          Scr = EndOfRun 
+          
+#00702    ClearTrickQueue 
+#00703    ClearManualTrick 
+#00704    ClearEventBuffer 
+#00705    CheckGapTricks 
+#00706    ClearGapTricks 
+#00707    ClearPanel_Landed 
+#00708  END FUNCTION
+          
+#00709  FUNCTION FlailHitWall 
+#00711    FlailExceptions 
+#00712    FlailVibrate 
+#00713    PlayAnim Anim = FlailLeft 
+          
+#00714    WaitAnimFinished 
+#00715    goto OnGroundAI 
+#00716  END FUNCTION
+          
+#00717  FUNCTION FlailLeft 
+#00720    FlailExceptions 
+#00721    FlailVibrate 
+#00722    PlayAnim Anim = FlailLeft 
+          
+#00723    WaitAnimFinished 
+#00724    goto OnGroundAI 
+#00725  END FUNCTION
+          
+#00726  FUNCTION FlailRight 
+#00728    FlailExceptions 
+#00729    FlailVibrate 
+#00730    PlayAnim Anim = FlailRight 
+          
+#00731    WaitAnimFinished 
+#00732    goto OnGroundAI 
+#00733  END FUNCTION
+          
+#00734  FUNCTION FlailVibrate 
+#00736    IF SpeedGreaterThan 600 
+#00737      Vibrate Actuator = 1 
+            Percent = 80 
+            Duration = 0.25 
+            
+#00738    ELSE 
+#00739      Vibrate Actuator = 1 
+            Percent = 50 
+            Duration = 0.15 
+            
+#00740    END IF 
+#00741  END FUNCTION
+          
+#00742  FUNCTION GroundGone 
+#00750    InAirExceptions 
+#00751    SetException Ex = Ollied 
+          Scr = Ollie 
+          
+#00755    ClearTricksFrom GroundTricks 
+#00757    IF GotParam NoBoneless 
+#00758      SetQueueTricks special = SpecialTricks 
+            AirTricks 
+#00760    ELSE 
+#00761      SetQueueTricks special = SpecialTricks 
+            AirTricks Jumptricks JumpTricks0 
+#00762    END IF 
+#00763    IF Crouched 
+#00764      PlayAnim Anim = Crouch2InAir 
+            
+#00765    ELSE 
+#00766      PlayAnim Anim = Idle2InAir 
+            
+#00767    END IF 
+#00768    LOOP 
+#00772      IF AirTimeGreaterThan Skater_Late_Jump_Slop 
+#00775        ClearException Ollied 
+#00776        SetQueueTricks special = SpecialTricks 
+              AirTricks 
+#00777      END IF 
+#00778      DoNextTrick 
+#00779      IF GotParam AndManuals 
+#00780        DoNextManualTrick 
+#00781      END IF 
+#00782      IF AnimFinished 
+#00783        BREAK
+              
+#00784      END IF 
+#00785      WaitOneGameFrame 
+#00786    END LOOP 
+#00787    goto Airborne 
+#00788  END FUNCTION
+          
+#00789  AirAnimParams = STRUCT{
+          Hold BlendPeriod = 0.3 
+          NoRestart }
+        
+#00794  FUNCTION Airborne stretchtime = 1 
+          BlendPeriod = 0.3 
+          
+#00796    InAirExceptions 
+#00797    LOOP 
+#00799      DoNextTrick 
+#00800      IF LeftPressed 
+#00801        IF Flipped 
+#00802          PlayAnim Anim = AirTurnRight 
+                AirAnimParams 
+#00803        ELSE 
+#00804          PlayAnim Anim = AirTurnLeft 
+                AirAnimParams 
+#00805        END IF 
+#00806      ELSE 
+#00807        IF RightPressed 
+#00808          IF Flipped 
+#00809            PlayAnim Anim = AirTurnLeft 
+                  AirAnimParams 
+#00810          ELSE 
+#00811            PlayAnim Anim = AirTurnRight 
+                  AirAnimParams 
+#00812          END IF 
+#00813        ELSE 
+#00814          IF AirTimeGreaterThan GLOBAL.stretchtime 
+                  seconds 
+#00815            PlayAnim Anim = Stretch 
+                  BlendPeriod = GLOBAL.BlendPeriod 
+                  NoRestart 
+#00816            BREAK
+                  
+#00817          ELSE 
+#00818            PlayAnim Anim = AirIdle 
+                  Cycle BlendPeriod = GLOBAL.BlendPeriod 
+                  NoRestart 
+#00819          END IF 
+#00820        END IF 
+#00821      END IF 
+#00822      WaitOneGameFrame 
+#00823    END LOOP 
+#00824    WaitAnimWhilstChecking 
+#00825    PlayAnim Anim = StretchIdle 
+          BlendPeriod = 0.1 
+          Cycle 
+#00826  END FUNCTION
+          
+#00827  FUNCTION Land 
+#00836    SetSkaterCamLerpReductionTimer time = 0 
+          
+#00840    IF ProfileEquals is_named = demoness 
+            
+#00841      Demoness_FlameOn 
+#00842    END IF 
+#00843    IF AbsolutePitchGreaterThan 60 
+#00844      IF PitchGreaterThan 60 
+#00845        goto PitchBail 
+#00847      END IF 
+#00848    END IF 
+#00849    IF SpeedGreaterThan 500 
+#00850      IF YawBetween PAIR[60.0; 120.0] 
+#00851        IF InSplitScreenGame 
+#00852        ELSE 
+#00853          LaunchPanelMessage "&C1Landed sideways" properties = panelcombo 
+                
+#00854        END IF 
+#00855        goto YawBail 
+#00856      END IF 
+#00857    END IF 
+#00862    IF RollGreaterThan 50 
+#00863      goto DoingTrickBail 
+#00865    END IF 
+#00866    IF DoingTrick 
+#00867      goto DoingTrickBail 
+#00868    END IF 
+#00869    IF GotParam ReturnBacktoLipLand 
+#00870    ELSE 
+#00871      IF GotParam IgnoreAirTime 
+#00872        goto Land2 
+#00873      ELSE 
+#00874        IF AirTimeLessThan 0.2 seconds 
+#00875          goto Land2 Params = STRUCT{
+                  LittleAir }
+                
+#00877        ELSE 
+#00878          GotoPreserveParams Land2 
+#00879        END IF 
+#00880      END IF 
+#00881    END IF 
+#00882  END FUNCTION
+          
+#00883  FUNCTION Land2 RevertTime = 5 
+          
+#00892    AllowRailTricks 
+#00893    NollieOff 
+#00894    ClearLipCombos 
+#00895    IF LandedFromVert 
+#00898      Obj_ClearFlag FLAG_SKATER_MANUALCHEESE 
+#00899      SetExtraTricks tricks = Reverts 
+            Duration = GLOBAL.RevertTime 
+            
+#00900    ELSE 
+#00901      DoNextManualTrick FromAir 
+#00902    END IF 
+#00903    Vibrate Actuator = 1 
+          Percent = 80 
+          Duration = 0.1 
+          
+#00905    IF Crouched 
+#00907      IF GotParam LittleAir 
+#00908        PlayAnim Anim = CrouchBump 
+              
+#00909      ELSE 
+#00910        IF Backwards 
+#00911          FlipAndRotate 
+#00912          PlayAnim Anim = CrouchedLandTurn 
+                BlendPeriod = 0 
+                
+#00913          BoardRotate 
+#00914        ELSE 
+#00915          IF YawBetween PAIR[45.0; 60.0] 
+#00916            IF AirTimeGreaterThan 0.75 second 
+#00917              PlayAnim Anim = SketchyCrouchLand 
+                    BlendPeriod = 0.1 
+                    
+#00918              IF InSplitScreenGame 
+#00919              ELSE 
+#00920                LaunchPanelMessage "&C1Sketchy" properties = panelcombo 
+                      
+#00921              END IF 
+#00922            ELSE 
+#00923              PlayAnim Anim = CrouchedLand 
+                    BlendPeriod = 0.1 
+                    
+#00924            END IF 
+#00925          ELSE 
+#00926            PlayAnim Anim = CrouchedLand 
+                  BlendPeriod = 0.1 
+                  
+#00927          END IF 
+#00928        END IF 
+#00929      END IF 
+#00930    ELSE 
+#00931      IF GotParam LittleAir 
+#00932        PlayAnim Anim = IdleBump 
+              
+#00933      ELSE 
+#00934        IF Backwards 
+#00935          FlipAndRotate 
+#00936          PlayAnim Anim = LandTurn 
+                BlendPeriod = 0 
+                
+#00937          BoardRotate 
+#00938        ELSE 
+#00939          IF YawBetween PAIR[45.0; 60.0] 
+#00940            IF AirTimeGreaterThan 0.75 second 
+#00941              PlayAnim Anim = SketchyLand 
+                    BlendPeriod = 0.1 
+                    
+#00942              IF InSplitScreenGame 
+#00943              ELSE 
+#00944                LaunchPanelMessage "&C1Sketchy" properties = panelcombo 
+                      
+#00945              END IF 
+#00946            ELSE 
+#00947              PlayAnim Anim = Land 
+                    BlendPeriod = 0.1 
+                    
+#00948            END IF 
+#00949          ELSE 
+#00950            PlayAnim Anim = Land 
+                  BlendPeriod = 0.1 
+                  
+#00951          END IF 
+#00952        END IF 
+#00954      END IF 
+#00955    END IF 
+#00956    ClearTrickQueue 
+#00959    ClearEventBuffer buttons = ARRAY(
+            
+            x 
+          )
+          
+#00963    OnGroundExceptions_NoEndRun 
+#00964    OnExceptionRun Landout 
+#00965    SetManualTricks special = SpecialManualTricks 
+          ManualTricks 
+#00966    IF GotParam NoReverts 
+#00967    ELSE 
+#00968      IF LandedFromVert 
+#00969        ResetLandedFromVert 
+#00970        LOOP 
+#00971          wait 1 
+#00972        END LOOP GLOBAL.RevertTime 
+              
+#00973      ELSE 
+#00974        LOOP 
+#00975          DoNextManualTrick FromAir 
+#00976          wait 1 
+#00977        END LOOP 10 
+#00978      END IF 
+#00979    END IF 
+#00980    CheckGapTricks 
+#00984    ClearGapTricks 
+#00985    ClearPanel_Landed 
+#00986    ResetSpin 
+#00987    ClearManualTrick 
+#00988    OnGroundExceptions 
+#00991    CheckforNetBrake 
+#00992    WaitAnimWhilstChecking AndManuals 
+#00993    goto OnGroundAI 
+#00994  END FUNCTION
+          
+#00995  FUNCTION Landout 
+#00997    IF ExceptionTriggered RunHasEnded 
+#00998      SetSpeed 0 
+#00999      SetState Ground 
+#01000      ClearExceptions 
+#01001      SetException Ex = RunHasEnded 
+            Scr = EndOfRun 
+            
+#01002    ELSE 
+#01003      OnGroundExceptions_NoClear 
+#01004    END IF 
+#01005    CheckGapTricks 
+#01006    ClearGapTricks 
+#01007    ClearPanel_Landed 
+#01008    ClearManualTrick 
+#01009  END FUNCTION
+          
+#01010  FUNCTION WaitOnGround 
+#01015    LOOP 
+#01016      IF OnGround 
+#01017        BREAK
+              
+#01018      END IF 
+#01019      WaitOneGameFrame 
+#01020    END LOOP 
+#01021  END FUNCTION
+          
+#01022  FUNCTION VibrateOff 
+#01025    Vibrate Actuator = 0 
+          Percent = 0 
+          
+#01026    Vibrate Actuator = 1 
+          Percent = 0 
+          
+#01027  END FUNCTION
+          
+#01028  FUNCTION EndOfRun 
+#01039    SetState Ground 
+#01040    CleanUpSpecialItems 
+#01041    StopBalanceTrick 
+#01042    CheckGapTricks 
+#01043    ClearGapTricks 
+#01044    ClearPanel_Landed 
+#01045    ClearExceptions 
+#01046    ClearTrickQueues 
+#01047    ClearEventBuffer 
+#01048    SetException Ex = LostGame 
+          Scr = LostGame 
+          
+#01049    DisablePlayerInput AllowCameraControl 
+#01053    SetException Ex = SkaterCollideBail 
+          Scr = EndBail 
+          
+#01054    WaitOnGround 
+#01055    SetRollingFriction 19 
+#01056    wait 10 frames 
+#01057    WaitOnGround 
+#01058    IF SpeedGreaterThan 400 
+#01059      PlayCessSound 
+#01060      PlayAnim Anim = CessSlide180_FS 
+            
+#01061      WaitAnim 50 Percent 
+#01062      PlayAnim Anim = CessSlide180_FS 
+            From = Current 
+            To = 0 
+            
+#01063      WaitAnimFinished 
+#01064    ELSE 
+#01065      PlayAnim Anim = brake 
+            
+#01066      WaitAnimFinished 
+#01067    END IF 
+#01068    PlayAnim Anim = BrakeIdle 
+          BlendPeriod = 0.3 
+          Cycle 
+#01069    LOOP 
+#01070      IF SpeedLessThan 40 
+#01071        IF OnGround 
+#01072          BREAK
+                
+#01073        END IF 
+#01074      END IF 
+#01075      WaitOneGameFrame 
+#01076    END LOOP 
+#01077    IF InNetGame 
+#01078      SetException Ex = WonGame 
+            Scr = WonGame 
+            
+#01079      SetException Ex = LostGame 
+            Scr = LostGame 
+            
+#01080    END IF 
+#01081    wait 1 seconds 
+#01082    IF IsCareerMode 
+#01083      SetSkaterCamOverride heading = 3 
+            tilt = -0.2 
+            time = 2 
+            
+#01084    END IF 
+#01085    EndOfRunDone 
+#01087    SetException Ex = LostGame 
+          Scr = LostGame 
+          
+#01088    wait 1 seconds 
+#01089    IF InNetGame 
+#01090      IF GameIsOver 
+#01091      ELSE 
+#01092        IF GameModeEquals is_king 
+#01093        ELSE 
+#01094          LaunchPanelMessage "Waiting for other players to finish their combos..." properties = netstatusprops 
+                
+#01095        END IF 
+#01096      END IF 
+#01097    END IF 
+#01098  END FUNCTION
+          
+#01099  FUNCTION ForceEndOfRun 
+#01101    VibrateOff 
+#01102    MakeSkaterGoto EndOfRun 
+#01103  END FUNCTION
+          
+#01104  FUNCTION SkaterCollide_AtEndRun 
+#01106  END FUNCTION
+          
+#01107  FUNCTION WonGame 
+#01109    PlayAnim RANDOM[2][4; 16]
+          Anim = Prop 
+          JUMP 0x0b000000 Anim = Cheer1 
+          BlendPeriod = 0.3 
+          
+#01110    EndOfRunDone 
+#01111    WaitAnimFinished 
+#01112    IF ShouldMongo 
+#01113      PlayAnim Anim = MongoBrakeIdle 
+            Cycle 
+#01114    ELSE 
+#01115      PlayAnim Anim = BrakeIdle 
+            Cycle 
+#01116    END IF 
+#01117  END FUNCTION
+          
+#01118  FUNCTION LostGame 
+#01120    PlayAnim Anim = BrakeDefeat 
+          
+#01124    WaitAnimFinished 
+#01126    EndOfRunDone 
+#01127    IF ShouldMongo 
+#01128      PlayAnim Anim = MongoBrakeIdle 
+            Cycle 
+#01129    ELSE 
+#01130      PlayAnim Anim = BrakeIdle 
+            Cycle 
+#01131    END IF 
+#01132    WaitAnimFinished 
+#01133  END FUNCTION
+          
+#01134  FUNCTION EndBail 
+#01137    EndOfRunDone 
+#01138    ClearExceptions 
+#01139    InBail 
+#01140    TurnToFaceVelocity 
+#01141    VibrateOff 
+#01142    PlaySound RANDOM[2][4; 10]
+          BoardBail01 JUMP 0x05000000 BoardBail02 
+#01143    PlayAnim Anim = SlipForwards 
+          NoRestart BlendPeriod = 0.3 
+          
+#01144    wait 10 frames 
+#01145    SwitchOffBoard 
+#01146    wait 10 Frame 
+#01147    PlaySound RANDOM[2][4; 10]
+          HitBody03 JUMP 0x05000000 HitBody04 
+#01148    wait 10 frames 
+#01149    SetRollingFriction 18 
+#01150    Vibrate Actuator = 1 
+          Percent = 100 
+          Duration = 0.2 
+          
+#01151    Obj_Spawnscript BloodSmall 
+#01152    WaitAnim 25 Percent fromend 
+#01153    PlaySound FoleyMove01 vol = 50 
+          
+#01154    WaitAnimFinished 
+#01155    Obj_Spawnscript BloodPool 
+#01156    PlayAnim Anim = GetUpForwards 
+          BlendPeriod = 0.1 
+          
+#01157    SetRollingFriction 20 
+#01158    wait 50 frames 
+#01159    SwitchOnBoard 
+#01160    BoardRotate normal 
+#01161    WaitAnimFinished 
+#01162    NotifyBailDone 
+#01163    NotInBail 
+#01164    goto EndOfRun 
+#01165  END FUNCTION
+          
+#01166  FUNCTION EndOfRunTimeOut 
+#01168    EndOfRunDone 
+#01169  END FUNCTION
+          
+#01170  FUNCTION CarPlant 
+#01174    ClearExceptions 
+#01175    InAirExceptions 
+#01176    ClearException CarPlant 
+#01177    PlaySound GrindMetalOn RANDOM[3][8; 20; 32]
+          pitch = 80 
+          JUMP 0x1b000000 pitch = 90 
+          JUMP 0x0b000000 pitch = 85 
+          
+#01178    Obj_Spawnscript CarSparks 
+#01179    DoCarPlantBoost 
+#01180    SetTrickName "Car Plant" 
+#01181    SetTrickScore 400 
+#01182    Display 
+#01183    IF DoingTrick 
+#01184    ELSE 
+#01185      PlayAnim Anim = Beanplant 
+            BlendPeriod = 0.3 
+            
+#01186      WaitAnimWhilstChecking 
+#01187      goto Airborne 
+#01188    END IF 
+#01189  END FUNCTION
+          
+#01190  FUNCTION CarSparks 
+#01193    SparksOn 
+#01194    wait 20 gameframes 
+#01195    SetException Ex = CarPlant 
+          Scr = CarPlant 
+          
+#01196    wait 180 gameframes 
+#01197    SparksOff 
+#01198  END FUNCTION
+          
+#01199  FUNCTION FreezeSkater 
+#01202    SwitchOnBoard 
+#01203    ClearExceptions 
+#01204    SetQueueTricks NoTricks 
+#01205    DisablePlayerInput 
+#01206    SetRollingFriction 10000 
+#01207    PlayAnim Anim = StartIdle 
+          Cycle 
+#01208  END FUNCTION
+          
+#01209  FUNCTION CarBail 
+#01211    InBail 
+#01212    Obj_Spawnscript BloodCar 
+#01213    PlaySound hitdumpsterX 
+#01214    PlaySound hitvehicle3 
+#01215    goto NoseManualBail 
+#01216  END FUNCTION
+          
+#01217  FUNCTION FlailingFall 
+#01220    IF Obj_FlagNotSet FLAG_SKATER_KILLING 
+#01221      Obj_SetFlag FLAG_SKATER_KILLING 
+#01222      InBail 
+#01223      Obj_ClearFlag FLAG_SKATER_KILLING 
+#01224    ELSE 
+#01225      InBail 
+#01226    END IF 
+#01227    ClearExceptions 
+#01229    SetQueueTricks NoTricks 
+#01230    DisablePlayerInput AllowCameraControl 
+#01231    PlayAnim Anim = StretchtoFlailingFall 
+          BlendPeriod = 0.3 
+          
+#01232    ClearGapTricks 
+#01233    ClearPanel_Bailed 
+#01234    WaitAnim 90 Percent 
+#01235    SwitchOffBoard 
+#01236    WaitAnimFinished 
+#01237    PlayAnim Anim = FlailingFall 
+          Cycle 
+#01238  END FUNCTION
+          
+#01242  FUNCTION RestartSkater 
+#01250    RestartSkaterExceptions 
+#01251    ClearGapTricks 
+#01252    ClearPanel_Bailed 
+#01253    EnablePlayerInput 
+#01254    OnGroundExceptions 
+#01255    WaitAnimFinished 
+#01256    goto OnGroundAI 
+#01257  END FUNCTION
+          
+#01258  FUNCTION DropIn DropInAnim = DropIn 
+          
+#01260    SetState Lip 
+#01261    SetSkaterCamOverride heading = 0 
+          tilt = -0.05 
+          time = 1.0E-9 
+          
+#01262    RestartSkaterExceptions 
+#01263    SetRollingFriction 10000 
+#01264    DisablePlayerInput 
+#01265    PlayAnim Anim = GLOBAL.DropInAnim 
+          BlendPeriod = 0.0 
+          
+#01266    WaitAnim 20 Percent 
+#01267    SetSkaterCamOverride heading = 0 
+          tilt = 0 
+          time = 2 
+          
+#01268    WaitAnim 85 Percent 
+#01269    SetState Ground 
+#01270    SetRollingFriction 0 
+#01271    WaitAnimFinished 
+#01272    EnablePlayerInput 
+#01273    ClearSkaterCamOverride 
+#01274    OnGroundExceptions 
+#01275    WaitOneGameFrame 
+#01276    goto Land 
+#01280  END FUNCTION
+          
+#01281  FUNCTION StartLevelSkating 
+#01283    RestartSkaterExceptions 
+#01284    IF AutoKickIsOff 
+#01285      IF ShouldMongo 
+#01286        PlayAnim Anim = MongoBrakeIdle 
+              
+#01287      ELSE 
+#01288        PlayAnim Anim = BrakeIdle 
+              
+#01289      END IF 
+#01290    ELSE 
+#01291      DisablePlayerInput 
+#01292      SetRollingFriction 100000 
+#01294      PlayAnim Anim = StartIdle 
+            
+#01295      wait 2 frames 
+#01296      WaitAnimFinished 
+#01298      SetRollingFriction default 
+#01299      PlayAnim Anim = StartSkating1 
+            BlendPeriod = 0.0 
+            
+#01300      WaitAnim 75 Percent 
+#01301    END IF 
+#01302    SetRollingFriction default 
+#01303    EnablePlayerInput 
+#01304    ClearSkaterCamOverride 
+#01305    OnGroundExceptions 
+#01306    WaitAnimFinished 
+#01307    goto OnGroundAI 
+#01308  END FUNCTION
+          
+#01309  FUNCTION StartSkating1 
+#01312    RestartSkaterExceptions 
+#01315    SetRollingFriction default 
+#01316    DisablePlayerInput AllowCameraControl 
+#01317    IF ProfileEquals is_named = mullen 
+            
+#01318      SetRollingFriction 10000 
+#01319      PlayAnim Anim = MullenStart 
+            BlendPeriod = 0.0 
+            
+#01320      WaitAnim 40 Percent 
+#01321      PlaySound boneless09 pitch = 110 
+            
+#01322      PlayBonkSound 
+#01323      BlendperiodOut 0 
+#01324      WaitAnim 60 Percent 
+#01325      SetRollingFriction default 
+#01326    ELSE 
+#01327      IF AutoKickIsOff 
+#01328        IF ShouldMongo 
+#01329          PlayAnim Anim = MongoBrakeIdle 
+                
+#01330        ELSE 
+#01331          PlayAnim Anim = BrakeIdle 
+                
+#01332        END IF 
+#01333      ELSE 
+#01334        PlayAnim Anim = StartSkating1 
+              BlendPeriod = 0.0 
+              
+#01335        WaitAnim 75 Percent 
+#01336      END IF 
+#01337    END IF 
+#01338    ClearSkaterCamOverride 
+#01340    EnablePlayerInput 
+#01341    OnGroundExceptions 
+#01342    WaitAnimFinished 
+#01343    goto OnGroundAI 
+#01344  END FUNCTION
+          
+#01345  FUNCTION StartSkatingCanada 
+#01347    Obj_Spawnscript CanadaBreath 
+#01348    goto StartSkating11 
+#01349  END FUNCTION
+          
+#01350  FUNCTION CanadaBreath 
+#01352    Obj_Attachframe bone = "head" 
+          
+#01353    LOOP 
+#01354      BloodParticlesOn name = "breath.png" 
+            start_col = -8355712 
+            end_col = 1434484864 
+            num = 1 
+            emit_w = 1.0 
+            emit_h = 1.0 
+            angle = 90 
+            size = 4 
+            bone = "head" 
+            growth = 6 
+            time = 2 
+            speed = 20 
+            grav = 0 
+            life = 2 
+            
+#01355      wait 10 frames 
+#01357    END LOOP 
+#01358  END FUNCTION
+          
+#01359  FUNCTION PedProps name = "Ped Props" 
+          score = 500 
+          
+#01361    IF InSplitScreenGame 
+#01362    ELSE 
+#01363      LaunchPanelMessage "Spectator Bonus" properties = Panelcombo2 
+            
+#01364    END IF 
+#01365    PlaySound PedProps vol = 500 
+          
+#01366    SetTrickName GLOBAL.name 
+          
+#01367    SetTrickScore GLOBAL.score 
+          
+#01368    Display BlockSpin 
+#01369    WaitOneGameFrame 
+#01370    IF OnGround 
+#01371      IF DoingTrick 
+#01372      ELSE 
+#01373        CheckGapTricks 
+#01374        ClearGapTricks 
+#01375        ClearPanel_Landed 
+#01376      END IF 
+#01377    END IF 
+#01378  END FUNCTION
+          
+#01379  FUNCTION RestartSkaterExceptions 
+#01382    AllowRailTricks 
+#01383    BoardRotate normal 
+#01384    ClearExceptions 
+#01385    SetException Ex = SkaterCollideBail 
+          Scr = SkaterCollideBail 
+          
+#01386    ClearTrickQueue 
+#01389    SetQueueTricks NoTricks 
+#01390    ClearManualTrick 
+#01391    ClearEventBuffer 
+#01392    SwitchOnBoard 
+#01393    Obj_Attachframe bone = "head" 
+          
+#01396  END FUNCTION
+          
+#01399  FUNCTION NetPause 
+#01402  END FUNCTION
+          
+#01403  FUNCTION Foobar 
+#01405    IF OnGround 
+#01406      SetRollingFriction 100 
+#01407      CessBrake 
+#01408      HandBrake 
+#01409    ELSE 
+#01410      WaitOnGround 
+#01411      Land 
+#01412      HandBrake 
+#01413    END IF 
+#01414  END FUNCTION
+          
+#01415  FUNCTION LaunchSpecialMessage text = "Special Trick" 
+          
+#01418    PlaySound HUD_specialtrickAA vol = 100 
+          
+#01419    IF InSplitScreenGame 
+#01420    ELSE 
+#01421      LaunchPanelMessage GLOBAL.text 
+            properties = panelcombo 
+            
+#01422    END IF 
+#01423  END FUNCTION
+          
+#01424  FUNCTION LaunchExtraMessage text = "Hidden Combo!" 
+          
+#01426    PlaySound HUD_specialtrickAA vol = 100 
+          
+#01427    IF InSplitScreenGame 
+#01428    ELSE 
+#01429      LaunchPanelMessage GLOBAL.text 
+            properties = panelcombo 
+            
+#01430    END IF 
+#01431  END FUNCTION
+          
+#01432  FUNCTION MakeSkaterFly 
+#01437    MakeSkaterGoto FlyAi 
+#01438  END FUNCTION
+          
+#01439  FUNCTION FlyAi move = 8 
+          
+#01442    ClearExceptions 
+#01443    SetQueueTricks NoTricks 
+#01444    SetSpeed 0 
+#01445    SetState Air 
+#01446    SetRollingFriction 1000 
+#01447    NoRailTricks 
+#01448    LOOP 
+#01449      IF held R2 
+#01450        Jump 
+#01451        wait 8 frames 
+#01452      END IF 
+#01453      IF held L1 
+#01454        BREAK
+              
+#01455      END IF 
+#01456      IF held L2 
+#01457        IF held square 
+#01458          move x = 18 
+                
+#01459        END IF 
+#01460        IF held Circle 
+#01461          move x = -18 
+                
+#01462        END IF 
+#01463        IF held Triangle 
+#01464          move z = 18 
+                
+#01465        END IF 
+#01466        IF held x 
+#01467          move z = -18 
+                
+#01468        END IF 
+#01469      ELSE 
+#01470        IF held square 
+#01471          move x = 6 
+                
+#01472        END IF 
+#01473        IF held Circle 
+#01474          move x = -6 
+                
+#01475        END IF 
+#01476        IF held Triangle 
+#01477          move z = 8 
+                
+#01478        END IF 
+#01479        IF held x 
+#01480          move z = -8 
+                
+#01481        END IF 
+#01482      END IF 
+#01483      WaitOneGameFrame 
+#01484    END LOOP 
+#01485    AllowRailTricks 
+#01486    MakeSkaterGoto OnGroundAI 
+#01487  END FUNCTION
+          
+#01488  FUNCTION PedKnockDown 
+#01493    Obj_Spawnscript BloodCar 
+#01494    SetRollingFriction 0 
+#01497    goto NoseManualBail 
+#01498  END FUNCTION
+          
+#01499  FUNCTION SkaterPushPed 
+#01501    SetException Ex = CarBail 
+          Scr = CarBail 
+          
+#01502    SetException Ex = SkaterCollideBail 
+          Scr = SkaterCollideBail 
+          
+#01503    FlailVibrate 
+#01504    NollieOff 
+#01505    StopBalanceTrick 
+#01506    PlaySound bitchslap2 
+#01507    IF AnimEquals ARRAY(
+              CrouchIdle SkateIdle Land MongoPushCycle PushCycle 
+            )
+            
+#01508      goto FlailHitWall 
+#01509    END IF 
+#01510    IF AnimEquals ARRAY(
+              runout runoutquick Smackwallupright 
+            )
+            
+#01511      goto Bailsmack Params = STRUCT{
+              SmackAnim = Smackwallupright 
+              }
+            
+#01512    END IF 
+#01513    IF InAir 
+#01514      goto Airborne 
+#01515    ELSE 
+#01516      IF IsInBail 
+#01517        IF AnimEquals ARRAY(
+                  Smackwallfeet NutterFallBackward FiftyFiftyFallBackward BackwardsTest BackwardFaceSlam Smackwallfeet SlipBackwards 
+                )
+                
+#01519          goto Bailsmack Params = STRUCT{
+                  SmackAnim = Smackwallfeet 
+                  }
+                
+#01520        ELSE 
+#01521          goto Bailsmack Params = STRUCT{
+                  NULL }
+                
+#01522        END IF 
+#01523      END IF 
+#01524      goto OnGroundAI 
+#01525    END IF 
+#01526  END FUNCTION
+          
+#01527  FUNCTION SkaterBreakGlass 
+#01529    SetException Ex = CarBail 
+          Scr = CarBail 
+          
+#01530    SetException Ex = SkaterCollideBail 
+          Scr = SkaterCollideBail 
+          
+#01531    FlailVibrate 
+#01532    NollieOff 
+#01533    StopBalanceTrick 
+#01534    IF AnimEquals ARRAY(
+              CrouchIdle SkateIdle Land MongoPushCycle PushCycle 
+            )
+            
+#01535      goto FlailHitWall 
+#01536    END IF 
+#01537    IF AnimEquals ARRAY(
+              runout runoutquick Smackwallupright 
+            )
+            
+#01538      goto Bailsmack Params = STRUCT{
+              SmackAnim = Smackwallupright 
+              }
+            
+#01539    END IF 
+#01540    IF InAir 
+#01541      goto Airborne 
+#01542    ELSE 
+#01543      IF IsInBail 
+#01544        IF AnimEquals ARRAY(
+                  Smackwallfeet NutterFallBackward FiftyFiftyFallBackward BackwardsTest BackwardFaceSlam Smackwallfeet SlipBackwards 
+                )
+                
+#01546          goto Bailsmack Params = STRUCT{
+                  SmackAnim = Smackwallfeet 
+                  }
+                
+#01547        ELSE 
+#01548          goto Bailsmack Params = STRUCT{
+                  NULL }
+                
+#01549        END IF 
+#01550      END IF 
+#01551      goto OnGroundAI 
+#01552    END IF 
+#01553  END FUNCTION
+          
+#01554  FUNCTION SkaterCollideBall 
+#01557    IF InAir 
+#01558      InAirExceptions 
+#01559      Obj_Spawnscript CarSparks 
+#01560      PlayAnim Anim = Boneless 
+            BlendPeriod = 0.3 
+            
+#01561      SetTrickName "Scratchin the Ball!" 
+#01562      SetTrickScore 400 
+#01563      Display 
+#01564      WaitAnimWhilstChecking AndManuals 
+#01565      goto Airborne 
+#01566    ELSE 
+#01567      InBail 
+#01568      Obj_Spawnscript BloodCar 
+#01569      PlaySound bodysmackA 
+#01570      goto NoseManualBail 
+#01571      LaunchPanelMessage "Ball Busted!" 
+#01572    END IF 
+#01573  END FUNCTION
+          
+#01574  

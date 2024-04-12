@@ -1,0 +1,2826 @@
+cas_min_weight = 130 
+        
+#00001  cas_max_weight = 250 
+        
+#00002  cas_min_height = 48 
+        
+#00004  cas_max_height = 84 
+        
+#00005  cas_min_saturation = 0 
+        
+#00010  cas_max_saturation = 56 
+        
+#00011  cas_min_value = 20 
+        
+#00012  cas_max_value = 80 
+        
+#00013  give_neversoft_skaters = 0 
+        
+#00015  cas_heads_anims = STRUCT{
+          show_anim = "CASHeadCamAnim" 
+          back_anim = "CASHeadCamBackAnim" 
+          reload_anim = "CASHeadCamStaticAnim" 
+          }
+        
+#00023  cas_torsos_anims = STRUCT{
+          show_anim = "CASTorsoCamAnim" 
+          back_anim = "CASTorsoCamBackAnim" 
+          reload_anim = "CASTorsoCamStaticAnim" 
+          }
+        
+#00029  cas_legs_anims = STRUCT{
+          show_anim = "CASLegsCamAnim" 
+          back_anim = "CASLegsCamBackAnim" 
+          reload_anim = "CASLegsCamStaticAnim" 
+          }
+        
+#00035  editable_cas_options = ARRAY(
+          
+          STRUCT{
+            array_name = kneepads 
+            allow_edit_hsv options_menu_name = kneepads_menu 
+            color_menu_name = kneepads_hsv_menu 
+            color_property_name = kneepads 
+            color_hue_slider = kneepads_h_slider 
+            color_saturation_slider = kneepads_s_slider 
+            color_value_slider = kneepads_v_slider 
+            cas_legs_anims num_visible = 7 
+            random_probability = 0.2 
+            }
+          STRUCT{
+            array_name = socks 
+            options_menu_name = socks_menu 
+            color_menu_name = socks_hsv_menu 
+            color_property_name = socks 
+            color_hue_slider = socks_h_slider 
+            color_saturation_slider = socks_s_slider 
+            color_value_slider = socks_v_slider 
+            cas_legs_anims num_visible = 8 
+            allow_edit_hsv }
+          STRUCT{
+            array_name = shoes 
+            options_menu_name = shoes_menu 
+            color_menu_name = shoes_hsv_menu 
+            color_property_name = shoes 
+            color_hue_slider = shoes_h_slider 
+            color_saturation_slider = shoes_s_slider 
+            color_value_slider = shoes_v_slider 
+            cas_legs_anims num_visible = 8 
+            allow_edit_hsv }
+          STRUCT{
+            array_name = legs 
+            allow_edit_hsv options_menu_name = legs_menu 
+            color_menu_name = legs_hsv_menu 
+            color_property_name = legs 
+            color_hue_slider = legs_h_slider 
+            color_saturation_slider = legs_s_slider 
+            color_value_slider = legs_v_slider 
+            cas_legs_anims num_visible = 8 
+            }
+          STRUCT{
+            array_name = elbowpads 
+            allow_edit_hsv options_menu_name = elbowpads_menu 
+            color_menu_name = elbowpads_hsv_menu 
+            color_property_name = elbowpads 
+            color_hue_slider = elbowpads_h_slider 
+            color_saturation_slider = elbowpads_s_slider 
+            color_value_slider = elbowpads_v_slider 
+            cas_torsos_anims num_visible = 7 
+            random_probability = 0.2 
+            }
+          STRUCT{
+            array_name = left_arm_tattoo 
+            options_menu_name = left_arm_tattoos_menu 
+            cas_torsos_anims num_visible = 11 
+            random_probability = 0.2 
+            }
+          STRUCT{
+            array_name = right_arm_tattoo 
+            options_menu_name = right_arm_tattoos_menu 
+            cas_torsos_anims num_visible = 11 
+            random_probability = 0.2 
+            }
+          STRUCT{
+            array_name = chest_tattoo 
+            options_menu_name = chest_tattoos_menu 
+            cas_torsos_anims num_visible = 11 
+            random_probability = 0.2 
+            }
+          STRUCT{
+            array_name = back_tattoo 
+            options_menu_name = back_tattoos_menu 
+            cas_torsos_anims num_visible = 11 
+            random_probability = 0.2 
+            }
+          STRUCT{
+            array_name = torso 
+            allow_edit_hsv options_menu_name = torsos_menu 
+            color_menu_name = torsos_hsv_menu 
+            color_property_name = torso 
+            color_hue_slider = torsos_h_slider 
+            color_saturation_slider = torsos_s_slider 
+            color_value_slider = torsos_v_slider 
+            cas_torsos_anims num_visible = 11 
+            }
+          STRUCT{
+            array_name = left_leg_tattoo 
+            options_menu_name = left_leg_tattoos_menu 
+            cas_legs_anims num_visible = 8 
+            random_probability = 0.2 
+            }
+          STRUCT{
+            array_name = right_leg_tattoo 
+            options_menu_name = right_leg_tattoos_menu 
+            cas_legs_anims num_visible = 8 
+            random_probability = 0.2 
+            }
+          STRUCT{
+            array_name = front_logo 
+            options_menu_name = front_logos_menu 
+            cas_torsos_anims num_visible = 11 
+            }
+          STRUCT{
+            array_name = back_logo 
+            options_menu_name = back_logos_menu 
+            cas_torsos_anims num_visible = 11 
+            }
+          STRUCT{
+            array_name = backpack 
+            allow_edit_hsv options_menu_name = backpacks_menu 
+            color_menu_name = backpacks_hsv_menu 
+            color_property_name = backpack 
+            color_hue_slider = backpacks_h_slider 
+            color_saturation_slider = backpacks_s_slider 
+            color_value_slider = backpacks_v_slider 
+            cas_torsos_anims num_visible = 11 
+            random_probability = 0.2 
+            }
+          STRUCT{
+            array_name = head 
+            allow_edit_hsv options_menu_name = heads_menu 
+            cas_heads_anims num_visible = 10 
+            }
+          STRUCT{
+            array_name = glasses 
+            options_menu_name = glasses_menu 
+            color_menu_name = glasses_hsv_menu 
+            color_property_name = glasses 
+            color_hue_slider = glasses_h_slider 
+            color_saturation_slider = glasses_s_slider 
+            color_value_slider = glasses_v_slider 
+            cas_heads_anims num_visible = 10 
+            random_probability = 0.2 
+            allow_edit_hsv }
+          STRUCT{
+            array_name = hair 
+            allow_edit_hsv options_menu_name = hair_menu 
+            color_menu_name = hair_hsv_menu 
+            color_property_name = hair 
+            color_hue_slider = hair_h_slider 
+            color_saturation_slider = hair_s_slider 
+            color_value_slider = hair_v_slider 
+            cas_heads_anims num_visible = 10 
+            }
+          STRUCT{
+            array_name = jaw 
+            allow_edit_hsv options_menu_name = jaws_menu 
+            color_menu_name = jaws_hsv_menu 
+            color_property_name = jaw 
+            color_hue_slider = jaws_h_slider 
+            color_saturation_slider = jaws_s_slider 
+            color_value_slider = jaws_v_slider 
+            cas_heads_anims num_visible = 10 
+            random_probability = 0.5 
+            }
+          STRUCT{
+            array_name = boardup 
+            }
+          STRUCT{
+            array_name = boarddown 
+            allow_edit_hsv }
+          STRUCT{
+            array_name = hat 
+            allow_edit_hsv options_menu_name = hats_menu 
+            color_menu_name = hats_hsv_menu 
+            color_property_name = hat 
+            color_hue_slider = hats_h_slider 
+            color_saturation_slider = hats_s_slider 
+            color_value_slider = hats_v_slider 
+            cas_heads_anims num_visible = 10 
+            random_probability = 0.5 
+            }
+          STRUCT{
+            array_name = helmet 
+            allow_edit_hsv options_menu_name = helmets_menu 
+            color_menu_name = helmets_hsv_menu 
+            color_property_name = helmet 
+            color_hue_slider = helmets_h_slider 
+            color_saturation_slider = helmets_s_slider 
+            color_value_slider = helmets_v_slider 
+            cas_heads_anims num_visible = 7 
+            }
+          STRUCT{
+            array_name = accessories 
+            options_menu_name = accessories_menu 
+            cas_torsos_anims num_visible = 11 
+            random_probability = 0.2 
+            }
+          STRUCT{
+            array_name = special_item 
+            }
+          STRUCT{
+            array_name = special_item_2 
+            }
+          STRUCT{
+            array_name = hat_logo 
+            options_menu_name = hat_logos_menu 
+            cas_heads_anims num_visible = 10 
+            }
+          STRUCT{
+            array_name = helmet_logo 
+            options_menu_name = helmet_logos_menu 
+            cas_heads_anims num_visible = 7 
+            }
+          
+        )
+        
+#00301  FUNCTION CasShowScript 
+#00305    IF CurrentSkaterProfileIs 1 
+#00306      MoveMenu id = cas_menu_container 
+            x = 195 
+            
+#00307      MoveMenu id = cas_name_keyboard_control 
+            x = -35 
+            
+#00310      MoveMenu id = cas_hometown_keyboard_control 
+            x = -35 
+            
+#00311    ELSE 
+#00312      MoveMenu id = cas_menu_container 
+            x = 0 
+            
+#00313      MoveMenu id = cas_name_keyboard_control 
+            x = 160 
+            
+#00314      MoveMenu id = cas_hometown_keyboard_control 
+            x = 160 
+            
+#00315    END IF 
+#00316  END FUNCTION
+          
+#00317  cas_menu_width = STRUCT{
+          w = 350.0 
+          }
+        
+#00321  cas_menu_properties = STRUCT{
+          x = 45.0 
+          y = 90.0 
+          w = 350.0 
+          h = 400.0 
+          just_center_x just_center_y }
+        
+#00327  cas_left_menu_properties = STRUCT{
+          x = 0.0 
+          y = 40.0 
+          w = 150.0 
+          h = 400.0 
+          just_center_x just_center_y not_rounded }
+        
+#00334  cas_right_menu_properties = STRUCT{
+          x = 150.0 
+          y = 40.0 
+          w = 200.0 
+          h = 400.0 
+          just_center_x just_center_y not_rounded right_side_icon }
+        
+#00342  cas_done_menu_properties = STRUCT{
+          x = 0.0 
+          y = 40.0 
+          w = 350.0 
+          h = 400.0 
+          just_center_x just_center_y not_rounded }
+        
+#00349  cas_horizontal_menu_properties = STRUCT{
+          x = 3.0 
+          y = 4.0 
+          }
+        
+#00353  cas_pip_spacing = 5.0 
+        
+#00355  implemented_property = STRUCT{
+          drawer = cas_menu_property 
+          }
+        
+#00359  FUNCTION reload_cas 
+#00361    IF GotParam both_skaters 
+#00362      RemoveAllSkaters 
+#00363      ToggleSkater 
+#00364    ELSE 
+#00365      ReloadCurrentSkater 
+#00366    END IF 
+#00367    reset_skateshop_skater 
+#00368    IF CurrentSkaterProfileIs 0 
+#00372      MainMenuCam 
+#00373    END IF 
+#00374  END FUNCTION
+          
+#00375  FUNCTION load_pro_skater 
+#00377    IF setplayerappearance NULL 
+#00378      reload_cas 
+#00384    END IF 
+#00385    printf "NEW SKATER INFO:" 
+#00386    IF ProfileEquals trickstyle = vert 
+            
+#00387      printf "Trickstyle = Vert" 
+#00388    END IF 
+#00389    IF ProfileEquals trickstyle = street 
+            
+#00390      printf "Trickstyle = Street" 
+#00391    END IF 
+#00392    IF ProfileEquals is_named = hawk 
+            
+#00393      printf "Is Tony Hawk" 
+#00394    ELSE 
+#00395      printf "Is Not Tony Hawk" 
+#00396    END IF 
+#00397    IF ProfileEquals is_named = koston 
+            
+#00398      printf "Is Eric Koston" 
+#00399    ELSE 
+#00400      printf "Is Not Eric Koston" 
+#00401    END IF 
+#00402    IF ProfileEquals is_pro 
+#00403      printf "Is Pro Skater" 
+#00404    END IF 
+#00405    IF ProfileEquals is_custom 
+#00406      printf "Is Custom Skater" 
+#00407    END IF 
+#00408    IF ProfileEquals stance = regular 
+            
+#00409      printf "Is Regular" 
+#00410    END IF 
+#00411    IF ProfileEquals stance = goofy 
+            
+#00412      printf "Is Goofy" 
+#00413    END IF 
+#00414    IF ProfileEquals body_type = male 
+            
+#00415      printf "Is Male" 
+#00416    END IF 
+#00417    IF ProfileEquals body_type = female 
+            
+#00418      printf "Is Female" 
+#00419    END IF 
+#00420  END FUNCTION
+          
+#00421  FUNCTION link_to_cas 
+#00423    load_pro_skater name = custom 
+          
+#00424    MainMenuToPlayer1CamAnim 
+#00425  END FUNCTION
+          
+#00426  FUNCTION pre_cas_menu_create 
+#00428    createmenu STRUCT{
+            type = verticalmenu 
+            id = pre_cas_main_menu 
+            cas_menu_properties blue_top eventhandlers = ARRAY(
+              
+              STRUCT{
+                type = showeventhandler 
+                target = "pre_cas_on_show" 
+                }
+              STRUCT{
+                type = backeventhandler 
+                target = "Player1ToMainMenuCamAnim" 
+                }
+              
+            )
+            children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Creation Options" 
+                static dont_gray drawer = title 
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = create_new_item 
+                text = "Create New" 
+                link = create_new_warning 
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = edit_current_item 
+                text = "Edit Current" 
+                link = cas_menu_container 
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Load skater" 
+                target = "_CreationOptionsLoadCAS" 
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = cas_save_skater 
+                text = "Save Skater" 
+                implemented_property just_center_x drawer = main 
+                target = "_EditCurrentSaveCAS" 
+                params = STRUCT{
+                  ReturnToCreationOptions }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = pre_cas_main_menu_done 
+                text = "Done" 
+                target = "go_back" 
+                params = STRUCT{
+                  id = pre_cas_main_menu 
+                  }
+                }
+              
+            )
+            }
+          
+#00469    CreateAndAttachMenu STRUCT{
+            type = verticalmenu 
+            id = create_new_warning 
+            parent = contain1 
+            cas_menu_properties blue_top eventhandlers = ARRAY(
+              
+              STRUCT{
+                type = showeventhandler 
+                target = "create_new_warning_on_show" 
+                }
+              
+            )
+            children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Create New" 
+                static dont_gray drawer = title 
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Warning:" 
+                static dont_gray }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Any unsaved changes" 
+                static dont_gray }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "to your current" 
+                static dont_gray }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "create-a-skater" 
+                static dont_gray }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "will be lost." 
+                static dont_gray }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "" 
+                static dont_gray }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Continue?" 
+                static dont_gray }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "" 
+                static dont_gray }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Yes" 
+                target = "goto_create_new_skater" 
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = warning_no_id 
+                text = "No" 
+                target = "go_back" 
+                params = STRUCT{
+                  id = create_new_warning 
+                  }
+                }
+              
+            )
+            }
+          
+#00527  END FUNCTION
+          
+#00529  FUNCTION goto_create_new_skater 
+#00531    go_back id = create_new_warning 
+          
+#00533    create_new_skater 
+#00536    SwitchToMenu menu = cas_menu_container 
+          DoNotMakeRoot 
+#00540  END FUNCTION
+          
+#00541  FUNCTION create_new_warning_on_show 
+#00543    AttemptMenuSelect menu_id = create_new_warning 
+          item_id = warning_no_id 
+          
+#00544  END FUNCTION
+          
+#00545  FUNCTION create_new_skater 
+#00547    ResetSkaterProfile default_custom_skater_info 
+#00549    ResetDefaultAppearance 
+#00550    reload_cas 
+#00551    FireMenuEvent type = REFRESHDECKTEXTURES 
+          id = deck_menu 
+          target = deck_menu 
+          
+#00552  END FUNCTION
+          
+#00553  FUNCTION cas_menu_create 
+#00555    createmenu STRUCT{
+            type = menucontainer 
+            id = cas_menu_container 
+            eventhandlers = ARRAY(
+              
+              STRUCT{
+                type = showeventhandler 
+                target = "cas_on_show" 
+                }
+              STRUCT{
+                type = hideeventhandler 
+                target = "cas_on_hide" 
+                }
+              
+            )
+            }
+          
+#00565    MoveMenu id = cas_menu_container 
+          y = -30 
+          
+#00569    attach_new_cas_multi_menu 
+#00571    attach_new_cas_general_menus 
+#00573    ForEachIn editable_cas_options do = attach_new_cas_scrolling_menu 
+          
+#00576    ForEachIn editable_cas_options do = attach_new_cas_color_menu 
+          
+#00579  END FUNCTION
+          
+#00581  FUNCTION attach_new_cas_event_handler 
+#00584    IF GotParam options_menu_name 
+#00585      VerifyParam param = options_menu_name 
+            func = attach_new_cas_event_handler 
+            NULL 
+#00586      AttachNewCASEventHandler NULL 
+#00587    END IF 
+#00588  END FUNCTION
+          
+#00589  FUNCTION attach_new_cas_color_menu 
+#00591    IF GotParam color_menu_name 
+#00593      VerifyParam param = color_menu_name 
+            func = attach_new_cas_color_menu 
+            NULL 
+#00594      VerifyParam param = back_anim 
+            func = attach_new_cas_color_menu 
+            NULL 
+#00595      VerifyParam param = show_anim 
+            func = attach_new_cas_scrolling_menu 
+            NULL 
+#00596      VerifyParam param = array_name 
+            func = attach_new_cas_scrolling_menu 
+            NULL 
+#00597      VerifyParam param = color_hue_slider 
+            func = attach_new_cas_color_menu 
+            NULL 
+#00598      VerifyParam param = color_saturation_slider 
+            func = attach_new_cas_color_menu 
+            NULL 
+#00599      VerifyParam param = color_value_slider 
+            func = attach_new_cas_color_menu 
+            NULL 
+#00600      createmenu STRUCT{
+              type = verticalmenu 
+              id = GLOBAL.color_menu_name 
+              cas_right_menu_properties eventhandlers = ARRAY(
+                
+                STRUCT{
+                  type = backeventhandler 
+                  target = GLOBAL.back_anim 
+                  }
+                STRUCT{
+                  type = showeventhandler 
+                  target = GLOBAL.show_anim 
+                  }
+                
+              )
+              children = ARRAY(
+                
+                STRUCT{
+                  type = slidermenuelement 
+                  id = GLOBAL.color_hue_slider 
+                  text = "Color" 
+                  drawer = cas_menu_property 
+                  lower = 0 
+                  upper = 355 
+                  delta = 5 
+                  start = 0 
+                  wrap = 1 
+                  right_side_w = 65 
+                  eventhandlers = ARRAY(
+                    
+                    STRUCT{
+                      type = ContentsChangedEventHandler 
+                      target = "change_color_property" 
+                      params = STRUCT{
+                        field_id = GLOBAL.array_name 
+                        subfield_id = hue 
+                        slider_id = GLOBAL.color_hue_slider 
+                        }
+                      }
+                    
+                  )
+                  }
+                STRUCT{
+                  type = slidermenuelement 
+                  id = GLOBAL.color_saturation_slider 
+                  text = "Saturation" 
+                  drawer = cas_menu_property 
+                  lower = 0 
+                  upper = 100 
+                  delta = 2 
+                  start = 50 
+                  right_side_w = 65 
+                  eventhandlers = ARRAY(
+                    
+                    STRUCT{
+                      type = ContentsChangedEventHandler 
+                      target = "change_color_property" 
+                      params = STRUCT{
+                        field_id = GLOBAL.array_name 
+                        subfield_id = saturation 
+                        slider_id = GLOBAL.color_saturation_slider 
+                        }
+                      }
+                    
+                  )
+                  }
+                STRUCT{
+                  type = slidermenuelement 
+                  id = GLOBAL.color_value_slider 
+                  text = "Brightness" 
+                  drawer = cas_menu_property 
+                  lower = 0 
+                  upper = 100 
+                  delta = 2 
+                  start = 50 
+                  right_side_w = 65 
+                  eventhandlers = ARRAY(
+                    
+                    STRUCT{
+                      type = ContentsChangedEventHandler 
+                      target = "change_color_property" 
+                      params = STRUCT{
+                        field_id = GLOBAL.array_name 
+                        subfield_id = value 
+                        slider_id = GLOBAL.color_value_slider 
+                        }
+                      }
+                    
+                  )
+                  }
+                
+              )
+              }
+            
+#00636      attachchild parent = cas_right_container 
+            child = GLOBAL.color_menu_name 
+            
+#00637    END IF 
+#00638  END FUNCTION
+          
+#00640  FUNCTION attach_new_cas_scrolling_menu 
+#00642    IF GotParam options_menu_name 
+#00645      VerifyParam param = back_anim 
+            func = attach_new_cas_scrolling_menu 
+            NULL 
+#00647      VerifyParam param = show_anim 
+            func = attach_new_cas_scrolling_menu 
+            NULL 
+#00648      VerifyParam param = options_menu_name 
+            func = attach_new_cas_scrolling_menu 
+            NULL 
+#00649      VerifyParam param = num_visible 
+            func = attach_new_cas_scrolling_menu 
+            NULL 
+#00650      createmenu STRUCT{
+              type = scrollingmenu 
+              id = GLOBAL.options_menu_name 
+              cas_right_menu_properties num_visible = GLOBAL.num_visible 
+              eventhandlers = ARRAY(
+                
+                STRUCT{
+                  type = backeventhandler 
+                  target = GLOBAL.back_anim 
+                  }
+                STRUCT{
+                  type = showeventhandler 
+                  target = GLOBAL.show_anim 
+                  }
+                
+              )
+              }
+            
+#00660      attachchild parent = cas_right_container 
+            child = GLOBAL.options_menu_name 
+            
+#00661    END IF 
+#00662  END FUNCTION
+          
+#00663  FUNCTION attach_new_cas_multi_menu 
+#00665    createmenu STRUCT{
+            type = verticalmenu 
+            id = cas_multi_menu 
+            cas_menu_properties blue_top children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                id = cas_current_title 
+                text = "Create Skater" 
+                static dont_gray drawer = title 
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = cas_current_name 
+                text = "Skater Name" 
+                static dont_gray highlight_props = Inverted_Highlight_Info 
+                truncate_to_width }
+              STRUCT{
+                type = menucontainer 
+                id = cas_multi_container 
+                show_all_children eventhandler = STRUCT{
+                  type = leftrightcontroller 
+                  left = cas_left_container 
+                  right = cas_right_container 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = cas_points_available 
+                text = "" 
+                implemented_property static dont_gray drawer = points_available_property 
+                lock_layout y = 258.0 
+                }
+              
+            )
+            }
+          
+#00700    createmenu STRUCT{
+            type = menucontainer 
+            id = cas_left_container 
+            }
+          
+#00705    attachchild parent = cas_multi_container 
+          child = cas_left_container 
+          
+#00707    createmenu STRUCT{
+            type = menucontainer 
+            id = cas_right_container 
+            }
+          
+#00712    attachchild parent = cas_multi_container 
+          child = cas_right_container 
+          
+#00714    attach_new_cas_page_menu STRUCT{
+            menu_id = cas_general_menu 
+            child_array = cas_general_children 
+            layout_properties = cas_left_menu_properties 
+            container_id = cas_left_container 
+            }
+          
+#00732    attach_new_cas_page_menu STRUCT{
+            menu_id = cas_heads_menu 
+            child_array = cas_heads_children 
+            layout_properties = cas_left_menu_properties 
+            container_id = cas_left_container 
+            }
+          
+#00738    attach_new_cas_page_menu STRUCT{
+            menu_id = cas_torsos_menu 
+            child_array = cas_torsos_children 
+            layout_properties = cas_left_menu_properties 
+            container_id = cas_left_container 
+            }
+          
+#00744    attach_new_cas_page_menu STRUCT{
+            menu_id = cas_legs_menu 
+            child_array = cas_legs_children 
+            layout_properties = cas_left_menu_properties 
+            container_id = cas_left_container 
+            }
+          
+#00750    attach_new_cas_page_menu STRUCT{
+            menu_id = cas_pads_menu 
+            child_array = cas_pads_children 
+            layout_properties = cas_left_menu_properties 
+            container_id = cas_left_container 
+            }
+          
+#00756    attach_new_cas_page_menu STRUCT{
+            menu_id = cas_stats_menu 
+            child_array = cas_stats_children 
+            layout_properties = cas_left_menu_properties 
+            container_id = cas_left_container 
+            }
+          
+#00762    attach_new_cas_page_menu STRUCT{
+            menu_id = cas_done_menu 
+            child_array = cas_done_children 
+            layout_properties = cas_done_menu_properties 
+            container_id = cas_left_container 
+            }
+          
+#00768    attach_new_cas_page_menu STRUCT{
+            menu_id = cas_general_display_menu 
+            child_array = cas_general_display_children 
+            layout_properties = cas_right_menu_properties 
+            container_id = cas_right_container 
+            is_display_menu }
+          
+#00775    attach_new_cas_page_menu STRUCT{
+            menu_id = cas_heads_display_menu 
+            child_array = cas_heads_display_children 
+            layout_properties = cas_right_menu_properties 
+            container_id = cas_right_container 
+            is_display_menu }
+          
+#00782    attach_new_cas_page_menu STRUCT{
+            menu_id = cas_torsos_display_menu 
+            child_array = cas_torsos_display_children 
+            layout_properties = cas_right_menu_properties 
+            container_id = cas_right_container 
+            is_display_menu }
+          
+#00789    attach_new_cas_page_menu STRUCT{
+            menu_id = cas_legs_display_menu 
+            child_array = cas_legs_display_children 
+            layout_properties = cas_right_menu_properties 
+            container_id = cas_right_container 
+            is_display_menu }
+          
+#00796    attach_new_cas_page_menu STRUCT{
+            menu_id = cas_pads_display_menu 
+            child_array = cas_pads_display_children 
+            layout_properties = cas_right_menu_properties 
+            container_id = cas_right_container 
+            is_display_menu }
+          
+#00803    attach_new_cas_page_menu STRUCT{
+            menu_id = cas_stats_display_menu 
+            child_array = cas_stats_display_children 
+            layout_properties = cas_right_menu_properties 
+            container_id = cas_right_container 
+            is_display_menu }
+          
+#00810    attach_new_cas_page_menu STRUCT{
+            menu_id = cas_done_display_menu 
+            layout_properties = cas_right_menu_properties 
+            container_id = cas_right_container 
+            is_display_menu }
+          
+#00816    attachchild parent = cas_menu_container 
+          child = cas_multi_menu 
+          
+#00817    CreateAndAttachMenu STRUCT{
+            type = keyboardcontrol 
+            id = cas_name_keyboard_control 
+            x = 160.0 
+            y = 56.0 
+            w = 320.0 
+            h = 336.0 
+            just_center_x just_center_y num_columns = 13 
+            gapname_charset min_chars = 0 
+            max_chars = 16 
+            title_string = "Enter name:" 
+            eventhandlers = ARRAY(
+              
+              STRUCT{
+                type = showeventhandler 
+                target = "clear_keyboard_string" 
+                params = STRUCT{
+                  control_id = cas_name_keyboard_control 
+                  }
+                }
+              STRUCT{
+                type = ContentsChangedEventHandler 
+                target = "set_profile_data" 
+                params = STRUCT{
+                  field_id = display_name 
+                  keyboard_id = cas_name_keyboard_control 
+                  }
+                }
+              STRUCT{
+                type = ContentsChangedEventHandler 
+                target = "check_for_neversoft_skaters" 
+                params = STRUCT{
+                  field_id = display_name 
+                  keyboard_id = cas_name_keyboard_control 
+                  }
+                }
+              
+            )
+            parent = cas_menu_container 
+            }
+          
+#00835    CreateAndAttachMenu STRUCT{
+            type = keyboardcontrol 
+            id = cas_hometown_keyboard_control 
+            x = 160.0 
+            y = 56.0 
+            w = 320.0 
+            h = 336.0 
+            just_center_x just_center_y num_columns = 13 
+            gapname_charset min_chars = 0 
+            max_chars = 20 
+            title_string = "Enter hometown:" 
+            eventhandlers = ARRAY(
+              
+              STRUCT{
+                type = showeventhandler 
+                target = "clear_keyboard_string" 
+                params = STRUCT{
+                  control_id = cas_hometown_keyboard_control 
+                  }
+                }
+              STRUCT{
+                type = ContentsChangedEventHandler 
+                target = "set_profile_data" 
+                params = STRUCT{
+                  field_id = hometown 
+                  keyboard_id = cas_hometown_keyboard_control 
+                  }
+                }
+              
+            )
+            parent = cas_menu_container 
+            }
+          
+#00850    attach_new_tab_menu 
+#00851  END FUNCTION
+          
+#00852  FUNCTION attach_new_cas_general_menus 
+#00854    CreateAndAttachMenu STRUCT{
+            type = verticalmenu 
+            id = cas_sex_menu 
+            parent = cas_right_container 
+            cas_right_menu_properties children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                id = cas_item_male 
+                text = "Male" 
+                implemented_property eventhandlers = ARRAY(
+                  
+                  STRUCT{
+                    type = showeventhandler 
+                    target = "get_profile_data" 
+                    params = STRUCT{
+                      field_id = body_type 
+                      select_if = male 
+                      menu_id = cas_sex_menu 
+                      control_id = cas_item_male 
+                      }
+                    }
+                  STRUCT{
+                    type = ChooseEventHandler 
+                    target = "change_skater_property" 
+                    params = STRUCT{
+                      field_id = body_type 
+                      value = male 
+                      should_reload_skater }
+                    }
+                  
+                )
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = cas_item_female 
+                text = "Female" 
+                implemented_property eventhandlers = ARRAY(
+                  
+                  STRUCT{
+                    type = showeventhandler 
+                    target = "get_profile_data" 
+                    params = STRUCT{
+                      field_id = body_type 
+                      select_if = female 
+                      menu_id = cas_sex_menu 
+                      control_id = cas_item_female 
+                      }
+                    }
+                  STRUCT{
+                    type = ChooseEventHandler 
+                    target = "change_skater_property" 
+                    params = STRUCT{
+                      field_id = body_type 
+                      value = female 
+                      should_reload_skater }
+                    }
+                  
+                )
+                }
+              
+            )
+            }
+          
+#00888    CreateAndAttachMenu STRUCT{
+            type = verticalmenu 
+            id = cas_age_menu 
+            parent = cas_right_container 
+            cas_right_menu_properties children = ARRAY(
+              
+              STRUCT{
+                type = slidermenuelement 
+                id = cas_age_slider 
+                text = "years" 
+                drawer = cas_menu_property 
+                lower = 5 
+                upper = 80 
+                delta = 1 
+                start = 16 
+                wrap = 0 
+                right_side_w = 65 
+                eventhandlers = ARRAY(
+                  
+                  STRUCT{
+                    type = showeventhandler 
+                    target = "get_profile_data" 
+                    params = STRUCT{
+                      field_id = age 
+                      slider_id = cas_age_slider 
+                      }
+                    }
+                  STRUCT{
+                    type = ContentsChangedEventHandler 
+                    target = "change_skater_property" 
+                    params = STRUCT{
+                      field_id = age 
+                      slider_id = cas_age_slider 
+                      }
+                    }
+                  
+                )
+                }
+              
+            )
+            }
+          
+#00907    CreateAndAttachMenu STRUCT{
+            type = verticalmenu 
+            id = cas_weight_menu 
+            parent = cas_right_container 
+            cas_right_menu_properties children = ARRAY(
+              
+              STRUCT{
+                type = slidermenuelement 
+                id = cas_weight_slider 
+                text = "pounds" 
+                lower = cas_min_weight 
+                upper = cas_max_weight 
+                delta = 5 
+                start = 180 
+                right_side_w = 65 
+                drawer = cas_menu_property 
+                eventhandlers = ARRAY(
+                  
+                  STRUCT{
+                    type = ChooseEventHandler 
+                    target = "reload_cas" 
+                    }
+                  STRUCT{
+                    type = showeventhandler 
+                    target = "get_profile_data" 
+                    params = STRUCT{
+                      field_id = weight 
+                      slider_id = cas_weight_slider 
+                      }
+                    }
+                  STRUCT{
+                    type = ContentsChangedEventHandler 
+                    target = "change_skater_property" 
+                    params = STRUCT{
+                      field_id = weight 
+                      slider_id = cas_weight_slider 
+                      should_reload_skater }
+                    }
+                  
+                )
+                }
+              
+            )
+            }
+          
+#00927    CreateAndAttachMenu STRUCT{
+            type = verticalmenu 
+            id = cas_height_menu 
+            parent = cas_right_container 
+            cas_right_menu_properties children = ARRAY(
+              
+              STRUCT{
+                type = slidermenuelement 
+                id = cas_height_slider 
+                text = "inches" 
+                lower = cas_min_height 
+                upper = cas_max_height 
+                delta = 1 
+                start = 72 
+                right_side_w = 65 
+                drawer = cas_menu_property 
+                eventhandlers = ARRAY(
+                  
+                  STRUCT{
+                    type = ChooseEventHandler 
+                    target = "reload_cas" 
+                    }
+                  STRUCT{
+                    type = showeventhandler 
+                    target = "get_profile_data" 
+                    params = STRUCT{
+                      field_id = height 
+                      slider_id = cas_height_slider 
+                      }
+                    }
+                  STRUCT{
+                    type = ContentsChangedEventHandler 
+                    target = "change_skater_property" 
+                    params = STRUCT{
+                      field_id = height 
+                      slider_id = cas_height_slider 
+                      should_reload_skater }
+                    }
+                  
+                )
+                }
+              
+            )
+            }
+          
+#00947    CreateAndAttachMenu STRUCT{
+            type = verticalmenu 
+            id = cas_trickstyle_menu 
+            parent = cas_right_container 
+            cas_right_menu_properties children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                id = cas_item_vert 
+                text = "Vert" 
+                implemented_property eventhandlers = ARRAY(
+                  
+                  STRUCT{
+                    type = showeventhandler 
+                    target = "get_profile_data" 
+                    params = STRUCT{
+                      field_id = trickstyle 
+                      select_if = vert 
+                      menu_id = cas_trickstyle_menu 
+                      control_id = cas_item_vert 
+                      }
+                    }
+                  STRUCT{
+                    type = IsSelectedEventHandler 
+                    target = "set_profile_data" 
+                    params = STRUCT{
+                      field_id = trickstyle 
+                      value = vert 
+                      }
+                    }
+                  STRUCT{
+                    type = ChooseEventHandler 
+                    target = "go_back" 
+                    params = STRUCT{
+                      id = cas_trickstyle_menu 
+                      }
+                    }
+                  
+                )
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = cas_item_street 
+                text = "Street" 
+                implemented_property eventhandlers = ARRAY(
+                  
+                  STRUCT{
+                    type = showeventhandler 
+                    target = "get_profile_data" 
+                    params = STRUCT{
+                      field_id = trickstyle 
+                      select_if = street 
+                      menu_id = cas_trickstyle_menu 
+                      control_id = cas_item_street 
+                      }
+                    }
+                  STRUCT{
+                    type = IsSelectedEventHandler 
+                    target = "set_profile_data" 
+                    params = STRUCT{
+                      field_id = trickstyle 
+                      value = street 
+                      }
+                    }
+                  STRUCT{
+                    type = ChooseEventHandler 
+                    target = "go_back" 
+                    params = STRUCT{
+                      id = cas_trickstyle_menu 
+                      }
+                    }
+                  
+                )
+                }
+              
+            )
+            }
+          
+#00987    CreateAndAttachMenu STRUCT{
+            type = verticalmenu 
+            id = cas_stance_menu 
+            parent = cas_right_container 
+            cas_right_menu_properties children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                id = cas_item_regular 
+                text = "Regular" 
+                implemented_property eventhandlers = ARRAY(
+                  
+                  STRUCT{
+                    type = showeventhandler 
+                    target = "get_profile_data" 
+                    params = STRUCT{
+                      field_id = stance 
+                      select_if = regular 
+                      menu_id = cas_stance_menu 
+                      control_id = cas_item_regular 
+                      }
+                    }
+                  STRUCT{
+                    type = IsSelectedEventHandler 
+                    target = "set_profile_data" 
+                    params = STRUCT{
+                      field_id = stance 
+                      value = regular 
+                      }
+                    }
+                  STRUCT{
+                    type = ChooseEventHandler 
+                    target = "go_back" 
+                    params = STRUCT{
+                      id = cas_stance_menu 
+                      }
+                    }
+                  
+                )
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = cas_item_goofy 
+                text = "Goofy" 
+                implemented_property eventhandlers = ARRAY(
+                  
+                  STRUCT{
+                    type = showeventhandler 
+                    target = "get_profile_data" 
+                    params = STRUCT{
+                      field_id = stance 
+                      select_if = goofy 
+                      menu_id = cas_stance_menu 
+                      control_id = cas_item_goofy 
+                      }
+                    }
+                  STRUCT{
+                    type = IsSelectedEventHandler 
+                    target = "set_profile_data" 
+                    params = STRUCT{
+                      field_id = stance 
+                      value = goofy 
+                      }
+                    }
+                  STRUCT{
+                    type = ChooseEventHandler 
+                    target = "go_back" 
+                    params = STRUCT{
+                      id = cas_stance_menu 
+                      }
+                    }
+                  
+                )
+                }
+              
+            )
+            }
+          
+#01027    CreateAndAttachMenu STRUCT{
+            type = verticalmenu 
+            id = cas_push_menu 
+            parent = cas_right_container 
+            cas_right_menu_properties children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                id = cas_item_nevermongo 
+                text = "Never Mongo" 
+                implemented_property eventhandlers = ARRAY(
+                  
+                  STRUCT{
+                    type = showeventhandler 
+                    target = "get_profile_data" 
+                    params = STRUCT{
+                      field_id = pushstyle 
+                      select_if = never_mongo 
+                      menu_id = cas_push_menu 
+                      control_id = cas_item_nevermongo 
+                      }
+                    }
+                  STRUCT{
+                    type = IsSelectedEventHandler 
+                    target = "set_profile_data" 
+                    params = STRUCT{
+                      field_id = pushstyle 
+                      value = never_mongo 
+                      }
+                    }
+                  STRUCT{
+                    type = ChooseEventHandler 
+                    target = "go_back" 
+                    params = STRUCT{
+                      id = cas_push_menu 
+                      }
+                    }
+                  
+                )
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = cas_item_alwaysmongo 
+                text = "Always Mongo" 
+                implemented_property eventhandlers = ARRAY(
+                  
+                  STRUCT{
+                    type = showeventhandler 
+                    target = "get_profile_data" 
+                    params = STRUCT{
+                      field_id = pushstyle 
+                      select_if = always_mongo 
+                      menu_id = cas_push_menu 
+                      control_id = cas_item_alwaysmongo 
+                      }
+                    }
+                  STRUCT{
+                    type = IsSelectedEventHandler 
+                    target = "set_profile_data" 
+                    params = STRUCT{
+                      field_id = pushstyle 
+                      value = always_mongo 
+                      }
+                    }
+                  STRUCT{
+                    type = ChooseEventHandler 
+                    target = "go_back" 
+                    params = STRUCT{
+                      id = cas_push_menu 
+                      }
+                    }
+                  
+                )
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = cas_item_mongowhenswitch 
+                text = "Mongo when Switch" 
+                implemented_property eventhandlers = ARRAY(
+                  
+                  STRUCT{
+                    type = showeventhandler 
+                    target = "get_profile_data" 
+                    params = STRUCT{
+                      field_id = pushstyle 
+                      select_if = mongo_when_switch 
+                      menu_id = cas_push_menu 
+                      control_id = cas_item_mongowhenswitch 
+                      }
+                    }
+                  STRUCT{
+                    type = IsSelectedEventHandler 
+                    target = "set_profile_data" 
+                    params = STRUCT{
+                      field_id = pushstyle 
+                      value = mongo_when_switch 
+                      }
+                    }
+                  STRUCT{
+                    type = ChooseEventHandler 
+                    target = "go_back" 
+                    params = STRUCT{
+                      id = cas_push_menu 
+                      }
+                    }
+                  
+                )
+                }
+              
+            )
+            }
+          
+#01085  END FUNCTION
+          
+#01087  FUNCTION change_skater_property 
+#01089    IF GotParam field_id 
+#01090      IF GotParam value 
+#01091        ApplyToSkaterProfile field_id = GLOBAL.field_id 
+              value = GLOBAL.value 
+              
+#01092      ELSE 
+#01093        IF GotParam slider_id 
+#01094          ApplyToSkaterProfile field_id = GLOBAL.field_id 
+                slider_id = GLOBAL.slider_id 
+                
+#01095        ELSE 
+#01096          printf NULL 
+#01097          script_assert "No value or slider_id specified in change_skater_property" 
+#01098        END IF 
+#01099      END IF 
+#01100    ELSE 
+#01101      script_assert "No field_id specified in change_skater_property" 
+#01102    END IF 
+#01103    IF GotParam should_reload_skater 
+#01105      reload_cas 
+#01106    END IF 
+#01107  END FUNCTION
+          
+#01108  FUNCTION change_color_property 
+#01110    ApplyColorToSkaterProfile NULL 
+#01111    RefreshSkaterColors 
+#01112  END FUNCTION
+          
+#01113  FUNCTION pre_cas_on_show 
+#01115    printf "pre_cas_on_show" 
+#01116    IF GetGlobalFlag flag = ALREADY_EDITED_CAS 
+            
+#01118      AttemptMenuSelect menu_id = pre_cas_main_menu 
+            item_id = edit_current_item 
+            
+#01119    END IF 
+#01120  END FUNCTION
+          
+#01121  FUNCTION cas_on_hide 
+#01123    SetGlobalFlag flag = ALREADY_EDITED_CAS 
+          
+#01126  END FUNCTION
+          
+#01127  FUNCTION cas_on_show 
+#01129    CasShowScript 
+#01130    InitializeCASMenus 
+#01133    ForEachIn editable_cas_options do = attach_new_cas_event_handler 
+          
+#01134  END FUNCTION
+          
+#01135  FUNCTION promenu_on_show 
+#01137    IF CurrentSkaterProfileIs 0 
+#01138      MoveMenu id = cas_pro_menu 
+            x = 45.0 
+            
+#01139    ELSE 
+#01140      MoveMenu id = cas_pro_menu 
+            x = 245.0 
+            
+#01141    END IF 
+#01142    cas_load_pre prefile_name = "cas_shared_fe.pre" 
+          
+#01145  END FUNCTION
+          
+#01146  FUNCTION cas_unload_pre_files 
+#01148    UnloadPreFile "cas_male_fe.pre" dont_assert 
+#01151    UnloadPreFile "cas_female_fe.pre" dont_assert 
+#01152    UnloadPreFile "cas_secret_fe.pre" dont_assert 
+#01153    UnloadPreFile "cas_shared_fe.pre" dont_assert 
+#01154    UnloadPreFile BoardsPre dont_assert 
+#01155  END FUNCTION
+          
+#01156  FUNCTION cas_load_pre 
+#01158    VerifyParam param = prefile_name 
+          func = load_pre_redundant_safe 
+          NULL 
+#01159    IF IsTrue cas_artist 
+#01160      printf "Not loading Cas Geometry PRE file (is cas_artist)" 
+#01164      printf "Not loading Cas Textures PRE file (is cas_artist)" 
+#01165    ELSE 
+#01166      IF InPreFile GLOBAL.prefile_name 
+              
+#01167        printf "Not loading Cas PRE file (already InPreFile)" 
+#01168      ELSE 
+#01169        printf "Loading Cas PRE file" 
+#01170        LoadPreFile GLOBAL.prefile_name 
+              
+#01177      END IF 
+#01178    END IF 
+#01179  END FUNCTION
+          
+#01180  FUNCTION cas_on_move 
+#01182    printf "Move detected" 
+#01183    printf GLOBAL.press 
+          
+#01184  END FUNCTION
+          
+#01185  FUNCTION disable_all_cas_menus_except 
+#01187    VerifyParam param = id 
+          func = disable_all_cas_menus_except 
+          NULL 
+#01188    DisableAllCASMenusExcept id = GLOBAL.id 
+          
+#01189  END FUNCTION
+          
+#01190  FUNCTION attach_new_cas_page_menu 
+#01192    VerifyParam param = menu_id 
+          func = attach_new_cas_page_menu 
+          NULL 
+#01194    VerifyParam param = container_id 
+          func = attach_new_cas_page_menu 
+          NULL 
+#01196    IF GotParam child_array 
+#01197      createmenu STRUCT{
+              type = verticalmenu 
+              id = GLOBAL.menu_id 
+              GLOBAL.layout_properties 
+              children = GLOBAL.child_array 
+              }
+            
+#01203    ELSE 
+#01204      createmenu STRUCT{
+              type = verticalmenu 
+              id = GLOBAL.menu_id 
+              GLOBAL.layout_properties 
+              }
+            
+#01209    END IF 
+#01210    IF GotParam is_display_menu 
+#01214    ELSE 
+#01215      AttachEventHandler object = GLOBAL.menu_id 
+            type = showeventhandler 
+            target = "attempt_menu_select" 
+            params = STRUCT{
+              menu_id = GLOBAL.menu_id 
+              top_item }
+            
+#01216    END IF 
+#01217    attachchild parent = GLOBAL.container_id 
+          child = GLOBAL.menu_id 
+          
+#01219  END FUNCTION
+          
+#01220  cas_general_children = ARRAY(
+          
+          STRUCT{
+            type = textmenuelement 
+            id = cas_name 
+            text = "Name" 
+            implemented_property just_right_x link = cas_name_keyboard_control 
+            }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_hometown 
+            text = "Hometown" 
+            implemented_property just_right_x link = cas_hometown_keyboard_control 
+            }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_age 
+            text = "Age" 
+            implemented_property just_right_x link = cas_age_menu 
+            target = "disable_all_cas_menus_except" 
+            params = STRUCT{
+              id = cas_age 
+              }
+            }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_sex 
+            text = "Sex" 
+            implemented_property just_right_x link = cas_sex_menu 
+            target = "disable_all_cas_menus_except" 
+            params = STRUCT{
+              id = cas_sex 
+              }
+            }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_height 
+            text = "Height" 
+            implemented_property just_right_x link = cas_height_menu 
+            target = "disable_all_cas_menus_except" 
+            params = STRUCT{
+              id = cas_height 
+              }
+            }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_weight 
+            text = "Weight" 
+            implemented_property just_right_x link = cas_weight_menu 
+            target = "disable_all_cas_menus_except" 
+            params = STRUCT{
+              id = cas_weight 
+              }
+            }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_trickstyle 
+            text = "Trick Style" 
+            implemented_property just_right_x link = cas_trickstyle_menu 
+            target = "disable_all_cas_menus_except" 
+            params = STRUCT{
+              id = cas_trickstyle 
+              }
+            }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_stance 
+            text = "Stance" 
+            implemented_property just_right_x link = cas_stance_menu 
+            target = "disable_all_cas_menus_except" 
+            params = STRUCT{
+              id = cas_stance 
+              }
+            }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_pushstyle 
+            text = "Push Style" 
+            implemented_property just_right_x link = cas_push_menu 
+            target = "disable_all_cas_menus_except" 
+            params = STRUCT{
+              id = cas_pushstyle 
+              }
+            }
+          
+        )
+        
+#01283  cas_heads_children = ARRAY(
+          
+          STRUCT{
+            type = textmenuelement 
+            id = cas_face 
+            text = "Face" 
+            implemented_property just_right_x link = heads_menu 
+            target = "disable_all_cas_menus_except" 
+            params = STRUCT{
+              id = cas_face 
+              }
+            }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_hair 
+            text = "Hair" 
+            implemented_property just_right_x link = hair_menu 
+            target = "disable_all_cas_menus_except" 
+            params = STRUCT{
+              id = cas_hair 
+              }
+            }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_hair_color 
+            text = "Hair Color" 
+            implemented_property just_right_x link = hair_hsv_menu 
+            target = "disable_all_cas_menus_except" 
+            params = STRUCT{
+              id = cas_hair_color 
+              }
+            }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_facial_hair 
+            text = "Facial Hair" 
+            implemented_property just_right_x link = jaws_menu 
+            target = "disable_all_cas_menus_except" 
+            params = STRUCT{
+              id = cas_facial_hair 
+              }
+            }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_facial_hair_color 
+            text = "F. Hair Color" 
+            implemented_property just_right_x link = jaws_hsv_menu 
+            target = "disable_all_cas_menus_except" 
+            params = STRUCT{
+              id = cas_facial_hair_color 
+              }
+            }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_hat 
+            text = "Hat" 
+            implemented_property just_right_x link = hats_menu 
+            target = "disable_all_cas_menus_except" 
+            params = STRUCT{
+              id = cas_hat 
+              }
+            }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_hat_color 
+            text = "Hat Color" 
+            implemented_property just_right_x link = hats_hsv_menu 
+            target = "disable_all_cas_menus_except" 
+            params = STRUCT{
+              id = cas_hat_color 
+              }
+            }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_hat_logo 
+            text = "Hat Logo" 
+            implemented_property just_right_x link = hat_logos_menu 
+            target = "disable_all_cas_menus_except" 
+            params = STRUCT{
+              id = cas_hat_logo 
+              }
+            }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_glasses 
+            text = "Glasses" 
+            implemented_property just_right_x link = glasses_menu 
+            target = "disable_all_cas_menus_except" 
+            params = STRUCT{
+              id = cas_glasses 
+              }
+            }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_glasses_color 
+            text = "Glasses Color" 
+            implemented_property just_right_x link = glasses_hsv_menu 
+            target = "disable_all_cas_menus_except" 
+            params = STRUCT{
+              id = cas_glasses_color 
+              }
+            }
+          
+        )
+        
+#01346  cas_torsos_children = ARRAY(
+          
+          STRUCT{
+            type = textmenuelement 
+            id = cas_shirt 
+            text = "Shirt" 
+            implemented_property just_right_x link = torsos_menu 
+            target = "disable_all_cas_menus_except" 
+            params = STRUCT{
+              id = cas_shirt 
+              }
+            }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_shirt_color 
+            text = "Shirt Color" 
+            implemented_property just_right_x link = torsos_hsv_menu 
+            target = "disable_all_cas_menus_except" 
+            params = STRUCT{
+              id = cas_shirt_color 
+              }
+            }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_front_logo 
+            text = "Front Logo" 
+            implemented_property just_right_x link = front_logos_menu 
+            target = "disable_all_cas_menus_except" 
+            params = STRUCT{
+              id = cas_front_logo 
+              }
+            }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_back_logo 
+            text = "Back Logo" 
+            implemented_property just_right_x link = back_logos_menu 
+            target = "disable_all_cas_menus_except" 
+            params = STRUCT{
+              id = cas_back_logo 
+              }
+            }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_backpack 
+            text = "Backpack" 
+            implemented_property just_right_x link = backpacks_menu 
+            target = "disable_all_cas_menus_except" 
+            params = STRUCT{
+              id = cas_backpack 
+              }
+            }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_backpack_color 
+            text = "Pack Color" 
+            implemented_property just_right_x link = backpacks_hsv_menu 
+            target = "disable_all_cas_menus_except" 
+            params = STRUCT{
+              id = cas_backpack_color 
+              }
+            }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_accessories 
+            text = "Accessories" 
+            implemented_property just_right_x link = accessories_menu 
+            target = "disable_all_cas_menus_except" 
+            params = STRUCT{
+              id = cas_accessories 
+              }
+            }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_chest_tattoo 
+            text = "Chest Tattoo" 
+            implemented_property just_right_x link = chest_tattoos_menu 
+            target = "disable_all_cas_menus_except" 
+            params = STRUCT{
+              id = cas_chest_tattoo 
+              }
+            }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_back_tattoo 
+            text = "Back Tattoo" 
+            implemented_property just_right_x link = back_tattoos_menu 
+            target = "disable_all_cas_menus_except" 
+            params = STRUCT{
+              id = cas_back_tattoo 
+              }
+            }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_left_arm_tattoo 
+            text = "L. Arm Tattoo" 
+            implemented_property just_right_x link = left_arm_tattoos_menu 
+            target = "disable_all_cas_menus_except" 
+            params = STRUCT{
+              id = cas_left_arm_tattoo 
+              }
+            }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_right_arm_tattoo 
+            text = "R. Arm Tattoo" 
+            implemented_property just_right_x link = right_arm_tattoos_menu 
+            target = "disable_all_cas_menus_except" 
+            params = STRUCT{
+              id = cas_right_arm_tattoo 
+              }
+            }
+          
+        )
+        
+#01415  cas_legs_children = ARRAY(
+          
+          STRUCT{
+            type = textmenuelement 
+            id = cas_pants 
+            text = "Pants" 
+            implemented_property just_right_x link = legs_menu 
+            target = "disable_all_cas_menus_except" 
+            params = STRUCT{
+              id = cas_pants 
+              }
+            }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_pants_color 
+            text = "Pants Color" 
+            implemented_property just_right_x link = legs_hsv_menu 
+            target = "disable_all_cas_menus_except" 
+            params = STRUCT{
+              id = cas_pants_color 
+              }
+            }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_socks 
+            text = "Socks" 
+            implemented_property just_right_x link = socks_menu 
+            target = "disable_all_cas_menus_except" 
+            params = STRUCT{
+              id = cas_socks 
+              }
+            }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_socks_color 
+            text = "Socks Color" 
+            implemented_property just_right_x link = socks_hsv_menu 
+            target = "disable_all_cas_menus_except" 
+            params = STRUCT{
+              id = cas_socks_color 
+              }
+            }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_shoes 
+            text = "Shoes" 
+            implemented_property just_right_x link = shoes_menu 
+            target = "disable_all_cas_menus_except" 
+            params = STRUCT{
+              id = cas_shoes 
+              }
+            }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_shoes_color 
+            text = "Shoe Color" 
+            implemented_property just_right_x link = shoes_hsv_menu 
+            target = "disable_all_cas_menus_except" 
+            params = STRUCT{
+              id = cas_shoes_color 
+              }
+            }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_left_leg_tattoo 
+            text = "L. Leg Tattoo" 
+            implemented_property just_right_x link = left_leg_tattoos_menu 
+            target = "disable_all_cas_menus_except" 
+            params = STRUCT{
+              id = cas_left_leg_tattoo 
+              }
+            }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_right_leg_tattoo 
+            text = "R. Leg Tattoo" 
+            implemented_property just_right_x link = right_leg_tattoos_menu 
+            target = "disable_all_cas_menus_except" 
+            params = STRUCT{
+              id = cas_right_leg_tattoo 
+              }
+            }
+          
+        )
+        
+#01466  cas_pads_children = ARRAY(
+          
+          STRUCT{
+            type = textmenuelement 
+            id = cas_helmet 
+            text = "Helmet" 
+            implemented_property just_right_x link = helmets_menu 
+            target = "disable_all_cas_menus_except" 
+            params = STRUCT{
+              id = cas_helmet 
+              }
+            }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_helmet_color 
+            text = "Helmet Color" 
+            implemented_property just_right_x link = helmets_hsv_menu 
+            target = "disable_all_cas_menus_except" 
+            params = STRUCT{
+              id = cas_helmet_color 
+              }
+            }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_helmet_logo 
+            text = "Helmet Logo" 
+            implemented_property just_right_x link = helmet_logos_menu 
+            target = "disable_all_cas_menus_except" 
+            params = STRUCT{
+              id = cas_helmet_logo 
+              }
+            }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_elbowpads 
+            text = "Elbowpads" 
+            implemented_property just_right_x link = elbowpads_menu 
+            target = "disable_all_cas_menus_except" 
+            params = STRUCT{
+              id = cas_elbowpads 
+              }
+            }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_elbowpads_color 
+            text = "E-Pad Color" 
+            implemented_property just_right_x link = elbowpads_hsv_menu 
+            target = "disable_all_cas_menus_except" 
+            params = STRUCT{
+              id = cas_elbowpads_color 
+              }
+            }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_kneepads 
+            text = "Kneepads" 
+            implemented_property just_right_x link = kneepads_menu 
+            target = "disable_all_cas_menus_except" 
+            params = STRUCT{
+              id = cas_kneepads 
+              }
+            }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_kneepads_color 
+            text = "K-Pad Color" 
+            implemented_property just_right_x link = kneepads_hsv_menu 
+            target = "disable_all_cas_menus_except" 
+            params = STRUCT{
+              id = cas_kneepads_color 
+              }
+            }
+          
+        )
+        
+#01511  cas_stats_children = ARRAY(
+          
+          STRUCT{
+            type = textmenuelement 
+            auto_id text = "Air" 
+            implemented_property just_right_x link = cas_stats_display_menu 
+            }
+          STRUCT{
+            type = textmenuelement 
+            auto_id text = "Hangtime" 
+            implemented_property just_right_x link = cas_stats_display_menu 
+            }
+          STRUCT{
+            type = textmenuelement 
+            auto_id text = "Ollie" 
+            implemented_property just_right_x link = cas_stats_display_menu 
+            }
+          STRUCT{
+            type = textmenuelement 
+            auto_id text = "Speed" 
+            implemented_property just_right_x link = cas_stats_display_menu 
+            }
+          STRUCT{
+            type = textmenuelement 
+            auto_id text = "Spin" 
+            implemented_property just_right_x link = cas_stats_display_menu 
+            }
+          STRUCT{
+            type = textmenuelement 
+            auto_id text = "Switch" 
+            implemented_property just_right_x link = cas_stats_display_menu 
+            }
+          STRUCT{
+            type = textmenuelement 
+            auto_id text = "Rail Balance" 
+            implemented_property just_right_x link = cas_stats_display_menu 
+            }
+          STRUCT{
+            type = textmenuelement 
+            auto_id text = "Lip Balance" 
+            implemented_property just_right_x link = cas_stats_display_menu 
+            }
+          STRUCT{
+            type = textmenuelement 
+            auto_id text = "Manual Balance" 
+            implemented_property just_right_x link = cas_stats_display_menu 
+            }
+          
+        )
+        
+#01559  cas_done_children = ARRAY(
+          
+          STRUCT{
+            type = textmenuelement 
+            id = cas_save_changes 
+            text = "Save changes" 
+            implemented_property just_center_x drawer = main 
+            target = "_EditCurrentSaveCAS" 
+            }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_reset_to_default 
+            text = "Reset Appearance" 
+            implemented_property just_center_x drawer = main 
+            target = "reset_to_defaults" 
+            }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_randomize 
+            text = "Randomize appearance" 
+            implemented_property just_center_x drawer = main 
+            target = "randomize_appearance" 
+            }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_accept_changes 
+            text = "Done" 
+            implemented_property just_center_x drawer = main 
+            target = "go_back" 
+            params = STRUCT{
+              id = cas_accept_changes 
+              }
+            }
+          
+        )
+        
+#01590  cas_general_display_children = ARRAY(
+          
+          STRUCT{
+            type = textmenuelement 
+            id = cas_disp_name 
+            text = "---" 
+            implemented_property just_center_x truncate_to_width }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_disp_hometown 
+            text = "---" 
+            implemented_property just_center_x truncate_to_width }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_disp_age 
+            text = "---" 
+            implemented_property just_center_x }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_disp_sex 
+            text = "---" 
+            implemented_property just_center_x }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_disp_height 
+            text = "---" 
+            implemented_property just_center_x }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_disp_weight 
+            text = "---" 
+            implemented_property just_center_x }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_disp_trickstyle 
+            text = "---" 
+            implemented_property just_center_x }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_disp_stance 
+            text = "---" 
+            implemented_property just_center_x }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_disp_push 
+            text = "---" 
+            implemented_property just_center_x }
+          
+        )
+        
+#01636  cas_heads_display_children = ARRAY(
+          
+          STRUCT{
+            type = textmenuelement 
+            id = cas_disp_face 
+            text = "---" 
+            implemented_property just_center_x }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_disp_hair 
+            text = "---" 
+            implemented_property just_center_x }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_disp_hair_color 
+            text = "---" 
+            implemented_property just_center_x }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_disp_facial_hair 
+            text = "---" 
+            implemented_property just_center_x }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_disp_facial_hair_color 
+            text = "---" 
+            implemented_property just_center_x }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_disp_hat 
+            text = "---" 
+            implemented_property just_center_x }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_disp_hat_color 
+            text = "---" 
+            implemented_property just_center_x }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_disp_hat_logo 
+            text = "---" 
+            implemented_property just_center_x }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_disp_glasses 
+            text = "---" 
+            implemented_property just_center_x }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_disp_glasses_color 
+            text = "---" 
+            implemented_property just_center_x }
+          
+        )
+        
+#01687  cas_torsos_display_children = ARRAY(
+          
+          STRUCT{
+            type = textmenuelement 
+            id = cas_disp_shirt 
+            text = "---" 
+            implemented_property just_center_x }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_disp_shirt_color 
+            text = "---" 
+            implemented_property just_center_x }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_disp_front_logo 
+            text = "---" 
+            implemented_property just_center_x }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_disp_back_logo 
+            text = "---" 
+            implemented_property just_center_x }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_disp_backpack 
+            text = "---" 
+            implemented_property just_center_x }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_disp_backpack_color 
+            text = "---" 
+            implemented_property just_center_x }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_disp_accessories 
+            text = "---" 
+            implemented_property just_center_x }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_disp_chest_tattoo 
+            text = "---" 
+            implemented_property just_center_x }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_disp_back_tattoo 
+            text = "---" 
+            implemented_property just_center_x }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_disp_left_arm_tattoo 
+            text = "---" 
+            implemented_property just_center_x }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_disp_right_arm_tattoo 
+            text = "---" 
+            implemented_property just_center_x }
+          
+        )
+        
+#01734  cas_legs_display_children = ARRAY(
+          
+          STRUCT{
+            type = textmenuelement 
+            id = cas_disp_pants 
+            text = "---" 
+            implemented_property just_center_x }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_disp_pants_color 
+            text = "---" 
+            implemented_property just_center_x }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_disp_socks 
+            text = "---" 
+            implemented_property just_center_x }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_disp_socks_color 
+            text = "---" 
+            implemented_property just_center_x }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_disp_shoes 
+            text = "---" 
+            implemented_property just_center_x }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_disp_shoes_color 
+            text = "---" 
+            implemented_property just_center_x }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_disp_left_leg_tattoo 
+            text = "---" 
+            implemented_property just_center_x }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_disp_right_leg_tattoo 
+            text = "---" 
+            implemented_property just_center_x }
+          
+        )
+        
+#01769  cas_pads_display_children = ARRAY(
+          
+          STRUCT{
+            type = textmenuelement 
+            id = cas_disp_helmet 
+            text = "---" 
+            implemented_property just_center_x }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_disp_helmet_color 
+            text = "---" 
+            implemented_property just_center_x }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_disp_helmet_logo 
+            text = "---" 
+            implemented_property just_center_x }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_disp_elbowpads 
+            text = "---" 
+            implemented_property just_center_x }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_disp_elbowpads_color 
+            text = "---" 
+            implemented_property just_center_x }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_disp_kneepads 
+            text = "---" 
+            implemented_property just_center_x }
+          STRUCT{
+            type = textmenuelement 
+            id = cas_disp_kneepads_color 
+            text = "---" 
+            implemented_property just_center_x }
+          
+        )
+        
+#01800  cas_stats_height = 21.2 
+        
+#01802  cas_stats_display_children = ARRAY(
+          
+          STRUCT{
+            type = statsmenuelement 
+            id = cas_disp_air 
+            pro_id = pro_disp_air 
+            text = "---" 
+            implemented_property just_center_x h = cas_stats_height 
+            w = 200.0 
+            ghosted dont_gray pip_spacing = cas_pip_spacing 
+            eventhandlers = ARRAY(
+              
+              STRUCT{
+                type = ContentsChangedEventHandler 
+                target = "request_stat_change" 
+                params = STRUCT{
+                  field_id = air 
+                  menu_id = cas_disp_air 
+                  }
+                }
+              STRUCT{
+                type = ChooseEventHandler 
+                target = "unpause_game_flow_if_linear_stats_menu" 
+                }
+              
+            )
+            }
+          STRUCT{
+            type = statsmenuelement 
+            id = cas_disp_hangtime 
+            pro_id = pro_disp_hangtime 
+            text = "---" 
+            implemented_property just_center_x h = cas_stats_height 
+            w = 200.0 
+            ghosted dont_gray pip_spacing = cas_pip_spacing 
+            eventhandlers = ARRAY(
+              
+              STRUCT{
+                type = ContentsChangedEventHandler 
+                target = "request_stat_change" 
+                params = STRUCT{
+                  field_id = hangtime 
+                  menu_id = cas_disp_hangtime 
+                  }
+                }
+              STRUCT{
+                type = ChooseEventHandler 
+                target = "unpause_game_flow_if_linear_stats_menu" 
+                }
+              
+            )
+            }
+          STRUCT{
+            type = statsmenuelement 
+            id = cas_disp_ollie 
+            pro_id = pro_disp_ollie 
+            text = "---" 
+            implemented_property just_center_x h = cas_stats_height 
+            w = 200.0 
+            ghosted dont_gray pip_spacing = cas_pip_spacing 
+            eventhandlers = ARRAY(
+              
+              STRUCT{
+                type = ContentsChangedEventHandler 
+                target = "request_stat_change" 
+                params = STRUCT{
+                  field_id = ollie 
+                  menu_id = cas_disp_ollie 
+                  }
+                }
+              STRUCT{
+                type = ChooseEventHandler 
+                target = "unpause_game_flow_if_linear_stats_menu" 
+                }
+              
+            )
+            }
+          STRUCT{
+            type = statsmenuelement 
+            id = cas_disp_speed 
+            pro_id = pro_disp_speed 
+            text = "---" 
+            implemented_property just_center_x h = cas_stats_height 
+            w = 200.0 
+            ghosted dont_gray pip_spacing = cas_pip_spacing 
+            eventhandlers = ARRAY(
+              
+              STRUCT{
+                type = ContentsChangedEventHandler 
+                target = "request_stat_change" 
+                params = STRUCT{
+                  field_id = speed 
+                  menu_id = cas_disp_speed 
+                  }
+                }
+              STRUCT{
+                type = ChooseEventHandler 
+                target = "unpause_game_flow_if_linear_stats_menu" 
+                }
+              
+            )
+            }
+          STRUCT{
+            type = statsmenuelement 
+            id = cas_disp_spin 
+            pro_id = pro_disp_spin 
+            text = "---" 
+            implemented_property just_center_x h = cas_stats_height 
+            w = 200.0 
+            ghosted dont_gray pip_spacing = cas_pip_spacing 
+            eventhandlers = ARRAY(
+              
+              STRUCT{
+                type = ContentsChangedEventHandler 
+                target = "request_stat_change" 
+                params = STRUCT{
+                  field_id = spin 
+                  menu_id = cas_disp_spin 
+                  }
+                }
+              STRUCT{
+                type = ChooseEventHandler 
+                target = "unpause_game_flow_if_linear_stats_menu" 
+                }
+              
+            )
+            }
+          STRUCT{
+            type = statsmenuelement 
+            id = cas_disp_switch 
+            pro_id = pro_disp_switch 
+            text = "---" 
+            implemented_property just_center_x h = cas_stats_height 
+            w = 200.0 
+            ghosted dont_gray pip_spacing = cas_pip_spacing 
+            eventhandlers = ARRAY(
+              
+              STRUCT{
+                type = ContentsChangedEventHandler 
+                target = "request_stat_change" 
+                params = STRUCT{
+                  field_id = switch 
+                  menu_id = cas_disp_switch 
+                  }
+                }
+              STRUCT{
+                type = ChooseEventHandler 
+                target = "unpause_game_flow_if_linear_stats_menu" 
+                }
+              
+            )
+            }
+          STRUCT{
+            type = statsmenuelement 
+            id = cas_disp_rail_balance 
+            pro_id = pro_disp_rail_balance 
+            text = "---" 
+            implemented_property just_center_x h = cas_stats_height 
+            w = 200.0 
+            ghosted dont_gray pip_spacing = cas_pip_spacing 
+            eventhandlers = ARRAY(
+              
+              STRUCT{
+                type = ContentsChangedEventHandler 
+                target = "request_stat_change" 
+                params = STRUCT{
+                  field_id = rail_balance 
+                  menu_id = cas_disp_rail_balance 
+                  }
+                }
+              STRUCT{
+                type = ChooseEventHandler 
+                target = "unpause_game_flow_if_linear_stats_menu" 
+                }
+              
+            )
+            }
+          STRUCT{
+            type = statsmenuelement 
+            id = cas_disp_lip_balance 
+            pro_id = pro_disp_lip_balance 
+            text = "---" 
+            implemented_property just_center_x h = cas_stats_height 
+            w = 200.0 
+            ghosted dont_gray pip_spacing = cas_pip_spacing 
+            eventhandlers = ARRAY(
+              
+              STRUCT{
+                type = ContentsChangedEventHandler 
+                target = "request_stat_change" 
+                params = STRUCT{
+                  field_id = lip_balance 
+                  menu_id = cas_disp_lip_balance 
+                  }
+                }
+              STRUCT{
+                type = ChooseEventHandler 
+                target = "unpause_game_flow_if_linear_stats_menu" 
+                }
+              
+            )
+            }
+          STRUCT{
+            type = statsmenuelement 
+            id = cas_disp_manual_balance 
+            pro_id = pro_disp_manual_balance 
+            text = "---" 
+            implemented_property just_center_x h = cas_stats_height 
+            w = 200.0 
+            ghosted dont_gray pip_spacing = cas_pip_spacing 
+            eventhandlers = ARRAY(
+              
+              STRUCT{
+                type = ContentsChangedEventHandler 
+                target = "request_stat_change" 
+                params = STRUCT{
+                  field_id = manual_balance 
+                  menu_id = cas_disp_manual_balance 
+                  }
+                }
+              STRUCT{
+                type = ChooseEventHandler 
+                target = "unpause_game_flow_if_linear_stats_menu" 
+                }
+              
+            )
+            }
+          
+        )
+        
+#01931  FUNCTION unpause_game_flow_if_linear_stats_menu 
+#01933    IF IsTrue EnteringStatsMenuFromGameFlow 
+#01934      unpause_game_flow 
+#01935    END IF 
+#01936  END FUNCTION
+          
+#01937  FUNCTION set_profile_data 
+#01939    ApplyToSkaterProfile NULL 
+#01940  END FUNCTION
+          
+#01941  FUNCTION get_profile_data 
+#01943    SetUIFromSkaterProfile NULL 
+#01944  END FUNCTION
+          
+#01945  FUNCTION set_netpref_data 
+#01947    printf "set network preferences data" 
+#01948    printf NULL 
+#01949  END FUNCTION
+          
+#01950  FUNCTION get_netpref_data 
+#01952    printf "get network preferences data" 
+#01953    printf NULL 
+#01954  END FUNCTION
+          
+#01955  FUNCTION attempt_menu_select 
+#01957    AttemptMenuSelect NULL 
+#01958  END FUNCTION
+          
+#01959  FUNCTION attach_new_tab_menu 
+#01961    createmenu STRUCT{
+            type = horizontalmenu 
+            id = cas_tab_menu 
+            cas_horizontal_menu_properties children = ARRAY(
+              
+              STRUCT{
+                type = iconmenuelement 
+                id = cas_icon_general 
+                image = "frontendsprites\cas_general.png" 
+                rectScaleX = 1.3 
+                }
+              STRUCT{
+                type = iconmenuelement 
+                id = cas_icon_heads 
+                image = "frontendsprites\cas_head.png" 
+                rectScaleX = 1.3 
+                }
+              STRUCT{
+                type = iconmenuelement 
+                id = cas_icon_torsos 
+                image = "frontendsprites\cas_torso.png" 
+                rectScaleX = 1.3 
+                }
+              STRUCT{
+                type = iconmenuelement 
+                id = cas_icon_legs 
+                image = "frontendsprites\cas_legs.png" 
+                rectScaleX = 1.3 
+                }
+              STRUCT{
+                type = iconmenuelement 
+                id = cas_icon_pads 
+                image = "frontendsprites\cas_pads.png" 
+                rectScaleX = 1.3 
+                }
+              STRUCT{
+                type = iconmenuelement 
+                id = cas_icon_stats 
+                image = "frontendsprites\cas_stats.png" 
+                rectScaleX = 1.3 
+                }
+              STRUCT{
+                type = iconmenuelement 
+                id = cas_icon_done 
+                image = "frontendsprites\cas_done.png" 
+                rectScaleX = 1.3 
+                }
+              
+            )
+            }
+          
+#01998    attachchild parent = cas_multi_container 
+          child = cas_tab_menu 
+          
+#02000  END FUNCTION
+          
+#02001  FUNCTION request_stat_change 
+#02003    VerifyParam param = field_id 
+          func = request_stat_change 
+          NULL 
+#02004    VerifyParam param = inc_val 
+          func = request_stat_change 
+          NULL 
+#02005    IF ApplyStatChange field_id = GLOBAL.field_id 
+            inc_val = GLOBAL.inc_val 
+            
+#02006      PlayStatsSound 
+#02007    ELSE 
+#02008      PlayBuzzSound 
+#02009    END IF 
+#02010    UpdateSkaterStats 
+#02011  END FUNCTION
+          
+#02012  FUNCTION go_back 
+#02014    VerifyParam param = id 
+          func = go_back 
+          NULL 
+#02015    launchevent type = back 
+          target = GLOBAL.id 
+          
+#02016  END FUNCTION
+          
+#02017  FUNCTION pre_init_skater_model 
+#02019    IF InFrontEnd 
+#02020      StopStream 
+#02021      StopMusic 
+#02022      IF GotParam pre 
+#02023        IF InPreFile GLOBAL.pre 
+                
+#02024        ELSE 
+#02025          UnloadPreFile "cas_male_fe.pre" dont_assert 
+#02027          UnloadPreFile "cas_female_fe.pre" dont_assert 
+#02028          UnloadPreFile "cas_secret_fe.pre" dont_assert 
+#02029          UnloadPreFile BoardsPre dont_assert 
+#02030          cas_load_pre prefile_name = GLOBAL.pre 
+                
+#02033        END IF 
+#02034      END IF 
+#02035    ELSE 
+#02036      PauseMusic 1 
+#02037      PauseStream 1 
+#02038      PauseSkaters 
+#02039      IF GotParam pre 
+#02040        SetArenaSize 1 
+#02042        cas_load_pre prefile_name = GLOBAL.pre 
+              
+#02043      END IF 
+#02044    END IF 
+#02045  END FUNCTION
+          
+#02046  FUNCTION post_init_skater_model 
+#02048    IF InFrontEnd 
+#02049    ELSE 
+#02050      IF GotParam pre 
+#02051        UnloadPreFile GLOBAL.pre 
+              dont_assert 
+#02053        SetArenaSize 
+#02054      END IF 
+#02055      UnpauseSkaters 
+#02056      PauseMusic -1 
+#02057      PauseStream -1 
+#02058    END IF 
+#02059  END FUNCTION
+          
+#02060  FUNCTION reset_to_defaults 
+#02062    ResetDefaultAppearance 
+#02063    ResetDefaultStats 
+#02065    reload_cas 
+#02066  END FUNCTION
+          
+#02067  FUNCTION randomize_appearance 
+#02069    RandomizeAppearance 
+#02070    reload_cas 
+#02071  END FUNCTION
+          
+#02072  cas_y_offset = ARRAY(
+          
+          281.34 301.84 323.34 259.34 237.84 281.34 166.34 
+        )
+        
+#02084  FUNCTION check_for_neversoft_skaters 
+#02086    ForEachIn master_neversoft_skater_list do = check_for_neversoft_skater 
+          params = NULL 
+          
+#02087  END FUNCTION
+          
+#02088  FUNCTION check_for_neversoft_skater 
+#02090    IF IsTrue give_neversoft_skaters 
+#02091      IF GotParam unlock_with_multiple 
+#02093        IF ArrayContains array = GLOBAL.unlock_with_multiple 
+                contains = GLOBAL.string 
+                
+#02096          set_neversoft_skater STRUCT{
+                  info = GLOBAL.info 
+                  appearance = GLOBAL.appearance 
+                  }
+                
+#02100          reload_cas 
+#02101        END IF 
+#02102      ELSE 
+#02103        IF StringEquals a = GLOBAL.string 
+                b = GLOBAL.unlock_with 
+                
+#02104          set_neversoft_skater STRUCT{
+                  info = GLOBAL.info 
+                  appearance = GLOBAL.appearance 
+                  }
+                
+#02108          reload_cas 
+#02109        END IF 
+#02110      END IF 
+#02111    END IF 
+#02113  END FUNCTION
+          
+#02114  FUNCTION print_current_appearance 
+#02116    PrintCurrentAppearance 
+#02117  END FUNCTION
+          
+#02118  FUNCTION set_neversoft_skater 
+#02120    SetNeversoftSkater NULL 
+#02121  END FUNCTION
+          
+#02122  

@@ -1,0 +1,1568 @@
+FUNCTION Foo_Startup 
+#00001    LoadSound "shared\Car_BrakeSqueal" vol = 60 
+          dropoff = 150 
+          PosUpdate 
+#00002    LoadSound "shared\carloop" vol = 50 
+          dropoff = 150 
+          PosUpdateWithDoppler 
+#00003    LoadSound "shared\Car_IceCream" vol = 60 
+          dropoff = 150 
+          PosUpdate 
+#00004    LoadSound "shared\carhorn" vol = 100 
+          dropoff = 150 
+          
+#00005    LoadSound "shared\LA_Skid" vol = 100 
+          dropoff = 150 
+          
+#00006    LoadSound "shared\Car_YellAtSkater01" vol = 100 
+          dropoff = 150 
+          
+#00007    LoadSound "shared\Car_YellAtSkater02" vol = 100 
+          dropoff = 150 
+          
+#00008  END FUNCTION
+          
+#00009  FUNCTION Ware_Startup 
+#00011    LoadSound "shared\glasspane2x" vol = 100 
+          dropoff = 100 
+          
+#00014    SetRenderModeVU 
+#00015    IF ClipPlaneEnabled 
+#00016      EnableFog 
+#00017      SetClippingDistances near = 12 
+            far = 1792 
+            
+#00018      SetBackgroundColor STRUCT{
+              r = 164 
+              g = 164 
+              b = 164 
+              alpha = 0 
+              }
+            
+#00019      SetFogDistance distance = 1280 
+            
+#00020      SetFogColor r = 164 
+            g = 164 
+            b = 164 
+            
+#00021    ELSE 
+#00022      SetClippingDistances near = 12 
+            far = 5000 
+            
+#00023      SetBackgroundColor STRUCT{
+              r = 0 
+              g = 0 
+              b = 0 
+              alpha = 0 
+              }
+            
+#00024    END IF 
+#00025    SetBSPAmbientColor STRUCT{
+            r = 84 
+            g = 84 
+            b = 84 
+            alpha = 0 
+            }
+          
+#00026  END FUNCTION
+          
+#00027  FUNCTION Burn_Startup 
+#00029    LoadSound "shared\Car_BrakeSqueal" vol = 60 
+          dropoff = 350 
+          PosUpdate 
+#00030    LoadSound "shared\carloop" vol = 80 
+          dropoff = 350 
+          PosUpdateWithDoppler 
+#00031    LoadSound "shared\Car_IceCream" vol = 60 
+          dropoff = 150 
+          PosUpdate 
+#00032    LoadSound "shared\carhorn" vol = 100 
+          dropoff = 350 
+          
+#00033    LoadSound "shared\LA_Skid" vol = 100 
+          dropoff = 350 
+          
+#00034  END FUNCTION
+          
+#00035  FUNCTION Sk3Ed_Schl_Startup 
+#00039    LoadSound "shared\BonkBush" vol = 100 
+          dropoff = 150 
+          
+#00040    LoadSound "Shared\FallPungee" vol = 70 
+          pitch = 45 
+          dropoff = 0 
+          
+#00041    LoadSound "Shared\FallWater" 
+#00042    LoadSound "Sub\SUB_HitSheet" vol = 800 
+          
+#00043    LoadSound "Foun\foun_poolfall" 
+#00044  END FUNCTION
+          
+#00045  FUNCTION Sk3Ed_Indr_Startup 
+#00049    LoadSound "shared\BonkBush" vol = 100 
+          dropoff = 150 
+          
+#00050    LoadSound "Shared\FallPungee" vol = 70 
+          pitch = 45 
+          dropoff = 0 
+          
+#00051    LoadSound "Shared\FallWater" 
+#00052    LoadSound "Sub\SUB_HitSheet" vol = 800 
+          
+#00053    LoadSound "Foun\foun_poolfall" 
+#00054  END FUNCTION
+          
+#00055  FUNCTION Sk3Ed_Bch_Startup 
+#00059    LoadSound "shared\BonkBush" vol = 100 
+          dropoff = 150 
+          
+#00060    LoadSound "Shared\FallPungee" vol = 70 
+          pitch = 45 
+          dropoff = 0 
+          
+#00061    LoadSound "Shared\FallWater" 
+#00062    LoadSound "Sub\SUB_HitSheet" vol = 800 
+          
+#00063    LoadSound "Foun\foun_poolfall" 
+#00064  END FUNCTION
+          
+#00065  FUNCTION SkateShop_Startup 
+#00067    LoadStreamHeader "streams\skateshp\streams" 
+#00068    LoadSound "SkateShop\GUI_buzzer01" 
+#00069    LoadSound "SkateShop\MENU_left_rightB" 
+#00070    LoadSound "SkateShop\Skater_boarddown" 
+#00071    LoadSound "SkateShop\Skater_boardup" 
+#00072    LoadSound "SkateShop\video13" 
+#00073    LoadSound "SkateShop\GUI_unlock1" 
+#00074    SetParticleSysVisibility system = "Particle_SS_Flames01" 
+          visible = 0 
+          
+#00075    SetParticleSysVisibility system = "Particle_SS_Flames02" 
+          visible = 0 
+          
+#00076    SetParticleSysVisibility system = "Particle_SS_Flames03" 
+          visible = 0 
+          
+#00077    SetParticleSysVisibility system = "Particle_SS_Flames04" 
+          visible = 0 
+          
+#00078    SetParticleSysVisibility system = "Particle_SS_Flames05" 
+          visible = 0 
+          
+#00079    SetParticleSysVisibility system = "Particle_SS_Flames06" 
+          visible = 0 
+          
+#00080    SetParticleSysVisibility system = "Particle_SS_Smoke01" 
+          visible = 0 
+          
+#00081    SetParticleSysVisibility system = "Particle_SS_Smoke02" 
+          visible = 0 
+          
+#00082    SetParticleSysVisibility system = "Particle_SS_Smoke03" 
+          visible = 0 
+          
+#00083    SetParticleSysVisibility system = "Particle_SS_Smoke04" 
+          visible = 0 
+          
+#00084    SetParticleSysVisibility system = "Particle_SS_Smoke05" 
+          visible = 0 
+          
+#00085    SetParticleSysVisibility system = "Particle_SS_Smoke06" 
+          visible = 0 
+          
+#00086    spawnscript JKU_SkateShop_Music 
+#00087  END FUNCTION
+          
+#00088  FUNCTION JKU_SS_CarSpawn01 
+#00090    wait 0x30 PAIR[5.0; 20.0] seconds 
+#00091    Create RANDOM[2][9; 26]
+          
+#00092    name = TRG_SS_Car_Path1_01 
+          
+#00093    JUMP 0x0b000000 name = TRG_SS_Car_Path1_02 
+          
+#00094    die 
+#00095  END FUNCTION
+          
+#00096  FUNCTION JKU_SS_CarSpawn02 
+#00098    wait 0x30 PAIR[5.0; 20.0] seconds 
+#00099    Create RANDOM[2][9; 26]
+          
+#00100    name = TRG_SS_Car_Path2_01 
+          
+#00101    JUMP 0x0b000000 name = TRG_SS_Car_Path2_02 
+          
+#00102    die 
+#00103  END FUNCTION
+          
+#00104  FUNCTION JKU_Car_SkateShop01 
+#00106    Obj_StickToGround off 
+#00107    Obj_SetGroundOffset 0.1 
+#00108    Obj_SetPathVelocity 45 mph 
+#00109    Obj_FollowPathLinked 
+#00110    Obj_SetPathAcceleration 30 mphps 
+#00111    Obj_SetPathDeceleration 20 mphps 
+#00112    Obj_SetPathMinStopVel 5 
+#00113  END FUNCTION
+          
+#00114  FUNCTION JKU_Ped_SkateShop01 
+#00116    Obj_PlayAnim anim = Walk 
+          cycle 
+#00117    Obj_FollowPathLinked 
+#00118    Obj_RandomPathMode On 
+#00119    Obj_SetPathAcceleration 10 
+#00120    Obj_SetPathDeceleration 10 
+#00121    LOOP 
+#00122      wait 300 gameframes 
+#00123      wait 0x30 PAIR[0.0; 300.0] 
+#00124      Obj_SetAnimCycleMode off 
+#00125      Obj_WaitAnimFinished 
+#00126      Obj_PlayAnim anim = WalkToIdle 
+            
+#00127      wait 10 gameframes 
+#00128      Obj_StopAlongPath 
+#00129      Obj_WaitAnimFinished 
+#00130      Obj_CycleAnim anim = Idle 
+            
+#00131      LOOP 
+#00132        Ped_Idle01 
+#00133      END LOOP 0x30 PAIR[1.0; 3.0] 
+#00134      Obj_PlayAnim anim = IdleToWalk 
+            
+#00135      wait 5 gameframes 
+#00136      Obj_StartAlongPath 
+#00137      Obj_WaitAnimFinished 
+#00138      Obj_PlayAnim anim = RANDOM[2][4; 10]
+            
+            Walk JUMP 0x05000000 Walk1 cycle 
+#00139    END LOOP 
+#00140  END FUNCTION
+          
+#00141  FUNCTION JKU_Burn_CarSpawn01 
+#00143    wait 0x30 PAIR[1.0; 10.0] seconds 
+#00144    Create RANDOM[23][93; 110; 127; 144; 161; 178; 195; 212; 229; 246; 263; 280; 297; 314; 331; 348; 365; 382; 399; 416; 433; 450; 467]
+          
+#00145    name = TRG_Foo_Car_Path1_02 
+          
+#00146    JUMP 0xc4010000 name = TRG_Foo_Car_Path1_03 
+          
+#00147    JUMP 0xaf010000 name = TRG_Foo_Car_Path1_05 
+          
+#00148    JUMP 0x9a010000 name = TRG_Foo_Car_Path1_06 
+          
+#00149    JUMP 0x85010000 name = TRG_Foo_Car_Path1_07 
+          
+#00150    JUMP 0x70010000 name = TRG_Foo_Car_Path1_08 
+          
+#00151    JUMP 0x5b010000 name = TRG_Foo_Car_Path1_09 
+          
+#00152    JUMP 0x46010000 name = TRG_Foo_Car_Path1_10 
+          
+#00153    JUMP 0x31010000 name = TRG_Foo_Car_Path1_11 
+          
+#00154    JUMP 0x1c010000 name = TRG_Foo_Car_Path1_12 
+          
+#00155    JUMP 0x07010000 name = TRG_Foo_Car_Path1_13 
+          
+#00156    JUMP 0xf2000000 name = TRG_Foo_Car_Path1_14 
+          
+#00157    JUMP 0xdd000000 name = TRG_Foo_Car_Path1_15 
+          
+#00158    JUMP 0xc8000000 name = TRG_Foo_Car_Path1_16 
+          
+#00159    JUMP 0xb3000000 name = TRG_Foo_Car_Path1_17 
+          
+#00160    JUMP 0x9e000000 name = TRG_Foo_Car_Path1_18 
+          
+#00161    JUMP 0x89000000 name = TRG_Foo_Car_Path1_19 
+          
+#00162    JUMP 0x74000000 name = TRG_Foo_Car_Path1_20 
+          
+#00163    JUMP 0x5f000000 name = TRG_Foo_Car_Path1_21 
+          
+#00164    JUMP 0x4a000000 name = TRG_Foo_Car_Path1_22 
+          
+#00165    JUMP 0x35000000 name = TRG_Foo_Car_Path1_23 
+          
+#00166    JUMP 0x20000000 name = TRG_Foo_Car_Path1_24 
+          
+#00167    JUMP 0x0b000000 name = TRG_Foo_Car_Path1_25 
+          
+#00168    die 
+#00169  END FUNCTION
+          
+#00170  FUNCTION JKU_Burn_CarSpawn02 
+#00172    wait 0x30 PAIR[1.0; 10.0] seconds 
+#00173    Create RANDOM[23][93; 110; 127; 144; 161; 178; 195; 212; 229; 246; 263; 280; 297; 314; 331; 348; 365; 382; 399; 416; 433; 450; 467]
+          
+#00174    name = TRG_Foo_Car_Path2_01 
+          
+#00175    JUMP 0xc4010000 name = TRG_Foo_Car_Path2_02 
+          
+#00176    JUMP 0xaf010000 name = TRG_Foo_Car_Path2_03 
+          
+#00177    JUMP 0x9a010000 name = TRG_Foo_Car_Path2_05 
+          
+#00178    JUMP 0x85010000 name = TRG_Foo_Car_Path2_06 
+          
+#00179    JUMP 0x70010000 name = TRG_Foo_Car_Path2_07 
+          
+#00180    JUMP 0x5b010000 name = TRG_Foo_Car_Path2_08 
+          
+#00181    JUMP 0x46010000 name = TRG_Foo_Car_Path2_09 
+          
+#00182    JUMP 0x31010000 name = TRG_Foo_Car_Path2_10 
+          
+#00183    JUMP 0x1c010000 name = TRG_Foo_Car_Path2_11 
+          
+#00184    JUMP 0x07010000 name = TRG_Foo_Car_Path2_12 
+          
+#00185    JUMP 0xf2000000 name = TRG_Foo_Car_Path2_13 
+          
+#00186    JUMP 0xdd000000 name = TRG_Foo_Car_Path2_14 
+          
+#00187    JUMP 0xc8000000 name = TRG_Foo_Car_Path2_15 
+          
+#00188    JUMP 0xb3000000 name = TRG_Foo_Car_Path2_16 
+          
+#00189    JUMP 0x9e000000 name = TRG_Foo_Car_Path2_17 
+          
+#00190    JUMP 0x89000000 name = TRG_Foo_Car_Path2_18 
+          
+#00191    JUMP 0x74000000 name = TRG_Foo_Car_Path2_19 
+          
+#00192    JUMP 0x5f000000 name = TRG_Foo_Car_Path2_20 
+          
+#00193    JUMP 0x4a000000 name = TRG_Foo_Car_Path2_21 
+          
+#00194    JUMP 0x35000000 name = TRG_Foo_Car_Path2_22 
+          
+#00195    JUMP 0x20000000 name = TRG_Foo_Car_Path2_23 
+          
+#00196    JUMP 0x0b000000 name = TRG_Foo_Car_Path2_24 
+          
+#00197    die 
+#00198  END FUNCTION
+          
+#00199  FUNCTION JKU_Burn_Car_Accel01 
+#00201    Obj_SetPathVelocity 0x30 PAIR[50.0; 70.0] mph 
+#00202    Car_Sound_Accel01 
+#00203  END FUNCTION
+          
+#00204  FUNCTION JKU_slowshit 
+#00206    LOOP 
+#00207      visible prefix = "slowshit" 
+            
+#00208      wait 2 seconds 
+#00209      invisible prefix = "slowshit" 
+            
+#00210      wait 2 seconds 
+#00211    END LOOP 
+#00212  END FUNCTION
+          
+#00213  FUNCTION JKU_CrowdRandom 
+#00215    LOOP 
+#00216      RANDOM[6][25; 47; 69; 91; 113; 135]
+            
+#00217      Obj_CycleAnim anim = CrowdIdle 
+            
+#00218      JUMP 0x78000000 Obj_CycleAnim anim = CrowdIdleMove 
+            
+#00219      JUMP 0x5e000000 Obj_CycleAnim anim = CrowdClap 
+            
+#00220      JUMP 0x44000000 Obj_CycleAnim anim = CrowdClapMove 
+            
+#00221      JUMP 0x2a000000 Obj_CycleAnim anim = CrowdWild 
+            
+#00222      JUMP 0x10000000 Obj_CycleAnim anim = CrowdWildMove 
+            
+#00223    END LOOP 
+#00224  END FUNCTION
+          
+#00225  FUNCTION JKU_SkateShop_Music 
+#00231    RAND3[2][4; 29]
+          AddMusicTrack "music\gangsta" JUMP 0x19000000 AddMusicTrack "music\gangsta2" 
+#00232    PauseMusic 0 
+#00233    PauseStream 0 
+#00234  END FUNCTION
+          
+#00235  FLAG_SKATESHOP_FAR = 0 
+        
+#00237  FLAG_SKATESHOP_CLOSE = 1 
+        
+#00238  FLAG_SKATESHOP_BOARD = 2 
+        
+#00239  FLAG_SKATESHOP_OPTIONS = 3 
+        
+#00240  FLAG_SKATESHOP_PED01 = 4 
+        
+#00241  FLAG_SKATESHOP_NODE01 = 5 
+        
+#00242  FLAG_SKATESHOP_NODE02 = 6 
+        
+#00243  FLAG_SKATESHOP_BOARD01 = 7 
+        
+#00244  FLAG_SKATESHOP_DEMONESS = 8 
+        
+#00245  FLAG_SKATESHOP_MAUL = 9 
+        
+#00246  FLAG_SKATESHOP_WOLVERINE = 10 
+        
+#00247  FLAG_SKATESHOP_CARRERA = 11 
+        
+#00248  FLAG_SKATESHOP_DICK = 12 
+        
+#00249  FLAG_SKATESHOP_SECINIT = 13 
+        
+#00250  FLAG_SKATESHOP_DONOTHING = 14 
+        
+#00251  FLAG_SKATESHOP_OLLIE = 15 
+        
+#00252  FLAG_SKATESHOP_EYE = 16 
+        
+#00253  FLAG_SKATESHOP_GOALTALKING = 17 
+        
+#00254  FLAG_SKATESHOP_SLATER = 18 
+        
+#00255  FUNCTION JKU_SkateShop_SSState 
+#00257    LOOP 
+#00258      IF MenuIsShown frontend_menu 
+#00259        Obj_SetFlag FLAG_SKATESHOP_FAR 
+#00261        Obj_ClearFlag ARRAY(
+                FLAG_SKATESHOP_CLOSE FLAG_SKATESHOP_BOARD FLAG_SKATESHOP_OPTIONS 
+              )
+              
+#00262      END IF 
+#00263      IF MenuIsShown ARRAY(
+                career_menu single_session_menu free_skate_menu net_type_menu pre_cas_main_menu player_one_menu 
+              )
+              
+#00264        Obj_SetFlag FLAG_SKATESHOP_CLOSE 
+#00266        Obj_ClearFlag ARRAY(
+                FLAG_SKATESHOP_FAR FLAG_SKATESHOP_BOARD FLAG_SKATESHOP_OPTIONS 
+              )
+              
+#00267      END IF 
+#00268      IF MenuIsShown boardshop_menu 
+#00269        Obj_SetFlag FLAG_SKATESHOP_BOARD 
+#00271        Obj_ClearFlag ARRAY(
+                FLAG_SKATESHOP_FAR FLAG_SKATESHOP_CLOSE FLAG_SKATESHOP_OPTIONS 
+              )
+              
+#00272      END IF 
+#00273      IF MenuIsShown options_main_menu 
+#00274        Obj_SetFlag FLAG_SKATESHOP_OPTIONS 
+#00276        Obj_ClearFlag ARRAY(
+                FLAG_SKATESHOP_FAR FLAG_SKATESHOP_CLOSE FLAG_SKATESHOP_BOARD 
+              )
+              
+#00277      END IF 
+#00278      IF ProfileEquals Is_Named = demoness 
+              
+#00279        IF Obj_FlagSet ARRAY(
+                  FLAG_SKATESHOP_MAUL FLAG_SKATESHOP_WOLVERINE FLAG_SKATESHOP_CARRERA FLAG_SKATESHOP_DICK FLAG_SKATESHOP_OLLIE FLAG_SKATESHOP_EYE FLAG_SKATESHOP_SLATER 
+                )
+                
+#00280          Obj_ClearFlag FLAG_SKATESHOP_SECINIT 
+#00281        END IF 
+#00282        IF Obj_FlagNotSet FLAG_SKATESHOP_DEMONESS 
+#00283          IF StreamIsAvailable 1 
+#00284            PlayStream CHAR_demon channel = 1 
+                  
+#00285          END IF 
+#00286        END IF 
+#00287        Obj_SetFlag FLAG_SKATESHOP_DEMONESS 
+#00288        Obj_ClearFlag ARRAY(
+                FLAG_SKATESHOP_MAUL FLAG_SKATESHOP_WOLVERINE FLAG_SKATESHOP_CARRERA FLAG_SKATESHOP_DICK FLAG_SKATESHOP_OLLIE FLAG_SKATESHOP_EYE FLAG_SKATESHOP_SLATER 
+              )
+              
+#00289      ELSE 
+#00290        IF ProfileEquals Is_Named = maul 
+                
+#00291          IF Obj_FlagSet ARRAY(
+                    FLAG_SKATESHOP_DEMONESS FLAG_SKATESHOP_WOLVERINE FLAG_SKATESHOP_CARRERA FLAG_SKATESHOP_DICK FLAG_SKATESHOP_OLLIE FLAG_SKATESHOP_EYE FLAG_SKATESHOP_SLATER 
+                  )
+                  
+#00292            Obj_ClearFlag FLAG_SKATESHOP_SECINIT 
+#00293          END IF 
+#00294          Obj_SetFlag FLAG_SKATESHOP_MAUL 
+#00295          Obj_ClearFlag ARRAY(
+                  FLAG_SKATESHOP_DEMONESS FLAG_SKATESHOP_WOLVERINE FLAG_SKATESHOP_CARRERA FLAG_SKATESHOP_DICK FLAG_SKATESHOP_OLLIE FLAG_SKATESHOP_EYE FLAG_SKATESHOP_SLATER 
+                )
+                
+#00296        ELSE 
+#00297          IF ProfileEquals Is_Named = wolverine 
+                  
+#00298            IF Obj_FlagSet ARRAY(
+                      FLAG_SKATESHOP_DEMONESS FLAG_SKATESHOP_MAUL FLAG_SKATESHOP_CARRERA FLAG_SKATESHOP_DICK FLAG_SKATESHOP_OLLIE FLAG_SKATESHOP_EYE FLAG_SKATESHOP_SLATER 
+                    )
+                    
+#00299              Obj_ClearFlag FLAG_SKATESHOP_SECINIT 
+#00300            END IF 
+#00301            IF Obj_FlagNotSet FLAG_SKATESHOP_WOLVERINE 
+#00302              IF StreamIsAvailable 1 
+#00303                PlayStream Wolv_Claw_Out_05 channel = 1 
+                      
+#00304              END IF 
+#00305            END IF 
+#00306            Obj_SetFlag FLAG_SKATESHOP_WOLVERINE 
+#00307            Obj_ClearFlag ARRAY(
+                    FLAG_SKATESHOP_DEMONESS FLAG_SKATESHOP_MAUL FLAG_SKATESHOP_CARRERA FLAG_SKATESHOP_DICK FLAG_SKATESHOP_OLLIE FLAG_SKATESHOP_EYE FLAG_SKATESHOP_SLATER 
+                  )
+                  
+#00308          ELSE 
+#00309            IF ProfileEquals Is_Named = carrera 
+                    
+#00310              IF Obj_FlagSet ARRAY(
+                        FLAG_SKATESHOP_DEMONESS FLAG_SKATESHOP_MAUL FLAG_SKATESHOP_WOLVERINE FLAG_SKATESHOP_DICK FLAG_SKATESHOP_OLLIE FLAG_SKATESHOP_EYE FLAG_SKATESHOP_SLATER 
+                      )
+                      
+#00311                Obj_ClearFlag FLAG_SKATESHOP_SECINIT 
+#00312              END IF 
+#00313              Obj_SetFlag FLAG_SKATESHOP_CARRERA 
+#00315              Obj_ClearFlag ARRAY(
+                      FLAG_SKATESHOP_DEMONESS FLAG_SKATESHOP_MAUL FLAG_SKATESHOP_WOLVERINE FLAG_SKATESHOP_DICK FLAG_SKATESHOP_OLLIE FLAG_SKATESHOP_EYE FLAG_SKATESHOP_SLATER 
+                    )
+                    
+#00316            ELSE 
+#00317              IF ProfileEquals Is_Named = dick 
+                      
+#00318                IF Obj_FlagSet ARRAY(
+                          FLAG_SKATESHOP_DEMONESS FLAG_SKATESHOP_MAUL FLAG_SKATESHOP_WOLVERINE FLAG_SKATESHOP_CARRERA FLAG_SKATESHOP_OLLIE FLAG_SKATESHOP_EYE FLAG_SKATESHOP_SLATER 
+                        )
+                        
+#00319                  Obj_ClearFlag FLAG_SKATESHOP_SECINIT 
+#00320                END IF 
+#00321                IF Obj_FlagNotSet FLAG_SKATESHOP_DICK 
+#00322                  IF StreamIsAvailable 1 
+#00323                    PlayStream GUI_officer channel = 1 
+                          
+#00324                  END IF 
+#00325                END IF 
+#00326                Obj_SetFlag FLAG_SKATESHOP_DICK 
+#00327                Obj_ClearFlag ARRAY(
+                        FLAG_SKATESHOP_DEMONESS FLAG_SKATESHOP_MAUL FLAG_SKATESHOP_WOLVERINE FLAG_SKATESHOP_CARRERA FLAG_SKATESHOP_OLLIE FLAG_SKATESHOP_EYE FLAG_SKATESHOP_SLATER 
+                      )
+                      
+#00328              ELSE 
+#00329                IF ProfileEquals Is_Named = ollie 
+                        
+#00330                  IF Obj_FlagSet ARRAY(
+                            FLAG_SKATESHOP_DEMONESS FLAG_SKATESHOP_MAUL FLAG_SKATESHOP_WOLVERINE FLAG_SKATESHOP_CARRERA FLAG_SKATESHOP_DICK FLAG_SKATESHOP_EYE FLAG_SKATESHOP_SLATER 
+                          )
+                          
+#00331                    Obj_ClearFlag FLAG_SKATESHOP_SECINIT 
+#00332                  END IF 
+#00333                  IF Obj_FlagNotSet FLAG_SKATESHOP_OLLIE 
+#00334                    IF StreamIsAvailable 1 
+#00335                      PlayStream RANDOM[3][13; 35; 57]
+                            
+#00336                      GUI_bum01 channel = 1 
+                            
+#00337                      JUMP 0x2a000000 GUI_bum2 channel = 1 
+                            
+#00338                      JUMP 0x10000000 GUI_bum5 channel = 1 
+                            
+#00339                    END IF 
+#00340                  END IF 
+#00341                  Obj_SetFlag FLAG_SKATESHOP_OLLIE 
+#00342                  Obj_ClearFlag ARRAY(
+                          FLAG_SKATESHOP_DEMONESS FLAG_SKATESHOP_MAUL FLAG_SKATESHOP_WOLVERINE FLAG_SKATESHOP_CARRERA FLAG_SKATESHOP_DICK FLAG_SKATESHOP_EYE FLAG_SKATESHOP_SLATER 
+                        )
+                        
+#00343                ELSE 
+#00344                  IF ProfileEquals Is_Named = eyeball 
+                          
+#00345                    IF Obj_FlagSet ARRAY(
+                              FLAG_SKATESHOP_DEMONESS FLAG_SKATESHOP_MAUL FLAG_SKATESHOP_WOLVERINE FLAG_SKATESHOP_CARRERA FLAG_SKATESHOP_DICK FLAG_SKATESHOP_OLLIE FLAG_SKATESHOP_SLATER 
+                            )
+                            
+#00346                      Obj_ClearFlag FLAG_SKATESHOP_SECINIT 
+#00347                    END IF 
+#00348                    IF Obj_FlagNotSet FLAG_SKATESHOP_EYE 
+#00349                      IF StreamIsAvailable 1 
+#00350                        PlayStream CHAR_eye channel = 1 
+                              
+#00351                      END IF 
+#00352                    END IF 
+#00353                    Obj_SetFlag FLAG_SKATESHOP_EYE 
+#00354                    Obj_ClearFlag ARRAY(
+                            FLAG_SKATESHOP_DEMONESS FLAG_SKATESHOP_MAUL FLAG_SKATESHOP_WOLVERINE FLAG_SKATESHOP_CARRERA FLAG_SKATESHOP_OLLIE FLAG_SKATESHOP_DICK FLAG_SKATESHOP_SLATER 
+                          )
+                          
+#00355                  ELSE 
+#00356                    IF ProfileEquals Is_Named = slater 
+                            
+#00357                      IF Obj_FlagSet ARRAY(
+                                FLAG_SKATESHOP_DEMONESS FLAG_SKATESHOP_MAUL FLAG_SKATESHOP_WOLVERINE FLAG_SKATESHOP_CARRERA FLAG_SKATESHOP_DICK FLAG_SKATESHOP_OLLIE FLAG_SKATESHOP_EYE 
+                              )
+                              
+#00358                        Obj_ClearFlag FLAG_SKATESHOP_SECINIT 
+#00359                      END IF 
+#00360                      IF Obj_FlagNotSet FLAG_SKATESHOP_SLATER 
+#00361                        IF StreamIsAvailable 1 
+#00362                          PlayStream CHAR_Kelly channel = 1 
+                                
+#00363                        END IF 
+#00364                      END IF 
+#00365                      Obj_SetFlag FLAG_SKATESHOP_SLATER 
+#00366                      Obj_ClearFlag ARRAY(
+                              FLAG_SKATESHOP_DEMONESS FLAG_SKATESHOP_MAUL FLAG_SKATESHOP_WOLVERINE FLAG_SKATESHOP_CARRERA FLAG_SKATESHOP_OLLIE FLAG_SKATESHOP_DICK FLAG_SKATESHOP_EYE 
+                            )
+                            
+#00367                    ELSE 
+#00368                      Obj_ClearFlag ARRAY(
+                              FLAG_SKATESHOP_DEMONESS FLAG_SKATESHOP_MAUL FLAG_SKATESHOP_WOLVERINE FLAG_SKATESHOP_CARRERA FLAG_SKATESHOP_DICK FLAG_SKATESHOP_SECINIT FLAG_SKATESHOP_OLLIE FLAG_SKATESHOP_EYE FLAG_SKATESHOP_SLATER 
+                            )
+                            
+#00369                    END IF 
+#00370                  END IF 
+#00371                END IF 
+#00372              END IF 
+#00373            END IF 
+#00374          END IF 
+#00375        END IF 
+#00376      END IF 
+#00377      wait 1 gameframes 
+#00378    END LOOP 
+#00379  END FUNCTION
+          
+#00380  FUNCTION JKU_SkateShop_RastaMove LookNode = TRG_SS_Skater01 
+          
+#00382    IF Obj_FlagSet FLAG_SKATESHOP_DEMONESS 
+#00383      IF Obj_FlagNotSet FLAG_SKATESHOP_SECINIT 
+#00384        StopStream channel = 0 
+              
+#00385        Obj_SetFlag FLAG_SKATESHOP_SECINIT 
+#00386        Obj_CycleAnim anim = Demoness_Init 
+              BlendPeriod = 0.3 
+              
+#00387        JKU_SkateShop_RastaDemoness_Init 
+#00388      END IF 
+#00389      IF StreamIsAvailable 0 
+#00390        Obj_PlayStream CHAR_demon_rasta channel = 0 
+              
+#00391      END IF 
+#00392      IF Obj_FlagNotSet FLAG_SKATESHOP_DONOTHING 
+#00393        Obj_LookAtNode name = GLOBAL.MoveNode 
+              speed = 180 
+              
+#00394        Obj_CycleAnim anim = Demoness_Init 
+              backwards 
+#00395        Obj_MoveToNode speed = 5 
+              mph name = GLOBAL.MoveNode 
+              
+#00396        Obj_CycleAnim anim = IdleToTongueRun 
+              
+#00397        Obj_PlayAnim anim = TongueRun 
+              cycle 
+#00398        Obj_WaitMove 
+#00399        Obj_LookAtNode name = GLOBAL.LookNode 
+              speed = 180 
+              
+#00400        Obj_CycleAnim anim = Demoness_Init 
+              BlendPeriod = 0.3 
+              
+#00401      END IF 
+#00402      Obj_CycleAnim anim = Demoness_Idle 
+            
+#00403      IF Obj_FlagNotSet FLAG_SKATESHOP_DEMONESS 
+#00404        Obj_CycleAnim anim = Demoness_Init 
+              backwards 
+#00405        JKU_SkateShop_RastaDemoness_Out 
+#00406      END IF 
+#00407    ELSE 
+#00408      IF Obj_FlagSet FLAG_SKATESHOP_MAUL 
+#00409        IF Obj_FlagNotSet FLAG_SKATESHOP_SECINIT 
+#00410          StopStream channel = 0 
+                
+#00411          Obj_SetFlag FLAG_SKATESHOP_SECINIT 
+#00412          Obj_CycleAnim anim = DarthMaul_Init 
+                BlendPeriod = 0.3 
+                
+#00413        END IF 
+#00414        IF StreamIsAvailable 0 
+#00415          Obj_PlayStream CHAR_maul_rasta channel = 0 
+                
+#00416        END IF 
+#00417        IF Obj_FlagNotSet FLAG_SKATESHOP_DONOTHING 
+#00418          Obj_PlayAnim anim = DarthMaul_Idle 
+                cycle 
+#00419          Obj_LookAtNode name = GLOBAL.MoveNode 
+                speed = 180 
+                
+#00420          Obj_MoveToNode speed = 5 
+                mph name = GLOBAL.MoveNode 
+                
+#00421          Obj_WaitMove 
+#00422          Obj_SetAnimCycleMode off 
+#00423          Obj_LookAtNode name = GLOBAL.LookNode 
+                speed = 180 
+                
+#00424          Obj_WaitAnimFinished 
+#00425        END IF 
+#00426        Obj_CycleAnim anim = DarthMaul_Idle 
+              
+#00427        IF Obj_FlagNotSet FLAG_SKATESHOP_MAUL 
+#00428          Obj_CycleAnim anim = DarthMaul_Out 
+                
+#00429        END IF 
+#00430      ELSE 
+#00431        IF Obj_FlagSet FLAG_SKATESHOP_DICK 
+#00432          IF Obj_FlagNotSet FLAG_SKATESHOP_SECINIT 
+#00433            StopStream channel = 0 
+                  
+#00434            Obj_SetFlag FLAG_SKATESHOP_SECINIT 
+#00435            Obj_CycleAnim anim = OfficerDick_Init 
+                  BlendPeriod = 0.3 
+                  
+#00436          END IF 
+#00437          IF Obj_FlagNotSet FLAG_SKATESHOP_DONOTHING 
+#00438            Obj_LookAtNode name = GLOBAL.MoveNode 
+                  speed = 180 
+                  
+#00439            Obj_PlayAnim anim = IdleToRun 
+                  BlendPeriod = 0.3 
+                  
+#00440            Obj_MoveToNode speed = 6 
+                  mph name = GLOBAL.MoveNode 
+                  
+#00441            wait 5 gameframes 
+#00442            Obj_PlayAnim anim = Run 
+                  cycle BlendPeriod = 0.3 
+                  
+#00443            Obj_WaitMove 
+#00444            Obj_LookAtNode name = GLOBAL.LookNode 
+                  speed = 180 
+                  
+#00445            Obj_CycleAnim anim = OfficerDick_Init 
+                  BlendPeriod = 0.5 
+                  
+#00446          END IF 
+#00447          Obj_CycleAnim anim = OfficerDick_Idle 
+                
+#00448          IF Obj_FlagNotSet FLAG_SKATESHOP_DICK 
+#00449            Obj_CycleAnim anim = OfficerDick_Init 
+                  backwards 
+#00450          END IF 
+#00451        ELSE 
+#00452          IF Obj_FlagSet FLAG_SKATESHOP_WOLVERINE 
+#00453            IF Obj_FlagNotSet FLAG_SKATESHOP_SECINIT 
+#00454              StopStream channel = 0 
+                    
+#00455              Obj_SetFlag FLAG_SKATESHOP_SECINIT 
+#00456            END IF 
+#00457            IF Obj_FlagNotSet FLAG_SKATESHOP_DONOTHING 
+#00458              Obj_LookAtNode name = GLOBAL.MoveNode 
+                    speed = 180 
+                    
+#00459              Obj_CycleAnim anim = IdleToWalk 
+                    BlendPeriod = 0.3 
+                    
+#00460              Obj_MoveToNode speed = 2 
+                    mph name = GLOBAL.MoveNode 
+                    
+#00461              Obj_PlayAnim anim = RANDOM[3][8; 14; 20]
+                    
+                    Walk JUMP 0x0f000000 Walk JUMP 0x05000000 Walk1 cycle 
+#00462              Obj_WaitMove 
+#00463              Obj_LookAtNode name = GLOBAL.LookNode 
+                    speed = 180 
+                    
+#00464              IF Obj_FlagSet FLAG_SKATESHOP_WOLVERINE 
+#00465                Obj_CycleAnim anim = Wolverine_Init 
+                      BlendPeriod = 0.3 
+                      
+#00466              END IF 
+#00467            END IF 
+#00468            IF Obj_FlagSet FLAG_SKATESHOP_WOLVERINE 
+#00469              Obj_CycleAnim anim = Wolverine_Idle 
+                    BlendPeriod = 0.3 
+                    
+#00470            END IF 
+#00471          ELSE 
+#00472            IF Obj_FlagSet FLAG_SKATESHOP_CARRERA 
+#00473              IF Obj_FlagNotSet FLAG_SKATESHOP_SECINIT 
+#00474                StopStream channel = 0 
+                      
+#00475                Obj_SetFlag FLAG_SKATESHOP_SECINIT 
+#00476                Obj_CycleAnim anim = PrivateCarrera_Init 
+                      BlendPeriod = 0.3 
+                      
+#00477                Obj_PlayAnim anim = PrivateCarrera_Idle 
+                      cycle 
+#00478              END IF 
+#00479              IF Obj_FlagNotSet FLAG_SKATESHOP_DONOTHING 
+#00480                Obj_LookAtNode name = GLOBAL.MoveNode 
+                      speed = 180 
+                      
+#00481                Obj_MoveToNode speed = 2 
+                      mph name = GLOBAL.MoveNode 
+                      
+#00482                Obj_WaitMove 
+#00483                Obj_LookAtNode name = GLOBAL.LookNode 
+                      speed = 180 
+                      
+#00484              END IF 
+#00485              Obj_SpawnScript JKU_SkateShop_Rasta_CarreraStreams 
+#00486            ELSE 
+#00487              IF Obj_FlagSet FLAG_SKATESHOP_OLLIE 
+#00488                IF Obj_FlagNotSet FLAG_SKATESHOP_SECINIT 
+#00489                  StopStream channel = 0 
+                        
+#00490                  Obj_SetFlag FLAG_SKATESHOP_SECINIT 
+#00491                END IF 
+#00492                IF Obj_FlagNotSet FLAG_SKATESHOP_DONOTHING 
+#00493                  Obj_LookAtNode name = GLOBAL.MoveNode 
+                        speed = 100 
+                        
+#00494                  Obj_MoveToNode speed = 1.2 
+                        mph name = GLOBAL.MoveNode 
+                        
+#00495                  Obj_CycleAnim anim = DrunkIdleToDrunkWalk 
+                        
+#00496                  Obj_PlayAnim anim = DrunkWalk 
+                        cycle 
+#00497                  Obj_WaitMove 
+#00498                  Obj_LookAtNode name = GLOBAL.LookNode 
+                        speed = 100 
+                        
+#00499                  Obj_CycleAnim anim = DrunkWalkToDrunkIdle 
+                        BlendPeriod = 0.3 
+                        
+#00500                END IF 
+#00501                IF Obj_FlagSet FLAG_SKATESHOP_OLLIE 
+#00502                  RANDOM[6][25; 58; 91; 124; 157; 211]
+                        
+#00503                  Obj_CycleAnim anim = DrunkIdle 
+                        BlendPeriod = 0.3 
+                        
+#00504                  JUMP 0xc4000000 Obj_CycleAnim anim = DrunkIdle 
+                        BlendPeriod = 0.3 
+                        
+#00505                  JUMP 0x9f000000 Obj_CycleAnim anim = DrunkIdle 
+                        BlendPeriod = 0.3 
+                        
+#00506                  JUMP 0x7a000000 Obj_CycleAnim anim = DrunkDrinking 
+                        BlendPeriod = 0.3 
+                        
+#00507                  JUMP 0x55000000 Obj_CycleAnim anim = HitBySkater 
+                        BlendPeriod = 0.3 
+                        
+#00508                  Obj_CycleAnim anim = GetUp 
+                        
+#00509                  JUMP 0x1b000000 Obj_CycleAnim anim = DrunkCoughing 
+                        BlendPeriod = 0.3 
+                        
+#00510                END IF 
+#00511              ELSE 
+#00512                IF Obj_FlagNotSet FLAG_SKATESHOP_DONOTHING 
+#00513                  Obj_LookAtNode name = GLOBAL.MoveNode 
+                        speed = 180 
+                        
+#00514                  Obj_MoveToNode speed = 2 
+                        mph name = GLOBAL.MoveNode 
+                        
+#00515                  Obj_CycleAnim anim = IdleToWalk 
+                        BlendPeriod = 0.3 
+                        
+#00516                  Obj_PlayAnim anim = RANDOM[3][8; 14; 20]
+                        
+                        Walk JUMP 0x0f000000 Walk JUMP 0x05000000 Walk1 cycle 
+#00517                  Obj_WaitMove 
+#00518                  Obj_LookAtNode name = GLOBAL.LookNode 
+                        speed = 180 
+                        
+#00519                  Obj_CycleAnim anim = WalkToIdle 
+                        BlendPeriod = 0.3 
+                        
+#00520                END IF 
+#00521                StopStream channel = 0 
+                      
+#00522                JKU_SkateShop_RastaIdle 
+#00523              END IF 
+#00524            END IF 
+#00525          END IF 
+#00526        END IF 
+#00527      END IF 
+#00528    END IF 
+#00529    Obj_ClearFlag FLAG_SKATESHOP_DONOTHING 
+#00530  END FUNCTION
+          
+#00531  FUNCTION JKU_SkateShop_Rasta_CarreraStreams 
+#00533    IF StreamIsAvailable 0 
+#00534      RANDOM[2][9; 30]
+            
+#00535      wait 60 gameframes 
+#00536      JUMP 0x8f010000 RANDOM[12][44; 50; 77; 104; 131; 158; 185; 212; 239; 266; 293; 320]
+            
+#00537      JUMP 0x4b010000 Obj_PlayStream Skate_new_60 channel = 0 
+            
+#00538      JUMP 0x2c010000 Obj_PlayStream Skate_new_60a channel = 0 
+            
+#00539      JUMP 0x0d010000 Obj_PlayStream Skate_new_60b channel = 0 
+            
+#00540      JUMP 0xee000000 Obj_PlayStream Skate_new_61 channel = 0 
+            
+#00541      JUMP 0xcf000000 Obj_PlayStream Skate_new_61a channel = 0 
+            
+#00542      JUMP 0xb0000000 Obj_PlayStream Skate_new_61b channel = 0 
+            
+#00543      JUMP 0x91000000 Obj_PlayStream Skate_new_61c channel = 0 
+            
+#00544      JUMP 0x72000000 Obj_PlayStream Skate_new_61e channel = 0 
+            
+#00546      JUMP 0x53000000 Obj_PlayStream Skate_new_61f channel = 0 
+            
+#00547      JUMP 0x34000000 Obj_PlayStream Skate_new_61g channel = 0 
+            
+#00548      JUMP 0x15000000 Obj_PlayStream Skate_new_61h channel = 0 
+            
+#00549      
+#00550    END IF 
+#00551  END FUNCTION
+          
+#00552  FUNCTION JKU_SkateShop_Ped01 
+#00554    Obj_SpawnScript JKU_SkateShop_SSState 
+#00555    LOOP 
+#00556      IF Obj_FlagSet FLAG_SKATESHOP_FAR 
+#00557        RANDOM[9][37; 63; 89; 115; 141; 167; 258; 349; 440]
+              
+#00559        Obj_SetFlag FLAG_SKATESHOP_DONOTHING 
+#00560        JKU_SkateShop_RastaMove 
+#00561        JUMP 0xf5010000 Obj_SetFlag FLAG_SKATESHOP_DONOTHING 
+#00562        JKU_SkateShop_RastaMove 
+#00563        JUMP 0xd7010000 Obj_SetFlag FLAG_SKATESHOP_DONOTHING 
+#00564        JKU_SkateShop_RastaMove 
+#00565        JUMP 0xb9010000 Obj_SetFlag FLAG_SKATESHOP_DONOTHING 
+#00566        JKU_SkateShop_RastaMove 
+#00567        JUMP 0x9b010000 Obj_SetFlag FLAG_SKATESHOP_DONOTHING 
+#00568        JKU_SkateShop_RastaMove 
+#00569        JUMP 0x7d010000 
+#00570        IF Obj_FlagNotSet FLAG_SKATESHOP_PED01 
+#00571          Obj_SetFlag FLAG_SKATESHOP_PED01 
+#00572          Obj_ClearFlag ARRAY(
+                  FLAG_SKATESHOP_NODE01 FLAG_SKATESHOP_NODE02 FLAG_SKATESHOP_BOARD01 
+                )
+                
+#00573          JKU_SkateShop_RastaMove MoveNode = TRG_SS_Ped01 
+                
+#00574        END IF 
+#00575        JUMP 0x1e010000 
+#00576        IF Obj_FlagNotSet FLAG_SKATESHOP_NODE01 
+#00577          Obj_SetFlag FLAG_SKATESHOP_NODE01 
+#00578          Obj_ClearFlag ARRAY(
+                  FLAG_SKATESHOP_PED01 FLAG_SKATESHOP_NODE02 FLAG_SKATESHOP_BOARD01 
+                )
+                
+#00579          JKU_SkateShop_RastaMove MoveNode = TRG_SS_PedCounter_Node01 
+                
+#00580        END IF 
+#00581        JUMP 0xbf000000 
+#00582        IF Obj_FlagNotSet FLAG_SKATESHOP_NODE02 
+#00583          Obj_SetFlag FLAG_SKATESHOP_NODE02 
+#00584          Obj_ClearFlag ARRAY(
+                  FLAG_SKATESHOP_PED01 FLAG_SKATESHOP_NODE01 FLAG_SKATESHOP_BOARD01 
+                )
+                
+#00585          JKU_SkateShop_RastaMove MoveNode = TRG_SS_PedCounter_Node02 
+                
+#00586        END IF 
+#00587        JUMP 0x60000000 
+#00588        IF Obj_FlagNotSet FLAG_SKATESHOP_BOARD01 
+#00589          Obj_SetFlag FLAG_SKATESHOP_BOARD01 
+#00590          Obj_ClearFlag ARRAY(
+                  FLAG_SKATESHOP_PED01 FLAG_SKATESHOP_NODE01 FLAG_SKATESHOP_NODE02 
+                )
+                
+#00591          JKU_SkateShop_RastaMove MoveNode = TRG_SS_PedCounter_BoardNode01 
+                LookNode = TRG_SS_LookAtNode02 
+                
+#00592        END IF 
+#00593      END IF 
+#00594      IF Obj_FlagSet FLAG_SKATESHOP_CLOSE 
+#00595        IF Obj_FlagNotSet FLAG_SKATESHOP_PED01 
+#00597          Obj_SetFlag FLAG_SKATESHOP_PED01 
+#00598          Obj_ClearFlag ARRAY(
+                  FLAG_SKATESHOP_NODE01 FLAG_SKATESHOP_NODE02 FLAG_SKATESHOP_BOARD01 
+                )
+                
+#00599          JKU_SkateShop_RastaMove MoveNode = TRG_SS_Ped01 
+                
+#00600        ELSE 
+#00601          Obj_SetFlag FLAG_SKATESHOP_DONOTHING 
+#00602          JKU_SkateShop_RastaMove 
+#00603        END IF 
+#00604      END IF 
+#00605      IF Obj_FlagSet FLAG_SKATESHOP_BOARD 
+#00606        IF Obj_FlagNotSet FLAG_SKATESHOP_BOARD01 
+#00608          Obj_SetFlag FLAG_SKATESHOP_BOARD01 
+#00609          Obj_ClearFlag ARRAY(
+                  FLAG_SKATESHOP_PED01 FLAG_SKATESHOP_NODE01 FLAG_SKATESHOP_NODE02 
+                )
+                
+#00610          JKU_SkateShop_RastaMove MoveNode = TRG_SS_PedCounter_BoardNode01 
+                LookNode = TRG_SS_LookAtNode02 
+                
+#00611        ELSE 
+#00612          Obj_SetFlag FLAG_SKATESHOP_DONOTHING 
+#00613          JKU_SkateShop_RastaMove 
+#00614        END IF 
+#00615      END IF 
+#00616      wait 1 gameframes 
+#00617    END LOOP 
+#00618  END FUNCTION
+          
+#00619  FUNCTION JKU_SkateShop_RastaIdle 
+#00621    IF Obj_FlagSet FLAG_SKATESHOP_BOARD 
+#00627      IF Obj_FlagSet FLAG_SKATESHOP_BOARD01 
+#00628        SkateShop_CheckForTalking 
+#00629      END IF 
+#00630    END IF 
+#00631    IF Obj_FlagSet FLAG_SKATESHOP_GOALTALKING 
+#00632      Obj_ClearFlag FLAG_SKATESHOP_GOALTALKING 
+#00633      RANDOM[2][9; 42]
+            
+#00634      Obj_CycleAnim anim = Talk 
+            BlendPeriod = 0.3 
+            
+#00635      JUMP 0x1b000000 Obj_CycleAnim anim = Talk2 
+            BlendPeriod = 0.3 
+            
+#00636    ELSE 
+#00637      RANDOM[4][12; 13; 14; 20]
+            JUMP 0x2a000000 JUMP 0x25000000 
+#00638      JUMP 0x1b000000 Obj_CycleAnim anim = Idle 
+            BlendPeriod = 0.3 
+            
+#00639      RANDOM[13][53; 86; 119; 152; 185; 218; 251; 284; 317; 350; 383; 416; 449]
+            
+#00640      Obj_CycleAnim anim = Idle 
+            BlendPeriod = 0.3 
+            
+#00641      JUMP 0xb7010000 Obj_CycleAnim anim = Idle 
+            BlendPeriod = 0.3 
+            
+#00642      JUMP 0x92010000 Obj_CycleAnim anim = Idle 
+            BlendPeriod = 0.3 
+            
+#00643      JUMP 0x6d010000 Obj_CycleAnim anim = Idle 
+            BlendPeriod = 0.3 
+            
+#00644      JUMP 0x48010000 Obj_CycleAnim anim = StandIdle 
+            BlendPeriod = 0.3 
+            
+#00645      JUMP 0x23010000 Obj_CycleAnim anim = StandIdle 
+            BlendPeriod = 0.3 
+            
+#00646      JUMP 0xfe000000 Obj_CycleAnim anim = StandIdle 
+            BlendPeriod = 0.3 
+            
+#00647      JUMP 0xd9000000 Obj_CycleAnim anim = StandIdle 
+            BlendPeriod = 0.3 
+            
+#00648      JUMP 0xb4000000 Obj_CycleAnim anim = LookLeftRight 
+            BlendPeriod = 0.3 
+            
+#00649      JUMP 0x8f000000 Obj_CycleAnim anim = LookRight 
+            BlendPeriod = 0.3 
+            
+#00650      JUMP 0x6a000000 Obj_CycleAnim anim = LookLeftDown 
+            BlendPeriod = 0.3 
+            
+#00651      JUMP 0x45000000 Obj_CycleAnim anim = ScratchChin 
+            BlendPeriod = 0.3 
+            
+#00652      JUMP 0x20000000 Obj_CycleAnim anim = LookAtWatch 
+            BlendPeriod = 0.3 
+            
+#00653      
+#00654    END IF 
+#00655  END FUNCTION
+          
+#00657  FUNCTION SkateShop_CheckForTalking 
+#00659    IF Obj_FlagNotSet FLAG_SKATESHOP_GOALTALKING 
+#00661      IF GetGlobalFlag flag = SKATESHOP_JUST_GOT_EVERYTHING 
+              
+#00662        IF Obj_FlagNotSet FLAG_SKATESHOP_GOALTALKING 
+#00663          Obj_SetFlag FLAG_SKATESHOP_GOALTALKING 
+#00665          PlayStream Skate_New_36 channel = 0 
+                
+#00666        END IF 
+#00667      END IF 
+#00668      IF GetGlobalFlag flag = SKATESHOP_JUST_GOT_SECRET_CHAR 
+              
+#00669        IF Obj_FlagNotSet FLAG_SKATESHOP_GOALTALKING 
+#00670          Obj_SetFlag FLAG_SKATESHOP_GOALTALKING 
+#00672          PlayStream Skate_New_33 channel = 0 
+                
+#00673        END IF 
+#00674      END IF 
+#00675      IF GetGlobalFlag flag = SKATESHOP_JUST_GOT_SECRET_LEVEL 
+              
+#00676        IF Obj_FlagNotSet FLAG_SKATESHOP_GOALTALKING 
+#00677          Obj_SetFlag FLAG_SKATESHOP_GOALTALKING 
+#00679          PlayStream Skate_New_34 channel = 0 
+                
+#00680        END IF 
+#00681      END IF 
+#00682      IF GetGlobalFlag flag = SKATESHOP_JUST_GOT_SECRET_CHEAT 
+              
+#00683        IF Obj_FlagNotSet FLAG_SKATESHOP_GOALTALKING 
+#00684          Obj_SetFlag FLAG_SKATESHOP_GOALTALKING 
+#00686          PlayStream Skate_New_35 channel = 0 
+                
+#00687        END IF 
+#00688      END IF 
+#00689      IF GetGlobalFlag flag = SKATESHOP_JUST_GOT_3_MEDALS 
+              
+#00690        IF Obj_FlagNotSet FLAG_SKATESHOP_GOALTALKING 
+#00691          Obj_SetFlag FLAG_SKATESHOP_GOALTALKING 
+#00693          PlayStream Skate_New_31 channel = 0 
+                
+#00694        END IF 
+#00695      END IF 
+#00696      IF GetGlobalFlag flag = SKATESHOP_JUST_GOT_LEVEL 
+              
+#00697        IF Obj_FlagNotSet FLAG_SKATESHOP_GOALTALKING 
+#00698          Obj_SetFlag FLAG_SKATESHOP_GOALTALKING 
+#00700          PlayStream RANDOM[3][8; 14; 20]
+                Skate_New_22 JUMP 0x0f000000 Skate_New_23 JUMP 0x05000000 Skate_New_24 channel = 0 
+                
+#00701        END IF 
+#00702      END IF 
+#00703      IF GetGlobalFlag flag = SKATESHOP_JUST_GOT_DECK 
+              
+#00704        IF Obj_FlagNotSet FLAG_SKATESHOP_GOALTALKING 
+#00705          Obj_SetFlag FLAG_SKATESHOP_GOALTALKING 
+#00707          PlayStream RANDOM[3][8; 14; 20]
+                Skate_New_28 JUMP 0x0f000000 Skate_New_29 JUMP 0x05000000 Skate_New_30 channel = 0 
+                
+#00708        END IF 
+#00709      END IF 
+#00710      IF GetGlobalFlag flag = SKATESHOP_JUST_GOT_MEDAL_GOLD 
+              
+#00711        IF Obj_FlagNotSet FLAG_SKATESHOP_GOALTALKING 
+#00712          Obj_SetFlag FLAG_SKATESHOP_GOALTALKING 
+#00714          PlayStream Skate_New_27 channel = 0 
+                
+#00715        END IF 
+#00716      END IF 
+#00717      IF GetGlobalFlag flag = SKATESHOP_JUST_GOT_MEDAL_SILVER 
+              
+#00718        IF Obj_FlagNotSet FLAG_SKATESHOP_GOALTALKING 
+#00719          Obj_SetFlag FLAG_SKATESHOP_GOALTALKING 
+#00721          PlayStream Skate_New_26 channel = 0 
+                
+#00722        END IF 
+#00723      END IF 
+#00724      IF GetGlobalFlag flag = SKATESHOP_JUST_GOT_MEDAL_BRONZE 
+              
+#00725        IF Obj_FlagNotSet FLAG_SKATESHOP_GOALTALKING 
+#00726          Obj_SetFlag FLAG_SKATESHOP_GOALTALKING 
+#00728          PlayStream Skate_New_25 channel = 0 
+                
+#00729        END IF 
+#00730      END IF 
+#00731      IF GetGlobalFlag flag = SKATESHOP_JUST_GOT_GOAL 
+              
+#00732        IF Obj_FlagNotSet FLAG_SKATESHOP_GOALTALKING 
+#00733          Obj_SetFlag FLAG_SKATESHOP_GOALTALKING 
+#00735          IF GetGlobalFlag flag = SKATESHOP_JUST_GOT_LEVEL7_GOAL 
+                  
+#00736            PlayStream Skate_New_21 channel = 0 
+                  
+#00738          END IF 
+#00739          IF GetGlobalFlag flag = SKATESHOP_JUST_GOT_LEVEL5_GOAL 
+                  
+#00740            PlayStream Skate_New_20 channel = 0 
+                  
+#00742          END IF 
+#00743          IF GetGlobalFlag flag = SKATESHOP_JUST_GOT_LEVEL4_GOAL 
+                  
+#00744            PlayStream Skate_New_19 channel = 0 
+                  
+#00746          END IF 
+#00747          IF GetGlobalFlag flag = SKATESHOP_JUST_GOT_LEVEL2_GOAL 
+                  
+#00748            PlayStream Skate_New_18 channel = 0 
+                  
+#00750          END IF 
+#00751          IF GetGlobalFlag flag = SKATESHOP_JUST_GOT_LEVEL1_GOAL 
+                  
+#00752            PlayStream Skate_New_17 channel = 0 
+                  
+#00754          ELSE 
+#00755            PlayStream RANDOM[3][8; 14; 20]
+                  Skate_New_14 JUMP 0x0f000000 Skate_New_15 JUMP 0x05000000 Skate_New_16 channel = 0 
+                  
+#00757          END IF 
+#00758        END IF 
+#00759      END IF 
+#00760      UnSetGlobalFlag flag = SKATESHOP_JUST_GOT_GOAL 
+            
+#00761      UnSetGlobalFlag flag = SKATESHOP_JUST_GOT_MEDAL_BRONZE 
+            
+#00762      UnSetGlobalFlag flag = SKATESHOP_JUST_GOT_MEDAL_SILVER 
+            
+#00763      UnSetGlobalFlag flag = SKATESHOP_JUST_GOT_MEDAL_GOLD 
+            
+#00764      UnSetGlobalFlag flag = SKATESHOP_JUST_GOT_LEVEL 
+            
+#00765      UnSetGlobalFlag flag = SKATESHOP_JUST_GOT_DECK 
+            
+#00766      UnSetGlobalFlag flag = SKATESHOP_JUST_GOT_SECRET_CHAR 
+            
+#00767      UnSetGlobalFlag flag = SKATESHOP_JUST_GOT_SECRET_LEVEL 
+            
+#00768      UnSetGlobalFlag flag = SKATESHOP_JUST_GOT_SECRET_CHEAT 
+            
+#00769      UnSetGlobalFlag flag = SKATESHOP_JUST_GOT_LEVEL1_GOAL 
+            
+#00770      UnSetGlobalFlag flag = SKATESHOP_JUST_GOT_LEVEL2_GOAL 
+            
+#00771      UnSetGlobalFlag flag = SKATESHOP_JUST_GOT_LEVEL4_GOAL 
+            
+#00772      UnSetGlobalFlag flag = SKATESHOP_JUST_GOT_LEVEL5_GOAL 
+            
+#00773      UnSetGlobalFlag flag = SKATESHOP_JUST_GOT_LEVEL7_GOAL 
+            
+#00774      UnSetGlobalFlag flag = SKATESHOP_JUST_GOT_3_MEDALS 
+            
+#00775      UnSetGlobalFlag flag = SKATESHOP_JUST_GOT_EVERYTHING 
+            
+#00776    END IF 
+#00777  END FUNCTION
+          
+#00778  FUNCTION JKU_SkateShop_RastaDemoness_Init 
+#00780    SetParticleSysVisibility system = "Particle_SS_Flames01" 
+          visible = 1 
+          
+#00781    SetParticleSysVisibility system = "Particle_SS_Smoke01" 
+          visible = 1 
+          
+#00782    Obj_ApplyScaling x = 0.95 
+          y = 0.95 
+          z = 0.95 
+          
+#00783    wait 5 frames 
+#00784    SetParticleSysVisibility system = "Particle_SS_Flames02" 
+          visible = 1 
+          
+#00785    SetParticleSysVisibility system = "Particle_SS_Smoke02" 
+          visible = 1 
+          
+#00786    Obj_ApplyScaling x = 0.9 
+          y = 0.9 
+          z = 0.9 
+          
+#00787    wait 5 frames 
+#00788    SetParticleSysVisibility system = "Particle_SS_Flames03" 
+          visible = 1 
+          
+#00789    SetParticleSysVisibility system = "Particle_SS_Smoke03" 
+          visible = 1 
+          
+#00790    Obj_ApplyScaling x = 0.85 
+          y = 0.85 
+          z = 0.85 
+          
+#00791    wait 5 frames 
+#00792    SetParticleSysVisibility system = "Particle_SS_Flames04" 
+          visible = 1 
+          
+#00793    SetParticleSysVisibility system = "Particle_SS_Smoke04" 
+          visible = 1 
+          
+#00794    Obj_ApplyScaling x = 0.8 
+          y = 0.8 
+          z = 0.8 
+          
+#00795    wait 5 frames 
+#00796    SetParticleSysVisibility system = "Particle_SS_Flames05" 
+          visible = 1 
+          
+#00797    SetParticleSysVisibility system = "Particle_SS_Smoke05" 
+          visible = 1 
+          
+#00798    Obj_ApplyScaling x = 0.75 
+          y = 0.75 
+          z = 0.75 
+          
+#00799    wait 5 frames 
+#00800    SetParticleSysVisibility system = "Particle_SS_Flames06" 
+          visible = 1 
+          
+#00801    SetParticleSysVisibility system = "Particle_SS_Smoke06" 
+          visible = 1 
+          
+#00802    Obj_ApplyScaling x = 0.7 
+          y = 0.7 
+          z = 0.7 
+          
+#00803    wait 1.5 frames 
+#00804    Obj_ApplyScaling x = 0.65 
+          y = 0.65 
+          z = 0.65 
+          
+#00805    wait 1.5 frames 
+#00806    Obj_ApplyScaling x = 0.6 
+          y = 0.6 
+          z = 0.6 
+          
+#00807  END FUNCTION
+          
+#00808  FUNCTION JKU_SkateShop_RastaDemoness_Out 
+#00810    SetParticleSysVisibility system = "Particle_SS_Flames06" 
+          visible = 0 
+          
+#00811    SetParticleSysVisibility system = "Particle_SS_Smoke06" 
+          visible = 0 
+          
+#00812    Obj_ApplyScaling x = 0.65 
+          y = 0.65 
+          z = 0.65 
+          
+#00813    wait 5 frames 
+#00814    SetParticleSysVisibility system = "Particle_SS_Flames05" 
+          visible = 0 
+          
+#00815    SetParticleSysVisibility system = "Particle_SS_Smoke05" 
+          visible = 0 
+          
+#00816    Obj_ApplyScaling x = 0.7 
+          y = 0.7 
+          z = 0.7 
+          
+#00817    wait 5 frames 
+#00818    SetParticleSysVisibility system = "Particle_SS_Flames04" 
+          visible = 0 
+          
+#00819    SetParticleSysVisibility system = "Particle_SS_Smoke04" 
+          visible = 0 
+          
+#00820    Obj_ApplyScaling x = 0.75 
+          y = 0.75 
+          z = 0.75 
+          
+#00821    wait 5 frames 
+#00822    SetParticleSysVisibility system = "Particle_SS_Flames03" 
+          visible = 0 
+          
+#00823    SetParticleSysVisibility system = "Particle_SS_Smoke03" 
+          visible = 0 
+          
+#00824    Obj_ApplyScaling x = 0.8 
+          y = 0.8 
+          z = 0.8 
+          
+#00825    wait 5 frames 
+#00826    SetParticleSysVisibility system = "Particle_SS_Flames02" 
+          visible = 0 
+          
+#00827    SetParticleSysVisibility system = "Particle_SS_Smoke02" 
+          visible = 0 
+          
+#00828    Obj_ApplyScaling x = 0.85 
+          y = 0.85 
+          z = 0.85 
+          
+#00829    wait 5 frames 
+#00830    SetParticleSysVisibility system = "Particle_SS_Flames01" 
+          visible = 0 
+          
+#00831    SetParticleSysVisibility system = "Particle_SS_Smoke01" 
+          visible = 0 
+          
+#00832    Obj_ApplyScaling x = 0.9 
+          y = 0.9 
+          z = 0.9 
+          
+#00833    wait 1.5 frames 
+#00834    Obj_ApplyScaling x = 0.95 
+          y = 0.95 
+          z = 0.95 
+          
+#00835    wait 1.5 frames 
+#00836    Obj_ApplyScaling x = 1 
+          y = 1 
+          z = 1 
+          
+#00837  END FUNCTION
+          
+#00838  FUNCTION JKU_Ware_IsObserver 
+#00840    kill prefix = "SkWare_Dark" 
+          
+#00841  END FUNCTION
+          
+#00842  FUNCTION JKU_Ware_RoomFlicker 
+#00844    visible prefix = "SkWare_Light" 
+          
+#00845    invisible prefix = "SkWare_Dark" 
+          
+#00846    LOOP 
+#00847      wait RANDOM[4][17; 33; 49; 65]
+            
+#00848      10 gameframes 
+#00849      JUMP 0x32000000 30 gameframes 
+#00850      JUMP 0x1e000000 60 gameframes 
+#00851      JUMP 0x0a000000 120 gameframes 
+#00852      invisible prefix = "SkWare_Light" 
+            
+#00853      visible prefix = "SkWare_Dark" 
+            
+#00854      wait RANDOM[4][17; 33; 49; 65]
+            
+#00855      10 gameframes 
+#00856      JUMP 0x32000000 30 gameframes 
+#00857      JUMP 0x1e000000 60 gameframes 
+#00858      JUMP 0x0a000000 120 gameframes 
+#00859      invisible prefix = "SkWare_Dark" 
+            
+#00860      visible prefix = "SkWare_Light" 
+            
+#00861    END LOOP 
+#00862  END FUNCTION
+          
+#00863  FUNCTION JKU_PerchedBird 
+#00865    Obj_SetGroundOffset 0 feet 
+#00866    Obj_StickToGround off 
+#00867    Obj_PathHeading off 
+#00868    Obj_SpawnScript BirdPerched params = STRUCT{
+            EscapeNode1 = GLOBAL.EscapeNode1 
+            EscapeNode2 = GLOBAL.EscapeNode2 
+            EscapeNode3 = GLOBAL.EscapeNode3 
+            }
+          
+#00872  END FUNCTION
+          
+#00873  FUNCTION BirdPerched 
+#00875    Obj_KillSpawnedScript name = BirdFlapWings 
+          
+#00876    LOOP 
+#00877      IF Obj_ObjectInRadius radius = 50 
+              feet type = skater 
+              
+#00879        Obj_SpawnScript BirdFlapWings 
+#00881        wait RANDOM[4][12; 18; 24; 30]
+              1 JUMP 0x19000000 3 JUMP 0x0f000000 5 JUMP 0x05000000 7 frames 
+#00882        Obj_MoveToNode speed = 15 
+              acceleration = 2 
+              name = RANDOM[3][8; 15; 22]
+              
+              GLOBAL.EscapeNode1 
+              JUMP 0x11000000 GLOBAL.EscapeNode2 
+              JUMP 0x06000000 GLOBAL.EscapeNode3 
+              
+#00883        BREAK
+              
+#00884      END IF 
+#00885      wait 30 frames 
+#00886    END LOOP 
+#00887  END FUNCTION
+          
+#00888  FUNCTION BirdHovering 
+#00890    LOOP 
+#00891      IF Obj_ObjectNotInRadius radius = 100 
+              feet type = skater 
+              
+#00893        Obj_SpawnScript BirdFlapWings 
+#00895        Obj_SpawnScript BirdCheckForSkaterWhenComingHome params = STRUCT{
+                EscapeNode1 = GLOBAL.EscapeNode1 
+                EscapeNode2 = GLOBAL.EscapeNode2 
+                EscapeNode3 = GLOBAL.EscapeNode3 
+                }
+              
+#00899        Obj_MoveToNode speed = 15 
+              acceleration = 2 
+              name = GLOBAL.RoostNode 
+              
+#00900        BREAK
+              
+#00901      END IF 
+#00902      wait 30 frames 
+#00903    END LOOP 
+#00904  END FUNCTION
+          
+#00905  FUNCTION BirdCheckForSkaterWhenComingHome 
+#00907    LOOP 
+#00908      IF Obj_ObjectInRadius radius = 50 
+              feet type = skater 
+              
+#00910        Obj_MoveToNode speed = 15 
+              acceleration = 2 
+              name = RANDOM[3][8; 15; 22]
+              
+              GLOBAL.EscapeNode1 
+              JUMP 0x11000000 GLOBAL.EscapeNode2 
+              JUMP 0x06000000 GLOBAL.EscapeNode3 
+              
+#00911        BREAK
+              
+#00912      END IF 
+#00913      wait 30 frames 
+#00914    END LOOP 
+#00915  END FUNCTION
+          
+#00916  FUNCTION JKU_Ped_Walkway00_IdleA 
+#00920    LOOP 
+#00921      Obj_LookAtObject type = skater 
+            
+#00924      Obj_CycleAnim anim = RANDOM[6][20; 26; 32; 38; 44; 50]
+            
+            ScratchChin JUMP 0x2d000000 Talk JUMP 0x23000000 Talk2 JUMP 0x19000000 Idle JUMP 0x0f000000 Idle2 JUMP 0x05000000 Idle3 
+#00925      IF Obj_ObjectInRadius radius = 20 
+              type = skater 
+              
+#00928        LOOP 
+#00929          IF Obj_ObjectInRadius radius = 5 
+                  type = skater 
+                  
+#00930            LOOP 
+#00932              Obj_LookAtObject type = skater 
+                    
+#00934              Obj_CycleAnim anim = JumpBack 
+                    
+#00935              IF Obj_ObjectNotInRadius radius = 5 
+                      type = skater 
+                      
+#00936                BREAK
+                      
+#00937              END IF 
+#00938            END LOOP 
+#00939          END IF 
+#00940          IF Obj_ObjectInRect dist = 5 
+                  width = 5 
+                  offset = VECTOR[0.0; 6.0; -2.5] 
+                  type = skater 
+                  
+#00942            Obj_LookAtObject type = skater 
+                  
+#00944            Obj_CycleAnim anim = IdletoCower 
+                  
+#00945            Obj_CycleAnim anim = Cower 
+                  
+#00946            Obj_CycleAnim anim = CowertoIdle 
+                  
+#00947          END IF 
+#00948          Obj_LookAtObject type = skater 
+                
+#00950          Obj_CycleAnim anim = RANDOM[2][4; 10]
+                
+                Cheering JUMP 0x05000000 Clap 
+#00951          IF Obj_ObjectNotInRadius radius = 20 
+                  type = skater 
+                  
+#00955            BREAK
+                  
+#00956          END IF 
+#00957        END LOOP 
+#00958      END IF 
+#00959    END LOOP 
+#00960  END FUNCTION
+          
+#00961  FUNCTION JKU_BirdPath 
+#00963    Obj_SetPathVelocity 0x30 PAIR[12.0; 14.0] 
+#00964  END FUNCTION
+          
+#00965  

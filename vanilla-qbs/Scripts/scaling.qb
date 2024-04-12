@@ -1,0 +1,1368 @@
+FUNCTION apply_normal_mode 
+#00001    resetscale 
+#00002    setobjectscale STRUCT{
+            x = 1.0 
+            y = 1.0 
+            z = 1.0 
+            }
+          
+#00003  END FUNCTION
+          
+#00004  FUNCTION apply_flathead_mode 
+#00006    resetscale 
+#00007    applyscale STRUCT{
+            x = 4.0 
+            y = 1.0 
+            z = 4.0 
+            bone = "head" 
+            }
+          
+#00008  END FUNCTION
+          
+#00009  FUNCTION apply_flathead2_mode 
+#00011    resetscale 
+#00012    applyscale STRUCT{
+            x = 1.0 
+            y = 4.0 
+            z = 4.0 
+            bone = "head" 
+            }
+          
+#00013  END FUNCTION
+          
+#00014  FUNCTION apply_bighead_mode 
+#00016    resetscale 
+#00017    applyscale STRUCT{
+            x = 2.0 
+            y = 2.0 
+            z = 2.0 
+            bone = "head" 
+            }
+          
+#00018  END FUNCTION
+          
+#00019  FUNCTION apply_bigfeet_mode 
+#00021    resetscale 
+#00022    applyscale STRUCT{
+            x = 2.0 
+            y = 2.0 
+            z = 1.0 
+            bone = "left_ankle" 
+            }
+          
+#00023    applyscale STRUCT{
+            x = 2.0 
+            y = 2.0 
+            z = 1.0 
+            bone = "left_toes" 
+            }
+          
+#00024    applyscale STRUCT{
+            x = 2.0 
+            y = 2.0 
+            z = 1.0 
+            bone = "right_ankle" 
+            }
+          
+#00025    applyscale STRUCT{
+            x = 2.0 
+            y = 2.0 
+            z = 1.0 
+            bone = "right_toes" 
+            }
+          
+#00026  END FUNCTION
+          
+#00027  FUNCTION apply_fatass_mode 
+#00029    resetscale 
+#00030    applyscale STRUCT{
+            x = 2.0 
+            y = 2.0 
+            z = 2.0 
+            bone = "head" 
+            }
+          
+#00031    applyscale STRUCT{
+            x = 2.0 
+            y = 2.0 
+            z = 1.0 
+            bone = "right_hip" 
+            }
+          
+#00032    applyscale STRUCT{
+            x = 2.0 
+            y = 2.0 
+            z = 1.0 
+            bone = "left_hip" 
+            }
+          
+#00033  END FUNCTION
+          
+#00034  FUNCTION apply_thin_mode 
+#00036    resetscale 
+#00037    applyscale STRUCT{
+            x = 0.5 
+            y = 0.5 
+            z = 1.0 
+            bone = "right_hip" 
+            }
+          
+#00038    applyscale STRUCT{
+            x = 0.5 
+            y = 0.5 
+            z = 1.0 
+            bone = "left_hip" 
+            }
+          
+#00039    applyscale STRUCT{
+            x = 0.5 
+            y = 0.5 
+            z = 1.0 
+            bone = "neck" 
+            }
+          
+#00040    applyscale STRUCT{
+            x = 0.5 
+            y = 0.5 
+            z = 1.0 
+            bone = "chest" 
+            }
+          
+#00041    applyscale STRUCT{
+            x = 0.5 
+            y = 0.5 
+            z = 1.0 
+            bone = "stomach" 
+            }
+          
+#00042    applyscale STRUCT{
+            x = 0.5 
+            y = 0.5 
+            z = 1.0 
+            bone = "pelvis" 
+            }
+          
+#00043    applyscale STRUCT{
+            x = 1.0 
+            y = 0.5 
+            z = 0.5 
+            bone = "left_shoulder" 
+            }
+          
+#00044    applyscale STRUCT{
+            x = 1.0 
+            y = 0.5 
+            z = 0.5 
+            bone = "right_shoulder" 
+            }
+          
+#00045  END FUNCTION
+          
+#00046  FUNCTION apply_popeye_mode 
+#00048    resetscale 
+#00049    applyscale STRUCT{
+            x = 2.5 
+            y = 2.5 
+            z = 1.5 
+            bone = "left_forearm" 
+            }
+          
+#00050    applyscale STRUCT{
+            x = 2.5 
+            y = 2.5 
+            z = 1.5 
+            bone = "right_forearm" 
+            }
+          
+#00051    applyscale STRUCT{
+            x = 2.5 
+            y = 2.5 
+            z = 1.5 
+            bone = "left_wrist" 
+            }
+          
+#00052    applyscale STRUCT{
+            x = 2.5 
+            y = 2.5 
+            z = 1.5 
+            bone = "left_fingers" 
+            }
+          
+#00053    applyscale STRUCT{
+            x = 2.5 
+            y = 2.5 
+            z = 1.5 
+            bone = "right_wrist" 
+            }
+          
+#00054    applyscale STRUCT{
+            x = 2.5 
+            y = 2.5 
+            z = 1.5 
+            bone = "right_fingers" 
+            }
+          
+#00055  END FUNCTION
+          
+#00056  FUNCTION apply_bigarm_mode 
+#00058    resetscale 
+#00059    applyscale STRUCT{
+            x = 1.0 
+            y = 2.0 
+            z = 2.0 
+            bone = "right_shoulder" 
+            }
+          
+#00060    applyscale STRUCT{
+            x = 2.5 
+            y = 2.5 
+            z = 1.0 
+            bone = "right_elbow" 
+            }
+          
+#00061    applyscale STRUCT{
+            x = 2.5 
+            y = 2.5 
+            z = 1.5 
+            bone = "right_forearm" 
+            }
+          
+#00062    applyscale STRUCT{
+            x = 2.5 
+            y = 2.5 
+            z = 1.5 
+            bone = "right_wrist" 
+            }
+          
+#00063    applyscale STRUCT{
+            x = 2.5 
+            y = 2.5 
+            z = 1.5 
+            bone = "right_fingers" 
+            }
+          
+#00064  END FUNCTION
+          
+#00065  FUNCTION apply_bigboard_mode 
+#00067    resetscale 
+#00068    applyscale STRUCT{
+            x = 2.0 
+            y = 2.0 
+            z = 1.0 
+            bone = "burnq_board" 
+            }
+          
+#00069    applyscale STRUCT{
+            x = 2.0 
+            y = 2.0 
+            z = 1.0 
+            bone = "burnq_front_wheel" 
+            }
+          
+#00070    applyscale STRUCT{
+            x = 2.0 
+            y = 2.0 
+            z = 1.0 
+            bone = "burnq_back_wheel" 
+            }
+          
+#00071  END FUNCTION
+          
+#00072  FUNCTION apply_tall_mode 
+#00074    resetscale 
+#00075    setobjectscale STRUCT{
+            x = 1.2 
+            y = 1.2 
+            z = 1.2 
+            }
+          
+#00076  END FUNCTION
+          
+#00085  FUNCTION apply_short_mode 
+#00087    resetscale 
+#00088    setobjectscale STRUCT{
+            x = 0.9 
+            y = 0.9 
+            z = 0.9 
+            }
+          
+#00089  END FUNCTION
+          
+#00090  FUNCTION apply_caballero_mode 
+#00092    applyscale STRUCT{
+            x = 1.0 
+            y = 1.0 
+            z = 1.0 
+            bone = "head" 
+            }
+          
+#00093    applyscale STRUCT{
+            x = 1.0 
+            y = 1.0 
+            z = 1.0 
+            bone = "neck" 
+            }
+          
+#00094    applyscale STRUCT{
+            x = 1.0 
+            y = 1.0 
+            z = 1.0 
+            bone = "brain" 
+            }
+          
+#00095  END FUNCTION
+          
+#00096  FUNCTION apply_rowley_mode 
+#00098    applyscale STRUCT{
+            x = 1.025 
+            y = 1.025 
+            z = 1.025 
+            bone = "head" 
+            }
+          
+#00099    applyscale STRUCT{
+            x = 1.0 
+            y = 1.0 
+            z = 1.0 
+            bone = "neck" 
+            }
+          
+#00100    applyscale STRUCT{
+            x = 1.0 
+            y = 1.0 
+            z = 1.0 
+            bone = "brain" 
+            }
+          
+#00101  END FUNCTION
+          
+#00102  FUNCTION apply_uyeda_mode 
+#00104    apply_kid_mode 
+#00105    applyscale STRUCT{
+            x = 2.0 
+            y = 1.0 
+            z = 2.0 
+            bone = "head" 
+            }
+          
+#00106  END FUNCTION
+          
+#00107  FUNCTION apply_Fong_mode 
+#00109    applyscale STRUCT{
+            x = 1.2 
+            y = 1.0 
+            z = 1.0 
+            bone = "head" 
+            }
+          
+#00110    applyscale STRUCT{
+            x = 0.8 
+            y = 0.9 
+            z = 1.0 
+            bone = "neck" 
+            }
+          
+#00111  END FUNCTION
+          
+#00112  FUNCTION apply_Chad_mode 
+#00114    applyscale STRUCT{
+            x = 1.1 
+            y = 0.9 
+            z = 0.9 
+            bone = "head" 
+            }
+          
+#00115    applyscale STRUCT{
+            x = 0.8 
+            y = 0.9 
+            z = 1.0 
+            bone = "neck" 
+            }
+          
+#00116  END FUNCTION
+          
+#00117  FUNCTION apply_Nolan_mode 
+#00119    applyscale STRUCT{
+            x = 0.5 
+            y = 0.5 
+            z = 0.5 
+            bone = "head" 
+            }
+          
+#00120    applyscale STRUCT{
+            x = 0.5 
+            y = 0.5 
+            z = 1.0 
+            bone = "right_hip" 
+            }
+          
+#00121    applyscale STRUCT{
+            x = 0.5 
+            y = 0.5 
+            z = 1.0 
+            bone = "left_hip" 
+            }
+          
+#00122    applyscale STRUCT{
+            x = 0.5 
+            y = 0.5 
+            z = 1.0 
+            bone = "neck" 
+            }
+          
+#00123    applyscale STRUCT{
+            x = 0.5 
+            y = 0.5 
+            z = 1.0 
+            bone = "chest" 
+            }
+          
+#00124    applyscale STRUCT{
+            x = 0.5 
+            y = 0.5 
+            z = 1.0 
+            bone = "stomach" 
+            }
+          
+#00125    applyscale STRUCT{
+            x = 0.5 
+            y = 0.5 
+            z = 1.0 
+            bone = "pelvis" 
+            }
+          
+#00126    applyscale STRUCT{
+            x = 1.0 
+            y = 0.5 
+            z = 0.5 
+            bone = "left_shoulder" 
+            }
+          
+#00127    applyscale STRUCT{
+            x = 1.0 
+            y = 0.5 
+            z = 0.5 
+            bone = "right_shoulder" 
+            }
+          
+#00128  END FUNCTION
+          
+#00129  FUNCTION apply_west_mode 
+#00131    resetscale 
+#00132    applyscale STRUCT{
+            x = 0.95 
+            y = 1.0 
+            z = 1.0 
+            bone = "head" 
+            }
+          
+#00133    applyscale STRUCT{
+            x = 0.8 
+            y = 0.9 
+            z = 1.0 
+            bone = "neck" 
+            }
+          
+#00134    applyscale STRUCT{
+            x = 0.8 
+            y = 0.8 
+            z = 0.8 
+            bone = "pelvis" 
+            }
+          
+#00135  END FUNCTION
+          
+#00137  FUNCTION apply_duncan_mode 
+#00139    resetscale 
+#00140    applyscale STRUCT{
+            x = 1.0 
+            y = 1.0 
+            z = 1.05 
+            bone = "head" 
+            }
+          
+#00141    applyscale STRUCT{
+            x = 0.8 
+            y = 0.9 
+            z = 1.0 
+            bone = "neck" 
+            }
+          
+#00142    applyscale STRUCT{
+            x = 0.8 
+            y = 0.8 
+            z = 0.8 
+            bone = "pelvis" 
+            }
+          
+#00143  END FUNCTION
+          
+#00145  FUNCTION apply_baby_mode 
+#00147    apply_kid_mode 
+#00148    applyscale STRUCT{
+            x = 2.5 
+            y = 2.2 
+            z = 2.0 
+            bone = "head" 
+            }
+          
+#00149  END FUNCTION
+          
+#00150  FUNCTION apply_Rachael_mode 
+#00152    resetscale 
+#00154    setobjectscale STRUCT{
+            x = 0.65 
+            y = 0.65 
+            z = 0.65 
+            }
+          
+#00156    applyscale STRUCT{
+            x = 0.87 
+            y = 1.0 
+            z = 1.0 
+            bone = "pelvis" 
+            }
+          
+#00158    applyscale STRUCT{
+            x = 0.87 
+            y = 1.0 
+            z = 1.0 
+            bone = "left_hip" 
+            }
+          
+#00160    applyscale STRUCT{
+            x = 0.87 
+            y = 1.0 
+            z = 1.0 
+            bone = "right_hip" 
+            }
+          
+#00162    applyscale STRUCT{
+            x = 1.24 
+            y = 1.24 
+            z = 1.24 
+            bone = "head" 
+            }
+          
+#00164  END FUNCTION
+          
+#00166  FUNCTION apply_kid_mode 
+#00168    resetscale 
+#00169    setobjectscale STRUCT{
+            x = 0.6 
+            y = 0.6 
+            z = 0.6 
+            }
+          
+#00170    applyscale STRUCT{
+            x = 1.0 
+            y = 1.0 
+            z = 1.0 
+            bone = "dummy_scale" 
+            }
+          
+#00178    applyscale STRUCT{
+            x = 1.16 
+            y = 1.16 
+            z = 1.0 
+            bone = "pelvis" 
+            }
+          
+#00179    applyscale STRUCT{
+            x = 1.2 
+            y = 1.2 
+            z = 1.0 
+            bone = "left_hip" 
+            }
+          
+#00180    applyscale STRUCT{
+            x = 1.2 
+            y = 1.2 
+            z = 1.0 
+            bone = "left_knee" 
+            }
+          
+#00181    applyscale STRUCT{
+            x = 1.2 
+            y = 1.2 
+            z = 1.0 
+            bone = "left_ankle" 
+            }
+          
+#00182    applyscale STRUCT{
+            x = 1.2 
+            y = 1.2 
+            z = 1.0 
+            bone = "left_toes" 
+            }
+          
+#00183    applyscale STRUCT{
+            x = 1.16 
+            y = 1.16 
+            z = 1.0 
+            bone = "stomach" 
+            }
+          
+#00184    applyscale STRUCT{
+            x = 1.16 
+            y = 1.16 
+            z = 1.0 
+            bone = "chest" 
+            }
+          
+#00185    applyscale STRUCT{
+            x = 1.16 
+            y = 1.16 
+            z = 1.0 
+            bone = "neck" 
+            }
+          
+#00186    applyscale STRUCT{
+            x = 1.5 
+            y = 1.5 
+            z = 1.5 
+            bone = "head" 
+            }
+          
+#00187    applyscale STRUCT{
+            x = 1.2 
+            y = 1.2 
+            z = 1.0 
+            bone = "right_collar" 
+            }
+          
+#00188    applyscale STRUCT{
+            x = 1.0 
+            y = 1.2 
+            z = 1.2 
+            bone = "right_shoulder" 
+            }
+          
+#00189    applyscale STRUCT{
+            x = 1.2 
+            y = 1.2 
+            z = 1.0 
+            bone = "right_elbow" 
+            }
+          
+#00190    applyscale STRUCT{
+            x = 1.2 
+            y = 1.2 
+            z = 1.0 
+            bone = "right_forearm" 
+            }
+          
+#00191    applyscale STRUCT{
+            x = 1.2 
+            y = 1.2 
+            z = 1.0 
+            bone = "right_wrist" 
+            }
+          
+#00192    applyscale STRUCT{
+            x = 1.2 
+            y = 1.2 
+            z = 1.0 
+            bone = "right_fingers" 
+            }
+          
+#00193    applyscale STRUCT{
+            x = 1.2 
+            y = 1.2 
+            z = 1.0 
+            bone = "left_collar" 
+            }
+          
+#00194    applyscale STRUCT{
+            x = 1.0 
+            y = 1.2 
+            z = 1.2 
+            bone = "left_shoulder" 
+            }
+          
+#00195    applyscale STRUCT{
+            x = 1.2 
+            y = 1.2 
+            z = 1.0 
+            bone = "left_elbow" 
+            }
+          
+#00196    applyscale STRUCT{
+            x = 1.2 
+            y = 1.2 
+            z = 1.0 
+            bone = "left_forearm" 
+            }
+          
+#00197    applyscale STRUCT{
+            x = 1.2 
+            y = 1.2 
+            z = 1.0 
+            bone = "left_wrist" 
+            }
+          
+#00198    applyscale STRUCT{
+            x = 1.2 
+            y = 1.2 
+            z = 1.0 
+            bone = "left_fingers" 
+            }
+          
+#00199    applyscale STRUCT{
+            x = 1.2 
+            y = 1.2 
+            z = 1.0 
+            bone = "right_hip" 
+            }
+          
+#00200    applyscale STRUCT{
+            x = 1.2 
+            y = 1.2 
+            z = 1.0 
+            bone = "right_knee" 
+            }
+          
+#00201    applyscale STRUCT{
+            x = 1.2 
+            y = 1.2 
+            z = 1.0 
+            bone = "right_ankle" 
+            }
+          
+#00202    applyscale STRUCT{
+            x = 1.2 
+            y = 1.2 
+            z = 1.0 
+            bone = "right_toes" 
+            }
+          
+#00203    applyscale STRUCT{
+            x = 1.38 
+            y = 1.38 
+            z = 1.0 
+            bone = "burnq_board" 
+            }
+          
+#00204    applyscale STRUCT{
+            x = 1.38 
+            y = 1.38 
+            z = 1.0 
+            bone = "burnq_front_wheel" 
+            }
+          
+#00205    applyscale STRUCT{
+            x = 1.38 
+            y = 1.38 
+            z = 1.0 
+            bone = "burnq_back_wheel" 
+            }
+          
+#00206  END FUNCTION
+          
+#00207  FUNCTION apply_will_mode 
+#00209    resetscale 
+#00210    setobjectscale STRUCT{
+            x = 0.5 
+            y = 0.5 
+            z = 0.5 
+            }
+          
+#00211    applyscale STRUCT{
+            x = 1.0 
+            y = 1.0 
+            z = 1.0 
+            bone = "dummy_scale" 
+            }
+          
+#00219    applyscale STRUCT{
+            x = 1.16 
+            y = 1.16 
+            z = 1.0 
+            bone = "pelvis" 
+            }
+          
+#00220    applyscale STRUCT{
+            x = 1.3 
+            y = 1.3 
+            z = 1.0 
+            bone = "left_hip" 
+            }
+          
+#00221    applyscale STRUCT{
+            x = 1.3 
+            y = 1.5 
+            z = 1.0 
+            bone = "stomach" 
+            }
+          
+#00222    applyscale STRUCT{
+            x = 1.1 
+            y = 1.1 
+            z = 1.0 
+            bone = "chest" 
+            }
+          
+#00223    applyscale STRUCT{
+            x = 1.16 
+            y = 1.16 
+            z = 1.0 
+            bone = "neck" 
+            }
+          
+#00224    applyscale STRUCT{
+            x = 3.0 
+            y = 2.75 
+            z = 2.25 
+            bone = "head" 
+            }
+          
+#00225    applyscale STRUCT{
+            x = 1.2 
+            y = 1.2 
+            z = 1.0 
+            bone = "right_collar" 
+            }
+          
+#00226    applyscale STRUCT{
+            x = 1.2 
+            y = 1.3 
+            z = 1.2 
+            bone = "right_shoulder" 
+            }
+          
+#00227    applyscale STRUCT{
+            x = 1.2 
+            y = 1.2 
+            z = 1.0 
+            bone = "right_elbow" 
+            }
+          
+#00228    applyscale STRUCT{
+            x = 1.2 
+            y = 1.2 
+            z = 1.0 
+            bone = "right_forearm" 
+            }
+          
+#00229    applyscale STRUCT{
+            x = 1.5 
+            y = 1.5 
+            z = 1.0 
+            bone = "right_wrist" 
+            }
+          
+#00230    applyscale STRUCT{
+            x = 1.2 
+            y = 1.2 
+            z = 1.0 
+            bone = "right_fingers" 
+            }
+          
+#00231    applyscale STRUCT{
+            x = 1.2 
+            y = 1.2 
+            z = 1.0 
+            bone = "left_collar" 
+            }
+          
+#00232    applyscale STRUCT{
+            x = 1.2 
+            y = 1.3 
+            z = 1.2 
+            bone = "left_shoulder" 
+            }
+          
+#00233    applyscale STRUCT{
+            x = 1.2 
+            y = 1.2 
+            z = 1.0 
+            bone = "left_elbow" 
+            }
+          
+#00234    applyscale STRUCT{
+            x = 1.2 
+            y = 1.2 
+            z = 1.0 
+            bone = "left_forearm" 
+            }
+          
+#00235    applyscale STRUCT{
+            x = 1.5 
+            y = 1.5 
+            z = 1.0 
+            bone = "left_wrist" 
+            }
+          
+#00236    applyscale STRUCT{
+            x = 1.2 
+            y = 1.2 
+            z = 1.0 
+            bone = "left_fingers" 
+            }
+          
+#00237    applyscale STRUCT{
+            x = 1.3 
+            y = 1.3 
+            z = 1.0 
+            bone = "right_hip" 
+            }
+          
+#00238    applyscale STRUCT{
+            x = 1.3 
+            y = 1.3 
+            z = 1.0 
+            bone = "left_knee" 
+            }
+          
+#00239    applyscale STRUCT{
+            x = 1.3 
+            y = 1.3 
+            z = 1.0 
+            bone = "right_knee" 
+            }
+          
+#00240    applyscale STRUCT{
+            x = 1.3 
+            y = 1.3 
+            z = 1.0 
+            bone = "right_ankle" 
+            }
+          
+#00241    applyscale STRUCT{
+            x = 1.3 
+            y = 1.3 
+            z = 1.0 
+            bone = "left_ankle" 
+            }
+          
+#00242    applyscale STRUCT{
+            x = 1.3 
+            y = 1.2 
+            z = 1.0 
+            bone = "right_toes" 
+            }
+          
+#00243    applyscale STRUCT{
+            x = 1.3 
+            y = 1.2 
+            z = 1.0 
+            bone = "right_toes" 
+            }
+          
+#00244    applyscale STRUCT{
+            x = 1.4 
+            y = 1.0 
+            z = 1.0 
+            bone = "burnq_board" 
+            }
+          
+#00245    applyscale STRUCT{
+            x = 1.5 
+            y = 1.0 
+            z = 1.5 
+            bone = "burnq_front_wheel" 
+            }
+          
+#00246    applyscale STRUCT{
+            x = 1.4 
+            y = 1.4 
+            z = 1.4 
+            bone = "burnq_back_wheel" 
+            }
+          
+#00247  END FUNCTION
+          
+#00248  FUNCTION apply_fat_mode 
+#00251    resetscale 
+#00252    applyscale STRUCT{
+            x = 1.0 
+            y = 1.0 
+            z = 1.0 
+            bone = "dummy_scale" 
+            }
+          
+#00262    applyscale STRUCT{
+            x = 1.55 
+            y = 1.55 
+            z = 1.0 
+            bone = "pelvis" 
+            }
+          
+#00263    applyscale STRUCT{
+            x = 1.55 
+            y = 1.55 
+            z = 1.0 
+            bone = "left_hip" 
+            }
+          
+#00264    applyscale STRUCT{
+            x = 1.55 
+            y = 1.55 
+            z = 1.0 
+            bone = "left_knee" 
+            }
+          
+#00265    applyscale STRUCT{
+            x = 1.11 
+            y = 1.11 
+            z = 1.0 
+            bone = "left_ankle" 
+            }
+          
+#00266    applyscale STRUCT{
+            x = 1.11 
+            y = 1.11 
+            z = 1.0 
+            bone = "left_toes" 
+            }
+          
+#00267    applyscale STRUCT{
+            x = 1.55 
+            y = 1.55 
+            z = 1.0 
+            bone = "stomach" 
+            }
+          
+#00268    applyscale STRUCT{
+            x = 1.55 
+            y = 1.55 
+            z = 1.0 
+            bone = "chest" 
+            }
+          
+#00269    applyscale STRUCT{
+            x = 1.55 
+            y = 1.55 
+            z = 1.0 
+            bone = "neck" 
+            }
+          
+#00270    applyscale STRUCT{
+            x = 1.055 
+            y = 1.055 
+            z = 1.055 
+            bone = "head" 
+            }
+          
+#00271    applyscale STRUCT{
+            x = 1.0 
+            y = 1.0 
+            z = 1.0 
+            bone = "right_collar" 
+            }
+          
+#00272    applyscale STRUCT{
+            x = 1.0 
+            y = 1.55 
+            z = 1.55 
+            bone = "right_shoulder" 
+            }
+          
+#00273    applyscale STRUCT{
+            x = 1.55 
+            y = 1.55 
+            z = 1.0 
+            bone = "right_elbow" 
+            }
+          
+#00274    applyscale STRUCT{
+            x = 1.55 
+            y = 1.55 
+            z = 1.0 
+            bone = "right_forearm" 
+            }
+          
+#00275    applyscale STRUCT{
+            x = 1.55 
+            y = 1.55 
+            z = 1.0 
+            bone = "right_wrist" 
+            }
+          
+#00276    applyscale STRUCT{
+            x = 1.55 
+            y = 1.55 
+            z = 1.0 
+            bone = "right_fingers" 
+            }
+          
+#00277    applyscale STRUCT{
+            x = 1.0 
+            y = 1.0 
+            z = 1.0 
+            bone = "left_collar" 
+            }
+          
+#00278    applyscale STRUCT{
+            x = 1.0 
+            y = 1.55 
+            z = 1.55 
+            bone = "left_shoulder" 
+            }
+          
+#00279    applyscale STRUCT{
+            x = 1.55 
+            y = 1.55 
+            z = 1.0 
+            bone = "left_elbow" 
+            }
+          
+#00280    applyscale STRUCT{
+            x = 1.55 
+            y = 1.55 
+            z = 1.0 
+            bone = "left_forearm" 
+            }
+          
+#00281    applyscale STRUCT{
+            x = 1.55 
+            y = 1.55 
+            z = 1.0 
+            bone = "left_wrist" 
+            }
+          
+#00282    applyscale STRUCT{
+            x = 1.55 
+            y = 1.55 
+            z = 1.0 
+            bone = "left_fingers" 
+            }
+          
+#00283    applyscale STRUCT{
+            x = 1.55 
+            y = 1.55 
+            z = 1.0 
+            bone = "right_hip" 
+            }
+          
+#00284    applyscale STRUCT{
+            x = 1.55 
+            y = 1.55 
+            z = 1.0 
+            bone = "right_knee" 
+            }
+          
+#00285    applyscale STRUCT{
+            x = 1.11 
+            y = 1.11 
+            z = 1.0 
+            bone = "right_ankle" 
+            }
+          
+#00286    applyscale STRUCT{
+            x = 1.11 
+            y = 1.11 
+            z = 1.0 
+            bone = "right_toes" 
+            }
+          
+#00287    applyscale STRUCT{
+            x = 1.0 
+            y = 1.0 
+            z = 1.0 
+            bone = "burnq_board" 
+            }
+          
+#00288    applyscale STRUCT{
+            x = 1.0 
+            y = 1.0 
+            z = 1.0 
+            bone = "burnq_front_wheel" 
+            }
+          
+#00289    applyscale STRUCT{
+            x = 1.0 
+            y = 1.0 
+            z = 1.0 
+            bone = "burnq_back_wheel" 
+            }
+          
+#00290  END FUNCTION
+          
+#00291  weight_table = 
+#00298  
+        ARRAY(
+          STRUCT{
+            x = 1.0 
+            y = 1.0 
+            z = 1.0 
+            bone = "dummy_scale" 
+            }
+          STRUCT{
+            x = 0.7 
+            y = 1.0 
+            z = 0.0 
+            bone = "pelvis" 
+            }
+          STRUCT{
+            x = 1.0 
+            y = 1.0 
+            z = 0.0 
+            bone = "left_hip" 
+            }
+          STRUCT{
+            x = 1.0 
+            y = 1.0 
+            z = 0.0 
+            bone = "left_knee" 
+            }
+          STRUCT{
+            x = 0.2 
+            y = 0.2 
+            z = 0.0 
+            bone = "left_ankle" 
+            }
+          STRUCT{
+            x = 0.2 
+            y = 0.2 
+            z = 0.0 
+            bone = "left_toes" 
+            }
+          STRUCT{
+            x = 1.0 
+            y = 1.0 
+            z = 0.0 
+            bone = "stomach" 
+            }
+          STRUCT{
+            x = 0.7 
+            y = 1.0 
+            z = 0.0 
+            bone = "chest" 
+            }
+          STRUCT{
+            x = 0.01 
+            y = 0.01 
+            z = 0.0 
+            bone = "neck" 
+            }
+          STRUCT{
+            x = 0.1 
+            y = 0.1 
+            z = 0.0 
+            bone = "head" 
+            }
+          STRUCT{
+            x = 0.2 
+            y = 0.2 
+            z = 0.2 
+            bone = "brain" 
+            }
+          STRUCT{
+            x = 1.0 
+            y = 1.0 
+            z = 0.0 
+            bone = "right_collar" 
+            }
+          STRUCT{
+            x = 0.0 
+            y = 1.0 
+            z = 1.0 
+            bone = "right_shoulder" 
+            }
+          STRUCT{
+            x = 1.0 
+            y = 1.0 
+            z = 0.0 
+            bone = "right_elbow" 
+            }
+          STRUCT{
+            x = 1.0 
+            y = 1.0 
+            z = 0.0 
+            bone = "right_forearm" 
+            }
+          STRUCT{
+            x = 0.2 
+            y = 0.2 
+            z = 0.0 
+            bone = "right_wrist" 
+            }
+          STRUCT{
+            x = 0.2 
+            y = 0.2 
+            z = 0.0 
+            bone = "right_fingers" 
+            }
+          STRUCT{
+            x = 1.0 
+            y = 1.0 
+            z = 0.0 
+            bone = "left_collar" 
+            }
+          STRUCT{
+            x = 0.0 
+            y = 1.0 
+            z = 1.0 
+            bone = "left_shoulder" 
+            }
+          STRUCT{
+            x = 1.0 
+            y = 1.0 
+            z = 0.0 
+            bone = "left_elbow" 
+            }
+          STRUCT{
+            x = 1.0 
+            y = 1.0 
+            z = 0.0 
+            bone = "left_forearm" 
+            }
+          STRUCT{
+            x = 0.2 
+            y = 0.2 
+            z = 0.0 
+            bone = "left_wrist" 
+            }
+          STRUCT{
+            x = 0.2 
+            y = 0.2 
+            z = 0.0 
+            bone = "left_fingers" 
+            }
+          STRUCT{
+            x = 1.0 
+            y = 1.0 
+            z = 0.0 
+            bone = "right_hip" 
+            }
+          STRUCT{
+            x = 1.0 
+            y = 1.0 
+            z = 0.0 
+            bone = "right_knee" 
+            }
+          STRUCT{
+            x = 0.2 
+            y = 0.2 
+            z = 0.0 
+            bone = "right_ankle" 
+            }
+          STRUCT{
+            x = 0.2 
+            y = 0.2 
+            z = 0.0 
+            bone = "right_toes" 
+            }
+          STRUCT{
+            x = 0.0 
+            y = 0.0 
+            z = 0.0 
+            bone = "burnq_board" 
+            }
+          STRUCT{
+            x = 0.0 
+            y = 0.0 
+            z = 0.0 
+            bone = "burnq_front_wheel" 
+            }
+          STRUCT{
+            x = 0.0 
+            y = 0.0 
+            z = 0.0 
+            bone = "burnq_back_wheel" 
+            }
+          
+        )
+        
+#00330  

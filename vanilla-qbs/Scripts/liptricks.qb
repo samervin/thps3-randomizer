@@ -1,0 +1,966 @@
+DefaultLipTrick = STRUCT{
+          Name = 'Nose Stall' 
+          Score = 300 
+          CopingHit = 1 
+          InitAnim = NoseTailStall_init 
+          Anim = NoseTailStall_range 
+          OutAnim = NoseTailStall_out 
+          BoardRotate RotateOnOllie FlipOnOllie ReleaseFrame = 20 
+          ComboLip ExtraTricks = LipTrickExtras 
+          }
+        
+#00001  Trick_Blunt = STRUCT{
+          Scr = LipMacro2 
+          Params = STRUCT{
+            Name = 'Blunt to Fakie' 
+            CopingHit = 5 
+            Score = 500 
+            InitAnim = BluntToFakie_init 
+            Anim = BluntToFakie_range 
+            OutAnim = BluntToFakie_out 
+            BoardRotate ExtraTricks = LipTrickExtras 
+            }
+          }
+        
+#00003  Trick_MuteInvert = STRUCT{
+          Scr = LipMacro2 
+          Params = STRUCT{
+            Name = 'Invert' 
+            Score = 2000 
+            InitAnim = MuteInvert_init 
+            Anim = MuteInvert_range 
+            OutAnim = MuteInvert_out 
+            NoOllie BoardRotate ExtraTricks = InvertExtras 
+            }
+          }
+        
+#00004  Trick_Eggplant = STRUCT{
+          Scr = LipMacro2 
+          Params = STRUCT{
+            Name = 'Eggplant' 
+            Score = 2500 
+            InitAnim = EggPlant_init 
+            Anim = EggPlant_range 
+            OutAnim = EggPlant_out 
+            NoOllie FlipAfter RevertBS ExtraTricks = InvertExtras 
+            }
+          }
+        
+#00006  Trick_GymnastPlant = STRUCT{
+          Scr = LipMacro2 
+          Params = STRUCT{
+            Name = 'Gymnast Plant' 
+            Score = 3000 
+            InitAnim = GymnastPlant_init 
+            Anim = GymnastPlant_range 
+            OutAnim = GymnastPlant_out 
+            NoOllie FlipAfter RevertBS ExtraTricks = InvertExtras 
+            }
+          }
+        
+#00007  Trick_RockToFakie = STRUCT{
+          Scr = LipMacro2 
+          Params = STRUCT{
+            Name = 'Rock to Fakie' 
+            Score = 500 
+            CopingHit = 1 
+            InitAnim = FakieRockAndRoll_init 
+            Anim = FakieRockAndRoll_range 
+            OutAnim = FakieRockAndRoll_out 
+            BoardRotate ExtraTricks = LipTrickExtras 
+            }
+          }
+        
+#00009  Trick_Disaster = STRUCT{
+          Scr = LipMacro2 
+          Params = STRUCT{
+            Name = 'Disaster' 
+            Score = 600 
+            CopingHit = 20 
+            InitAnim = Disaster_init 
+            Anim = Disaster_range 
+            OutAnim = Disaster_out 
+            FlipAfter RotateOnOllie ExtraTricks = LipTrickExtras 
+            }
+          }
+        
+#00010  Trick_Invert = STRUCT{
+          Scr = LipMacro2 
+          Params = STRUCT{
+            Name = 'Varial Invert to Fakie' 
+            Score = 2250 
+            InitAnim = Invert_init 
+            Anim = Invert_range 
+            OutAnim = Invert_out 
+            NoOllie BoardRotate RevertBS ExtraTricks = InvertExtras 
+            }
+          }
+        
+#00012  Trick_OneFootInvert = STRUCT{
+          Scr = LipMacro2 
+          Params = STRUCT{
+            Name = 'One Foot Invert' 
+            Score = 2500 
+            InitAnim = OneFootInvert_init 
+            Anim = OneFootInvert_range 
+            OutAnim = OneFootInvert_out 
+            NoOllie BoardRotate ReleaseFrame = 30 
+            RevertBS ExtraTricks = InvertExtras 
+            }
+          }
+        
+#00013  Trick_BSFootplant = STRUCT{
+          Scr = LipMacro2 
+          Params = STRUCT{
+            Name = 'BS Boneless' 
+            Score = 600 
+            InitAnim = BSFootplant_init 
+            Anim = BSFootplant_range 
+            OutAnim = BSFootplant_out 
+            OllieOutAnim = BSFootplant_OllieOut 
+            FlipAfter UseBoneless ReleaseFrame = 20 
+            BailScript = FaceSmash 
+            RevertBS ExtraTricks = LipTrickExtras 
+            }
+          }
+        
+#00014  Trick_AxleStall = STRUCT{
+          Scr = LipMacro2 
+          Params = STRUCT{
+            Name = 'Axle Stall' 
+            Score = 500 
+            CopingHit = 8 
+            InitAnim = AxleStall_init 
+            Anim = AxleStall_range 
+            OutAnim = AxleStall_out 
+            OllieOutAnim = AxleStall_OllieOut 
+            FlipAfter ExtraTricks = LipTrickExtras 
+            }
+          }
+        
+#00016  Trick_Nosepick = STRUCT{
+          Scr = LipMacro2 
+          Params = STRUCT{
+            Name = 'FS Nosepick' 
+            Score = 550 
+            CopingHit = 15 
+            InitAnim = FSIndyNosepick_init 
+            Anim = FSIndyNosepick_range 
+            OutAnim = FSIndyNosepick_out 
+            FlipAfter RotateOnOllie ExtraTricks = LipTrickExtras 
+            }
+          }
+        
+#00017  Trick_Noseblunt = STRUCT{
+          Scr = LipMacro2 
+          Params = STRUCT{
+            Name = 'FS Noseblunt' 
+            Score = 550 
+            CopingHit = 20 
+            InitAnim = FS180Noseblunt_init 
+            Anim = FS180Noseblunt_range 
+            OutAnim = FS180Noseblunt_out 
+            FlipAfter RotateOnOllie ExtraTricks = LipTrickExtras 
+            }
+          }
+        
+#00018  Trick_AndrectInvert = STRUCT{
+          Scr = LipMacro2 
+          Params = STRUCT{
+            Name = 'Andrecht Invert' 
+            Score = 2500 
+            InitAnim = AndrectInvert_init 
+            Anim = AndrectInvert_range 
+            OutAnim = AndrectInvert_out 
+            NoOllie FlipAfter BoardRotate ExtraTricks = InvertExtras 
+            ReleaseFrame = 20 
+            }
+          }
+        
+#00020  Trick_Switcheroo = STRUCT{
+          Scr = LipMacro2 
+          Params = STRUCT{
+            Name = 'The Switcheroo' 
+            Score = 2500 
+            InitAnim = Switcheroo_Init 
+            Anim = Switcheroo_range 
+            OutAnim = Switcheroo_Out 
+            NoOllie BoardRotate FlipAfter ExtraTricks = InvertExtras 
+            ReleaseFrame = 30 
+            }
+          }
+        
+#00021  Trick_BSNoseComply = STRUCT{
+          Scr = LipMacro2 
+          Params = STRUCT{
+            Name = 'BS Nose Comply' 
+            Score = 4500 
+            CopingHit = 50 
+            InitAnim = BSNoseComply_init 
+            Anim = BSNoseComply_range 
+            OutAnim = BSNoseComply_out 
+            RotateOnOllie FlipOnOllie IsSpecial RevertBS ExtraTricks = LipTrickExtras 
+            }
+          }
+        
+#00023  Trick_DarkDisaster = STRUCT{
+          Scr = LipMacro2 
+          Params = STRUCT{
+            Name = 'Dark Disaster' 
+            Score = 4000 
+            InitAnim = DarkDisaster_init 
+            Anim = DarkDisaster_range 
+            OutAnim = DarkDisaster_out 
+            FlipAfter RotateOnOllie IsSpecial RevertBS ExtraTricks = LipTrickExtras 
+            }
+          }
+        
+#00024  Trick_BigSpinFliptoTail = STRUCT{
+          Scr = LipMacro2 
+          Params = STRUCT{
+            Name = 'Bigspin Flip to Tail' 
+            CopingHit = 40 
+            Score = 4500 
+            InitAnim = BigSpinFliptoTail_init 
+            Anim = BigSpinFliptoTail_range 
+            OutAnim = BigSpinFliptoTail_out 
+            FlipAfter RotateOnOllie IsSpecial RevertBS ExtraTricks = LipTrickExtras 
+            }
+          }
+        
+#00025  Trick_OneFootBlunt = STRUCT{
+          Scr = LipMacro2 
+          Params = STRUCT{
+            Name = 'One Foot Blunt' 
+            Score = 4000 
+            CopingHit = 1 
+            InitAnim = OneFootBluntKickFlip_init 
+            Anim = OneFootBluntKickFlip_range 
+            OutAnim = OneFootBluntKickFlip_out 
+            BoardRotate ExtraTricks = LipTrickExtras 
+            IsSpecial ReleaseFrame = 15 
+            }
+          }
+        
+#00026  Trick_HTeethSweeper = STRUCT{
+          Scr = LipMacro2 
+          Params = STRUCT{
+            Name = 'The H Teeth Sweeper' 
+            Score = 4000 
+            InitAnim = HTeethSweeper_Init 
+            Anim = HTeethSweeper_Range 
+            OutAnim = HTeethSweeper_Out 
+            NoOllie IsSpecial BloodFrame = 10 
+            }
+          }
+        
+#00027  Trick_Russian = STRUCT{
+          Scr = LipMacro2 
+          Params = STRUCT{
+            Name = 'Russian Boneless' 
+            Score = 4000 
+            InitAnim = BSFootplant_init 
+            Cycle Anim = Russian_Idle 
+            OutAnim = Russian_out 
+            OllieOutAnim = Russian_OllieOut 
+            FlipAfter UseBoneless ReleaseFrame = 20 
+            BailScript = FaceSmash 
+            RevertBS ExtraTricks = LipTrickExtras 
+            IsSpecial }
+          }
+        
+#00028  Trick_Summoner = STRUCT{
+          Scr = LipMacro2 
+          Params = STRUCT{
+            Name = 'The Summoner' 
+            UnlockFlag = SKATER_UNLOCKED_DEMONESS 
+            Score = 5000 
+            InitAnim = Summoner_Init 
+            Idle Anim = Summoner_Idle 
+            OutAnim = Summoner_out 
+            IsSpecial NoOllie }
+          }
+        
+#00029  Trick_HoHoSadplant = STRUCT{
+          Scr = LipMacro2 
+          Params = STRUCT{
+            Name = 'Ho Ho Sad Plant' 
+            UnlockFlag = SKATER_UNLOCKED_CARRERA 
+            Score = 5000 
+            InitAnim = HoHoSadPlant_Init 
+            Cycle Anim = HoHoSadPlant_Idle 
+            OutAnim = HoHoSadPlant_Out 
+            IsSpecial NoOllie }
+          }
+        
+#00030  SpecialLipTricks = 
+#00033  
+        ARRAY(
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Up Right Triangle 1000 }
+            TrickSlot = SpLip_U_R_Triangle 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Up Down Triangle 1000 }
+            TrickSlot = SpLip_U_D_Triangle 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Up Left Triangle 1000 }
+            TrickSlot = SpLip_U_L_Triangle 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Right Up Triangle 1000 }
+            TrickSlot = SpLip_R_U_Triangle 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Right Down Triangle 1000 }
+            TrickSlot = SpLip_R_D_Triangle 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Right Left Triangle 1000 }
+            TrickSlot = SpLip_R_L_Triangle 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Down Up Triangle 1000 }
+            TrickSlot = SpLip_D_U_Triangle 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Down Right Triangle 1000 }
+            TrickSlot = SpLip_D_R_Triangle 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Down Left Triangle 1000 }
+            TrickSlot = SpLip_D_L_Triangle 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Left Up Triangle 1000 }
+            TrickSlot = SpLip_L_U_Triangle 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Left Right Triangle 1000 }
+            TrickSlot = SpLip_L_R_Triangle 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Left Down Triangle 1000 }
+            TrickSlot = SpLip_L_D_Triangle 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Up Up Triangle 1000 }
+            TrickSlot = SpLip_U_U_Triangle 
+            }
+          
+        )
+        
+#00048  LipTricks = 
+#00050  
+        ARRAY(
+          STRUCT{
+            Trigger = STRUCT{
+              Press UpLeft 500 }
+            TrickSlot = Lip_TriangleUL 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              Press UpRight 500 }
+            TrickSlot = Lip_TriangleUR 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              Press DownLeft 500 }
+            TrickSlot = Lip_TriangleDL 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              Press DownRight 500 }
+            TrickSlot = Lip_TriangleDR 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              Press Left 500 }
+            TrickSlot = Lip_TriangleL 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              Press Right 500 }
+            TrickSlot = Lip_TriangleR 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              Press Down 500 }
+            TrickSlot = Lip_TriangleD 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              Press Up 500 }
+            TrickSlot = Lip_TriangleU 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              Press Triangle 1000 }
+            Scr = LipMacro2 
+            Params = DefaultLipTrick 
+            }
+          
+        )
+        
+#00063  ComboLipTricks = 
+#00065  
+        ARRAY(
+          STRUCT{
+            Trigger = STRUCT{
+              Press Left 500 }
+            Trick_BSFootplant }
+          STRUCT{
+            Trigger = STRUCT{
+              Press Right 500 }
+            Trick_Blunt }
+          STRUCT{
+            Trigger = STRUCT{
+              Press Down 500 }
+            Trick_AxleStall }
+          STRUCT{
+            Trigger = STRUCT{
+              Press Up 500 }
+            Trick_Disaster }
+          STRUCT{
+            Trigger = STRUCT{
+              Press Triangle 500 }
+            DefaultLipTrick }
+          
+        )
+        
+#00076  LipTrickExtras = 
+#00078  
+        ARRAY(
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Left Left Triangle 500 }
+            Trick_BSFootplant }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Right Right Triangle 500 }
+            Trick_AxleStall }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Left Right Triangle 500 }
+            Trick_Disaster }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Right Left Triangle 500 }
+            DefaultLipTrick }
+          
+        )
+        
+#00084  InvertExtras = 
+#00086  
+        ARRAY(
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Left Left Triangle 500 }
+            Trick_OneFootInvert }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Right Right Triangle 500 }
+            Trick_MuteInvert }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Left Right Triangle 500 }
+            Trick_GymnastPlant }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Right Left Triangle 500 }
+            Trick_Invert }
+          
+        )
+        
+#00092  AndrectExtras = 
+#00094  
+        STRUCT{
+          Trigger = STRUCT{
+            InOrder Triangle Triangle 500 }
+          Trick_Switcheroo }
+        
+#00095  FUNCTION LipMacro2 
+#00097    SetSkaterCamLerpReductionTimer time = 10 
+          
+#00099    IF BailIsOn 
+#00100      SetState Air 
+#00101      Goto LipBail 
+#00102    END IF 
+#00103    KillExtraTricks 
+#00104    BailOff 
+#00105    SetState Lip 
+#00106    ClearExceptions 
+#00107    ClearTrickQueue 
+#00108    SetQueueTricks NoTricks 
+#00109    SetException Ex = OffMeterTop 
+          Scr = LipOut 
+          Params = STRUCT{
+            NULL }
+          
+#00111    SetException Ex = OffMeterBottom 
+          Scr = LipBail 
+          Params = STRUCT{
+            NULL }
+          
+#00112    SetException Ex = SkaterCollideBail 
+          Scr = SkaterCollideBail 
+          
+#00113    SetException Ex = MadeOtherSkaterBail 
+          Scr = MadeOtherSkaterBail_Called 
+          CallInsteadOfGoto 
+#00114    SetQueueTricks NoTricks 
+#00115    IF GotParam NoOllie 
+#00117      SetException Ex = Ollied 
+            Scr = LipOut 
+            Params = STRUCT{
+              NULL }
+            
+#00118    ELSE 
+#00120      SetException Ex = Ollied 
+            Scr = OllieLipOut 
+            Params = STRUCT{
+              NULL }
+            
+#00121    END IF 
+#00122    PlayBonkSound 
+#00123    IF GotParam CopingHit 
+#00124      SpawnSkaterScript CopingHit Params = STRUCT{
+              NULL }
+            
+#00125    END IF 
+#00126    SetTrickName GLOBAL.Name 
+          
+#00127    SetTrickScore GLOBAL.Score 
+          
+#00128    IF GotParam BloodFrame 
+#00129      SpawnSkaterScript LipBlood Params = STRUCT{
+              NULL }
+            
+#00130    END IF 
+#00131    IF Obj_FlagSet FLAG_SKATER_LIPCOMBO 
+#00133      BlendPeriodOut 0.0 
+#00134      IF GotParam ComboLip 
+#00135        Flip 
+#00136        BoardRotate 
+#00137      END IF 
+#00138      DoBalanceTrick ButtonA = Up 
+            ButtonB = Down 
+            Type = Lip 
+            
+#00139      IF GotParam Cycle 
+#00140        Playanim Anim = GLOBAL.Anim 
+              pingpong 
+#00141      ELSE 
+#00142        Playanim Anim = GLOBAL.Anim 
+              wobble from = end 
+              To = Start 
+              
+#00143      END IF 
+#00144      IF GotParam Idle 
+#00145        Playanim Anim = GLOBAL.Anim 
+              Cycle 
+#00146        FlameUp 
+#00147      END IF 
+#00148      Wait 5 frames 
+#00149      Display Blockspin 
+#00150    ELSE 
+#00151      IF GotParam InitAnim 
+#00152        Playanim Anim = GLOBAL.InitAnim 
+              
+#00153        WaitAnimFinished 
+#00154        Display Blockspin 
+#00155        DoBalanceTrick ButtonA = Up 
+              ButtonB = Down 
+              Type = Lip 
+              
+#00156        IF GotParam Cycle 
+#00157          Playanim Anim = GLOBAL.Anim 
+                pingpong 
+#00158        ELSE 
+#00159          Playanim Anim = GLOBAL.Anim 
+                wobble from = end 
+                To = Start 
+                
+#00160        END IF 
+#00161        IF GotParam Idle 
+#00162          Playanim Anim = GLOBAL.Anim 
+                Cycle 
+#00163          FlameUp 
+#00164        END IF 
+#00165      END IF 
+#00166    END IF 
+#00167    IF GotParam IsSpecial 
+#00168      LaunchSpecialMessage 
+#00169    END IF 
+#00170    IF GotParam RevertFS 
+#00172      Obj_SetFlag FLAG_SKATER_REVERTFS 
+#00173    END IF 
+#00174    IF GotParam RevertBS 
+#00175      Obj_SetFlag FLAG_SKATER_REVERTBS 
+#00176    END IF 
+#00177    IF GotParam ExtraTricks 
+#00178      SetExtraTricks tricks = GLOBAL.ExtraTricks 
+            ignore = GLOBAL.Name 
+            
+#00179    END IF 
+#00180    LOOP 
+#00183      Tweaktrick 10 
+#00185      IF AnimEquals Russian_Idle 
+#00186        IF frameis 1 
+#00187          PlayBonkSound 
+#00188        END IF 
+#00189        IF frameis 32 
+#00190          PlayBonkSound 
+#00191        END IF 
+#00192      END IF 
+#00193      WaitOneGameFrame 
+#00197    END LOOP 
+#00198  END FUNCTION
+          
+#00200  FUNCTION CopingHit CopingHit = 1 
+          
+#00202    printstruct NULL 
+#00203    Wait GLOBAL.CopingHit 
+          frames 
+#00204    PlaySound copinghit3 RANDOM[3][8; 20; 32]
+          pitch = 90 
+          JUMP 0x1b000000 pitch = 100 
+          JUMP 0x0b000000 pitch = 110 
+          vol = 80 
+          
+#00205  END FUNCTION
+          
+#00206  FUNCTION LipBlood 
+#00210    Wait GLOBAL.BloodFrame 
+          frames 
+#00211    PlaySound bitchslap2 pitch = 60 
+          
+#00212    BloodParticlesOn Name = "breath.png" 
+          start_col = -1 
+          end_col = 587202559 
+          num = 2 
+          emit_w = 2.0 
+          emit_h = 2.0 
+          angle = 50 
+          size = 4.0 
+          bone = "head" 
+          growth = 2 
+          time = 0.5 
+          speed = 250 
+          grav = -1000 
+          life = 0.5 
+          
+#00213    SpawnSkaterScript BloodSuperTiny 
+#00214    Wait 1 frame 
+#00215    PlaySound headsmackB 
+#00216  END FUNCTION
+          
+#00217  FUNCTION FlameUp 
+#00219    Obj_Attachframe bone = "right_knee" 
+          
+#00220    Obj_Attachframe bone = "left_knee" 
+          
+#00221    Obj_Attachframe bone = "pelvis" 
+          
+#00222    BloodParticlesOn Name = "breath.png" 
+          start_col = 1426128895 
+          end_col = 153 
+          blend_mode = 72 
+          num = 40 
+          emit_w = 1.0 
+          emit_h = 1.0 
+          angle = 10 
+          size = 60.0 
+          bone = "right_knee" 
+          growth = 0 
+          time = 1 
+          speed = 40 
+          grav = 0 
+          life = 1 
+          
+#00225    BloodParticlesOn Name = "breath.png" 
+          start_col = 1429221424 
+          end_col = 4671303 
+          num = 50 
+          emit_w = 2.0 
+          emit_h = 2.0 
+          angle = 20 
+          size = 20.0 
+          bone = "pelvis" 
+          growth = 1.5 
+          time = 2 
+          speed = 50 
+          grav = 0 
+          life = 1 
+          
+#00226  END FUNCTION
+          
+#00228  FUNCTION LipOut 
+#00232    ClearLipCombos 
+#00235    StopBalanceTrick 
+#00236    KillExtraTricks 
+#00237    SetSkaterCamLerpReductionTimer time = 0 
+          
+#00238    SetException Ex = Landed 
+          Scr = LipLand 
+          Params = STRUCT{
+            NULL }
+          
+#00241    IF GotParam OutAnim 
+#00242      Playanim Anim = GLOBAL.OutAnim 
+            Blendperiod = 0.0 
+            
+#00243      BlendPeriodOut 0.3 
+#00244    ELSE 
+#00245      IF GotParam InitAnim 
+#00246        Playanim Anim = GLOBAL.InitAnim 
+              backwards 
+#00247      ELSE 
+#00248      END IF 
+#00249    END IF 
+#00250    IF GotParam BoardRotate 
+#00251      BoardRotateAfter 
+#00252    END IF 
+#00253    IF GotParam ReleaseFrame 
+#00254      WaitAnim GLOBAL.ReleaseFrame 
+            frames fromend 
+#00255    ELSE 
+#00256      WaitAnim 90 frames fromend 
+#00257    END IF 
+#00258    printf "moving the skater away.........." 
+#00264    SetState Air 
+#00265    Move z = 1 
+          
+#00266    Move y = 6 
+          
+#00267    DoNextTrick 
+#00269    NoRailTricks 
+#00270    InAirExceptions 
+#00271    SetException Ex = Landed 
+          Scr = LipLand 
+          Params = STRUCT{
+            NULL }
+          
+#00272    BlendPeriodOut 0 
+#00273    WaitAnimFinished 
+#00277    SetException Ex = GroundGone 
+          Scr = GroundGone 
+          
+#00278    IF OnGround 
+#00279      ClearGapTricks 
+#00280      ClearPanel_Landed 
+#00281      DoNextManualTrick 
+#00282    ELSE 
+#00283      ClearManualTrick 
+#00284    END IF 
+#00285    IF Inair 
+#00291      IF GotParam FlipAfter 
+#00292      ELSE 
+#00293        FlipAfter 
+#00294      END IF 
+#00295      RotateAfter 
+#00296      SetLandedFromVert 
+#00297      Goto Airborne 
+#00298    ELSE 
+#00299      CheckGapTricks 
+#00301      ClearGapTricks 
+#00302      ClearPanel_Landed 
+#00303      Goto OnGroundAi 
+#00304    END IF 
+#00305  END FUNCTION
+          
+#00306  FUNCTION ClearLipCombos 
+#00311    ClearAllowLipNoGrind 
+#00312    Obj_ClearFlag FLAG_SKATER_LIPCOMBO 
+#00313  END FUNCTION
+          
+#00314  FUNCTION LipLand 
+#00317    Land ReturnBacktoLipLand 
+#00318    printf "LipLand =============================" 
+#00319    printstruct 
+#00320    AllowRailTricks 
+#00325    Rotate 
+#00326    EnableDisplayFlip 
+#00327    IF GotParam FlipAfter 
+#00328    ELSE 
+#00329      FlipAfter 
+#00330    END IF 
+#00331    SetExtraTricks tricks = Reverts 
+          duration = 20 
+          
+#00332    WaitAnimFinished 
+#00333    SetLandedFromVert 
+#00335    Goto Land 
+#00336  END FUNCTION
+          
+#00337  FUNCTION LipBail 
+#00342    StopBalanceTrick 
+#00345    printf "stopping balance" 
+#00346    Move z = 1 
+          
+#00348    Move y = 6 
+          
+#00349    SetState Air 
+#00350    IF GotParam FlipOnOllie 
+#00351      FlipAfter 
+#00352    END IF 
+#00353    IF GotParam RotateOnOllie 
+#00354      RotateAfter 
+#00355    END IF 
+#00356    IF GotParam BailScript 
+#00357      Goto GLOBAL.BailScript 
+            
+#00358    ELSE 
+#00359      GotoRandomScript ARRAY(
+              FaceSmash NoseManualBail ManualBail 
+            )
+            
+#00360    END IF 
+#00361  END FUNCTION
+          
+#00362  FUNCTION OllieLipOut 
+#00366    SetSkaterCamLerpReductionTimer time = 1 
+          
+#00367    printstruct NULL 
+#00368    StopBalanceTrick 
+#00371    KillExtraTricks 
+#00372    NoRailTricks 
+#00373    Move z = 1 
+          
+#00374    Move y = 6 
+          
+#00375    IF GotParam BoardRotate 
+#00378      BoardRotateAfter 
+#00379    END IF 
+#00380    IF GotParam FlipOnOllie 
+#00381      FlipAfter 
+#00382    END IF 
+#00383    IF GotParam RotateOnOllie 
+#00384      RotateAfter 
+#00385    END IF 
+#00386    SetLandedFromVert 
+#00387    SpawnSkaterScript SetUpLipCombo 
+#00388    Rotate x = 90 
+          
+#00389    Rotate x = -45 
+          
+#00390    IF GotParam OllieOutAnim 
+#00391      Ollie OutAnim = GLOBAL.OllieOutAnim 
+            RotateAfter = yes 
+            FromLip 
+#00392    ELSE 
+#00393      Ollie 
+#00394    END IF 
+#00395  END FUNCTION
+          
+#00396  FUNCTION SetUpLipCombo 
+#00398    Wait 0.3 seconds 
+#00399    Obj_SetFlag FLAG_SKATER_LIPCOMBO 
+#00400    AllowRailTricks 
+#00401    AllowLipNoGrind 
+#00402    Wait 0.3 seconds 
+#00403    IF Inair 
+#00404      ClearAllowLipNoGrind 
+#00405      Obj_ClearFlag FLAG_SKATER_LIPCOMBO 
+#00406      NoRailTricks 
+#00407    END IF 
+#00408  END FUNCTION
+          
+#00409  FUNCTION LipTrick 
+#00416    ClearExceptions 
+#00418    SetException Ex = SkaterCollideBail 
+          Scr = SkaterCollideBail 
+          
+#00419    ClearTrickQueue 
+#00420    KillExtraTricks 
+#00421    IF Obj_FlagSet FLAG_SKATER_LIPCOMBO 
+#00423      SetQueueTricks ComboLipTricks 
+#00424    ELSE 
+#00425      SetQueueTricks special = SpecialLipTricks 
+            LipTricks 
+#00426      printf "queued up the liptricks............" 
+#00427    END IF 
+#00428    UseGrindEvents 
+#00429    Wait 1 Gameframe 
+#00431    DoNextTrick 
+#00433    ClearExceptions 
+#00435    SetException Ex = SkaterCollideBail 
+          Scr = SkaterCollideBail 
+          
+#00436    ClearTrickQueue 
+#00437    SetQueueTricks NoTricks 
+#00438    printf "default lip trick coming up................." 
+#00440    Goto LipMacro2 Params = DefaultLipTrick 
+          
+#00441  END FUNCTION
+          
+#00442  FUNCTION LipMacro 
+#00453    ClearExceptions 
+#00455    ClearTrickQueue 
+#00456    SetQueueTricks NoTricks 
+#00457    SetException Ex = OffMeterTop 
+          Scr = LipBail 
+          
+#00460    SetException Ex = OffMeterBottom 
+          Scr = LipBail 
+          
+#00461    IF GotParam InitAnim 
+#00462      Playanim Anim = GLOBAL.InitAnim 
+            
+#00463      WaitAnimFinished 
+#00464    END IF 
+#00465    IF Held Triangle 
+#00466    ELSE 
+#00467      Goto LipOut Params = STRUCT{
+              NULL }
+            
+#00468    END IF 
+#00469    SetTrickName GLOBAL.Name 
+          
+#00470    SetTrickScore GLOBAL.Score 
+          
+#00471    Display Blockspin 
+#00472    DoBalanceTrick ButtonA = Right 
+          ButtonB = Left 
+          Type = Lip 
+          DoFlipCheck 
+#00473    Playanim Anim = GLOBAL.Anim 
+          wobble 
+#00475    LOOP 
+#00476      IF Held Triangle 
+#00477        Tweaktrick 10 
+#00478      ELSE 
+#00479        Goto LipOutLonger 
+#00480      END IF 
+#00481      WaitOneGameFrame 
+#00482    END LOOP 
+#00483  END FUNCTION
+          
+#00484  FUNCTION LipOutLonger 
+#00488    StopBalanceTrick 
+#00491    printf "stopping balance" 
+#00492    Move y = 2 
+          
+#00493    Wait 50 frames 
+#00494    SetState Ground 
+#00495    CheckGapTricks 
+#00496    ClearGapTricks 
+#00497    ClearPanel_Landed 
+#00498    Goto OnGroundAi 
+#00499  END FUNCTION
+          
+#00500  

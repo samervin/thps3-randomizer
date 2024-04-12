@@ -1,0 +1,1729 @@
+
+#00001  shared_shoes = ARRAY(
+          
+          STRUCT{
+            desc = "Hawk's" 
+            texture = "cs_nh_hawk_shoe.png" 
+            target = "replace_shoe" 
+            sponsor = hawkshoes 
+            }
+          STRUCT{
+            desc = "Caballero's" 
+            texture = "cs_nh_caballero_shoe.png" 
+            target = "replace_shoe" 
+            sponsor = steve 
+            }
+          STRUCT{
+            desc = "Campbell's" 
+            texture = "cs_nh_campbell_shoe.png" 
+            target = "replace_shoe" 
+            sponsor = kareem 
+            }
+          STRUCT{
+            desc = "Glifberg's" 
+            texture = "cs_nh_glifberg_shoe.png" 
+            target = "replace_shoe" 
+            sponsor = rune 
+            }
+          STRUCT{
+            desc = "Koston's" 
+            texture = "cs_nh_koston_shoe.png" 
+            target = "replace_shoe" 
+            sponsor = es 
+            }
+          STRUCT{
+            desc = "Lasek's" 
+            texture = "cs_nh_lasek_shoe02.png" 
+            target = "replace_shoe" 
+            sponsor = genetic 
+            }
+          STRUCT{
+            desc = "Margera's" 
+            texture = "cs_nh_margera_shoe.png" 
+            target = "replace_shoe" 
+            sponsor = adio 
+            }
+          STRUCT{
+            desc = "Mullen's" 
+            texture = "cs_nh_mullen_shoe.png" 
+            target = "replace_shoe" 
+            sponsor = globe 
+            }
+          STRUCT{
+            desc = "Muska's" 
+            texture = "cs_nh_muska_shoe.png" 
+            target = "replace_shoe" 
+            sponsor = chad 
+            }
+          STRUCT{
+            desc = "Reynolds'" 
+            texture = "cs_nh_reynolds_shoe.png" 
+            target = "replace_shoe" 
+            sponsor = emerica 
+            }
+          STRUCT{
+            desc = "Rowley's" 
+            texture = "cs_nh_rowley_shoe.png" 
+            target = "replace_shoe" 
+            sponsor = geoff 
+            }
+          STRUCT{
+            desc = "Thomas'" 
+            texture = "cs_nn_thomas_shoes01.png" 
+            target = "replace_shoe" 
+            sponsor = jamie 
+            }
+          STRUCT{
+            desc = "Steamer's" 
+            texture = "cs_nh_steamer_shoe.png" 
+            target = "replace_shoe" 
+            sponsor = etnies 
+            }
+          STRUCT{
+            desc = "Steamer White" 
+            texture = "cs_nh_steamer_shoe02.png" 
+            target = "replace_shoe" 
+            sponsor = etnies 
+            }
+          STRUCT{
+            desc = "Generic 1" 
+            mesh = "models/skater_m/Shoe_generic01.skn" 
+            }
+          STRUCT{
+            desc = "Generic 2" 
+            mesh = "models/skater_m/Shoe_generic01.skn" 
+            texture = STRUCT{
+              image_dir = "textures/skater_m" 
+              replace = "CS_NN_Shoe_Generic01.png" 
+              with = "CS_NN_Shoe_Generic02.png" 
+              }
+            }
+          STRUCT{
+            desc = "Generic 3" 
+            mesh = "models/skater_m/Shoe_generic01.skn" 
+            texture = STRUCT{
+              image_dir = "textures/skater_m" 
+              replace = "CS_NN_Shoe_Generic01.png" 
+              with = "CS_NN_Shoe_Generic03.png" 
+              }
+            }
+          STRUCT{
+            desc = "Blk Boots" 
+            mesh = "models/skater_m/shoe_Boot01.skn" 
+            }
+          STRUCT{
+            desc = "Work Boot" 
+            mesh = "models/skater_m/shoe_Boot01.skn" 
+            texture = STRUCT{
+              image_dir = "textures/skater_m" 
+              replace = "CS_NN_Boot01.png" 
+              with = "CS_NN_Boot02.png" 
+              }
+            }
+          STRUCT{
+            desc = "Motorcycle" 
+            mesh = "models/skater_m/shoe_Boot01.skn" 
+            texture = STRUCT{
+              image_dir = "textures/skater_m" 
+              replace = "CS_NN_Boot01.png" 
+              with = "CS_NN_Boot03.png" 
+              }
+            }
+          STRUCT{
+            desc = "Flippers" 
+            mesh = "models/skater_m/shoe_fin01.skn" 
+            flags = STRUCT{
+              no_socks }
+            }
+          STRUCT{
+            desc = "Clown" 
+            mesh = "models/skater_m/shoe_clown01.skn" 
+            }
+          STRUCT{
+            desc = "Carrera's" 
+            mesh = "models/skater_f/shoe_carrera.skn" 
+            no_color flags = STRUCT{
+              no_socks no_leg_tattoos }
+            onlywith = carrera 
+            }
+          STRUCT{
+            desc = "Police Issue" 
+            mesh = "models/skater_m/Shoe_generic01.skn" 
+            texture = STRUCT{
+              image_dir = "textures/skater_m" 
+              replace = "CS_NN_Shoe_Generic01.png" 
+              with = "cs_nh_officerdick_shoe.png" 
+              }
+            }
+          STRUCT{
+            desc = "Bare Feet" 
+            hidden flags = STRUCT{
+              no_socks }
+            }
+          
+        )
+        
+#00057  shared_hat_logos = ARRAY(
+          
+          STRUCT{
+            desc = "None" 
+            }
+          STRUCT{
+            desc = "411VM" 
+            texture = "Hat_411vm01.png" 
+            target = "replace_hatlogo" 
+            sponsor = _411vm 
+            }
+          STRUCT{
+            desc = "Active Ride Shop" 
+            texture = "Hat_Active01.png" 
+            target = "replace_hatlogo" 
+            sponsor = active 
+            }
+          STRUCT{
+            desc = "Activision - Black" 
+            texture = "Hat_Activision01.png" 
+            target = "replace_hatlogo" 
+            sponsor = neversoft 
+            }
+          STRUCT{
+            desc = "Activision - White" 
+            texture = "Hat_Activision02.png" 
+            target = "replace_hatlogo" 
+            sponsor = neversoft 
+            }
+          STRUCT{
+            desc = "Activision - O2" 
+            texture = "Hat_o201.png" 
+            target = "replace_hatlogo" 
+            sponsor = neversoft 
+            }
+          STRUCT{
+            desc = "Adio" 
+            texture = "Hat_Adio01.png" 
+            target = "replace_hatlogo" 
+            sponsor = adio 
+            }
+          STRUCT{
+            desc = "Alphanumeric" 
+            texture = "Hat_Alphanumeric01.png" 
+            target = "replace_hatlogo" 
+            sponsor = alphanumeric 
+            }
+          STRUCT{
+            desc = "Axion" 
+            texture = "Hat_Axion01.png" 
+            target = "replace_hatlogo" 
+            sponsor = axion 
+            }
+          STRUCT{
+            desc = "Baker" 
+            texture = "Hat_baker01.png" 
+            target = "replace_hatlogo" 
+            sponsor = baker 
+            }
+          STRUCT{
+            desc = "Billabong" 
+            texture = "Hat_billabong01.png" 
+            target = "replace_hatlogo" 
+            sponsor = billabong 
+            }
+          STRUCT{
+            desc = "Birdhouse" 
+            texture = "Hat_birdhouse01.png" 
+            target = "replace_hatlogo" 
+            sponsor = birdhouse 
+            }
+          STRUCT{
+            desc = "Blond Magazine" 
+            texture = "Hat_blonde01.png" 
+            target = "replace_hatlogo" 
+            sponsor = blond 
+            }
+          STRUCT{
+            desc = "Caballero" 
+            texture = "Hat_caballero01.png" 
+            target = "replace_hatlogo" 
+            sponsor = caballero 
+            }
+          STRUCT{
+            desc = "Chaos Skate 1" 
+            texture = "Hat_chaos01.png" 
+            target = "replace_hatlogo" 
+            sponsor = chaos 
+            }
+          STRUCT{
+            desc = "Chaos Skate 2" 
+            texture = "Hat_chaos02.png" 
+            target = "replace_hatlogo" 
+            sponsor = chaos 
+            }
+          STRUCT{
+            desc = "Circa" 
+            texture = "Hat_circa01.png" 
+            target = "replace_hatlogo" 
+            sponsor = circa 
+            }
+          STRUCT{
+            desc = "City Stars" 
+            texture = "Hat_citystars01.png" 
+            target = "replace_hatlogo" 
+            sponsor = citystars 
+            }
+          STRUCT{
+            desc = "Dolby" 
+            texture = "Hat_dolby01.png" 
+            target = "replace_hatlogo" 
+            sponsor = dolby 
+            }
+          STRUCT{
+            desc = "Element" 
+            texture = "Hat_element01.png" 
+            target = "replace_hatlogo" 
+            sponsor = element 
+            }
+          STRUCT{
+            desc = "Emerica" 
+            texture = "Hat_emerica01.png" 
+            target = "replace_hatlogo" 
+            sponsor = emerica 
+            }
+          STRUCT{
+            desc = "Enjoi" 
+            texture = "Hat_enjoipanda01.png" 
+            target = "replace_hatlogo" 
+            sponsor = enjoi 
+            }
+          STRUCT{
+            desc = "Es" 
+            texture = "Hat_es01.png" 
+            target = "replace_hatlogo" 
+            sponsor = es 
+            }
+          STRUCT{
+            desc = "Etnies" 
+            texture = "Hat_etnies01.png" 
+            target = "replace_hatlogo" 
+            sponsor = etnies 
+            }
+          STRUCT{
+            desc = "Four Star" 
+            texture = "Hat_fourstar01.png" 
+            target = "replace_hatlogo" 
+            sponsor = fourstar 
+            }
+          STRUCT{
+            desc = "Fury" 
+            texture = "Hat_fury01.png" 
+            target = "replace_hatlogo" 
+            sponsor = fury 
+            }
+          STRUCT{
+            desc = "Genetic" 
+            texture = "Hat_genetic01.png" 
+            target = "replace_hatlogo" 
+            sponsor = genetic 
+            }
+          STRUCT{
+            desc = "Ghetto Child" 
+            texture = "Hat_ghetto01.png" 
+            target = "replace_hatlogo" 
+            sponsor = ghetto 
+            }
+          STRUCT{
+            desc = "Girl" 
+            texture = "Hat_girl01.png" 
+            target = "replace_hatlogo" 
+            sponsor = girl 
+            }
+          STRUCT{
+            desc = "Globe" 
+            texture = "Hat_globe01.png" 
+            target = "replace_hatlogo" 
+            sponsor = globe 
+            }
+          STRUCT{
+            desc = "Hawk Clothing 1" 
+            texture = "Hat_hawkapp01.png" 
+            target = "replace_hatlogo" 
+            sponsor = hawkapp 
+            }
+          STRUCT{
+            desc = "Hawk Clothing 2" 
+            texture = "Hat_hawkapp02.png" 
+            target = "replace_hatlogo" 
+            sponsor = hawkapp 
+            }
+          STRUCT{
+            desc = "Hawk Shoes" 
+            texture = "Hat_hawk01.png" 
+            target = "replace_hatlogo" 
+            sponsor = hawkshoes 
+            }
+          STRUCT{
+            desc = "HIM" 
+            texture = "Hat_him01.png" 
+            target = "replace_hatlogo" 
+            sponsor = him 
+            }
+          STRUCT{
+            desc = "Innes" 
+            texture = "Hat_innes01.png" 
+            target = "replace_hatlogo" 
+            sponsor = innes 
+            }
+          STRUCT{
+            desc = "Jeep" 
+            texture = "Hat_jeep01.png" 
+            target = "replace_hatlogo" 
+            sponsor = jeep 
+            }
+          STRUCT{
+            desc = "Marvel" 
+            texture = "Hat_marvel01.png" 
+            target = "replace_hatlogo" 
+            sponsor = marvel 
+            UnlockFlag = SKATER_UNLOCKED_WOLVERINE 
+            }
+          STRUCT{
+            desc = "Matix" 
+            texture = "Hat_matix01.png" 
+            target = "replace_hatlogo" 
+            sponsor = matix 
+            }
+          STRUCT{
+            desc = "MCM" 
+            texture = "Hat_mcm01.png" 
+            target = "replace_hatlogo" 
+            sponsor = mcm 
+            }
+          STRUCT{
+            desc = "Nokia" 
+            texture = "Hat_Nokia01.png" 
+            target = "replace_hatlogo" 
+            sponsor = nokia 
+            }
+          STRUCT{
+            desc = "Neversoft" 
+            texture = "Hat_Neversoft01.png" 
+            target = "replace_hatlogo" 
+            sponsor = neversoft 
+            }
+          STRUCT{
+            desc = "Old Star" 
+            texture = "Hat_oldstar01.png" 
+            target = "replace_hatlogo" 
+            sponsor = oldstar 
+            }
+          STRUCT{
+            desc = "Planet X" 
+            texture = "Hat_planetx01.png" 
+            target = "replace_hatlogo" 
+            sponsor = planetx 
+            }
+          STRUCT{
+            desc = "Powell - Brigade" 
+            texture = "Hat_brigade01.png" 
+            target = "replace_hatlogo" 
+            sponsor = brigade 
+            }
+          STRUCT{
+            desc = "Quiksilver" 
+            texture = "Hat_quicksilver01.png" 
+            target = "replace_hatlogo" 
+            sponsor = quicksilver 
+            }
+          STRUCT{
+            desc = "Red Dragon" 
+            texture = "Hat_reddragon01.png" 
+            target = "replace_hatlogo" 
+            sponsor = reddragon 
+            }
+          STRUCT{
+            desc = "Ricta" 
+            texture = "Hat_ricta01.png" 
+            target = "replace_hatlogo" 
+            sponsor = ricta 
+            }
+          STRUCT{
+            desc = "Shortys" 
+            texture = "Hat_shortys01.png" 
+            target = "replace_hatlogo" 
+            sponsor = shortys 
+            }
+          STRUCT{
+            desc = "Skateboard" 
+            texture = "Hat_skateboard01.png" 
+            target = "replace_hatlogo" 
+            sponsor = skateboard 
+            }
+          STRUCT{
+            desc = "Skater Island" 
+            texture = "Hat_skaterisland01.png" 
+            target = "replace_hatlogo" 
+            sponsor = skaterisland 
+            }
+          STRUCT{
+            desc = "Tensor" 
+            texture = "Hat_tensor01.png" 
+            target = "replace_hatlogo" 
+            sponsor = tensor 
+            }
+          STRUCT{
+            desc = "THPS1" 
+            texture = "Hat_THPS101.png" 
+            target = "replace_hatlogo" 
+            sponsor = neversoft 
+            }
+          STRUCT{
+            desc = "THPS2" 
+            texture = "Hat_THPS201.png" 
+            target = "replace_hatlogo" 
+            sponsor = neversoft 
+            }
+          STRUCT{
+            desc = "THPS3" 
+            texture = "Hat_THPS301.png" 
+            target = "replace_hatlogo" 
+            sponsor = neversoft 
+            }
+          STRUCT{
+            desc = "Toy Machine" 
+            texture = "Hat_toymachine01.png" 
+            target = "replace_hatlogo" 
+            sponsor = toymachine 
+            }
+          STRUCT{
+            desc = "TSA" 
+            texture = "Hat_tsa01.png" 
+            target = "replace_hatlogo" 
+            sponsor = tsa 
+            }
+          STRUCT{
+            desc = "Volcom" 
+            texture = "Hat_volcom01.png" 
+            target = "replace_hatlogo" 
+            sponsor = volcom 
+            }
+          STRUCT{
+            desc = "Zero" 
+            texture = "Hat_zero01.png" 
+            target = "replace_hatlogo" 
+            sponsor = zero 
+            }
+          STRUCT{
+            desc = "I Eat Dirt" 
+            texture = "Hat_ieatdirt01.png" 
+            target = "replace_hatlogo" 
+            sponsor = neversoft 
+            }
+          
+        )
+        
+#00119  shared_front_logos = ARRAY(
+          
+          STRUCT{
+            desc = "None" 
+            }
+          STRUCT{
+            desc = "411VM" 
+            texture = "Sht_411vm01.png" 
+            target = "replace_frontlogo" 
+            sponsor = _411vm 
+            }
+          STRUCT{
+            desc = "Active Ride Shop" 
+            texture = "Sht_Active01.png" 
+            target = "replace_frontlogo" 
+            sponsor = active 
+            }
+          STRUCT{
+            desc = "Activision - Black" 
+            texture = "Sht_Activision01.png" 
+            target = "replace_frontlogo" 
+            sponsor = neversoft 
+            }
+          STRUCT{
+            desc = "Activision - White" 
+            texture = "Sht_Activision02.png" 
+            target = "replace_frontlogo" 
+            sponsor = neversoft 
+            }
+          STRUCT{
+            desc = "Activision - O2" 
+            texture = "Sht_o201.png" 
+            target = "replace_frontlogo" 
+            sponsor = neversoft 
+            }
+          STRUCT{
+            desc = "Adio" 
+            texture = "Sht_Adio01.png" 
+            target = "replace_frontlogo" 
+            sponsor = adio 
+            }
+          STRUCT{
+            desc = "Alphanumeric" 
+            texture = "Sht_Alphanumeric01.png" 
+            target = "replace_frontlogo" 
+            sponsor = alphanumeric 
+            }
+          STRUCT{
+            desc = "Axion" 
+            texture = "Sht_Axion01.png" 
+            target = "replace_frontlogo" 
+            sponsor = axion 
+            }
+          STRUCT{
+            desc = "Baker" 
+            texture = "Sht_baker01.png" 
+            target = "replace_frontlogo" 
+            sponsor = baker 
+            }
+          STRUCT{
+            desc = "Billabong" 
+            texture = "Sht_billabong01.png" 
+            target = "replace_frontlogo" 
+            sponsor = billabong 
+            }
+          STRUCT{
+            desc = "Birdhouse" 
+            texture = "Sht_birdhouse01.png" 
+            target = "replace_frontlogo" 
+            sponsor = birdhouse 
+            }
+          STRUCT{
+            desc = "Blond Magazine" 
+            texture = "Sht_blonde01.png" 
+            target = "replace_frontlogo" 
+            sponsor = blond 
+            }
+          STRUCT{
+            desc = "Caballero" 
+            texture = "Sht_caballero01.png" 
+            target = "replace_frontlogo" 
+            sponsor = caballero 
+            }
+          STRUCT{
+            desc = "Chaos Skate 1" 
+            texture = "Sht_chaos01.png" 
+            target = "replace_frontlogo" 
+            sponsor = chaos 
+            }
+          STRUCT{
+            desc = "Chaos Skate 2" 
+            texture = "Sht_chaos02.png" 
+            target = "replace_frontlogo" 
+            sponsor = chaos 
+            }
+          STRUCT{
+            desc = "Circa" 
+            texture = "Sht_circa01.png" 
+            target = "replace_frontlogo" 
+            sponsor = circa 
+            }
+          STRUCT{
+            desc = "City Stars" 
+            texture = "Sht_citystars01.png" 
+            target = "replace_frontlogo" 
+            sponsor = citystars 
+            }
+          STRUCT{
+            desc = "Dolby" 
+            texture = "Sht_dolby01.png" 
+            target = "replace_frontlogo" 
+            sponsor = dolby 
+            }
+          STRUCT{
+            desc = "Element" 
+            texture = "Sht_element01.png" 
+            target = "replace_frontlogo" 
+            sponsor = element 
+            }
+          STRUCT{
+            desc = "Emerica" 
+            texture = "Sht_emerica01.png" 
+            target = "replace_frontlogo" 
+            sponsor = emerica 
+            }
+          STRUCT{
+            desc = "Enjoi" 
+            texture = "Sht_enjoi01.png" 
+            target = "replace_frontlogo" 
+            sponsor = enjoi 
+            }
+          STRUCT{
+            desc = "Es" 
+            texture = "Sht_es01.png" 
+            target = "replace_frontlogo" 
+            sponsor = es 
+            }
+          STRUCT{
+            desc = "Etnies" 
+            texture = "Sht_etnies01.png" 
+            target = "replace_frontlogo" 
+            sponsor = etnies 
+            }
+          STRUCT{
+            desc = "Four Star" 
+            texture = "Sht_fourstar01.png" 
+            target = "replace_frontlogo" 
+            sponsor = fourstar 
+            }
+          STRUCT{
+            desc = "Fury" 
+            texture = "Sht_fury01.png" 
+            target = "replace_frontlogo" 
+            sponsor = fury 
+            }
+          STRUCT{
+            desc = "Genetic" 
+            texture = "Sht_genetic01.png" 
+            target = "replace_frontlogo" 
+            sponsor = genetic 
+            }
+          STRUCT{
+            desc = "Ghetto Child" 
+            texture = "Sht_ghetto01.png" 
+            target = "replace_frontlogo" 
+            sponsor = ghetto 
+            }
+          STRUCT{
+            desc = "Girl" 
+            texture = "Sht_girl01.png" 
+            target = "replace_frontlogo" 
+            sponsor = girl 
+            }
+          STRUCT{
+            desc = "Globe" 
+            texture = "Sht_globe01.png" 
+            target = "replace_frontlogo" 
+            sponsor = globe 
+            }
+          STRUCT{
+            desc = "Hawk Clothing 1" 
+            texture = "Sht_hawkapp01.png" 
+            target = "replace_frontlogo" 
+            sponsor = hawkapp 
+            }
+          STRUCT{
+            desc = "Hawk Clothing 2" 
+            texture = "Sht_hawkapp02.png" 
+            target = "replace_frontlogo" 
+            sponsor = hawkapp 
+            }
+          STRUCT{
+            desc = "Hawk Shoes" 
+            texture = "Sht_hawk01.png" 
+            target = "replace_frontlogo" 
+            sponsor = hawkshoes 
+            }
+          STRUCT{
+            desc = "HIM" 
+            texture = "Sht_him01.png" 
+            target = "replace_frontlogo" 
+            sponsor = him 
+            }
+          STRUCT{
+            desc = "Innes" 
+            texture = "Sht_innes01.png" 
+            target = "replace_frontlogo" 
+            sponsor = innes 
+            }
+          STRUCT{
+            desc = "Jeep" 
+            texture = "Sht_jeep01.png" 
+            target = "replace_frontlogo" 
+            sponsor = jeep 
+            }
+          STRUCT{
+            desc = "Marvel" 
+            texture = "Sht_marvel01.png" 
+            target = "replace_frontlogo" 
+            sponsor = marvel 
+            UnlockFlag = SKATER_UNLOCKED_WOLVERINE 
+            }
+          STRUCT{
+            desc = "Matix" 
+            texture = "Sht_matix01.png" 
+            target = "replace_frontlogo" 
+            sponsor = matix 
+            }
+          STRUCT{
+            desc = "MCM" 
+            texture = "Sht_mcm01.png" 
+            target = "replace_frontlogo" 
+            sponsor = mcm 
+            }
+          STRUCT{
+            desc = "Nokia" 
+            texture = "Sht_Nokia01.png" 
+            target = "replace_frontlogo" 
+            sponsor = nokia 
+            }
+          STRUCT{
+            desc = "Nokia - 3300" 
+            texture = "Sht_Nokia02.png" 
+            target = "replace_frontlogo" 
+            sponsor = nokia 
+            }
+          STRUCT{
+            desc = "Neversoft 1" 
+            texture = "Sht_Neversoft01.png" 
+            target = "replace_frontlogo" 
+            sponsor = neversoft 
+            }
+          STRUCT{
+            desc = "Neversoft 2" 
+            texture = "Sht_Neversoft02.png" 
+            target = "replace_frontlogo" 
+            sponsor = neversoft 
+            }
+          STRUCT{
+            desc = "Old Star" 
+            texture = "Sht_oldstar01.png" 
+            target = "replace_frontlogo" 
+            sponsor = oldstar 
+            }
+          STRUCT{
+            desc = "Planet X" 
+            texture = "Sht_planetx01.png" 
+            target = "replace_frontlogo" 
+            sponsor = planetx 
+            }
+          STRUCT{
+            desc = "Powell - Brigade" 
+            texture = "Sht_brigade01.png" 
+            target = "replace_frontlogo" 
+            sponsor = brigade 
+            }
+          STRUCT{
+            desc = "Quiksilver" 
+            texture = "Sht_quicksilver01.png" 
+            target = "replace_frontlogo" 
+            sponsor = quicksilver 
+            }
+          STRUCT{
+            desc = "Red Dragon" 
+            texture = "Sht_reddragon01.png" 
+            target = "replace_frontlogo" 
+            sponsor = reddragon 
+            }
+          STRUCT{
+            desc = "Ricta" 
+            texture = "Sht_ricta01.png" 
+            target = "replace_frontlogo" 
+            sponsor = ricta 
+            }
+          STRUCT{
+            desc = "Shortys" 
+            texture = "Sht_shortys01.png" 
+            target = "replace_frontlogo" 
+            sponsor = shortys 
+            }
+          STRUCT{
+            desc = "Skateboard" 
+            texture = "Sht_skateboard01.png" 
+            target = "replace_frontlogo" 
+            sponsor = skateboard 
+            }
+          STRUCT{
+            desc = "Skater Island" 
+            texture = "Sht_skaterisland01.png" 
+            target = "replace_frontlogo" 
+            sponsor = skaterisland 
+            }
+          STRUCT{
+            desc = "Tensor" 
+            texture = "Sht_tensor01.png" 
+            target = "replace_frontlogo" 
+            sponsor = tensor 
+            }
+          STRUCT{
+            desc = "THPS 1" 
+            texture = "Sht_THPS101.png" 
+            target = "replace_frontlogo" 
+            sponsor = neversoft 
+            }
+          STRUCT{
+            desc = "THPS 2" 
+            texture = "Sht_THPS201.png" 
+            target = "replace_frontlogo" 
+            sponsor = neversoft 
+            }
+          STRUCT{
+            desc = "THPS 3" 
+            texture = "Sht_THPS301.png" 
+            target = "replace_frontlogo" 
+            sponsor = neversoft 
+            }
+          STRUCT{
+            desc = "Toy Machine" 
+            texture = "Sht_toymachine01.png" 
+            target = "replace_frontlogo" 
+            sponsor = toymachine 
+            }
+          STRUCT{
+            desc = "TSA" 
+            texture = "Sht_tsa01.png" 
+            target = "replace_frontlogo" 
+            sponsor = tsa 
+            }
+          STRUCT{
+            desc = "Volcom" 
+            texture = "Sht_volcom01.png" 
+            target = "replace_frontlogo" 
+            sponsor = volcom 
+            }
+          STRUCT{
+            desc = "Zero" 
+            texture = "Sht_zero01.png" 
+            target = "replace_frontlogo" 
+            sponsor = zero 
+            }
+          STRUCT{
+            desc = "I Eat Dirt" 
+            texture = "Sht_ieatdirt01.png" 
+            target = "replace_frontlogo" 
+            sponsor = neversoft 
+            }
+          STRUCT{
+            desc = "Glenn" 
+            texture = "Sht_glennsd01.png" 
+            target = "replace_frontlogo" 
+            sponsor = neversoft 
+            hidden }
+          STRUCT{
+            desc = "Guilt" 
+            texture = "Sht_kevingl01.png" 
+            target = "replace_frontlogo" 
+            sponsor = neversoft 
+            hidden }
+          
+        )
+        
+#00185  shared_back_logos = ARRAY(
+          
+          STRUCT{
+            desc = "None" 
+            }
+          STRUCT{
+            desc = "411VM" 
+            texture = "Sht_411vm01.png" 
+            target = "replace_backlogo" 
+            sponsor = _411vm 
+            }
+          STRUCT{
+            desc = "Active Ride Shop" 
+            texture = "Sht_Active01.png" 
+            target = "replace_backlogo" 
+            sponsor = active 
+            }
+          STRUCT{
+            desc = "Activision - Black" 
+            texture = "Sht_Activision01.png" 
+            target = "replace_backlogo" 
+            sponsor = neversoft 
+            }
+          STRUCT{
+            desc = "Activision - White" 
+            texture = "Sht_Activision02.png" 
+            target = "replace_backlogo" 
+            sponsor = neversoft 
+            }
+          STRUCT{
+            desc = "Activision - O2" 
+            texture = "Sht_o201.png" 
+            target = "replace_backlogo" 
+            sponsor = neversoft 
+            }
+          STRUCT{
+            desc = "Adio" 
+            texture = "Sht_Adio01.png" 
+            target = "replace_backlogo" 
+            sponsor = adio 
+            }
+          STRUCT{
+            desc = "Alphanumeric" 
+            texture = "Sht_Alphanumeric01.png" 
+            target = "replace_backlogo" 
+            sponsor = alphanumeric 
+            }
+          STRUCT{
+            desc = "Axion" 
+            texture = "Sht_Axion01.png" 
+            target = "replace_backlogo" 
+            sponsor = axion 
+            }
+          STRUCT{
+            desc = "Baker" 
+            texture = "Sht_baker01.png" 
+            target = "replace_backlogo" 
+            sponsor = baker 
+            }
+          STRUCT{
+            desc = "Billabong" 
+            texture = "Sht_billabong01.png" 
+            target = "replace_backlogo" 
+            sponsor = billabong 
+            }
+          STRUCT{
+            desc = "Birdhouse" 
+            texture = "Sht_birdhouse01.png" 
+            target = "replace_backlogo" 
+            sponsor = birdhouse 
+            }
+          STRUCT{
+            desc = "Blond Magazine" 
+            texture = "Sht_blonde01.png" 
+            target = "replace_backlogo" 
+            sponsor = blond 
+            }
+          STRUCT{
+            desc = "Caballero" 
+            texture = "Sht_caballero01.png" 
+            target = "replace_backlogo" 
+            sponsor = caballero 
+            }
+          STRUCT{
+            desc = "Chaos Skate 1" 
+            texture = "Sht_chaos01.png" 
+            target = "replace_backlogo" 
+            sponsor = chaos 
+            }
+          STRUCT{
+            desc = "Chaos Skate 2" 
+            texture = "Sht_chaos02.png" 
+            target = "replace_backlogo" 
+            sponsor = chaos 
+            }
+          STRUCT{
+            desc = "Circa" 
+            texture = "Sht_circa01.png" 
+            target = "replace_backlogo" 
+            sponsor = circa 
+            }
+          STRUCT{
+            desc = "City Stars" 
+            texture = "Sht_citystars01.png" 
+            target = "replace_backlogo" 
+            sponsor = citystars 
+            }
+          STRUCT{
+            desc = "Dolby" 
+            texture = "Sht_dolby01.png" 
+            target = "replace_backlogo" 
+            sponsor = dolby 
+            }
+          STRUCT{
+            desc = "Element" 
+            texture = "Sht_element01.png" 
+            target = "replace_backlogo" 
+            sponsor = element 
+            }
+          STRUCT{
+            desc = "Emerica" 
+            texture = "Sht_emerica01.png" 
+            target = "replace_backlogo" 
+            sponsor = emerica 
+            }
+          STRUCT{
+            desc = "Enjoi" 
+            texture = "Sht_enjoi01.png" 
+            target = "replace_backlogo" 
+            sponsor = enjoi 
+            }
+          STRUCT{
+            desc = "Es" 
+            texture = "Sht_es01.png" 
+            target = "replace_backlogo" 
+            sponsor = es 
+            }
+          STRUCT{
+            desc = "Etnies" 
+            texture = "Sht_etnies01.png" 
+            target = "replace_backlogo" 
+            sponsor = etnies 
+            }
+          STRUCT{
+            desc = "Four Star" 
+            texture = "Sht_fourstar01.png" 
+            target = "replace_backlogo" 
+            sponsor = fourstar 
+            }
+          STRUCT{
+            desc = "Fury" 
+            texture = "Sht_fury01.png" 
+            target = "replace_backlogo" 
+            sponsor = fury 
+            }
+          STRUCT{
+            desc = "Genetic" 
+            texture = "Sht_genetic01.png" 
+            target = "replace_backlogo" 
+            sponsor = genetic 
+            }
+          STRUCT{
+            desc = "Ghetto Child" 
+            texture = "Sht_ghetto01.png" 
+            target = "replace_backlogo" 
+            sponsor = ghetto 
+            }
+          STRUCT{
+            desc = "Girl" 
+            texture = "Sht_girl01.png" 
+            target = "replace_backlogo" 
+            sponsor = girl 
+            }
+          STRUCT{
+            desc = "Globe" 
+            texture = "Sht_globe01.png" 
+            target = "replace_backlogo" 
+            sponsor = globe 
+            }
+          STRUCT{
+            desc = "Hawk Clothing 1" 
+            texture = "Sht_hawkapp01.png" 
+            target = "replace_backlogo" 
+            sponsor = hawkapp 
+            }
+          STRUCT{
+            desc = "Hawk Clothing 2" 
+            texture = "Sht_hawkapp02.png" 
+            target = "replace_backlogo" 
+            sponsor = hawkapp 
+            }
+          STRUCT{
+            desc = "Hawk Shoes" 
+            texture = "Sht_hawk01.png" 
+            target = "replace_backlogo" 
+            sponsor = hawkshoes 
+            }
+          STRUCT{
+            desc = "HIM" 
+            texture = "Sht_him01.png" 
+            target = "replace_backlogo" 
+            sponsor = him 
+            }
+          STRUCT{
+            desc = "Innes" 
+            texture = "Sht_innes01.png" 
+            target = "replace_backlogo" 
+            sponsor = innes 
+            }
+          STRUCT{
+            desc = "Jeep" 
+            texture = "Sht_jeep01.png" 
+            target = "replace_backlogo" 
+            sponsor = jeep 
+            }
+          STRUCT{
+            desc = "Marvel" 
+            texture = "Sht_marvel01.png" 
+            target = "replace_backlogo" 
+            sponsor = marvel 
+            UnlockFlag = SKATER_UNLOCKED_WOLVERINE 
+            }
+          STRUCT{
+            desc = "Matix" 
+            texture = "Sht_matix01.png" 
+            target = "replace_backlogo" 
+            sponsor = matix 
+            }
+          STRUCT{
+            desc = "MCM" 
+            texture = "Sht_mcm01.png" 
+            target = "replace_backlogo" 
+            sponsor = mcm 
+            }
+          STRUCT{
+            desc = "Nokia" 
+            texture = "Sht_Nokia01.png" 
+            target = "replace_backlogo" 
+            sponsor = nokia 
+            }
+          STRUCT{
+            desc = "Nokia - 3300" 
+            texture = "Sht_Nokia02.png" 
+            target = "replace_backlogo" 
+            sponsor = nokia 
+            }
+          STRUCT{
+            desc = "Neversoft 1" 
+            texture = "Sht_Neversoft01.png" 
+            target = "replace_backlogo" 
+            sponsor = neversoft 
+            }
+          STRUCT{
+            desc = "Neversoft 2" 
+            texture = "Sht_Neversoft02.png" 
+            target = "replace_backlogo" 
+            sponsor = neversoft 
+            }
+          STRUCT{
+            desc = "Old Star" 
+            texture = "Sht_oldstar01.png" 
+            target = "replace_backlogo" 
+            sponsor = oldstar 
+            }
+          STRUCT{
+            desc = "Planet X" 
+            texture = "Sht_planetx01.png" 
+            target = "replace_backlogo" 
+            sponsor = planetx 
+            }
+          STRUCT{
+            desc = "Powell - Brigade" 
+            texture = "Sht_brigade01.png" 
+            target = "replace_backlogo" 
+            sponsor = brigade 
+            }
+          STRUCT{
+            desc = "Quiksilver" 
+            texture = "Sht_quicksilver01.png" 
+            target = "replace_backlogo" 
+            sponsor = quicksilver 
+            }
+          STRUCT{
+            desc = "Red Dragon" 
+            texture = "Sht_reddragon01.png" 
+            target = "replace_backlogo" 
+            sponsor = reddragon 
+            }
+          STRUCT{
+            desc = "Ricta" 
+            texture = "Sht_ricta01.png" 
+            target = "replace_backlogo" 
+            sponsor = ricta 
+            }
+          STRUCT{
+            desc = "Shortys" 
+            texture = "Sht_shortys01.png" 
+            target = "replace_backlogo" 
+            sponsor = shortys 
+            }
+          STRUCT{
+            desc = "Skateboard" 
+            texture = "Sht_skateboard01.png" 
+            target = "replace_backlogo" 
+            sponsor = skateboard 
+            }
+          STRUCT{
+            desc = "Skater Island" 
+            texture = "Sht_skaterisland01.png" 
+            target = "replace_backlogo" 
+            sponsor = skaterisland 
+            }
+          STRUCT{
+            desc = "Tensor" 
+            texture = "Sht_tensor01.png" 
+            target = "replace_backlogo" 
+            sponsor = tensor 
+            }
+          STRUCT{
+            desc = "THPS 1" 
+            texture = "Sht_THPS101.png" 
+            target = "replace_backlogo" 
+            sponsor = neversoft 
+            }
+          STRUCT{
+            desc = "THPS 2" 
+            texture = "Sht_THPS201.png" 
+            target = "replace_backlogo" 
+            sponsor = neversoft 
+            }
+          STRUCT{
+            desc = "THPS 3" 
+            texture = "Sht_THPS301.png" 
+            target = "replace_backlogo" 
+            sponsor = neversoft 
+            }
+          STRUCT{
+            desc = "Toy Machine" 
+            texture = "Sht_toymachine01.png" 
+            target = "replace_backlogo" 
+            sponsor = toymachine 
+            }
+          STRUCT{
+            desc = "TSA" 
+            texture = "Sht_tsa01.png" 
+            target = "replace_backlogo" 
+            sponsor = tsa 
+            }
+          STRUCT{
+            desc = "Volcom" 
+            texture = "Sht_volcom01.png" 
+            target = "replace_backlogo" 
+            sponsor = volcom 
+            }
+          STRUCT{
+            desc = "Zero" 
+            texture = "Sht_zero01.png" 
+            target = "replace_backlogo" 
+            sponsor = zero 
+            }
+          STRUCT{
+            desc = "I Eat Dirt" 
+            texture = "Sht_ieatdirt01.png" 
+            target = "replace_backlogo" 
+            sponsor = neversoft 
+            }
+          STRUCT{
+            desc = "Glenn" 
+            texture = "Sht_glennsd01.png" 
+            target = "replace_backlogo" 
+            sponsor = neversoft 
+            hidden }
+          
+        )
+        
+#00250  shared_glasses = ARRAY(
+          
+          STRUCT{
+            desc = "None" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/extra_glassesstyle.skn" 
+            desc = "Stylish 1" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/extra_glassesstyle2.skn" 
+            desc = "Stylish 2" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/extra_glassesstylish3.skn" 
+            desc = "Stylish 3" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/extra_glassesHalfFrames.skn" 
+            desc = "Stylish 4" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/extra_glassesaviator.skn" 
+            desc = "Aviator" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/extra_glassesgeek.skn" 
+            desc = "Nelson" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/extra_glassesRound01.skn" 
+            desc = "Round" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/extra_glassesRound02.skn" 
+            desc = "Round 2" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/extra_glassesSquare.skn" 
+            desc = "Square" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/extra_glassescatseye.skn" 
+            desc = "Catseye" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/extra_glassesDiamante.skn" 
+            desc = "Catseye2" 
+            texture = STRUCT{
+              image_dir = "textures/skater_m" 
+              replace = "MLS_skater_glasses_diamante_32.png" 
+              with = "MLS_skater_glasses_catseye_red.png" 
+              }
+            }
+          STRUCT{
+            mesh = "models/skater_m/extra_glassesDiamante.skn" 
+            desc = "Diamante" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/extra_glassesMilky.skn" 
+            desc = "Brainiac" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/extra_glassesFlying.skn" 
+            desc = "Flying" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/extra_glassesgag.skn" 
+            desc = "Gag" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/extra_glassesGoggle_eyes.skn" 
+            desc = "Gag2" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/extra_glassesNightVision.skn" 
+            desc = "Night Vision" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/extra_glasses_star.skn" 
+            desc = "Stars!" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/extra_glasses3D.skn" 
+            desc = "3D" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/extra_glassesEyePatch.skn" 
+            desc = "i-Patch" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/extra_glassesscuba.skn" 
+            desc = "Snorkel" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/extra_glassesZoom.skn" 
+            desc = "Zoom!" 
+            }
+          
+        )
+        
+#00279  shared_helmets = ARRAY(
+          
+          STRUCT{
+            desc = "None" 
+            flags = STRUCT{
+              supports_hair }
+            }
+          STRUCT{
+            mesh = "models/skater_m/hat_helmet.skn" 
+            desc = "Helmet" 
+            flags = STRUCT{
+              supports_hat_logo is_helmet }
+            notwith = caballero 
+            }
+          STRUCT{
+            mesh = "models/skater_m/hat_helmet_cab.skn" 
+            desc = " Helmet " 
+            flags = STRUCT{
+              is_helmet }
+            onlywith = caballero 
+            }
+          
+        )
+        
+#00294  shared_hats = ARRAY(
+          
+          STRUCT{
+            desc = "None" 
+            flags = STRUCT{
+              supports_hair }
+            }
+          STRUCT{
+            mesh = "models/skater_m/hat_bballbackwards.skn" 
+            desc = "Cap Backwards" 
+            flags = STRUCT{
+              supports_hat_logo }
+            }
+          STRUCT{
+            mesh = "models/skater_m/hat_bballforwards.skn" 
+            desc = "Cap Forwards" 
+            flags = STRUCT{
+              supports_hat_logo }
+            }
+          STRUCT{
+            mesh = "models/skater_m/hat_Truckerhat.skn" 
+            desc = "Truckstop" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/hat_beanie.skn" 
+            desc = "Beanie" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/Hat_Skipper.skn" 
+            desc = "Hey Skipper" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/hat_bandana.skn" 
+            desc = "Carlos Bandana" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/hat_headband.skn" 
+            desc = "Banned" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/hat_Headband_Backwards.skn" 
+            desc = "Retro Banned" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/hat_visor.skn" 
+            desc = "AdVisor" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/Hat_Do_Rag.skn" 
+            desc = "Do Rag" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/hat_Ivycap.skn" 
+            desc = "Ivy league" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/hat_Cowboyhat.skn" 
+            desc = "Cowboy" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/hat_Gangsterhat.skn" 
+            desc = "Capone" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/hat_Beerhat.skn" 
+            desc = "Foamy head" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/hat_Piratehat.skn" 
+            desc = "Ah Jim Lad!" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/hat_GI01.skn" 
+            desc = "GI Joel" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/hat_Beret.skn" 
+            desc = "Green berets" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/hat_Tommy.skn" 
+            desc = "Fit For Heroes" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/hat_bobby.skn" 
+            desc = "Constable Trotter" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/hat_Viking.skn" 
+            desc = "Viking" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/hat_spike.skn" 
+            desc = "Spiker Biker" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/hat_pith.skn" 
+            desc = "Take the Pith" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/hat_China.skn" 
+            desc = "Crouching Hat" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/hat_Bowlerhat.skn" 
+            desc = "Avenger" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/hat_Deerstalker.skn" 
+            desc = "Shirley Homes" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/hat_Tophat.skn" 
+            desc = "Top Cat" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/hat_Baldwig.skn" 
+            desc = "Clownhead" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/hat_Tophat.skn" 
+            desc = "Uncle Sam" 
+            texture = STRUCT{
+              image_dir = "textures/skater_m" 
+              replace = "MLS_tophat_01.png" 
+              with = "MLS_tophat_USA.png" 
+              }
+            }
+          STRUCT{
+            Brain_Hat }
+          
+        )
+        
+#00341  shared_accessories = ARRAY(
+          
+          STRUCT{
+            desc = "None" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/Extra_WatchR_A.skn" 
+            desc = "R Watch Silver" 
+            texture = STRUCT{
+              image_dir = "textures/skater_m" 
+              replace = "CS_NN_Watch01.png" 
+              with = "CS_NN_Watch02.png" 
+              }
+            }
+          STRUCT{
+            mesh = "models/skater_m/Extra_WatchR_A.skn" 
+            desc = "R Watch Gold" 
+            texture = STRUCT{
+              image_dir = "textures/skater_m" 
+              replace = "CS_NN_Watch01.png" 
+              with = "CS_NN_Watch04.png" 
+              }
+            }
+          STRUCT{
+            mesh = "models/skater_m/Extra_WatchR_A.skn" 
+            desc = "R Watch Black" 
+            texture = STRUCT{
+              image_dir = "textures/skater_m" 
+              replace = "CS_NN_Watch01.png" 
+              with = "CS_NN_Watch03.png" 
+              }
+            }
+          STRUCT{
+            mesh = "models/skater_m/Extra_WatchL_A.skn" 
+            desc = "L Watch Silver" 
+            texture = STRUCT{
+              image_dir = "textures/skater_m" 
+              replace = "CS_NN_Watch01.png" 
+              with = "CS_NN_Watch02.png" 
+              }
+            }
+          STRUCT{
+            mesh = "models/skater_m/Extra_WatchL_A.skn" 
+            desc = "L Watch Gold" 
+            texture = STRUCT{
+              image_dir = "textures/skater_m" 
+              replace = "CS_NN_Watch01.png" 
+              with = "CS_NN_Watch04.png" 
+              }
+            }
+          STRUCT{
+            mesh = "models/skater_m/Extra_WatchL_A.skn" 
+            desc = "L Watch Black" 
+            texture = STRUCT{
+              image_dir = "textures/skater_m" 
+              replace = "CS_NN_Watch01.png" 
+              with = "CS_NN_Watch03.png" 
+              }
+            }
+          STRUCT{
+            mesh = "models/skater_m/Extra_BracletL_A.skn" 
+            desc = "L Bracelet Punk" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/Extra_BracletL_A.skn" 
+            desc = "L Bracelet 2" 
+            texture = STRUCT{
+              image_dir = "textures/skater_m" 
+              replace = "CS_NN_Braclet01.png" 
+              with = "CS_NN_Braclet02.png" 
+              }
+            }
+          STRUCT{
+            mesh = "models/skater_m/Extra_BracletL_A.skn" 
+            desc = "L Bracelet 3" 
+            texture = STRUCT{
+              image_dir = "textures/skater_m" 
+              replace = "CS_NN_Braclet01.png" 
+              with = "MLS_CAS_bracelet01.png" 
+              }
+            }
+          STRUCT{
+            mesh = "models/skater_m/Extra_BracletL_A.skn" 
+            desc = "L Bracelet 4" 
+            texture = STRUCT{
+              image_dir = "textures/skater_m" 
+              replace = "CS_NN_Braclet01.png" 
+              with = "MLS_CAS_bracelet02.png" 
+              }
+            }
+          STRUCT{
+            mesh = "models/skater_m/Extra_BracletL_A.skn" 
+            desc = "L Bracelet 5" 
+            texture = STRUCT{
+              image_dir = "textures/skater_m" 
+              replace = "CS_NN_Braclet01.png" 
+              with = "MLS_CAS_bracelet03.png" 
+              }
+            }
+          STRUCT{
+            mesh = "models/skater_m/Extra_BracletL_A.skn" 
+            desc = "L Bracelet 6" 
+            texture = STRUCT{
+              image_dir = "textures/skater_m" 
+              replace = "CS_NN_Braclet01.png" 
+              with = "MLS_CAS_bracelet04.png" 
+              }
+            }
+          STRUCT{
+            mesh = "models/skater_m/Extra_BracletR_A.skn" 
+            desc = "R Bracelet Punk" 
+            }
+          STRUCT{
+            mesh = "models/skater_m/Extra_BracletR_A.skn" 
+            desc = "R Bracelet 2" 
+            texture = STRUCT{
+              image_dir = "textures/skater_m" 
+              replace = "CS_NN_Braclet01.png" 
+              with = "CS_NN_Braclet02.png" 
+              }
+            }
+          STRUCT{
+            mesh = "models/skater_m/Extra_BracletR_A.skn" 
+            desc = "R Bracelet 3" 
+            texture = STRUCT{
+              image_dir = "textures/skater_m" 
+              replace = "CS_NN_Braclet01.png" 
+              with = "MLS_CAS_bracelet01.png" 
+              }
+            }
+          STRUCT{
+            mesh = "models/skater_m/Extra_BracletR_A.skn" 
+            desc = "R Bracelet 4" 
+            texture = STRUCT{
+              image_dir = "textures/skater_m" 
+              replace = "CS_NN_Braclet01.png" 
+              with = "MLS_CAS_bracelet02.png" 
+              }
+            }
+          STRUCT{
+            mesh = "models/skater_m/Extra_BracletR_A.skn" 
+            desc = "R Bracelet 5" 
+            texture = STRUCT{
+              image_dir = "textures/skater_m" 
+              replace = "CS_NN_Braclet01.png" 
+              with = "MLS_CAS_bracelet03.png" 
+              }
+            }
+          STRUCT{
+            mesh = "models/skater_m/Extra_BracletR_A.skn" 
+            desc = "R Bracelet 6" 
+            texture = STRUCT{
+              image_dir = "textures/skater_m" 
+              replace = "CS_NN_Braclet01.png" 
+              with = "MLS_CAS_bracelet04.png" 
+              }
+            }
+          STRUCT{
+            mesh = "models/skater_m/cast_forearm.skn" 
+            desc = "R Cast " 
+            flags = STRUCT{
+              covers_elbows no_Arm_Tattoos }
+            }
+          STRUCT{
+            mesh = "models/skater_m/cast_forearm_L.skn" 
+            desc = "L Cast " 
+            flags = STRUCT{
+              covers_elbows no_Arm_Tattoos }
+            }
+          STRUCT{
+            desc = "Casts" 
+            mesh = ARRAY(
+              
+              "models/skater_m/cast_forearm_L.skn" "models/skater_m/cast_forearm.skn" 
+            )
+            flags = STRUCT{
+              covers_elbows no_Arm_Tattoos }
+            }
+          STRUCT{
+            desc = "Bracelets Punk" 
+            mesh = ARRAY(
+              
+              "models/skater_m/Extra_BracletL_A.skn" "models/skater_m/Extra_BracletR_A.skn" 
+            )
+            }
+          STRUCT{
+            mesh = "models/skater_m/Extra_Muska.skn" 
+            desc = "Muska's Stuff" 
+            hidden }
+          
+        )
+        
+#00430  

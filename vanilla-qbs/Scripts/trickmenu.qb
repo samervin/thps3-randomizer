@@ -1,0 +1,960 @@
+
+#00001  trick_left_menu_width = 105 
+        
+#00005  trick_right_menu_width = 265 
+        
+#00006  trick_menu_total_width = 370 
+        
+#00007  trick_menu_properties = STRUCT{
+          x = 155.0 
+          y = 90.0 
+          w = trick_menu_total_width 
+          h = 336.0 
+          just_center_x just_center_y }
+        
+#00013  trick_left_menu_properties = STRUCT{
+          x = 0.0 
+          y = 30.0 
+          w = 150.0 
+          h = 400.0 
+          just_center_x just_center_y not_rounded }
+        
+#00020  trick_right_menu_properties = STRUCT{
+          x = 150.0 
+          y = 30.0 
+          w = 200.0 
+          h = 400.0 
+          just_center_x just_center_y not_rounded right_side_icon }
+        
+#00028  ButtonCombos = 
+#00045  
+        ARRAY(
+          STRUCT{
+            desc = "¡ + «" 
+            for = grabtricks 
+            trickslot = Air_CircleU 
+            }
+          STRUCT{
+            desc = "¢ + «" 
+            for = grabtricks 
+            trickslot = Air_CircleUR 
+            }
+          STRUCT{
+            desc = "£ + «" 
+            for = grabtricks 
+            trickslot = Air_CircleR 
+            }
+          STRUCT{
+            desc = "¤ + «" 
+            for = grabtricks 
+            trickslot = Air_CircleDR 
+            }
+          STRUCT{
+            desc = "¥ + «" 
+            for = grabtricks 
+            trickslot = Air_CircleD 
+            }
+          STRUCT{
+            desc = "¦ + «" 
+            for = grabtricks 
+            trickslot = Air_CircleDL 
+            }
+          STRUCT{
+            desc = "§ + «" 
+            for = grabtricks 
+            trickslot = Air_CircleL 
+            }
+          STRUCT{
+            desc = "¨ + «" 
+            for = grabtricks 
+            trickslot = Air_CircleUL 
+            }
+          STRUCT{
+            desc = "¡¡ + «" 
+            for = grabtricks 
+            trickslot = Air_U_U_Circle 
+            }
+          STRUCT{
+            desc = "££ + «" 
+            for = grabtricks 
+            trickslot = Air_R_R_Circle 
+            }
+          STRUCT{
+            desc = "¥¥ + «" 
+            for = grabtricks 
+            trickslot = Air_D_D_Circle 
+            }
+          STRUCT{
+            desc = "§§ + «" 
+            for = grabtricks 
+            trickslot = Air_L_L_Circle 
+            }
+          STRUCT{
+            desc = "¡ + ©" 
+            for = fliptricks 
+            trickslot = Air_SquareU 
+            }
+          STRUCT{
+            desc = "¢ + ©" 
+            for = fliptricks 
+            trickslot = Air_SquareUR 
+            }
+          STRUCT{
+            desc = "£ + ©" 
+            for = fliptricks 
+            trickslot = Air_SquareR 
+            }
+          STRUCT{
+            desc = "¤ + ©" 
+            for = fliptricks 
+            trickslot = Air_SquareDR 
+            }
+          STRUCT{
+            desc = "¥ + ©" 
+            for = fliptricks 
+            trickslot = Air_SquareD 
+            }
+          STRUCT{
+            desc = "¦ + ©" 
+            for = fliptricks 
+            trickslot = Air_SquareDL 
+            }
+          STRUCT{
+            desc = "§ + ©" 
+            for = fliptricks 
+            trickslot = Air_SquareL 
+            }
+          STRUCT{
+            desc = "¨ + ©" 
+            for = fliptricks 
+            trickslot = Air_SquareUL 
+            }
+          STRUCT{
+            desc = "¡¡ + ©" 
+            for = fliptricks 
+            trickslot = Air_U_U_Square 
+            }
+          STRUCT{
+            desc = "££ + ©" 
+            for = fliptricks 
+            trickslot = Air_R_R_Square 
+            }
+          STRUCT{
+            desc = "¥¥ + ©" 
+            for = fliptricks 
+            trickslot = Air_D_D_Square 
+            }
+          STRUCT{
+            desc = "§§ + ©" 
+            for = fliptricks 
+            trickslot = Air_L_L_Square 
+            }
+          STRUCT{
+            desc = "¡ + ª" 
+            for = liptricks 
+            trickslot = Lip_TriangleU 
+            }
+          STRUCT{
+            desc = "¢ + ª" 
+            for = liptricks 
+            trickslot = Lip_TriangleUR 
+            }
+          STRUCT{
+            desc = "£ + ª" 
+            for = liptricks 
+            trickslot = Lip_TriangleR 
+            }
+          STRUCT{
+            desc = "¤ + ª" 
+            for = liptricks 
+            trickslot = Lip_TriangleDR 
+            }
+          STRUCT{
+            desc = "¥ + ª" 
+            for = liptricks 
+            trickslot = Lip_TriangleD 
+            }
+          STRUCT{
+            desc = "¦ + ª" 
+            for = liptricks 
+            trickslot = Lip_TriangleDL 
+            }
+          STRUCT{
+            desc = "§ + ª" 
+            for = liptricks 
+            trickslot = Lip_TriangleL 
+            }
+          STRUCT{
+            desc = "¨ + ª" 
+            for = liptricks 
+            trickslot = Lip_TriangleUL 
+            }
+          
+        )
+        
+#00081  SpecialCombos = 
+#00083  
+        ARRAY(
+          STRUCT{
+            desc = "¥§ + «" 
+            for = airtricks 
+            trickslot = SpAir_D_L_Circle 
+            }
+          STRUCT{
+            desc = "¥£ + «" 
+            for = airtricks 
+            trickslot = SpAir_D_R_Circle 
+            }
+          STRUCT{
+            desc = "¥¡ + «" 
+            for = airtricks 
+            trickslot = SpAir_D_U_Circle 
+            }
+          STRUCT{
+            desc = "§¥ + «" 
+            for = airtricks 
+            trickslot = SpAir_L_D_Circle 
+            }
+          STRUCT{
+            desc = "§£ + «" 
+            for = airtricks 
+            trickslot = SpAir_L_R_Circle 
+            }
+          STRUCT{
+            desc = "§¡ + «" 
+            for = airtricks 
+            trickslot = SpAir_L_U_Circle 
+            }
+          STRUCT{
+            desc = "£¥ + «" 
+            for = airtricks 
+            trickslot = SpAir_R_D_Circle 
+            }
+          STRUCT{
+            desc = "£§ + «" 
+            for = airtricks 
+            trickslot = SpAir_R_L_Circle 
+            }
+          STRUCT{
+            desc = "£¡ + «" 
+            for = airtricks 
+            trickslot = SpAir_R_U_Circle 
+            }
+          STRUCT{
+            desc = "¡¥ + «" 
+            for = airtricks 
+            trickslot = SpAir_U_D_Circle 
+            }
+          STRUCT{
+            desc = "¡§ + «" 
+            for = airtricks 
+            trickslot = SpAir_U_L_Circle 
+            }
+          STRUCT{
+            desc = "¡£ + «" 
+            for = airtricks 
+            trickslot = SpAir_U_R_Circle 
+            }
+          STRUCT{
+            desc = "¥§ + ©" 
+            for = airtricks 
+            trickslot = SpAir_D_L_Square 
+            }
+          STRUCT{
+            desc = "¥£ + ©" 
+            for = airtricks 
+            trickslot = SpAir_D_R_Square 
+            }
+          STRUCT{
+            desc = "¥¡ + ©" 
+            for = airtricks 
+            trickslot = SpAir_D_U_Square 
+            }
+          STRUCT{
+            desc = "§¥ + ©" 
+            for = airtricks 
+            trickslot = SpAir_L_D_Square 
+            }
+          STRUCT{
+            desc = "§£ + ©" 
+            for = airtricks 
+            trickslot = SpAir_L_R_Square 
+            }
+          STRUCT{
+            desc = "§¡ + ©" 
+            for = airtricks 
+            trickslot = SpAir_L_U_Square 
+            }
+          STRUCT{
+            desc = "£¥ + ©" 
+            for = airtricks 
+            trickslot = SpAir_R_D_Square 
+            }
+          STRUCT{
+            desc = "£§ + ©" 
+            for = airtricks 
+            trickslot = SpAir_R_L_Square 
+            }
+          STRUCT{
+            desc = "£¡ + ©" 
+            for = airtricks 
+            trickslot = SpAir_R_U_Square 
+            }
+          STRUCT{
+            desc = "¡¥ + ©" 
+            for = airtricks 
+            trickslot = SpAir_U_D_Square 
+            }
+          STRUCT{
+            desc = "¡§ + ©" 
+            for = airtricks 
+            trickslot = SpAir_U_L_Square 
+            }
+          STRUCT{
+            desc = "¡£ + ©" 
+            for = airtricks 
+            trickslot = SpAir_U_R_Square 
+            }
+          STRUCT{
+            desc = "¥§ + ª" 
+            for = grindtricks 
+            trickslot = SpGrind_D_L_Triangle 
+            }
+          STRUCT{
+            desc = "¥£ + ª" 
+            for = grindtricks 
+            trickslot = SpGrind_D_R_Triangle 
+            }
+          STRUCT{
+            desc = "¥¡ + ª" 
+            for = grindtricks 
+            trickslot = SpGrind_D_U_Triangle 
+            }
+          STRUCT{
+            desc = "§¥ + ª" 
+            for = grindtricks 
+            trickslot = SpGrind_L_D_Triangle 
+            }
+          STRUCT{
+            desc = "§£ + ª" 
+            for = grindtricks 
+            trickslot = SpGrind_L_R_Triangle 
+            }
+          STRUCT{
+            desc = "§¡ + ª" 
+            for = grindtricks 
+            trickslot = SpGrind_L_U_Triangle 
+            }
+          STRUCT{
+            desc = "£¥ + ª" 
+            for = grindtricks 
+            trickslot = SpGrind_R_D_Triangle 
+            }
+          STRUCT{
+            desc = "£§ + ª" 
+            for = grindtricks 
+            trickslot = SpGrind_R_L_Triangle 
+            }
+          STRUCT{
+            desc = "£¡ + ª" 
+            for = grindtricks 
+            trickslot = SpGrind_R_U_Triangle 
+            }
+          STRUCT{
+            desc = "¡¥ + ª" 
+            for = grindtricks 
+            trickslot = SpGrind_U_D_Triangle 
+            }
+          STRUCT{
+            desc = "¡§ + ª" 
+            for = grindtricks 
+            trickslot = SpGrind_U_L_Triangle 
+            }
+          STRUCT{
+            desc = "¡£ + ª" 
+            for = grindtricks 
+            trickslot = SpGrind_U_R_Triangle 
+            }
+          STRUCT{
+            desc = "¥§ + ª" 
+            for = liptricks 
+            trickslot = SpLip_D_L_Triangle 
+            }
+          STRUCT{
+            desc = "¥£ + ª" 
+            for = liptricks 
+            trickslot = SpLip_D_R_Triangle 
+            }
+          STRUCT{
+            desc = "¥¡ + ª" 
+            for = liptricks 
+            trickslot = SpLip_D_U_Triangle 
+            }
+          STRUCT{
+            desc = "§¥ + ª" 
+            for = liptricks 
+            trickslot = SpLip_L_D_Triangle 
+            }
+          STRUCT{
+            desc = "§£ + ª" 
+            for = liptricks 
+            trickslot = SpLip_L_R_Triangle 
+            }
+          STRUCT{
+            desc = "§¡ + ª" 
+            for = liptricks 
+            trickslot = SpLip_L_U_Triangle 
+            }
+          STRUCT{
+            desc = "£¥ + ª" 
+            for = liptricks 
+            trickslot = SpLip_R_D_Triangle 
+            }
+          STRUCT{
+            desc = "£§ + ª" 
+            for = liptricks 
+            trickslot = SpLip_R_L_Triangle 
+            }
+          STRUCT{
+            desc = "£¡ + ª" 
+            for = liptricks 
+            trickslot = SpLip_R_U_Triangle 
+            }
+          STRUCT{
+            desc = "¡¥ + ª" 
+            for = liptricks 
+            trickslot = SpLip_U_D_Triangle 
+            }
+          STRUCT{
+            desc = "¡§ + ª" 
+            for = liptricks 
+            trickslot = SpLip_U_L_Triangle 
+            }
+          STRUCT{
+            desc = "¡£ + ª" 
+            for = liptricks 
+            trickslot = SpLip_U_R_Triangle 
+            }
+          STRUCT{
+            desc = "¥§ + ª" 
+            for = manualtricks 
+            trickslot = SpMan_D_L_Triangle 
+            }
+          STRUCT{
+            desc = "¥£ + ª" 
+            for = manualtricks 
+            trickslot = SpMan_D_R_Triangle 
+            }
+          STRUCT{
+            desc = "¥¡ + ª" 
+            for = manualtricks 
+            trickslot = SpMan_D_U_Triangle 
+            }
+          STRUCT{
+            desc = "§¥ + ª" 
+            for = manualtricks 
+            trickslot = SpMan_L_D_Triangle 
+            }
+          STRUCT{
+            desc = "§£ + ª" 
+            for = manualtricks 
+            trickslot = SpMan_L_R_Triangle 
+            }
+          STRUCT{
+            desc = "§¡ + ª" 
+            for = manualtricks 
+            trickslot = SpMan_L_U_Triangle 
+            }
+          STRUCT{
+            desc = "£¥ + ª" 
+            for = manualtricks 
+            trickslot = SpMan_R_D_Triangle 
+            }
+          STRUCT{
+            desc = "£§ + ª" 
+            for = manualtricks 
+            trickslot = SpMan_R_L_Triangle 
+            }
+          STRUCT{
+            desc = "£¡ + ª" 
+            for = manualtricks 
+            trickslot = SpMan_R_U_Triangle 
+            }
+          STRUCT{
+            desc = "¡¥ + ª" 
+            for = manualtricks 
+            trickslot = SpMan_U_D_Triangle 
+            }
+          STRUCT{
+            desc = "¡§ + ª" 
+            for = manualtricks 
+            trickslot = SpMan_U_L_Triangle 
+            }
+          STRUCT{
+            desc = "¡£ + ª" 
+            for = manualtricks 
+            trickslot = SpMan_U_R_Triangle 
+            }
+          
+        )
+        
+#00149  FUNCTION tm_helper_on_pre_trick_menu 
+#00157    IF InFrontEnd 
+#00158    ELSE 
+#00159      helper_select_choose_back_centered 
+#00160    END IF 
+#00161  END FUNCTION
+          
+#00162  FUNCTION tm_helper_on_trick_right_menu 
+#00164    IF InFrontEnd 
+#00165    ELSE 
+#00166      helper_on_trick_right_menu 
+#00167    END IF 
+#00168  END FUNCTION
+          
+#00169  FUNCTION tm_helper_on_trick_available_menu 
+#00171    IF InFrontEnd 
+#00172    ELSE 
+#00173      helper_on_trick_available_menu 
+#00174    END IF 
+#00175  END FUNCTION
+          
+#00176  FUNCTION tm_helper_on_special_trickname_menu 
+#00178    IF InFrontEnd 
+#00179    ELSE 
+#00180      helper_on_special_trickname_menu 
+#00181    END IF 
+#00182  END FUNCTION
+          
+#00183  FUNCTION tm_helper_on_available_specials_menu 
+#00185    IF InFrontEnd 
+#00186    ELSE 
+#00187      helper_on_available_specials_menu 
+#00188    END IF 
+#00189  END FUNCTION
+          
+#00190  FUNCTION tm_helper_on_available_trickslots_menu 
+#00192    IF InFrontEnd 
+#00193    ELSE 
+#00194      helper_on_available_trickslots_menu 
+#00195    END IF 
+#00196  END FUNCTION
+          
+#00197  ShouldDisableReplays = 0 
+        
+#00199  FUNCTION disable_replays 
+#00201    change ShouldDisableReplays = 1 
+          
+#00202  END FUNCTION
+          
+#00203  FUNCTION enable_replays 
+#00205    change ShouldDisableReplays = 0 
+          
+#00206  END FUNCTION
+          
+#00207  FUNCTION possibly_show_trick_menu_warning 
+#00209    IF InFrontEnd 
+#00210      DestroyElement id = trick_menu_warning1 
+            
+#00212      DestroyElement id = trick_menu_warning2 
+            
+#00213      DestroyElement id = trick_menu_warning3 
+            
+#00214    END IF 
+#00215  END FUNCTION
+          
+#00216  FUNCTION trick_menu_create 
+#00218    createmenu STRUCT{
+            type = menucontainer 
+            id = trick_menu_container 
+            eventhandlers = ARRAY(
+              
+              STRUCT{
+                type = showeventhandler 
+                target = "initialize_trick_menus" 
+                }
+              STRUCT{
+                type = hideeventhandler 
+                target = "uninitialize_trick_menus" 
+                }
+              STRUCT{
+                type = showeventhandler 
+                target = "possibly_show_trick_menu_warning" 
+                }
+              
+            )
+            }
+          
+#00227    CreateAndAttachMenu STRUCT{
+            type = verticalmenu 
+            id = pre_trick_menu 
+            game_menu_properties blue_top eventhandlers = ARRAY(
+              
+              STRUCT{
+                type = showeventhandler 
+                target = "tm_helper_on_pre_trick_menu" 
+                params = STRUCT{
+                  x1 = 295 
+                  x2 = 410 
+                  x3 = 520 
+                  }
+                }
+              
+            )
+            children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Edit Tricks" 
+                static dont_gray drawer = title 
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "grab tricks" 
+                target = "populate_trick_menu" 
+                params = STRUCT{
+                  for = grabtricks 
+                  trick_type = grabtrick 
+                  title = "Grab Tricks" 
+                  }
+                link = trick_menu 
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "flip tricks" 
+                target = "populate_trick_menu" 
+                params = STRUCT{
+                  for = fliptricks 
+                  trick_type = fliptrick 
+                  title = "Flip Tricks" 
+                  }
+                link = trick_menu 
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "lip tricks" 
+                target = "populate_trick_menu" 
+                params = STRUCT{
+                  for = liptricks 
+                  trick_type = lipmacro2 
+                  title = "Lip Tricks" 
+                  }
+                link = trick_menu 
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "special tricks" 
+                target = "populate_trick_menu" 
+                params = STRUCT{
+                  for = specialtricks 
+                  LookForSpecials title = "Special Tricks" 
+                  }
+                link = special_trick_menu 
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = trick_menu_warning1 
+                text = "Warning: Editing your tricks" 
+                static dont_gray drawer = main_warning 
+                x = -15 
+                y = 158 
+                w = 350 
+                lock_layout lock_width }
+              STRUCT{
+                type = textmenuelement 
+                id = trick_menu_warning2 
+                text = "during a run will disable" 
+                static dont_gray drawer = main_warning 
+                x = -15 
+                y = 175 
+                w = 350 
+                lock_layout lock_width }
+              STRUCT{
+                type = textmenuelement 
+                id = trick_menu_warning3 
+                text = "your replay for this run" 
+                static dont_gray drawer = main_warning 
+                x = -15 
+                y = 191 
+                w = 350 
+                lock_layout lock_width }
+              STRUCT{
+                type = textmenuelement 
+                id = pre_trick_menu_done 
+                text = "Done" 
+                target = "go_back" 
+                params = STRUCT{
+                  id = pre_trick_menu 
+                  }
+                }
+              
+            )
+            parent = trick_menu_container 
+            }
+          
+#00319    IF InFrontEnd 
+#00321      IF CurrentSkaterProfileIs 1 
+#00322        MoveMenu id = pre_trick_menu 
+              x = 295 
+              w = 300 
+              
+#00324      ELSE 
+#00325        MoveMenu id = pre_trick_menu 
+              x = 45 
+              w = 300 
+              
+#00327      END IF 
+#00328    END IF 
+#00329    CreateAndAttachMenu STRUCT{
+            type = verticalmenu 
+            game_menu_properties w = trick_menu_total_width 
+            id = trick_menu 
+            blue_top children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                id = trick_menu_title 
+                text = "Edit Tricks" 
+                static dont_gray drawer = title 
+                }
+              STRUCT{
+                type = menucontainer 
+                game_menu_properties id = trick_multi_container 
+                show_all_children eventhandlers = ARRAY(
+                  
+                  STRUCT{
+                    type = leftrightcontroller 
+                    left = trick_left_container 
+                    right = trick_right_container 
+                    }
+                  
+                )
+                }
+              
+            )
+            parent = trick_menu_container 
+            }
+          
+#00359    CreateAndAttachMenu STRUCT{
+            type = verticalmenu 
+            trick_left_menu_properties w = trick_left_menu_width 
+            y = 0.0 
+            id = trick_left_menu 
+            parent = trick_multi_container 
+            }
+          
+#00368    CreateAndAttachMenu STRUCT{
+            type = menucontainer 
+            id = trick_right_container 
+            parent = trick_multi_container 
+            }
+          
+#00374    CreateAndAttachMenu STRUCT{
+            type = verticalmenu 
+            trick_right_menu_properties x = trick_left_menu_width 
+            w = trick_right_menu_width 
+            y = 0.0 
+            id = trick_right_menu 
+            parent = trick_right_container 
+            eventhandlers = ARRAY(
+              
+              STRUCT{
+                type = showeventhandler 
+                target = "tm_helper_on_trick_right_menu" 
+                }
+              
+            )
+            }
+          
+#00387    CreateAndAttachMenu STRUCT{
+            type = scrollingmenu 
+            trick_right_menu_properties num_visible = 12 
+            x = trick_left_menu_width 
+            w = trick_right_menu_width 
+            y = 0.0 
+            id = trick_available_menu 
+            parent = trick_right_container 
+            eventhandlers = ARRAY(
+              
+              STRUCT{
+                type = showeventhandler 
+                target = "tm_helper_on_trick_available_menu" 
+                }
+              
+            )
+            }
+          
+#00401    CreateAndAttachMenu STRUCT{
+            type = verticalmenu 
+            game_menu_properties w = 450.0 
+            x = 95.0 
+            y = 120 
+            id = special_trick_menu 
+            blue_top children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Special Tricks" 
+                static dont_gray drawer = title 
+                }
+              STRUCT{
+                type = menucontainer 
+                game_menu_properties id = special_trick_multi_container 
+                show_all_children eventhandlers = ARRAY(
+                  
+                  STRUCT{
+                    type = leftrightcontroller 
+                    left = special_trick_left_container 
+                    right = special_trick_right_container 
+                    }
+                  STRUCT{
+                    type = showeventhandler 
+                    target = "tm_helper_on_special_trickname_menu" 
+                    }
+                  
+                )
+                children = ARRAY(
+                  
+                  STRUCT{
+                    type = menucontainer 
+                    id = special_trick_left_container 
+                    children = ARRAY(
+                      
+                      STRUCT{
+                        type = verticalmenu 
+                        trick_left_menu_properties w = 250.0 
+                        y = 0.0 
+                        x = 50.0 
+                        id = special_trickname_menu 
+                        }
+                      STRUCT{
+                        type = scrollingmenu 
+                        trick_left_menu_properties w = 250.0 
+                        y = 0.0 
+                        x = 50.0 
+                        id = available_specials_menu 
+                        num_visible = 10 
+                        eventhandlers = ARRAY(
+                          
+                          STRUCT{
+                            type = showeventhandler 
+                            target = "tm_helper_on_available_specials_menu" 
+                            }
+                          STRUCT{
+                            type = backeventhandler 
+                            target = "tm_helper_on_special_trickname_menu" 
+                            }
+                          
+                        )
+                        }
+                      
+                    )
+                    }
+                  STRUCT{
+                    type = menucontainer 
+                    id = special_trick_right_container 
+                    children = ARRAY(
+                      
+                      STRUCT{
+                        type = verticalmenu 
+                        trick_right_menu_properties w = 150.0 
+                        y = 0.0 
+                        x = 300.0 
+                        id = special_trickslot_menu 
+                        static }
+                      STRUCT{
+                        type = scrollingmenu 
+                        trick_left_menu_properties w = 150.0 
+                        y = 0.0 
+                        x = 300.0 
+                        id = available_trickslots_menu 
+                        num_visible = 10 
+                        right_side_icon eventhandlers = ARRAY(
+                          
+                          STRUCT{
+                            type = showeventhandler 
+                            target = "tm_helper_on_available_trickslots_menu" 
+                            }
+                          STRUCT{
+                            type = backeventhandler 
+                            target = "tm_helper_on_available_specials_menu" 
+                            }
+                          
+                        )
+                        }
+                      
+                    )
+                    }
+                  STRUCT{
+                    type = verticalmenu 
+                    trick_left_menu_properties w = 50.0 
+                    y = 0.0 
+                    x = 0.0 
+                    id = special_tricknumber_menu 
+                    static children = ARRAY(
+                      
+                      STRUCT{
+                        type = textmenuelement 
+                        auto_id text = "1" 
+                        static dont_gray drawer = trick_menu_property 
+                        }
+                      
+                    )
+                    }
+                  
+                )
+                }
+              
+            )
+            parent = trick_menu_container 
+            }
+          
+#00513    MoveMenu id = trick_menu 
+          y = 70 
+          
+#00516    MoveMenu id = special_trick_menu 
+          y = 70 
+          
+#00517    IF InFrontEnd 
+#00519      IF CurrentSkaterProfileIs 1 
+#00520        MoveMenu id = trick_menu 
+              x = 295 
+              
+#00521      ELSE 
+#00522        MoveMenu id = trick_menu 
+              x = 40 
+              
+#00523      END IF 
+#00524    END IF 
+#00525  END FUNCTION
+          
+#00527  FUNCTION populate_trick_menu 
+#00529    depopulate_trick_menu 
+#00530    PopulateTrickMenus NULL 
+#00531  END FUNCTION
+          
+#00532  FUNCTION depopulate_trick_menu 
+#00534    printf "Depopulating trick menu" 
+#00535    DepopulateMenu id = trick_left_menu 
+          
+#00536    DepopulateMenu id = trick_right_menu 
+          
+#00537    DepopulateMenu id = trick_available_menu 
+          
+#00538  END FUNCTION
+          
+#00539  FUNCTION initialize_trick_menus 
+#00541    InitializeTrickMenus 
+#00542    IF InFrontEnd 
+#00543      ResetSkaterRotation 
+#00544      DisableSkaterRotation 
+#00545    END IF 
+#00546  END FUNCTION
+          
+#00547  FUNCTION uninitialize_trick_menus 
+#00549    UninitializeTrickMenus 
+#00550    IF InFrontEnd 
+#00551      EnableSkaterRotation 
+#00552    END IF 
+#00553  END FUNCTION
+          

@@ -1,0 +1,434 @@
+
+#00001  SpecialGrindTricks = 
+#00006  
+        ARRAY(
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Up Right Triangle 400 }
+            Duration = 400 
+            TrickSlot = SpGrind_U_R_Triangle 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Up Down Triangle 400 }
+            Duration = 400 
+            TrickSlot = SpGrind_U_D_Triangle 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Up Left Triangle 400 }
+            Duration = 400 
+            TrickSlot = SpGrind_U_L_Triangle 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Right Up Triangle 400 }
+            Duration = 400 
+            TrickSlot = SpGrind_R_U_Triangle 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Right Down Triangle 400 }
+            Duration = 400 
+            TrickSlot = SpGrind_R_D_Triangle 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Right Left Triangle 400 }
+            Duration = 400 
+            TrickSlot = SpGrind_R_L_Triangle 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Down Up Triangle 400 }
+            Duration = 400 
+            TrickSlot = SpGrind_D_U_Triangle 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Down Right Triangle 400 }
+            Duration = 400 
+            TrickSlot = SpGrind_D_R_Triangle 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Down Left Triangle 400 }
+            Duration = 400 
+            TrickSlot = SpGrind_D_L_Triangle 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Left Up Triangle 400 }
+            Duration = 400 
+            TrickSlot = SpGrind_L_U_Triangle 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Left Right Triangle 400 }
+            Duration = 400 
+            TrickSlot = SpGrind_L_R_Triangle 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Left Down Triangle 400 }
+            Duration = 400 
+            TrickSlot = SpGrind_L_D_Triangle 
+            }
+          
+        )
+        
+#00021  Trick_Fandangle = STRUCT{
+          params = STRUCT{
+            Name = 'Fandangle' 
+            IsSpecial }
+          Scripts = FandangleArray 
+          }
+        
+#00026  Trick_CrailSlide = STRUCT{
+          params = STRUCT{
+            Name = 'Crail Slide' 
+            IsSpecial }
+          Scripts = CrailSlideArray 
+          }
+        
+#00027  Trick_Coffin = STRUCT{
+          params = STRUCT{
+            Name = 'Coffin' 
+            IsSpecial }
+          Scripts = CoffinArray 
+          }
+        
+#00028  Trick_GrindOverturn = STRUCT{
+          params = STRUCT{
+            Name = '5-0 Overturn' 
+            IsSpecial }
+          Scripts = GrindOverturnArray 
+          }
+        
+#00029  Trick_HangTenNoseGrind = STRUCT{
+          params = STRUCT{
+            Name = 'Hang Ten Nosegrind' 
+            IsSpecial }
+          Scripts = HangTenNoseGrindArray 
+          }
+        
+#00030  Trick_Salad = STRUCT{
+          params = STRUCT{
+            Name = 'Salad Grind' 
+            IsSpecial }
+          Scripts = SaladArray 
+          }
+        
+#00031  Trick_Sobriety = STRUCT{
+          params = STRUCT{
+            Name = 'Sobriety Grind' 
+            UnlockFlag = SKATER_UNLOCKED_DICK 
+            IsSpecial }
+          Scripts = SobrietyArray 
+          }
+        
+#00032  Trick_Handstand5050 = STRUCT{
+          params = STRUCT{
+            Name = 'Handstand 50-50' 
+            IsSpecial }
+          Scripts = Handstand5050Array 
+          }
+        
+#00033  Trick_RowleyDarkSlide = STRUCT{
+          params = STRUCT{
+            Name = 'Rowley Darkslide' 
+            IsSpecial }
+          Scripts = RowleyDarkSlideArray 
+          }
+        
+#00034  Trick_DarkSlide = STRUCT{
+          params = STRUCT{
+            Name = 'Darkslide' 
+            IsSpecial }
+          Scripts = DarkSlideArray 
+          }
+        
+#00035  Trick_BigHitter = STRUCT{
+          params = STRUCT{
+            Name = 'Big Hitter II' 
+            IsSpecial }
+          Scripts = BigHitterArray 
+          }
+        
+#00036  Trick_NosegrindPivot = STRUCT{
+          params = STRUCT{
+            Name = 'Nosegrind to Pivot' 
+            IsSpecial }
+          Scripts = NosegrindPivotArray 
+          }
+        
+#00037  Trick_FeebleLayback = STRUCT{
+          params = STRUCT{
+            Name = 'Layback Sparks' 
+            IsSpecial }
+          Scripts = LaidBackArray 
+          }
+        
+#00038  Trick_Hurricane = STRUCT{
+          params = STRUCT{
+            Name = 'Hurricane' 
+            IsSpecial }
+          Scripts = HurricaneArray 
+          }
+        
+#00039  Trick_TailblockSlide = STRUCT{
+          params = STRUCT{
+            Name = 'Tailblock Slide' 
+            IsSpecial }
+          Scripts = TailblockSlideArray 
+          }
+        
+#00040  Trick_HumanDart = STRUCT{
+          params = STRUCT{
+            Name = 'Human Dart' 
+            IsSpecial }
+          Scripts = HumanDartArray 
+          }
+        
+#00041  Trick_Drunkgrind = STRUCT{
+          params = STRUCT{
+            Name = 'S.U.I. Grind' 
+            UnlockFlag = SKATER_UNLOCKED_BUM 
+            IsSpecial }
+          Scripts = DrunkGrindArray 
+          }
+        
+#00042  Trick_MaulRollGrind = STRUCT{
+          params = STRUCT{
+            Name = 'Dark Jedi Grind' 
+            UnlockFlag = SKATER_UNLOCKED_MAUL 
+            IsSpecial }
+          Scripts = MaulRollGrindArray 
+          }
+        
+#00043  Trick_PaddleGrind = STRUCT{
+          params = STRUCT{
+            Name = 'Paddle Out Grind' 
+            UnlockFlag = SKATER_UNLOCKED_SLATER 
+            IsSpecial }
+          Scripts = PaddleGrindArray 
+          }
+        
+#00044  Trick_NoseSlideLipSlide = STRUCT{
+          params = STRUCT{
+            Name = 'Noseslide Lipslide' 
+            IsSpecial }
+          Scripts = NoseslideLipslideArray 
+          }
+        
+#00045  Trick_BoomBox = STRUCT{
+          params = STRUCT{
+            Name = 'Ghetto Blastin' 
+            OnlyWith = Muska 
+            IsSpecial }
+          Scripts = BoomBoxArray 
+          }
+        
+#00046  Trick_CrookedBigSpin = STRUCT{
+          params = STRUCT{
+            Name = 'Crook BigSpin Crook' 
+            IsSpecial }
+          Scripts = CrookedBigSpinArray 
+          }
+        
+#00047  GrindTricks = 
+#00062  
+        ARRAY(
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Up Up Triangle 400 }
+            Duration = 1000 
+            Scripts = UpUpScripts 
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Down Down Triangle 400 }
+            Duration = 1000 
+            Scripts = DownDownScripts 
+            }
+          
+        )
+        
+#00066  CrookedBigSpinArray = 
+#00068  
+        ARRAY(
+          Trick_CrookedBigSpin_BS Trick_CrookedBigSpin_FS Trick_CrookedBigSpin_BS Trick_CrookedBigSpin_FS Trick_CrookedBigSpin_BS_180 Trick_CrookedBigSpin_FS_180 Trick_CrookedBigSpin_BS_180 Trick_CrookedBigSpin_FS_180 Trick_CrookedBigSpin_FS Trick_CrookedBigSpin_BS Trick_CrookedBigSpin_FS Trick_CrookedBigSpin_BS Trick_CrookedBigSpin_FS_180 Trick_CrookedBigSpin_BS_180 Trick_CrookedBigSpin_FS_180 Trick_CrookedBigSpin_BS_180 
+        )
+        
+#00086  BoomBoxArray = 
+#00089  
+        ARRAY(
+          Trick_BoomBox_BS Trick_BoomBox_FS Trick_BoomBox_BS Trick_BoomBox_FS Trick_BoomBox_BS_180 Trick_BoomBox_FS_180 Trick_BoomBox_BS_180 Trick_BoomBox_FS_180 Trick_BoomBox_FS Trick_BoomBox_BS Trick_BoomBox_FS Trick_BoomBox_BS Trick_BoomBox_FS_180 Trick_BoomBox_BS_180 Trick_BoomBox_FS_180 Trick_BoomBox_BS_180 
+        )
+        
+#00107  NoseslideLipslideArray = 
+#00109  
+        ARRAY(
+          Trick_NoseSlideLipSlide_BS Trick_NoseSlideLipSlide_FS Trick_NoseSlideLipSlide_BS Trick_NoseSlideLipSlide_FS Trick_NoseSlideLipSlide_BS_180 Trick_NoseSlideLipSlide_FS_180 Trick_NoseSlideLipSlide_BS_180 Trick_NoseSlideLipSlide_FS_180 Trick_NoseSlideLipSlide_FS Trick_NoseSlideLipSlide_BS Trick_NoseSlideLipSlide_FS Trick_NoseSlideLipSlide_BS Trick_NoseSlideLipSlide_FS_180 Trick_NoseSlideLipSlide_BS_180 Trick_NoseSlideLipSlide_FS_180 Trick_NoseSlideLipSlide_BS_180 
+        )
+        
+#00127  PaddleGrindArray = 
+#00130  
+        ARRAY(
+          Trick_PaddleGrind_BS Trick_PaddleGrind_FS Trick_PaddleGrind_BS Trick_PaddleGrind_FS Trick_PaddleGrind_BS_180 Trick_PaddleGrind_FS_180 Trick_PaddleGrind_BS_180 Trick_PaddleGrind_FS_180 Trick_PaddleGrind_FS Trick_PaddleGrind_BS Trick_PaddleGrind_FS Trick_PaddleGrind_BS Trick_PaddleGrind_FS_180 Trick_PaddleGrind_BS_180 Trick_PaddleGrind_FS_180 Trick_PaddleGrind_BS_180 
+        )
+        
+#00148  MaulRollGrindArray = 
+#00151  
+        ARRAY(
+          Trick_MaulRollGrind_BS Trick_MaulRollGrind_FS Trick_MaulRollGrind_BS Trick_MaulRollGrind_FS Trick_MaulRollGrind_BS_180 Trick_MaulRollGrind_FS_180 Trick_MaulRollGrind_BS_180 Trick_MaulRollGrind_FS_180 Trick_MaulRollGrind_FS Trick_MaulRollGrind_BS Trick_MaulRollGrind_FS Trick_MaulRollGrind_BS Trick_MaulRollGrind_FS_180 Trick_MaulRollGrind_BS_180 Trick_MaulRollGrind_FS_180 Trick_MaulRollGrind_BS_180 
+        )
+        
+#00169  DrunkGrindArray = 
+#00173  
+        ARRAY(
+          Trick_DrunkGrind_BS Trick_DrunkGrind_FS Trick_DrunkGrind_BS Trick_DrunkGrind_FS Trick_DrunkGrind_BS_180 Trick_DrunkGrind_FS_180 Trick_DrunkGrind_BS_180 Trick_DrunkGrind_FS_180 Trick_DrunkGrind_FS Trick_DrunkGrind_BS Trick_DrunkGrind_FS Trick_DrunkGrind_BS Trick_DrunkGrind_FS_180 Trick_DrunkGrind_BS_180 Trick_DrunkGrind_FS_180 Trick_DrunkGrind_BS_180 
+        )
+        
+#00191  HumanDartArray = 
+#00193  
+        ARRAY(
+          Trick_HumanDart_BS Trick_HumanDart_FS Trick_HumanDart_BS Trick_HumanDart_FS Trick_HumanDart_BS_180 Trick_HumanDart_FS_180 Trick_HumanDart_BS_180 Trick_HumanDart_FS_180 Trick_HumanDart_FS Trick_HumanDart_BS Trick_HumanDart_FS Trick_HumanDart_BS Trick_HumanDart_FS_180 Trick_HumanDart_BS_180 Trick_HumanDart_FS_180 Trick_HumanDart_BS_180 
+        )
+        
+#00211  TailblockSlideArray = 
+#00213  
+        ARRAY(
+          Trick_TailblockSlide_BS Trick_TailblockSlide_FS Trick_TailblockSlide_BS Trick_TailblockSlide_FS Trick_TailblockSlide_BS_180 Trick_TailblockSlide_FS_180 Trick_TailblockSlide_BS_180 Trick_TailblockSlide_FS_180 Trick_TailblockSlide_FS Trick_TailblockSlide_BS Trick_TailblockSlide_FS Trick_TailblockSlide_BS Trick_TailblockSlide_FS_180 Trick_TailblockSlide_BS_180 Trick_TailblockSlide_FS_180 Trick_TailblockSlide_BS_180 
+        )
+        
+#00231  NosegrindPivotArray = 
+#00233  
+        ARRAY(
+          Trick_NosegrindPivot_BS Trick_NosegrindPivot_FS Trick_NosegrindPivot_BS Trick_NosegrindPivot_FS Trick_NosegrindPivot_BS_180 Trick_NosegrindPivot_FS_180 Trick_NosegrindPivot_BS_180 Trick_NosegrindPivot_FS_180 Trick_NosegrindPivot_FS Trick_NosegrindPivot_BS Trick_NosegrindPivot_FS Trick_NosegrindPivot_BS Trick_NosegrindPivot_FS_180 Trick_NosegrindPivot_BS_180 Trick_NosegrindPivot_FS_180 Trick_NosegrindPivot_BS_180 
+        )
+        
+#00251  LaidBackArray = 
+#00253  
+        ARRAY(
+          Trick_LaidBack_BS Trick_LaidBack_FS Trick_LaidBack_BS Trick_LaidBack_FS Trick_LaidBack_BS_180 Trick_LaidBack_FS_180 Trick_LaidBack_BS_180 Trick_LaidBack_FS_180 Trick_LaidBack_FS Trick_LaidBack_BS Trick_LaidBack_FS Trick_LaidBack_BS Trick_LaidBack_FS_180 Trick_LaidBack_BS_180 Trick_LaidBack_FS_180 Trick_LaidBack_BS_180 
+        )
+        
+#00271  BigHitterArray = 
+#00274  
+        ARRAY(
+          Trick_BigHitter_BS Trick_BigHitter_FS Trick_BigHitter_BS Trick_BigHitter_FS Trick_BigHitter_BS_180 Trick_BigHitter_FS_180 Trick_BigHitter_BS_180 Trick_BigHitter_FS_180 Trick_BigHitter_FS Trick_BigHitter_BS Trick_BigHitter_FS Trick_BigHitter_BS Trick_BigHitter_FS_180 Trick_BigHitter_BS_180 Trick_BigHitter_FS_180 Trick_BigHitter_BS_180 
+        )
+        
+#00292  RowleyDarkSlideArray = 
+#00294  
+        ARRAY(
+          Trick_RowleyDarkSlide_BS Trick_RowleyDarkSlide_FS Trick_RowleyDarkSlide_BS Trick_RowleyDarkSlide_FS Trick_RowleyDarkSlide_BS_180 Trick_RowleyDarkSlide_FS_180 Trick_RowleyDarkSlide_BS_180 Trick_RowleyDarkSlide_FS_180 Trick_RowleyDarkSlide_FS Trick_RowleyDarkSlide_BS Trick_RowleyDarkSlide_FS Trick_RowleyDarkSlide_BS Trick_RowleyDarkSlide_FS_180 Trick_RowleyDarkSlide_BS_180 Trick_RowleyDarkSlide_FS_180 Trick_RowleyDarkSlide_BS_180 
+        )
+        
+#00312  Handstand5050Array = 
+#00314  
+        ARRAY(
+          Trick_Handstand5050_BS Trick_Handstand5050_FS Trick_Handstand5050_BS Trick_Handstand5050_FS Trick_Handstand5050_BS_180 Trick_Handstand5050_FS_180 Trick_Handstand5050_BS_180 Trick_Handstand5050_FS_180 Trick_Handstand5050_FS Trick_Handstand5050_BS Trick_Handstand5050_FS Trick_Handstand5050_BS Trick_Handstand5050_FS_180 Trick_Handstand5050_BS_180 Trick_Handstand5050_FS_180 Trick_Handstand5050_BS_180 
+        )
+        
+#00332  SobrietyArray = 
+#00335  
+        ARRAY(
+          Trick_Sobriety_BS Trick_Sobriety_FS Trick_Sobriety_BS Trick_Sobriety_FS Trick_Sobriety_BS_180 Trick_Sobriety_FS_180 Trick_Sobriety_BS_180 Trick_Sobriety_FS_180 Trick_Sobriety_FS Trick_Sobriety_BS Trick_Sobriety_FS Trick_Sobriety_BS Trick_Sobriety_FS_180 Trick_Sobriety_BS_180 Trick_Sobriety_FS_180 Trick_Sobriety_BS_180 
+        )
+        
+#00353  GrindOverturnArray = 
+#00356  
+        ARRAY(
+          Trick_GrindOverturn_BS Trick_GrindOverturn_FS Trick_GrindOverturn_BS Trick_GrindOverturn_FS Trick_GrindOverturn_BS_180 Trick_GrindOverturn_FS_180 Trick_GrindOverturn_BS_180 Trick_GrindOverturn_FS_180 Trick_GrindOverturn_FS Trick_GrindOverturn_BS Trick_GrindOverturn_FS Trick_GrindOverturn_BS Trick_GrindOverturn_FS_180 Trick_GrindOverturn_BS_180 Trick_GrindOverturn_FS_180 Trick_GrindOverturn_BS_180 
+        )
+        
+#00374  HangTenNoseGrindArray = 
+#00376  
+        ARRAY(
+          Trick_HangTenNoseGrind_BS Trick_HangTenNoseGrind_FS Trick_HangTenNoseGrind_BS Trick_HangTenNoseGrind_FS Trick_HangTenNoseGrind_BS_180 Trick_HangTenNoseGrind_FS_180 Trick_HangTenNoseGrind_BS_180 Trick_HangTenNoseGrind_FS_180 Trick_HangTenNoseGrind_FS Trick_HangTenNoseGrind_BS Trick_HangTenNoseGrind_FS Trick_HangTenNoseGrind_BS Trick_HangTenNoseGrind_FS_180 Trick_HangTenNoseGrind_BS_180 Trick_HangTenNoseGrind_FS_180 Trick_HangTenNoseGrind_BS_180 
+        )
+        
+#00394  SaladArray = 
+#00396  
+        ARRAY(
+          Trick_Salad_BS Trick_Salad_FS Trick_Salad_BS Trick_Salad_FS Trick_Salad_BS_180 Trick_Salad_FS_180 Trick_Salad_BS_180 Trick_Salad_FS_180 Trick_Salad_FS Trick_Salad_BS Trick_Salad_FS Trick_Salad_BS Trick_Salad_FS_180 Trick_Salad_BS_180 Trick_Salad_FS_180 Trick_Salad_BS_180 
+        )
+        
+#00414  CrailSlideArray = 
+#00417  
+        ARRAY(
+          Trick_CrailSlide_BS Trick_CrailSlide_FS Trick_CrailSlide_BS Trick_CrailSlide_FS Trick_CrailSlide_BS_180 Trick_CrailSlide_FS_180 Trick_CrailSlide_BS_180 Trick_CrailSlide_FS_180 Trick_CrailSlide_FS Trick_CrailSlide_BS Trick_CrailSlide_FS Trick_CrailSlide_BS Trick_CrailSlide_FS_180 Trick_CrailSlide_BS_180 Trick_CrailSlide_FS_180 Trick_CrailSlide_BS_180 
+        )
+        
+#00435  FandangleArray = 
+#00439  
+        ARRAY(
+          Trick_fandangle_BS Trick_fandangle_FS Trick_fandangle_BS Trick_fandangle_FS Trick_fandangle_BS_180 Trick_fandangle_FS_180 Trick_fandangle_BS_180 Trick_fandangle_FS_180 Trick_fandangle_FS Trick_fandangle_BS Trick_fandangle_FS Trick_fandangle_BS Trick_fandangle_FS_180 Trick_fandangle_BS_180 Trick_fandangle_FS_180 Trick_fandangle_BS_180 
+        )
+        
+#00457  CoffinArray = 
+#00459  
+        ARRAY(
+          Trick_Coffin_BS Trick_Coffin_FS Trick_Coffin_BS Trick_Coffin_FS Trick_coffin_BS_180 Trick_coffin_FS_180 Trick_coffin_BS_180 Trick_coffin_FS_180 Trick_Coffin_FS Trick_Coffin_BS Trick_Coffin_FS Trick_Coffin_BS Trick_coffin_FS_180 Trick_coffin_BS_180 Trick_coffin_FS_180 Trick_coffin_BS_180 
+        )
+        
+#00477  DarkSlideArray = 
+#00480  
+        ARRAY(
+          Trick_Darkslide_BS Trick_Darkslide_FS Trick_Darkslide_BS Trick_Darkslide_FS Trick_Darkslide_BS_180 Trick_Darkslide_FS_180 Trick_Darkslide_BS_180 Trick_Darkslide_FS_180 Trick_Darkslide_FS Trick_Darkslide_BS Trick_Darkslide_FS Trick_Darkslide_BS Trick_Darkslide_FS_180 Trick_Darkslide_BS_180 Trick_Darkslide_FS_180 Trick_Darkslide_BS_180 
+        )
+        
+#00498  HurricaneArray = 
+#00500  
+        ARRAY(
+          Trick_Hurricane_BS Trick_Hurricane_FS Trick_Hurricane_BS Trick_Hurricane_FS Trick_Hurricane_BS_180 Trick_Hurricane_FS_180 Trick_Hurricane_BS_180 Trick_Hurricane_FS_180 Trick_Hurricane_FS Trick_Hurricane_BS Trick_Hurricane_FS Trick_Hurricane_BS Trick_Hurricane_FS_180 Trick_Hurricane_BS_180 Trick_Hurricane_FS_180 Trick_Hurricane_BS_180 
+        )
+        
+#00518  UpUpScripts = 
+#00520  
+        ARRAY(
+          Trick_Nosebluntslide_BS Trick_Nosebluntslide_FS Trick_Nosebluntslide_BS Trick_Nosebluntslide_FS Trick_Nosebluntslide_BS_180 Trick_Nosebluntslide_FS_180 Trick_Nosebluntslide_BS_180 Trick_Nosebluntslide_FS_180 Trick_Nosebluntslide_FS Trick_Nosebluntslide_BS Trick_Nosebluntslide_FS Trick_Nosebluntslide_BS Trick_Nosebluntslide_FS_180 Trick_Nosebluntslide_BS_180 Trick_Nosebluntslide_FS_180 Trick_Nosebluntslide_BS_180 
+        )
+        
+#00538  DownDownScripts = 
+#00540  
+        ARRAY(
+          Trick_Bluntslide_BS Trick_Bluntslide_FS Trick_Bluntslide_BS Trick_Bluntslide_FS Trick_Bluntslide_BS_180 Trick_Bluntslide_FS_180 Trick_Bluntslide_BS_180 Trick_Bluntslide_FS_180 Trick_Bluntslide_FS Trick_Bluntslide_BS Trick_Bluntslide_FS Trick_Bluntslide_BS Trick_Bluntslide_FS_180 Trick_Bluntslide_BS_180 Trick_Bluntslide_FS_180 Trick_Bluntslide_BS_180 
+        )
+        
+#00558  GrindTrickList = 
+#00561  
+        ARRAY(
+          ARRAY(
+            Trick_BoardSlide_BS Trick_LipSlide_FS Trick_5050_BS Trick_5050_FS Trick_LipSlide_BS Trick_BoardSlide_FS Trick_5050_FS_180 Trick_5050_BS_180 Trick_LipSlide_FS Trick_BoardSlide_BS Trick_5050_FS Trick_5050_BS Trick_BoardSlide_FS Trick_LipSlide_BS Trick_5050_FS_180 Trick_5050_BS_180 
+          )
+          ARRAY(
+            Trick_NoseGrind_BS Trick_NoseGrind_FS Trick_NoseGrind_BS Trick_NoseGrind_FS Trick_NoseGrind_BS_180 Trick_NoseGrind_FS_180 Trick_NoseGrind_BS_180 Trick_NoseGrind_FS_180 Trick_NoseGrind_FS Trick_NoseGrind_BS Trick_NoseGrind_FS Trick_NoseGrind_BS Trick_NoseGrind_FS_180 Trick_NoseGrind_BS_180 Trick_NoseGrind_FS_180 Trick_NoseGrind_BS_180 
+          )
+          ARRAY(
+            Trick_5_0_BS Trick_5_0_FS Trick_5_0_BS Trick_5_0_FS Trick_5_0_BS_180 Trick_5_0_FS_180 Trick_5_0_BS_180 Trick_5_0_FS_180 Trick_5_0_FS Trick_5_0_BS Trick_5_0_FS Trick_5_0_BS Trick_5_0_FS_180 Trick_5_0_BS_180 Trick_5_0_FS_180 Trick_5_0_BS_180 
+          )
+          ARRAY(
+            Trick_BoardSlide_BS Trick_LipSlide_FS Trick_Tailslide_BS Trick_Noseslide_FS Trick_LipSlide_BS Trick_BoardSlide_FS Trick_Tailslide_BS_180 Trick_Noseslide_FS_180 Trick_LipSlide_FS Trick_BoardSlide_BS Trick_Tailslide_FS Trick_Noseslide_BS Trick_BoardSlide_FS Trick_LipSlide_BS Trick_TailSlide_FS_180 Trick_Noseslide_BS_180 
+          )
+          ARRAY(
+            Trick_BoardSlide_BS Trick_LipSlide_FS Trick_Noseslide_BS Trick_Tailslide_FS Trick_LipSlide_BS Trick_BoardSlide_FS Trick_Noseslide_BS_180 Trick_TailSlide_FS_180 Trick_LipSlide_FS Trick_BoardSlide_BS Trick_Noseslide_FS Trick_Tailslide_BS Trick_BoardSlide_FS Trick_LipSlide_BS Trick_Noseslide_FS_180 Trick_Tailslide_BS_180 
+          )
+          ARRAY(
+            Trick_NGCrook_BS Trick_Crooked_FS Trick_NGCrook_BS Trick_Crooked_FS Trick_NGCrook_BS_180 Trick_Crooked_FS_rot Trick_NGCrook_BS_180 Trick_Crooked_FS_180 Trick_NGCrook_FS Trick_Crooked_BS Trick_NGCrook_FS Trick_Crooked_BS Trick_NGCrook_FS_rot Trick_Crooked_BS_180 Trick_NGCrook_FS_180 Trick_Crooked_BS_180 
+          )
+          ARRAY(
+            Trick_Crooked_BS Trick_NGCrook_FS Trick_Crooked_BS Trick_NGCrook_FS Trick_Crooked_BS_180 Trick_NGCrook_FS_rot Trick_Crooked_BS_180 Trick_NGCrook_FS_180 Trick_Crooked_FS Trick_NGCrook_BS Trick_Crooked_FS Trick_NGCrook_BS Trick_Crooked_FS_rot Trick_NGCrook_BS_180 Trick_Crooked_FS_180 Trick_NGCrook_BS_180 
+          )
+          ARRAY(
+            Trick_Smith_BS Trick_Feeble_FS Trick_Smith_BS Trick_Feeble_FS Trick_Smith_BS_180 Trick_Feeble_FS_rot Trick_Smith_BS_180 Trick_Feeble_FS_180 Trick_Smith_FS Trick_Feeble_BS Trick_Smith_FS Trick_Feeble_BS Trick_Smith_FS_rot Trick_Feeble_BS_180 Trick_Smith_FS_180 Trick_Feeble_BS_180 
+          )
+          ARRAY(
+            Trick_Feeble_BS Trick_Smith_FS Trick_Feeble_BS Trick_Smith_FS Trick_Feeble_BS_180 Trick_Smith_FS_rot Trick_Feeble_BS_180 Trick_Smith_FS_180 Trick_Feeble_FS Trick_Smith_BS Trick_Feeble_FS Trick_Smith_BS Trick_Feeble_FS_rot Trick_Smith_BS_180 Trick_Feeble_FS_180 Trick_Smith_BS_180 
+          )
+          
+        )
+        
+#00811  

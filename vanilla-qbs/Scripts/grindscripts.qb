@@ -1,0 +1,2194 @@
+
+#00001  FUNCTION SkateInOrBail 
+#00006    OnGroundExceptions_NoEndRun 
+#00008    ClearException GroundGone 
+#00009    OnExceptionRun SkateInOrBail_Out 
+#00010    SetQueueTricks NoTricks 
+#00011    ClearManualTrick 
+#00012    IF GotParam FallingRight 
+#00013      IF SkateInAble Right 
+#00014        SetLandedFromVert 
+#00015        SetState ground 
+#00016        Move x = -1 
+              
+#00017        Move y = -5 
+              
+#00018        OrientToNormal 
+#00019        Rotate y = -30 
+              Duration = 0.2 
+              seconds 
+#00021        OnGroundExceptions_NoEndRun 
+#00022        ClearException GroundGone 
+#00023        SetQueueTricks NoTricks 
+#00024        SetManualTricks NoTricks 
+#00025        SetExtraTricks tricks = Reverts 
+              Duration = 20 
+              
+#00026        IF GotParam OutAnim 
+#00027          PlayAnim Anim = GLOBAL.OutAnim 
+                BlendPeriod = 0.3 
+                
+#00028        ELSE 
+#00029          PlayAnim Anim = GLOBAL.initanim 
+                Backwards BlendPeriod = 0.3 
+                
+#00030        END IF 
+#00031        WaitAnimWhilstChecking 
+#00032        goto SkateInLand 
+#00034      ELSE 
+#00035        goto GLOBAL.GrindBail 
+              
+#00036      END IF 
+#00037    END IF 
+#00038    IF GotParam FallingLeft 
+#00040      IF SkateInAble Left 
+#00041        SetLandedFromVert 
+#00042        printf "ground......................." 
+#00043        SetState ground 
+#00044        Move x = 1 
+              
+#00046        Move y = -5 
+              
+#00047        OrientToNormal 
+#00048        Rotate y = 30 
+              Duration = 0.2 
+              seconds 
+#00050        SetState ground 
+#00051        OnGroundExceptions_NoEndRun 
+#00052        ClearException GroundGone 
+#00053        SetQueueTricks NoTricks 
+#00054        SetManualTricks NoTricks 
+#00055        SetExtraTricks tricks = Reverts 
+              Duration = 20 
+              
+#00056        IF GotParam OutAnim 
+#00057          PlayAnim Anim = GLOBAL.OutAnim 
+                BlendPeriod = 0.3 
+                
+#00058        ELSE 
+#00059          PlayAnim Anim = GLOBAL.initanim 
+                Backwards BlendPeriod = 0.3 
+                
+#00060        END IF 
+#00061        WaitAnimWhilstChecking 
+#00062        goto SkateInLand 
+#00063      ELSE 
+#00064        goto GLOBAL.GrindBail 
+              
+#00065      END IF 
+#00066    END IF 
+#00067    printf "Missing a FallingLeft or FallingRight ?" 
+#00068    goto GLOBAL.GrindBail 
+          
+#00069  END FUNCTION
+          
+#00070  FUNCTION SkateInLand 
+#00072    OnExceptionRun SkateInLandOut 
+#00073    NollieOff 
+#00074    Vibrate Actuator = 1 
+          Percent = 80 
+          Duration = 0.1 
+          
+#00077    IF Crouched 
+#00079      PlayAnim Anim = CrouchedLand 
+            BlendPeriod = 0.1 
+            
+#00080    ELSE 
+#00081      PlayAnim Anim = Land 
+            BlendPeriod = 0.1 
+            
+#00082    END IF 
+#00083    ClearTrickQueue 
+#00084    OnExceptionRun SkateInLandOut 
+#00089    CheckGapTricks 
+#00092    ClearGapTricks 
+#00093    OnGroundExceptions_NoEndRun 
+#00094    WaitAnim 10 Percent 
+#00095    ClearPanel_Landed 
+#00096    OnGroundExceptions 
+#00097    CheckforNetBrake 
+#00098    AllowRailtricks 
+#00099    WaitAnimWhilstChecking AndManuals 
+#00100    goto OnGroundAI 
+#00101  END FUNCTION
+          
+#00102  FUNCTION SkateInLandOut 
+#00104    AllowRailtricks 
+#00105    ClearPanel_Landed 
+#00106  END FUNCTION
+          
+#00107  FUNCTION SkateInOrBail_Out 
+#00110    ClearPanel_Landed 
+#00111  END FUNCTION
+          
+#00112  Extra_5050_FS = 
+#00114  
+        ARRAY(
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Up Up Triangle 300 }
+            Scr = Trick_NoseBluntSlide_FS 
+            Params = STRUCT{
+              IsExtra = yes 
+              }
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Down Down Triangle 300 }
+            Scr = Trick_Bluntslide_FS 
+            Params = STRUCT{
+              IsExtra = yes 
+              }
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              AirTrickLogic Up Triangle 200 }
+            Scr = Trick_NoseGrind_FS 
+            Params = STRUCT{
+              IsExtra = yes 
+              }
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              AirTrickLogic Down Triangle 200 }
+            Scr = Trick_5_0_FS 
+            Params = STRUCT{
+              IsExtra = yes 
+              }
+            }
+          
+        )
+        
+#00120  Extra_5050_BS = 
+#00122  
+        ARRAY(
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Up Up Triangle 300 }
+            Scr = Trick_NoseBluntSlide_BS 
+            Params = STRUCT{
+              IsExtra = yes 
+              }
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Down Down Triangle 300 }
+            Scr = Trick_Bluntslide_BS 
+            Params = STRUCT{
+              IsExtra = yes 
+              }
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              AirTrickLogic Up Triangle 200 }
+            Scr = Trick_NoseGrind_BS 
+            Params = STRUCT{
+              IsExtra = yes 
+              }
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              AirTrickLogic Down Triangle 200 }
+            Scr = Trick_5_0_BS 
+            Params = STRUCT{
+              IsExtra = yes 
+              }
+            }
+          
+        )
+        
+#00128  Extra_Trick_Crooked_FS = 
+#00130  
+        ARRAY(
+          STRUCT{
+            Trigger = STRUCT{
+              Press Square 200 }
+            Trick_Crooked_FS Params = STRUCT{
+              IsExtra = yes 
+              }
+            }
+          
+        )
+        
+#00131  Extra_NoseGrinds_FS = 
+#00133  
+        ARRAY(
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Up Up Triangle 300 }
+            Scr = Trick_NoseBluntSlide_FS 
+            Params = STRUCT{
+              Name = 'FS Nosebluntslide' 
+              IsExtra = yes 
+              }
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Up Down Triangle 300 }
+            Scr = Trick_Crooked_FS 
+            Params = STRUCT{
+              Name = 'FS Crooked' 
+              IsExtra = yes 
+              }
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              InOrder Circle Circle 250 }
+            Scr = Trick_NGCrook_FS 
+            Params = STRUCT{
+              Name = 'FS OverCrook' 
+              IsExtra = yes 
+              }
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              InOrder Square Square 250 }
+            Scr = Trick_Noseslide_FS_ok 
+            Params = STRUCT{
+              Name = 'FS Noseslide' 
+              IsExtra = yes 
+              }
+            }
+          
+        )
+        
+#00142  Extra_NoseGrinds_BS = 
+#00144  
+        ARRAY(
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Up Up Triangle 300 }
+            Scr = Trick_NoseBluntSlide_BS 
+            Params = STRUCT{
+              Name = 'BS Nosebluntslide' 
+              IsExtra = yes 
+              }
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Up Down Triangle 300 }
+            Scr = Trick_Crooked_BS 
+            Params = STRUCT{
+              Name = 'BS Crooked' 
+              IsExtra = yes 
+              }
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              InOrder Circle Circle 250 }
+            Scr = Trick_NGCrook_BS 
+            Params = STRUCT{
+              Name = 'BS OverCrook' 
+              IsExtra = yes 
+              }
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              InOrder Square Square 250 }
+            Scr = Trick_Noseslide_BS_ok 
+            Params = STRUCT{
+              Name = 'BS Noseslide' 
+              IsExtra = yes 
+              }
+            }
+          
+        )
+        
+#00153  Extra_TailGrinds_FS = 
+#00155  
+        ARRAY(
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Down Down Triangle 300 }
+            Scr = Trick_Bluntslide_FS 
+            Params = STRUCT{
+              Name = 'FS Bluntslide' 
+              IsExtra = yes 
+              }
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Down Up Triangle 300 }
+            Scr = Trick_Smith_FS 
+            Params = STRUCT{
+              Name = 'FS Smith' 
+              IsExtra = yes 
+              }
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              InOrder Circle Circle 250 }
+            Scr = Trick_Feeble_FS 
+            Params = STRUCT{
+              Name = 'FS Feeble' 
+              IsExtra = yes 
+              }
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              InOrder Square Square 250 }
+            Scr = Trick_Tailslide_FS_ok 
+            Params = STRUCT{
+              Name = 'FS Tailslide' 
+              IsExtra = yes 
+              }
+            }
+          
+        )
+        
+#00161  Extra_TailGrinds_BS = 
+#00163  
+        ARRAY(
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Down Down Triangle 300 }
+            Scr = Trick_Bluntslide_BS 
+            Params = STRUCT{
+              Name = 'BS Bluntslide' 
+              IsExtra = yes 
+              }
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Down Up Triangle 300 }
+            Scr = Trick_Smith_BS 
+            Params = STRUCT{
+              Name = 'BS Smith' 
+              IsExtra = yes 
+              }
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              InOrder Circle Circle 250 }
+            Scr = Trick_Feeble_BS 
+            Params = STRUCT{
+              Name = 'BS Feeble' 
+              IsExtra = yes 
+              }
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              InOrder Square Square 250 }
+            Scr = Trick_Tailslide_BS_ok 
+            Params = STRUCT{
+              Name = 'BS Tailslide' 
+              IsExtra = yes 
+              }
+            }
+          
+        )
+        
+#00169  FUNCTION Grind GrindTweak = 7 
+          
+#00185    KillExtraTricks 
+#00186    IF BailIsOn 
+#00187      SetState Air 
+#00188      goto DoingTrickBail 
+#00189    END IF 
+#00190    BailOff 
+#00191    Obj_ClearFlag FLAG_SKATER_MANUALCHEESE 
+#00192    CleanUpSpecialItems 
+#00193    Vibrate Actuator = 1 
+          Percent = 50 
+          Duration = 0.25 
+          
+#00194    Vibrate Actuator = 0 
+          Percent = 50 
+          
+#00195    IF IsGrind GLOBAL.Type 
+            
+#00196      SparksOn 
+#00197    ELSE 
+#00198      SparksOff 
+#00199    END IF 
+#00200    ClearExceptions 
+#00201    IF GotParam Nollie 
+#00202      SetException Ex = Ollied 
+            Scr = NollieNoDisplay 
+            
+#00203      NollieOn 
+#00204    ELSE 
+#00205      IF GotParam OutAnimOnOllie 
+#00206        SetException Ex = Ollied 
+              Scr = Ollie 
+              Params = STRUCT{
+                NULL }
+              
+#00207      ELSE 
+#00208        SetException Ex = Ollied 
+              Scr = Ollie 
+              
+#00209      END IF 
+#00210      NollieOff 
+#00211    END IF 
+#00212    SetException Ex = OffRail 
+          Scr = OffRail 
+          Params = STRUCT{
+            initanim = GLOBAL.initanim 
+            OutAnim = GLOBAL.OutAnim 
+            }
+          
+#00213    SetException Ex = Landed 
+          Scr = Land 
+          
+#00214    SetException Ex = OffMeterTop 
+          Scr = SkateInOrBail 
+          Params = STRUCT{
+            NULL FallingLeft }
+          
+#00215    SetException Ex = OffMeterBottom 
+          Scr = SkateInOrBail 
+          Params = STRUCT{
+            NULL FallingRight }
+          
+#00216    SetException Ex = SkaterCollideBail 
+          Scr = SkaterCollideBail 
+          
+#00217    SetException Ex = MadeOtherSkaterBail 
+          Scr = MadeOtherSkaterBail_Called 
+          CallInsteadOfGoto 
+#00218    SetTrickScore 50 
+#00219    SetTrickName "Kissed the Rail" 
+#00220    OnExceptionRun Grind_Kissed 
+#00221    ClearTrickQueue 
+#00222    ClearManualTrick 
+#00223    ClearExtraGrindTrick 
+#00224    SetQueueTricks NoTricks 
+#00225    SetManualTricks NoTricks 
+#00226    SetRailSound GLOBAL.Type 
+          
+#00227    IF GotParam IsSpecial 
+#00228      SetGrindTweak 36 
+#00229    ELSE 
+#00231      SetGrindTweak GLOBAL.GrindTweak 
+            
+#00232    END IF 
+#00233    IF GotParam IsExtra 
+#00234      LaunchExtraMessage 
+#00235      AdjustBalance SpeedMult = 1.25 
+            
+#00236    END IF 
+#00237    IF GotParam Profile 
+#00238      IF ProfileEquals is_named = GLOBAL.Profile 
+              
+#00239        SwitchOnAtomic special_item 
+#00240        SwitchOffAtomic special_item_2 
+#00241      END IF 
+#00242    END IF 
+#00243    IF GotParam NoBlend 
+#00244      PlayAnim Anim = GLOBAL.initanim 
+            BlendPeriod = 0.0 
+            
+#00245    ELSE 
+#00248      PlayAnim Anim = GLOBAL.initanim 
+            BlendPeriod = 0.3 
+            
+#00249    END IF 
+#00250    DoBalanceTrick ButtonA = Right 
+          ButtonB = Left 
+          Type = GLOBAL.Type 
+          DoFlipCheck 
+#00254    WaitAnim 10 frames 
+#00255    IF GotParam IsSpecial 
+#00256      LaunchSpecialMessage text = "Special Grind" 
+            
+#00257    END IF 
+#00258    OnExceptionRun Normal_Grind 
+#00263    SetTrickName GLOBAL.Name 
+          
+#00264    SetTrickScore GLOBAL.Score 
+          
+#00265    Display BlockSpin 
+#00266    WaitAnimFinished 
+#00275    IF GotParam FlipAfterInit 
+#00276      Flip 
+#00277      PlayBonkSound 
+#00278      BoardRotate 
+#00279      BlendperiodOut 0 
+#00280    END IF 
+#00281    IF GotParam Idle 
+#00282      PlayAnim Anim = GLOBAL.Anim 
+            Cycle NoRestart 
+#00283    ELSE 
+#00284      PlayAnim Anim = GLOBAL.Anim 
+            Wobble 
+#00285    END IF 
+#00286    IF GotParam Extratricks 
+#00287      SetExtraTricks tricks = GLOBAL.Extratricks 
+            ignore = GLOBAL.Name 
+            
+#00290    END IF 
+#00291    IF AnimEquals MaulRollGrind_Idle 
+#00292      LOOP 
+#00293        IF FrameIs 10 
+#00294          PlaySound SaberTwirl5 pitch = 65 
+                
+#00295        END IF 
+#00296        wait 1 frame 
+#00297      END LOOP 
+#00298    END IF 
+#00299  END FUNCTION
+          
+#00300  FUNCTION Grind_Kissed 
+#00302    IF GotParam MadeOtherSkaterBail 
+#00303    ELSE 
+#00304      KillExtraTricks 
+#00305    END IF 
+#00306    Display BlockSpin 
+#00307    IF ProfileEquals is_named = maul 
+            
+#00308    ELSE 
+#00309      SwitchOffAtomic special_item 
+#00310      SwitchOnAtomic special_item_2 
+#00311    END IF 
+#00312  END FUNCTION
+          
+#00315  FUNCTION Normal_Grind 
+#00317    IF GotParam MadeOtherSkaterBail 
+#00318    ELSE 
+#00319      KillExtraTricks 
+#00320    END IF 
+#00321    IF ProfileEquals is_named = maul 
+            
+#00322    ELSE 
+#00323      SwitchOffAtomic special_item 
+#00324      SwitchOnAtomic special_item_2 
+#00325    END IF 
+#00326  END FUNCTION
+          
+#00329  FUNCTION OffRail 
+#00332    KillExtraTricks 
+#00333    Vibrate Actuator = 0 
+          Percent = 0 
+          
+#00334    SetState Air 
+#00335    SetException Ex = Landed 
+          Scr = Land 
+          
+#00336    DoNextTrick 
+#00337    IF GotParam EarlyOut 
+#00338      PlayAnim Anim = GLOBAL.EarlyOut 
+            BlendPeriod = 0.1 
+            Backwards 
+#00339    ELSE 
+#00340      IF GotParam OutAnim 
+#00341        IF GotParam OutAnimBackwards 
+#00342          PlayAnim Anim = GLOBAL.OutAnim 
+                Backwards BlendPeriod = 0.1 
+                
+#00343        ELSE 
+#00344          PlayAnim Anim = GLOBAL.OutAnim 
+                BlendPeriod = 0.1 
+                
+#00345        END IF 
+#00346      ELSE 
+#00347        PlayAnim Anim = GLOBAL.initanim 
+              BlendPeriod = 0.1 
+              Backwards 
+#00348      END IF 
+#00349    END IF 
+#00350    IF GotParam BoardRotate 
+#00351      BlendperiodOut 0 
+#00352      BoardRotateAfter 
+#00353    END IF 
+#00354    IF GotParam FlipAfter 
+#00355      printf "flipping.................." 
+#00356      FlipAfter 
+#00357    END IF 
+#00358    WaitAnimFinished 
+#00359    goto Airborne 
+#00360  END FUNCTION
+          
+#00361  FUNCTION Trick_5050_BS Name = 'BS 50-50' 
+          
+#00374    Grind STRUCT{
+            Name = GLOBAL.Name 
+            Score = 100 
+            initanim = Init_FiftyFifty 
+            Anim = FiftyFifty_range 
+            Type = Grind 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = FiftyFiftyFall 
+            Extratricks = Extra_5050_BS 
+            IsExtra = GLOBAL.IsExtra 
+            }
+          
+#00376  END FUNCTION
+          
+#00377  FUNCTION Trick_5050_FS Name = 'FS 50-50' 
+          
+#00379    Grind STRUCT{
+            Name = GLOBAL.Name 
+            Score = 100 
+            initanim = Init_FiftyFifty 
+            Anim = FiftyFifty_range 
+            Type = Grind 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = FiftyFiftyFall 
+            Extratricks = Extra_5050_FS 
+            IsExtra = GLOBAL.IsExtra 
+            }
+          
+#00381  END FUNCTION
+          
+#00382  FUNCTION Trick_5050_BS_180 
+#00384    FlipAndRotate 
+#00385    BoardRotateAfter 
+#00386    goto Trick_5050_BS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#00387  END FUNCTION
+          
+#00388  FUNCTION Trick_5050_FS_180 
+#00390    FlipAndRotate 
+#00391    BoardRotateAfter 
+#00392    goto Trick_5050_FS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#00393  END FUNCTION
+          
+#00394  FUNCTION Trick_Boardslide_FS Name = 'FS Boardslide' 
+          
+#00397    Rotate 
+#00398    Grind STRUCT{
+            Name = GLOBAL.Name 
+            Score = 200 
+            GrindTweak = 14 
+            initanim = Init_FSBoardslide 
+            Anim = FSBoardslide_range 
+            OutAnim = FSBoardslide_Out 
+            Type = Slide 
+            NoBlend = yes 
+            GrindBail = Nutter 
+            IsExtra = GLOBAL.IsExtra 
+            }
+          
+#00400  END FUNCTION
+          
+#00401  FUNCTION Trick_Boardslide_BS Name = 'BS Boardslide' 
+          
+#00403    Grind STRUCT{
+            Name = GLOBAL.Name 
+            Score = 200 
+            GrindTweak = 14 
+            initanim = Init_BSBoardslide 
+            Anim = BSBoardslide_range 
+            OutAnim = BSBoardslide_Out 
+            Type = Slide 
+            NoBlend = yes 
+            GrindBail = Nutter 
+            IsExtra = GLOBAL.IsExtra 
+            }
+          
+#00405  END FUNCTION
+          
+#00406  FUNCTION Trick_Lipslide_FS Name = 'FS Lipslide' 
+          
+#00408    Grind STRUCT{
+            Name = GLOBAL.Name 
+            Score = 200 
+            GrindTweak = 14 
+            initanim = Init_FSLipslide 
+            Anim = BSBoardslide_range 
+            OutAnim = BSBoardslide_Out 
+            Type = Slide 
+            NoBlend = yes 
+            GrindBail = Nutter 
+            IsExtra = GLOBAL.IsExtra 
+            }
+          
+#00410  END FUNCTION
+          
+#00411  FUNCTION Trick_Lipslide_BS Name = 'BS Lipslide' 
+          
+#00413    Rotate 
+#00414    Grind STRUCT{
+            Name = GLOBAL.Name 
+            Score = 200 
+            GrindTweak = 14 
+            initanim = Init_BSLipslide 
+            Anim = FSBoardslide_range 
+            OutAnim = FSBoardslide_Out 
+            Type = Slide 
+            NoBlend = yes 
+            GrindBail = Nutter 
+            IsExtra = GLOBAL.IsExtra 
+            }
+          
+#00416  END FUNCTION
+          
+#00417  FUNCTION Trick_Tailslide_FS 
+#00420    IF BadLedge 
+#00421      goto Trick_Noseslide_BS_ok 
+#00422    ELSE 
+#00423      goto Trick_Tailslide_FS_ok 
+#00424    END IF 
+#00425  END FUNCTION
+          
+#00426  FUNCTION Trick_Tailslide_FS_ok Name = 'FS Tailslide' 
+          
+#00428    Grind STRUCT{
+            Name = GLOBAL.Name 
+            Score = 150 
+            GrindTweak = 11 
+            initanim = Init_FSTailslide 
+            Anim = FSTailslide_range 
+            OutAnim = FSTailslide_Out 
+            Type = Slide 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = FiftyFiftyFall 
+            Extratricks = Extra_TailGrinds_FS 
+            IsExtra = GLOBAL.IsExtra 
+            }
+          
+#00430  END FUNCTION
+          
+#00431  FUNCTION Trick_Tailslide_BS 
+#00433    IF BadLedge 
+#00434      goto Trick_Noseslide_FS_ok 
+#00435    ELSE 
+#00436      goto Trick_Tailslide_BS_ok 
+#00437    END IF 
+#00438  END FUNCTION
+          
+#00439  FUNCTION Trick_Tailslide_BS_ok Name = 'BS Tailslide' 
+          
+#00441    Grind STRUCT{
+            Name = GLOBAL.Name 
+            Score = 150 
+            GrindTweak = 11 
+            initanim = Init_Tailslide 
+            Anim = Tailslide_range 
+            OutAnim = BSTailslide_Out 
+            Type = Slide 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = BackwardsGrindBails 
+            Extratricks = Extra_TailGrinds_BS 
+            IsExtra = GLOBAL.IsExtra 
+            }
+          
+#00443  END FUNCTION
+          
+#00444  FUNCTION Trick_Tailslide_FS_180 
+#00446    FlipAndRotate 
+#00447    BoardRotateAfter 
+#00448    goto Trick_Tailslide_BS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#00449  END FUNCTION
+          
+#00450  FUNCTION Trick_Tailslide_BS_180 
+#00452    FlipAndRotate 
+#00453    BoardRotateAfter 
+#00454    goto Trick_Tailslide_FS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#00455  END FUNCTION
+          
+#00456  FUNCTION Trick_Noseslide_FS 
+#00458    IF BadLedge 
+#00459      goto Trick_Tailslide_BS_ok 
+#00460    ELSE 
+#00461      goto Trick_Noseslide_FS_ok 
+#00462    END IF 
+#00463  END FUNCTION
+          
+#00464  FUNCTION Trick_Noseslide_FS_ok Name = 'FS Noseslide' 
+          
+#00466    Grind STRUCT{
+            Name = GLOBAL.Name 
+            Score = 150 
+            GrindTweak = 11 
+            initanim = Init_FSNoseslide 
+            Anim = FSNoseslide_range 
+            Type = Slide 
+            Nollie = yes 
+            OutAnim = FSNoseSlide_Out 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = BackwardsGrindBails 
+            Extratricks = Extra_NoseGrinds_FS 
+            IsExtra = GLOBAL.IsExtra 
+            }
+          
+#00468  END FUNCTION
+          
+#00469  FUNCTION Trick_Noseslide_BS 
+#00471    IF BadLedge 
+#00472      goto Trick_Tailslide_FS_ok 
+#00473    ELSE 
+#00474      goto Trick_Noseslide_BS_ok 
+#00475    END IF 
+#00476  END FUNCTION
+          
+#00477  FUNCTION Trick_Noseslide_BS_ok Name = 'BS Noseslide' 
+          
+#00479    Grind STRUCT{
+            Name = GLOBAL.Name 
+            Score = 150 
+            GrindTweak = 11 
+            initanim = Init_Noseslide 
+            Anim = Noseslide_range 
+            OutAnim = BSNoseslide_Out 
+            Type = Slide 
+            Nollie = yes 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = FiftyFiftyFall 
+            Extratricks = Extra_NoseGrinds_BS 
+            IsExtra = GLOBAL.IsExtra 
+            }
+          
+#00481  END FUNCTION
+          
+#00482  FUNCTION Trick_Noseslide_FS_180 
+#00484    FlipAndRotate 
+#00485    BoardRotateAfter 
+#00486    goto Trick_Noseslide_BS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#00487  END FUNCTION
+          
+#00488  FUNCTION Trick_Noseslide_BS_180 
+#00490    FlipAndRotate 
+#00491    BoardRotateAfter 
+#00492    goto Trick_Noseslide_FS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#00493  END FUNCTION
+          
+#00494  FUNCTION Trick_NoseGrind_FS Name = 'FS Nosegrind' 
+          
+#00497    Grind STRUCT{
+            Name = GLOBAL.Name 
+            Score = 100 
+            initanim = Init_Nosegrind 
+            Anim = Nosegrind_range 
+            Type = Grind 
+            Nollie = yes 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = FiftyFiftyFall 
+            Extratricks = Extra_NoseGrinds_FS 
+            IsExtra = GLOBAL.IsExtra 
+            }
+          
+#00499  END FUNCTION
+          
+#00500  FUNCTION Trick_NoseGrind_BS Name = 'BS Nosegrind' 
+          
+#00502    Grind STRUCT{
+            Name = GLOBAL.Name 
+            Score = 100 
+            initanim = Init_Nosegrind 
+            Anim = Nosegrind_range 
+            Type = Grind 
+            Nollie = yes 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = FiftyFiftyFall 
+            Extratricks = Extra_NoseGrinds_BS 
+            IsExtra = GLOBAL.IsExtra 
+            }
+          
+#00504  END FUNCTION
+          
+#00505  FUNCTION Trick_NoseGrind_BS_180 
+#00507    FlipAndRotate 
+#00509    BoardRotateAfter 
+#00510    goto Trick_5_0_FS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#00511  END FUNCTION
+          
+#00512  FUNCTION Trick_NoseGrind_FS_180 
+#00514    FlipAndRotate 
+#00516    BoardRotateAfter 
+#00517    goto Trick_5_0_BS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#00518  END FUNCTION
+          
+#00519  FUNCTION Trick_5_0_FS Name = 'FS 5-0' 
+          
+#00522    Grind STRUCT{
+            Name = GLOBAL.Name 
+            Score = 100 
+            initanim = Init_Tailgrind 
+            Anim = Tailgrind_range 
+            Type = Grind 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = FiftyFiftyFall 
+            Extratricks = Extra_TailGrinds_FS 
+            IsExtra = GLOBAL.IsExtra 
+            }
+          
+#00524  END FUNCTION
+          
+#00525  FUNCTION Trick_5_0_BS Name = 'BS 5-0' 
+          
+#00527    Grind STRUCT{
+            Name = GLOBAL.Name 
+            Score = 100 
+            initanim = Init_Tailgrind 
+            Anim = Tailgrind_range 
+            Type = Grind 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = FiftyFiftyFall 
+            Extratricks = Extra_TailGrinds_BS 
+            IsExtra = GLOBAL.IsExtra 
+            }
+          
+#00529  END FUNCTION
+          
+#00530  FUNCTION Trick_5_0_FS_180 
+#00532    FlipAndRotate 
+#00534    BoardRotateAfter 
+#00535    goto Trick_NoseGrind_BS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#00536  END FUNCTION
+          
+#00537  FUNCTION Trick_5_0_BS_180 
+#00539    FlipAndRotate 
+#00541    BoardRotateAfter 
+#00542    goto Trick_NoseGrind_BS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#00543  END FUNCTION
+          
+#00544  FUNCTION Trick_Crooked_FS Name = 'FS Crooked' 
+          
+#00548    Grind STRUCT{
+            Name = GLOBAL.Name 
+            Score = 125 
+            GrindTweak = 9 
+            initanim = Init_FSCrooked 
+            Anim = FSCrooked_range 
+            Type = Grind 
+            Nollie = yes 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = FiftyFiftyFall 
+            Extratricks = Extra_NoseGrinds_FS 
+            IsExtra = GLOBAL.IsExtra 
+            }
+          
+#00550  END FUNCTION
+          
+#00551  FUNCTION Trick_Crooked_FS_rot 
+#00553    Rotate 
+#00554    goto Trick_Crooked_FS 
+#00555  END FUNCTION
+          
+#00556  FUNCTION Trick_Crooked_BS Name = 'BS Crooked' 
+          
+#00558    Grind STRUCT{
+            Name = GLOBAL.Name 
+            Score = 125 
+            GrindTweak = 9 
+            initanim = Init_BSCrooked 
+            Anim = BSCrooked_range 
+            Type = Grind 
+            Nollie = yes 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = FiftyFiftyFall 
+            Extratricks = Extra_NoseGrinds_BS 
+            IsExtra = GLOBAL.IsExtra 
+            }
+          
+#00560  END FUNCTION
+          
+#00561  FUNCTION Trick_Crooked_FS_180 
+#00563    IF Backwards 
+#00564      printf "I'm backwards............" 
+#00565    END IF 
+#00566    FlipAndRotate 
+#00568    BoardRotateAfter 
+#00569    goto Trick_Crooked_BS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#00571  END FUNCTION
+          
+#00572  FUNCTION Trick_Crooked_BS_180 
+#00574    FlipAndRotate 
+#00575    BoardRotateAfter 
+#00576    goto Trick_Crooked_FS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#00578  END FUNCTION
+          
+#00579  FUNCTION Trick_NGCRook_FS_rot 
+#00581    Rotate 
+#00582    printf "fixed it bitches................................" 
+#00583    goto Trick_NGCrook_FS 
+#00584  END FUNCTION
+          
+#00585  FUNCTION Trick_NGCrook_FS Name = 'FS Overcrook' 
+          
+#00587    Grind STRUCT{
+            Name = GLOBAL.Name 
+            Score = 125 
+            GrindTweak = 9 
+            initanim = Init_FSOvercrook 
+            Anim = FSOvercrook_range 
+            Type = Grind 
+            Nollie = yes 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = FiftyFiftyFall 
+            Extratricks = Extra_NoseGrinds_FS 
+            IsExtra = GLOBAL.IsExtra 
+            }
+          
+#00589  END FUNCTION
+          
+#00590  FUNCTION Trick_NGCrook_BS Name = 'BS Overcrook' 
+          
+#00592    Grind STRUCT{
+            Name = GLOBAL.Name 
+            Score = 125 
+            GrindTweak = 9 
+            initanim = Init_BSOvercrook 
+            Anim = BSOvercrook_range 
+            Type = Grind 
+            Nollie = yes 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = FiftyFiftyFall 
+            Extratricks = Extra_NoseGrinds_BS 
+            IsExtra = GLOBAL.IsExtra 
+            }
+          
+#00594  END FUNCTION
+          
+#00595  FUNCTION Trick_NGCRook_FS_180 
+#00597    FlipAndRotate 
+#00599    goto Trick_NGCrook_BS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#00600  END FUNCTION
+          
+#00601  FUNCTION Trick_NGCrook_BS_180 
+#00603    FlipAndRotate 
+#00605    goto Trick_NGCrook_FS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#00606  END FUNCTION
+          
+#00607  FUNCTION Trick_Smith_FS Name = 'FS Smith' 
+          
+#00610    Grind STRUCT{
+            Name = GLOBAL.Name 
+            Score = 125 
+            GrindTweak = 9 
+            initanim = Init_FSSmith 
+            Anim = FSSmith_range 
+            Type = Grind 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = Nutter 
+            Extratricks = Extra_TailGrinds_FS 
+            IsExtra = GLOBAL.IsExtra 
+            }
+          
+#00612  END FUNCTION
+          
+#00613  FUNCTION Trick_Smith_FS_rot 
+#00615    Rotate 
+#00616    goto Trick_Smith_FS 
+#00617  END FUNCTION
+          
+#00618  FUNCTION Trick_Smith_BS Name = 'BS Smith' 
+          
+#00620    Grind STRUCT{
+            Name = GLOBAL.Name 
+            Score = 125 
+            GrindTweak = 9 
+            initanim = Init_BSSmith 
+            Anim = BSSmith_range 
+            Type = Grind 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = Nutter 
+            Extratricks = Extra_TailGrinds_BS 
+            IsExtra = GLOBAL.IsExtra 
+            }
+          
+#00622  END FUNCTION
+          
+#00623  FUNCTION Trick_Smith_FS_180 
+#00625    FlipAndRotate 
+#00627    goto Trick_Smith_BS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#00628  END FUNCTION
+          
+#00629  FUNCTION Trick_Smith_BS_180 
+#00631    FlipAndRotate 
+#00633    goto Trick_Smith_FS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#00634  END FUNCTION
+          
+#00635  FUNCTION Trick_Feeble_FS Name = 'FS Feeble' 
+          
+#00637    Grind STRUCT{
+            Name = GLOBAL.Name 
+            Score = 125 
+            GrindTweak = 9 
+            initanim = Init_FSFeeble 
+            Anim = FSFeeble_range 
+            Type = Grind 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = Nutter 
+            Extratricks = Extra_TailGrinds_FS 
+            IsExtra = GLOBAL.IsExtra 
+            }
+          
+#00639  END FUNCTION
+          
+#00640  FUNCTION Trick_Feeble_FS_rot 
+#00642    Rotate 
+#00643    goto Trick_Feeble_FS 
+#00644  END FUNCTION
+          
+#00645  FUNCTION Trick_Feeble_BS Name = 'BS Feeble' 
+          
+#00647    Grind STRUCT{
+            Name = GLOBAL.Name 
+            Score = 125 
+            GrindTweak = 9 
+            initanim = Init_BSFeeble 
+            Anim = BSFeeble_range 
+            Type = Grind 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = Nutter 
+            Extratricks = Extra_TailGrinds_BS 
+            IsExtra = GLOBAL.IsExtra 
+            }
+          
+#00649  END FUNCTION
+          
+#00650  FUNCTION Trick_Feeble_FS_180 
+#00652    FlipAndRotate 
+#00654    goto Trick_Feeble_BS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#00655  END FUNCTION
+          
+#00656  FUNCTION Trick_Feeble_BS_180 
+#00658    FlipAndRotate 
+#00660    goto Trick_Feeble_FS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#00661  END FUNCTION
+          
+#00662  FUNCTION Trick_Bluntslide_BS Name = 'BS Bluntslide' 
+          
+#00665    Grind STRUCT{
+            Name = GLOBAL.Name 
+            Score = 250 
+            GrindTweak = 18 
+            initanim = Init_BSBluntSlide 
+            Anim = BSBluntSlide_range 
+            Type = Slide 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = FiftyFiftyFall 
+            Extratricks = Extra_TailGrinds_BS 
+            IsExtra = GLOBAL.IsExtra 
+            }
+          
+#00667  END FUNCTION
+          
+#00668  FUNCTION Trick_Bluntslide_FS Name = 'FS Bluntslide' 
+          
+#00670    Grind STRUCT{
+            Name = GLOBAL.Name 
+            Score = 250 
+            GrindTweak = 18 
+            initanim = Init_FSBluntSlide 
+            Anim = FSBluntSlide_range 
+            Type = Slide 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = BackwardsGrindBails 
+            Extratricks = Extra_TailGrinds_FS 
+            IsExtra = GLOBAL.IsExtra 
+            }
+          
+#00672  END FUNCTION
+          
+#00673  FUNCTION Trick_NoseBluntSlide_BS Name = 'BS Nosebluntslide' 
+          
+#00675    Grind STRUCT{
+            Name = GLOBAL.Name 
+            Score = 250 
+            GrindTweak = 18 
+            initanim = Init_BSNoseblunt 
+            Anim = BSNoseblunt_range 
+            Type = Slide 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = BackwardsGrindBails 
+            Extratricks = Extra_NoseGrinds_BS 
+            IsExtra = GLOBAL.IsExtra 
+            Nollie = yes 
+            }
+          
+#00677  END FUNCTION
+          
+#00678  FUNCTION Trick_NoseBluntSlide_FS Name = 'FS Nosebluntslide' 
+          
+#00680    Grind STRUCT{
+            Name = GLOBAL.Name 
+            Score = 250 
+            GrindTweak = 18 
+            initanim = Init_FSNoseblunt 
+            Anim = FSNoseblunt_range 
+            Type = Slide 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = FiftyFiftyFall 
+            Nollie = yes 
+            IsExtra = GLOBAL.IsExtra 
+            Extratricks = Extra_NoseGrinds_FS 
+            }
+          
+#00682  END FUNCTION
+          
+#00683  FUNCTION Trick_Bluntslide_BS_180 
+#00686    FlipAndRotate 
+#00687    BoardRotateAfter 
+#00688    goto Trick_Bluntslide_BS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#00689  END FUNCTION
+          
+#00690  FUNCTION Trick_Bluntslide_FS_180 
+#00692    Rotate 
+#00693    BoardRotateAfter 
+#00694    goto Trick_Bluntslide_FS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#00695  END FUNCTION
+          
+#00696  FUNCTION Trick_Nosebluntslide_BS_180 
+#00698    Rotate 
+#00699    BoardRotateAfter 
+#00700    goto Trick_NoseBluntSlide_BS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#00701  END FUNCTION
+          
+#00702  FUNCTION Trick_Nosebluntslide_FS_180 
+#00704    Rotate 
+#00705    BoardRotateAfter 
+#00706    goto Trick_NoseBluntSlide_FS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#00707  END FUNCTION
+          
+#00708  FUNCTION Trick_Hurricane_BS 
+#00714    Grind STRUCT{
+            Name = 'BS Hurricane' 
+            Score = 400 
+            initanim = BSHurricaneGrind_Init 
+            Anim = BSHurricaneGrind_Range 
+            OutAnim = BSHurricaneGrind_Out 
+            Type = Grind 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = BackwardsGrindBails 
+            Nollie = yes 
+            IsSpecial OutAnimOnOllie }
+          
+#00716  END FUNCTION
+          
+#00717  FUNCTION Trick_Hurricane_FS 
+#00719    Grind STRUCT{
+            Name = 'FS Hurricane' 
+            Score = 400 
+            initanim = FSHurricaneGrind_Init 
+            Anim = FSHurricaneGrind_Range 
+            OutAnim = FSHurricaneGrind_Out 
+            Type = Grind 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = FiftyFiftyFall 
+            IsSpecial OutAnimOnOllie }
+          
+#00721  END FUNCTION
+          
+#00722  FUNCTION Trick_Hurricane_BS_180 
+#00724    Rotate 
+#00725    BoardRotateAfter 
+#00726    goto Trick_Hurricane_BS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#00727  END FUNCTION
+          
+#00728  FUNCTION Trick_Hurricane_FS_180 
+#00730    Rotate 
+#00731    BoardRotateAfter 
+#00732    goto Trick_Hurricane_FS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#00733  END FUNCTION
+          
+#00734  FUNCTION Trick_Darkslide_BS 
+#00737    Grind STRUCT{
+            Name = 'BS Darkslide' 
+            Score = 400 
+            initanim = Darkslide_Init 
+            Anim = Darkslide_Range 
+            OutAnim = Darkslide_Out 
+            Type = Slide 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = BackwardsGrindBails 
+            Nollie = yes 
+            IsSpecial OutAnimOnOllie BoardRotate }
+          
+#00739  END FUNCTION
+          
+#00740  FUNCTION Trick_Darkslide_FS 
+#00742    Grind STRUCT{
+            Name = 'FS Darkslide' 
+            Score = 400 
+            initanim = Darkslide_Init 
+            Anim = Darkslide_Range 
+            OutAnim = Darkslide_Out 
+            Type = Slide 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = FiftyFiftyFall 
+            IsSpecial OutAnimOnOllie BoardRotate }
+          
+#00744  END FUNCTION
+          
+#00745  FUNCTION Trick_Darkslide_BS_180 
+#00747    Rotate 
+#00748    BoardRotateAfter 
+#00749    goto Trick_Darkslide_BS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#00750  END FUNCTION
+          
+#00751  FUNCTION Trick_Darkslide_FS_180 
+#00753    Rotate 
+#00754    BoardRotateAfter 
+#00755    goto Trick_Darkslide_FS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#00756  END FUNCTION
+          
+#00757  FUNCTION Trick_Coffin_BS 
+#00759    Grind STRUCT{
+            Name = 'BS Coffin' 
+            Score = 500 
+            initanim = CoffinGrind_Init 
+            Anim = CoffinGrind_Range 
+            OutAnim = CoffinGrind_Out 
+            Type = Grind 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = FiftyFiftyFall 
+            IsSpecial OutAnimOnOllie }
+          
+#00761  END FUNCTION
+          
+#00762  FUNCTION Trick_Coffin_FS 
+#00764    Grind STRUCT{
+            Name = 'FS Coffin' 
+            Score = 500 
+            initanim = CoffinGrind_Init 
+            Anim = CoffinGrind_Range 
+            OutAnim = CoffinGrind_Out 
+            Type = Grind 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = FiftyFiftyFall 
+            IsSpecial OutAnimOnOllie }
+          
+#00766  END FUNCTION
+          
+#00767  FUNCTION Trick_Coffin_BS_180 
+#00769    Rotate 
+#00770    BoardRotateAfter 
+#00771    goto Trick_Coffin_BS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#00772  END FUNCTION
+          
+#00773  FUNCTION Trick_Coffin_FS_180 
+#00775    Rotate 
+#00776    BoardRotateAfter 
+#00777    goto Trick_Coffin_FS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#00778  END FUNCTION
+          
+#00779  FUNCTION Trick_fandangle_BS 
+#00781    Grind STRUCT{
+            Name = 'BS Fandangle' 
+            Score = 500 
+            initanim = fandangle_Init 
+            Anim = fandangle_Range 
+            OutAnim = Fandangle_Out 
+            Type = Grind 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = FiftyFiftyFall 
+            IsSpecial Extratricks = Extra_NoseGrinds_BS 
+            OutAnimOnOllie BoardRotate }
+          
+#00783  END FUNCTION
+          
+#00784  FUNCTION Trick_fandangle_FS 
+#00786    Grind STRUCT{
+            Name = 'FS Fandangle' 
+            Score = 500 
+            initanim = fandangle_Init 
+            Anim = fandangle_Range 
+            OutAnim = Fandangle_Out 
+            Type = Grind 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = FiftyFiftyFall 
+            IsSpecial Extratricks = Extra_NoseGrinds_FS 
+            OutAnimOnOllie BoardRotate }
+          
+#00788  END FUNCTION
+          
+#00789  FUNCTION Trick_fandangle_BS_180 
+#00791    Rotate 
+#00792    BoardRotateAfter 
+#00793    goto Trick_fandangle_BS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#00794  END FUNCTION
+          
+#00795  FUNCTION Trick_fandangle_FS_180 
+#00797    Rotate 
+#00798    BoardRotateAfter 
+#00799    goto Trick_fandangle_FS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#00800  END FUNCTION
+          
+#00801  FUNCTION Trick_CrailSlide_BS 
+#00803    Grind STRUCT{
+            Name = 'BS Crail Slide' 
+            Score = 500 
+            initanim = CrailSlide_Init 
+            Anim = CrailSlide_Range 
+            OutAnim = CrailSlide_Out 
+            Type = Grind 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = FiftyFiftyFall 
+            IsSpecial Extratricks = Extra_TailGrinds_BS 
+            OutAnimOnOllie }
+          
+#00805  END FUNCTION
+          
+#00806  FUNCTION Trick_CrailSlide_FS 
+#00808    Grind STRUCT{
+            Name = 'FS Crail Slide' 
+            Score = 500 
+            initanim = CrailSlide_Init 
+            Anim = CrailSlide_Range 
+            OutAnim = CrailSlide_Out 
+            Type = Grind 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = FiftyFiftyFall 
+            IsSpecial Extratricks = Extra_TailGrinds_FS 
+            OutAnimOnOllie }
+          
+#00810  END FUNCTION
+          
+#00811  FUNCTION Trick_CrailSlide_BS_180 
+#00813    Rotate 
+#00814    BoardRotateAfter 
+#00815    goto Trick_CrailSlide_BS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#00816  END FUNCTION
+          
+#00817  FUNCTION Trick_CrailSlide_FS_180 
+#00819    Rotate 
+#00820    BoardRotateAfter 
+#00821    goto Trick_CrailSlide_FS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#00822  END FUNCTION
+          
+#00823  FUNCTION Trick_GrindOverturn_BS 
+#00825    Grind STRUCT{
+            Name = 'BS 5-0 Overturn' 
+            Score = 500 
+            initanim = GrindOverturn_Init 
+            Anim = GrindOverturn_Range 
+            OutAnim = GrindOverturn_Out 
+            Type = Grind 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = FiftyFiftyFall 
+            IsSpecial Extratricks = Extra_TailGrinds_BS 
+            OutAnimOnOllie }
+          
+#00827  END FUNCTION
+          
+#00828  FUNCTION Trick_GrindOverturn_FS 
+#00830    Grind STRUCT{
+            Name = 'FS 5-0 Overturn' 
+            Score = 500 
+            initanim = GrindOverturn_Init 
+            Anim = GrindOverturn_Range 
+            OutAnim = GrindOverturn_Out 
+            Type = Grind 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = FiftyFiftyFall 
+            IsSpecial Extratricks = Extra_TailGrinds_FS 
+            OutAnimOnOllie }
+          
+#00832  END FUNCTION
+          
+#00833  FUNCTION Trick_GrindOverturn_BS_180 
+#00835    Rotate 
+#00836    BoardRotateAfter 
+#00837    goto Trick_GrindOverturn_BS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#00838  END FUNCTION
+          
+#00839  FUNCTION Trick_GrindOverturn_FS_180 
+#00841    Rotate 
+#00842    BoardRotateAfter 
+#00843    goto Trick_GrindOverturn_FS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#00844  END FUNCTION
+          
+#00845  FUNCTION Trick_HangTenNoseGrind_BS 
+#00848    Grind STRUCT{
+            Name = 'Hang Ten Nosegrind' 
+            Score = 500 
+            initanim = HangTenNoseGrind_Init 
+            Anim = HangTenNoseGrind_Range 
+            OutAnim = HangTenNoseGrind_Out 
+            Type = Grind 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = FiftyFiftyFall 
+            Extratricks = Extra_NoseGrinds_BS 
+            IsSpecial Nollie }
+          
+#00850  END FUNCTION
+          
+#00851  FUNCTION Trick_HangTenNoseGrind_FS 
+#00853    Grind STRUCT{
+            Name = 'Hang Ten Nosegrind' 
+            Score = 500 
+            initanim = HangTenNoseGrind_Init 
+            Anim = HangTenNoseGrind_Range 
+            OutAnim = HangTenNoseGrind_Out 
+            Type = Grind 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = FiftyFiftyFall 
+            Extratricks = Extra_NoseGrinds_FS 
+            IsSpecial Nollie }
+          
+#00855  END FUNCTION
+          
+#00856  FUNCTION Trick_HangTenNoseGrind_BS_180 
+#00858    Rotate 
+#00859    BoardRotateAfter 
+#00860    goto Trick_HangTenNoseGrind_BS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#00861  END FUNCTION
+          
+#00862  FUNCTION Trick_HangTenNoseGrind_FS_180 
+#00864    Rotate 
+#00865    BoardRotateAfter 
+#00866    goto Trick_HangTenNoseGrind_FS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#00867  END FUNCTION
+          
+#00868  FUNCTION Trick_Sobriety_BS 
+#00870    Grind STRUCT{
+            Name = 'Sobriety Grind' 
+            Score = 500 
+            initanim = Sobriety_Init 
+            Anim = Sobriety_Range 
+            Type = Grind 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = FiftyFiftyFall 
+            IsSpecial }
+          
+#00872  END FUNCTION
+          
+#00873  FUNCTION Trick_Sobriety_FS 
+#00875    goto Trick_Sobriety_BS 
+#00876  END FUNCTION
+          
+#00877  FUNCTION Trick_Sobriety_BS_180 
+#00879    Rotate 
+#00880    BoardRotateAfter 
+#00881    goto Trick_Sobriety_BS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#00882  END FUNCTION
+          
+#00883  FUNCTION Trick_Sobriety_FS_180 
+#00885    goto Trick_Sobriety_BS_180 
+#00886  END FUNCTION
+          
+#00887  FUNCTION Trick_Handstand5050_BS 
+#00889    Grind STRUCT{
+            Name = 'Handstand 50-50' 
+            Score = 500 
+            initanim = Handstand5050Grind_Init 
+            Anim = Handstand5050Grind_Range 
+            OutAnim = Handstand5050Grind_out 
+            Type = Grind 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = NoseManualBail2 
+            IsSpecial OutAnimOnOllie }
+          
+#00891  END FUNCTION
+          
+#00892  FUNCTION Trick_Handstand5050_FS 
+#00894    goto Trick_Handstand5050_BS 
+#00895  END FUNCTION
+          
+#00896  FUNCTION Trick_Handstand5050_BS_180 
+#00898    Rotate 
+#00899    BoardRotateAfter 
+#00900    goto Trick_Handstand5050_BS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#00901  END FUNCTION
+          
+#00902  FUNCTION Trick_Handstand5050_FS_180 
+#00904    goto Trick_Handstand5050_BS_180 
+#00905  END FUNCTION
+          
+#00906  FUNCTION Trick_RowleyDarkSlide_BS 
+#00908    Grind STRUCT{
+            Name = 'Rowley Darkslide' 
+            Score = 500 
+            initanim = RowleyDarkSlide_Init 
+            Anim = RowleyDarkSlide_Range 
+            OutAnim = RowleyDarkSlide_out 
+            Type = Slide 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = Nutter 
+            IsSpecial OutAnimOnOllie BoardRotate }
+          
+#00910  END FUNCTION
+          
+#00911  FUNCTION Trick_RowleyDarkSlide_FS 
+#00913    goto Trick_RowleyDarkSlide_BS 
+#00914  END FUNCTION
+          
+#00915  FUNCTION Trick_RowleyDarkSlide_BS_180 
+#00917    Rotate 
+#00918    BoardRotateAfter 
+#00919    goto Trick_RowleyDarkSlide_BS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#00920  END FUNCTION
+          
+#00921  FUNCTION Trick_RowleyDarkSlide_FS_180 
+#00923    goto Trick_RowleyDarkSlide_BS_180 
+#00924  END FUNCTION
+          
+#00925  FUNCTION Trick_BigHitter_BS Extratricks = Extra_TailGrinds_BS 
+          
+#00927    Grind STRUCT{
+            Name = 'Big Hitter II' 
+            Score = 500 
+            initanim = BigHitter_Init 
+            Anim = BigHitter_Range 
+            OutAnim = BigHitter_out 
+            Type = Slide 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = Nutter 
+            IsSpecial Extratricks = GLOBAL.Extratricks 
+            OutAnimOnOllie }
+          
+#00929  END FUNCTION
+          
+#00930  FUNCTION Trick_BigHitter_FS 
+#00932    goto Trick_BigHitter_BS Params = STRUCT{
+            Extratricks = Extra_TailGrinds_FS 
+            }
+          
+#00933  END FUNCTION
+          
+#00934  FUNCTION Trick_BigHitter_BS_180 
+#00936    Rotate 
+#00937    BoardRotateAfter 
+#00938    goto Trick_BigHitter_BS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#00939  END FUNCTION
+          
+#00940  FUNCTION Trick_BigHitter_FS_180 
+#00942    goto Trick_BigHitter_BS_180 
+#00943  END FUNCTION
+          
+#00944  FUNCTION Trick_NosegrindPivot_BS Extratricks = Extra_TailGrinds_FS 
+          
+#00946    Grind STRUCT{
+            Name = 'Nosegrind to Pivot' 
+            Score = 500 
+            initanim = NosegrindPivot_Init 
+            Anim = NosegrindPivot_Range 
+            OutAnim = NosegrindPivot_Out 
+            Type = Grind 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = FiftyFiftyFall 
+            IsSpecial BoardRotate FlipAfter = 50 
+            Extratricks = GLOBAL.Extratricks 
+            EarlyOut = Init_Tailgrind 
+            OutAnimOnOllie }
+          
+#00948  END FUNCTION
+          
+#00949  FUNCTION Trick_NosegrindPivot_FS 
+#00951    goto Trick_NosegrindPivot_BS 
+#00952  END FUNCTION
+          
+#00953  FUNCTION Trick_NosegrindPivot_BS_180 
+#00955    Rotate 
+#00956    BoardRotateAfter 
+#00957    goto Trick_NosegrindPivot_BS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#00958  END FUNCTION
+          
+#00959  FUNCTION Trick_NosegrindPivot_FS_180 
+#00961    goto Trick_NosegrindPivot_BS_180 
+#00962  END FUNCTION
+          
+#00963  FUNCTION Trick_LaidBack_BS Extratricks = Extra_TailGrinds_BS 
+          
+#00965    Grind STRUCT{
+            Name = 'Layback BS Smith' 
+            Score = 500 
+            initanim = FSFeebleLayback_Init 
+            Anim = FSFeebleLayback_Range 
+            OutAnim = FSFeebleLayback_Out 
+            Type = Grind 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = Nutter 
+            IsSpecial Extratricks = GLOBAL.Extratricks 
+            OutAnimOnOllie Profile = Thomas 
+            }
+          
+#00967  END FUNCTION
+          
+#00968  FUNCTION Trick_LaidBack_FS Extratricks = Extra_TailGrinds_FS 
+          
+#00970    Grind STRUCT{
+            Name = 'Layback FS Feeble' 
+            Score = 500 
+            initanim = FSFeebleLayback_Init 
+            Anim = FSFeebleLayback_Range 
+            OutAnim = FSFeebleLayback_Out 
+            Type = Grind 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = Nutter 
+            IsSpecial Extratricks = GLOBAL.Extratricks 
+            OutAnimOnOllie Profile = Thomas 
+            }
+          
+#00972  END FUNCTION
+          
+#00973  FUNCTION Trick_LaidBack_BS_180 
+#00975    FlipAndRotate 
+#00976    BoardRotateAfter 
+#00977    goto Trick_LaidBack_FS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#00978  END FUNCTION
+          
+#00979  FUNCTION Trick_LaidBack_FS_180 
+#00981    FlipAndRotate 
+#00982    BoardRotateAfter 
+#00983    goto Trick_LaidBack_BS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#00984  END FUNCTION
+          
+#00985  FUNCTION Trick_TailblockSlide_BS Extratricks = Extra_TailGrinds_BS 
+          
+#00987    Grind STRUCT{
+            Name = 'Tailblock Slide' 
+            Score = 500 
+            initanim = TailblockSlide_Init 
+            Anim = TailblockSlide_Range 
+            OutAnim = TailblockSlide_Init 
+            Type = Slide 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = Nutter 
+            Extratricks = GLOBAL.Extratricks 
+            IsSpecial }
+          
+#00989  END FUNCTION
+          
+#00990  FUNCTION Trick_TailblockSlide_FS 
+#00992    goto Trick_TailblockSlide_BS Params = STRUCT{
+            Extratricks = Extra_TailGrinds_FS 
+            }
+          
+#00993  END FUNCTION
+          
+#00994  FUNCTION Trick_TailblockSlide_BS_180 
+#00996    Rotate 
+#00997    BoardRotateAfter 
+#00998    goto Trick_TailblockSlide_BS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#00999  END FUNCTION
+          
+#01000  FUNCTION Trick_TailblockSlide_FS_180 
+#01002    goto Trick_TailblockSlide_BS_180 
+#01003  END FUNCTION
+          
+#01004  FUNCTION Trick_HumanDart_BS 
+#01006    Grind STRUCT{
+            Name = 'The Human Dart' 
+            Score = 500 
+            initanim = HumanDart_Init 
+            Anim = HumanDart_Range 
+            OutAnim = HumanDart_Out 
+            Type = Grind 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = Nutter 
+            IsSpecial OutAnimOnOllie }
+          
+#01008  END FUNCTION
+          
+#01009  FUNCTION Trick_HumanDart_FS 
+#01011    goto Trick_HumanDart_BS 
+#01012  END FUNCTION
+          
+#01013  FUNCTION Trick_HumanDart_BS_180 
+#01015    Rotate 
+#01016    BoardRotateAfter 
+#01017    goto Trick_HumanDart_BS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#01018  END FUNCTION
+          
+#01019  FUNCTION Trick_HumanDart_FS_180 
+#01021    goto Trick_HumanDart_BS_180 
+#01022  END FUNCTION
+          
+#01023  FUNCTION Trick_DrunkGrind_BS 
+#01025    Grind STRUCT{
+            Name = 'S.U.I Grind' 
+            Score = 500 
+            initanim = DrunkGrind_Init 
+            Anim = DrunkGrind_Idle 
+            Type = Grind 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = Nutter 
+            IsSpecial OutAnimOnOllie }
+          
+#01027  END FUNCTION
+          
+#01028  FUNCTION Trick_DrunkGrind_FS 
+#01030    goto Trick_DrunkGrind_BS 
+#01031  END FUNCTION
+          
+#01032  FUNCTION Trick_DrunkGrind_BS_180 
+#01034    Rotate 
+#01035    BoardRotateAfter 
+#01036    goto Trick_DrunkGrind_BS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#01037  END FUNCTION
+          
+#01038  FUNCTION Trick_DrunkGrind_FS_180 
+#01040    goto Trick_DrunkGrind_BS_180 
+#01041  END FUNCTION
+          
+#01042  FUNCTION Trick_MaulRollGrind_BS 
+#01044    Grind STRUCT{
+            Name = 'Dark Jedi Grind' 
+            Score = 500 
+            initanim = MaulRollGrind_Init 
+            Anim = MaulRollGrind_Idle 
+            Idle Type = Grind 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = Nutter 
+            IsSpecial }
+          
+#01046  END FUNCTION
+          
+#01047  FUNCTION Trick_MaulRollGrind_FS 
+#01049    goto Trick_MaulRollGrind_BS 
+#01050  END FUNCTION
+          
+#01051  FUNCTION Trick_MaulRollGrind_BS_180 
+#01053    Rotate 
+#01054    BoardRotateAfter 
+#01055    goto Trick_MaulRollGrind_BS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#01056  END FUNCTION
+          
+#01057  FUNCTION Trick_MaulRollGrind_FS_180 
+#01059    goto Trick_MaulRollGrind_BS_180 
+#01060  END FUNCTION
+          
+#01061  FUNCTION Trick_PaddleGrind_BS 
+#01063    Grind STRUCT{
+            Name = 'Paddle Out Grind' 
+            Score = 500 
+            initanim = PaddleGrind_Init 
+            Anim = PaddleGrind_Idle 
+            Idle Type = Grind 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = Nutter 
+            IsSpecial }
+          
+#01065  END FUNCTION
+          
+#01066  FUNCTION Trick_PaddleGrind_FS 
+#01068    goto Trick_PaddleGrind_BS 
+#01069  END FUNCTION
+          
+#01070  FUNCTION Trick_PaddleGrind_BS_180 
+#01072    Rotate 
+#01073    BoardRotateAfter 
+#01074    goto Trick_PaddleGrind_BS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#01075  END FUNCTION
+          
+#01076  FUNCTION Trick_PaddleGrind_FS_180 
+#01078    goto Trick_PaddleGrind_BS_180 
+#01079  END FUNCTION
+          
+#01080  FUNCTION Trick_Salad_FS Name = 'FS Salad' 
+          
+#01082    Grind STRUCT{
+            Name = GLOBAL.Name 
+            Score = 125 
+            GrindTweak = 9 
+            initanim = FSSaladGrind_Init 
+            Anim = FSSaladGrind_range 
+            Type = Grind 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = Nutter 
+            Extratricks = Extra_TailGrinds_FS 
+            IsSpecial IsExtra = GLOBAL.IsExtra 
+            }
+          
+#01084  END FUNCTION
+          
+#01085  FUNCTION Trick_Salad_BS Name = 'BS Salad' 
+          
+#01087    Grind STRUCT{
+            Name = GLOBAL.Name 
+            Score = 125 
+            GrindTweak = 9 
+            initanim = BSSaladGrind_Init 
+            Anim = BSSaladGrind_range 
+            Type = Grind 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = Nutter 
+            Extratricks = Extra_TailGrinds_BS 
+            IsSpecial IsExtra = GLOBAL.IsExtra 
+            }
+          
+#01089  END FUNCTION
+          
+#01090  FUNCTION Trick_Salad_FS_180 
+#01092    FlipAndRotate 
+#01094    goto Trick_Salad_BS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#01095  END FUNCTION
+          
+#01096  FUNCTION Trick_Salad_BS_180 
+#01098    FlipAndRotate 
+#01100    goto Trick_Salad_FS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#01101  END FUNCTION
+          
+#01102  FUNCTION Trick_NoseSlideLipSlide_FS 
+#01104    IF BadLedge 
+#01105      goto Trick_NoseSlideLipSlide_BS_ok 
+#01106    ELSE 
+#01107      goto Trick_NoseSlideLipSlide_FS_ok 
+#01108    END IF 
+#01109  END FUNCTION
+          
+#01110  FUNCTION Trick_NoseSlideLipSlide_FS_ok Name = 'FS Noseslide LipSlide' 
+          
+#01112    Grind STRUCT{
+            Name = GLOBAL.Name 
+            Score = 500 
+            initanim = FSNoseSlideLipSlide 
+            Anim = BSBoardslide_range 
+            Type = Slide 
+            Nollie = yes 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = Nutter 
+            Extratricks = Extra_NoseGrinds_FS 
+            IsSpecial IsExtra = GLOBAL.IsExtra 
+            }
+          
+#01114  END FUNCTION
+          
+#01115  FUNCTION Trick_NoseSlideLipSlide_BS 
+#01117    IF BadLedge 
+#01118      goto Trick_NoseSlideLipSlide_FS_ok 
+#01119    ELSE 
+#01120      goto Trick_NoseSlideLipSlide_BS_ok 
+#01121    END IF 
+#01122  END FUNCTION
+          
+#01123  FUNCTION Trick_NoseSlideLipSlide_BS_ok Name = 'BS NoseSlide LipSlide' 
+          
+#01125    Grind STRUCT{
+            Name = GLOBAL.Name 
+            Score = 500 
+            initanim = BSNoseSlideLipSlide 
+            Anim = FSBoardslide_range 
+            Type = Slide 
+            Nollie = yes 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = FiftyFiftyFall 
+            Extratricks = Extra_NoseGrinds_BS 
+            IsSpecial IsExtra = GLOBAL.IsExtra 
+            }
+          
+#01127  END FUNCTION
+          
+#01128  FUNCTION Trick_NoseSlideLipSlide_FS_180 
+#01130    FlipAndRotate 
+#01131    BoardRotateAfter 
+#01132    goto Trick_NoseSlideLipSlide_BS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#01133  END FUNCTION
+          
+#01134  FUNCTION Trick_NoseSlideLipSlide_BS_180 
+#01136    FlipAndRotate 
+#01137    BoardRotateAfter 
+#01138    goto Trick_NoseSlideLipSlide_FS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#01139  END FUNCTION
+          
+#01140  FUNCTION Trick_BoomBox_BS 
+#01142    Grind STRUCT{
+            Name = 'Ghetto Blastin' 
+            Score = 500 
+            special_item initanim = BoomBox_Init 
+            Anim = BoomBox_Range2 
+            Type = Grind 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = FiftyFiftyFall 
+            IsSpecial Profile = Muska 
+            }
+          
+#01149  END FUNCTION
+          
+#01150  FUNCTION Trick_BoomBox_FS 
+#01152    goto Trick_BoomBox_BS Params = STRUCT{
+            Anim = BoomBox_Range 
+            }
+          
+#01153  END FUNCTION
+          
+#01154  FUNCTION Trick_BoomBox_BS_180 
+#01156    Rotate 
+#01157    BoardRotateAfter 
+#01158    goto Trick_BoomBox_BS Params = STRUCT{
+            NoBlend = yes 
+            Anim = BoomBox_Range 
+            }
+          
+#01159  END FUNCTION
+          
+#01160  FUNCTION Trick_BoomBox_FS_180 
+#01162    goto Trick_BoomBox_BS_180 
+#01163  END FUNCTION
+          
+#01164  FUNCTION Trick_CrookedBigSpin_BS 
+#01166    Grind STRUCT{
+            Name = 'Crook BigSpin Switch FS Crook' 
+            Score = 500 
+            special_item initanim = CrookedBigSpin 
+            Anim = FSCrooked_range 
+            OutAnim = Init_FSCrooked 
+            OutAnimBackwards Type = Grind 
+            NoBlend = GLOBAL.NoBlend 
+            GrindBail = BackwardsGrindBails 
+            IsSpecial FlipAfterInit }
+          
+#01168  END FUNCTION
+          
+#01169  FUNCTION Trick_CrookedBigSpin_FS 
+#01171    goto Trick_CrookedBigSpin_BS Params = STRUCT{
+            NoBlend = yes 
+            Name = 'Overcrook BigSpin Overcrook' 
+            }
+          
+#01172  END FUNCTION
+          
+#01173  FUNCTION Trick_CrookedBigSpin_BS_180 
+#01175    Rotate 
+#01176    BoardRotateAfter 
+#01177    goto Trick_CrookedBigSpin_BS Params = STRUCT{
+            NoBlend = yes 
+            }
+          
+#01178  END FUNCTION
+          
+#01179  FUNCTION Trick_CrookedBigSpin_FS_180 
+#01181    goto Trick_CrookedBigSpin_BS_180 
+#01182  END FUNCTION
+          
+#01183  

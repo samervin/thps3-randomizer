@@ -1,0 +1,2814 @@
+MemCardFileNameHeader = "BASLUS-20013" 
+        
+#00001  MemCardFileNameHeaderPALEnglish = "BESLES-50435" 
+        
+#00003  MemCardFileNameHeaderPALFrench = "BESLES-50436" 
+        
+#00004  MemCardFileNameHeaderPALGerman = "BESLES-50437" 
+        
+#00005  CASIconSpaceRequired = 15 
+        
+#00016  ReplayIconSpaceRequired = 24 
+        
+#00017  ParkIconSpaceRequired = 12 
+        
+#00018  OptionsProsIconSpaceRequired = 29 
+        
+#00019  MinimumSpaceNeeded = 87 
+        
+#00029  SpaceNeededText = "Space needed: %d KB" 
+        
+#00033  MemCardYesNoMenuVisible = 0 
+        
+#00040  MemCardLoadFailed = 0 
+        
+#00043  FUNCTION JumpToEndScr 
+#00046    Goto GLOBAL.EndScr 
+          
+#00047  END FUNCTION
+          
+#00048  FUNCTION DefaultEndScr 
+#00050    printf "Error! No EndScr specified" 
+#00051  END FUNCTION
+          
+#00052  FUNCTION DefaultReturnScript 
+#00054    printf "Error! No ReturnScript specified" 
+#00055  END FUNCTION
+          
+#00056  FUNCTION SwitchOffMenu 
+#00058    FireMenuEvent Type = HIDE 
+          Id = GLOBAL.Id 
+          target = GLOBAL.Id 
+          
+#00059  END FUNCTION
+          
+#00060  FUNCTION SwitchOnMenu 
+#00062    FireMenuEvent Type = SHOW 
+          Id = GLOBAL.Id 
+          target = GLOBAL.Id 
+          
+#00063    FireMenuEvent Type = SELECT 
+          Id = GLOBAL.Id 
+          target = GLOBAL.Id 
+          
+#00064  END FUNCTION
+          
+#00065  FUNCTION Abort 
+#00067  END FUNCTION
+          
+#00068  FUNCTION DisableBackEvent 
+#00075    DisableEvent Id = contain1 
+          EventType = back 
+          
+#00076  END FUNCTION
+          
+#00077  FUNCTION EnableBackEvent 
+#00079    EnableEvent Id = contain1 
+          EventType = back 
+          
+#00080  END FUNCTION
+          
+#00081  FUNCTION LaunchMemcardMenu 
+#00083    IF ENGLISH 
+#00084      LaunchSimpleMenu STRUCT{
+              x = 95 
+              y = 80 
+              w = 450 
+              header = GLOBAL.header 
+              Lines = GLOBAL.Lines 
+              }
+            
+#00091    ELSE 
+#00092      LaunchSimpleMenu STRUCT{
+              x = 75 
+              y = 80 
+              w = 490 
+              header = GLOBAL.header 
+              Lines = GLOBAL.Lines 
+              }
+            
+#00099    END IF 
+#00100  END FUNCTION
+          
+#00101  FUNCTION PleaseInsertCard ReturnScript = DefaultReturnScript 
+          
+#00106    Message_NoCardInSlot 
+#00108    helper_please_insert_card 
+#00109    LOOP 
+#00112      IF CardIsInSlot 
+#00113        helper_hide 
+#00114        GotoPreserveParams GLOBAL.ReturnScript 
+              
+#00115      END IF 
+#00116      LOOP 
+#00118        IF ControllerPressed Triangle 
+#00123          helper_hide 
+#00124          Goto Abort 
+#00125        END IF 
+#00126        IF MenuIsShown simple_menu 
+#00129        ELSE 
+#00130          helper_hide 
+#00131          Goto Abort 
+#00132        END IF 
+#00133        wait 1 gameframe 
+#00135      END LOOP 20 
+#00136    END LOOP 
+#00137  END FUNCTION
+          
+#00138  FUNCTION UnFormattedCard 
+#00146    GLOBAL.EndScr 
+          
+#00147    Message_UnformattedCard NULL 
+#00149    LOOP 
+#00151      IF MenuIsShown simple_menu 
+#00152      ELSE 
+#00153        BREAK
+              
+#00154      END IF 
+#00155      IF CardIsInSlot 
+#00157      ELSE 
+#00158        GLOBAL.EndScr 
+              
+#00159        GotoPreserveParams PleaseInsertCard Params = STRUCT{
+                ReturnScript = GLOBAL.FormatSucceededScript 
+                }
+              
+#00160      END IF 
+#00161      wait 1 gameframe 
+#00162    END LOOP 
+#00163  END FUNCTION
+          
+#00164  FUNCTION _FormatMemoryCard 
+#00166    SwitchOffMenu Id = simple_menu 
+          
+#00167    SpawnScript FormatMemoryCard Params = NULL 
+          
+#00168  END FUNCTION
+          
+#00169  FUNCTION FormatMemoryCard 
+#00171    DisplayMessage MessageScript = Message_FormattingCard 
+          PauseLength = MemCardMessageShortPause 
+          
+#00172    IF FormatCard 
+#00174      DisplayMessage MessageScript = Message_FormatSuccessful 
+            
+#00175      GotoPreserveParams GLOBAL.FormatSucceededScript 
+            
+#00176    ELSE 
+#00177      DisplayMessage MessageScript = Message_FormatFailed 
+            PauseLength = MemCardMessageErrorPause 
+            
+#00178      Goto GLOBAL.EndScr 
+            
+#00179    END IF 
+#00180  END FUNCTION
+          
+#00181  FUNCTION DontFormatMemoryCard 
+#00183    Goto GLOBAL.EndScr 
+          
+#00184  END FUNCTION
+          
+#00185  FUNCTION OptionsMenuSave 
+#00195    SwitchOffMenu Id = options_main_menu 
+          
+#00196    SpawnScript SaveOptionsAndPros Params = STRUCT{
+            EndScr = GoBackToOptionsMenu 
+            }
+          
+#00201  END FUNCTION
+          
+#00202  FUNCTION OptionsMenuLoad 
+#00205    SwitchOffMenu Id = options_main_menu 
+          
+#00206    SpawnScript LoadOptionsAndPros Params = STRUCT{
+            EndScr = GoBackToOptionsMenu 
+            PreviousMenu = options_main_menu 
+            }
+          
+#00211  END FUNCTION
+          
+#00212  FUNCTION GoBackToOptionsMenu 
+#00214    SwitchToMenu DoNotMakeRoot menu = options_main_menu 
+          
+#00215  END FUNCTION
+          
+#00221  FUNCTION _GoBackToOptionsMenu 
+#00223    SpawnScript GoBackToOptionsMenu Params = NULL 
+          
+#00224  END FUNCTION
+          
+#00225  FUNCTION SaveOptionsAndPros EndScr = DefaultEndScr 
+          
+#00227    GoBackToOptionsMenu 
+#00229    IF CardIsInSlot 
+#00232    ELSE 
+#00233      GLOBAL.EndScr 
+            
+#00236      GotoPreserveParams PleaseInsertCard Params = STRUCT{
+              ReturnScript = SaveOptionsAndPros 
+              }
+            
+#00237    END IF 
+#00238    IF CardIsFormatted 
+#00240    ELSE 
+#00241      GotoPreserveParams UnFormattedCard Params = STRUCT{
+              FormatSucceededScript = SaveOptionsAndPros 
+              }
+            
+#00242    END IF 
+#00243    IF MemCardFileExists Name = "Options and Pros" 
+            Type = OptionsAndPros 
+            
+#00247      GLOBAL.EndScr 
+            
+#00253      GotoPreserveParams QueryOKToOverwriteOptionsAndPros 
+#00254    ELSE 
+#00255      IF PAL 
+#00256        GotoPreserveParams QueryOKToSaveOptionsAndPros 
+#00258      ELSE 
+#00259        GotoPreserveParams DefinitelySaveOptionsAndPros 
+#00260      END IF 
+#00261    END IF 
+#00262  END FUNCTION
+          
+#00263  FUNCTION QueryOKToSaveOptionsAndPros 
+#00266    GLOBAL.EndScr 
+          
+#00267    helper_select_choose_back x1 = 167 
+          x2 = 282 
+          x3 = 392 
+          
+#00268    LaunchMemcardMenu STRUCT{
+            header = "Save game" 
+            Lines = ARRAY(
+              
+              STRUCT{
+                Id = ken_line1 
+                text = "" 
+                static dont_gray }
+              STRUCT{
+                Id = ken_line2 
+                text = "Are you sure ?" 
+                static dont_gray }
+              STRUCT{
+                Id = ken_line3 
+                text = "" 
+                static dont_gray }
+              STRUCT{
+                Id = ken_line4 
+                text = "Yes" 
+                target = "_DefinitelySaveOptionsAndPros" 
+                Params = STRUCT{
+                  NULL }
+                }
+              STRUCT{
+                Id = ken_line5 
+                text = "No" 
+                target = "JumpToEndScr" 
+                Params = STRUCT{
+                  EndScr = GLOBAL.EndScr 
+                  }
+                }
+              
+            )
+            }
+          
+#00279    Select_KenLine5 
+#00280    LOOP 
+#00282      IF MenuIsShown simple_menu 
+#00283      ELSE 
+#00284        BREAK
+              
+#00285      END IF 
+#00286      IF CardIsInSlot 
+#00288      ELSE 
+#00289        GLOBAL.EndScr 
+              
+#00290        GotoPreserveParams PleaseInsertCard Params = STRUCT{
+                ReturnScript = SaveOptionsAndPros 
+                }
+              
+#00291      END IF 
+#00292      wait 1 gameframe 
+#00293    END LOOP 
+#00294  END FUNCTION
+          
+#00296  FUNCTION QueryOKToOverwriteOptionsAndPros 
+#00299    change MemCardYesNoMenuVisible = 1 
+          
+#00300    IF CurrentSkaterIsPro 
+#00301      LaunchMemcardMenu STRUCT{
+              header = "Update" 
+              Lines = ARRAY(
+                
+                STRUCT{
+                  Id = ken_line1 
+                  text = "" 
+                  static dont_gray }
+                STRUCT{
+                  Id = ken_line2 
+                  text = "Overwrite saved game data ?" 
+                  static dont_gray }
+                STRUCT{
+                  Id = ken_line3 
+                  text = "" 
+                  static dont_gray }
+                STRUCT{
+                  Id = ken_line4 
+                  text = "Yes" 
+                  target = "_DefinitelySaveOptionsAndPros" 
+                  Params = STRUCT{
+                    NULL }
+                  }
+                STRUCT{
+                  Id = ken_line5 
+                  text = "No" 
+                  target = "JumpToEndScr" 
+                  Params = STRUCT{
+                    EndScr = GLOBAL.EndScr 
+                    }
+                  }
+                
+              )
+              }
+            
+#00312    ELSE 
+#00313      LaunchMemcardMenu STRUCT{
+              header = "Overwrite" 
+              Lines = ARRAY(
+                
+                STRUCT{
+                  Id = ken_line1 
+                  text = "" 
+                  static dont_gray }
+                STRUCT{
+                  Id = ken_line2 
+                  text = "Overwrite saved game data ?" 
+                  static dont_gray }
+                STRUCT{
+                  Id = ken_line3 
+                  text = "" 
+                  static dont_gray }
+                STRUCT{
+                  Id = ken_line4 
+                  text = "Yes" 
+                  target = "_DefinitelySaveOptionsAndPros" 
+                  Params = STRUCT{
+                    NULL }
+                  }
+                STRUCT{
+                  Id = ken_line5 
+                  text = "No" 
+                  target = "JumpToEndScr" 
+                  Params = STRUCT{
+                    EndScr = GLOBAL.EndScr 
+                    }
+                  }
+                
+              )
+              }
+            
+#00323    END IF 
+#00324    Select_KenLine5 
+#00325    LOOP 
+#00327      IF MenuIsShown simple_menu 
+#00328      ELSE 
+#00329        BREAK
+              
+#00330      END IF 
+#00331      IF CardIsInSlot 
+#00333      ELSE 
+#00334        GLOBAL.EndScr 
+              
+#00335        GotoPreserveParams PleaseInsertCard Params = STRUCT{
+                ReturnScript = SaveOptionsAndPros 
+                }
+              
+#00336      END IF 
+#00337      wait 1 gameframe 
+#00338    END LOOP 
+#00339  END FUNCTION
+          
+#00341  FUNCTION Select_KenLine5 
+#00343    launchevent Type = deselect 
+          target = ken_line4 
+          
+#00344    launchevent Type = SELECT 
+          target = ken_line5 
+          
+#00345  END FUNCTION
+          
+#00346  FUNCTION _DefinitelySaveOptionsAndPros 
+#00348    SwitchOffMenu Id = simple_menu 
+          
+#00352    SpawnScript DefinitelySaveOptionsAndPros Params = STRUCT{
+            NULL }
+          
+#00353  END FUNCTION
+          
+#00354  FUNCTION DefinitelySaveOptionsAndPros 
+#00356    DisplayMessage MessageScript = Message_SavingData 
+          PauseLength = MemCardMessageShortPause 
+          
+#00358    GLOBAL.EndScr 
+          
+#00359    IF SaveToMemoryCard Name = "Options and Pros" 
+            Type = OptionsAndPros 
+            
+#00362      IF SaveToMemoryCard Name = "Network settings" 
+              Type = NetworkSettings 
+              
+#00364        IF CurrentSkaterIsPro 
+#00365        ELSE 
+#00366          IF CustomSkaterFilenameDefined 
+#00367            Goto SaveCasNoNameInput 
+#00368          ELSE 
+#00369            change MemCardKeyboardControlAcceptScript = _SaveCasAfterSavingPros 
+                  
+#00370            SwitchToKeyboardControl 
+#00371            Goto Abort 
+#00372          END IF 
+#00373        END IF 
+#00374        DisplayMessage MessageScript = Message_SaveSuccessful 
+              
+#00376      ELSE 
+#00377        DeleteMemCardFile Name = "Options and Pros" 
+              Type = OptionsAndPros 
+              
+#00378        DisplayMessage MessageScript = Message_SaveFailed 
+              PauseLength = MemCardMessageErrorPause 
+              
+#00379      END IF 
+#00380    ELSE 
+#00381      DeleteMemCardFile Name = "Options and Pros" 
+            Type = OptionsAndPros 
+            
+#00382      DisplayMessage MessageScript = Message_SaveFailed 
+            PauseLength = MemCardMessageErrorPause 
+            
+#00383    END IF 
+#00384    IF MenuIsShown simple_menu 
+#00386    ELSE 
+#00387      Goto Abort 
+#00388    END IF 
+#00389    Goto GLOBAL.EndScr 
+          
+#00390  END FUNCTION
+          
+#00392  FUNCTION LoadOptionsAndPros EndScr = DefaultEndScr 
+          
+#00400    IF CardIsInSlot 
+#00404    ELSE 
+#00405      GLOBAL.EndScr 
+            
+#00408      GotoPreserveParams PleaseInsertCard Params = STRUCT{
+              ReturnScript = LoadOptionsAndPros 
+              }
+            
+#00409    END IF 
+#00410    IF CardIsFormatted 
+#00412      IF MemCardFileExists Name = "Options and Pros" 
+              Type = OptionsAndPros 
+              
+#00413        DisplayMessage MessageScript = Message_LoadingData 
+              PauseLength = MemCardMessageShortPause 
+              
+#00414        change MemCardLoadFailed = 0 
+              
+#00416        IF LoadFromMemoryCard Name = "Options and Pros" 
+                Type = OptionsAndPros 
+                
+#00417        ELSE 
+#00418          change MemCardLoadFailed = 1 
+                
+#00419        END IF 
+#00420        IF MemCardFileExists Name = "Network settings" 
+                Type = NetworkSettings 
+                
+#00423          IF LoadFromMemoryCard Name = "Network settings" 
+                  Type = NetworkSettings 
+                  
+#00424          ELSE 
+#00425            change MemCardLoadFailed = 1 
+                  
+#00426          END IF 
+#00427        END IF 
+#00428        IF CurrentSkaterIsPro 
+#00430        ELSE 
+#00431          IF CustomSkaterFilenameDefined 
+#00432            GetCustomSkaterFilename 
+#00433            IF LoadFromMemoryCard Name = GLOBAL.string 
+                    Type = cas 
+                    
+#00434            ELSE 
+#00435              change MemCardLoadFailed = 1 
+                    
+#00436            END IF 
+#00437          END IF 
+#00438        END IF 
+#00439        RemoveAllSkaters 
+#00443        ToggleSkater 
+#00444        FireMenuEvent Type = refreshdecktextures 
+              Id = deck_menu 
+              target = deck_menu 
+              
+#00446        PlaySkaterCamAnim skater = 0 
+              Name = "Cam_Options01" 
+              play_hold 
+#00450        IF istrue MemCardLoadFailed 
+#00452          DisplayMessage MessageScript = Message_LoadFailed 
+                PauseLength = MemCardMessageErrorPause 
+                
+#00453        ELSE 
+#00454          movies_menu_create 
+#00457          DisplayMessage MessageScript = Message_LoadSuccessful 
+                
+#00459        END IF 
+#00460        IF MenuIsShown simple_menu 
+#00462        ELSE 
+#00463          Goto Abort 
+#00464        END IF 
+#00465        Goto GLOBAL.EndScr 
+              
+#00467      END IF 
+#00468    END IF 
+#00469    DisplayMessage MessageScript = Message_NoSaveData 
+          PauseLength = MemCardMessageErrorPause 
+          
+#00472    IF MenuIsShown simple_menu 
+#00474    ELSE 
+#00475      Goto Abort 
+#00476    END IF 
+#00477    Goto GLOBAL.EndScr 
+          
+#00479  END FUNCTION
+          
+#00480  FUNCTION NetworkSetupMenuSave 
+#00489    SwitchOffMenu Id = net_network_setup_menu 
+          
+#00490    SpawnScript SaveNetworkPreferences Params = STRUCT{
+            EndScr = GoBackToNetworkSetupMenu 
+            }
+          
+#00495  END FUNCTION
+          
+#00496  FUNCTION NetworkSetupMenuLoad 
+#00499    SwitchOffMenu Id = net_network_setup_menu 
+          
+#00500    SpawnScript LoadNetworkPreferences Params = STRUCT{
+            EndScr = GoBackToNetworkSetupMenu 
+            }
+          
+#00505  END FUNCTION
+          
+#00506  FUNCTION GoBackToNetworkSetupMenu 
+#00508    SwitchToMenu DoNotMakeRoot menu = net_network_setup_menu 
+          
+#00509  END FUNCTION
+          
+#00515  FUNCTION SaveNetworkPreferences EndScr = DefaultEndScr 
+          
+#00517    GoBackToNetworkSetupMenu 
+#00521    IF CardIsInSlot 
+#00524    ELSE 
+#00525      Goto PleaseInsertCard Params = STRUCT{
+              ReturnScript = SaveNetworkPreferences 
+              PreviousMenu = net_network_setup_menu 
+              }
+            
+#00526    END IF 
+#00527    IF CardIsFormatted 
+#00529    ELSE 
+#00530      GotoPreserveParams UnFormattedCard Params = STRUCT{
+              FormatSucceededScript = SaveNetworkPreferences 
+              }
+            
+#00531    END IF 
+#00532    IF MemCardFileExists Name = "Network settings" 
+            Type = NetworkSettings 
+            
+#00535      GotoPreserveParams QueryOKToOverwriteNetworkPreferences 
+#00536    ELSE 
+#00537      IF PAL 
+#00538        GotoPreserveParams QueryOKToSaveNetworkPreferences 
+#00540      ELSE 
+#00541        GotoPreserveParams DefinitelySaveNetworkPreferences 
+#00542      END IF 
+#00543    END IF 
+#00544  END FUNCTION
+          
+#00545  FUNCTION QueryOKToOverwriteNetworkPreferences 
+#00547    change MemCardYesNoMenuVisible = 1 
+          
+#00548    LaunchMemcardMenu STRUCT{
+            header = "Overwrite" 
+            Lines = ARRAY(
+              
+              STRUCT{
+                Id = ken_line1 
+                text = "" 
+                static dont_gray }
+              STRUCT{
+                Id = ken_line2 
+                text = "Overwrite previous save?" 
+                static dont_gray }
+              STRUCT{
+                Id = ken_line3 
+                text = "" 
+                static dont_gray }
+              STRUCT{
+                Id = ken_line4 
+                text = "Yes" 
+                target = "_DefinitelySaveNetworkPreferences" 
+                Params = STRUCT{
+                  NULL }
+                }
+              STRUCT{
+                Id = ken_line5 
+                text = "No" 
+                target = "JumpToEndScr" 
+                Params = STRUCT{
+                  EndScr = GLOBAL.EndScr 
+                  }
+                }
+              
+            )
+            }
+          
+#00558    Select_KenLine5 
+#00559    LOOP 
+#00561      IF MenuIsShown simple_menu 
+#00562      ELSE 
+#00563        BREAK
+              
+#00564      END IF 
+#00565      IF CardIsInSlot 
+#00567      ELSE 
+#00568        GoBackToNetworkSetupMenu 
+#00569        GotoPreserveParams PleaseInsertCard Params = STRUCT{
+                ReturnScript = SaveNetworkPreferences 
+                PreviousMenu = net_network_setup_menu 
+                }
+              
+#00570      END IF 
+#00571      wait 1 gameframe 
+#00572    END LOOP 
+#00573  END FUNCTION
+          
+#00574  FUNCTION QueryOKToSaveNetworkPreferences 
+#00576    change MemCardYesNoMenuVisible = 1 
+          
+#00577    LaunchMemcardMenu STRUCT{
+            header = "Save network preferences" 
+            Lines = ARRAY(
+              
+              STRUCT{
+                Id = ken_line1 
+                text = "" 
+                static dont_gray }
+              STRUCT{
+                Id = ken_line2 
+                text = "Are you sure ?" 
+                static dont_gray }
+              STRUCT{
+                Id = ken_line3 
+                text = "" 
+                static dont_gray }
+              STRUCT{
+                Id = ken_line4 
+                text = "Yes" 
+                target = "_DefinitelySaveNetworkPreferences" 
+                Params = STRUCT{
+                  NULL }
+                }
+              STRUCT{
+                Id = ken_line5 
+                text = "No" 
+                target = "JumpToEndScr" 
+                Params = STRUCT{
+                  EndScr = GLOBAL.EndScr 
+                  }
+                }
+              
+            )
+            }
+          
+#00587    Select_KenLine5 
+#00588    LOOP 
+#00590      IF MenuIsShown simple_menu 
+#00591      ELSE 
+#00592        BREAK
+              
+#00593      END IF 
+#00594      IF CardIsInSlot 
+#00596      ELSE 
+#00597        GoBackToNetworkSetupMenu 
+#00598        GotoPreserveParams PleaseInsertCard Params = STRUCT{
+                ReturnScript = SaveNetworkPreferences 
+                PreviousMenu = net_network_setup_menu 
+                }
+              
+#00599      END IF 
+#00600      wait 1 gameframe 
+#00601    END LOOP 
+#00602  END FUNCTION
+          
+#00603  FUNCTION _DefinitelySaveNetworkPreferences 
+#00605    SwitchOffMenu Id = simple_menu 
+          
+#00609    SpawnScript DefinitelySaveNetworkPreferences Params = STRUCT{
+            NULL }
+          
+#00610  END FUNCTION
+          
+#00611  FUNCTION DefinitelySaveNetworkPreferences 
+#00613    DisplayMessage MessageScript = Message_SavingData 
+          PauseLength = MemCardMessageShortPause 
+          
+#00614    IF MemCardFileExists Name = "Options and Pros" 
+            Type = OptionsAndPros 
+            
+#00616    ELSE 
+#00617      IF SaveToMemoryCard Name = "Options and Pros" 
+              Type = OptionsAndPros 
+              
+#00618      ELSE 
+#00619        DisplayMessage MessageScript = Message_SaveFailed 
+              PauseLength = MemCardMessageErrorPause 
+              
+#00620        Goto GLOBAL.EndScr 
+              
+#00621      END IF 
+#00622    END IF 
+#00623    IF SaveToMemoryCard Name = "Network settings" 
+            Type = NetworkSettings 
+            
+#00625      DisplayMessage MessageScript = Message_SaveSuccessful 
+            
+#00626    ELSE 
+#00627      DeleteMemCardFile Name = "Network settings" 
+            Type = NetworkSettings 
+            
+#00628      DisplayMessage MessageScript = Message_SaveFailed 
+            PauseLength = MemCardMessageErrorPause 
+            
+#00629    END IF 
+#00630    IF MenuIsShown simple_menu 
+#00632    ELSE 
+#00633      Goto Abort 
+#00634    END IF 
+#00635    Goto GLOBAL.EndScr 
+          
+#00636  END FUNCTION
+          
+#00637  FUNCTION LoadNetworkPreferences EndScr = DefaultEndScr 
+          
+#00645    IF CardIsInSlot 
+#00649    ELSE 
+#00650      GLOBAL.EndScr 
+            
+#00653      GotoPreserveParams PleaseInsertCard Params = STRUCT{
+              ReturnScript = LoadNetworkPreferences 
+              PreviousMenu = net_network_setup_menu 
+              }
+            
+#00654    END IF 
+#00655    IF CardIsFormatted 
+#00657      IF MemCardFileExists Name = "Network settings" 
+              Type = NetworkSettings 
+              
+#00658        DisplayMessage MessageScript = Message_LoadingData 
+              PauseLength = MemCardMessageShortPause 
+              
+#00659        IF LoadFromMemoryCard Name = "Network settings" 
+                Type = NetworkSettings 
+                
+#00661          DisplayMessage MessageScript = Message_LoadSuccessful 
+                
+#00662        ELSE 
+#00663          DisplayMessage MessageScript = Message_LoadFailed 
+                PauseLength = MemCardMessageErrorPause 
+                
+#00664        END IF 
+#00665        IF MenuIsShown simple_menu 
+#00667        ELSE 
+#00668          Goto Abort 
+#00669        END IF 
+#00670        Goto GLOBAL.EndScr 
+              
+#00671      END IF 
+#00672    END IF 
+#00673    DisplayMessage MessageScript = Message_NoSaveData 
+          
+#00676    IF MenuIsShown simple_menu 
+#00678    ELSE 
+#00679      Goto Abort 
+#00680    END IF 
+#00681    Goto GLOBAL.EndScr 
+          
+#00682  END FUNCTION
+          
+#00683  FUNCTION ProSave 
+#00694    IF TestRequestedGameType Career 
+#00696      go_back Id = cas_menu_container 
+            
+#00697      SwitchOffMenu Id = career_menu 
+            
+#00698      wait 1 gameframe 
+#00699      SpawnScript SaveOptionsAndPros Params = STRUCT{
+              EndScr = GoBackToCareerMenu 
+              }
+            
+#00700    ELSE 
+#00701      IF TestRequestedGameType SingleSession 
+#00702        go_back Id = cas_menu_container 
+              
+#00703        SwitchOffMenu Id = single_session_menu 
+              
+#00704        wait 1 gameframe 
+#00705        SpawnScript SaveOptionsAndPros Params = STRUCT{
+                EndScr = GoBackToSingleSessionMenu 
+                }
+              
+#00706      ELSE 
+#00707        IF TestRequestedGameType FreeSkate 
+#00708          go_back Id = cas_menu_container 
+                
+#00709          SwitchOffMenu Id = free_skate_menu 
+                
+#00710          wait 1 gameframe 
+#00711          SpawnScript SaveOptionsAndPros Params = STRUCT{
+                  EndScr = GoBackToFreeSkateMenu 
+                  }
+                
+#00712        ELSE 
+#00713          IF TestRequestedGameType FreeSkate2p 
+#00714            IF CurrentSkaterProfileIs 0 
+#00715              go_back Id = cas_menu_container 
+                    
+#00716              SwitchOffMenu Id = player_one_menu 
+                    
+#00717              wait 1 gameframe 
+#00718              SpawnScript SaveOptionsAndPros Params = STRUCT{
+                      EndScr = GoBackToPlayerOneMenu 
+                      }
+                    
+#00719            ELSE 
+#00720              go_back Id = cas_menu_container 
+                    
+#00721              SwitchOffMenu Id = player_two_menu 
+                    
+#00722              wait 1 gameframe 
+#00723              SpawnScript SaveOptionsAndPros Params = STRUCT{
+                      EndScr = GoBackToPlayerTwoMenu 
+                      }
+                    
+#00724            END IF 
+#00725          END IF 
+#00726        END IF 
+#00727      END IF 
+#00728    END IF 
+#00729  END FUNCTION
+          
+#00730  FUNCTION GoBackToCareerMenu 
+#00732    SwitchToMenu DoNotMakeRoot menu = career_menu 
+          
+#00733  END FUNCTION
+          
+#00734  FUNCTION GoBackToSingleSessionMenu 
+#00736    SwitchToMenu DoNotMakeRoot menu = single_session_menu 
+          
+#00737  END FUNCTION
+          
+#00738  FUNCTION GoBackToFreeSkateMenu 
+#00740    SwitchToMenu DoNotMakeRoot menu = free_skate_menu 
+          
+#00741  END FUNCTION
+          
+#00742  FUNCTION GoBackToPlayerOneMenu 
+#00744    SwitchToMenu DoNotMakeRoot menu = player_one_menu 
+          
+#00745  END FUNCTION
+          
+#00746  FUNCTION GoBackToPlayerTwoMenu 
+#00748    SwitchToMenu DoNotMakeRoot menu = player_two_menu 
+          
+#00749  END FUNCTION
+          
+#00750  FUNCTION _EditCurrentSaveCAS 
+#00753    IF CurrentSkaterIsPro 
+#00754      SpawnScript ProSave 
+#00757    ELSE 
+#00758      IF GotParam ReturnToCreationOptions 
+#00763        change ReturnToCreationOptions = 1 
+              
+#00764      ELSE 
+#00765        change ReturnToCreationOptions = 0 
+              
+#00766      END IF 
+#00767      SpawnScript EditCurrentSaveCAS Params = NULL 
+            
+#00768    END IF 
+#00769  END FUNCTION
+          
+#00770  FUNCTION EditCurrentSaveCAS 
+#00772    change MemCardKeyboardControlAcceptScript = _MemCardKeyboardControlAccept 
+          
+#00773    SwitchToKeyboardControl 
+#00774  END FUNCTION
+          
+#00775  ReturnToCreationOptions = 0 
+        
+#00777  MemCardKeyboardControlAcceptScript = _MemCardKeyboardControlAccept 
+        
+#00781  FUNCTION _MemCardKeyboardControlAccept 
+#00785    SpawnScript MemCardKeyboardControlAccept Params = NULL 
+          
+#00786  END FUNCTION
+          
+#00787  FUNCTION MemCardKeyboardControlAccept 
+#00789    set_profile_data field_id = GLOBAL.field_id 
+          keyboard_id = GLOBAL.keyboard_id 
+          
+#00792    SwitchToKeyboardControl 
+#00795    IF MemCardFileExists Name = GLOBAL.string 
+            Type = cas 
+            
+#00798      change MemCardYesNoMenuVisible = 1 
+            
+#00799      IF istrue ReturnToCreationOptions 
+#00801        LaunchMemcardMenu STRUCT{
+                header = "Overwrite" 
+                Lines = ARRAY(
+                  
+                  STRUCT{
+                    Id = ken_line1 
+                    text = "" 
+                    static dont_gray }
+                  STRUCT{
+                    Id = ken_line2 
+                    text = "Overwrite previous save?" 
+                    static dont_gray }
+                  STRUCT{
+                    Id = ken_line3 
+                    text = "" 
+                    static dont_gray }
+                  STRUCT{
+                    Id = ken_line4 
+                    text = "Yes" 
+                    target = "_DoSaveCAS" 
+                    Params = STRUCT{
+                      FileName = GLOBAL.string 
+                      EndMenu = pre_cas_main_menu 
+                      }
+                    }
+                  STRUCT{
+                    Id = ken_line5 
+                    text = "No" 
+                    target = "_SwitchToKeyboardControl" 
+                    }
+                  
+                )
+                }
+              
+#00811      ELSE 
+#00812        LaunchMemcardMenu STRUCT{
+                header = "Overwrite" 
+                Lines = ARRAY(
+                  
+                  STRUCT{
+                    Id = ken_line1 
+                    text = "" 
+                    static dont_gray }
+                  STRUCT{
+                    Id = ken_line2 
+                    text = "Overwrite previous save?" 
+                    static dont_gray }
+                  STRUCT{
+                    Id = ken_line3 
+                    text = "" 
+                    static dont_gray }
+                  STRUCT{
+                    Id = ken_line4 
+                    text = "Yes" 
+                    target = "_DoSaveCAS" 
+                    Params = STRUCT{
+                      FileName = GLOBAL.string 
+                      EndMenu = cas_menu_container 
+                      }
+                    }
+                  STRUCT{
+                    Id = ken_line5 
+                    text = "No" 
+                    target = "_SwitchToKeyboardControl" 
+                    }
+                  
+                )
+                }
+              
+#00822      END IF 
+#00823      Select_KenLine5 
+#00824      LOOP 
+#00825        IF MenuIsShown simple_menu 
+#00826        ELSE 
+#00827          BREAK
+                
+#00828        END IF 
+#00829        IF CardIsInSlot 
+#00831        ELSE 
+#00832          SwitchToKeyboardControl 
+#00834          GotoPreserveParams PleaseInsertCard Params = STRUCT{
+                  ReturnScript = MemCardKeyboardControlAccept 
+                  }
+                
+#00835        END IF 
+#00836        wait 1 gameframe 
+#00837      END LOOP 
+#00838    ELSE 
+#00840      IF istrue ReturnToCreationOptions 
+#00843        SetUpFilesMenu STRUCT{
+                Save FileTypesToDisplay = All 
+                FileType = cas 
+                EndScr = GoBackToPreCasMenu 
+                NewFileName = GLOBAL.string 
+                CreateNewSaveScript = _CreateNewCASSave 
+                SaveScript = _SaveCAS 
+                LoadScript = _LoadCAS 
+                }
+              
+#00853      ELSE 
+#00854        SetUpFilesMenu STRUCT{
+                Save FileTypesToDisplay = All 
+                FileType = cas 
+                EndScr = GoBackToCasMenu 
+                NewFileName = GLOBAL.string 
+                CreateNewSaveScript = _CreateNewCASSave 
+                SaveScript = _SaveCAS 
+                LoadScript = _LoadCAS 
+                }
+              
+#00864      END IF 
+#00865      IF NoFiles 
+#00867        Goto _DoSaveCAS Params = STRUCT{
+                FileName = GLOBAL.string 
+                EndMenu = pre_cas_main_menu 
+                }
+              
+#00868      ELSE 
+#00869        SwitchToMenu DoNotMakeRoot menu = memcard_files_menu 
+              
+#00870      END IF 
+#00871    END IF 
+#00872  END FUNCTION
+          
+#00873  FUNCTION _SaveCasAfterSavingPros 
+#00876    SpawnScript SaveCasAfterSavingPros Params = NULL 
+          
+#00877  END FUNCTION
+          
+#00878  FUNCTION SaveCasAfterSavingPros 
+#00880    set_profile_data field_id = GLOBAL.field_id 
+          keyboard_id = GLOBAL.keyboard_id 
+          
+#00882    SwitchToKeyboardControl 
+#00885    IF MemCardFileExists Name = GLOBAL.string 
+            Type = cas 
+            
+#00887      change MemCardYesNoMenuVisible = 1 
+            
+#00888      IF InFrontEnd 
+#00890        LaunchMemcardMenu STRUCT{
+                header = "Overwrite" 
+                Lines = ARRAY(
+                  
+                  STRUCT{
+                    Id = ken_line1 
+                    text = "" 
+                    static dont_gray }
+                  STRUCT{
+                    Id = ken_line2 
+                    text = "Overwrite previous save?" 
+                    static dont_gray }
+                  STRUCT{
+                    Id = ken_line3 
+                    text = "" 
+                    static dont_gray }
+                  STRUCT{
+                    Id = ken_line4 
+                    text = "Yes" 
+                    target = "_DoSaveCAS" 
+                    Params = STRUCT{
+                      FileName = GLOBAL.string 
+                      EndMenu = options_main_menu 
+                      }
+                    }
+                  STRUCT{
+                    Id = ken_line5 
+                    text = "No" 
+                    target = "_SwitchToKeyboardControl" 
+                    }
+                  
+                )
+                }
+              
+#00900      ELSE 
+#00901        LaunchMemcardMenu STRUCT{
+                header = "Overwrite" 
+                Lines = ARRAY(
+                  
+                  STRUCT{
+                    Id = ken_line1 
+                    text = "" 
+                    static dont_gray }
+                  STRUCT{
+                    Id = ken_line2 
+                    text = "Overwrite previous save?" 
+                    static dont_gray }
+                  STRUCT{
+                    Id = ken_line3 
+                    text = "" 
+                    static dont_gray }
+                  STRUCT{
+                    Id = ken_line4 
+                    text = "Yes" 
+                    target = "_DoSaveCAS" 
+                    Params = STRUCT{
+                      FileName = GLOBAL.string 
+                      EndMenu = end_run_menu 
+                      }
+                    }
+                  STRUCT{
+                    Id = ken_line5 
+                    text = "No" 
+                    target = "_SwitchToKeyboardControl" 
+                    }
+                  
+                )
+                }
+              
+#00911      END IF 
+#00912      Select_KenLine5 
+#00913      LOOP 
+#00915        IF MenuIsShown simple_menu 
+#00916        ELSE 
+#00917          BREAK
+                
+#00918        END IF 
+#00919        IF CardIsInSlot 
+#00921        ELSE 
+#00922          SwitchToKeyboardControl 
+#00924          GotoPreserveParams PleaseInsertCard Params = STRUCT{
+                  ReturnScript = SaveCasAfterSavingPros 
+                  }
+                
+#00925        END IF 
+#00926        wait 1 gameframe 
+#00927      END LOOP 
+#00928    ELSE 
+#00930      IF InFrontEnd 
+#00931        SetUpFilesMenu STRUCT{
+                Save FileTypesToDisplay = All 
+                FileType = cas 
+                EndScr = GoBackToOptionsMenu 
+                NewFileName = GLOBAL.string 
+                CreateNewSaveScript = _CreateNewCASSave 
+                SaveScript = _SaveCAS 
+                LoadScript = _LoadCAS 
+                }
+              
+#00941        IF NoFiles 
+#00942          Goto _DoSaveCAS Params = STRUCT{
+                  FileName = GLOBAL.string 
+                  EndMenu = options_main_menu 
+                  }
+                
+#00943        ELSE 
+#00944          SwitchToMenu DoNotMakeRoot menu = memcard_files_menu 
+                
+#00945        END IF 
+#00946      ELSE 
+#00947        SetUpFilesMenu STRUCT{
+                Save FileTypesToDisplay = All 
+                FileType = cas 
+                EndScr = InGameEndMemCardSaveLoad 
+                NewFileName = GLOBAL.string 
+                CreateNewSaveScript = _CreateNewCASSave 
+                SaveScript = _SaveCAS 
+                LoadScript = _LoadCAS 
+                }
+              
+#00957        IF NoFiles 
+#00958          Goto _DoSaveCAS Params = STRUCT{
+                  FileName = GLOBAL.string 
+                  EndMenu = end_run_menu 
+                  }
+                
+#00959        ELSE 
+#00960          SwitchToMenu DoNotMakeRoot menu = memcard_files_menu 
+                
+#00961        END IF 
+#00962      END IF 
+#00963    END IF 
+#00964  END FUNCTION
+          
+#00965  FUNCTION SaveCasNoNameInput 
+#00967    GetCustomSkaterFilename 
+#00968    IF InFrontEnd 
+#00969      Goto DoSaveCAS Params = STRUCT{
+              FileName = GLOBAL.string 
+              EndMenu = options_main_menu 
+              }
+            
+#00970    ELSE 
+#00971      Goto DoSaveCAS Params = STRUCT{
+              FileName = GLOBAL.string 
+              EndMenu = end_run_menu 
+              }
+            
+#00972    END IF 
+#00973  END FUNCTION
+          
+#00974  FUNCTION GoBackToCasMenu 
+#00978    SwitchToMenu DoNotMakeRoot menu = cas_menu_container 
+          
+#00979  END FUNCTION
+          
+#00980  FUNCTION GoBackToPreCasMenu 
+#00982    SwitchToMenu DoNotMakeRoot menu = pre_cas_main_menu 
+          
+#00983  END FUNCTION
+          
+#00984  FUNCTION _DoSaveCAS 
+#00987    SpawnScript DoSaveCAS Params = NULL 
+          
+#00988  END FUNCTION
+          
+#00989  FUNCTION BackToCASKeyboardControl 
+#00992    GoBackToPreCasMenu 
+#00993    SwitchToKeyboardControl 
+#00994  END FUNCTION
+          
+#00995  FUNCTION DoSaveCAS 
+#00998    GoBackToPreCasMenu 
+#01000    IF CardIsInSlot 
+#01003    ELSE 
+#01004      GoBackToPreCasMenu 
+#01007      IF PAL 
+#01008        GotoPreserveParams PleaseInsertCard Params = STRUCT{
+                ReturnScript = BackToCASKeyboardControl 
+                }
+              
+#01009      ELSE 
+#01010        GotoPreserveParams PleaseInsertCard Params = STRUCT{
+                ReturnScript = DoSaveCAS 
+                }
+              
+#01011      END IF 
+#01012    END IF 
+#01013    IF CardIsFormatted 
+#01015    ELSE 
+#01016      GotoPreserveParams UnFormattedCard Params = STRUCT{
+              FormatSucceededScript = DoSaveCAS 
+              EndScr = GoBackToPreCasMenu 
+              }
+            
+#01017    END IF 
+#01018    helper_hide 
+#01024    DisplayMessage MessageScript = Message_SavingData 
+          PauseLength = MemCardMessageShortPause 
+          
+#01026    IF SaveToMemoryCard Name = GLOBAL.FileName 
+            Type = cas 
+            
+#01028      DisplayMessage MessageScript = Message_SaveSuccessful 
+            
+#01029    ELSE 
+#01030      DeleteMemCardFile Name = GLOBAL.FileName 
+            Type = cas 
+            
+#01031      DisplayMessage MessageScript = Message_SaveFailed 
+            PauseLength = MemCardMessageErrorPause 
+            
+#01032    END IF 
+#01033    IF MenuIsShown simple_menu 
+#01036    ELSE 
+#01037      Goto Abort 
+#01038    END IF 
+#01039    SwitchToMenu DoNotMakeRoot menu = GLOBAL.EndMenu 
+          
+#01040  END FUNCTION
+          
+#01041  FUNCTION _SwitchToKeyboardControl 
+#01046    SpawnScript SwitchToKeyboardControl 
+#01047  END FUNCTION
+          
+#01048  FUNCTION SwitchToKeyboardControl 
+#01050    SwitchToMenu DoNotMakeRoot menu = mem_card_keyboard_control 
+          
+#01051  END FUNCTION
+          
+#01052  FUNCTION _CreateNewCASSave 
+#01057    SpawnScript CreateNewCASSave Params = NULL 
+          
+#01058  END FUNCTION
+          
+#01059  FUNCTION CreateNewCASSave 
+#01061    IF CardIsInSlot 
+#01063    ELSE 
+#01064      GLOBAL.EndScr 
+            
+#01067      IF PAL 
+#01068        GotoPreserveParams PleaseInsertCard Params = STRUCT{
+                ReturnScript = BackToCASKeyboardControl 
+                }
+              
+#01069      ELSE 
+#01070        GotoPreserveParams PleaseInsertCard Params = STRUCT{
+                ReturnScript = CreateNewCASSave 
+                }
+              
+#01071      END IF 
+#01072    END IF 
+#01073    IF CardIsFormatted 
+#01075    ELSE 
+#01076      GotoPreserveParams UnFormattedCard Params = STRUCT{
+              FormatSucceededScript = CreateNewCASSave 
+              }
+            
+#01077    END IF 
+#01078    DisplayMessage MessageScript = Message_SavingData 
+          PauseLength = MemCardMessageShortPause 
+          
+#01080    IF SaveToMemoryCard Name = GLOBAL.NewFileName 
+            Type = cas 
+            
+#01083      DisplayMessage MessageScript = Message_SaveSuccessful 
+            
+#01084    ELSE 
+#01085      DeleteMemCardFile Name = GLOBAL.NewFileName 
+            Type = cas 
+            
+#01086      DisplayMessage MessageScript = Message_SaveFailed 
+            PauseLength = MemCardMessageErrorPause 
+            
+#01087    END IF 
+#01088    IF MenuIsShown simple_menu 
+#01090    ELSE 
+#01091      Goto Abort 
+#01092    END IF 
+#01093    Goto GLOBAL.EndScr 
+          
+#01094  END FUNCTION
+          
+#01095  FUNCTION _SaveCAS 
+#01102    SpawnScript SaveCAS Params = NULL 
+          
+#01103  END FUNCTION
+          
+#01104  FUNCTION SaveCAS EndScr = DefaultEndScr 
+          
+#01107    change MemCardYesNoMenuVisible = 1 
+          
+#01110    LaunchMemcardMenu STRUCT{
+            header = "Overwrite" 
+            Lines = ARRAY(
+              
+              STRUCT{
+                Id = ken_line1 
+                text = "" 
+                static dont_gray }
+              STRUCT{
+                Id = ken_line2 
+                text = "Overwrite previous file?" 
+                static dont_gray }
+              STRUCT{
+                Id = ken_line3 
+                text = "" 
+                static dont_gray }
+              STRUCT{
+                Id = ken_line4 
+                text = "Yes" 
+                target = "_DoReplaceWithCAS" 
+                Params = NULL 
+                }
+              STRUCT{
+                Id = ken_line5 
+                text = "No" 
+                target = "_BackToFilesMenu" 
+                }
+              
+            )
+            }
+          
+#01120    Select_KenLine5 
+#01121    LOOP 
+#01123      IF MenuIsShown simple_menu 
+#01124      ELSE 
+#01125        BREAK
+              
+#01126      END IF 
+#01127      IF CardIsInSlot 
+#01129      ELSE 
+#01130        SwitchToKeyboardControl 
+#01132        GotoPreserveParams PleaseInsertCard Params = STRUCT{
+                ReturnScript = SaveCAS 
+                }
+              
+#01133      END IF 
+#01134      wait 1 gameframe 
+#01135    END LOOP 
+#01136  END FUNCTION
+          
+#01138  FUNCTION _DoReplaceWithCAS 
+#01143    SpawnScript DoReplaceWithCAS Params = NULL 
+          
+#01144  END FUNCTION
+          
+#01145  FUNCTION DoReplaceWithCAS 
+#01147    IF CardIsInSlot 
+#01149    ELSE 
+#01150      GLOBAL.EndScr 
+            
+#01153      GotoPreserveParams PleaseInsertCard Params = STRUCT{
+              ReturnScript = DoReplaceWithCAS 
+              }
+            
+#01154    END IF 
+#01155    IF CardIsFormatted 
+#01157    ELSE 
+#01158      GotoPreserveParams UnFormattedCard Params = STRUCT{
+              FormatSucceededScript = DoReplaceWithCAS 
+              }
+            
+#01159    END IF 
+#01160    DisplayMessage MessageScript = Message_SavingData 
+          PauseLength = MemCardMessageShortPause 
+          
+#01162    DeleteMemCardFile Name = GLOBAL.FileName 
+          Type = GLOBAL.Type 
+          
+#01165    IF SaveToMemoryCard Name = GLOBAL.NewFileName 
+            Type = cas 
+            
+#01168      DisplayMessage MessageScript = Message_SaveSuccessful 
+            
+#01169    ELSE 
+#01170      DeleteMemCardFile Name = GLOBAL.NewFileName 
+            Type = cas 
+            
+#01171      DisplayMessage MessageScript = Message_SaveFailed 
+            PauseLength = MemCardMessageErrorPause 
+            
+#01172    END IF 
+#01173    IF MenuIsShown simple_menu 
+#01175    ELSE 
+#01176      Goto Abort 
+#01177    END IF 
+#01178    Goto GLOBAL.EndScr 
+          
+#01179  END FUNCTION
+          
+#01180  FUNCTION _BackToFilesMenu 
+#01184    SpawnScript BackToFilesMenu 
+#01185  END FUNCTION
+          
+#01186  FUNCTION BackToFilesMenu 
+#01188    SwitchToMenu DoNotMakeRoot menu = memcard_files_menu 
+          
+#01189  END FUNCTION
+          
+#01190  FUNCTION _CreationOptionsLoadCAS 
+#01199    SpawnScript CreationOptionsLoadCAS 
+#01200  END FUNCTION
+          
+#01201  FUNCTION CreationOptionsLoadCAS 
+#01203    SwitchOffMenu Id = pre_cas_main_menu 
+          
+#01204    SwitchToMenu DoNotMakeRoot menu = pre_cas_main_menu 
+          
+#01207    IF CardIsInSlot 
+#01209    ELSE 
+#01210      GotoPreserveParams PleaseInsertCard Params = STRUCT{
+              ReturnScript = CreationOptionsLoadCAS 
+              }
+            
+#01211    END IF 
+#01212    SetUpFilesMenu STRUCT{
+            Load FileTypesToDisplay = cas 
+            FileType = cas 
+            EndScr = BackToCreationOptions 
+            CreateNewSaveScript = _CreateNewCASSave 
+            SaveScript = _SaveCAS 
+            LoadScript = _LoadCAS 
+            }
+          
+#01223    IF NoFiles 
+#01225      DisplayMessage MessageScript = Message_NoCASFiles 
+            PauseLength = MemCardMessageErrorPause 
+            
+#01226      SwitchToMenu DoNotMakeRoot menu = pre_cas_main_menu 
+            
+#01227    ELSE 
+#01228      SwitchToMenu DoNotMakeRoot menu = memcard_files_menu 
+            
+#01229    END IF 
+#01230  END FUNCTION
+          
+#01231  FUNCTION BackToCreationOptions 
+#01233    SwitchOffMenu Id = memcard_files_menu 
+          
+#01234    SwitchToMenu DoNotMakeRoot menu = pre_cas_main_menu 
+          
+#01235  END FUNCTION
+          
+#01236  FUNCTION _CareerMenuLoadCAS 
+#01238    SpawnScript CareerMenuLoadCAS 
+#01239  END FUNCTION
+          
+#01240  FUNCTION CareerMenuLoadCAS 
+#01242    SwitchOffMenu Id = career_menu 
+          
+#01243    SwitchToMenu DoNotMakeRoot menu = career_menu 
+          
+#01246    IF CardIsInSlot 
+#01248    ELSE 
+#01249      SwitchToMenu DoNotMakeRoot menu = career_menu 
+            
+#01250      GotoPreserveParams PleaseInsertCard Params = STRUCT{
+              ReturnScript = CareerMenuLoadCAS 
+              }
+            
+#01251    END IF 
+#01252    SetUpFilesMenu STRUCT{
+            Load FileTypesToDisplay = cas 
+            FileType = cas 
+            EndScr = BackToCareerMenu 
+            CreateNewSaveScript = _CreateNewCASSave 
+            SaveScript = _SaveCAS 
+            LoadScript = _LoadCAS 
+            }
+          
+#01262    IF NoFiles 
+#01264      DisplayMessage MessageScript = Message_NoCASFiles 
+            PauseLength = MemCardMessageErrorPause 
+            
+#01265      SwitchToMenu DoNotMakeRoot menu = career_menu 
+            
+#01266    ELSE 
+#01267      SwitchToMenu DoNotMakeRoot menu = memcard_files_menu 
+            
+#01268    END IF 
+#01269  END FUNCTION
+          
+#01270  FUNCTION BackToCareerMenu 
+#01272    SwitchOffMenu Id = memcard_files_menu 
+          
+#01273    SwitchToMenu DoNotMakeRoot menu = career_menu 
+          
+#01274  END FUNCTION
+          
+#01275  FUNCTION _SingleSessionLoadCAS 
+#01277    SpawnScript SingleSessionLoadCAS 
+#01278  END FUNCTION
+          
+#01279  FUNCTION SingleSessionLoadCAS 
+#01281    SwitchOffMenu Id = single_session_menu 
+          
+#01282    SwitchToMenu DoNotMakeRoot menu = single_session_menu 
+          
+#01285    IF CardIsInSlot 
+#01287    ELSE 
+#01288      GotoPreserveParams PleaseInsertCard Params = STRUCT{
+              ReturnScript = SingleSessionLoadCAS 
+              }
+            
+#01289    END IF 
+#01290    SetUpFilesMenu STRUCT{
+            Load FileTypesToDisplay = cas 
+            FileType = cas 
+            EndScr = BackToSingleSessionMenu 
+            CreateNewSaveScript = _CreateNewCASSave 
+            SaveScript = _SaveCAS 
+            LoadScript = _LoadCAS 
+            }
+          
+#01300    IF NoFiles 
+#01302      DisplayMessage MessageScript = Message_NoCASFiles 
+            PauseLength = MemCardMessageErrorPause 
+            
+#01303      SwitchToMenu DoNotMakeRoot menu = single_session_menu 
+            
+#01304    ELSE 
+#01305      SwitchToMenu DoNotMakeRoot menu = memcard_files_menu 
+            
+#01306    END IF 
+#01307  END FUNCTION
+          
+#01308  FUNCTION BackToSingleSessionMenu 
+#01310    SwitchOffMenu Id = memcard_files_menu 
+          
+#01311    SwitchToMenu DoNotMakeRoot menu = single_session_menu 
+          
+#01312  END FUNCTION
+          
+#01313  FUNCTION _FreeSkateLoadCAS 
+#01315    SpawnScript FreeSkateLoadCAS 
+#01316  END FUNCTION
+          
+#01317  FUNCTION FreeSkateLoadCAS 
+#01319    SwitchOffMenu Id = free_skate_menu 
+          
+#01320    SwitchToMenu DoNotMakeRoot menu = free_skate_menu 
+          
+#01323    IF CardIsInSlot 
+#01325    ELSE 
+#01326      GotoPreserveParams PleaseInsertCard Params = STRUCT{
+              ReturnScript = FreeSkateLoadCAS 
+              }
+            
+#01327    END IF 
+#01328    SetUpFilesMenu STRUCT{
+            Load FileTypesToDisplay = cas 
+            FileType = cas 
+            EndScr = BackToFreeSkateMenu 
+            CreateNewSaveScript = _CreateNewCASSave 
+            SaveScript = _SaveCAS 
+            LoadScript = _LoadCAS 
+            }
+          
+#01338    IF NoFiles 
+#01340      DisplayMessage MessageScript = Message_NoCASFiles 
+            PauseLength = MemCardMessageErrorPause 
+            
+#01341      SwitchToMenu DoNotMakeRoot menu = free_skate_menu 
+            
+#01342    ELSE 
+#01343      SwitchToMenu DoNotMakeRoot menu = memcard_files_menu 
+            
+#01344    END IF 
+#01345  END FUNCTION
+          
+#01346  FUNCTION BackToFreeSkateMenu 
+#01348    SwitchOffMenu Id = memcard_files_menu 
+          
+#01349    SwitchToMenu DoNotMakeRoot menu = free_skate_menu 
+          
+#01350  END FUNCTION
+          
+#01351  FUNCTION _Player1LoadCAS 
+#01353    SpawnScript Player1LoadCAS 
+#01354  END FUNCTION
+          
+#01355  FUNCTION Player1LoadCAS 
+#01357    SwitchOffMenu Id = player_one_menu 
+          
+#01358    SwitchToMenu DoNotMakeRoot menu = player_one_menu 
+          
+#01361    IF CardIsInSlot 
+#01363    ELSE 
+#01364      GotoPreserveParams PleaseInsertCard Params = STRUCT{
+              ReturnScript = Player1LoadCAS 
+              }
+            
+#01365    END IF 
+#01366    SetUpFilesMenu STRUCT{
+            Load FileTypesToDisplay = cas 
+            FileType = cas 
+            EndScr = BackToPlayer1Menu 
+            CreateNewSaveScript = _CreateNewCASSave 
+            SaveScript = _SaveCAS 
+            LoadScript = _LoadCAS 
+            }
+          
+#01376    IF NoFiles 
+#01378      DisplayMessage MessageScript = Message_NoCASFiles 
+            PauseLength = MemCardMessageErrorPause 
+            
+#01379      SwitchToMenu DoNotMakeRoot menu = player_one_menu 
+            
+#01380    ELSE 
+#01381      SwitchToMenu DoNotMakeRoot menu = memcard_files_menu 
+            
+#01382    END IF 
+#01383  END FUNCTION
+          
+#01384  FUNCTION BackToPlayer1Menu 
+#01386    SwitchOffMenu Id = memcard_files_menu 
+          
+#01387    SwitchToMenu DoNotMakeRoot menu = player_one_menu 
+          
+#01388  END FUNCTION
+          
+#01389  FUNCTION _Player2LoadCAS 
+#01391    SpawnScript Player2LoadCAS 
+#01392  END FUNCTION
+          
+#01393  FUNCTION Player2LoadCAS 
+#01395    SwitchOffMenu Id = player_two_menu 
+          
+#01396    SwitchToMenu DoNotMakeRoot menu = player_two_menu 
+          
+#01399    IF CardIsInSlot 
+#01401    ELSE 
+#01402      GotoPreserveParams PleaseInsertCard Params = STRUCT{
+              ReturnScript = Player2LoadCAS 
+              }
+            
+#01403    END IF 
+#01404    SetUpFilesMenu STRUCT{
+            Load FileTypesToDisplay = cas 
+            FileType = cas 
+            EndScr = BackToPlayer2Menu 
+            CreateNewSaveScript = _CreateNewCASSave 
+            SaveScript = _SaveCAS 
+            LoadScript = _LoadCAS 
+            }
+          
+#01414    IF NoFiles 
+#01416      DisplayMessage MessageScript = Message_NoCASFiles 
+            PauseLength = MemCardMessageErrorPause 
+            
+#01417      SwitchToMenu DoNotMakeRoot menu = player_two_menu 
+            
+#01418    ELSE 
+#01419      SwitchToMenu DoNotMakeRoot menu = memcard_files_menu 
+            
+#01420    END IF 
+#01421  END FUNCTION
+          
+#01422  FUNCTION BackToPlayer2Menu 
+#01424    SwitchOffMenu Id = memcard_files_menu 
+          
+#01425    SwitchToMenu DoNotMakeRoot menu = player_two_menu 
+          
+#01426  END FUNCTION
+          
+#01427  FUNCTION LoadCAS EndScr = DefaultEndScr 
+          
+#01433    IF CardIsInSlot 
+#01437    ELSE 
+#01438      GLOBAL.EndScr 
+            
+#01439      GotoPreserveParams PleaseInsertCard Params = STRUCT{
+              ReturnScript = LoadCAS 
+              }
+            
+#01440    END IF 
+#01441    IF CardIsFormatted 
+#01443      IF MemCardFileExists Name = GLOBAL.FileName 
+              Type = cas 
+              
+#01444        DisplayMessage MessageScript = Message_LoadingData 
+              PauseLength = MemCardMessageShortPause 
+              
+#01445        IF LoadFromMemoryCard Name = GLOBAL.FileName 
+                Type = cas 
+                
+#01447          DisplayMessage MessageScript = Message_LoadSuccessful 
+                PauseLength = MemCardMessageShortPause 
+                
+#01448          Reload_cas 
+#01449          FireMenuEvent Type = refreshdecktextures 
+                Id = deck_menu 
+                target = deck_menu 
+                
+#01451        ELSE 
+#01452          DisplayMessage MessageScript = Message_LoadFailed 
+                PauseLength = MemCardMessageErrorPause 
+                
+#01453        END IF 
+#01454        IF MenuIsShown simple_menu 
+#01456        ELSE 
+#01457          Goto Abort 
+#01458        END IF 
+#01459        Goto GLOBAL.EndScr 
+              
+#01461      END IF 
+#01462    END IF 
+#01463    DisplayMessage MessageScript = Message_NoCASFiles 
+          PauseLength = MemCardMessageErrorPause 
+          
+#01466    IF MenuIsShown simple_menu 
+#01468    ELSE 
+#01469      Goto Abort 
+#01470    END IF 
+#01471    Goto GLOBAL.EndScr 
+          
+#01473  END FUNCTION
+          
+#01474  FUNCTION _LoadCAS 
+#01476    SpawnScript LoadCAS Params = NULL 
+          
+#01477  END FUNCTION
+          
+#01478  FUNCTION _ParkEditorLoad 
+#01487    SpawnScript ParkEditorLoad Params = NULL 
+          
+#01488  END FUNCTION
+          
+#01489  FUNCTION ParkEditorLoad 
+#01491    SwitchToMenu DoNotMakeRoot menu = parked_main_menu 
+          
+#01493    IF CardIsInSlot 
+#01495    ELSE 
+#01496      GotoPreserveParams PleaseInsertCard Params = STRUCT{
+              ReturnScript = ParkEditorLoad 
+              }
+            
+#01497    END IF 
+#01498    SetUpFilesMenu STRUCT{
+            Load FileTypesToDisplay = Park 
+            FileType = Park 
+            EndScr = BackToParkEditorMainMenu 
+            LoadScript = _LoadPark 
+            }
+          
+#01506    IF NoFiles 
+#01508      DisplayMessage MessageScript = Message_NoSaveData 
+            PauseLength = MemCardMessageErrorPause 
+            
+#01509      SwitchToMenu DoNotMakeRoot menu = parked_main_menu 
+            
+#01510    ELSE 
+#01511      SwitchToMenu DoNotMakeRoot menu = memcard_files_menu 
+            
+#01512    END IF 
+#01513  END FUNCTION
+          
+#01514  FUNCTION BackToFrontNetMenuParkEditorMenu 
+#01518    SwitchOffMenu Id = memcard_files_menu 
+          
+#01520    IF GotParam LoadParkSuccess 
+#01521      GetParkName 
+#01522      choose_level Level = custom_park 
+            string = GLOBAL.ParkNameDesc 
+            
+#01523      SwitchToMenu DoNotMakeRoot menu = net_server_setup_menu 
+            
+#01524    ELSE 
+#01525      SwitchToMenu DoNotMakeRoot menu = front_net_level_main_menu 
+            
+#01526    END IF 
+#01527  END FUNCTION
+          
+#01529  FUNCTION _FrontNetMenuParkEditorLoad 
+#01531    SpawnScript FrontNetMenuParkEditorLoad Params = NULL 
+          
+#01532  END FUNCTION
+          
+#01533  FUNCTION FrontNetMenuParkEditorLoad 
+#01535    SwitchToMenu DoNotMakeRoot menu = front_net_level_main_menu 
+          
+#01536    SetUpFilesMenu STRUCT{
+            Load FileTypesToDisplay = Park 
+            FileType = Park 
+            EndScr = BackToFrontNetMenuParkEditorMenu 
+            LoadScript = _LoadPark 
+            }
+          
+#01544    IF NoFiles 
+#01546      DisplayMessage MessageScript = Message_NoSaveData 
+            PauseLength = MemCardMessageErrorPause 
+            
+#01547      SwitchToMenu DoNotMakeRoot menu = front_net_level_main_menu 
+            
+#01548    ELSE 
+#01549      SwitchToMenu DoNotMakeRoot menu = memcard_files_menu 
+            
+#01550    END IF 
+#01551  END FUNCTION
+          
+#01552  FUNCTION BackToNetMenuParkEditorMenu 
+#01554    SwitchOffMenu Id = memcard_files_menu 
+          
+#01556    IF GotParam LoadParkSuccess 
+#01557      GetParkName 
+#01558      set_preferences_from_ui prefs = network 
+            field = "level" 
+            Level = custom_park 
+            string = GLOBAL.ParkNameDesc 
+            
+#01560      change_level Level = custom_park 
+            string = GLOBAL.ParkNameDesc 
+            
+#01561    ELSE 
+#01563      SwitchToMenu DoNotMakeRoot menu = net_level_menu 
+            
+#01564    END IF 
+#01565  END FUNCTION
+          
+#01567  FUNCTION _NetMenuParkEditorLoad 
+#01569    SpawnScript NetMenuParkEditorLoad Params = NULL 
+          
+#01570  END FUNCTION
+          
+#01571  FUNCTION NetMenuParkEditorLoad 
+#01573    SwitchToMenu DoNotMakeRoot menu = net_level_menu 
+          
+#01574    SetUpFilesMenu STRUCT{
+            Load FileTypesToDisplay = Park 
+            FileType = Park 
+            EndScr = BackToNetMenuParkEditorMenu 
+            LoadScript = _LoadPark 
+            }
+          
+#01582    IF NoFiles 
+#01584      DisplayMessage MessageScript = Message_NoSaveData 
+            PauseLength = MemCardMessageErrorPause 
+            
+#01585      SwitchToMenu DoNotMakeRoot menu = net_level_menu 
+            
+#01586    ELSE 
+#01587      SwitchToMenu DoNotMakeRoot menu = memcard_files_menu 
+            
+#01588    END IF 
+#01589  END FUNCTION
+          
+#01590  FUNCTION _CassetteMenuParkEditorLoad 
+#01593    SpawnScript CassetteMenuParkEditorLoad Params = NULL 
+          
+#01594  END FUNCTION
+          
+#01595  FUNCTION CassetteMenuParkEditorLoad 
+#01597    SwitchToMenu DoNotMakeRoot menu = cassette_menu_park_editor_menu 
+          
+#01599    IF CardIsInSlot 
+#01601    ELSE 
+#01602      SwitchToMenu DoNotMakeRoot menu = cassette_menu_park_editor_menu 
+            
+#01603      GotoPreserveParams PleaseInsertCard Params = STRUCT{
+              ReturnScript = CassetteMenuParkEditorLoad 
+              }
+            
+#01604    END IF 
+#01605    SetUpFilesMenu STRUCT{
+            Load FileTypesToDisplay = Park 
+            FileType = Park 
+            EndScr = BackToCassetteMenuParkEditorMenu 
+            LoadScript = _LoadPark 
+            }
+          
+#01613    IF NoFiles 
+#01615      DisplayMessage MessageScript = Message_NoSaveData 
+            PauseLength = MemCardMessageErrorPause 
+            
+#01616      SwitchToMenu DoNotMakeRoot menu = cassette_menu_park_editor_menu 
+            
+#01617    ELSE 
+#01618      SwitchToMenu DoNotMakeRoot menu = memcard_files_menu 
+            
+#01619    END IF 
+#01620  END FUNCTION
+          
+#01621  FUNCTION _LoadPark 
+#01623    SpawnScript LoadPark Params = NULL 
+          
+#01624  END FUNCTION
+          
+#01625  FUNCTION LoadPark EndScr = DefaultEndScr 
+          
+#01627    IF CardIsInSlot 
+#01632    ELSE 
+#01633      GLOBAL.EndScr 
+            
+#01634      GotoPreserveParams PleaseInsertCard Params = STRUCT{
+              ReturnScript = LoadPark 
+              }
+            
+#01635    END IF 
+#01636    IF CardIsFormatted 
+#01638      IF MemCardFileExists Name = GLOBAL.FileName 
+              Type = Park 
+              
+#01639        DisplayMessage MessageScript = Message_LoadingData 
+              PauseLength = MemCardMessageShortPause 
+              
+#01640        IF InFrontEnd 
+#01642          IF LoadFromMemoryCard Name = GLOBAL.FileName 
+                  Type = Park 
+                  DoNotCleanupAndInitialize 
+#01644            DisplayMessage MessageScript = Message_LoadSuccessful 
+                  
+#01645          ELSE 
+#01646            DisplayMessage MessageScript = Message_LoadFailed 
+                  PauseLength = MemCardMessageErrorPause 
+                  
+#01647          END IF 
+#01648        ELSE 
+#01649          SwitchToMenu DoNotMakeRoot menu = parked_main_menu 
+                
+#01654          DestroyElement Id = simple_menu 
+                
+#01655          IF LoadFromMemoryCard Name = GLOBAL.FileName 
+                  Type = Park 
+                  
+#01657            IF ParkEditorThemeWasSwitched 
+#01658              Goto Abort 
+#01659            END IF 
+#01660            DisplayMessage MessageScript = Message_LoadSuccessful 
+                  
+#01661          ELSE 
+#01662            DisplayMessage MessageScript = Message_LoadFailed 
+                  PauseLength = MemCardMessageErrorPause 
+                  
+#01663          END IF 
+#01664        END IF 
+#01665        UpdateParkNameInMenuTitles 
+#01669        Goto GLOBAL.EndScr 
+              Params = STRUCT{
+                LoadParkSuccess = 1 
+                }
+              
+#01671      END IF 
+#01672    END IF 
+#01673    DisplayMessage MessageScript = Message_NoSaveData 
+          PauseLength = MemCardMessageErrorPause 
+          
+#01676    IF MenuIsShown simple_menu 
+#01678    ELSE 
+#01679      Goto Abort 
+#01680    END IF 
+#01681    Goto GLOBAL.EndScr 
+          
+#01683  END FUNCTION
+          
+#01684  FUNCTION _ParkEditorSave 
+#01691    SpawnScript ParkEditorSave Params = NULL 
+          
+#01692  END FUNCTION
+          
+#01693  FUNCTION ParkEditorSave 
+#01695    SwitchToMenu DoNotMakeRoot menu = park_editor_keyboard_control 
+          
+#01696  END FUNCTION
+          
+#01697  FUNCTION _ParkEditorKeyboardControlAccept 
+#01700    SpawnScript ParkEditorKeyboardControlAccept Params = NULL 
+          
+#01701  END FUNCTION
+          
+#01702  FUNCTION ParkEditorKeyboardControlAccept 
+#01704    SwitchToMenu DoNotMakeRoot menu = park_editor_keyboard_control 
+          
+#01706    IF MemCardFileExists Name = GLOBAL.string 
+            Type = Park 
+            
+#01708      change MemCardYesNoMenuVisible = 1 
+            
+#01709      LaunchMemcardMenu STRUCT{
+              header = "Overwrite" 
+              Lines = ARRAY(
+                
+                STRUCT{
+                  Id = ken_line1 
+                  text = "" 
+                  static dont_gray }
+                STRUCT{
+                  Id = ken_line2 
+                  text = "Overwrite previous save?" 
+                  static dont_gray }
+                STRUCT{
+                  Id = ken_line3 
+                  text = "" 
+                  static dont_gray }
+                STRUCT{
+                  Id = ken_line4 
+                  text = "Yes" 
+                  target = "_DoSavePark" 
+                  Params = STRUCT{
+                    NewFileName = GLOBAL.string 
+                    }
+                  }
+                STRUCT{
+                  Id = ken_line5 
+                  text = "No" 
+                  target = "_SwitchToParkEditorKeyboardControl" 
+                  }
+                
+              )
+              }
+            
+#01719      Select_KenLine5 
+#01720      LOOP 
+#01721        IF MenuIsShown simple_menu 
+#01722        ELSE 
+#01723          BREAK
+                
+#01724        END IF 
+#01725        IF CardIsInSlot 
+#01727        ELSE 
+#01728          SwitchToMenu DoNotMakeRoot menu = park_editor_keyboard_control 
+                
+#01730          GotoPreserveParams PleaseInsertCard Params = STRUCT{
+                  ReturnScript = ParkEditorKeyboardControlAccept 
+                  }
+                
+#01731        END IF 
+#01732        wait 1 gameframe 
+#01733      END LOOP 
+#01734    ELSE 
+#01736      SetUpFilesMenu STRUCT{
+              Save FileTypesToDisplay = All 
+              FileType = Park 
+              EndScr = BackToParkEditorMainMenu 
+              NewFileName = GLOBAL.string 
+              CreateNewSaveScript = _DoSavePark 
+              SaveScript = _SavePark 
+              }
+            
+#01745      IF NoFiles 
+#01747        Goto _DoSavePark Params = STRUCT{
+                NewFileName = GLOBAL.string 
+                }
+              
+#01748      ELSE 
+#01749        SwitchToMenu DoNotMakeRoot menu = memcard_files_menu 
+              
+#01750      END IF 
+#01751    END IF 
+#01752  END FUNCTION
+          
+#01754  FUNCTION _SwitchToParkEditorKeyboardControl 
+#01756    SpawnScript SwitchToParkEditorKeyboardControl 
+#01757  END FUNCTION
+          
+#01758  FUNCTION SwitchToParkEditorKeyboardControl 
+#01760    SwitchToMenu DoNotMakeRoot menu = park_editor_keyboard_control 
+          
+#01761  END FUNCTION
+          
+#01762  FUNCTION BackToParkEditorMainMenu 
+#01764    SwitchOffMenu Id = memcard_files_menu 
+          
+#01765    SwitchToMenu DoNotMakeRoot menu = parked_main_menu 
+          
+#01766  END FUNCTION
+          
+#01767  FUNCTION BackToCassetteMenuParkEditorMenu 
+#01769    SwitchOffMenu Id = memcard_files_menu 
+          
+#01770    SwitchToMenu DoNotMakeRoot menu = cassette_menu_park_editor_menu 
+          
+#01771  END FUNCTION
+          
+#01772  FUNCTION BackToParkKeyboardControl 
+#01775    BackToParkEditorMainMenu 
+#01776    SwitchToParkEditorKeyboardControl 
+#01777  END FUNCTION
+          
+#01778  FUNCTION _DoSavePark 
+#01781    SpawnScript DoSavePark Params = NULL 
+          
+#01782  END FUNCTION
+          
+#01783  FUNCTION DoSavePark 
+#01785    SwitchToMenu DoNotMakeRoot menu = parked_main_menu 
+          
+#01787    IF CardIsInSlot 
+#01790    ELSE 
+#01791      SwitchToMenu DoNotMakeRoot menu = parked_main_menu 
+            
+#01792      IF PAL 
+#01793        GotoPreserveParams PleaseInsertCard Params = STRUCT{
+                ReturnScript = BackToParkKeyboardControl 
+                }
+              
+#01794      ELSE 
+#01795        GotoPreserveParams PleaseInsertCard Params = STRUCT{
+                ReturnScript = DoSavePark 
+                }
+              
+#01796      END IF 
+#01797    END IF 
+#01798    IF CardIsFormatted 
+#01800    ELSE 
+#01801      GotoPreserveParams UnFormattedCard Params = STRUCT{
+              FormatSucceededScript = DoSavePark 
+              EndScr = BackToParkEditorMainMenu 
+              }
+            
+#01802    END IF 
+#01803    DisplayMessage MessageScript = Message_SavingData 
+          PauseLength = MemCardMessageShortPause 
+          
+#01809    IF SaveToMemoryCard Name = GLOBAL.NewFileName 
+            Type = Park 
+            
+#01811      DisplayMessage MessageScript = Message_SaveSuccessful 
+            
+#01812    ELSE 
+#01813      DeleteMemCardFile Name = GLOBAL.NewFileName 
+            Type = Park 
+            
+#01814      DisplayMessage MessageScript = Message_SaveFailed 
+            PauseLength = MemCardMessageErrorPause 
+            
+#01815    END IF 
+#01816    IF MenuIsShown simple_menu 
+#01818    ELSE 
+#01819      Goto Abort 
+#01820    END IF 
+#01821    SwitchToMenu DoNotMakeRoot menu = parked_main_menu 
+          
+#01822  END FUNCTION
+          
+#01823  FUNCTION _SavePark 
+#01830    SpawnScript SavePark Params = NULL 
+          
+#01831  END FUNCTION
+          
+#01832  FUNCTION SavePark EndScr = DefaultEndScr 
+          
+#01835    change MemCardYesNoMenuVisible = 1 
+          
+#01838    LaunchMemcardMenu STRUCT{
+            header = "Overwrite" 
+            Lines = ARRAY(
+              
+              STRUCT{
+                Id = ken_line1 
+                text = "" 
+                static dont_gray }
+              STRUCT{
+                Id = ken_line2 
+                text = "Overwrite previous file?" 
+                static dont_gray }
+              STRUCT{
+                Id = ken_line3 
+                text = "" 
+                static dont_gray }
+              STRUCT{
+                Id = ken_line4 
+                text = "Yes" 
+                target = "_DoReplaceWithPark" 
+                Params = NULL 
+                }
+              STRUCT{
+                Id = ken_line5 
+                text = "No" 
+                target = "_BackToFilesMenu" 
+                }
+              
+            )
+            }
+          
+#01848    Select_KenLine5 
+#01849    LOOP 
+#01850      IF MenuIsShown simple_menu 
+#01851      ELSE 
+#01852        BREAK
+              
+#01853      END IF 
+#01854      IF CardIsInSlot 
+#01856      ELSE 
+#01857        SwitchToMenu DoNotMakeRoot menu = park_editor_keyboard_control 
+              
+#01859        GotoPreserveParams PleaseInsertCard Params = STRUCT{
+                ReturnScript = ParkEditorKeyboardControlAccept 
+                }
+              
+#01860      END IF 
+#01861      wait 1 gameframe 
+#01862    END LOOP 
+#01863  END FUNCTION
+          
+#01864  FUNCTION _DoReplaceWithPark 
+#01868    SpawnScript DoReplaceWithPark Params = NULL 
+          
+#01869  END FUNCTION
+          
+#01870  FUNCTION DoReplaceWithPark 
+#01872    IF CardIsInSlot 
+#01876    ELSE 
+#01877      GLOBAL.EndScr 
+            
+#01878      GotoPreserveParams PleaseInsertCard Params = STRUCT{
+              ReturnScript = DoReplaceWithPark 
+              }
+            
+#01879    END IF 
+#01880    IF CardIsFormatted 
+#01882    ELSE 
+#01883      GotoPreserveParams UnFormattedCard Params = STRUCT{
+              FormatSucceededScript = DoReplaceWithPark 
+              }
+            
+#01884    END IF 
+#01885    DisplayMessage MessageScript = Message_SavingData 
+          PauseLength = MemCardMessageShortPause 
+          
+#01887    DeleteMemCardFile Name = GLOBAL.FileName 
+          Type = GLOBAL.Type 
+          
+#01890    IF SaveToMemoryCard Name = GLOBAL.NewFileName 
+            Type = Park 
+            
+#01893      DisplayMessage MessageScript = Message_SaveSuccessful 
+            
+#01894    ELSE 
+#01895      DeleteMemCardFile Name = GLOBAL.NewFileName 
+            Type = Park 
+            
+#01896      DisplayMessage MessageScript = Message_SaveFailed 
+            PauseLength = MemCardMessageErrorPause 
+            
+#01897    END IF 
+#01898    IF MenuIsShown simple_menu 
+#01900    ELSE 
+#01901      Goto Abort 
+#01902    END IF 
+#01903    Goto GLOBAL.EndScr 
+          
+#01904  END FUNCTION
+          
+#01905  FUNCTION _EndRunSaveReplay 
+#01912    KillSpawnedScript Id = helper_scanner 
+          
+#01913    SpawnScript helper_scanner Id = helper_scanner 
+          
+#01914    SpawnScript EndRunSaveReplay Params = NULL 
+          
+#01916  END FUNCTION
+          
+#01917  FUNCTION EndRunSaveReplay 
+#01919    SwitchToMenu DoNotMakeRoot menu = replay_keyboard_control 
+          
+#01920  END FUNCTION
+          
+#01921  FUNCTION _ReplayKeyboardControlAccept 
+#01924    helper_hide 
+#01925    SpawnScript ReplayKeyboardControlAccept Params = NULL 
+          
+#01926  END FUNCTION
+          
+#01927  FUNCTION ReplayKeyboardControlAccept 
+#01929    SwitchToMenu DoNotMakeRoot menu = replay_keyboard_control 
+          
+#01931    IF MemCardFileExists Name = GLOBAL.string 
+            Type = Replay 
+            
+#01933      change MemCardYesNoMenuVisible = 1 
+            
+#01934      LaunchMemcardMenu STRUCT{
+              header = "Overwrite" 
+              Lines = ARRAY(
+                
+                STRUCT{
+                  Id = ken_line1 
+                  text = "" 
+                  static dont_gray }
+                STRUCT{
+                  Id = ken_line2 
+                  text = "Overwrite previous save?" 
+                  static dont_gray }
+                STRUCT{
+                  Id = ken_line3 
+                  text = "" 
+                  static dont_gray }
+                STRUCT{
+                  Id = ken_line4 
+                  text = "Yes" 
+                  target = "_DoSaveReplay" 
+                  Params = STRUCT{
+                    FileName = GLOBAL.string 
+                    }
+                  }
+                STRUCT{
+                  Id = ken_line5 
+                  text = "No" 
+                  target = "_SwitchToReplayKeyboardControl" 
+                  }
+                
+              )
+              }
+            
+#01944      Select_KenLine5 
+#01945      LOOP 
+#01947        IF MenuIsShown simple_menu 
+#01948        ELSE 
+#01949          BREAK
+                
+#01950        END IF 
+#01951        IF CardIsInSlot 
+#01953        ELSE 
+#01954          SwitchToMenu DoNotMakeRoot menu = replay_keyboard_control 
+                
+#01956          GotoPreserveParams PleaseInsertCard Params = STRUCT{
+                  ReturnScript = ReplayKeyboardControlAccept 
+                  }
+                
+#01957        END IF 
+#01958        wait 1 gameframe 
+#01959      END LOOP 
+#01960    ELSE 
+#01962      SetUpFilesMenu STRUCT{
+              Save FileTypesToDisplay = All 
+              FileType = Replay 
+              EndScr = Abort 
+              NewFileName = GLOBAL.string 
+              CreateNewSaveScript = _CreateNewReplaySave 
+              SaveScript = _SaveReplay 
+              }
+            
+#01971      IF NoFiles 
+#01972        Goto _DoSaveReplay Params = STRUCT{
+                FileName = GLOBAL.string 
+                }
+              
+#01973      ELSE 
+#01974        SwitchToMenu DoNotMakeRoot menu = memcard_files_menu 
+              
+#01975      END IF 
+#01976    END IF 
+#01977  END FUNCTION
+          
+#01979  FUNCTION _SwitchToReplayKeyboardControl 
+#01982    SpawnScript SwitchToReplayKeyboardControl 
+#01983  END FUNCTION
+          
+#01984  FUNCTION SwitchToReplayKeyboardControl 
+#01986    SwitchToMenu DoNotMakeRoot menu = replay_keyboard_control 
+          
+#01987  END FUNCTION
+          
+#01988  FUNCTION BackToReplayKeyboardControl 
+#01991    GoBackToReplayMenu 
+#01992    SwitchToReplayKeyboardControl 
+#01993  END FUNCTION
+          
+#01994  FUNCTION _DoSaveReplay 
+#01997    SpawnScript DoSaveReplay Params = NULL 
+          
+#01998  END FUNCTION
+          
+#01999  FUNCTION DoSaveReplay 
+#02001    IF CardIsInSlot 
+#02007    ELSE 
+#02008      SwitchToMenu DoNotMakeRoot menu = replay_menu 
+            
+#02009      IF PAL 
+#02010        GotoPreserveParams PleaseInsertCard Params = STRUCT{
+                ReturnScript = BackToReplayKeyboardControl 
+                }
+              
+#02011      ELSE 
+#02012        GotoPreserveParams PleaseInsertCard Params = STRUCT{
+                ReturnScript = DoSaveReplay 
+                }
+              
+#02013      END IF 
+#02014    END IF 
+#02015    IF CardIsFormatted 
+#02017    ELSE 
+#02018      GotoPreserveParams UnFormattedCard Params = STRUCT{
+              FormatSucceededScript = DoSaveReplay 
+              EndScr = GoBackToReplayMenu 
+              }
+            
+#02019    END IF 
+#02020    DisplayMessage MessageScript = Message_SavingData 
+          PauseLength = MemCardMessageShortPause 
+          
+#02022    IF SaveToMemoryCard Name = GLOBAL.FileName 
+            Type = Replay 
+            
+#02024      DisplayMessage MessageScript = Message_SaveSuccessful 
+            
+#02025    ELSE 
+#02026      DeleteMemCardFile Name = GLOBAL.FileName 
+            Type = Replay 
+            
+#02027      DisplayMessage MessageScript = Message_SaveFailed 
+            PauseLength = MemCardMessageErrorPause 
+            
+#02028    END IF 
+#02029    SwitchToMenu DoNotMakeRoot menu = replay_menu 
+          
+#02031  END FUNCTION
+          
+#02032  FUNCTION GoBackToReplayMenu 
+#02034    SwitchToMenu DoNotMakeRoot menu = replay_menu 
+          
+#02035  END FUNCTION
+          
+#02036  FUNCTION _CreateNewReplaySave 
+#02038    SpawnScript CreateNewReplaySave Params = NULL 
+          
+#02039  END FUNCTION
+          
+#02040  FUNCTION CreateNewReplaySave 
+#02042    IF CardIsInSlot 
+#02044    ELSE 
+#02045      SwitchToMenu DoNotMakeRoot menu = replay_menu 
+            
+#02046      IF PAL 
+#02047        GotoPreserveParams PleaseInsertCard Params = STRUCT{
+                ReturnScript = BackToReplayKeyboardControl 
+                }
+              
+#02048      ELSE 
+#02049        GotoPreserveParams PleaseInsertCard Params = STRUCT{
+                ReturnScript = CreateNewReplaySave 
+                }
+              
+#02050      END IF 
+#02051    END IF 
+#02052    IF CardIsFormatted 
+#02054    ELSE 
+#02055      GotoPreserveParams UnFormattedCard Params = STRUCT{
+              FormatSucceededScript = CreateNewReplaySave 
+              }
+            
+#02056    END IF 
+#02057    DisplayMessage MessageScript = Message_SavingData 
+          PauseLength = MemCardMessageShortPause 
+          
+#02059    IF SaveToMemoryCard Name = GLOBAL.NewFileName 
+            Type = Replay 
+            
+#02062      DisplayMessage MessageScript = Message_SaveSuccessful 
+            
+#02063    ELSE 
+#02064      DeleteMemCardFile Name = GLOBAL.NewFileName 
+            Type = Replay 
+            
+#02065      DisplayMessage MessageScript = Message_SaveFailed 
+            PauseLength = MemCardMessageErrorPause 
+            
+#02066    END IF 
+#02067    SwitchToMenu DoNotMakeRoot menu = replay_menu 
+          
+#02069  END FUNCTION
+          
+#02070  FUNCTION _SaveReplay 
+#02077    SpawnScript SaveReplay Params = NULL 
+          
+#02078  END FUNCTION
+          
+#02079  FUNCTION SaveReplay EndScr = DefaultEndScr 
+          
+#02082    change MemCardYesNoMenuVisible = 1 
+          
+#02084    LaunchMemcardMenu STRUCT{
+            header = "Overwrite" 
+            Lines = ARRAY(
+              
+              STRUCT{
+                Id = ken_line1 
+                text = "" 
+                static dont_gray }
+              STRUCT{
+                Id = ken_line2 
+                text = "Overwrite previous file?" 
+                static dont_gray }
+              STRUCT{
+                Id = ken_line3 
+                text = "" 
+                static dont_gray }
+              STRUCT{
+                Id = ken_line4 
+                text = "Yes" 
+                target = "_DoReplaceWithReplay" 
+                Params = NULL 
+                }
+              STRUCT{
+                Id = ken_line5 
+                text = "No" 
+                target = "_BackToFilesMenu" 
+                }
+              
+            )
+            }
+          
+#02094    Select_KenLine5 
+#02095    LOOP 
+#02097      IF MenuIsShown simple_menu 
+#02098      ELSE 
+#02099        BREAK
+              
+#02100      END IF 
+#02101      IF CardIsInSlot 
+#02103      ELSE 
+#02104        SwitchToMenu DoNotMakeRoot menu = replay_keyboard_control 
+              
+#02106        GotoPreserveParams PleaseInsertCard Params = STRUCT{
+                ReturnScript = ReplayKeyboardControlAccept 
+                }
+              
+#02107      END IF 
+#02108      wait 1 gameframe 
+#02109    END LOOP 
+#02110  END FUNCTION
+          
+#02112  FUNCTION _DoReplaceWithReplay 
+#02116    SpawnScript DoReplaceWithReplay Params = NULL 
+          
+#02117  END FUNCTION
+          
+#02118  FUNCTION DoReplaceWithReplay 
+#02120    IF CardIsInSlot 
+#02124    ELSE 
+#02125      SwitchToMenu DoNotMakeRoot menu = replay_menu 
+            
+#02126      GotoPreserveParams PleaseInsertCard Params = STRUCT{
+              ReturnScript = DoReplaceWithReplay 
+              }
+            
+#02127    END IF 
+#02128    IF CardIsFormatted 
+#02130    ELSE 
+#02131      GotoPreserveParams UnFormattedCard Params = STRUCT{
+              FormatSucceededScript = DoReplaceWithReplay 
+              }
+            
+#02132    END IF 
+#02133    DisplayMessage MessageScript = Message_SavingData 
+          PauseLength = MemCardMessageShortPause 
+          
+#02135    DeleteMemCardFile Name = GLOBAL.FileName 
+          Type = GLOBAL.Type 
+          
+#02138    IF SaveToMemoryCard Name = GLOBAL.NewFileName 
+            Type = Replay 
+            
+#02141      DisplayMessage MessageScript = Message_SaveSuccessful 
+            
+#02142    ELSE 
+#02143      DeleteMemCardFile Name = GLOBAL.NewFileName 
+            Type = Replay 
+            
+#02144      DisplayMessage MessageScript = Message_SaveFailed 
+            PauseLength = MemCardMessageErrorPause 
+            
+#02145    END IF 
+#02146    SwitchToMenu DoNotMakeRoot menu = replay_menu 
+          
+#02148  END FUNCTION
+          
+#02149  FUNCTION _OptionsMenuLoadReplay 
+#02156    SpawnScript OptionsMenuLoadReplay Params = NULL 
+          
+#02157  END FUNCTION
+          
+#02158  FUNCTION OptionsMenuLoadReplay 
+#02160    IF CardIsInSlot 
+#02163    ELSE 
+#02164      SwitchToMenu DoNotMakeRoot menu = options_main_menu 
+            
+#02165      GotoPreserveParams PleaseInsertCard Params = STRUCT{
+              ReturnScript = OptionsMenuLoadReplay 
+              }
+            
+#02166    END IF 
+#02167    SetUpFilesMenu STRUCT{
+            Load FileTypesToDisplay = Replay 
+            FileType = Replay 
+            EndScr = GoBackToOptionsMenu 
+            LoadScript = _LoadReplay 
+            }
+          
+#02175    IF NoFiles 
+#02177      DisplayMessage MessageScript = Message_NoSaveData 
+            PauseLength = MemCardMessageErrorPause 
+            
+#02178      SwitchToMenu DoNotMakeRoot menu = options_main_menu 
+            
+#02179    ELSE 
+#02180      SwitchToMenu DoNotMakeRoot menu = options_main_menu 
+            
+#02184      SwitchToMenu DoNotMakeRoot menu = memcard_files_menu 
+            
+#02185    END IF 
+#02186  END FUNCTION
+          
+#02187  FUNCTION _LoadReplay 
+#02189    SpawnScript LoadReplay Params = NULL 
+          
+#02190  END FUNCTION
+          
+#02191  FUNCTION LoadReplay EndScr = DefaultEndScr 
+          
+#02193    helper_hide 
+#02194    IF CardIsInSlot 
+#02198    ELSE 
+#02199      GLOBAL.EndScr 
+            
+#02200      GotoPreserveParams PleaseInsertCard Params = STRUCT{
+              ReturnScript = LoadReplay 
+              }
+            
+#02201    END IF 
+#02202    IF CardIsFormatted 
+#02204      IF MemCardFileExists Name = GLOBAL.FileName 
+              Type = Replay 
+              
+#02205        DisplayMessage MessageScript = Message_LoadingData 
+              PauseLength = MemCardMessageShortPause 
+              
+#02206        IF LoadFromMemoryCard Name = GLOBAL.FileName 
+                Type = Replay 
+                
+#02208          DisplayMessage MessageScript = Message_LoadSuccessful 
+                PauseLength = MemCardMessageShortPause 
+                
+#02209          SwitchToMenu DoNotMakeRoot menu = frontend_menu 
+                
+#02213          DestroyElement Id = memcard_files_menu 
+                
+#02214          LoadCorrectSkaterForReplay 
+#02216          Goto start_replay_game 
+#02217        ELSE 
+#02218          DisplayMessage MessageScript = Message_LoadFailed 
+                PauseLength = MemCardMessageErrorPause 
+                
+#02219        END IF 
+#02220        Goto GLOBAL.EndScr 
+              
+#02222      END IF 
+#02223    END IF 
+#02224    DisplayMessage MessageScript = Message_NoSaveData 
+          PauseLength = MemCardMessageErrorPause 
+          
+#02227    IF MenuIsShown simple_menu 
+#02229    ELSE 
+#02230      Goto Abort 
+#02231    END IF 
+#02232    Goto GLOBAL.EndScr 
+          
+#02234  END FUNCTION
+          
+#02235  FUNCTION GoBackToFilesMenu 
+#02243    SwitchToMenu DoNotMakeRoot menu = memcard_files_menu 
+          
+#02244  END FUNCTION
+          
+#02245  FUNCTION DeleteFile 
+#02247    change MemCardYesNoMenuVisible = 1 
+          
+#02248    LaunchMemcardMenu STRUCT{
+            header = "Delete" 
+            Lines = ARRAY(
+              
+              STRUCT{
+                Id = ken_line1 
+                text = "" 
+                static dont_gray }
+              STRUCT{
+                Id = ken_line2 
+                text = "Are you sure you want to" 
+                static dont_gray }
+              STRUCT{
+                Id = ken_line3 
+                text = "delete this save file ?" 
+                static dont_gray }
+              STRUCT{
+                Id = ken_line4 
+                text = "" 
+                static dont_gray }
+              STRUCT{
+                Id = ken_line5 
+                text = "Yes" 
+                target = "_DefinitelyDeleteFile" 
+                Params = NULL 
+                }
+              STRUCT{
+                Id = ken_line6 
+                text = "No" 
+                target = "GoBackToFilesMenu" 
+                }
+              
+            )
+            }
+          
+#02259    launchevent Type = deselect 
+          target = ken_line5 
+          
+#02260    launchevent Type = SELECT 
+          target = ken_line6 
+          
+#02261  END FUNCTION
+          
+#02262  FUNCTION _DefinitelyDeleteFile 
+#02264    SpawnScript DefinitelyDeleteFile Params = NULL 
+          
+#02265  END FUNCTION
+          
+#02266  FUNCTION DefinitelyDeleteFile 
+#02268    IF DeleteMemCardFile Name = GLOBAL.FileName 
+            Type = GLOBAL.Type 
+            
+#02271      DisplayMessage MessageScript = Message_DeleteSuccessful 
+            
+#02272    ELSE 
+#02273      DisplayMessage MessageScript = Message_DeleteFailed 
+            PauseLength = MemCardMessageErrorPause 
+            
+#02274    END IF 
+#02275    IF MenuIsShown simple_menu 
+#02277    ELSE 
+#02278      Goto Abort 
+#02279    END IF 
+#02280    Goto GoBackToFilesMenu 
+#02282  END FUNCTION
+          
+#02283  

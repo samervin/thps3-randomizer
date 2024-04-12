@@ -1,0 +1,40 @@
+
+#00001  select_shift = 0 
+        
+#00003  FUNCTION UserSelectSelect 
+#00005    ToggleSkaterCamMode skater = 0 
+          
+#00007  END FUNCTION
+          
+#00008  FUNCTION UserSelectSelect2 
+#00010    ToggleSkaterCamMode skater = 1 
+          
+#00012  END FUNCTION
+          
+#00013  FUNCTION UserSelectTriangle 
+#00020    IF NotCD 
+#00021      ToggleRenderMode 
+#00022    END IF 
+#00023  END FUNCTION
+          
+#00024  FUNCTION UserSelectSquare 
+#00026    IF NotCD 
+#00027      ScreenShot 
+#00028    END IF 
+#00029  END FUNCTION
+          
+#00030  FUNCTION UserSelectCircle 
+#00032    IF NotCD 
+#00033      ReloadNodeArray 
+#00035      Retry 
+#00036    END IF 
+#00037  END FUNCTION
+          
+#00038  FUNCTION UserSelectStart 
+#00040  END FUNCTION
+          
+#00042  FUNCTION UserSelectX 
+#00044    ToggleViewMode 
+#00045  END FUNCTION
+          
+#00046  

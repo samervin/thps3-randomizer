@@ -1,0 +1,2055 @@
+num_players_info = ARRAY(
+          
+          STRUCT{
+            name = "2 Players" 
+            checksum = num_2 
+            }
+          STRUCT{
+            name = "3 Players" 
+            checksum = num_3 
+            }
+          STRUCT{
+            name = "4 Players" 
+            checksum = num_4 
+            }
+          STRUCT{
+            name = "5 Players" 
+            checksum = num_5 
+            }
+          STRUCT{
+            name = "6 Players" 
+            checksum = num_6 
+            }
+          STRUCT{
+            name = "7 Players" 
+            checksum = num_7 
+            }
+          STRUCT{
+            name = "8 Players" 
+            checksum = num_8 
+            }
+          
+        )
+        
+#00012  num_observers_info = ARRAY(
+          
+          STRUCT{
+            name = "No Observers" 
+            checksum = num_0 
+            }
+          STRUCT{
+            name = "1 Observer" 
+            checksum = num_1 
+            }
+          STRUCT{
+            name = "2 Observers" 
+            checksum = num_2 
+            }
+          STRUCT{
+            name = "3 Observers" 
+            checksum = num_3 
+            }
+          STRUCT{
+            name = "4 Observers" 
+            checksum = num_4 
+            }
+          
+        )
+        
+#00020  skill_level_info = ARRAY(
+          
+          STRUCT{
+            name = "1: Baby Steps" 
+            checksum = num_1 
+            }
+          STRUCT{
+            name = "2: I Can Crawl!" 
+            checksum = num_2 
+            }
+          STRUCT{
+            name = "3: Hold My Own" 
+            checksum = num_3 
+            }
+          STRUCT{
+            name = "4: Let's Do This Thing" 
+            checksum = num_4 
+            }
+          STRUCT{
+            name = "5: Bring It On!" 
+            checksum = num_5 
+            }
+          
+        )
+        
+#00028  game_type_info = ARRAY(
+          
+          STRUCT{
+            name = "Trick Attack" 
+            checksum = nettrickattack 
+            value = choices_endgame_other 
+            }
+          STRUCT{
+            name = "Graffiti" 
+            checksum = netgraffiti 
+            value = empty_choices 
+            }
+          STRUCT{
+            name = "Slap!" 
+            checksum = netslap 
+            value = empty_choices 
+            }
+          STRUCT{
+            name = "King of the Hill" 
+            checksum = netking 
+            value = empty_choices 
+            }
+          STRUCT{
+            name = "Keep-Away" 
+            checksum = beachball 
+            value = choices_endgame_other 
+            }
+          STRUCT{
+            name = "Control Zone" 
+            checksum = ownthezone 
+            value = choices_endgame_zone 
+            }
+          STRUCT{
+            name = "Capture the Flag" 
+            checksum = ctf 
+            value = choices_endgame_ctf 
+            }
+          
+        )
+        
+#00038  level_info = ARRAY(
+          
+          STRUCT{
+            name = "Foundry" 
+            checksum = load_foun 
+            }
+          STRUCT{
+            name = "Canada" 
+            checksum = load_can 
+            }
+          STRUCT{
+            name = "Suburbia" 
+            checksum = load_sub 
+            }
+          STRUCT{
+            name = "Skater Island" 
+            checksum = load_si 
+            }
+          STRUCT{
+            name = "Rio" 
+            checksum = load_rio 
+            }
+          STRUCT{
+            name = "Airport" 
+            checksum = load_ap 
+            }
+          STRUCT{
+            name = "Los Angeles" 
+            checksum = load_la 
+            }
+          STRUCT{
+            name = "Tokyo" 
+            checksum = load_tok 
+            }
+          STRUCT{
+            name = "Ship" 
+            checksum = load_shp 
+            }
+          STRUCT{
+            name = "Warehouse" 
+            checksum = load_ware 
+            }
+          STRUCT{
+            name = "Burnside" 
+            checksum = load_burn 
+            }
+          STRUCT{
+            name = "Roswell" 
+            checksum = load_ros 
+            }
+          
+        )
+        
+#00053  dialup_authentication_types = ARRAY(
+          
+          STRUCT{
+            name = "Yes" 
+            checksum = yes 
+            }
+          STRUCT{
+            name = "No" 
+            checksum = no 
+            }
+          
+        )
+        
+#00058  device_types = ARRAY(
+          
+          STRUCT{
+            name = "None" 
+            checksum = device_none 
+            }
+          STRUCT{
+            name = "Ethernet (Network Adaptor for PS2)" 
+            checksum = device_broadband_pc 
+            }
+          STRUCT{
+            name = "Ethernet (Network Adaptor for PS2) (PPPoE)" 
+            checksum = device_broadband_pc_pppoe 
+            }
+          STRUCT{
+            name = "USB Ethernet Adaptor" 
+            checksum = device_broadband_usb 
+            }
+          STRUCT{
+            name = "USB Ethernet Adaptor (PPPoE)" 
+            checksum = device_broadband_usb_pppoe 
+            }
+          STRUCT{
+            name = "Modem (Network Adaptor for PS2)" 
+            checksum = device_sony_modem 
+            }
+          STRUCT{
+            name = "USB Modem" 
+            checksum = device_usb_modem 
+            }
+          
+        )
+        
+#00068  broadband_types = ARRAY(
+          
+          STRUCT{
+            name = "Auto-Detect (DHCP)" 
+            checksum = ip_dhcp 
+            }
+          STRUCT{
+            name = "Static IP Address" 
+            checksum = ip_static 
+            }
+          
+        )
+        
+#00073  boolean_types = ARRAY(
+          
+          STRUCT{
+            name = "Yes" 
+            checksum = boolean_true 
+            }
+          STRUCT{
+            name = "No" 
+            checksum = boolean_false 
+            }
+          
+        )
+        
+#00078  default_master_servers = ARRAY(
+          
+          STRUCT{
+            name = "205.147.4.17" 
+            }
+          STRUCT{
+            name = "63.241.179.8" 
+            }
+          STRUCT{
+            name = "205.147.28.3" 
+            }
+          
+        )
+        
+#00084  default_network_preferences = STRUCT{
+          game_type = STRUCT{
+            ui_string = "Trick Attack" 
+            checksum = nettrickattack 
+            }
+          game_end_type = STRUCT{
+            ui_string = "None" 
+            checksum = choice_none 
+            }
+          game_end_cond = STRUCT{
+            ui_string = "None" 
+            checksum = choice_none 
+            }
+          num_players = STRUCT{
+            ui_string = "4 Players" 
+            checksum = num_4 
+            value = 4 
+            }
+          num_observers = STRUCT{
+            ui_string = "No Observers" 
+            checksum = num_0 
+            value = 0 
+            }
+          password = STRUCT{
+            ui_string = "" 
+            }
+          level = STRUCT{
+            ui_string = "Foundry" 
+            checksum = load_foun 
+            }
+          server_name = STRUCT{
+            ui_string = "Gearbox" 
+            }
+          network_id = STRUCT{
+            ui_string = "ProSkater" 
+            }
+          ip_address = STRUCT{
+            ui_string = "192.168.0.10" 
+            }
+          gateway = STRUCT{
+            ui_string = "192.168.0.1" 
+            }
+          subnet_mask = STRUCT{
+            ui_string = "255.255.255.0" 
+            }
+          auto_dns = STRUCT{
+            ui_string = "Yes" 
+            checksum = boolean_true 
+            }
+          dns_server = STRUCT{
+            ui_string = "0.0.0.0" 
+            }
+          dns_server2 = STRUCT{
+            ui_string = "0.0.0.0" 
+            }
+          device_type = STRUCT{
+            ui_string = "None" 
+            checksum = device_none 
+            }
+          broadband_type = STRUCT{
+            ui_string = "Auto-Detect (DHCP)" 
+            checksum = ip_dhcp 
+            }
+          dialup_number = STRUCT{
+            ui_string = "" 
+            }
+          dialup_username = STRUCT{
+            ui_string = "" 
+            }
+          dialup_password = STRUCT{
+            ui_string = "" 
+            }
+          time_limit = STRUCT{
+            ui_string = "2 minutes" 
+            checksum = time_120 
+            time = 120 
+            }
+          host_name = STRUCT{
+            ui_string = "" 
+            }
+          domain_name = STRUCT{
+            ui_string = "" 
+            }
+          dialup_authentication = STRUCT{
+            ui_string = "Yes" 
+            checksum = yes 
+            }
+          skill_level = STRUCT{
+            ui_string = "3: Hold My Own" 
+            checksum = num_3 
+            }
+          use_default_master_servers = STRUCT{
+            ui_string = "Yes" 
+            checksum = boolean_true 
+            }
+          master_server1 = STRUCT{
+            ui_string = "0.0.0.0" 
+            }
+          master_server2 = STRUCT{
+            ui_string = "0.0.0.0" 
+            }
+          }
+        
+#00115  FUNCTION chosen_start_game 
+#00117    LoadPendingPlayers 
+#00118    StartNetworkGame 
+#00119  END FUNCTION
+          
+#00120  FUNCTION net_chosen_join_server 
+#00122    SetServerMode off 
+#00123    JoinServer NULL 
+#00124  END FUNCTION
+          
+#00125  FUNCTION set_network_mode 
+#00127    SetNetworkMode NULL 
+#00128    UseNetworkPreferences 
+#00129  END FUNCTION
+          
+#00130  FUNCTION choose_lan 
+#00132    set_network_mode NULL 
+#00133    StartServerList 
+#00134    refresh_server_list 
+#00135  END FUNCTION
+          
+#00136  FUNCTION set_join_mode 
+#00138    StopServerList 
+#00139    SetJoinMode NULL 
+#00140  END FUNCTION
+          
+#00141  FUNCTION connect_to_internet 
+#00143    set_network_mode NULL 
+#00144    ConnectToInternet 
+#00145  END FUNCTION
+          
+#00146  FUNCTION disconnect_from_internet 
+#00148    DisconnectFromInternet 
+#00149  END FUNCTION
+          
+#00150  FUNCTION chosen_leave_server 
+#00152    IF InNetGame 
+#00155      ParkEditorCommand command = DestroyGeneratedPark 
+            
+#00156    ELSE 
+#00157      ParkEditorCommand command = DestroyGeneratedPark 
+            instant 
+#00158    END IF 
+#00159    change FirstTimeInGameFlow_Startup = 1 
+          
+#00161    Cleanup 
+#00162    LeaveServer 
+#00163    SetNetworkMode 
+#00164  END FUNCTION
+          
+#00165  FUNCTION server_setup_complete 
+#00167    FreeServerList 
+#00168    SetGameType NetLobby 
+#00169    SetServerMode 
+#00170    set_preferences_from_ui prefs = network 
+          field = "level" 
+          level_checksum = load_foun 
+          string = "Foundry" 
+          
+#00172    Request_Level level = use_preferences 
+          
+#00173    SetGameState On 
+#00175  END FUNCTION
+          
+#00181  FUNCTION refresh_server_list 
+#00183    RefreshServerList 
+#00186  END FUNCTION
+          
+#00187  FUNCTION stop_server_list 
+#00189    StopServerList 
+#00190  END FUNCTION
+          
+#00191  FUNCTION start_server_list 
+#00193    StartServerList 
+#00194  END FUNCTION
+          
+#00195  FUNCTION set_ui_from_preferences 
+#00197    printf "show detected" 
+#00198    SetUIFromPreferences NULL 
+#00199  END FUNCTION
+          
+#00200  FUNCTION set_preferences_from_ui 
+#00202    printf "contents changed detected" 
+#00203    SetPreferencesFromUI NULL 
+#00204  END FUNCTION
+          
+#00205  FUNCTION join_with_password 
+#00207    printf "Attempting join with password" 
+#00208    JoinWithPassword NULL 
+#00209  END FUNCTION
+          
+#00210  FUNCTION test_network_settings 
+#00212    TestNetworkSetup 
+#00213  END FUNCTION
+          
+#00214  FUNCTION choose_level 
+#00216    printf NULL 
+#00217    set_preferences_from_ui prefs = network 
+          field = "level" 
+          level_checksum = GLOBAL.level 
+          NULL 
+#00218    go_back id = front_net_level_main_menu 
+          
+#00219  END FUNCTION
+          
+#00220  FUNCTION set_connection_settings_display 
+#00222    VerifyParam param = id 
+          func = set_connection_settings_display 
+          NULL 
+#00224    IF DeviceChosen 
+#00226      LaunchEvent type = enable 
+            target = GLOBAL.id 
+            
+#00227    ELSE 
+#00228      LaunchEvent type = disable 
+            target = GLOBAL.id 
+            
+#00229      LaunchEvent type = hide 
+            target = GLOBAL.id 
+            
+#00230    END IF 
+#00231  END FUNCTION
+          
+#00232  FUNCTION validate_observer_option 
+#00234    VerifyParam param = id 
+          func = validate_observer_option 
+          NULL 
+#00236    IF ObserversAllowed 
+#00238      LaunchEvent type = enable 
+            target = GLOBAL.id 
+            
+#00239    ELSE 
+#00240      LaunchEvent type = disable 
+            target = GLOBAL.id 
+            
+#00241      LaunchEvent type = hide 
+            target = GLOBAL.id 
+            
+#00242    END IF 
+#00243  END FUNCTION
+          
+#00244  FUNCTION validate_DNS_option 
+#00246    VerifyParam param = id 
+          func = validate_DNS_option 
+          NULL 
+#00248    IF AutoDNS 
+#00250      LaunchEvent type = disable 
+            target = GLOBAL.id 
+            
+#00251      LaunchEvent type = hide 
+            target = GLOBAL.id 
+            
+#00252    ELSE 
+#00253      LaunchEvent type = enable 
+            target = GLOBAL.id 
+            
+#00254    END IF 
+#00255  END FUNCTION
+          
+#00256  FUNCTION validate_master_server_option 
+#00258    VerifyParam param = id 
+          func = validate_master_server_option 
+          NULL 
+#00260    IF UsingDefaultMasterServers 
+#00262      LaunchEvent type = disable 
+            target = GLOBAL.id 
+            
+#00263      LaunchEvent type = hide 
+            target = GLOBAL.id 
+            
+#00264    ELSE 
+#00265      LaunchEvent type = enable 
+            target = GLOBAL.id 
+            
+#00266    END IF 
+#00267  END FUNCTION
+          
+#00268  FUNCTION validate_ip_option 
+#00270    VerifyParam param = id 
+          func = validate_ip_option 
+          NULL 
+#00272    IF UsingDHCP 
+#00274      LaunchEvent type = disable 
+            target = GLOBAL.id 
+            
+#00275      LaunchEvent type = hide 
+            target = GLOBAL.id 
+            
+#00276    ELSE 
+#00277      LaunchEvent type = enable 
+            target = GLOBAL.id 
+            
+#00278    END IF 
+#00279  END FUNCTION
+          
+#00280  FUNCTION validate_player_option 
+#00282    VerifyParam param = id 
+          func = validate_player_option 
+          NULL 
+#00284    IF NumPlayersAllowed GLOBAL.checksum 
+            
+#00286      LaunchEvent type = enable 
+            target = GLOBAL.id 
+            
+#00287    ELSE 
+#00288      LaunchEvent type = disable 
+            target = GLOBAL.id 
+            
+#00289      LaunchEvent type = hide 
+            target = GLOBAL.id 
+            
+#00290    END IF 
+#00291  END FUNCTION
+          
+#00292  FUNCTION net_menu_create 
+#00294    setdefaultproperty type = textdrawer 
+          name = main 
+          
+#00296    createmenu STRUCT{
+            type = verticalmenu 
+            id = net_type_menu 
+            x = 25.0 
+            y = 90.0 
+            w = 380.0 
+            h = 400.0 
+            just_center_x just_center_y blue_top eventhandlers = ARRAY(
+              
+              STRUCT{
+                type = backeventhandler 
+                target = "Player1ToMainMenuCamAnim" 
+                }
+              STRUCT{
+                type = hideeventhandler 
+                target = "SliderHide" 
+                }
+              STRUCT{
+                type = showeventhandler 
+                target = "SliderShow" 
+                }
+              
+            )
+            children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Network Play" 
+                static dont_gray drawer = title 
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = network_internet 
+                text = "Internet" 
+                kill_menu eventhandlers = ARRAY(
+                  
+                  STRUCT{
+                    type = ChooseEventHandler 
+                    target = "invokeUIScreen" 
+                    params = STRUCT{
+                      screen = gs_main_window 
+                      }
+                    }
+                  STRUCT{
+                    type = ChooseEventHandler 
+                    target = "connect_to_internet" 
+                    params = STRUCT{
+                      INTERNET_MODE }
+                    }
+                  
+                )
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = network_lan 
+                text = "LAN" 
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler 
+                  link = multi_menu 
+                  target = "choose_lan" 
+                  params = STRUCT{
+                    LAN_MODE }
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "-------" 
+                static }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Choose Skater" 
+                link = pro_menu 
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "-------" 
+                static }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Network Player Name" 
+                link = net_network_id_control 
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = network_id_display2 
+                text = "Current Network ID" 
+                static dont_gray drawer = keyboard_property 
+                eventhandler = STRUCT{
+                  type = showeventhandler 
+                  target = "set_ui_from_preferences" 
+                  params = STRUCT{
+                    prefs = network 
+                    field = "network_id" 
+                    }
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Done" 
+                target = "go_back" 
+                params = STRUCT{
+                  id = net_type_menu 
+                  }
+                }
+              
+            )
+            }
+          
+#00375    createmenu STRUCT{
+            type = verticalmenu 
+            id = net_server_setup_menu 
+            x = 45.0 
+            y = 70.0 
+            w = 300.0 
+            h = 400.0 
+            just_center_x just_center_y blue_top children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Server Setup" 
+                static dont_gray drawer = title 
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Server Name" 
+                link = net_server_name_control 
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Current Server Name" 
+                static dont_gray drawer = keyboard_property 
+                eventhandler = STRUCT{
+                  type = showeventhandler 
+                  target = "set_ui_from_preferences" 
+                  params = STRUCT{
+                    prefs = network 
+                    field = "server_name" 
+                    }
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Maximum Players" 
+                link = net_num_players_menu 
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Current Players" 
+                static dont_gray drawer = keyboard_property 
+                eventhandler = STRUCT{
+                  type = showeventhandler 
+                  target = "set_ui_from_preferences" 
+                  params = STRUCT{
+                    prefs = network 
+                    field = "num_players" 
+                    }
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Skill Level" 
+                link = net_skill_level_control 
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = skill_level_display 
+                text = "Current Skill Level" 
+                static dont_gray drawer = keyboard_property 
+                eventhandler = STRUCT{
+                  type = showeventhandler 
+                  target = "set_ui_from_preferences" 
+                  params = STRUCT{
+                    prefs = network 
+                    field = "skill_level" 
+                    }
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Password" 
+                link = net_password_control 
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = password_display 
+                text = "Current Password" 
+                static dont_gray drawer = keyboard_property 
+                eventhandler = STRUCT{
+                  type = showeventhandler 
+                  target = "set_ui_from_preferences" 
+                  params = STRUCT{
+                    prefs = network 
+                    field = "password" 
+                    mask_password }
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = net_ready 
+                text = "Ready" 
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler 
+                  target = "server_setup_complete" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Done" 
+                target = "go_back" 
+                params = STRUCT{
+                  id = net_server_setup_menu 
+                  }
+                }
+              
+            )
+            }
+          
+#00547    CreateAndAttachMenu STRUCT{
+            type = verticalmenu 
+            id = end_run_menu 
+            game_menu_properties blue_top eventhandler = STRUCT{
+              type = showeventhandler 
+              target = "Refresh_EndofRunMenu" 
+              }
+            children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "end of run" 
+                static dont_gray drawer = title 
+                }
+              
+            )
+            parent = contain1 
+            }
+          
+#00568    create_and_attach_generic_array_menu STRUCT{
+            menu_id = net_game_type_menu 
+            array_name = game_type_info 
+            field = game_type 
+            title = "Game Type" 
+            prefs = network 
+            x = 45.0 
+            y = 120.0 
+            w = 300.0 
+            h = 400.0 
+            }
+          
+#00587    create_and_attach_generic_array_menu STRUCT{
+            menu_id = net_num_players_menu 
+            array_name = num_players_info 
+            field = num_players 
+            title = "Number of Players" 
+            prefs = network 
+            validationscript = "validate_player_option" 
+            x = 140.0 
+            y = 120.0 
+            w = 360.0 
+            h = 400.0 
+            }
+          
+#00598    create_and_attach_generic_array_menu STRUCT{
+            menu_id = net_num_obs_menu 
+            array_name = num_observers_info 
+            field = num_observers 
+            title = "Number of Observers" 
+            prefs = network 
+            x = 120.0 
+            y = 120.0 
+            w = 400.0 
+            h = 400.0 
+            }
+          
+#00608    create_and_attach_generic_array_menu STRUCT{
+            menu_id = net_skill_level_control 
+            array_name = skill_level_info 
+            field = skill_level 
+            title = "Choose a skill level" 
+            prefs = network 
+            x = 140.0 
+            y = 120.0 
+            w = 360.0 
+            h = 400.0 
+            }
+          
+#00617    CreateAndAttachMenu STRUCT{
+            type = verticalmenu 
+            id = front_net_level_main_menu 
+            x = 45.0 
+            y = 90.0 
+            w = 300.0 
+            h = 400.0 
+            just_center_x just_center_y blue_top eventhandlers = ARRAY(
+              
+              STRUCT{
+                type = showeventhandler 
+                target = "populate_level_menu" 
+                params = STRUCT{
+                  choose_script = "choose_level" 
+                  parent_menu = front_net_level_main_menu 
+                  }
+                }
+              
+            )
+            children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Levels" 
+                static dont_gray drawer = title 
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Play Custom Park" 
+                target = "_FrontNetMenuParkEditorLoad" 
+                }
+              
+            )
+            parent = contain1 
+            }
+          
+#00658    createmenu STRUCT{
+            type = keyboardcontrol 
+            id = net_password_control 
+            x = 160.0 
+            y = 56.0 
+            w = 320.0 
+            h = 336.0 
+            just_center_x just_center_y num_columns = 13 
+            standard_charset min_chars = 0 
+            max_chars = 8 
+            title_string = "Enter password:" 
+            hide_password eventhandlers = ARRAY(
+              
+              STRUCT{
+                type = showeventhandler 
+                target = "set_ui_from_preferences" 
+                params = STRUCT{
+                  prefs = network 
+                  field = "password" 
+                  }
+                }
+              STRUCT{
+                type = contentschangedeventhandler 
+                target = "set_preferences_from_ui" 
+                params = STRUCT{
+                  prefs = network 
+                  field = "password" 
+                  }
+                }
+              
+            )
+            }
+          
+#00682    createmenu STRUCT{
+            type = verticalmenu 
+            x = 300.0 
+            y = 10.0 
+            w = 300.0 
+            h = 400.0 
+            just_center_x just_center_y id = ip_parent_menu 
+            blue_top children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                id = server_list 
+                text = "Server List" 
+                static dont_gray drawer = title_small 
+                }
+              STRUCT{
+                type = scrollingmenu 
+                x = 0.0 
+                y = 90.0 
+                w = 300.0 
+                h = 400.0 
+                just_center_x just_center_y id = ip_menu 
+                num_visible = 13 
+                }
+              
+            )
+            }
+          
+#00711    createmenu STRUCT{
+            type = verticalmenu 
+            x = 45.0 
+            y = 90.0 
+            w = 300.0 
+            h = 400.0 
+            just_center_x just_center_y id = region_parent_menu 
+            blue_top children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Region List" 
+                static dont_gray drawer = title 
+                }
+              STRUCT{
+                type = scrollingmenu 
+                x = 0.0 
+                y = 90.0 
+                w = 300.0 
+                h = 400.0 
+                just_center_x just_center_y id = region_menu 
+                num_visible = 10 
+                }
+              
+            )
+            }
+          
+#00740    createmenu STRUCT{
+            type = verticalmenu 
+            x = 0.0 
+            y = 125.0 
+            w = 280.0 
+            h = 200.0 
+            just_center_x just_center_y id = server_props_menu 
+            blue_top children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Server Info" 
+                static dont_gray drawer = title_small 
+                }
+              STRUCT{
+                type = verticalmenu 
+                x = 0.0 
+                y = 20.0 
+                w = 280.0 
+                h = 200.0 
+                drawer = test 
+                just_center_x just_center_y id = game_options 
+                }
+              
+            )
+            }
+          
+#00765    createmenu STRUCT{
+            type = verticalmenu 
+            x = 0.0 
+            y = 10.0 
+            w = 280.0 
+            h = 120.0 
+            just_center_x just_center_y id = net_menu 
+            blue_top children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Actions" 
+                static dont_gray drawer = title_small 
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = start_server 
+                text = "Start Server" 
+                link = net_server_setup_menu 
+                target = "stop_server_list" 
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = action_join 
+                text = "Join Server" 
+                static link = ip_parent_menu 
+                no_visit target = "set_join_mode" 
+                params = STRUCT{
+                  JOIN_MODE_PLAY }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = action_refresh 
+                text = "Refresh" 
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler 
+                  target = "refresh_server_list" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Done" 
+                target = "go_back" 
+                params = STRUCT{
+                  id = net_menu 
+                  }
+                }
+              
+            )
+            }
+          
+#00799    createmenu STRUCT{
+            type = keyboardcontrol 
+            id = enter_password_control 
+            x = 160.0 
+            y = 56.0 
+            w = 320.0 
+            h = 336.0 
+            just_center_x just_center_y num_columns = 13 
+            standard_charset min_chars = 0 
+            max_chars = 8 
+            no_back title_string = "Enter password:" 
+            target = "join_with_password" 
+            params = STRUCT{
+              params_test = 1 
+              }
+            hide_password eventhandlers = ARRAY(
+              
+              STRUCT{
+                type = showeventhandler 
+                target = "clear_keyboard_string" 
+                params = STRUCT{
+                  control_id = enter_password_control 
+                  string = "" 
+                  }
+                }
+              
+            )
+            }
+          
+#00825    VerifyParam param = root_container 
+          func = net_menu_create 
+          NULL 
+#00827    attachchild parent = GLOBAL.root_container 
+          child = net_type_menu 
+          
+#00829    attachchild parent = GLOBAL.root_container 
+          child = net_server_setup_menu 
+          
+#00830    attachchild parent = GLOBAL.root_container 
+          child = net_password_control 
+          
+#00831    attachchild parent = GLOBAL.root_container 
+          child = region_parent_menu 
+          
+#00832    attachchild parent = GLOBAL.root_container 
+          child = enter_password_control 
+          
+#00833    net_options_menu_create root_container = contain1 
+          
+#00836    createmenu STRUCT{
+            type = verticalmenu 
+            id = multi_menu 
+            x = 10.0 
+            y = 5.0 
+            w = 620.0 
+            h = 224.0 
+            blue_top children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                id = server_list_title 
+                text = "Network Games" 
+                static dont_gray drawer = title 
+                }
+              STRUCT{
+                type = menucontainer 
+                id = multi_container 
+                show_all_children eventhandler = STRUCT{
+                  type = leftrightcontroller 
+                  left = ll 
+                  right = rr 
+                  }
+                }
+              
+            )
+            }
+          
+#00851    createmenu STRUCT{
+            type = menucontainer 
+            id = ll 
+            }
+          
+#00855    attachchild parent = multi_container 
+          child = ll 
+          
+#00856    createmenu STRUCT{
+            type = menucontainer 
+            id = rr 
+            }
+          
+#00860    attachchild parent = multi_container 
+          child = rr 
+          
+#00874    attachchild parent = ll 
+          child = net_menu 
+          
+#00876    attachchild parent = rr 
+          child = ip_parent_menu 
+          
+#00877    attachchild parent = multi_container 
+          child = server_props_menu 
+          
+#00878    attachchild parent = GLOBAL.root_container 
+          child = multi_menu 
+          
+#00880  END FUNCTION
+          
+#00884  FUNCTION set_icon_texture 
+#00886    VerifyParam param = id 
+          func = set_icon_texture 
+          NULL 
+#00887    SetIconTexture id = GLOBAL.id 
+          texture = GLOBAL.texture 
+          
+#00888  END FUNCTION
+          
+#00889  FUNCTION net_options_menu_create 
+#00891    VerifyParam param = root_container 
+          func = net_options_menu_create 
+          NULL 
+#00893    CreateAndAttachMenu STRUCT{
+            type = verticalmenu 
+            id = net_network_setup_menu 
+            x = 25.0 
+            y = 90.0 
+            w = 380.0 
+            h = 400.0 
+            parent = GLOBAL.root_container 
+            just_center_x just_center_y blue_top children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Network Setup" 
+                static dont_gray drawer = title 
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Network Player Name" 
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler 
+                  link = net_network_id_control 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = network_id_display 
+                text = "Current Network ID" 
+                static dont_gray drawer = keyboard_property 
+                eventhandler = STRUCT{
+                  type = showeventhandler 
+                  target = "set_ui_from_preferences" 
+                  params = STRUCT{
+                    prefs = network 
+                    field = "network_id" 
+                    }
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = network_setup_advanced_item 
+                text = "Advanced Options" 
+                link = net_advanced_menu 
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = save_options_item 
+                text = "Save Settings" 
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler 
+                  target = "NetworkSetupMenuSave" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_options_item 
+                text = "Load Settings" 
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler 
+                  target = "NetworkSetupMenuLoad" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = net_network_setup_menu_done 
+                text = "Done" 
+                target = "go_back" 
+                params = STRUCT{
+                  id = net_network_setup_menu 
+                  }
+                }
+              
+            )
+            }
+          
+#00992    create_and_attach_generic_array_menu STRUCT{
+            menu_id = net_device_type_menu 
+            array_name = device_types 
+            field = device_type 
+            title = "Hardware Setup" 
+            prefs = network 
+            x = 120.0 
+            y = 120.0 
+            w = 400.0 
+            h = 400.0 
+            }
+          
+#01001    CreateAndAttachMenu STRUCT{
+            type = textmenuelement 
+            id = dsl_pppoe_message 
+            static dont_gray parent = net_device_type_menu 
+            drawer = keyboard_property 
+            text = "Most DSL users should select PPPoE devices" 
+            }
+          
+#01010    CreateAndAttachMenu STRUCT{
+            type = verticalmenu 
+            id = net_broadband_setup_menu 
+            parent = GLOBAL.root_container 
+            x = 135.0 
+            y = 75.0 
+            w = 370.0 
+            h = 300.0 
+            just_center_x just_center_y blue_top children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Connection Settings" 
+                static dont_gray drawer = title 
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Type" 
+                link = net_broadband_type_menu 
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = broadband_type_display 
+                text = "Current IP Type" 
+                static dont_gray drawer = keyboard_property 
+                eventhandler = STRUCT{
+                  type = showeventhandler 
+                  target = "set_ui_from_preferences" 
+                  params = STRUCT{
+                    prefs = network 
+                    field = "broadband_type" 
+                    }
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "IP Address" 
+                eventhandlers = ARRAY(
+                  
+                  STRUCT{
+                    type = showeventhandler 
+                    target = "validate_ip_option" 
+                    }
+                  STRUCT{
+                    type = ChooseEventHandler 
+                    link = net_ip_address_control 
+                    }
+                  
+                )
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = ip_address_display 
+                text = "Current IP Address" 
+                static dont_gray drawer = keyboard_property 
+                eventhandler = STRUCT{
+                  type = showeventhandler 
+                  target = "set_ui_from_preferences" 
+                  params = STRUCT{
+                    prefs = network 
+                    field = "ip_address" 
+                    }
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Gateway" 
+                eventhandlers = ARRAY(
+                  
+                  STRUCT{
+                    type = showeventhandler 
+                    target = "validate_ip_option" 
+                    }
+                  STRUCT{
+                    type = ChooseEventHandler 
+                    link = net_gateway_control 
+                    }
+                  
+                )
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = gateway_display 
+                text = "Current Gateway" 
+                static dont_gray drawer = keyboard_property 
+                eventhandler = STRUCT{
+                  type = showeventhandler 
+                  target = "set_ui_from_preferences" 
+                  params = STRUCT{
+                    prefs = network 
+                    field = "gateway" 
+                    }
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Subnet Mask" 
+                eventhandlers = ARRAY(
+                  
+                  STRUCT{
+                    type = showeventhandler 
+                    target = "validate_ip_option" 
+                    }
+                  STRUCT{
+                    type = ChooseEventHandler 
+                    link = net_subnet_control 
+                    }
+                  
+                )
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = subnet_display 
+                text = "Current Subnet Mask" 
+                static dont_gray drawer = keyboard_property 
+                eventhandler = STRUCT{
+                  type = showeventhandler 
+                  target = "set_ui_from_preferences" 
+                  params = STRUCT{
+                    prefs = network 
+                    field = "subnet_mask" 
+                    }
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "* Hostname" 
+                link = net_host_name_control 
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = host_name_display 
+                text = "Current Host/User Name" 
+                static dont_gray drawer = keyboard_property 
+                eventhandler = STRUCT{
+                  type = showeventhandler 
+                  target = "set_ui_from_preferences" 
+                  params = STRUCT{
+                    prefs = network 
+                    field = "host_name" 
+                    }
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Done" 
+                target = "go_back" 
+                params = STRUCT{
+                  id = net_broadband_setup_menu 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "* - Some ISPs Require This" 
+                static dont_gray drawer = keyboard_property 
+                }
+              
+            )
+            }
+          
+#01228    CreateAndAttachMenu STRUCT{
+            type = keyboardcontrol 
+            id = net_ip_address_control 
+            parent = GLOBAL.root_container 
+            x = 160.0 
+            y = 56.0 
+            w = 320.0 
+            h = 336.0 
+            just_center_x just_center_y num_columns = 13 
+            ip_charset min_chars = 7 
+            max_chars = 15 
+            title_string = "Enter ip address:" 
+            }
+          
+#01242    add_keyboard_handlers STRUCT{
+            keyboard_id = net_ip_address_control 
+            prefs = network 
+            field = "ip_address" 
+            }
+          
+#01248    CreateAndAttachMenu STRUCT{
+            type = keyboardcontrol 
+            id = net_gateway_control 
+            parent = GLOBAL.root_container 
+            x = 160.0 
+            y = 56.0 
+            w = 320.0 
+            h = 336.0 
+            just_center_x just_center_y num_columns = 13 
+            ip_charset min_chars = 7 
+            max_chars = 15 
+            title_string = "Enter gateway:" 
+            }
+          
+#01262    add_keyboard_handlers STRUCT{
+            keyboard_id = net_gateway_control 
+            prefs = network 
+            field = "gateway" 
+            }
+          
+#01268    CreateAndAttachMenu STRUCT{
+            type = keyboardcontrol 
+            id = net_network_id_control 
+            parent = GLOBAL.root_container 
+            x = 160.0 
+            y = 56.0 
+            w = 320.0 
+            h = 336.0 
+            just_center_x just_center_y num_columns = 13 
+            standard_charset min_chars = 1 
+            max_chars = 15 
+            title_string = "Enter network player name:" 
+            }
+          
+#01282    add_keyboard_handlers STRUCT{
+            keyboard_id = net_network_id_control 
+            prefs = network 
+            field = "network_id" 
+            }
+          
+#01288    CreateAndAttachMenu STRUCT{
+            type = keyboardcontrol 
+            id = net_server_name_control 
+            parent = GLOBAL.root_container 
+            x = 160.0 
+            y = 56.0 
+            w = 320.0 
+            h = 336.0 
+            just_center_x just_center_y num_columns = 13 
+            standard_charset min_chars = 1 
+            max_chars = 15 
+            title_string = "Enter server name:" 
+            }
+          
+#01302    add_keyboard_handlers STRUCT{
+            keyboard_id = net_server_name_control 
+            prefs = network 
+            field = "server_name" 
+            }
+          
+#01308    create_and_attach_generic_array_menu STRUCT{
+            menu_id = net_broadband_type_menu 
+            array_name = broadband_types 
+            field = broadband_type 
+            title = "Connection Type" 
+            prefs = network 
+            x = 165.0 
+            y = 120.0 
+            w = 310.0 
+            h = 400.0 
+            }
+          
+#01317    create_and_attach_generic_array_menu STRUCT{
+            menu_id = auto_dns_menu 
+            array_name = boolean_types 
+            field = auto_dns 
+            title = "Auto-Obtain DNS Servers?" 
+            prefs = network 
+            x = 70.0 
+            y = 120.0 
+            w = 500.0 
+            h = 400.0 
+            }
+          
+#01326    create_and_attach_generic_array_menu STRUCT{
+            menu_id = net_options_use_defaults_menu 
+            array_name = boolean_types 
+            field = use_default_master_servers 
+            title = "Use Defaults?" 
+            prefs = network 
+            x = 165.0 
+            y = 120.0 
+            w = 310.0 
+            h = 400.0 
+            }
+          
+#01335    CreateAndAttachMenu STRUCT{
+            type = verticalmenu 
+            id = net_advanced_menu 
+            x = 135.0 
+            y = 110.0 
+            w = 370.0 
+            h = 300.0 
+            just_center_x just_center_y blue_top parent = GLOBAL.root_container 
+            children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Advanced Options" 
+                dont_gray static drawer = title 
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Use Defaults" 
+                link = net_options_use_defaults_menu 
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = net_options_use_defaults_display 
+                text = "Current Master Type" 
+                static dont_gray drawer = keyboard_property 
+                eventhandler = STRUCT{
+                  type = showeventhandler 
+                  target = "set_ui_from_preferences" 
+                  params = STRUCT{
+                    prefs = network 
+                    field = "use_default_master_servers" 
+                    }
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Primary Master Server" 
+                eventhandlers = ARRAY(
+                  
+                  STRUCT{
+                    type = showeventhandler 
+                    target = "validate_master_server_option" 
+                    }
+                  STRUCT{
+                    type = ChooseEventHandler 
+                    link = net_master_server1_control 
+                    }
+                  
+                )
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = net_advanced_master_server1_display 
+                text = "Current Master Server" 
+                static dont_gray drawer = keyboard_property 
+                eventhandler = STRUCT{
+                  type = showeventhandler 
+                  target = "set_ui_from_preferences" 
+                  params = STRUCT{
+                    prefs = network 
+                    field = "master_server1" 
+                    }
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Secondary Master Server" 
+                eventhandlers = ARRAY(
+                  
+                  STRUCT{
+                    type = showeventhandler 
+                    target = "validate_master_server_option" 
+                    }
+                  STRUCT{
+                    type = ChooseEventHandler 
+                    link = net_master_server2_control 
+                    }
+                  
+                )
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = net_advanced_master_server2_display 
+                text = "Current Master Server" 
+                static dont_gray drawer = keyboard_property 
+                eventhandler = STRUCT{
+                  type = showeventhandler 
+                  target = "set_ui_from_preferences" 
+                  params = STRUCT{
+                    prefs = network 
+                    field = "master_server2" 
+                    }
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Done" 
+                target = "go_back" 
+                params = STRUCT{
+                  id = net_advanced_menu 
+                  }
+                }
+              
+            )
+            }
+          
+#01431    CreateAndAttachMenu STRUCT{
+            type = verticalmenu 
+            id = net_dialup_setup_menu 
+            x = 135.0 
+            y = 110.0 
+            w = 370.0 
+            h = 300.0 
+            just_center_x just_center_y blue_top parent = GLOBAL.root_container 
+            children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Connection Settings" 
+                dont_gray static drawer = title 
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "ISP Phone Number" 
+                link = net_dialup_number_control 
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = dialup_number_display 
+                text = "Current Dialup Number" 
+                static dont_gray drawer = keyboard_property 
+                eventhandler = STRUCT{
+                  type = showeventhandler 
+                  target = "set_ui_from_preferences" 
+                  params = STRUCT{
+                    prefs = network 
+                    field = "dialup_number" 
+                    }
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "User Name" 
+                link = net_dialup_username_control 
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = dialup_username_display 
+                text = "Current Dialup Username" 
+                static dont_gray drawer = keyboard_property 
+                eventhandler = STRUCT{
+                  type = showeventhandler 
+                  target = "set_ui_from_preferences" 
+                  params = STRUCT{
+                    prefs = network 
+                    field = "dialup_username" 
+                    }
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Password" 
+                link = net_dialup_password_control 
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = dialup_password_display 
+                text = "Current Dialup Password" 
+                static dont_gray drawer = keyboard_property 
+                eventhandler = STRUCT{
+                  type = showeventhandler 
+                  target = "set_ui_from_preferences" 
+                  params = STRUCT{
+                    prefs = network 
+                    field = "dialup_password" 
+                    mask_password }
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Use Authentication" 
+                link = net_dialup_authentication_control 
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = dialup_authentication_display 
+                text = "Current Dialup Authentication" 
+                static dont_gray drawer = keyboard_property 
+                eventhandler = STRUCT{
+                  type = showeventhandler 
+                  target = "set_ui_from_preferences" 
+                  params = STRUCT{
+                    prefs = network 
+                    field = "dialup_authentication" 
+                    }
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Done" 
+                target = "go_back" 
+                params = STRUCT{
+                  id = net_dialup_setup_menu 
+                  }
+                }
+              
+            )
+            }
+          
+#01599    CreateAndAttachMenu STRUCT{
+            type = verticalmenu 
+            id = net_pppoe_setup_menu 
+            parent = GLOBAL.root_container 
+            x = 135.0 
+            y = 120.0 
+            w = 370.0 
+            h = 340.0 
+            just_center_x just_center_y blue_top children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Connection Settings" 
+                dont_gray static drawer = title 
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "User Name" 
+                link = net_dialup_username_control 
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = pppoe_username_display 
+                text = "Current Dialup Username" 
+                static dont_gray drawer = keyboard_property 
+                eventhandler = STRUCT{
+                  type = showeventhandler 
+                  target = "set_ui_from_preferences" 
+                  params = STRUCT{
+                    prefs = network 
+                    field = "dialup_username" 
+                    }
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Password" 
+                link = net_dialup_password_control 
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = pppoe_password_display 
+                text = "Current Dialup Password" 
+                static dont_gray drawer = keyboard_property 
+                eventhandler = STRUCT{
+                  type = showeventhandler 
+                  target = "set_ui_from_preferences" 
+                  params = STRUCT{
+                    prefs = network 
+                    field = "dialup_password" 
+                    mask_password }
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Done" 
+                target = "go_back" 
+                params = STRUCT{
+                  id = net_pppoe_setup_menu 
+                  }
+                }
+              
+            )
+            }
+          
+#01731    CreateAndAttachMenu STRUCT{
+            type = keyboardcontrol 
+            id = net_dialup_number_control 
+            parent = GLOBAL.root_container 
+            x = 160.0 
+            y = 56.0 
+            w = 320.0 
+            h = 336.0 
+            just_center_x just_center_y num_columns = 13 
+            allow_numbers allow_phone_chars min_chars = 3 
+            max_chars = 16 
+            title_string = "Enter ISP Phone Number:" 
+            }
+          
+#01746    add_keyboard_handlers STRUCT{
+            keyboard_id = net_dialup_number_control 
+            prefs = network 
+            field = "dialup_number" 
+            }
+          
+#01752    CreateAndAttachMenu STRUCT{
+            type = keyboardcontrol 
+            id = net_dialup_username_control 
+            parent = GLOBAL.root_container 
+            x = 160.0 
+            y = 56.0 
+            w = 320.0 
+            h = 336.0 
+            just_center_x just_center_y num_columns = 13 
+            standard_charset allow_uppercase allow_lowercase min_chars = 1 
+            max_chars = 36 
+            title_string = "Enter Username:" 
+            }
+          
+#01768    add_keyboard_handlers STRUCT{
+            keyboard_id = net_dialup_username_control 
+            prefs = network 
+            field = "dialup_username" 
+            }
+          
+#01774    CreateAndAttachMenu STRUCT{
+            type = keyboardcontrol 
+            id = net_dialup_password_control 
+            parent = GLOBAL.root_container 
+            x = 160.0 
+            y = 56.0 
+            w = 320.0 
+            h = 336.0 
+            just_center_x just_center_y num_columns = 13 
+            standard_charset allow_uppercase allow_lowercase hide_password min_chars = 1 
+            max_chars = 36 
+            title_string = "Enter Password:" 
+            }
+          
+#01791    add_keyboard_handlers STRUCT{
+            keyboard_id = net_dialup_password_control 
+            prefs = network 
+            field = "dialup_password" 
+            }
+          
+#01797    create_and_attach_generic_array_menu STRUCT{
+            menu_id = net_dialup_authentication_control 
+            array_name = dialup_authentication_types 
+            field = dialup_authentication 
+            title = "Use Authentication?" 
+            prefs = network 
+            x = 135.0 
+            y = 120.0 
+            w = 370.0 
+            h = 400.0 
+            }
+          
+#01806    add_keyboard_handlers STRUCT{
+            keyboard_id = net_dialup_authentication_control 
+            prefs = network 
+            field = "dialup_authentication" 
+            }
+          
+#01812    CreateAndAttachMenu STRUCT{
+            type = keyboardcontrol 
+            id = net_subnet_control 
+            parent = GLOBAL.root_container 
+            x = 160.0 
+            y = 56.0 
+            w = 320.0 
+            h = 336.0 
+            just_center_x just_center_y num_columns = 13 
+            ip_charset min_chars = 7 
+            max_chars = 15 
+            title_string = "Enter subnet mask:" 
+            }
+          
+#01826    add_keyboard_handlers STRUCT{
+            keyboard_id = net_subnet_control 
+            prefs = network 
+            field = "subnet_mask" 
+            }
+          
+#01832    CreateAndAttachMenu STRUCT{
+            type = keyboardcontrol 
+            id = net_master_server1_control 
+            parent = GLOBAL.root_container 
+            x = 160.0 
+            y = 56.0 
+            w = 320.0 
+            h = 336.0 
+            just_center_x just_center_y num_columns = 13 
+            ip_charset min_chars = 7 
+            max_chars = 15 
+            title_string = "Enter Primary Master Server:" 
+            }
+          
+#01846    add_keyboard_handlers STRUCT{
+            keyboard_id = net_master_server1_control 
+            prefs = network 
+            field = "master_server1" 
+            }
+          
+#01852    CreateAndAttachMenu STRUCT{
+            type = keyboardcontrol 
+            id = net_master_server2_control 
+            parent = GLOBAL.root_container 
+            x = 160.0 
+            y = 56.0 
+            w = 320.0 
+            h = 336.0 
+            just_center_x just_center_y num_columns = 13 
+            ip_charset min_chars = 7 
+            max_chars = 15 
+            title_string = "Enter Secondary Master Server:" 
+            }
+          
+#01866    add_keyboard_handlers STRUCT{
+            keyboard_id = net_master_server2_control 
+            prefs = network 
+            field = "master_server2" 
+            }
+          
+#01872    CreateAndAttachMenu STRUCT{
+            type = keyboardcontrol 
+            id = net_dns_control 
+            parent = GLOBAL.root_container 
+            x = 160.0 
+            y = 56.0 
+            w = 320.0 
+            h = 336.0 
+            just_center_x just_center_y num_columns = 13 
+            ip_charset min_chars = 7 
+            max_chars = 15 
+            title_string = "Enter Primary DNS Server:" 
+            }
+          
+#01886    add_keyboard_handlers STRUCT{
+            keyboard_id = net_dns_control 
+            prefs = network 
+            field = "dns_server" 
+            }
+          
+#01892    CreateAndAttachMenu STRUCT{
+            type = keyboardcontrol 
+            id = net_dns_control2 
+            parent = GLOBAL.root_container 
+            x = 160.0 
+            y = 56.0 
+            w = 320.0 
+            h = 336.0 
+            just_center_x just_center_y num_columns = 13 
+            ip_charset min_chars = 7 
+            max_chars = 15 
+            title_string = "Enter Secondary DNS Server:" 
+            }
+          
+#01906    add_keyboard_handlers STRUCT{
+            keyboard_id = net_dns_control2 
+            prefs = network 
+            field = "dns_server2" 
+            }
+          
+#01912    CreateAndAttachMenu STRUCT{
+            type = keyboardcontrol 
+            id = net_host_name_control 
+            parent = GLOBAL.root_container 
+            x = 160.0 
+            y = 56.0 
+            w = 320.0 
+            h = 336.0 
+            just_center_x just_center_y num_columns = 13 
+            standard_charset min_chars = 0 
+            max_chars = 31 
+            title_string = "Enter Hostname:" 
+            }
+          
+#01926    add_keyboard_handlers STRUCT{
+            keyboard_id = net_host_name_control 
+            prefs = network 
+            field = "host_name" 
+            }
+          
+#01932    CreateAndAttachMenu STRUCT{
+            type = keyboardcontrol 
+            id = net_domain_name_control 
+            parent = GLOBAL.root_container 
+            x = 160.0 
+            y = 56.0 
+            w = 320.0 
+            h = 336.0 
+            just_center_x just_center_y num_columns = 13 
+            standard_charset min_chars = 0 
+            max_chars = 31 
+            title_string = "Enter Domain Name:" 
+            }
+          
+#01946    add_keyboard_handlers STRUCT{
+            keyboard_id = net_domain_name_control 
+            prefs = network 
+            field = "domain_name" 
+            }
+          
+#01952  END FUNCTION
+          
+#01953  

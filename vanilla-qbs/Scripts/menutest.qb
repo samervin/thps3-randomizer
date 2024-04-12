@@ -1,0 +1,46 @@
+FUNCTION sg_line_1 
+#00001    launchlocalmessage "sg line 1" 
+#00003  END FUNCTION
+          
+#00005  FUNCTION sg_line_2 
+#00009    launchlocalmessage "sg line 2" 
+#00011  END FUNCTION
+          
+#00013  FUNCTION TestMenu 
+#00017    LoadFont "title.fnt" 
+#00019    setdefaultproperty type = textdrawer 
+          name = main 
+          
+#00020    CreateSimpleMenu menu_id = menu2 
+          
+#00022    AddSimpleLine parent = menu2 
+          id = sg_sub_line1 
+          text = "Brand new!" 
+          
+#00024    target = "sg_line_1" 
+          kill_menu 
+#00026    LaunchSimpleMenu w = 200 
+          
+#00030    Lines = ARRAY(
+            
+            STRUCT{
+              id = sg_line2 
+              text = "Line 1" 
+              target = "sg_line_1" 
+              kill_menu }
+            STRUCT{
+              id = sg_line3 
+              text = "Line2" 
+              target = "sg_line_2" 
+              kill_menu }
+            STRUCT{
+              id = sg_line1 
+              text = "other menu" 
+              link = menu2 
+              }
+            
+          )
+          
+#00040  END FUNCTION
+          
+#00042  

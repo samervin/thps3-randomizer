@@ -1,0 +1,695 @@
+
+#00001  scroll_wait_long = 300 
+        
+#00003  scroll_wait_short = 50 
+        
+#00005  fe_arena_size = 3000 
+        
+#00008  FUNCTION InitializeFrontEndSprites 
+#00010    SetArenaSize fe_arena_size 
+#00012    LoadPreFile "FrontEndSprites.pre" dont_assert 
+#00014    LoadSprite "FrontEndSprites\cas_done.png" 
+#00015    LoadSprite "FrontEndSprites\cas_general.png" 
+#00016    LoadSprite "FrontEndSprites\cas_head.png" 
+#00017    LoadSprite "FrontEndSprites\cas_legs.png" 
+#00018    LoadSprite "FrontEndSprites\cas_pads.png" 
+#00019    LoadSprite "FrontEndSprites\cas_stats.png" 
+#00020    LoadSprite "FrontEndSprites\cas_torso.png" 
+#00021    UnloadPreFile "FrontEndSprites.pre" dont_assert 
+#00023    cas_load_pre prefile_name = "cas_shared_fe.pre" 
+          
+#00026    pre_init_skater_model pre = "cas_male_fe.pre" 
+          
+#00029    printf "InitializeFrontEndSprites" 
+#00032  END FUNCTION
+          
+#00053  FUNCTION UninitializeFrontEndSprites 
+#00055    UnloadSprite "FrontEndSprites\cas_done.png" 
+#00056    UnloadSprite "FrontEndSprites\cas_general.png" 
+#00057    UnloadSprite "FrontEndSprites\cas_head.png" 
+#00058    UnloadSprite "FrontEndSprites\cas_legs.png" 
+#00059    UnloadSprite "FrontEndSprites\cas_pads.png" 
+#00060    UnloadSprite "FrontEndSprites\cas_stats.png" 
+#00061    UnloadSprite "FrontEndSprites\cas_torso.png" 
+#00062    printf "UninitializeFrontEndSprites" 
+#00064    cas_unload_pre_files 
+#00067    SetArenaSize 
+#00070  END FUNCTION
+          
+#00073  FUNCTION Initialize_Front_End 
+#00075    LoadFont "title.fnt" 
+#00076    LoadFont "large.fnt" 
+#00077    LoadFont "small.fnt" 
+#00078    LoadFont "trick.fnt" 
+#00079    LoadSprite "PanelSprites\wheelselect.png" 
+#00083    LoadSprite "PanelSprites\arrow_menu.png" 
+#00084    LoadSprite "PanelSprites\cas_arrow.png" 
+#00085    LoadSprite "PanelSprites\medal_1.png" 
+#00086    LoadSprite "PanelSprites\medal_2.png" 
+#00087    LoadSprite "PanelSprites\medal_3.png" 
+#00088    LoadSprite "PanelSprites\medal_locked.png" 
+#00089  END FUNCTION
+          
+#00090  FUNCTION Shutdown_Front_End 
+#00095    UnloadFont "title.fnt" 
+#00098    UnloadFont "large.fnt" 
+#00099    UnloadFont "small.fnt" 
+#00100    UnloadFont "trick.fnt" 
+#00101    UnloadSprite "PanelSprites\wheelselect.png" 
+#00105    UnloadSprite "PanelSprites\arrow_menu.png" 
+#00106    UnloadSprite "PanelSprites\cas_arrow.png" 
+#00107  END FUNCTION
+          
+#00108  FUNCTION Create_Front_End_Props 
+#00111    printf "Create_Front_End_Props" 
+#00120    setproperty STRUCT{
+            type = textdrawer 
+            name = title 
+            values = STRUCT{
+              font = "title.fnt" 
+              spacing = 4 
+              defaultScale = 0.85 
+              defaultColor = VECTOR[120.0; 190.0; 210.0] 
+              defaultAlpha = 70 
+              shadow_off = PAIR[0.05; 0.05] 
+              }
+            }
+          
+#00133    setproperty STRUCT{
+            type = textdrawer 
+            name = title_warning 
+            values = STRUCT{
+              font = "title.fnt" 
+              spacing = 4 
+              defaultScale = 0.7 
+              defaultColor = VECTOR[210.0; 45.0; 45.0] 
+              defaultAlpha = 70 
+              shadow_off = PAIR[0.05; 0.05] 
+              }
+            }
+          
+#00145    setproperty STRUCT{
+            type = textdrawer 
+            name = title_small 
+            values = STRUCT{
+              font = "title.fnt" 
+              spacing = 4 
+              defaultScale = 0.5 
+              defaultColor = VECTOR[120.0; 190.0; 210.0] 
+              defaultAlpha = 70 
+              shadow_off = PAIR[0.05; 0.05] 
+              }
+            }
+          
+#00157    setproperty STRUCT{
+            type = textdrawer 
+            name = title_medium 
+            values = STRUCT{
+              font = "title.fnt" 
+              spacing = 4 
+              defaultScale = 0.6 
+              defaultColor = VECTOR[120.0; 190.0; 210.0] 
+              defaultAlpha = 70 
+              shadow_off = PAIR[0.05; 0.05] 
+              }
+            }
+          
+#00169    setproperty STRUCT{
+            type = textdrawer 
+            name = subtitle 
+            values = STRUCT{
+              font = "large.fnt" 
+              spacing = 0 
+              defaultScale = 1.0 
+              defaultColor = VECTOR[128.0; 68.0; 18.0] 
+              defaultAlpha = 100 
+              }
+            }
+          
+#00183    setproperty STRUCT{
+            type = textdrawer 
+            name = main 
+            values = STRUCT{
+              font = "large.fnt" 
+              spacing = 0 
+              defaultScale = 1.0 
+              selectedScale = 1.0 
+              defaultColor = VECTOR[100.0; 101.0; 105.0] 
+              selectedColor = VECTOR[130.0; 133.0; 145.0] 
+              grayColor = VECTOR[75.0; 79.0; 85.0] 
+              defaultAlpha = 75 
+              selectedAlpha = 95 
+              grayAlpha = 35 
+              }
+            }
+          
+#00200    setproperty STRUCT{
+            type = textdrawer 
+            name = main_warning 
+            values = STRUCT{
+              font = "large.fnt" 
+              spacing = 0 
+              defaultScale = 0.8 
+              selectedScale = 1.0 
+              defaultColor = VECTOR[210.0; 45.0; 45.0] 
+              defaultAlpha = 75 
+              selectedAlpha = 95 
+              grayAlpha = 35 
+              }
+            }
+          
+#00215    setproperty STRUCT{
+            type = textdrawer 
+            name = main_lighter 
+            values = STRUCT{
+              font = "large.fnt" 
+              spacing = 0 
+              defaultScale = 1.0 
+              selectedScale = 1.0 
+              defaultColor = VECTOR[100.0; 101.0; 105.0] 
+              selectedColor = VECTOR[130.0; 133.0; 145.0] 
+              grayColor = VECTOR[90.0; 90.0; 100.0] 
+              defaultAlpha = 75 
+              selectedAlpha = 95 
+              grayAlpha = 65 
+              }
+            }
+          
+#00232    setproperty STRUCT{
+            type = textdrawer 
+            name = main_smaller 
+            values = STRUCT{
+              font = "large.fnt" 
+              spacing = 0 
+              defaultScale = 0.9 
+              selectedScale = 0.9 
+              defaultColor = VECTOR[100.0; 101.0; 105.0] 
+              selectedColor = VECTOR[130.0; 133.0; 145.0] 
+              grayColor = VECTOR[160.0; 120.0; 40.0] 
+              defaultAlpha = 75 
+              selectedAlpha = 95 
+              grayAlpha = 65 
+              }
+            }
+          
+#00248    setproperty STRUCT{
+            type = textdrawer 
+            name = test 
+            values = STRUCT{
+              font = "small.fnt" 
+              spacing = 1.0 
+              defaultScale = 1.0 
+              selectedScale = 1.0 
+              defaultColor = VECTOR[0.0; 19.0; 192.0] 
+              selectedColor = VECTOR[255.0; 0.0; 255.0] 
+              }
+            }
+          
+#00261    setproperty STRUCT{
+            type = textdrawer 
+            name = cas_property 
+            values = STRUCT{
+              font = "large.fnt" 
+              spacing = 0 
+              defaultScale = 1.0 
+              selectedScale = 1.0 
+              defaultColor = VECTOR[100.0; 101.0; 105.0] 
+              selectedColor = VECTOR[130.0; 133.0; 145.0] 
+              grayColor = VECTOR[75.0; 79.0; 85.0] 
+              defaultAlpha = 75 
+              selectedAlpha = 95 
+              grayAlpha = 35 
+              }
+            }
+          
+#00278    setproperty STRUCT{
+            type = textdrawer 
+            name = cas_menu_property 
+            values = STRUCT{
+              font = "small.fnt" 
+              spacing = 2.5 
+              defaultScale = 0.9 
+              selectedScale = 0.9 
+              defaultColor = VECTOR[95.0; 98.0; 130.0] 
+              selectedColor = VECTOR[128.0; 168.0; 168.0] 
+              grayColor = VECTOR[75.0; 79.0; 85.0] 
+              defaultAlpha = 95 
+              selectedAlpha = 115 
+              grayAlpha = 35 
+              shadow_off = PAIR[0.0; 0.05] 
+              }
+            }
+          
+#00295    setproperty STRUCT{
+            type = textdrawer 
+            name = trick_menu_property 
+            values = STRUCT{
+              font = "small.fnt" 
+              spacing = 2.5 
+              defaultScale = 1.0 
+              selectedScale = 1.0 
+              defaultColor = VECTOR[95.0; 98.0; 130.0] 
+              selectedColor = VECTOR[158.0; 168.0; 168.0] 
+              grayColor = VECTOR[75.0; 79.0; 85.0] 
+              defaultAlpha = 95 
+              selectedAlpha = 115 
+              grayAlpha = 35 
+              shadow_off = PAIR[0.0; 0.05] 
+              }
+            }
+          
+#00312    setproperty STRUCT{
+            type = textdrawer 
+            name = trick_banner_menu_property 
+            values = STRUCT{
+              font = "small.fnt" 
+              spacing = 2.5 
+              defaultScale = 1.0 
+              selectedScale = 1.0 
+              defaultColor = VECTOR[95.0; 130.0; 98.0] 
+              selectedColor = VECTOR[158.0; 168.0; 168.0] 
+              defaultColor = VECTOR[95.0; 130.0; 98.0] 
+              defaultAlpha = 95 
+              selectedAlpha = 115 
+              grayAlpha = 35 
+              shadow_off = PAIR[0.0; 0.05] 
+              }
+            }
+          
+#00329    setproperty STRUCT{
+            type = textdrawer 
+            name = trickslot_menu_property 
+            values = STRUCT{
+              font = "small.fnt" 
+              spacing = 2.5 
+              defaultScale = 1.0 
+              selectedScale = 1.0 
+              defaultColor = VECTOR[255.0; 255.0; 255.0] 
+              selectedColor = VECTOR[128.0; 128.0; 128.0] 
+              grayColor = VECTOR[75.0; 79.0; 85.0] 
+              defaultAlpha = 120 
+              selectedAlpha = 225 
+              grayAlpha = 35 
+              }
+            }
+          
+#00346    setproperty STRUCT{
+            type = textdrawer 
+            name = keyboard_title 
+            values = STRUCT{
+              font = "small.fnt" 
+              spacing = 2.5 
+              defaultScale = 1.4 
+              selectedScale = 0.9 
+              defaultColor = VECTOR[50.0; 80.0; 128.0] 
+              selectedColor = VECTOR[200.0; 200.0; 200.0] 
+              grayColor = VECTOR[75.0; 79.0; 85.0] 
+              defaultAlpha = 128 
+              selectedAlpha = 115 
+              grayAlpha = 35 
+              shadow_off = PAIR[0.05; 0.05] 
+              }
+            }
+          
+#00364    setproperty STRUCT{
+            type = textdrawer 
+            name = keyboard_string 
+            values = STRUCT{
+              font = "small.fnt" 
+              spacing = 2.5 
+              defaultScale = 1.2 
+              selectedScale = 0.9 
+              defaultColor = VECTOR[180.0; 160.0; 0.0] 
+              selectedColor = VECTOR[200.0; 200.0; 200.0] 
+              grayColor = VECTOR[75.0; 79.0; 85.0] 
+              defaultAlpha = 128 
+              selectedAlpha = 115 
+              grayAlpha = 35 
+              shadow_off = PAIR[0.05; 0.05] 
+              }
+            }
+          
+#00382    setproperty STRUCT{
+            type = textdrawer 
+            name = points_available_property 
+            values = STRUCT{
+              font = "small.fnt" 
+              spacing = 2.5 
+              defaultScale = 0.9 
+              selectedScale = 0.9 
+              defaultColor = VECTOR[130.0; 133.0; 145.0] 
+              selectedColor = VECTOR[130.0; 133.0; 145.0] 
+              grayColor = VECTOR[75.0; 79.0; 85.0] 
+              defaultAlpha = 75 
+              selectedAlpha = 95 
+              grayAlpha = 35 
+              shadow_off = PAIR[0.0; 0.05] 
+              }
+            }
+          
+#00399    setproperty STRUCT{
+            type = textdrawer 
+            name = memcard_files_menu_property 
+            values = STRUCT{
+              font = "small.fnt" 
+              spacing = 2.5 
+              defaultScale = 0.9 
+              selectedScale = 0.9 
+              defaultColor = VECTOR[95.0; 98.0; 130.0] 
+              selectedColor = VECTOR[128.0; 168.0; 168.0] 
+              grayColor = VECTOR[75.0; 79.0; 85.0] 
+              defaultAlpha = 95 
+              selectedAlpha = 115 
+              grayAlpha = 35 
+              shadow_off = PAIR[0.0; 0.05] 
+              }
+            }
+          
+#00416    setproperty STRUCT{
+            type = textdrawer 
+            name = memcard_files_menu_top_line_property 
+            values = STRUCT{
+              font = "small.fnt" 
+              spacing = 2.5 
+              defaultScale = 0.9 
+              selectedScale = 0.9 
+              defaultColor = VECTOR[120.0; 160.0; 180.0] 
+              selectedColor = VECTOR[200.0; 200.0; 200.0] 
+              grayColor = VECTOR[75.0; 79.0; 85.0] 
+              defaultAlpha = 95 
+              selectedAlpha = 115 
+              grayAlpha = 35 
+              shadow_off = PAIR[0.0; 0.05] 
+              }
+            }
+          
+#00433    setproperty STRUCT{
+            type = textdrawer 
+            name = winner_screen_property 
+            values = STRUCT{
+              font = "small.fnt" 
+              spacing = 1.0 
+              defaultScale = 1.0 
+              selectedScale = 1.0 
+              defaultColor = VECTOR[95.0; 98.0; 105.0] 
+              selectedColor = VECTOR[130.0; 130.0; 145.0] 
+              defaultAlpha = 65 
+              selectedAlpha = 105 
+              shadow_off = PAIR[0.05; 0.1] 
+              }
+            }
+          
+#00448    setproperty STRUCT{
+            type = textdrawer 
+            name = judge_screen_property 
+            values = STRUCT{
+              font = "small.fnt" 
+              spacing = 1.0 
+              defaultScale = 1.3 
+              selectedScale = 1.0 
+              defaultColor = VECTOR[95.0; 98.0; 105.0] 
+              selectedColor = VECTOR[130.0; 130.0; 145.0] 
+              defaultAlpha = 65 
+              selectedAlpha = 105 
+              shadow_off = PAIR[0.05; 0.1] 
+              }
+            }
+          
+#00463    setproperty STRUCT{
+            type = textdrawer 
+            name = keyboard_property 
+            values = STRUCT{
+              font = "small.fnt" 
+              spacing = 1 
+              defaultScale = 1.0 
+              selectedScale = 1.0 
+              defaultColor = VECTOR[160.0; 120.0; 40.0] 
+              selectedColor = VECTOR[130.0; 130.0; 145.0] 
+              defaultAlpha = 80 
+              selectedAlpha = 115 
+              shadow_off = PAIR[0.05; 0.1] 
+              }
+            }
+          
+#00480    setproperty STRUCT{
+            type = textdrawer 
+            name = server_list_property 
+            values = STRUCT{
+              font = "small.fnt" 
+              spacing = 1 
+              defaultScale = 1.0 
+              selectedScale = 1.0 
+              defaultColor = VECTOR[160.0; 160.0; 160.0] 
+              selectedColor = VECTOR[130.0; 130.0; 145.0] 
+              defaultAlpha = 80 
+              selectedAlpha = 115 
+              shadow_off = PAIR[0.05; 0.1] 
+              }
+            }
+          
+#00495    setproperty STRUCT{
+            type = textdrawer 
+            name = score 
+            values = STRUCT{
+              font = "small.fnt" 
+              defaultScale = 1 
+              defaultColor = VECTOR[160.0; 120.0; 40.0] 
+              defaultAlpha = 115 
+              shadow_off = PAIR[0.1; 0.1] 
+              }
+            }
+          
+#00506    setproperty STRUCT{
+            type = textdrawer 
+            name = timer 
+            values = STRUCT{
+              font = "small.fnt" 
+              defaultScale = 1.5 
+              defaultColor = VECTOR[130.0; 133.0; 145.0] 
+              defaultAlpha = 85 
+              shadow_off = PAIR[0.07; 0.07] 
+              }
+            }
+          
+#00517    setproperty STRUCT{
+            type = textdrawer 
+            name = textconsole 
+            values = STRUCT{
+              font = "large.fnt" 
+              defaultScale = 0.8 
+              spacing = 1.5 
+              defaultColor = VECTOR[128.0; 110.0; 0.0] 
+              }
+            }
+          
+#00527    setproperty STRUCT{
+            type = textdrawer 
+            name = viewertext 
+            values = STRUCT{
+              font = "large.fnt" 
+              defaultScale = 0.8 
+              defaultColor = VECTOR[128.0; 110.0; 0.0] 
+              }
+            }
+          
+#00536    setproperty STRUCT{
+            type = textdrawer 
+            name = trick_font 
+            values = STRUCT{
+              font = "trick.fnt" 
+              spacing = 3 
+              defaultScale = 1 
+              defaultColor = VECTOR[150.0; 150.0; 150.0] 
+              defaultAlpha = 85 
+              shadow_off = PAIR[0.15; 0.15] 
+              }
+            }
+          
+#00549    setproperty STRUCT{
+            type = textdrawer 
+            name = trick_score_font 
+            values = STRUCT{
+              font = "trick.fnt" 
+              spacing = 3 
+              defaultScale = 1.4 
+              defaultColor = VECTOR[160.0; 160.0; 160.0] 
+              defaultAlpha = 110 
+              just_center_x just_top shadow_off = PAIR[0.15; 0.15] 
+              }
+            }
+          
+#00563    setproperty STRUCT{
+            type = textdrawer 
+            name = restart 
+            values = STRUCT{
+              font = "small.fnt" 
+              spacing = 1 
+              defaultScale = 1.0 
+              selectedScale = 1.0 
+              defaultColor = VECTOR[160.0; 120.0; 40.0] 
+              selectedColor = VECTOR[130.0; 130.0; 145.0] 
+              defaultAlpha = 80 
+              selectedAlpha = 115 
+              shadow_off = PAIR[0.05; 0.1] 
+              }
+            }
+          
+#00579    setproperty STRUCT{
+            type = textdrawer 
+            name = park_editor 
+            values = STRUCT{
+              font = "large.fnt" 
+              spacing = 0 
+              defaultScale = 1.0 
+              selectedScale = 1.0 
+              defaultColor = VECTOR[100.0; 101.0; 105.0] 
+              selectedColor = VECTOR[130.0; 133.0; 145.0] 
+              grayColor = VECTOR[75.0; 79.0; 85.0] 
+              defaultAlpha = 75 
+              selectedAlpha = 95 
+              grayAlpha = 35 
+              }
+            }
+          
+#00597    setproperty STRUCT{
+            type = imagedrawer 
+            name = wheel 
+            values = STRUCT{
+              name = "PanelSprites\wheelselect.png" 
+              }
+            }
+          
+#00605    setproperty STRUCT{
+            type = imagedrawer 
+            name = menu_arrow 
+            values = STRUCT{
+              name = "PanelSprites\arrow_menu.png" 
+              }
+            }
+          
+#00613    setproperty STRUCT{
+            type = imagedrawer 
+            name = slider_arrow 
+            values = STRUCT{
+              name = "PanelSprites\cas_arrow.png" 
+              }
+            }
+          
+#00621    setproperty STRUCT{
+            type = textdrawer 
+            name = goals_text 
+            values = STRUCT{
+              font = "small.fnt" 
+              defaultScale = 1 
+              defaultColor = VECTOR[120.0; 190.0; 210.0] 
+              defaultAlpha = 70 
+              shadow_off = PAIR[0.05; 0.05] 
+              }
+            }
+          
+#00635    setproperty STRUCT{
+            type = textdrawer 
+            name = helper_text 
+            values = STRUCT{
+              font = "small.fnt" 
+              defaultScale = 1 
+              defaultColor = VECTOR[120.0; 190.0; 210.0] 
+              defaultAlpha = 70 
+              shadow_off = PAIR[0.05; 0.05] 
+              }
+            }
+          
+#00646    setproperty STRUCT{
+            type = textdrawer 
+            name = small_helper 
+            values = STRUCT{
+              font = "small.fnt" 
+              defaultScale = 0.9 
+              defaultColor = VECTOR[120.0; 190.0; 210.0] 
+              defaultAlpha = 70 
+              shadow_off = PAIR[0.05; 0.05] 
+              }
+            }
+          
+#00657    setproperty STRUCT{
+            type = textdrawer 
+            name = front_end_goal_info 
+            values = STRUCT{
+              font = "large.fnt" 
+              spacing = 4 
+              defaultScale = 0.85 
+              defaultColor = VECTOR[120.0; 190.0; 210.0] 
+              defaultAlpha = 70 
+              shadow_off = PAIR[0.05; 0.05] 
+              }
+            }
+          
+#00670    setproperty STRUCT{
+            type = textdrawer 
+            name = cassette_menu_records_property 
+            values = record_font_props 
+            }
+          
+#00676  END FUNCTION
+          
+#00679  Menu_Highlight_Info = STRUCT{
+          normal = VECTOR[50.0; 51.0; 54.0] 
+          normal_alpha = 100 
+          highlight = VECTOR[135.0; 65.0; 15.0] 
+          highlight_alpha = 150 
+          blue = VECTOR[15.0; 65.0; 135.0] 
+          blue_alpha = 150 
+          spacing = 1 
+          border_width = 2 
+          wheel_offset = 16 
+          }
+        
+#00694  Scores_Highlight_Info_red = STRUCT{
+          normal = VECTOR[128.0; 0.0; 0.0] 
+          normal_alpha = 65 
+          highlight = VECTOR[128.0; 0.0; 0.0] 
+          highlight_alpha = 105 
+          blue = VECTOR[128.0; 0.0; 0.0] 
+          blue_alpha = 128 
+          spacing = 1 
+          border_width = 2 
+          wheel_offset = 16 
+          }
+        
+#00706  Scores_Highlight_Info_blue = STRUCT{
+          normal = VECTOR[0.0; 0.0; 128.0] 
+          normal_alpha = 65 
+          highlight = VECTOR[0.0; 0.0; 128.0] 
+          highlight_alpha = 105 
+          blue = VECTOR[0.0; 0.0; 128.0] 
+          blue_alpha = 128 
+          spacing = 1 
+          border_width = 2 
+          wheel_offset = 16 
+          }
+        
+#00718  Slider_Highlight_Info = STRUCT{
+          normal = VECTOR[30.0; 31.0; 34.0] 
+          normal_alpha = 100 
+          highlight = VECTOR[135.0; 65.0; 15.0] 
+          highlight_alpha = 150 
+          blue = VECTOR[15.0; 65.0; 135.0] 
+          blue_alpha = 150 
+          spacing = 1 
+          border_width = 2 
+          wheel_offset = 16 
+          }
+        
+#00733  Inverted_Highlight_Info = STRUCT{
+          normal = VECTOR[0.0; 0.0; 0.0] 
+          normal_alpha = 150 
+          highlight = VECTOR[0.0; 0.0; 0.0] 
+          highlight_alpha = 150 
+          blue = VECTOR[15.0; 65.0; 135.0] 
+          blue_alpha = 150 
+          spacing = 1 
+          border_width = 2 
+          wheel_offset = 16 
+          }
+        
+#00747  

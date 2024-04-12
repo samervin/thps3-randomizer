@@ -1,0 +1,1067 @@
+
+#00001  FUNCTION DoingTrickBail 
+#00010    IF backwards 
+#00020      Goto BackwardFaceSlam 
+#00021    ELSE 
+#00022      IF SpeedLessThan 550 
+#00023        IF AirTimeLessThan 1 second 
+#00024          Goto Runout 
+#00026        END IF 
+#00027      END IF 
+#00028      IF ProfileEquals is_named = maul 
+              
+#00029        Goto MaulBail 
+#00030      ELSE 
+#00031        GotoRandomScript ARRAY(
+                LandPartiallyOnBoard Facesmash NoseManualBail ManualBail 
+              )
+              
+#00033      END IF 
+#00034    END IF 
+#00035  END FUNCTION
+          
+#00036  FUNCTION YawBail 
+#00038    IF YawingLeft 
+#00039      IF Flipped 
+#00040        GotoRandomScript ARRAY(
+                Facesmash NoseManualBail 
+              )
+              
+#00041      ELSE 
+#00042        Goto Fallback 
+#00043      END IF 
+#00044    ELSE 
+#00045      IF Flipped 
+#00046        Goto Fallback 
+#00047      ELSE 
+#00048        GotoRandomScript ARRAY(
+                Facesmash NoseManualBail 
+              )
+              
+#00049      END IF 
+#00050    END IF 
+#00051  END FUNCTION
+          
+#00052  FUNCTION PitchBail 
+#00054    GotoRandomScript ARRAY(
+            HeadFirstSplat Neckbreaker 
+          )
+          
+#00055  END FUNCTION
+          
+#00056  FUNCTION FiftyFiftyFall 
+#00059    GotoRandomScript ARRAY(
+            FiftyFiftyFallForward FiftyFiftyFallBackward 
+          )
+          
+#00060  END FUNCTION
+          
+#00061  FUNCTION Nutter 
+#00063    IF Ledge 
+#00064      Goto FiftyFiftyFall 
+#00066    ELSE 
+#00067      GotoRandomScript ARRAY(
+              NutterForward NutterBackward 
+            )
+            
+#00068    END IF 
+#00069  END FUNCTION
+          
+#00070  FUNCTION BackwardsGrindBails 
+#00072    GotoRandomScript ARRAY(
+            BackwardFaceSlam BackwardsFall 
+          )
+          
+#00073  END FUNCTION
+          
+#00074  FUNCTION HeadFirstSplat 
+#00080    GeneralBail STRUCT{
+            Anim1 = HeadFirstSplat 
+            BoardOffFrame = 60 
+            Anim2 = GetUpBackwards 
+            IntoAirFrame = 1 
+            Friction = 15 
+            SmackAnim = SmackWallFeet 
+            Sound = Bail04 
+            FoleySound NoBlending GroundGoneBail = GroundGoneBail 
+            AnimFall1 = HeadFirstFall 
+            AnimFall2 = HeadFirstSplat 
+            AnimFall3 = GetUpBackwards 
+            }
+          
+#00083  END FUNCTION
+          
+#00084  FUNCTION Neckbreaker 
+#00086    GeneralBail STRUCT{
+            Anim1 = Neckbreaker 
+            BoardOffFrame = 60 
+            Anim2 = GetUpFacing 
+            IntoAirFrame = 1 
+            Friction = 15 
+            SmackAnim = SmackWallFeet 
+            Sound = Bail04 
+            FoleySound NoBlending GroundGoneBail = GroundGoneBail 
+            AnimFall1 = HeadFirstFall 
+            AnimFall2 = HeadFirstSplat 
+            AnimFall3 = GetUpBackwards 
+            }
+          
+#00089  END FUNCTION
+          
+#00090  FUNCTION NoseManualBail2 
+#00092    GeneralBail STRUCT{
+            Anim1 = SlipForwards 
+            BoardOffFrame = 10 
+            Anim2 = GetUpForwards 
+            IntoAirFrame = 20 
+            Friction = 15 
+            SmackAnim = Smackwallupright 
+            Sound = BoardBail01 
+            FoleySound BloodFrame = 20 
+            GroundGoneBail = GroundGoneBail 
+            AnimFall1 = HeadFirstFall 
+            AnimFall2 = HeadFirstSplat 
+            AnimFall3 = GetUpBackwards 
+            }
+          
+#00095  END FUNCTION
+          
+#00096  FUNCTION MaulBail 
+#00098    GeneralBail STRUCT{
+            Anim1 = SlipBackwards 
+            BoardOffFrame = 10 
+            Anim2 = GetUpDarthMaul 
+            IntoAirFrame = 20 
+            Friction = 18 
+            SmackAnim = SmackWallFeet 
+            Sound = bodysmackA 
+            FoleySound GroundGoneBail = GroundGoneBail 
+            AnimFall1 = HeadFirstFallBack 
+            AnimFall2 = BigDrop 
+            AnimFall3 = GetUpFacing 
+            }
+          
+#00101  END FUNCTION
+          
+#00102  FUNCTION LandPartiallyOnBoard 
+#00104    GeneralBail STRUCT{
+            Anim1 = LandPartiallyOnBoard 
+            BoardOffFrame = 60 
+            Anim2 = GetUpForwards 
+            IntoAirFrame = 1 
+            Friction = 15 
+            SmackAnim = SmackWallFeet 
+            Sound = bail_knee1 
+            FoleySound GroundGoneBail = GroundGoneBail 
+            AnimFall1 = HeadFirstFall 
+            AnimFall2 = HeadFirstSplat 
+            AnimFall3 = GetUpBackwards 
+            }
+          
+#00107  END FUNCTION
+          
+#00108  FUNCTION Runout 
+#00110    IF SpeedLessThan 400 
+#00111      GeneralBail STRUCT{
+              Anim1 = RunOutQuick 
+              IntoAirFrame = 1 
+              Friction = 11 
+              BoardAlwaysOn BashOff NoBlood Sound = Bailrunoutflip 
+              GroundGoneBail = GroundGoneBail 
+              AnimFall1 = RunOutDropIdle 
+              AnimFall2 = RunOutDrop 
+              }
+            
+#00114    ELSE 
+#00115      GeneralBail STRUCT{
+              Anim1 = Runout 
+              IntoAirFrame = 1 
+              SmackAnim = Smackwallupright 
+              Friction = 13 
+              BoardAlwaysOn BashOff NoBlood Sound = Bailrunoutflip 
+              GroundGoneBail = GroundGoneBail 
+              AnimFall1 = RunOutDropIdle 
+              AnimFall2 = RunOutDrop 
+              }
+            
+#00118    END IF 
+#00119  END FUNCTION
+          
+#00120  FUNCTION BackwardFaceSlam 
+#00126    Flip 
+#00127    GeneralBail STRUCT{
+            Anim1 = BackwardFaceSlam 
+            Anim2 = GetUpFacing 
+            IntoAirFrame = 50 
+            BloodFrame = 25 
+            SmackAnim = SmackWallFeet 
+            Sound = bail_backward1 
+            FoleySound GroundGoneBail = GroundGoneBail 
+            AnimFall1 = FeetFirstFallFront 
+            AnimFall2 = HeadFirstSplat 
+            AnimFall3 = GetUpBackwards 
+            }
+          
+#00130  END FUNCTION
+          
+#00131  FUNCTION BackwardsFall 
+#00133    GeneralBail STRUCT{
+            Anim1 = BackwardsTest 
+            Anim2 = GetUpBackwards 
+            IntoAirFrame = 62 
+            BloodFrame = 50 
+            SmackAnim = SmackWallFeet 
+            Sound = boardbail02 
+            HitBody FoleySound GroundGoneBail = GroundGoneBail 
+            AnimFall1 = FeetFirstFallFront 
+            AnimFall2 = HeadFirstSplat 
+            AnimFall3 = GetUpBackwards 
+            }
+          
+#00136  END FUNCTION
+          
+#00137  FUNCTION Fallback 
+#00139    GeneralBail STRUCT{
+            Anim1 = Fallback 
+            Anim2 = Fallback_resume 
+            IntoAirFrame = 20 
+            BloodFrame = 35 
+            Sound = Bail04 
+            FoleySound GroundGoneBail = GroundGoneBail 
+            AnimFall1 = Fallback 
+            AnimFall2 = BigDrop 
+            AnimFall3 = GetUpFacing 
+            }
+          
+#00142  END FUNCTION
+          
+#00143  FUNCTION FiftyFiftyFallForward 
+#00147    GeneralBail STRUCT{
+            Anim1 = FiftyFiftyFallForward 
+            Anim2 = GetUpFacing 
+            IntoAirFrame = 40 
+            BloodFrame = 50 
+            SmackAnim = SmackWall 
+            Sound = Bail04 
+            FoleySound GroundGoneBail = GroundGoneBail 
+            AnimFall1 = HeadFirstFall 
+            AnimFall2 = HeadFirstSplat 
+            AnimFall3 = GetUpBackwards 
+            }
+          
+#00150  END FUNCTION
+          
+#00151  FUNCTION FiftyFiftyFallBackward 
+#00153    GeneralBail STRUCT{
+            Anim1 = FiftyFiftyFallBackward 
+            Anim2 = GetUpForwards 
+            IntoAirFrame = 50 
+            BloodFrame = 50 
+            SmackAnim = SmackWallFeet 
+            Sound = Bail04 
+            FoleySound GroundGoneBail = GroundGoneBail 
+            AnimFall1 = FeetFirstFallFront 
+            AnimFall2 = HeadFirstSplat 
+            AnimFall3 = GetUpBackwards 
+            }
+          
+#00157  END FUNCTION
+          
+#00158  FUNCTION NutterForward 
+#00160    GeneralBail STRUCT{
+            Anim1 = NutterFallForward 
+            Anim2 = GetUpForwards 
+            IntoAirFrame = 30 
+            BloodFrame = 50 
+            SmackAnim = SmackWall 
+            Sound = Bail04 
+            FoleySound BonkSound GroundGoneBail = GroundGoneBail 
+            AnimFall1 = HeadFirstFall 
+            AnimFall2 = HeadFirstSplat 
+            AnimFall3 = GetUpBackwards 
+            }
+          
+#00163  END FUNCTION
+          
+#00164  FUNCTION NutterBackward 
+#00166    GeneralBail STRUCT{
+            Anim1 = NutterFallBackward 
+            Anim2 = FaceSmash_resume 
+            IntoAirFrame = 30 
+            SmackAnim = SmackWallFeet 
+            Sound = Bail04 
+            FoleySound BonkSound GroundGoneBail = GroundGoneBail 
+            AnimFall1 = HeadFirstFall 
+            AnimFall2 = HeadFirstSplat 
+            AnimFall3 = GetUpBackwards 
+            }
+          
+#00169  END FUNCTION
+          
+#00170  FUNCTION GeneralBail Friction = 18 
+          
+#00183    SetSkaterCamLerpReductionTimer time = 0 
+          
+#00184    InBail 
+#00185    SetExtraPush radius = 48 
+          speed = 100 
+          rotate = 6 
+          
+#00189    TurnToFaceVelocity 
+#00190    SparksOff 
+#00191    VibrateOff 
+#00192    ClearGapTricks 
+#00193    ClearExceptions 
+#00194    DisablePlayerInput AllowCameraControl 
+#00195    ClearPanel_Bailed 
+#00197    SetException Ex = CarBail 
+          Scr = CarBail 
+          
+#00198    IF GotParam GroundGoneBail 
+#00199      SetException Ex = GroundGone 
+            Scr = GLOBAL.GroundGoneBail 
+            Params = STRUCT{
+              NULL }
+            
+#00200    END IF 
+#00201    IF GotParam SmackAnim 
+#00204      SetException Ex = FlailHitWall 
+            Scr = BailSmack 
+            Params = STRUCT{
+              SmackAnim = GLOBAL.SmackAnim 
+              }
+            
+#00205      SetException Ex = FlailLeft 
+            Scr = BailSmack 
+            Params = STRUCT{
+              SmackAnim = GLOBAL.SmackAnim 
+              }
+            
+#00206      SetException Ex = FlailRight 
+            Scr = BailSmack 
+            Params = STRUCT{
+              SmackAnim = GLOBAL.SmackAnim 
+              }
+            
+#00207    END IF 
+#00208    IF InSlapGame 
+#00209      SetException Ex = SkaterCollideBail 
+            Scr = SkaterCollideBail 
+            
+#00210    END IF 
+#00211    IF GotParam Sound 
+#00213      PlaySound GLOBAL.Sound 
+            
+#00214    ELSE 
+#00215      PlayBonkSound 
+#00216    END IF 
+#00217    IF GotParam NoBlending 
+#00218      PlayAnim Anim = GLOBAL.Anim1 
+            NoRestart Blendperiod = 0.0 
+            
+#00219    ELSE 
+#00220      PlayAnim Anim = GLOBAL.Anim1 
+            NoRestart Blendperiod = 0.3 
+            
+#00221    END IF 
+#00222    IF GotParam BashOff 
+#00223    ELSE 
+#00224      BashOn 
+#00225    END IF 
+#00226    IF GotParam BoardAlwaysOn 
+#00228    ELSE 
+#00229      Obj_Spawnscript BailBoardControl Params = STRUCT{
+              BoardOffFrame = GLOBAL.BoardOffFrame 
+              }
+            
+#00230    END IF 
+#00231    IF OnRail 
+#00234      WaitAnim frame GLOBAL.IntoAirFrame 
+            
+#00235      move y = 2.0 
+            
+#00236      SetState Air 
+#00237      Vibrate Actuator = 1 
+            Percent = 100 
+            Duration = 0.2 
+            
+#00238      IF GotParam BonkSound 
+#00239        PlayBonkSound 
+#00240      END IF 
+#00242    END IF 
+#00243    WaitOnGround 
+#00244    IF GotParam BloodFrame 
+#00247      WaitAnim frame GLOBAL.BloodFrame 
+            
+#00248      Obj_Spawnscript BloodSmall 
+#00249      PlaySound RANDOM[4][12; 18; 24; 30]
+            hitblood01 JUMP 0x19000000 hitblood02 JUMP 0x0f000000 hitblood04 JUMP 0x05000000 hitblood05 
+#00250    END IF 
+#00251    Vibrate Actuator = 1 
+          Percent = 100 
+          Duration = 0.2 
+          
+#00252    SetRollingFriction 100 
+#00253    IF GotParam HitBody 
+#00254      Spawnscript HitBody Params = STRUCT{
+              NULL }
+            
+#00255    END IF 
+#00256    Wait 2 frames 
+#00257    SetRollingFriction GLOBAL.Friction 
+          
+#00258    WaitAnim 30 Percent 
+#00262    SpeedCheckStop 
+#00263    SetRollingFriction 20 
+#00264    WaitAnim 50 Percent 
+#00265    SpeedCheckStop 
+#00266    BashOn 
+#00267    WaitAnim 75 Percent 
+#00268    SpeedCheckStop 
+#00269    IF GotParam FoleySound 
+#00270      PlaySound Foleymove01 vol = 50 
+            
+#00271    END IF 
+#00272    WaitAnimFinished 
+#00273    SpeedCheckStop 
+#00274    IF GotParam BloodFrame 
+#00275      Obj_Spawnscript BloodPool 
+#00276    END IF 
+#00277    IF GotParam Anim2 
+#00278      PlayAnim Anim = GLOBAL.Anim2 
+            Blendperiod = 0.1 
+            
+#00279    END IF 
+#00280    SetRollingFriction 20 
+#00281    SpeedCheckStop 
+#00282    VibrateOff 
+#00283    WaitAnim 20 frames fromend 
+#00284    SwitchOnBoard 
+#00285    IF GotParam BoardAlwaysOn 
+#00286    ELSE 
+#00287      BoardRotate normal 
+#00288    END IF 
+#00289    WaitAnimFinished 
+#00290    Goto Baildone 
+#00291  END FUNCTION
+          
+#00292  FUNCTION BailBoardControl BoardOffFrame = 5 
+          
+#00299    Wait GLOBAL.BoardOffFrame 
+          
+#00300    SwitchOffBoard 
+#00301  END FUNCTION
+          
+#00302  FUNCTION SpeedCheckStop 
+#00307    IF SpeedLessThan 300 
+#00308      SetRollingFriction 100 
+#00309    END IF 
+#00310  END FUNCTION
+          
+#00311  FUNCTION HitBody hitbodyframe = 15 
+          
+#00314    Wait GLOBAL.hitbodyframe 
+          frames 
+#00315    PlaySound RANDOM[2][4; 10]
+          Hitbody03 JUMP 0x05000000 HitBody04 
+#00316  END FUNCTION
+          
+#00317  FUNCTION BailSmack SmackAnim = SmackWall 
+          
+#00323    IF InSlapGame 
+#00324      SetException Ex = SkaterCollideBail 
+            Scr = SkaterCollideBail 
+            
+#00325    END IF 
+#00326    TurnToFaceVelocity 
+#00327    SwitchOffBoard 
+#00328    SetRollingFriction 15 
+#00329    PlayAnim Anim = GLOBAL.SmackAnim 
+          Blendperiod = 0.1 
+          
+#00330    Obj_Spawnscript BloodTiny 
+#00331    Vibrate Actuator = 1 
+          Percent = 100 
+          Duration = 0.2 
+          
+#00332    PlaySound bodysmackA 
+#00333    WaitAnimFinished 
+#00334    IF AnimEquals SmackWall 
+#00335      PlayAnim Anim = GetUpFacesmash 
+            Blendperiod = 0.1 
+            
+#00336    ELSE 
+#00337      IF AnimEquals Smackwallupright 
+#00338        PlayAnim Anim = GetUpBackwards 
+              Blendperiod = 0.1 
+              
+#00339      ELSE 
+#00340        PlayAnim Anim = GetUpFacing 
+              Blendperiod = 0.1 
+              
+#00341      END IF 
+#00342    END IF 
+#00343    SetRollingFriction 15 
+#00344    WaitAnim 80 Percent 
+#00345    SwitchOnBoard 
+#00346    BoardRotate normal 
+#00347    WaitAnimFinished 
+#00348    Goto Baildone 
+#00349  END FUNCTION
+          
+#00350  FUNCTION Facesmash 
+#00359    SetSkaterCamLerpReductionTimer time = 0 
+          
+#00360    InBail 
+#00361    SetExtraPush radius = 48 
+          speed = 100 
+          rotate = 6 
+          
+#00362    TurnToFaceVelocity 
+#00363    SwitchOffBoard 
+#00364    VibrateOff 
+#00365    ClearGapTricks 
+#00366    ClearPanel_Bailed 
+#00367    DisablePlayerInput AllowCameraControl 
+#00368    ClearExceptions 
+#00370    SetException Ex = CarBail 
+          Scr = CarBail 
+          
+#00371    SetException Ex = FlailHitWall 
+          Scr = BailSmack 
+          Params = STRUCT{
+            SmackAnim = Smackwallupright 
+            }
+          
+#00372    SetException Ex = FlailLeft 
+          Scr = BailSmack 
+          Params = STRUCT{
+            SmackAnim = Smackwallupright 
+            }
+          
+#00373    SetException Ex = FlailRight 
+          Scr = BailSmack 
+          Params = STRUCT{
+            SmackAnim = Smackwallupright 
+            }
+          
+#00374    SetException Ex = GroundGone 
+          Scr = GroundGoneBail 
+          Params = STRUCT{
+            AnimFall1 = HeadFirstFall 
+            AnimFall2 = HeadFirstSplat 
+            AnimFall3 = GetUpBackwards 
+            }
+          
+#00375    IF InSlapGame 
+#00376      SetException Ex = SkaterCollideBail 
+            Scr = SkaterCollideBail 
+            
+#00377    END IF 
+#00378    PlaySound Bail04 
+#00379    PlayAnim Anim = FaceFall 
+          NoRestart Blendperiod = 0.3 
+          
+#00380    BashOn 
+#00381    Wait 20 frames 
+#00382    LOOP 
+#00383      IF OnGround 
+#00384        BREAK
+              
+#00385      ELSE 
+#00386        WaitOneGameFrame 
+#00387      END IF 
+#00388    END LOOP 
+#00389    SetRollingFriction 15 
+#00390    Vibrate Actuator = 1 
+          Percent = 100 
+          Duration = 0.2 
+          
+#00391    Obj_Spawnscript BloodSmall 
+#00392    PlaySound bodysmackA 
+#00393    WaitAnim 50 Percent fromend 
+#00395    SetException Ex = FlailHitWall 
+          Scr = BailSmack 
+          Params = STRUCT{
+            SmackAnim = SmackWall 
+            }
+          
+#00397    SetException Ex = FlailLeft 
+          Scr = BailSmack 
+          Params = STRUCT{
+            SmackAnim = SmackWall 
+            }
+          
+#00398    SetException Ex = FlailRight 
+          Scr = BailSmack 
+          Params = STRUCT{
+            SmackAnim = SmackWall 
+            }
+          
+#00399    WaitAnimFinished 
+#00401    IF SpeedGreaterThan 300 
+#00405      PlayAnim Anim = FaceFallBigHit 
+            NoRestart Blendperiod = 0.1 
+            
+#00406      Vibrate Actuator = 1 
+            Percent = 100 
+            Duration = 0.2 
+            
+#00407      PlaySound headsmackB 
+#00408    ELSE 
+#00411      PlayAnim Anim = FaceFallSmallHit 
+            NoRestart Blendperiod = 0.1 
+            
+#00412      Vibrate Actuator = 1 
+            Percent = 100 
+            Duration = 0.2 
+            
+#00413      PlaySound headsmackB vol = 75 
+            
+#00414    END IF 
+#00415    WaitAnimFinished 
+#00417    Obj_Spawnscript BloodPool 
+#00418    ClearExceptions 
+#00422    IF InSlapGame 
+#00423      SetException Ex = SkaterCollideBail 
+            Scr = SkaterCollideBail 
+            
+#00424    END IF 
+#00425    PlayAnim Anim = GetUpFacesmash 
+          Blendperiod = 0.1 
+          
+#00426    WaitAnim 70 Percent 
+#00427    SwitchOnBoard 
+#00428    BoardRotate normal 
+#00429    WaitAnimFinished 
+#00430    Goto Baildone 
+#00431  END FUNCTION
+          
+#00432  FUNCTION GroundGoneBail AnimFall1 = HeadFirstFall 
+          AnimFall2 = HeadFirstSplat 
+          
+#00438    InBail 
+#00439    ClearExceptions 
+#00440    IF InSlapGame 
+#00441      SetException Ex = SkaterCollideBail 
+            Scr = SkaterCollideBail 
+            
+#00442    END IF 
+#00443    DisablePlayerInput AllowCameraControl 
+#00444    SetExtraPush radius = 48 
+          speed = 100 
+          rotate = 6 
+          
+#00445    SwitchOffBoard 
+#00446    SetRollingFriction 20 
+#00447    PlayAnim Anim = GLOBAL.AnimFall1 
+          NoRestart Blendperiod = 0.3 
+          
+#00448    LOOP 
+#00450      IF AnimFinished 
+#00451        PlayAnim Anim = GLOBAL.AnimFall1 
+              PingPong From = End 
+              To = 20 
+              speed = 0.5 
+              Blendperiod = 0.1 
+              
+#00452      END IF 
+#00453      IF OnGround 
+#00454        BREAK
+              
+#00455      END IF 
+#00456      WaitOneGameFrame 
+#00457    END LOOP 
+#00458    PlaySound bodysmackA 
+#00459    Vibrate Actuator = 1 
+          Percent = 100 
+          Duration = 0.2 
+          
+#00460    IF GotParam NoBlood 
+#00461    ELSE 
+#00462      Obj_Spawnscript BloodTiny 
+#00463    END IF 
+#00464    SetRollingFriction 100 
+#00465    PlayAnim Anim = GLOBAL.AnimFall2 
+          NoRestart Blendperiod = 0.1 
+          
+#00466    BashOn 
+#00467    IF GotParam AnimFall3 
+#00468      WaitAnimFinished 
+#00469      PlayAnim Anim = GLOBAL.AnimFall3 
+            NoRestart Blendperiod = 0.1 
+            
+#00470    END IF 
+#00471    WaitAnim 20 frames fromend 
+#00472    BoardRotate normal 
+#00473    SwitchOnBoard 
+#00474    WaitAnimFinished 
+#00475    Goto Baildone 
+#00476  END FUNCTION
+          
+#00477  FUNCTION NoseManualBail 
+#00480    SetSkaterCamLerpReductionTimer time = 0 
+          
+#00481    InBail 
+#00482    CleanUpSpecialItems 
+#00485    SetExtraPush radius = 48 
+          speed = 100 
+          rotate = 6 
+          
+#00486    TurnToFaceVelocity 
+#00487    VibrateOff 
+#00488    ClearGapTricks 
+#00489    ClearPanel_Bailed 
+#00490    StopBalanceTrick 
+#00491    DisablePlayerInput AllowCameraControl 
+#00492    ClearExceptions 
+#00495    SetException Ex = CarBail 
+          Scr = CarBail 
+          
+#00496    SetException Ex = FlailHitWall 
+          Scr = BailSmack 
+          Params = STRUCT{
+            SmackAnim = Smackwallupright 
+            }
+          
+#00497    SetException Ex = FlailLeft 
+          Scr = BailSmack 
+          Params = STRUCT{
+            SmackAnim = Smackwallupright 
+            }
+          
+#00498    SetException Ex = FlailRight 
+          Scr = BailSmack 
+          Params = STRUCT{
+            SmackAnim = Smackwallupright 
+            }
+          
+#00499    SetException Ex = GroundGone 
+          Scr = GroundGoneBail 
+          Params = STRUCT{
+            AnimFall1 = HeadFirstFall 
+            AnimFall2 = HeadFirstSplat 
+            AnimFall3 = GetUpBackwards 
+            }
+          
+#00500    IF InSlapGame 
+#00501      SetException Ex = SkaterCollideBail 
+            Scr = SkaterCollideBail 
+            
+#00502    END IF 
+#00503    PlaySound RANDOM[2][4; 10]
+          BoardBail01 JUMP 0x05000000 boardbail02 
+#00505    PlayAnim Anim = SlipForwards 
+          NoRestart Blendperiod = 0.3 
+          
+#00506    BashOn 
+#00507    Wait 10 frames 
+#00508    SwitchOffBoard 
+#00509    Wait 10 frame 
+#00510    PlaySound RANDOM[2][4; 10]
+          Hitbody03 JUMP 0x05000000 HitBody04 
+#00511    Wait 10 frames 
+#00512    SetRollingFriction 18 
+#00513    Vibrate Actuator = 1 
+          Percent = 100 
+          Duration = 0.2 
+          
+#00514    Obj_Spawnscript BloodSmall 
+#00515    WaitAnim 25 Percent fromend 
+#00516    SetException Ex = FlailHitWall 
+          Scr = BailSmack 
+          Params = STRUCT{
+            SmackAnim = Smackwallupright 
+            }
+          
+#00518    SetException Ex = FlailLeft 
+          Scr = BailSmack 
+          Params = STRUCT{
+            SmackAnim = Smackwallupright 
+            }
+          
+#00519    SetException Ex = FlailRight 
+          Scr = BailSmack 
+          Params = STRUCT{
+            SmackAnim = Smackwallupright 
+            }
+          
+#00520    PlaySound Foleymove01 vol = 50 
+          
+#00521    WaitAnimFinished 
+#00522    Obj_Spawnscript BloodPool 
+#00523    ClearExceptions 
+#00524    IF InSlapGame 
+#00525      SetException Ex = SkaterCollideBail 
+            Scr = SkaterCollideBail 
+            
+#00526    END IF 
+#00527    PlayAnim Anim = GetUpForwards 
+          Blendperiod = 0.1 
+          
+#00528    SetRollingFriction 20 
+#00529    Wait 50 frames 
+#00530    SwitchOnBoard 
+#00531    BoardRotate normal 
+#00532    WaitAnimFinished 
+#00533    SetRollingFriction default 
+#00534    Goto Baildone 
+#00535  END FUNCTION
+          
+#00536  FUNCTION ManualBail 
+#00538    InBail 
+#00539    SetExtraPush radius = 48 
+          speed = 100 
+          rotate = 6 
+          
+#00541    VibrateOff 
+#00542    ClearGapTricks 
+#00543    ClearPanel_Bailed 
+#00544    DisablePlayerInput AllowCameraControl 
+#00545    ClearExceptions 
+#00547    SetException Ex = CarBail 
+          Scr = CarBail 
+          
+#00548    SetException Ex = FlailHitWall 
+          Scr = BailSmack 
+          Params = STRUCT{
+            SmackAnim = SmackWallFeet 
+            }
+          
+#00549    SetException Ex = FlailLeft 
+          Scr = BailSmack 
+          Params = STRUCT{
+            SmackAnim = SmackWallFeet 
+            }
+          
+#00550    SetException Ex = FlailRight 
+          Scr = BailSmack 
+          Params = STRUCT{
+            SmackAnim = SmackWallFeet 
+            }
+          
+#00551    SetException Ex = GroundGone 
+          Scr = GroundGoneBail 
+          Params = STRUCT{
+            AnimFall1 = HeadFirstFallBack 
+            AnimFall2 = BigDrop 
+            AnimFall3 = GetUpFacing 
+            }
+          
+#00552    IF InSlapGame 
+#00553      SetException Ex = SkaterCollideBail 
+            Scr = SkaterCollideBail 
+            
+#00554    END IF 
+#00555    PlaySound Bail04 pitch = 80 
+          
+#00557    PlayAnim Anim = SlipBackwards 
+          NoRestart Blendperiod = 0.3 
+          From = 10 
+          
+#00559    BashOn 
+#00560    Wait 15 frames 
+#00561    SetRollingFriction 18 
+#00562    Vibrate Actuator = 1 
+          Percent = 100 
+          Duration = 0.2 
+          
+#00563    PlaySound bodysmackA 
+#00564    SwitchOffBoard 
+#00565    WaitAnimFinished 
+#00566    ClearExceptions 
+#00567    IF InSlapGame 
+#00568      SetException Ex = SkaterCollideBail 
+            Scr = SkaterCollideBail 
+            
+#00569    END IF 
+#00570    PlayAnim Anim = GetUpBackwards 
+          Blendperiod = 0.1 
+          
+#00571    SetRollingFriction 20 
+#00572    Wait 55 frames 
+#00573    SwitchOnBoard 
+#00574    BoardRotate normal 
+#00575    WaitAnimFinished 
+#00576    Goto Baildone 
+#00577  END FUNCTION
+          
+#00578  FUNCTION Baildone 
+#00587    ClearLipCombos 
+#00588    NotifyBailDone 
+#00589    SetExtraPush radius = 0 
+          
+#00590    SetRollingFriction default 
+#00591    ClearTrickQueue 
+#00592    ClearEventBuffer 
+#00593    ClearManualTrick 
+#00594    BashOff 
+#00596    EnablePlayerInput 
+#00597    NotInBail 
+#00598    ClearGapTricks 
+#00599    KillExtraTricks 
+#00600    SetSkaterCamLerpReductionTimer time = 0 
+          
+#00601    ClearSkaterFlags 
+#00602    Goto OnGroundAI 
+#00603  END FUNCTION
+          
+#00604  FUNCTION BloodBig bone = "head" 
+          
+#00611    BloodOn NULL size = 10.0 
+          freq = 2.0 
+          rnd_radius = 12 
+          
+#00613    Wait 2 frames 
+#00614    BloodOff NULL 
+#00615    BloodOn NULL size = 7.0 
+          freq = 2.0 
+          rnd_radius = 12 
+          
+#00616    Wait 4 frames 
+#00617    BloodOff NULL 
+#00618    BloodOn NULL size = 3.0 
+          freq = 0.8 
+          rnd_radius = 12 
+          
+#00619    Wait 3 frames 
+#00620    BloodOff NULL 
+#00621  END FUNCTION
+          
+#00622  FUNCTION BloodCar bone = "head" 
+          
+#00625    Wait 30 frames 
+#00626    BloodOn NULL size = 10.0 
+          freq = 2.0 
+          rnd_radius = 12 
+          
+#00628    Wait 4 frames 
+#00629    BloodOff NULL 
+#00630    BloodOn NULL size = 7.0 
+          freq = 2.0 
+          rnd_radius = 12 
+          
+#00631    Wait 4 frames 
+#00632    BloodOff NULL 
+#00633    BloodOn NULL size = 3.0 
+          freq = 0.8 
+          rnd_radius = 12 
+          
+#00634    Wait 3 frames 
+#00635    BloodOff NULL 
+#00636  END FUNCTION
+          
+#00637  FUNCTION BloodSmall bone = "head" 
+          
+#00641    IF OnGround 
+#00642      Obj_Spawnscript BloodSplat 
+#00643    END IF 
+#00644    Wait 14 frames 
+#00645    BloodOn NULL size = 8.0 
+          freq = 2.0 
+          rnd_radius = 36 
+          
+#00647    Wait 1 frames 
+#00648    BloodOff NULL 
+#00649    BloodOn NULL size = 6.0 
+          freq = 2.0 
+          rnd_radius = 36 
+          
+#00650    Wait 4 frames 
+#00651    BloodOff NULL 
+#00652    BloodOn NULL size = 3.0 
+          freq = 0.8 
+          rnd_radius = 36 
+          
+#00653    Wait 3 frames 
+#00654    BloodOff NULL 
+#00655  END FUNCTION
+          
+#00656  FUNCTION BloodTiny bone = "head" 
+          
+#00658    Obj_Spawnscript BloodSplat 
+#00659    BloodOn NULL size = 5.0 
+          freq = 2.0 
+          rnd_radius = 12 
+          
+#00661    Wait 4 frames 
+#00662    BloodOff NULL 
+#00663    BloodOn NULL size = 2.0 
+          freq = 0.8 
+          rnd_radius = 12 
+          
+#00664    Wait 3 frames 
+#00665    BloodOff NULL 
+#00666  END FUNCTION
+          
+#00667  FUNCTION BloodSuperTiny bone = "head" 
+          
+#00669    Obj_Spawnscript BloodSplat 
+#00670    BloodOn NULL size = 1.0 
+          freq = 2.0 
+          rnd_radius = 12 
+          
+#00672    Wait 4 frames 
+#00673    BloodOff NULL 
+#00674    BloodOn NULL size = 0.5 
+          freq = 0.8 
+          rnd_radius = 12 
+          
+#00675    Wait 3 frames 
+#00676    BloodOff NULL 
+#00677  END FUNCTION
+          
+#00678  FUNCTION BloodPool bone = "head" 
+          
+#00681  END FUNCTION
+          
+#00698  FUNCTION BloodSplat 
+#00700    BloodParticlesOn name = "blood_1.png" 
+          start_col = -16777046 
+          end_col = 570425514 
+          num = 10 
+          emit_w = 2.0 
+          emit_h = 2.0 
+          angle = 10 
+          size = 2.0 
+          bone = "head" 
+          growth = 1.5 
+          time = 0.3 
+          speed = 250 
+          grav = -900 
+          life = 0.3 
+          
+#00702  END FUNCTION
+          
+#00703  FUNCTION SwitchOnBoard 
+#00705    SwitchOnAtomic board 
+#00706    IF ProfileEquals is_named = maul 
+            
+#00707      SwitchOnAtomic special_item 
+#00708    END IF 
+#00709  END FUNCTION
+          
+#00710  FUNCTION SwitchOffBoard 
+#00712    SwitchOffAtomic board 
+#00713    IF ProfileEquals is_named = maul 
+            
+#00714      SwitchOffAtomic special_item 
+#00715    END IF 
+#00716  END FUNCTION
+          
+#00717  FUNCTION CleanUpSpecialItems 
+#00719    IF ProfileEquals is_named = demoness 
+            
+#00720      SwitchOffAtomic special_item 
+#00721      SwitchOnAtomic skin 
+#00722      SwitchOnBoard 
+#00723    ELSE 
+#00724      IF ProfileEquals is_named = maul 
+              
+#00725      ELSE 
+#00726        SwitchOffAtomic special_item 
+#00727        SwitchOnAtomic special_item_2 
+#00728      END IF 
+#00729    END IF 
+#00730  END FUNCTION
+          

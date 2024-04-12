@@ -1,0 +1,829 @@
+
+#00001  CHEAT_SNOWBOARD = CHEAT_ON_1 
+        
+#00005  CHEAT_ALWAYS_SPECIAL = CHEAT_ON_2 
+        
+#00006  CHEAT_PERFECT_RAIL = CHEAT_ON_3 
+        
+#00007  CHEAT_STATS_13 = CHEAT_ON_4 
+        
+#00008  CHEAT_GIANT = CHEAT_ON_5 
+        
+#00009  CHEAT_MATRIX = CHEAT_ON_6 
+        
+#00010  CHEAT_PERFECT_MANUAL = CHEAT_ON_7 
+        
+#00011  CHEAT_KID = CHEAT_ON_8 
+        
+#00012  CHEAT_MOON = CHEAT_ON_9 
+        
+#00013  CHEAT_SIM = CHEAT_ON_10 
+        
+#00014  CHEAT_FIRST_PERSON = CHEAT_ON_11 
+        
+#00015  CHEAT_NUMBER12 = CHEAT_ON_12 
+        
+#00016  FUNCTION Cheat_menu_maybe 
+#00021    IF IntegerEquals a = GLOBAL.cheat 
+            b = GLOBAL.maybe 
+            
+#00022      IF GetGlobalFlag flag = GLOBAL.unlocked 
+              
+#00023        IF GetGlobalFlag flag = GLOBAL.cheat 
+                
+#00024          SetMenuElementText Id = GLOBAL.Id 
+                GLOBAL.on 
+                
+#00025        ELSE 
+#00026          SetMenuElementText Id = GLOBAL.Id 
+                GLOBAL.off 
+                
+#00027        END IF 
+#00028      ELSE 
+#00029        SetMenuElementText Id = GLOBAL.Id 
+              " - Cheat Locked - " 
+#00030      END IF 
+#00031    END IF 
+#00032  END FUNCTION
+          
+#00033  FUNCTION Cheat_menu_refresh_line 
+#00035    Cheat_menu_maybe NULL maybe = CHEAT_SNOWBOARD 
+          on = "Snowboard: On" 
+          off = "Snowboard: Off" 
+          
+#00036    Cheat_menu_maybe NULL maybe = CHEAT_ALWAYS_SPECIAL 
+          on = "Always Special: On" 
+          off = "Always Special: Off" 
+          
+#00037    Cheat_menu_maybe NULL maybe = CHEAT_PERFECT_RAIL 
+          on = "Perfect Rail: On" 
+          off = "Perfect Rail: Off" 
+          
+#00038    Cheat_menu_maybe NULL maybe = CHEAT_STATS_13 
+          on = "Super Stats: On" 
+          off = "Super Stats: Off" 
+          
+#00039    Cheat_menu_maybe NULL maybe = CHEAT_GIANT 
+          on = "Giant Mode: On" 
+          off = "Giant Mode: Off" 
+          
+#00040    Cheat_menu_maybe NULL maybe = CHEAT_MATRIX 
+          on = "Slowmo: On" 
+          off = "Slowmo: Off" 
+          
+#00041    Cheat_menu_maybe NULL maybe = CHEAT_PERFECT_MANUAL 
+          on = "Perfect Manual: On" 
+          off = "Perfect Manual: Off" 
+          
+#00042    Cheat_menu_maybe NULL maybe = CHEAT_KID 
+          on = "Tiny Mode: On" 
+          off = "Tiny Mode: Off" 
+          
+#00043    Cheat_menu_maybe NULL maybe = CHEAT_MOON 
+          on = "Moon Physics: On" 
+          off = "Moon Physics: Off" 
+          
+#00044    Cheat_menu_maybe NULL maybe = CHEAT_SIM 
+          on = "Expert Mode: On" 
+          off = "Expert Mode: Off" 
+          
+#00045    Cheat_menu_maybe NULL maybe = CHEAT_FIRST_PERSON 
+          on = "First Person : On" 
+          off = "First Person: Off" 
+          
+#00046  END FUNCTION
+          
+#00048  FUNCTION cheat_menu_refresh 
+#00051    Cheat_menu_refresh_line cheat = CHEAT_ON_1 
+          Id = menu_cheat_1 
+          unlocked = CHEAT_UNLOCKED_1 
+          
+#00053    Cheat_menu_refresh_line cheat = CHEAT_ON_2 
+          Id = menu_cheat_2 
+          unlocked = CHEAT_UNLOCKED_2 
+          
+#00054    Cheat_menu_refresh_line cheat = CHEAT_ON_3 
+          Id = menu_cheat_3 
+          unlocked = CHEAT_UNLOCKED_3 
+          
+#00055    Cheat_menu_refresh_line cheat = CHEAT_ON_4 
+          Id = menu_cheat_4 
+          unlocked = CHEAT_UNLOCKED_4 
+          
+#00056    Cheat_menu_refresh_line cheat = CHEAT_ON_5 
+          Id = menu_cheat_5 
+          unlocked = CHEAT_UNLOCKED_5 
+          
+#00057    Cheat_menu_refresh_line cheat = CHEAT_ON_6 
+          Id = menu_cheat_6 
+          unlocked = CHEAT_UNLOCKED_6 
+          
+#00058    Cheat_menu_refresh_line cheat = CHEAT_ON_7 
+          Id = menu_cheat_7 
+          unlocked = CHEAT_UNLOCKED_7 
+          
+#00059    Cheat_menu_refresh_line cheat = CHEAT_ON_8 
+          Id = menu_cheat_8 
+          unlocked = CHEAT_UNLOCKED_8 
+          
+#00060    Cheat_menu_refresh_line cheat = CHEAT_ON_9 
+          Id = menu_cheat_9 
+          unlocked = CHEAT_UNLOCKED_9 
+          
+#00061    Cheat_menu_refresh_line cheat = CHEAT_ON_10 
+          Id = menu_cheat_10 
+          unlocked = CHEAT_UNLOCKED_10 
+          
+#00062    Cheat_menu_refresh_line cheat = CHEAT_ON_11 
+          Id = menu_cheat_11 
+          unlocked = CHEAT_UNLOCKED_11 
+          
+#00063  END FUNCTION
+          
+#00066  FUNCTION ToggleCheatMenuLine 
+#00072    IF GetGlobalFlag flag = GLOBAL.unlocked 
+            
+#00073      disable_replays 
+#00074      printf "toggling flag......" 
+#00075      IF GetGlobalFlag flag = GLOBAL.cheat 
+              
+#00076        printf "unsetting flag" 
+#00077        UnsetGlobalFlag flag = GLOBAL.cheat 
+              
+#00078      ELSE 
+#00079        printf "setting flag" 
+#00080        SetGlobalFlag flag = GLOBAL.cheat 
+              
+#00081      END IF 
+#00082    END IF 
+#00083    cheat_menu_refresh 
+#00084  END FUNCTION
+          
+#00085  FUNCTION cheat_menu_create 
+#00089    createmenu STRUCT{
+            type = verticalmenu 
+            Id = cheat_menu 
+            x = 125.0 
+            y = 70.0 
+            w = 380.0 
+            h = 400.0 
+            just_center_x just_center_y blue_top eventhandler = STRUCT{
+              type = showeventhandler 
+              target = "cheat_menu_refresh" 
+              }
+            children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Cheat Menu" 
+                static dont_gray drawer = title 
+                }
+              STRUCT{
+                type = textmenuelement 
+                Id = menu_cheat_1 
+                text = "Foo" 
+                target = "ToggleCheatMenuLine" 
+                Params = STRUCT{
+                  cheat = CHEAT_ON_1 
+                  unlocked = CHEAT_UNLOCKED_1 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                Id = menu_cheat_2 
+                text = "Foo" 
+                target = "ToggleCheatMenuLine" 
+                Params = STRUCT{
+                  cheat = CHEAT_ON_2 
+                  unlocked = CHEAT_UNLOCKED_2 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                Id = menu_cheat_3 
+                text = "Foo" 
+                target = "ToggleCheatMenuLine" 
+                Params = STRUCT{
+                  cheat = CHEAT_ON_3 
+                  unlocked = CHEAT_UNLOCKED_3 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                Id = menu_cheat_4 
+                text = "Foo" 
+                target = "ToggleCheatMenuLine" 
+                Params = STRUCT{
+                  cheat = CHEAT_ON_4 
+                  unlocked = CHEAT_UNLOCKED_4 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                Id = menu_cheat_5 
+                text = "Foo" 
+                target = "ToggleCheatMenuLine" 
+                Params = STRUCT{
+                  cheat = CHEAT_ON_5 
+                  unlocked = CHEAT_UNLOCKED_5 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                Id = menu_cheat_6 
+                text = "Foo" 
+                target = "ToggleCheatMenuLine" 
+                Params = STRUCT{
+                  cheat = CHEAT_ON_6 
+                  unlocked = CHEAT_UNLOCKED_6 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                Id = menu_cheat_7 
+                text = "Foo" 
+                target = "ToggleCheatMenuLine" 
+                Params = STRUCT{
+                  cheat = CHEAT_ON_7 
+                  unlocked = CHEAT_UNLOCKED_7 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                Id = menu_cheat_8 
+                text = "Foo" 
+                target = "ToggleCheatMenuLine" 
+                Params = STRUCT{
+                  cheat = CHEAT_ON_8 
+                  unlocked = CHEAT_UNLOCKED_8 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                Id = menu_cheat_9 
+                text = "Foo" 
+                target = "ToggleCheatMenuLine" 
+                Params = STRUCT{
+                  cheat = CHEAT_ON_9 
+                  unlocked = CHEAT_UNLOCKED_9 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                Id = menu_cheat_10 
+                text = "Foo" 
+                target = "ToggleCheatMenuLine" 
+                Params = STRUCT{
+                  cheat = CHEAT_ON_10 
+                  unlocked = CHEAT_UNLOCKED_10 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                Id = menu_cheat_11 
+                text = "Foo" 
+                target = "ToggleCheatMenuLine" 
+                Params = STRUCT{
+                  cheat = CHEAT_ON_11 
+                  unlocked = CHEAT_UNLOCKED_11 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                Id = menu_cheat_done 
+                text = "Done" 
+                target = "go_back" 
+                Params = STRUCT{
+                  Id = cheat_menu 
+                  }
+                }
+              
+            )
+            }
+          
+#00158    attachchild parent = contain1 
+          child = cheat_menu 
+          
+#00159  END FUNCTION
+          
+#00160  FUNCTION done_with_cheats 
+#00162  END FUNCTION
+          
+#00163  FUNCTION cleargame 
+#00165    printf "clearing the game....." 
+#00166    CareerStartLevel level = LevelNum_Rio 
+          
+#00167    ClearACompLevel 
+#00168    CareerStartLevel level = LevelNum_SkaterIsland 
+          
+#00169    ClearACompLevel 
+#00170    CareerStartLevel level = LevelNum_Tokyo 
+          
+#00171    ClearACompLevel 
+#00172    SetGlobalFlag flag = GOT_GOLD_RIO 
+          
+#00173    SetGlobalFlag flag = GOT_GOLD_SI 
+          
+#00174    SetGlobalFlag flag = GOT_GOLD_TOKYO 
+          
+#00175    CareerStartLevel level = LevelNum_Foundry 
+          
+#00176    ClearALevel 
+#00177    CareerStartLevel level = LevelNum_Canada 
+          
+#00178    ClearALevel 
+#00179    CareerStartLevel level = LevelNum_Suburbia 
+          
+#00180    ClearALevel 
+#00181    CareerStartLevel level = LevelNum_Airport 
+          
+#00182    ClearALevel 
+#00183    CareerStartLevel level = LevelNum_LA 
+          
+#00184    ClearALevel 
+#00185    CareerStartLevel level = LevelNum_Ship 
+          
+#00186    ClearALevel 
+#00187    CareerStartLevel level = LevelNum_Skateshop 
+          
+#00188    SetGlobalFlag flag = LEVEL_UNLOCKED_FOUNDRY 
+          
+#00189    SetGlobalFlag flag = LEVEL_UNLOCKED_CANADA 
+          
+#00190    SetGlobalFlag flag = LEVEL_UNLOCKED_RIO 
+          
+#00191    SetGlobalFlag flag = LEVEL_UNLOCKED_SUBURBIA 
+          
+#00192    SetGlobalFlag flag = LEVEL_UNLOCKED_AIRPORT 
+          
+#00193    SetGlobalFlag flag = LEVEL_UNLOCKED_SKATERISLAND 
+          
+#00194    SetGlobalFlag flag = LEVEL_UNLOCKED_LOSANGELES 
+          
+#00195    SetGlobalFlag flag = LEVEL_UNLOCKED_TOKYO 
+          
+#00196    SetGlobalFlag flag = LEVEL_UNLOCKED_SHIP 
+          
+#00197    SetGlobalFlag flag = SPECIAL_HAS_SEEN_SHIP 
+          
+#00198  END FUNCTION
+          
+#00199  FUNCTION AllDecks 
+#00201    CareerStartLevel level = LevelNum_Rio 
+          
+#00202    SetFlag flag = GOAL_DECK 
+          
+#00203    CareerStartLevel level = LevelNum_SkaterIsland 
+          
+#00204    SetFlag flag = GOAL_DECK 
+          
+#00205    CareerStartLevel level = LevelNum_Tokyo 
+          
+#00206    SetFlag flag = GOAL_DECK 
+          
+#00207    CareerStartLevel level = LevelNum_Foundry 
+          
+#00208    SetFlag flag = GOAL_DECK 
+          
+#00209    CareerStartLevel level = LevelNum_Canada 
+          
+#00210    SetFlag flag = GOAL_DECK 
+          
+#00211    CareerStartLevel level = LevelNum_Suburbia 
+          
+#00212    SetFlag flag = GOAL_DECK 
+          
+#00213    CareerStartLevel level = LevelNum_Airport 
+          
+#00214    SetFlag flag = GOAL_DECK 
+          
+#00215    CareerStartLevel level = LevelNum_LA 
+          
+#00216    SetFlag flag = GOAL_DECK 
+          
+#00217    CareerStartLevel level = LevelNum_Ship 
+          
+#00218    SetFlag flag = GOAL_DECK 
+          
+#00219    CareerStartLevel level = LevelNum_Skateshop 
+          
+#00220  END FUNCTION
+          
+#00221  FUNCTION AllStats 
+#00223    CareerStartLevel level = LevelNum_Rio 
+          
+#00224    GiveLevelStats 
+#00225    CareerStartLevel level = LevelNum_SkaterIsland 
+          
+#00226    GiveLevelStats 
+#00227    CareerStartLevel level = LevelNum_Tokyo 
+          
+#00228    GiveLevelStats 
+#00229    CareerStartLevel level = LevelNum_Foundry 
+          
+#00230    GiveLevelStats 
+#00231    CareerStartLevel level = LevelNum_Canada 
+          
+#00232    GiveLevelStats 
+#00233    CareerStartLevel level = LevelNum_Suburbia 
+          
+#00234    GiveLevelStats 
+#00235    CareerStartLevel level = LevelNum_Airport 
+          
+#00236    GiveLevelStats 
+#00237    CareerStartLevel level = LevelNum_LA 
+          
+#00238    GiveLevelStats 
+#00239    CareerStartLevel level = LevelNum_Ship 
+          
+#00240    GiveLevelStats 
+#00241    CareerStartLevel level = LevelNum_Skateshop 
+          
+#00242  END FUNCTION
+          
+#00243  FUNCTION unlock_all_cheats 
+#00246    SetGlobalFlag flag = CHEAT_UNLOCKED_1 
+          
+#00247    SetGlobalFlag flag = CHEAT_UNLOCKED_2 
+          
+#00248    SetGlobalFlag flag = CHEAT_UNLOCKED_3 
+          
+#00249    SetGlobalFlag flag = CHEAT_UNLOCKED_4 
+          
+#00250    SetGlobalFlag flag = CHEAT_UNLOCKED_5 
+          
+#00251    SetGlobalFlag flag = CHEAT_UNLOCKED_6 
+          
+#00252    SetGlobalFlag flag = CHEAT_UNLOCKED_7 
+          
+#00253    SetGlobalFlag flag = CHEAT_UNLOCKED_8 
+          
+#00254    SetGlobalFlag flag = CHEAT_UNLOCKED_9 
+          
+#00255    SetGlobalFlag flag = CHEAT_UNLOCKED_10 
+          
+#00256    SetGlobalFlag flag = CHEAT_UNLOCKED_11 
+          
+#00257    SetGlobalFlag flag = CHEAT_UNLOCKED_12 
+          
+#00258  END FUNCTION
+          
+#00259  FUNCTION cheat_give_skaters 
+#00261    SetGlobalFlag flag = SKATER_UNLOCKED_MAUL 
+          
+#00262    SetGlobalFlag flag = SKATER_UNLOCKED_WOLVERINE 
+          
+#00263    SetGlobalFlag flag = SKATER_UNLOCKED_DICK 
+          
+#00264    SetGlobalFlag flag = SKATER_UNLOCKED_CARRERA 
+          
+#00265    SetGlobalFlag flag = SKATER_UNLOCKED_BUM 
+          
+#00266    SetGlobalFlag flag = SKATER_UNLOCKED_SLATER 
+          
+#00267    SetGlobalFlag flag = SKATER_UNLOCKED_DEMONESS 
+          
+#00268    SetGlobalFlag flag = SKATER_UNLOCKED_EYEBALL 
+          
+#00269  END FUNCTION
+          
+#00270  FUNCTION cheat_give_levels 
+#00273    cleargame 
+#00274    SetGlobalFlag flag = LEVEL_UNLOCKED_WAREHOUSE 
+          
+#00275    SetGlobalFlag flag = LEVEL_UNLOCKED_BURNSIDE 
+          
+#00276    SetGlobalFlag flag = LEVEL_UNLOCKED_ROSWELL 
+          
+#00277  END FUNCTION
+          
+#00278  FUNCTION cheat_give_everything 
+#00280    cheat_give_skaters 
+#00281    cheat_give_levels 
+#00282    unlock_all_cheats 
+#00283    cheat_unlockmovies 
+#00284  END FUNCTION
+          
+#00285  FUNCTION cheat_togglemetrics 
+#00287    Togglemetrics 
+#00288  END FUNCTION
+          
+#00289  FUNCTION cheat_togglememmetrics 
+#00291    ToggleMemMetrics 
+#00292  END FUNCTION
+          
+#00293  FUNCTION cheat_unlockmovies 
+#00295    SetGlobalFlag flag = MOVIE_UNLOCKED_HAWK 
+          
+#00296    SetGlobalFlag flag = MOVIE_UNLOCKED_CABALLERO 
+          
+#00297    SetGlobalFlag flag = MOVIE_UNLOCKED_CAMPBELL 
+          
+#00298    SetGlobalFlag flag = MOVIE_UNLOCKED_GLIFBERG 
+          
+#00299    SetGlobalFlag flag = MOVIE_UNLOCKED_KOSTON 
+          
+#00300    SetGlobalFlag flag = MOVIE_UNLOCKED_LASEK 
+          
+#00301    SetGlobalFlag flag = MOVIE_UNLOCKED_MARGERA 
+          
+#00302    SetGlobalFlag flag = MOVIE_UNLOCKED_MULLEN 
+          
+#00303    SetGlobalFlag flag = MOVIE_UNLOCKED_MUSKA 
+          
+#00304    SetGlobalFlag flag = MOVIE_UNLOCKED_REYNOLDS 
+          
+#00305    SetGlobalFlag flag = MOVIE_UNLOCKED_ROWLEY 
+          
+#00306    SetGlobalFlag flag = MOVIE_UNLOCKED_STEAMER 
+          
+#00307    SetGlobalFlag flag = MOVIE_UNLOCKED_THOMAS 
+          
+#00308    SetGlobalFlag flag = MOVIE_UNLOCKED_JEDIKNIGHT 
+          
+#00309    SetGlobalFlag flag = MOVIE_UNLOCKED_WOLVERINE 
+          
+#00310    SetGlobalFlag flag = MOVIE_UNLOCKED_CARRERA 
+          
+#00312    SetGlobalFlag flag = MOVIE_UNLOCKED_DICK 
+          
+#00313    SetGlobalFlag flag = MOVIE_UNLOCKED_SLATER 
+          
+#00314    SetGlobalFlag flag = MOVIE_UNLOCKED_BUM 
+          
+#00315    SetGlobalFlag flag = MOVIE_UNLOCKED_Eyeball 
+          
+#00316    SetGlobalFlag flag = MOVIE_UNLOCKED_PRO_BAILS1 
+          
+#00317    SetGlobalFlag flag = MOVIE_UNLOCKED_CAS 
+          
+#00318    SetGlobalFlag flag = MOVIE_UNLOCKED_DEMONESS 
+          
+#00319    movies_menu_create 
+#00320  END FUNCTION
+          
+#00321  FUNCTION do_doomguy_stuff 
+#00323    wait 10 gameframes 
+#00324    SwitchOffMenu Id = options_main_menu 
+          
+#00325    wait 5 gameframes 
+#00326    DisableBackEvent 
+#00328    DisableEvent Id = options_main_menu 
+          EventType = back 
+          
+#00329    DisableEvent Id = options_main_menu 
+          EventType = choose 
+          
+#00330    FrontEndSetInactive 
+#00331    CreatePanels 
+#00332    KillMessages 
+#00333    PauseStream 0 
+#00335    PlayStream unlock_secret 
+#00336    LaunchLocalMessage Id = LegealStuff 
+          "DOOM character (c) 1999-2002 Id Software, Inc. Used under license. All Rights Reserved." panel_message_legalmumbojumbo 
+#00337    LaunchLocalMessage Id = GoalText 
+          "Secret Character Unlocked" panel_message_newThing01 
+#00338    LaunchLocalMessage Id = complete 
+          "DOOM Guy" panel_message_newlevelThingName01 
+#00339    SetGlobalFlag flag = SKATER_UNLOCKED_DOOMGUY 
+          
+#00340    SetGlobalFlag flag = SKATESHOP_JUST_GOT_SECRET_CHAR 
+          
+#00341    wait 0.5 seconds 
+#00342    LaunchLocalMessage Id = BottomInfo 
+          "Press ¬ to Continue" panel_message_XtoContinue 
+#00343    WaitForControllerPressedX 
+#00344    LaunchLocalMessage Id = GoalText 
+          "Secret Character Unlocked" panel_message_newThing02 
+#00345    LaunchLocalMessage Id = complete 
+          "DOOM Guy" panel_message_newlevelThingName02 
+#00346    LaunchLocalMessage Id = BottomInfo 
+          " " panel_message_XtoContinue 
+#00347    LaunchLocalMessage Id = LegealStuff 
+          " " panel_message_legalmumbojumbo 
+#00348    wait 0.5 seconds 
+#00349    LaunchLocalMessage Id = GoalText 
+          "New Movie Unlocked" panel_message_newThing01 
+#00352    LaunchLocalMessage Id = complete 
+          "Gearbox Tribute" panel_message_newlevelThingName01 
+#00353    wait 1 seconds 
+#00354    LaunchLocalMessage Id = BottomInfo 
+          "Press ¬ to Continue" panel_message_XtoContinue 
+#00355    WaitForControllerPressedX 
+#00356    LaunchLocalMessage Id = GoalText 
+          "New Movie Unlocked" panel_message_newThing02 
+#00357    LaunchLocalMessage Id = complete 
+          "Gearbox Tribute" panel_message_newlevelThingName02 
+#00358    LaunchLocalMessage Id = BottomInfo 
+          " " panel_message_XtoContinue 
+#00359    LaunchLocalMessage Id = LegealStuff 
+          " " panel_message_legalmumbojumbo 
+#00360    wait 0.5 seconds 
+#00361    KillMessages 
+#00363    DeletePanel 
+#00364    ControllerDebounce x time = 0.2 
+          
+#00365    wait 15 gameframes 
+#00366    SwitchOnMenu Id = options_main_menu 
+          
+#00368    EnableBackEvent 
+#00370    EnableEvent Id = options_main_menu 
+          EventType = back 
+          
+#00371    EnableEvent Id = options_main_menu 
+          EventType = choose 
+          
+#00372    FrontEndSetActive 
+#00373  END FUNCTION
+          
+#00374  FUNCTION cheat_unlockdoomguy 
+#00376    IF GetGlobalFlag flag = SKATER_UNLOCKED_DOOMGUY 
+            
+#00377    ELSE 
+#00378      SetGlobalFlag flag = SKATER_UNLOCKED_DOOMGUY 
+            
+#00379      MakeTextMenuElementStatic Movie_GBX_Tribute nonstatic = 1 
+            
+#00380      spawnscript do_doomguy_stuff 
+#00381    END IF 
+#00382  END FUNCTION
+          
+#00383  FUNCTION ClearACompLevel 
+#00385    SetGoal Goal = GOAL_BRONZE 
+          
+#00386    SetGoal Goal = GOAL_SILVER 
+          
+#00387    SetGoal Goal = GOAL_GOLD 
+          
+#00388    SetFlag flag = GOAL_DECK 
+          
+#00389    GiveLevelStats 
+#00390    SetFlag flag = GOAL_STAT_POINT1 
+          
+#00391    SetFlag flag = GOAL_STAT_POINT2 
+          
+#00392    SetFlag flag = GOAL_STAT_POINT3 
+          
+#00393    SetFlag flag = GOAL_STAT_POINT4 
+          
+#00394    SetFlag flag = GOAL_STAT_POINT5 
+          
+#00395  END FUNCTION
+          
+#00396  FUNCTION ClearALevel 
+#00398    SetFlag flag = GOAL_DECK 
+          
+#00399    GiveLevelStats 
+#00400    SetGoal Goal = GOAL_HIGHSCORE 
+          
+#00401    SetGoal Goal = GOAL_PROSCORE 
+          
+#00402    SetGoal Goal = GOAL_SICKSCORE 
+          
+#00403    SetGoal Goal = GOAL_SKATE 
+          
+#00404    SetGoal Goal = GOAL_TRICKSPOT 
+          
+#00405    SetGoal Goal = GOAL_TAPE 
+          
+#00406    SetGoal Goal = GOAL_SCRIPTED1 
+          
+#00407    SetGoal Goal = GOAL_SCRIPTED2 
+          
+#00408    SetGoal Goal = GOAL_SCRIPTED3 
+          
+#00409  END FUNCTION
+          
+#00410  FUNCTION GiveLevelStats 
+#00412    IF GetFlag flag = GOAL_STAT_POINT1 
+            
+#00413    ELSE 
+#00414      SetFlag flag = GOAL_STAT_POINT1 
+            
+#00415      AwardStatPoint 
+#00416    END IF 
+#00417    IF GetFlag flag = GOAL_STAT_POINT2 
+            
+#00418    ELSE 
+#00419      SetFlag flag = GOAL_STAT_POINT2 
+            
+#00420      AwardStatPoint 
+#00421    END IF 
+#00422    IF GetFlag flag = GOAL_STAT_POINT3 
+            
+#00423    ELSE 
+#00424      SetFlag flag = GOAL_STAT_POINT3 
+            
+#00425      AwardStatPoint 
+#00426    END IF 
+#00427    IF GetFlag flag = GOAL_STAT_POINT4 
+            
+#00428    ELSE 
+#00429      SetFlag flag = GOAL_STAT_POINT4 
+            
+#00430      AwardStatPoint 
+#00431    END IF 
+#00432    IF GetFlag flag = GOAL_STAT_POINT5 
+            
+#00433    ELSE 
+#00434      SetFlag flag = GOAL_STAT_POINT5 
+            
+#00435      AwardStatPoint 
+#00436    END IF 
+#00437  END FUNCTION
+          
+#00438  FUNCTION cheat_xxx 
+#00440    printf "Cheat without a cheatscript" 
+#00441  END FUNCTION
+          
+#00442  FUNCTION cheat_give_neversoft_skaters 
+#00444    change give_neversoft_skaters = 1 
+          
+#00447  END FUNCTION
+          
+#00448  FUNCTION cheat_select_shift 
+#00450    change select_shift = 1 
+          
+#00453  END FUNCTION
+          
+#00454  FUNCTION cheat_playsound_good 
+#00456    PlaySound GUI_unlock1 
+#00457  END FUNCTION
+          
+#00458  FUNCTION cheat_playsound_bad 
+#00461    PlaySound GUI_buzzer01 
+#00462  END FUNCTION
+          
+#00463  FUNCTION cheat_toggle_net_metrics 
+#00465    ToggleNetMetrics 
+#00466  END FUNCTION
+          
+#00467  FUNCTION cheat_reset 
+#00469    ResetPS2 
+#00470  END FUNCTION
+          
+#00471  FUNCTION cheat_resethd 
+#00473    ResetHD 
+#00474  END FUNCTION
+          
+#00475  FUNCTION default_non_cd_startup 
+#00480    cheat_give_neversoft_skaters 
+#00481    cheat_select_shift 
+#00482  END FUNCTION
+          
+#00483  cheat_array = ARRAY(
+          
+          STRUCT{
+            c1 = 617143598 
+            c2 = -1773057737 
+            CheatScript = unlock_all_cheats 
+            }
+          STRUCT{
+            c1 = 235273493 
+            c2 = -488702967 
+            CheatScript = cheat_give_everything 
+            }
+          STRUCT{
+            c1 = 379726526 
+            c2 = 1631993579 
+            CheatScript = cheat_give_levels 
+            }
+          STRUCT{
+            c1 = 1906945534 
+            c2 = 1661351313 
+            CheatScript = cheat_give_skaters 
+            }
+          STRUCT{
+            c1 = -1732415189 
+            c2 = 237830098 
+            CheatScript = cheat_give_neversoft_skaters 
+            }
+          STRUCT{
+            c1 = 1617514200 
+            c2 = 84318768 
+            CheatScript = cleargame 
+            }
+          STRUCT{
+            c1 = 156079685 
+            c2 = 407536924 
+            CheatScript = AllDecks 
+            }
+          STRUCT{
+            c1 = 652320665 
+            c2 = 334460197 
+            CheatScript = AllStats 
+            }
+          STRUCT{
+            c1 = 1552329878 
+            c2 = -766892396 
+            CheatScript = cheat_unlockmovies 
+            }
+          STRUCT{
+            c1 = -2038664901 
+            c2 = 461662073 
+            CheatScript = cheat_unlockdoomguy 
+            }
+          
+        )
+        
+#00518  

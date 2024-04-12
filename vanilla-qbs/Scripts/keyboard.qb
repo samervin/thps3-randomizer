@@ -1,0 +1,227 @@
+foreign_charset = "ﬂƒ‹÷‡‚‰ÍËÈÎÏÓÔÙÚˆ˘˚¸Áú" 
+        
+#00001  standard_charset = STRUCT{
+          alphanumeric_charset allow_punctuation allow_spaces }
+        
+#00008  gapname_charset = STRUCT{
+          alphanumeric_charset allow_basic_punctuation allow_spaces }
+        
+#00016  ip_charset = STRUCT{
+          ip_control allow_numbers allow_period }
+        
+#00022  alphanumeric_charset = STRUCT{
+          allow_numbers allow_uppercase allow_lowercase allow_foreign }
+        
+#00029  horse_charset = STRUCT{
+          allow_numbers allow_uppercase allow_lowercase }
+        
+#00036  FUNCTION TestKeyboardScript 
+#00038    printf GLOBAL.keyboard_string 
+          
+#00039  END FUNCTION
+          
+#00040  FUNCTION add_keyboard_handlers prefs = network 
+          
+#00044    VerifyParam param = keyboard_id 
+          func = add_standard_keyboard_handlers 
+          NULL 
+#00045    VerifyParam param = prefs 
+          func = add_standard_keyboard_handlers 
+          NULL 
+#00046    VerifyParam param = field 
+          func = add_standard_keyboard_handlers 
+          NULL 
+#00047    AttachEventHandler STRUCT{
+            type = showeventhandler 
+            object = GLOBAL.keyboard_id 
+            target = "set_ui_from_preferences" 
+            params = STRUCT{
+              prefs = GLOBAL.prefs 
+              field = GLOBAL.field 
+              }
+            }
+          
+#00054    AttachEventHandler STRUCT{
+            type = contentschangedeventhandler 
+            object = GLOBAL.keyboard_id 
+            target = "set_preferences_from_ui" 
+            params = STRUCT{
+              prefs = GLOBAL.prefs 
+              field = GLOBAL.field 
+              }
+            }
+          
+#00061  END FUNCTION
+          
+#00062  FUNCTION create_and_attach_generic_array_menu parent = contain1 
+          
+#00073    VerifyParam param = menu_id 
+          func = populate_generic_array_menu 
+          NULL 
+#00075    VerifyParam param = field 
+          func = populate_generic_array_menu 
+          NULL 
+#00076    VerifyParam param = array_name 
+          func = populate_generic_array_menu 
+          NULL 
+#00077    IF GotParam title 
+#00079      CreateAndAttachMenu STRUCT{
+              type = verticalmenu 
+              x = 45.0 
+              y = 120.0 
+              w = 300.0 
+              h = 400.0 
+              just_center_x just_center_y id = GLOBAL.menu_id 
+              parent = GLOBAL.parent_id 
+              blue_top NULL children = ARRAY(
+                
+                STRUCT{
+                  type = textmenuelement 
+                  auto_id parent = GLOBAL.menu_id 
+                  text = GLOBAL.title 
+                  static dont_gray drawer = title 
+                  }
+                
+              )
+              }
+            
+#00100    ELSE 
+#00101      CreateAndAttachMenu STRUCT{
+              type = verticalmenu 
+              x = 45.0 
+              y = 120.0 
+              w = 300.0 
+              h = 400.0 
+              just_center_x just_center_y id = GLOBAL.menu_id 
+              parent = GLOBAL.parent_id 
+              blue_top NULL }
+            
+#00111    END IF 
+#00112    ForEachIn GLOBAL.array_name 
+          do = add_generic_array_menu_item 
+          params = STRUCT{
+            NULL }
+          
+#00115  END FUNCTION
+          
+#00116  FUNCTION add_generic_array_menu_item 
+#00122    VerifyParam param = menu_id 
+          func = add_generic_array_menu_item 
+          NULL 
+#00124    VerifyParam param = field 
+          func = add_generic_array_menu_item 
+          NULL 
+#00125    VerifyParam param = name 
+          func = add_generic_array_menu_item 
+          NULL 
+#00128    VerifyParam param = checksum 
+          func = add_generic_array_menu_item 
+          NULL 
+#00129    IF GotParam validationscript 
+#00131      CreateAndAttachMenu STRUCT{
+              type = textmenuelement 
+              auto_id parent = GLOBAL.menu_id 
+              text = GLOBAL.name 
+              implemented_property eventhandlers = ARRAY(
+                
+                STRUCT{
+                  type = showeventhandler 
+                  target = "set_ui_from_preferences" 
+                  params = STRUCT{
+                    prefs = GLOBAL.prefs 
+                    field = GLOBAL.field 
+                    select_if = GLOBAL.checksum 
+                    menu_id = GLOBAL.menu_id 
+                    }
+                  }
+                STRUCT{
+                  type = showeventhandler 
+                  target = GLOBAL.validationscript 
+                  params = STRUCT{
+                    name = GLOBAL.name 
+                    checksum = GLOBAL.checksum 
+                    }
+                  }
+                STRUCT{
+                  type = IsSelectedEventHandler 
+                  target = "set_preferences_from_generic_array" 
+                  params = STRUCT{
+                    prefs = GLOBAL.prefs 
+                    field = GLOBAL.field 
+                    value = GLOBAL.checksum 
+                    array_name = GLOBAL.array_name 
+                    }
+                  }
+                STRUCT{
+                  type = ChooseEventHandler 
+                  target = "go_back" 
+                  params = STRUCT{
+                    id = GLOBAL.menu_id 
+                    }
+                  }
+                
+              )
+              }
+            
+#00175    ELSE 
+#00176      CreateAndAttachMenu STRUCT{
+              type = textmenuelement 
+              auto_id parent = GLOBAL.menu_id 
+              text = GLOBAL.name 
+              implemented_property eventhandlers = ARRAY(
+                
+                STRUCT{
+                  type = showeventhandler 
+                  target = "set_ui_from_preferences" 
+                  params = STRUCT{
+                    prefs = GLOBAL.prefs 
+                    field = GLOBAL.field 
+                    select_if = GLOBAL.checksum 
+                    menu_id = GLOBAL.menu_id 
+                    }
+                  }
+                STRUCT{
+                  type = IsSelectedEventHandler 
+                  target = "set_preferences_from_generic_array" 
+                  params = STRUCT{
+                    prefs = GLOBAL.prefs 
+                    field = GLOBAL.field 
+                    value = GLOBAL.checksum 
+                    array_name = GLOBAL.array_name 
+                    }
+                  }
+                STRUCT{
+                  type = ChooseEventHandler 
+                  target = "go_back" 
+                  params = STRUCT{
+                    id = GLOBAL.menu_id 
+                    }
+                  }
+                
+              )
+              }
+            
+#00210    END IF 
+#00211  END FUNCTION
+          
+#00212  FUNCTION set_preferences_from_generic_array 
+#00214    ForEachIn GLOBAL.array_name 
+          do = set_preferences_from_generic_array_item 
+          params = STRUCT{
+            NULL }
+          
+#00215  END FUNCTION
+          
+#00216  FUNCTION set_preferences_from_generic_array_item 
+#00218    IF ChecksumEquals a = GLOBAL.value 
+            b = GLOBAL.checksum 
+            
+#00219      SetPreference NULL params = STRUCT{
+              ui_string = GLOBAL.name 
+              checksum = GLOBAL.checksum 
+              time = GLOBAL.time 
+              }
+            
+#00221    END IF 
+#00222  END FUNCTION
+          

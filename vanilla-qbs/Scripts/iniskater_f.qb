@@ -1,0 +1,1636 @@
+
+#00001  cas_female_basicmesh = "models/skater_f/skater_f.skn" 
+        
+#00003  cas_female_options = 
+#00005  
+        STRUCT{
+          head = ARRAY(
+            
+            STRUCT{
+              desc = "Elissa Steamer" 
+              mesh = "models/skater_f/Head_S_Steamer.skn" 
+              flags = STRUCT{
+                is_pro_head no_headgear no_glasses has_big_hair }
+              target = "AddFemaleProHead1" 
+              hidden }
+            STRUCT{
+              target = "set_carrera_skintone" 
+              desc = "Corporal Carrera" 
+              mesh = "models/skater_f/head_carrera.skn" 
+              flags = STRUCT{
+                is_pro_head no_leg_tattoos no_socks no_back_tattoo has_big_hair is_helmet }
+              hidden }
+            STRUCT{
+              desc = "Light Skin 1" 
+              texture = "cs_nh_f_wht_face_exotic.png" 
+              target = "AddFemaleHead1" 
+              flags = STRUCT{
+                light_skin_1 }
+              }
+            STRUCT{
+              desc = "Light Skin 2" 
+              texture = "cs_nh_f_wht_face_cute.png" 
+              target = "AddFemaleHead1" 
+              flags = STRUCT{
+                light_skin_2 }
+              }
+            STRUCT{
+              desc = "Light Skin 3" 
+              texture = "cs_nh_f_wht_face_jpn.png" 
+              target = "AddFemaleHead1" 
+              flags = STRUCT{
+                light_skin_3 }
+              }
+            STRUCT{
+              desc = "Light Skin 4" 
+              texture = "cs_nh_f_wht_face_sas.png" 
+              target = "AddFemaleHead1" 
+              flags = STRUCT{
+                light_skin_4 }
+              }
+            STRUCT{
+              desc = "Light Skin 5" 
+              texture = "cs_nn_f_wht_face_05.png" 
+              target = "AddFemaleHead1" 
+              flags = STRUCT{
+                light_skin_5 }
+              }
+            STRUCT{
+              desc = "Tan Skin 1" 
+              texture = "cs_nh_f_bwn_face_asn.png" 
+              target = "AddFemaleHead2" 
+              flags = STRUCT{
+                tan_skin_1 }
+              }
+            STRUCT{
+              desc = "Tan Skin 2" 
+              texture = "cs_nh_f_bwn_face_cute.png" 
+              target = "AddFemaleHead2" 
+              flags = STRUCT{
+                tan_skin_2 }
+              }
+            STRUCT{
+              desc = "Tan Skin 3" 
+              texture = "cs_nh_f_bwn_face_lat.png" 
+              target = "AddFemaleHead2" 
+              flags = STRUCT{
+                tan_skin_3 }
+              }
+            STRUCT{
+              desc = "Tan Skin 4" 
+              texture = "cs_nh_f_bwn_face_psn.png" 
+              target = "AddFemaleHead2" 
+              flags = STRUCT{
+                tan_skin_4 }
+              }
+            STRUCT{
+              desc = "Tan Skin 5" 
+              texture = "cs_nn_f_bwn_face_05.png" 
+              target = "AddFemaleHead2" 
+              flags = STRUCT{
+                tan_skin_5 }
+              }
+            STRUCT{
+              desc = "Dark Skin 1" 
+              texture = "cs_nh_f_blk_face_cute.png" 
+              target = "AddFemaleHead3" 
+              flags = STRUCT{
+                dark_skin_1 }
+              }
+            STRUCT{
+              desc = "Dark Skin 2" 
+              texture = "cs_nh_f_blk_face_exotic.png" 
+              target = "AddFemaleHead3" 
+              flags = STRUCT{
+                dark_skin_2 }
+              }
+            STRUCT{
+              desc = "Dark Skin 3" 
+              texture = "cs_nh_f_blk_face_sas.png" 
+              target = "AddFemaleHead3" 
+              flags = STRUCT{
+                dark_skin_3 }
+              }
+            STRUCT{
+              desc = "Dark Skin 4" 
+              texture = "cs_nn_f_blk_face_04.png" 
+              target = "AddFemaleHead3" 
+              flags = STRUCT{
+                dark_skin_4 }
+              }
+            STRUCT{
+              desc = "Dark Skin 5" 
+              texture = "cs_nn_f_blk_face_05.png" 
+              target = "AddFemaleHead3" 
+              flags = STRUCT{
+                dark_skin_5 }
+              }
+            STRUCT{
+              SJ_head_structure }
+            STRUCT{
+              LD_head_structure }
+            STRUCT{
+              RDy_head_structure }
+            STRUCT{
+              NWv_head_structure }
+            STRUCT{
+              SDv_head_structure }
+            
+          )
+          hair = ARRAY(
+            
+            STRUCT{
+              mesh = "models/skater_f/hair_F_W_long.skn" 
+              desc = "Light Brown Long" 
+              }
+            STRUCT{
+              mesh = "models/skater_f/hair_F_W_medium.skn" 
+              desc = "Light Brown Medium" 
+              }
+            STRUCT{
+              mesh = "models/skater_f/hair_F_W_bushy.skn" 
+              desc = "Light Brown Short" 
+              }
+            STRUCT{
+              mesh = "models/skater_f/hair_F_crop.skn" 
+              desc = "Light Brown Cropped" 
+              }
+            STRUCT{
+              mesh = "models/skater_f/hair_F_W_ponytail.skn" 
+              desc = "Lt Brown Pony Tail" 
+              }
+            STRUCT{
+              mesh = "models/skater_f/hair_F_W_pigtails.skn" 
+              desc = "Lt Brown PigTails" 
+              }
+            STRUCT{
+              mesh = "models/skater_f/hair_F_W_long.skn" 
+              desc = "Dark Brown Long" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NH_F_Wht_Hair.png" 
+                with = "CS_NH_F_Bwn_hair.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/hair_F_W_medium.skn" 
+              desc = "Dark Brown Medium" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NH_F_Wht_Hair.png" 
+                with = "CS_NH_F_Bwn_Hair.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/hair_F_W_bushy.skn" 
+              desc = "Dark Brown Short" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NH_F_Wht_bushyhair.png" 
+                with = "CS_NH_F_Bwn_bushyhair.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/hair_F_crop.skn" 
+              desc = "Dark Brown Cropped" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NH_F_Wht_Hair.png" 
+                with = "CS_NH_F_Bwn_Hair.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/hair_F_W_ponytail.skn" 
+              desc = "Dk Brown Pony Tail" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NH_F_Wht_ponytail.png" 
+                with = "CS_NH_F_Bwn_ponytail.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/hair_F_W_pigtails.skn" 
+              desc = "Dk Brown PigTails" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NH_F_Wht_pigtails.png" 
+                with = "CS_NH_F_Bwn_pigtails.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/hair_F_W_long.skn" 
+              desc = "Blonde Long" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NH_F_Wht_Hair.png" 
+                with = "CS_NH_F_Wht_Hair_bln.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/hair_F_crop.skn" 
+              desc = "Blonde Cropped" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NH_F_Wht_Hair.png" 
+                with = "CS_NH_F_Wht_Hair_bln.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/hair_F_W_ponytail.skn" 
+              desc = "Blonde Pony Tail" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NH_F_Wht_ponytail.png" 
+                with = "CS_NH_F_Wht_ponytail_bln.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/hair_F_W_pigtails.skn" 
+              desc = "Blonde PigTails" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NH_F_Wht_pigtails.png" 
+                with = "CS_NH_F_Wht_pigtails_bln.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/hair_F_W_long.skn" 
+              desc = "Black Long" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NH_F_Wht_Hair.png" 
+                with = "CS_NH_F_Blk_hair.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/hair_F_W_medium.skn" 
+              desc = "Black Medium" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NH_F_Wht_Hair.png" 
+                with = "CS_NH_F_Blk_Hair.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/hair_F_W_bushy.skn" 
+              desc = "Black Short" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NH_F_Wht_bushyhair.png" 
+                with = "CS_NH_F_Blk_bushyhair.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/hair_F_crop.skn" 
+              desc = "Black Cropped" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NH_F_Wht_Hair.png" 
+                with = "CS_NH_F_Blk_Hair.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/hair_F_W_ponytail.skn" 
+              desc = "Black Pony Tail" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NH_F_Wht_ponytail.png" 
+                with = "CS_NH_F_Blk_ponytail.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/hair_F_W_pigtails.skn" 
+              desc = "Black PigTails" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NH_F_Wht_pigtails.png" 
+                with = "CS_NH_F_Blk_pigtails.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/hair_F_W_long.skn" 
+              desc = "Red Long" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NH_F_Wht_Hair.png" 
+                with = "CS_NH_F_Wht_Hair_red.png" 
+                }
+              }
+            STRUCT{
+              desc = "Really Short" 
+              }
+            STRUCT{
+              mesh = "models/skater_m/Hair_F_W_mohawk.skn" 
+              desc = "Mohawk" 
+              target = "replace_female_skullcap" 
+              }
+            STRUCT{
+              desc = "Bald" 
+              target = "replace_female_skullcap" 
+              }
+            
+          )
+          jaw = ARRAY(
+            
+            STRUCT{
+              desc = "None" 
+              }
+            
+          )
+          torso = ARRAY(
+            
+            STRUCT{
+              mesh = "models/skater_f/shirt_SStshirt.skn" 
+              desc = "T-Shirt" 
+              flags = STRUCT{
+                supports_front_logo supports_back_logo }
+              }
+            STRUCT{
+              mesh = "models/skater_f/shirt_SStshirt.skn" 
+              desc = "T-Shirt - Sport" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NH_Shirt.png" 
+                with = "CS_NH_Shirt_holster.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/shirt_SStshirt.skn" 
+              desc = "T-Shirt - Stripes" 
+              textures = ARRAY(
+                
+                STRUCT{
+                  image_dir = "textures/skater_m" 
+                  replace = "CS_NH_shirt.png" 
+                  with = "CS_NH_shirt_plaidx.png" 
+                  }
+                STRUCT{
+                  image_dir = "textures/skater_m" 
+                  replace = "CS_NH_sleeve_short.png" 
+                  with = "CS_NN_sleeve_short_plaidx.png" 
+                  }
+                
+              )
+              }
+            STRUCT{
+              mesh = "models/skater_f/shirt_SStshirt.skn" 
+              desc = "T-Shirt - Camo" 
+              textures = ARRAY(
+                
+                STRUCT{
+                  image_dir = "textures/skater_m" 
+                  replace = "CS_NH_shirt.png" 
+                  with = "CS_NH_shirt_camo.png" 
+                  }
+                STRUCT{
+                  image_dir = "textures/skater_m" 
+                  replace = "CS_NH_sleeve_short.png" 
+                  with = "CS_NN_sleeve_short_camo.png" 
+                  }
+                
+              )
+              }
+            STRUCT{
+              mesh = "models/skater_f/shirt_SSopencollar.skn" 
+              desc = "V-Neck" 
+              flags = STRUCT{
+                supports_back_logo }
+              }
+            STRUCT{
+              mesh = "models/skater_f/shirt_ssopencollar.skn" 
+              desc = "V-Neck - Style 1" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NH_Female_shirt.png" 
+                with = "CS_NH_Female_shirt_02.png" 
+                }
+              flags = STRUCT{
+                supports_back_logo }
+              }
+            STRUCT{
+              mesh = "models/skater_f/shirt_ssopencollar.skn" 
+              desc = "V-Neck - Style 2" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NH_Female_shirt.png" 
+                with = "CS_NH_Female_shirt_03.png" 
+                }
+              flags = STRUCT{
+                supports_back_logo }
+              }
+            STRUCT{
+              mesh = "models/skater_f/shirt_ssopencollar.skn" 
+              desc = "V-Neck - Flower" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NH_female_shirt.png" 
+                with = "CS_NH_shirt_floral.png" 
+                }
+              flags = STRUCT{
+                supports_back_logo }
+              }
+            STRUCT{
+              mesh = "models/skater_f/shirt_ssopencollar.skn" 
+              desc = "V-Neck - Floral" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NH_Female_shirt.png" 
+                with = "CS_NH_Female_shirt_05.png" 
+                }
+              flags = STRUCT{
+                supports_back_logo }
+              }
+            STRUCT{
+              mesh = "models/skater_f/shirt_tanktop.skn" 
+              desc = "Tank-Top" 
+              flags = STRUCT{
+                shows_panties supports_front_logo supports_chest_tattoos supports_back_tattoos }
+              }
+            STRUCT{
+              mesh = "models/skater_f/shirt_tanktop.skn" 
+              desc = "Tank-Top - Floral" 
+              flags = STRUCT{
+                shows_panties supports_chest_tattoos supports_back_tattoos }
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NH_female_tanktop.png" 
+                with = "CS_NH_female_tanktop_flora.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/shirt_tanktop.skn" 
+              desc = "Tank-Top - Dip-Dye" 
+              flags = STRUCT{
+                shows_panties supports_chest_tattoos supports_back_tattoos }
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NH_female_tanktop.png" 
+                with = "CS_NH_female_tanktop_dye.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/shirt_bball.skn" 
+              desc = "Tank-Top - Sport" 
+              flags = STRUCT{
+                shows_panties no_backpack supports_chest_tattoos supports_back_tattoos }
+              }
+            STRUCT{
+              mesh = "models/skater_f/shirt_F_lStshirt.skn" 
+              desc = "Long Sleeve" 
+              flags = STRUCT{
+                supports_front_logo supports_back_logo covers_elbows covers_arms no_backpack }
+              }
+            STRUCT{
+              mesh = "models/skater_f/shirt_lsopencollar.skn" 
+              desc = "Button" 
+              flags = STRUCT{
+                covers_elbows covers_arms no_backpack }
+              }
+            STRUCT{
+              mesh = "models/skater_f/shirt_lsopencollar.skn" 
+              desc = "Button - Plaid" 
+              flags = STRUCT{
+                covers_elbows covers_arms no_backpack }
+              textures = ARRAY(
+                
+                STRUCT{
+                  image_dir = "textures/skater_m" 
+                  replace = "CS_NH_buttoncollar.png" 
+                  with = "CS_NN_shirt_long_plaid01.png" 
+                  }
+                STRUCT{
+                  image_dir = "textures/skater_m" 
+                  replace = "CS_NH_sleeve_long.png" 
+                  with = "CS_NN_sleeve_long_plaid01.png" 
+                  }
+                
+              )
+              }
+            STRUCT{
+              mesh = "models/skater_f/shirt_lsopencollar.skn" 
+              desc = "Button - Camo" 
+              flags = STRUCT{
+                covers_elbows covers_arms no_backpack }
+              textures = ARRAY(
+                
+                STRUCT{
+                  image_dir = "textures/skater_m" 
+                  replace = "CS_NH_buttoncollar.png" 
+                  with = "CS_NH_buttoncollar_camo.png" 
+                  }
+                STRUCT{
+                  image_dir = "textures/skater_m" 
+                  replace = "CS_NH_sleeve_long.png" 
+                  with = "CS_NH_sleeve_long_camo.png" 
+                  }
+                
+              )
+              }
+            STRUCT{
+              mesh = "models/skater_f/shirt_lsopencollar.skn" 
+              desc = "Button - Two-Tone" 
+              flags = STRUCT{
+                covers_elbows covers_arms no_backpack }
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NH_buttoncollar.png" 
+                with = "CS_NH_buttoncollar_stripeY.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/shirt_sheer.skn" 
+              desc = "Sheer Shirt" 
+              flags = STRUCT{
+                covers_elbows covers_arms no_backpack shows_panties supports_chest_tattoos supports_back_tattoos }
+              }
+            STRUCT{
+              mesh = "models/skater_f/Shirt_F_lshooddown.skn" 
+              desc = "Sweat - Hood Down" 
+              flags = STRUCT{
+                supports_front_logo covers_elbows covers_arms no_backpack }
+              }
+            STRUCT{
+              mesh = "models/skater_f/shirt_F_lshooddown.skn" 
+              desc = "Sweat - Down/Stripe" 
+              flags = STRUCT{
+                supports_front_logo covers_elbows covers_arms no_backpack }
+              textures = ARRAY(
+                
+                STRUCT{
+                  image_dir = "textures/skater_m" 
+                  replace = "CS_NN_lshoodarm01.png" 
+                  with = "CS_NH_lshoodarm_stripe.png" 
+                  }
+                STRUCT{
+                  image_dir = "textures/skater_m" 
+                  replace = "CS_NN_lshooddown01.png" 
+                  with = "CS_NH_lshoodydown_stripe.png" 
+                  }
+                
+              )
+              }
+            STRUCT{
+              mesh = "models/skater_f/Shirt_F_lshoodup.skn" 
+              desc = "Sweat - Hood up" 
+              flags = STRUCT{
+                supports_front_logo covers_elbows covers_arms no_backpack no_headgear no_hair }
+              }
+            STRUCT{
+              mesh = "models/skater_f/shirt_F_lshoodup.skn" 
+              desc = "Sweat - Up/Stripe" 
+              flags = STRUCT{
+                supports_front_logo covers_elbows covers_arms no_backpack no_headgear no_hair }
+              textures = ARRAY(
+                
+                STRUCT{
+                  image_dir = "textures/skater_m" 
+                  replace = "CS_NN_lshoodarm01.png" 
+                  with = "CS_NH_lshoodarm_stripe.png" 
+                  }
+                STRUCT{
+                  image_dir = "textures/skater_m" 
+                  replace = "CS_NN_lshoodup01.png" 
+                  with = "CS_NH_lshoodyup_stripe.png" 
+                  }
+                STRUCT{
+                  image_dir = "textures/skater_m" 
+                  replace = "CS_NN_lshood01.png" 
+                  with = "CS_NH_hoodyhood_stripe.png" 
+                  }
+                
+              )
+              }
+            STRUCT{
+              mesh = "models/skater_f/shirt_denimjacket.skn" 
+              desc = "Denim Jacket" 
+              flags = STRUCT{
+                covers_elbows covers_arms no_backpack supports_chest_tattoos supports_back_tattoos }
+              }
+            STRUCT{
+              mesh = "models/skater_f/shirt_baggyvest.skn" 
+              desc = "Vest" 
+              flags = STRUCT{
+                no_backpack }
+              }
+            STRUCT{
+              mesh = "models/skater_f/shirt_baggyvest.skn" 
+              desc = "Vest - Camo" 
+              flags = STRUCT{
+                no_backpack }
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NH_baggyvest.png" 
+                with = "CS_NH_baggyvest_camo.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/shirt_baggyvest.skn" 
+              desc = "Vest - Padded" 
+              flags = STRUCT{
+                no_backpack }
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NH_baggyvest.png" 
+                with = "CS_NH_baggyvest_padded.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/shirt_baggyvest.skn" 
+              desc = "Vest - Two-Tone" 
+              flags = STRUCT{
+                no_backpack }
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NH_baggyvest.png" 
+                with = "CS_NH_baggyvest_stripe.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/shirt_snowjacket.skn" 
+              desc = "Snow Jacket 1" 
+              flags = STRUCT{
+                covers_elbows covers_arms no_backpack }
+              }
+            STRUCT{
+              mesh = "models/skater_f/shirt_snowjacket.skn" 
+              desc = "Snow Jacket 2" 
+              flags = STRUCT{
+                covers_elbows covers_arms no_backpack }
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NH_snowjacket.png" 
+                with = "CS_NH_snowjacket_stripex.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/shirt_snowjacket.skn" 
+              desc = "Padded Jacket" 
+              flags = STRUCT{
+                covers_elbows covers_arms no_backpack }
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NH_snowjacket.png" 
+                with = "CS_NH_snowjacket_padded.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/shirt_steamer.skn" 
+              desc = "Elissa's Shirt" 
+              flags = STRUCT{
+                covers_elbows covers_arms no_backpack no_arm_tattoos }
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NH_F_Wht_arm.png" 
+                with = "CS_NH_F_Wht_arm_shd01.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/shirt_carrera.skn" 
+              desc = "Carrera's Shirt" 
+              flags = STRUCT{
+                shows_panties covers_elbows covers_arms no_backpack }
+              hidden }
+            
+          )
+          legs = ARRAY(
+            
+            STRUCT{
+              mesh = "models/skater_f/pant_steamer.skn" 
+              desc = "Elissa's Jeans" 
+              }
+            STRUCT{
+              mesh = "models/skater_f/pant_regularpants.skn" 
+              desc = "Jeans" 
+              }
+            STRUCT{
+              mesh = "models/skater_f/pant_baggypants.skn" 
+              desc = "Jeans - Baggy" 
+              }
+            STRUCT{
+              mesh = "models/skater_f/pant_regularpants.skn" 
+              desc = "Jeans - Styled" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NH_F_longpants.png" 
+                with = "CS_NH_baggypants_stripe.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/pant_regularpants.skn" 
+              desc = "Corduroy" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NH_F_longpants.png" 
+                with = "CS_NH_baggypants_cord.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/pant_baggypants.skn" 
+              desc = "Cargo Pants" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NH_baggypants.png" 
+                with = "CS_NH_baggycargos.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/pant_baggypants.skn" 
+              desc = "Snow Pants" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NH_baggypants.png" 
+                with = "CS_NH_baggypants_snow.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/pant_baggypants.skn" 
+              desc = "Camouflage" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NH_baggypants.png" 
+                with = "CS_NH_baggypants_camo.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/pant_anklelength.skn" 
+              desc = "Ankle Pants" 
+              }
+            STRUCT{
+              mesh = "models/skater_f/pant_anklelength.skn" 
+              desc = "Ankle - Style" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NH_F_longpants.png" 
+                with = "CS_NH_baggypants_stripe.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/pant_anklelength.skn" 
+              desc = "Ankle - Floral" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NH_F_longpants.png" 
+                with = "CS_NH_baggypants_flora.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/pant_shortshorts.skn" 
+              desc = "Shorts" 
+              flags = STRUCT{
+                supports_kneepads }
+              }
+            STRUCT{
+              mesh = "models/skater_f/pant_regularshorts.skn" 
+              desc = "Shorts - Beach" 
+              flags = STRUCT{
+                supports_kneepads }
+              }
+            STRUCT{
+              mesh = "models/skater_f/pant_regularshorts.skn" 
+              desc = "Shorts - Camo" 
+              flags = STRUCT{
+                supports_kneepads }
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NH_shortshorts.png" 
+                with = "CS_NH_cargoshorts_camo.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/pant_regularshorts.skn" 
+              desc = "Shorts - Style" 
+              flags = STRUCT{
+                supports_kneepads }
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NH_shortshorts.png" 
+                with = "CS_NH_cargoshorts_stripe.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/skirt.skn" 
+              desc = "Skirt" 
+              flags = STRUCT{
+                supports_kneepads shows_panties }
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NH_F_Wht_leg_32.png" 
+                with = "CS_NH_F_Wht_leg_Shd01.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/skirt.skn" 
+              desc = "Skirt - Plaid" 
+              flags = STRUCT{
+                supports_kneepads shows_panties }
+              textures = ARRAY(
+                
+                STRUCT{
+                  image_dir = "textures/skater_m" 
+                  replace = "CS_NH_skirt.png" 
+                  with = "CS_NH_pleatedskirt_plaid.png" 
+                  }
+                STRUCT{
+                  image_dir = "textures/skater_m" 
+                  replace = "CS_NH_F_Wht_leg_32.png" 
+                  with = "CS_NH_F_Wht_leg_Shd01.png" 
+                  }
+                
+              )
+              }
+            STRUCT{
+              mesh = "models/skater_f/skirt.skn" 
+              desc = "Skirt - Pleated" 
+              flags = STRUCT{
+                supports_kneepads shows_panties }
+              textures = ARRAY(
+                
+                STRUCT{
+                  image_dir = "textures/skater_m" 
+                  replace = "CS_NH_skirt.png" 
+                  with = "CS_NH_pleatedskirt.png" 
+                  }
+                STRUCT{
+                  image_dir = "textures/skater_m" 
+                  replace = "CS_NH_F_Wht_leg_32.png" 
+                  with = "CS_NH_F_Wht_leg_Shd01.png" 
+                  }
+                
+              )
+              }
+            STRUCT{
+              mesh = "models/skater_f/skirt.skn" 
+              desc = "Skirt - Stripes" 
+              flags = STRUCT{
+                supports_kneepads shows_panties }
+              textures = ARRAY(
+                
+                STRUCT{
+                  image_dir = "textures/skater_m" 
+                  replace = "CS_NH_skirt.png" 
+                  with = "CS_NH_pleatedskirt_plaid02.png" 
+                  }
+                STRUCT{
+                  image_dir = "textures/skater_m" 
+                  replace = "CS_NH_F_Wht_leg_32.png" 
+                  with = "CS_NH_F_Wht_leg_Shd01.png" 
+                  }
+                
+              )
+              }
+            STRUCT{
+              mesh = "models/skater_f/skirt.skn" 
+              desc = "Skirt - Floral" 
+              flags = STRUCT{
+                supports_kneepads shows_panties }
+              textures = ARRAY(
+                
+                STRUCT{
+                  image_dir = "textures/skater_m" 
+                  replace = "CS_NH_skirt.png" 
+                  with = "CS_NH_skirt_floral.png" 
+                  }
+                STRUCT{
+                  image_dir = "textures/skater_m" 
+                  replace = "CS_NH_F_Wht_leg_32.png" 
+                  with = "CS_NH_F_Wht_leg_Shd01.png" 
+                  }
+                
+              )
+              }
+            STRUCT{
+              mesh = "models/skater_f/skirt_carrera.skn" 
+              desc = "Carrera's Skirt" 
+              flags = STRUCT{
+                shows_panties }
+              onlywith = carrera 
+              }
+            
+          )
+          elbowpads = ARRAY(
+            
+            STRUCT{
+              desc = "No Elbowpads" 
+              }
+            STRUCT{
+              mesh = "models/skater_m/extra_elbow.skn" 
+              desc = "Elbowpads" 
+              }
+            STRUCT{
+              mesh = "models/skater_m/extra_elbowvert.skn" 
+              desc = "Elbowpads - Vert" 
+              }
+            
+          )
+          kneepads = ARRAY(
+            
+            STRUCT{
+              desc = "No Kneepads" 
+              }
+            STRUCT{
+              mesh = "models/skater_m/extra_knee.skn" 
+              desc = "Kneepads" 
+              }
+            STRUCT{
+              mesh = "models/skater_m/extra_kneevert.skn" 
+              desc = "Kneepads - Vert" 
+              }
+            
+          )
+          backpack = ARRAY(
+            
+            STRUCT{
+              desc = "None" 
+              }
+            STRUCT{
+              mesh = "models/skater_f/Extra_F_backpack.skn" 
+              desc = "Brown Backpack" 
+              }
+            STRUCT{
+              mesh = "models/skater_f/extra_F_backpack.skn" 
+              desc = "Purple Backpack" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_MLS_backpack01F.png" 
+                with = "CS_MLS_backpack02F.png" 
+                }
+              }
+            
+          )
+          chest_tattoo = ARRAY(
+            
+            STRUCT{
+              desc = "None" 
+              }
+            STRUCT{
+              mesh = "models/skater_f/Tattoo_F_Belly.skn" 
+              desc = "Belly 1" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NN_F_Tattoo_Torso03.png" 
+                with = "CS_NN_F_Tattoo_Torso01.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/Tattoo_F_Belly.skn" 
+              desc = "Belly 2" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NN_F_Tattoo_Torso03.png" 
+                with = "CS_NN_F_Tattoo_Torso02.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/Tattoo_F_Belly.skn" 
+              desc = "Belly 3" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NN_F_Tattoo_Torso03.png" 
+                with = "CS_MLS_F_Tattoo_Belly01_32.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/Tattoo_F_Belly.skn" 
+              desc = "Belly 4" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NN_F_Tattoo_Torso03.png" 
+                with = "CS_MLS_F_Tattoo_Belly02_32.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/Tattoo_F_Belly.skn" 
+              desc = "Belly 5" 
+              }
+            
+          )
+          back_tattoo = ARRAY(
+            
+            STRUCT{
+              desc = "None" 
+              }
+            STRUCT{
+              mesh = "models/skater_f/Tattoo_F_Back.skn" 
+              desc = "Back 1" 
+              }
+            STRUCT{
+              mesh = "models/skater_f/Tattoo_F_Back.skn" 
+              desc = "Back 2" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NN_F_Tattoo_Torso01.png" 
+                with = "CS_NN_F_Tattoo_Torso02.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/Tattoo_F_Back.skn" 
+              desc = "Back 3" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NN_F_Tattoo_Torso01.png" 
+                with = "CS_MLS_F_Tattoo_Belly01_32.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/Tattoo_F_Back.skn" 
+              desc = "Back 4" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NN_F_Tattoo_Torso01.png" 
+                with = "CS_MLS_F_Tattoo_Belly02_32.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/Tattoo_F_Back.skn" 
+              desc = "Back 5" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NN_F_Tattoo_Torso01.png" 
+                with = "CS_NN_F_Tattoo_Torso03.png" 
+                }
+              }
+            
+          )
+          left_arm_tattoo = ARRAY(
+            
+            STRUCT{
+              desc = "None" 
+              }
+            STRUCT{
+              mesh = "models/skater_f/Tattoo_F_Forearm_L.skn" 
+              desc = "Forearm  1" 
+              }
+            STRUCT{
+              mesh = "models/skater_f/Tattoo_F_Forearm_L.skn" 
+              desc = "Flames" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NN_Tattoo_Forearm01.png" 
+                with = "CS_NN_Tattoo_Forearm02.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/Tattoo_F_Bicep_L.skn" 
+              desc = "Bicep  1" 
+              }
+            STRUCT{
+              mesh = "models/skater_f/Tattoo_F_Bicep_L.skn" 
+              desc = "Bicep  2" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NN_Tattoo_Bicep01.png" 
+                with = "CS_NN_Tattoo_Forearm01.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/Tattoo_F_Bicep_L.skn" 
+              desc = "Bleeding Heart" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NN_Tattoo_Bicep01.png" 
+                with = "CS_MLS_F_Tattoo_arm01_32.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/Tattoo_F_Bicep_L.skn" 
+              desc = "Spades" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NN_Tattoo_Bicep01.png" 
+                with = "CS_MLS_F_Tattoo_arm02_32.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/Tattoo_F_Bicep_L.skn" 
+              desc = "Harlequin" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NN_Tattoo_Bicep01.png" 
+                with = "CS_MLS_F_Tattoo_arm05_32.png" 
+                }
+              }
+            
+          )
+          right_arm_tattoo = ARRAY(
+            
+            STRUCT{
+              desc = "None" 
+              }
+            STRUCT{
+              mesh = "models/skater_f/Tattoo_F_Forearm_R.skn" 
+              desc = "Forearm  1" 
+              }
+            STRUCT{
+              mesh = "models/skater_f/Tattoo_F_Forearm_R.skn" 
+              desc = "Flames" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NN_Tattoo_Forearm01.png" 
+                with = "CS_NN_Tattoo_Forearm02.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/Tattoo_F_Bicep_R.skn" 
+              desc = "Bicep  1" 
+              }
+            STRUCT{
+              mesh = "models/skater_f/Tattoo_F_Bicep_R.skn" 
+              desc = "Bicep  2" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NN_Tattoo_Bicep01.png" 
+                with = "CS_NN_Tattoo_Forearm01.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/Tattoo_F_Bicep_R.skn" 
+              desc = "Bleeding Heart" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NN_Tattoo_Bicep01.png" 
+                with = "CS_MLS_F_Tattoo_arm01_32.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/Tattoo_F_Bicep_R.skn" 
+              desc = "Spades" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NN_Tattoo_Bicep01.png" 
+                with = "CS_MLS_F_Tattoo_arm02_32.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/Tattoo_F_Bicep_R.skn" 
+              desc = "Harlequin" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NN_Tattoo_Bicep01.png" 
+                with = "CS_MLS_F_Tattoo_arm05_32.png" 
+                }
+              }
+            
+          )
+          right_leg_tattoo = ARRAY(
+            
+            STRUCT{
+              desc = "None" 
+              }
+            STRUCT{
+              mesh = "models/skater_f/Tattoo_F_Leg_R.skn" 
+              desc = "Leg 1" 
+              }
+            STRUCT{
+              mesh = "models/skater_f/Tattoo_F_Leg_R.skn" 
+              desc = "Leg 2" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NN_Tattoo_Leg01.png" 
+                with = "CS_NN_F_Tattoo02.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/Tattoo_F_Leg_R.skn" 
+              desc = "Leg 3" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NN_Tattoo_Leg01.png" 
+                with = "CS_MLS_Tattoo_F_leg01_32.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/Tattoo_F_Leg_R.skn" 
+              desc = "Leg 4" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NN_Tattoo_Leg01.png" 
+                with = "CS_MLS_Tattoo_F_leg02_32.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/Tattoo_F_Leg_R.skn" 
+              desc = "Leg 5" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NN_Tattoo_Leg01.png" 
+                with = "CS_NN_Tattoo_Leg02.png" 
+                }
+              }
+            
+          )
+          left_leg_tattoo = ARRAY(
+            
+            STRUCT{
+              desc = "None" 
+              }
+            STRUCT{
+              mesh = "models/skater_f/Tattoo_F_Leg_L.skn" 
+              desc = "Leg 1" 
+              }
+            STRUCT{
+              mesh = "models/skater_f/Tattoo_F_Leg_L.skn" 
+              desc = "Leg 2" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NN_Tattoo_Leg01.png" 
+                with = "CS_NN_F_Tattoo02.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/Tattoo_F_Leg_L.skn" 
+              desc = "Leg 3" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NN_Tattoo_Leg01.png" 
+                with = "CS_MLS_Tattoo_F_leg01_32.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/Tattoo_F_Leg_L.skn" 
+              desc = "Leg 4" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NN_Tattoo_Leg01.png" 
+                with = "CS_MLS_Tattoo_F_leg02_32.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/Tattoo_F_Leg_L.skn" 
+              desc = "Leg 5" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NN_Tattoo_Leg01.png" 
+                with = "CS_NN_Tattoo_Leg02.png" 
+                }
+              }
+            
+          )
+          socks = ARRAY(
+            
+            STRUCT{
+              desc = "None" 
+              flags = STRUCT{
+                supports_leg_tattoos }
+              }
+            STRUCT{
+              mesh = "models/skater_f/Extra_F_Socks.skn" 
+              desc = "Short Socks" 
+              }
+            STRUCT{
+              mesh = "models/skater_f/Extra_F_Socks.skn" 
+              desc = "Long Socks" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NN_Socks_low01.png" 
+                with = "CS_NN_Socks_High01.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/Extra_F_Socks.skn" 
+              desc = "Sport Socks 1" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NN_Socks_low01.png" 
+                with = "CAS_MLS_sportsocksF_32.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/Extra_F_Socks.skn" 
+              desc = "Sport Socks 2" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NN_Socks_low01.png" 
+                with = "CAS_MLS_sportsocks_32.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/Extra_F_Socks.skn" 
+              desc = "Lacy Socks 1" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NN_Socks_low01.png" 
+                with = "CAS_MLS_lacesocksf.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/Extra_F_Socks.skn" 
+              desc = "Lacy Socks 2" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NN_Socks_low01.png" 
+                with = "CAS_MLS_lacesocksf_b.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/Extra_F_Socks.skn" 
+              desc = "Style Socks 1" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NN_Socks_low01.png" 
+                with = "CAS_MLS_redblack.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/Extra_F_Socks.skn" 
+              desc = "Style Socks 2" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NN_Socks_low01.png" 
+                with = "CAS_MLS_gentleman_32.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/Extra_F_Socks.skn" 
+              desc = "Brown Socks" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NN_Socks_low01.png" 
+                with = "CAS_MLS_english.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/Extra_F_Socks.skn" 
+              desc = "Golf Socks" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NN_Socks_low01.png" 
+                with = "CAS_MLS_argyllsocks_32.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/Extra_F_Socks.skn" 
+              desc = "Checkered Socks" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NN_Socks_low01.png" 
+                with = "CAS_MLS_checksocks_32.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/Extra_F_Socks.skn" 
+              desc = "Silly Socks 1" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NN_Socks_low01.png" 
+                replace = "CS_NN_Socks_low01.png" 
+                with = "CAS_MLS_questionsocks_32.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/Extra_F_Socks.skn" 
+              desc = "Silly Socks 2" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NN_Socks_low01.png" 
+                with = "CAS_MLS_spottysocks_32.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/Extra_F_Socks.skn" 
+              desc = "Silly Socks 3" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NN_Socks_low01.png" 
+                with = "CAS_MLS_spottysocks2_32.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/Extra_F_Socks.skn" 
+              desc = "Silly Socks 4" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NN_Socks_low01.png" 
+                with = "CAS_MLS_stripesocks_32.png" 
+                }
+              }
+            STRUCT{
+              mesh = "models/skater_f/Extra_F_Socks.skn" 
+              desc = "Silly Socks 5" 
+              texture = STRUCT{
+                image_dir = "textures/skater_m" 
+                replace = "CS_NN_Socks_low01.png" 
+                with = "CAS_MLS_stripesocks2_32.png" 
+                }
+              }
+            
+          )
+          special_item = ARRAY(
+            
+            STRUCT{
+              desc = "None" 
+              }
+            
+          )
+          special_item_2 = ARRAY(
+            
+            STRUCT{
+              desc = "None" 
+              }
+            
+          )
+          shoes = shared_shoes 
+          boardup = shared_boardsup 
+          boarddown = shared_boardsdown 
+          hat_logo = shared_hat_logos 
+          helmet_logo = shared_hat_logos 
+          front_logo = shared_front_logos 
+          back_logo = shared_back_logos 
+          glasses = shared_glasses 
+          hat = shared_hats 
+          helmet = shared_helmets 
+          accessories = shared_accessories 
+          }
+        
+#00765  FUNCTION set_female_skintone_1 
+#00771    SetSkaterHSV h = 0 
+          s = 0 
+          v = 78 
+          
+#00772    apply_normal_mode 
+#00773  END FUNCTION
+          
+#00774  FUNCTION set_female_skintone_2 
+#00776    SetSkaterHSV h = 0 
+          s = 0 
+          v = 78 
+          
+#00777    apply_normal_mode 
+#00778    ReplaceSkinTexture replace = "CS_NH_F_wht_hand.png" 
+          with = "CS_NH_F_bwn_hand.png" 
+          image_dir = GLOBAL.image_dir 
+          
+#00779    ReplaceSkinTexture replace = "CS_NH_F_wht_leg_32.png" 
+          with = "CS_NH_F_bwn_leg.png" 
+          image_dir = GLOBAL.image_dir 
+          
+#00780    ReplaceSkinTexture replace = "CS_NH_F_wht_arm.png" 
+          with = "CS_NH_F_bwn_arm.png" 
+          image_dir = GLOBAL.image_dir 
+          
+#00781    ReplaceSkinTexture replace = "CS_NH_F_wht_torso.png" 
+          with = "CS_NH_F_bwn_torso.png" 
+          image_dir = GLOBAL.image_dir 
+          
+#00782  END FUNCTION
+          
+#00783  FUNCTION set_female_skintone_3 
+#00785    SetSkaterHSV h = 0 
+          s = 0 
+          v = 78 
+          
+#00786    apply_normal_mode 
+#00787    ReplaceSkinTexture replace = "CS_NH_F_wht_hand.png" 
+          with = "CS_NH_F_blk_hand.png" 
+          image_dir = GLOBAL.image_dir 
+          
+#00788    ReplaceSkinTexture replace = "CS_NH_F_wht_leg_32.png" 
+          with = "CS_NH_F_blk_leg.png" 
+          image_dir = GLOBAL.image_dir 
+          
+#00789    ReplaceSkinTexture replace = "CS_NH_F_wht_arm.png" 
+          with = "CS_NH_F_blk_arm.png" 
+          image_dir = GLOBAL.image_dir 
+          
+#00790    ReplaceSkinTexture replace = "CS_NH_F_wht_torso.png" 
+          with = "CS_NH_F_blk_torso.png" 
+          image_dir = GLOBAL.image_dir 
+          
+#00791  END FUNCTION
+          
+#00792  FUNCTION set_carrera_skintone 
+#00794    SetSkaterHSV h = 0 
+          s = 0 
+          v = 76 
+          
+#00795    apply_normal_mode 
+#00796    ReplaceSkinTexture replace = "CS_NH_F_wht_hand.png" 
+          with = "CS_NH_F_bwn_hand.png" 
+          image_dir = "textures/skater_m" 
+          
+#00797    ReplaceSkinTexture replace = "CS_NH_F_wht_leg_32.png" 
+          with = "CS_NH_carrera_leg_32.png" 
+          image_dir = "textures/skater_m" 
+          
+#00798    ReplaceSkinTexture replace = "CS_NH_F_wht_arm.png" 
+          with = "CS_NH_F_bwn_arm.png" 
+          image_dir = "textures/skater_m" 
+          
+#00799    ReplaceSkinTexture replace = "CS_NH_F_wht_torso.png" 
+          with = "CS_NH_F_bwn_torso.png" 
+          image_dir = "textures/skater_m" 
+          
+#00800  END FUNCTION
+          
+#00801  FUNCTION AddFemaleHead1 
+#00803    ReplaceSkinTexture replace = "CS_NH_F_wht_face_exotic.png" 
+          with = GLOBAL.texture 
+          image_dir = "textures/skater_m" 
+          
+#00804    set_female_skintone_1 image_dir = "textures/skater_m" 
+          
+#00805  END FUNCTION
+          
+#00806  FUNCTION AddFemaleHead2 
+#00808    ReplaceSkinTexture replace = "CS_NH_F_wht_face_exotic.png" 
+          with = GLOBAL.texture 
+          image_dir = "textures/skater_m" 
+          
+#00809    set_female_skintone_2 image_dir = "textures/skater_m" 
+          
+#00810  END FUNCTION
+          
+#00811  FUNCTION AddFemaleHead3 
+#00813    ReplaceSkinTexture replace = "CS_NH_F_wht_face_exotic.png" 
+          with = GLOBAL.texture 
+          image_dir = "textures/skater_m" 
+          
+#00814    set_female_skintone_3 image_dir = "textures/skater_m" 
+          
+#00815  END FUNCTION
+          
+#00816  FUNCTION AddFemaleProHead1 
+#00818    set_female_skintone_1 image_dir = "textures/skater_m" 
+          
+#00819  END FUNCTION
+          
+#00820  FUNCTION AddFemaleProHead2 
+#00822    set_female_skintone_2 image_dir = "textures/skater_m" 
+          
+#00823  END FUNCTION
+          
+#00824  female_skullcap_list = ARRAY(
+          
+          STRUCT{
+            look_for_param = light_skin_1 
+            skullcap_texture = "cs_nn_f_wht_face_B_exotic.png" 
+            }
+          STRUCT{
+            look_for_param = light_skin_2 
+            skullcap_texture = "cs_nn_f_wht_face_B_cute.png" 
+            }
+          STRUCT{
+            look_for_param = light_skin_3 
+            skullcap_texture = "cs_nn_f_wht_face_B_jpn.png" 
+            }
+          STRUCT{
+            look_for_param = light_skin_4 
+            skullcap_texture = "cs_nn_f_wht_face_B_sas.png" 
+            }
+          STRUCT{
+            look_for_param = light_skin_5 
+            skullcap_texture = "cs_nn_f_wht_face_B_05.png" 
+            }
+          STRUCT{
+            look_for_param = tan_skin_1 
+            skullcap_texture = "cs_nn_f_bwn_face_B_asn.png" 
+            }
+          STRUCT{
+            look_for_param = tan_skin_2 
+            skullcap_texture = "cs_nn_f_bwn_face_B_cute.png" 
+            }
+          STRUCT{
+            look_for_param = tan_skin_3 
+            skullcap_texture = "cs_nn_f_bwn_face_B_lat.png" 
+            }
+          STRUCT{
+            look_for_param = tan_skin_4 
+            skullcap_texture = "cs_nn_f_bwn_face_B_psn.png" 
+            }
+          STRUCT{
+            look_for_param = tan_skin_5 
+            skullcap_texture = "cs_nn_f_bwn_face_B_05.png" 
+            }
+          STRUCT{
+            look_for_param = dark_skin_1 
+            skullcap_texture = "cs_nn_f_blk_face_B_cute.png" 
+            }
+          STRUCT{
+            look_for_param = dark_skin_2 
+            skullcap_texture = "cs_nn_f_blk_face_B_exotic.png" 
+            }
+          STRUCT{
+            look_for_param = dark_skin_3 
+            skullcap_texture = "cs_nn_f_blk_face_B_sas.png" 
+            }
+          STRUCT{
+            look_for_param = dark_skin_4 
+            skullcap_texture = "cs_nn_f_blk_face_B_04.png" 
+            }
+          STRUCT{
+            look_for_param = dark_skin_5 
+            skullcap_texture = "cs_nn_f_blk_face_B_05.png" 
+            }
+          STRUCT{
+            SJ_hair_exception }
+          STRUCT{
+            LD_hair_exception }
+          STRUCT{
+            RDy_hair_exception }
+          STRUCT{
+            NWv_hair_exception }
+          STRUCT{
+            SDv_hair_exception }
+          
+        )
+        
+#00894  

@@ -1,0 +1,1729 @@
+
+#00001  mul_array = 
+#00007  
+        ARRAY(
+          STRUCT{
+            name = "1x" 
+            value = 1 
+            }
+          STRUCT{
+            name = "2x" 
+            value = 2 
+            }
+          STRUCT{
+            name = "3x" 
+            value = 3 
+            }
+          
+        )
+        
+#00012  team_array = 
+#00014  
+        ARRAY(
+          STRUCT{
+            name = "Blue" 
+            value = 0 
+            }
+          STRUCT{
+            name = "Red" 
+            value = 1 
+            }
+          STRUCT{
+            name = "None" 
+            value = 2 
+            }
+          
+        )
+        
+#00019  bool_choice_array = 
+#00021  
+        ARRAY(
+          STRUCT{
+            name = "No" 
+            value = 0 
+            }
+          STRUCT{
+            name = "Yes" 
+            value = 1 
+            }
+          
+        )
+        
+#00025  node_type_array = 
+#00027  
+        ARRAY(
+          STRUCT{
+            name = "Powerup" 
+            checksum = powerup 
+            }
+          STRUCT{
+            name = "Player Start" 
+            checksum = restart 
+            }
+          
+        )
+        
+#00031  modify_zone = 
+#00033  
+        STRUCT{
+          menu_title = "Zone Menu" 
+          modify_items = ARRAY(
+            
+            STRUCT{
+              type_checksum = packed 
+              elements = ARRAY(
+                
+                STRUCT{
+                  data_checksum = mod_mul 
+                  string = "Multiplier" 
+                  array = mul_array 
+                  default = 0 
+                  exec_target = "Ed_Runcommand" 
+                  exec_command = setzonemultiplier 
+                  }
+                
+              )
+              }
+            
+          )
+          }
+        
+#00054  modify_node = 
+#00056  
+        STRUCT{
+          menu_title = "Node Menu" 
+          modify_items = ARRAY(
+            
+            STRUCT{
+              type_checksum = packed 
+              elements = ARRAY(
+                
+                STRUCT{
+                  data_checksum = mod_nodetype 
+                  string = "Type" 
+                  array = node_type_array 
+                  default = 0 
+                  width = 220 
+                  exec_target = "Ed_Runcommand" 
+                  exec_command = setzonemultiplier 
+                  has_properties }
+                
+              )
+              }
+            
+          )
+          }
+        
+#00076  modify_mpstart = 
+#00078  
+        STRUCT{
+          menu_title = "Restart Menu" 
+          modify_items = ARRAY(
+            
+            STRUCT{
+              type_checksum = packed 
+              elements = ARRAY(
+                
+                STRUCT{
+                  data_checksum = mod_team 
+                  string = "Team" 
+                  array = team_array 
+                  default = 2 
+                  width = 100 
+                  spacing = 30 
+                  exec_target = "Ed_Runcommand" 
+                  exec_command = setzonemultiplier 
+                  }
+                
+              )
+              }
+            
+          )
+          }
+        
+#00097  FUNCTION destroyModifyUIElement 
+#00099    IF GotParam info_checksum 
+#00100      DestroyElement id = GLOBAL.info_checksum 
+            
+#00101    END IF 
+#00102    DestroyElement id = GLOBAL.data_checksum 
+          
+#00104  END FUNCTION
+          
+#00105  FUNCTION destroyModifyMenuGroup 
+#00107    ForEachIn GLOBAL.elements 
+          do = destroyModifyUIElement 
+          params = STRUCT{
+            NULL }
+          
+#00108  END FUNCTION
+          
+#00109  FUNCTION destroyModifyMenu 
+#00111    ForEachIn GLOBAL.modify_items 
+          do = destroyModifyMenuGroup 
+          params = STRUCT{
+            NULL }
+          
+#00112  END FUNCTION
+          
+#00113  FUNCTION createModifyUIElement width = 80 
+          
+#00115    IF GotParam array 
+#00116      CreateAndAttachMenu STRUCT{
+              type = slidermenuelement 
+              id = GLOBAL.data_checksum 
+              text = GLOBAL.string 
+              lower = 0 
+              upper = 10 
+              delta = 1 
+              start = 5 
+              wrap = 0 
+              right_side_w = GLOBAL.width 
+              arrow_spacing = -1 
+              text_array = GLOBAL.array 
+              parent = parked_modify_menu 
+              eventhandlers = ARRAY(
+                
+                STRUCT{
+                  type = ShowEventHandler 
+                  target = GLOBAL.exec_target 
+                  params = STRUCT{
+                    command = GLOBAL.exec_command 
+                    menu_id = GLOBAL.data_checksum 
+                    setui instant }
+                  }
+                STRUCT{
+                  type = ContentsChangedEventHandler 
+                  target = GLOBAL.exec_target 
+                  params = STRUCT{
+                    command = GLOBAL.exec_command 
+                    menu_id = GLOBAL.data_checksum 
+                    instant }
+                  }
+                
+              )
+              }
+            
+#00129    ELSE 
+#00130    END IF 
+#00132    IF GotParam info_checksum 
+#00134      CreateAndAttachMenu STRUCT{
+              type = textmenuelement 
+              id = GLOBAL.info_checksum 
+              drawer = GLOBAL.info_drawer 
+              text = "info" 
+              static dont_gray parent = parked_modify_menu 
+              }
+            
+#00142    END IF 
+#00143  END FUNCTION
+          
+#00144  FUNCTION createModifyMenuGroup 
+#00146    ForEachIn GLOBAL.elements 
+          do = createModifyUIElement 
+          params = STRUCT{
+            NULL }
+          
+#00147  END FUNCTION
+          
+#00148  FUNCTION createModifyMenu 
+#00150    SetMenuElementText id = parked_modify_menu_title 
+          GLOBAL.menu_title 
+          
+#00151    DestroyElement id = parked_modify_menu_props 
+          
+#00152    DestroyElement id = parked_modify_menu_done 
+          
+#00153    ForEachIn GLOBAL.modify_items 
+          do = createModifyMenuGroup 
+          params = STRUCT{
+            NULL }
+          
+#00155    CreateAndAttachMenu STRUCT{
+            type = textmenuelement 
+            id = parked_modify_menu_done 
+            text = "Done" 
+            target = "destroyModifyMenu" 
+            kill_menu params = STRUCT{
+              NULL }
+            parent = parked_modify_menu 
+            }
+          
+#00163  END FUNCTION
+          
+#00164  FUNCTION DoParkGeneration 
+#00167    setgametype freeskate 
+#00169    MemPushContext 0 
+#00171    PreLevelLoad 
+#00172    IF InNetGame 
+#00173      DisplayProperLoadingScreen net 
+#00174    ELSE 
+#00175      IF GameModeEquals is_parkeditor 
+#00176        DisplayLoadingScreen "images\loadscrn_editor.png" 
+#00177      ELSE 
+#00178        DisplayLoadingScreen "images\loadscrn_editor_play.png" 
+#00179      END IF 
+#00180    END IF 
+#00181    LaunchLevel Level = custom_park 
+          
+#00182    printf "Ryan: finished 'LaunchLevel' call" 
+#00183    PostLevelLoad 
+#00184    ResetCamera 
+#00185    MemPopContext 
+#00186    SetRenderModeVU 
+#00188    SetBackgroundColor STRUCT{
+            r = 0 
+            g = 0 
+            b = 0 
+            alpha = 0 
+            }
+          
+#00189    SetBSPAmbientColor STRUCT{
+            r = 0 
+            g = 0 
+            b = 0 
+            alpha = 0 
+            }
+          
+#00190    SetDFFAmbientColor STRUCT{
+            r = 84 
+            g = 84 
+            b = 84 
+            alpha = 0 
+            }
+          
+#00191    SetClippingDistances near = 12 
+          far = 22000 
+          
+#00192    LaunchConsoleMessage "Stats at 10" 2 
+#00193    LoadPreFile "parked_sounds.pre" 
+#00201    LoadSound "ParkEd\GUI_placeblock1" 
+#00202    LoadSound "ParkEd\GUI_removeblock1" 
+#00203    LoadSound "ParkEd\select1" 
+#00204    LoadSound "ParkEd\GUI_buzzer01" 
+#00205    UnloadPreFile "parked_sounds.pre" 
+#00206  END FUNCTION
+          
+#00211  FUNCTION Ed_DropinSkater 
+#00216    printf "Ed_DropinSkater" 
+#00217    ParkEditorCommand command = SetCustomParkPlay 
+          on 
+#00218  END FUNCTION
+          
+#00221  FUNCTION Ed_RemoveSkater 
+#00226    reset_parkeditor_skater 
+#00227    ParkEditorCommand command = SetCustomParkPlay 
+          off instant 
+#00228  END FUNCTION
+          
+#00229  FUNCTION Ed_RunCommand 
+#00234    ParkEditorCommand NULL 
+#00241  END FUNCTION
+          
+#00242  FUNCTION Ed_ThemeSwitch 
+#00248    change_level Level = custom_park 
+          game = parkeditor 
+          
+#00249  END FUNCTION
+          
+#00250  FUNCTION PlayEdPlaceSound 
+#00254    PlaySound GUI_placeblock1 vol = 60 
+          
+#00255    printf "Play Place Sound" 
+#00256  END FUNCTION
+          
+#00257  FUNCTION PlayEdEraseSound 
+#00262    PlaySound GUI_removeblock1 vol = 60 
+          
+#00263  END FUNCTION
+          
+#00265  FUNCTION PlayEdChangeSetSound 
+#00270    PlaySound select1 vol = 60 
+          
+#00271  END FUNCTION
+          
+#00273  FUNCTION PlayEdChangePieceSound 
+#00278    PlaySound select2b vol = 60 
+          
+#00279  END FUNCTION
+          
+#00281  FUNCTION PlayEdBuzzSound 
+#00286    PlaySound GUI_buzzer01 vol = 60 
+          
+#00287  END FUNCTION
+          
+#00289  ParkEdMenuXYValues = STRUCT{
+          x = 170.0 
+          y = 150.0 
+          }
+        
+#00303  ParkEdPreMadeMenuXYValues = STRUCT{
+          x = 125.0 
+          y = 122.0 
+          w = 400.0 
+          h = 400.0 
+          }
+        
+#00304  ParkEdYesNoMenuXYValues = STRUCT{
+          x = 127.0 
+          y = 150.0 
+          w = 386.0 
+          h = 400.0 
+          }
+        
+#00305  FUNCTION TestPlay_ShowEvent 
+#00308    PauseMusicAndStreams 
+#00309    helper_park_editor 
+#00310  END FUNCTION
+          
+#00311  FUNCTION parked_menu_create 
+#00314    setdefaultproperty type = textdrawer 
+          name = main 
+          
+#00316    createmenu STRUCT{
+            type = menucontainer 
+            id = contain1 
+            }
+          
+#00320    createmenu STRUCT{
+            type = verticalmenu 
+            id = parked_main_menu 
+            ParkEdMenuXYValues w = 300.0 
+            h = 400.0 
+            just_center_x just_center_y blue_top eventhandler = STRUCT{
+              type = ShowEventHandler 
+              target = "helper_park_editor" 
+              }
+            children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Park Editor" 
+                static dont_gray drawer = title 
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Continue" 
+                target = "do_backend_continue" 
+                kill_menu }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Test Skate" 
+                target = "Ed_DropinSkater" 
+                link = parked_test_menu 
+                root_link kill_menu }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Switch Theme" 
+                link = parked_theme_menu 
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Clear Map" 
+                target = "goto_yesno_menu2" 
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Pre-Made Parks" 
+                target = "goto_yesno_menu3" 
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Load Park" 
+                target = "goto_yesno_menu4" 
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Save Park" 
+                target = "_ParkEditorSave" 
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Main Menu" 
+                target = "goto_yesno_menu1" 
+                }
+              
+            )
+            }
+          
+#00382    createmenu STRUCT{
+            type = verticalmenu 
+            id = parked_test_menu 
+            ParkEdMenuXYValues w = 360.0 
+            h = 400.0 
+            just_center_x just_center_y blue_top eventhandler = STRUCT{
+              type = ShowEventHandler 
+              target = "TestPlay_ShowEvent" 
+              }
+            children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Test Play Pause" 
+                static dont_gray drawer = title 
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Continue" 
+                target = "do_backend_continue_delay" 
+                kill_menu }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Retry" 
+                target = "Ed_RunCommand" 
+                params = STRUCT{
+                  command = resetSkater 
+                  MusicAndStreams = 1 
+                  }
+                kill_menu }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Back To Editor" 
+                target = "Ed_RemoveSkater" 
+                link = parked_main_menu 
+                kill_menu }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Main Menu" 
+                target = "chosen_leave_server" 
+                kill_menu }
+              
+            )
+            }
+          
+#00419    createmenu STRUCT{
+            type = verticalmenu 
+            id = parked_load_menu 
+            ParkEdPreMadeMenuXYValues just_center_x just_center_y blue_top eventhandler = STRUCT{
+              type = ShowEventHandler 
+              target = "helper_park_editor" 
+              }
+            children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Pre-Made Parks" 
+                static dont_gray drawer = title 
+                }
+              STRUCT{
+                type = scrollingmenu 
+                auto_id x = 0.0 
+                y = 0.0 
+                w = 400.0 
+                h = 400.0 
+                just_center_x just_center_y num_visible = 13 
+                children = ARRAY(
+                  
+                  STRUCT{
+                    type = textmenuelement 
+                    id = parked_load1 
+                    text = "Park 1" 
+                    kill_menu target = "Ed_RunCommand" 
+                    params = STRUCT{
+                      command = accessDisk 
+                      file = 1 
+                      }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = parked_load2 
+                    text = "Park 2" 
+                    kill_menu target = "Ed_RunCommand" 
+                    params = STRUCT{
+                      command = accessDisk 
+                      file = 2 
+                      }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = parked_load3 
+                    text = "Park 3" 
+                    kill_menu target = "Ed_RunCommand" 
+                    params = STRUCT{
+                      command = accessDisk 
+                      file = 3 
+                      }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = parked_load4 
+                    text = "Park 4" 
+                    kill_menu target = "Ed_RunCommand" 
+                    params = STRUCT{
+                      command = accessDisk 
+                      file = 4 
+                      }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = parked_load5 
+                    text = "Park 5" 
+                    kill_menu target = "Ed_RunCommand" 
+                    params = STRUCT{
+                      command = accessDisk 
+                      file = 5 
+                      }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = parked_load6 
+                    text = "Park 6" 
+                    kill_menu target = "Ed_RunCommand" 
+                    params = STRUCT{
+                      command = accessDisk 
+                      file = 6 
+                      }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = parked_load7 
+                    text = "Park 7" 
+                    kill_menu target = "Ed_RunCommand" 
+                    params = STRUCT{
+                      command = accessDisk 
+                      file = 7 
+                      }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = parked_load8 
+                    text = "Park 8" 
+                    kill_menu target = "Ed_RunCommand" 
+                    params = STRUCT{
+                      command = accessDisk 
+                      file = 8 
+                      }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = parked_load9 
+                    text = "Park 9" 
+                    kill_menu target = "Ed_RunCommand" 
+                    params = STRUCT{
+                      command = accessDisk 
+                      file = 9 
+                      }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = parked_load10 
+                    text = "Park 10" 
+                    kill_menu target = "Ed_RunCommand" 
+                    params = STRUCT{
+                      command = accessDisk 
+                      file = 10 
+                      }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = parked_load11 
+                    text = "Park 11" 
+                    kill_menu target = "Ed_RunCommand" 
+                    params = STRUCT{
+                      command = accessDisk 
+                      file = 11 
+                      }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = parked_load12 
+                    text = "Park 12" 
+                    kill_menu target = "Ed_RunCommand" 
+                    params = STRUCT{
+                      command = accessDisk 
+                      file = 12 
+                      }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = parked_load13 
+                    text = "Park 13" 
+                    kill_menu target = "Ed_RunCommand" 
+                    params = STRUCT{
+                      command = accessDisk 
+                      file = 13 
+                      }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = parked_load14 
+                    text = "Park 14" 
+                    kill_menu target = "Ed_RunCommand" 
+                    params = STRUCT{
+                      command = accessDisk 
+                      file = 14 
+                      }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = parked_load15 
+                    text = "Park 15" 
+                    kill_menu target = "Ed_RunCommand" 
+                    params = STRUCT{
+                      command = accessDisk 
+                      file = 15 
+                      }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = parked_load16 
+                    text = "Park 16" 
+                    kill_menu target = "Ed_RunCommand" 
+                    params = STRUCT{
+                      command = accessDisk 
+                      file = 16 
+                      }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = parked_load17 
+                    text = "Park 17" 
+                    kill_menu target = "Ed_RunCommand" 
+                    params = STRUCT{
+                      command = accessDisk 
+                      file = 17 
+                      }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = parked_load18 
+                    text = "Park 18" 
+                    kill_menu target = "Ed_RunCommand" 
+                    params = STRUCT{
+                      command = accessDisk 
+                      file = 18 
+                      }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = parked_load19 
+                    text = "Park 19" 
+                    kill_menu target = "Ed_RunCommand" 
+                    params = STRUCT{
+                      command = accessDisk 
+                      file = 19 
+                      }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = parked_load20 
+                    text = "Park 20" 
+                    kill_menu target = "Ed_RunCommand" 
+                    params = STRUCT{
+                      command = accessDisk 
+                      file = 20 
+                      }
+                    }
+                  
+                )
+                }
+              
+            )
+            }
+          
+#00527    createmenu STRUCT{
+            type = verticalmenu 
+            id = parked_save_menu 
+            ParkEdPreMadeMenuXYValues just_center_x just_center_y blue_top eventhandler = STRUCT{
+              type = ShowEventHandler 
+              target = "helper_park_editor" 
+              }
+            children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Save Pre-Made" 
+                static dont_gray drawer = title 
+                }
+              STRUCT{
+                type = scrollingmenu 
+                auto_id x = 0.0 
+                y = 0.0 
+                w = 350.0 
+                h = 400.0 
+                just_center_x just_center_y num_visible = 13 
+                children = ARRAY(
+                  
+                  STRUCT{
+                    type = textmenuelement 
+                    id = parked_save1 
+                    text = "Park 1" 
+                    kill_menu target = "Ed_RunCommand" 
+                    params = STRUCT{
+                      command = accessDisk 
+                      save file = 1 
+                      }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = parked_save2 
+                    text = "Park 2" 
+                    kill_menu target = "Ed_RunCommand" 
+                    params = STRUCT{
+                      command = accessDisk 
+                      save file = 2 
+                      }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = parked_save3 
+                    text = "Park 3" 
+                    kill_menu target = "Ed_RunCommand" 
+                    params = STRUCT{
+                      command = accessDisk 
+                      save file = 3 
+                      }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = parked_save4 
+                    text = "Park 4" 
+                    kill_menu target = "Ed_RunCommand" 
+                    params = STRUCT{
+                      command = accessDisk 
+                      save file = 4 
+                      }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = parked_save5 
+                    text = "Park 5" 
+                    kill_menu target = "Ed_RunCommand" 
+                    params = STRUCT{
+                      command = accessDisk 
+                      save file = 5 
+                      }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = parked_save6 
+                    text = "Park 6" 
+                    kill_menu target = "Ed_RunCommand" 
+                    params = STRUCT{
+                      command = accessDisk 
+                      save file = 6 
+                      }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = parked_save7 
+                    text = "Park 7" 
+                    kill_menu target = "Ed_RunCommand" 
+                    params = STRUCT{
+                      command = accessDisk 
+                      save file = 7 
+                      }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = parked_save8 
+                    text = "Park 8" 
+                    kill_menu target = "Ed_RunCommand" 
+                    params = STRUCT{
+                      command = accessDisk 
+                      save file = 8 
+                      }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = parked_save9 
+                    text = "Park 9" 
+                    kill_menu target = "Ed_RunCommand" 
+                    params = STRUCT{
+                      command = accessDisk 
+                      save file = 9 
+                      }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = parked_save10 
+                    text = "Park 10" 
+                    kill_menu target = "Ed_RunCommand" 
+                    params = STRUCT{
+                      command = accessDisk 
+                      save file = 10 
+                      }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = parked_save11 
+                    text = "Park 11" 
+                    kill_menu target = "Ed_RunCommand" 
+                    params = STRUCT{
+                      command = accessDisk 
+                      save file = 11 
+                      }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = parked_save12 
+                    text = "Park 12" 
+                    kill_menu target = "Ed_RunCommand" 
+                    params = STRUCT{
+                      command = accessDisk 
+                      save file = 12 
+                      }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = parked_save13 
+                    text = "Park 13" 
+                    kill_menu target = "Ed_RunCommand" 
+                    params = STRUCT{
+                      command = accessDisk 
+                      save file = 13 
+                      }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = parked_save14 
+                    text = "Park 14" 
+                    kill_menu target = "Ed_RunCommand" 
+                    params = STRUCT{
+                      command = accessDisk 
+                      save file = 14 
+                      }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = parked_save15 
+                    text = "Park 15" 
+                    kill_menu target = "Ed_RunCommand" 
+                    params = STRUCT{
+                      command = accessDisk 
+                      save file = 15 
+                      }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = parked_save16 
+                    text = "Park 16" 
+                    kill_menu target = "Ed_RunCommand" 
+                    params = STRUCT{
+                      command = accessDisk 
+                      save file = 16 
+                      }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = parked_save17 
+                    text = "Park 17" 
+                    kill_menu target = "Ed_RunCommand" 
+                    params = STRUCT{
+                      command = accessDisk 
+                      save file = 17 
+                      }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = parked_save18 
+                    text = "Park 18" 
+                    kill_menu target = "Ed_RunCommand" 
+                    params = STRUCT{
+                      command = accessDisk 
+                      save file = 18 
+                      }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = parked_save19 
+                    text = "Park 19" 
+                    kill_menu target = "Ed_RunCommand" 
+                    params = STRUCT{
+                      command = accessDisk 
+                      save file = 19 
+                      }
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    id = parked_save20 
+                    text = "Park 20" 
+                    kill_menu target = "Ed_RunCommand" 
+                    params = STRUCT{
+                      command = accessDisk 
+                      save file = 20 
+                      }
+                    }
+                  
+                )
+                }
+              
+            )
+            }
+          
+#00635    createmenu STRUCT{
+            type = verticalmenu 
+            id = parked_clear_menu 
+            ParkEdMenuXYValues w = 300.0 
+            h = 400.0 
+            just_center_x just_center_y blue_top eventhandler = STRUCT{
+              type = ShowEventHandler 
+              target = "helper_park_editor" 
+              }
+            children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Select new size" 
+                static dont_gray drawer = title 
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "16 X 16" 
+                kill_menu target = "Ed_RunCommand" 
+                params = STRUCT{
+                  command = clearmap 
+                  size = 0 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "24 X 24" 
+                kill_menu target = "Ed_RunCommand" 
+                params = STRUCT{
+                  command = clearmap 
+                  size = 1 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "30 X 30" 
+                kill_menu target = "Ed_RunCommand" 
+                params = STRUCT{
+                  command = clearmap 
+                  size = 2 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "30 X 18" 
+                kill_menu target = "Ed_RunCommand" 
+                params = STRUCT{
+                  command = clearmap 
+                  size = 3 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "80 X 6" 
+                kill_menu target = "Ed_RunCommand" 
+                params = STRUCT{
+                  command = clearmap 
+                  size = 4 
+                  }
+                }
+              
+            )
+            }
+          
+#00694    createmenu STRUCT{
+            type = verticalmenu 
+            id = parked_theme_menu 
+            ParkEdMenuXYValues w = 300.0 
+            h = 400.0 
+            just_center_x just_center_y blue_top eventhandler = STRUCT{
+              type = ShowEventHandler 
+              target = "helper_park_editor" 
+              }
+            children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Select Theme" 
+                static dont_gray drawer = title 
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "School" 
+                kill_menu target = "Ed_RunCommand" 
+                params = STRUCT{
+                  command = switchtheme 
+                  theme = 0 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Indoor" 
+                kill_menu target = "Ed_RunCommand" 
+                params = STRUCT{
+                  command = switchtheme 
+                  theme = 1 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Beach" 
+                kill_menu target = "Ed_RunCommand" 
+                params = STRUCT{
+                  command = switchtheme 
+                  theme = 2 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Done" 
+                target = "go_back" 
+                params = STRUCT{
+                  id = parked_theme_menu 
+                  }
+                }
+              
+            )
+            }
+          
+#00735    createmenu STRUCT{
+            type = verticalmenu 
+            id = parked_gap_menu 
+            ParkEdMenuXYValues w = 300.0 
+            h = 400.0 
+            just_center_x just_center_y blue_top eventhandler = STRUCT{
+              type = ShowEventHandler 
+              target = "helper_park_editor" 
+              }
+            children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Gap Menu" 
+                static dont_gray drawer = title 
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = gap_name_element 
+                text = "name: XXX" 
+                static dont_gray drawer = cas_menu_property 
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = gap_score_element 
+                text = "score: XXX" 
+                static dont_gray drawer = cas_menu_property 
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Set Text" 
+                link = gapname_keyboard_Control 
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Set Score" 
+                link = parked_gap_score_menu 
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Done" 
+                target = "do_backend_continue" 
+                kill_menu }
+              
+            )
+            }
+          
+#00785    createmenu STRUCT{
+            type = verticalmenu 
+            id = parked_zone_menu 
+            ParkEdMenuXYValues w = 300.0 
+            h = 400.0 
+            just_center_x just_center_y blue_top eventhandler = STRUCT{
+              type = ShowEventHandler 
+              target = "helper_park_editor" 
+              }
+            children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Zone Menu" 
+                static dont_gray drawer = title 
+                }
+              STRUCT{
+                type = slidermenuelement 
+                id = mul_slider 
+                text = "Multiplier:" 
+                lower = 0 
+                upper = 10 
+                delta = 1 
+                start = 5 
+                wrap = 0 
+                right_side_w = 80 
+                text_array = mul_array 
+                eventhandlers = ARRAY(
+                  
+                  STRUCT{
+                    type = ShowEventHandler 
+                    target = "Ed_RunCommand" 
+                    params = STRUCT{
+                      command = setzonemultiplier 
+                      menu_id = mul_slider 
+                      setui instant }
+                    }
+                  STRUCT{
+                    type = ContentsChangedEventHandler 
+                    target = "Ed_RunCommand" 
+                    params = STRUCT{
+                      command = setzonemultiplier 
+                      menu_id = mul_slider 
+                      instant }
+                    }
+                  
+                )
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Done" 
+                target = "do_backend_continue" 
+                kill_menu }
+              
+            )
+            }
+          
+#00818    createmenu STRUCT{
+            type = verticalmenu 
+            id = parked_modify_menu 
+            x = 120 
+            y = 150 
+            w = 400.0 
+            h = 400.0 
+            just_center_x just_center_y blue_top eventhandler = STRUCT{
+              type = ShowEventHandler 
+              target = "helper_park_editor" 
+              }
+            children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                id = parked_modify_menu_title 
+                text = "Menu" 
+                static dont_gray drawer = title 
+                }
+              
+            )
+            }
+          
+#00839    IF ENGLISH 
+#00841      createmenu STRUCT{
+              type = verticalmenu 
+              id = parked_gap_score_menu 
+              ParkEdMenuXYValues w = 300.0 
+              h = 400.0 
+              just_center_x just_center_y blue_top eventhandler = STRUCT{
+                type = ShowEventHandler 
+                target = "helper_park_editor" 
+                }
+              children = ARRAY(
+                
+                STRUCT{
+                  type = textmenuelement 
+                  auto_id text = "Set Gap Score" 
+                  static dont_gray drawer = title 
+                  }
+                STRUCT{
+                  type = textmenuelement 
+                  auto_id text = "50 pts" 
+                  target = "Ed_RunCommand" 
+                  params = STRUCT{
+                    command = setgapscore 
+                    score = 50 
+                    instant }
+                  link = parked_gap_menu 
+                  }
+                STRUCT{
+                  type = textmenuelement 
+                  auto_id text = "100 pts" 
+                  target = "Ed_RunCommand" 
+                  params = STRUCT{
+                    command = setgapscore 
+                    score = 100 
+                    instant }
+                  link = parked_gap_menu 
+                  }
+                STRUCT{
+                  type = textmenuelement 
+                  auto_id text = "150 pts" 
+                  target = "Ed_RunCommand" 
+                  params = STRUCT{
+                    command = setgapscore 
+                    score = 150 
+                    instant }
+                  link = parked_gap_menu 
+                  }
+                STRUCT{
+                  type = textmenuelement 
+                  auto_id text = "200 pts" 
+                  target = "Ed_RunCommand" 
+                  params = STRUCT{
+                    command = setgapscore 
+                    score = 200 
+                    instant }
+                  link = parked_gap_menu 
+                  }
+                STRUCT{
+                  type = textmenuelement 
+                  auto_id text = "300 pts" 
+                  target = "Ed_RunCommand" 
+                  params = STRUCT{
+                    command = setgapscore 
+                    score = 300 
+                    instant }
+                  link = parked_gap_menu 
+                  }
+                STRUCT{
+                  type = textmenuelement 
+                  auto_id text = "400 pts" 
+                  target = "Ed_RunCommand" 
+                  params = STRUCT{
+                    command = setgapscore 
+                    score = 400 
+                    instant }
+                  link = parked_gap_menu 
+                  }
+                STRUCT{
+                  type = textmenuelement 
+                  auto_id text = "500 pts" 
+                  target = "Ed_RunCommand" 
+                  params = STRUCT{
+                    command = setgapscore 
+                    score = 500 
+                    instant }
+                  link = parked_gap_menu 
+                  }
+                STRUCT{
+                  type = textmenuelement 
+                  auto_id text = "750 pts" 
+                  target = "Ed_RunCommand" 
+                  params = STRUCT{
+                    command = setgapscore 
+                    score = 750 
+                    instant }
+                  link = parked_gap_menu 
+                  }
+                STRUCT{
+                  type = textmenuelement 
+                  auto_id text = "1000 pts" 
+                  target = "Ed_RunCommand" 
+                  params = STRUCT{
+                    command = setgapscore 
+                    score = 1000 
+                    instant }
+                  link = parked_gap_menu 
+                  }
+                STRUCT{
+                  type = textmenuelement 
+                  auto_id text = "2000 pts" 
+                  target = "Ed_RunCommand" 
+                  params = STRUCT{
+                    command = setgapscore 
+                    score = 2000 
+                    instant }
+                  link = parked_gap_menu 
+                  }
+                
+              )
+              }
+            
+#00909    ELSE 
+#00910      createmenu STRUCT{
+              type = verticalmenu 
+              id = parked_gap_score_menu 
+              x = 80.0 
+              y = 150.0 
+              w = 460.0 
+              h = 400.0 
+              just_center_x just_center_y blue_top eventhandler = STRUCT{
+                type = ShowEventHandler 
+                target = "helper_park_editor" 
+                }
+              children = ARRAY(
+                
+                STRUCT{
+                  type = textmenuelement 
+                  auto_id text = "Set Gap Score" 
+                  static dont_gray drawer = title 
+                  }
+                STRUCT{
+                  type = textmenuelement 
+                  auto_id text = "50 pts" 
+                  target = "Ed_RunCommand" 
+                  params = STRUCT{
+                    command = setgapscore 
+                    score = 50 
+                    instant }
+                  link = parked_gap_menu 
+                  }
+                STRUCT{
+                  type = textmenuelement 
+                  auto_id text = "100 pts" 
+                  target = "Ed_RunCommand" 
+                  params = STRUCT{
+                    command = setgapscore 
+                    score = 100 
+                    instant }
+                  link = parked_gap_menu 
+                  }
+                STRUCT{
+                  type = textmenuelement 
+                  auto_id text = "150 pts" 
+                  target = "Ed_RunCommand" 
+                  params = STRUCT{
+                    command = setgapscore 
+                    score = 150 
+                    instant }
+                  link = parked_gap_menu 
+                  }
+                STRUCT{
+                  type = textmenuelement 
+                  auto_id text = "200 pts" 
+                  target = "Ed_RunCommand" 
+                  params = STRUCT{
+                    command = setgapscore 
+                    score = 200 
+                    instant }
+                  link = parked_gap_menu 
+                  }
+                STRUCT{
+                  type = textmenuelement 
+                  auto_id text = "300 pts" 
+                  target = "Ed_RunCommand" 
+                  params = STRUCT{
+                    command = setgapscore 
+                    score = 300 
+                    instant }
+                  link = parked_gap_menu 
+                  }
+                STRUCT{
+                  type = textmenuelement 
+                  auto_id text = "400 pts" 
+                  target = "Ed_RunCommand" 
+                  params = STRUCT{
+                    command = setgapscore 
+                    score = 400 
+                    instant }
+                  link = parked_gap_menu 
+                  }
+                STRUCT{
+                  type = textmenuelement 
+                  auto_id text = "500 pts" 
+                  target = "Ed_RunCommand" 
+                  params = STRUCT{
+                    command = setgapscore 
+                    score = 500 
+                    instant }
+                  link = parked_gap_menu 
+                  }
+                STRUCT{
+                  type = textmenuelement 
+                  auto_id text = "750 pts" 
+                  target = "Ed_RunCommand" 
+                  params = STRUCT{
+                    command = setgapscore 
+                    score = 750 
+                    instant }
+                  link = parked_gap_menu 
+                  }
+                STRUCT{
+                  type = textmenuelement 
+                  auto_id text = "1000 pts" 
+                  target = "Ed_RunCommand" 
+                  params = STRUCT{
+                    command = setgapscore 
+                    score = 1000 
+                    instant }
+                  link = parked_gap_menu 
+                  }
+                STRUCT{
+                  type = textmenuelement 
+                  auto_id text = "2000 pts" 
+                  target = "Ed_RunCommand" 
+                  params = STRUCT{
+                    command = setgapscore 
+                    score = 2000 
+                    instant }
+                  link = parked_gap_menu 
+                  }
+                
+              )
+              }
+            
+#00978    END IF 
+#00979    createmenu STRUCT{
+            type = verticalmenu 
+            id = parked_yesno_menu1 
+            ParkEdYesNoMenuXYValues just_center_x just_center_y blue_top eventhandler = STRUCT{
+              type = ShowEventHandler 
+              target = "helper_park_editor" 
+              }
+            children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                id = parked_yesno_title1 
+                text = "Quit?" 
+                static dont_gray drawer = title 
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = parked_choice_yes1 
+                text = "Yes" 
+                target = "chosen_leave_server" 
+                kill_menu }
+              STRUCT{
+                type = textmenuelement 
+                id = parked_choice_no1 
+                text = "No" 
+                link = parked_main_menu 
+                root_link }
+              
+            )
+            }
+          
+#01006    createmenu STRUCT{
+            type = verticalmenu 
+            id = parked_yesno_menu2 
+            ParkEdYesNoMenuXYValues just_center_x just_center_y blue_top eventhandler = STRUCT{
+              type = ShowEventHandler 
+              target = "helper_park_editor" 
+              }
+            children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                id = parked_yesno_title2 
+                text = "Lose unsaved park?" 
+                static dont_gray drawer = title 
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = parked_choice_yes2 
+                text = "Yes" 
+                link = parked_clear_menu 
+                no_visit }
+              STRUCT{
+                type = textmenuelement 
+                id = parked_choice_no2 
+                text = "No" 
+                link = parked_main_menu 
+                root_link }
+              
+            )
+            }
+          
+#01034    createmenu STRUCT{
+            type = verticalmenu 
+            id = parked_yesno_menu3 
+            ParkEdYesNoMenuXYValues just_center_x just_center_y blue_top eventhandler = STRUCT{
+              type = ShowEventHandler 
+              target = "helper_park_editor" 
+              }
+            children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                id = parked_yesno_title3 
+                text = "Lose unsaved park?" 
+                static dont_gray drawer = title 
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = parked_choice_yes3 
+                text = "Yes" 
+                link = parked_load_menu 
+                no_visit }
+              STRUCT{
+                type = textmenuelement 
+                id = parked_choice_no3 
+                text = "No" 
+                link = parked_main_menu 
+                root_link }
+              
+            )
+            }
+          
+#01062    createmenu STRUCT{
+            type = verticalmenu 
+            id = parked_yesno_menu4 
+            ParkEdYesNoMenuXYValues just_center_x just_center_y blue_top eventhandler = STRUCT{
+              type = ShowEventHandler 
+              target = "helper_park_editor" 
+              }
+            children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                id = parked_yesno_title4 
+                text = "Lose unsaved park?" 
+                static dont_gray drawer = title 
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = parked_choice_yes4 
+                text = "Yes" 
+                target = "_ParkEditorLoad" 
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = parked_choice_no4 
+                text = "No" 
+                link = parked_main_menu 
+                root_link }
+              
+            )
+            }
+          
+#01090    attachchild parent = contain1 
+          child = parked_main_menu 
+          
+#01093    attachchild parent = contain1 
+          child = parked_test_menu 
+          
+#01094    attachchild parent = contain1 
+          child = parked_load_menu 
+          
+#01095    attachchild parent = contain1 
+          child = parked_save_menu 
+          
+#01096    attachchild parent = contain1 
+          child = parked_clear_menu 
+          
+#01097    attachchild parent = contain1 
+          child = parked_theme_menu 
+          
+#01098    attachchild parent = contain1 
+          child = parked_gap_menu 
+          
+#01099    attachchild parent = contain1 
+          child = parked_gap_score_menu 
+          
+#01100    attachchild parent = contain1 
+          child = parked_yesno_menu1 
+          
+#01101    attachchild parent = contain1 
+          child = parked_yesno_menu2 
+          
+#01102    attachchild parent = contain1 
+          child = parked_yesno_menu3 
+          
+#01103    attachchild parent = contain1 
+          child = parked_yesno_menu4 
+          
+#01104    attachchild parent = contain1 
+          child = parked_zone_menu 
+          
+#01105    attachchild parent = contain1 
+          child = parked_modify_menu 
+          
+#01106    memcard_files_menu_create 
+#01108    create_gapname_keyboard 
+#01109    helper_menu_create 
+#01110  END FUNCTION
+          
+#01111  FUNCTION goto_yesno_menu1 
+#01116    launchevent type = link 
+          target = parked_yesno_menu1 
+          
+#01117    launchevent type = select 
+          target = parked_choice_no1 
+          
+#01118    launchevent type = deselect 
+          target = parked_choice_yes1 
+          
+#01119  END FUNCTION
+          
+#01120  FUNCTION goto_yesno_menu2 
+#01124    IF IsUnsavedPark 
+#01125      launchevent type = link 
+            target = parked_yesno_menu2 
+            
+#01126      launchevent type = select 
+            target = parked_choice_no2 
+            
+#01127      launchevent type = deselect 
+            target = parked_choice_yes2 
+            
+#01128    ELSE 
+#01129      launchevent type = link 
+            target = parked_clear_menu 
+            
+#01130    END IF 
+#01131  END FUNCTION
+          
+#01132  FUNCTION goto_yesno_menu3 
+#01136    IF IsUnsavedPark 
+#01137      launchevent type = link 
+            target = parked_yesno_menu3 
+            
+#01138      launchevent type = select 
+            target = parked_choice_no3 
+            
+#01139      launchevent type = deselect 
+            target = parked_choice_yes3 
+            
+#01140    ELSE 
+#01141      launchevent type = link 
+            target = parked_load_menu 
+            
+#01142    END IF 
+#01143  END FUNCTION
+          
+#01144  FUNCTION goto_yesno_menu4 
+#01148    IF IsUnsavedPark 
+#01149      launchevent type = link 
+            target = parked_yesno_menu4 
+            
+#01150      launchevent type = select 
+            target = parked_choice_no4 
+            
+#01151      launchevent type = deselect 
+            target = parked_choice_yes4 
+            
+#01152    ELSE 
+#01153      _ParkEditorLoad 
+#01154    END IF 
+#01155  END FUNCTION
+          
+#01156  FUNCTION create_gapname_keyboard 
+#01160    DestroyElement id = gapname_keyboard_Control 
+          
+#01161    CreateAndAttachMenu STRUCT{
+            type = keyboardcontrol 
+            id = gapname_keyboard_Control 
+            x = 160.0 
+            y = 115.0 
+            w = 320.0 
+            h = 336.0 
+            just_center_x just_center_y num_columns = 13 
+            gapname_charset min_chars = 1 
+            max_chars = 31 
+            default_to_accept title_string = "Enter Gap Name" 
+            default_string = "" 
+            eventhandlers = ARRAY(
+              
+              STRUCT{
+                type = ShowEventHandler 
+                target = "start_gapname" 
+                }
+              STRUCT{
+                type = ContentsChangedEventHandler 
+                target = "end_gapname" 
+                }
+              
+            )
+            parent = contain1 
+            }
+          
+#01189  END FUNCTION
+          
+#01191  FUNCTION start_gapname 
+#01194    ParkEditorGetGapName 
+#01195    printf GLOBAL.string 
+          
+#01196    launchevent type = SetContents 
+          target = gapname_keyboard_Control 
+          NULL 
+#01197  END FUNCTION
+          
+#01198  FUNCTION end_gapname 
+#01201    printf GLOBAL.string 
+          
+#01202    ParkEditorSetGapName string = GLOBAL.string 
+          
+#01203  END FUNCTION
+          
+#01204  

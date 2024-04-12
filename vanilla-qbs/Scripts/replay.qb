@@ -1,0 +1,128 @@
+REPLAY_MODE_OFF = 0 
+        
+#00001  REPLAY_MODE_RECORD = 1 
+        
+#00002  REPLAY_MODE_PLAY_AFTER_RUN = 2 
+        
+#00003  REPLAY_MODE_PLAY_SAVED = 4 
+        
+#00004  FUNCTION WatchSavedReplay 
+#00006    SetReplayMode REPLAY_MODE_PLAY_SAVED 
+#00007    MemPushContext 0 
+#00008    DisplayLoadingScreen blank 
+#00009    MemPopContext 
+#00010    Retry 
+#00011  END FUNCTION
+          
+#00012  FUNCTION WatchEndOfRunReplay 
+#00014    SetReplayMode REPLAY_MODE_PLAY_AFTER_RUN 
+#00015    MemPushContext 0 
+#00016    DisplayLoadingScreen blank 
+#00017    MemPopContext 
+#00018    Retry 
+#00019  END FUNCTION
+          
+#00020  FUNCTION ExitSavedReplay 
+#00022    unpause_game_flow 
+#00023    SetReplayMode REPLAY_MODE_OFF 
+#00024    chosen_leave_server 
+#00025  END FUNCTION
+          
+#00026  FUNCTION ExitReplayAfterEndOfRun 
+#00028    SetReplayMode REPLAY_MODE_OFF 
+#00029    SwitchToMenu menu = end_run_menu 
+          
+#00030  END FUNCTION
+          
+#00031  FUNCTION Replay_ShowEvent 
+#00033    PauseMusicAndStreams 
+#00034    helper_hide 
+#00035    helper_select_choose_back x1 = 167 
+          x2 = 282 
+          x3 = 392 
+          
+#00036  END FUNCTION
+          
+#00037  FUNCTION replay_menu_create 
+#00039    createandattachmenu STRUCT{
+            type = verticalmenu 
+            id = replay_menu 
+            x = 170.0 
+            y = 120.0 
+            w = 300.0 
+            h = 336.0 
+            blue_top Eventhandler = STRUCT{
+              type = showeventhandler 
+              target = "Replay_ShowEvent" 
+              }
+            children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "replay" 
+                static dont_gray drawer = title 
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = replay_show 
+                text = "Watch Replay" 
+                target = "WatchEndOfRunReplay" 
+                kill_menu }
+              STRUCT{
+                type = textmenuelement 
+                id = replay_save 
+                text = "Save Replay" 
+                target = "_EndRunSaveReplay" 
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = replay_quit 
+                text = "Done" 
+                target = "ExitReplayAfterEndOfRun" 
+                kill_menu }
+              
+            )
+            parent = contain1 
+            }
+          
+#00059  END FUNCTION
+          
+#00060  FUNCTION replay_from_memcard_menu_create 
+#00062    createandattachmenu STRUCT{
+            type = verticalmenu 
+            id = replay_from_memcard_menu 
+            x = 160.0 
+            y = 120.0 
+            w = 300.0 
+            h = 336.0 
+            blue_top Eventhandler = STRUCT{
+              type = showeventhandler 
+              target = "Replay_ShowEvent" 
+              }
+            children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "replay" 
+                static dont_gray drawer = title 
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = replay_from_memcard_show 
+                text = "Watch Replay" 
+                target = "WatchSavedReplay" 
+                kill_menu }
+              STRUCT{
+                type = textmenuelement 
+                id = replay_from_memcard_quit 
+                text = "Exit" 
+                target = "ExitSavedReplay" 
+                kill_menu }
+              
+            )
+            parent = contain1 
+            }
+          
+#00079  END FUNCTION
+          
+#00080  

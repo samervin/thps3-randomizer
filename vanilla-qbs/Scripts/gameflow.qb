@@ -1,0 +1,672 @@
+FUNCTION WaitFrameLoop 
+#00001    LOOP 
+#00002      wait 1 gameframe 
+#00003    END LOOP 
+#00004  END FUNCTION
+          
+#00005  FUNCTION InitializeGameFlow 
+#00007    IF OnServer 
+#00009      printf "*** START SERVER HERE ***" 
+#00010      SetServerMode 
+#00011      StartServer 
+#00012    END IF 
+#00013    IF InFrontEnd 
+#00016    ELSE 
+#00017      LaunchMenuScreen screen = game_menu 
+            not_active 
+#00018    END IF 
+#00019    IF OnServer 
+#00024      printf "*** JOIN SERVER HERE ***" 
+#00025      JoinServer NULL 
+#00026      CreatePanels 
+#00027    END IF 
+#00028    printf "***************************    LOADING LEVEL ****************************************************" 
+#00030    LoadRequestedLevel 
+#00032    IF InFrontEnd 
+#00037      InitializeFrontEndSprites 
+#00039      InitTVScreensVisibility 
+#00040      LoadSkaters 
+#00041      spawnscript helper_scanner 
+#00042    END IF 
+#00043    StandardGameFlow 
+#00045  END FUNCTION
+          
+#00046  FUNCTION ChangeLevelGameFlow 
+#00048    change FirstTimeInSplitScreen = 1 
+          
+#00050    LoadRequestedLevel 
+#00053    ReinsertSkaters 
+#00056    IF InNetGame 
+#00058      SetGameType netlobby 
+#00059      SetCurrentGameType 
+#00060    END IF 
+#00061    LOOP 
+#00064      IF InFrontEnd 
+#00065        IF SkatersAreReady 
+#00066          BREAK
+                
+#00067        END IF 
+#00068        wait 1 gameframe 
+#00069      ELSE 
+#00070        wait 1 gameframe 
+#00071        IF SkatersAreReady 
+#00072          BREAK
+                
+#00073        END IF 
+#00074      END IF 
+#00075    END LOOP 
+#00076    WaitFrameLoop 
+#00081  END FUNCTION
+          
+#00083  FUNCTION RestartGameFlow 
+#00085    StandardGameFlow 
+#00086  END FUNCTION
+          
+#00087  FUNCTION pause_game_flow 
+#00089    printf "Pausing game flow" 
+#00090    PauseGameFlow 
+#00091    wait 1 gameframe 
+#00092  END FUNCTION
+          
+#00093  FUNCTION unpause_game_flow 
+#00095    printf "Unpausing game flow" 
+#00096    UnpauseGameFlow 
+#00097  END FUNCTION
+          
+#00098  FirstTimeInGameFlow_Startup = 1 
+        
+#00100  FUNCTION GameFlow_Startup 
+#00101    printf "Running standard game flow" 
+#00103    IF GameModeEquals is_career 
+#00106      SetGlobalFlag flag = SKATESHOP_RETURN_FROM_CAREER 
+            
+#00107    ELSE 
+#00108      IF GameModeEquals is_singlesession 
+#00109        SetGlobalFlag flag = SKATESHOP_RETURN_FROM_SINGLE 
+              
+#00110      ELSE 
+#00111        IF GameModeEquals is_parkeditor 
+#00112          SetGlobalFlag flag = SKATESHOP_RETURN_FROM_PARKEDIT 
+                
+#00113        ELSE 
+#00114          IF InNetGame 
+#00115            SetGlobalFlag flag = SKATESHOP_RETURN_FROM_ONLINE 
+                  
+#00116          ELSE 
+#00117            SetGlobalFlag flag = SKATESHOP_RETURN_FROM_FREESKATE 
+                  
+#00118          END IF 
+#00119        END IF 
+#00120      END IF 
+#00121    END IF 
+#00122    DisablePause 
+#00124    UnSetWaitForGoalFlags 
+#00130    SetScreenMode one_camera 
+#00133    LOOP 
+#00136      IF InFrontEnd 
+#00137        IF SkatersAreReady 
+#00138          BREAK
+                
+#00139        END IF 
+#00140        wait 1 gameframe 
+#00141      ELSE 
+#00142        wait 1 gameframe 
+#00143        IF SkatersAreReady 
+#00144          BREAK
+                
+#00145        END IF 
+#00146      END IF 
+#00147    END LOOP 
+#00148    HideClock 
+#00154    IF GameModeEquals is_parkeditor 
+#00158      printf "freezing skater" 
+#00159      Ed_RemoveSkater 
+#00160    END IF 
+#00161    RestartLevel 
+#00163    IF InFrontEnd 
+#00167      WaitFrameLoop 
+#00168    END IF 
+#00169    IF GameModeEquals is_parkeditor 
+#00172    ELSE 
+#00173      RefreshGameMenu 
+#00174    END IF 
+#00175    InitializeSkaters 
+#00178    KillMessages 
+#00179    TogglePanel 0 
+#00180    IF CareerLevelIs LevelNum_Tutorials 
+#00183      PauseMusic 1 
+#00184    ELSE 
+#00185    END IF 
+#00187    PauseStream 0 
+#00188    HideLoadingScreen 
+#00189    IF InNetGame 
+#00191      IF GameModeEquals is_lobby 
+#00192        IF OnServer 
+#00193          server_enter_free_skate 
+#00194        ELSE 
+#00195          client_enter_free_skate 
+#00196        END IF 
+#00197      END IF 
+#00198    END IF 
+#00199    IF IsTrue FirstTimeFromSkateshop 
+#00201      change FirstTimeFromSkateshop = 0 
+            
+#00203    ELSE 
+#00204    END IF 
+#00206    IF InSplitScreenGame 
+#00210      ResetSkaters 
+#00211      IF IsTrue FirstTimeInSplitScreen 
+#00213        MakeSkaterGosub remove_skater_from_world skater = 0 
+              
+#00217        MakeSkaterGosub remove_skater_from_world skater = 1 
+              
+#00218        SwitchToMenu menu = splitscreen_setup_menu 
+              
+#00223        pause_game_flow 
+#00226        change FirstTimeInSplitScreen = 0 
+              
+#00228      END IF 
+#00229      ApplySplitScreenOptions 
+#00232      MakeSkaterGosub add_skater_to_world skater = 0 
+            
+#00236      MakeSkaterGosub add_skater_to_world skater = 1 
+            
+#00237    END IF 
+#00238    SetScreenModeFromGameMode 
+#00241    IF ShouldRunIntroScript 
+#00244      DisablePause 
+#00245      SpawnLevelScript target = once_on_startup 
+            callback = unpause_game_flow 
+            
+#00246    END IF 
+#00251    LOOP 
+#00254      IF IntroScriptFinished 
+#00255        BREAK
+              
+#00256      END IF 
+#00257      wait 1 gameframe 
+#00258    END LOOP 
+#00259    IF IsCompetition 
+#00261      IF CareerLevelIs LevelNum_Rio 
+#00263        StartCompetition RioCompParams RioScoreParams 
+#00264      END IF 
+#00265      IF CareerLevelIs LevelNum_SkaterIsland 
+#00266        StartCompetition SICompParams SIScoreParams 
+#00267      END IF 
+#00268      IF CareerLevelIs LevelNum_Tokyo 
+#00269        StartCompetition TokCompParams TokScoreParams 
+#00270      END IF 
+#00271    END IF 
+#00272    IF GameModeEquals is_horse 
+#00274      StartHorse 
+#00275    END IF 
+#00276  END FUNCTION
+          
+#00277  FUNCTION GameFlow_StartRun 
+#00280    IF IsCompetition 
+#00283      StartCompetitionRun 
+#00288      PlaySkaterCamAnim skater = 0 
+            stop 
+#00291      KillMessages 
+#00292      DisablePause 
+#00293      IF CareerLevelIs LevelNum_Rio 
+#00294        printf "going to spawn comp_wait_runstart" 
+#00295        Comp_Wait_RunStart_Setup RioCompParams 
+#00296      END IF 
+#00297      IF CareerLevelIs LevelNum_SkaterIsland 
+#00298        Comp_Wait_RunStart_Setup SICompParams 
+#00299      END IF 
+#00300      IF CareerLevelIs LevelNum_Tokyo 
+#00301        Comp_Wait_RunStart_Setup TokCompParams 
+#00302      END IF 
+#00303      pause_game_flow 
+#00304    ELSE 
+#00305      PlaySkaterCamAnim skater = 0 
+            stop 
+#00306    END IF 
+#00307    TogglePanel 1 
+#00310    DisablePause 
+#00311    IF ReplayModeEquals REPLAY_MODE_PLAY_SAVED 
+#00314      SwitchToMenu menu = replay_from_memcard_menu 
+            DoNotOpen 
+#00315      PauseStream 0 
+#00316    ELSE 
+#00317      IF ReplayModeEquals REPLAY_MODE_PLAY_AFTER_RUN 
+#00318        SwitchToMenu menu = replay_menu 
+              DoNotOpen 
+#00319        PauseStream 0 
+#00320      END IF 
+#00321    END IF 
+#00322    enable_replays 
+#00326    IF InMultiplayerGame 
+#00331    ELSE 
+#00334    END IF 
+#00336    ReplayInit 
+#00339    IF TestGameType parkeditor 
+#00340    ELSE 
+#00341      ResetLevel 
+#00342    END IF 
+#00343    IF IsCareerMode 
+#00345      KillTrickPoints 
+#00346      SetUpSkaterDefaults 
+#00347      CreateTrickPoints2 
+#00348      CreateSkateLines2 
+#00349      CreateDeckIcon 
+#00350      CreatePhotoGuy 
+#00351      UnSetGlobalFlag flag = PROMPT_FOR_SAVE 
+            
+#00352    END IF 
+#00353    IF CareerLevelIs LevelNum_Tutorials 
+#00354      PauseMusic 1 
+#00355    ELSE 
+#00356      printf "starting a run....skip tracks and crank up the music" 
+#00357      IF GameModeEquals is_horse 
+#00358      ELSE 
+#00359        SkipMusicTrack 
+#00360      END IF 
+#00361      PauseMusic 0 
+#00362    END IF 
+#00363    IF GameModeEquals default_time_limit 
+#00365      ResetClock 
+#00366      UnpauseClock 
+#00367      ShowClock 
+#00368    ELSE 
+#00369      HideClock 
+#00370    END IF 
+#00371    SetTeamMode 0 
+#00373    IF GameModeEquals is_king 
+#00375      SpawnCrown 
+#00376      SpawnCompass 
+#00377    END IF 
+#00378    IF GameModeEquals is_horse 
+#00380      horse_start_run 
+#00381    END IF 
+#00382    IF GameModeChecksumEquals ctf 
+#00385      SpawnCTF 
+#00386      SetTeamMode 1 
+#00387      SpawnCompass 
+#00388    END IF 
+#00389    IF GameModeChecksumEquals ownthezone 
+#00392      SpawnZones 
+#00393      SetTeamMode 1 
+#00394      SpawnCompass 
+#00395    END IF 
+#00396    IF GameModeChecksumEquals beachball 
+#00399      SpawnBeachball 
+#00400      SpawnCompass 
+#00401    END IF 
+#00402    SetTeamMode 2 
+#00405    ResetSkaters 
+#00408    IF InMultiplayerGame 
+#00410      spawnscript Splitscreen_StartupScript 
+#00411    END IF 
+#00412    IF InNetGame 
+#00414      IF OnServer 
+#00415      ELSE 
+#00416        LaunchQueuedScripts 
+#00417        IF IsObserving 
+#00418          ShowAllObjects 
+#00419        END IF 
+#00420      END IF 
+#00421    END IF 
+#00422    IF InNetGame 
+#00424      LoadMultiplayerSounds 
+#00425      IF GameModeEquals is_lobby 
+#00427        IF IsTrue FirstTimeInGameFlow_Startup 
+#00428          change FirstTimeInGameFlow_Startup = 0 
+                
+#00429          InvokeScreen screen = ss_main_window 
+                
+#00430        ELSE 
+#00431          DoDeferredStart 
+#00432        END IF 
+#00433      END IF 
+#00434    END IF 
+#00435  END FUNCTION
+          
+#00436  FUNCTION GameFlow_PlayRun 
+#00439    wait 3 gameframe 
+#00440    IF InMultiplayerGame 
+#00442      UseBothPadsInFrontEnd 
+#00443    ELSE 
+#00444      UseOnePadInFrontEnd 
+#00445    END IF 
+#00446    EnableActuators 
+#00449    EnablePause 
+#00450    LOOP 
+#00451      IF ShouldEndRun 
+#00453        BREAK
+              
+#00454      END IF 
+#00455      IF IsCompetition 
+#00456        IF CompetitionEnded 
+#00457          BREAK
+                
+#00458        END IF 
+#00459      END IF 
+#00460      IF GameModeEquals is_horse 
+#00461        IF FirstTrickStarted 
+#00462          HideClock 
+#00463          BREAK
+                
+#00468        END IF 
+#00469      END IF 
+#00470      wait 1 gameframe 
+#00471    END LOOP 
+#00472  END FUNCTION
+          
+#00473  FUNCTION GameFlow_WaitEnd 
+#00475    LOOP 
+#00476      IF EndRunSelected 
+#00477        BREAK
+              
+#00478      END IF 
+#00479      IF IsCompetition 
+#00480        IF CompetitionEnded 
+#00481          BREAK
+                
+#00482        END IF 
+#00483      END IF 
+#00484      IF AllSkatersAreIdle 
+#00485        BREAK
+              
+#00486      END IF 
+#00487      wait 1 gameframe 
+#00488    END LOOP 
+#00489    EnableActuators 0 
+#00491    printf "About to disable" 
+#00493    DisablePause 
+#00502    wait 2 game frames 
+#00503    UnpauseGame 
+#00505    DisablePause 
+#00506    FrontEndSetInactive 
+#00507    DisablePause 
+#00508    wait 2 game frames 
+#00509    TogglePanel 0 
+#00513    KillMessages 
+#00514    SetReplayMode REPLAY_MODE_OFF 
+#00515    KillSpawnedScript name = SK3_Killskater_Finish 
+          
+#00516  END FUNCTION
+          
+#00518  FUNCTION GameFlow_End 
+#00523    IF IsCompetition 
+#00528      placing_screen 
+#00530    END IF 
+#00533    LOOP 
+#00536      IF CalculateFinalScores 
+#00537        BREAK
+              
+#00538      END IF 
+#00539      wait 1 gameframe 
+#00540    END LOOP 
+#00541    SpawnLevelScript target = once_on_exit 
+          
+#00544    LOOP 
+#00547      IF IntroScriptFinished 
+#00548        BREAK
+              
+#00549      END IF 
+#00550      wait 1 gameframe 
+#00551    END LOOP 
+#00552    IF IsCareerMode 
+#00554      Goal_CheckProVideoUnlock 
+#00555      IF GetGlobalFlag flag = SHOW_CREDITS 
+              
+#00556        UnSetGlobalFlag flag = SHOW_CREDITS 
+              
+#00557        IF CD 
+#00558          wait 1 gameframe 
+#00559          ingame_play_movie "movies\credits" 
+#00560        END IF 
+#00561      END IF 
+#00562      IF IsCompetition 
+#00563      ELSE 
+#00564        UpdateRecords 
+#00565        Statistics_screen 
+#00566      END IF 
+#00567    ELSE 
+#00568      IF IsCustomPark 
+#00569      ELSE 
+#00571        IF GameModeEquals is_singlesession 
+#00572          UpdateRecords 
+#00573          Statistics_screen 
+#00574        END IF 
+#00575      END IF 
+#00576    END IF 
+#00577    change EnteringStatsMenuFromGameFlow = 1 
+          
+#00584    IF JustGotFlag flag = GOAL_STAT_POINT1 
+            
+#00587      printf "stat point" 
+#00588      SwitchToMenu menu = stats_menu 
+            
+#00589      pause_game_flow 
+#00590    ELSE 
+#00591      IF JustGotFlag flag = GOAL_STAT_POINT2 
+              
+#00592        printf "stat point" 
+#00593        SwitchToMenu menu = stats_menu 
+              
+#00594        pause_game_flow 
+#00595      ELSE 
+#00596        IF JustGotFlag flag = GOAL_STAT_POINT3 
+                
+#00597          printf "stat point" 
+#00598          SwitchToMenu menu = stats_menu 
+                
+#00599          pause_game_flow 
+#00600        ELSE 
+#00601          IF JustGotFlag flag = GOAL_STAT_POINT4 
+                  
+#00602            printf "stat point" 
+#00603            SwitchToMenu menu = stats_menu 
+                  
+#00604            pause_game_flow 
+#00605          ELSE 
+#00606            IF JustGotFlag flag = GOAL_STAT_POINT5 
+                    
+#00607              printf "stat point" 
+#00608              SwitchToMenu menu = stats_menu 
+                    
+#00609              pause_game_flow 
+#00610            END IF 
+#00611          END IF 
+#00612        END IF 
+#00613      END IF 
+#00614    END IF 
+#00615    change EnteringStatsMenuFromGameFlow = 0 
+          
+#00618    helper_select_choose_back_centered 
+#00621    IF InNetGame 
+#00624      SwitchToMenu menu = end_run_menu 
+            DontPauseWhenActive 
+#00625    ELSE 
+#00626      IF IsCareerMode 
+#00627        IF GetGlobalFlag flag = PROMPT_FOR_SAVE 
+                
+#00628          SwitchToMenu menu = savegame_yesno_menu 
+                
+#00629        ELSE 
+#00630          SwitchToMenu menu = end_run_menu 
+                
+#00631        END IF 
+#00632      ELSE 
+#00633        SwitchToMenu menu = end_run_menu 
+              
+#00634      END IF 
+#00635    END IF 
+#00636    IF GameModeEquals show_ranking_screen 
+#00639      helper_hide 
+#00640      KillMessages all_panels 
+#00645      SwitchToMenu menu = winner_screen 
+            
+#00647    END IF 
+#00648    IF InNetGame 
+#00650      ResetClock 
+#00651      IF OnServer 
+#00652        wait 5 gameframes 
+#00653        LoadPendingPlayers 
+#00654      END IF 
+#00655    END IF 
+#00656  END FUNCTION
+          
+#00658  FUNCTION StandardGameFlow 
+#00661    GameFlow_Startup 
+#00663    LOOP 
+#00668      GameFlow_StartRun 
+#00669      IF ReplayModeEquals REPLAY_MODE_PLAY_SAVED 
+#00670        GameFlow_PlayRun 
+#00671        GameFlow_WaitEnd 
+#00672        SwitchToMenu menu = replay_from_memcard_menu 
+              
+#00673        pause_game_flow 
+#00674      ELSE 
+#00675        IF ReplayModeEquals REPLAY_MODE_PLAY_AFTER_RUN 
+#00676          GameFlow_PlayRun 
+#00677          GameFlow_WaitEnd 
+#00678          SwitchToMenu menu = replay_menu 
+                
+#00679          pause_game_flow 
+#00680        ELSE 
+#00681          GameFlow_PlayRun 
+#00682          GameFlow_WaitEnd 
+#00683          IF IsCompetition 
+#00685            IF CompetitionEnded 
+#00687              EndCompetitionRun 
+#00690              PauseMusic 1 
+#00691              leader_screen_gameflow 
+#00692              pause_game_flow 
+#00693              BREAK
+                    
+#00694            ELSE 
+#00695              EndCompetitionRun 
+#00696              New_Judge_screen_gameflow 
+#00697              pause_game_flow 
+#00698              leader_screen_gameflow 
+#00699              pause_game_flow 
+#00700              IF RoundIs 3 
+#00703                BREAK
+                      
+#00704              ELSE 
+#00705                InitializeSkaters 
+#00707              END IF 
+#00708            END IF 
+#00709          ELSE 
+#00710            IF GameModeEquals is_horse 
+#00712              IF EndRunSelected 
+#00713                BREAK
+                      
+#00714              END IF 
+#00715              horse_end_run 
+#00717              IF HorseEnded 
+#00719                BREAK
+                      
+#00721              ELSE 
+#00722                InitializeSkaters 
+#00724              END IF 
+#00725            ELSE 
+#00726              BREAK
+                    
+#00728            END IF 
+#00729          END IF 
+#00730        END IF 
+#00731      END IF 
+#00732    END LOOP 
+#00733    horse_uninit 
+#00735    GameFlow_End 
+#00739    WaitFrameLoop 
+#00743  END FUNCTION
+          
+#00745  FUNCTION spawn_movie 
+#00747    spawnscript play_movie_task params = STRUCT{
+            NULL }
+          
+#00748  END FUNCTION
+          
+#00749  FUNCTION play_movie_task 
+#00752    playmovie_script NULL 
+#00753  END FUNCTION
+          
+#00754  FUNCTION gf 
+#00756    cleanup 
+#00757    request_level level = load_rio 
+          
+#00758    ChangeLevelGameFlow 
+#00759  END FUNCTION
+          
+#00760  FUNCTION ShowAllObjects 
+#00762    IF CareerLevelIs LevelNum_Foundry 
+#00763    END IF 
+#00764    IF CareerLevelIs LevelNum_Canada 
+#00765      AJC_Script_Can_Network_Startup 
+#00766    END IF 
+#00767    IF CareerLevelIs LevelNum_Suburbia 
+#00768    END IF 
+#00769    IF CareerLevelIs LevelNum_SkaterIsland 
+#00770    END IF 
+#00771    IF CareerLevelIs LevelNum_Airport 
+#00772      CPF_AP_BeginAt_ShowAll 
+#00773    END IF 
+#00774    IF CareerLevelIs LevelNum_Rio 
+#00775    END IF 
+#00776    IF CareerLevelIs LevelNum_LA 
+#00777    END IF 
+#00778    IF CareerLevelIs LevelNum_Tokyo 
+#00779      JS_Tok_NetObserver 
+#00780    END IF 
+#00781    IF CareerLevelIs LevelNum_Ship 
+#00782      BDJ_SHP_NetObserverStartup 
+#00783    END IF 
+#00784    IF LevelIs load_ware 
+#00785      JKU_Ware_IsObserver 
+#00786    END IF 
+#00787  END FUNCTION
+          
+#00788  FUNCTION Splitscreen_StartupScript 
+#00790    IF LevelIs Load_Shp 
+#00791      printf "Launching BDJ_SHP_LoadingScript................................." 
+#00792      BDJ_SHP_LoadingScript 
+#00793    END IF 
+#00794  END FUNCTION
+          
+#00795  FUNCTION LoadMultiplayerSounds 
+#00797    IF GameModeChecksumEquals ctf 
+#00798      LoadSound "MP\ctf_flag_captured1_crowd" vol = 100 
+            
+#00799      LoadSound "MP\ctf_flag_captured2_crowd" vol = 100 
+            
+#00800      LoadSound "MP\ctf_flag_dropped" vol = 100 
+            
+#00801      LoadSound "MP\ctf_flag_returned" vol = 100 
+            
+#00802      LoadSound "MP\ctf_flag_taken1_crowd" vol = 100 
+            
+#00803      LoadSound "MP\ctf_flag_taken2_crowd" vol = 100 
+            
+#00804    END IF 
+#00805    IF GameModeChecksumEquals ownthezone 
+#00807      LoadSound "MP\zone_control_all" vol = 100 
+            
+#00808      LoadSound "MP\zone_control_zone" vol = 100 
+            
+#00809      LoadSound "MP\zone_drop_key" vol = 100 
+            
+#00810      LoadSound "MP\zone_get_key" vol = 100 
+            
+#00811      LoadSound "MP\zone_lose_all" vol = 100 
+            
+#00812      LoadSound "MP\zone_lose_zone" vol = 100 
+            
+#00813    END IF 
+#00814    IF GameModeChecksumEquals beachball 
+#00816      LoadSound "MP\beach_ball_bounce" vol = 100 
+            
+#00817      LoadSound "MP\beach_ball_dropped" vol = 100 
+            
+#00818      LoadSound "MP\beach_ball_taken" vol = 100 
+            
+#00819    END IF 
+#00820  END FUNCTION
+          
+#00822  

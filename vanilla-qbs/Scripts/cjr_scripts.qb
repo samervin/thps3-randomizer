@@ -1,0 +1,5251 @@
+
+#00001  FUNCTION Rio_Startup 
+#00011    LoadStreamHeader "streams\rio\streams" 
+#00012    SetTerrainMetalSmooth 
+#00013    LoadSound "Shared\GapSound" 
+#00014    LoadSound "Shared\BonkBush" 
+#00015    LoadSound "Shared\Car_BrakeSqueal" DropOff = 150 
+          PosUpdate 
+#00016    LoadSound "Shared\CarLoop" DropOff = 150 
+          PosUpdateWithDoppler 
+#00017    LoadSound "Shared\CarHorn" DropOff = 150 
+          
+#00018    LoadSound "Shared\LA_Skid" DropOff = 150 
+          
+#00019    LoadSound "Shared\FallWater" 
+#00020    LoadSound "Shared\FallPungee" 
+#00021    LoadSound "Shared\GoalDone" 
+#00022    LoadSound "Shared\HitFlimsyWood" DropOff = 150 
+          
+#00023    LoadSound "Rio\Rio_Plywood" 
+#00024    LoadSound "Rio\Rio_Observation" 
+#00025    LoadSound "Si\CrowdC01" DropOff = 250 
+          PosUpdate 
+#00026    LoadSound "Si\CrowdC02" DropOff = 250 
+          PosUpdate 
+#00027    LoadSound "Si\CrowdC03" DropOff = 250 
+          PosUpdate 
+#00028    LoadSound "Si\CrowdC05" DropOff = 250 
+          PosUpdate 
+#00029    SetParticleSysVisibility System = "Particle_SpecBox_Center01" 
+          Visible = 0 
+          
+#00030    SetParticleSysVisibility System = "Particle_SpecBox_Center02" 
+          Visible = 0 
+          
+#00031    SetParticleSysVisibility System = "Particle_SpecBox_Center03" 
+          Visible = 0 
+          
+#00032    SetParticleSysVisibility System = "Particle_SpecBox_Center04" 
+          Visible = 0 
+          
+#00033    SetParticleSysVisibility System = "Particle_SpecBox_Center05" 
+          Visible = 0 
+          
+#00034    SetParticleSysVisibility System = "Particle_SpecBox_Center06" 
+          Visible = 0 
+          
+#00035    SetParticleSysVisibility System = "Particle_SpecBox_Center07" 
+          Visible = 0 
+          
+#00036    SetParticleSysVisibility System = "Particle_SpecBox_Left01" 
+          Visible = 0 
+          
+#00037    SetParticleSysVisibility System = "Particle_SpecBox_Left02" 
+          Visible = 0 
+          
+#00038    SetParticleSysVisibility System = "Particle_SpecBox_Left03" 
+          Visible = 0 
+          
+#00039    SetParticleSysVisibility System = "Particle_SpecBox_Right01" 
+          Visible = 0 
+          
+#00040    SetParticleSysVisibility System = "Particle_SpecBox_Right02" 
+          Visible = 0 
+          
+#00041    SetParticleSysVisibility System = "Particle_SpecBox_Right03" 
+          Visible = 0 
+          
+#00042  END FUNCTION
+          
+#00043  RioCompParams = STRUCT{
+          Comp_Start_Script = NullScript 
+          Comp_StartComplete_Script = NullScript 
+          Comp_Run1_Script = NullScript 
+          Comp_Run1Complete_Script = NullScript 
+          Comp_Run2_Script = NullScript 
+          Comp_Run2Complete_Script = NullScript 
+          Comp_Run3_Script = NullScript 
+          Comp_Run3Complete_Script = NullScript 
+          Comp_End_Script = NullScript 
+          Comp_EndComplete_Script = NullScript 
+          Comp_CamRulesRuns_Script = NullScript 
+          Comp_CamRulesBails_Script = CJR_Rio_Judge_CloseUp 
+          Comp_CamRulesScores_Script = CJR_Rio_Judge_CleanUp 
+          Comp_CamRulesMedals_Script = NullScript 
+          Comp_CamRulesList_Script = NullScript 
+          Comp_CamEndCrowd_Script = CJR_Rio_End_Cleanup 
+          Comp_CamEndFinal_Script = NullScript 
+          Comp_CamJudged_Script = CJR_Rio_Judge_CloseUp 
+          Comp_CamJudgedHold_Script = NullScript 
+          Comp_CamJudgedChange_Script = CJR_Rio_Judges_Opti 
+          Comp_CamJudgedEnd_Script = ALF_SI_JudgedEndScript 
+          NetPlayScript = NullScript 
+          CareerPlayScript = NullScript 
+          CameraCompRules_Runs = "Cam_CompRules_Runs" 
+          CameraCompRules_Bails = "Cam_CompRules_Bails" 
+          CameraCompRules_Scores = "Cam_CompRules_Scores" 
+          CameraCompRules_Medals = "Cam_CompRules_Medals" 
+          CameraCompRules_List = "Cam_CompRules_List" 
+          CameraCompEnd_Crowd = "Cam_CompEnd_Medals" 
+          CameraCompEnd_Win = "Cam_CompEnd_1st_Place" 
+          CameraCompEnd_Final = "Cam_CompEnd_Final" 
+          CameraSkaterJudged = "Cam_Skater_Judged" 
+          CameraCompEnd_Hold = "Cam_CompEnd_Hold" 
+          CameraJudgeFlyBy = "Cam_CompJudge_FlyBy" 
+          CompIntroPeds = "Ped_CompIntro" 
+          CompRun1JudgedPeds = "Ped_CompRun1" 
+          CompRun2JudgedPeds = "Ped_CompRun2" 
+          CompRun3JudgesPeds = "Ped_CompRun3" 
+          CompEndPeds = "Ped_End" 
+          CompNormalPeds = "Ped_Norm" 
+          CompSkaterWaitStart = SkaterWaitForRunIn 
+          CompWaypointStart = Trg_Restart_1P 
+          }
+        
+#00099  FUNCTION CJR_Rio_Ped_Monster 
+#00106    Obj_ClearExceptions 
+#00107    Obj_SetOuterRadius 80 
+#00108    Obj_SetException Ex = SkaterOutOfRadius 
+          Scr = CJR_Rio_Ped_Monster_Chill 
+          
+#00109    LOOP 
+#00110      Obj_CycleAnim Anim = CrowdIdle 
+            NumCycles = RANDOM[4][17; 28; 39; 50]
+            
+            
+#00111      1 
+#00112      JUMP 0x28000000 2 
+#00113      JUMP 0x19000000 3 
+#00114      JUMP 0x0a000000 4 
+#00115      
+#00116      Obj_CycleAnim Anim = RANDOM[2][9; 20]
+            
+            
+#00117      CrowdClap 
+#00118      JUMP 0x0a000000 CrowdWild 
+#00119      
+#00120    END LOOP 
+#00121  END FUNCTION
+          
+#00122  FUNCTION CJR_Rio_Ped_Monster_Chill 
+#00125    Obj_ClearExceptions 
+#00126    Obj_SetInnerRadius 80 
+#00127    Obj_SetException Ex = SkaterInRadius 
+          Scr = CJR_Rio_Ped_Monster 
+          
+#00128  END FUNCTION
+          
+#00129  FUNCTION CJR_Rio_Ped_Judge 
+#00132    LOOP 
+#00133      Obj_PlayAnim Anim = Judge_StandIdle 
+            Cycle 
+#00134      Wait RANDOM[6][25; 41; 57; 73; 89; 105]
+            
+#00135      0.25 Seconds 
+#00136      JUMP 0x5f000000 0.5 Seconds 
+#00137      JUMP 0x4b000000 0.75 Seconds 
+#00138      JUMP 0x37000000 1 Seconds 
+#00139      JUMP 0x23000000 1.25 Seconds 
+#00140      JUMP 0x0f000000 1.5 Seconds 
+#00141      
+#00142      Obj_CycleAnim Anim = RANDOM[2][9; 20]
+            
+            
+#00143      Judge_StandLeft 
+#00144      JUMP 0x0a000000 Judge_StandRight 
+#00145      
+#00146      Obj_CycleAnim Anim = Judge_StandCheck 
+            
+#00147      Wait 1 GameFrames 
+#00148    END LOOP 
+#00149  END FUNCTION
+          
+#00150  FUNCTION CJR_Rio_Ped_Judge_Lefty 
+#00153    LOOP 
+#00154      Obj_PlayAnim Anim = Judge_StandIdle 
+            Cycle 
+#00155      Wait RANDOM[6][25; 41; 57; 73; 89; 105]
+            
+#00156      0.25 Seconds 
+#00157      JUMP 0x5f000000 0.5 Seconds 
+#00158      JUMP 0x4b000000 0.75 Seconds 
+#00159      JUMP 0x37000000 1 Seconds 
+#00160      JUMP 0x23000000 1.25 Seconds 
+#00161      JUMP 0x0f000000 1.5 Seconds 
+#00162      
+#00163      Obj_CycleAnim Anim = RANDOM[2][9; 20]
+            
+            
+#00164      Judge_StandLeft 
+#00165      JUMP 0x0a000000 Judge_StandRight 
+#00166      
+#00167      Obj_CycleAnim Anim = Judge_StandCheck 
+            
+#00168      Wait 1 GameFrames 
+#00169    END LOOP 
+#00170  END FUNCTION
+          
+#00171  FUNCTION CJR_Rio_Ped_Judge_End_LT 
+#00174    LOOP 
+#00175      Obj_PlayAnim Anim = Judge_StandIdle 
+            Cycle 
+#00176      Wait RANDOM[6][25; 41; 57; 73; 89; 105]
+            
+#00177      0.25 Seconds 
+#00178      JUMP 0x5f000000 0.5 Seconds 
+#00179      JUMP 0x4b000000 0.75 Seconds 
+#00180      JUMP 0x37000000 1 Seconds 
+#00181      JUMP 0x23000000 1.25 Seconds 
+#00182      JUMP 0x0f000000 1.5 Seconds 
+#00183      
+#00184      Obj_CycleAnim Anim = Judge_StandRight 
+            
+#00185      Obj_PlayAnim Anim = Judge_StandIdle 
+            Cycle 
+#00186      Wait RANDOM[6][25; 41; 57; 73; 89; 105]
+            
+#00187      0.25 Seconds 
+#00188      JUMP 0x5f000000 0.5 Seconds 
+#00189      JUMP 0x4b000000 0.75 Seconds 
+#00190      JUMP 0x37000000 1 Seconds 
+#00191      JUMP 0x23000000 1.25 Seconds 
+#00192      JUMP 0x0f000000 1.5 Seconds 
+#00193      
+#00194      Obj_CycleAnim Anim = Judge_StandCheck 
+            
+#00195      Wait 1 GameFrames 
+#00196    END LOOP 
+#00197  END FUNCTION
+          
+#00198  FUNCTION CJR_Rio_Ped_Judge_End_RT 
+#00201    LOOP 
+#00202      Obj_PlayAnim Anim = Judge_StandIdle 
+            Cycle 
+#00203      Wait RANDOM[6][25; 41; 57; 73; 89; 105]
+            
+#00204      0.25 Seconds 
+#00205      JUMP 0x5f000000 0.5 Seconds 
+#00206      JUMP 0x4b000000 0.75 Seconds 
+#00207      JUMP 0x37000000 1 Seconds 
+#00208      JUMP 0x23000000 1.25 Seconds 
+#00209      JUMP 0x0f000000 1.5 Seconds 
+#00210      
+#00211      Obj_CycleAnim Anim = Judge_StandLeft 
+            
+#00212      Obj_PlayAnim Anim = Judge_StandIdle 
+            Cycle 
+#00213      Wait RANDOM[6][25; 41; 57; 73; 89; 105]
+            
+#00214      0.25 Seconds 
+#00215      JUMP 0x5f000000 0.5 Seconds 
+#00216      JUMP 0x4b000000 0.75 Seconds 
+#00217      JUMP 0x37000000 1 Seconds 
+#00218      JUMP 0x23000000 1.25 Seconds 
+#00219      JUMP 0x0f000000 1.5 Seconds 
+#00220      
+#00221      Obj_CycleAnim Anim = Judge_StandCheck 
+            
+#00222      Wait 1 GameFrames 
+#00223    END LOOP 
+#00224  END FUNCTION
+          
+#00225  FUNCTION CJR_Rio_Ladder_Explode 
+#00233    IF InMultiPlayerGame 
+#00234    ELSE 
+#00235      Obj_PlaySound Rio_Plywood 
+#00236      Shatter Name = SpecBox_Ladder01 
+            Area = 10000 
+            Variance = 2 
+            Vel_x = 10 
+            Vel_y = 10 
+            Vel_z = -10 
+            Spread = 50 
+            
+#00237      Kill Name = SpecBox_Ladder01 
+            
+#00238      Wait 1 Seconds 
+#00239      GoTo CJR_Rio_SpecBox_Collapse 
+#00240    END IF 
+#00241  END FUNCTION
+          
+#00242  FUNCTION CJR_Rio_SpecBox_Collapse 
+#00245    PauseSkaters 
+#00246    TeleportSkaterUp 
+#00247    PlaySkaterCamAnim Skater = 0 
+          Name = "Cam_SpecBox_Collapse" 
+          
+#00248    SpawnScript CJR_Rio_SpecBox_Skippable 
+#00249    LOOP 
+#00250      IF SkaterCamAnimFinished Skater = 0 
+              Name = "Cam_SpecBox_Collapse" 
+              
+#00251        BREAK
+              
+#00252      END IF 
+#00253      Wait 1 Frame 
+#00254    END LOOP 
+#00255    Kill Prefix = "TRG_Ledge_SpecBox_Norm" 
+          
+#00256    Kill Prefix = "SpecBox_Norm" 
+          
+#00257    Kill Prefix = "TRG_Ledge_SpecBox_Broken" 
+          
+#00258    Kill Prefix = "Obj_SpecBox_Broken" 
+          
+#00259    Kill Prefix = "Obj_SpecBox_Shatter" 
+          
+#00260    Kill Prefix = "Collision_SpecBox_Broken" 
+          
+#00261    Create Prefix = "TRG_Ledge_SpecBox_Broken" 
+          
+#00262    Create Prefix = "SpecBox_Broken" 
+          
+#00263    Create Prefix = "Collision_SpecBox_Broken" 
+          
+#00264    SetParticleSysVisibility System = "Particle_SpecBox_Center01" 
+          Visible = 0 
+          
+#00265    SetParticleSysVisibility System = "Particle_SpecBox_Center02" 
+          Visible = 0 
+          
+#00266    SetParticleSysVisibility System = "Particle_SpecBox_Center03" 
+          Visible = 0 
+          
+#00267    SetParticleSysVisibility System = "Particle_SpecBox_Center04" 
+          Visible = 0 
+          
+#00268    SetParticleSysVisibility System = "Particle_SpecBox_Center05" 
+          Visible = 0 
+          
+#00269    SetParticleSysVisibility System = "Particle_SpecBox_Center06" 
+          Visible = 0 
+          
+#00270    SetParticleSysVisibility System = "Particle_SpecBox_Center07" 
+          Visible = 0 
+          
+#00271    SetParticleSysVisibility System = "Particle_SpecBox_Right01" 
+          Visible = 0 
+          
+#00272    SetParticleSysVisibility System = "Particle_SpecBox_Right02" 
+          Visible = 0 
+          
+#00273    SetParticleSysVisibility System = "Particle_SpecBox_Right03" 
+          Visible = 0 
+          
+#00274    SetParticleSysVisibility System = "Particle_SpecBox_Left01" 
+          Visible = 0 
+          
+#00275    SetParticleSysVisibility System = "Particle_SpecBox_Left02" 
+          Visible = 0 
+          
+#00276    SetParticleSysVisibility System = "Particle_SpecBox_Left03" 
+          Visible = 0 
+          
+#00277    TeleportSkaterDown 
+#00278    UnPauseSkaters 
+#00279  END FUNCTION
+          
+#00280  FUNCTION CJR_Rio_SpecBox_Skippable 
+#00283    Wait 1 Seconds 
+#00284    SetSkaterCamAnimSkippable Skater = 0 
+          Skippable = 1 
+          
+#00285    Kill Name = TRGP_SpecBox_Ladder01 
+          
+#00286    Kill Prefix = "TRG_Ledge_SpecBox_Norm" 
+          
+#00287    Kill Prefix = "SpecBox_Norm" 
+          
+#00288    Create Prefix = "TRG_Ledge_SpecBox_Broken" 
+          
+#00289    Create Prefix = "Obj_SpecBox_Broken" 
+          
+#00290    Create Prefix = "Obj_SpecBox_Shatter" 
+          
+#00291    Create Prefix = "Collision_SpecBox_Broken" 
+          
+#00292    CJR_Rio_SpecBox_Shatter_Supports 
+#00293  END FUNCTION
+          
+#00294  FUNCTION CJR_Rio_SpecBox_Broken01 
+#00297    PlaySound Rio_Plywood Pitch = 90 
+          
+#00298    Obj_MoveToNode Name = Waypoint_Specbox_Collapse05 
+          Acceleration = 5 
+          Speed = 5 
+          
+#00299    Obj_WaitMove 
+#00300    Obj_RotX Angle = -2 
+          Speed = 30 
+          FLAG_MAX_COORDS 
+#00301    Obj_WaitRotate 
+#00302    Create Name = SpecBox_Broken01 
+          
+#00303    Die 
+#00304  END FUNCTION
+          
+#00305  FUNCTION CJR_Rio_SpecBox_Broken02 
+#00308    Obj_MoveToNode Name = Waypoint_Specbox_Collapse06 
+          Acceleration = 5 
+          Speed = 5 
+          
+#00309    Obj_WaitMove 
+#00310    Obj_RotX Angle = 2 
+          Speed = 30 
+          FLAG_MAX_COORDS 
+#00311    Obj_WaitRotate 
+#00312    Create Name = SpecBox_Broken02 
+          
+#00313    Die 
+#00314  END FUNCTION
+          
+#00315  FUNCTION CJR_Rio_SpecBox_Broken03 
+#00318    PlaySound Rio_Observation Pitch = 80 
+          
+#00319    Obj_MoveToNode Name = Waypoint_SpecBox_Collapse03 
+          Acceleration = 15 
+          Speed = 10 
+          
+#00320    Obj_WaitMove 
+#00321    SetParticleSysVisibility System = "Particle_SpecBox_Center01" 
+          Visible = 1 
+          
+#00322    Obj_RotX Angle = 20 
+          Speed = 80 
+          FLAG_MAX_COORDS 
+#00323    Wait 0.06 Seconds 
+#00324    SetParticleSysVisibility System = "Particle_SpecBox_Center02" 
+          Visible = 1 
+          
+#00325    SetParticleSysVisibility System = "Particle_SpecBox_Center01" 
+          Visible = 0 
+          
+#00326    Wait 0.06 Seconds 
+#00327    SetParticleSysVisibility System = "Particle_SpecBox_Center03" 
+          Visible = 1 
+          
+#00328    SetParticleSysVisibility System = "Particle_SpecBox_Center02" 
+          Visible = 0 
+          
+#00329    Wait 0.06 Seconds 
+#00330    SetParticleSysVisibility System = "Particle_SpecBox_Center04" 
+          Visible = 1 
+          
+#00331    SetParticleSysVisibility System = "Particle_SpecBox_Center03" 
+          Visible = 0 
+          
+#00332    Wait 0.06 Seconds 
+#00333    SetParticleSysVisibility System = "Particle_SpecBox_Center05" 
+          Visible = 1 
+          
+#00334    SetParticleSysVisibility System = "Particle_SpecBox_Center04" 
+          Visible = 0 
+          
+#00335    Wait 0.06 Seconds 
+#00336    SetParticleSysVisibility System = "Particle_SpecBox_Center06" 
+          Visible = 1 
+          
+#00337    SetParticleSysVisibility System = "Particle_SpecBox_Center05" 
+          Visible = 0 
+          
+#00338    Wait 0.06 Seconds 
+#00339    SetParticleSysVisibility System = "Particle_SpecBox_Center07" 
+          Visible = 1 
+          
+#00340    SetParticleSysVisibility System = "Particle_SpecBox_Center06" 
+          Visible = 0 
+          
+#00341    Obj_WaitRotate 
+#00342    PlaySound Rio_Plywood Pitch = 90 
+          
+#00343    SetParticleSysVisibility System = "Particle_SpecBox_Right01" 
+          Visible = 1 
+          
+#00344    Wait 0.075 Seconds 
+#00345    SetParticleSysVisibility System = "Particle_SpecBox_Right02" 
+          Visible = 1 
+          
+#00346    SetParticleSysVisibility System = "Particle_SpecBox_Right01" 
+          Visible = 0 
+          
+#00347    Wait 0.075 Seconds 
+#00348    SetParticleSysVisibility System = "Particle_SpecBox_Right03" 
+          Visible = 1 
+          
+#00349    SetParticleSysVisibility System = "Particle_SpecBox_Right02" 
+          Visible = 0 
+          
+#00350    LOOP 
+#00351      IF SkaterCamAnimFinished Skater = 0 
+              Name = "Cam_SpecBox_Collapse" 
+              
+#00352        SetParticleSysVisibility System = "Particle_SpecBox_Center07" 
+              Visible = 0 
+              
+#00353        SetParticleSysVisibility System = "Particle_SpecBox_Right03" 
+              Visible = 0 
+              
+#00354        Create Name = Specbox_Broken03 
+              
+#00355        BREAK
+              
+#00356      END IF 
+#00357      Wait 1 GameFrames 
+#00358    END LOOP 
+#00359    TeleportSkaterDown 
+#00360    UnPauseSkaters 
+#00361    Die 
+#00362  END FUNCTION
+          
+#00363  FUNCTION CJR_Rio_SpecBox_Broken04 
+#00366    Obj_MoveToNode Name = Waypoint_SpecBox_Collapse03 
+          Acceleration = 15 
+          Speed = 10 
+          
+#00367    Obj_WaitMove 
+#00368    Wait 1 Seconds 
+#00369    Obj_RotX Angle = -20 
+          Speed = 80 
+          FLAG_MAX_COORDS 
+#00370    Obj_WaitRotate 
+#00371    PlaySound Rio_Plywood Pitch = 90 
+          
+#00372    SetParticleSysVisibility System = "Particle_SpecBox_Left01" 
+          Visible = 1 
+          
+#00373    Wait 0.075 Seconds 
+#00374    SetParticleSysVisibility System = "Particle_SpecBox_Left02" 
+          Visible = 1 
+          
+#00375    SetParticleSysVisibility System = "Particle_SpecBox_Left01" 
+          Visible = 0 
+          
+#00376    Wait 0.075 Seconds 
+#00377    SetParticleSysVisibility System = "Particle_SpecBox_Left03" 
+          Visible = 1 
+          
+#00378    SetParticleSysVisibility System = "Particle_SpecBox_Left02" 
+          Visible = 0 
+          
+#00379    LOOP 
+#00380      IF SkaterCamAnimFinished Skater = 0 
+              Name = "Cam_SpecBox_Collapse" 
+              
+#00381        SetParticleSysVisibility System = "Particle_SpecBox_Left03" 
+              Visible = 0 
+              
+#00382        Create Name = SpecBox_Broken04 
+              
+#00383        BREAK
+              
+#00384      END IF 
+#00385      Wait 1 GameFrames 
+#00386    END LOOP 
+#00387    Die 
+#00388  END FUNCTION
+          
+#00389  FUNCTION CJR_Rio_SpecBox_Shatter_Supports 
+#00402    Shatter Name = Obj_SpecBox_Shatter_Supports01 
+          Area = 10000 
+          Variance = 2 
+          Vel_x = 0 
+          Vel_y = 75 
+          Vel_z = -30 
+          Spread = 50 
+          
+#00403    Kill Name = Obj_SpecBox_Shatter_Supports01 
+          
+#00404    Create Name = SpecBox_Broken_Supports01 
+          
+#00405    Shatter Name = Obj_SpecBox_Shatter_Supports02 
+          Area = 100000 
+          Variance = 2 
+          Vel_x = 150 
+          Vel_y = 0 
+          Vel_z = -30 
+          Spread = 50 
+          
+#00406    Kill Name = Obj_SpecBox_Shatter_Supports02 
+          
+#00407    Shatter Name = Obj_SpecBox_Shatter_Supports03 
+          Area = 10000 
+          Variance = 2 
+          Vel_x = 25 
+          Vel_y = 50 
+          Vel_z = -30 
+          Spread = 75 
+          
+#00408    Kill Name = Obj_SpecBox_Shatter_Supports03 
+          
+#00409  END FUNCTION
+          
+#00410  FUNCTION CJR_Rio_Boundary_Warn01 
+#00417    DoFlash Duration = 0.125 
+          Start_R = 0 
+          Start_G = 0 
+          Start_B = 0 
+          End_R = 255 
+          End_G = 255 
+          End_B = 255 
+          
+#00418    LaunchPanelMessage "Back To the Park!" 
+#00419  END FUNCTION
+          
+#00420  FUNCTION CJR_Rio_Boundary_Warn02 
+#00423    DoFlash Duration = 0.125 
+          Start_R = 0 
+          Start_G = 0 
+          Start_B = 0 
+          End_R = 255 
+          End_G = 255 
+          End_B = 255 
+          
+#00424    LaunchPanelMessage "Turn Back!!" 
+#00425  END FUNCTION
+          
+#00426  FUNCTION CJR_Rio_Boundary_Warn03 
+#00429    DoFlash Duration = 0.125 
+          Start_R = 0 
+          Start_G = 0 
+          Start_B = 0 
+          End_R = 255 
+          End_G = 255 
+          End_B = 255 
+          
+#00430    LaunchPanelMessage "Last Chance!!!" 
+#00431  END FUNCTION
+          
+#00432  FUNCTION CJR_Rio_Boundary_Kill01 
+#00434    Sk3_Killskater DeathSound = LA_Skid 
+          Message1 = "Stick To The Skate Park" 
+          Message2 = "You Got Lost" 
+          Message3 = "What are you...new?" 
+          Message4 = "Where Are You Going?" 
+          R = 255 
+          G = 0 
+          B = 0 
+          
+#00435  END FUNCTION
+          
+#00436  FUNCTION CJR_Rio_Weed 
+#00439    PlaySound BonkBush Vol = 100 
+          Pitch = 100 
+          
+#00440  END FUNCTION
+          
+#00441  FUNCTION CJR_Rio_Bush 
+#00444    PlaySound BonkBush Vol = 100 
+          Pitch = 70 
+          
+#00445  END FUNCTION
+          
+#00446  FUNCTION CJR_Rio_Tree 
+#00449    PlaySound BonkBush Vol = 100 
+          Pitch = 40 
+          
+#00450  END FUNCTION
+          
+#00451  FUNCTION CJR_Rio_End_Cleanup 
+#00454    Kill Prefix = "TRG_Car" 
+          
+#00455    Invisible Prefix = "Bay_Inv" 
+          
+#00456    Kill Name = Canals_Flat03 
+          
+#00457    Create Name = Canals_Flat03_No_Shadow 
+          
+#00458  END FUNCTION
+          
+#00459  FUNCTION CJR_Rio_Judge_CloseUp 
+#00462    Visible Prefix = "Opti_DeepSul" 
+          
+#00463    Create Prefix = "Ped_Judge" 
+          
+#00464    Create Name = TRG_JudgeNoises 
+          
+#00465    Kill Name = Ped_Norm_Monster_Judge01 
+          
+#00466  END FUNCTION
+          
+#00467  FUNCTION CJR_Rio_Judge_CleanUp 
+#00470    Create Name = Ped_Norm_Monster_Judge01 
+          
+#00471    Kill Prefix = "Ped_Judge" 
+          
+#00472  END FUNCTION
+          
+#00473  FUNCTION CJR_Rio_Judges_Opti 
+#00476    CJR_Rio_Judge_CloseUp 
+#00477    CJR_Rio_Opti_ExitSulArea 
+#00478    CJR_Rio_Opti_ExitDeepSulArea 
+#00479  END FUNCTION
+          
+#00480  FUNCTION CJR_Rio_Opti_InSulArea 
+#00483    Kill Prefix = "TRG_Car" 
+          
+#00484    Invisible Prefix = "Bay" 
+          
+#00485    Invisible Prefix = "Opti_InSul" 
+          
+#00486    Visible Prefix = "Sul_Bowl" 
+          
+#00487  END FUNCTION
+          
+#00488  FUNCTION CJR_Rio_Opti_ExitSulArea 
+#00491    Create Prefix = "TRG_Car" 
+          
+#00492    Visible Prefix = "Bay" 
+          
+#00493    Visible Prefix = "Opti_InSul" 
+          
+#00494    Invisible Prefix = "Sul_Bowl" 
+          
+#00495  END FUNCTION
+          
+#00496  FUNCTION CJR_Rio_Opti_DeepSulArea 
+#00499    Invisible Prefix = "Opti_DeepSul" 
+          
+#00500  END FUNCTION
+          
+#00501  FUNCTION CJR_Rio_Opti_ExitDeepSulArea 
+#00504    Visible Prefix = "Opti_DeepSul" 
+          
+#00505  END FUNCTION
+          
+#00506  FUNCTION CJR_Rio_Kill_Sul_Fence 
+#00509    PlaySound HitFlimsyWood Vol = 75 
+          
+#00510    Kill Name = ES_Sul_Fence 
+          
+#00511    Kill Name = TRGP_Kill_SulFence 
+          
+#00512    Create Prefix = "ES_Sul_Fence_Broken" 
+          
+#00513    Wait 1 Seconds 
+#00514    Kill Prefix = "ES_Sul_Fence_Broken" 
+          
+#00515  END FUNCTION
+          
+#00516  FUNCTION CJR_Rio_ReSpawn_Multi 
+#00519    Visible Prefix = "Bay" 
+          
+#00520    Visible Prefix = "Opti_InSul" 
+          
+#00521    Visible Prefix = "Opti_DeepSul" 
+          
+#00522    Invisible Prefix = "Sul_Bowl" 
+          
+#00523  END FUNCTION
+          
+#00524  FUNCTION CJR_Rio_EndGap_ShortWall 
+#00530    EndGap GapID = ShortWall 
+          Score = 100 
+          Text = "Short Wall Stomp" 
+          
+#00531  END FUNCTION
+          
+#00532  FUNCTION CJR_Rio_EndGap_Corner 
+#00535    EndGap GapID = Corner 
+          Score = 100 
+          Text = "Corner Stomp" 
+          
+#00536  END FUNCTION
+          
+#00537  FUNCTION CJR_Rio_EndGap_Tunnel 
+#00540    EndGap GapID = GLOBAL.ID1 
+          Score = 350 
+          Text = "Tunnel Gap" 
+          
+#00541  END FUNCTION
+          
+#00542  FUNCTION CJR_Rio_EndGap_Tunnel_Big 
+#00545    EndGap GapID = GLOBAL.ID1 
+          Score = 500 
+          Text = "Big Tunnel Gap" 
+          
+#00546  END FUNCTION
+          
+#00547  FUNCTION CJR_Rio_EndGap_Rail_2_Bridge 
+#00550    EndGap GapID = Rail2Bridge 
+          Score = 500 
+          Text = "Take It To Da Bridge!" 
+          
+#00551  END FUNCTION
+          
+#00552  FUNCTION CJR_Rio_EndGap_Bridge_Rails 
+#00555    EndGap GapID = GLOBAL.ID1 
+          Score = 50 
+          Text = "Cake Walk Ledge 2 Ledge" 
+          
+#00556  END FUNCTION
+          
+#00557  FUNCTION CJR_Rio_EndGap_Channel 
+#00560    EndGap GapID = GLOBAL.ID1 
+          Score = 250 
+          Text = "Channel Gap" 
+          
+#00561  END FUNCTION
+          
+#00562  FUNCTION CJR_Rio_EndGap_Ramp_Hop 
+#00565    EndGap GapID = GLOBAL.ID1 
+          Score = 150 
+          Text = "Ramp Hop" 
+          
+#00566  END FUNCTION
+          
+#00567  FUNCTION CJR_Rio_EndGap_HighWires 
+#00570    EndGap GapID = HighWires 
+          Score = 500 
+          Text = "High Wire Act" 
+          
+#00571  END FUNCTION
+          
+#00572  FUNCTION CJR_Rio_EndGap_WhooptyRail 
+#00575    EndGap GapID = WhooptyRail 
+          Score = 200 
+          Text = "Whoopty Rail Gap" 
+          
+#00576  END FUNCTION
+          
+#00577  FUNCTION CJR_Rio_EndGap_GhettoRail 
+#00580    EndGap GapID = GhettoRail 
+          Score = 100 
+          Text = "Ghetto Rail Gap" 
+          
+#00581  END FUNCTION
+          
+#00582  FUNCTION CJR_Rio_EndGap_BankLedge 
+#00585    EndGap GapID = BankLedge 
+          Score = 100 
+          Text = "Bank Ledge Gap" 
+          
+#00586  END FUNCTION
+          
+#00587  FUNCTION CJR_Rio_EndGap_BusStop 
+#00590    EndGap GapID = BusStop 
+          Score = 100 
+          Text = "Bus Stop Stomp" 
+          
+#00591  END FUNCTION
+          
+#00592  FUNCTION CJR_Rio_EndGap_SpectatorBox 
+#00595    EndGap GapID = SpectatorBox 
+          Score = 350 
+          Text = "Spectator Box Stomp" 
+          
+#00596  END FUNCTION
+          
+#00597  FUNCTION CJR_Rio_EndGap_Ramp_2_Ramp 
+#00600    EndGap GapID = GLOBAL.ID1 
+          Score = 250 
+          Text = "Ramp 2 Ramp Transfer" 
+          
+#00601  END FUNCTION
+          
+#00602  FUNCTION CJR_Rio_EndGap_PowerLine 
+#00605    EndGap GapID = PowerLine 
+          Score = 500 
+          Text = "Red Line Grind" 
+          
+#00606  END FUNCTION
+          
+#00607  FUNCTION CJR_Rio_EndGap_PowerLine_Lip 
+#00610    EndGap GapID = PowerLine_Lip 
+          Score = 500 
+          Text = "Ruby Red Lip" 
+          
+#00611  END FUNCTION
+          
+#00612  FUNCTION CJR_Rio_EndGap_Ghetto_Lip 
+#00615    EndGap GapID = Ghetto_Lip 
+          Score = 500 
+          Text = "Ghetto Extension" 
+          
+#00616  END FUNCTION
+          
+#00617  FUNCTION CJR_Rio_EndGap_Qtr_Back_Lip 
+#00620    EndGap GapID = Qtr_Back_Lip 
+          Score = 250 
+          Text = "Quarter Back Extension" 
+          
+#00621  END FUNCTION
+          
+#00622  FUNCTION CJR_Rio_EndGap_Lip_2_Box 
+#00625    EndGap GapID = Lip_2_Box 
+          Score = 50 
+          Text = "Lip 2 Box" 
+          
+#00626  END FUNCTION
+          
+#00627  FUNCTION CJR_Rio_EndGap_Whoopty_Manual 
+#00630    EndGap GapID = Whoopty_Manual 
+          Score = 250 
+          Text = "2 Wheeled Whoopty Gap" 
+          
+#00631  END FUNCTION
+          
+#00632  FUNCTION CJR_Rio_EndGap_Box_Manual 
+#00635    EndGap GapID = Box_Manual 
+          Score = 250 
+          Text = "2 Wheeled Box Gap" 
+          
+#00636  END FUNCTION
+          
+#00637  FUNCTION CJR_Rio_EndGap_Bench 
+#00640    EndGap GapID = GLOBAL.ID1 
+          Score = 50 
+          Text = "Bench Trippin'" 
+          
+#00641  END FUNCTION
+          
+#00642  FUNCTION CJR_Rio_EndGap_Dumpster 
+#00645    EndGap GapID = GLOBAL.ID1 
+          Score = 50 
+          Text = "Dumpster Dive" 
+          
+#00646  END FUNCTION
+          
+#00647  FUNCTION Foun_Startup 
+#00656    LoadStreamHeader "streams\foun\streams" 
+#00657    LoadSound "shared\FallWater" 
+#00659    LoadSound "shared\gapsound" 
+#00660    LoadSound "shared\goaldone" 
+#00661    LoadSound "Foun\foun_alarm1" Vol = 75 
+          DropOff = 150 
+          PosUpdate 
+#00662    LoadSound "Foun\foun_alarm3" Vol = 100 
+          DropOff = 150 
+          PosUpdate 
+#00663    LoadSound "Foun\foun_alarmshort" Vol = 75 
+          DropOff = 150 
+          
+#00664    LoadSound "Foun\foun_spark2x" Vol = 75 
+          DropOff = 150 
+          
+#00665    LoadSound "Foun\foun_bucket" Vol = 100 
+          DropOff = 150 
+          PosUpdate 
+#00666    LoadSound "Foun\foun_pour" Vol = 100 
+          DropOff = 150 
+          PosUpdate 
+#00667    LoadSound "Foun\foun_unhook" Vol = 100 
+          DropOff = 150 
+          
+#00668    LoadSound "Foun\foun_bounce1" Vol = 100 
+          DropOff = 150 
+          
+#00669    LoadSound "Foun\foun_poolfall" Vol = 100 
+          DropOff = 150 
+          
+#00670    LoadSound "Foun\foun_melt" Vol = 100 
+          DropOff = 150 
+          PosUpdate 
+#00671    LoadSound "Foun\foun_touchdown" Vol = 100 
+          DropOff = 150 
+          
+#00672    LoadSound "Foun\foun_foremanhit" Vol = 100 
+          DropOff = 150 
+          
+#00673    LoadSound "Foun\foun_foremansplash" Vol = 100 
+          DropOff = 150 
+          
+#00674    LoadSound "Foun\foun_press" Vol = 100 
+          DropOff = 150 
+          
+#00675    LoadSound "Foun\foun_pressmove" Vol = 100 
+          DropOff = 150 
+          
+#00676    LoadSound "Foun\foun_pressend" Vol = 100 
+          DropOff = 150 
+          
+#00677    LoadSound "Foun\foun_fan" Vol = 100 
+          DropOff = 150 
+          PosUpdate 
+#00678    LoadSound "Foun\foun_gears" Vol = 100 
+          DropOff = 125 
+          PosUpdate 
+#00679    LoadSound "Foun\foun_plexi" Vol = 100 
+          
+#00680    LoadSound "Foun\foun_secret2" Vol = 100 
+          DropOff = 100 
+          PosUpdate 
+#00681    LoadSound "Foun\foun_Generator" Vol = 100 
+          DropOff = 150 
+          PosUpdate 
+#00682    LoadSound "Foun\foun_vo_clearout3" Vol = 100 
+          DropOff = 100 
+          
+#00683    LoadSound "Foun\foun_vo_comingdown2" Vol = 100 
+          DropOff = 100 
+          
+#00684    LoadSound "La\la_vo_knockped1" Vol = 100 
+          DropOff = 200 
+          PosUpdate 
+#00685    LoadSound "La\la_vo_knockped2" Vol = 100 
+          DropOff = 200 
+          PosUpdate 
+#00686    SetParticleSysVisibility System = "Particle_PourFire" 
+          Visible = 0 
+          
+#00687    SetParticleSysVisibility System = "Particle_PourFire_Shrink" 
+          Visible = 0 
+          
+#00688    SetParticleSysVisibility System = "Particle_Soaker_Spatter" 
+          Visible = 0 
+          
+#00689    SetParticleSysVisibility System = "Particle_Soaker_Spatter02" 
+          Visible = 0 
+          
+#00690    SetParticleSysVisibility System = "Particle_Soaker_Spatter03" 
+          Visible = 0 
+          
+#00691    SetParticleSysVisibility System = "Particle_Press_Steam01" 
+          Visible = 0 
+          
+#00692    SetParticleSysVisibility System = "Particle_Press_Steam02" 
+          Visible = 0 
+          
+#00693    SetParticleSysVisibility System = "Particle_Press_Steam03" 
+          Visible = 0 
+          
+#00694    SetParticleSysVisibility System = "Particle_Press_Steam04" 
+          Visible = 0 
+          
+#00695    SetParticleSysVisibility System = "Particle_Furnace" 
+          Visible = 0 
+          
+#00696    SetParticleSysVisibility System = "Particle_Molten_Steam01" 
+          Visible = 0 
+          
+#00697    SetParticleSysVisibility System = "Particle_Molten_Steam02" 
+          Visible = 0 
+          
+#00698    SetParticleSysVisibility System = "Particle_Molten_Flamers01" 
+          Visible = 0 
+          
+#00699    SetParticleSysVisibility System = "Particle_Bucket_Fire" 
+          Visible = 0 
+          
+#00700    IF InMultiPlayerGame 
+#00702      SetParticleSysVisibility System = "Particle_Press_Steam01" 
+            Visible = 0 
+            
+#00703      SetParticleSysVisibility System = "Particle_Press_Steam02" 
+            Visible = 0 
+            
+#00704      SetParticleSysVisibility System = "Particle_Press_Steam03" 
+            Visible = 0 
+            
+#00705      SetParticleSysVisibility System = "Particle_Press_Steam04" 
+            Visible = 0 
+            
+#00706      SetParticleSysVisibility System = "Particle_Molten_Flamers01" 
+            Visible = 0 
+            
+#00707      SetParticleSysVisibility System = "Particle_Molten_Steam01" 
+            Visible = 0 
+            
+#00708      SetParticleSysVisibility System = "Particle_Molten_Steam02" 
+            Visible = 0 
+            
+#00709      SetParticleSysVisibility System = "Particle_Furnace" 
+            Visible = 0 
+            
+#00710      SetParticleSysVisibility System = "Particle_Soaker_Spatter" 
+            Visible = 0 
+            
+#00711      SetParticleSysVisibility System = "Particle_Soaker_Spatter02" 
+            Visible = 0 
+            
+#00712      SetParticleSysVisibility System = "Particle_Soaker_Spatter03" 
+            Visible = 0 
+            
+#00713      SetParticleSysVisibility System = "Particle_Press_Steam01" 
+            Visible = 0 
+            
+#00714      SetParticleSysVisibility System = "Particle_Press_Steam02" 
+            Visible = 0 
+            
+#00715      SetParticleSysVisibility System = "Particle_Press_Steam03" 
+            Visible = 0 
+            
+#00716      SetParticleSysVisibility System = "Particle_Press_Steam04" 
+            Visible = 0 
+            
+#00717      SetParticleSysVisibility System = "Particle_Bucket_Fire" 
+            Visible = 0 
+            
+#00718    ELSE 
+#00719      Invisible Name = Pour01 
+            
+#00720      Invisible Name = Pour_Start01 
+            
+#00721      Invisible Name = Pour_Start01b 
+            
+#00722      Invisible Name = Pour_Start02 
+            
+#00723      Invisible Name = Pour_Start02b 
+            
+#00724      Invisible Name = Pour_Start03 
+            
+#00725      Invisible Name = Pour_Stop01 
+            
+#00726      Invisible Name = Pour_Stop01b 
+            
+#00727      Invisible Name = Pour_Stop02 
+            
+#00728      Invisible Name = Pour_Stop02b 
+            
+#00729      Invisible Name = Pour_Stop03 
+            
+#00730      Invisible Name = Pour_Ripple 
+            
+#00731      Invisible Name = Pour_Ripple_Spread01 
+            
+#00732      Invisible Name = Pour_Ripple_Spread02 
+            
+#00733      Invisible Name = Pour_Ripple_Spread03 
+            
+#00734    END IF 
+#00735  END FUNCTION
+          
+#00736  FUNCTION CJR_Foun_LoadingScript 
+#00739    IF InMultiPlayerGame 
+#00740      Create Name = SouthDeck_DJBooth_OFF 
+            
+#00741      Kill Name = SouthDeck_DJBooth_RED 
+            
+#00742      Kill Name = SouthDeck_DJBooth_BLUE 
+            
+#00743      Kill Name = Pour01 
+            
+#00744      Kill Name = Pour_Start01 
+            
+#00745      Kill Name = Pour_Start01b 
+            
+#00746      Kill Name = Pour_Start02 
+            
+#00747      Kill Name = Pour_Start02b 
+            
+#00748      Kill Name = Pour_Start03 
+            
+#00749      Kill Name = Pour_Stop01 
+            
+#00750      Kill Name = Pour_Stop01b 
+            
+#00751      Kill Name = Pour_Stop02 
+            
+#00752      Kill Name = Pour_Stop02b 
+            
+#00753      Kill Name = Pour_Stop03 
+            
+#00754      Kill Name = Pour_Ripple 
+            
+#00755      Kill Name = TRGP_Soaker 
+            
+#00756      Kill Name = Pour_Ripple_Spread01 
+            
+#00757      Kill Name = Pour_Ripple_Spread02 
+            
+#00758      Kill Name = Pour_Ripple_Spread03 
+            
+#00759      Create Name = GenDoor01_Open 
+            
+#00768      Create Name = GenDoor02_Open 
+            
+#00769      Create Name = GenDoor03_Open 
+            
+#00770      Kill Prefix = "GenDoor_Closed" 
+            
+#00771      Kill Prefix = "GenDoor03_Closed" 
+            
+#00772      Create Prefix = "TRG_Ledge_SecretGen" 
+            
+#00773      Create Prefix = "Secret_Gen" 
+            
+#00774      Create Prefix = "Collision_Secret_Gen" 
+            
+#00775      Create Prefix = "Air_Polys_Secret_Gen" 
+            
+#00776    ELSE 
+#00777      SetUpSkaterDefaults 
+#00778      CreateSkateLines 
+#00779      CreateDeckIcon 
+#00780      CreateSecretTape 
+#00781      CreateTrickPoints 
+#00782      Visible Name = SouthDeck_DJBooth_OFF 
+            
+#00783      Invisible Name = SouthDeck_DJBooth_RED 
+            
+#00784      Invisible Name = SouthDeck_DJBooth_BLUE 
+            
+#00785      Invisible Name = Pour01 
+            
+#00786      Invisible Name = Pour_Start01 
+            
+#00787      Invisible Name = Pour_Start01b 
+            
+#00788      Invisible Name = Pour_Start02 
+            
+#00789      Invisible Name = Pour_Start02b 
+            
+#00790      Invisible Name = Pour_Start03 
+            
+#00791      Invisible Name = Pour_Stop01 
+            
+#00792      Invisible Name = Pour_Stop01b 
+            
+#00793      Invisible Name = Pour_Stop02 
+            
+#00794      Invisible Name = Pour_Stop02b 
+            
+#00795      Invisible Name = Pour_Stop03 
+            
+#00796      Invisible Name = Pour_Ripple 
+            
+#00797      Invisible Name = Pour_Ripple_Spread01 
+            
+#00798      Invisible Name = Pour_Ripple_Spread02 
+            
+#00799      Invisible Name = Pour_Ripple_Spread03 
+            
+#00800      SetParticleSysVisibility System = "Particle_Furnace" 
+            Visible = 0 
+            
+#00801      SetParticleSysVisibility System = "Particle_Molten_Steam01" 
+            Visible = 0 
+            
+#00802      SetParticleSysVisibility System = "Particle_Molten_Steam02" 
+            Visible = 0 
+            
+#00803      SetParticleSysVisibility System = "Particle_Molten_Flamers01" 
+            Visible = 0 
+            
+#00804      SetParticleSysVisibility System = "Particle_PourFire" 
+            Visible = 0 
+            
+#00805      SetParticleSysVisibility System = "Particle_PourFire_Shrink" 
+            Visible = 0 
+            
+#00806      ClearFlag Name = Obj_FlagSet_Valves 
+            CJR_FLAG_VALVE01_HIT 
+#00807      ClearFlag Name = Obj_FlagSet_Valves 
+            CJR_FLAG_VALVE02_HIT 
+#00808      ClearFlag Name = Obj_FlagSet_Valves 
+            CJR_FLAG_VALVE03_HIT 
+#00809      ClearFlag Name = Obj_FlagSet_Valves 
+            CJR_FLAG_VALVE04_HIT 
+#00810      ClearFlag Name = Obj_FlagSet_Valves 
+            CJR_FLAG_VALVE05_HIT 
+#00811    END IF 
+#00812  END FUNCTION
+          
+#00813  FoundryGoalParams = STRUCT{
+          Goal_Start_Script = CJR_Foun_Intro_Pour_CleanUp 
+          Goal_Complete_Start_Script = CJR_Foun_Vis_OutGenerator 
+          NetPlayScript = NullScript 
+          CareerPlayScript = NullScript 
+          CameraStart = "Cam_Goals" 
+          CameraTape = "Cam_Goal_04" 
+          CameraTrickSpotVert = "Cam_Goal_05vert" 
+          CameraTrickSpotStreet = "Cam_Goal_05street" 
+          CameraScripted1 = "Cam_Goal_06" 
+          CameraScripted1Complete = "Cam_Goal_Complete_06" 
+          CameraScripted2 = "Cam_Goal_07" 
+          CameraScripted2Complete = "Cam_Goal_Complete_07" 
+          CameraScripted3 = "Cam_Goal_08" 
+          CameraScripted3Complete = "Cam_Goal_Complete_08" 
+          CameraTrickspotVertComplete = "Cam_Goal_Complete_05vert" 
+          CameraTrickspotStreetComplete = "Cam_Goal_Complete_05street" 
+          Goal_HighScore_Text = "Get a HIGH SCORE | 10,000 Points" 
+          Goal_ProScore_Text = "Get a PRO SCORE | 40,000 Points" 
+          Goal_SickScore_Text = "Get a SICK SCORE | 100,000 Points" 
+          Goal_Skate_Text = "Collect S-K-A-T-E" 
+          Goal_Tape_Text = "Get the Secret Tape" 
+          Goal_TrickSpotStreet_Text = "50-50 TC's Rail" 
+          Goal_TrickSpotVert_Text = "Cannonball Over the | Half Pipe" 
+          Goal_Scripted1_Text = "Grind the | Molten Bucket" 
+          Goal_Scripted2_Text = "Un-Jam 5 Valves" 
+          Goal_Scripted3_Text = "Soak the Foreman" 
+          Goal_Scripted1_Start_Script = CJR_Foun_Intro_Bucket_Sequence 
+          Goal_Scripted1_End_Script = CJR_Foun_Intro_Bucket_CleanUp 
+          Goal_Scripted1_Complete_Start_Script = NullScript 
+          Goal_Scripted1_Complete_End_Script = NullScript 
+          Goal_Scripted2_Start_Script = NullScript 
+          Goal_Scripted2_End_Script = NullScript 
+          Goal_Scripted2_Complete_Start_Script = NullScript 
+          Goal_Scripted2_Complete_End_Script = NullScript 
+          Goal_End_Script = NullScript 
+          Goal_Complete_End_Script = NullScript 
+          Goal_Trickspot_VertAnimName = Cannonball 
+          Goal_Trickspot_VertAnimFrame1 = 16 
+          Goal_Trickspot_VertAnimFrame2 = 28 
+          Goal_Trickspot_VertAnimFrame3 = 34 
+          Goal_Trickspot_StreetAnimName = FiftyFifty_Range 
+          Goal_Trickspot_StreetAnimFrame1 = 60 
+          Goal_Trickspot_StreetAnimFrame2 = 33 
+          Goal_Trickspot_StreetAnimFrame3 = 39 
+          }
+        
+#00861  CJR_FLAG_BUCKET_MOVING = 0 
+        
+#00867  CJR_FLAG_BUCKET_STOPPED = 1 
+        
+#00868  CJR_FLAG_BUCKET_RETURN = 2 
+        
+#00869  CJR_FLAG_PRESS_UP = 3 
+        
+#00870  CJR_FLAG_BRACE_UP = 4 
+        
+#00871  CJR_FLAG_BUCKET_ALARM = 5 
+        
+#00872  CJR_FLAG_STEAM_ON = 6 
+        
+#00873  CJR_FLAG_STEAM_PLAYING = 7 
+        
+#00874  CJR_FLAG_VALVE01_HIT = 8 
+        
+#00875  CJR_FLAG_VALVE02_HIT = 9 
+        
+#00876  CJR_FLAG_VALVE03_HIT = 10 
+        
+#00877  CJR_FLAG_VALVE04_HIT = 11 
+        
+#00878  CJR_FLAG_VALVE05_HIT = 12 
+        
+#00879  CJR_FLAG_BUCKET_REFILL = 13 
+        
+#00880  CJR_FLAG_SOAKER_HIT = 14 
+        
+#00881  CJR_FLAG_GEN_OPEN = 15 
+        
+#00882  CJR_FLAG_KILL_CAM = 16 
+        
+#00883  EX_BUCKET_MOVE_OUT = 1 
+        
+#00889  EX_BUCKET_START_POUR = 2 
+        
+#00890  EX_BUCKET_END_POUR = 3 
+        
+#00891  EX_BUCKET_RETURN = 4 
+        
+#00892  EX_BUCKET_FALL = 5 
+        
+#00893  EX_BUCKET_REPEAT = 6 
+        
+#00894  EX_VALVE_WHEEL_ROTATE = 7 
+        
+#00895  EX_VALVE_HIT = 8 
+        
+#00896  EX_SOAKER_BOX_HIT = 9 
+        
+#00897  EX_SOAKER_WAYPOINT = 10 
+        
+#00898  FUNCTION CJR_Foun_Intro_Pour_CleanUp 
+#00904    Invisible Name = Pour01 
+          
+#00905    Invisible Name = Pour_Start01 
+          
+#00906    Invisible Name = Pour_Start01b 
+          
+#00907    Invisible Name = Pour_Start02 
+          
+#00908    Invisible Name = Pour_Start02b 
+          
+#00909    Invisible Name = Pour_Start03 
+          
+#00910    Invisible Name = Pour_Stop01 
+          
+#00911    Invisible Name = Pour_Stop01b 
+          
+#00912    Invisible Name = Pour_Stop02 
+          
+#00913    Invisible Name = Pour_Stop02b 
+          
+#00914    Invisible Name = Pour_Stop03 
+          
+#00915    Invisible Name = Pour_Ripple 
+          
+#00916    Invisible Name = Pour_Ripple_Spread01 
+          
+#00917    Invisible Name = Pour_Ripple_Spread02 
+          
+#00918    Invisible Name = Pour_Ripple_Spread03 
+          
+#00919    SetParticleSysVisibility System = "Particle_PourFire" 
+          Visible = 0 
+          
+#00920    SetParticleSysVisibility System = "Particle_PourFire_Shrink" 
+          Visible = 0 
+          
+#00921  END FUNCTION
+          
+#00922  FUNCTION CJR_Foun_Intro_Bucket_Sequence 
+#00925    Create Prefix = "Obj_Intro_Bucket" 
+          
+#00926    Create Name = TRG_Ped_Intro_Bucket_Director 
+          
+#00927  END FUNCTION
+          
+#00928  FUNCTION CJR_Foun_Intro_Bucket_CleanUp 
+#00931    Kill Prefix = "Obj_Intro_Bucket" 
+          
+#00932    Kill Name = TRG_Ped_Intro_Bucket_Director 
+          
+#00933  END FUNCTION
+          
+#00934  FUNCTION CJR_Foun_Intro_Bucket 
+#00937    Obj_MoveToNode Name = Waypoint_Bucket_Out 
+          
+#00938    Obj_RotX Angle = 90 
+          Speed = 30 
+          Acceleration = 75 
+          Deceleration = 20 
+          FLAG_MAX_COORDS 
+#00939    SendException EX_BUCKET_REPEAT Name = TRG_Ped_Intro_Bucket_Director 
+          
+#00940    SendException EX_BUCKET_START_POUR Name = Obj_Bucket_Booth_Controller 
+          
+#00941    Wait 3.25 Seconds 
+#00942    Visible Name = Pour_Start01 
+          
+#00943    Wait 2 GameFrames 
+#00944    Invisible Name = Pour_Start01 
+          
+#00945    Visible Name = Pour_Start01b 
+          
+#00946    Wait 2 GameFrames 
+#00947    Invisible Name = Pour_Start01b 
+          
+#00948    Visible Name = Pour_Start02 
+          
+#00949    Wait 2 GameFrames 
+#00950    Invisible Name = Pour_Start02 
+          
+#00951    Visible Name = Pour_Start02b 
+          
+#00952    Wait 2 GameFrames 
+#00953    Invisible Name = Pour_Start02b 
+          
+#00954    Visible Name = Pour_Start03 
+          
+#00955    Wait 2 GameFrames 
+#00956    Invisible Name = Pour_Start03 
+          
+#00957    Visible Name = Pour01 
+          
+#00958    Visible Name = Pour_Ripple 
+          
+#00959    SetParticleSysVisibility System = "Particle_PourFire" 
+          Visible = 1 
+          
+#00960    Obj_PlaySound foun_pour 
+#00961  END FUNCTION
+          
+#00962  FUNCTION CJR_Foun_Intro_Bucket_Hook 
+#00965    Obj_ClearExceptions 
+#00966    Obj_MoveToNode Name = Waypoint_Hook_Out 
+          
+#00967    Obj_SetPathVelocity 3.25 
+#00968    Obj_SetPathAcceleration 6 
+#00969    Obj_SetPathDeceleration 3.1 
+#00970    Obj_StickToGround Off 
+#00971    Obj_PathHeading Off 
+#00972    Obj_FollowPath Name = Waypoint_Hook_Path01 
+          
+#00973  END FUNCTION
+          
+#00974  FUNCTION CJR_Foun_Intro_Ped_Bucket_Director 
+#00977    Obj_ClearExceptions 
+#00978    Obj_SetException Ex = EX_BUCKET_REPEAT 
+          Scr = CJR_Foun_Ped_Bucket_Director_Stop_Bucket 
+          
+#00979    LOOP 
+#00980      Obj_CycleAnim Anim = RANDOM[4][12; 18; 24; 30]
+            
+            LookLeftRight JUMP 0x19000000 LookLeftDown JUMP 0x0f000000 LookRight JUMP 0x05000000 LookAtWatch 
+#00981      Obj_CycleAnim Anim = Idle 
+            
+#00982    END LOOP 
+#00983  END FUNCTION
+          
+#00984  FUNCTION CJR_Foun_Create_Bucket_Real 
+#00987    Create Name = Obj_Bucket 
+          
+#00988    Create Name = Obj_Bucket_Brace 
+          
+#00989    Create Name = Obj_Bucket_Hook 
+          
+#00990    Create Name = Obj_Bucket_Controller 
+          
+#00991    Create Name = Obj_Bucket_Booth_Controller 
+          
+#00992    Create Name = TRG_Ped_Bucket_Director 
+          
+#00993  END FUNCTION
+          
+#00994  FUNCTION CJR_Foun_Ped_Soda_Machine 
+#01000    Obj_ClearExceptions 
+#01001    Obj_SetOuterRadius 100 
+#01002    Obj_SetException Ex = SkaterOutOfRadius 
+          Scr = CJR_Foun_Ped_Soda_Machine_Chill 
+          
+#01003    LOOP 
+#01004      Obj_CycleAnim Anim = RANDOM[5][16; 22; 28; 34; 40]
+            
+            ScratchChin JUMP 0x23000000 ShakeFist JUMP 0x19000000 Disgust JUMP 0x0f000000 RichKidPoke JUMP 0x05000000 PlayerPoint 
+#01005    END LOOP 
+#01007  END FUNCTION
+          
+#01008  FUNCTION CJR_Foun_Ped_Soda_Machine_Chill 
+#01010    Obj_ClearExceptions 
+#01011    Obj_SetInnerRadius 100 
+#01012    Obj_SetException Ex = SkaterInRadius 
+          Scr = CJR_Foun_Ped_Soda_Machine 
+          
+#01013  END FUNCTION
+          
+#01014  FUNCTION CJR_Foun_Ped_Security_Sitter 
+#01017    Obj_ClearExceptions 
+#01018    Obj_SetOuterRadius 100 
+#01019    Obj_SetException Ex = SkaterOutOfRadius 
+          Scr = CJR_Foun_Ped_Security_Sitter_Chill 
+          
+#01020    LOOP 
+#01021      Obj_CycleAnim Anim = SittingIdle 
+            
+#01022    END LOOP 
+#01023  END FUNCTION
+          
+#01024  FUNCTION CJR_Foun_Ped_Security_Sitter_Chill 
+#01027    Obj_ClearExceptions 
+#01028    Obj_SetInnerRadius 100 
+#01029    Obj_SetException Ex = SkaterInRadius 
+          Scr = CJR_Foun_Ped_Security_Sitter 
+          
+#01030  END FUNCTION
+          
+#01031  FUNCTION CJR_Foun_Ped_Security_Talker 
+#01034    Obj_ClearExceptions 
+#01035    Obj_SetOuterRadius 100 
+#01036    Obj_SetException Ex = SkaterOutOfRadius 
+          Scr = CJR_Foun_Ped_Security_Talker_Chill 
+          
+#01037    LOOP 
+#01038      Obj_CycleAnim Anim = RANDOM[5][16; 22; 28; 34; 40]
+            
+            Talk JUMP 0x23000000 Talk2 JUMP 0x19000000 Disgust JUMP 0x0f000000 LookAtWatch JUMP 0x05000000 LookLeftRight 
+#01039    END LOOP 
+#01041  END FUNCTION
+          
+#01042  FUNCTION CJR_Foun_Ped_Security_Talker_Chill 
+#01045    Obj_ClearExceptions 
+#01046    Obj_SetInnerRadius 100 
+#01047    Obj_SetException Ex = SkaterInRadius 
+          Scr = CJR_Foun_Ped_Security_Talker 
+          
+#01048  END FUNCTION
+          
+#01049  FUNCTION CJR_Foun_Ped_Bucket_Operator 
+#01052    Obj_ClearExceptions 
+#01053    Obj_SetOuterRadius 80 
+#01054    Obj_SetException Ex = SkaterOutOfRadius 
+          Scr = CJR_Foun_Ped_Bucket_Operator_Chill 
+          
+#01055    LOOP 
+#01056      Obj_PlayAnim Anim = FoundryPanel 
+            
+#01057      Obj_PlayStream RANDOM[2][9; 20]
+            
+#01058      Foun_Booth_02 
+#01059      JUMP 0x0a000000 Foun_Booth_02a 
+#01060      
+#01061      Obj_WaitAnimFinished 
+#01062      Obj_CycleAnim Anim = RANDOM[3][13; 24; 35]
+            
+            
+#01063      LookAtWatch 
+#01064      JUMP 0x19000000 ScratchChin 
+#01065      JUMP 0x0a000000 LookLeftRight 
+#01066      
+#01067    END LOOP 
+#01068  END FUNCTION
+          
+#01069  FUNCTION CJR_Foun_Ped_Bucket_Operator_Rant 
+#01072    Obj_ClearExceptions 
+#01073    Obj_SetOuterRadius 80 
+#01074    Obj_SetException Ex = SkaterOutOfRadius 
+          Scr = CJR_Foun_Ped_Bucket_Operator_Chill 
+          
+#01075    Obj_PlayAnim Anim = ShakeFist 
+          
+#01076    Obj_PlayStream RANDOM[7][29; 40; 51; 62; 73; 84; 95]
+          
+#01077    Foun_Booth_03 
+#01078    JUMP 0x55000000 Foun_Booth_04 
+#01079    JUMP 0x46000000 Foun_Booth_04a 
+#01080    JUMP 0x37000000 Foun_Booth_05 
+#01081    JUMP 0x28000000 Foun_Booth_06 
+#01082    JUMP 0x19000000 Foun_Booth_06a 
+#01083    JUMP 0x0a000000 Foun_Booth_07 
+#01084    
+#01085    Obj_WaitAnimFinished 
+#01086    Create Name = TRG_Ped_BucketOp_Norm 
+          
+#01087    Die 
+#01088  END FUNCTION
+          
+#01089  FUNCTION CJR_Foun_Ped_Bucket_Operator_Chill 
+#01092    Obj_ClearExceptions 
+#01093    Obj_SetInnerRadius 80 
+#01094    Obj_SetException Ex = SkaterInRadius 
+          Scr = CJR_Foun_Ped_Bucket_Operator 
+          
+#01095  END FUNCTION
+          
+#01096  FUNCTION CJR_Foun_Ped_Bucket_Operator_Panic 
+#01099    Obj_PlayAnim Anim = FoundryPanel 
+          
+#01100    Wait 1 Seconds 
+#01101    Obj_CycleAnim Anim = IdleToCower 
+          
+#01102    PlayStream RANDOM[4][17; 28; 39; 50]
+          
+#01103    Foun_Booth_09 
+#01104    JUMP 0x28000000 Foun_Booth_11 
+#01105    JUMP 0x19000000 Foun_Booth_12 
+#01106    JUMP 0x0a000000 Foun_Booth_12a 
+#01107    
+#01108    Obj_CycleAnim Anim = Cower 
+          
+#01109    Obj_LookAtNode Name = Waypoint_Bucket_Operator_Flee 
+          
+#01110    Wait 0.5 Seconds 
+#01111    Obj_LookAtNode Name = Waypoint_Bucket_PasserBy_Flee 
+          
+#01112    Wait 0.5 Seconds 
+#01113    Obj_LookAtNode Name = Waypoint_Bucket_Operator_Flee 
+          
+#01114    PlayStream RANDOM[2][9; 20]
+          
+#01115    Foun_Booth_08 
+#01116    JUMP 0x0a000000 Foun_Booth_10 
+#01117    
+#01118    Obj_PlayAnim Anim = CowerToCoweringRun 
+          
+#01119    Obj_MoveToNode Name = Waypoint_Bucket_Operator_Flee 
+          Speed = 8 
+          Acceleration = 3 
+          
+#01120    Obj_CycleAnim Anim = CoweringRun 
+          
+#01121    Obj_WaitMove 
+#01122    Die 
+#01123  END FUNCTION
+          
+#01124  FUNCTION CJR_Foun_Ped_PressOp_A 
+#01127    Obj_ClearExceptions 
+#01128    Obj_SetOuterRadius 50 
+#01129    Obj_SetException Ex = SkaterOutOfRadius 
+          Scr = CJR_Foun_Ped_PressOp_A_Chill 
+          
+#01130    LOOP 
+#01131      Obj_CycleAnim Anim = FoundryPanel 
+            
+#01132      Obj_PlayAnim Anim = RotateRight 
+            
+#01133      Wait 5 GamesFrames 
+#01134      Obj_LookAtNode Name = TRG_Ped_PressOp_B 
+            Time = 0.5 
+            
+#01135      Obj_WaitAnimFinished 
+#01136      Obj_PlayAnim Anim = RANDOM[2][4; 10]
+            
+            Talk JUMP 0x05000000 Talk2 
+#01137      Obj_PlayStream RANDOM[14][57; 68; 79; 90; 101; 112; 123; 134; 145; 156; 167; 178; 189; 200]
+            
+#01138      Foun_Press_01 
+#01139      JUMP 0xbe000000 Foun_Press_02 
+#01140      JUMP 0xaf000000 Foun_Press_03 
+#01141      JUMP 0xa0000000 Foun_Press_04 
+#01142      JUMP 0x91000000 Foun_Press_05 
+#01143      JUMP 0x82000000 Foun_Press_05a 
+#01144      JUMP 0x73000000 Foun_Press_06 
+#01145      JUMP 0x64000000 Foun_Press_07 
+#01146      JUMP 0x55000000 Foun_Press_07a 
+#01147      JUMP 0x46000000 Foun_Press_08 
+#01148      JUMP 0x37000000 Foun_Press_09 
+#01149      JUMP 0x28000000 Foun_Press_10 
+#01150      JUMP 0x19000000 Foun_Press_11 
+#01151      JUMP 0x0a000000 Foun_Press_12 
+#01152      
+#01153      Obj_WaitAnimFinished 
+#01154      Obj_PlayAnim Anim = RotateLeft 
+            
+#01155      Wait 5 GamesFrames 
+#01156      Obj_LookAtNode Name = WayPoint_PressOp_A_Target 
+            Time = 0.5 
+            
+#01157      Obj_WaitAnimFinished 
+#01158      Obj_CycleAnim Anim = RANDOM[3][8; 14; 20]
+            
+            LookAtWatch JUMP 0x0f000000 ScratchChin JUMP 0x05000000 LookLeftRight 
+#01159    END LOOP 
+#01160  END FUNCTION
+          
+#01161  FUNCTION CJR_Foun_Ped_PressOp_A_Chill 
+#01164    Obj_ClearExceptions 
+#01165    Obj_SetInnerRadius 50 
+#01166    Obj_SetException Ex = SkaterInRadius 
+          Scr = CJR_Foun_Ped_PressOp_A 
+          
+#01167  END FUNCTION
+          
+#01168  FUNCTION CJR_Foun_Ped_PressOp_B 
+#01171    Obj_ClearExceptions 
+#01172    Obj_SetOuterRadius 50 
+#01173    Obj_SetException Ex = SkaterOutOfRadius 
+          Scr = CJR_Foun_Ped_PressOp_B_Chill 
+          
+#01174    LOOP 
+#01175      Obj_PlayAnim Anim = FoundryPanel 
+            
+#01176      Obj_WaitAnimFinished 
+#01177      Obj_CycleAnim Anim = RANDOM[3][8; 14; 20]
+            
+            LookAtWatch JUMP 0x0f000000 ScratchChin JUMP 0x05000000 LookLeftRight 
+#01178    END LOOP 
+#01179  END FUNCTION
+          
+#01180  FUNCTION CJR_Foun_Ped_PressOp_B_Chill 
+#01183    Obj_ClearExceptions 
+#01184    Obj_SetInnerRadius 50 
+#01185    Obj_SetException Ex = SkaterInRadius 
+          Scr = CJR_Foun_Ped_PressOp_B 
+          
+#01186  END FUNCTION
+          
+#01187  FUNCTION CJR_Foun_Ped_Bucket_Director 
+#01190    Obj_ClearExceptions 
+#01191    Obj_SetInnerRadius 3 
+#01192    Obj_SetOuterRadius 50 
+#01193    Obj_SetException Ex = SkaterInRadius 
+          Scr = CJR_Foun_Ped_Bucket_Director_Fall 
+          
+#01194    Obj_SetException Ex = SkaterOutOfRadius 
+          Scr = CJR_Foun_Ped_Bucket_Director_Chill 
+          
+#01195    Obj_SetException Ex = EX_BUCKET_MOVE_OUT 
+          Scr = CJR_Foun_Ped_Bucket_Director_Direct 
+          
+#01196    Obj_SetException Ex = EX_BUCKET_REPEAT 
+          Scr = CJR_Foun_Ped_Bucket_Director_Stop_Bucket 
+          
+#01197    LOOP 
+#01198      Obj_CycleAnim Anim = RANDOM[4][12; 18; 24; 30]
+            
+            LookLeftRight JUMP 0x19000000 LookLeftDown JUMP 0x0f000000 LookRight JUMP 0x05000000 LookAtWatch 
+#01199      Obj_CycleAnim Anim = Idle 
+            
+#01200    END LOOP 
+#01201  END FUNCTION
+          
+#01202  FUNCTION CJR_Foun_Ped_Bucket_Director_Chill 
+#01205    Obj_ClearExceptions 
+#01206    Obj_SetInnerRadius 50 
+#01207    Obj_SetException Ex = SkaterInRadius 
+          Scr = CJR_Foun_Ped_Bucket_Director 
+          
+#01208  END FUNCTION
+          
+#01209  FUNCTION CJR_Foun_Ped_Bucket_Director_Direct 
+#01212    Obj_ClearExceptions 
+#01213    Obj_SetInnerRadius 3 
+#01214    Obj_SetOuterRadius 50 
+#01215    Obj_SetException Ex = SkaterInRadius 
+          Scr = CJR_Foun_Ped_Bucket_Director_Fall 
+          
+#01216    Obj_SetException Ex = SkaterOutOfRadius 
+          Scr = CJR_Foun_Ped_Bucket_Director_Chill 
+          
+#01217    Obj_SetException Ex = EX_BUCKET_REPEAT 
+          Scr = CJR_Foun_Ped_Bucket_Director_Stop_Bucket 
+          
+#01218    LOOP 
+#01219      Obj_CycleAnim Anim = FoundryBucketMove 
+            
+#01220      Obj_CycleAnim Anim = Idle 
+            
+#01221    END LOOP 
+#01222  END FUNCTION
+          
+#01223  FUNCTION CJR_Foun_Ped_Bucket_Director_Stop_Bucket 
+#01226    Obj_ClearExceptions 
+#01227    Obj_SetInnerRadius 3 
+#01228    Obj_SetOuterRadius 50 
+#01229    Obj_SetException Ex = SkaterInRadius 
+          Scr = CJR_Foun_Ped_Bucket_Director_Fall 
+          
+#01230    Obj_SetException Ex = SkaterOutOfRadius 
+          Scr = CJR_Foun_Ped_Bucket_Director_Chill 
+          
+#01231    Obj_CycleAnim Anim = FoundryBucketStop 
+          
+#01232    Obj_CycleAnim Anim = FoundryBucketPour 
+          
+#01233    Obj_CycleAnim Anim = Idle 
+          
+#01234    Obj_CycleAnim Anim = FoundryBucketPour 
+          
+#01235    Obj_CycleAnim Anim = Idle 
+          
+#01236    GoTo CJR_Foun_Ped_Bucket_Director 
+#01237  END FUNCTION
+          
+#01238  FUNCTION CJR_Foun_Ped_Bucket_Director_Fall 
+#01241    Obj_ClearExceptions 
+#01242    Obj_SetOuterRadius 20 
+#01243    Obj_SetException Ex = SkaterOutOfRadius 
+          Scr = CJR_Foun_Ped_Bucket_Director_GetUp 
+          
+#01244    Obj_PlaySound bitchslap2 
+#01245    Obj_PlayAnim Anim = HitBySkater 
+          
+#01246    Obj_PlayStream RANDOM[15][61; 72; 83; 94; 105; 116; 127; 138; 149; 160; 171; 182; 193; 204; 215]
+          
+#01247    Foun_Coord_01 
+#01248    JUMP 0xcd000000 Foun_Coord_01a 
+#01249    JUMP 0xbe000000 Foun_Coord_01b 
+#01250    JUMP 0xaf000000 Foun_Coord_02 
+#01251    JUMP 0xa0000000 Foun_Coord_02a 
+#01252    JUMP 0x91000000 Foun_Coord_02c 
+#01253    JUMP 0x82000000 Foun_Coord_03 
+#01254    JUMP 0x73000000 Foun_Coord_03a 
+#01255    JUMP 0x64000000 Foun_Coord_03b 
+#01256    JUMP 0x55000000 Foun_Coord_04 
+#01257    JUMP 0x46000000 Foun_Coord_04a 
+#01258    JUMP 0x37000000 Foun_Coord_04b 
+#01259    JUMP 0x28000000 Foun_Coord_05 
+#01260    JUMP 0x19000000 Foun_Coord_05a 
+#01261    JUMP 0x0a000000 Foun_Coord_05c 
+#01262    
+#01263    Obj_WaitAnimFinished 
+#01264  END FUNCTION
+          
+#01265  FUNCTION CJR_Foun_Ped_Bucket_Director_GetUp 
+#01268    Obj_ClearExceptions 
+#01269    Obj_CycleAnim Anim = GetUp 
+          
+#01270    GoTo CJR_Foun_Ped_Bucket_Director 
+#01271  END FUNCTION
+          
+#01272  FUNCTION CJR_Foun_Ped_Bucket_Director_Panic 
+#01275    Wait 0.5 Seconds 
+#01276    Obj_CycleAnim Anim = IdleToCower 
+          
+#01277    PlayStream RANDOM[6][25; 36; 47; 58; 69; 80]
+          
+#01278    Foun_Coord_06 
+#01279    JUMP 0x46000000 Foun_Coord_06a 
+#01280    JUMP 0x37000000 Foun_Coord_07 
+#01281    JUMP 0x28000000 Foun_Coord_07a 
+#01282    JUMP 0x19000000 Foun_Coord_07b 
+#01283    JUMP 0x0a000000 Foun_Coord_08 
+#01284    
+#01285    Obj_CycleAnim Anim = Cower 
+          
+#01286    Obj_LookAtNode Name = Waypoint_Bucket_Operator_Flee 
+          
+#01287    PlayStream RANDOM[4][17; 28; 39; 50]
+          
+#01288    Foun_Coord_09 
+#01289    JUMP 0x28000000 Foun_Coord_09a 
+#01290    JUMP 0x19000000 Foun_Coord_09c 
+#01291    JUMP 0x0a000000 Foun_Coord_10 
+#01292    
+#01293    Obj_PlayAnim Anim = CowerToCoweringRun 
+          
+#01294    Obj_MoveToNode Name = Waypoint_Bucket_Operator_Flee 
+          Speed = 8 
+          Acceleration = 3 
+          
+#01295    Obj_PlayAnim Anim = CoweringRun 
+          Cycle 
+#01296    Obj_WaitMove 
+#01297    Die 
+#01298  END FUNCTION
+          
+#01299  FUNCTION CJR_Foun_Ped_Soaker 
+#01302    Obj_ClearExceptions 
+#01303    Obj_SetInnerRadius 15 
+#01304    Obj_SetOuterRadius 15 
+#01305    Obj_SetException Ex = SkaterInRadius 
+          Scr = CJR_Foun_Ped_Soaker_Talk 
+          
+#01306    LOOP 
+#01307      Obj_CycleAnim Anim = Idle 
+            NumCycles = RANDOM[3][8; 14; 20]
+            
+            1 JUMP 0x0f000000 2 JUMP 0x05000000 3 
+#01308      Obj_CycleAnim Anim = IdleToClipBoardIdle 
+            
+#01309      Obj_CycleAnim Anim = RANDOM[2][4; 10]
+            
+            ClipBoardIdle JUMP 0x05000000 ClipBoardWriting NumCycles = RANDOM[2][4; 10]
+            
+            1 JUMP 0x05000000 2 
+#01310      Obj_CycleAnim Anim = ClipBoardIdleToIdle 
+            
+#01311      Obj_CycleAnim Anim = RANDOM[3][8; 14; 20]
+            
+            LookAtWatch JUMP 0x0f000000 ScratchChin JUMP 0x05000000 LookLeftRight 
+#01312      Wait 1 GameFrames 
+#01313    END LOOP 
+#01314  END FUNCTION
+          
+#01315  FUNCTION CJR_Foun_Ped_Soaker_Talk 
+#01318    Obj_ClearExceptions 
+#01319    Obj_SetInnerRadius 3 
+#01320    Obj_SetOuterRadius 50 
+#01321    Obj_SetException Ex = SkaterInRadius 
+          Scr = CJR_Foun_Ped_Soaker_Fall 
+          
+#01322    Obj_SetException Ex = SkaterOutOfRadius 
+          Scr = CJR_Foun_Ped_Soaker 
+          
+#01323    LOOP 
+#01324      Obj_CycleAnim Anim = Idle 
+            
+#01325      Obj_CycleAnim Anim = IdleToClipBoardIdle 
+            
+#01326      Obj_PlayAnim Anim = ClipBoardWriting 
+            
+#01327      Obj_PlayStream RANDOM[27][109; 120; 131; 142; 153; 164; 175; 186; 197; 208; 219; 230; 241; 252; 263; 274; 285; 296; 307; 318; 329; 340; 351; 362; 373; 384; 395]
+            
+#01328      Foun_Ins_01 
+#01329      JUMP 0x81010000 Foun_Ins_02 
+#01330      JUMP 0x72010000 Foun_Ins_02a 
+#01331      JUMP 0x63010000 Foun_Ins_03 
+#01332      JUMP 0x54010000 Foun_Ins_04 
+#01333      JUMP 0x45010000 Foun_Ins_04a 
+#01334      JUMP 0x36010000 Foun_Ins_05 
+#01335      JUMP 0x27010000 Foun_Ins_05a 
+#01336      JUMP 0x18010000 Foun_Ins_06 
+#01337      JUMP 0x09010000 Foun_Ins_06a 
+#01338      JUMP 0xfa000000 Foun_Ins_06b 
+#01339      JUMP 0xeb000000 Foun_Ins_07 
+#01340      JUMP 0xdc000000 Foun_Ins_08 
+#01341      JUMP 0xcd000000 Foun_Ins_08a 
+#01342      JUMP 0xbe000000 Foun_Ins_08b 
+#01343      JUMP 0xaf000000 Foun_Ins_08c 
+#01344      JUMP 0xa0000000 Foun_Ins_09 
+#01345      JUMP 0x91000000 Foun_Ins_09a 
+#01346      JUMP 0x82000000 Foun_Ins_09b 
+#01347      JUMP 0x73000000 Foun_Ins_10 
+#01348      JUMP 0x64000000 Foun_Ins_10b 
+#01349      JUMP 0x55000000 Foun_Ins_10c 
+#01350      JUMP 0x46000000 Foun_Ins_11 
+#01351      JUMP 0x37000000 Foun_Ins_11a 
+#01352      JUMP 0x28000000 Foun_Ins_11b 
+#01353      JUMP 0x19000000 Foun_Ins_12 
+#01354      JUMP 0x0a000000 Foun_Ins_13 
+#01355      
+#01356      Obj_WaitAnimFinished 
+#01357      Obj_CycleAnim Anim = ClipBoardIdleToIdle 
+            
+#01358      Obj_PlayAnim Anim = RANDOM[3][8; 14; 20]
+            
+            LookAtWatch JUMP 0x0f000000 ScratchChin JUMP 0x05000000 LookLeftRight 
+#01359      Obj_PlayStream RANDOM[27][109; 120; 131; 142; 153; 164; 175; 186; 197; 208; 219; 230; 241; 252; 263; 274; 285; 296; 307; 318; 329; 340; 351; 362; 373; 384; 395]
+            
+#01360      Foun_Ins_01 
+#01361      JUMP 0x81010000 Foun_Ins_02 
+#01362      JUMP 0x72010000 Foun_Ins_02a 
+#01363      JUMP 0x63010000 Foun_Ins_03 
+#01364      JUMP 0x54010000 Foun_Ins_04 
+#01365      JUMP 0x45010000 Foun_Ins_04a 
+#01366      JUMP 0x36010000 Foun_Ins_05 
+#01367      JUMP 0x27010000 Foun_Ins_05a 
+#01368      JUMP 0x18010000 Foun_Ins_06 
+#01369      JUMP 0x09010000 Foun_Ins_06a 
+#01370      JUMP 0xfa000000 Foun_Ins_06b 
+#01371      JUMP 0xeb000000 Foun_Ins_07 
+#01372      JUMP 0xdc000000 Foun_Ins_08 
+#01373      JUMP 0xcd000000 Foun_Ins_08a 
+#01374      JUMP 0xbe000000 Foun_Ins_08b 
+#01375      JUMP 0xaf000000 Foun_Ins_08c 
+#01376      JUMP 0xa0000000 Foun_Ins_09 
+#01377      JUMP 0x91000000 Foun_Ins_09a 
+#01378      JUMP 0x82000000 Foun_Ins_09b 
+#01379      JUMP 0x73000000 Foun_Ins_10 
+#01380      JUMP 0x64000000 Foun_Ins_10b 
+#01381      JUMP 0x55000000 Foun_Ins_10c 
+#01382      JUMP 0x46000000 Foun_Ins_11 
+#01383      JUMP 0x37000000 Foun_Ins_11a 
+#01384      JUMP 0x28000000 Foun_Ins_11b 
+#01385      JUMP 0x19000000 Foun_Ins_12 
+#01386      JUMP 0x0a000000 Foun_Ins_13 
+#01387      
+#01388      Obj_WaitAnimFinished 
+#01389    END LOOP 
+#01390  END FUNCTION
+          
+#01391  FUNCTION CJR_Foun_Ped_Soaker_Fall 
+#01394    Obj_ClearExceptions 
+#01395    Obj_StopStream 
+#01396    Obj_SetOuterRadius 20 
+#01397    Obj_SetException Ex = SkaterOutOfRadius 
+          Scr = CJR_Foun_Ped_Soaker_GetUp 
+          
+#01398    Obj_PlaySound bitchslap2 
+#01399    Obj_PlayAnim Anim = HitBySkater 
+          
+#01400    Obj_PlayStream RANDOM[5][21; 32; 43; 54; 65]
+          
+#01401    Foun_Ins_14 
+#01402    JUMP 0x37000000 Foun_Ins_15 
+#01403    JUMP 0x28000000 Foun_Ins_16 
+#01404    JUMP 0x19000000 Foun_Ins_17 
+#01405    JUMP 0x0a000000 Foun_Ins_18 
+#01406    
+#01407    Obj_WaitAnimFinished 
+#01408  END FUNCTION
+          
+#01409  FUNCTION CJR_Foun_Ped_Soaker_GetUp 
+#01412    Obj_ClearExceptions 
+#01413    Obj_CycleAnim Anim = GetUp 
+          
+#01414    GoTo CJR_Foun_Ped_Soaker 
+#01415  END FUNCTION
+          
+#01416  FUNCTION CJR_Foun_Ped_Soaker_Dive 
+#01419    Obj_SetPathVelocity 25 
+#01420    Obj_SetPathAcceleration 75 
+#01421    Obj_StickToGround Off 
+#01422    Obj_PathHeading Off 
+#01423    PlaySound bitchslap2 
+#01424    Obj_FollowPathLinked 
+#01425    Obj_PlaySound foun_foremanhit 
+#01426    Obj_PlayAnim Anim = ForemanHit1 
+          
+#01427    Obj_WaitMove 
+#01428    Obj_CycleAnim Anim = ForemanSplash_Init 
+          
+#01429    Obj_PlayAnim Anim = ForemanSplash 
+          Cycle 
+#01430  END FUNCTION
+          
+#01431  FUNCTION CJR_Foun_Ped_Skipped_Soaker 
+#01434    Obj_PlayAnim Anim = ForemanSplash 
+          Cycle 
+#01435  END FUNCTION
+          
+#01436  FUNCTION CJR_Foun_Ped_Welder 
+#01439    Obj_ClearExceptions 
+#01440    Obj_SetInnerRadius 3 
+#01441    Obj_SetOuterRadius 100 
+#01442    Obj_SetException Ex = SkaterInRadius 
+          Scr = CJR_Foun_Ped_Welder_Fall 
+          
+#01443    Obj_SetException Ex = SkaterOutOfRadius 
+          Scr = CJR_Foun_Ped_Welder_Chill 
+          
+#01444    LOOP 
+#01445      Obj_PlayAnim Anim = Welding 
+            
+#01446      Create Name = Obj_Welder_Sparks_Controller 
+            
+#01447      Obj_WaitAnimFinished 
+#01448      Obj_CycleAnim Anim = Welding 
+            
+#01449      Kill Name = Obj_Welder_Sparks_Controller 
+            
+#01450      Obj_CycleAnim Anim = RANDOM[2][4; 10]
+            
+            WelderInspect JUMP 0x05000000 WelderCheckTool 
+#01451      Wait 1 GameFrames 
+#01452    END LOOP 
+#01453  END FUNCTION
+          
+#01454  FUNCTION CJR_Foun_Ped_Welder_Chill 
+#01457    Obj_ClearExceptions 
+#01458    Kill Name = Obj_Welder_Sparks_Controller 
+          
+#01459    Obj_SetInnerRadius 80 
+#01460    Obj_SetException Ex = SkaterInRadius 
+          Scr = CJR_Foun_Ped_Welder 
+          
+#01461  END FUNCTION
+          
+#01462  FUNCTION CJR_Foun_Ped_Welder_Fall 
+#01465    Obj_ClearExceptions 
+#01466    Kill Name = Obj_Welder_Sparks_Controller 
+          
+#01467    Obj_SetOuterRadius 20 
+#01468    Obj_SetException Ex = SkaterOutOfRadius 
+          Scr = CJR_Foun_Ped_Welder_GetUp 
+          
+#01469    Obj_PlaySound bitchslap2 
+#01470    Obj_PlayAnim Anim = HitBySkater 
+          
+#01471    Obj_PlaySound RANDOM[2][4; 10]
+          la_vo_knockped1 JUMP 0x05000000 la_vo_knockped2 
+#01472    Obj_WaitAnimFinished 
+#01473  END FUNCTION
+          
+#01474  FUNCTION CJR_Foun_Ped_Welder_GetUp 
+#01477    Obj_ClearExceptions 
+#01478    Obj_CycleAnim Anim = GetUp 
+          
+#01479    GoTo CJR_Foun_Ped_Welder 
+#01480  END FUNCTION
+          
+#01481  FUNCTION CJR_Foun_Ped_Valve 
+#01484    Obj_ClearExceptions 
+#01485    Obj_SetInnerRadius 15 
+#01486    Obj_SetOuterRadius 80 
+#01487    Obj_SetException Ex = SkaterInRadius 
+          Scr = CJR_Foun_Ped_Valve_Dodge 
+          
+#01488    Obj_SetException Ex = SkaterOutOfRadius 
+          Scr = CJR_Foun_Ped_Valve_Chill 
+          
+#01489    Obj_LookAtObject Name = Obj_Valve_A_Wheel 
+          Time = 0.3 
+          
+#01490    LOOP 
+#01491      Obj_CycleAnim Anim = Idle 
+            
+#01492      Obj_PlayAnim Anim = FoundryValve 
+            
+#01493      Wait 75 Frames 
+#01494      SendException EX_VALVE_WHEEL_ROTATE Name = Obj_Valve_A_Wheel 
+            
+#01495      Obj_PlayStream RANDOM[9][37; 48; 59; 70; 81; 92; 103; 114; 125]
+            
+#01496      Foun_Valve_16 
+#01497      JUMP 0x73000000 Foun_Valve_16a 
+#01498      JUMP 0x64000000 Foun_Valve_16b 
+#01499      JUMP 0x55000000 Foun_Valve_16c 
+#01500      JUMP 0x46000000 Foun_Valve_17 
+#01501      JUMP 0x37000000 Foun_Valve_17a 
+#01502      JUMP 0x28000000 Foun_Valve_18 
+#01503      JUMP 0x19000000 Foun_Valve_19 
+#01504      JUMP 0x0a000000 Foun_Valve_19a 
+#01505      
+#01506      Wait 90 Frames 
+#01507      Obj_PlayStream RANDOM[9][37; 48; 59; 70; 81; 92; 103; 114; 125]
+            
+#01508      Foun_Valve_16 
+#01509      JUMP 0x73000000 Foun_Valve_16a 
+#01510      JUMP 0x64000000 Foun_Valve_16b 
+#01511      JUMP 0x55000000 Foun_Valve_16c 
+#01512      JUMP 0x46000000 Foun_Valve_17 
+#01513      JUMP 0x37000000 Foun_Valve_17a 
+#01514      JUMP 0x28000000 Foun_Valve_18 
+#01515      JUMP 0x19000000 Foun_Valve_19 
+#01516      JUMP 0x0a000000 Foun_Valve_19a 
+#01517      
+#01518      Obj_WaitAnimFinished 
+#01519      Obj_PlayAnim Anim = RANDOM[3][8; 14; 20]
+            
+            ScratchChin JUMP 0x0f000000 Disgust JUMP 0x05000000 BBQGuyBrow 
+#01520      Obj_PlayStream RANDOM[8][33; 44; 55; 66; 77; 88; 99; 110]
+            
+#01521      Foun_Valve_20 
+#01522      JUMP 0x64000000 Foun_Valve_21 
+#01523      JUMP 0x55000000 Foun_Valve_22 
+#01524      JUMP 0x46000000 Foun_Valve_23 
+#01525      JUMP 0x37000000 Foun_Valve_23a 
+#01526      JUMP 0x28000000 Foun_Valve_24 
+#01527      JUMP 0x19000000 Foun_Valve_24a 
+#01528      JUMP 0x0a000000 Foun_Valve_25 
+#01529      
+#01530      Obj_WaitAnimFinished 
+#01531    END LOOP 
+#01532  END FUNCTION
+          
+#01533  FUNCTION CJR_Foun_Ped_Valve_Chill 
+#01536    Obj_ClearExceptions 
+#01537    Obj_SetInnerRadius 80 
+#01538    Obj_SetException Ex = SkaterInRadius 
+          Scr = CJR_Foun_Ped_Valve 
+          
+#01539  END FUNCTION
+          
+#01540  FUNCTION CJR_Foun_Ped_Valve_Dodge 
+#01543    Obj_ClearExceptions 
+#01544    Obj_SetInnerRadius 3 
+#01545    Obj_SetOuterRadius 50 
+#01546    Obj_SetException Ex = SkaterInRadius 
+          Scr = CJR_Foun_Ped_Valve_Fall 
+          
+#01547    Obj_SetException Ex = SkaterOutOfRadius 
+          Scr = CJR_Foun_Ped_Valve 
+          
+#01548    Obj_SetException Ex = EX_VALVE_HIT 
+          Scr = CJR_Foun_Ped_Valve_Thanks 
+          
+#01549    Obj_PlayStream RANDOM[6][25; 36; 47; 58; 69; 80]
+          
+#01550    Foun_Valve_06 
+#01551    JUMP 0x46000000 Foun_Valve_07 
+#01552    JUMP 0x37000000 Foun_Valve_08 
+#01553    JUMP 0x28000000 Foun_Valve_09 
+#01554    JUMP 0x19000000 Foun_Valve_10 
+#01555    JUMP 0x0a000000 Foun_Valve_10a 
+#01556    
+#01557    Obj_CycleAnim Anim = IdleToCower 
+          
+#01558    Obj_PlayAnim Anim = CowerToIdleQuick 
+          
+#01559    Obj_LookAtObject Type = Skater 
+          Time = 0.3 
+          
+#01560    Obj_WaitAnimFinished 
+#01561    Obj_PlayStream RANDOM[8][33; 44; 55; 66; 77; 88; 99; 110]
+          
+#01562    Foun_Valve_11 
+#01563    JUMP 0x64000000 Foun_Valve_12 
+#01564    JUMP 0x55000000 Foun_Valve_13 
+#01565    JUMP 0x46000000 Foun_Valve_13a 
+#01566    JUMP 0x37000000 Foun_Valve_14 
+#01567    JUMP 0x28000000 Foun_Valve_14a 
+#01568    JUMP 0x19000000 Foun_Valve_15 
+#01569    JUMP 0x0a000000 Foun_Valve_15a 
+#01570    
+#01571    Obj_CycleAnim Anim = RANDOM[3][8; 14; 20]
+          
+          ShakeFist JUMP 0x0f000000 PlayerPoint JUMP 0x05000000 Disgust 
+#01572    Obj_LookAtObject Name = Obj_Valve_A_Wheel 
+          Time = 0.3 
+          
+#01573    LOOP 
+#01574      Obj_CycleAnim Anim = Idle 
+            
+#01575      Obj_PlayAnim Anim = FoundryValve 
+            
+#01576      Wait 75 Frames 
+#01577      SendException EX_VALVE_WHEEL_ROTATE Name = Obj_Valve_A_Wheel 
+            
+#01578      Obj_PlayStream RANDOM[9][37; 48; 59; 70; 81; 92; 103; 114; 125]
+            
+#01579      Foun_Valve_16 
+#01580      JUMP 0x73000000 Foun_Valve_16a 
+#01581      JUMP 0x64000000 Foun_Valve_16b 
+#01582      JUMP 0x55000000 Foun_Valve_16c 
+#01583      JUMP 0x46000000 Foun_Valve_17 
+#01584      JUMP 0x37000000 Foun_Valve_17a 
+#01585      JUMP 0x28000000 Foun_Valve_18 
+#01586      JUMP 0x19000000 Foun_Valve_19 
+#01587      JUMP 0x0a000000 Foun_Valve_19a 
+#01588      
+#01589      Wait 90 Frames 
+#01590      Obj_PlayStream RANDOM[9][37; 48; 59; 70; 81; 92; 103; 114; 125]
+            
+#01591      Foun_Valve_16 
+#01592      JUMP 0x73000000 Foun_Valve_16a 
+#01593      JUMP 0x64000000 Foun_Valve_16b 
+#01594      JUMP 0x55000000 Foun_Valve_16c 
+#01595      JUMP 0x46000000 Foun_Valve_17 
+#01596      JUMP 0x37000000 Foun_Valve_17a 
+#01597      JUMP 0x28000000 Foun_Valve_18 
+#01598      JUMP 0x19000000 Foun_Valve_19 
+#01599      JUMP 0x0a000000 Foun_Valve_19a 
+#01600      
+#01601      Obj_WaitAnimFinished 
+#01602      Obj_PlayAnim Anim = RANDOM[3][8; 14; 20]
+            
+            ScratchChin JUMP 0x0f000000 Disgust JUMP 0x05000000 BBQGuyBrow 
+#01603      Obj_PlayStream RANDOM[8][33; 44; 55; 66; 77; 88; 99; 110]
+            
+#01604      Foun_Valve_20 
+#01605      JUMP 0x64000000 Foun_Valve_21 
+#01606      JUMP 0x55000000 Foun_Valve_22 
+#01607      JUMP 0x46000000 Foun_Valve_23 
+#01608      JUMP 0x37000000 Foun_Valve_23a 
+#01609      JUMP 0x28000000 Foun_Valve_24 
+#01610      JUMP 0x19000000 Foun_Valve_24a 
+#01611      JUMP 0x0a000000 Foun_Valve_25 
+#01612      
+#01613      Obj_WaitAnimFinished 
+#01614    END LOOP 
+#01615  END FUNCTION
+          
+#01616  FUNCTION CJR_Foun_Ped_Valve_Fall 
+#01619    Obj_ClearExceptions 
+#01620    Obj_StopStream 
+#01621    Obj_SetOuterRadius 20 
+#01622    Obj_SetException Ex = SkaterOutOfRadius 
+          Scr = CJR_Foun_Ped_Valve_GetUp 
+          
+#01623    Obj_PlaySound bitchslap2 
+#01624    Obj_PlayAnim Anim = HitBySkater 
+          
+#01625    Obj_PlayStream RANDOM[5][21; 32; 43; 54; 65]
+          
+#01626    Foun_Valve_01 
+#01627    JUMP 0x37000000 Foun_Valve_02 
+#01628    JUMP 0x28000000 Foun_Valve_03 
+#01629    JUMP 0x19000000 Foun_Valve_04 
+#01630    JUMP 0x0a000000 Foun_Valve_05 
+#01631    
+#01632    Obj_WaitAnimFinished 
+#01633  END FUNCTION
+          
+#01634  FUNCTION CJR_Foun_Ped_Valve_GetUp 
+#01637    Obj_ClearExceptions 
+#01638    Obj_CycleAnim Anim = GetUp 
+          
+#01639    GoTo CJR_Foun_Ped_Valve 
+#01640  END FUNCTION
+          
+#01641  FUNCTION CJR_Foun_Ped_Valve_Thanks 
+#01644    Obj_ClearExceptions 
+#01645    Obj_PlayStream RANDOM[13][53; 64; 75; 86; 97; 108; 119; 130; 141; 152; 163; 174; 185]
+          
+#01646    Foun_Valve_26 
+#01647    JUMP 0xaf000000 Foun_Valve_26a 
+#01648    JUMP 0xa0000000 Foun_Valve_27 
+#01649    JUMP 0x91000000 Foun_Valve_28 
+#01650    JUMP 0x82000000 Foun_Valve_29 
+#01651    JUMP 0x73000000 Foun_Valve_30 
+#01652    JUMP 0x64000000 Foun_Valve_31 
+#01653    JUMP 0x55000000 Foun_Valve_32 
+#01654    JUMP 0x46000000 Foun_Valve_32a 
+#01655    JUMP 0x37000000 Foun_Valve_33 
+#01656    JUMP 0x28000000 Foun_Valve_33a 
+#01657    JUMP 0x19000000 Foun_Valve_34 
+#01658    JUMP 0x0a000000 Foun_Valve_34a 
+#01659    
+#01660    Obj_CycleAnim Anim = Idle 
+          
+#01661    Obj_SwitchScript SK3_PedScript Params = STRUCT{
+            Streamer Low }
+          
+#01662  END FUNCTION
+          
+#01663  FUNCTION CJR_Foun_Ped_Valve_Idle 
+#01666    Obj_StopAlongPath 
+#01667    Obj_CycleAnim Anim = RANDOM[3][8; 14; 20]
+          
+          ScratchChin JUMP 0x0f000000 LookAtWatch JUMP 0x05000000 LookLeftRight 
+#01668    Obj_SwitchScript SK3_PedScript 
+#01669  END FUNCTION
+          
+#01670  FUNCTION CJR_Foun_Ped_ValveB 
+#01673    Obj_ClearExceptions 
+#01674    Obj_SetInnerRadius 15 
+#01675    Obj_SetOuterRadius 80 
+#01676    Obj_SetException Ex = SkaterInRadius 
+          Scr = CJR_Foun_Ped_ValveB_Dodge 
+          
+#01677    Obj_SetException Ex = SkaterOutOfRadius 
+          Scr = CJR_Foun_Ped_ValveB_Chill 
+          
+#01678    Obj_LookAtObject Name = Obj_Valve_B_Wheel 
+          Time = 0.3 
+          
+#01679    LOOP 
+#01680      Obj_CycleAnim Anim = Idle 
+            
+#01681      Obj_PlayAnim Anim = FoundryValve 
+            
+#01682      Wait 75 Frames 
+#01683      SendException EX_VALVE_WHEEL_ROTATE Name = Obj_Valve_B_Wheel 
+            
+#01684      Obj_PlayStream RANDOM[9][37; 48; 59; 70; 81; 92; 103; 114; 125]
+            
+#01685      Foun_Valve_16 
+#01686      JUMP 0x73000000 Foun_Valve_16a 
+#01687      JUMP 0x64000000 Foun_Valve_16b 
+#01688      JUMP 0x55000000 Foun_Valve_16c 
+#01689      JUMP 0x46000000 Foun_Valve_17 
+#01690      JUMP 0x37000000 Foun_Valve_17a 
+#01691      JUMP 0x28000000 Foun_Valve_18 
+#01692      JUMP 0x19000000 Foun_Valve_19 
+#01693      JUMP 0x0a000000 Foun_Valve_19a 
+#01694      
+#01695      Wait 90 Frames 
+#01696      Obj_PlayStream RANDOM[9][37; 48; 59; 70; 81; 92; 103; 114; 125]
+            
+#01697      Foun_Valve_16 
+#01698      JUMP 0x73000000 Foun_Valve_16a 
+#01699      JUMP 0x64000000 Foun_Valve_16b 
+#01700      JUMP 0x55000000 Foun_Valve_16c 
+#01701      JUMP 0x46000000 Foun_Valve_17 
+#01702      JUMP 0x37000000 Foun_Valve_17a 
+#01703      JUMP 0x28000000 Foun_Valve_18 
+#01704      JUMP 0x19000000 Foun_Valve_19 
+#01705      JUMP 0x0a000000 Foun_Valve_19a 
+#01706      
+#01707      Obj_WaitAnimFinished 
+#01708      Obj_PlayAnim Anim = RANDOM[3][8; 14; 20]
+            
+            ScratchChin JUMP 0x0f000000 Disgust JUMP 0x05000000 BBQGuyBrow 
+#01709      Obj_PlayStream RANDOM[8][33; 44; 55; 66; 77; 88; 99; 110]
+            
+#01710      Foun_Valve_20 
+#01711      JUMP 0x64000000 Foun_Valve_21 
+#01712      JUMP 0x55000000 Foun_Valve_22 
+#01713      JUMP 0x46000000 Foun_Valve_23 
+#01714      JUMP 0x37000000 Foun_Valve_23a 
+#01715      JUMP 0x28000000 Foun_Valve_24 
+#01716      JUMP 0x19000000 Foun_Valve_24a 
+#01717      JUMP 0x0a000000 Foun_Valve_25 
+#01718      
+#01719      Obj_WaitAnimFinished 
+#01720    END LOOP 
+#01721  END FUNCTION
+          
+#01722  FUNCTION CJR_Foun_Ped_ValveB_Chill 
+#01725    Obj_ClearExceptions 
+#01726    Obj_SetInnerRadius 80 
+#01727    Obj_SetException Ex = SkaterInRadius 
+          Scr = CJR_Foun_Ped_ValveB 
+          
+#01728  END FUNCTION
+          
+#01729  FUNCTION CJR_Foun_Ped_ValveB_Dodge 
+#01732    Obj_ClearExceptions 
+#01733    Obj_SetInnerRadius 3 
+#01734    Obj_SetOuterRadius 50 
+#01735    Obj_SetException Ex = SkaterInRadius 
+          Scr = CJR_Foun_Ped_ValveB_Fall 
+          
+#01736    Obj_SetException Ex = SkaterOutOfRadius 
+          Scr = CJR_Foun_Ped_ValveB 
+          
+#01737    Obj_SetException Ex = EX_VALVE_HIT 
+          Scr = CJR_Foun_Ped_ValveB_Thanks 
+          
+#01738    Obj_PlayStream RANDOM[6][25; 36; 47; 58; 69; 80]
+          
+#01739    Foun_Valve_06 
+#01740    JUMP 0x46000000 Foun_Valve_07 
+#01741    JUMP 0x37000000 Foun_Valve_08 
+#01742    JUMP 0x28000000 Foun_Valve_09 
+#01743    JUMP 0x19000000 Foun_Valve_10 
+#01744    JUMP 0x0a000000 Foun_Valve_10a 
+#01745    
+#01746    Obj_CycleAnim Anim = IdleToCower 
+          
+#01747    Obj_PlayAnim Anim = CowerToIdleQuick 
+          
+#01748    Obj_LookAtObject Type = Skater 
+          Time = 0.3 
+          
+#01749    Obj_WaitAnimFinished 
+#01750    Obj_PlayStream RANDOM[8][33; 44; 55; 66; 77; 88; 99; 110]
+          
+#01751    Foun_Valve_11 
+#01752    JUMP 0x64000000 Foun_Valve_12 
+#01753    JUMP 0x55000000 Foun_Valve_13 
+#01754    JUMP 0x46000000 Foun_Valve_13a 
+#01755    JUMP 0x37000000 Foun_Valve_14 
+#01756    JUMP 0x28000000 Foun_Valve_14a 
+#01757    JUMP 0x19000000 Foun_Valve_15 
+#01758    JUMP 0x0a000000 Foun_Valve_15a 
+#01759    
+#01760    Obj_CycleAnim Anim = RANDOM[3][8; 14; 20]
+          
+          ShakeFist JUMP 0x0f000000 PlayerPoint JUMP 0x05000000 Disgust 
+#01761    Obj_LookAtObject Name = Obj_Valve_B_Wheel 
+          Time = 0.3 
+          
+#01762    LOOP 
+#01763      Obj_CycleAnim Anim = Idle 
+            
+#01764      Obj_PlayAnim Anim = FoundryValve 
+            
+#01765      Wait 75 Frames 
+#01766      SendException EX_VALVE_WHEEL_ROTATE Name = Obj_Valve_B_Wheel 
+            
+#01767      Obj_PlayStream RANDOM[9][37; 48; 59; 70; 81; 92; 103; 114; 125]
+            
+#01768      Foun_Valve_16 
+#01769      JUMP 0x73000000 Foun_Valve_16a 
+#01770      JUMP 0x64000000 Foun_Valve_16b 
+#01771      JUMP 0x55000000 Foun_Valve_16c 
+#01772      JUMP 0x46000000 Foun_Valve_17 
+#01773      JUMP 0x37000000 Foun_Valve_17a 
+#01774      JUMP 0x28000000 Foun_Valve_18 
+#01775      JUMP 0x19000000 Foun_Valve_19 
+#01776      JUMP 0x0a000000 Foun_Valve_19a 
+#01777      
+#01778      Wait 90 Frames 
+#01779      Obj_PlayStream RANDOM[9][37; 48; 59; 70; 81; 92; 103; 114; 125]
+            
+#01780      Foun_Valve_16 
+#01781      JUMP 0x73000000 Foun_Valve_16a 
+#01782      JUMP 0x64000000 Foun_Valve_16b 
+#01783      JUMP 0x55000000 Foun_Valve_16c 
+#01784      JUMP 0x46000000 Foun_Valve_17 
+#01785      JUMP 0x37000000 Foun_Valve_17a 
+#01786      JUMP 0x28000000 Foun_Valve_18 
+#01787      JUMP 0x19000000 Foun_Valve_19 
+#01788      JUMP 0x0a000000 Foun_Valve_19a 
+#01789      
+#01790      Obj_WaitAnimFinished 
+#01791      Obj_PlayAnim Anim = RANDOM[3][8; 14; 20]
+            
+            ScratchChin JUMP 0x0f000000 Disgust JUMP 0x05000000 BBQGuyBrow 
+#01792      Obj_PlayStream RANDOM[8][33; 44; 55; 66; 77; 88; 99; 110]
+            
+#01793      Foun_Valve_20 
+#01794      JUMP 0x64000000 Foun_Valve_21 
+#01795      JUMP 0x55000000 Foun_Valve_22 
+#01796      JUMP 0x46000000 Foun_Valve_23 
+#01797      JUMP 0x37000000 Foun_Valve_23a 
+#01798      JUMP 0x28000000 Foun_Valve_24 
+#01799      JUMP 0x19000000 Foun_Valve_24a 
+#01800      JUMP 0x0a000000 Foun_Valve_25 
+#01801      
+#01802      Obj_WaitAnimFinished 
+#01803    END LOOP 
+#01804  END FUNCTION
+          
+#01805  FUNCTION CJR_Foun_Ped_ValveB_Fall 
+#01808    Obj_ClearExceptions 
+#01809    Obj_StopStream 
+#01810    Obj_SetOuterRadius 20 
+#01811    Obj_SetException Ex = SkaterOutOfRadius 
+          Scr = CJR_Foun_Ped_ValveB_GetUp 
+          
+#01812    Obj_PlaySound bitchslap2 
+#01813    Obj_PlayAnim Anim = HitBySkater 
+          
+#01814    Obj_PlayStream RANDOM[5][21; 32; 43; 54; 65]
+          
+#01815    Foun_Valve_01 
+#01816    JUMP 0x37000000 Foun_Valve_02 
+#01817    JUMP 0x28000000 Foun_Valve_03 
+#01818    JUMP 0x19000000 Foun_Valve_04 
+#01819    JUMP 0x0a000000 Foun_Valve_05 
+#01820    
+#01821    Obj_WaitAnimFinished 
+#01822  END FUNCTION
+          
+#01823  FUNCTION CJR_Foun_Ped_ValveB_GetUp 
+#01826    Obj_ClearExceptions 
+#01827    Obj_CycleAnim Anim = GetUp 
+          
+#01828    GoTo CJR_Foun_Ped_Valve 
+#01829  END FUNCTION
+          
+#01830  FUNCTION CJR_Foun_Ped_ValveB_Thanks 
+#01833    Obj_ClearExceptions 
+#01834    Obj_PlayStream RANDOM[13][53; 64; 75; 86; 97; 108; 119; 130; 141; 152; 163; 174; 185]
+          
+#01835    Foun_Valve_26 
+#01836    JUMP 0xaf000000 Foun_Valve_26a 
+#01837    JUMP 0xa0000000 Foun_Valve_27 
+#01838    JUMP 0x91000000 Foun_Valve_28 
+#01839    JUMP 0x82000000 Foun_Valve_29 
+#01840    JUMP 0x73000000 Foun_Valve_30 
+#01841    JUMP 0x64000000 Foun_Valve_31 
+#01842    JUMP 0x55000000 Foun_Valve_32 
+#01843    JUMP 0x46000000 Foun_Valve_32a 
+#01844    JUMP 0x37000000 Foun_Valve_33 
+#01845    JUMP 0x28000000 Foun_Valve_33a 
+#01846    JUMP 0x19000000 Foun_Valve_34 
+#01847    JUMP 0x0a000000 Foun_Valve_34a 
+#01848    
+#01849    Obj_SwitchScript SK3_PedScript Params = STRUCT{
+            Streamer Low }
+          
+#01850  END FUNCTION
+          
+#01851  FUNCTION CJR_Foun_Ped_Control_Porch 
+#01854    Obj_ClearExceptions 
+#01855    Obj_SetOuterRadius 50 
+#01856    Obj_SetInnerRadius 3 
+#01857    Obj_SetException Ex = SkaterOutOfRadius 
+          Scr = CJR_Foun_Ped_Control_Porch_Chill 
+          
+#01858    Obj_SetException Ex = SkaterInRadius 
+          Scr = CJR_Foun_Ped_Control_Porch_Fall 
+          
+#01859    Obj_PlayAnim Anim = Idle 
+          Cycle 
+#01860  END FUNCTION
+          
+#01861  FUNCTION CJR_Foun_Ped_Control_Porch_Chill 
+#01864    Obj_ClearExceptions 
+#01865    Obj_SetInnerRadius 50 
+#01866    Obj_SetException Ex = SkaterInRadius 
+          Scr = CJR_Foun_Ped_Control_Porch 
+          
+#01867  END FUNCTION
+          
+#01868  FUNCTION CJR_Foun_Ped_Control_Porch_Talk 
+#01871    Wait 0.5 Seconds 
+#01872    Obj_PlayAnim Anim = RANDOM[2][4; 10]
+          
+          Talk JUMP 0x05000000 Talk2 
+#01873    Obj_PlayStream RANDOM[9][37; 48; 59; 70; 81; 92; 103; 114; 125]
+          
+#01874    Foun_Fore_01 
+#01875    JUMP 0x73000000 Foun_Fore_02 
+#01876    JUMP 0x64000000 Foun_Fore_03 
+#01877    JUMP 0x55000000 Foun_Fore_04 
+#01878    JUMP 0x46000000 Foun_Fore_05 
+#01879    JUMP 0x37000000 Foun_Fore_06 
+#01880    JUMP 0x28000000 Foun_Fore_07a 
+#01881    JUMP 0x19000000 Foun_Fore_08 
+#01882    JUMP 0x0a000000 Foun_Fore_09 
+#01883    
+#01884    Obj_WaitAnimFinished 
+#01885    Obj_CycleAnim Anim = FoundryLowPanel 
+          
+#01886    Create Name = TRG_Ped_Control_Porch 
+          
+#01887    Die 
+#01888  END FUNCTION
+          
+#01889  FUNCTION CJR_Foun_Ped_Control_Porch_Fall 
+#01892    Obj_ClearExceptions 
+#01893    Obj_SetOuterRadius 20 
+#01894    Obj_SetException Ex = SkaterOutOfRadius 
+          Scr = CJR_Foun_Ped_Control_Porch_GetUp 
+          
+#01895    Obj_PlaySound bitchslap2 
+#01896    Obj_PlayAnim Anim = HitBySkater 
+          
+#01897    Obj_PlayStream RANDOM[5][21; 32; 43; 54; 65]
+          
+#01898    Foun_Valve_01 
+#01899    JUMP 0x37000000 Foun_Valve_02 
+#01900    JUMP 0x28000000 Foun_Valve_03 
+#01901    JUMP 0x19000000 Foun_Valve_04 
+#01902    JUMP 0x0a000000 Foun_Valve_05 
+#01903    
+#01904  END FUNCTION
+          
+#01905  FUNCTION CJR_Foun_Ped_Control_Porch_GetUp 
+#01908    Obj_ClearExceptions 
+#01909    Obj_CycleAnim Anim = GetUp 
+          
+#01910    GoTo CJR_Foun_Ped_Control_Porch 
+#01911  END FUNCTION
+          
+#01912  FUNCTION CJR_Foun_Bucket_Controller 
+#01918    Obj_ClearExceptions 
+#01919    Obj_SetException Ex = EX_BUCKET_REPEAT 
+          Scr = CJR_Foun_Bucket_Repeat 
+          
+#01920    IF IsCareerMode 
+#01921      IF GetGoal Goal = GOAL_SCRIPTED1 
+              
+#01922      ELSE 
+#01923        Wait 1 Seconds 
+#01924        SendException EX_BUCKET_MOVE_OUT Name = Obj_Bucket 
+              
+#01925        SendException EX_BUCKET_MOVE_OUT Name = Obj_Bucket_Hook 
+              
+#01926        SendException EX_BUCKET_MOVE_OUT Name = Obj_Bucket_Brace 
+              
+#01927        SendException EX_BUCKET_MOVE_OUT Name = TRG_Ped_Bucket_Director 
+              
+#01928      END IF 
+#01929    ELSE 
+#01930      IF InMultiPlayerGame 
+#01931        Visible Name = SouthDeck_DJBooth_OFF 
+              
+#01932        Kill Name = SouthDeck_DJBooth_RED 
+              
+#01933        Kill Name = SouthDeck_DJBooth_BLUE 
+              
+#01934      ELSE 
+#01935        Wait 1 Seconds 
+#01936        SendException EX_BUCKET_MOVE_OUT Name = Obj_Bucket 
+              
+#01937        SendException EX_BUCKET_MOVE_OUT Name = Obj_Bucket_Hook 
+              
+#01938        SendException EX_BUCKET_MOVE_OUT Name = Obj_Bucket_Brace 
+              
+#01939        SendException EX_BUCKET_MOVE_OUT Name = TRG_Ped_Bucket_Director 
+              
+#01940      END IF 
+#01941    END IF 
+#01942  END FUNCTION
+          
+#01943  FUNCTION CJR_Foun_Skip_Bucket_Sequence 
+#01946    SetSkaterCamAnimSkippable Skater = 0 
+          Skippable = 1 
+          
+#01947    LOOP 
+#01948      IF Held X 
+#01949        BREAK
+              
+#01951      END IF 
+#01952      Wait 1 GameFrames 
+#01953    END LOOP 
+#01954    KillSpawnedScript Name = CJR_Foun_Bucket_Trigger 
+          
+#01955    PlaySkaterCamAnim Skater = 0 
+          stop 
+#01956    Kill Prefix = "Obj_Bucket" 
+          
+#01957    Kill Prefix = "Pour" 
+          
+#01958    Kill Prefix = "TRG_Rail_Bucket" 
+          
+#01959    Kill Prefix = "TRG_Ped_Bucket" 
+          
+#01960    Kill Name = SouthDeck_DJBooth_RED 
+          
+#01961    Kill Name = SouthDeck_DJBooth_BLUE 
+          
+#01962    Kill Name = Obj_Alarm_Sounds 
+          
+#01963    Visible Name = SouthDeck_DJBooth_OFF 
+          
+#01964    SetParticleSysVisibility System = "Particle_PourFire" 
+          Visible = 0 
+          
+#01965    SetParticleSysVisibility System = "Particle_PourFire_Shrink" 
+          Visible = 0 
+          
+#01966    SetParticleSysVisibility System = "Particle_Bucket_Fire" 
+          Visible = 0 
+          
+#01967    Create Name = Obj_Bucket_Brace_Fall 
+          
+#01968    TeleportSkaterDown 
+#01969    UnPauseSkaters 
+#01970    Got_Scripted1 
+#01971    SetGlobalFlag flag = SKATESHOP_JUST_GOT_LEVEL1_GOAL 
+          
+#01972  END FUNCTION
+          
+#01973  FUNCTION CJR_Foun_Fire_Bucket_Scripts 
+#01976    SpawnScript CJR_Foun_Bucket_Trigger 
+#01977  END FUNCTION
+          
+#01978  FUNCTION CJR_Foun_Bucket_Trigger 
+#01981    IF IsCareerMode 
+#01982      IF GetGoal Goal = GOAL_SCRIPTED1 
+              
+#01983      ELSE 
+#01984        Wait 0.5 Seconds 
+#01985        PauseSkaters 
+#01986        TeleportSkaterUp 
+#01987        Kill Prefix = "TRG_Ped_BucketOp" 
+              
+#01988        Kill Name = TRGP_Molten_Pour01 
+              
+#01989        Create Name = TRG_Ped_BucketOp_Panic 
+              
+#01990        PlaySkaterCamAnim Skater = 0 
+              Name = "Cam_Bucket_Booth" 
+              
+#01991        Wait 1 Seconds 
+#01992        SpawnSkaterScript CJR_Foun_Skip_Bucket_Sequence 
+#01993        Wait 1 Seconds 
+#01994        IF IsAlive Name = Obj_Bucket_Booth_Controller 
+                
+#01995          SendException EX_BUCKET_FALL Name = Obj_Bucket_Booth_Controller 
+                
+#01996        END IF 
+#01997        LOOP 
+#01998          IF SkaterCamAnimFinished Skater = 0 
+                  Name = "Cam_Bucket_Booth" 
+                  
+#01999            BREAK
+                  
+#02000          END IF 
+#02001          Wait 1 gameframe 
+#02002        END LOOP 
+#02003        Kill Name = Obj_Bucket 
+              
+#02004        Kill Name = Obj_Bucket_Brace 
+              
+#02005        Kill Name = Obj_Bucket_Hook 
+              
+#02006        Kill Prefix = "TRG_Rail_Bucket_Fall" 
+              
+#02007        Create Name = Obj_Bucket_Fall 
+              
+#02008        Create Name = Obj_Bucket_Hook_Fall 
+              
+#02009        Create Name = Obj_Bucket_Brace_Fall 
+              
+#02010        Kill Name = TRG_Ped_Bucket_Director 
+              
+#02011        Create Name = TRG_Ped_Bucket_Director_Panic 
+              
+#02012        PlaySkaterCamAnim Skater = 0 
+              Name = "Cam_Bucket_Dump" 
+              
+#02013        LOOP 
+#02014          IF SkaterCamAnimFinished Skater = 0 
+                  Name = "Cam_Bucket_Dump" 
+                  
+#02015            BREAK
+                  
+#02016          END IF 
+#02017          Wait 1 gameframe 
+#02018        END LOOP 
+#02019        TeleportSkaterDown 
+#02020        UnPauseSkaters 
+#02021      END IF 
+#02022    END IF 
+#02023  END FUNCTION
+          
+#02024  FUNCTION CJR_Foun_Bucket 
+#02027    Obj_ClearExceptions 
+#02028    Obj_SetException Ex = EX_BUCKET_MOVE_OUT 
+          Scr = CJR_Foun_Bucket_MoveOut 
+          
+#02029  END FUNCTION
+          
+#02030  FUNCTION CJR_Foun_Bucket_Repeat 
+#02033    GoTo CJR_Foun_Bucket_Controller 
+#02034  END FUNCTION
+          
+#02035  FUNCTION CJR_Foun_Bucket_MoveOut 
+#02038    Obj_ClearExceptions 
+#02039    Obj_MoveToNode Name = Waypoint_Bucket_Out 
+          Speed = 8 
+          mph 
+#02040    Obj_PlaySound foun_bucket Pitch = 90 
+          
+#02041    Obj_WaitMove 
+#02042    SendException EX_BUCKET_REPEAT Name = TRG_Ped_Bucket_Director 
+          
+#02043    SendException EX_BUCKET_START_POUR Name = Obj_Bucket_Booth_Controller 
+          
+#02044    Obj_StopSound foun_bucket 
+#02045    Wait 1 Second 
+#02046    SendException EX_BUCKET_START_POUR Name = Obj_Bucket_Hook 
+          
+#02047    Create Name = TRGP_Gap_Bucket_Transfer01 
+          
+#02048    Obj_RotX Angle = 90 
+          Speed = 30 
+          Acceleration = 75 
+          Deceleration = 20 
+          FLAG_MAX_COORDS 
+#02049    Wait 3.25 Seconds 
+#02050    Visible Name = Pour_Start01 
+          
+#02051    Wait 2 GameFrames 
+#02052    Invisible Name = Pour_Start01 
+          
+#02053    Visible Name = Pour_Start01b 
+          
+#02054    Wait 2 GameFrames 
+#02055    Invisible Name = Pour_Start01b 
+          
+#02056    Visible Name = Pour_Start02 
+          
+#02057    Wait 2 GameFrames 
+#02058    Invisible Name = Pour_Start02 
+          
+#02059    Visible Name = Pour_Start02b 
+          
+#02060    Wait 2 GameFrames 
+#02061    Invisible Name = Pour_Start02b 
+          
+#02062    Visible Name = Pour_Start03 
+          
+#02063    Wait 2 GameFrames 
+#02064    Invisible Name = Pour_Start03 
+          
+#02065    Visible Name = Pour01 
+          
+#02066    Visible Name = Pour_Ripple 
+          
+#02067    SetParticleSysVisibility System = "Particle_PourFire" 
+          Visible = 1 
+          
+#02068    Obj_PlaySound foun_pour 
+#02069    Create Name = TRGP_Molten_Pour01 
+          
+#02070    Create Name = TRGP_Kill_Bucket 
+          
+#02071    Create Prefix = "TRG_Rail_Bucket_Fall" 
+          
+#02072    Wait 8 Seconds 
+#02073    Kill Name = TRGP_Kill_Bucket 
+          
+#02074    Kill Prefix = "TRG_Rail_Bucket_Fall" 
+          
+#02075    Invisible Name = Pour01 
+          
+#02076    Visible Name = Pour_Stop01 
+          
+#02077    Wait 2 GameFrames 
+#02078    Invisible Name = Pour_Stop01 
+          
+#02079    Visible Name = Pour_Stop01b 
+          
+#02080    Wait 2 GameFrames 
+#02081    Invisible Name = Pour_Stop01b 
+          
+#02082    Visible Name = Pour_Stop02 
+          
+#02083    Wait 2 GameFrames 
+#02084    Invisible Name = Pour_Stop02 
+          
+#02085    Visible Name = Pour_Stop02b 
+          
+#02086    Wait 2 GameFrames 
+#02087    Invisible Name = Pour_Stop02b 
+          
+#02088    Visible Name = Pour_Stop03 
+          
+#02089    Wait 2 GameFrames 
+#02090    Invisible Name = Pour_Stop03 
+          
+#02091    Invisible Name = Pour_Ripple 
+          
+#02092    SetParticleSysVisibility System = "Particle_PourFire" 
+          Visible = 0 
+          
+#02093    SetParticleSysVisibility System = "Particle_PourFire_Shrink" 
+          Visible = 1 
+          
+#02094    Visible Name = Pour_Ripple_Spread01 
+          
+#02095    Wait 4 GameFrames 
+#02096    Invisible Name = Pour_Ripple_Spread01 
+          
+#02097    Visible Name = Pour_Ripple_Spread02 
+          
+#02098    Wait 4 GameFrames 
+#02099    Invisible Name = Pour_Ripple_Spread02 
+          
+#02100    Visible Name = Pour_Ripple_Spread03 
+          
+#02101    Wait 4 GameFrames 
+#02102    Invisible Name = Pour_Ripple_Spread03 
+          
+#02103    Wait 2 GameFrames 
+#02104    SetParticleSysVisibility System = "Particle_PourFire_Shrink" 
+          Visible = 0 
+          
+#02105    Obj_StopSound foun_pour 
+#02106    Kill Name = TRGP_Molten_Pour01 
+          
+#02107    SendException EX_BUCKET_END_POUR Name = Obj_Bucket_Hook 
+          
+#02108    Obj_RotX Angle = -90 
+          Speed = 30 
+          Acceleration = 75 
+          Deceleration = 20 
+          FLAG_MAX_COORDS 
+#02109    Obj_WaitRotate 
+#02110    Wait 1 Seconds 
+#02111    Kill Prefix = "TRGP_Booth" 
+          
+#02112    Kill Name = TRGP_Gap_Bucket_Transfer01 
+          
+#02113    SendException EX_BUCKET_RETURN Name = Obj_Bucket_Booth_Controller 
+          
+#02114    SendException EX_BUCKET_RETURN Name = Obj_Bucket_Hook 
+          
+#02115    SendException EX_BUCKET_RETURN Name = Obj_Bucket_Brace 
+          
+#02116    Obj_MoveToNode Name = Waypoint_Bucket_In 
+          Speed = 8 
+          mph 
+#02117    Obj_PlaySound foun_bucket Pitch = 90 
+          
+#02118    Obj_WaitMove 
+#02119    Obj_StopSound foun_bucket 
+#02120    IF IsAlive Name = Obj_Bucket_Controller 
+            
+#02121      SendException EX_BUCKET_REPEAT Name = Obj_Bucket_Controller 
+            
+#02122    END IF 
+#02123    GoTo CJR_Foun_Bucket 
+#02124  END FUNCTION
+          
+#02125  FUNCTION CJR_Foun_Bucket_Ripple 
+#02128    Obj_ClearExceptions 
+#02129    Obj_ApplyScaling X = 0.95 
+          y = 0.95 
+          z = 0.95 
+          
+#02130    Wait 1 gameframe 
+#02131    Obj_ApplyScaling X = 0.9 
+          y = 0.9 
+          z = 0.9 
+          
+#02132    Wait 1 gameframe 
+#02133    Obj_ApplyScaling X = 0.85 
+          y = 0.85 
+          z = 0.85 
+          
+#02134    Wait 1 gameframe 
+#02135    Obj_ApplyScaling X = 0.8 
+          y = 0.8 
+          z = 0.8 
+          
+#02136    Wait 1 gameframe 
+#02137    Obj_ApplyScaling X = 0.75 
+          y = 0.75 
+          z = 0.75 
+          
+#02138    Wait 1 gameframe 
+#02139    Obj_ApplyScaling X = 0.7 
+          y = 0.7 
+          z = 0.7 
+          
+#02140    Wait 1 gameframe 
+#02141    Obj_ApplyScaling X = 0.65 
+          y = 0.65 
+          z = 0.65 
+          
+#02142    Wait 1 gameframe 
+#02143    Obj_ApplyScaling X = 0.6 
+          y = 0.6 
+          z = 0.6 
+          
+#02144    Wait 1 gameframe 
+#02145    Obj_ApplyScaling X = 0.55 
+          y = 0.55 
+          z = 0.55 
+          
+#02146    Wait 1 gameframe 
+#02147    Obj_ApplyScaling X = 0.5 
+          y = 0.5 
+          z = 0.5 
+          
+#02148    Wait 1 gameframe 
+#02149    Obj_ApplyScaling X = 0.45 
+          y = 0.45 
+          z = 0.45 
+          
+#02150    Wait 1 gameframe 
+#02151    Obj_ApplyScaling X = 0.4 
+          y = 0.4 
+          z = 0.4 
+          
+#02152    Wait 1 gameframe 
+#02153    Obj_ApplyScaling X = 0.35 
+          y = 0.35 
+          z = 0.35 
+          
+#02154    Wait 1 gameframe 
+#02155    Obj_ApplyScaling X = 0.3 
+          y = 0.3 
+          z = 0.3 
+          
+#02156    Wait 1 gameframe 
+#02157    Obj_ApplyScaling X = 0.25 
+          y = 0.25 
+          z = 0.25 
+          
+#02158    Wait 1 gameframe 
+#02159    Obj_ApplyScaling X = 0.2 
+          y = 0.2 
+          z = 0.2 
+          
+#02160    Wait 1 gameframe 
+#02161    Obj_ApplyScaling X = 0.15 
+          y = 0.15 
+          z = 0.15 
+          
+#02162    Wait 1 gameframe 
+#02163    Obj_ApplyScaling X = 0.1 
+          y = 0.1 
+          z = 0.1 
+          
+#02164    Wait 1 gameframe 
+#02165    Die 
+#02166  END FUNCTION
+          
+#02167  FUNCTION CJR_Foun_Bucket_Brace 
+#02170    Obj_ClearExceptions 
+#02171    Obj_SetException Ex = EX_BUCKET_MOVE_OUT 
+          Scr = CJR_Foun_Bucket_Brace_MoveOut 
+          
+#02172    Obj_SetException Ex = EX_BUCKET_RETURN 
+          Scr = CJR_Foun_Bucket_Brace_Return 
+          
+#02173  END FUNCTION
+          
+#02174  FUNCTION CJR_Foun_Bucket_Brace_MoveOut 
+#02177    Obj_ClearExceptions 
+#02178    Obj_MoveToNode Name = Waypoint_Bucket_Out 
+          Speed = 8 
+          mph 
+#02179    Obj_WaitMove 
+#02180    GoTo CJR_Foun_Bucket_Brace 
+#02181  END FUNCTION
+          
+#02182  FUNCTION CJR_Foun_Bucket_Brace_Return 
+#02185    Obj_ClearExceptions 
+#02186    Obj_MoveToNode Name = Waypoint_Bucket_In 
+          Speed = 8 
+          mph 
+#02187    Obj_WaitMove 
+#02188    GoTo CJR_Foun_Bucket_Brace 
+#02189  END FUNCTION
+          
+#02190  FUNCTION CJR_Foun_Bucket_Hook 
+#02193    Obj_ClearExceptions 
+#02194    Obj_SetException Ex = EX_BUCKET_MOVE_OUT 
+          Scr = CJR_Foun_Bucket_Hook_MoveOut 
+          
+#02195    Obj_SetException Ex = EX_BUCKET_START_POUR 
+          Scr = CJR_Foun_Bucket_Hook_Pull 
+          
+#02196    Obj_SetException Ex = EX_BUCKET_END_POUR 
+          Scr = CJR_Foun_Bucket_Hook_Release 
+          
+#02197    Obj_SetException Ex = EX_BUCKET_RETURN 
+          Scr = CJR_Foun_Bucket_Hook_Return 
+          
+#02198  END FUNCTION
+          
+#02199  FUNCTION CJR_Foun_Bucket_Hook_MoveOut 
+#02202    Obj_MoveToNode Name = Waypoint_Hook_Out 
+          Speed = 8 
+          mph 
+#02203    Obj_WaitMove 
+#02204    GoTo CJR_Foun_Bucket_Hook 
+#02205  END FUNCTION
+          
+#02206  FUNCTION CJR_Foun_Bucket_Hook_Pull 
+#02209    Obj_SetPathVelocity 3.25 
+#02210    Obj_SetPathAcceleration 6 
+#02211    Obj_SetPathDeceleration 3.1 
+#02212    Obj_StickToGround Off 
+#02213    Obj_PathHeading Off 
+#02214    Obj_FollowPath Name = Waypoint_Hook_Path01 
+          
+#02215    GoTo CJR_Foun_Bucket_Hook 
+#02216  END FUNCTION
+          
+#02217  FUNCTION CJR_Foun_Bucket_Hook_Release 
+#02220    Obj_SetPathVelocity 3.25 
+#02221    Obj_SetPathAcceleration 6 
+#02222    Obj_SetPathDeceleration 3.1 
+#02223    Obj_StickToGround Off 
+#02224    Obj_PathHeading Off 
+#02225    Obj_FollowPath Name = Waypoint_Hook_Path_Return01 
+          
+#02226    GoTo CJR_Foun_Bucket_Hook 
+#02227  END FUNCTION
+          
+#02228  FUNCTION CJR_Foun_Bucket_Hook_Return 
+#02231    Obj_ClearExceptions 
+#02232    Obj_MoveToNode Name = Waypoint_Hook_In 
+          Speed = 8 
+          mph 
+#02233    Obj_WaitMove 
+#02234    GoTo CJR_Foun_Bucket_Hook 
+#02235  END FUNCTION
+          
+#02236  FUNCTION CJR_Foun_Booth_Controller 
+#02239    Obj_ClearExceptions 
+#02240    Obj_SetException Ex = EX_BUCKET_START_POUR 
+          Scr = CJR_Foun_Bucket_Booth_Blink 
+          
+#02241    Invisible Name = SouthDeck_DJBooth_OFF 
+          
+#02242    Visible Name = SouthDeck_DJBooth_BLUE 
+          
+#02243    Invisible Name = SouthDeck_DJBooth_RED 
+          
+#02244    Obj_StopSound foun_alarm1 
+#02245  END FUNCTION
+          
+#02246  FUNCTION CJR_Foun_Bucket_Booth_Blink 
+#02249    Obj_ClearExceptions 
+#02250    Obj_SetException Ex = EX_BUCKET_RETURN 
+          Scr = CJR_Foun_Booth_Controller 
+          
+#02251    Obj_SetException Ex = EX_BUCKET_FALL 
+          Scr = CJR_Foun_Booth_Explode 
+          
+#02252    Invisible Name = SouthDeck_DJBooth_BLUE 
+          
+#02253    LOOP 
+#02254      Visible Name = SouthDeck_DJBooth_RED 
+            
+#02255      Invisible Name = SouthDeck_DJBooth_OFF 
+            
+#02256      Obj_PlaySound foun_alarm1 Pitch = 70 
+            
+#02257      Wait 1 Seconds 
+#02258      Invisible Name = SouthDeck_DJBooth_RED 
+            
+#02259      Visible Name = SouthDeck_DJBooth_OFF 
+            
+#02260      Wait 0.5 Seconds 
+#02261    END LOOP 
+#02262  END FUNCTION
+          
+#02263  FUNCTION CJR_Foun_Booth_Explode 
+#02266    Obj_ClearExceptions 
+#02267    Obj_PlaySound foun_alarmshort Pitch = 70 
+          
+#02268    Invisible Name = SouthDeck_DJBooth_BLUE 
+          
+#02269    Visible Name = SouthDeck_DJBooth_RED 
+          
+#02270    Invisible Name = SouthDeck_DJBooth_OFF 
+          
+#02271    Wait 0.25 Seconds 
+#02272    Invisible Name = SouthDeck_DJBooth_RED 
+          
+#02273    Visible Name = SouthDeck_DJBooth_OFF 
+          
+#02274    Wait 0.5 Seconds 
+#02275    Visible Name = SouthDeck_DJBooth_RED 
+          
+#02276    Invisible Name = SouthDeck_DJBooth_OFF 
+          
+#02277    Wait 0.15 Seconds 
+#02278    Invisible Name = SouthDeck_DJBooth_RED 
+          
+#02279    Visible Name = SouthDeck_DJBooth_OFF 
+          
+#02280    Wait 0.25 Seconds 
+#02281    Visible Name = SouthDeck_DJBooth_RED 
+          
+#02282    Invisible Name = SouthDeck_DJBooth_OFF 
+          
+#02283    Wait 0.15 Seconds 
+#02284    Invisible Name = SouthDeck_DJBooth_RED 
+          
+#02285    Visible Name = SouthDeck_DJBooth_OFF 
+          
+#02286    Wait 0.15 Seconds 
+#02287    Invisible Name = SouthDeck_DJBooth_RED 
+          
+#02288    Visible Name = SouthDeck_DJBooth_OFF 
+          
+#02289    Wait 0.25 Seconds 
+#02290    Visible Name = SouthDeck_DJBooth_RED 
+          
+#02291    Invisible Name = SouthDeck_DJBooth_OFF 
+          
+#02292    Wait 0.15 Seconds 
+#02293    Create Name = Obj_Alarm_Sounds 
+          
+#02294    Invisible Name = SouthDeck_DJBooth_RED 
+          
+#02295    Visible Name = SouthDeck_DJBooth_OFF 
+          
+#02296  END FUNCTION
+          
+#02297  FUNCTION CJR_Foun_Bucket_Fall 
+#02300    Kill Prefix = "TRGP_Molten" 
+          
+#02301    Kill Prefix = "Pour" 
+          
+#02302    Kill Prefix = "TRGP_Gap_Bucket_Transfer" 
+          
+#02303    SetParticleSysVisibility System = "Particle_PourFire" 
+          Visible = 0 
+          
+#02304    Obj_StopSound foun_pour 
+#02305    Obj_PlaySound foun_bucket Vol = 150 
+          Pitch = 70 
+          
+#02306    Obj_RotX Angle = -30 
+          Speed = 60 
+          FLAG_MAX_COORDS 
+#02307    Obj_WaitRotate 
+#02308    Obj_StopSound foun_bucket 
+#02309    Obj_PlaySound foun_bucket Vol = 150 
+          Pitch = 80 
+          
+#02310    Obj_RotX Angle = 60 
+          Speed = 120 
+          FLAG_MAX_COORDS 
+#02311    Obj_WaitRotate 
+#02312    Obj_StopSound foun_bucket 
+#02313    Obj_PlaySound foun_bucket Vol = 150 
+          Pitch = 70 
+          
+#02314    Obj_RotX Angle = -90 
+          Speed = 60 
+          FLAG_MAX_COORDS 
+#02315    Wait 0.5 Seconds 
+#02316    Obj_WaitRotate 
+#02317    Obj_StopSound foun_bucket 
+#02318    Obj_PlaySound foun_bucket Vol = 150 
+          Pitch = 65 
+          
+#02319    Obj_RotX Angle = 75 
+          Speed = 90 
+          FLAG_MAX_COORDS 
+#02320    Obj_WaitRotate 
+#02321    Obj_StopSound foun_bucket 
+#02322    Obj_SetPathVelocity 30 
+#02323    Obj_SetPathAcceleration 32 
+#02324    Obj_SetPathDeceleration 15 
+#02325    Obj_StickToGround Off 
+#02326    Obj_PathHeading Off 
+#02327    Obj_RotX Angle = 15 
+          Speed = -50 
+          FLAG_MAX_COORDS 
+#02328    Obj_PlaySound foun_unhook Vol = 150 
+          
+#02329    Obj_FollowPathLinked 
+#02330    Wait 7.5 Seconds 
+#02331    Obj_PlaySound foun_touchdown Vol = 150 
+          Pitch = 90 
+          
+#02332    Wait 1 Second 
+#02333    Obj_WaitMove 
+#02334    KillSpawnedScript Name = CJR_Foun_Skip_Bucket_Sequence 
+          
+#02335    Got_Scripted1 
+#02336    Kill Name = Obj_Alarm_Sounds 
+          
+#02337    SetGlobalFlag flag = SKATESHOP_JUST_GOT_LEVEL1_GOAL 
+          
+#02338    Wait 0.25 Seconds 
+#02339    SetParticleSysVisibility System = "Particle_Bucket_Fire" 
+          Visible = 0 
+          
+#02340    Die 
+#02341  END FUNCTION
+          
+#02342  FUNCTION CJR_Foun_Bucket_Alarm 
+#02345    LOOP 
+#02346      Obj_PlaySound foun_alarm1 Vol = 90 
+            Pitch = 80 
+            
+#02347      Wait 1 Seconds 
+#02348      Obj_StopSound foun_alarm1 
+#02349      Wait 0.5 Seconds 
+#02350    END LOOP 
+#02351  END FUNCTION
+          
+#02352  FUNCTION CJR_Foun_Bucket_Bounce 
+#02355    Obj_PlaySound foun_bounce1 Vol = 150 
+          Pitch = 90 
+          
+#02356    Obj_SetPathAcceleration 0 
+#02357    Obj_SetPathDeceleration 32 
+#02358    Obj_SetPathVelocity 15 
+#02359    Obj_RotX Angle = 160 
+          Speed = -240 
+          FLAG_MAX_COORDS 
+#02360  END FUNCTION
+          
+#02361  FUNCTION CJR_Foun_Bucket_Bob1 
+#02364    Obj_PlaySound foun_poolfall Vol = 150 
+          Pitch = 90 
+          
+#02365    SetParticleSysVisibility System = "Particle_Bucket_Fire" 
+          Visible = 1 
+          
+#02366    Obj_SetPathVelocity 1 
+#02367    Obj_SetPathDeceleration 100 
+#02368    Wait 0.5 Seconds 
+#02369    Obj_PlaySound foun_melt 
+#02370  END FUNCTION
+          
+#02371  FUNCTION CJR_Foun_Bucket_Bob2 
+#02374    Obj_SetPathVelocity 2 
+#02375    Obj_SetPathAcceleration 5 
+#02376  END FUNCTION
+          
+#02377  FUNCTION CJR_Foun_Bucket_Dive 
+#02380    Obj_SetPathVelocity 0.5 
+#02381    Obj_SetPathDeceleration 0.5 
+#02382    Obj_RotX Speed = -50 
+          Acceleration = -10 
+          FLAG_MAX_COORDS 
+#02383    Obj_SetPathVelocity 1.5 
+#02384    Obj_SetPathAcceleration 0.5 
+#02385  END FUNCTION
+          
+#02386  FUNCTION CJR_Foun_Press_Trigger 
+#02389    IF InMultiPlayerGame 
+#02390    ELSE 
+#02391      IF GetFlag flag = CJR_FLAG_PRESS_UP 
+              
+#02392        Obj_PlaySound foun_alarm1 Pitch = 95 
+              
+#02393        Kill Name = Press_Up 
+              
+#02394        Create Name = Obj_Press_Move 
+              
+#02395        Wait 0.25 Seconds 
+#02396        Kill Name = Press_Braces_Down 
+              
+#02397        Create Name = Obj_Press_Braces_Move 
+              
+#02398        Kill Name = Press_Pinch01_Out 
+              
+#02399        Kill Name = Press_Pinch02_Out 
+              
+#02400        Create Name = Obj_Press_Pinch01_Move 
+              
+#02401        Create Name = Obj_Press_Pinch02_Move 
+              
+#02402        Kill Name = Collision_Press_Pinch01_Out 
+              
+#02403        Kill Name = Collision_Press_Pinch02_Out 
+              
+#02404        Kill Name = Collision_Press_Open 
+              
+#02405        Create Name = Collision_Press_Closed 
+              
+#02406        Kill Prefix = "TRG_Rail_Press_Up" 
+              
+#02407        Create Prefix = "TRG_Rail_Press_Down" 
+              
+#02408        Kill Prefix = "TRG_Rail_Pinch_Out" 
+              
+#02409        Create Prefix = "TRG_Rail_Pinch_In" 
+              
+#02410      ELSE 
+#02411        Obj_PlaySound foun_alarm1 Pitch = 95 
+              
+#02412        Kill Name = Press_Pinch01_In 
+              
+#02413        Kill Name = Press_Pinch02_In 
+              
+#02414        Create Name = Obj_Press_Pinch01_Move 
+              
+#02415        Create Name = Obj_Press_Pinch02_Move 
+              
+#02416        Kill Name = Collision_Press_Pinch01_In 
+              
+#02417        Kill Name = Collision_Press_Pinch02_In 
+              
+#02418        Kill Name = Collision_Press_Closed 
+              
+#02419        Create Name = Collision_Press_Open 
+              
+#02420        Wait 0.25 Seconds 
+#02421        Kill Name = Press_Down 
+              
+#02422        Create Name = Obj_Press_Move 
+              
+#02423        Wait 0.25 Seconds 
+#02424        Kill Name = Press_Braces_Up 
+              
+#02425        Create Name = Obj_Press_Braces_Move 
+              
+#02426        Kill Prefix = "TRG_Rail_Press_Down" 
+              
+#02427        Create Prefix = "TRG_Rail_Press_Up" 
+              
+#02428        Kill Prefix = "TRG_Rail_Pinch_In" 
+              
+#02429        Create Prefix = "TRG_Rail_Pinch_Out" 
+              
+#02430      END IF 
+#02431    END IF 
+#02432  END FUNCTION
+          
+#02433  FUNCTION CJR_Foun_Press_Movement 
+#02436    IF GetFlag flag = CJR_FLAG_PRESS_UP 
+            
+#02437      Obj_PlaySound foun_press Pitch = 95 
+            
+#02438      Wait 0.25 Seconds 
+#02439      Obj_MoveToNode Name = Waypoint_Press_Down 
+            Acceleration = 0 
+            Speed = 9 
+            mph 
+#02440      Obj_PlaySound foun_pressmove Pitch = 85 
+            
+#02441      Obj_WaitMove 
+#02442      Obj_PlaySound foun_pressend Pitch = 70 
+            
+#02443      Create Name = Press_Down 
+            
+#02444      UnSetFlag flag = CJR_FLAG_PRESS_UP 
+            
+#02445    ELSE 
+#02446      Obj_MoveToNode Name = Waypoint_Press_Down 
+            
+#02447      Obj_PlaySound foun_press Pitch = 95 
+            
+#02448      Wait 0.25 Seconds 
+#02449      Obj_MoveToNode Name = Waypoint_Press_Up 
+            Acceleration = 0 
+            Speed = 9 
+            mph 
+#02450      Obj_PlaySound foun_pressmove Pitch = 85 
+            
+#02451      Obj_WaitMove 
+#02452      Obj_PlaySound foun_pressend Pitch = 70 
+            
+#02453      Create Name = Press_Up 
+            
+#02454      SetFlag flag = CJR_FLAG_PRESS_UP 
+            
+#02455    END IF 
+#02456    Wait 1 gameframe 
+#02457    Die 
+#02458  END FUNCTION
+          
+#02459  FUNCTION CJR_Foun_Press_Braces_Movement 
+#02462    IF GetFlag flag = CJR_FLAG_PRESS_UP 
+            
+#02463      Obj_MoveToNode Name = Waypoint_Press_Braces_Down 
+            
+#02464      Obj_MoveToNode Name = Waypoint_Press_Braces_Up 
+            Acceleration = 0 
+            Speed = 4.4 
+            mph 
+#02465      Obj_WaitMove 
+#02466      Create Name = Press_Braces_Up 
+            
+#02467    ELSE 
+#02468      Obj_MoveToNode Name = Waypoint_Press_Braces_Down 
+            Acceleration = 0 
+            Speed = 4.4 
+            mph 
+#02469      Obj_WaitMove 
+#02470      Create Name = Press_Braces_Down 
+            
+#02471    END IF 
+#02472    Wait 1 gameframe 
+#02473    Die 
+#02474  END FUNCTION
+          
+#02475  FUNCTION CJR_Foun_Press_Pinch01_Movement 
+#02478    IF GetFlag flag = CJR_FLAG_PRESS_UP 
+            
+#02479      Wait 1.25 Seconds 
+#02480      Obj_MoveToNode Name = Waypoint_Press_Pinch01_In 
+            Acceleration = 0 
+            Speed = 30 
+            mph 
+#02481      Obj_WaitMove 
+#02482      Obj_PlaySound foun_press 
+#02483      Create Name = Press_Pinch01_In 
+            
+#02484      Create Name = Collision_Press_Pinch01_In 
+            
+#02485    ELSE 
+#02486      Obj_MoveToNode Name = Waypoint_Press_Pinch01_In 
+            
+#02487      Obj_MoveToNode Name = Waypoint_Press_Pinch01_Out 
+            Acceleration = 0 
+            Speed = 30 
+            mph 
+#02488      Obj_WaitMove 
+#02489      Obj_PlaySound foun_press 
+#02490      Create Name = Press_Pinch01_Out 
+            
+#02491      Create Name = Collision_Press_Pinch01_Out 
+            
+#02492    END IF 
+#02493    Wait 1 gameframe 
+#02494    Die 
+#02495  END FUNCTION
+          
+#02496  FUNCTION CJR_Foun_Press_Pinch02_Movement 
+#02499    IF GetFlag flag = CJR_FLAG_PRESS_UP 
+            
+#02500      Wait 1.25 Seconds 
+#02501      Obj_MoveToNode Name = Waypoint_Press_Pinch02_In 
+            Acceleration = 0 
+            Speed = 30 
+            mph 
+#02502      Obj_WaitMove 
+#02503      Obj_PlaySound foun_press 
+#02504      Create Name = Press_Pinch02_In 
+            
+#02505      Create Name = Collision_Press_Pinch02_In 
+            
+#02506    ELSE 
+#02507      Obj_MoveToNode Name = Waypoint_Press_Pinch02_In 
+            
+#02508      Obj_MoveToNode Name = Waypoint_Press_Pinch02_Out 
+            Acceleration = 0 
+            Speed = 30 
+            mph 
+#02509      Obj_WaitMove 
+#02510      Obj_PlaySound foun_press 
+#02511      Create Name = Press_Pinch02_Out 
+            
+#02512      Create Name = Collision_Press_Pinch02_Out 
+            
+#02513    END IF 
+#02514    Wait 1 gameframe 
+#02515    Die 
+#02516  END FUNCTION
+          
+#02517  FUNCTION CJR_Foun_Valve_A_Wheel 
+#02520    Obj_ClearExceptions 
+#02521    Obj_SetException Ex = EX_VALVE_WHEEL_ROTATE 
+          Scr = CJR_Foun_Valve_A_Wheel_Rotate 
+          
+#02522  END FUNCTION
+          
+#02523  FUNCTION CJR_Foun_Valve_B_Wheel 
+#02526    Obj_ClearExceptions 
+#02527    Obj_SetException Ex = EX_VALVE_WHEEL_ROTATE 
+          Scr = CJR_Foun_Valve_B_Wheel_Rotate 
+          
+#02528  END FUNCTION
+          
+#02529  FUNCTION CJR_Foun_Valve_C_Wheel 
+#02532    Obj_ClearExceptions 
+#02533    Obj_SetException Ex = EX_VALVE_WHEEL_ROTATE 
+          Scr = CJR_Foun_Valve_C_Wheel_Rotate 
+          
+#02534  END FUNCTION
+          
+#02535  FUNCTION CJR_Foun_Valve_D_Wheel 
+#02538    Obj_ClearExceptions 
+#02539    Obj_SetException Ex = EX_VALVE_WHEEL_ROTATE 
+          Scr = CJR_Foun_Valve_D_Wheel_Rotate 
+          
+#02540  END FUNCTION
+          
+#02541  FUNCTION CJR_Foun_Valve_E_Wheel 
+#02544    Obj_ClearExceptions 
+#02545    Obj_SetException Ex = EX_VALVE_WHEEL_ROTATE 
+          Scr = CJR_Foun_Valve_E_Wheel_Rotate 
+          
+#02546  END FUNCTION
+          
+#02547  FUNCTION CJR_Foun_Valve_A_Wheel_Rotate 
+#02550    Obj_RotX Angle = -25 
+          Speed = 100 
+          FLAG_MAX_COORDS 
+#02551    Obj_WaitRotate 
+#02552    Obj_RotX Angle = 25 
+          Speed = 34 
+          FLAG_MAX_COORDS 
+#02553    Obj_WaitRotate 
+#02554    Wait 27 Frames 
+#02555    Obj_RotX Angle = -25 
+          Speed = 95 
+          FLAG_MAX_COORDS 
+#02556    Obj_WaitRotate 
+#02557    Obj_RotX Angle = 17 
+          Speed = 36 
+          FLAG_MAX_COORDS 
+#02558    Obj_WaitRotate 
+#02559    Obj_RotX Angle = -17 
+          Speed = 86 
+          FLAG_MAX_COORDS 
+#02560    Obj_WaitRotate 
+#02561    Wait 2 Frames 
+#02562    Obj_RotX Angle = 21 
+          Speed = 33 
+          FLAG_MAX_COORDS 
+#02563    Obj_WaitRotate 
+#02564    GoTo CJR_Foun_Valve_A_Wheel 
+#02565  END FUNCTION
+          
+#02566  FUNCTION CJR_Foun_Valve_B_Wheel_Rotate 
+#02569    Obj_RotX Angle = -25 
+          Speed = 100 
+          FLAG_MAX_COORDS 
+#02570    Obj_WaitRotate 
+#02571    Obj_RotX Angle = 25 
+          Speed = 34 
+          FLAG_MAX_COORDS 
+#02572    Obj_WaitRotate 
+#02573    Wait 27 Frames 
+#02574    Obj_RotX Angle = -25 
+          Speed = 95 
+          FLAG_MAX_COORDS 
+#02575    Obj_WaitRotate 
+#02576    Obj_RotX Angle = 17 
+          Speed = 36 
+          FLAG_MAX_COORDS 
+#02577    Obj_WaitRotate 
+#02578    Obj_RotX Angle = -17 
+          Speed = 86 
+          FLAG_MAX_COORDS 
+#02579    Obj_WaitRotate 
+#02580    Wait 2 Frames 
+#02581    Obj_RotX Angle = 21 
+          Speed = 33 
+          FLAG_MAX_COORDS 
+#02582    Obj_WaitRotate 
+#02583    GoTo CJR_Foun_Valve_B_Wheel 
+#02584  END FUNCTION
+          
+#02585  FUNCTION CJR_Foun_Valve_C_Wheel_Rotate 
+#02588    Obj_RotX Angle = -25 
+          Speed = 100 
+          FLAG_MAX_COORDS 
+#02589    Obj_WaitRotate 
+#02590    Obj_RotX Angle = 25 
+          Speed = 34 
+          FLAG_MAX_COORDS 
+#02591    Obj_WaitRotate 
+#02592    Wait 27 Frames 
+#02593    Obj_RotX Angle = -25 
+          Speed = 95 
+          FLAG_MAX_COORDS 
+#02594    Obj_WaitRotate 
+#02595    Obj_RotX Angle = 17 
+          Speed = 36 
+          FLAG_MAX_COORDS 
+#02596    Obj_WaitRotate 
+#02597    Obj_RotX Angle = -17 
+          Speed = 86 
+          FLAG_MAX_COORDS 
+#02598    Obj_WaitRotate 
+#02599    Wait 2 Frames 
+#02600    Obj_RotX Angle = 21 
+          Speed = 33 
+          FLAG_MAX_COORDS 
+#02601    Obj_WaitRotate 
+#02602    GoTo CJR_Foun_Valve_E_Wheel 
+#02603  END FUNCTION
+          
+#02604  FUNCTION CJR_Foun_Valve_D_Wheel_Rotate 
+#02607    Obj_RotX Angle = -25 
+          Speed = 100 
+          FLAG_MAX_COORDS 
+#02608    Obj_WaitRotate 
+#02609    Obj_RotX Angle = 25 
+          Speed = 34 
+          FLAG_MAX_COORDS 
+#02610    Obj_WaitRotate 
+#02611    Wait 27 Frames 
+#02612    Obj_RotX Angle = -25 
+          Speed = 95 
+          FLAG_MAX_COORDS 
+#02613    Obj_WaitRotate 
+#02614    Obj_RotX Angle = 17 
+          Speed = 36 
+          FLAG_MAX_COORDS 
+#02615    Obj_WaitRotate 
+#02616    Obj_RotX Angle = -17 
+          Speed = 86 
+          FLAG_MAX_COORDS 
+#02617    Obj_WaitRotate 
+#02618    Wait 2 Frames 
+#02619    Obj_RotX Angle = 21 
+          Speed = 33 
+          FLAG_MAX_COORDS 
+#02620    Obj_WaitRotate 
+#02621    GoTo CJR_Foun_Valve_E_Wheel 
+#02622  END FUNCTION
+          
+#02623  FUNCTION CJR_Foun_Valve_E_Wheel_Rotate 
+#02626    Obj_RotX Angle = -25 
+          Speed = 100 
+          FLAG_MAX_COORDS 
+#02627    Obj_WaitRotate 
+#02628    Obj_RotX Angle = 25 
+          Speed = 34 
+          FLAG_MAX_COORDS 
+#02629    Obj_WaitRotate 
+#02630    Wait 27 Frames 
+#02631    Obj_RotX Angle = -25 
+          Speed = 95 
+          FLAG_MAX_COORDS 
+#02632    Obj_WaitRotate 
+#02633    Obj_RotX Angle = 17 
+          Speed = 36 
+          FLAG_MAX_COORDS 
+#02634    Obj_WaitRotate 
+#02635    Obj_RotX Angle = -17 
+          Speed = 86 
+          FLAG_MAX_COORDS 
+#02636    Obj_WaitRotate 
+#02637    Wait 2 Frames 
+#02638    Obj_RotX Angle = 21 
+          Speed = 33 
+          FLAG_MAX_COORDS 
+#02639    Obj_WaitRotate 
+#02640    GoTo CJR_Foun_Valve_E_Wheel 
+#02641  END FUNCTION
+          
+#02642  FUNCTION CJR_Foun_Valve_A_Booth 
+#02645    IF IsCareerMode 
+#02646      IF GetGoal Goal = GOAL_SCRIPTED2 
+              
+#02647        GoTo CJR_Foun_Valve_A_Booth_Clear 
+#02648      ELSE 
+#02649        Obj_ClearExceptions 
+#02650        Obj_SetException Ex = EX_VALVE_HIT 
+              Scr = CJR_Foun_Valve_A_Booth_Clear 
+              
+#02651        SetParticleSysVisibility System = "Particle_Valve_Steam01" 
+              Visible = 1 
+              
+#02652        Invisible Name = ValveA_Booth_Blue 
+              
+#02653        LOOP 
+#02654          Visible Name = ValveA_Gear_Red 
+                
+#02655          Invisible Name = ValveA_Gear_Off 
+                
+#02656          Visible Name = ValveA_Booth_Red 
+                
+#02657          Invisible Name = ValveA_Booth_Off 
+                
+#02658          Wait 0.5 Seconds 
+#02659          Invisible Name = ValveA_Gear_Red 
+                
+#02660          Visible Name = ValveA_Gear_Off 
+                
+#02661          Invisible Name = ValveA_Booth_Red 
+                
+#02662          Visible Name = ValveA_Booth_Off 
+                
+#02663          Wait 0.25 Seconds 
+#02664        END LOOP 
+#02665      END IF 
+#02666    ELSE 
+#02667      Visible Name = ValveA_Booth_Off 
+            
+#02668      Visible Name = ValveA_Gear_Off 
+            
+#02669      Kill Name = ValveA_Booth_Blue 
+            
+#02670      Kill Name = ValveA_Gear_Red 
+            
+#02671      Kill Name = ValveA_Booth_Red 
+            
+#02672      SetParticleSysVisibility System = "Particle_Valve_Steam01" 
+            Visible = 0 
+            
+#02673    END IF 
+#02674  END FUNCTION
+          
+#02675  FUNCTION CJR_Foun_Valve_A_Booth_Clear 
+#02678    SetParticleSysVisibility System = "Particle_Valve_Steam01" 
+          Visible = 0 
+          
+#02679    Create Name = Obj_ValveA_Gear_Blue01 
+          
+#02680    Create Name = Obj_ValveA_Gear_Blue02 
+          
+#02681    Create Name = Obj_ValveA_Gear_Blue03 
+          
+#02682    Invisible Name = ValveA_Gear_Red 
+          
+#02683    Invisible Name = ValveA_Gear_Off 
+          
+#02684    Visible Name = ValveA_Booth_Blue 
+          
+#02685    Invisible Name = ValveA_Booth_Red 
+          
+#02686    Invisible Name = ValveA_Booth_Off 
+          
+#02687  END FUNCTION
+          
+#02688  FUNCTION CJR_Foun_Valve_B_Booth 
+#02691    IF IsCareerMode 
+#02692      IF GetGoal Goal = GOAL_SCRIPTED2 
+              
+#02693        GoTo CJR_Foun_Valve_B_Booth_Clear 
+#02694      ELSE 
+#02695        Obj_ClearExceptions 
+#02696        Obj_SetException Ex = EX_VALVE_HIT 
+              Scr = CJR_Foun_Valve_B_Booth_Clear 
+              
+#02697        SetParticleSysVisibility System = "Particle_Valve_Steam02" 
+              Visible = 1 
+              
+#02698        Invisible Name = ValveB_Booth_Blue 
+              
+#02699        LOOP 
+#02700          Visible Name = ValveB_Gear_Red 
+                
+#02701          Invisible Name = ValveB_Gear_Off 
+                
+#02702          Visible Name = ValveB_Booth_Red 
+                
+#02703          Invisible Name = ValveB_Booth_Off 
+                
+#02704          Wait 0.5 Seconds 
+#02705          Invisible Name = ValveB_Gear_Red 
+                
+#02706          Visible Name = ValveB_Gear_Off 
+                
+#02707          Invisible Name = ValveB_Booth_Red 
+                
+#02708          Visible Name = ValveB_Booth_Off 
+                
+#02709          Wait 0.25 Seconds 
+#02710        END LOOP 
+#02711      END IF 
+#02712    ELSE 
+#02713      Visible Name = ValveB_Booth_Off 
+            
+#02714      Visible Name = ValveB_Gear_Off 
+            
+#02715      Kill Name = ValveB_Booth_Blue 
+            
+#02716      Kill Name = ValveB_Gear_Red 
+            
+#02717      Kill Name = ValveB_Booth_Red 
+            
+#02718      SetParticleSysVisibility System = "Particle_Valve_Steam02" 
+            Visible = 0 
+            
+#02719    END IF 
+#02720  END FUNCTION
+          
+#02721  FUNCTION CJR_Foun_Valve_B_Booth_Clear 
+#02724    SetParticleSysVisibility System = "Particle_Valve_Steam02" 
+          Visible = 0 
+          
+#02725    Create Name = Obj_ValveB_Gear_Blue01 
+          
+#02726    Create Name = Obj_ValveB_Gear_Blue02 
+          
+#02727    Create Name = Obj_ValveB_Gear_Blue03 
+          
+#02728    Invisible Name = ValveB_Gear_Red 
+          
+#02729    Invisible Name = ValveB_Gear_Off 
+          
+#02730    Visible Name = ValveB_Booth_Blue 
+          
+#02731    Invisible Name = ValveB_Booth_Red 
+          
+#02732    Invisible Name = ValveB_Booth_Off 
+          
+#02733  END FUNCTION
+          
+#02734  FUNCTION CJR_Foun_Valve_C_Booth 
+#02737    IF IsCareerMode 
+#02738      IF GetGoal Goal = GOAL_SCRIPTED2 
+              
+#02739        GoTo CJR_Foun_Valve_C_Booth_Clear 
+#02740      ELSE 
+#02741        Obj_ClearExceptions 
+#02742        Obj_SetException Ex = EX_VALVE_HIT 
+              Scr = CJR_Foun_Valve_C_Booth_Clear 
+              
+#02743        SetParticleSysVisibility System = "Particle_Valve_Steam03" 
+              Visible = 1 
+              
+#02744        Invisible Name = ValveC_Panel_Blue 
+              
+#02745        LOOP 
+#02746          Visible Name = ValveC_Panel_Red 
+                
+#02747          Invisible Name = ValveC_Panel_Off 
+                
+#02748          Wait 0.5 Seconds 
+#02749          Invisible Name = ValveC_Panel_Red 
+                
+#02750          Visible Name = ValveC_Panel_Off 
+                
+#02751          Wait 0.25 Seconds 
+#02752        END LOOP 
+#02753      END IF 
+#02754    ELSE 
+#02755      Visible Name = ValveC_Panel_Off 
+            
+#02756      Kill Name = ValveC_Panel_Blue 
+            
+#02757      Kill Name = ValveC_Panel_Red 
+            
+#02758      SetParticleSysVisibility System = "Particle_Valve_Steam03" 
+            Visible = 0 
+            
+#02759    END IF 
+#02760  END FUNCTION
+          
+#02761  FUNCTION CJR_Foun_Valve_C_Booth_Clear 
+#02764    SetParticleSysVisibility System = "Particle_Valve_Steam03" 
+          Visible = 0 
+          
+#02765    Visible Name = ValveC_Panel_Blue 
+          
+#02766    Invisible Name = ValveC_Panel_Red 
+          
+#02767    Invisible Name = ValveC_Panel_Off 
+          
+#02768  END FUNCTION
+          
+#02769  FUNCTION CJR_Foun_Valve_D_Booth 
+#02772    IF IsCareerMode 
+#02773      IF GetGoal Goal = GOAL_SCRIPTED2 
+              
+#02774        GoTo CJR_Foun_Valve_D_Booth_Clear 
+#02775      ELSE 
+#02776        Obj_ClearExceptions 
+#02777        Obj_SetException Ex = EX_VALVE_HIT 
+              Scr = CJR_Foun_Valve_D_Booth_Clear 
+              
+#02778        SetParticleSysVisibility System = "Particle_Valve_Steam04" 
+              Visible = 1 
+              
+#02779        Invisible Name = ValveD_Panel_Blue 
+              
+#02780        LOOP 
+#02781          Visible Name = ValveD_Panel_Red 
+                
+#02782          Invisible Name = ValveD_Panel_Off 
+                
+#02783          Wait 0.5 Seconds 
+#02784          Invisible Name = ValveD_Panel_Red 
+                
+#02785          Visible Name = ValveD_Panel_Off 
+                
+#02786          Wait 0.25 Seconds 
+#02787        END LOOP 
+#02788      END IF 
+#02789    ELSE 
+#02790      Visible Name = ValveD_Panel_Off 
+            
+#02791      Kill Name = ValveD_Panel_Blue 
+            
+#02792      Kill Name = ValveD_Panel_Red 
+            
+#02793      SetParticleSysVisibility System = "Particle_Valve_Steam04" 
+            Visible = 0 
+            
+#02794    END IF 
+#02795  END FUNCTION
+          
+#02796  FUNCTION CJR_Foun_Valve_D_Booth_Clear 
+#02799    SetParticleSysVisibility System = "Particle_Valve_Steam04" 
+          Visible = 0 
+          
+#02800    Visible Name = ValveD_Panel_Blue 
+          
+#02801    Invisible Name = ValveD_Panel_Red 
+          
+#02802    Invisible Name = ValveD_Panel_Off 
+          
+#02803  END FUNCTION
+          
+#02804  FUNCTION CJR_Foun_Valve_E_Booth 
+#02807    IF IsCareerMode 
+#02808      IF GetGoal Goal = GOAL_SCRIPTED2 
+              
+#02809        GoTo CJR_Foun_Valve_E_Booth_Clear 
+#02810      ELSE 
+#02811        Obj_ClearExceptions 
+#02812        Obj_SetException Ex = EX_VALVE_HIT 
+              Scr = CJR_Foun_Valve_E_Booth_Clear 
+              
+#02813        SetParticleSysVisibility System = "Particle_Valve_Steam05" 
+              Visible = 1 
+              
+#02814        Invisible Name = ValveE_Panel_Blue 
+              
+#02815        LOOP 
+#02816          Visible Name = ValveE_Panel_Red 
+                
+#02817          Invisible Name = ValveE_Panel_Off 
+                
+#02818          Wait 0.5 Seconds 
+#02819          Invisible Name = ValveE_Panel_Red 
+                
+#02820          Visible Name = ValveE_Panel_Off 
+                
+#02821          Wait 0.25 Seconds 
+#02822        END LOOP 
+#02823      END IF 
+#02824    ELSE 
+#02825      Visible Name = ValveE_Panel_Off 
+            
+#02826      Kill Name = ValveE_Panel_Blue 
+            
+#02827      Kill Name = ValveE_Panel_Red 
+            
+#02828      SetParticleSysVisibility System = "Particle_Valve_Steam05" 
+            Visible = 0 
+            
+#02829    END IF 
+#02830  END FUNCTION
+          
+#02831  FUNCTION CJR_Foun_Valve_E_Booth_Clear 
+#02834    SetParticleSysVisibility System = "Particle_Valve_Steam05" 
+          Visible = 0 
+          
+#02835    Visible Name = ValveE_Panel_Blue 
+          
+#02836    Invisible Name = ValveE_Panel_Red 
+          
+#02837    Invisible Name = ValveE_Panel_Off 
+          
+#02838  END FUNCTION
+          
+#02839  FUNCTION CJR_Foun_ValveA_Trigger 
+#02842    IF IsCareerMode 
+#02843      IF QueryFlag Name = Obj_FlagSet_Valves 
+              CJR_FLAG_VALVE01_HIT 
+#02844      ELSE 
+#02845        SendException EX_VALVE_HIT Name = Obj_ValveA_Booth_Control 
+              
+#02846        SendException EX_VALVE_HIT Prefix = "TRG_Ped_Valve_A" 
+              
+#02847        SendException EX_VALVE_HIT Name = Obj_Valve_Goal_Counter 
+              
+#02848        SendFlag Name = Obj_FlagSet_Valves 
+              CJR_FLAG_VALVE01_HIT 
+#02849      END IF 
+#02850    END IF 
+#02851  END FUNCTION
+          
+#02852  FUNCTION CJR_Foun_ValveB_Trigger 
+#02855    IF IsCareerMode 
+#02856      IF QueryFlag Name = Obj_FlagSet_Valves 
+              CJR_FLAG_VALVE02_HIT 
+#02857      ELSE 
+#02858        SendException EX_VALVE_HIT Name = Obj_ValveB_Booth_Control 
+              
+#02859        SendException EX_VALVE_HIT Prefix = "TRG_Ped_Valve_B" 
+              
+#02860        SendException EX_VALVE_HIT Name = Obj_Valve_Goal_Counter 
+              
+#02861        SendFlag Name = Obj_FlagSet_Valves 
+              CJR_FLAG_VALVE02_HIT 
+#02862      END IF 
+#02863    END IF 
+#02864  END FUNCTION
+          
+#02865  FUNCTION CJR_Foun_ValveC_Trigger 
+#02868    IF IsCareerMode 
+#02869      IF QueryFlag Name = Obj_FlagSet_Valves 
+              CJR_FLAG_VALVE03_HIT 
+#02870      ELSE 
+#02871        SendException EX_VALVE_HIT Name = Obj_ValveC_Booth_Control 
+              
+#02872        SendException EX_VALVE_HIT Name = Obj_Valve_Goal_Counter 
+              
+#02873        SendFlag Name = Obj_FlagSet_Valves 
+              CJR_FLAG_VALVE03_HIT 
+#02874      END IF 
+#02875    END IF 
+#02876  END FUNCTION
+          
+#02877  FUNCTION CJR_Foun_ValveD_Trigger 
+#02880    IF IsCareerMode 
+#02881      IF QueryFlag Name = Obj_FlagSet_Valves 
+              CJR_FLAG_VALVE04_HIT 
+#02882      ELSE 
+#02883        SendException EX_VALVE_HIT Name = Obj_ValveD_Booth_Control 
+              
+#02884        SendException EX_VALVE_HIT Name = Obj_Valve_Goal_Counter 
+              
+#02885        SendFlag Name = Obj_FlagSet_Valves 
+              CJR_FLAG_VALVE04_HIT 
+#02886      END IF 
+#02887    END IF 
+#02888  END FUNCTION
+          
+#02889  FUNCTION CJR_Foun_ValveE_Trigger 
+#02892    IF IsCareerMode 
+#02893      IF QueryFlag Name = Obj_FlagSet_Valves 
+              CJR_FLAG_VALVE05_HIT 
+#02894      ELSE 
+#02895        SendException EX_VALVE_HIT Name = Obj_ValveE_Booth_Control 
+              
+#02896        SendException EX_VALVE_HIT Name = Obj_Valve_Goal_Counter 
+              
+#02897        SendFlag Name = Obj_FlagSet_Valves 
+              CJR_FLAG_VALVE05_HIT 
+#02898      END IF 
+#02899    END IF 
+#02900  END FUNCTION
+          
+#02901  FUNCTION CJR_Foun_Valve_Goal_Counter 
+#02904    Obj_ClearExceptions 
+#02905    Obj_SetException Ex = EX_VALVE_HIT 
+          Scr = CJR_Foun_Valve_Counter_Hit 
+          
+#02906  END FUNCTION
+          
+#02907  FUNCTION CJR_Foun_Valve_Counter_Hit 
+#02910    Obj_ClearExceptions 
+#02911    IF IsCareerMode 
+#02912      IF GetGoal Goal = GOAL_SCRIPTED2 
+              
+#02913      ELSE 
+#02914        Obj_VarInc Var = 0 
+              
+#02915        IF Obj_VarEQ Var = 0 
+                Value = 1 
+                
+#02916          LaunchPanelMessage "1 of 5 Valves Un-Jammed" Properties = panel_message_goal 
+                
+#02917        END IF 
+#02918        IF Obj_VarEQ Var = 0 
+                Value = 2 
+                
+#02919          LaunchPanelMessage "2 of 5 Valves Un-Jammed" Properties = panel_message_goal 
+                
+#02920        END IF 
+#02921        IF Obj_VarEQ Var = 0 
+                Value = 3 
+                
+#02922          LaunchPanelMessage "3 of 5 Valves Un-Jammed" Properties = panel_message_goal 
+                
+#02923        END IF 
+#02924        IF Obj_VarEQ Var = 0 
+                Value = 4 
+                
+#02925          LaunchPanelMessage "4 of 5 Valves Un-Jammed" Properties = panel_message_goal 
+                
+#02926        END IF 
+#02927        IF Obj_VarEQ Var = 0 
+                Value = 5 
+                
+#02928          LaunchPanelMessage "5 of 5 Valves Un-Jammed" Properties = panel_message_goal 
+                
+#02929          Wait 1 Seconds 
+#02930          Got_Scripted2 
+#02931          IF GetFlag flag = CJR_FLAG_GEN_OPEN 
+                  
+#02932          ELSE 
+#02933            CJR_Foun_Secret_Gen_Doors 
+#02934            SetFlag flag = CJR_FLAG_GEN_OPEN 
+                  
+#02935          END IF 
+#02936        END IF 
+#02937      END IF 
+#02938    END IF 
+#02939    GoTo CJR_Foun_Valve_Goal_Counter 
+#02940  END FUNCTION
+          
+#02941  FUNCTION CJR_Foun_Secret_Gen_Doors 
+#02944    IF InMultiPlayerGame 
+#02945    ELSE 
+#02946      PauseSkaters 
+#02947      TeleportSkaterUp 
+#02948      PlaySkaterCamAnim Skater = 0 
+            Name = "Cam_GenDoors" 
+            
+#02949      Create Prefix = "GenDoor03_Closed" 
+            
+#02950      Create Prefix = "TRG_Ledge_SecretGen" 
+            
+#02951      Create Prefix = "Secret_Gen" 
+            
+#02952      Create Prefix = "Collision_Secret_Gen" 
+            
+#02953      Create Prefix = "Air_Polys_Secret_Gen" 
+            
+#02954      Kill Prefix = "GenDoor_Closed" 
+            
+#02955      Create Prefix = "Obj_GenDoor" 
+            
+#02956      LOOP 
+#02957        IF SkaterCamAnimFinished Skater = 0 
+                Name = "Cam_GenDoors" 
+                
+#02958          BREAK
+                
+#02959        END IF 
+#02960        Wait 1 GameFrames 
+#02961      END LOOP 
+#02962      TeleportSkaterDown 
+#02963      UnPauseSkaters 
+#02964    END IF 
+#02965  END FUNCTION
+          
+#02966  FUNCTION CJR_Foun_Valve_Check 
+#02969    IF InMultiPlayerGame 
+#02970      GoTo CJR_Foun_Secret_Gen_Multi_Off 
+#02971    END IF 
+#02972    IF IsCareerMode 
+#02973      IF GetFlag flag = CJR_FLAG_GEN_OPEN 
+              
+#02974        Create Name = TRG_Ped_Valve_A_Freed 
+              
+#02975        Create Name = TRG_Ped_Valve_B_Freed 
+              
+#02976        Kill Prefix = "GenDoor_Closed" 
+              
+#02977        Kill Prefix = "GenDoor03_Closed" 
+              
+#02978        Create Name = GenDoor01_Open 
+              
+#02979        Create Name = GenDoor02_Open 
+              
+#02980        Create Name = GenDoor03_Open 
+              
+#02981      ELSE 
+#02982        Create Name = TRG_Ped_Valve_A 
+              
+#02983        Create Name = TRG_Ped_Valve_B 
+              
+#02984        Create Prefix = "GenDoor_Closed" 
+              
+#02985        Kill Prefix = "GenDoor03_Closed" 
+              
+#02986        Kill Prefix = "TRG_Ledge_SecretGen" 
+              
+#02987        Kill Prefix = "Secret_Gen" 
+              
+#02988        Kill Prefix = "Collision_Secret_Gen" 
+              
+#02989        Kill Prefix = "Air_Polys_Secret_Gen" 
+              
+#02990      END IF 
+#02991    ELSE 
+#02992      Create Name = TRG_Ped_Valve_A_Freed 
+            
+#02993      Create Name = TRG_Ped_Valve_B_Freed 
+            
+#02994      IF GetFlag flag = CJR_FLAG_GEN_OPEN 
+              
+#02995        Kill Prefix = "GenDoor_Closed" 
+              
+#02996        Kill Prefix = "GenDoor03_Closed" 
+              
+#02997        Create Name = GenDoor01_Open 
+              
+#02998        Create Name = GenDoor02_Open 
+              
+#02999        Create Name = GenDoor03_Open 
+              
+#03000      ELSE 
+#03001        Create Prefix = "GenDoor_Closed" 
+              
+#03002        Kill Prefix = "GenDoor03_Closed" 
+              
+#03003        Kill Prefix = "TRG_Ledge_SecretGen" 
+              
+#03004        Kill Prefix = "Secret_Gen" 
+              
+#03005        Kill Prefix = "Collision_Secret_Gen" 
+              
+#03006        Kill Prefix = "Air_Polys_Secret_Gen" 
+              
+#03007      END IF 
+#03008    END IF 
+#03009  END FUNCTION
+          
+#03010  FUNCTION CJR_Foun_Secret_Gen_Multi_Off 
+#03013  END FUNCTION
+          
+#03014  FUNCTION CJR_Foun_Fire_Soaker_Scripts 
+#03017    SpawnScript CJR_Foun_Soaker_Trigger 
+#03018  END FUNCTION
+          
+#03019  FUNCTION CJR_Foun_Soaker_Trigger 
+#03022    IF IsCareerMode 
+#03023      IF GetGoal Goal = GOAL_SCRIPTED3 
+              
+#03024      ELSE 
+#03025        SendException EX_SOAKER_BOX_HIT Name = Obj_Soaker_Chain 
+              
+#03026        SendException EX_SOAKER_BOX_HIT Name = Obj_Soaker_Crane 
+              
+#03027        Wait 1 Seconds 
+#03028        SpawnSkaterScript CJR_Foun_Skip_Soaker_Sequence 
+#03029      END IF 
+#03030    END IF 
+#03031  END FUNCTION
+          
+#03032  FUNCTION CJR_Foun_Skip_Soaker_Sequence 
+#03035    SetSkaterCamAnimSkippable Skater = 0 
+          Skippable = 1 
+          
+#03036    LOOP 
+#03037      IF Held X 
+#03038        BREAK
+              
+#03039      END IF 
+#03040      Wait 1 gameframe 
+#03041    END LOOP 
+#03042    KillSpawnedScript Name = CJR_Foun_Soaker_Trigger 
+          
+#03043    SendException EX_VALVE_HIT Name = Obj_Soaker_Chain 
+          
+#03044    Kill Prefix = "Obj_Soaker" 
+          
+#03045    Kill Prefix = "TRG_Ped_Soaker" 
+          
+#03046    Kill Prefix = "Soaker_Splash" 
+          
+#03047    Kill Prefix = "WaterRipple" 
+          
+#03048    Kill Prefix = "TRGP_Soaker" 
+          
+#03049    SetParticleSysVisibility System = "Particle_Soaker_Spatter" 
+          Visible = 0 
+          
+#03050    SetParticleSysVisibility System = "Particle_Soaker_Spatter02" 
+          Visible = 0 
+          
+#03051    SetParticleSysVisibility System = "Particle_Soaker_Spatter03" 
+          Visible = 0 
+          
+#03052    Create Name = WaterRipple 
+          
+#03053    Create Name = TRG_Ped_Skipped_Soaker 
+          
+#03054    TeleportSkaterDown 
+#03055    UnPauseSkaters 
+#03056    PlaySkaterCamAnim Skater = 0 
+          stop 
+#03057    Got_Scripted3 
+#03058  END FUNCTION
+          
+#03059  FUNCTION CJR_Foun_Soaker_Chain 
+#03062    Obj_ClearExceptions 
+#03063    Obj_SetException Ex = EX_SOAKER_BOX_HIT 
+          Scr = CJR_Foun_Soaker_Chain_Move 
+          
+#03064    Obj_SetException Ex = EX_VALVE_HIT 
+          Scr = CJR_Foun_Soaker_Chain_Die 
+          
+#03065  END FUNCTION
+          
+#03066  FUNCTION CJR_Foun_Soaker_Chain_Move 
+#03069    Obj_ClearExceptions 
+#03070    Obj_SetException Ex = EX_VALVE_HIT 
+          Scr = CJR_Foun_Soaker_Chain_Die 
+          
+#03071    PauseSkaters 
+#03072    TeleportSkaterUp 
+#03073    PlaySkaterCamAnim Skater = 0 
+          Name = "Cam_Soaker_Crane" 
+          
+#03074    Obj_MoveToNode Name = Waypoint_Soaker_Chain_Out 
+          Speed = 30 
+          Acceleration = 60 
+          
+#03075    Obj_RotY Angle = 5 
+          Speed = 70 
+          FLAG_MAX_COORDS 
+#03076    Obj_MoveToNode Name = Waypoint_Soaker_Chain_Out 
+          Speed = 10 
+          Acceleration = 20 
+          
+#03077    Wait 0.45 Seconds 
+#03078    Obj_RotY Angle = -20 
+          Speed = 45 
+          Acceleration = 65 
+          Deceleration = 40 
+          FLAG_MAX_COORDS 
+#03079    Obj_WaitRotate 
+#03080    Wait 0.2 Seconds 
+#03081    PlaySkaterCamAnim Skater = 0 
+          Name = "Cam_Soaker_Dive" 
+          
+#03082    Obj_RotY Angle = 30 
+          Speed = 30 
+          Acceleration = 45 
+          Deceleration = 5 
+          FLAG_MAX_COORDS 
+#03083    SendException EX_SOAKER_WAYPOINT Name = Obj_Soaker_Crane 
+          
+#03084    Obj_MoveToNode Name = Waypoint_Soaker_Chain_In 
+          Speed = 10 
+          Acceleration = 20 
+          Deceleration = 10 
+          
+#03085    Wait 0.75 Seconds 
+#03086    Obj_PlaySound foun_unhook 
+#03087    Create Name = TRG_Ped_Soaker_Dive 
+          
+#03088    Kill Name = TRG_Ped_Soaker 
+          
+#03089    Wait 0.25 Seconds 
+#03090    Obj_WaitRotate 
+#03091    Obj_RotY Angle = -10 
+          Speed = 60 
+          Acceleration = 60 
+          Deceleration = 10 
+          FLAG_MAX_COORDS 
+#03092    Obj_WaitRotate 
+#03093    Wait 1 Seconds 
+#03094    Got_Scripted3 
+#03095    LOOP 
+#03096      IF SkaterCamAnimFinished Skater = 0 
+              Name = "Cam_Soaker_Dive" 
+              
+#03097        KillSpawnedScript Name = CJR_Foun_Skip_Soaker_Sequence 
+              
+#03098        BREAK
+              
+#03099      END IF 
+#03100      Wait 1 GameFrames 
+#03101    END LOOP 
+#03102    Kill Prefix = "TRGP_Soaker" 
+          
+#03103    TeleportSkaterDown 
+#03104    UnPauseSkaters 
+#03105    Die 
+#03106  END FUNCTION
+          
+#03107  FUNCTION CJR_Foun_Soaker_Chain_Die 
+#03110    Die 
+#03111  END FUNCTION
+          
+#03112  FUNCTION CJR_Foun_Soaker_Crane 
+#03115    Obj_ClearExceptions 
+#03116    Obj_SetException Ex = EX_SOAKER_BOX_HIT 
+          Scr = CJR_Foun_Soaker_Crane_Move 
+          
+#03117    Obj_SetException Ex = EX_SOAKER_WAYPOINT 
+          Scr = CJR_Foun_Soaker_Crane_Return 
+          
+#03118  END FUNCTION
+          
+#03119  FUNCTION CJR_Foun_Soaker_Crane_Move 
+#03122    Obj_ClearExceptions 
+#03123    Obj_MoveToNode Name = Waypoint_Soaker_Chain_Out 
+          Speed = 10 
+          Acceleration = 20 
+          
+#03124    Obj_PlaySound foun_bucket Vol = 120 
+          Pitch = 80 
+          
+#03125    Obj_WaitMove 
+#03126    LOOP 
+#03127      IF SkaterCamAnimFinished Skater = 0 
+              Name = "Cam_Soaker_Dive" 
+              
+#03128        BREAK
+              
+#03129      END IF 
+#03130      Wait 1 GameFrames 
+#03131    END LOOP 
+#03132    Die 
+#03133  END FUNCTION
+          
+#03134  FUNCTION CJR_Foun_Soaker_Crane_Return 
+#03137    Obj_ClearExceptions 
+#03138    Obj_MoveToNode Name = Waypoint_Soaker_Chain_In 
+          Speed = 10 
+          Acceleration = 20 
+          
+#03139    GoTo CJR_Foun_Soaker_Crane 
+#03140  END FUNCTION
+          
+#03141  FUNCTION CJR_Foun_Soaker_Splash 
+#03144    Obj_PlaySound foun_foremansplash 
+#03145    Create Name = Soaker_Splash01 
+          
+#03146    Create Name = WaterRipple 
+          
+#03147    Create Name = Splash_Box01 
+          
+#03148    Shatter Name = Splash_Box01 
+          Area = 50 
+          Variance = 2 
+          Vel_x = 30 
+          Vel_y = 15 
+          Vel_z = 30 
+          Spread = 0.1 
+          
+#03149    Kill Name = Splash_Box01 
+          
+#03150    Create Name = Splash_Box02 
+          
+#03151    Shatter Name = Splash_Box02 
+          Area = 50 
+          Variance = 2 
+          Vel_x = 25 
+          Vel_y = 5 
+          Vel_z = 25 
+          Spread = 0.1 
+          
+#03152    Kill Name = Splash_Box02 
+          
+#03153    Wait 67 Frames 
+#03154    SetParticleSysVisibility System = "Particle_Soaker_Spatter" 
+          Visible = 1 
+          
+#03155    Wait 7 Frames 
+#03156    SetParticleSysVisibility System = "Particle_Soaker_Spatter02" 
+          Visible = 1 
+          
+#03157    Wait 15 Frames 
+#03158    SetParticleSysVisibility System = "Particle_Soaker_Spatter03" 
+          Visible = 1 
+          
+#03159    Wait 5 Frames 
+#03160    SetParticleSysVisibility System = "Particle_Soaker_Spatter" 
+          Visible = 0 
+          
+#03161    Wait 10 Frames 
+#03162    SetParticleSysVisibility System = "Particle_Soaker_Spatter02" 
+          Visible = 0 
+          
+#03163    Wait 15 Frames 
+#03164    SetParticleSysVisibility System = "Particle_Soaker_Spatter03" 
+          Visible = 0 
+          
+#03165  END FUNCTION
+          
+#03166  FUNCTION CJR_Foun_Generator_Arc 
+#03169    Obj_RotZ Speed = 50 
+          FLAG_MAX_COORDS 
+#03170    LOOP 
+#03171      Obj_PlaySound Foun_Secret2 
+#03172      Obj_MoveToNode Name = Waypoint_Generator_Arc01 
+            
+#03173      Obj_MoveToNode Name = Waypoint_Generator_Arc02 
+            Speed = 40 
+            
+#03174      Obj_WaitMove 
+#03175      Wait 1 GameFrames 
+#03176    END LOOP 
+#03177  END FUNCTION
+          
+#03178  FUNCTION CJR_Foun_Generator_Arc_Reflect 
+#03181    LOOP 
+#03182      Obj_MoveToNode Name = Waypoint_Generator_Arc01 
+            
+#03183      Obj_MoveToNode Name = Waypoint_Generator_Arc02 
+            Speed = 40 
+            
+#03184      Obj_WaitMove 
+#03185      Wait 1 GameFrames 
+#03186    END LOOP 
+#03187  END FUNCTION
+          
+#03188  FUNCTION CJR_Foun_PipeTrickGap 
+#03194    IF ProfileEquals TrickStyle = Vert 
+            
+#03195      StartGapTrick TrickText = "Cannonball" 
+            GapScript = Got_TrickSpot 
+            
+#03196    END IF 
+#03197  END FUNCTION
+          
+#03198  FUNCTION CJR_Foun_RailTrickGap 
+#03201    IF ProfileEquals TrickStyle = Street 
+            
+#03202      StartGapTrick TrickText = "50-50" 
+            GapScript = Got_TrickSpot 
+            
+#03203    END IF 
+#03204  END FUNCTION
+          
+#03205  FUNCTION CJR_Foun_EndGap_ValveRail01 
+#03208    EndGap GapID = ValveRail01 
+          GapScript = CJR_Foun_ValveA_Trigger 
+          
+#03209  END FUNCTION
+          
+#03210  FUNCTION CJR_Foun_EndGap_ValveRail02 
+#03213    EndGap GapID = ValveRail02 
+          GapScript = CJR_Foun_ValveB_Trigger 
+          
+#03214  END FUNCTION
+          
+#03215  FUNCTION CJR_Foun_EndGap_ValveRail03 
+#03218    EndGap GapID = ValveRail03 
+          GapScript = CJR_Foun_ValveC_Trigger 
+          
+#03219  END FUNCTION
+          
+#03220  FUNCTION CJR_Foun_EndGap_ValveRail04 
+#03223    EndGap GapID = ValveRail04 
+          GapScript = CJR_Foun_ValveD_Trigger 
+          
+#03224  END FUNCTION
+          
+#03225  FUNCTION CJR_Foun_EndGap_ValveRail05 
+#03228    EndGap GapID = ValveRail05 
+          GapScript = CJR_Foun_ValveE_Trigger 
+          
+#03229  END FUNCTION
+          
+#03230  FUNCTION CJR_Foun_EndGap_StairStep 
+#03233    EndGap GapID = GLOBAL.ID1 
+          Score = 200 
+          Text = "Stair Steppin'" 
+          
+#03234  END FUNCTION
+          
+#03235  FUNCTION CJR_Foun_EndGap_PressUp 
+#03238    EndGap GapID = PressUp 
+          Score = 250 
+          Text = "Stomp the Presses!" 
+          
+#03239  END FUNCTION
+          
+#03240  FUNCTION CJR_Foun_EndGap_CatWalks 
+#03243    EndGap GapID = CatWalks 
+          Score = 250 
+          Text = "Catwalk Grind" 
+          
+#03244  END FUNCTION
+          
+#03245  FUNCTION CJR_Foun_EndGap_CatWalks_Lip 
+#03248    EndGap GapID = CatWalks_Lip 
+          Score = 500 
+          Text = "Catwalk Balancing Act" 
+          
+#03249  END FUNCTION
+          
+#03250  FUNCTION CJR_Foun_EndGap_CatWalks_Controller_Lip 
+#03253    EndGap GapID = CatWalks_Lip 
+          Score = 750 
+          Text = "Catwalk Tight Lip" 
+          GapScript = CJR_Foun_Create_Porch_Talker 
+          
+#03254  END FUNCTION
+          
+#03255  FUNCTION CJR_Foun_EndGap_Furnace_Rail 
+#03258    EndGap GapID = Furnace_Rail 
+          Score = 500 
+          Text = "Furnace Topper Rail" 
+          
+#03259  END FUNCTION
+          
+#03260  FUNCTION CJR_Foun_EndGap_Furnace_Guard 
+#03263    EndGap GapID = Furnace_Guard 
+          Score = 250 
+          Text = "Railin' On Furnace Row" 
+          
+#03264  END FUNCTION
+          
+#03265  FUNCTION CJR_Foun_EndGap_Furnace_Guard_Lip 
+#03268    EndGap GapID = Furnace_Guard_Lip 
+          Score = 500 
+          Text = "Furnace Row Extension" 
+          
+#03269  END FUNCTION
+          
+#03270  FUNCTION CJR_Foun_EndGap_Quencher_Rails 
+#03273    EndGap GapID = Quencher_Rails 
+          Score = 250 
+          Text = "Tub Rail Tap" 
+          
+#03274  END FUNCTION
+          
+#03275  FUNCTION CJR_Foun_EndGap_Quencher_Lip 
+#03278    EndGap GapID = Quencher_Lip 
+          Score = 250 
+          Text = "Edge O' the Tub Extension" 
+          
+#03279  END FUNCTION
+          
+#03280  FUNCTION CJR_Foun_EndGap_Quencher_Air 
+#03283    EndGap GapID = Quencher_Air 
+          Score = 250 
+          Text = "Just Passing Through" 
+          
+#03284  END FUNCTION
+          
+#03285  FUNCTION CJR_Foun_EndGap_Generator_Transfer 
+#03288    EndGap GapID = GLOBAL.ID1 
+          Score = 500 
+          Text = "Generator Transfer" 
+          
+#03289  END FUNCTION
+          
+#03290  FUNCTION CJR_Foun_EndGap_RollIn_Transfer 
+#03293    EndGap GapID = GLOBAL.ID1 
+          Score = 500 
+          Text = "Roll In Transfer" 
+          
+#03294  END FUNCTION
+          
+#03295  FUNCTION CJR_Foun_EndGap_Molten_Transfer 
+#03298    EndGap GapID = GLOBAL.ID1 
+          Score = 500 
+          Text = "Deep Fried Transfer" 
+          
+#03299  END FUNCTION
+          
+#03300  FUNCTION CJR_Foun_EndGap_DJBooth_Transfer 
+#03303    EndGap GapID = GLOBAL.ID1 
+          Score = 500 
+          Text = "Control Booth Transfer" 
+          
+#03304  END FUNCTION
+          
+#03305  FUNCTION CJR_Foun_EndGap_Porch_Rails 
+#03308    EndGap GapID = Porch_Rails 
+          Score = 500 
+          Text = "Porch Rail Tap" 
+          
+#03309  END FUNCTION
+          
+#03310  FUNCTION CJR_Foun_EndGap_Porch_Lip 
+#03313    EndGap GapID = Porch_Lip 
+          Score = 750 
+          Text = "Nice View Up Here!" 
+          
+#03314  END FUNCTION
+          
+#03315  FUNCTION CJR_Foun_EndGap_Heat_Shield 
+#03318    EndGap GapID = Heat_Shield 
+          Score = 250 
+          Text = "CG's SKDK 2 STFK" 
+          
+#03319  END FUNCTION
+          
+#03320  FUNCTION CJR_Foun_EndGap_AC_Ducts 
+#03323    EndGap GapID = AC_Ducts 
+          Score = 500 
+          Text = "Don't Look Down!" 
+          
+#03324  END FUNCTION
+          
+#03325  FUNCTION CJR_Foun_EndGap_I_Beam 
+#03328    EndGap GapID = I_Beam 
+          Score = 500 
+          Text = "Walkin' A Thin Line!" 
+          
+#03329  END FUNCTION
+          
+#03330  FUNCTION CJR_Foun_EndGap_Generator_Hop 
+#03333    EndGap GapID = GLOBAL.ID1 
+          Score = 250 
+          Text = "Generator Hop" 
+          
+#03334  END FUNCTION
+          
+#03335  FUNCTION CJR_Foun_EndGap_Molten_Hop 
+#03338    EndGap GapID = GLOBAL.ID1 
+          Score = 150 
+          Text = "Hot Tub Jump" 
+          
+#03339  END FUNCTION
+          
+#03340  FUNCTION CJR_Foun_EndGap_Molten_Hop_Big 
+#03343    EndGap GapID = GLOBAL.ID1 
+          Score = 350 
+          Text = "Hardway Over the Hot Tub" 
+          
+#03344  END FUNCTION
+          
+#03345  FUNCTION CJR_Foun_EndGap_Rail_Hop 
+#03348    EndGap GapID = GLOBAL.ID1 
+          Score = 100 
+          Text = "Rail Hop" 
+          
+#03349  END FUNCTION
+          
+#03350  FUNCTION CJR_Foun_EndGap_Rail_Hop_Small 
+#03353    EndGap GapID = GLOBAL.ID1 
+          Score = 50 
+          Text = "Lil' Rail Hop" 
+          
+#03354  END FUNCTION
+          
+#03355  FUNCTION CJR_Foun_EndGap_Roll_In_Hop 
+#03358    EndGap GapID = GLOBAL.ID1 
+          Score = 100 
+          Text = "Roll In Hop" 
+          
+#03359  END FUNCTION
+          
+#03360  FUNCTION CJR_Foun_EndGap_Bucket_Transfer 
+#03363    EndGap GapID = Bucket_Transfer 
+          Score = 250 
+          Text = "Bucket o' Hot Sauce!" 
+          
+#03364  END FUNCTION
+          
+#03365  FUNCTION CJR_Foun_EndGap_Bend_Rail_Transfer 
+#03368    EndGap GapID = GLOBAL.ID1 
+          Score = 100 
+          Text = "Back End Rail 2 Rail" 
+          
+#03369  END FUNCTION
+          
+#03370  FUNCTION CJR_Foun_EndGap_Quencher 
+#03373    EndGap GapID = GLOBAL.ID1 
+          Score = 750 
+          Text = "Poolside Over Under Gap" 
+          
+#03374  END FUNCTION
+          
+#03375  FUNCTION CJR_Foun_EndGap_Furnace_Rail_Transfer 
+#03378    EndGap GapID = GLOBAL.ID1 
+          Score = 50 
+          Text = "Furnace Walk Rail 2 Rail!" 
+          
+#03379  END FUNCTION
+          
+#03380  FUNCTION CJR_Foun_EndGap_Press_Rail_Transfer 
+#03383    EndGap GapID = GLOBAL.ID1 
+          Score = 50 
+          Text = "Press Walk Rail 2 Rail!" 
+          
+#03384  END FUNCTION
+          
+#03385  FUNCTION CJR_Foun_EndGap_Press_Rail_Transfer_Big 
+#03388    EndGap GapID = GLOBAL.ID1 
+          Score = 150 
+          Text = "Press Booth Rail 2 Rail" 
+          
+#03389  END FUNCTION
+          
+#03390  FUNCTION CJR_Foun_EndGap_Bend_Manual 
+#03393    EndGap GapID = GLOBAL.ID1 
+          Score = 500 
+          Text = "Circus Act Around The Bend!" 
+          
+#03394  END FUNCTION
+          
+#03395  FUNCTION CJR_Foun_EndGap_Wickets 
+#03398    EndGap GapID = Wickets 
+          Score = 150 
+          Text = "Split the Wickets!" 
+          
+#03399  END FUNCTION
+          
+#03400  FUNCTION CJR_Foun_EndGap_Nausea 
+#03403    EndGap GapID = Extreme_Nausea 
+          Score = 1000 
+          Text = "Nausea Grind!!!" 
+          
+#03404  END FUNCTION
+          
+#03405  FUNCTION CJR_Foun_EndGap_Walkway_Stomp 
+#03408    EndGap GapID = Walkway_Stomp 
+          Score = 200 
+          Text = "From Way Down Town!" 
+          
+#03409  END FUNCTION
+          
+#03410  FUNCTION CJR_Foun_EndGap_Gen_Lip 
+#03413    EndGap GapID = GenLip 
+          Score = 250 
+          Text = "Low Current Walkway Lip" 
+          
+#03414  END FUNCTION
+          
+#03415  FUNCTION CJR_Foun_EndGap_Gen_Lip_Hi 
+#03418    EndGap GapID = GenLip_Hi 
+          Score = 750 
+          Text = "High Voltage Walkway Lip" 
+          
+#03419  END FUNCTION
+          
+#03420  FUNCTION CJR_Foun_Booth_Sparks 
+#03426    Obj_ClearExceptions 
+#03427    Obj_SetOuterRadius 50 
+#03428    Obj_SetException Ex = SkaterOutOfRadius 
+          Scr = CJR_Foun_Booth_Sparks_Hold 
+          
+#03429    Wait 0.25 Seconds 
+#03430    Shatter Name = Obj_Booth_Sparks01 
+          Area = 3.5 
+          Variance = 2 
+          Vel_x = 30 
+          Vel_y = 10 
+          Vel_z = 15 
+          Spread = 0.1 
+          
+#03431    Obj_PlaySound foun_spark2x 
+#03432    Wait RANDOM[3][8; 19; 30]
+          0.25 Seconds JUMP 0x19000000 0.5 Seconds JUMP 0x0a000000 0.75 Seconds 
+#03433    Shatter Name = Obj_Booth_Sparks01 
+          Area = 3.5 
+          Variance = 2 
+          Vel_x = 30 
+          Vel_y = 10 
+          Vel_z = 15 
+          Spread = 0.1 
+          
+#03434    Obj_PlaySound foun_spark2x 
+#03435    Wait RANDOM[3][8; 19; 30]
+          0.25 Seconds JUMP 0x19000000 0.5 Seconds JUMP 0x0a000000 0.75 Seconds 
+#03436    Shatter Name = Obj_Booth_Sparks01 
+          Area = 3.5 
+          Variance = 2 
+          Vel_x = 30 
+          Vel_y = 10 
+          Vel_z = 15 
+          Spread = 0.1 
+          
+#03437    Obj_PlaySound foun_spark2x 
+#03438    Wait RANDOM[3][8; 19; 30]
+          0.25 Seconds JUMP 0x19000000 0.5 Seconds JUMP 0x0a000000 0.75 Seconds 
+#03439    Shatter Name = Obj_Booth_Sparks01 
+          Area = 3.5 
+          Variance = 2 
+          Vel_x = 30 
+          Vel_y = 10 
+          Vel_z = 15 
+          Spread = 0.1 
+          
+#03440    Obj_PlaySound foun_spark2x 
+#03441  END FUNCTION
+          
+#03442  FUNCTION CJR_Foun_Booth_Sparks_Hold 
+#03445    Obj_ClearExceptions 
+#03446    Obj_SetInnerRadius 50 
+#03447    Obj_SetException Ex = SkaterInRadius 
+          Scr = CJR_Foun_Booth_Sparks 
+          
+#03448  END FUNCTION
+          
+#03449  FUNCTION CJR_Foun_Create_Porch_Talker 
+#03452    Kill Name = TRG_Ped_Control_Porch 
+          
+#03453    Create Name = TRG_Ped_Control_Porch_Talk 
+          
+#03454  END FUNCTION
+          
+#03455  FUNCTION CJR_Foun_Create_DJ_Talker 
+#03458    Kill Prefix = "TRG_Ped_BucketOp" 
+          
+#03459    Create Name = TRG_Ped_BucketOp_Rant 
+          
+#03460  END FUNCTION
+          
+#03461  FUNCTION CJR_Foun_Glass_Pane01 
+#03464    Shatter Name = Glass_Pane01 
+          Area = 5000 
+          Variance = 1 
+          Vel_x = 20 
+          Vel_y = 20 
+          Vel_z = -25 
+          Spread = 3 
+          
+#03465    Kill Name = Glass_Pane01 
+          
+#03466    Kill Name = Glass_Panel01_reflect 
+          
+#03467    PlaySound foun_plexi Vol = 100 
+          Pitch = 90 
+          
+#03468    Kill Name = TRGP_Glass_Pane01 
+          
+#03469  END FUNCTION
+          
+#03470  FUNCTION CJR_Foun_Glass_Pane02 
+#03472    Shatter Name = Glass_Pane02 
+          Area = 5000 
+          Variance = 1 
+          Vel_x = 20 
+          Vel_y = 20 
+          Vel_z = -25 
+          Spread = 3 
+          
+#03473    Kill Name = Glass_Pane02 
+          
+#03474    Kill Name = Glass_Pane02_reflect 
+          
+#03475    PlaySound foun_plexi Vol = 100 
+          Pitch = 90 
+          
+#03476    Kill Name = TRGP_Glass_Pane02 
+          
+#03477  END FUNCTION
+          
+#03478  FUNCTION CJR_Foun_Rotating_Light 
+#03481    Obj_ClearExceptions 
+#03482    Obj_SetOuterRadius 25 
+#03483    Obj_SetException Ex = SkaterOutOfRadius 
+          Scr = CJR_Foun_Rotating_Light_Kill 
+          
+#03484    Obj_RotX Speed = 720 
+          FLAG_MAX_COORDS 
+#03485  END FUNCTION
+          
+#03486  FUNCTION CJR_Foun_Rotating_Light_Kill 
+#03489    Obj_ClearExceptions 
+#03490    Obj_SetInerRadius 25 
+#03491    Obj_SetException Ex = SkaterInRadius 
+          Scr = CJR_Foun_Rotating_Light 
+          
+#03492    Kill Name = * 
+          
+#03493  END FUNCTION
+          
+#03494  FUNCTION CJR_Foun_Kill_Skater_Molten 
+#03497    Sk3_Killskater DeathSound = Fallwater 
+          Message1 = "All Sizzle...No Steak!" 
+          Message2 = "Deep Fried Goodness!" 
+          Message3 = "Not The Smartest Move!" 
+          Message4 = "I'll Take Mine Well Done!" 
+          R = 255 
+          G = 0 
+          B = 0 
+          
+#03499  END FUNCTION
+          
+#03500  FUNCTION CJR_Foun_Kill_Skater_Press 
+#03503    Sk3_Killskater DeathSound = foun_pressend 
+          Message1 = "Watch That Last Step!" 
+          Message2 = "Hot box!!!" 
+          Message3 = "Extra Crispy Please!" 
+          Message4 = "Hole In One!" 
+          R = 255 
+          G = 0 
+          B = 0 
+          
+#03504  END FUNCTION
+          
+#03505  FUNCTION CJR_Foun_Raw_Materials 
+#03508    LOOP 
+#03509      Obj_MoveToNode Name = Waypoint_Raw_Materials_Exit 
+            Speed = 4.6 
+            
+#03510      Obj_WaitMove 
+#03511      Obj_MoveToNode Name = Waypoint_Raw_Materials_Entry 
+            
+#03512      Obj_WaitMove 
+#03513    END LOOP 
+#03514  END FUNCTION
+          
+#03515  FUNCTION CJR_Foun_Soaker_Splash_A_Scale 
+#03518    Obj_ApplyScaling X = 1 
+          y = 0 
+          z = 1 
+          
+#03519    Wait 1 gameframe 
+#03520    Obj_ApplyScaling X = 1 
+          y = 0.1 
+          z = 1 
+          
+#03521    Wait 1 gameframe 
+#03522    Obj_ApplyScaling X = 1 
+          y = 0.2 
+          z = 1 
+          
+#03523    Wait 1 gameframe 
+#03524    Obj_ApplyScaling X = 1 
+          y = 0.2 
+          z = 1 
+          
+#03525    Wait 1 gameframe 
+#03526    Obj_ApplyScaling X = 1 
+          y = 0.4 
+          z = 1 
+          
+#03527    Wait 1 gameframe 
+#03528    Obj_ApplyScaling X = 1 
+          y = 0.5 
+          z = 1 
+          
+#03529    Wait 1 gameframe 
+#03530    Obj_ApplyScaling X = 1 
+          y = 0.6 
+          z = 1 
+          
+#03531    Wait 1.5 gameframe 
+#03532    Obj_ApplyScaling X = 1 
+          y = 0.7 
+          z = 1 
+          
+#03533    Wait 1.5 gameframe 
+#03534    Obj_ApplyScaling X = 1 
+          y = 0.8 
+          z = 1 
+          
+#03535    Wait 2 gameframe 
+#03536    Obj_ApplyScaling X = 1 
+          y = 0.9 
+          z = 1 
+          
+#03537    Wait 2 gameframe 
+#03538    Obj_ApplyScaling X = 1 
+          y = 0.95 
+          z = 1 
+          
+#03539    Wait 2 gameframe 
+#03540    Obj_ApplyScaling X = 1 
+          y = 1 
+          z = 1 
+          
+#03541    Wait 3 gameframe 
+#03542    Obj_ApplyScaling X = 1 
+          y = 1.25 
+          z = 1 
+          
+#03543    Wait 3 gameframe 
+#03544    Obj_ApplyScaling X = 1 
+          y = 1.5 
+          z = 1 
+          
+#03545    Wait 2 gameframe 
+#03546    Obj_ApplyScaling X = 1 
+          y = 1.25 
+          z = 1 
+          
+#03547    Wait 1 gameframe 
+#03548    Obj_ApplyScaling X = 1 
+          y = 0.9 
+          z = 1 
+          
+#03549    Wait 1 gameframe 
+#03550    Obj_ApplyScaling X = 1 
+          y = 0.7 
+          z = 1 
+          
+#03551    Wait 1 gameframe 
+#03552    Obj_ApplyScaling X = 1 
+          y = 0.5 
+          z = 1 
+          
+#03553    Wait 1 gameframe 
+#03554    Obj_ApplyScaling X = 1 
+          y = 0.3 
+          z = 1 
+          
+#03555    Wait 1 gameframe 
+#03556    Obj_ApplyScaling X = 1 
+          y = 0.1 
+          z = 1 
+          
+#03557    Wait 1 gameframe 
+#03558    Die 
+#03559  END FUNCTION
+          
+#03560  FUNCTION CJR_Foun_Soaker_Splash_B_Scale 
+#03563  END FUNCTION
+          
+#03588  FUNCTION CJR_Foun_Inv_InGenerator 
+#03591    Kill Prefix = "Trench" 
+          
+#03592    Kill Prefix = "Obj_Fan" 
+          
+#03593    Kill Prefix = "Opti" 
+          
+#03594  END FUNCTION
+          
+#03599  FUNCTION CJR_Foun_Vis_OutGenerator 
+#03602    Create Prefix = "Trench" 
+          
+#03603    Create Prefix = "Obj_Fan" 
+          
+#03604    Create Prefix = "Opti" 
+          
+#03605  END FUNCTION
+          
+#03610  FUNCTION CJR_Foun_Inv_Particles 
+#03613    SetParticleSysVisibility System = "Particle_Furnace" 
+          Visible = 0 
+          
+#03614    SetParticleSysVisibility System = "Particle_Molten_Steam01" 
+          Visible = 0 
+          
+#03615    SetParticleSysVisibility System = "Particle_Molten_Steam02" 
+          Visible = 0 
+          
+#03616    SetParticleSysVisibility System = "Particle_Molten_Flamers01" 
+          Visible = 0 
+          
+#03617  END FUNCTION
+          
+#03618  FUNCTION CJR_Foun_Vis_Particles 
+#03621    SetParticleSysVisibility System = "Particle_Furnace" 
+          Visible = 1 
+          
+#03622    SetParticleSysVisibility System = "Particle_Molten_Steam01" 
+          Visible = 1 
+          
+#03623    SetParticleSysVisibility System = "Particle_Molten_Steam02" 
+          Visible = 1 
+          
+#03624    SetParticleSysVisibility System = "Particle_Molten_Flamers01" 
+          Visible = 1 
+          
+#03625  END FUNCTION
+          
+#03626  

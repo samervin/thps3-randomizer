@@ -1,0 +1,781 @@
+
+#00001  MemCardMessageErrorPause = 180 
+        
+#00007  MemCardMessageDefaultPause = 120 
+        
+#00008  MemCardMessageShortPause = 60 
+        
+#00009  memcard_font_props = STRUCT{
+          font = "large.fnt" 
+          just = PAIR[0.0; 0.0] 
+          dims = PAIR[640.0; 448.0] 
+          colors = ARRAY(
+            
+            STRUCT{
+              VECTOR[128.0; 128.0; 128.0] alpha = 128 
+              }
+            
+          )
+          key_points = ARRAY(
+            
+            STRUCT{
+              pos = PAIR[320.0; 200.0] 
+              alpha = 128 
+              scale = 1.5 
+              time = 2 
+              }
+            STRUCT{
+              time = 10000000 
+              }
+            
+          )
+          }
+        
+#00024  FUNCTION DisplayMessage PauseLength = MemCardMessageDefaultPause 
+          
+#00030    DisableBackEvent 
+#00031    helper_hide 
+#00032    GLOBAL.MessageScript 
+          
+#00033    ControllerDebounce x time = 1 
+          
+#00034    LOOP 
+#00035      wait 1 gameframe 
+#00036      IF ControllerPressed Triangle 
+#00037        wait 1 gameframe 
+#00038        BREAK
+              
+#00039      END IF 
+#00040      IF ControllerPressed x 
+#00041        wait 1 gameframe 
+#00042        BREAK
+              
+#00043      END IF 
+#00044    END LOOP GLOBAL.PauseLength 
+          
+#00045    EnableBackEvent 
+#00046  END FUNCTION
+          
+#00047  FUNCTION LaunchMemcardMessagesMenu_Style1 
+#00049    IF ENGLISH 
+#00050      LaunchSimpleMenu STRUCT{
+              x = 100 
+              y = 120 
+              w = 440 
+              header = GLOBAL.header 
+              Lines = GLOBAL.Lines 
+              }
+            
+#00057    ELSE 
+#00058      LaunchSimpleMenu STRUCT{
+              x = 50 
+              y = 120 
+              w = 540 
+              header = GLOBAL.header 
+              Lines = GLOBAL.Lines 
+              }
+            
+#00065    END IF 
+#00066  END FUNCTION
+          
+#00067  FUNCTION LaunchMemcardMessagesMenu_Style2 
+#00069    IF ENGLISH 
+#00070      LaunchSimpleMenu STRUCT{
+              x = 45 
+              y = 80 
+              w = 550 
+              header = GLOBAL.header 
+              Lines = GLOBAL.Lines 
+              }
+            
+#00077    ELSE 
+#00078      LaunchSimpleMenu STRUCT{
+              x = 20 
+              y = 80 
+              w = 600 
+              header = GLOBAL.header 
+              Lines = GLOBAL.Lines 
+              }
+            
+#00085    END IF 
+#00086  END FUNCTION
+          
+#00087  FUNCTION Message_NotEnoughRoomToSaveOptProsNet 
+#00089    LaunchMemcardMessagesMenu_Style2 STRUCT{
+            header = "Error !" 
+            Lines = ARRAY(
+              
+              STRUCT{
+                id = ken_line1 
+                text = "" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line2 
+                text = "Save failed !" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line2b 
+                text = "Insufficient free space." 
+                static dont_gray }
+              STRUCT{
+                id = ken_line14 
+                text = "" 
+                static dont_gray }
+              
+            )
+            }
+          
+#00098    wait 1 gameframe 
+#00099  END FUNCTION
+          
+#00100  FUNCTION Message_LoadingParkFromDisc 
+#00102    LaunchMemcardMessagesMenu_Style1 STRUCT{
+            header = "Loading..." 
+            Lines = ARRAY(
+              
+              STRUCT{
+                id = ken_line1 
+                text = "" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line2 
+                text = "Loading park from disc ..." 
+                static dont_gray }
+              STRUCT{
+                id = ken_line3 
+                text = "" 
+                static dont_gray }
+              
+            )
+            }
+          
+#00110    wait 1 gameframe 
+#00111  END FUNCTION
+          
+#00112  FUNCTION Message_LoadParkFromDiscFailed 
+#00114    LaunchMemcardMessagesMenu_Style1 STRUCT{
+            header = "Error !" 
+            Lines = ARRAY(
+              
+              STRUCT{
+                id = ken_line1 
+                text = "" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line2 
+                text = "Load failed !" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line3 
+                text = "" 
+                static dont_gray }
+              
+            )
+            }
+          
+#00122    wait 1 gameframe 
+#00123  END FUNCTION
+          
+#00124  FUNCTION Message_SaveSuccessful 
+#00127    LaunchSimpleMenu STRUCT{
+            x = 120 
+            y = 120 
+            w = 400 
+            header = "Successful" 
+            Lines = ARRAY(
+              
+              STRUCT{
+                id = ken_line1 
+                text = "" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line2 
+                text = "Save successful !" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line3 
+                text = "" 
+                static dont_gray }
+              
+            )
+            }
+          
+#00138    wait 1 gameframe 
+#00139  END FUNCTION
+          
+#00140  FUNCTION Message_SaveFailed 
+#00142    IF SaveFailedDueToInsufficientSpace 
+#00143      LaunchMemcardMessagesMenu_Style1 STRUCT{
+              header = "Error !" 
+              Lines = ARRAY(
+                
+                STRUCT{
+                  id = ken_line1 
+                  text = "" 
+                  static dont_gray }
+                STRUCT{
+                  id = ken_line2 
+                  text = "Save failed !" 
+                  static dont_gray }
+                STRUCT{
+                  id = ken_line2b 
+                  text = "Insufficient free space." 
+                  static dont_gray }
+                STRUCT{
+                  id = ken_line2c 
+                  text = "" 
+                  static dont_gray }
+                
+              )
+              }
+            
+#00152    ELSE 
+#00153      LaunchMemcardMessagesMenu_Style1 STRUCT{
+              header = "Error !" 
+              Lines = ARRAY(
+                
+                STRUCT{
+                  id = ken_line1 
+                  text = "" 
+                  static dont_gray }
+                STRUCT{
+                  id = ken_line2 
+                  text = "Save failed !" 
+                  static dont_gray }
+                STRUCT{
+                  id = ken_line7 
+                  text = "" 
+                  static dont_gray }
+                
+              )
+              }
+            
+#00161    END IF 
+#00162    wait 1 gameframe 
+#00163  END FUNCTION
+          
+#00164  FUNCTION Message_LoadSuccessful 
+#00166    LaunchSimpleMenu STRUCT{
+            x = 120 
+            y = 120 
+            w = 400 
+            header = "Successful !" 
+            Lines = ARRAY(
+              
+              STRUCT{
+                id = ken_line1 
+                text = "" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line2 
+                text = "Load successful !" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line3 
+                text = "" 
+                static dont_gray }
+              
+            )
+            }
+          
+#00176    wait 1 gameframe 
+#00177  END FUNCTION
+          
+#00178  FUNCTION Message_LoadFailed 
+#00180    LaunchMemcardMessagesMenu_Style1 STRUCT{
+            header = "Error !" 
+            Lines = ARRAY(
+              
+              STRUCT{
+                id = ken_line1 
+                text = "" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line2 
+                text = "Load failed !" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line7 
+                text = "" 
+                static dont_gray }
+              
+            )
+            }
+          
+#00188    wait 1 gameframe 
+#00189  END FUNCTION
+          
+#00190  FUNCTION Message_DeletingFile 
+#00192    LaunchMemcardMessagesMenu_Style1 STRUCT{
+            header = "Deleting..." 
+            Lines = ARRAY(
+              
+              STRUCT{
+                id = ken_line1 
+                text = "" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line2 
+                text = "Deleting data" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line3 
+                text = "Do not remove memory card" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line4 
+                text = "(8mb) (for playstation2)" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line5 
+                text = "in memory card slot 1," 
+                static dont_gray }
+              STRUCT{
+                id = ken_line6 
+                text = "reset, or switch off console" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line7 
+                text = "" 
+                static dont_gray }
+              
+            )
+            }
+          
+#00204    wait 1 gameframe 
+#00205  END FUNCTION
+          
+#00206  FUNCTION Message_DeleteSuccessful 
+#00208    LaunchSimpleMenu STRUCT{
+            x = 120 
+            y = 120 
+            w = 400 
+            header = "Successful !" 
+            Lines = ARRAY(
+              
+              STRUCT{
+                id = ken_line1 
+                text = "" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line2 
+                text = "Delete successful !" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line3 
+                text = "" 
+                static dont_gray }
+              
+            )
+            }
+          
+#00218    wait 1 gameframe 
+#00219  END FUNCTION
+          
+#00220  FUNCTION Message_DeleteFailed 
+#00222    LaunchMemcardMessagesMenu_Style1 STRUCT{
+            x = 120 
+            y = 120 
+            w = 400 
+            header = "Error !" 
+            Lines = ARRAY(
+              
+              STRUCT{
+                id = ken_line1 
+                text = "" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line2 
+                text = "Delete failed !" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line3 
+                text = "" 
+                static dont_gray }
+              
+            )
+            }
+          
+#00232    wait 1 gameframe 
+#00233  END FUNCTION
+          
+#00234  FUNCTION Message_CheckingCard 
+#00236    LaunchMemcardMessagesMenu_Style1 STRUCT{
+            x = 100 
+            y = 120 
+            w = 440 
+            header = "Checking..." 
+            Lines = ARRAY(
+              
+              STRUCT{
+                id = ken_line1 
+                text = "" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line2 
+                text = "Checking memory card" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line3 
+                text = "(8mb) (for playstation2)" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line4 
+                text = "in memory card slot 1" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line5 
+                text = "" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line6 
+                text = "do not remove memory card" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line7 
+                text = "(8mb) (for playstation2)" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line8 
+                text = "reset, or switch" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line9 
+                text = "off the console" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line10 
+                text = "" 
+                static dont_gray }
+              
+            )
+            }
+          
+#00253    wait 1 gameframe 
+#00254  END FUNCTION
+          
+#00255  FUNCTION Message_NoCardInSlot 
+#00257    LaunchMemcardMessagesMenu_Style1 STRUCT{
+            header = "Error !" 
+            Lines = ARRAY(
+              
+              STRUCT{
+                id = ken_line1 
+                text = "" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line2 
+                text = "no memory card" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line3 
+                text = "(8mb) (for playstation2)" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line4 
+                text = "in memory card slot 1" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line5 
+                text = "" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line6 
+                text = "please insert a" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line7 
+                text = "valid memory card" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line8 
+                text = "(8mb) (for playstation2)" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line9 
+                text = "" 
+                static dont_gray }
+              
+            )
+            }
+          
+#00271    wait 1 gameframe 
+#00272  END FUNCTION
+          
+#00273  FUNCTION Message_NoSaveData 
+#00275    LaunchMemcardMessagesMenu_Style1 STRUCT{
+            header = "Load Failed !" 
+            Lines = ARRAY(
+              
+              STRUCT{
+                id = ken_line1 
+                text = "" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line2 
+                text = "No THPS3 save data" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line6 
+                text = "" 
+                static dont_gray }
+              
+            )
+            }
+          
+#00287    wait 1 gameframe 
+#00288  END FUNCTION
+          
+#00289  FUNCTION Message_NoCASFiles 
+#00291    LaunchSimpleMenu STRUCT{
+            x = 120 
+            y = 120 
+            w = 400 
+            header = "Info" 
+            Lines = ARRAY(
+              
+              STRUCT{
+                id = ken_line1 
+                text = "" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line2 
+                text = "No Create a Skater" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line3 
+                text = "files found." 
+                static dont_gray }
+              STRUCT{
+                id = ken_line4 
+                text = "" 
+                static dont_gray }
+              
+            )
+            }
+          
+#00302    wait 1 gameframe 
+#00303  END FUNCTION
+          
+#00304  FUNCTION Message_LoadingData 
+#00306    LaunchMemcardMessagesMenu_Style1 STRUCT{
+            header = "Loading..." 
+            Lines = ARRAY(
+              
+              STRUCT{
+                id = ken_line1 
+                text = "" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line2 
+                text = "Loading data." 
+                static dont_gray }
+              STRUCT{
+                id = ken_line3 
+                text = "Please wait." 
+                static dont_gray }
+              STRUCT{
+                id = ken_line4 
+                text = "" 
+                static dont_gray }
+              
+            )
+            }
+          
+#00315    wait 1 gameframe 
+#00316  END FUNCTION
+          
+#00317  FUNCTION Message_SavingData 
+#00319    LaunchMemcardMessagesMenu_Style1 STRUCT{
+            header = "Saving..." 
+            Lines = ARRAY(
+              
+              STRUCT{
+                id = ken_line1 
+                text = "" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line2 
+                text = "Saving data." 
+                static dont_gray }
+              STRUCT{
+                id = ken_line3 
+                text = "Please wait." 
+                static dont_gray }
+              STRUCT{
+                id = ken_line4 
+                text = "" 
+                static dont_gray }
+              
+            )
+            }
+          
+#00328    wait 1 gameframe 
+#00329  END FUNCTION
+          
+#00330  FUNCTION Message_UnformattedCard 
+#00332    Change MemCardYesNoMenuVisible = 1 
+          
+#00333    LaunchMemcardMessagesMenu_Style1 STRUCT{
+            header = "Error !" 
+            Lines = ARRAY(
+              
+              STRUCT{
+                id = ken_line1 
+                text = "memory card (8mb)" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line2 
+                text = " (for playstation2)" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line3 
+                text = "in memory card slot 1" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line4 
+                text = "is unformatted" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line5 
+                text = "" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line6 
+                text = "Format memory card" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line7 
+                text = "(8mb) (for playstation2)?" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line8 
+                text = "Yes" 
+                target = "_FormatMemoryCard" 
+                Params = NULL 
+                }
+              STRUCT{
+                id = ken_line9 
+                text = "No" 
+                target = "DontFormatMemoryCard" 
+                Params = NULL 
+                }
+              
+            )
+            }
+          
+#00348    launchevent type = deselect 
+          target = ken_line8 
+          
+#00349    launchevent type = select 
+          target = ken_line9 
+          
+#00350    wait 1 gameframe 
+#00352  END FUNCTION
+          
+#00353  FUNCTION Message_FormattingCard 
+#00355    LaunchSimpleMenu STRUCT{
+            x = 100 
+            y = 120 
+            w = 440 
+            header = "Formatting..." 
+            Lines = ARRAY(
+              
+              STRUCT{
+                id = ken_line1 
+                text = "" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line2 
+                text = "Formatting memory card" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line3 
+                text = "(8mb) (for playstation2)" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line4 
+                text = "in memory card slot 1" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line5 
+                text = "" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line6 
+                text = "Do not remove memory card" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line7 
+                text = "(8mb) (for playstation2)," 
+                static dont_gray }
+              STRUCT{
+                id = ken_line8 
+                text = "reset, or switch off console" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line9 
+                text = "" 
+                static dont_gray }
+              
+            )
+            }
+          
+#00371    wait 1 gameframe 
+#00372  END FUNCTION
+          
+#00373  FUNCTION Message_FormatSuccessful 
+#00375    LaunchSimpleMenu STRUCT{
+            x = 120 
+            y = 120 
+            w = 400 
+            header = "Successful" 
+            Lines = ARRAY(
+              
+              STRUCT{
+                id = ken_line1 
+                text = "" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line2 
+                text = "Format successful" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line3 
+                text = "" 
+                static dont_gray }
+              
+            )
+            }
+          
+#00385    wait 1 gameframe 
+#00386  END FUNCTION
+          
+#00387  FUNCTION Message_FormatFailed 
+#00389    LaunchSimpleMenu STRUCT{
+            x = 120 
+            y = 120 
+            w = 400 
+            header = "Format Failed" 
+            Lines = ARRAY(
+              
+              STRUCT{
+                id = ken_line1 
+                text = "" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line2 
+                text = "Format failed" 
+                static dont_gray }
+              STRUCT{
+                id = ken_line3 
+                text = "" 
+                static dont_gray }
+              
+            )
+            }
+          
+#00399    wait 1 gameframe 
+#00400  END FUNCTION
+          
+#00401  

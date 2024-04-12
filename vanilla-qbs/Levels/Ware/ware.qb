@@ -1,0 +1,3048 @@
+NodeArray = 
+#00001  
+        ARRAY(
+          STRUCT{
+            Position = VECTOR[-1614.2899; -1482.8588; 2538.9905] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Wall08_Reflection04 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-520.4239; -711.40454; 3341.495] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail01 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkWare_Rail01 
+            }
+          STRUCT{
+            Position = VECTOR[-636.14496; -711.40454; 3203.584] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail02 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkWare_Rail01 
+            TriggerScript = WareTRG_Ware_Rail02Script 
+            Links = ARRAY(
+              
+              1 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-1260.2244; -618.155; 1747.4453] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail04 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = JKU_Ware_HP_1_02 
+            }
+          STRUCT{
+            Position = VECTOR[-540.10443; -618.155; 1747.4459] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail05 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = JKU_Ware_HP_1_02 
+            TriggerScript = WareTRG_Ware_Rail05Script 
+            Links = ARRAY(
+              
+              3 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-540.1034; -470.90494; 963.7344] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail06 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = JKU_Ware_HP_1_01 
+            TriggerScript = WareTRG_Ware_Rail06Script 
+            Links = ARRAY(
+              
+              6 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-1260.2233; -470.90488; 963.7344] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail07 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = JKU_Ware_HP_1_01 
+            }
+          STRUCT{
+            Position = VECTOR[540.0837; -120.000175; 36.003628] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail08 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkWare_Light_QP05 
+            Links = ARRAY(
+              
+              8 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-540.0947; -120.00024; 36.004253] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail09 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkWare_Light_QP05 
+            }
+          STRUCT{
+            Position = VECTOR[180.0162; -618.1553; 1747.4456] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail10 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = JKU_Ware_HP_2_05 
+            TriggerScript = WareTRG_Ware_Rail10Script 
+            Links = ARRAY(
+              
+              10 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-180.04219; -618.1554; 1747.4457] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail11 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = JKU_Ware_HP_2_05 
+            }
+          STRUCT{
+            Position = VECTOR[540.07855; -618.1553; 1747.4462] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail12 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = JKU_Ware_HP_2_04 
+            TriggerScript = WareTRG_Ware_Rail12Script 
+            }
+          STRUCT{
+            Position = VECTOR[1260.1975; -618.15515; 1747.4464] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail13 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = JKU_Ware_HP_2_04 
+            TriggerScript = WareTRG_Ware_Rail13Script 
+            Links = ARRAY(
+              
+              11 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[180.01373; -669.3893; 2393.134] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail14 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = JKU_Ware_HP_1_03 
+            Links = ARRAY(
+              
+              14 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[1260.1919; -669.3891; 2393.134] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail15 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = JKU_Ware_HP_1_03 
+            }
+          STRUCT{
+            Position = VECTOR[1260.1919; -669.3891; 3035.9631] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail16 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = JKU_Ware_HP_1_04 
+            TriggerScript = WareTRG_Ware_Rail16Script 
+            }
+          STRUCT{
+            Position = VECTOR[180.01367; -669.3893; 3035.963] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail17 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = JKU_Ware_HP_1_04 
+            TriggerScript = WareTRG_Ware_Rail17Script 
+            Links = ARRAY(
+              
+              15 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-1260.2283; -705.39514; 2384.4922] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail19 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkWare_Main_12 
+            TriggerScript = WareTRG_Ware_Rail19Script 
+            }
+          STRUCT{
+            Position = VECTOR[-1536.2749; -705.39514; 2714.5513] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail20 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkWare_Main_12 
+            TriggerScript = WareTRG_Ware_Rail20Script 
+            Links = ARRAY(
+              
+              17 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-1536.2749; -705.3951; 3128.6194] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail21 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkWare_Main_12 
+            TriggerScript = WareTRG_Ware_Rail21Script 
+            Links = ARRAY(
+              
+              18 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-1620.291; -705.395; 3308.6494] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail22 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkWare_Main_12 
+            TriggerScript = WareTRG_Ware_Rail22Script 
+            Links = ARRAY(
+              
+              19 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-1596.292; -618.155; 4075.3687] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail23 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = JKU_Ware_HP_1_07 
+            Links = ARRAY(
+              
+              247 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-829.68414; -618.155; 4075.3713] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail24 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = JKU_Ware_HP_1_07 
+            Links = ARRAY(
+              
+              67 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-728.7435; -618.155; 4061.541] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail25 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = JKU_Ware_HP_1_07 
+            Links = ARRAY(
+              
+              22 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-616.88934; -618.155; 3949.6868] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail26 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = JKU_Ware_HP_1_07 
+            Links = ARRAY(
+              
+              23 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-606.1109; -618.155; 3848.7441] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail27 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = JKU_Ware_HP_1_07 
+            Links = ARRAY(
+              
+              24 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-586.7776; -618.155; 3802.0679] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail28 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = JKU_Ware_HP_1_07 
+            Links = ARRAY(
+              
+              25 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-540.0995; -618.155; 3782.7334] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail29 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = JKU_Ware_HP_1_07 
+            Links = ARRAY(
+              
+              26 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-493.4237; -618.155; 3802.0674] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail30 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = JKU_Ware_HP_1_08 
+            Links = ARRAY(
+              
+              27 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-474.09036; -618.155; 3848.7441] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail31 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = JKU_Ware_HP_1_08 
+            Links = ARRAY(
+              
+              28 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-474.09058; -618.155; 4205.743] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail32 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = JKU_Ware_HP_1_08 
+            Links = ARRAY(
+              
+              29 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-463.31152; -618.155; 4309.74] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail33 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = JKU_Ware_HP_1_08 
+            Links = ARRAY(
+              
+              30 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-351.45728; -618.155; 4421.5947] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail34 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = JKU_Ware_HP_1_08 
+            Links = ARRAY(
+              
+              31 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-250.51483; -618.1549; 4432.372] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail35 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = JKU_Ware_HP_1_08 
+            Links = ARRAY(
+              
+              32 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[967.56; -618.155; 4432.371] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail36 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = JKU_Ware_HP_1_05 
+            Links = ARRAY(
+              
+              33 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[1071.5574; -618.155; 4421.591] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail37 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = JKU_Ware_HP_1_06 
+            Links = ARRAY(
+              
+              34 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[1183.4114; -618.155; 4309.7393] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail38 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = JKU_Ware_HP_1_06 
+            Links = ARRAY(
+              
+              35 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[1194.1895; -618.155; 4208.797] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail39 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = JKU_Ware_HP_1_06 
+            TriggerScript = WareTRG_Ware_Rail39Script 
+            Links = ARRAY(
+              
+              36 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[1194.19; -618.155; 3692.7075] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail40 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = JKU_Ware_HP_1_06 
+            TriggerScript = WareTRG_Ware_Rail40Script 
+            Links = ARRAY(
+              
+              37 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[1200.1897; -618.155; 3121.1594] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail41 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkWare_Rail02 
+            }
+          STRUCT{
+            Position = VECTOR[1200.1895; -618.155; 3589.2373] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail42 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkWare_Rail02 
+            TriggerScript = WareTRG_Ware_Rail42Script 
+            Links = ARRAY(
+              
+              39 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[126.00738; -271.38187; 4434.303] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail43 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkWare_Rail03 
+            TriggerScript = WareTRG_Ware_Rail43Script 
+            Links = ARRAY(
+              
+              65 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[594.0853; -271.38187; 4434.304] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail44 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkWare_Rail03 
+            }
+          STRUCT{
+            Position = VECTOR[1110.623; -705.39514; 3089.9976] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail45 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkWare_Main_12_01 
+            TriggerScript = WareTRG_Ware_Rail45Script 
+            }
+          STRUCT{
+            Position = VECTOR[1110.6228; -705.39514; 3179.9858] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail46 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkWare_Main_12_01 
+            TriggerScript = WareTRG_Ware_Rail46Script 
+            Links = ARRAY(
+              
+              43 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[961.05347; -705.39514; 3334.3313] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail47 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkWare_Main_12_01 
+            TriggerScript = WareTRG_Ware_Rail47Script 
+            Links = ARRAY(
+              
+              44 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[961.0536; -705.39514; 3488.6787] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail48 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkWare_Main_12_01 
+            TriggerScript = WareTRG_Ware_Rail48Script 
+            Links = ARRAY(
+              
+              45 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[1074.0806; -705.39514; 3622.7493] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail49 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkWare_Main_12_01 
+            TriggerScript = WareTRG_Ware_Rail49Script 
+            Links = ARRAY(
+              
+              46 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[1074.0771; -705.39514; 3692.707] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail50 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkWare_Main_12_01 
+            TriggerScript = WareTRG_Ware_Rail50Script 
+            Links = ARRAY(
+              
+              47 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[720.1035; -69.38909; 2393.1333] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRGP_Ware_Gap_HP01 
+            Class = EnvironmentObject 
+            CreatedAtStart TriggerScript = WareTRGP_Ware_Gap_HP01Script 
+            Links = ARRAY(
+              
+              50 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[720.1028; -69.38909; 3034.7983] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRGP_Ware_Gap_HP02 
+            Class = EnvironmentObject 
+            CreatedAtStart TriggerScript = WareTRGP_Ware_Gap_HP02Script 
+            Links = ARRAY(
+              
+              49 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-636.1448; -712.3933; 2303.4338] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail51 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkWare_Rail01 
+            TriggerScript = WareTRG_Ware_Rail51Script 
+            Links = ARRAY(
+              
+              60 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-180.04608; -765.4053; 2300.477] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail52 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = JKU_Ware_HP_1_03 
+            Links = ARRAY(
+              
+              13 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-180.04636; -765.4053; 3128.6182] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail53 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = JKU_Ware_HP_1_04 
+            TriggerScript = WareTRG_Ware_Rail53Script 
+            Links = ARRAY(
+              
+              16 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-900.1632; -18.155205; 1747.4464] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRGP_Ware_Gap_FacePlant02 
+            Class = EnvironmentObject 
+            CreatedAtStart TriggerScript = WareTRGP_Ware_Gap_FacePlant02Script 
+            }
+          STRUCT{
+            Position = VECTOR[-300.0578; -267.25043; 357.66553] 
+            Angles = VECTOR[0.0; -3.141593; 0.0] 
+            Name = TRG_Ware_Restart01 
+            Class = Restart 
+            Type = UserDefined 
+            CreatedAtStart RestartName = "UD: P1 Restart" 
+            restart_types = ARRAY(
+              
+              Player1 MultiPlayer Horse 
+            )
+            TriggerScript = WareTRG_Ware_Restart01Script 
+            }
+          STRUCT{
+            Position = VECTOR[-1260.2291; -714.1178; 3088.7] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail54 
+            Class = RailNode 
+            Type = Wood 
+            CreatedAtStart TerrainType = TERRAIN_WOOD 
+            TrickObject Cluster = SkWare_Kicker_Wood01 
+            }
+          STRUCT{
+            Position = VECTOR[-1080.8861; -714.11774; 3104.3904] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail55 
+            Class = RailNode 
+            Type = Wood 
+            CreatedAtStart TerrainType = TERRAIN_WOOD 
+            TrickObject Cluster = SkWare_Kicker_Wood01 
+            Links = ARRAY(
+              
+              56 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-1104.0079; -714.11774; 3368.6802] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail56 
+            Class = RailNode 
+            Type = Wood 
+            CreatedAtStart TerrainType = TERRAIN_WOOD 
+            TrickObject Cluster = SkWare_Kicker_Wood01 
+            Links = ARRAY(
+              
+              59 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-1283.351; -714.1178; 3352.9897] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail57 
+            Class = RailNode 
+            Type = Wood 
+            CreatedAtStart TerrainType = TERRAIN_WOOD 
+            TrickObject Cluster = SkWare_Kicker_Wood01 
+            }
+          STRUCT{
+            Position = VECTOR[-636.1448; -712.3933; 2483.4636] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail58 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkWare_Rail01 
+            TriggerScript = WareTRG_Ware_Rail58Script 
+            Links = ARRAY(
+              
+              2 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[356.64362; -678.97723; 3676.212] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail59 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkWare_Taxi01 
+            }
+          STRUCT{
+            Position = VECTOR[305.87952; -682.3558; 3676.212] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail60 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkWare_Taxi01 
+            Links = ARRAY(
+              
+              61 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[990.1715; -399.60474; 2618.5425] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRGP_Ware_Gap_Secret01 
+            Class = EnvironmentObject 
+            CreatedAtStart TriggerScript = WareTRGP_Ware_Gap_Secret01Script 
+            Links = ARRAY(
+              
+              64 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[990.1698; -399.6048; 2810.5757] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRGP_Ware_Gap_Secret02 
+            Class = EnvironmentObject 
+            CreatedAtStart TriggerScript = WareTRGP_Ware_Gap_Secret02Script 
+            Links = ARRAY(
+              
+              63 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[228.0206; -271.38187; 4434.303] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail61 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkWare_Rail03 
+            TriggerScript = WareTRG_Ware_Rail61Script 
+            Links = ARRAY(
+              
+              66 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[492.0725; -271.38187; 4434.303] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail62 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = SkWare_Rail03 
+            TriggerScript = WareTRG_Ware_Rail62Script 
+            Links = ARRAY(
+              
+              42 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-1440.2607; -618.155; 4075.3713] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail63 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = JKU_Ware_HP_1_07 
+            TriggerScript = WareTRG_Ware_Rail63Script 
+            Links = ARRAY(
+              
+              21 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[270.03925; -132.00035; 36.004326] 
+            Angles = VECTOR[1.570796; 3.141593; -0.0] 
+            Name = TRG_Ware_Restart_HPJump 
+            Class = Restart 
+            Type = UserDefined 
+            CreatedAtStart RestartName = "UD: HP Jump" 
+            restart_types = ARRAY(
+              
+              MultiPlayer Horse 
+            )
+            TriggerScript = WareTRG_Ware_Restart_HPJumpScript 
+            }
+          STRUCT{
+            Position = VECTOR[-636.1448; -618.15497; 1105.3368] 
+            Angles = VECTOR[0.0; -3.141593; 0.0] 
+            Name = TRG_Ware_Restart_BigRail 
+            Class = Restart 
+            Type = UserDefined 
+            CreatedAtStart RestartName = "UD: Big Rail" 
+            restart_types = ARRAY(
+              
+              MultiPlayer Horse 
+            )
+            TriggerScript = WareTRG_Ware_Restart_BigRailScript 
+            }
+          STRUCT{
+            Position = VECTOR[1200.1895; -630.1553; 1747.4465] 
+            Angles = VECTOR[1.570796; 3.141593; -0.0] 
+            Name = TRG_Ware_Restart_HolyShi 
+            Class = Restart 
+            Type = UserDefined 
+            CreatedAtStart RestartName = "UD: Holy shi..." 
+            restart_types = ARRAY(
+              
+              MultiPlayer Horse 
+            )
+            TriggerScript = WareTRG_Ware_Restart_HolyShiScript 
+            }
+          STRUCT{
+            Position = VECTOR[331.262; -630.1553; 4424.4365] 
+            Angles = VECTOR[1.570796; 0.0; -0.0] 
+            Name = TRG_Ware_Restart_TaxiJump 
+            Class = Restart 
+            Type = UserDefined 
+            CreatedAtStart RestartName = "UD: Taxi Jump" 
+            restart_types = ARRAY(
+              
+              MultiPlayer Horse 
+            )
+            TriggerScript = WareTRG_Ware_Restart_TaxiJumpScript 
+            }
+          STRUCT{
+            Position = VECTOR[-1208.2389; -630.155; 4075.3745] 
+            Angles = VECTOR[1.570796; 0.0; -0.0] 
+            Name = TRG_Ware_Restart_Kickers 
+            Class = Restart 
+            Type = UserDefined 
+            CreatedAtStart RestartName = "UD: Kickers" 
+            restart_types = ARRAY(
+              
+              MultiPlayer Horse 
+            )
+            TriggerScript = WareTRG_Ware_Restart_KickersScript 
+            }
+          STRUCT{
+            Position = VECTOR[-1170.5576; -114.11764; 3096.545] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRGP_Ware_Gap_Kicker01 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject Cluster = SkWare_Kicker_Wood01 
+            TriggerScript = WareTRGP_Ware_Gap_Kicker01Script 
+            }
+          STRUCT{
+            Position = VECTOR[-1193.6794; -114.11758; 3360.8347] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRGP_Ware_Gap_Kicker02 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject Cluster = SkWare_Kicker_Wood01 
+            TriggerScript = WareTRGP_Ware_Gap_Kicker02Script 
+            }
+          STRUCT{
+            Position = VECTOR[-484.75696; -18.155022; 4003.905] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRGP_Ware_Gap_Transfer01 
+            Class = EnvironmentObject 
+            CreatedAtStart TriggerScript = WareTRGP_Ware_Gap_Transfer01Script 
+            }
+          STRUCT{
+            Position = VECTOR[-595.44434; -18.155022; 3971.726] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRGP_Ware_Gap_Transfer02 
+            Class = EnvironmentObject 
+            CreatedAtStart TriggerScript = WareTRGP_Ware_Gap_Transfer02Script 
+            }
+          STRUCT{
+            Position = VECTOR[996.1706; -452.90784; 2714.5479] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Crown04 
+            Class = GenericNode 
+            Type = Crown 
+            }
+          STRUCT{
+            Position = VECTOR[360.04645; -247.38187; 4434.303] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Crown05 
+            Class = GenericNode 
+            Type = Crown 
+            }
+          STRUCT{
+            Position = VECTOR[-1509.8787; -669.3951; 2472.3135] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Crown06 
+            Class = GenericNode 
+            Type = Crown 
+            }
+          STRUCT{
+            Position = VECTOR[-540.10065; -582.1551; 3995.0645] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Crown07 
+            Class = GenericNode 
+            Type = Crown 
+            }
+          STRUCT{
+            Position = VECTOR[1081.0537; -669.39514; 3411.505] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Crown08 
+            Class = GenericNode 
+            Type = Crown 
+            }
+          STRUCT{
+            Position = VECTOR[-0.012939; -378.15533; 1747.4457] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Crown09 
+            Class = GenericNode 
+            Type = Crown 
+            }
+          STRUCT{
+            Position = VECTOR[-0.013853; -500.32962; 1649.4032] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Grafitti01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[360.04633; -273.74283; 4468.378] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Rail03 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject }
+          STRUCT{
+            Position = VECTOR[170.21179; 264.31796; 3848.7075] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = Lightbeam04 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-540.08276; -259.2052; 1313.8254] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Fence02 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[990.1487; -396.60422; 2618.5315] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_SecretRoom_WindowFrame01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[990.1697; -396.60422; 2810.5647] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_SecretRoom_WindowFrame03 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-1250.7645; -430.69284; 1020.7796] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Sign08 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-206.24033; -104.59081; 1929.6301] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = Object_Hook01 
+            Class = GameObject 
+            IgnoredLights = ARRAY(
+              
+              -1 0 1 2 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[763.8236; -122.109245; 2806.7307] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = Object_Chain01 
+            Class = GameObject 
+            IgnoredLights = ARRAY(
+              
+              -1 0 1 2 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[763.8236; -122.109245; 2624.0647] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = Object_Chain02 
+            Class = GameObject 
+            IgnoredLights = ARRAY(
+              
+              -1 0 1 2 
+            )
+            }
+          STRUCT{
+            Position = VECTOR[-1241.6719; -287.39438; 3789.9575] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = Lightbeam06 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-1195.4404; -740.90924; 3381.0442] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Kicker_Block02 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TrickObject Cluster = SkWare_Kicker_Wood01 
+            }
+          STRUCT{
+            Position = VECTOR[-1168.7969; -740.90924; 3076.3352] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Kicker_Block01 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TrickObject Cluster = SkWare_Kicker_Wood01 
+            }
+          STRUCT{
+            Position = VECTOR[-1614.7878; -381.34134; 3578.6926] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Pipe02 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-181.1159; 19.361284; 2697.809] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Wall_4 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[1122.1824; -402.6052; 2618.5422] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_SecretRoom_Glass05 
+            Class = EnvironmentObject 
+            CreatedAtStart NetEnabled Permanent TriggerScript = WareSkWare_SecretRoom_Glass05Script 
+            }
+          STRUCT{
+            Position = VECTOR[858.11597; -402.6052; 2618.5198] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_SecretRoom_Glass01 
+            Class = EnvironmentObject 
+            CreatedAtStart NetEnabled Permanent TriggerScript = WareSkWare_SecretRoom_Glass01Script 
+            }
+          STRUCT{
+            Position = VECTOR[1122.1804; -402.6052; 2810.5764] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_SecretRoom_Glass03 
+            Class = EnvironmentObject 
+            CreatedAtStart NetEnabled Permanent TriggerScript = WareSkWare_SecretRoom_Glass03Script 
+            }
+          STRUCT{
+            Position = VECTOR[858.114; -402.6052; 2810.553] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_SecretRoom_Glass04 
+            Class = EnvironmentObject 
+            CreatedAtStart NetEnabled Permanent TriggerScript = WareSkWare_SecretRoom_Glass04Script 
+            }
+          STRUCT{
+            Position = VECTOR[990.4885; -525.3015; 2727.6418] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Lamp01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-1614.7878; -1082.7253; 3578.6926] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Pipe03_Reflection 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[720.0925; -396.60422; 2714.5422] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_SecretRoom_WindowFrame02 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-0.011841; -175.69798; 896.72626] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Light_Sign_MenGirls01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-576.8366; -714.0014; 2821.2942] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Rail01 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject }
+          STRUCT{
+            Position = VECTOR[-0.008954; -106.0058; 808.70044] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Light_Wall01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-0.005982; 709.5252; 73.80063] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Light_QP05 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TrickObject Cluster = SkWare_Light_QP05 
+            }
+          STRUCT{
+            Position = VECTOR[270.03845; -268.70963; 1033.3274] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Light_Floor06 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[900.1376; -199.19502; 808.6996] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Light_Wall04 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[1200.1897; -620.516; 3355.1985] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Rail02 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject }
+          STRUCT{
+            Position = VECTOR[720.0925; -402.60507; 2714.5647] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_SecretRoom_Glass02 
+            Class = EnvironmentObject 
+            CreatedAtStart NetEnabled Permanent TriggerScript = WareSkWare_SecretRoom_Glass02Script 
+            }
+          STRUCT{
+            Position = VECTOR[847.30786; -763.89014; 3770.1624] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Wood02 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[869.9149; -763.89014; 3314.435] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Wood04 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-693.7292; -763.89014; 2657.0862] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Wood07 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-423.42004; -763.89014; 3093.8274] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Wood09 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-700.00085; -763.89014; 3107.4988] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Wood10 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-437.19788; -763.89014; 2887.302] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Wood12 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-521.1413; -763.89014; 2801.3323] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Wood13 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-717.5343; -763.89014; 2933.801] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Wood16 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-540.0976; -22.633102; 433.8608] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Light_Wall05 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[0.984253; 229.21854; -23.227661] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Light_Light01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[900.14136; 161.97415; 433.86118] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Roof01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[357.30902; -716.1902; 3676.2122] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Taxi01 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TrickObject Cluster = SkWare_Taxi01 
+            TriggerScript = WareSkWare_Taxi01Script 
+            }
+          STRUCT{
+            Position = VECTOR[-900.15686; 161.97415; 433.8607] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Roof02 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-0.011353; 101.96413; 1272.5652] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Roof03 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[900.13794; 101.96413; 1272.5652] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Roof04 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-1080.1963; -1286.977; 4141.3823] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Wall08_Reflection01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[895.2263; -537.55457; 1650.4039] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_sign01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-1163.2803; -740.90924; 3013.3372] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Kicker_Wood01 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TrickObject Cluster = SkWare_Kicker_Wood01 
+            }
+          STRUCT{
+            Position = VECTOR[466.89203; -745.59436; 3579.7864] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Taxi_Wood06 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TrickObject Cluster = SkWare_Taxi01 
+            }
+          STRUCT{
+            Position = VECTOR[998.2024; -763.89014; 3818.1467] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Wood01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[939.74194; -763.89014; 3637.1428] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Wood03 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[860.9553; -763.89014; 3470.4836] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Wood05 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[797.74634; -763.89014; 3608.5012] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Wood06 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-539.6486; -763.89014; 3232.886] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Wood08 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-539.88446; -763.89014; 2980.3264] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Wood11 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-521.1486; -763.89014; 2620.134] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Wood14 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-774.6598; -763.89014; 2782.0208] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Wood15 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[990.1145; -601.6836; 2726.174] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = Cylinder01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[900.1415; -199.19502; 808.69965] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Dark_Wall04 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[270.04382; 211.37021; 1033.3279] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Dark_Floor06 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-540.0976; -22.633087; 433.8608] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Dark_Wall05 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[0.990112; 229.21848; -23.227661] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Dark_Light01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-0.001099; 709.52496; 73.80063] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Dark_QP05 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TrickObject Cluster = SkWare_Light_QP05 
+            }
+          STRUCT{
+            Position = VECTOR[-0.036255; -175.69804; 896.715] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Dark_Sign_MenGirls01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-0.008976; -106.00586; 808.7005] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Dark_Wall01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-1241.6702; -287.39438; 2526.1099] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = Lightbeam10 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-869.604; -287.39438; 1390.8264] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = Lightbeam11 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-180.0268; -534.8529; 3089.9092] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Main_9 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-30.016937; -673.7921; 2302.8625] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Main_1 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[540.07404; -864.836; 2714.5486] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Main_7 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[540.07336; -736.4475; 3080.264] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Main_8 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject }
+          STRUCT{
+            Position = VECTOR[-900.16406; -619.26465; 1426.3912] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Main_11 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-1440.2598; -765.4051; 2804.5637] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Main_12 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject }
+          STRUCT{
+            Position = VECTOR[1092.1641; -864.836; 2714.5486] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Main_17 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-1260.2235; -78.06552; 1390.5957] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Main_18 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-900.16125; -184.47034; 897.7252] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Main_24 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-1440.2601; -768.40564; 3488.6785] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Main_30 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-180.02808; -630.157; 3373.7466] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Main_10 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[1260.1934; -767.11255; 2714.548] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Main_16 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[1260.2135; -399.60468; 2714.56] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Wall_6 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-180.04675; -364.50012; 3193.7158] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Main_25 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-180.02795; -511.75024; 3119.9158] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Main_26 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-180.04675; -78.06555; 3193.7158] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Main_27 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-180.04602; -258.09546; 3072.894] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Main_28 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-436.2943; -691.7802; 3923.4375] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = JKU_Ware_HP_1_08 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject }
+          STRUCT{
+            Position = VECTOR[-0.012817; -691.7803; 1815.2485] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = JKU_Ware_HP_2_05 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TriggerScript = WareJKU_Ware_HP_2_05Script 
+            }
+          STRUCT{
+            Position = VECTOR[-0.005982; 709.5252; 73.80063] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Light_QP05a 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TrickObject Cluster = SkWare_Light_QP05 
+            }
+          STRUCT{
+            Position = VECTOR[-0.001099; 709.52496; 73.80063] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Dark_QP05a 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TrickObject Cluster = SkWare_Light_QP05 
+            }
+          STRUCT{
+            Position = VECTOR[-1455.4441; -780.1174; 3482.6724] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = JKU_WaterSeeThrough 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-900.1634; -544.5299; 1031.5356] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = JKU_Ware_HP_1_01 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject }
+          STRUCT{
+            Position = VECTOR[-900.16406; -691.78015; 1815.2477] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = JKU_Ware_HP_1_02 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TriggerScript = WareJKU_Ware_HP_1_02Script 
+            }
+          STRUCT{
+            Position = VECTOR[720.10364; -767.1124; 2496.8315] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = JKU_Ware_HP_1_03 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject }
+          STRUCT{
+            Position = VECTOR[720.1035; -767.1124; 2932.2654] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = JKU_Ware_HP_1_04 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject }
+          STRUCT{
+            Position = VECTOR[358.52246; -691.7801; 4364.5713] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = JKU_Ware_HP_1_05 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TriggerScript = WareJKU_Ware_HP_1_05Script 
+            }
+          STRUCT{
+            Position = VECTOR[1126.3888; -691.78015; 3950.7515] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = JKU_Ware_HP_1_06 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject }
+          STRUCT{
+            Position = VECTOR[-1080.1958; -765.4053; 3861.253] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = JKU_Ware_HP_1_07 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject }
+          STRUCT{
+            Position = VECTOR[900.1377; -691.7802; 1815.2473] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = JKU_Ware_HP_2_04 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TriggerScript = WareJKU_Ware_HP_2_04Script 
+            }
+          STRUCT{
+            Position = VECTOR[540.0744; -734.1362; 2348.9338] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Main_8_01 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject }
+          STRUCT{
+            Position = VECTOR[1057.1478; -735.4002; 3391.353] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Main_12_01 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject }
+          STRUCT{
+            Position = VECTOR[-1200.9569; -740.9092; 3444.043] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Kicker_Wood02 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TrickObject Cluster = SkWare_Kicker_Wood01 
+            TriggerScript = WareSkWare_Kicker_Wood02Script 
+            }
+          STRUCT{
+            Position = VECTOR[357.30902; -716.1902; 3676.2122] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Taxi_Col01 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TrickObject Cluster = SkWare_Taxi01 
+            TriggerScript = WareSkWare_Taxi_Col01Script 
+            }
+          STRUCT{
+            Position = VECTOR[-1200.9569; -740.9092; 3444.043] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Kicker_Col01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-300.10022; -174.96222; 897.73615] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Light_WindowFrame01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[552.0386; -359.53857; 897.7367] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Light_WindowFrame02 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[1031.876; -174.96222; 897.7249] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Dark_WindowFrame01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[1125.9985; -86.28834; 1029.9996] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Dark_WindowFrame02 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[1031.8989; -180.9621; 897.7249] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Light_Glass02 
+            Class = EnvironmentObject 
+            CreatedAtStart NetEnabled Permanent TriggerScript = WareSkWare_Light_Glass02Script 
+            }
+          STRUCT{
+            Position = VECTOR[1631.896; -180.9621; 897.7264] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Light_Glass01 
+            Class = EnvironmentObject 
+            CreatedAtStart NetEnabled Permanent TriggerScript = WareSkWare_Light_Glass01Script 
+            }
+          STRUCT{
+            Position = VECTOR[180.0; 0.0; 200.0] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Dark_Glass02 
+            Class = EnvironmentObject 
+            CreatedAtStart NetEnabled Permanent TriggerScript = WareSkWare_Dark_Glass02Script 
+            }
+          STRUCT{
+            Position = VECTOR[780.0; 0.0; 180.0] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Dark_Glass01 
+            Class = EnvironmentObject 
+            CreatedAtStart NetEnabled Permanent TriggerScript = WareSkWare_Dark_Glass01Script 
+            }
+          STRUCT{
+            Position = VECTOR[-1258.6511; -544.5299; 1567.4163] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Sign10 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[538.0822; -439.2349; 1597.8289] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Sign19 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[1080.1683; -438.12534; 1649.4039] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Sign20 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[360.04535; -189.16728; 4496.383] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Sign03 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-1618.2902; -364.50012; 2523.1565] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Sign05 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-720.2008; -337.02252; 899.725] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Sign06 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[1258.2001; -544.5299; 4353.59] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Sign11 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[1257.1981; -364.5001; 3930.6077] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Sign16 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[539.08044; -82.64294; 717.6956] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Light_Sign23 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[0.056438; -62.512325; -29.035671] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Light_Sign21 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-298.44745; 87.338295; -29.004238] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Light_Sign22 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-300.06458; -49.672115; 896.72516] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Light_Sign24 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[360.04745; -352.52255; 4438.1675] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Sign25 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[1256.8138; -567.371; 2714.546] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Sign12 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-180.57246; -364.5002; 1572.1716] 
+            Angles = VECTOR[1.570796; 0.0; 0.0] 
+            Name = SkWare_Sign18 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-684.8922; -364.5001; 4138.384] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Sign04 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[1258.1973; -384.74182; 1789.2476] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Sign17 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-1257.2183; -588.1499; 2094.764] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Sign01a 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-5.665619; -350.5261; 1649.4033] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Sign29 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[539.08044; -82.64294; 717.6956] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Dark_Sign23 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[0.032024; -62.512386; -29.035671] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Dark_Sign21 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-300.06458; -49.672115; 896.72516] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Dark_Sign24 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-298.44745; 87.338295; -29.004238] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Dark_Sign24a 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[1055.5332; -517.625; 4496.383] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Sign14 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-1618.2902; -589.1721; 2586.6687] 
+            Angles = VECTOR[0.0; 1.744114; 0.0] 
+            Name = SkWare_Sign28 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-1436.2012; -483.85394; 4139.385] 
+            Angles = VECTOR[1.570796; 1.570796; 0.0] 
+            Name = SkWare_Sign02 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-326.19537; -539.4689; 4495.9883] 
+            Angles = VECTOR[0.0; -1.570796; 0.0] 
+            Name = SkWare_Sign15 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[1258.1921; -415.65552; 3303.7007] 
+            Angles = VECTOR[0.0; -1.570796; 0.0] 
+            Name = SkWare_Sign13 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-1258.6516; -514.012; 1285.337] 
+            Angles = VECTOR[0.0; -1.570796; 0.0] 
+            Name = SkWare_Sign09 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-0.01001; 588.3529; 929.52124] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Flicker_Col01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-1436.2012; -1005.0506; 4139.385] 
+            Angles = VECTOR[1.570796; 1.570796; -3.141593] 
+            Name = SkWare_Sign30_Water 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-542.35175; -504.48663; 1289.2203] 
+            Angles = VECTOR[0.0; -3.141593; 0.0] 
+            Name = SkWare_Sign30 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-1440.082; -572.8596; 2301.8088] 
+            Angles = VECTOR[0.0; 3.141593; 0.0] 
+            Name = SkWare_Sign31 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-1618.2902; -364.50012; 3816.2803] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Sign32 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-1455.4441; -773.06976; 3482.6724] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Main_14 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-517.38715; -763.45105; 2822.4692] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_RailShadow01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-180.0268; -534.8529; 3089.9092] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Main_EF_01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[-180.0268; -534.8529; 3089.9092] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Main_EF_02 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[900.13837; -619.2648; 1697.4248] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Main_11_01 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TrickObject Cluster = JKU_Ware_HP_2_04 
+            }
+          STRUCT{
+            Position = VECTOR[-0.013; -619.26495; 1697.4243] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Main_11_02 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TrickObject Cluster = JKU_Ware_HP_2_05 
+            }
+          STRUCT{
+            Position = VECTOR[-900.16296; -470.90488; 930.7295] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Main_11_03 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TrickObject Cluster = JKU_Ware_HP_1_01 
+            }
+          STRUCT{
+            Position = VECTOR[1113.8799; -618.155; 4095.5452] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Main_11_04 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TrickObject Cluster = JKU_Ware_HP_1_06 
+            }
+          STRUCT{
+            Position = VECTOR[358.5227; -618.155; 4465.377] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Main_11_05 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TrickObject Cluster = JKU_Ware_HP_1_05 
+            }
+          STRUCT{
+            Position = VECTOR[-395.30756; -618.155; 4140.5586] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Main_11_06 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TrickObject Cluster = JKU_Ware_HP_1_08 
+            }
+          STRUCT{
+            Position = VECTOR[-1080.1959; -618.155; 3962.06] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Main_11_07 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TrickObject Cluster = JKU_Ware_HP_1_07 
+            }
+          STRUCT{
+            Position = VECTOR[540.08105; -673.79236; 1727.4872] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Dark_Wall04_01 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TrickObject Cluster = JKU_Ware_HP_2_04 
+            }
+          STRUCT{
+            Position = VECTOR[540.07855; -673.7923; 1727.4872] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Light_Wall04_01 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TrickObject Cluster = JKU_Ware_HP_2_04 
+            }
+          STRUCT{
+            Position = VECTOR[-0.012881; -673.7925; 1727.4878] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Dark_Wall01_01 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TrickObject Cluster = JKU_Ware_HP_2_05 
+            }
+          STRUCT{
+            Position = VECTOR[-0.013102; -673.7924; 1727.4878] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Light_Wall01_01 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TrickObject Cluster = JKU_Ware_HP_2_05 
+            }
+          STRUCT{
+            Position = VECTOR[-540.10406; -673.79236; 1727.4877] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Dark_Wall05_01 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TrickObject Cluster = JKU_Ware_HP_1_02 
+            }
+          STRUCT{
+            Position = VECTOR[-540.10406; -673.7923; 1727.4877] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Light_Wall05_01 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TrickObject Cluster = JKU_Ware_HP_1_02 
+            }
+          STRUCT{
+            Position = VECTOR[1206.721; -662.5282; 3692.7068] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Main_10_01 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TrickObject Cluster = JKU_Ware_HP_1_06 
+            }
+          STRUCT{
+            Position = VECTOR[1110.6287; -706.1482; 3391.353] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Main_11_08 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TrickObject Cluster = SkWare_Main_12_01 
+            }
+          STRUCT{
+            Position = VECTOR[-1440.2598; -705.3951; 2804.5635] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = SkWare_Main_11_09 
+            Class = EnvironmentObject 
+            CreatedAtStart TrickObject TrickObject Cluster = SkWare_Main_12 
+            }
+          STRUCT{
+            Position = VECTOR[-1608.292; -618.1551; 4069.3687] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_Ware_Rail64 
+            Class = RailNode 
+            Type = Metal 
+            CreatedAtStart TerrainType = TERRAIN_METALSMOOTH 
+            TrickObject Cluster = JKU_Ware_HP_1_07 
+            }
+          STRUCT{
+            Position = VECTOR[1135.3032; -616.45715; 4371.133] 
+            Angles = VECTOR[0.0; -0.698132; 0.0] 
+            Name = TRG_CTF_Team1 
+            Class = GenericNode 
+            Type = CTF_1 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[1.162341; -119.58612; 26.201069] 
+            Angles = VECTOR[0.0; -3.141593; 0.0] 
+            Name = TRG_CTF_Team02 
+            Class = GenericNode 
+            Type = CTF_2 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[990.1332; -428.85397; 2731.7952] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_ZONE_CONTROL02 
+            Class = GenericNode 
+            Type = Zone 
+            CreatedAtStart Zone_Multiplier = 2 
+            }
+          STRUCT{
+            Position = VECTOR[-540.1701; -407.2292; 3851.6174] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_ZONE_CONTROL03 
+            Class = GenericNode 
+            Type = Zone 
+            CreatedAtStart Zone_Multiplier = 1 
+            }
+          STRUCT{
+            Position = VECTOR[360.0251; -252.00348; 4433.615] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_ZONE_CONTROL06 
+            Class = GenericNode 
+            Type = Zone 
+            CreatedAtStart Zone_Multiplier = 1 
+            }
+          STRUCT{
+            Position = VECTOR[1.168716; 119.86622; 41.79449] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_ZONE_CONTROL05 
+            Class = GenericNode 
+            Type = Zone 
+            CreatedAtStart Zone_Multiplier = 1 
+            }
+          STRUCT{
+            Position = VECTOR[-419.19177; -616.1942; 4385.6704] 
+            Angles = VECTOR[0.0; 0.785398; 0.0] 
+            Name = TRG_CTF1_Restart_1P 
+            Class = Restart 
+            Type = MultiPlayer 
+            CreatedAtStart RestartName = "Multi: Restart" 
+            restart_types = ARRAY(
+              
+              MultiPlayer CTF_1 
+            )
+            TriggerScript = WareTRG_CTF1_Restart_1PScript 
+            }
+          STRUCT{
+            Position = VECTOR[-1487.185; -767.7379; 3688.192] 
+            Angles = VECTOR[0.0; 0.785398; 0.0] 
+            Name = TRG_CTF1_Restart_2P 
+            Class = Restart 
+            Type = MultiPlayer 
+            CreatedAtStart RestartName = "Multi: Restart" 
+            restart_types = ARRAY(
+              
+              MultiPlayer CTF_1 
+            )
+            TriggerScript = WareTRG_CTF1_Restart_2PScript 
+            }
+          STRUCT{
+            Position = VECTOR[784.0904; -759.50885; 3591.86] 
+            Angles = VECTOR[-0.0; -0.0; -0.0] 
+            Name = TRG_CTF1_Restart_3P 
+            Class = Restart 
+            Type = MultiPlayer 
+            CreatedAtStart RestartName = "Multi: Restart" 
+            restart_types = ARRAY(
+              
+              MultiPlayer CTF_1 
+            )
+            TriggerScript = WareTRG_CTF1_Restart_3PScript 
+            }
+          STRUCT{
+            Position = VECTOR[-840.01843; -759.50885; 3584.8796] 
+            Angles = VECTOR[-0.0; -0.0; -0.0] 
+            Name = TRG_CTF1_Restart_4P 
+            Class = Restart 
+            Type = MultiPlayer 
+            CreatedAtStart RestartName = "Multi: Restart" 
+            restart_types = ARRAY(
+              
+              MultiPlayer CTF_1 
+            )
+            TriggerScript = WareTRG_CTF1_Restart_4PScript 
+            }
+          STRUCT{
+            Position = VECTOR[86.112114; -266.47458; 453.17545] 
+            Angles = VECTOR[-0.0; -3.141593; -0.0] 
+            Name = TRG_CTF2_Restart_1P 
+            Class = Restart 
+            Type = MultiPlayer 
+            CreatedAtStart RestartName = "Multi: Restart" 
+            restart_types = ARRAY(
+              
+              MultiPlayer CTF_2 
+            )
+            TriggerScript = WareTRG_CTF2_Restart_1PScript 
+            }
+          STRUCT{
+            Position = VECTOR[-84.82518; -266.47458; 453.48535] 
+            Angles = VECTOR[-0.0; -3.141593; -0.0] 
+            Name = TRG_CTF2_Restart_2P 
+            Class = Restart 
+            Type = MultiPlayer 
+            CreatedAtStart RestartName = "Multi: Restart" 
+            restart_types = ARRAY(
+              
+              MultiPlayer CTF_2 
+            )
+            TriggerScript = WareTRG_CTF2_Restart_2PScript 
+            }
+          STRUCT{
+            Position = VECTOR[-675.3532; -616.3442; 1347.5892] 
+            Angles = VECTOR[-0.0; -3.141593; -0.0] 
+            Name = TRG_CTF2_Restart_3P 
+            Class = Restart 
+            Type = MultiPlayer 
+            CreatedAtStart RestartName = "Multi: Restart" 
+            restart_types = ARRAY(
+              
+              MultiPlayer CTF_2 
+            )
+            TriggerScript = WareTRG_CTF2_Restart_3PScript 
+            }
+          STRUCT{
+            Position = VECTOR[-1114.2842; -616.3442; 1462.5236] 
+            Angles = VECTOR[-0.0; -3.141593; -0.0] 
+            Name = TRG_CTF2_Restart_4P 
+            Class = Restart 
+            Type = MultiPlayer 
+            CreatedAtStart RestartName = "Multi: Restart" 
+            restart_types = ARRAY(
+              
+              MultiPlayer CTF_2 
+            )
+            TriggerScript = WareTRG_CTF2_Restart_4PScript 
+            }
+          STRUCT{
+            Position = VECTOR[-899.66223; -404.67548; 1481.7517] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_ZONE_CONTROL04 
+            Class = GenericNode 
+            Type = Zone 
+            CreatedAtStart Zone_Multiplier = 2 
+            }
+          STRUCT{
+            Position = VECTOR[-0.02092; -363.98087; 1747.366] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = TRG_ZONE_KEY 
+            Class = GenericNode 
+            Type = ZONE_KEY 
+            CreatedAtStart Zone_Multiplier = 1 
+            }
+          
+        )
+        
+#02622  TriggerScripts = 
+#02624  
+        ARRAY(
+          LoadTerrain WareTRG_Ware_Rail02Script WareTRG_Ware_Rail05Script WareTRG_Ware_Rail06Script WareTRG_Ware_Rail10Script WareTRG_Ware_Rail12Script WareTRG_Ware_Rail13Script WareTRG_Ware_Rail16Script WareTRG_Ware_Rail17Script WareTRG_Ware_Rail19Script WareTRG_Ware_Rail20Script WareTRG_Ware_Rail21Script WareTRG_Ware_Rail22Script WareTRG_Ware_Rail39Script WareTRG_Ware_Rail40Script WareTRG_Ware_Rail42Script WareTRG_Ware_Rail43Script WareTRG_Ware_Rail45Script WareTRG_Ware_Rail46Script WareTRG_Ware_Rail47Script WareTRG_Ware_Rail48Script WareTRG_Ware_Rail49Script WareTRG_Ware_Rail50Script WareTRGP_Ware_Gap_HP01Script WareTRGP_Ware_Gap_HP02Script WareTRG_Ware_Rail51Script WareTRG_Ware_Rail53Script WareTRGP_Ware_Gap_FacePlant02Script WareTRG_Ware_Restart01Script WareTRG_Ware_Rail58Script WareTRGP_Ware_Gap_Secret01Script WareTRGP_Ware_Gap_Secret02Script WareTRG_Ware_Rail61Script WareTRG_Ware_Rail62Script WareTRG_Ware_Rail63Script WareTRG_Ware_Restart_HPJumpScript WareTRG_Ware_Restart_BigRailScript WareTRG_Ware_Restart_HolyShiScript WareTRG_Ware_Restart_TaxiJumpScript WareTRG_Ware_Restart_KickersScript WareTRGP_Ware_Gap_Kicker01Script WareTRGP_Ware_Gap_Kicker02Script WareTRGP_Ware_Gap_Transfer01Script WareTRGP_Ware_Gap_Transfer02Script WareSkWare_SecretRoom_Glass05Script WareSkWare_SecretRoom_Glass01Script WareSkWare_SecretRoom_Glass03Script WareSkWare_SecretRoom_Glass04Script WareSkWare_SecretRoom_Glass02Script WareSkWare_Taxi01Script WareJKU_Ware_HP_2_05Script WareJKU_Ware_HP_1_02Script WareJKU_Ware_HP_1_05Script WareJKU_Ware_HP_2_04Script WareSkWare_Kicker_Wood02Script WareSkWare_Taxi_Col01Script WareSkWare_Light_Glass02Script WareSkWare_Light_Glass01Script WareSkWare_Dark_Glass02Script WareSkWare_Dark_Glass01Script WareTRG_CTF1_Restart_1PScript WareTRG_CTF1_Restart_2PScript WareTRG_CTF1_Restart_3PScript WareTRG_CTF1_Restart_4PScript WareTRG_CTF2_Restart_1PScript WareTRG_CTF2_Restart_2PScript WareTRG_CTF2_Restart_3PScript WareTRG_CTF2_Restart_4PScript 
+        )
+        
+#02694  FUNCTION WareTRG_Ware_Rail02Script 
+#02696    StartGap GapID = JKU_Ware_Gap_BigRail02 
+          Flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02697    EndGap GapID = JKU_Ware_Gap_BigRail01 
+          Score = 200 
+          Text = "Big Rail" 
+          
+#02698  END FUNCTION
+          
+#02699  FUNCTION WareTRG_Ware_Rail05Script 
+#02702    EndGap GapID = JKU_Ware_Channel02 
+          Score = 250 
+          Text = "Channel Gap" 
+          
+#02703    EndGap GapID = JKU_Ware_Channel03 
+          
+#02704    StartGap GapID = JKU_Ware_Channel03 
+          Flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02705  END FUNCTION
+          
+#02706  FUNCTION WareTRG_Ware_Rail06Script 
+#02709    EndGap GapID = JKU_Ware_Gap_TransitionGrind01 
+          Score = 400 
+          Text = "Transition Grind" 
+          
+#02710  END FUNCTION
+          
+#02711  FUNCTION WareTRG_Ware_Rail10Script 
+#02714    EndGap GapID = JKU_Ware_Channel01 
+          Score = 250 
+          Text = "Channel Gap" 
+          
+#02715    EndGap GapID = JKU_Ware_Channel03 
+          Score = 250 
+          Text = "Channel Gap" 
+          
+#02716    EndGap GapID = JKU_Ware_Channel02 
+          
+#02717    StartGap GapID = JKU_Ware_Channel02 
+          Flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02718  END FUNCTION
+          
+#02719  FUNCTION WareTRG_Ware_Rail12Script 
+#02722    EndGap GapID = JKU_TransitionGrind 
+          Score = 400 
+          Text = "Transition Grind" 
+          
+#02723  END FUNCTION
+          
+#02724  FUNCTION WareTRG_Ware_Rail13Script 
+#02727    EndGap GapID = JKU_Ware_Channel02 
+          Score = 250 
+          Text = "Channel Gap" 
+          
+#02728    EndGap GapID = JKU_Ware_Channel01 
+          
+#02729    StartGap GapID = JKU_Ware_Channel01 
+          Flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02730  END FUNCTION
+          
+#02731  FUNCTION WareTRG_Ware_Rail16Script 
+#02734    EndGap GapID = JKU_Ware_TaxiRail01 
+          Score = 500 
+          Text = "Taxi 2 HP Rail" 
+          
+#02735    EndGap GapID = JKU_Ware_TaxiGap01 
+          
+#02736  END FUNCTION
+          
+#02737  FUNCTION WareTRG_Ware_Rail17Script 
+#02740    EndGap GapID = JKU_Ware_TaxiRail01 
+          Score = 500 
+          Text = "Taxi 2 HP Rail" 
+          
+#02741    EndGap GapID = JKU_Ware_TaxiGap01 
+          
+#02742  END FUNCTION
+          
+#02743  FUNCTION WareTRG_Ware_Rail19Script 
+#02746    EndGap GapID = JKU_Ware_KickerLedge01 
+          Score = 500 
+          Text = "Kicker 2 Ledge" 
+          
+#02747  END FUNCTION
+          
+#02748  FUNCTION WareTRG_Ware_Rail20Script 
+#02751    EndGap GapID = JKU_Ware_KickerLedge01 
+          Score = 500 
+          Text = "Kicker 2 Ledge" 
+          
+#02752  END FUNCTION
+          
+#02753  FUNCTION WareTRG_Ware_Rail21Script 
+#02756    EndGap GapID = JKU_Ware_KickerLedge01 
+          Score = 500 
+          Text = "Kicker 2 Ledge" 
+          
+#02757  END FUNCTION
+          
+#02758  FUNCTION WareTRG_Ware_Rail22Script 
+#02761    EndGap GapID = JKU_Ware_KickerLedge01 
+          Score = 500 
+          Text = "Kicker 2 Ledge" 
+          
+#02762  END FUNCTION
+          
+#02763  FUNCTION WareTRG_Ware_Rail39Script 
+#02766  END FUNCTION
+          
+#02768  FUNCTION WareTRG_Ware_Rail40Script 
+#02771    StartGap GapID = JKU_HolyShit 
+          Flags = ARRAY(
+            
+            REQUIRE_RAIL CANCEL_GROUND 
+          )
+          
+#02772  END FUNCTION
+          
+#02773  FUNCTION WareTRG_Ware_Rail42Script 
+#02776    EndGap GapID = JKU_Ware_Gap_MonsterGrind01 
+          Score = 500 
+          Text = "Monster Grind" 
+          
+#02777  END FUNCTION
+          
+#02778  FUNCTION WareTRG_Ware_Rail43Script 
+#02781    StartGap GapID = JKU_Ware_Gap_HighRail01 
+          Flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02782    StartGap GapID = JKU_Ware_Gap_MonsterGrind01 
+          Flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02783    EndGap GapID = JKU_Ware_Gap_HighRail02 
+          Score = 200 
+          Text = "High Rail" 
+          
+#02784    IF Triggertype ARRAY(
+              TRIGGER_LIP_ON 
+            )
+            
+#02785      EndGap GapID = JKU_Ware_Gap_LipTrick01 
+            Score = 500 
+            Text = "Enjoi the Lip" 
+            
+#02786    END IF 
+#02787  END FUNCTION
+          
+#02788  FUNCTION WareTRG_Ware_Rail45Script 
+#02791    EndGap GapID = JKU_Ware_TaxiLedge01 
+          Score = 500 
+          Text = "Taxi 2 Ledge" 
+          
+#02792  END FUNCTION
+          
+#02793  FUNCTION WareTRG_Ware_Rail46Script 
+#02796    EndGap GapID = JKU_Ware_TaxiLedge01 
+          Score = 500 
+          Text = "Taxi 2 Ledge" 
+          
+#02797  END FUNCTION
+          
+#02798  FUNCTION WareTRG_Ware_Rail47Script 
+#02801    EndGap GapID = JKU_Ware_TaxiLedge01 
+          Score = 500 
+          Text = "Taxi 2 Ledge" 
+          
+#02802  END FUNCTION
+          
+#02803  FUNCTION WareTRG_Ware_Rail48Script 
+#02806    EndGap GapID = JKU_Ware_TaxiLedge01 
+          Score = 500 
+          Text = "Taxi 2 Ledge" 
+          
+#02807  END FUNCTION
+          
+#02808  FUNCTION WareTRG_Ware_Rail49Script 
+#02811    EndGap GapID = JKU_Ware_TaxiLedge01 
+          Score = 500 
+          Text = "Taxi 2 Ledge" 
+          
+#02812  END FUNCTION
+          
+#02813  FUNCTION WareTRG_Ware_Rail50Script 
+#02816    EndGap GapID = JKU_Ware_TaxiLedge01 
+          Score = 500 
+          Text = "Taxi 2 Ledge" 
+          
+#02817  END FUNCTION
+          
+#02818  FUNCTION WareTRGP_Ware_Gap_HP01Script 
+#02821    StartGap GapID = JKU_TransitionGrind 
+          Flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL 
+          )
+          
+#02822    StartGap Flags = PURE_AIR 
+          
+#02823    EndGap Score = 300 
+          Text = "Over the Pipe" 
+          
+#02824    EndGap GapID = JKU_Ware_TaxiGap01 
+          Score = 600 
+          Text = "Taxi Gap" 
+          
+#02825  END FUNCTION
+          
+#02826  FUNCTION WareTRGP_Ware_Gap_HP02Script 
+#02829    StartGap Flags = PURE_AIR 
+          
+#02830    EndGap Score = 300 
+          Text = "Over the Pipe" 
+          
+#02831    EndGap GapID = JKU_Ware_TaxiGap01 
+          Score = 600 
+          Text = "Taxi Gap" 
+          
+#02832  END FUNCTION
+          
+#02833  FUNCTION WareTRG_Ware_Rail51Script 
+#02836    EndGap GapID = JKU_Ware_Gap_Deck2Rail 
+          Score = 300 
+          Text = "Deck 2 Rail" 
+          
+#02837    StartGap GapID = JKU_Ware_Gap_BigRail01 
+          Flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02838    EndGap GapID = JKU_Ware_Gap_BigRail02 
+          Score = 200 
+          Text = "Big Rail" 
+          
+#02839  END FUNCTION
+          
+#02840  FUNCTION WareTRG_Ware_Rail53Script 
+#02843    EndGap GapID = JKU_Ware_TaxiRail01 
+          Score = 500 
+          Text = "Taxi 2 HP Rail" 
+          
+#02844    EndGap GapID = JKU_Ware_TaxiGap01 
+          
+#02845  END FUNCTION
+          
+#02846  FUNCTION WareTRGP_Ware_Gap_FacePlant02Script 
+#02849    StartGap GapID = JKU_Ware_Gap_Deck2Rail 
+          Flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_WALL CANCEL_MANUAL 
+          )
+          
+#02851  END FUNCTION
+          
+#02852  FUNCTION WareTRG_Ware_Restart01Script 
+#02855    Obj_KillSpawnedScript Name = JKU_Ware_RoomFlicker 
+          
+#02856    Obj_SpawnScript JKU_Ware_RoomFlicker 
+#02857    MakeSkaterGoto StartSkating1 
+#02858  END FUNCTION
+          
+#02859  FUNCTION WareTRG_Ware_Rail58Script 
+#02862    EndGap GapID = JKU_Ware_Gap_Deck2Rail 
+          Score = 300 
+          Text = "Deck 2 Rail" 
+          
+#02863  END FUNCTION
+          
+#02864  FUNCTION WareTRGP_Ware_Gap_Secret01Script 
+#02867    StartGap Flags = PURE_AIR 
+          
+#02868    EndGap Score = 300 
+          Text = "Secret Room" 
+          
+#02869  END FUNCTION
+          
+#02870  FUNCTION WareTRGP_Ware_Gap_Secret02Script 
+#02873    StartGap Flags = PURE_AIR 
+          
+#02874    EndGap Score = 300 
+          Text = "Secret Room" 
+          
+#02875  END FUNCTION
+          
+#02876  FUNCTION WareTRG_Ware_Rail61Script 
+#02879    IF Triggertype ARRAY(
+              TRIGGER_LIP_ON 
+            )
+            
+#02880      EndGap GapID = JKU_Ware_Gap_LipTrick01 
+            Score = 500 
+            Text = "Enjoi the Lip" 
+            
+#02881    END IF 
+#02882  END FUNCTION
+          
+#02883  FUNCTION WareTRG_Ware_Rail62Script 
+#02886    StartGap GapID = JKU_Ware_Gap_HighRail02 
+          Flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+          )
+          
+#02887    EndGap GapID = JKU_Ware_Gap_HighRail01 
+          Score = 200 
+          Text = "High Rail" 
+          
+#02888    IF Triggertype ARRAY(
+              TRIGGER_LIP_ON 
+            )
+            
+#02889      EndGap GapID = JKU_Ware_Gap_LipTrick01 
+            Score = 500 
+            Text = "Enjoi the Lip" 
+            
+#02890    END IF 
+#02891  END FUNCTION
+          
+#02892  FUNCTION WareTRG_Ware_Rail63Script 
+#02895    EndGap GapID = JKU_HolyShit 
+          Score = 3000 
+          Text = "Holy Shi..." 
+          
+#02896  END FUNCTION
+          
+#02897  FUNCTION WareTRG_Ware_Restart_HPJumpScript 
+#02900    Obj_KillSpawnedScript Name = JKU_Ware_RoomFlicker 
+          
+#02901    Obj_SpawnScript JKU_Ware_RoomFlicker 
+#02902    MakeSkaterGoto DropIn 
+#02903  END FUNCTION
+          
+#02904  FUNCTION WareTRG_Ware_Restart_BigRailScript 
+#02907    Obj_KillSpawnedScript Name = JKU_Ware_RoomFlicker 
+          
+#02908    Obj_SpawnScript JKU_Ware_RoomFlicker 
+#02909    MakeSkaterGoto StartSkating1 
+#02910  END FUNCTION
+          
+#02911  FUNCTION WareTRG_Ware_Restart_HolyShiScript 
+#02914    Obj_KillSpawnedScript Name = JKU_Ware_RoomFlicker 
+          
+#02915    Obj_SpawnScript JKU_Ware_RoomFlicker 
+#02916    MakeSkaterGoto DropIn 
+#02917  END FUNCTION
+          
+#02918  FUNCTION WareTRG_Ware_Restart_TaxiJumpScript 
+#02921    Obj_KillSpawnedScript Name = JKU_Ware_RoomFlicker 
+          
+#02922    Obj_SpawnScript JKU_Ware_RoomFlicker 
+#02923    MakeSkaterGoto DropIn 
+#02924  END FUNCTION
+          
+#02925  FUNCTION WareTRG_Ware_Restart_KickersScript 
+#02928    Obj_KillSpawnedScript Name = JKU_Ware_RoomFlicker 
+          
+#02929    Obj_SpawnScript JKU_Ware_RoomFlicker 
+#02930    MakeSkaterGoto DropIn 
+#02931  END FUNCTION
+          
+#02932  FUNCTION WareTRGP_Ware_Gap_Kicker01Script 
+#02935    EndGap GapID = JKU_Ware_Kicker01 
+          Score = 100 
+          Text = "Kicker Gap" 
+          
+#02936    StartGap GapID = JKU_Ware_Kicker02 
+          Flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL CANCEL_RAIL 
+          )
+          
+#02937  END FUNCTION
+          
+#02938  FUNCTION WareTRGP_Ware_Gap_Kicker02Script 
+#02941    EndGap GapID = JKU_Ware_Kicker02 
+          Score = 100 
+          Text = "Kicker Gap" 
+          
+#02942    StartGap GapID = JKU_Ware_Kicker01 
+          Flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL CANCEL_RAIL 
+          )
+          
+#02943  END FUNCTION
+          
+#02944  FUNCTION WareTRGP_Ware_Gap_Transfer01Script 
+#02947    EndGap GapID = JKU_Ware_Transfer02 
+          Score = 200 
+          Text = "Transfer" 
+          
+#02948    StartGap GapID = JKU_Ware_Transfer01 
+          Flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL CANCEL_RAIL 
+          )
+          
+#02949  END FUNCTION
+          
+#02950  FUNCTION WareTRGP_Ware_Gap_Transfer02Script 
+#02953    EndGap GapID = JKU_Ware_Transfer01 
+          Score = 200 
+          Text = "Transfer" 
+          
+#02954    StartGap GapID = JKU_Ware_Transfer02 
+          Flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL CANCEL_RAIL 
+          )
+          
+#02955  END FUNCTION
+          
+#02956  FUNCTION WareSkWare_SecretRoom_Glass05Script 
+#02959    PlaySound glasspane2x pitch = RANDOM[5][16; 22; 28; 34; 40]
+          
+          75 JUMP 0x23000000 85 JUMP 0x19000000 100 JUMP 0x0f000000 115 JUMP 0x05000000 125 
+#02960    Kill Name = SkWare_SecretRoom_Glass05 
+          
+#02961    Shatter STRUCT{
+            Name = SkWare_SecretRoom_Glass05 
+            area = RANDOM[3][8; 14; 20]
+            
+            1000 JUMP 0x0f000000 2000 JUMP 0x05000000 4000 variance = 4.6 
+            vel_x = RANDOM[3][8; 14; 20]
+            
+            0.0 JUMP 0x0f000000 30 JUMP 0x05000000 -30 vel_y = -100 
+            vel_z = RANDOM[3][8; 14; 20]
+            
+            0 JUMP 0x0f000000 30 JUMP 0x05000000 -30 spread = 1.0 
+            }
+          
+#02967  END FUNCTION
+          
+#02968  FUNCTION WareSkWare_SecretRoom_Glass01Script 
+#02971    PlaySound glasspane2x pitch = RANDOM[5][16; 22; 28; 34; 40]
+          
+          75 JUMP 0x23000000 85 JUMP 0x19000000 100 JUMP 0x0f000000 115 JUMP 0x05000000 125 
+#02972    Kill Name = SkWare_SecretRoom_Glass01 
+          
+#02973    Shatter STRUCT{
+            Name = SkWare_SecretRoom_Glass01 
+            area = RANDOM[3][8; 14; 20]
+            
+            1000 JUMP 0x0f000000 2000 JUMP 0x05000000 4000 variance = 4.6 
+            vel_x = RANDOM[3][8; 14; 20]
+            
+            0.0 JUMP 0x0f000000 30 JUMP 0x05000000 -30 vel_y = -100 
+            vel_z = RANDOM[3][8; 14; 20]
+            
+            0 JUMP 0x0f000000 30 JUMP 0x05000000 -30 spread = 1.0 
+            }
+          
+#02979  END FUNCTION
+          
+#02980  FUNCTION WareSkWare_SecretRoom_Glass03Script 
+#02983    PlaySound glasspane2x pitch = RANDOM[5][16; 22; 28; 34; 40]
+          
+          75 JUMP 0x23000000 85 JUMP 0x19000000 100 JUMP 0x0f000000 115 JUMP 0x05000000 125 
+#02984    Kill Name = SkWare_SecretRoom_Glass03 
+          
+#02985    Shatter STRUCT{
+            Name = SkWare_SecretRoom_Glass03 
+            area = RANDOM[3][8; 14; 20]
+            
+            1000 JUMP 0x0f000000 2000 JUMP 0x05000000 4000 variance = 4.6 
+            vel_x = RANDOM[3][8; 14; 20]
+            
+            0.0 JUMP 0x0f000000 30 JUMP 0x05000000 -30 vel_y = -100 
+            vel_z = RANDOM[3][8; 14; 20]
+            
+            0 JUMP 0x0f000000 30 JUMP 0x05000000 -30 spread = 1.0 
+            }
+          
+#02991  END FUNCTION
+          
+#02992  FUNCTION WareSkWare_SecretRoom_Glass04Script 
+#02995    PlaySound glasspane2x pitch = RANDOM[5][16; 22; 28; 34; 40]
+          
+          75 JUMP 0x23000000 85 JUMP 0x19000000 100 JUMP 0x0f000000 115 JUMP 0x05000000 125 
+#02996    Kill Name = SkWare_SecretRoom_Glass04 
+          
+#02997    Shatter STRUCT{
+            Name = SkWare_SecretRoom_Glass04 
+            area = RANDOM[3][8; 14; 20]
+            
+            1000 JUMP 0x0f000000 2000 JUMP 0x05000000 4000 variance = 4.6 
+            vel_x = RANDOM[3][8; 14; 20]
+            
+            0.0 JUMP 0x0f000000 30 JUMP 0x05000000 -30 vel_y = -100 
+            vel_z = RANDOM[3][8; 14; 20]
+            
+            0 JUMP 0x0f000000 30 JUMP 0x05000000 -30 spread = 1.0 
+            }
+          
+#03003  END FUNCTION
+          
+#03004  FUNCTION WareSkWare_SecretRoom_Glass02Script 
+#03007    PlaySound glasspane2x pitch = RANDOM[5][16; 22; 28; 34; 40]
+          
+          75 JUMP 0x23000000 85 JUMP 0x19000000 100 JUMP 0x0f000000 115 JUMP 0x05000000 125 
+#03008    Kill Name = SkWare_SecretRoom_Glass02 
+          
+#03009    Shatter STRUCT{
+            Name = SkWare_SecretRoom_Glass02 
+            area = RANDOM[3][8; 14; 20]
+            
+            1000 JUMP 0x0f000000 2000 JUMP 0x05000000 4000 variance = 4.6 
+            vel_x = RANDOM[3][8; 14; 20]
+            
+            0.0 JUMP 0x0f000000 30 JUMP 0x05000000 -30 vel_y = -100 
+            vel_z = RANDOM[3][8; 14; 20]
+            
+            0 JUMP 0x0f000000 30 JUMP 0x05000000 -30 spread = 1.0 
+            }
+          
+#03015  END FUNCTION
+          
+#03016  FUNCTION WareSkWare_Taxi01Script 
+#03019    IF Triggertype ARRAY(
+              TRIGGER_JUMP_OFF TRIGGER_SKATE_OFF_EDGE 
+            )
+            
+#03020      EndGap GapID = JKU_Ware_TaxiLedge01 
+            
+#03021      EndGap GapID = JKU_Ware_TaxiRail01 
+            
+#03022      EndGap GapID = JKU_Ware_TaxiGap01 
+            
+#03023      StartGap GapID = JKU_Ware_TaxiLedge01 
+            Flags = ARRAY(
+              
+              CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+            )
+            
+#03024      StartGap GapID = JKU_Ware_TaxiRail01 
+            Flags = ARRAY(
+              
+              CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+            )
+            
+#03025      StartGap GapID = JKU_Ware_TaxiGap01 
+            Flags = ARRAY(
+              
+              CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+            )
+            
+#03026    END IF 
+#03027  END FUNCTION
+          
+#03028  FUNCTION WareJKU_Ware_HP_2_05Script 
+#03031    EndGap GapID = JKU_Ware_Channel02 
+          
+#03032    IF Triggertype TRIGGER_LAND_ON 
+#03033      EndGap STRUCT{
+              GapID = JKU_Ware_Channel01 
+              Score = 250 
+              Text = "Channel Gap" 
+              }
+            
+#03038      EndGap STRUCT{
+              GapID = JKU_Ware_Channel03 
+              Score = 250 
+              Text = "Channel Gap" 
+              }
+            
+#03043    END IF 
+#03044    IF Triggertype ARRAY(
+              TRIGGER_JUMP_OFF TRIGGER_SKATE_OFF_EDGE 
+            )
+            
+#03045      StartGap GapID = JKU_Ware_Channel02 
+            Flags = ARRAY(
+              
+              CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+            )
+            
+#03046    END IF 
+#03047  END FUNCTION
+          
+#03048  FUNCTION WareJKU_Ware_HP_1_02Script 
+#03051    EndGap GapID = JKU_Ware_Channel03 
+          
+#03052    IF Triggertype TRIGGER_LAND_ON 
+#03053      EndGap STRUCT{
+              GapID = JKU_Ware_Channel02 
+              Score = 250 
+              Text = "Channel Gap" 
+              }
+            
+#03058    END IF 
+#03059    IF Triggertype ARRAY(
+              TRIGGER_JUMP_OFF TRIGGER_SKATE_OFF_EDGE 
+            )
+            
+#03060      StartGap GapID = JKU_Ware_Channel03 
+            Flags = ARRAY(
+              
+              CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+            )
+            
+#03061    END IF 
+#03062  END FUNCTION
+          
+#03063  FUNCTION WareJKU_Ware_HP_1_05Script 
+#03066    StartGap GapID = JKU_Ware_Gap_LipTrick01 
+          Flags = ARRAY(
+            
+            CANCEL_GROUND CANCEL_WALL CANCEL_MANUAL 
+          )
+          
+#03067  END FUNCTION
+          
+#03068  FUNCTION WareJKU_Ware_HP_2_04Script 
+#03071    EndGap GapID = JKU_Ware_Channel01 
+          
+#03072    IF Triggertype TRIGGER_LAND_ON 
+#03073      EndGap STRUCT{
+              GapID = JKU_Ware_Channel02 
+              Score = 250 
+              Text = "Channel Gap" 
+              }
+            
+#03078    END IF 
+#03079    IF Triggertype ARRAY(
+              TRIGGER_JUMP_OFF TRIGGER_SKATE_OFF_EDGE 
+            )
+            
+#03080      StartGap GapID = JKU_Ware_Channel01 
+            Flags = ARRAY(
+              
+              CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+            )
+            
+#03081    END IF 
+#03082  END FUNCTION
+          
+#03083  FUNCTION WareSkWare_Kicker_Wood02Script 
+#03086    IF Triggertype ARRAY(
+              TRIGGER_JUMP_OFF TRIGGER_SKATE_OFF_EDGE 
+            )
+            
+#03087      StartGap GapID = JKU_Ware_KickerLedge01 
+            Flags = ARRAY(
+              
+              CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+            )
+            
+#03088    END IF 
+#03089  END FUNCTION
+          
+#03090  FUNCTION WareSkWare_Taxi_Col01Script 
+#03093    IF Triggertype ARRAY(
+              TRIGGER_JUMP_OFF TRIGGER_SKATE_OFF_EDGE 
+            )
+            
+#03094      EndGap GapID = JKU_Ware_TaxiLedge01 
+            
+#03095      EndGap GapID = JKU_Ware_TaxiRail01 
+            
+#03096      EndGap GapID = JKU_Ware_TaxiGap01 
+            
+#03097      StartGap GapID = JKU_Ware_TaxiLedge01 
+            Flags = ARRAY(
+              
+              CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+            )
+            
+#03098      StartGap GapID = JKU_Ware_TaxiRail01 
+            Flags = ARRAY(
+              
+              CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+            )
+            
+#03099      StartGap GapID = JKU_Ware_TaxiGap01 
+            Flags = ARRAY(
+              
+              CANCEL_GROUND CANCEL_MANUAL CANCEL_WALL 
+            )
+            
+#03100    END IF 
+#03101  END FUNCTION
+          
+#03102  FUNCTION WareSkWare_Light_Glass02Script 
+#03105    PlaySound glasspane2x pitch = RANDOM[5][16; 22; 28; 34; 40]
+          
+          75 JUMP 0x23000000 85 JUMP 0x19000000 100 JUMP 0x0f000000 115 JUMP 0x05000000 125 
+#03106    Kill Name = SkWare_Light_Glass02 
+          
+#03107    Kill Name = SkWare_Dark_Glass02 
+          
+#03108    Shatter STRUCT{
+            Name = SkWare_Light_Glass02 
+            area = 4000 
+            variance = 4 
+            vel_x = 0x30 
+            PAIR[10.0; 30.0] vel_y = -100 
+            vel_z = 0x30 
+            PAIR[10.0; 30.0] spread = 1.0 
+            }
+          
+#03114  END FUNCTION
+          
+#03115  FUNCTION WareSkWare_Light_Glass01Script 
+#03118    PlaySound glasspane2x pitch = RANDOM[5][16; 22; 28; 34; 40]
+          
+          75 JUMP 0x23000000 85 JUMP 0x19000000 100 JUMP 0x0f000000 115 JUMP 0x05000000 125 
+#03119    Kill Name = SkWare_Light_Glass01 
+          
+#03120    Kill Name = SkWare_Dark_Glass01 
+          
+#03121    Shatter STRUCT{
+            Name = SkWare_Light_Glass01 
+            area = 4000 
+            variance = 4 
+            vel_x = 0x30 
+            PAIR[10.0; 30.0] vel_y = -100 
+            vel_z = 0x30 
+            PAIR[10.0; 30.0] spread = 1.0 
+            }
+          
+#03127  END FUNCTION
+          
+#03128  FUNCTION WareSkWare_Dark_Glass02Script 
+#03131    PlaySound glasspane2x pitch = RANDOM[5][16; 22; 28; 34; 40]
+          
+          75 JUMP 0x23000000 85 JUMP 0x19000000 100 JUMP 0x0f000000 115 JUMP 0x05000000 125 
+#03132    Kill Name = SkWare_Dark_Glass02 
+          
+#03133    Kill Name = SkWare_Light_Glass02 
+          
+#03134    Shatter STRUCT{
+            Name = SkWare_Dark_Glass02 
+            area = 4000 
+            variance = 4 
+            vel_x = 0x30 
+            PAIR[10.0; 30.0] vel_y = -100 
+            vel_z = 0x30 
+            PAIR[10.0; 30.0] spread = 1.0 
+            }
+          
+#03140  END FUNCTION
+          
+#03141  FUNCTION WareSkWare_Dark_Glass01Script 
+#03144    PlaySound glasspane2x pitch = RANDOM[5][16; 22; 28; 34; 40]
+          
+          75 JUMP 0x23000000 85 JUMP 0x19000000 100 JUMP 0x0f000000 115 JUMP 0x05000000 125 
+#03145    Kill Name = SkWare_Dark_Glass01 
+          
+#03146    Kill Name = SkWare_Light_Glass01 
+          
+#03147    Shatter STRUCT{
+            Name = SkWare_Dark_Glass01 
+            area = 4000 
+            variance = 4 
+            vel_x = 0x30 
+            PAIR[10.0; 30.0] vel_y = -100 
+            vel_z = 0x30 
+            PAIR[10.0; 30.0] spread = 1.0 
+            }
+          
+#03153  END FUNCTION
+          
+#03154  FUNCTION WareTRG_CTF1_Restart_1PScript 
+#03157    Obj_KillSpawnedScript Name = JKU_Ware_RoomFlicker 
+          
+#03158    Obj_SpawnScript JKU_Ware_RoomFlicker 
+#03159    MakeSkaterGoto StartSkating1 
+#03160  END FUNCTION
+          
+#03161  FUNCTION WareTRG_CTF1_Restart_2PScript 
+#03164    Obj_KillSpawnedScript Name = JKU_Ware_RoomFlicker 
+          
+#03165    Obj_SpawnScript JKU_Ware_RoomFlicker 
+#03166    MakeSkaterGoto StartSkating1 
+#03167  END FUNCTION
+          
+#03168  FUNCTION WareTRG_CTF1_Restart_3PScript 
+#03171    Obj_KillSpawnedScript Name = JKU_Ware_RoomFlicker 
+          
+#03172    Obj_SpawnScript JKU_Ware_RoomFlicker 
+#03173    MakeSkaterGoto StartSkating1 
+#03174  END FUNCTION
+          
+#03175  FUNCTION WareTRG_CTF1_Restart_4PScript 
+#03178    Obj_KillSpawnedScript Name = JKU_Ware_RoomFlicker 
+          
+#03179    Obj_SpawnScript JKU_Ware_RoomFlicker 
+#03180    MakeSkaterGoto StartSkating1 
+#03181  END FUNCTION
+          
+#03182  FUNCTION WareTRG_CTF2_Restart_1PScript 
+#03185    Obj_KillSpawnedScript Name = JKU_Ware_RoomFlicker 
+          
+#03186    Obj_SpawnScript JKU_Ware_RoomFlicker 
+#03187    MakeSkaterGoto StartSkating1 
+#03188  END FUNCTION
+          
+#03189  FUNCTION WareTRG_CTF2_Restart_2PScript 
+#03192    Obj_KillSpawnedScript Name = JKU_Ware_RoomFlicker 
+          
+#03193    Obj_SpawnScript JKU_Ware_RoomFlicker 
+#03194    MakeSkaterGoto StartSkating1 
+#03195  END FUNCTION
+          
+#03196  FUNCTION WareTRG_CTF2_Restart_3PScript 
+#03199    Obj_KillSpawnedScript Name = JKU_Ware_RoomFlicker 
+          
+#03200    Obj_SpawnScript JKU_Ware_RoomFlicker 
+#03201    MakeSkaterGoto StartSkating1 
+#03202  END FUNCTION
+          
+#03203  FUNCTION WareTRG_CTF2_Restart_4PScript 
+#03206    Obj_KillSpawnedScript Name = JKU_Ware_RoomFlicker 
+          
+#03207    Obj_SpawnScript JKU_Ware_RoomFlicker 
+#03208    MakeSkaterGoto StartSkating1 
+#03209  END FUNCTION
+          
+#03210  FUNCTION LoadTerrain 
+#03213    SetTerrainDefault 
+#03214    SetTerrainConcSmooth 
+#03215    SetTerrainMetalSmooth 
+#03216    SetTerrainWood 
+#03217    SetTerrainWoodMasonite 
+#03218    SetTerrainWoodPlywood 
+#03219    SetTerrainBrick 
+#03220    SetTerrainDirt 
+#03221    SetTerrainWater 
+#03222    SetTerrainChainlink 
+#03223  END FUNCTION
+          
+#03224  

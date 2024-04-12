@@ -1,0 +1,1076 @@
+
+#00001  FUNCTION NewScoreLeaderYou 
+#00003    LaunchPanelMessage "&C1You have taken the lead!" properties = netmessageprops 
+          
+#00004    PlaySound HUD_specialtrickAA Vol = 500 
+          
+#00005  END FUNCTION
+          
+#00006  FUNCTION NewScoreLeaderOther 
+#00008    LaunchPanelMessage "&c1%s0 &c2has taken the lead!" s0 = GLOBAL.String0 
+          properties = netmessageprops 
+          
+#00009    PlaySound HUD_specialtrickAA Vol = 500 
+          
+#00010  END FUNCTION
+          
+#00011  FUNCTION timer_runout_beep 
+#00013    PlaySound TimeoutA Vol = 75 
+          pitch = 110 
+          
+#00014  END FUNCTION
+          
+#00015  FUNCTION GraffitiStealYou 
+#00018    LaunchPanelMessage "you stole from &c1%s0&c2!" s0 = GLOBAL.String0 
+          properties = netmessageprops 
+          
+#00019    PlaySound HUD_specialtrickAA Vol = 500 
+          
+#00020  END FUNCTION
+          
+#00021  FUNCTION GraffitiStealOther 
+#00023    LaunchPanelMessage "&c1%s0&c2 stole from you!" s0 = GLOBAL.String0 
+          properties = netmessageprops 
+          
+#00024    PlaySound HUD_specialtrickAA Vol = 500 
+          
+#00025  END FUNCTION
+          
+#00026  FUNCTION SkaterCollideBail 
+#00028    InBail 
+#00029    PlaySound HUDtrickslopC 
+#00030    IF InNetGame 
+#00032      LaunchPanelMessage properties = netmessageprops 
+            s0 = GLOBAL.String0 
+            RANDOM[26][105; 145; 197; 239; 279; 330; 388; 443; 496; 555; 599; 658; 700; 745; 786; 835; 879; 933; 977; 1028; 1074; 1119; 1164; 1194; 1241; 1296]
+            
+#00033      "&c2You got smacked by &c1%s0" 
+#00034      JUMP 0x01050000 "&c1%s0 &c2just dropped the hammer on you" 
+#00035      JUMP 0xc9040000 "&c1%s0 &c2is taking all comers" 
+#00036      JUMP 0x9b040000 "&c1%s0 &c2caught you wankin'" 
+#00037      JUMP 0x6f040000 "&c1%s0 &c2shows you to the kiddie park " 
+#00038      JUMP 0x38040000 "&c1%s0 &c2says this is THPS3, not THP YOU SUCK" 
+#00039      JUMP 0xfa030000 "&c2Sorry, &c1%s0 &c2meant to kick your face" 
+#00040      JUMP 0xbf030000 "&c2Another classic neck breaker by &c1%s0" 
+#00041      JUMP 0x86030000 "&c1%s0 &c2is SO much better than you, it's sick" 
+#00042      JUMP 0x47030000 "&c1%s0 &c2says stick to scooters" 
+#00043      JUMP 0x17030000 "&C2You gonna let &c1%s0 &c2treat you like that?" 
+#00044      JUMP 0xd8020000 "&c2Hint, stay away from &c1%s0" 
+#00045      JUMP 0xaa020000 "&c2Face plant, courtesy of &c1%s0" 
+#00046      JUMP 0x79020000 "&c1%s0 &c2set you up the bomb" 
+#00047      JUMP 0x4c020000 "&c2All your base are belong to &c1%s0" 
+#00048      JUMP 0x17020000 "&c1%s0 &c2wipes you off his shoe" 
+#00049      JUMP 0xe7010000 "&c1%s0 &c2rejected you like a baboon heart" 
+#00050      JUMP 0xad010000 "&c1%s0 &c2wipes you off his shoe" 
+#00051      JUMP 0x7d010000 "&c1%s0 &c2offers you some inline skates" 
+#00052      JUMP 0x46010000 "&c1%s0 &c2served you up a backhand" 
+#00053      JUMP 0x14010000 "&c1%s0 &c2shanked you coldblooded" 
+#00054      JUMP 0xe3000000 "&c2You are &c1%s0's &c2prison boy" 
+#00055      JUMP 0xb2000000 "&c1%s0&c2 1, you 0" 
+#00056      JUMP 0x90000000 "&c2Head slap, compliments of &c1%s0" 
+#00057      JUMP 0x5d000000 "&c1%s0 &c2kicked your ass. Plain and simple" 
+#00058      JUMP 0x22000000 "&c1%s0 &c2is never soft" 
+#00059      
+#00060    END IF 
+#00061    PlaySound bodysmackA 
+#00064    IF InSlapGame 
+#00066      ClearPanel_Bailed 
+#00067      MoveToRandomRestart 
+#00068    END IF 
+#00069    goto NoseManualBail 
+#00074  END FUNCTION
+          
+#00075  FUNCTION MadeOtherSkaterBail 
+#00077    SetTrickName "Head Smack" 
+#00078    SetTrickScore 2000 
+#00079    IF InNetGame 
+#00080      IF ProfileEquals is_named = maul 
+              
+#00081        LaunchPanelMessage s0 = GLOBAL.String0 
+              properties = netmessageprops 
+              RANDOM[2][9; 44]
+              
+#00082        "You force pushed &c1%s0" 
+#00083        JUMP 0x26000000 "Lightsaber attack on &c1%s0" 
+#00084        
+#00085        PlaySound Saberhit1 
+#00086      ELSE 
+#00087        LaunchPanelMessage s0 = GLOBAL.String0 
+              properties = netmessageprops 
+              RANDOM[8][33; 63; 92; 122; 161; 202; 252; 297]
+              
+#00088        "You smacked &c1%s0" 
+#00089        JUMP 0x26010000 "You punked &c1%s0" 
+#00090        JUMP 0x05010000 "You shanked &c1%s0" 
+#00091        JUMP 0xe3000000 "You slapped &c1%s0 &C0silly" 
+#00092        JUMP 0xb8000000 "You showed the door to &c1%s0" 
+#00093        JUMP 0x8b000000 "You dropped &c1%s0 &c0like a bad habit" 
+#00094        JUMP 0x55000000 "You made &c1%s0 &c0lick the floor" 
+#00095        JUMP 0x24000000 "You are &c1%s0's &c0daddy" 
+#00096        
+#00097      END IF 
+#00098    END IF 
+#00099    Display Blockspin 
+#00101    OnGroundExceptions 
+#00102    Clearexception Ex = RunHasEnded 
+          
+#00103    PlayAnim Anim = SlapRight 
+          Blendperiod = 0.3 
+          
+#00104    PlaySound bitchslap2 
+#00105    WaitAnimWhilstChecking AndManuals 
+#00106    CheckGapTricks 
+#00107    ClearGapTricks 
+#00108    ClearPanel_Landed 
+#00109    goto OnGroundAi 
+#00110  END FUNCTION
+          
+#00111  FUNCTION MadeOtherSkaterBailAir 
+#00113    SetTrickName "Head Smack" 
+#00114    SetTrickScore 2000 
+#00115    IF InNetGame 
+#00116      IF ProfileEquals is_named = maul 
+              
+#00117        LaunchPanelMessage s0 = GLOBAL.String0 
+              properties = netmessageprops 
+              RANDOM[2][9; 44]
+              
+#00118        "You force pushed &c1%s0" 
+#00119        JUMP 0x26000000 "Lightsaber attack on &c1%s0" 
+#00120        
+#00121        PlaySound Saberhit1 
+#00122      ELSE 
+#00123        LaunchPanelMessage "Airborne face smack to &c1%s0!" s0 = GLOBAL.String0 
+              properties = netmessageprops 
+              
+#00124      END IF 
+#00125    ELSE 
+#00126    END IF 
+#00127    Display Blockspin 
+#00128    IF doingtrick 
+#00129    ELSE 
+#00136      InAirExceptions 
+#00137      PlayAnim Anim = SlapAir 
+            Blendperiod = 0.3 
+            
+#00138      PlaySound bodysmackA 
+#00139      WaitAnimWhilstChecking 
+#00140      goto Airborne 
+#00141    END IF 
+#00142  END FUNCTION
+          
+#00143  FUNCTION MadeOtherSkaterBail_Called 
+#00145    SetTrickName "Head Smack" 
+#00146    SetTrickScore 2000 
+#00147    IF InNetGame 
+#00148      LaunchPanelMessage "Face smack to &c1%s0!" s0 = GLOBAL.String0 
+            properties = netmessageprops 
+            
+#00149    ELSE 
+#00150    END IF 
+#00151    Display Blockspin 
+#00152  END FUNCTION
+          
+#00153  FUNCTION NetIdle 
+#00155    IF ShouldMongo 
+#00156      PlayAnim Anim = MongoBrakeIdle 
+            Cycle NoRestart 
+#00157    ELSE 
+#00158      PlayAnim Anim = BrakeIdle 
+            Cycle NoRestart 
+#00159    END IF 
+#00160  END FUNCTION
+          
+#00161  FUNCTION server_enter_free_skate 
+#00163    LaunchPanelMessage "Entering Free Skate." properties = netstatusprops 
+          
+#00164    LoadPendingPlayers 
+#00166  END FUNCTION
+          
+#00167  FUNCTION client_enter_free_skate 
+#00169    LaunchPanelMessage "Entering Free Skate" properties = netstatusprops 
+          
+#00170  END FUNCTION
+          
+#00171  netmessageprops = STRUCT{
+          font = "small.fnt" 
+          just = PAIR[0.0; 0.0] 
+          dims = PAIR[600.0; 112.0] 
+          colors = ARRAY(
+            
+            STRUCT{
+              VECTOR[50.0; 80.0; 128.0] alpha = 128 
+              }
+            STRUCT{
+              VECTOR[128.0; 128.0; 128.0] alpha = 75 
+              }
+            STRUCT{
+              VECTOR[110.0; 50.0; 50.0] alpha = 75 
+              }
+            STRUCT{
+              VECTOR[180.0; 160.0; 0.0] alpha = 75 
+              }
+            
+          )
+          key_points = ARRAY(
+            
+            STRUCT{
+              pos = PAIR[320.0; 250.0] 
+              alpha = 0 
+              scale = 0.2 
+              time = 0 
+              }
+            STRUCT{
+              alpha = 128 
+              scale = 1.01 
+              time = 0.09 
+              }
+            STRUCT{
+              alpha = 128 
+              scale = 1.01 
+              time = 5 
+              }
+            STRUCT{
+              alpha = 0 
+              scale = 0.2 
+              time = 5.09 
+              }
+            
+          )
+          }
+        
+#00190  netstatusprops = STRUCT{
+          font = "small.fnt" 
+          just = PAIR[0.0; 0.0] 
+          dims = PAIR[600.0; 112.0] 
+          colors = ARRAY(
+            
+            STRUCT{
+              VECTOR[128.0; 128.0; 128.0] alpha = 128 
+              }
+            STRUCT{
+              VECTOR[50.0; 80.0; 128.0] alpha = 75 
+              }
+            STRUCT{
+              VECTOR[110.0; 50.0; 50.0] alpha = 75 
+              }
+            STRUCT{
+              VECTOR[180.0; 160.0; 0.0] alpha = 75 
+              }
+            
+          )
+          key_points = ARRAY(
+            
+            STRUCT{
+              pos = PAIR[320.0; 285.0] 
+              alpha = 0 
+              scale = 0.2 
+              time = 0 
+              }
+            STRUCT{
+              alpha = 128 
+              scale = 1.01 
+              time = 0.09 
+              }
+            STRUCT{
+              alpha = 128 
+              scale = 1.01 
+              time = 5 
+              }
+            STRUCT{
+              alpha = 0 
+              scale = 0.2 
+              time = 5.09 
+              }
+            
+          )
+          }
+        
+#00209  netexceptionprops = STRUCT{
+          font = "small.fnt" 
+          just = PAIR[0.0; 0.0] 
+          dims = PAIR[600.0; 112.0] 
+          colors = ARRAY(
+            
+            STRUCT{
+              VECTOR[128.0; 128.0; 128.0] alpha = 128 
+              }
+            STRUCT{
+              VECTOR[50.0; 80.0; 128.0] alpha = 75 
+              }
+            STRUCT{
+              VECTOR[110.0; 50.0; 50.0] alpha = 75 
+              }
+            STRUCT{
+              VECTOR[180.0; 160.0; 0.0] alpha = 75 
+              }
+            
+          )
+          key_points = ARRAY(
+            
+            STRUCT{
+              pos = PAIR[320.0; 305.0] 
+              alpha = 0 
+              scale = 0.2 
+              time = 0 
+              }
+            STRUCT{
+              alpha = 128 
+              scale = 1.01 
+              time = 0.09 
+              }
+            STRUCT{
+              alpha = 128 
+              scale = 1.01 
+              time = 5 
+              }
+            STRUCT{
+              alpha = 0 
+              scale = 0.2 
+              time = 5.09 
+              }
+            
+          )
+          }
+        
+#00228  chat1props = STRUCT{
+          font = "small.fnt" 
+          just = PAIR[0.0; 0.0] 
+          dims = PAIR[600.0; 112.0] 
+          colors = ARRAY(
+            
+            STRUCT{
+              VECTOR[50.0; 80.0; 128.0] alpha = 128 
+              }
+            STRUCT{
+              VECTOR[180.0; 160.0; 0.0] alpha = 75 
+              }
+            STRUCT{
+              VECTOR[110.0; 50.0; 50.0] alpha = 75 
+              }
+            STRUCT{
+              VECTOR[128.0; 128.0; 128.0] alpha = 75 
+              }
+            
+          )
+          key_points = ARRAY(
+            
+            STRUCT{
+              pos = PAIR[320.0; 150.0] 
+              alpha = 0 
+              scale = 0.2 
+              time = 0 
+              }
+            STRUCT{
+              alpha = 128 
+              scale = 1.01 
+              time = 0.09 
+              }
+            STRUCT{
+              alpha = 128 
+              scale = 1.01 
+              time = 5 
+              }
+            STRUCT{
+              alpha = 0 
+              scale = 0.2 
+              time = 5.09 
+              }
+            
+          )
+          }
+        
+#00247  chat2props = STRUCT{
+          font = "small.fnt" 
+          just = PAIR[0.0; 0.0] 
+          dims = PAIR[600.0; 112.0] 
+          colors = ARRAY(
+            
+            STRUCT{
+              VECTOR[50.0; 80.0; 128.0] alpha = 128 
+              }
+            STRUCT{
+              VECTOR[180.0; 160.0; 0.0] alpha = 75 
+              }
+            STRUCT{
+              VECTOR[110.0; 50.0; 50.0] alpha = 75 
+              }
+            STRUCT{
+              VECTOR[128.0; 128.0; 128.0] alpha = 75 
+              }
+            
+          )
+          key_points = ARRAY(
+            
+            STRUCT{
+              pos = PAIR[320.0; 170.0] 
+              alpha = 0 
+              scale = 0.2 
+              time = 0 
+              }
+            STRUCT{
+              alpha = 128 
+              scale = 1.01 
+              time = 0.09 
+              }
+            STRUCT{
+              alpha = 128 
+              scale = 1.01 
+              time = 5 
+              }
+            STRUCT{
+              alpha = 0 
+              scale = 0.2 
+              time = 5.09 
+              }
+            
+          )
+          }
+        
+#00266  chat3props = STRUCT{
+          font = "small.fnt" 
+          just = PAIR[0.0; 0.0] 
+          dims = PAIR[600.0; 112.0] 
+          colors = ARRAY(
+            
+            STRUCT{
+              VECTOR[50.0; 80.0; 128.0] alpha = 128 
+              }
+            STRUCT{
+              VECTOR[180.0; 160.0; 0.0] alpha = 75 
+              }
+            STRUCT{
+              VECTOR[110.0; 50.0; 50.0] alpha = 75 
+              }
+            STRUCT{
+              VECTOR[128.0; 128.0; 128.0] alpha = 75 
+              }
+            
+          )
+          key_points = ARRAY(
+            
+            STRUCT{
+              pos = PAIR[320.0; 190.0] 
+              alpha = 0 
+              scale = 0.2 
+              time = 0 
+              }
+            STRUCT{
+              alpha = 128 
+              scale = 1.01 
+              time = 0.09 
+              }
+            STRUCT{
+              alpha = 128 
+              scale = 1.01 
+              time = 5 
+              }
+            STRUCT{
+              alpha = 0 
+              scale = 0.2 
+              time = 5.09 
+              }
+            
+          )
+          }
+        
+#00285  chat4props = STRUCT{
+          font = "small.fnt" 
+          just = PAIR[0.0; 0.0] 
+          dims = PAIR[600.0; 112.0] 
+          colors = ARRAY(
+            
+            STRUCT{
+              VECTOR[50.0; 80.0; 128.0] alpha = 128 
+              }
+            STRUCT{
+              VECTOR[180.0; 160.0; 0.0] alpha = 75 
+              }
+            STRUCT{
+              VECTOR[110.0; 50.0; 50.0] alpha = 75 
+              }
+            STRUCT{
+              VECTOR[128.0; 128.0; 128.0] alpha = 75 
+              }
+            
+          )
+          key_points = ARRAY(
+            
+            STRUCT{
+              pos = PAIR[320.0; 210.0] 
+              alpha = 0 
+              scale = 0.2 
+              time = 0 
+              }
+            STRUCT{
+              alpha = 128 
+              scale = 1.01 
+              time = 0.09 
+              }
+            STRUCT{
+              alpha = 128 
+              scale = 1.01 
+              time = 5 
+              }
+            STRUCT{
+              alpha = 0 
+              scale = 0.2 
+              time = 5.09 
+              }
+            
+          )
+          }
+        
+#00304  chat5props = STRUCT{
+          font = "small.fnt" 
+          just = PAIR[0.0; 0.0] 
+          dims = PAIR[600.0; 112.0] 
+          colors = ARRAY(
+            
+            STRUCT{
+              VECTOR[50.0; 80.0; 128.0] alpha = 128 
+              }
+            STRUCT{
+              VECTOR[180.0; 160.0; 0.0] alpha = 75 
+              }
+            STRUCT{
+              VECTOR[110.0; 50.0; 50.0] alpha = 75 
+              }
+            STRUCT{
+              VECTOR[128.0; 128.0; 128.0] alpha = 75 
+              }
+            
+          )
+          key_points = ARRAY(
+            
+            STRUCT{
+              pos = PAIR[320.0; 230.0] 
+              alpha = 0 
+              scale = 0.2 
+              time = 0 
+              }
+            STRUCT{
+              alpha = 128 
+              scale = 1.01 
+              time = 0.09 
+              }
+            STRUCT{
+              alpha = 128 
+              scale = 1.01 
+              time = 5 
+              }
+            STRUCT{
+              alpha = 0 
+              scale = 0.2 
+              time = 5.09 
+              }
+            
+          )
+          }
+        
+#00323  chat6props = STRUCT{
+          font = "small.fnt" 
+          just = PAIR[0.0; 0.0] 
+          dims = PAIR[600.0; 112.0] 
+          colors = ARRAY(
+            
+            STRUCT{
+              VECTOR[50.0; 80.0; 128.0] alpha = 128 
+              }
+            STRUCT{
+              VECTOR[180.0; 160.0; 0.0] alpha = 75 
+              }
+            STRUCT{
+              VECTOR[110.0; 50.0; 50.0] alpha = 75 
+              }
+            STRUCT{
+              VECTOR[128.0; 128.0; 128.0] alpha = 75 
+              }
+            
+          )
+          key_points = ARRAY(
+            
+            STRUCT{
+              pos = PAIR[320.0; 230.0] 
+              alpha = 0 
+              scale = 0.2 
+              time = 0 
+              }
+            STRUCT{
+              alpha = 128 
+              scale = 1.01 
+              time = 0.09 
+              }
+            STRUCT{
+              alpha = 128 
+              scale = 1.01 
+              time = 5 
+              }
+            STRUCT{
+              alpha = 0 
+              scale = 0.2 
+              time = 5.09 
+              }
+            
+          )
+          }
+        
+#00342  chat7props = STRUCT{
+          font = "small.fnt" 
+          just = PAIR[0.0; 0.0] 
+          dims = PAIR[600.0; 112.0] 
+          colors = ARRAY(
+            
+            STRUCT{
+              VECTOR[50.0; 80.0; 128.0] alpha = 128 
+              }
+            STRUCT{
+              VECTOR[180.0; 160.0; 0.0] alpha = 75 
+              }
+            STRUCT{
+              VECTOR[110.0; 50.0; 50.0] alpha = 75 
+              }
+            STRUCT{
+              VECTOR[128.0; 128.0; 128.0] alpha = 75 
+              }
+            
+          )
+          key_points = ARRAY(
+            
+            STRUCT{
+              pos = PAIR[320.0; 230.0] 
+              alpha = 0 
+              scale = 0.2 
+              time = 0 
+              }
+            STRUCT{
+              alpha = 128 
+              scale = 1.01 
+              time = 0.09 
+              }
+            STRUCT{
+              alpha = 128 
+              scale = 1.01 
+              time = 5 
+              }
+            STRUCT{
+              alpha = 0 
+              scale = 0.2 
+              time = 5.09 
+              }
+            
+          )
+          }
+        
+#00361  chat8props = STRUCT{
+          font = "small.fnt" 
+          just = PAIR[0.0; 0.0] 
+          dims = PAIR[600.0; 112.0] 
+          colors = ARRAY(
+            
+            STRUCT{
+              VECTOR[50.0; 80.0; 128.0] alpha = 128 
+              }
+            STRUCT{
+              VECTOR[180.0; 160.0; 0.0] alpha = 75 
+              }
+            STRUCT{
+              VECTOR[110.0; 50.0; 50.0] alpha = 75 
+              }
+            STRUCT{
+              VECTOR[128.0; 128.0; 128.0] alpha = 75 
+              }
+            
+          )
+          key_points = ARRAY(
+            
+            STRUCT{
+              pos = PAIR[320.0; 230.0] 
+              alpha = 0 
+              scale = 0.2 
+              time = 0 
+              }
+            STRUCT{
+              alpha = 128 
+              scale = 1.01 
+              time = 0.09 
+              }
+            STRUCT{
+              alpha = 128 
+              scale = 1.01 
+              time = 5 
+              }
+            STRUCT{
+              alpha = 0 
+              scale = 0.2 
+              time = 5.09 
+              }
+            
+          )
+          }
+        
+#00380  chat9props = STRUCT{
+          font = "small.fnt" 
+          just = PAIR[0.0; 0.0] 
+          dims = PAIR[600.0; 112.0] 
+          colors = ARRAY(
+            
+            STRUCT{
+              VECTOR[50.0; 80.0; 128.0] alpha = 128 
+              }
+            STRUCT{
+              VECTOR[180.0; 160.0; 0.0] alpha = 75 
+              }
+            STRUCT{
+              VECTOR[110.0; 50.0; 50.0] alpha = 75 
+              }
+            STRUCT{
+              VECTOR[128.0; 128.0; 128.0] alpha = 75 
+              }
+            
+          )
+          key_points = ARRAY(
+            
+            STRUCT{
+              pos = PAIR[320.0; 230.0] 
+              alpha = 0 
+              scale = 0.2 
+              time = 0 
+              }
+            STRUCT{
+              alpha = 128 
+              scale = 1.01 
+              time = 0.09 
+              }
+            STRUCT{
+              alpha = 128 
+              scale = 1.01 
+              time = 5 
+              }
+            STRUCT{
+              alpha = 0 
+              scale = 0.2 
+              time = 5.09 
+              }
+            
+          )
+          }
+        
+#00399  net_error_msg = 'Error' 
+        
+#00401  net_notice_msg = 'Notice' 
+        
+#00402  net_status_msg = 'Status' 
+        
+#00403  net_refused_msg = 'Refused' 
+        
+#00404  net_error_not_connected = 'Your network device is not properly connected to the network. Check your cables or contact your network administrator.' 
+        
+#00406  net_error_not_detected = 'Could not detect any compatible network devices. Check your connections. See the THPS3 manual for troubleshooting.' 
+        
+#00407  net_error_dhcp_error = 'Could not automatically detect network settings. Check connections and DHCP server or choose a static IP.' 
+        
+#00408  net_error_changed_device = 'You have changed network device settings and must restart your system for this change to take effect.' 
+        
+#00409  net_error_general_error = 'Your network device is not configured properly or may not be properly connected. See the THPS3 manual for troubleshooting.' 
+        
+#00410  net_error_cant_change_device = 'You must restart your system before changing this option.' 
+        
+#00411  net_reason_full_observers = 'The server will not allow any more observers at this time.' 
+        
+#00413  net_reason_banned = 'You have been banned from this server.' 
+        
+#00414  net_reason_full = 'The server is full.' 
+        
+#00415  net_reason_wrong_password = 'Incorrect password.' 
+        
+#00416  net_reason_version = 'Incompatible version.' 
+        
+#00417  net_reason_general = 'Connection refused.' 
+        
+#00418  net_message_game_in_progress = 'This game is in progress. Would you like to observe the remainder of this game and join automatically afterwards?' 
+        
+#00420  net_message_waiting_for_players = 'Waiting for some players to fully load... Would you like to wait for them?' 
+        
+#00421  net_message_server_removed_you = 'The server has chosen to remove you from this game.' 
+        
+#00423  net_message_server_moved_on = 'The server decided to start the game without you.' 
+        
+#00425  net_message_no_servers_found = 'No Servers Found' 
+        
+#00426  net_message_new_king_other = '&C1%s0 &C0is king of the hill!' 
+        
+#00427  net_message_new_king_you = 'You are king of the hill!' 
+        
+#00428  net_message_new_player = '&C1%s0 &C0is joining the game' 
+        
+#00429  net_message_dropped_crown_you = 'You dropped your crown!' 
+        
+#00430  net_message_dropped_crown_other = 'The king has dropped his crown!' 
+        
+#00431  net_message_changing_levels = 'Get Ready! Changing levels to &C1%s0....' 
+        
+#00432  net_message_game_will_start = 'The game will start when all players are fully-loaded.' 
+        
+#00433  net_message_join_pending = '&C1%s0 &C0is waiting to join.' 
+        
+#00434  net_message_observing = '&C1%s0 &C0is now observing the game.' 
+        
+#00435  net_message_joining = '&C1%s0 &C0is joining the game.' 
+        
+#00436  net_message_starting_game = 'Get Ready! Starting a &C1%s0&C0 game....' 
+        
+#00437  net_message_player_quit = '&C1%s0 &C0has left the game.' 
+        
+#00439  net_message_player_timed_out = '&C1%s0 &C0has timed out.' 
+        
+#00440  net_message_player_now_observing = '&C1%s0 &C0has chosen to observe.' 
+        
+#00441  net_message_player_banned = 'Server has removed &C1%s0 &C0from the game.' 
+        
+#00442  net_message_player_left_out = 'Server has dropped &C1%s0 &C0from the game.' 
+        
+#00443  net_message_player_dropped = '&C1%s0 &C0had a bad connection and was dropped.' 
+        
+#00444  net_status_nomap = 'Map missing.' 
+        
+#00446  net_status_connecting = 'Connecting to Server....' 
+        
+#00447  net_status_joining = 'Joining game....' 
+        
+#00448  net_status_trying_password = 'Trying password....' 
+        
+#00449  net_status_lost_connection = 'You have lost connection to the server.' 
+        
+#00451  net_status_server_quit = 'The server has quit.' 
+        
+#00453  net_status_join_timeout = 'Timed out joining server. Refresh your server list or try again. If this problem persists, check your firewall settings.' 
+        
+#00454  net_status_not_posted = 'Your game was not posted on Gamespy. Check your network cables as well as any Firewall settings you may have.' 
+        
+#00455  net_status_checking_motd = 'Connecting to master server....' 
+        
+#00456  net_status_retry_motd = 'Reattempting to Connect to master server....' 
+        
+#00457  net_status_getting_lobbies = 'Getting lobby list....' 
+        
+#00458  net_status_gamespy_no_dns = 'Failed to connect to Gamespy. Check your Gateway and/or Firewall settings. See the THPS3 manual for troubleshooting.' 
+        
+#00459  net_status_gamespy_no_connect = 'Failed to connect to Gamespy. Check your connection and settings. See the THPS3 manual for troubleshooting.' 
+        
+#00460  net_status_motd_failed = 'Failed to connect to master server.' 
+        
+#00461  net_status_testing_settings = 'Testing network settings....' 
+        
+#00462  net_status_need_to_setup = 'You have yet to setup your network device and connection. Would you like to do so now?' 
+        
+#00463  net_status_need_to_setup_dialup = 'You have yet to setup your connection settings. Would you like to do so now?' 
+        
+#00464  net_modem_state_dialing = 'Dialing' 
+        
+#00466  net_modem_state_connected = 'Connected. Logging in....' 
+        
+#00467  net_modem_state_logged_in = 'Connected' 
+        
+#00468  net_modem_state_disconnecting = 'Disconnecting....' 
+        
+#00469  net_modem_state_hanging_up = 'Hanging up....' 
+        
+#00470  net_modem_state_disconnected = 'Disconnected.' 
+        
+#00471  net_modem_state_conencting = 'Connecting to ISP' 
+        
+#00472  net_modem_error_no_modem = 'No compatible modems are attached.' 
+        
+#00474  net_modem_error_timeout = 'Timed out connecting to service provider. Check your connection settings.' 
+        
+#00475  net_modem_error_busy = 'The phone number you dialed is busy,' 
+        
+#00476  net_modem_error_no_connect = 'Could not connect to ISP. Please check your ISP phone number.' 
+        
+#00477  net_modem_error_no_dialtone = 'No dialtone detected. Make sure your phone line is properly connected.' 
+        
+#00478  net_modem_error_during_connect = 'Connected, but could not log in. Check your username and password in your connection settings.' 
+        
+#00479  score_title_trick_attack = 'Score' 
+        
+#00481  score_title_graffiti = 'Tags' 
+        
+#00482  score_title_king = 'Time' 
+        
+#00483  score_title_slap = 'Slaps' 
+        
+#00484  sort_title_list = 'Server List' 
+        
+#00486  sort_title_name = 'Name' 
+        
+#00488  sort_title_ping = 'Ping' 
+        
+#00489  sort_title_players = 'Players' 
+        
+#00490  sort_title_observers = 'Observers' 
+        
+#00491  sort_title_mode = 'Mode' 
+        
+#00492  sort_title_level = 'Level' 
+        
+#00493  sort_title_skill = 'Skill' 
+        
+#00494  lobby_full_title = 'Full' 
+        
+#00496  lobby_lan_title = 'LAN Games' 
+        
+#00497  net_message_has_respawned = 'The %s has respawned!' 
+        
+#00502  net_message_starting_game_error = '&C1%s0&C0 not supported on this map.' 
+        
+#00503  net_message_ctf_grab_you = 'You grabbed the flag!' 
+        
+#00506  net_message_ctf_grab_teammate = '&C%d%s&C0 grabbed the flag!' 
+        
+#00507  net_message_ctf_grab_other = '&C%d%s&C0 grabbed your flag!' 
+        
+#00508  net_message_ctf_capture_you = 'You captured the flag!' 
+        
+#00509  net_message_ctf_capture_teammate = '&C%d%s&C0 captured the flag!' 
+        
+#00510  net_message_ctf_capture_other = '&C%d%s&C0 captured your flag!' 
+        
+#00511  net_message_ctf_return_you = 'You returned the flag!' 
+        
+#00512  net_message_ctf_return_teammate = '&C%d%s&C0 returned your flag!' 
+        
+#00513  net_message_ctf_return_other = '&C%d%s&C0 returned the flag!' 
+        
+#00514  net_message_ctf_drop_you = 'You dropped the flag!' 
+        
+#00515  net_message_ctf_drop_teammate = '&C%d%s&C0 dropped the flag!' 
+        
+#00516  net_message_ctf_drop_other = '&C%d%s&C0 dropped your flag!' 
+        
+#00517  net_message_zone_you_lost_to = 'You lost a %dx zone to &c%d%s&c0!' 
+        
+#00520  net_message_zone_you_lost = 'You lost a %dx zone!' 
+        
+#00521  net_message_zone_you_own_from = 'You own a %dx zone from &c%d%s&c0!' 
+        
+#00522  net_message_zone_1_lost_to_2 = '&c%d%s&c0 lost a %dx zone to &c%d%s&c0!' 
+        
+#00523  net_message_zone_lost = '&c%d%s&c0 lost a %dx zone!' 
+        
+#00524  net_message_zone_you_own = 'You own a %dx zone!' 
+        
+#00525  net_message_zone_own = '&c%d%s&c0 owns a %dx zone!' 
+        
+#00526  net_message_zone_all = 'Your team owned all zones and scores!' 
+        
+#00527  net_message_zone_other = 'The %s owned all zones and scores!' 
+        
+#00528  net_message_grab_key_other = '&C1%s &C0got the zone key!' 
+        
+#00531  net_message_grab_key_you = 'You got the zone key!' 
+        
+#00532  net_message_dropped_key_you = 'You dropped the zone key!' 
+        
+#00533  net_message_dropped_key_other = '&C1%s &C0has dropped the zone key!' 
+        
+#00534  net_message_you_joined = 'You joined the %s!' 
+        
+#00537  net_message_joined = '%s joined the %s!' 
+        
+#00538  net_message_new_ball_other = '&C1%s &C0got the ball!' 
+        
+#00541  net_message_new_ball_you = 'You got the ball!' 
+        
+#00542  net_message_dropped_ball_you = 'You dropped the ball!' 
+        
+#00543  net_message_dropped_ball_other = '&C1%s &C0has dropped the ball!' 
+        
+#00544  ss_message_left = '%s has left the game.' 
+        
+#00547  ss_message_joined = '%s has joined the game.' 
+        
+#00548  ss_message_level_changed = 'Level changed to %s.' 
+        
+#00549  ss_message_gamemode_changed = 'Game mode changed to %s.' 
+        
+#00550  ss_message_time_changed = 'Time limit changed to %s.' 
+        
+#00551  ss_message_bad_msg_target = 'Bad private message.' 
+        
+#00552  ss_message_bad_msg_format = 'Bad message format.' 
+        
+#00553  ss_message_bad_player = 'Player %s not found.' 
+        
+#00554  ss_message_msg_self = 'Cannot send private message to yourself!' 
+        
+#00555  ss_message_system = '>* %s' 
+        
+#00557  ss_message_private = '>*%s*: %s' 
+        
+#00558  ss_message_normal = '>%s: %s' 
+        
+#00559  ss_message_action = '>%s %s' 
+        
+#00560  gs_message_init = 'Initializing GameSpy...' 
+        
+#00563  gs_message_conn = 'Connecting to GameSpy...' 
+        
+#00564  gs_message_connected = 'Connected to GameSpy!' 
+        
+#00565  gs_message_plist = 'Updating player list...' 
+        
+#00566  gs_message_plist_done = 'Finished updating players list.' 
+        
+#00567  gs_message_slist = 'Retrieving server list...' 
+        
+#00568  gs_message_joined = '%s has joined.' 
+        
+#00569  gs_message_left = '%s has left.' 
+        
+#00570  gs_message_err_disconnected = 'Disconnected: %s' 
+        
+#00571  gs_message_err_init_failed = 'GameSpy initialization failed.' 
+        
+#00572  gs_message_err_msg = 'Unknown error parsing message.' 
+        
+#00573  gs_message_err_not_conn = 'Not connected to GameSpy.  Please reconnect.' 
+        
+#00574  gs_message_err_couldnt_conn = 'Unable to connect to GameSpy.  Please retry in a few minutes.' 
+        
+#00575  gs_message_err_nick_inuse = 'Error: Nick <%s> is in use.' 
+        
+#00576  gs_message_err_nick_invalid = 'Error: Nick <%s> is invalid.' 
+        
+#00577  gs_message_err_invalid_char = 'Error: Character <%c> in nick is invalid.' 
+        
+#00578  gs_message_err_bad_ip = 'Bad connect ip address.' 
+        
+#00581  gs_message_your_ip = 'Your IP address is: %s.' 
+        
+#00582  gs_command_me = 'me' 
+        
+#00583  gs_command_tell = 'tell' 
+        
+#00584  gs_command_connect = 'connect' 
+        
+#00585  gs_command_ip = 'ip' 
+        
+#00586  gs_message_nickchanged = 'Nick changed.' 
+        
+#00587  gs_message_nicknotchanged = 'Unable to change nick.' 
+        
+#00588  gs_wintitle_filters = 'Filters' 
+        
+#00589  gs_wintitle_options = 'Options' 
+        
+#00590  gs_wintitle_not_con = 'Not Connected' 
+        
+#00591  gs_wintitle_staging = 'Staging' 
+        
+#00592  gs_wintitle_create = 'Create' 
+        
+#00593  gs_wintitle_si = 'Server Info' 
+        
+#00594  gs_wintitle_slist = 'Server List' 
+        

@@ -1,0 +1,2119 @@
+OldBigDeckTexture = "cw_ss_BoardSelect11.png" 
+        
+#00001  OldBigGripTapeTexture = "cw_ss_generic_griptape_11.png" 
+        
+#00002  LockedDeckTexture = "cw_bs_unopened.png" 
+        
+#00003  OldDeckModelInfo = 
+#00008  
+        ARRAY(
+          STRUCT{
+            ModelName = BS_Board_01 
+            DeckTexture = "JKU_BoardSelect01.png" 
+            GripTapeTexture = "cw_ss_generic_griptape_01.png" 
+            }
+          STRUCT{
+            ModelName = BS_Board_02 
+            DeckTexture = "JKU_BoardSelect02.png" 
+            GripTapeTexture = "cw_ss_generic_griptape_02.png" 
+            }
+          STRUCT{
+            ModelName = BS_Board_03 
+            DeckTexture = "JKU_BoardSelect03.png" 
+            GripTapeTexture = "cw_ss_generic_griptape_03.png" 
+            }
+          STRUCT{
+            ModelName = BS_Board_04 
+            DeckTexture = "JKU_BoardSelect04.png" 
+            GripTapeTexture = "cw_ss_generic_griptape_04.png" 
+            }
+          STRUCT{
+            ModelName = BS_Board_05 
+            DeckTexture = "JKU_BoardSelect05.png" 
+            GripTapeTexture = "cw_ss_generic_griptape_05.png" 
+            }
+          STRUCT{
+            ModelName = BS_Board_06 
+            DeckTexture = "JKU_BoardSelect06.png" 
+            GripTapeTexture = "cw_ss_generic_griptape_06.png" 
+            }
+          STRUCT{
+            ModelName = BS_Board_07 
+            DeckTexture = "JKU_BoardSelect07.png" 
+            GripTapeTexture = "cw_ss_generic_griptape_07.png" 
+            }
+          STRUCT{
+            ModelName = BS_Board_08 
+            DeckTexture = "JKU_BoardSelect08.png" 
+            GripTapeTexture = "cw_ss_generic_griptape_08.png" 
+            }
+          STRUCT{
+            ModelName = BS_Board_09 
+            DeckTexture = "JKU_BoardSelect09.png" 
+            GripTapeTexture = "cw_ss_generic_griptape_09.png" 
+            }
+          STRUCT{
+            ModelName = BS_Board_10 
+            DeckTexture = "JKU_BoardSelect10.png" 
+            GripTapeTexture = "cw_ss_generic_griptape_10.png" 
+            }
+          
+        )
+        
+#00060  DeckMenuInfo = 
+#00063  
+        ARRAY(
+          STRUCT{
+            CanBeUsedBy = ARRAY(
+              
+              Hawk 
+            )
+            DecksTitle = "Hawk decks" 
+            LockedText = "Unlock using Tony Hawk" 
+            PreName = "HawkBoards.pre" 
+            }
+          STRUCT{
+            CanBeUsedBy = ARRAY(
+              
+              Caballero 
+            )
+            DecksTitle = "Caballero decks" 
+            LockedText = "Unlock using Caballero" 
+            PreName = "CaballeroBoards.pre" 
+            }
+          STRUCT{
+            CanBeUsedBy = ARRAY(
+              
+              Campbell 
+            )
+            DecksTitle = "Campbell decks" 
+            LockedText = "Unlock using Campbell" 
+            PreName = "CampbellBoards.pre" 
+            }
+          STRUCT{
+            CanBeUsedBy = ARRAY(
+              
+              Glifberg 
+            )
+            DecksTitle = "Glifberg decks" 
+            LockedText = "Unlock using Glifberg" 
+            PreName = "GlifbergBoards.pre" 
+            }
+          STRUCT{
+            CanBeUsedBy = ARRAY(
+              
+              Koston 
+            )
+            DecksTitle = "Koston decks" 
+            LockedText = "Unlock using Koston" 
+            PreName = "KostonBoards.pre" 
+            }
+          STRUCT{
+            CanBeUsedBy = ARRAY(
+              
+              Lasek 
+            )
+            DecksTitle = "Lasek decks" 
+            LockedText = "Unlock using Bucky Lasek" 
+            PreName = "LasekBoards.pre" 
+            }
+          STRUCT{
+            CanBeUsedBy = ARRAY(
+              
+              Margera 
+            )
+            DecksTitle = "Margera decks" 
+            LockedText = "Unlock using Margera" 
+            PreName = "MargeraBoards.pre" 
+            }
+          STRUCT{
+            CanBeUsedBy = ARRAY(
+              
+              Mullen 
+            )
+            DecksTitle = "Mullen decks" 
+            LockedText = "Unlock using Rodney Mullen" 
+            PreName = "MullenBoards.pre" 
+            }
+          STRUCT{
+            CanBeUsedBy = ARRAY(
+              
+              Muska 
+            )
+            DecksTitle = "Muska decks" 
+            LockedText = "Unlock using Muska" 
+            PreName = "MuskaBoards.pre" 
+            }
+          STRUCT{
+            CanBeUsedBy = ARRAY(
+              
+              Reynolds 
+            )
+            DecksTitle = "Reynolds decks" 
+            LockedText = "Unlock using Andrew Reynolds" 
+            PreName = "ReynoldsBoards.pre" 
+            }
+          STRUCT{
+            CanBeUsedBy = ARRAY(
+              
+              Rowley 
+            )
+            DecksTitle = "Rowley decks" 
+            LockedText = "Unlock using Rowley" 
+            PreName = "RowleyBoards.pre" 
+            }
+          STRUCT{
+            CanBeUsedBy = ARRAY(
+              
+              Steamer 
+            )
+            DecksTitle = "Steamer decks" 
+            LockedText = "Unlock using Elissa Steamer" 
+            PreName = "SteamerBoards.pre" 
+            }
+          STRUCT{
+            CanBeUsedBy = ARRAY(
+              
+              Thomas 
+            )
+            DecksTitle = "Thomas decks" 
+            LockedText = "Unlock using Thomas" 
+            PreName = "ThomasBoards.pre" 
+            }
+          STRUCT{
+            CanBeUsedBy = ARRAY(
+              
+              Custom 
+            )
+            DecksTitle = "Create-a-skater decks" 
+            LockedText = "Unlock using a create-a-skater" 
+            PreName = "CasBoards.pre" 
+            }
+          STRUCT{
+            CanBeUsedBy = ARRAY(
+              
+              Dick 
+            )
+            GlobalFlag = SKATER_UNLOCKED_DICK 
+            DecksTitle = "Dick decks" 
+            LockedText = "Unlock using Dick" 
+            PreName = "DickBoards.pre" 
+            }
+          STRUCT{
+            CanBeUsedBy = ARRAY(
+              
+              Carrera 
+            )
+            GlobalFlag = SKATER_UNLOCKED_CARRERA 
+            DecksTitle = "Carrera decks" 
+            LockedText = "Unlock using Carrera" 
+            PreName = "CarreraBoards.pre" 
+            }
+          STRUCT{
+            CanBeUsedBy = ARRAY(
+              
+              Demoness 
+            )
+            GlobalFlag = SKATER_UNLOCKED_DEMONESS 
+            DecksTitle = "Demoness decks" 
+            LockedText = "Unlock using Demoness" 
+            PreName = "DemonessBoards.pre" 
+            }
+          STRUCT{
+            CanBeUsedBy = ARRAY(
+              
+              Wolverine 
+            )
+            GlobalFlag = SKATER_UNLOCKED_WOLVERINE 
+            DecksTitle = "Wolverine decks" 
+            LockedText = "Unlock using Wolverine" 
+            PreName = "WolverineBoards.pre" 
+            }
+          STRUCT{
+            CanBeUsedBy = ARRAY(
+              
+              Maul 
+            )
+            GlobalFlag = SKATER_UNLOCKED_MAUL 
+            DecksTitle = "Darth Maul decks" 
+            LockedText = "Unlock using Darth Maul" 
+            PreName = "MaulBoards.pre" 
+            }
+          STRUCT{
+            CanBeUsedBy = ARRAY(
+              
+              Slater 
+            )
+            GlobalFlag = SKATER_UNLOCKED_SLATER 
+            DecksTitle = "Kelly Slater decks" 
+            LockedText = "Unlock using Kelly Slater" 
+            PreName = "SlaterBoards.pre" 
+            }
+          STRUCT{
+            CanBeUsedBy = ARRAY(
+              
+              Ollie 
+            )
+            GlobalFlag = SKATER_UNLOCKED_BUM 
+            DecksTitle = "Ollie the Bum decks" 
+            LockedText = "Unlock using Ollie the Bum" 
+            PreName = "OllieBoards.pre" 
+            }
+          STRUCT{
+            CanBeUsedBy = ARRAY(
+              
+              Eyeball 
+            )
+            GlobalFlag = SKATER_UNLOCKED_EYEBALL 
+            DecksTitle = "Neversoft Eyeball decks" 
+            LockedText = "Unlock using Neversoft Eyeball" 
+            PreName = "EyeballBoards.pre" 
+            }
+          STRUCT{
+            CanBeUsedBy = ARRAY(
+              
+              DOOMGuy 
+            )
+            GlobalFlag = SKATER_UNLOCKED_DOOMGUY 
+            DecksTitle = "DOOM decks" 
+            LockedText = "Unlock using DOOM Guy" 
+            PreName = "DoomguyBoards.pre" 
+            }
+          
+        )
+        
+#00235  GripTapeMenuInfo = 
+#00237  
+        ARRAY(
+          STRUCT{
+            Title = "Grip Tapes" 
+            GripTapes = ARRAY(
+              
+              STRUCT{
+                GripTapeDescription = "Generic Cut" 
+                GripTapeTexture = "GenericG01.png" 
+                }
+              STRUCT{
+                GripTapeDescription = "Solid" 
+                GripTapeTexture = "GenericG02.png" 
+                }
+              STRUCT{
+                GripTapeDescription = "Razors edge" 
+                GripTapeTexture = "GenericG03.png" 
+                }
+              STRUCT{
+                GripTapeDescription = "Equal" 
+                GripTapeTexture = "GenericG04.png" 
+                }
+              STRUCT{
+                GripTapeDescription = "Slasher" 
+                GripTapeTexture = "GenericG05.png" 
+                }
+              STRUCT{
+                GripTapeDescription = "Square" 
+                GripTapeTexture = "GenericG06.png" 
+                }
+              STRUCT{
+                GripTapeDescription = "Eye dont know" 
+                GripTapeTexture = "GenericG015.png" 
+                }
+              STRUCT{
+                GripTapeDescription = "Striper" 
+                GripTapeTexture = "GenericG08.png" 
+                }
+              STRUCT{
+                GripTapeDescription = "Thrashed" 
+                GripTapeTexture = "GenericG09.png" 
+                RotateGripTapeRight }
+              STRUCT{
+                GripTapeDescription = "You're a star" 
+                GripTapeTexture = "DickG01.png" 
+                }
+              
+            )
+            }
+          STRUCT{
+            Title = "More Grip Tapes" 
+            GripTapes = ARRAY(
+              
+              STRUCT{
+                GripTapeDescription = "Green Machine" 
+                GripTapeTexture = "GenericG011.png" 
+                }
+              STRUCT{
+                GripTapeDescription = "Ladies" 
+                GripTapeTexture = "CarreraG01.png" 
+                RotateGripTapeRight }
+              STRUCT{
+                GripTapeDescription = "Red Light" 
+                GripTapeTexture = "GenericG013.png" 
+                }
+              STRUCT{
+                GripTapeDescription = "Crack" 
+                GripTapeTexture = "GenericG014.png" 
+                }
+              STRUCT{
+                GripTapeDescription = "Ye Old School" 
+                GripTapeTexture = "GenericG07.png" 
+                }
+              STRUCT{
+                GripTapeDescription = "Colored Nuts" 
+                GripTapeTexture = "GenericG010.png" 
+                }
+              STRUCT{
+                GripTapeDescription = "Bat Grip" 
+                GripTapeTexture = "DemonessG01.png" 
+                RotateGripTapeRight }
+              STRUCT{
+                GripTapeDescription = "Scratch away" 
+                GripTapeTexture = "WolverineG01.png" 
+                }
+              STRUCT{
+                Top 4 GripTapeDescription = "Blues" 
+                GripTapeTexture = "GenericG012.png" 
+                }
+              STRUCT{
+                GripTapeDescription = "Eyeball" 
+                GripTapeTexture = "eyeballG01.png" 
+                }
+              
+            )
+            }
+          STRUCT{
+            Title = "Even More Grip Tapes" 
+            GripTapes = ARRAY(
+              
+              STRUCT{
+                GripTapeDescription = "Hawk" 
+                GripTapeTexture = "HawkG01.png" 
+                }
+              STRUCT{
+                GripTapeDescription = "Cab" 
+                GripTapeTexture = "CaballeroG01.png" 
+                RotateGripTapeRight }
+              STRUCT{
+                GripTapeDescription = "Glifberg" 
+                GripTapeTexture = "GlifbergG01.png" 
+                }
+              STRUCT{
+                GripTapeDescription = "Koston" 
+                GripTapeTexture = "KostonG01.png" 
+                RotateGripTapeRight }
+              STRUCT{
+                GripTapeDescription = "Bam" 
+                GripTapeTexture = "MargeraG01.png" 
+                RotateGripTapeRight }
+              STRUCT{
+                GripTapeDescription = "Mullen" 
+                GripTapeTexture = "MullenG01.png" 
+                }
+              STRUCT{
+                GripTapeDescription = "Muska" 
+                GripTapeTexture = "MuskaG01.png" 
+                RotateGripTapeRight }
+              STRUCT{
+                GripTapeDescription = "Steamer" 
+                GripTapeTexture = "SteamerG01.png" 
+                }
+              STRUCT{
+                GripTapeDescription = "Thomas" 
+                GripTapeTexture = "ThomasG01.png" 
+                }
+              STRUCT{
+                GripTapeDescription = "Broken" 
+                GripTapeTexture = "ollieG01.png" 
+                }
+              
+            )
+            }
+          
+        )
+        
+#00429  FUNCTION MoveToCounter 
+#00431    DisableSkaterRotation 
+#00432    IF ProfileEquals is_named = Maul 
+            
+#00433      LOOP 
+#00434        Move z = 1 
+              
+#00435        Wait 1 frame 
+#00436      END LOOP 18 
+#00437      SwitchOffAtomic special_item 
+#00438    END IF 
+#00439    IF ProfileEquals is_named = Muska 
+            
+#00440      LOOP 
+#00441        Move z = 1 
+              
+#00442        Wait 1 frame 
+#00443      END LOOP 18 
+#00444    END IF 
+#00445    SwitchOffShadow 
+#00446    Wait 0.45 seconds 
+#00447    ResetSkaterRotation 
+#00450    Obj_MoveToNode Name = TRG_BoardSelectNode 
+          
+#00451    PlayAnim Anim = Boardshop1 
+          blendperiod = 0 
+          
+#00453    IF CurrentSkaterProfileIs 1 
+#00455      rotate y = -40 
+            
+#00456    ELSE 
+#00457      rotate y = 30 
+            
+#00458    END IF 
+#00459    setstate lip 
+#00464    IF Flipped 
+#00465      Flip 
+#00466    END IF 
+#00467  END FUNCTION
+          
+#00469  FUNCTION SkShowDeck 
+#00472    ResetSkaterRotation 
+#00473    IF CurrentSkaterProfileIs 1 
+#00474      rotate y = 174 
+            duration = 0.5 
+            second 
+#00475    ELSE 
+#00476      rotate y = 30 
+            
+#00477      rotate y = 180 
+            duration = 0.5 
+            second 
+#00478    END IF 
+#00479  END FUNCTION
+          
+#00480  FUNCTION SkShowGripTape 
+#00482    ResetSkaterRotation 
+#00483    IF CurrentSkaterProfileIs 1 
+#00484      rotate y = 174 
+            duration = 0.5 
+            second 
+#00485    ELSE 
+#00486      rotate y = 210 
+            
+#00487      rotate y = 180 
+            duration = 0.5 
+            second 
+#00488    END IF 
+#00489  END FUNCTION
+          
+#00490  FUNCTION ShowDeck 
+#00492    IF CurrentSkaterProfileIs 1 
+#00493      MakeSkaterGoto SkShowDeck Skater = 1 
+            
+#00494    ELSE 
+#00495      MakeSkaterGoto SkShowDeck Skater = 0 
+            
+#00496    END IF 
+#00497  END FUNCTION
+          
+#00498  FUNCTION ShowGripTape 
+#00501    IF CurrentSkaterProfileIs 1 
+#00502      MakeSkaterGoto SkShowGripTape Skater = 1 
+            
+#00503    ELSE 
+#00504      MakeSkaterGoto SkShowGripTape Skater = 0 
+            
+#00505    END IF 
+#00506  END FUNCTION
+          
+#00507  FUNCTION Player1MoveBack 
+#00509    Obj_MoveToNode Name = TRG_SS_Skater01 
+          
+#00510    SwitchOnShadow 
+#00511    Goto LookAtBoard 
+#00512  END FUNCTION
+          
+#00513  FUNCTION Player2MoveBack 
+#00515    Obj_MoveToNode Name = TRG_SS_Skater02 
+          
+#00516    SwitchOnShadow 
+#00517    Goto LookAtBoard 
+#00518  END FUNCTION
+          
+#00519  FUNCTION LookAtBoard 
+#00521    spawnskaterscript BackToGround 
+#00522    Goto SkateShopDummyAI 
+#00532  END FUNCTION
+          
+#00533  FUNCTION BackToGround 
+#00535    Wait 2 gameframes 
+#00540    setstate ground 
+#00541  END FUNCTION
+          
+#00542  FUNCTION BoardshopBackOut 
+#00544    IF CurrentSkaterProfileIs 1 
+#00545      BoardShopToPlayer2CamAnim 
+#00549      MakeSkaterGoto Player2MoveBack Skater = 1 
+            
+#00551    ELSE 
+#00552      BoardShopToPlayer1CamAnim 
+#00555      MakeSkaterGoto Player1MoveBack Skater = 0 
+            
+#00557    END IF 
+#00558    ResetSkaterRotation 
+#00559    EnableSkaterRotation 
+#00560  END FUNCTION
+          
+#00561  FUNCTION MakeBoardshopBackOut 
+#00565    FireMenuEvent Type = BACK 
+          Id = boardshop_menu 
+          target = boardshop_menu 
+          
+#00566  END FUNCTION
+          
+#00567  FUNCTION display_correct_deck_set 
+#00569    DisplayCorrectDeckSet 
+#00570  END FUNCTION
+          
+#00571  FUNCTION CreateBoardShopMenu 
+#00573    createmenu STRUCT{
+            Type = verticalmenu 
+            Id = boardshop_menu 
+            x = 320.0 
+            y = 120.0 
+            w = 280.0 
+            h = 400.0 
+            just_center_x just_center_y blue_top eventhandlers = ARRAY(
+              
+              STRUCT{
+                Type = showeventhandler 
+                target = "display_correct_deck_set" 
+                }
+              STRUCT{
+                Type = backeventhandler 
+                target = "BoardshopBackOut" 
+                }
+              
+            )
+            children = ARRAY(
+              
+              STRUCT{
+                Type = textmenuelement 
+                auto_id text = "Boardshop" 
+                static dont_gray drawer = Title 
+                dont_gray }
+              STRUCT{
+                Type = textmenuelement 
+                auto_id text = "Change Deck" 
+                target = "ChangeToDeckMenu" 
+                }
+              STRUCT{
+                Type = textmenuelement 
+                auto_id text = "Griptape" 
+                target = "ChangeToGripTapeMenu" 
+                }
+              STRUCT{
+                Type = textmenuelement 
+                auto_id text = "Wheel Color" 
+                link = wheel_color_menu 
+                target = "ShowDeck" 
+                }
+              STRUCT{
+                Type = textmenuelement 
+                auto_id text = "Done" 
+                target = "MakeBoardshopBackOut" 
+                }
+              
+            )
+            }
+          
+#00616  END FUNCTION
+          
+#00617  DeckMenuParams = 
+#00620  
+        STRUCT{
+          DeckOffScreenX = 700 
+          DeckX = 470 
+          DeckY = 180 
+          DeckZ = 60 
+          DeckMoveFrames = 15 
+          NumFramesToFlip = 40 
+          HighlightArrowScale = 0.75 
+          LeftRightArrowScale = 1 
+          TopArrowOffset = VECTOR[0.0; 24.0; 0.0] 
+          BottomArrowOffset = VECTOR[0.0; -23.0; 0.0] 
+          LeftArrowOffset = VECTOR[-12.0; 2.0; 0.0] 
+          RightArrowOffset = VECTOR[12.0; 0.0; 0.0] 
+          TitleX = 235 
+          TitleY = 160 
+          DescriptionX = 475 
+          DescriptionY = 340 
+          }
+        
+#00640  FUNCTION CreateDeckMenu 
+#00642    createmenu STRUCT{
+            Type = deckmenu 
+            Id = deck_menu 
+            AppearanceParams = DeckMenuParams 
+            }
+          
+#00649  END FUNCTION
+          
+#00651  FUNCTION WheelColorBackOut 
+#00653    ShowGripTape 
+#00654  END FUNCTION
+          
+#00655  FUNCTION CreateWheelColorMenu 
+#00657    createmenu STRUCT{
+            Type = verticalmenu 
+            Id = wheel_color_menu 
+            x = 320.0 
+            y = 120.0 
+            w = 270.0 
+            h = 400.0 
+            just_center_x just_center_y blue_top eventhandler = STRUCT{
+              Type = backeventhandler 
+              target = "WheelColorBackOut" 
+              }
+            children = ARRAY(
+              
+              STRUCT{
+                Type = textmenuelement 
+                auto_id text = "Wheel color" 
+                static dont_gray drawer = Title 
+                }
+              STRUCT{
+                Type = slidermenuelement 
+                Id = wheel_color_hue 
+                text = "Color" 
+                lower = 0 
+                upper = 360 
+                delta = 12 
+                start = 0 
+                wrap = 1 
+                right_side_w = 80 
+                arrow_spacing = 30.0 
+                eventhandlers = ARRAY(
+                  
+                  STRUCT{
+                    Type = ContentsChangedEventHandler 
+                    target = "change_color_property" 
+                    params = STRUCT{
+                      field_id = boarddown 
+                      subfield_id = hue 
+                      slider_id = wheel_color_hue 
+                      }
+                    }
+                  
+                )
+                }
+              STRUCT{
+                Type = slidermenuelement 
+                Id = wheel_color_saturation 
+                text = "Saturation" 
+                lower = 0 
+                upper = 100 
+                delta = 2 
+                start = 50 
+                right_side_w = 80 
+                arrow_spacing = 30.0 
+                eventhandlers = ARRAY(
+                  
+                  STRUCT{
+                    Type = ContentsChangedEventHandler 
+                    target = "change_color_property" 
+                    params = STRUCT{
+                      field_id = boarddown 
+                      subfield_id = saturation 
+                      slider_id = wheel_color_saturation 
+                      }
+                    }
+                  
+                )
+                }
+              STRUCT{
+                Type = slidermenuelement 
+                Id = wheel_color_value 
+                text = "Brightness" 
+                lower = 0 
+                upper = 100 
+                delta = 2 
+                start = 50 
+                right_side_w = 80 
+                arrow_spacing = 30.0 
+                eventhandlers = ARRAY(
+                  
+                  STRUCT{
+                    Type = ContentsChangedEventHandler 
+                    target = "change_color_property" 
+                    params = STRUCT{
+                      field_id = boarddown 
+                      subfield_id = value 
+                      slider_id = wheel_color_value 
+                      }
+                    }
+                  
+                )
+                }
+              STRUCT{
+                Type = textmenuelement 
+                Id = wheel_color_menu_done 
+                text = "Done" 
+                target = "go_back" 
+                params = STRUCT{
+                  Id = wheel_color_menu 
+                  }
+                }
+              
+            )
+            }
+          
+#00707  END FUNCTION
+          
+#00708  FUNCTION UpdateWheelColorScript 
+#00710    UpdateWheelColor 
+#00711  END FUNCTION
+          
+#00712  FUNCTION ChangeToDeckMenu 
+#00714    IF SkaterCamAnimHeld Skater = 0 
+            
+#00717      FireMenuEvent Type = link 
+            Id = deck_menu 
+            target = deck_menu 
+            
+#00718      ShowDeck 
+#00719    END IF 
+#00720  END FUNCTION
+          
+#00721  FUNCTION ChangeToGripTapeMenu 
+#00724    IF SkaterCamAnimHeld Skater = 0 
+            
+#00729      IF DecksAreSpinning 
+#00730      ELSE 
+#00731        FireMenuEvent Type = CHANGETOGRIPTAPE 
+              Id = deck_menu 
+              target = deck_menu 
+              
+#00733        FireMenuEvent Type = link 
+              Id = deck_menu 
+              target = deck_menu 
+              
+#00734      END IF 
+#00735    END IF 
+#00736  END FUNCTION
+          
+#00737  shared_boardsdown = 
+#00740  
+        ARRAY(
+          STRUCT{
+            Hawk desc = "Birdman Crest" 
+            texture = "HawkB01.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Hawk desc = "Gold Edition Logo" 
+            texture = "HawkB02.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Hawk desc = "Team Seal 2001" 
+            texture = "HawkB03.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Hawk desc = "Hawk Collage" 
+            texture = "HawkB04.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Hawk desc = "Pterodactyl 2" 
+            texture = "HawkB05.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Hawk desc = "Pterodactyl skull" 
+            texture = "HawkB06.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Hawk RotateDeckLeft desc = "3-D Logo" 
+            texture = "HawkB07.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Hawk desc = "Giant Pterodactyl Skull" 
+            texture = "HawkB08.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Hawk desc = "Pterodactyl 2001" 
+            texture = "HawkB09.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Hawk desc = "Tony Hawk Logo" 
+            texture = "HawkB010.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Caballero RotateDeckRight desc = "Chin Series - 1999" 
+            texture = "caballeroB01.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Caballero desc = "Cab Tank - 1993" 
+            texture = "caballeroB02.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Caballero desc = "Classic Dragon - 1999" 
+            texture = "caballeroB03.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Caballero desc = "Dragon - 2000" 
+            texture = "caballeroB04.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Caballero desc = "Face Series - 2000" 
+            texture = "caballeroB05.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Caballero desc = "Guitar Dragon - 1991" 
+            texture = "caballeroB06.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Caballero desc = "Harley the Dog - 1992" 
+            texture = "caballeroB07.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Caballero desc = "King Cab - 1993" 
+            texture = "caballeroB08.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Caballero desc = "Mini Dragon - 2000" 
+            texture = "caballeroB09.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Caballero desc = "Star Series - 2001" 
+            texture = "caballeroB010.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Campbell RotateDeckLeft desc = "Citybot 8" 
+            texture = "campbellB01.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Campbell desc = "Sound Team Deck" 
+            texture = "campbellB02.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Campbell desc = "Viking" 
+            texture = "campbellB03.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Campbell RotateDeckLeft desc = "Reemo Jr." 
+            texture = "campbellB04.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Campbell desc = "Nude" 
+            texture = "campbellB05.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Campbell RotateDeckLeft desc = "K.C. Star Deck" 
+            texture = "campbellB06.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Campbell desc = "Reemo Dwella " 
+            texture = "campbellB07.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Campbell desc = "Ultra Violence 1.0" 
+            texture = "campbellB08.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Campbell desc = "Dragon" 
+            texture = "campbellB09.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Campbell desc = "Reemo! 2" 
+            texture = "campbellB010.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Glifberg RotateDeckRight desc = "Glifberg 1" 
+            texture = "glifbergB01.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Glifberg RotateDeckRight desc = "Glifberg 2" 
+            texture = "glifbergB02.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Glifberg desc = "Glifberg 3" 
+            texture = "glifbergB03.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Glifberg desc = "Glifberg 4" 
+            texture = "glifbergB04.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Glifberg RotateDeckRight desc = "Glifberg 5" 
+            texture = "glifbergB05.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Glifberg RotateDeckRight desc = "Glifberg 6" 
+            texture = "glifbergB06.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Glifberg desc = "Glifberg 7" 
+            texture = "glifbergB07.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Glifberg RotateDeckRight desc = "Glifberg 8" 
+            texture = "glifbergB08.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Glifberg desc = "Glifberg 9" 
+            texture = "glifbergB09.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Glifberg RotateDeckRight desc = "Glifberg 10" 
+            texture = "glifbergB010.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Koston desc = "Classic Koston" 
+            texture = "kostonB01.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Koston desc = "Mechanical" 
+            texture = "kostonB02.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Koston RotateDeckLeft desc = "Baseball" 
+            texture = "kostonB03.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Koston desc = "Flag" 
+            texture = "kostonB04.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Koston desc = "OG 2000" 
+            texture = "kostonB05.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Koston desc = "Oldman" 
+            texture = "kostonB06.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Koston RotateDeckRight desc = "Modern" 
+            texture = "kostonB07.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Koston desc = "OG 2001" 
+            texture = "kostonB08.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Koston RotateDeckLeft desc = "Soccer" 
+            texture = "kostonB09.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Koston desc = "Jumbo Girl" 
+            texture = "kostonB010.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Lasek desc = "Paradise Slammers" 
+            texture = "lasekB01.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Lasek desc = "Racecar" 
+            texture = "lasekB02.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Lasek RotateDeckLeft desc = "3-D Logo" 
+            texture = "lasekB03.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Lasek RotateDeckLeft desc = "Checkered Flag" 
+            texture = "lasekB04.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Lasek desc = "Racecar Logo" 
+            texture = "lasekB05.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Lasek desc = "Rooster" 
+            texture = "lasekB06.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Lasek desc = "Team Seal 2001" 
+            texture = "lasekB07.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Lasek desc = "Throttle" 
+            texture = "lasekB08.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Lasek desc = "Trophy Girls" 
+            texture = "lasekB09.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Lasek desc = "Nollie Flip" 
+            texture = "lasekB010.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Margera RotateDeckLeft desc = "Welcome" 
+            texture = "margeraB01.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Margera desc = "Letterman" 
+            texture = "margeraB02.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Margera RotateDeckLeft desc = "Ivy League" 
+            texture = "margeraB03.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Margera RotateDeckLeft desc = "Bats" 
+            texture = "margeraB04.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Margera desc = "Arbor" 
+            texture = "margeraB05.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Margera desc = "Animalism" 
+            texture = "margeraB06.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Margera desc = "Maninmal" 
+            texture = "margeraB07.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Margera RotateDeckLeft desc = "Trophy" 
+            texture = "margeraB08.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Margera desc = "Instinct" 
+            texture = "margeraB09.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Margera desc = "Script" 
+            texture = "margeraB010.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Mullen desc = "Rodney" 
+            texture = "mullenB01.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Mullen RotateDeckLeft desc = "Duh!" 
+            texture = "mullenB02.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Mullen RotateDeckRight desc = "Panda Poo" 
+            texture = "mullenB03.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Mullen RotateDeckLeft desc = "Boy Genius" 
+            texture = "mullenB04.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Mullen RotateDeckRight desc = "Old Man" 
+            texture = "mullenB05.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Mullen RotateDeckRight desc = "Panda Series" 
+            texture = "mullenB06.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Mullen RotateDeckRight desc = "Pigeon" 
+            texture = "mullenB07.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Mullen desc = "Quack" 
+            texture = "mullenB08.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Mullen RotateDeckRight desc = "Panda Mullen" 
+            texture = "mullenB09.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Mullen RotateDeckLeft desc = "Kick Me" 
+            texture = "mullenB010.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Muska desc = "Red Sun" 
+            texture = "muskaB01.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Muska RotateDeckLeft desc = "White Icon" 
+            texture = "muskaB02.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Muska desc = "Orange Silhouette" 
+            texture = "muskaB03.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Muska desc = "Blue Sun" 
+            texture = "muskaB04.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Muska RotateDeckRight desc = "Red Team" 
+            texture = "muskaB05.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Muska desc = "Green Sun" 
+            texture = "muskaB06.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Muska RotateDeckRight desc = "Muska Icon" 
+            texture = "muskaB07.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Muska RotateDeckLeft desc = "Black Icon" 
+            texture = "muskaB08.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Muska RotateDeckLeft desc = "Muska Flight" 
+            texture = "muskaB09.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Muska desc = "Red Silhouette" 
+            texture = "muskaB010.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Reynolds desc = "Green Brand Logo" 
+            texture = "reynoldsB01.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Reynolds desc = "White Baker Logo" 
+            texture = "reynoldsB02.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Reynolds RotateDeckLeft desc = "Baker Logo" 
+            texture = "reynoldsB03.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Reynolds desc = "Red Brand Logo" 
+            texture = "reynoldsB04.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Reynolds desc = "Black Cowboys" 
+            texture = "reynoldsB05.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Reynolds desc = "Blue Brand Logo" 
+            texture = "reynoldsB06.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Reynolds desc = "Yellow Baker Logo" 
+            texture = "reynoldsB07.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Reynolds desc = "Monkey" 
+            texture = "reynoldsB08.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Reynolds desc = "Green Baker Logo" 
+            texture = "reynoldsB09.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Reynolds RotateDeckLeft desc = "Rastas" 
+            texture = "reynoldsB010.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Rowley RotateDeckRight desc = "Rowley 1" 
+            texture = "rowleyB01.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Rowley RotateDeckRight desc = "Rowley 2" 
+            texture = "rowleyB02.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Rowley desc = "Rowley 3" 
+            texture = "rowleyB03.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Rowley RotateDeckRight desc = "Rowley 4" 
+            texture = "rowleyB04.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Rowley desc = "Rowley 5" 
+            texture = "rowleyB05.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Rowley RotateDeckRight desc = "Rowley 6" 
+            texture = "rowleyB06.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Rowley RotateDeckRight desc = "Rowley 7" 
+            texture = "rowleyB07.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Rowley RotateDeckRight desc = "Rowley 8" 
+            texture = "rowleyB08.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Rowley desc = "Rowley 9" 
+            texture = "rowleyB09.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Rowley desc = "Rowley 10" 
+            texture = "rowleyB010.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Steamer desc = "Etnies 1" 
+            texture = "steamerB01.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Steamer desc = "TSA 1" 
+            texture = "steamerB02.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Steamer RotateDeckRight desc = "Etnies 2" 
+            texture = "steamerB03.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Steamer desc = "TSA 2" 
+            texture = "steamerB04.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Steamer desc = "Etnies 3" 
+            texture = "steamerB05.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Steamer desc = "TSA 3" 
+            texture = "steamerB06.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Steamer RotateDeckRight desc = "Etnies 4" 
+            texture = "steamerB07.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Steamer desc = "TSA 4" 
+            texture = "steamerB08.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Steamer desc = "Etnies 5" 
+            texture = "steamerB09.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Steamer RotateDeckRight desc = "TSA 5" 
+            texture = "steamerB010.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Thomas desc = "Thomas Skeleton" 
+            texture = "ThomasB01.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Thomas RotateDeckLeft desc = "Punk Green" 
+            texture = "ThomasB02.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Thomas desc = "American Punk" 
+            texture = "ThomasB03.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Thomas RotateDeckLeft desc = "Red Bold" 
+            texture = "ThomasB04.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Thomas desc = "American Zero" 
+            texture = "ThomasB05.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Thomas desc = "Three Skull Black" 
+            texture = "ThomasB06.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Thomas desc = "Dying To Live" 
+            texture = "ThomasB07.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Thomas RotateDeckRight desc = "Zero or Die" 
+            texture = "ThomasB08.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Thomas desc = "Thomas Smith" 
+            texture = "ThomasB09.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Thomas desc = "Thomas Cross" 
+            texture = "ThomasB010.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Dick RotateDeckRight desc = "Night Stick" 
+            texture = "DickB01.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Dick desc = "CODE RED!" 
+            texture = "DickB02.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Dick desc = "Dead or Alive" 
+            texture = "DickB03.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Dick desc = "3 Donuts" 
+            texture = "DickB04.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Dick desc = "Dick Ticket" 
+            texture = "DickB05.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Dick desc = "I Still Got It" 
+            texture = "DickB06.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Dick desc = "ATTACK!" 
+            texture = "DickB07.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Dick RotateDeckRight desc = "Punishment" 
+            texture = "DickB08.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Dick desc = "Mother?" 
+            texture = "DickB09.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Dick RotateDeckLeft desc = "Oops I did it Again" 
+            texture = "DickB010.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Carrera desc = "Carrera 1" 
+            texture = "CarreraB01.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Carrera desc = "Carrera 2" 
+            texture = "CarreraB02.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Carrera desc = "Carrera 3" 
+            texture = "CarreraB03.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Carrera RotateDeckLeft desc = "Carrera 4" 
+            texture = "CarreraB04.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Carrera RotateDeckRight desc = "Carrera 5" 
+            texture = "CarreraB05.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Carrera desc = "Carrera 6" 
+            texture = "CarreraB06.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Carrera desc = "Carrera 7" 
+            texture = "CarreraB07.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Carrera RotateDeckRight desc = "Carrera 8" 
+            texture = "CarreraB08.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Carrera desc = "Carrera 9" 
+            texture = "CarreraB09.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Carrera desc = "Carrera 10" 
+            texture = "CarreraB010.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Demoness desc = "Fire Skull" 
+            texture = "DemonessB01.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Demoness desc = "Pitch" 
+            texture = "DemonessB02.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Demoness RotateDeckRight desc = "Bat Attack!" 
+            texture = "DemonessB03.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Demoness desc = "Widow Maker" 
+            texture = "DemonessB04.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Demoness desc = "Daddy-o" 
+            texture = "DemonessB05.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Demoness desc = "He Made Me Do it" 
+            texture = "DemonessB06.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Demoness desc = "Burn Baby Burn" 
+            texture = "DemonessB07.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Demoness desc = "Shrunken fun" 
+            texture = "DemonessB08.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Demoness RotateDeckRight desc = "10,000 Years" 
+            texture = "DemonessB09.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Demoness desc = "Rock N Roll" 
+            texture = "DemonessB010.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Wolverine RotateDeckLeft desc = "Wolverine 1" 
+            texture = "wolverineB01.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Wolverine RotateDeckLeft desc = "Wolverine 2" 
+            texture = "wolverineB02.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Wolverine desc = "Wolverine 3" 
+            texture = "wolverineB03.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Wolverine desc = "Wolverine 4" 
+            texture = "wolverineB04.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Wolverine desc = "Wolverine 5" 
+            texture = "wolverineB05.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Wolverine desc = "Wolverine 6" 
+            texture = "wolverineB06.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Wolverine desc = "Wolverine 7" 
+            texture = "wolverineB07.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Wolverine desc = "Wolverine 8" 
+            texture = "wolverineB08.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Wolverine desc = "Wolverine 9" 
+            texture = "wolverineB09.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Wolverine desc = "Wolverine 10" 
+            texture = "wolverineB010.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Maul desc = "Maul 1" 
+            texture = "MaulB01.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Maul desc = "Maul 2" 
+            texture = "MaulB02.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Maul desc = "Maul 3" 
+            texture = "MaulB03.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Maul RotateDeckLeft desc = "Maul 4" 
+            texture = "MaulB04.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Maul desc = "Maul 5" 
+            texture = "MaulB05.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Maul RotateDeckLeft desc = "Maul 6" 
+            texture = "MaulB06.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Maul RotateDeckLeft desc = "Maul 7" 
+            texture = "MaulB07.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Maul desc = "Maul 8" 
+            texture = "MaulB08.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Maul desc = "Maul 9" 
+            texture = "MaulB09.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Maul RotateDeckLeft desc = "Maul 10" 
+            texture = "MaulB010.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Slater desc = "Slater 1" 
+            texture = "SlaterB01.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Slater desc = "Splash" 
+            texture = "SlaterB02.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Slater RotateDeckRight desc = "O2" 
+            texture = "SlaterB03.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Slater desc = "Quick Red" 
+            texture = "SlaterB04.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Slater RotateDeckRight desc = "Pro Green" 
+            texture = "SlaterB05.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Slater RotateDeckRight desc = "Team Activision" 
+            texture = "SlaterB06.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Slater RotateDeckRight desc = "Pro Blue" 
+            texture = "SlaterB07.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Slater RotateDeckLeft desc = "Quick Black" 
+            texture = "SlaterB08.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Slater desc = "Slater 2" 
+            texture = "SlaterB09.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Slater RotateDeckRight desc = "Pro Red" 
+            texture = "SlaterB010.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Ollie RotateDeckRight desc = "Skate For Food" 
+            texture = "OllieB01.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Ollie desc = "Triple X" 
+            texture = "OllieB02.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Ollie RotateDeckRight desc = "New Bed" 
+            texture = "OllieB03.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Ollie RotateDeckRight desc = "Grrr!" 
+            texture = "OllieB04.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Ollie desc = "I Eat Dirt" 
+            texture = "OllieB05.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Ollie desc = "Barrel Buddies" 
+            texture = "OllieB06.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Ollie desc = "Ollie Mug" 
+            texture = "OllieB07.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Ollie desc = "THE FLY" 
+            texture = "OllieB08.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Ollie desc = "Hobo Cart" 
+            texture = "OllieB09.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Ollie RotateDeckRight desc = "Thirst Money" 
+            texture = "OllieB010.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Eyeball desc = "EyeBall 1" 
+            texture = "EyeBallB01.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Eyeball RotateDeckRight desc = "Flamer Dark" 
+            texture = "EyeBallB02.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Eyeball desc = "Classic" 
+            texture = "EyeBallB03.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Eyeball RotateDeckRight desc = "Graf Head" 
+            texture = "EyeBallB04.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Eyeball RotateDeckRight desc = "Thare Coming to get you" 
+            texture = "EyeBallB05.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Eyeball desc = "Family Photo" 
+            texture = "EyeBallB06.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Eyeball desc = "EyeBall 7" 
+            texture = "EyeBallB07.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Eyeball desc = "EyeBall 8" 
+            texture = "EyeBallB08.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Eyeball RotateDeckRight desc = "Flamer Light" 
+            texture = "EyeBallB09.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Eyeball RotateDeckRight desc = "Chomp Chomp" 
+            texture = "EyeBallB010.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            DOOMGuy desc = "Cyberdemon" 
+            texture = "DoomB01.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            DOOMGuy RotateDeckRight desc = "Baron of Hell" 
+            texture = "DoomB02.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            DOOMGuy desc = "Natas" 
+            texture = "DoomB03.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            DOOMGuy RotateDeckRight desc = "CacoDemon" 
+            texture = "DoomB04.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            DOOMGuy RotateDeckRight desc = "Lost Soul" 
+            texture = "DoomB05.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            DOOMGuy desc = "Archvile" 
+            texture = "DoomB06.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            DOOMGuy desc = "Hell on Earth" 
+            texture = "DoomB07.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            DOOMGuy desc = "Deimos and Phobos" 
+            texture = "DoomB08.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            DOOMGuy RotateDeckRight desc = "Sergeant" 
+            texture = "DoomB09.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            DOOMGuy RotateDeckRight desc = "DOOM" 
+            texture = "DoomB10.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Custom desc = "Red Baker Logo" 
+            texture = "casB01.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Custom RotateDeckLeft desc = "Birdhouse Logo" 
+            texture = "casB02.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Custom desc = "Caballero Chinese Dragon" 
+            texture = "casB03.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Custom desc = "City Stars Slam" 
+            texture = "casB04.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Custom desc = "Element" 
+            texture = "casB05.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Custom desc = "Enjoi Dingleberry Team" 
+            texture = "casB06.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Custom desc = "Koston Olympic" 
+            texture = "casB07.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Custom RotateDeckLeft desc = "Shorty's Yellow Icon" 
+            texture = "casB08.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Custom desc = "Toy Machine Red" 
+            texture = "casB09.png" 
+            target = "replace_boardsdown" 
+            }
+          STRUCT{
+            Custom desc = "Zero New Firebird" 
+            texture = "casB010.png" 
+            target = "replace_boardsdown" 
+            }
+          
+        )
+        
+#01021  shared_boardsup = ARRAY(
+          
+          STRUCT{
+            desc = "Generic Cut" 
+            texture = "GenericG01.png" 
+            target = "replace_boardsup" 
+            }
+          STRUCT{
+            desc = "Solid" 
+            texture = "GenericG02.png" 
+            target = "replace_boardsup" 
+            }
+          STRUCT{
+            desc = "Razors edge" 
+            texture = "GenericG03.png" 
+            target = "replace_boardsup" 
+            }
+          STRUCT{
+            desc = "Equal" 
+            texture = "GenericG04.png" 
+            target = "replace_boardsup" 
+            }
+          STRUCT{
+            desc = "Slasher" 
+            texture = "GenericG05.png" 
+            target = "replace_boardsup" 
+            }
+          STRUCT{
+            desc = "Square" 
+            texture = "GenericG06.png" 
+            target = "replace_boardsup" 
+            }
+          STRUCT{
+            desc = "Ye Old School" 
+            texture = "GenericG07.png" 
+            target = "replace_boardsup" 
+            }
+          STRUCT{
+            desc = "Striper" 
+            texture = "GenericG08.png" 
+            target = "replace_boardsup" 
+            }
+          STRUCT{
+            desc = "Thrashed" 
+            texture = "GenericG09.png" 
+            target = "replace_boardsup" 
+            }
+          STRUCT{
+            desc = "Colored Nuts" 
+            texture = "GenericG010.png" 
+            target = "replace_boardsup" 
+            }
+          STRUCT{
+            desc = "Green Machine" 
+            texture = "GenericG011.png" 
+            target = "replace_boardsup" 
+            }
+          STRUCT{
+            desc = "Blues" 
+            texture = "GenericG012.png" 
+            target = "replace_boardsup" 
+            }
+          STRUCT{
+            desc = "Red Light" 
+            texture = "GenericG013.png" 
+            target = "replace_boardsup" 
+            }
+          STRUCT{
+            desc = "Crack" 
+            texture = "GenericG014.png" 
+            target = "replace_boardsup" 
+            }
+          STRUCT{
+            desc = "Eye dont know" 
+            texture = "GenericG015.png" 
+            target = "replace_boardsup" 
+            }
+          STRUCT{
+            desc = "Hawk" 
+            texture = "HawkG01.png" 
+            target = "replace_boardsup" 
+            }
+          STRUCT{
+            desc = "Bam" 
+            texture = "margeraG01.png" 
+            target = "replace_boardsup" 
+            }
+          STRUCT{
+            desc = "Cab" 
+            texture = "CaballeroG01.png" 
+            target = "replace_boardsup" 
+            }
+          STRUCT{
+            desc = "Glifberg" 
+            texture = "GlifbergG01.png" 
+            target = "replace_boardsup" 
+            }
+          STRUCT{
+            desc = "Koston" 
+            texture = "KostonG01.png" 
+            target = "replace_boardsup" 
+            }
+          STRUCT{
+            desc = "Mullen" 
+            texture = "MullenG01.png" 
+            target = "replace_boardsup" 
+            }
+          STRUCT{
+            desc = "Muska" 
+            texture = "MuskaG01.png" 
+            target = "replace_boardsup" 
+            }
+          STRUCT{
+            desc = "Steamer" 
+            texture = "SteamerG01.png" 
+            target = "replace_boardsup" 
+            }
+          STRUCT{
+            desc = "Thomas" 
+            texture = "thomasG01.png" 
+            target = "replace_boardsup" 
+            }
+          STRUCT{
+            desc = "Slater" 
+            texture = "SlaterG01.png" 
+            target = "replace_boardsup" 
+            }
+          STRUCT{
+            desc = "You're a star" 
+            texture = "DickG01.png" 
+            target = "replace_boardsup" 
+            }
+          STRUCT{
+            desc = "Ladies" 
+            texture = "CarreraG01.png" 
+            target = "replace_boardsup" 
+            }
+          STRUCT{
+            desc = "Bat Grip" 
+            texture = "DemonessG01.png" 
+            target = "replace_boardsup" 
+            }
+          STRUCT{
+            desc = "Scratch away" 
+            texture = "WolverineG01.png" 
+            target = "replace_boardsup" 
+            }
+          STRUCT{
+            desc = "Broken" 
+            texture = "OllieG01.png" 
+            target = "replace_boardsup" 
+            }
+          STRUCT{
+            desc = "Eyeball" 
+            texture = "EyeballG01.png" 
+            target = "replace_boardsup" 
+            }
+          STRUCT{
+            desc = "DOOM Grip" 
+            texture = "DoomG01.png" 
+            target = "replace_boardsup" 
+            }
+          
+        )
+        
+#01065  

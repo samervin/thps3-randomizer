@@ -1,0 +1,153 @@
+FUNCTION memcard_files_menu_create 
+#00001    DestroyElement id = memcard_files_menu 
+          
+#00003    createmenu STRUCT{
+            type = verticalmenu 
+            id = memcard_files_menu 
+            cas_menu_properties x = 120 
+            w = 400 
+            blue_top children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                id = memcard_files_menu_title 
+                text = "THPS3 files" 
+                static dont_gray drawer = title 
+                }
+              STRUCT{
+                type = menucontainer 
+                id = memcard_files_menu_multi_container 
+                show_all_children }
+              STRUCT{
+                type = textmenuelement 
+                id = memcard_files_menu_space_needed 
+                text = "Space needed: KB" 
+                implemented_property static dont_gray drawer = points_available_property 
+                lock_layout y = 202.0 
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = memcard_files_menu_free_space 
+                text = "Free Space: KB" 
+                implemented_property static dont_gray drawer = points_available_property 
+                lock_layout y = 224.0 
+                }
+              
+            )
+            }
+          
+#00042    attachchild parent = contain1 
+          child = memcard_files_menu 
+          
+#00044    DestroyElement id = memcard_file_names_menu 
+          
+#00048    createmenu STRUCT{
+            type = scrollingmenu 
+            num_visible = 8 
+            id = memcard_file_names_menu 
+            x = 0.0 
+            y = 0.0 
+            w = 400.0 
+            h = 400.0 
+            just_left_x just_center_y not_rounded }
+          
+#00060    attachchild parent = memcard_files_menu_multi_container 
+          child = memcard_file_names_menu 
+          
+#00084    InitializeMemCardFilesMenu 
+#00092    CreateAndAttachMenu STRUCT{
+            type = keyboardcontrol 
+            id = mem_card_keyboard_control 
+            x = 160.0 
+            y = 56.0 
+            w = 320.0 
+            h = 336.0 
+            just_center_x just_center_y num_columns = 13 
+            standard_charset min_chars = 1 
+            max_chars = 16 
+            title_string = "Enter name:" 
+            eventhandlers = ARRAY(
+              
+              STRUCT{
+                type = ShowEventHandler 
+                target = "get_profile_data" 
+                params = STRUCT{
+                  field_id = display_name 
+                  control_id = mem_card_keyboard_control 
+                  }
+                }
+              STRUCT{
+                type = ContentsChangedEventHandler 
+                target = "MemCardKeyboardControlAcceptScript" 
+                params = STRUCT{
+                  field_id = file_name 
+                  keyboard_id = mem_card_keyboard_control 
+                  }
+                }
+              
+            )
+            default_to_accept hide_on_close parent = contain1 
+            }
+          
+#00115    IF ENGLISH 
+#00117      CreateAndAttachMenu parkeditor_kc_struct 
+#00118    ELSE 
+#00119      CreateAndAttachMenu parkeditor_kc_struct x = 140.0 
+            y = 70.0 
+            title_string = " " 
+            
+#00120    END IF 
+#00121    CreateAndAttachMenu STRUCT{
+            type = keyboardcontrol 
+            id = replay_keyboard_control 
+            x = 160.0 
+            y = 56.0 
+            w = 320.0 
+            h = 336.0 
+            just_center_x just_center_y num_columns = 13 
+            standard_charset min_chars = 1 
+            max_chars = 16 
+            title_string = "Enter name:" 
+            eventhandlers = ARRAY(
+              
+              STRUCT{
+                type = ContentsChangedEventHandler 
+                target = "_ReplayKeyboardControlAccept" 
+                params = STRUCT{
+                  field_id = display_name 
+                  keyboard_id = replay_keyboard_control 
+                  }
+                }
+              
+            )
+            default_to_accept hide_on_close parent = contain1 
+            }
+          
+#00143  END FUNCTION
+          
+#00145  parkeditor_kc_struct = STRUCT{
+          type = keyboardcontrol 
+          id = park_editor_keyboard_control 
+          x = 160.0 
+          y = 115.0 
+          w = 320.0 
+          h = 336.0 
+          just_center_x just_center_y num_columns = 13 
+          gapname_charset min_chars = 1 
+          max_chars = 16 
+          title_string = "Enter name:" 
+          eventhandlers = ARRAY(
+            
+            STRUCT{
+              type = ContentsChangedEventHandler 
+              target = "_ParkEditorKeyboardControlAccept" 
+              params = STRUCT{
+                field_id = display_name 
+                keyboard_id = park_editor_keyboard_control 
+                }
+              }
+            
+          )
+          default_to_accept hide_on_close parent = contain1 
+          }
+        

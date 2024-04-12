@@ -1,0 +1,375 @@
+
+#00001  FUNCTION BDJ_SHP_PowerGuy 
+#00002    Obj_SetGroundOffset 3.1 feet 
+#00005    Obj_StickToGround distAbove = 3 
+          distBelow = 6 
+          
+#00006    Obj_SetPathTurnDist 2.5 feet 
+#00007    Obj_StickToGround off 
+#00008    Obj_PathHeading On 
+#00011    Obj_SetPathVelocity 5 fps 
+#00012    goto BDJ_SHP_PowerGuy_Idle params = STRUCT{
+            NULL }
+          
+#00014  END FUNCTION
+          
+#00015  FUNCTION BDJ_SHP_PowerGuy_Idle 
+#00017    Obj_ClearExceptions 
+#00020    Obj_SetInnerRadius 50 
+#00021    Obj_SetException ex = SkaterInRadius 
+          scr = BDJ_SHP_PowerGuy_IdleNearSkater 
+          params = STRUCT{
+            NULL }
+          
+#00022    Obj_SetException ex = EX_FERRY_RAISED 
+          scr = BDJ_SHP_PowerGuy_Idle 
+          params = STRUCT{
+            NULL }
+          
+#00023    LOOP 
+#00026      IF GetFlag flag = BDJ_SHP_FERRY 
+              
+#00027        goto BDJ_SHP_PowerGuy_FerryRaised params = STRUCT{
+                NULL }
+              
+#00028      ELSE 
+#00029        RANDOM[6][25; 47; 69; 91; 113; 135]
+              
+#00030        Obj_CycleAnim anim = Idle 
+              
+#00031        JUMP 0xb2000000 Obj_CycleAnim anim = Idle 
+              
+#00032        JUMP 0x98000000 Obj_CycleAnim anim = Idle 
+              
+#00033        JUMP 0x7e000000 Obj_CycleAnim anim = ScratchChin 
+              
+#00034        JUMP 0x64000000 Obj_CycleAnim anim = BBQGuyBrow 
+              
+#00035        JUMP 0x4a000000 Obj_CycleAnim anim = IdleToIdle2 
+              
+#00036        Obj_CycleAnim anim = Idle2 
+              numCycles = 2 
+              
+#00037        Obj_CycleAnim anim = Idle2ToIdle 
+              
+#00038        
+#00039      END IF 
+#00040    END LOOP 
+#00041  END FUNCTION
+          
+#00043  FUNCTION BDJ_SHP_PowerGuy_IdleNearSkater 
+#00045    Obj_ClearExceptions 
+#00048    Obj_SetInnerRadius 4 
+#00051    Obj_SetException ex = SkaterInRadius 
+          scr = BDJ_SHP_PowerGuy_ActionSkaterTooClose 
+          params = STRUCT{
+            NULL }
+          
+#00052    Obj_SetOuterRadius 60 
+#00055    Obj_SetException ex = SkaterOutOfRadius 
+          scr = BDJ_SHP_PowerGuy_Idle 
+          params = STRUCT{
+            NULL }
+          
+#00056    Obj_SetException ex = EX_FERRY_RAISED 
+          scr = BDJ_SHP_PowerGuy_Idle 
+          params = STRUCT{
+            NULL }
+          
+#00057    IF GetFlag flag = BDJ_SHP_FERRY 
+            
+#00060      goto BDJ_SHP_PowerGuy_FerryRaised params = STRUCT{
+              NULL }
+            
+#00061    ELSE 
+#00062      RANDOM[4][17; 33; 49; 65]
+            
+#00063      goto BDJ_SHP_PowerGuy_VO_01 
+#00064      JUMP 0x37000000 goto BDJ_SHP_PowerGuy_VO_02 
+#00065      JUMP 0x23000000 goto BDJ_SHP_PowerGuy_VO_03 
+#00066      JUMP 0x0f000000 goto BDJ_SHP_PowerGuy_VO_04 
+#00067      
+#00068    END IF 
+#00069  END FUNCTION
+          
+#00071  FUNCTION BDJ_SHP_PowerGuy_VO_01 
+#00073    Obj_PlayStream SHP_PowerGuy_Fixing01 Vol = 200 
+          Dropoff = 100 
+          
+#00074    Obj_CycleAnim anim = RANDOM[5][16; 22; 28; 34; 40]
+          
+          ScratchChin JUMP 0x23000000 BBQGuyBrow JUMP 0x19000000 disgust JUMP 0x0f000000 talk JUMP 0x05000000 talk2 
+#00075    RANDOM[2][9; 79]
+          
+#00076    Obj_CycleAnim anim = Idle 
+          numCycles = RANDOM[3][8; 14; 20]
+          
+          2 JUMP 0x0f000000 3 JUMP 0x05000000 4 
+#00077    JUMP 0x6f000000 Obj_CycleAnim anim = IdleToIdle2 
+          
+#00078    Obj_CycleAnim anim = Idle2 
+          numCycles = RANDOM[3][8; 14; 20]
+          
+          1 JUMP 0x0f000000 2 JUMP 0x05000000 3 
+#00079    Obj_CycleAnim anim = Idle2ToIdle 
+          
+#00080    
+#00081    goto BDJ_SHP_PowerGuy_VO_02 
+#00082  END FUNCTION
+          
+#00083  FUNCTION BDJ_SHP_PowerGuy_VO_02 
+#00085    Obj_PlayStream SHP_PowerGuy_Fixing02 Vol = 200 
+          Dropoff = 100 
+          
+#00086    Obj_CycleAnim anim = RANDOM[5][16; 22; 28; 34; 40]
+          
+          ScratchChin JUMP 0x23000000 BBQGuyBrow JUMP 0x19000000 disgust JUMP 0x0f000000 talk JUMP 0x05000000 talk2 
+#00087    RANDOM[2][9; 79]
+          
+#00088    Obj_CycleAnim anim = Idle 
+          numCycles = RANDOM[3][8; 14; 20]
+          
+          2 JUMP 0x0f000000 3 JUMP 0x05000000 4 
+#00089    JUMP 0x6f000000 Obj_CycleAnim anim = IdleToIdle2 
+          
+#00090    Obj_CycleAnim anim = Idle2 
+          numCycles = RANDOM[3][8; 14; 20]
+          
+          1 JUMP 0x0f000000 2 JUMP 0x05000000 3 
+#00091    Obj_CycleAnim anim = Idle2ToIdle 
+          
+#00092    
+#00093    goto BDJ_SHP_PowerGuy_VO_03 
+#00094  END FUNCTION
+          
+#00095  FUNCTION BDJ_SHP_PowerGuy_VO_03 
+#00097    Obj_PlayStream SHP_PowerGuy_Fixing03 Vol = 200 
+          Dropoff = 100 
+          
+#00098    Obj_CycleAnim anim = RANDOM[5][16; 22; 28; 34; 40]
+          
+          ScratchChin JUMP 0x23000000 BBQGuyBrow JUMP 0x19000000 disgust JUMP 0x0f000000 talk JUMP 0x05000000 talk2 
+#00099    RANDOM[2][9; 79]
+          
+#00100    Obj_CycleAnim anim = Idle 
+          numCycles = RANDOM[3][8; 14; 20]
+          
+          2 JUMP 0x0f000000 3 JUMP 0x05000000 4 
+#00101    JUMP 0x6f000000 Obj_CycleAnim anim = IdleToIdle2 
+          
+#00102    Obj_CycleAnim anim = Idle2 
+          numCycles = RANDOM[3][8; 14; 20]
+          
+          1 JUMP 0x0f000000 2 JUMP 0x05000000 3 
+#00103    Obj_CycleAnim anim = Idle2ToIdle 
+          
+#00104    
+#00105    goto BDJ_SHP_PowerGuy_VO_04 
+#00106  END FUNCTION
+          
+#00107  FUNCTION BDJ_SHP_PowerGuy_VO_04 
+#00109    Obj_PlayStream SHP_PowerGuy_Fixing04 Vol = 200 
+          Dropoff = 100 
+          
+#00110    Obj_CycleAnim anim = RANDOM[5][16; 22; 28; 34; 40]
+          
+          ScratchChin JUMP 0x23000000 BBQGuyBrow JUMP 0x19000000 disgust JUMP 0x0f000000 talk JUMP 0x05000000 talk2 
+#00111    RANDOM[2][9; 79]
+          
+#00112    Obj_CycleAnim anim = Idle 
+          numCycles = RANDOM[3][8; 14; 20]
+          
+          2 JUMP 0x0f000000 3 JUMP 0x05000000 4 
+#00113    JUMP 0x6f000000 Obj_CycleAnim anim = IdleToIdle2 
+          
+#00114    Obj_CycleAnim anim = Idle2 
+          numCycles = RANDOM[3][8; 14; 20]
+          
+          1 JUMP 0x0f000000 2 JUMP 0x05000000 3 
+#00115    Obj_CycleAnim anim = Idle2ToIdle 
+          
+#00116    
+#00117    goto BDJ_SHP_PowerGuy_VO_01 
+#00118  END FUNCTION
+          
+#00119  FUNCTION BDJ_SHP_PowerGuy_ActionSkaterTooClose 
+#00121    Obj_ClearExceptions 
+#00124    Obj_SetInnerRadius 0 
+#00125    Obj_SetOuterRadius 10 
+#00126    Obj_SetException ex = EX_FERRY_RAISED 
+          scr = BDJ_SHP_PowerGuy_Idle 
+          params = STRUCT{
+            NULL }
+          
+#00127    IF SkaterCurrentScorePotLessThan 1 
+#00134      MakeSkaterGoto SkaterPushPed 
+#00135    END IF 
+#00136    Obj_PlaySound bail04 Vol = 100 
+          
+#00138    StopStream 
+#00139    Obj_PlayStream RANDOM[4][12; 18; 24; 30]
+          SHP_PowerGuy_Hit01 JUMP 0x19000000 SHP_PowerGuy_Hit02 JUMP 0x0f000000 SHP_PowerGuy_Hit03 JUMP 0x05000000 SHP_PowerGuy_Hit04 Vol = 200 
+          Dropoff = 100 
+          
+#00140    Obj_StopAlongPath 
+#00142    RANDOM[3][13; 314; 562]
+          
+#00144    Obj_PlayAnim anim = HitBySkater 
+          
+#00145    Obj_WaitAnimFinished 
+#00146    Obj_SetException ex = SkaterOutOfRadius 
+          scr = BDJ_SHP_PowerGuy_ActionSkaterTooCloseEnd 
+          params = STRUCT{
+            NULL }
+          
+#00147    LOOP 
+#00148      Wait RANDOM[3][8; 14; 20]
+            10 JUMP 0x0f000000 60 JUMP 0x05000000 90 frames 
+#00149      Obj_PlayAnim anim = HitBySkater 
+            from = 88 
+            to = 81 
+            
+#00150      Obj_WaitAnimFinished 
+#00151      Obj_PlayAnim anim = HitBySkater 
+            from = 81 
+            to = 88 
+            
+#00152      Obj_WaitAnimFinished 
+#00153      Obj_PlayAnim anim = HitBySkater 
+            from = 88 
+            to = 81 
+            
+#00154      Obj_WaitAnimFinished 
+#00155    END LOOP 
+#00156    JUMP 0xf3010000 Obj_PlayAnim anim = HitFromFront 
+          
+#00157    Obj_WaitAnimFinished 
+#00158    Obj_SetException ex = SkaterOutOfRadius 
+          scr = BDJ_SHP_PowerGuy_ActionSkaterTooCloseEnd 
+          params = STRUCT{
+            NULL }
+          
+#00159    LOOP 
+#00160      Wait RANDOM[3][8; 14; 20]
+            10 JUMP 0x0f000000 60 JUMP 0x05000000 90 frames 
+#00161      Obj_PlayAnim anim = HitFromFront 
+            from = 122 
+            to = 110 
+            
+#00162      Obj_WaitAnimFinished 
+#00163      Obj_PlayAnim anim = HitFromFront 
+            from = 111 
+            to = 122 
+            
+#00164      Obj_WaitAnimFinished 
+#00165    END LOOP 
+#00166    JUMP 0xf7000000 Obj_PlayAnim anim = HitFromBack 
+          
+#00167    Obj_WaitAnimFinished 
+#00168    Obj_SetException ex = SkaterOutOfRadius 
+          scr = BDJ_SHP_PowerGuy_ActionSkaterTooCloseEnd 
+          params = STRUCT{
+            NULL }
+          
+#00169    LOOP 
+#00170      Wait RANDOM[3][8; 14; 20]
+            10 JUMP 0x0f000000 60 JUMP 0x05000000 90 frames 
+#00171      Obj_PlayAnim anim = HitFromBack 
+            from = 86 
+            to = 80 
+            
+#00172      Obj_WaitAnimFinished 
+#00173      Obj_PlayAnim anim = HitFromBack 
+            from = 86 
+            to = 80 
+            
+#00174      Obj_WaitAnimFinished 
+#00175    END LOOP 
+#00176    
+#00177  END FUNCTION
+          
+#00178  FUNCTION BDJ_SHP_PowerGuy_ActionSkaterTooCloseEnd 
+#00180    Obj_ClearExceptions 
+#00183    Obj_SetInnerRadius 2 
+#00184    Obj_SetException ex = SkaterInRadius 
+          scr = BDJ_SHP_PowerGuy_ActionSkaterTooClose 
+          params = STRUCT{
+            NULL }
+          
+#00185    Obj_PlayAnim anim = GetUp 
+          
+#00188    Obj_WaitAnimFinished 
+#00189    Obj_LookAtObject type = skater 
+          time = 0.3 
+          
+#00190    Obj_PlayAnim anim = RotateLeft 
+          Cycle 
+#00191    Obj_WaitRotate 
+#00192    Obj_SetAnimCycleMode off 
+#00193    Obj_WaitAnimFinished 
+#00194    Obj_PlayStream RANDOM[5][16; 22; 28; 34; 40]
+          SHP_PowerGuy_Upset01 JUMP 0x23000000 SHP_PowerGuy_Upset02 JUMP 0x19000000 SHP_PowerGuy_Upset03 JUMP 0x0f000000 SHP_PowerGuy_Upset04 JUMP 0x05000000 SHP_PowerGuy_Upset05 Vol = 200 
+          Dropoff = 100 
+          
+#00195    Obj_PlayAnim anim = RANDOM[2][4; 10]
+          
+          disgust JUMP 0x05000000 shakefist 
+#00197    Obj_WaitAnimFinished 
+#00198    Obj_LookAtNodeLinked time = 0.3 
+          
+#00199    Obj_PlayAnim anim = RotateLeft 
+          Cycle 
+#00200    Obj_WaitRotate 
+#00201    Obj_SetAnimCycleMode off 
+#00202    Obj_WaitAnimFinished 
+#00203    Obj_CycleAnim anim = Idle 
+          
+#00204    GotoPreserveParams BDJ_SHP_PowerGuy_IdleNearSkater 
+#00205  END FUNCTION
+          
+#00206  FUNCTION BDJ_SHP_PowerGuy_FerryRaised 
+#00208    Obj_ClearExceptions 
+#00211    Obj_SetInnerRadius 4 
+#00212    Obj_SetException ex = SkaterInRadius 
+          scr = BDJ_SHP_PowerGuy_ActionSkaterTooClose 
+          params = STRUCT{
+            NULL }
+          
+#00213    Obj_SetOuterRadius 200 
+#00214    Obj_SetException ex = SkaterOutOfRadius 
+          scr = BDJ_SHP_PowerGuy_ByeBye 
+          params = STRUCT{
+            NULL }
+          
+#00215    Obj_LookAtObject type = skater 
+          time = 0.3 
+          
+#00218    Obj_PlayAnim anim = RotateLeft 
+          Cycle 
+#00219    Obj_WaitRotate 
+#00220    Obj_SetAnimCycleMode off 
+#00221    Obj_WaitAnimFinished 
+#00222    Obj_CycleAnim anim = talk 
+          
+#00223    Obj_WaitAnimFinished 
+#00224    LOOP 
+#00225      Obj_CycleAnim anim = Idle 
+            
+#00226      Obj_LookAtObject type = skater 
+            time = 0.3 
+            
+#00227      Obj_PlayAnim anim = RotateLeft 
+            Cycle 
+#00228      Obj_WaitRotate 
+#00229      Obj_SetAnimCycleMode off 
+#00230      Obj_WaitAnimFinished 
+#00231      Obj_PlayAnim anim = Idle 
+            Cycle 
+#00232    END LOOP 
+#00233  END FUNCTION
+          
+#00234  FUNCTION BDJ_SHP_PowerGuy_ByeBye 
+#00236    die 
+#00237  END FUNCTION
+          
+#00238  

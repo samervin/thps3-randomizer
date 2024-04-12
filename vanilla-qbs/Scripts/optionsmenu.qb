@@ -1,0 +1,1059 @@
+FUNCTION MoveNetSetup 
+#00001    MoveMenu Id = net_network_setup_menu 
+          x = 150 
+          
+#00002  END FUNCTION
+          
+#00003  FUNCTION Options_ShowEvent 
+#00005    helper_select_choose_back x1 = 167 
+          x2 = 282 
+          x3 = 392 
+          
+#00006  END FUNCTION
+          
+#00009  FUNCTION Palmer_ShowEvent 
+#00011    SelectElement Id = return_THPS3 
+          
+#00012  END FUNCTION
+          
+#00013  FUNCTION RunCreditMovies 
+#00015    playmovie_script "movies\credits" 
+#00016  END FUNCTION
+          
+#00018  FUNCTION set_primary_controller_name 
+#00020    printf "show detected" 
+#00021    SetPrimaryControllerName NULL 
+#00022  END FUNCTION
+          
+#00023  FUNCTION controller_list_options 
+#00025    helper_select_choose_back x1 = 167 
+          x2 = 282 
+          x3 = 392 
+          
+#00026  END FUNCTION
+          
+#00027  FUNCTION options_menu_create 
+#00029    createmenu STRUCT{
+            type = verticalmenu 
+            Id = options_main_menu 
+            x = 170.0 
+            y = 90.0 
+            w = 300.0 
+            h = 400.0 
+            just_center_x just_center_y blue_top eventhandlers = ARRAY(
+              
+              STRUCT{
+                type = backeventhandler 
+                target = "OptionsToMainMenuCamAnim" 
+                }
+              STRUCT{
+                type = showeventhandler 
+                target = "Options_ShowEvent" 
+                }
+              
+            )
+            children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Options" 
+                static dont_gray drawer = title 
+                }
+              STRUCT{
+                type = textmenuelement 
+                Id = soundfx_menu 
+                text = "sound options" 
+                link = sfx_menu_container 
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "movies" 
+                link = movies_menu 
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "save game" 
+                target = "OptionsMenuSave" 
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "load game" 
+                target = "OptionsMenuLoad" 
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Level Records" 
+                target = "Options_RecordsDisplay" 
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "controller config" 
+                link = controller_config_menu 
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Cheats" 
+                link = cheat_keyboard_control 
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Credits" 
+                target = "RunCreditMovies" 
+                }
+              STRUCT{
+                type = textmenuelement 
+                Id = xbox_gamma 
+                text = "gamma" 
+                link = gamma_menu 
+                }
+              STRUCT{
+                type = textmenuelement 
+                Id = options_done 
+                text = "Done" 
+                target = "go_back" 
+                params = STRUCT{
+                  Id = options_main_menu 
+                  }
+                }
+              
+            )
+            }
+          
+#00103    createmenu STRUCT{
+            type = verticalmenu 
+            Id = palmer_warning 
+            x = 130.0 
+            y = 120.0 
+            w = 380.0 
+            h = 400.0 
+            just_center_x just_center_y blue_top eventhandler = STRUCT{
+              type = showeventhandler 
+              target = "Palmer_ShowEvent" 
+              }
+            children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Warning!" 
+                static dont_gray drawer = title 
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "You will lose any" 
+                static dont_gray }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "unsaved THPS3 changes" 
+                static dont_gray }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "if you exit to the" 
+                static dont_gray }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Shaun Palmer demo." 
+                static dont_gray }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = " " 
+                static dont_gray }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Play Demo" 
+                target = "palmer_demo" 
+                }
+              STRUCT{
+                type = textmenuelement 
+                Id = return_THPS3 
+                text = "Return to THPS3" 
+                link = options_main_menu 
+                }
+              
+            )
+            }
+          
+#00145    attachchild parent = contain1 
+          child = palmer_warning 
+          
+#00147    create_cheat_keyboard 
+#00149    IF istrue Xbox 
+#00156    ELSE 
+#00157      DestroyElement Id = xbox_gamma 
+            
+#00158    END IF 
+#00159    attachchild parent = contain1 
+          child = options_main_menu 
+          
+#00161    IF istrue Xbox 
+#00164      createmenu STRUCT{
+              type = verticalmenu 
+              Id = gamma_menu 
+              x = 45.0 
+              y = 90.0 
+              w = 300.0 
+              h = 400.0 
+              just_center_x just_center_y blue_top children = ARRAY(
+                
+                STRUCT{
+                  type = textmenuelement 
+                  auto_id text = "Gamma" 
+                  static dont_gray drawer = title 
+                  }
+                STRUCT{
+                  type = slidermenuelement 
+                  Id = gamma_r 
+                  text = "red" 
+                  lower = 0 
+                  upper = 100 
+                  delta = 1 
+                  start = 20 
+                  wrap = 0 
+                  right_side_w = 80 
+                  arrow_spacing = 30.0 
+                  eventhandlers = ARRAY(
+                    
+                    STRUCT{
+                      type = ContentsChangedEventHandler 
+                      target = "change_gamma" 
+                      }
+                    
+                  )
+                  }
+                STRUCT{
+                  type = slidermenuelement 
+                  Id = gamma_g 
+                  text = "green" 
+                  lower = 0 
+                  upper = 100 
+                  delta = 1 
+                  start = 20 
+                  right_side_w = 80 
+                  arrow_spacing = 30.0 
+                  eventhandlers = ARRAY(
+                    
+                    STRUCT{
+                      type = ContentsChangedEventHandler 
+                      target = "change_gamma" 
+                      }
+                    
+                  )
+                  }
+                STRUCT{
+                  type = slidermenuelement 
+                  Id = gamma_b 
+                  text = "blue" 
+                  lower = 0 
+                  upper = 100 
+                  delta = 1 
+                  start = 20 
+                  right_side_w = 80 
+                  arrow_spacing = 30.0 
+                  eventhandlers = ARRAY(
+                    
+                    STRUCT{
+                      type = ContentsChangedEventHandler 
+                      target = "change_gamma" 
+                      }
+                    
+                  )
+                  }
+                
+              )
+              }
+            
+#00206      attachchild parent = contain1 
+            child = gamma_menu 
+            
+#00208    END IF 
+#00210    memcard_files_menu_create 
+#00212    createmenu STRUCT{
+            type = verticalmenu 
+            Id = controller_config_menu 
+            x = 150.0 
+            y = 120.0 
+            w = 340.0 
+            h = 400.0 
+            just_center_x just_center_y blue_top eventhandler = STRUCT{
+              type = showeventhandler 
+              target = "controller_config_menu_on_show" 
+              }
+            children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Control Config" 
+                static dont_gray drawer = title 
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Primary Controller" 
+                link = controller_select_primary 
+                }
+              STRUCT{
+                type = textmenuelement 
+                Id = controller_display_id 
+                text = "Default" 
+                static dont_gray drawer = keyboard_property 
+                eventhandler = STRUCT{
+                  type = showeventhandler 
+                  target = "set_primary_controller_name" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                Id = controller_primary_profile_select 
+                text = "Gamepad Profile" 
+                link = controller_select_profile 
+                }
+              STRUCT{
+                type = textmenuelement 
+                Id = controller_profile_id 
+                text = "Default" 
+                static dont_gray drawer = keyboard_property 
+                }
+              STRUCT{
+                type = textmenuelement 
+                Id = controller_kb_profile_select 
+                text = "Keyboard Profile" 
+                link = controller_select_kb_profile 
+                }
+              STRUCT{
+                type = textmenuelement 
+                Id = controller_kb_profile_id 
+                text = "Default" 
+                static dont_gray drawer = keyboard_property 
+                }
+              STRUCT{
+                type = textmenuelement 
+                Id = controller_config_1_option 
+                text = "Settings" 
+                link = controller_config_1 
+                }
+              STRUCT{
+                type = textmenuelement 
+                Id = controller_config_done 
+                text = "Done" 
+                target = "go_back" 
+                params = STRUCT{
+                  Id = controller_config_menu 
+                  }
+                }
+              
+            )
+            }
+          
+#00274    attachchild parent = contain1 
+          child = controller_config_menu 
+          
+#00276    createmenu STRUCT{
+            type = verticalmenu 
+            Id = controller_config_1 
+            x = 120.0 
+            y = 120.0 
+            w = 400.0 
+            h = 400.0 
+            just_center_x just_center_y blue_top eventhandler = STRUCT{
+              type = showeventhandler 
+              target = "controller_config_1_on_show" 
+              }
+            children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Settings" 
+                static dont_gray drawer = title 
+                }
+              STRUCT{
+                type = textmenuelement 
+                Id = controller_config_1_autokick 
+                text = "Foo" 
+                target = "ToggleAutoKick" 
+                params = STRUCT{
+                  Controller1 }
+                }
+              STRUCT{
+                type = textmenuelement 
+                Id = controller_config_1_spintaps 
+                text = "Foo" 
+                target = "ToggleSpinTaps" 
+                params = STRUCT{
+                  Controller1 }
+                }
+              STRUCT{
+                type = textmenuelement 
+                Id = controller_config_1_done 
+                text = "Done" 
+                target = "go_back" 
+                params = STRUCT{
+                  Id = controller_config_1 
+                  }
+                }
+              
+            )
+            }
+          
+#00311    attachchild parent = contain1 
+          child = controller_config_1 
+          
+#00313    createmenu STRUCT{
+            type = verticalmenu 
+            Id = controller_config_2 
+            x = 150.0 
+            y = 120.0 
+            w = 340.0 
+            h = 400.0 
+            just_center_x just_center_y blue_top eventhandler = STRUCT{
+              type = showeventhandler 
+              target = "controller_config_2_on_show" 
+              }
+            children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Controller 2" 
+                static dont_gray drawer = title 
+                }
+              STRUCT{
+                type = textmenuelement 
+                Id = controller_config_2_vibration 
+                text = "Foo" 
+                target = "ToggleVibration" 
+                params = STRUCT{
+                  Controller2 }
+                }
+              STRUCT{
+                type = textmenuelement 
+                Id = controller_config_2_autokick 
+                text = "Foo" 
+                target = "ToggleAutoKick" 
+                params = STRUCT{
+                  Controller2 }
+                }
+              STRUCT{
+                type = textmenuelement 
+                Id = controller_config_2_spintaps 
+                text = "Foo" 
+                target = "ToggleSpinTaps" 
+                params = STRUCT{
+                  Controller2 }
+                }
+              STRUCT{
+                type = textmenuelement 
+                Id = controller_config_2_done 
+                text = "Done" 
+                target = "go_back" 
+                params = STRUCT{
+                  Id = controller_config_2 
+                  }
+                }
+              
+            )
+            }
+          
+#00348    attachchild parent = contain1 
+          child = controller_config_2 
+          
+#00350    createmenu STRUCT{
+            type = verticalmenu 
+            Id = controller_select_primary 
+            x = 120.0 
+            y = 120.0 
+            w = 400.0 
+            h = 400.0 
+            just_center_x just_center_y blue_top }
+          
+#00360    attachchild parent = contain1 
+          child = controller_select_primary 
+          
+#00361    createmenu STRUCT{
+            type = verticalmenu 
+            Id = controller_select_profile 
+            x = 120.0 
+            y = 120.0 
+            w = 400.0 
+            h = 400.0 
+            just_center_x just_center_y blue_top }
+          
+#00371    attachchild parent = contain1 
+          child = controller_select_profile 
+          
+#00373    createmenu STRUCT{
+            type = verticalmenu 
+            Id = controller_select_kb_profile 
+            x = 120.0 
+            y = 120.0 
+            w = 400.0 
+            h = 400.0 
+            just_center_x just_center_y blue_top }
+          
+#00383    attachchild parent = contain1 
+          child = controller_select_kb_profile 
+          
+#00385    InitializeControllerMenu 
+#00387  END FUNCTION
+          
+#00389  opts_str_profile = 'Profile' 
+        
+#00391  opts_str_controllers = 'Controllers' 
+        
+#00392  FUNCTION controller_config_menu_on_show 
+#00394    SetFrontEndPad 0 
+#00395    UseBothPadsInFrontEnd 
+#00396  END FUNCTION
+          
+#00397  FUNCTION controller_config_1_on_show 
+#00399    SetFrontEndPad 0 
+#00400    IF VibrationIsOn 0 
+#00402      SetMenuElementText Id = controller_config_1_vibration 
+            "Vibration: On" 
+#00403    ELSE 
+#00404      SetMenuElementText Id = controller_config_1_vibration 
+            "Vibration: Off" 
+#00405    END IF 
+#00406    IF AutoKickIsOn 0 
+#00408      SetMenuElementText Id = controller_config_1_autokick 
+            "AutoKick: On" 
+#00409    ELSE 
+#00410      SetMenuElementText Id = controller_config_1_autokick 
+            "AutoKick: Off" 
+#00411    END IF 
+#00412    IF SpinTapsAreOn 0 
+#00414      SetMenuElementText Id = controller_config_1_spintaps 
+            "180 Spin Taps: On" 
+#00415    ELSE 
+#00416      SetMenuElementText Id = controller_config_1_spintaps 
+            "180 Spin Taps: Off" 
+#00417    END IF 
+#00418  END FUNCTION
+          
+#00420  FUNCTION controller_config_2_on_show 
+#00422    SetFrontEndPad 1 
+#00423    IF VibrationIsOn 1 
+#00425      SetMenuElementText Id = controller_config_2_vibration 
+            "Vibration: On" 
+#00426    ELSE 
+#00427      SetMenuElementText Id = controller_config_2_vibration 
+            "Vibration: Off" 
+#00428    END IF 
+#00429    IF AutoKickIsOn 1 
+#00431      SetMenuElementText Id = controller_config_2_autokick 
+            "AutoKick: On" 
+#00432    ELSE 
+#00433      SetMenuElementText Id = controller_config_2_autokick 
+            "AutoKick: Off" 
+#00434    END IF 
+#00435    IF SpinTapsAreOn 1 
+#00437      SetMenuElementText Id = controller_config_2_spintaps 
+            "180 Spin Taps: On" 
+#00438    ELSE 
+#00439      SetMenuElementText Id = controller_config_2_spintaps 
+            "180 Spin Taps: Off" 
+#00440    END IF 
+#00441  END FUNCTION
+          
+#00443  FUNCTION ToggleVibration 
+#00445    IF GotParam Controller1 
+#00446      IF VibrationIsOn 0 
+#00447        VibrationOff 0 
+#00448      ELSE 
+#00449        VibrationOn 0 
+#00450      END IF 
+#00451      controller_config_1_on_show 
+#00452    END IF 
+#00453    IF GotParam Controller2 
+#00455      IF VibrationIsOn 1 
+#00456        VibrationOff 1 
+#00457      ELSE 
+#00458        VibrationOn 1 
+#00459      END IF 
+#00460      controller_config_2_on_show 
+#00461    END IF 
+#00462  END FUNCTION
+          
+#00463  FUNCTION ToggleAutoKick 
+#00465    IF GotParam Controller1 
+#00466      IF AutoKickIsOn 0 
+#00467        AutoKickOff 0 
+#00468      ELSE 
+#00469        AutoKickOn 0 
+#00470      END IF 
+#00471      controller_config_1_on_show 
+#00472    END IF 
+#00473    IF GotParam Controller2 
+#00475      IF AutoKickIsOn 1 
+#00476        AutoKickOff 1 
+#00477      ELSE 
+#00478        AutoKickOn 1 
+#00479      END IF 
+#00480      controller_config_2_on_show 
+#00481    END IF 
+#00482  END FUNCTION
+          
+#00483  FUNCTION ToggleSpintaps 
+#00485    IF GotParam Controller1 
+#00486      IF SpinTapsAreOn 0 
+#00487        SpinTapsOff 0 
+#00488      ELSE 
+#00489        SpinTapsOn 0 
+#00490      END IF 
+#00491      controller_config_1_on_show 
+#00492    END IF 
+#00493    IF GotParam Controller2 
+#00495      IF SpinTapsAreOn 1 
+#00496        SpinTapsOff 1 
+#00497      ELSE 
+#00498        SpinTapsOn 1 
+#00499      END IF 
+#00500      controller_config_2_on_show 
+#00501    END IF 
+#00502  END FUNCTION
+          
+#00503  FUNCTION change_gamma 
+#00506    ApplyChangeGamma 
+#00508  END FUNCTION
+          
+#00510  ken_line_col_1 = 180 
+        
+#00518  ken_line_col_2 = 435 
+        
+#00519  ken_line_col_3 = 565 
+        
+#00520  ReturnedFromLevelRecords = 0 
+        
+#00524  FUNCTION WaitForButtonRelease 
+#00526    LOOP 
+#00527      IF ControllerPressed GLOBAL.Button 
+              
+#00528      ELSE 
+#00529        BREAK
+              
+#00530      END IF 
+#00531      wait 1 gameframe 
+#00532    END LOOP 
+#00533  END FUNCTION
+          
+#00534  FUNCTION Options_RecordsDisplay 
+#00536    DisableBackEvent 
+#00537    DisableEvent Id = options_main_menu 
+          EventType = back 
+          
+#00538    CreatePanels 
+#00539    KillMessages 
+#00540    spawnskaterscript Skater_RecordsDisplay 
+#00541    SwitchOffMenu Id = options_main_menu 
+          
+#00542    spawnscript DisplayHelper 
+#00543  END FUNCTION
+          
+#00544  FUNCTION DisplayHelper 
+#00555    wait 2 gameframe 
+#00556    IF Menuisshown options_main_menu 
+#00557    ELSE 
+#00561      helper_level_records 
+#00562    END IF 
+#00563  END FUNCTION
+          
+#00564  FUNCTION Skater_RecordsDisplay Level = LevelNum_Foundry 
+          Heading = "Foundry" 
+          
+#00566    GetRecordText Level = GLOBAL.Level 
+          
+#00567    records_display x_col_1 = ken_line_col_1 
+          x_col_2 = ken_line_col_2 
+          x_col_3 = ken_line_col_3 
+          Heading = GLOBAL.Heading 
+          
+#00568    WaitForButtonRelease Button = Right 
+          
+#00572    WaitForButtonRelease Button = Left 
+          
+#00573    WaitForButtonRelease Button = Up 
+          
+#00574    WaitForButtonRelease Button = Down 
+          
+#00575    LOOP 
+#00577      IF ControllerPressed Right 
+#00578        ShowNextRecordRight NULL 
+#00579      END IF 
+#00580      IF ControllerPressed Up 
+#00582        ShowNextRecordRight NULL 
+#00583      END IF 
+#00584      IF ControllerPressed Left 
+#00586        ShowNextRecordLeft NULL 
+#00587      END IF 
+#00588      IF ControllerPressed Down 
+#00590        ShowNextRecordLeft NULL 
+#00591      END IF 
+#00592      IF ControllerPressed Triangle 
+#00594        KillMessages 
+#00595        DeletePanel 
+#00597        helper_hide 
+#00598        Change ReturnedFromLevelRecords = 1 
+              
+#00604        SwitchToMenu DoNotMakeRoot menu = options_main_menu 
+              
+#00605        EnableBackEvent 
+#00606        EnableEvent Id = options_main_menu 
+              EventType = back 
+              
+#00607        BREAK
+              
+#00608      END IF 
+#00609      wait 1 gameframe 
+#00611    END LOOP 
+#00612  END FUNCTION
+          
+#00613  FUNCTION MaybeShowShip 
+#00615    IF GetGlobalFlag flag = SPECIAL_HAS_SEEN_SHIP 
+            
+#00616      goto Skater_RecordsDisplay params = STRUCT{
+              Level = LevelNum_Ship 
+              Heading = "Ship" 
+              }
+            
+#00617    END IF 
+#00618    IF istrue AllLevelsUnlocked 
+#00619      goto Skater_RecordsDisplay params = STRUCT{
+              Level = LevelNum_Ship 
+              Heading = "Ship" 
+              }
+            
+#00620    END IF 
+#00621  END FUNCTION
+          
+#00622  FUNCTION MaybeShowWarehouse 
+#00624    IF GetGlobalFlag flag = LEVEL_UNLOCKED_WAREHOUSE 
+            
+#00625      goto Skater_RecordsDisplay params = STRUCT{
+              Level = LevelNum_Warehouse 
+              Heading = "Warehouse" 
+              }
+            
+#00626    END IF 
+#00627    IF istrue AllLevelsUnlocked 
+#00628      goto Skater_RecordsDisplay params = STRUCT{
+              Level = LevelNum_Warehouse 
+              Heading = "Warehouse" 
+              }
+            
+#00629    END IF 
+#00630  END FUNCTION
+          
+#00631  FUNCTION MaybeShowBurnside 
+#00633    IF GetGlobalFlag flag = LEVEL_UNLOCKED_BURNSIDE 
+            
+#00634      goto Skater_RecordsDisplay params = STRUCT{
+              Level = LevelNum_Burnside 
+              Heading = "Burnside" 
+              }
+            
+#00635    END IF 
+#00636    IF istrue AllLevelsUnlocked 
+#00637      goto Skater_RecordsDisplay params = STRUCT{
+              Level = LevelNum_Burnside 
+              Heading = "Burnside" 
+              }
+            
+#00638    END IF 
+#00639  END FUNCTION
+          
+#00640  FUNCTION MaybeShowRoswell 
+#00642    IF GetGlobalFlag flag = LEVEL_UNLOCKED_ROSWELL 
+            
+#00643      goto Skater_RecordsDisplay params = STRUCT{
+              Level = LevelNum_Roswell 
+              Heading = "Roswell" 
+              }
+            
+#00644    END IF 
+#00645    IF istrue AllLevelsUnlocked 
+#00646      goto Skater_RecordsDisplay params = STRUCT{
+              Level = LevelNum_Roswell 
+              Heading = "Roswell" 
+              }
+            
+#00647    END IF 
+#00648  END FUNCTION
+          
+#00649  FUNCTION ShowNextRecordRight 
+#00651    IF IntegerEquals a = GLOBAL.Level 
+            b = LevelNum_Foundry 
+            
+#00652      goto Skater_RecordsDisplay params = STRUCT{
+              Level = LevelNum_Canada 
+              Heading = "Canada" 
+              }
+            
+#00653    ELSE 
+#00654      IF IntegerEquals a = GLOBAL.Level 
+              b = LevelNum_Canada 
+              
+#00655        goto Skater_RecordsDisplay params = STRUCT{
+                Level = LevelNum_Rio 
+                Heading = "Rio" 
+                }
+              
+#00656      ELSE 
+#00657        IF IntegerEquals a = GLOBAL.Level 
+                b = LevelNum_Rio 
+                
+#00658          goto Skater_RecordsDisplay params = STRUCT{
+                  Level = LevelNum_Suburbia 
+                  Heading = "Suburbia" 
+                  }
+                
+#00659        ELSE 
+#00660          IF IntegerEquals a = GLOBAL.Level 
+                  b = LevelNum_Suburbia 
+                  
+#00661            goto Skater_RecordsDisplay params = STRUCT{
+                    Level = LevelNum_Airport 
+                    Heading = "Airport" 
+                    }
+                  
+#00662          ELSE 
+#00663            IF IntegerEquals a = GLOBAL.Level 
+                    b = LevelNum_Airport 
+                    
+#00664              goto Skater_RecordsDisplay params = STRUCT{
+                      Level = LevelNum_SkaterIsland 
+                      Heading = "Skater Island" 
+                      }
+                    
+#00665            ELSE 
+#00666              IF IntegerEquals a = GLOBAL.Level 
+                      b = LevelNum_SkaterIsland 
+                      
+#00667                goto Skater_RecordsDisplay params = STRUCT{
+                        Level = LevelNum_LA 
+                        Heading = "Los Angeles" 
+                        }
+                      
+#00668              ELSE 
+#00669                IF IntegerEquals a = GLOBAL.Level 
+                        b = LevelNum_LA 
+                        
+#00670                  goto Skater_RecordsDisplay params = STRUCT{
+                          Level = LevelNum_Tokyo 
+                          Heading = "Tokyo" 
+                          }
+                        
+#00671                ELSE 
+#00672                  IF IntegerEquals a = GLOBAL.Level 
+                          b = LevelNum_Tokyo 
+                          
+#00673                    MaybeShowShip 
+#00674                    MaybeShowWarehouse 
+#00675                    MaybeShowBurnside 
+#00676                    MaybeShowRoswell 
+#00677                  ELSE 
+#00678                    IF IntegerEquals a = GLOBAL.Level 
+                            b = LevelNum_Ship 
+                            
+#00679                      MaybeShowWarehouse 
+#00680                      MaybeShowBurnside 
+#00681                      MaybeShowRoswell 
+#00682                    ELSE 
+#00683                      IF IntegerEquals a = GLOBAL.Level 
+                              b = LevelNum_Warehouse 
+                              
+#00684                        MaybeShowBurnside 
+#00685                        MaybeShowRoswell 
+#00686                      ELSE 
+#00687                        IF IntegerEquals a = GLOBAL.Level 
+                                b = LevelNum_Burnside 
+                                
+#00688                          MaybeShowRoswell 
+#00689                        END IF 
+#00690                      END IF 
+#00691                    END IF 
+#00692                  END IF 
+#00693                END IF 
+#00694              END IF 
+#00695            END IF 
+#00696          END IF 
+#00697        END IF 
+#00698      END IF 
+#00699    END IF 
+#00700  END FUNCTION
+          
+#00701  FUNCTION ShowNextRecordLeft 
+#00703    IF IntegerEquals a = GLOBAL.Level 
+            b = LevelNum_Canada 
+            
+#00704      goto Skater_RecordsDisplay params = STRUCT{
+              Level = LevelNum_Foundry 
+              Heading = "Foundry" 
+              }
+            
+#00705    ELSE 
+#00706      IF IntegerEquals a = GLOBAL.Level 
+              b = LevelNum_Rio 
+              
+#00707        goto Skater_RecordsDisplay params = STRUCT{
+                Level = LevelNum_Canada 
+                Heading = "Canada" 
+                }
+              
+#00708      ELSE 
+#00709        IF IntegerEquals a = GLOBAL.Level 
+                b = LevelNum_Suburbia 
+                
+#00710          goto Skater_RecordsDisplay params = STRUCT{
+                  Level = LevelNum_Rio 
+                  Heading = "Rio" 
+                  }
+                
+#00711        ELSE 
+#00712          IF IntegerEquals a = GLOBAL.Level 
+                  b = LevelNum_Airport 
+                  
+#00713            goto Skater_RecordsDisplay params = STRUCT{
+                    Level = LevelNum_Suburbia 
+                    Heading = "Suburbia" 
+                    }
+                  
+#00714          ELSE 
+#00715            IF IntegerEquals a = GLOBAL.Level 
+                    b = LevelNum_SkaterIsland 
+                    
+#00716              goto Skater_RecordsDisplay params = STRUCT{
+                      Level = LevelNum_Airport 
+                      Heading = "Airport" 
+                      }
+                    
+#00717            ELSE 
+#00718              IF IntegerEquals a = GLOBAL.Level 
+                      b = LevelNum_LA 
+                      
+#00719                goto Skater_RecordsDisplay params = STRUCT{
+                        Level = LevelNum_SkaterIsland 
+                        Heading = "Skater Island" 
+                        }
+                      
+#00720              ELSE 
+#00721                IF IntegerEquals a = GLOBAL.Level 
+                        b = LevelNum_Tokyo 
+                        
+#00722                  goto Skater_RecordsDisplay params = STRUCT{
+                          Level = LevelNum_LA 
+                          Heading = "Los Angeles" 
+                          }
+                        
+#00723                ELSE 
+#00724                  IF IntegerEquals a = GLOBAL.Level 
+                          b = LevelNum_Ship 
+                          
+#00725                    goto Skater_RecordsDisplay params = STRUCT{
+                            Level = LevelNum_Tokyo 
+                            Heading = "Tokyo" 
+                            }
+                          
+#00726                  ELSE 
+#00727                    IF IntegerEquals a = GLOBAL.Level 
+                            b = LevelNum_Warehouse 
+                            
+#00728                      MaybeShowShip 
+#00729                      goto Skater_RecordsDisplay params = STRUCT{
+                              Level = LevelNum_Tokyo 
+                              Heading = "Tokyo" 
+                              }
+                            
+#00730                    ELSE 
+#00731                      IF IntegerEquals a = GLOBAL.Level 
+                              b = LevelNum_Burnside 
+                              
+#00732                        MaybeShowWarehouse 
+#00733                        MaybeShowShip 
+#00734                        goto Skater_RecordsDisplay params = STRUCT{
+                                Level = LevelNum_Tokyo 
+                                Heading = "Tokyo" 
+                                }
+                              
+#00735                      ELSE 
+#00736                        IF IntegerEquals a = GLOBAL.Level 
+                                b = LevelNum_Roswell 
+                                
+#00737                          MaybeShowBurnside 
+#00738                          MaybeShowWarehouse 
+#00739                          MaybeShowShip 
+#00740                          goto Skater_RecordsDisplay params = STRUCT{
+                                  Level = LevelNum_Tokyo 
+                                  Heading = "Tokyo" 
+                                  }
+                                
+#00741                        END IF 
+#00742                      END IF 
+#00743                    END IF 
+#00744                  END IF 
+#00745                END IF 
+#00746              END IF 
+#00747            END IF 
+#00748          END IF 
+#00749        END IF 
+#00750      END IF 
+#00751    END IF 
+#00752  END FUNCTION
+          
+#00753  FUNCTION create_cheat_keyboard 
+#00756    DestroyElement Id = cheat_keyboard_control 
+          
+#00757    CreateAndAttachMenu STRUCT{
+            type = keyboardcontrol 
+            Id = cheat_keyboard_control 
+            x = 160.0 
+            y = 56.0 
+            w = 320.0 
+            h = 336.0 
+            just_center_x just_center_y num_columns = 13 
+            alphanumeric_charset min_chars = 0 
+            max_chars = 28 
+            default_to_accept title_string = "Enter Cheat Code" 
+            default_string = "" 
+            hide_password eventhandlers = ARRAY(
+              
+              STRUCT{
+                type = showeventhandler 
+                target = "start_cheat" 
+                params = STRUCT{
+                  prefs = records 
+                  field = "cheat" 
+                  }
+                }
+              STRUCT{
+                type = ContentsChangedEventHandler 
+                target = "end_cheat" 
+                params = STRUCT{
+                  prefs = records 
+                  field = "cheat" 
+                  }
+                }
+              
+            )
+            parent = contain1 
+            }
+          
+#00785  END FUNCTION
+          
+#00786  FUNCTION start_cheat 
+#00789    LaunchEvent type = SetContents 
+          target = cheat_keyboard_control 
+          string = "" 
+          
+#00790  END FUNCTION
+          
+#00791  FUNCTION end_cheat 
+#00793    printf GLOBAL.string 
+          
+#00794    TryCheatString string = GLOBAL.string 
+          
+#00795  END FUNCTION
+          
+#00798  FUNCTION palmer_demo 
+#00800    stopmusic 
+#00801    stopstream 
+#00802    LoadExecPS2 elf = "cdrom0:\DEMO\SLUS_201.99" 
+          
+#00803  END FUNCTION
+          
+#00804  

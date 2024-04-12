@@ -1,0 +1,2112 @@
+
+#00001  FUNCTION Tutorial_Menu_Creation 
+#00002    SpawnSkaterScript Remap_Trickslot Params = STRUCT{
+            Slot = SpAir_L_R_Circle 
+            Trick = Trick_ChristAir 
+            }
+          
+#00003    PauseMusic 1 
+#00004    createandattachmenu STRUCT{
+            type = verticalmenu 
+            id = tutorial_menu 
+            x = 105.0 
+            y = 60.0 
+            w = 430.0 
+            h = 400.0 
+            just_center_x just_center_y blue_top eventhandler = STRUCT{
+              type = showeventhandler 
+              target = "EndofRun_helper" 
+              }
+            children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Tutorial Menu" 
+                static dont_gray drawer = title 
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = tut_chpt_1 
+                text = "Moving / Camera" 
+                target = "Create_Chapter_1" 
+                kill_menu }
+              STRUCT{
+                type = textmenuelement 
+                id = tut_chpt_2 
+                text = "The Ollie" 
+                target = "Create_Chapter_2" 
+                kill_menu }
+              STRUCT{
+                type = textmenuelement 
+                id = tut_chpt_3 
+                text = "Catching Air" 
+                target = "Create_Chapter_3" 
+                kill_menu }
+              STRUCT{
+                type = textmenuelement 
+                id = tut_chpt_4 
+                text = "Exiting Pools" 
+                target = "Create_Chapter_4" 
+                kill_menu }
+              STRUCT{
+                type = textmenuelement 
+                id = tut_chpt_5 
+                text = "Flip Tricks" 
+                target = "Create_Chapter_5" 
+                kill_menu }
+              STRUCT{
+                type = textmenuelement 
+                id = tut_chpt_6 
+                text = "Grab Tricks" 
+                target = "Create_Chapter_6" 
+                kill_menu }
+              STRUCT{
+                type = textmenuelement 
+                id = tut_chpt_7 
+                text = "Grinds" 
+                target = "Create_Chapter_7" 
+                kill_menu }
+              STRUCT{
+                type = textmenuelement 
+                id = tut_chpt_8 
+                text = "Manuals" 
+                target = "Create_Chapter_8" 
+                kill_menu }
+              STRUCT{
+                type = textmenuelement 
+                id = tut_chpt_9 
+                text = "Lip Tricks" 
+                target = "Create_Chapter_9" 
+                kill_menu }
+              STRUCT{
+                type = textmenuelement 
+                id = tut_chpt_10 
+                text = "The Wallride" 
+                target = "Create_Chapter_10" 
+                kill_menu }
+              STRUCT{
+                type = textmenuelement 
+                id = tut_chpt_11 
+                text = "Special Meter / Tricks" 
+                target = "Create_Chapter_11" 
+                kill_menu }
+              STRUCT{
+                type = textmenuelement 
+                id = tut_chpt_12 
+                text = "The Revert" 
+                target = "Create_Chapter_12" 
+                kill_menu }
+              STRUCT{
+                type = textmenuelement 
+                id = tut_chpt_13 
+                text = "Scoring" 
+                target = "Create_Chapter_13" 
+                kill_menu }
+              STRUCT{
+                type = textmenuelement 
+                id = tut_chpt_14 
+                text = "Super Scoring Combos" 
+                target = "Create_Chapter_14" 
+                kill_menu }
+              STRUCT{
+                type = textmenuelement 
+                id = return_to_main 
+                text = "Return to Main Menu" 
+                link = quittutorials_yesno_menu 
+                }
+              
+            )
+            parent = contain1 
+            }
+          
+#00065    createandattachmenu STRUCT{
+            type = verticalmenu 
+            id = quittutorials_yesno_menu 
+            x = 170.0 
+            y = 150.0 
+            w = 300.0 
+            h = 336.0 
+            just_center_x just_center_y blue_top eventhandler = STRUCT{
+              type = showeventhandler 
+              target = "Select_TutNo" 
+              }
+            parent = contain1 
+            children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Quit?" 
+                static dont_gray drawer = title 
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = quitTut_yes 
+                text = "Yes" 
+                target = "chosen_leave_server" 
+                kill_menu }
+              STRUCT{
+                type = textmenuelement 
+                id = quitTut_no 
+                text = "No" 
+                link = tutorial_menu 
+                }
+              
+            )
+            }
+          
+#00089  END FUNCTION
+          
+#00090  FUNCTION Select_TutNo 
+#00092    SelectElement id = quitTut_no 
+          
+#00093    helper_select_choose_back_centered 
+#00094  END FUNCTION
+          
+#00095  FUNCTION Refresh_EndofTutorials 
+#00097    wait 1 frames 
+#00098    launchevent type = deselect 
+          target = tut_chpt_1 
+          
+#00099    launchevent type = deselect 
+          target = tut_chpt_2 
+          
+#00100    launchevent type = deselect 
+          target = tut_chpt_3 
+          
+#00101    launchevent type = deselect 
+          target = tut_chpt_4 
+          
+#00102    launchevent type = deselect 
+          target = tut_chpt_5 
+          
+#00103    launchevent type = deselect 
+          target = tut_chpt_6 
+          
+#00104    launchevent type = deselect 
+          target = tut_chpt_7 
+          
+#00105    launchevent type = deselect 
+          target = tut_chpt_8 
+          
+#00106    launchevent type = deselect 
+          target = tut_chpt_9 
+          
+#00107    launchevent type = deselect 
+          target = tut_chpt_10 
+          
+#00108    launchevent type = deselect 
+          target = tut_chpt_11 
+          
+#00109    launchevent type = deselect 
+          target = tut_chpt_12 
+          
+#00110    launchevent type = deselect 
+          target = tut_chpt_13 
+          
+#00111    launchevent type = deselect 
+          target = tut_chpt_14 
+          
+#00112    launchevent type = select 
+          target = return_to_main 
+          
+#00113  END FUNCTION
+          
+#00114  TUTORIAL_RUNNING = 0 
+        
+#00116  FUNCTION CPF_Tut_LoadingScript 
+#00118  END FUNCTION
+          
+#00120  FUNCTION Tut_Startup 
+#00122    LoadStreamHeader "streams\tut\streams" 
+#00123    LoadSound "shared\goaldone" vol = 100 
+          dropoff = 0 
+          
+#00124    LoadSound "shared\lowriderloop" vol = 100 
+          dropoff = 100 
+          posupdate 
+#00125    LoadSound "ap\crowdA01" vol = 100 
+          dropoff = 100 
+          
+#00126    LoadSound "ap\crowdA02" vol = 100 
+          dropoff = 100 
+          
+#00127    LaunchLocalMessage "Tutorials" panel_message_Tutorial_MainTitle 
+#00128  END FUNCTION
+          
+#00131  FUNCTION Tut_Start_Node 
+#00133    DisablePlayerInput 
+#00135    CleanUpSpecialItems 
+#00136    MakeSkaterGoto SkaterWaitingForTurorial 
+#00137    Tutorial_Menu_Creation 
+#00139    PauseMusic 1 
+#00141    wait 1 frame 
+#00142    LaunchLocalMessage "Tutorials" panel_message_Tutorial_MainTitle 
+#00143    IF GetGlobalFlag flag = SPECIAL_HAS_SEEN_TUTORIALS 
+            
+#00144      PlayStream Tony_Tutorial_003 
+#00145      LOOP 
+#00146        wait 1 frame 
+#00147        IF ControllerPressed x 
+#00148          BREAK
+                
+#00149        END IF 
+#00150      END LOOP 300 
+#00151    ELSE 
+#00152      PlayStream Tony_Tutorial_001_Welcome 
+#00153      LOOP 
+#00154        wait 1 frame 
+#00155        IF ControllerPressed x 
+#00156          BREAK
+                
+#00157        END IF 
+#00158      END LOOP 500 
+#00159      SetGlobalFlag flag = SPECIAL_HAS_SEEN_TUTORIALS 
+            
+#00160    END IF 
+#00162    SetGlobalFlag flag = SKATESHOP_RETURN_FROM_TUTORIALS 
+          
+#00163    StopStream 
+#00164    KillMessages 
+#00165    SwitchToMenu menu = tutorial_menu 
+          
+#00166  END FUNCTION
+          
+#00167  FUNCTION chosen_leave_tutorials 
+#00169    UnSetFlag flag = TUTORIAL_RUNNING 
+          
+#00171    ParkEditorCommand command = DestroyGeneratedPark 
+          instant 
+#00172    LeaveServer 
+#00173  END FUNCTION
+          
+#00174  TutorialParams = STRUCT{
+          Chapter_1 = "1. Moving and The Camera" 
+          Chapter_2 = "2. The Ollie" 
+          Chapter_3 = "3. Catching Air" 
+          Chapter_4 = "4. Exiting Pools" 
+          Chapter_5 = "5. Flip Tricks" 
+          Chapter_6 = "6. Grab Tricks" 
+          Chapter_7 = "7. Grinds" 
+          Chapter_8 = "8. Manuals" 
+          Chapter_9 = "9. Lip Tricks" 
+          Chapter_10 = "10. The Wallride" 
+          Chapter_11 = "11. Special Tricks and the Special Meter" 
+          Chapter_12 = "12. The Revert" 
+          Chapter_13 = "13. Scoring" 
+          Chapter_14 = "14. Super Scoring Combos" 
+          }
+        
+#00191  FUNCTION Create_Tutorial_Chapter 
+#00193    Create name = TRG_Chapter_01 
+          
+#00194  END FUNCTION
+          
+#00195  FUNCTION Create_Chapter_1 
+#00197    IF GotParam FromOutro 
+#00198    ELSE 
+#00199      wait 1 frame 
+#00200      KillSpawnedScript id = TutorialScript 
+            
+#00201    END IF 
+#00202    Create name = TRG_Chapter_01 
+          
+#00203  END FUNCTION
+          
+#00204  FUNCTION Create_Chapter_2 
+#00205    IF GotParam FromOutro 
+#00206    ELSE 
+#00207      wait 1 frame 
+#00208      KillSpawnedScript id = TutorialScript 
+            
+#00209    END IF 
+#00210    Create name = TRG_Chapter_02 
+          
+#00211  END FUNCTION
+          
+#00212  FUNCTION Create_Chapter_3 
+#00213    IF GotParam FromOutro 
+#00214    ELSE 
+#00215      wait 1 frame 
+#00216      KillSpawnedScript id = TutorialScript 
+            
+#00217    END IF 
+#00218    Create name = TRG_Chapter_03 
+          
+#00219  END FUNCTION
+          
+#00220  FUNCTION Create_Chapter_4 
+#00221    IF GotParam FromOutro 
+#00222    ELSE 
+#00223      wait 1 frame 
+#00224      KillSpawnedScript id = TutorialScript 
+            
+#00225    END IF 
+#00226    Create name = TRG_Chapter_04 
+          
+#00227  END FUNCTION
+          
+#00228  FUNCTION Create_Chapter_5 
+#00229    IF GotParam FromOutro 
+#00230    ELSE 
+#00231      wait 1 frame 
+#00232      KillSpawnedScript id = TutorialScript 
+            
+#00233    END IF 
+#00234    Create name = TRG_Chapter_05 
+          
+#00235  END FUNCTION
+          
+#00236  FUNCTION Create_Chapter_6 
+#00237    IF GotParam FromOutro 
+#00238    ELSE 
+#00239      wait 1 frame 
+#00240      KillSpawnedScript id = TutorialScript 
+            
+#00241    END IF 
+#00242    Create name = TRG_Chapter_06 
+          
+#00243  END FUNCTION
+          
+#00244  FUNCTION Create_Chapter_7 
+#00245    IF GotParam FromOutro 
+#00246    ELSE 
+#00247      wait 1 frame 
+#00248      KillSpawnedScript id = TutorialScript 
+            
+#00249    END IF 
+#00250    Create name = TRG_Chapter_07 
+          
+#00251  END FUNCTION
+          
+#00252  FUNCTION Create_Chapter_8 
+#00253    IF GotParam FromOutro 
+#00254    ELSE 
+#00255      wait 1 frame 
+#00256      KillSpawnedScript id = TutorialScript 
+            
+#00257    END IF 
+#00258    Create name = TRG_Chapter_08 
+          
+#00259  END FUNCTION
+          
+#00260  FUNCTION Create_Chapter_9 
+#00261    IF GotParam FromOutro 
+#00262    ELSE 
+#00263      wait 1 frame 
+#00264      KillSpawnedScript id = TutorialScript 
+            
+#00265    END IF 
+#00266    Create name = TRG_Chapter_09 
+          
+#00267  END FUNCTION
+          
+#00268  FUNCTION Create_Chapter_10 
+#00269    IF GotParam FromOutro 
+#00270    ELSE 
+#00271      wait 1 frame 
+#00272      KillSpawnedScript id = TutorialScript 
+            
+#00273    END IF 
+#00274    Create name = TRG_Chapter_10 
+          
+#00275  END FUNCTION
+          
+#00276  FUNCTION Create_Chapter_11 
+#00277    IF GotParam FromOutro 
+#00278    ELSE 
+#00279      wait 1 frame 
+#00280      KillSpawnedScript id = TutorialScript 
+            
+#00281    END IF 
+#00282    Create name = TRG_Chapter_11 
+          
+#00283  END FUNCTION
+          
+#00284  FUNCTION Create_Chapter_12 
+#00285    IF GotParam FromOutro 
+#00286    ELSE 
+#00287      wait 1 frame 
+#00288      KillSpawnedScript id = TutorialScript 
+            
+#00289    END IF 
+#00290    Create name = TRG_Chapter_12 
+          
+#00291  END FUNCTION
+          
+#00292  FUNCTION Create_Chapter_13 
+#00293    IF GotParam FromOutro 
+#00294    ELSE 
+#00295      wait 1 frame 
+#00296      KillSpawnedScript id = TutorialScript 
+            
+#00297    END IF 
+#00298    Create name = TRG_Chapter_13 
+          
+#00299  END FUNCTION
+          
+#00300  FUNCTION Create_Chapter_14 
+#00301    IF GotParam FromOutro 
+#00302    ELSE 
+#00303      wait 1 frame 
+#00304      KillSpawnedScript id = TutorialScript 
+            
+#00305    END IF 
+#00306    Create name = TRG_Chapter_14 
+          
+#00307  END FUNCTION
+          
+#00308  FUNCTION EndCurrentTutorial 
+#00310    Kill prefix = "C" 
+          
+#00312    KillMessages 
+#00313    KillSpawnedScript id = TutorialScript 
+          
+#00314    UnSetFlag flag = TUTORIAL_RUNNING 
+          
+#00315    MakeSkaterGoto EndOfTutorial 
+#00316    TogglePanel 0 
+#00317    wait 1 frame 
+#00318    SwitchToMenu menu = tutorial_menu 
+          
+#00319  END FUNCTION
+          
+#00320  FUNCTION TutorialText Tut_id = Tut_TextID 
+          Tut_Text = "foo" 
+          Tut_Time = 300 
+          Tut_Sound = hud_jumpgap 
+          TutText_pos = PAIR[0.0; 0.0] 
+          
+#00322    LaunchLocalMessage GLOBAL.Tut_Text 
+          id = GLOBAL.Tut_id 
+          panel_message_Tutorial_TextEnter base_pos = GLOBAL.TutText_pos 
+          
+#00323    StopStream 
+#00324    PlayStream GLOBAL.Tut_Sound 
+          
+#00325    wait 0.25 seconds 
+#00326    LaunchLocalMessage GLOBAL.Tut_Text 
+          id = GLOBAL.Tut_id 
+          panel_message_Tutorial_Text base_pos = GLOBAL.TutText_pos 
+          
+#00327    Debounce x time = 1.0 
+          
+#00328    LOOP 
+#00329      wait 1 frame 
+#00330      IF GetFlag flag = TUTORIAL_RUNNING 
+              
+#00331      ELSE 
+#00332        KillMessages 
+#00333      END IF 
+#00334      IF Held x 
+#00335        BREAK
+              
+#00336      END IF 
+#00337    END LOOP GLOBAL.Tut_Time 
+          
+#00338    Debounce x time = 1.0 
+          
+#00339    LaunchLocalMessage GLOBAL.Tut_Text 
+          id = GLOBAL.Tut_id 
+          panel_message_Tutorial_TextExit base_pos = GLOBAL.TutText_pos 
+          
+#00340    wait 0.3 seconds 
+#00341  END FUNCTION
+          
+#00342  FUNCTION TutorialTitleTextEnter Tut_Text = " " 
+          
+#00344    LaunchLocalMessage GLOBAL.Tut_Text 
+          id = title 
+          panel_message_Tutorial_TitleEnter 
+#00345  END FUNCTION
+          
+#00346  FUNCTION TutorialTitleTextExit Tut_Text = " " 
+          
+#00348    LaunchLocalMessage GLOBAL.Tut_Text 
+          panel_message_Tutorial_TitleExit 
+#00349  END FUNCTION
+          
+#00350  FUNCTION TutorialIntroSetup Tut_Restart = TRG_C1_Restart 
+          Tut_Objs = "C01" 
+          Tut_TextPass = " " 
+          
+#00352    PauseMusic 1 
+#00353    PauseStream 0 
+#00354    TogglePanel 0 
+#00355    SwitchOnBoard 
+#00356    EndGap GapID = C2_JumpGap 
+          
+#00358    EndGap GapID = C5_FlipGap 
+          
+#00359    EndGap GapID = C6_GrabGap 
+          
+#00360    EndGap GapID = C9_LipGap2 
+          
+#00361    EndGap GapID = C7_GrindGap 
+          
+#00362    EndGap GapID = C10_WallLand 
+          
+#00363    EndGap GapID = C12RevertCheck 
+          
+#00364    Kill prefix = "TRG_Chapter" 
+          
+#00365    Kill prefix = "C" 
+          
+#00366    ClearSkaterCamOverride 
+#00369    SetFlag flag = TUTORIAL_RUNNING 
+          
+#00371    Create prefix = GLOBAL.Tut_Objs 
+          
+#00372    TutorialTitleTextEnter Tut_Text = GLOBAL.Tut_TextPass 
+          
+#00373    CleanUpSpecialItems 
+#00374    MakeSkaterGoto Simple_SkaterWaitingForTurorial 
+#00375    wait 1 frame 
+#00376    Obj_MoveToNode name = GLOBAL.Tut_Restart 
+          orient 
+#00377    wait 1 frame 
+#00378    Obj_MoveToNode name = GLOBAL.Tut_Restart 
+          orient 
+#00379    wait 1 frame 
+#00380    MakeSkaterGoto Simple_SkaterWaitingForTurorial 
+#00381    wait 10 frames 
+#00383    PlaySound hud_jumpgap 
+#00384    wait 20 frames 
+#00385  END FUNCTION
+          
+#00386  FUNCTION TutorialIntroDone Tut_TextPass = " " 
+          Tut_KeyPresses = " " 
+          
+#00388    CleanUpSpecialItems 
+#00389    MakeSkaterGoto BailDone 
+#00390    MakeSkaterGoto StartSkatingTutorial 
+#00391    KillMessages 
+#00392    TutorialTitleTextExit Tut_Text = GLOBAL.Tut_TextPass 
+          
+#00393    LaunchLocalMessage GLOBAL.Tut_KeyPresses 
+          panel_message_Tutorial_KeyPresses 
+#00394    TogglePanel 1 
+#00395    StopStream 
+#00398    ClearPanel_Bailed 
+#00399  END FUNCTION
+          
+#00400  FUNCTION TuturialOutroJustFinish Tut_TextPass = " " 
+          
+#00402    PauseMusic 1 
+#00403    CleanUpSpecialItems 
+#00404    MakeSkaterGoto EndOfTutorial 
+#00405    KillMessages 
+#00406    TutorialTitleTextEnter Tut_Text = GLOBAL.Tut_TextPass 
+          
+#00407    LaunchLocalMessage id = complete 
+          "Complete" panel_message_tutorialcomplete 
+#00408    wait 10 frames 
+#00409    PlaySound goaldone 
+#00411    wait 60 frames 
+#00412    wait 160 frames 
+#00413    TogglePanel 0 
+#00414    wait 0.3 seconds 
+#00415  END FUNCTION
+          
+#00416  FUNCTION TutorialOutroSetup Tut_TextPass = " " 
+          
+#00418    PauseMusic 1 
+#00419    CleanUpSpecialItems 
+#00420    MakeSkaterGoto EndOfTutorial 
+#00421    KillMessages 
+#00422    TutorialTitleTextEnter Tut_Text = GLOBAL.Tut_TextPass 
+          
+#00423    LaunchLocalMessage id = complete 
+          "Complete" panel_message_tutorialcomplete 
+#00424    wait 10 frames 
+#00425    PlaySound goaldone 
+#00427    wait 60 frames 
+#00428    wait 160 frames 
+#00429    TogglePanel 0 
+#00430    LaunchLocalMessage "Additional Tips:" id = tips 
+          panel_message_Tutorial_TextEnter base_pos = PAIR[0.0; -180.0] 
+          
+#00431    wait 0.3 seconds 
+#00432    LaunchLocalMessage "Additional Tips:" id = tips 
+          panel_message_Tutorial_Text base_pos = PAIR[0.0; -180.0] 
+          
+#00433  END FUNCTION
+          
+#00434  FUNCTION TutorialOutroDoneJustFinish Tut_Objs = "C" 
+          Tut_TextPass = " " 
+          Tut_Chpt = Create_Chapter_1 
+          
+#00436    Debounce x 1 
+#00437    TutorialText Tut_Time = 1000000000 
+          Tut_Text = "Press м to proceed to |the next Tutorial" 
+          
+#00438    KillMessages 
+#00439    UnSetFlag flag = TUTORIAL_RUNNING 
+          
+#00440    TutorialTitleTextExit Tut_Text = GLOBAL.Tut_TextPass 
+          
+#00441    wait 0.5 seconds 
+#00442    Kill prefix = GLOBAL.Tut_Objs 
+          
+#00443    GLOBAL.Tut_Chpt 
+          FromOutro 
+#00444  END FUNCTION
+          
+#00446  FUNCTION TutorialOutroDone Tut_Objs = "C" 
+          Tut_TextPass = " " 
+          Tut_Chpt = Create_Chapter_1 
+          
+#00448    Debounce x 1 
+#00449    LaunchLocalMessage "Additional Tips:" id = tips 
+          panel_message_Tutorial_TextExit base_pos = PAIR[0.0; -180.0] 
+          
+#00450    TutorialText Tut_Time = 1000000000 
+          Tut_Text = "Press м to proceed to |the next Tutorial" 
+          
+#00451    KillMessages 
+#00452    UnSetFlag flag = TUTORIAL_RUNNING 
+          
+#00453    TutorialTitleTextExit Tut_Text = GLOBAL.Tut_TextPass 
+          
+#00454    wait 0.5 seconds 
+#00455    Kill prefix = GLOBAL.Tut_Objs 
+          
+#00456    GLOBAL.Tut_Chpt 
+          FromOutro 
+#00457  END FUNCTION
+          
+#00459  FUNCTION Chapter_1 Tut_Title = "Moving and the Camera" 
+          
+#00461    EndGap GapID = C1_MoveGap1 
+          
+#00462    EndGap GapID = C1_MoveGap2 
+          
+#00463    TutorialIntroSetup Tut_Restart = TRG_C1_Restart 
+          Tut_Objs = "C01" 
+          Tut_TextPass = GLOBAL.Tut_Title 
+          
+#00464    TutorialText Tut_Time = 270 
+          Tut_Sound = Tony_Tutorial_006a 
+          Tut_Text = "While Skating, press or hold |left (з) or right (г) to turn." 
+          
+#00466    TutorialText Tut_Time = 270 
+          Tut_Sound = Tony_Tutorial_007 
+          Tut_Text = "Hold Down (е) to stop." 
+          
+#00467    TutorialText Tut_Time = 80 
+          Tut_Sound = Tony_Tutorial_Gate_001 
+          Tut_Text = "Skate through the |gates to complete the |tutorial!" 
+          
+#00469    TutorialIntroDone Tut_TextPass = GLOBAL.Tut_Title 
+          
+#00470  END FUNCTION
+          
+#00471  FUNCTION Chapter_1_2 Tut_Title = "Moving and the Camera" 
+          
+#00473    TuturialOutroJustFinish Tut_TextPass = GLOBAL.Tut_Title 
+          
+#00474    TutorialOutroDoneJustFinish Tut_TextPass = GLOBAL.Tut_Title 
+          Tut_Objs = "C01" 
+          Tut_Chpt = Create_Chapter_2 
+          
+#00477  END FUNCTION
+          
+#00479  FUNCTION Chapter_2 Tut_Title = "The Ollie" 
+          
+#00481    TutorialIntroSetup Tut_Restart = TRG_C2_Restart 
+          Tut_Objs = "C2" 
+          Tut_TextPass = GLOBAL.Tut_Title 
+          
+#00482    TutorialText Tut_Time = 260 
+          Tut_Sound = Tony_Tutorial_012 
+          Tut_Text = "While skating, hold down |the ollie button (м) to crouch |and release to jump, or ollie" 
+          
+#00483    TutorialText Tut_Time = 170 
+          Tut_Sound = Tony_Tutorial_013 
+          Tut_Text = "Crouch longer to |gain speed and ollie higher." 
+          
+#00484    TutorialText Tut_Time = 80 
+          Tut_Sound = Tony_Tutorial_014 
+          Tut_Text = "Try to ollie over the crate!" 
+          
+#00485    TutorialIntroDone Tut_TextPass = GLOBAL.Tut_Title 
+          Tut_KeyPresses = "Ollie (м)" 
+          
+#00486  END FUNCTION
+          
+#00487  FUNCTION Chapter_2_2 Tut_Title = "The Ollie" 
+          
+#00489    TutorialOutroSetup Tut_TextPass = GLOBAL.Tut_Title 
+          
+#00490    IF ENGLISH 
+#00491      TutorialText Tut_Time = 700 
+            TutText_pos = PAIR[0.0; -60.0] 
+            Tut_Text = "Tap up then the ollie button (бм) to|no comply, a jump move that scores points." 
+            
+#00492    ELSE 
+#00493      TutorialText Tut_Time = 700 
+            TutText_pos = PAIR[0.0; -40.0] 
+            Tut_Text = "Tap up then the ollie button (бм) to|no comply, a jump move that scores points." 
+            
+#00494    END IF 
+#00495    TutorialOutroDone Tut_TextPass = GLOBAL.Tut_Title 
+          Tut_Objs = "C2" 
+          Tut_Chpt = Create_Chapter_3 
+          
+#00496  END FUNCTION
+          
+#00497  FUNCTION Chapter_3 Tut_Title = "Catching Air" 
+          
+#00499    TutorialIntroSetup Tut_Restart = TRG_C3_Restart 
+          Tut_Objs = "C3" 
+          Tut_TextPass = GLOBAL.Tut_Title 
+          
+#00500    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_015_Catchair 
+          Tut_Text = "To catch air off of the ramp, |skate up the ramp while |holding down the ollie button (м)." 
+          
+#00501    TutorialText Tut_Time = 260 
+          Tut_Sound = Tony_Tutorial_016 
+          Tut_Text = "Release the ollie button at the edge,| or lip of the ramp to ollie upward." 
+          
+#00502    TutorialText Tut_Time = 220 
+          Tut_Sound = Tony_Tutorial_017 
+          Tut_Text = "The closer you are |to the lip when you ollie, |the higher you will go." 
+          
+#00503    TutorialText Tut_Time = 150 
+          Tut_Sound = Tony_Tutorial_018 
+          Tut_Text = "Don't land sideways or you will bail." 
+          
+#00504    TutorialText Tut_Time = 130 
+          Tut_Sound = Tony_Tutorial_019 
+          Tut_Text = "Catch air off the ramp!" 
+          
+#00505    TutorialIntroDone Tut_TextPass = GLOBAL.Tut_Title 
+          
+#00506  END FUNCTION
+          
+#00507  FUNCTION Chapter_3_2 Tut_Title = "Catching Air" 
+          
+#00509    TutorialOutroSetup Tut_TextPass = GLOBAL.Tut_Title 
+          
+#00510    IF ENGLISH 
+#00511      TutorialText Tut_Time = 1000 
+            TutText_pos = PAIR[0.0; -120.0] 
+            Tut_Text = "Jump even higher by tapping| up-up then the ollie button (ббм)| to boneless, fastplant or beanplant" 
+            
+#00512    ELSE 
+#00513      TutorialText Tut_Time = 1000 
+            TutText_pos = PAIR[0.0; -90.0] 
+            Tut_Text = "Jump even higher by tapping| up-up then the ollie button (ббм)| to boneless, fastplant or beanplant" 
+            
+#00514    END IF 
+#00515    TutorialOutroDone Tut_TextPass = GLOBAL.Tut_Title 
+          Tut_Objs = "C3" 
+          Tut_Chpt = Create_Chapter_4 
+          
+#00516  END FUNCTION
+          
+#00517  FUNCTION Chapter_4 Tut_Title = "Exiting Pools" 
+          
+#00519    TutorialIntroSetup Tut_Restart = TRG_C4_Restart 
+          Tut_Objs = "C4" 
+          Tut_TextPass = GLOBAL.Tut_Title 
+          
+#00520    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_020a 
+          Tut_Text = "Exit a pool by holding up (б)|while skating up and over the pool's lip." 
+          
+#00521    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_021 
+          Tut_Text = "Ollieing over the lip of a pool |while holding up will also exit the pool." 
+          
+#00522    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_022 
+          Tut_Text = "Ollieing over the lip of a ramp |will cause you to jump over it." 
+          
+#00523    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_023 
+          Tut_Text = "Try to skate or ollie out of the pool!" 
+          
+#00524    TutorialIntroDone Tut_TextPass = GLOBAL.Tut_Title 
+          Tut_KeyPresses = "Exit Pool (б)" 
+          
+#00525  END FUNCTION
+          
+#00526  FUNCTION Chapter_4_2 Tut_Title = "Exiting Pools" 
+          
+#00528    TutorialOutroSetup Tut_TextPass = GLOBAL.Tut_Title 
+          
+#00529    TutorialText Tut_Time = 1000 
+          TutText_pos = PAIR[0.0; -120.0] 
+          Tut_Text = "Jump over ramps to get to places |you cannot otherwise reach." 
+          
+#00530    TutorialOutroDone Tut_TextPass = GLOBAL.Tut_Title 
+          Tut_Objs = "C4" 
+          Tut_Chpt = Create_Chapter_5 
+          
+#00531  END FUNCTION
+          
+#00532  FUNCTION Chapter_5 Tut_Title = "Flip Tricks" 
+          
+#00534    TutorialIntroSetup Tut_Restart = TRG_C5_Restart 
+          Tut_Objs = "C5" 
+          Tut_TextPass = GLOBAL.Tut_Title 
+          
+#00535    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_024_FlipTrick 
+          Tut_Text = "Catch air then simultaneously tap the| flip trick button plus left (й+з) to kickflip." 
+          
+#00536    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_025 
+          Tut_Text = "Complete the kickflip before you land |or you will bail." 
+          
+#00537    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_026 
+          Tut_Text = "Holding left (з) or right (г) while tricking| will rotate the trick for more points." 
+          
+#00538    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_027 
+          Tut_Text = "Tapping the flip trick button + different| directions will give you up to |8 different tricks." 
+          
+#00539    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_028 
+          Tut_Text = "Ollie off the funbox, then tap |the flip trick button plus left (й+з) |to try a kickflip!" 
+          
+#00540    TutorialIntroDone Tut_TextPass = GLOBAL.Tut_Title 
+          Tut_KeyPresses = "Kickflip (й+з)" 
+          
+#00541  END FUNCTION
+          
+#00542  FUNCTION Chapter_5_2 Tut_Title = "Flip Tricks" 
+          
+#00544    TutorialOutroSetup Tut_TextPass = GLOBAL.Tut_Title 
+          
+#00545    TutorialText Tut_Time = 1000 
+          TutText_pos = PAIR[0.0; -80.0] 
+          Tut_Text = "Tapping out two quick kickflips |will give you a double kickflip" 
+          
+#00546    TutorialOutroDone Tut_TextPass = GLOBAL.Tut_Title 
+          Tut_Objs = "C5" 
+          Tut_Chpt = Create_Chapter_6 
+          
+#00547  END FUNCTION
+          
+#00548  FUNCTION Chapter_6 Tut_Title = "Grab Tricks" 
+          
+#00550    TutorialIntroSetup Tut_Restart = TRG_C6_Restart 
+          Tut_Objs = "C6" 
+          Tut_TextPass = GLOBAL.Tut_Title 
+          
+#00551    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_029_GrabTrick 
+          Tut_Text = "Catch air then simultaneously |tap the grab trick button plus left (л+з)| to perform a Melon Grab." 
+          
+#00552    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_030 
+          Tut_Text = "Holding the grab trick button longer |will tweak grab tricks for more points." 
+          
+#00553    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_031 
+          Tut_Text = "Different directions equals different grabs." 
+          
+#00554    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_032 
+          Tut_Text = "Ollie off the funbox, then tap the |grab trick button plus left (л+з) |to try a Melon!" 
+          
+#00555    TutorialIntroDone Tut_TextPass = GLOBAL.Tut_Title 
+          Tut_KeyPresses = "Melon (л+з)" 
+          
+#00556  END FUNCTION
+          
+#00557  FUNCTION Chapter_6_2 Tut_Title = "Grab Tricks" 
+          
+#00559    TutorialOutroSetup Tut_TextPass = GLOBAL.Tut_Title 
+          
+#00560    IF ENGLISH 
+#00561      TutorialText Tut_Time = 1000 
+            TutText_pos = PAIR[0.0; -100.0] 
+            Tut_Text = "Different skaters have different trick setups.|          |Tricks devalue each time they are used, |so mix them up for higher scores." 
+            
+#00562    ELSE 
+#00563      TutorialText Tut_Time = 1000 
+            TutText_pos = PAIR[0.0; -40.0] 
+            Tut_Text = "Different skaters have different trick setups.|          |Tricks devalue each time they are used, |so mix them up for higher scores." 
+            
+#00564    END IF 
+#00565    TutorialOutroDone Tut_TextPass = GLOBAL.Tut_Title 
+          Tut_Objs = "C6" 
+          Tut_Chpt = Create_Chapter_7 
+          
+#00566  END FUNCTION
+          
+#00567  FUNCTION Chapter_7 Tut_Title = "Grinds" 
+          
+#00569    TutorialIntroSetup Tut_Restart = TRG_C7_Restart 
+          Tut_Objs = "C7" 
+          Tut_TextPass = GLOBAL.Tut_Title 
+          
+#00570    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_033_Grind 
+          Tut_Text = "To grind, hold down the grind button (к)| when in the air near a rail edge or lip." 
+          
+#00571    TutorialText Tut_Time = 330 
+          Tut_Sound = Tony_Tutorial_034a 
+          Tut_Text = "Board parallel to rail equals a 50-50 grind, |perpendicular to rail equals |a boardslide or lipslide." 
+          
+#00572    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_036 
+          Tut_Text = "Different directions + the grind |button will give you different grinds." 
+          
+#00573    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_037 
+          Tut_Text = "Tap left (з) and right (г) to |balance while grinding." 
+          
+#00574    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_038b 
+          Tut_Text = "Skate next to the rail, ollie |and press the grind button (к) |to grind it!" 
+          
+#00575    TutorialIntroDone Tut_TextPass = GLOBAL.Tut_Title 
+          Tut_KeyPresses = "Grind (к)" 
+          
+#00576  END FUNCTION
+          
+#00577  FUNCTION Chapter_7_2 Tut_Title = "Grinds" 
+          
+#00579    TutorialOutroSetup Tut_TextPass = GLOBAL.Tut_Title 
+          
+#00580    TutorialText Tut_Time = 1000 
+          TutText_pos = PAIR[0.0; -80.0] 
+          Tut_Text = "Tap down-down + the grind button (ее+к) |for a bluntslide.|          |While grinding a ramp or pool, you can |lean back into the ramp or pool |to exit a grind." 
+          
+#00581    TutorialOutroDone Tut_TextPass = GLOBAL.Tut_Title 
+          Tut_Objs = "C7" 
+          Tut_Chpt = Create_Chapter_8 
+          
+#00582  END FUNCTION
+          
+#00583  FUNCTION Chapter_8 Tut_Title = "Manuals" 
+          
+#00585    TutorialIntroSetup Tut_Restart = TRG_C8_Restart 
+          Tut_Objs = "C8" 
+          Tut_TextPass = GLOBAL.Tut_Title 
+          
+#00586    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_040 
+          Tut_Text = "Tap up-down (бе) to manual, |or down-up (еб) to nose manual| when skating or landing." 
+          
+#00587    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_041 
+          Tut_Text = "Tap up and down to balance while manualing." 
+          
+#00588    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_042 
+          Tut_Text = "Use the balance meter to check your balance." 
+          
+#00589    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_043 
+          Tut_Text = "You can hit the ollie button (м)|to ollie out of a manual." 
+          
+#00590    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_044 
+          Tut_Text = "Tap up-down (бе) or down-up (еб) |to do a manual, |then ride it across the gap!" 
+          
+#00591    TutorialIntroDone Tut_TextPass = GLOBAL.Tut_Title 
+          Tut_KeyPresses = "Manual (бе)|Nose Manual (еб)" 
+          
+#00592  END FUNCTION
+          
+#00593  FUNCTION Chapter_8_2 Tut_Title = "Manuals" 
+          
+#00595    TutorialOutroSetup Tut_TextPass = GLOBAL.Tut_Title 
+          
+#00596    TutorialText Tut_Time = 1000 
+          TutText_pos = PAIR[0.0; -80.0] 
+          Tut_Text = "Use manuals to keep combos |going across flat ground sections.|          |Ollie off of a rail and press up-down |to land in a manual." 
+          
+#00597    TutorialOutroDone Tut_TextPass = GLOBAL.Tut_Title 
+          Tut_Objs = "C8" 
+          Tut_Chpt = Create_Chapter_9 
+          
+#00598  END FUNCTION
+          
+#00599  FUNCTION Chapter_9 Tut_Title = "Lip Tricks" 
+          
+#00601    TutorialIntroSetup Tut_Restart = TRG_C9_Restart 
+          Tut_Objs = "C9" 
+          Tut_TextPass = GLOBAL.Tut_Title 
+          
+#00602    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_045_LipTricks 
+          Tut_Text = "Perform lip tricks by skating |straight up to the lip of a ramp |while holding the grind button (к)." 
+          
+#00603    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_046 
+          Tut_Text = "You need to be perpendicular to |the lip to perform a lip trick." 
+          
+#00604    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_047 
+          Tut_Text = "Use up (б) and down (е) to balance |while in a lip trick." 
+          
+#00605    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_048 
+          Tut_Text = "Either ollie or lean back into |the ramp to land a lip trick." 
+          
+#00606    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_049 
+          Tut_Text = "Different directions + the grind |button gives you different lip tricks." 
+          
+#00607    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_050 
+          Tut_Text = "Skate up the ramp while holding |the grind button to try a lip trick!" 
+          
+#00608    TutorialIntroDone Tut_TextPass = GLOBAL.Tut_Title 
+          Tut_KeyPresses = "Lip Trick (к)" 
+          
+#00609  END FUNCTION
+          
+#00610  FUNCTION Chapter_9_2 Tut_Title = "Lip Tricks" 
+          
+#00612    TutorialOutroSetup Tut_TextPass = GLOBAL.Tut_Title 
+          
+#00613    TutorialText Tut_Time = 1000 
+          TutText_pos = PAIR[0.0; -120.0] 
+          Tut_Text = "You can air straight up from a ramp to |edges up above to perform lip tricks |or grinds up high." 
+          
+#00614    TutorialOutroDone Tut_TextPass = GLOBAL.Tut_Title 
+          Tut_Objs = "C9" 
+          Tut_Chpt = Create_Chapter_10 
+          
+#00615  END FUNCTION
+          
+#00616  FUNCTION Chapter_10 Tut_Title = "The Wallride" 
+          
+#00618    TutorialIntroSetup Tut_Restart = TRG_C10_Restart 
+          Tut_Objs = "C10" 
+          Tut_TextPass = GLOBAL.Tut_Title 
+          
+#00619    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_051_Wallride 
+          Tut_Text = "Skate at an angle up to a wall, |ollie, then hit the grind button (к)|to wallride." 
+          
+#00620    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_052 
+          Tut_Text = "Ollie while wallriding |to wallie off of the wall." 
+          
+#00621    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_053 
+          Tut_Text = "Skate up to the wall and wall ride it (к)!" 
+          
+#00622    TutorialIntroDone Tut_TextPass = GLOBAL.Tut_Title 
+          Tut_KeyPresses = "Wallride (к)" 
+          
+#00623  END FUNCTION
+          
+#00624  FUNCTION Chapter_10_2 Tut_Title = "The Wallride" 
+          
+#00626    TutorialOutroSetup Tut_TextPass = GLOBAL.Tut_Title 
+          
+#00627    TutorialText Tut_Time = 1000 
+          TutText_pos = PAIR[0.0; -80.0] 
+          Tut_Text = "Use wall rides to get to |hard to reach places.|           |Learn to wallie into a trick |for more points." 
+          
+#00628    TutorialOutroDone Tut_TextPass = GLOBAL.Tut_Title 
+          Tut_Objs = "C10" 
+          Tut_Chpt = Create_Chapter_11 
+          
+#00629  END FUNCTION
+          
+#00630  FUNCTION Chapter_11 Tut_Title = "Special Tricks / Meter" 
+          
+#00632    TutorialIntroSetup Tut_Restart = TRG_C11_Restart 
+          Tut_Objs = "C11" 
+          Tut_TextPass = GLOBAL.Tut_Title 
+          
+#00634    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_054_SpecialTrick 
+          Tut_Text = "Your adrenaline is pumping |when the special meter flashes orange." 
+          
+#00635    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_055 
+          Tut_Text = "Quickly scoring points |fills the special meter." 
+          
+#00636    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_057 
+          Tut_Text = "Jump higher, go faster, perform special |tricks when the meter is glowing." 
+          
+#00637    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_059 
+          Tut_Text = "When you're special, try tapping |multiple directions then a trick button |to find a special trick." 
+          
+#00638    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_060 
+          Tut_Text = "Pull tricks in the halfpipe| to get special, then tap |left, then right + the grab button (зг+л)| to pull a Christ Air!" 
+          
+#00639    TutorialIntroDone Tut_TextPass = GLOBAL.Tut_Title 
+          Tut_KeyPresses = "Get Special|Christ Air (зг+л)" 
+          
+#00640  END FUNCTION
+          
+#00641  FUNCTION Chapter_11_2 Tut_Title = "Special Tricks / Meter" 
+          
+#00643    TutorialOutroSetup Tut_TextPass = GLOBAL.Tut_Title 
+          
+#00644    IF ENGLISH 
+#00645      TutorialText Tut_Time = 1000 
+            TutText_pos = PAIR[0.0; -80.0] 
+            Tut_Text = "Special grinds, grabs and |flip tricks differ among skaters, |try to find them all.|         |Once your special meter is full, try to |ollie or boneless to hard to reach places." 
+            
+#00646    ELSE 
+#00647      TutorialText Tut_Time = 1000 
+            TutText_pos = PAIR[0.0; -40.0] 
+            Tut_Text = "Special grinds, grabs and |flip tricks differ among skaters, |try to find them all.|         |Once your special meter is full, try to |ollie or boneless to hard to reach places." 
+            
+#00648    END IF 
+#00649    TutorialOutroDone Tut_TextPass = GLOBAL.Tut_Title 
+          Tut_Objs = "C11" 
+          Tut_Chpt = Create_Chapter_12 
+          
+#00650  END FUNCTION
+          
+#00651  FUNCTION Chapter_12 Tut_Title = "The Revert" 
+          
+#00653    TutorialIntroSetup Tut_Restart = TRG_C12_Restart 
+          Tut_Objs = "C12" 
+          Tut_TextPass = GLOBAL.Tut_Title 
+          
+#00654    TutorialText Tut_Time = 350 
+          Tut_Sound = Tony_Tutorial_061_Revert 
+          Tut_Text = "Hit the revert button just as you |land into a ramp, pool or halfpipe to perform |the revert, a new landing trick in |Tony Hawk's Pro Skater 3." 
+          
+#00655    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_062 
+          Tut_Text = "You can use the revert to continue |a combo when you land from vert." 
+          
+#00656    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_064 
+          Tut_Text = "Hit the ramp and then hit the |revert button just as you land |to perform a revert!" 
+          
+#00657    TutorialIntroDone Tut_TextPass = GLOBAL.Tut_Title 
+          Tut_KeyPresses = "Revert" 
+          
+#00658  END FUNCTION
+          
+#00659  FUNCTION Chapter_12_2 Tut_Title = "The Revert" 
+          
+#00661    TutorialOutroSetup Tut_TextPass = GLOBAL.Tut_Title 
+          
+#00662    IF ENGLISH 
+#00663      TutorialText Tut_Time = 1000 
+            TutText_pos = PAIR[0.0; -80.0] 
+            Tut_Text = "Revert into a manual in order to |link vert tricks to other tricks |to lengthen combos.|           |After linking a couple of vert tricks, |pull a grind to regain your speed." 
+            
+#00664    ELSE 
+#00665      TutorialText Tut_Time = 1000 
+            TutText_pos = PAIR[0.0; -40.0] 
+            Tut_Text = "Revert into a manual in order to |link vert tricks to other tricks |to lengthen combos.|           |After linking a couple of vert tricks, |pull a grind to regain your speed." 
+            
+#00666    END IF 
+#00667    TutorialOutroDone Tut_TextPass = GLOBAL.Tut_Title 
+          Tut_Objs = "C12" 
+          Tut_Chpt = Create_Chapter_13 
+          
+#00668  END FUNCTION
+          
+#00669  FUNCTION Chapter_13 Tut_Title = "Scoring" 
+          
+#00671    TutorialIntroSetup Tut_Restart = TRG_C13_Restart 
+          Tut_Objs = "C13" 
+          Tut_TextPass = GLOBAL.Tut_Title 
+          
+#00672    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_065a 
+          Tut_Text = "Each time you repeat a trick during a run, |that trick's point value decreases." 
+          
+#00673    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_066a 
+          Tut_Text = "Think about your line and mix your tricks up." 
+          
+#00674    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_067 
+          Tut_Text = "Nollie instead of Ollie |for more trick variations." 
+          
+#00675    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_068 
+          Tut_Text = "Perform combos using |vert tricks, reverts, manuals, and grinds |for bigger scores." 
+          
+#00676    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_069 
+          Tut_Text = "Your score gets multiplied by the |number of tricks strung together |in the combo." 
+          
+#00677    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_070a 
+          Tut_Text = "Gaps, which are special areas |the skater must pass through, |add points to your trick string." 
+          
+#00678    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_071 
+          Tut_Text = "Increase scores by working  |Air, Rail, Manual, and Wallride Gaps |into your combos." 
+          
+#00679    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_073 
+          Tut_Text = "Pull a combo for 3,000 points!" 
+          
+#00681    TutorialIntroDone Tut_TextPass = GLOBAL.Tut_Title 
+          Tut_KeyPresses = "Manual (бе)|Grind (к)" 
+          
+#00682  END FUNCTION
+          
+#00683  FUNCTION Chapter_13_2 Tut_Title = "Scoring" 
+          
+#00685    TutorialOutroSetup Tut_TextPass = GLOBAL.Tut_Title 
+          
+#00686    IF ENGLISH 
+#00687      TutorialText Tut_Time = 1000 
+            TutText_pos = PAIR[0.0; -80.0] 
+            Tut_Text = "Try to trick into and out of every grind.|         |Mix it up using different tricks, specials,| manuals and reverts to link vert tricks |and grinds together to get maximum points." 
+            
+#00688    ELSE 
+#00689      TutorialText Tut_Time = 1000 
+            TutText_pos = PAIR[0.0; -40.0] 
+            Tut_Text = "Try to trick into and out of every grind.|         |Mix it up using different tricks, specials,| manuals and reverts to link vert tricks |and grinds together to get maximum points." 
+            
+#00690    END IF 
+#00691    TutorialOutroDone Tut_TextPass = GLOBAL.Tut_Title 
+          Tut_Objs = "C13" 
+          Tut_Chpt = Create_Chapter_14 
+          
+#00692  END FUNCTION
+          
+#00693  FUNCTION Chapter_14 Tut_Title = "Super Scoring Combos" 
+          
+#00695    EndGap GapID = C14_SuperCombo 
+          
+#00696    EndGap GapID = C14_SuperCombo 
+          
+#00697    StateInfoOn 
+#00698    TutorialIntroSetup Tut_Restart = TRG_C14_Restart 
+          Tut_Objs = "C14" 
+          Tut_TextPass = GLOBAL.Tut_Title 
+          
+#00699    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_Super_01 
+          Tut_Text = "To get the highest scores in THPS3, |you will have to be able to |pull off really big combos." 
+          
+#00700    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_Super_02 
+          Tut_Text = "Super Scoring Combos combine |vert tricks, manuals, grinds and gaps|all in one combo." 
+          
+#00701    TutorialText Tut_Time = 360 
+          Tut_Sound = Tony_Tutorial_Super_03 
+          Tut_Text = "To combo from a ramp, do a |revert as soon as you| land and then immediately |go into a manual (бе or еб)." 
+          
+#00702    TutorialText Tut_Time = 280 
+          Tut_Sound = Tony_Tutorial_Super_04 
+          Tut_Text = "Once in a manual, balance while |heading toward another trick object |(another ramp or a grind)." 
+          
+#00703    TutorialText Tut_Time = 380 
+          Tut_Sound = Tony_Tutorial_Super_05 
+          Tut_Text = "Catch air off the ramp ahead, |land with a revert and go into a manual, |then manual to the rail and grind it (к)." 
+          
+#00704    TutorialIntroDone Tut_TextPass = GLOBAL.Tut_Title 
+          Tut_KeyPresses = "Revert|Manual (бе)|Grind (к)" 
+          
+#00705  END FUNCTION
+          
+#00706  FUNCTION Chapter_14_2 Tut_Title = "Super Scoring Combos" 
+          
+#00708    TutorialOutroSetup Tut_TextPass = GLOBAL.Tut_Title 
+          
+#00709    TutorialText Tut_Time = 1000 
+          TutText_pos = PAIR[0.0; -80.0] 
+          Tut_Text = "Use these combos to find |lines all over the levels.|         |Combine these lines with high scoring gaps |to get ultra high scores!" 
+          
+#00710    KillMessages 
+#00712    SwitchToMenu menu = tutorial_menu 
+          
+#00713    SpawnScript Refresh_EndofTutorials 
+#00714  END FUNCTION
+          
+#00715  FUNCTION Tut_C1_Complete 
+#00717    wait 1 frame 
+#00718    IF IsInBail 
+#00719    ELSE 
+#00720      KillMessages 
+#00721      wait 1 frame 
+#00722      EndGap GapID = C1_MoveGap1 
+            
+#00723      wait 1 frame 
+#00724      EndGap GapID = C1_MoveGap2 
+            
+#00725      PlaySound RANDOM[2][4; 10]
+            CrowdA01 JUMP 0x05000000 CrowdA02 
+#00726      KillSpawnedScript id = TutorialScript 
+            
+#00727      SpawnSkaterScript Chapter_1_2 id = TutorialScript 
+            
+#00728    END IF 
+#00729  END FUNCTION
+          
+#00730  FUNCTION Tut_C2_Complete 
+#00732    wait 1 frame 
+#00733    IF IsInBail 
+#00734    ELSE 
+#00735      KillMessages 
+#00736      PlaySound RANDOM[2][4; 10]
+            CrowdA01 JUMP 0x05000000 CrowdA02 
+#00737      KillSpawnedScript id = TutorialScript 
+            
+#00738      SpawnSkaterScript Chapter_2_2 id = TutorialScript 
+            
+#00739    END IF 
+#00740  END FUNCTION
+          
+#00741  FUNCTION Tut_C3_Midway 
+#00743    KillMessages 
+#00744    StartGap GapID = C3_VertGapEnd 
+          flags = Cancel_Ground 
+          
+#00746  END FUNCTION
+          
+#00747  FUNCTION Tut_C3_Complete 
+#00749    wait 1 frame 
+#00750    IF IsInBail 
+#00751    ELSE 
+#00752      KillMessages 
+#00753      PlaySound RANDOM[2][4; 10]
+            CrowdA01 JUMP 0x05000000 CrowdA02 
+#00754      KillSpawnedScript id = TutorialScript 
+            
+#00755      SpawnSkaterScript Chapter_3_2 id = TutorialScript 
+            
+#00756    END IF 
+#00757  END FUNCTION
+          
+#00758  FUNCTION Tut_C4_Complete 
+#00760    KillMessages 
+#00761    PlaySound RANDOM[2][4; 10]
+          CrowdA01 JUMP 0x05000000 CrowdA02 
+#00762    KillSpawnedScript id = TutorialScript 
+          
+#00763    SpawnSkaterScript Chapter_4_2 id = TutorialScript 
+          
+#00764  END FUNCTION
+          
+#00765  FUNCTION Tut_C5_Complete 
+#00767    StartGapTrick tricktext = "KickFlip" 
+          gapscript = Tut_C5_Complete2 
+          
+#00768  END FUNCTION
+          
+#00769  FUNCTION Tut_C5_Complete2 
+#00771    KillMessages 
+#00772    PlaySound RANDOM[2][4; 10]
+          CrowdA01 JUMP 0x05000000 CrowdA02 
+#00773    KillSpawnedScript id = TutorialScript 
+          
+#00774    SpawnSkaterScript Chapter_5_2 id = TutorialScript 
+          
+#00775  END FUNCTION
+          
+#00776  FUNCTION Tut_C6_Complete 
+#00778    StartGapTrick tricktext = "Melon" 
+          gapscript = Tut_C6_Complete2 
+          
+#00779  END FUNCTION
+          
+#00780  FUNCTION Tut_C6_Complete2 
+#00782    KillMessages 
+#00783    PlaySound RANDOM[2][4; 10]
+          CrowdA01 JUMP 0x05000000 CrowdA02 
+#00785    KillSpawnedScript id = TutorialScript 
+          
+#00786    SpawnSkaterScript Chapter_6_2 id = TutorialScript 
+          
+#00787  END FUNCTION
+          
+#00788  FUNCTION Tut_C7_Complete 
+#00790    wait 1 frame 
+#00791    IF IsInBail 
+#00792    ELSE 
+#00793      KillMessages 
+#00794      PlaySound RANDOM[2][4; 10]
+            CrowdA01 JUMP 0x05000000 CrowdA02 
+#00796      KillSpawnedScript id = TutorialScript 
+            
+#00797      SpawnSkaterScript Chapter_7_2 id = TutorialScript 
+            
+#00798    END IF 
+#00799  END FUNCTION
+          
+#00800  FUNCTION Tut_C8_Complete 
+#00802    KillMessages 
+#00803    PlaySound RANDOM[2][4; 10]
+          CrowdA01 JUMP 0x05000000 CrowdA02 
+#00805    KillSpawnedScript id = TutorialScript 
+          
+#00806    SpawnSkaterScript Chapter_8_2 id = TutorialScript 
+          
+#00807  END FUNCTION
+          
+#00808  FUNCTION Tut_C9_Complete 
+#00810    Tut_C9_Complete2 
+#00811  END FUNCTION
+          
+#00814  FUNCTION Tut_C9_Complete2 
+#00816    StartGap GapID = C9_LipGap2 
+          flags = ARRAY(
+            
+            Cancel_Ground 
+          )
+          
+#00817  END FUNCTION
+          
+#00818  FUNCTION Tut_C9_Complete3 
+#00820    StartGap GapID = C9_LipGap3 
+          
+#00821  END FUNCTION
+          
+#00822  FUNCTION Tut_C9_Complete4 
+#00824    wait 1 frame 
+#00825    IF IsInBail 
+#00826    ELSE 
+#00827      KillMessages 
+#00828      PlaySound RANDOM[2][4; 10]
+            CrowdA01 JUMP 0x05000000 CrowdA02 
+#00830      KillSpawnedScript id = TutorialScript 
+            
+#00831      wait 0.5 seconds 
+#00832      SpawnSkaterScript Chapter_9_2 id = TutorialScript 
+            
+#00833    END IF 
+#00834  END FUNCTION
+          
+#00835  FUNCTION Tut_C10_Complete 
+#00837    wait 1 frame 
+#00838    IF IsInBail 
+#00839    ELSE 
+#00840      StartGap GapID = C10_WallLand 
+            flags = ARRAY(
+              
+              Cancel_Ground 
+            )
+            
+#00844    END IF 
+#00845  END FUNCTION
+          
+#00846  FUNCTION Tut_C10_Complete2 
+#00848    wait 1 frame 
+#00850    IF IsInBail 
+#00851    ELSE 
+#00852      KillMessages 
+#00853      PlaySound RANDOM[2][4; 10]
+            CrowdA01 JUMP 0x05000000 CrowdA02 
+#00855      KillSpawnedScript id = TutorialScript 
+            
+#00856      SpawnSkaterScript Chapter_10_2 id = TutorialScript 
+            
+#00858    END IF 
+#00859  END FUNCTION
+          
+#00860  FUNCTION Tut_C11_Complete 
+#00862    StartGapTrick tricktext = "Christ air" 
+          gapscript = Tut_C11_Complete2 
+          
+#00863  END FUNCTION
+          
+#00864  FUNCTION Tut_C11_Complete2 
+#00866    KillMessages 
+#00867    PlaySound RANDOM[2][4; 10]
+          CrowdA01 JUMP 0x05000000 CrowdA02 
+#00868    KillSpawnedScript id = TutorialScript 
+          
+#00869    SpawnSkaterScript Chapter_11_2 id = TutorialScript 
+          
+#00870  END FUNCTION
+          
+#00871  FUNCTION Tut_C12_Complete 
+#00873    StartGapTrick tricktext = "revert" 
+          gapscript = Tut_C12_Complete2 
+          
+#00875    wait 1 frame 
+#00876    CheckGapTricks 
+#00877    wait 1 frame 
+#00878    ClearGapTricks 
+#00879  END FUNCTION
+          
+#00880  FUNCTION Tut_C12_Complete2 
+#00882    KillMessages 
+#00883    Kill prefix = "C12TRG_RevertCheck" 
+          
+#00884    wait 30 frames 
+#00885    PlaySound RANDOM[2][4; 10]
+          CrowdA01 JUMP 0x05000000 CrowdA02 
+#00887    KillSpawnedScript id = TutorialScript 
+          
+#00888    SpawnSkaterScript Chapter_12_2 id = TutorialScript 
+          
+#00889  END FUNCTION
+          
+#00890  FUNCTION C12_GO_RevertChecker 
+#00892    LOOP 
+#00893      SpawnSkaterScript Tut_C12_Complete 
+#00895      wait 4 frame 
+#00896    END LOOP 
+#00897  END FUNCTION
+          
+#00898  FUNCTION Tut_C13_Complete 
+#00900    KillMessages 
+#00901    PlaySound RANDOM[2][4; 10]
+          CrowdA01 JUMP 0x05000000 CrowdA02 
+#00903    KillSpawnedScript id = TutorialScript 
+          
+#00904    SpawnSkaterScript Chapter_13_2 id = TutorialScript 
+          
+#00905  END FUNCTION
+          
+#00906  FUNCTION Tut_C14_Complete 
+#00908  END FUNCTION
+          
+#00909  FUNCTION Tut_C14_RevertComplete 
+#00911    wait 3 frames 
+#00913    StartGap GapID = C14_SuperCombo1 
+          flags = ARRAY(
+            
+            require_manual Cancel_Ground 
+          )
+          
+#00915  END FUNCTION
+          
+#00916  FUNCTION Tut_C14_Complete1 
+#00918    StartGap GapID = C14_SuperCombo2 
+          flags = ARRAY(
+            
+            Cancel_Ground 
+          )
+          
+#00920  END FUNCTION
+          
+#00921  FUNCTION Tut_C14_Complete2 
+#00923    wait 1 frame 
+#00924    IF IsInBail 
+#00925    ELSE 
+#00926      PlaySound RANDOM[2][4; 10]
+            CrowdA01 JUMP 0x05000000 CrowdA02 
+#00929      KillSpawnedScript id = TutorialScript 
+            
+#00932      SpawnSkaterScript Chapter_14_2 id = TutorialScript 
+            
+#00933    END IF 
+#00934  END FUNCTION
+          
+#00935  FUNCTION Tut_C14_RevertCheck 
+#00937    StartGapTrick tricktext = "revert" 
+          gapscript = Tut_C14_RevertComplete 
+          
+#00939    wait 1 frame 
+#00940    CheckGapTricks 
+#00941    wait 1 frame 
+#00942    ClearGapTricks 
+#00943  END FUNCTION
+          
+#00944  FUNCTION C14_GO_RevertChecker 
+#00946    LOOP 
+#00947      SpawnSkaterScript Tut_C14_RevertCheck 
+#00949      wait 4 frame 
+#00950    END LOOP 
+#00951  END FUNCTION
+          
+#00952  FUNCTION Tut_ScoreChecker 
+#00954    Obj_SetException Ex = SkaterLanded 
+          Scr = TutSeesTrick 
+          
+#00955    LOOP 
+#00956      wait 30 frames 
+#00958    END LOOP 
+#00959  END FUNCTION
+          
+#00960  FUNCTION TutSeesTrick 
+#00962    Obj_ClearExceptions 
+#00963    IF SkaterLastScoreLandedGreaterThan 3000 
+#00965      Goto Tut_C13_Complete 
+#00967    ELSE 
+#00968      wait 10 frames 
+#00969      Goto Tut_ScoreChecker 
+#00970    END IF 
+#00971    GotoPreserveParams CrowdIsWaiting 
+#00972  END FUNCTION
+          
+#00973  panel_message_Tutorial_TextEnter = STRUCT{
+          font = "small.fnt" 
+          just = PAIR[0.0; 0.0] 
+          dims = PAIR[60.0; 112.0] 
+          colors = ARRAY(
+            
+            STRUCT{
+              VECTOR[128.0; 128.0; 128.0] alpha = 128 
+              }
+            
+          )
+          key_points = ARRAY(
+            
+            STRUCT{
+              pos = PAIR[320.0; 330.0] 
+              alpha = 0 
+              scale = 1.51 
+              time = 0 
+              }
+            STRUCT{
+              pos = PAIR[320.0; 330.0] 
+              alpha = 128 
+              scale = 1.51 
+              time = 0.31 
+              }
+            STRUCT{
+              pos = PAIR[320.0; 330.0] 
+              alpha = 128 
+              scale = 1.51 
+              time = 0.41 
+              }
+            
+          )
+          }
+        
+#00987  panel_message_Tutorial_TextExit = STRUCT{
+          font = "small.fnt" 
+          just = PAIR[0.0; 0.0] 
+          dims = PAIR[60.0; 112.0] 
+          colors = ARRAY(
+            
+            STRUCT{
+              VECTOR[128.0; 128.0; 128.0] alpha = 128 
+              }
+            
+          )
+          key_points = ARRAY(
+            
+            STRUCT{
+              pos = PAIR[320.0; 330.0] 
+              alpha = 128 
+              scale = 1.51 
+              time = 0 
+              }
+            STRUCT{
+              pos = PAIR[320.0; 330.0] 
+              alpha = 0 
+              scale = 1.51 
+              time = 0.3 
+              }
+            
+          )
+          }
+        
+#01000  panel_message_Tutorial_Text = STRUCT{
+          font = "small.fnt" 
+          just = PAIR[0.0; 0.0] 
+          dims = PAIR[60.0; 112.0] 
+          colors = ARRAY(
+            
+            STRUCT{
+              VECTOR[128.0; 128.0; 128.0] alpha = 128 
+              }
+            
+          )
+          key_points = ARRAY(
+            
+            STRUCT{
+              pos = PAIR[320.0; 330.0] 
+              alpha = 128 
+              scale = 1.51 
+              time = 0 
+              }
+            STRUCT{
+              pos = PAIR[320.0; 330.0] 
+              alpha = 128 
+              scale = 1.51 
+              time = 1000000000 
+              }
+            
+          )
+          }
+        
+#01013  panel_message_Tutorial_Title = STRUCT{
+          font = "title.fnt" 
+          just = PAIR[0.0; 0.0] 
+          dims = PAIR[60.0; 112.0] 
+          colors = ARRAY(
+            
+            STRUCT{
+              VECTOR[128.0; 128.0; 128.0] alpha = 128 
+              }
+            
+          )
+          key_points = ARRAY(
+            
+            STRUCT{
+              pos = PAIR[320.0; 60.0] 
+              alpha = 0 
+              scale = 1 
+              time = 0 
+              }
+            STRUCT{
+              pos = PAIR[320.0; 60.0] 
+              alpha = 0 
+              scale = 1 
+              time = 0.2 
+              }
+            STRUCT{
+              pos = PAIR[320.0; 60.0] 
+              alpha = 128 
+              scale = 1 
+              time = 0.21 
+              }
+            STRUCT{
+              time = 1 
+              }
+            STRUCT{
+              pos = PAIR[320.0; 60.0] 
+              alpha = 0 
+              scale = 1 
+              time = 1000000000 
+              }
+            
+          )
+          }
+        
+#01029  panel_message_Tutorial_TitleExit = STRUCT{
+          font = "title.fnt" 
+          just = PAIR[0.0; 0.0] 
+          dims = PAIR[60.0; 112.0] 
+          colors = ARRAY(
+            
+            STRUCT{
+              VECTOR[128.0; 128.0; 128.0] alpha = 128 
+              }
+            
+          )
+          key_points = ARRAY(
+            
+            STRUCT{
+              pos = PAIR[320.0; 60.0] 
+              alpha = 128 
+              scale = 1 
+              time = 0 
+              }
+            STRUCT{
+              pos = PAIR[320.0; 60.0] 
+              alpha = 0 
+              scale = 0 
+              time = 0.5 
+              }
+            
+          )
+          }
+        
+#01042  panel_message_Tutorial_TitleEnter = STRUCT{
+          font = "title.fnt" 
+          just = PAIR[0.0; 0.0] 
+          dims = PAIR[60.0; 112.0] 
+          colors = ARRAY(
+            
+            STRUCT{
+              VECTOR[128.0; 128.0; 128.0] alpha = 128 
+              }
+            
+          )
+          key_points = ARRAY(
+            
+            STRUCT{
+              pos = PAIR[320.0; 60.0] 
+              alpha = 0 
+              scale = 0 
+              time = 0 
+              }
+            STRUCT{
+              pos = PAIR[320.0; 60.0] 
+              alpha = 128 
+              scale = 1 
+              time = 0.5 
+              }
+            STRUCT{
+              time = 1000000000 
+              }
+            
+          )
+          }
+        
+#01056  panel_message_Tutorial_MainTitle = STRUCT{
+          font = "title.fnt" 
+          just = PAIR[0.0; 0.0] 
+          dims = PAIR[60.0; 112.0] 
+          colors = ARRAY(
+            
+            STRUCT{
+              VECTOR[128.0; 128.0; 128.0] alpha = 128 
+              }
+            
+          )
+          key_points = ARRAY(
+            
+            STRUCT{
+              pos = PAIR[320.0; 30.0] 
+              alpha = 128 
+              scale = 1 
+              time = 0 
+              }
+            STRUCT{
+              time = 1000000000 
+              }
+            
+          )
+          }
+        
+#01069  panel_message_Tutorial_KeyPresses = STRUCT{
+          font = "small.fnt" 
+          just = PAIR[-1.0; 0.0] 
+          dims = PAIR[10.0; 112.0] 
+          colors = ARRAY(
+            
+            STRUCT{
+              VECTOR[128.0; 128.0; 128.0] alpha = 128 
+              }
+            
+          )
+          key_points = ARRAY(
+            
+            STRUCT{
+              pos = PAIR[20.0; 130.0] 
+              alpha = 128 
+              scale = 1.21 
+              time = 0 
+              }
+            STRUCT{
+              time = 1000000000 
+              }
+            
+          )
+          }
+        
+#01082  panel_message_tutorialcomplete = STRUCT{
+          font = "small.fnt" 
+          just = PAIR[0.0; -1.0] 
+          dims = PAIR[320.0; 612.0] 
+          colors = ARRAY(
+            
+            STRUCT{
+              VECTOR[120.0; 20.0; 20.0] alpha = 70 
+              }
+            
+          )
+          key_points = ARRAY(
+            
+            STRUCT{
+              pos = PAIR[335.0; 140.0] 
+              alpha = 0 
+              scale = 0.3 
+              time = 0 
+              }
+            STRUCT{
+              pos = PAIR[335.0; 140.0] 
+              alpha = 0 
+              scale = 0.3 
+              time = 0.5 
+              }
+            STRUCT{
+              pos = PAIR[335.0; 145.0] 
+              alpha = 20 
+              scale = 2.05 
+              time = 0.1 
+              }
+            STRUCT{
+              pos = PAIR[335.0; 149.0] 
+              alpha = 50 
+              scale = 1.95 
+              time = 0.2 
+              }
+            STRUCT{
+              pos = PAIR[335.0; 151.0] 
+              alpha = 70 
+              scale = 1.8 
+              time = 0.3 
+              }
+            STRUCT{
+              pos = PAIR[335.0; 152.0] 
+              alpha = 130 
+              scale = 2.01 
+              time = 0.4 
+              }
+            STRUCT{
+              time = 1.4 
+              }
+            STRUCT{
+              pos = PAIR[335.0; 154.0] 
+              alpha = 100 
+              scale = 0.85 
+              time = 1.6 
+              }
+            STRUCT{
+              pos = PAIR[335.0; 157.0] 
+              alpha = 40 
+              scale = 0.55 
+              time = 1.7 
+              }
+            STRUCT{
+              pos = PAIR[335.0; 162.0] 
+              alpha = 0 
+              scale = 0.25 
+              time = 1.9 
+              }
+            
+          )
+          }
+        
+#01103  FUNCTION EndOfTutorial 
+#01105    StopBalanceTrick 
+#01106    Vibrate Off 
+#01107    CheckGapTricks 
+#01108    ClearGapTricks 
+#01109    ClearPanel_Landed 
+#01110    ClearExceptions 
+#01111    SetException Ex = LostGame 
+          Scr = LostGame 
+          
+#01112    DisablePlayerInput AllowCameraControl 
+#01117    WaitOnGround 
+#01118    SetRollingFriction 19 
+#01119    wait 1 frames 
+#01120    WaitOnGround 
+#01121    IF SpeedGreaterThan 400 
+#01122      PlayCessSound 
+#01123      PlayAnim Anim = CessSlide180_FS 
+            
+#01124      WaitAnim 50 percent 
+#01125      PlayAnim Anim = CessSlide180_FS 
+            From = Current 
+            To = 0 
+            
+#01126      WaitAnimFinished 
+#01127    ELSE 
+#01128      PlayAnim Anim = brake 
+            
+#01129      WaitAnimFinished 
+#01130    END IF 
+#01131    PlayAnim Anim = BrakeIdle 
+          BlendPeriod = 0.3 
+          cycle 
+#01132    LOOP 
+#01133      IF SpeedLessThan 40 
+#01134        IF OnGround 
+#01135          BREAK
+                
+#01136        END IF 
+#01137      END IF 
+#01138      WaitOneGameFrame 
+#01139    END LOOP 
+#01140    IF InNetGame 
+#01141      SetException Ex = WonGame 
+            Scr = WonGame 
+            
+#01142      SetException Ex = LostGame 
+            Scr = LostGame 
+            
+#01143    END IF 
+#01144    SetSkaterCamOverride heading = 2 
+          tilt = -0.2 
+          time = 4 
+          
+#01145    EndOfRunDone 
+#01146  END FUNCTION
+          
+#01147  FUNCTION StartSkatingTutorial 
+#01149    RestartSkaterExceptions 
+#01151    SetRollingFriction default 
+#01152    DisablePlayerInput 
+#01153    SetSkaterCamOverride heading = 0 
+          tilt = 0 
+          time = 0.3 
+          
+#01154    PlayAnim Anim = StartSkating1 
+          BlendPeriod = 0.0 
+          
+#01155    WaitAnim 2 percent 
+#01156    WaitAnim 75 percent 
+#01157    ClearSkaterCamOverride 
+#01158    EnablePlayerInput 
+#01159    OnGroundExceptions 
+#01160    WaitAnimFinished 
+#01161    Goto OnGroundAI 
+#01162  END FUNCTION
+          
+#01163  FUNCTION Simple_SkaterWaitingForTurorial 
+#01165    ClearExceptions 
+#01166    PlayAnim Anim = StartIdle 
+          cycle BlendPeriod = 0.0 
+          
+#01167    SetRollingFriction 10000 
+#01168    SetSpeed 0 
+#01169    SetState Ground 
+#01170    LOOP 
+#01171      wait 1 frame 
+#01172    END LOOP 
+#01173  END FUNCTION
+          
+#01174  FUNCTION Simple_SkaterReset 
+#01176    ClearExceptions 
+#01177    SetState Ground 
+#01178    wait 1 frame 
+#01179  END FUNCTION
+          
+#01180  FUNCTION SkaterWaitingForTurorial 
+#01182    CheckGapTricks 
+#01183    ClearGapTricks 
+#01184    ClearPanel_Landed 
+#01185    ClearExceptions 
+#01186    SetException Ex = LostGame 
+          Scr = LostGame 
+          
+#01187    DisablePlayerInput AllowCameraControl 
+#01192    WaitOnGround 
+#01193    SetRollingFriction 19 
+#01194    wait 10 frames 
+#01195    WaitOnGround 
+#01196    IF SpeedGreaterThan 400 
+#01197      PlayCessSound 
+#01198      PlayAnim Anim = CessSlide180_FS 
+            
+#01199      WaitAnim 50 percent 
+#01200      PlayAnim Anim = CessSlide180_FS 
+            From = Current 
+            To = 0 
+            
+#01201      WaitAnimFinished 
+#01202    ELSE 
+#01203      PlayAnim Anim = brake 
+            
+#01204      WaitAnimFinished 
+#01205    END IF 
+#01206    PlayAnim Anim = BrakeIdle 
+          BlendPeriod = 0.3 
+          cycle 
+#01207    LOOP 
+#01208      IF SpeedLessThan 40 
+#01209        IF OnGround 
+#01210          BREAK
+                
+#01211        END IF 
+#01212      END IF 
+#01213      WaitOneGameFrame 
+#01214    END LOOP 
+#01215    IF InNetGame 
+#01216      SetException Ex = WonGame 
+            Scr = WonGame 
+            
+#01217      SetException Ex = LostGame 
+            Scr = LostGame 
+            
+#01218    END IF 
+#01219    SetSkaterCamOverride heading = 0 
+          tilt = -0.2 
+          time = 3 
+          
+#01220    EndOfRunDone 
+#01221  END FUNCTION
+          
+#01222  

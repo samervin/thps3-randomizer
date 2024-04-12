@@ -1,0 +1,1262 @@
+FUNCTION chosen0 
+#00001    ToggleMetrics 
+#00002  END FUNCTION
+          
+#00003  FUNCTION chosen1 
+#00005    ToggleVRAMViewer 
+#00006  END FUNCTION
+          
+#00007  FUNCTION chosen2 
+#00010    resetengine 
+#00011  END FUNCTION
+          
+#00012  FUNCTION chosen3 
+#00014    DumpVRAMUsage 
+#00015  END FUNCTION
+          
+#00016  FUNCTION chosen_render_normal 
+#00018    debugrendermode normal 
+#00019  END FUNCTION
+          
+#00020  FUNCTION chosen_render_nope 
+#00022    debugrendermode nope 
+#00023  END FUNCTION
+          
+#00024  FUNCTION chosen_render_zeropipe 
+#00026    debugrendermode zeropipe 
+#00027  END FUNCTION
+          
+#00028  FUNCTION chosen_render_dropclip 
+#00030    debugrendermode dropclip 
+#00031  END FUNCTION
+          
+#00032  FUNCTION chosen_render_noclip 
+#00034    debugrendermode noclip 
+#00035  END FUNCTION
+          
+#00036  FUNCTION chosen_toggle_texture_upload 
+#00038    debugtoggletextureupload 
+#00039  END FUNCTION
+          
+#00040  FUNCTION chosen_toggle_texture_draw 
+#00042    debugtoggletexturedraw 
+#00043  END FUNCTION
+          
+#00044  FUNCTION chosen_toggle_point_draw 
+#00046    debugtogglepointdraw 
+#00047  END FUNCTION
+          
+#00048  FUNCTION chosen_test1 
+#00050    debugrendertest1 
+#00051  END FUNCTION
+          
+#00052  FUNCTION chosen_test2 
+#00054    debugrendertest2 
+#00055  END FUNCTION
+          
+#00056  FUNCTION toggle_net_metrics 
+#00058    ToggleNetMetrics 
+#00059  END FUNCTION
+          
+#00060  FUNCTION chosen_toggle_light_viewer 
+#00062    ToggleLightViewer 
+#00063  END FUNCTION
+          
+#00064  FUNCTION debug_menu_create 
+#00066    createmenu STRUCT{
+            type = verticalmenu 
+            id = debug_main_menu 
+            x = 45.0 
+            y = 90.0 
+            w = 300.0 
+            h = 400.0 
+            just_center_x just_center_y blue_top children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Debug" 
+                static dont_gray drawer = title 
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = set_gamemode 
+                text = "launch game" 
+                link = gamemode_menu 
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_ped_car 
+                text = "load other models" 
+                link = ped_car_menu 
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_test_level 
+                text = "load test level" 
+                link = test_level_menu 
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = toggle_metrics 
+                text = "toggle metrics" 
+                target = "chosen0" 
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = toggle_vram 
+                text = "toggle VRAM viewer" 
+                target = "chosen1" 
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = toggle_image 
+                text = "toggle image viewer" 
+                target = "launchImageViewer" 
+                kill_menu }
+              STRUCT{
+                type = textmenuelement 
+                id = toggle_light 
+                text = "toggle light viewer" 
+                target = "chosen_toggle_light_viewer" 
+                kill_menu }
+              STRUCT{
+                type = textmenuelement 
+                id = network_metrics 
+                text = "toggle net metrics" 
+                target = "toggle_net_metrics" 
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = render_options 
+                text = "render menu" 
+                link = render_menu 
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = dump_vram_usage 
+                text = "dump VRAM usage" 
+                target = "chosen3" 
+                adds_task }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Multiple Menu Test" 
+                link = magic_menu 
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Menu Test 2" 
+                link = menu_test2 
+                }
+              
+            )
+            }
+          
+#00150    createmenu STRUCT{
+            type = verticalmenu 
+            id = magic_menu 
+            x = 40.0 
+            y = 112.0 
+            w = 560.0 
+            h = 224.0 
+            blue_top children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Test Menu" 
+                static dont_gray drawer = title 
+                }
+              STRUCT{
+                type = menucontainer 
+                id = test_container 
+                show_all_children eventhandler = STRUCT{
+                  type = leftrightcontroller 
+                  left = lmc 
+                  right = rmc 
+                  }
+                }
+              
+            )
+            }
+          
+#00165    createmenu STRUCT{
+            type = menucontainer 
+            id = lmc 
+            }
+          
+#00169    attachchild parent = test_container 
+          child = lmc 
+          
+#00170    createmenu STRUCT{
+            type = menucontainer 
+            id = rmc 
+            }
+          
+#00174    attachchild parent = test_container 
+          child = rmc 
+          
+#00175    createmenu STRUCT{
+            type = verticalmenu 
+            id = test_menu1 
+            x = 0.0 
+            y = 0.0 
+            w = 280.0 
+            h = 224.0 
+            not_rounded children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "something" 
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "link to 2" 
+                link = test_menu2 
+                no_visit }
+              
+            )
+            }
+          
+#00187    attachchild parent = lmc 
+          child = test_menu1 
+          
+#00188    createmenu STRUCT{
+            type = verticalmenu 
+            id = test_menu2 
+            x = 280.0 
+            y = 0.0 
+            w = 280.0 
+            h = 224.0 
+            not_rounded right_side_icon just_right children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "rape" 
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "pillage" 
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "plunder" 
+                }
+              
+            )
+            }
+          
+#00203    attachchild parent = rmc 
+          child = test_menu2 
+          
+#00204    createmenu STRUCT{
+            type = verticalmenu 
+            id = render_menu 
+            x = 160.0 
+            y = 112.0 
+            w = 320.0 
+            h = 224.0 
+            children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                id = render_normal 
+                text = "normal" 
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler 
+                  target = "chosen_render_normal" 
+                  adds_task }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = render_nc 
+                text = "no clip" 
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler 
+                  target = "chosen_render_noclip" 
+                  adds_task }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = render_dc 
+                text = "drop clip" 
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler 
+                  target = "chosen_render_dropclip" 
+                  adds_task }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = render_nope 
+                text = "nope ucode" 
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler 
+                  target = "chosen_render_nope" 
+                  adds_task }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = render_zeropipe 
+                text = "zero pipeline" 
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler 
+                  target = "chosen_render_zeropipe" 
+                  adds_task }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = render_tu 
+                text = "toggle text upload" 
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler 
+                  target = "chosen_toggle_texture_upload" 
+                  adds_task }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = render_td 
+                text = "toggle tex draw" 
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler 
+                  target = "chosen_toggle_texture_draw" 
+                  adds_task }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = render_tpd 
+                text = "toggle point draw" 
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler 
+                  target = "chosen_toggle_point_draw" 
+                  adds_task }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = render_test1 
+                text = "test one" 
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler 
+                  target = "chosen_test1" 
+                  adds_task }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = render_test2 
+                text = "test two" 
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler 
+                  target = "chosen_test2" 
+                  adds_task }
+                }
+              
+            )
+            }
+          
+#00242    createmenu STRUCT{
+            type = verticalmenu 
+            id = test_level_menu 
+            x = 120.0 
+            y = 130.0 
+            w = 400.0 
+            h = 400.0 
+            just_center_x }
+          
+#00250    printf "Going through master level list... Debug level" 
+#00253    ForEachIn master_level_list do = add_level_menu_item 
+          params = STRUCT{
+            mask = debug_level 
+            target_script = "change_level" 
+            parent_menu = test_level_menu 
+            }
+          
+#00254    setdefaultproperty type = textdrawer 
+          name = cas_property 
+          
+#00256    createmenu STRUCT{
+            type = scrollingmenu 
+            id = ped_car_menu 
+            x = 125 
+            y = 32.0 
+            w = 428.0 
+            h = 400.0 
+            num_visible = 20 
+            just_left drawer = modelviewer 
+            children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_createdskater 
+                text = " Created Skater" 
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler 
+                  target = "view_createdskater" 
+                  kill_menu }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_ped_bbq_guy 
+                text = " Ped: BBQ Guy" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\ped_bbq_guy\ped_bbq_guy.skn" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_ped_bully_a 
+                text = " Ped: Big Bad Bully" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\ped_bully_a\ped_bully_a.skn" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_pedfem_a 
+                text = " Ped: Bikini Girl A" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\pedfem_a\pedfem_a.skn" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_pedfem_b 
+                text = " Ped: Bikini Girl B" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\pedfem_b\pedfem_b.skn" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_pedfem_c 
+                text = " Ped: Bikini Girl C" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\pedfem_c\pedfem_c.skn" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_pedfem_d 
+                text = " Ped: Bikini Girl D" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\pedfem_d\pedfem_d.skn" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_ped_canada_a 
+                text = " Ped: Canada A" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\ped_canada_a\ped_canada_a.skn" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_ped_canada_b 
+                text = " Ped: Canada B" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\ped_canada_b\ped_canada_b.skn" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_ped_canada_c 
+                text = " Ped: Canada C" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\ped_canada_c\ped_canada_c.skn" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_ped_canada_d 
+                text = " Ped: Canada D" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\ped_canada_d\ped_canada_d.skn" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_ped_constr_a 
+                text = " Ped: Construction A" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\ped_constr_a\ped_constr_a.skn" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_ped_constr_b 
+                text = " Ped: Construction B" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\ped_constr_b\ped_constr_b.skn" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_crowd_a 
+                text = " Ped: Crowd A" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\crowd_a\crowd_a.skn" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_crowd_b 
+                text = " Ped: Crowd B" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\crowd_b\crowd_b.skn" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_crowd_c 
+                text = " Ped: Crowd C" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\crowd_c\crowd_c.skn" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_crowd_d 
+                text = " Ped: Crowd D" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\crowd_d\crowd_d.skn" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_ped_bum_a 
+                text = " Ped: Drunken Bum" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\ped_bum_a\ped_bum_a.skn" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_pedestrian_a 
+                text = " Ped: Generic a" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\pedestrian_a\pedestrian_a.skn" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_pedestrian_b 
+                text = " Ped: Generic b" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\pedestrian_b\pedestrian_b.skn" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_pedestrian_c 
+                text = " Ped: Generic c" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\pedestrian_c\pedestrian_c.skn" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_pedestrian_d 
+                text = " Ped: Generic d" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\pedestrian_d\pedestrian_d.skn" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_ped_pirate_a 
+                text = " Ped: Pirate a" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\ped_pirate_a\ped_pirate_a.skn" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_ped_photoguy_a 
+                text = " Ped: Photographer" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\ped_photoguy_a\ped_photoguy_a.skn" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_pedpro_muska 
+                text = " Ped: Pro - Muska" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\pedpro_muska\pedpro_muska.skn" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_ped_surf_a 
+                text = " Ped: Surfer Dude" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\ped_surf_a\ped_surf_a.skn" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_ped_security_a 
+                text = " Ped: Security A" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\ped_security_a\ped_security_a.skn" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_ped_security_b 
+                text = " Ped: Security B" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\ped_security_b\ped_security_b.skn" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_ped_terrorist_a 
+                text = " Ped: Terrorist" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\ped_terrorist_a\ped_terrorist_a.skn" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_ped_thinman_a 
+                text = " Ped: Thinman" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\ped_thinman_a\ped_thinman_a.skn" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_ped_thinman_axe 
+                text = " Ped: Thinman with Axe" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\ped_thinman_axe\ped_thinman_axe.skn" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_ped_welder_a 
+                text = " Ped: Welder A" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\ped_welder_a\ped_welder_a.skn" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_ped_welder_b 
+                text = " Ped: Welder B" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\ped_welder_b\ped_welder_b.skn" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_2cv_blue 
+                text = " Car: 2CV - Blue" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\2cv_blue\2cv_blue.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_2cv_green 
+                text = " Car: 2CV - Green" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\2cv_green\2cv_green.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_2cv_grey 
+                text = " Car: 2CV - Grey" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\2cv_grey\2cv_grey.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_2cv_red 
+                text = " Car: 2CV - Red" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\2cv_red\2cv_red.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_2cv_yellow 
+                text = " Car: 2CV - Yellow" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\2cv_yellow\2cv_yellow.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_buick_blue 
+                text = " Car: Buick - Blue" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\buick_blue\buick_blue.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_buick_gold 
+                text = " Car: Buick - Gold" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\buick_gold\buick_gold.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_buick_brown 
+                text = " Car: Buick - Brown" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\buick_brown\buick_brown.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_buick_green 
+                text = " Car: Buick - Green" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\buick_green\buick_green.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_bx_black 
+                text = " Car: BX - Black" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\bx_black\bx_black.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_bx_blue 
+                text = " Car: BX - Blue" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\bx_blue\bx_blue.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_bx_brown 
+                text = " Car: BX - Brown" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\bx_brown\bx_brown.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_bx_green 
+                text = " Car: BX - Green" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\bx_green\bx_green.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_bx_red 
+                text = " Car: BX - Red" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\bx_red\bx_red.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_lux_car_blue 
+                text = " Car: Luxury Car - Blue" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\lux_car_blue\lux_car_blue.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_microbus_blue 
+                text = " Car: Microbus - Blue" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\microbus_blue\microbus_blue.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_microbus_green 
+                text = " Car: Microbus - Green" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\microbus_green\microbus_green.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_microbus_grey 
+                text = " Car: Microbus - Grey" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\microbus_grey\microbus_grey.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_microbus_orange 
+                text = " Car: Microbus - Orange" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\microbus_orange\microbus_orange.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_microbus_purpl 
+                text = " Car: Microbus - Purple" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\microbus_purpl\microbus_purpl.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_olds_beige 
+                text = " Car: Oldsmobile - Beige" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\oldsbeige\oldsbeige.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_olds_blue 
+                text = " Car: Oldsmobile - Blue" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\oldsblue\oldsblue.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_olds_gold 
+                text = " Car: Oldsmobile - Gold" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\oldsgold\oldsgold.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_olds_green 
+                text = " Car: Oldsmobile - Green" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\oldsgreen\oldsgreen.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_olds_red 
+                text = " Car: Oldsmobile - Red" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\oldsred\oldsred.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_pickup_black 
+                text = " Car: Pickup Truck - Black" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\pickup_black\pickup_black.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_pickup_blue 
+                text = " Car: Pickup Truck - Blue" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\pickup_blue\pickup_blue.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_pickup_purple 
+                text = " Car: Pickup Truck - Purple" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\pickup_purpl\pickup_purpl.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_pickup_red 
+                text = " Car: Pickup Truck - Red" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\pickup_red\pickup_red.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_pickup_white 
+                text = " Car: Pickup Truck - White" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\pickup_white\pickup_white.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_wagon01 
+                text = " Car: Station Wagon" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\wagon01\wagon01.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_ap_plane_jet 
+                text = " MISC: Airport Jet" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\ap_plane_jet\ap_plane_jet.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_b1boat 
+                text = " MISC: B1 Boat" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\b1boat\b1boat.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_airport_kart02 
+                text = " MISC: Baggage Carrier" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\airport_kart02\airport_kart02.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_bullet_train_a 
+                text = " MISC: Bullet Train" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\bullet_train_a\bullet_train_a.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_rio_bus 
+                text = " MISC: Bus - Rio" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\rio_bus\rio_bus.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_firetruck 
+                text = " MISC: Fire Engine" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\fire_truck\fire_truck.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_icecream 
+                text = " MISC: Ice Cream Truck" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\IceCreamTruck\IceCreamTruck.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_light_airplane01 
+                text = " MISC: Light Plane" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\light_airplane01\light_airplane01.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_van_looter 
+                text = " MISC: Looter Van" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\van_looter\van_looter.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_low_rider 
+                text = " MISC: Low Rider" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\low_rider\low_rider.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_Ap_lugakart01 
+                text = " MISC: Luggage Cart" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\Ap_lugakart01\Ap_lugakart01.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_airport_kart01 
+                text = " MISC: People Carrier" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\airport_kart01\airport_kart01.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_plane_jet 
+                text = " MISC: Plane Jet" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\plane_jet\plane_jet.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_police_car 
+                text = " MISC: Police Car - L.A." 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\police_car\police_car.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_police_car_canada 
+                text = " MISC: Police Car - Canada" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\police_car_canada\police_car_canada.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_policecar_rio 
+                text = " MISC: Police Car - Rio" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\policecar_rio\policecar_rio.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_snowmobile01 
+                text = " MISC: Snowmobile A" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\snowmobile01\snowmobile01.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_snowmobile02 
+                text = " MISC: Snowmobile B" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\snowmobile02\snowmobile02.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_snowmobile03 
+                text = " MISC: Snowmobile C" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\snowmobile03\snowmobile03.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_snowmobile04 
+                text = " MISC: Snowmobile D" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\snowmobile04\snowmobile04.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_submarine 
+                text = " MISC: Submarine" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\submarine\submarine.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_tugboat 
+                text = " MISC: Tugboat" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\tugboat\tugboat.dff" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_bird_a 
+                text = " Animal: Bird A" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\bird_a\bird_a.skn" 
+                  }
+                }
+              STRUCT{
+                type = textmenuelement 
+                id = load_view_bird_a_resting 
+                text = " Animal: Bird A resting" 
+                target = "view_model" 
+                params = STRUCT{
+                  model = "models\bird_a_resting\bird_a_resting.skn" 
+                  }
+                }
+              
+            )
+            }
+          
+#00536    setdefaultproperty type = textdrawer 
+          name = main 
+          
+#00538    createmenu STRUCT{
+            type = verticalmenu 
+            id = generated_menu 
+            x = 160.0 
+            y = 112.0 
+            w = 320.0 
+            h = 224.0 
+            }
+          
+#00543    attachchild parent = contain1 
+          child = debug_main_menu 
+          
+#00545    attachchild parent = contain1 
+          child = render_menu 
+          
+#00546    attachchild parent = contain1 
+          child = test_level_menu 
+          
+#00547    attachchild parent = contain1 
+          child = ped_car_menu 
+          
+#00548    attachchild parent = contain1 
+          child = generated_menu 
+          
+#00549    attachchild parent = contain1 
+          child = magic_menu 
+          
+#00550    createmenu STRUCT{
+            type = verticalmenu 
+            id = menu_test2 
+            x = 160.0 
+            y = 112.0 
+            w = 320.0 
+            h = 224.0 
+            blue_top children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Menu Test 2" 
+                static dont_gray drawer = title 
+                }
+              STRUCT{
+                type = verticalmenu 
+                auto_id w = 320.0 
+                just_right children = ARRAY(
+                  
+                  STRUCT{
+                    type = textmenuelement 
+                    auto_id text = "Choice A" 
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    auto_id text = "Choice B" 
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    auto_id text = "Choice C" 
+                    }
+                  STRUCT{
+                    type = textmenuelement 
+                    auto_id text = "Choice D" 
+                    }
+                  
+                )
+                }
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "I am George Bush" 
+                drawer = keyboard_property 
+                static }
+              
+            )
+            }
+          
+#00577    attachchild parent = contain1 
+          child = menu_test2 
+          
+#00578  END FUNCTION
+          
+#00580  

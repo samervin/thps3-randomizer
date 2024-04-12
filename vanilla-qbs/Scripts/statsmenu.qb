@@ -1,0 +1,202 @@
+
+#00001  winner_screen_left = 60.0 
+        
+#00008  winner_screen_width = 520.0 
+        
+#00009  winner_screen_left_col_width = 100.0 
+        
+#00010  winner_screen_middle_col_width = 280.0 
+        
+#00011  winner_screen_right_col_width = 140.0 
+        
+#00012  winner_screen_left_col = 60.0 
+        
+#00013  winner_screen_middle_col = 160.0 
+        
+#00014  winner_screen_right_col = 440.0 
+        
+#00015  winner_screen_ranking_ypos = 80.0 
+        
+#00016  winner_screen_header_ypos = 120.0 
+        
+#00017  winner_screen_stats_ypos = 140.0 
+        
+#00018  winner_screen_prompt_ypos = 420.0 
+        
+#00019  stats_menu_properties = STRUCT{
+          just_center_x just_center_y not_rounded }
+        
+#00025  FUNCTION stats_menu_create 
+#00027    createmenu STRUCT{
+            type = menucontainer 
+            id = winner_screen 
+            show_all_children }
+          
+#00033    createmenu STRUCT{
+            type = verticalmenu 
+            id = winner_screen_title 
+            x = winner_screen_left 
+            w = winner_screen_width 
+            y = winner_screen_ranking_ypos 
+            h = 260.0 
+            stats_menu_properties blue_top children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Rankings" 
+                drawer = title 
+                static dont_gray }
+              
+            )
+            }
+          
+#00053    createmenu STRUCT{
+            type = verticalmenu 
+            id = winner_screen_positions_title 
+            x = winner_screen_left_col 
+            w = winner_screen_left_col_width 
+            y = winner_screen_header_ypos 
+            h = 260.0 
+            stats_menu_properties children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Rank" 
+                static dont_gray }
+              
+            )
+            }
+          
+#00071    createmenu STRUCT{
+            type = verticalmenu 
+            id = winner_screen_names_title 
+            x = winner_screen_middle_col 
+            w = winner_screen_middle_col_width 
+            y = winner_screen_header_ypos 
+            h = 260.0 
+            stats_menu_properties children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Name" 
+                static dont_gray }
+              
+            )
+            }
+          
+#00089    createmenu STRUCT{
+            type = verticalmenu 
+            id = winner_screen_scores_title 
+            x = winner_screen_right_col 
+            w = winner_screen_right_col_width 
+            y = winner_screen_header_ypos 
+            h = 260.0 
+            stats_menu_properties children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Score" 
+                static dont_gray }
+              
+            )
+            }
+          
+#00107    createmenu STRUCT{
+            type = verticalmenu 
+            id = winner_screen_positions 
+            x = winner_screen_left_col 
+            w = winner_screen_left_col_width 
+            y = winner_screen_stats_ypos 
+            h = 260.0 
+            stats_menu_properties children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Dummy" 
+                static dont_gray }
+              
+            )
+            }
+          
+#00125    createmenu STRUCT{
+            type = verticalmenu 
+            id = winner_screen_names 
+            x = winner_screen_middle_col 
+            w = winner_screen_middle_col_width 
+            y = winner_screen_stats_ypos 
+            h = 260.0 
+            stats_menu_properties children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Dummy" 
+                static dont_gray }
+              
+            )
+            }
+          
+#00143    createmenu STRUCT{
+            type = verticalmenu 
+            id = winner_screen_scores 
+            x = winner_screen_right_col 
+            w = winner_screen_right_col_width 
+            y = winner_screen_stats_ypos 
+            h = 260.0 
+            stats_menu_properties children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Dummy" 
+                static dont_gray }
+              
+            )
+            }
+          
+#00161    createmenu STRUCT{
+            type = verticalmenu 
+            id = winner_screen_prompt 
+            x = winner_screen_left 
+            w = winner_screen_width 
+            y = winner_screen_prompt_ypos 
+            h = 260.0 
+            stats_menu_properties children = ARRAY(
+              
+              STRUCT{
+                type = textmenuelement 
+                auto_id text = "Continue" 
+                target = "do_backend_retry" 
+                }
+              
+            )
+            }
+          
+#00180    attachchild parent = contain1 
+          child = winner_screen 
+          
+#00182    attachchild parent = winner_screen 
+          child = winner_screen_title 
+          
+#00183    attachchild parent = winner_screen 
+          child = winner_screen_positions_title 
+          
+#00184    attachchild parent = winner_screen 
+          child = winner_screen_names_title 
+          
+#00185    attachchild parent = winner_screen 
+          child = winner_screen_scores_title 
+          
+#00186    attachchild parent = winner_screen 
+          child = winner_screen_positions 
+          
+#00187    attachchild parent = winner_screen 
+          child = winner_screen_names 
+          
+#00188    attachchild parent = winner_screen 
+          child = winner_screen_scores 
+          
+#00189    attachchild parent = winner_screen 
+          child = winner_screen_prompt 
+          
+#00190  END FUNCTION
+          
+#00192  

@@ -1,0 +1,29 @@
+NodeArray = 
+#00001  
+        ARRAY(
+          STRUCT{
+            Position = VECTOR[8.32E-4; 539.6731; -0.001835] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = Obj_SkRos_Bak_Sphr01 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          STRUCT{
+            Position = VECTOR[8.32E-4; 539.6731; -0.001835] 
+            Angles = VECTOR[0.0; 0.0; 0.0] 
+            Name = Obj_SkRos_Bak_Sphr02 
+            Class = EnvironmentObject 
+            CreatedAtStart }
+          
+        )
+        
+#00019  TriggerScripts = 
+#00021  
+        ARRAY(
+          LoadTerrain 
+        )
+        
+#00024  FUNCTION LoadTerrain 
+#00026    SetTerrainDefault 
+#00027  END FUNCTION
+          
+#00028  
