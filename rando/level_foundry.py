@@ -132,8 +132,8 @@ class LevelFoundry(Level):
 # foundry_gap_vert = foundry_gaps.pop()
 # cjr[1275] = f'          Goal_TrickSpotStreet_Text = "{foundry_street_trick} | {foundry_gap_street}"\n'
 # cjr[1276] = f'          Goal_TrickSpotVert_Text = "{foundry_vert_trick} | {foundry_gap_vert}"\n'
-# cjr[4614] = f'#03195      StartGapTrick TrickText = "{foundry_vert_trick}"\n'
-# cjr[4623] = f'#03202      StartGapTrick TrickText = "{foundry_street_trick}"\n'
+# cjr[4614] = f'#00000      StartGapTrick TrickText = "{foundry_vert_trick}"\n'
+# cjr[4623] = f'#00000      StartGapTrick TrickText = "{foundry_street_trick}"\n'
 
 # # add new scripts
 # cjr = ''.join(cjr)

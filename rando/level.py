@@ -31,7 +31,7 @@ class Level:
         script = script.splitlines(keepends=True)
         output = []
         for i, line in enumerate(script):
-            # substitute any #01234 with i (the current line number) zero-padded to 5 spaces
+            # substitute any memory address like #00000 with i (the current line number) zero-padded to 5 spaces
             output.append(re.sub(r'#\d{5}', f"#{i:05d}", line))
         return output
 
