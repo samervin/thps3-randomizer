@@ -28,7 +28,18 @@ def read_script_file(filename):
     with open(f'../vanilla-qbs/Scripts/{filename}.qb', 'r') as f:
         return f.readlines()
 
+def memify(script):
+    # make one long string, then split on lines, to include modified linebreaks
+    script = ''.join(script)
+    script = script.splitlines(keepends=True)
+    output = []
+    for i, line in enumerate(script):
+        # substitute any #01234 with i (the current line number) zero-padded to 5 spaces
+        output.append(re.sub(r'#\d{5}', f"#{i:05d}", line))
+    return output
+
 def write_script_file(filename, contents):
+    contents = memify(contents)
     full_filename = f'../outfiles/Scripts/{filename}.out'
     os.makedirs(os.path.dirname(full_filename), exist_ok=True)
     with open(full_filename, 'w', newline='\n') as fout:
@@ -846,6 +857,15 @@ def junk_suburbia(alf):
     # Make the thin man fall in love with Tony Hawk
     alf[2010] = '#01627        IF ProfileEquals Is_Named = hawk '
 
+
+def memify(script):
+    # make one long string, then split on lines, to include modified linebreaks
+    script = ''.join(script)
+    script = script.splitlines(keepends=True)
+    output = []
+    for i, line in enumerate(script):
+        output.append(re.sub(r'#\d{5}', f"#{i:05d}", line))
+    return output
 
 
 if __name__ == "__main__":

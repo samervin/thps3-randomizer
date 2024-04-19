@@ -25,7 +25,18 @@ class Level:
         with open(f'../vanilla-qbs/Levels/{self.filename}.qb', 'r') as f:
             return f.read()
 
+    def memify(self, script):
+        # make one long string, then split on lines, to include modified linebreaks
+        script = ''.join(script)
+        script = script.splitlines(keepends=True)
+        output = []
+        for i, line in enumerate(script):
+            # substitute any #01234 with i (the current line number) zero-padded to 5 spaces
+            output.append(re.sub(r'#\d{5}', f"#{i:05d}", line))
+        return output
+
     def write_level_file(self, contents):
+        contents = self.memify(contents)
         full_filename = f'../outfiles/Levels/{self.filename}.out'
         os.makedirs(os.path.dirname(full_filename), exist_ok=True)
         with open(full_filename, 'w', newline='\n') as fout:
