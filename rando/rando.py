@@ -49,18 +49,6 @@ def patch_level_select(levelsqb, gameqb):
     # patch in-game level select so Foundry is inaccessible when locked
     levelsqb[1253] = "            once_on_exit = EndRunScript\n            unlock_flag = LEVEL_UNLOCKED_FOUNDRY\n"
     # patch in-game level select so Foundry goal text is hidden when Foundry is locked
-    # first make room in the function for the memory values
-    # TODO: no longer necessary
-    gameqb[1722] = "#00000    DestroyElement id = level2\n"
-    gameqb[1724] = "#00000    DestroyElement id = level3\n"
-    gameqb[1726] = "#00000    DestroyElement id = level4\n"
-    gameqb[1728] = "#00000    DestroyElement id = level5\n"
-    gameqb[1730] = "#00000    DestroyElement id = level6\n"
-    gameqb[1732] = "#00000    DestroyElement id = level7\n"
-    gameqb[1734] = "#00000    DestroyElement id = level8\n"
-    gameqb[1736] = "#00000    DestroyElement id = level9\n"
-    gameqb[1738] = "#00000    GetGoalsCompleted LevelNum_Foundry\n"
-    # then actually modify logic
     gameqb[1739] = "#00000    IF GetGlobalFlag flag = LEVEL_UNLOCKED_FOUNDRY\n"
     gameqb[1740] = "#00000      AddLine parent = career_level_goals\n"
     gameqb[1741] = """            id = level1
@@ -178,6 +166,9 @@ def randomize_level_requirements(levels, mainmenu, goal_scripts, comp_scripts):
             mainmenu[mainmenu_line] = f"            {level_reqs[i][0]} {level_reqs[i][1]} }}\n"
         else:
             mainmenu[mainmenu_line] = f"            {level_reqs[i][0]} {level_reqs[i][1]}s }}\n"
+
+    # patch main menu name
+    mainmenu[672] = '                auto_id text = "THPS3 Rando"'
 
     # patch to unlock the first level instead of always unlocking Foundry
     mainmenu[2288] = f"#00000    SetGlobalFlag flag = LEVEL_UNLOCKED_{levels[0].name_flag}\n"
@@ -729,14 +720,6 @@ def randomize_impress_ped_scores(sk3_pedscripts, ajc, bdj):
     bdj[82] = f'          Goal_Scripted3_Text = "Impress Neversoft Girls| With {ped_ship_score},000 Points"\n'
 
 def randomize_decks(boardselect):
-    # TODO: Call UpdateWheelColor somewhere to make these values matter
-    wheel_color = random.randint(0, 360)
-    wheel_saturation = random.randint(0, 100)
-    wheel_brightness = random.randint(0, 100)
-    boardselect[684] = f"                start = {wheel_color}\n"
-    boardselect[709] = f"                start = {wheel_saturation}\n"
-    boardselect[733] = f"                start = {wheel_brightness}\n"
-
     grips = _shuffle(Boards().get_grips())
     # Randomize default grip tapes (don't change the descriptions here!)
     for i in range(32):
@@ -764,7 +747,7 @@ def randomize_secrets(goal_scripts):
     goal_scripts[7489] = "          THPS3_secret_1 THPS3_secret_2 THPS3_secret_3 THPS3_secret_4 THPS3_secret_5 THPS3_secret_6 THPS3_secret_7 THPS3_secret_8 THPS3_secret_9 THPS3_secret_10 THPS3_secret_11 THPS3_secret_12 THPS3_secret_13 THPS3_secret_14 THPS3_secret_15 THPS3_secret_16 THPS3_secret_17 THPS3_secret_18 THPS3_secret_19 THPS3_secret_20 THPS3_secret_21 THPS3_secret_22 THPS3_secret_23\n"
     # Rewrite ExecuteNextSecret_20to29 to fit in 23rd secret condition
     # Global flags seem to be hardcoded, but CHEAT_UNLOCKED_12 is not used, so we can repurpose it here
-    goal_scripts[9211:9234] = ["" for line in goal_scripts[9211:9234]]
+    goal_scripts[9211:9227] = ["" for line in goal_scripts[9211:9227]]
     goal_scripts[9210] = """#00000  FUNCTION ExecuteNextSecret_20to29
     #00000    IF GetGlobalFlag flag = CHEAT_UNLOCKED_12
     #00000      THPS3_secretScript_23
@@ -783,13 +766,6 @@ def randomize_secrets(goal_scripts):
     #00000      END IF
     #00000    END IF
     #00000  END FUNCTION
-
-    #00000  FUNCTION CreatePhotoGuy
-    #00000    IF IsCareerMode
-    #00000      IF GetGoal goal = GOAL_TRICKSPOT
-
-    #00000      ELSE
-    #00000        IF ProfileEquals trickstyle = vert
     """
     # TODO: For now, first person mode is always 23rd/last:
     # It contains "Entire Game complete" logic and the last secret cannot be a skater anyway
@@ -857,16 +833,6 @@ def junk_suburbia(alf):
     alf[2977] = '#00000    Obj_SetPathVelocity 100 mph '
     # Make the thin man fall in love with Tony Hawk
     alf[2010] = '#00000        IF ProfileEquals Is_Named = hawk '
-
-
-def memify(script):
-    # make one long string, then split on lines, to include modified linebreaks
-    script = ''.join(script)
-    script = script.splitlines(keepends=True)
-    output = []
-    for i, line in enumerate(script):
-        output.append(re.sub(r'#\d{5}', f"#{i:05d}", line))
-    return output
 
 
 if __name__ == "__main__":
