@@ -481,22 +481,16 @@ def require_deck_for_tape(goal_scripts):
     """
 
 def require_deck_for_medal(judges, comp_scripts):
-    # require the deck to be collected before getting any medal, or else you will lose the competition
-    judges[745] = "#00000    IF GetFlag flag = GOAL_DECK\n#00000    IF PlaceIs 1\n"
-    judges[790] = """#00000    ELSE
-    #00000      IF CareerLevelIs LevelNum_Rio
-    #00000        CompEndSequence_Lose RioCompParams
-    #00000      END IF
-    #00000      IF CareerLevelIs LevelNum_SkaterIsland
-    #00000        CompEndSequence_Lose SICompParams
-    #00000      END IF
-    #00000      IF CareerLevelIs LevelNum_Tokyo
-    #00000        CompEndSequence_Lose TokCompParams
-    #00000      END IF
-    #00000    END IF
-    #00000    Kill Prefix = "TRG_Ped_End"
-    """
+    flag_medal_req = "{{rando_judges_medal_requirement}}"
+    deck_required_for_medal = True
+    if deck_required_for_medal:
+        # require the deck to be collected before getting any medal, or else you will lose the competition
+        judges = judges.replace(flag_medal_req, "GetFlag flag = GOAL_DECK")
+    else:
+        # GetGlobalFlag flag = 159 will resolve to True as long as SPECIAL_HAS_SEEN_SHIP is set in mainmenu.qb
+        judges = judges.replace(flag_medal_req, "GetGlobalFlag flag = 159")
     # notify the player
+    # TODO: comp_scripts is not modified yet
     comp_scripts[187] = '#00000      LaunchPanelMessage "Must Find Deck To Medal" Properties = Panel_Message_CompRule\n'
     comp_scripts[266] = '#00000      LaunchPanelMessage "Must Find Deck To Medal" Properties = Panel_Message_CompRule_List03\n'
 
@@ -514,6 +508,7 @@ def require_deck_for_medal(judges, comp_scripts):
     #00000      EndRun_CheckForLevelsOpen
     """
     comp_scripts[899:906] = ["" for line in comp_scripts[900:906]]
+    return judges, comp_scripts
 
 def randomize_level_timer(gamemode):
     # randomize the time limit for normal levels
@@ -831,9 +826,12 @@ if __name__ == "__main__":
     cjr = read_script_file('cjr_scripts')
     cpf = read_script_file('cpf_scripts')
     protricks = read_script_file('protricks')
-    judges = read_script_file('judges')
     sk3_pedscripts = read_script_file('sk3_pedscripts')
     boardselect = read_script_file('boardselect')
+
+    # read modified QBs
+    judges = read_modified_script_file('judges')
+
 
     # randomization logic
     levels = get_random_level_order(end_on_comp=True)
@@ -857,7 +855,7 @@ if __name__ == "__main__":
     randomize_decks(boardselect)
 
     require_deck_for_tape(goal_scripts)
-    require_deck_for_medal(judges, comp_scripts)
+    judges, comp_scripts = require_deck_for_medal(judges, comp_scripts)
 
     randomize_secrets(goal_scripts)
     lock_characters(skater_profile)
@@ -876,7 +874,6 @@ if __name__ == "__main__":
     write_script_file('cjr_scripts', cjr)
     write_script_file('cpf_scripts', cpf)
     write_script_file('protricks', protricks)
-    write_script_file('judges', judges)
     write_script_file('sk3_pedscripts', sk3_pedscripts)
     write_script_file('boardselect', boardselect)
 
@@ -888,3 +885,6 @@ if __name__ == "__main__":
     gameqb = read_modified_script_file('game')
     gameqb = display_victory_requirements(gameqb)
     write_script_file('game', gameqb)
+
+    # write modified QBs
+    write_script_file('judges', judges)
