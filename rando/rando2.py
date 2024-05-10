@@ -30,7 +30,7 @@ def read_script_file(filename):
 
 def read_modified_script_file(filename):
     with open(f'../modified-qbs/Scripts/{filename}.qb', 'r') as f:
-        return f.readlines()
+        return f.read()
 
 def memify(script):
     # make one long string, then split on lines, to include modified linebreaks
@@ -49,30 +49,11 @@ def write_script_file(filename, contents):
     with open(full_filename, 'w', newline='\n') as fout:
         fout.writelines(contents)
 
-def patch_level_select(gameqb):
-    # patch in-game level select so Foundry goal text is hidden when Foundry is locked
-    gameqb[1739] = "#00000    IF GetGlobalFlag flag = LEVEL_UNLOCKED_FOUNDRY\n"
-    gameqb[1740] = "#00000      AddLine parent = career_level_goals\n"
-    gameqb[1741] = """            id = level1
-                text = GLOBAL.GoalsCompleted
-    #00000    ELSE
-    #00000      AddLine parent = career_level_goals
-                id = level1
-                text = GLOBAL.GoalsCompleted
-                static
-    #00000    END IF
-    """
-    # Display (dummy) rando requirements on level select menu instead of (broken) level unlock requirements
+def display_victory_requirements(gameqb):
+    # Display (dummy) victory requirements on level select menu instead of (broken) level unlock requirements
     # You only get about 26 characters before the message grows beyond the menu bar
     rando_victory = "3 Golds with All Skaters"
-    gameqb[1864] = "#00000      DestroyElement id = next_level_at\n"
-    gameqb[1865] = f"""#00000      AddLine parent = career_change_level_menu
-                id = next_level_at
-                text = "{rando_victory}"
-                static drawer = main_smaller
-                lock_layout y = 220
-    """
-    gameqb[1866:1951] = ["" for line in gameqb[1866:1950]]
+    return gameqb.replace("{{rando_game_victory_text}}", rando_victory)
 
 def get_random_level_order(end_on_comp=False):
     if end_on_comp:
@@ -843,7 +824,6 @@ if __name__ == "__main__":
     goal_scripts = read_script_file('goal_scripts')
     comp_scripts = read_script_file('comp_scripts')
     skater_profile = read_script_file('skater_profile')
-    gameqb = read_script_file('game')
     gamemode = read_script_file('gamemode')
     ajc = read_script_file('ajc_scripts')
     alf = read_script_file('alf_scripts')
@@ -862,7 +842,6 @@ if __name__ == "__main__":
         levels[3].name, levels[4].name, levels[5].name,
         levels[6].name, levels[7].name, levels[8].name,
     )
-    patch_level_select(gameqb)
     patch_view_goals_menu(goal_scripts)
 
     randomize_level_requirements(levels, mainmenu, goal_scripts, comp_scripts)
@@ -890,7 +869,6 @@ if __name__ == "__main__":
     write_script_file('goal_scripts', goal_scripts)
     write_script_file('comp_scripts', comp_scripts)
     write_script_file('skater_profile', skater_profile)
-    write_script_file('game', gameqb)
     write_script_file('gamemode', gamemode)
     write_script_file('ajc_scripts', ajc)
     write_script_file('alf_scripts', alf)
@@ -905,3 +883,8 @@ if __name__ == "__main__":
     # read and write modified QBs with no randomization
     levelsqb = read_modified_script_file('levels')
     write_script_file('levels', levelsqb)
+
+    # read and write modified QBs
+    gameqb = read_modified_script_file('game')
+    gameqb = display_victory_requirements(gameqb)
+    write_script_file('game', gameqb)

@@ -1720,6 +1720,9 @@
 #00000  END FUNCTION
 
 #00000  FUNCTION populate_goals_menu
+
+#00000    DestroyElement id = level1
+
 #00000    DestroyElement id = level2
 
 #00000    DestroyElement id = level3
@@ -1737,9 +1740,16 @@
 #00000    DestroyElement id = level9
 
 #00000    GetGoalsCompleted LevelNum_Foundry
-#00000    AddLine parent = career_level_goals
-          id = level1
-          text = GLOBAL.GoalsCompleted
+#00000    IF GetGlobalFlag flag = LEVEL_UNLOCKED_FOUNDRY
+#00000      AddLine parent = career_level_goals
+            id = level1
+            text = GLOBAL.GoalsCompleted
+#00000    ELSE
+#00000      AddLine parent = career_level_goals
+            id = level1
+            text = GLOBAL.GoalsCompleted
+            static
+#00000    END IF
 
 #00000    GetGoalsCompleted LevelNum_Canada
 #00000    IF GetGlobalFlag flag = LEVEL_UNLOCKED_CANADA
@@ -1862,93 +1872,11 @@
 
 #00000    IF IsCareerMode
 #00000      populate_goals_menu
-#00000      GetNextLevelRequirements
-#00000      IF GotParam friggina
-#00000        IF GetGlobalFlag flag = SPECIAL_HAS_SEEN_SHIP
-
-#00000          DestroyElement id = next_level_at
-
-#00000          IF GetGlobalFlag flag = LEVEL_UNLOCKED_SHIP
-
-#00000            IF PAL
-#00000              AddLine parent = career_change_level_menu
-                    id = next_level_at
-                    text = "All levels unlocked"
-                    static drawer = main_smaller
-                    lock_layout y = 228
-
-#00000            ELSE
-#00000              AddLine parent = career_change_level_menu
-                    id = next_level_at
-                    text = "All levels unlocked"
-                    static drawer = main_smaller
-                    lock_layout y = 220
-
-#00000            END IF
-#00000          ELSE
-#00000            IF PAL
-#00000              AddLine parent = career_change_level_menu
-                    id = next_level_at
-                    text = GLOBAL.NextLevelRequirements
-                    static drawer = main_smaller
-                    lock_layout y = 228
-
-#00000            ELSE
-#00000              AddLine parent = career_change_level_menu
-                    id = next_level_at
-                    text = GLOBAL.NextLevelRequirements
-                    static drawer = main_smaller
-                    lock_layout y = 220
-
-#00000            END IF
-#00000          END IF
-#00000        ELSE
-#00000          IF PAL
-#00000            AddLine parent = career_change_level_menu
-                  id = next_level_at
-                  text = GLOBAL.NextLevelRequirements
-                  static drawer = main_smaller
-                  lock_layout y = 209
-
-#00000          ELSE
-#00000            AddLine parent = career_change_level_menu
-                  id = next_level_at
-                  text = GLOBAL.NextLevelRequirements
-                  static drawer = main_smaller
-                  lock_layout y = 201
-
-#00000          END IF
-#00000        END IF
-#00000      ELSE
-#00000        IF GetGlobalFlag flag = SPECIAL_HAS_SEEN_SHIP
-
-#00000          DestroyElement id = next_level_at
-
-#00000          IF GetGlobalFlag flag = LEVEL_UNLOCKED_SHIP
-
-#00000            AddLine parent = career_change_level_menu
-                  id = next_level_at
-                  text = "All levels unlocked"
-                  static drawer = main_smaller
-                  lock_layout y = 238
-
-#00000          ELSE
-#00000            AddLine parent = career_change_level_menu
-                  id = next_level_at
-                  text = GLOBAL.NextLevelRequirements
-                  static drawer = main_smaller
-                  lock_layout y = 238
-
-#00000          END IF
-#00000        ELSE
-#00000          AddLine parent = career_change_level_menu
+#00000      AddLine parent = career_change_level_menu
                 id = next_level_at
-                text = GLOBAL.NextLevelRequirements
+                text = "{{rando_game_victory_text}}"
                 static drawer = main_smaller
-                lock_layout y = 214
-
-#00000        END IF
-#00000      END IF
+                lock_layout y = 220
 #00000    ELSE
 #00000      DestroyElement id = next_level_at
 
