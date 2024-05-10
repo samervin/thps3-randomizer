@@ -670,7 +670,7 @@ FUNCTION start_main_menu
 
               STRUCT{
                 Type = textmenuelement
-                auto_id text = "Main Menu"
+                auto_id text = "THPS3 Rando"
                 static dont_gray drawer = title
                 dont_gray }
               STRUCT{
@@ -1832,29 +1832,32 @@ FUNCTION start_main_menu
 #00000
         ARRAY(
           STRUCT{
+            level = LevelNum_Foundry
+            {{rando_mainmenu_unlock_foundry}} }
+          STRUCT{
             level = LevelNum_Canada
-            3 Goals }
+            {{rando_mainmenu_unlock_canada}} }
           STRUCT{
             level = LevelNum_Rio
-            10 Goals }
+            {{rando_mainmenu_unlock_rio}} }
           STRUCT{
             level = LevelNum_Suburbia
-            1 Medal }
+            {{rando_mainmenu_unlock_suburbia}} }
           STRUCT{
             level = LevelNum_Airport
-            18 Goals }
+            {{rando_mainmenu_unlock_airport}} }
           STRUCT{
             level = LevelNum_SkaterIsland
-            26 Goals }
+            {{rando_mainmenu_unlock_si}} }
           STRUCT{
             level = LevelNum_LA
-            2 Medals }
+            {{rando_mainmenu_unlock_la}} }
           STRUCT{
             level = LevelNum_Tokyo
-            35 Goals }
+            {{rando_mainmenu_unlock_tokyo}} }
           STRUCT{
             level = LevelNum_Ship
-            3 Medals }
+            {{rando_mainmenu_unlock_ship}} }
 
         )
 
@@ -2253,40 +2256,10 @@ FUNCTION start_main_menu
           child = cassette_menu_records_2
 
 #00000    attachchild parent = contain1
-          child = cassette_menu_stat_points_text
-
-#00000    attachchild parent = contain1
-          child = cassette_menu_stat_points_pips
-
-#00000    attachchild parent = contain1
-          child = cassette_menu_got_deck_text
-
-#00000    attachchild parent = contain1
-          child = cassette_menu_line_1
-
-#00000    attachchild parent = contain1
-          child = cassette_menu_line_2
-
-#00000    attachchild parent = contain1
-          child = cassette_menu_best_medal_text
-
-#00000    attachchild parent = contain1
-          child = cassette_menu_best_medal_gold
-
-#00000    attachchild parent = contain1
-          child = cassette_menu_best_medal_silver
-
-#00000    attachchild parent = contain1
-          child = cassette_menu_best_medal_bronze
-
-#00000    attachchild parent = contain1
-          child = cassette_menu_best_medal_none
-
-#00000    attachchild parent = contain1
           child = cassette_menu_parked_load_menu
 
 #00000    spawnscript PositionStatPips
-#00000    SetGlobalFlag flag = LEVEL_UNLOCKED_FOUNDRY
+#00000    SetGlobalFlag flag = {{rando_mainmenu_first_level_unlock}}
 
 #00000    IF TestRequestedGameType Career
 #00000    ELSE
@@ -2316,7 +2289,7 @@ FUNCTION start_main_menu
             TVImageName = ss_go_TV_foundry
             LockedTVImageName = ss_go_TV_foundry_l
             LevelName = 'Foundry'
-            LevelNumber = LevelNum_Foundry
+            GlobalFlag = LEVEL_UNLOCKED_FOUNDRY
             GoalParams = FoundryGoalParams
             eventhandler = STRUCT{
               Type = ChooseEventHandler
@@ -2327,8 +2300,10 @@ FUNCTION start_main_menu
               }
             }
 
-#00000    attachchild child = cassette_foundry
-          parent = cassette_menu
+#00000    IF GetGlobalFlag flag = LEVEL_UNLOCKED_FOUNDRY
+#00000      attachchild child = cassette_foundry
+            parent = cassette_menu
+#00000    END IF
 
 #00000    createmenu STRUCT{
             Type = cassettemenuelement
@@ -2337,7 +2312,6 @@ FUNCTION start_main_menu
             TVImageName = ss_go_TV_Can
             LockedTVImageName = ss_go_TV_Can_l
             LevelName = 'Canada'
-            LevelNumber = LevelNum_Canada
             GlobalFlag = LEVEL_UNLOCKED_CANADA
             GoalParams = CanadaGoalParams
             eventhandler = STRUCT{
@@ -2349,8 +2323,10 @@ FUNCTION start_main_menu
               }
             }
 
-#00000    attachchild child = cassette_canada
-          parent = cassette_menu
+#00000    IF GetGlobalFlag flag = LEVEL_UNLOCKED_CANADA
+#00000      attachchild child = cassette_canada
+            parent = cassette_menu
+#00000    END IF
 
 #00000    createmenu STRUCT{
             Type = cassettemenuelement
@@ -2359,7 +2335,6 @@ FUNCTION start_main_menu
             TVImageName = ss_go_TV_Rio
             LockedTVImageName = ss_go_TV_Rio_l
             LevelName = 'Rio'
-            LevelNumber = LevelNum_Rio
             GlobalFlag = LEVEL_UNLOCKED_RIO
             GoalParams = DefaultGoalParams
             CompetitionLevel eventhandler = STRUCT{
@@ -2371,8 +2346,10 @@ FUNCTION start_main_menu
               }
             }
 
-#00000    attachchild child = cassette_rio
-          parent = cassette_menu
+#00000    IF GetGlobalFlag flag = LEVEL_UNLOCKED_RIO
+#00000      attachchild child = cassette_rio
+            parent = cassette_menu
+#00000    END IF
 
 #00000    createmenu STRUCT{
             Type = cassettemenuelement
@@ -2381,7 +2358,6 @@ FUNCTION start_main_menu
             TVImageName = ss_go_TV_Sub
             LockedTVImageName = ss_go_TV_Sub_l
             LevelName = 'Suburbia'
-            LevelNumber = LevelNum_Suburbia
             GlobalFlag = LEVEL_UNLOCKED_SUBURBIA
             GoalParams = SuburbiaGoalParams
             eventhandler = STRUCT{
@@ -2393,8 +2369,10 @@ FUNCTION start_main_menu
               }
             }
 
-#00000    attachchild child = cassette_suburbia
-          parent = cassette_menu
+#00000    IF GetGlobalFlag flag = LEVEL_UNLOCKED_SUBURBIA
+#00000      attachchild child = cassette_suburbia
+            parent = cassette_menu
+#00000    END IF
 
 #00000    createmenu STRUCT{
             Type = cassettemenuelement
@@ -2403,7 +2381,6 @@ FUNCTION start_main_menu
             TVImageName = ss_go_TV_ap
             LockedTVImageName = ss_go_TV_ap_l
             LevelName = 'Airport'
-            LevelNumber = LevelNum_Airport
             GlobalFlag = LEVEL_UNLOCKED_AIRPORT
             GoalParams = AirportGoalParams
             eventhandler = STRUCT{
@@ -2415,8 +2392,10 @@ FUNCTION start_main_menu
               }
             }
 
-#00000    attachchild child = cassette_airport
-          parent = cassette_menu
+#00000    IF GetGlobalFlag flag = LEVEL_UNLOCKED_AIRPORT
+#00000      attachchild child = cassette_airport
+            parent = cassette_menu
+#00000    END IF
 
 #00000    createmenu STRUCT{
             Type = cassettemenuelement
@@ -2425,7 +2404,6 @@ FUNCTION start_main_menu
             TVImageName = ss_go_TV_si
             LockedTVImageName = ss_go_TV_si_l
             LevelName = 'Skater Island'
-            LevelNumber = LevelNum_SkaterIsland
             GlobalFlag = LEVEL_UNLOCKED_SKATERISLAND
             GoalParams = DefaultGoalParams
             CompetitionLevel eventhandler = STRUCT{
@@ -2437,8 +2415,10 @@ FUNCTION start_main_menu
               }
             }
 
-#00000    attachchild child = cassette_skater_island
-          parent = cassette_menu
+#00000    IF GetGlobalFlag flag = LEVEL_UNLOCKED_SKATERISLAND
+#00000      attachchild child = cassette_skater_island
+            parent = cassette_menu
+#00000    END IF
 
 #00000    createmenu STRUCT{
             Type = cassettemenuelement
@@ -2447,7 +2427,6 @@ FUNCTION start_main_menu
             TVImageName = ss_go_TV_la
             LockedTVImageName = ss_go_TV_la_l
             LevelName = 'Los Angeles'
-            LevelNumber = LevelNum_LA
             GlobalFlag = LEVEL_UNLOCKED_LOSANGELES
             GoalParams = LosAngelesGoalParams
             eventhandler = STRUCT{
@@ -2459,8 +2438,10 @@ FUNCTION start_main_menu
               }
             }
 
-#00000    attachchild child = cassette_los_angeles
-          parent = cassette_menu
+#00000    IF GetGlobalFlag flag = LEVEL_UNLOCKED_LOSANGELES
+#00000      attachchild child = cassette_los_angeles
+            parent = cassette_menu
+#00000    END IF
 
 #00000    createmenu STRUCT{
             Type = cassettemenuelement
@@ -2469,7 +2450,6 @@ FUNCTION start_main_menu
             TVImageName = ss_go_TV_tok
             LockedTVImageName = ss_go_TV_tok_l
             LevelName = 'Tokyo'
-            LevelNumber = LevelNum_Tokyo
             GlobalFlag = LEVEL_UNLOCKED_TOKYO
             GoalParams = DefaultGoalParams
             CompetitionLevel eventhandler = STRUCT{
@@ -2481,17 +2461,16 @@ FUNCTION start_main_menu
               }
             }
 
-#00000    attachchild child = cassette_tokyo
-          parent = cassette_menu
-
-#00000    IF istrue AllLevelsUnlocked
-#00000      CreateShipCassette
-#00000    ELSE
-#00000      IF GetGlobalFlag flag = SPECIAL_HAS_SEEN_SHIP
-
-#00000        CreateShipCassette
-#00000      END IF
+#00000    IF GetGlobalFlag flag = LEVEL_UNLOCKED_TOKYO
+#00000      attachchild child = cassette_tokyo
+            parent = cassette_menu
 #00000    END IF
+
+#00000    SetGlobalFlag flag = SPECIAL_HAS_SEEN_SHIP
+#00000    IF GetGlobalFlag flag = LEVEL_UNLOCKED_SHIP
+#00000      CreateShipCassette
+#00000    END IF
+
 #00000    IF TestRequestedGameType Career
 #00000    ELSE
 #00000      IF istrue AllLevelsUnlocked
@@ -2575,7 +2554,6 @@ FUNCTION start_main_menu
             TVImageName = ss_go_TV_ship
             LockedTVImageName = ss_go_TV_ship_l
             LevelName = 'Cruise Ship'
-            LevelNumber = LevelNum_Ship
             GlobalFlag = LEVEL_UNLOCKED_SHIP
             GoalParams = DefaultGoalParams
             eventhandler = STRUCT{

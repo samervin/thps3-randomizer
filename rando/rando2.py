@@ -117,103 +117,35 @@ def randomize_level_requirements(levels, mainmenu, goal_scripts):
     for i, level in enumerate(levels):
         match level.name_flag:
             case "FOUNDRY":
-                if level_reqs[i][1] == "first":
-                    pass # Don't even add Foundry to the list, it's already unlocked!
-                elif level_reqs[i][0] == 1:
-                    mainmenu[1857] = f"          STRUCT{{\n            level = LevelNum_Foundry\n            {level_reqs[i][0]} {level_reqs[i][1]} }}\n"
-                else:
-                    mainmenu[1857] = f"          STRUCT{{\n            level = LevelNum_Foundry\n            {level_reqs[i][0]} {level_reqs[i][1]}s }}\n"
-                continue # we handled Foundry separately, go to next level
+                unlock_var = "{{rando_mainmenu_unlock_foundry}}"
             case "CANADA":
-                mainmenu_line = 1835
+                unlock_var = "{{rando_mainmenu_unlock_canada}}"
             case "RIO":
-                mainmenu_line = 1838
+                unlock_var = "{{rando_mainmenu_unlock_rio}}"
             case "SUBURBIA":
-                mainmenu_line = 1841
+                unlock_var = "{{rando_mainmenu_unlock_suburbia}}"
             case "AIRPORT":
-                mainmenu_line = 1844
+                unlock_var = "{{rando_mainmenu_unlock_airport}}"
             case "SKATERISLAND":
-                mainmenu_line = 1847
+                unlock_var = "{{rando_mainmenu_unlock_si}}"
             case "LOSANGELES":
-                mainmenu_line = 1850
+                unlock_var = "{{rando_mainmenu_unlock_la}}"
             case "TOKYO":
-                mainmenu_line = 1853
+                unlock_var = "{{rando_mainmenu_unlock_tokyo}}"
             case "SHIP":
-                mainmenu_line = 1856
+                unlock_var = "{{rando_mainmenu_unlock_ship}}"
             case _:
                 raise Exception("invalid level")
 
-        if level_reqs[i][1] == "first":
-            mainmenu[mainmenu_line] = f"            0 Goals }}\n"
-        elif level_reqs[i][0] == 1:
-            mainmenu[mainmenu_line] = f"            {level_reqs[i][0]} {level_reqs[i][1]} }}\n"
-        else:
-            mainmenu[mainmenu_line] = f"            {level_reqs[i][0]} {level_reqs[i][1]}s }}\n"
-
-    # patch main menu name
-    mainmenu[672] = '                auto_id text = "THPS3 Rando"'
+        if level_reqs[i][1] == "first": # initial level
+            mainmenu = mainmenu.replace(unlock_var, "0 Goals")
+        elif level_reqs[i][0] == 1: # 1 goal or medal
+            mainmenu = mainmenu.replace(unlock_var, f"{level_reqs[i][0]} {level_reqs[i][1]}")
+        else: # More than 1 goal or medal
+            mainmenu = mainmenu.replace(unlock_var, f"{level_reqs[i][0]} {level_reqs[i][1]}s")
 
     # patch to unlock the first level instead of always unlocking Foundry
-    mainmenu[2288] = f"#00000    SetGlobalFlag flag = LEVEL_UNLOCKED_{levels[0].name_flag}\n"
-
-    # patch to give Foundry a proper GlobalFlag
-    mainmenu[2318] = "            LevelNumber = LevelNum_Foundry\n            GlobalFlag = LEVEL_UNLOCKED_FOUNDRY\n"
-
-    # patch to remove levelnums from cassettes (to work around career mode unlock requirement weirdness)
-    mainmenu[2318] = "\n"
-    mainmenu[2339] = "\n"
-    mainmenu[2361] = "\n"
-    mainmenu[2383] = "\n"
-    mainmenu[2405] = "\n"
-    mainmenu[2427] = "\n"
-    mainmenu[2449] = "\n"
-    mainmenu[2471] = "\n"
-    mainmenu[2577] = "\n"
-
-    # patch to remove false/empty info from level select (due to missing levelnums)
-    mainmenu[2254:2283] = ["" for line in mainmenu[2254:2283]]
-
-    # patch to only show cassettes if they are unlocked
-    mainmenu[2328] = "#00000    IF GetGlobalFlag flag = LEVEL_UNLOCKED_FOUNDRY\n"
-    mainmenu[2329] = "#00000    attachchild child = cassette_foundry\n"
-    mainmenu[2331] = "#00000    END IF\n"
-
-    mainmenu[2350] = "#00000    IF GetGlobalFlag flag = LEVEL_UNLOCKED_CANADA\n"
-    mainmenu[2351] = "#00000    attachchild child = cassette_canada\n"
-    mainmenu[2353] = "#00000    END IF\n"
-
-    mainmenu[2372] = "#00000    IF GetGlobalFlag flag = LEVEL_UNLOCKED_RIO\n"
-    mainmenu[2373] = "#00000    attachchild child = cassette_rio\n"
-    mainmenu[2375] = "#00000    END IF\n"
-
-    mainmenu[2394] = "#00000    IF GetGlobalFlag flag = LEVEL_UNLOCKED_SUBURBIA\n"
-    mainmenu[2395] = "#00000    attachchild child = cassette_suburbia\n"
-    mainmenu[2397] = "#00000    END IF\n"
-
-    mainmenu[2416] = "#00000    IF GetGlobalFlag flag = LEVEL_UNLOCKED_AIRPORT\n"
-    mainmenu[2417] = "#00000    attachchild child = cassette_airport\n"
-    mainmenu[2419] = "#00000    END IF\n"
-
-    mainmenu[2438] = "#00000    IF GetGlobalFlag flag = LEVEL_UNLOCKED_SKATERISLAND\n"
-    mainmenu[2439] = "#00000    attachchild child = cassette_skater_island\n"
-    mainmenu[2441] = "#00000    END IF\n"
-
-    mainmenu[2460] = "#00000    IF GetGlobalFlag flag = LEVEL_UNLOCKED_LOSANGELES\n"
-    mainmenu[2461] = "#00000    attachchild child = cassette_los_angeles\n"
-    mainmenu[2463] = "#00000    END IF\n"
-
-    mainmenu[2482] = "#00000    IF GetGlobalFlag flag = LEVEL_UNLOCKED_TOKYO\n"
-    mainmenu[2483] = "#00000    attachchild child = cassette_tokyo\n"
-    mainmenu[2485] = "#00000    END IF\n"
-
-    # patch to set Cruise Ship as "seen" and possibly display cassette
-    mainmenu[2486] = "#00000    SetGlobalFlag flag = SPECIAL_HAS_SEEN_SHIP\n"
-    mainmenu[2487] = "#00000    IF GetGlobalFlag flag = LEVEL_UNLOCKED_SHIP\n"
-    mainmenu[2488] = "#00000      CreateShipCassette\n"
-    mainmenu[2489] = "#00000    END IF\n"
-    mainmenu[2491] = "#00000    \n"
-    mainmenu[2492] = "#00000    \n"
-    mainmenu[2493] = "#00000    \n"
+    mainmenu = mainmenu.replace("{{rando_mainmenu_first_level_unlock}}", f"LEVEL_UNLOCKED_{levels[0].name_flag}")
 
     # patch to prevent Cruise Ship from unlocking via 3 medals only
     goal_scripts[8809] = "#00000\n"
@@ -265,6 +197,8 @@ def randomize_level_requirements(levels, mainmenu, goal_scripts):
                                 S_Flag = LEVEL_UNLOCKED_{levels[8].name_flag}
     #00000                    END IF
     """
+
+    return mainmenu
 
 def randomize_score_goals(levels, goal_scripts, comp_scripts):
     # randomize score goals
@@ -805,7 +739,6 @@ def junk_suburbia(alf):
 
 if __name__ == "__main__":
     # read vanilla QBs
-    mainmenu = read_script_file('mainmenu')
     goal_scripts = read_script_file('goal_scripts')
     skater_profile = read_script_file('skater_profile')
     gamemode = read_script_file('gamemode')
@@ -823,6 +756,7 @@ if __name__ == "__main__":
     gameqb = read_modified_script_file('game')
     judges = read_modified_script_file('judges')
     levelsqb = read_modified_script_file('levels')
+    mainmenu = read_modified_script_file('mainmenu')
 
     # randomize QBs
     levels = get_random_level_order(end_on_comp=True)
@@ -834,7 +768,7 @@ if __name__ == "__main__":
     patch_view_goals_menu(goal_scripts)
 
     gameqb = display_victory_requirements(gameqb)
-    randomize_level_requirements(levels, mainmenu, goal_scripts)
+    mainmenu = randomize_level_requirements(levels, mainmenu, goal_scripts)
     comp_scripts = randomize_score_goals(levels, goal_scripts, comp_scripts)
     randomize_item_locations(levels)
     skater_profile = randomize_stats(skater_profile)
@@ -855,7 +789,6 @@ if __name__ == "__main__":
     junk_suburbia(alf)
 
     # write vanilla QBs
-    write_script_file('mainmenu', mainmenu)
     write_script_file('goal_scripts', goal_scripts)
     write_script_file('skater_profile', skater_profile)
     write_script_file('gamemode', gamemode)
@@ -873,3 +806,4 @@ if __name__ == "__main__":
     write_script_file('game', gameqb)
     write_script_file('judges', judges)
     write_script_file('levels', levelsqb)
+    write_script_file('mainmenu', mainmenu)
