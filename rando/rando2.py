@@ -86,7 +86,7 @@ def get_random_level_order(end_on_comp=False):
         ]
         return _shuffle(levels)
 
-def randomize_level_requirements(levels, mainmenu, goal_scripts, comp_scripts):
+def randomize_level_requirements(levels, mainmenu, goal_scripts):
     # randomize level order and unlock conditions
     # default requirements:
     # Foundry = 0 goals
@@ -266,7 +266,7 @@ def randomize_level_requirements(levels, mainmenu, goal_scripts, comp_scripts):
     #00000                    END IF
     """
 
-def randomize_score_goals(levels, goal_scripts):
+def randomize_score_goals(levels, goal_scripts, comp_scripts):
     # randomize score goals
     # original scores, for reference:
     # foundry: 10k, 30k, 60k
@@ -328,9 +328,9 @@ def randomize_score_goals(levels, goal_scripts):
                 rio_bronze = comp_goals.pop(0)
                 rio_silver = comp_goals.pop(0)
                 rio_gold = comp_goals.pop(0)
-                comp_scripts[96] = f"          Bronze_Score = {rio_bronze}000\n"
-                comp_scripts[97] = f"          Silver_Score = {rio_silver}000\n"
-                comp_scripts[98] = f"          Gold_Score = {rio_gold}000\n"
+                comp_scripts = comp_scripts.replace("{{rando_comp_scripts_rio_bronze}}", f"{rio_bronze}000")
+                comp_scripts = comp_scripts.replace("{{rando_comp_scripts_rio_silver}}", f"{rio_silver}000")
+                comp_scripts = comp_scripts.replace("{{rando_comp_scripts_rio_gold}}", f"{rio_gold}000")
             case "SUBURBIA":
                 suburbia_high = score_goals.pop(0)
                 suburbia_pro = score_goals.pop(0)
@@ -355,9 +355,9 @@ def randomize_score_goals(levels, goal_scripts):
                 skater_island_bronze = comp_goals.pop(0)
                 skater_island_silver = comp_goals.pop(0)
                 skater_island_gold = comp_goals.pop(0)
-                comp_scripts[106] = f"          Bronze_Score = {skater_island_bronze}000\n"
-                comp_scripts[107] = f"          Silver_Score = {skater_island_silver}000\n"
-                comp_scripts[108] = f"          Gold_Score = {skater_island_gold}000\n"
+                comp_scripts = comp_scripts.replace("{{rando_comp_scripts_si_bronze}}", f"{skater_island_bronze}000")
+                comp_scripts = comp_scripts.replace("{{rando_comp_scripts_si_silver}}", f"{skater_island_silver}000")
+                comp_scripts = comp_scripts.replace("{{rando_comp_scripts_si_gold}}", f"{skater_island_gold}000")
             case "LOSANGELES":
                 los_angeles_high = score_goals.pop(0)
                 los_angeles_pro = score_goals.pop(0)
@@ -372,9 +372,9 @@ def randomize_score_goals(levels, goal_scripts):
                 tokyo_bronze = comp_goals.pop(0)
                 tokyo_silver = comp_goals.pop(0)
                 tokyo_gold = comp_goals.pop(0)
-                comp_scripts[116] = f"          Bronze_Score = {tokyo_bronze}000\n"
-                comp_scripts[117] = f"          Silver_Score = {tokyo_silver}000\n"
-                comp_scripts[118] = f"          Gold_Score = {tokyo_gold}000\n"
+                comp_scripts = comp_scripts.replace("{{rando_comp_scripts_tokyo_bronze}}", f"{tokyo_bronze}000")
+                comp_scripts = comp_scripts.replace("{{rando_comp_scripts_tokyo_silver}}", f"{tokyo_silver}000")
+                comp_scripts = comp_scripts.replace("{{rando_comp_scripts_tokyo_gold}}", f"{tokyo_gold}000")
             case "SHIP":
                 cruise_ship_high = score_goals.pop(0)
                 cruise_ship_pro = score_goals.pop(0)
@@ -387,6 +387,7 @@ def randomize_score_goals(levels, goal_scripts):
                 goal_scripts[734] = f"#00000      SetScoreGoal Score = {cruise_ship_sick}000\n"
             case _:
                 raise Exception("invalid level")
+    return comp_scripts
 
 def randomize_item_locations(levels):
     for level in levels:
@@ -482,32 +483,21 @@ def require_deck_for_tape(goal_scripts):
 
 def require_deck_for_medal(judges, comp_scripts):
     flag_medal_req = "{{rando_judges_medal_requirement}}"
+    comp_scripts_medal_req = "{{rando_comp_scripts_medal_requirement}}"
+    medal_message = "{{rando_comp_scripts_medal_message}}"
+
     deck_required_for_medal = True
     if deck_required_for_medal:
         # require the deck to be collected before getting any medal, or else you will lose the competition
         judges = judges.replace(flag_medal_req, "GetFlag flag = GOAL_DECK")
+        comp_scripts = comp_scripts.replace(medal_message, "Must Find Deck To Medal")
+        comp_scripts = comp_scripts.replace(comp_scripts_medal_req, "GetFlag flag = GOAL_DECK")
     else:
         # GetGlobalFlag flag = 159 will resolve to True as long as SPECIAL_HAS_SEEN_SHIP is set in mainmenu.qb
         judges = judges.replace(flag_medal_req, "GetGlobalFlag flag = 159")
-    # notify the player
-    # TODO: comp_scripts is not modified yet
-    comp_scripts[187] = '#00000      LaunchPanelMessage "Must Find Deck To Medal" Properties = Panel_Message_CompRule\n'
-    comp_scripts[266] = '#00000      LaunchPanelMessage "Must Find Deck To Medal" Properties = Panel_Message_CompRule_List03\n'
+        comp_scripts = comp_scripts.replace(medal_message, "Bails Hurt Scores")
+        comp_scripts = comp_scripts.replace(comp_scripts_medal_req, "GetGlobalFlag flag = 159")
 
-    # making this a separate script didn't work, so modify the Lose method directly
-    comp_scripts[898] = """#00000      IF GetFlag flag = GOAL_DECK
-    #00000        LaunchPanelMessage "You Did Not Place.|                   | Maybe next time."Properties = Panel_Message_CompCongrats
-    #00000      ELSE
-    #00000        LaunchPanelMessage "You Did Not Find The Deck.|                   | Find The Deck To Medal."Properties = Panel_Message_CompCongrats
-    #00000      END IF
-    #00000      LaunchLocalMessage id = BottomInfo
-                "Press ¬ to Continue" panel_message_XtoContinue
-    #00000      WaitForControllerPressedX
-    #00000      LaunchLocalMessage id = BottomInfo
-                " " panel_message_XtoContinue
-    #00000      EndRun_CheckForLevelsOpen
-    """
-    comp_scripts[899:906] = ["" for line in comp_scripts[900:906]]
     return judges, comp_scripts
 
 def randomize_level_timer(gamemode):
@@ -817,7 +807,6 @@ if __name__ == "__main__":
     # read vanilla QBs
     mainmenu = read_script_file('mainmenu')
     goal_scripts = read_script_file('goal_scripts')
-    comp_scripts = read_script_file('comp_scripts')
     skater_profile = read_script_file('skater_profile')
     gamemode = read_script_file('gamemode')
     ajc = read_script_file('ajc_scripts')
@@ -830,6 +819,7 @@ if __name__ == "__main__":
     boardselect = read_script_file('boardselect')
 
     # read modified QBs
+    comp_scripts = read_modified_script_file('comp_scripts')
     gameqb = read_modified_script_file('game')
     judges = read_modified_script_file('judges')
     levelsqb = read_modified_script_file('levels')
@@ -844,8 +834,8 @@ if __name__ == "__main__":
     patch_view_goals_menu(goal_scripts)
 
     gameqb = display_victory_requirements(gameqb)
-    randomize_level_requirements(levels, mainmenu, goal_scripts, comp_scripts)
-    randomize_score_goals(levels, goal_scripts)
+    randomize_level_requirements(levels, mainmenu, goal_scripts)
+    comp_scripts = randomize_score_goals(levels, goal_scripts, comp_scripts)
     randomize_item_locations(levels)
     skater_profile = randomize_stats(skater_profile)
     randomize_trickstyle(skater_profile)
@@ -867,7 +857,6 @@ if __name__ == "__main__":
     # write vanilla QBs
     write_script_file('mainmenu', mainmenu)
     write_script_file('goal_scripts', goal_scripts)
-    write_script_file('comp_scripts', comp_scripts)
     write_script_file('skater_profile', skater_profile)
     write_script_file('gamemode', gamemode)
     write_script_file('ajc_scripts', ajc)
@@ -880,6 +869,7 @@ if __name__ == "__main__":
     write_script_file('boardselect', boardselect)
 
     # write modified QBs
+    write_script_file('comp_scripts', comp_scripts)
     write_script_file('game', gameqb)
     write_script_file('judges', judges)
     write_script_file('levels', levelsqb)

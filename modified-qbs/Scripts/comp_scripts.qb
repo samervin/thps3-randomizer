@@ -94,9 +94,9 @@
 #00000  COMP_FLAG_SPOT5_FILLED = 21
 
 #00000  RioScoreParams = STRUCT{
-          Bronze_Score = 25000
-          Silver_Score = 70000
-          Gold_Score = 120000
+          Bronze_Score = {{rando_comp_scripts_rio_bronze}}
+          Silver_Score = {{rando_comp_scripts_rio_silver}}
+          Gold_Score = {{rando_comp_scripts_rio_gold}}
           Bronze = 80
           Silver = 85
           Gold = 90
@@ -104,9 +104,9 @@
           }
 
 #00000  SIScoreParams = STRUCT{
-          Bronze_Score = 45000
-          Silver_Score = 80000
-          Gold_Score = 150000
+          Bronze_Score = {{rando_comp_scripts_si_bronze}}
+          Silver_Score = {{rando_comp_scripts_si_silver}}
+          Gold_Score = {{rando_comp_scripts_si_gold}}
           Bronze = 85
           Silver = 90
           Gold = 93
@@ -114,9 +114,9 @@
           }
 
 #00000  TokScoreParams = STRUCT{
-          Bronze_Score = 100000
-          Silver_Score = 150000
-          Gold_Score = 200000
+          Bronze_Score = {{rando_comp_scripts_tokyo_bronze}}
+          Silver_Score = {{rando_comp_scripts_tokyo_silver}}
+          Gold_Score = {{rando_comp_scripts_tokyo_gold}}
           Bronze = 90
           Silver = 92.5
           Gold = 95
@@ -185,7 +185,7 @@
 #00000        Wait 1 Gameframes
 #00000      END LOOP
 #00000      PlaySound GoalDone
-#00000      LaunchPanelMessage "Bails Hurt Scores" Properties = Panel_Message_CompRule
+#00000      LaunchPanelMessage "{{rando_comp_scripts_medal_message}}" Properties = Panel_Message_CompRule
 
 #00000      GLOBAL.Comp_CamRulesBails_Script
 
@@ -264,7 +264,7 @@
 #00000      LaunchPanelMessage "Skaters Get 3 Runs" Properties = Panel_Message_CompRule_List02
 
 #00000      Wait 0.15 Seconds
-#00000      LaunchPanelMessage "Bails Hurt Scores" Properties = Panel_Message_CompRule_List03
+#00000      LaunchPanelMessage "{{rando_comp_scripts_medal_message}}" Properties = Panel_Message_CompRule_List03
 
 #00000      Wait 0.15 Seconds
 #00000      LaunchPanelMessage "Average Of Top 2 Runs Is | Your Final Score" Properties = Panel_Message_CompRule_List04
@@ -896,8 +896,11 @@
 #00000      LaunchPanelMessage "" Properties = Panel_Message_CompRule
 
 #00000      Wait 1 Seconds
-#00000      LaunchPanelMessage "You Did Not Place.|                   | Maybe next time." Properties = Panel_Message_CompCongrats
-
+#00000      IF {{rando_comp_scripts_medal_requirement}}
+#00000        LaunchPanelMessage "You Did Not Place.|                   | Maybe next time." Properties = Panel_Message_CompCongrats
+#00000      ELSE
+#00000        LaunchPanelMessage "You Did Not Find The Deck.|                   | Find The Deck To Medal." Properties = Panel_Message_CompCongrats
+#00000      END IF
 #00000      LaunchLocalMessage id = BottomInfo
             "Press ¬ to Continue" panel_message_XtoContinue
 #00000      WaitForControllerPressedX
