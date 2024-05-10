@@ -1,5 +1,5 @@
 
-#00001  load_icon_properties = STRUCT{
+#00000  load_icon_properties = STRUCT{
           x = 50.0
           y = 50.0
           anim_delay = 16
@@ -9,562 +9,562 @@
           )
           }
 
-#00016  game_menu_properties = STRUCT{
+#00000  game_menu_properties = STRUCT{
           x = 150.0
           y = 90.0
           w = 320.0
           h = 336.0
           just_center_x just_center_y }
 
-#00022  EnteringStatsMenuFromGameFlow = 0
+#00000  EnteringStatsMenuFromGameFlow = 0
 
-#00024  FUNCTION PauseMusicAndStreams
-#00026    PauseMusic 1
-#00028    PauseStream 1
-#00029  END FUNCTION
+#00000  FUNCTION PauseMusicAndStreams
+#00000    PauseMusic 1
+#00000    PauseStream 1
+#00000  END FUNCTION
 
-#00030  FUNCTION UnPauseMusicAndStreams
-#00032    PauseMusic 0
-#00034    PauseStream 0
-#00035  END FUNCTION
+#00000  FUNCTION UnPauseMusicAndStreams
+#00000    PauseMusic 0
+#00000    PauseStream 0
+#00000  END FUNCTION
 
-#00036  FUNCTION do_backend_retry
-#00038    SpawnScript do_screen_freeze
-#00042  END FUNCTION
+#00000  FUNCTION do_backend_retry
+#00000    SpawnScript do_screen_freeze
+#00000  END FUNCTION
 
-#00044  FUNCTION do_screen_freeze
-#00046    PauseGame
-#00047    IF InNetGame
-#00048      StartNetworkLobby
-#00049    END IF
-#00050    Wait 2 gameframe
-#00051    DisplayLoadingScreen CurrentScreen
-#00052    unpausegame
-#00053    retry
-#00054  END FUNCTION
+#00000  FUNCTION do_screen_freeze
+#00000    PauseGame
+#00000    IF InNetGame
+#00000      StartNetworkLobby
+#00000    END IF
+#00000    Wait 2 gameframe
+#00000    DisplayLoadingScreen CurrentScreen
+#00000    unpausegame
+#00000    retry
+#00000  END FUNCTION
 
-#00055  FUNCTION do_backend_end_run
-#00056    IF InSplitScreenGame
-#00057      UseBothPadsInFrontEnd
-#00058    END IF
-#00059    EndRun
-#00060  END FUNCTION
+#00000  FUNCTION do_backend_end_run
+#00000    IF InSplitScreenGame
+#00000      UseBothPadsInFrontEnd
+#00000    END IF
+#00000    EndRun
+#00000  END FUNCTION
 
-#00061  FUNCTION Paused_menu_backevent
-#00063    IF CareerLevelIs LevelNum_Tutorials
-#00064      PauseStream 0
-#00065    ELSE
-#00066      UnPauseMusicAndStreams
-#00067    END IF
-#00068  END FUNCTION
+#00000  FUNCTION Paused_menu_backevent
+#00000    IF CareerLevelIs LevelNum_Tutorials
+#00000      PauseStream 0
+#00000    ELSE
+#00000      UnPauseMusicAndStreams
+#00000    END IF
+#00000  END FUNCTION
 
-#00069  FUNCTION do_backend_continue
-#00072    IF CareerLevelIs LevelNum_Tutorials
-#00073      PauseStream 0
-#00074    ELSE
-#00075      UnPauseMusicAndStreams
-#00076    END IF
-#00078  END FUNCTION
+#00000  FUNCTION do_backend_continue
+#00000    IF CareerLevelIs LevelNum_Tutorials
+#00000      PauseStream 0
+#00000    ELSE
+#00000      UnPauseMusicAndStreams
+#00000    END IF
+#00000  END FUNCTION
 
-#00081  FUNCTION do_backend_continue_delay
-#00084    Wait 0.2 seconds
-#00093  END FUNCTION
+#00000  FUNCTION do_backend_continue_delay
+#00000    Wait 0.2 seconds
+#00000  END FUNCTION
 
-#00094  FUNCTION View_Goal_movies
-#00097    printf "viewing movies -----------------------"
-#00098    SpawnSkaterScript StartRunScript params = STRUCT{
+#00000  FUNCTION View_Goal_movies
+#00000    printf "viewing movies -----------------------"
+#00000    SpawnSkaterScript StartRunScript params = STRUCT{
             from_menu }
 
-#00103  END FUNCTION
+#00000  END FUNCTION
 
-#00104  FUNCTION View_ListAllGoals
-#00106    SpawnSkaterScript MidLevel_GoalCheck params = STRUCT{
+#00000  FUNCTION View_ListAllGoals
+#00000    SpawnSkaterScript MidLevel_GoalCheck params = STRUCT{
             from_pause_menu }
 
-#00107  END FUNCTION
+#00000  END FUNCTION
 
-#00108  FUNCTION ResetLevelGoals
-#00114    UnSetGoal goal = GOAL_HIGHSCORE
+#00000  FUNCTION ResetLevelGoals
+#00000    UnSetGoal goal = GOAL_HIGHSCORE
 
-#00115    UnSetGoal goal = GOAL_PROSCORE
+#00000    UnSetGoal goal = GOAL_PROSCORE
 
-#00116    UnSetGoal goal = GOAL_SICKSCORE
+#00000    UnSetGoal goal = GOAL_SICKSCORE
 
-#00117    UnSetGoal goal = GOAL_SKATE
+#00000    UnSetGoal goal = GOAL_SKATE
 
-#00118    UnSetGoal goal = GOAL_TRICKSPOT
+#00000    UnSetGoal goal = GOAL_TRICKSPOT
 
-#00119    UnSetGoal goal = GOAL_TAPE
+#00000    UnSetGoal goal = GOAL_TAPE
 
-#00120    UnSetGoal goal = GOAL_SCRIPTED1
+#00000    UnSetGoal goal = GOAL_SCRIPTED1
 
-#00121    UnSetGoal goal = GOAL_SCRIPTED2
+#00000    UnSetGoal goal = GOAL_SCRIPTED2
 
-#00122    UnSetGoal goal = GOAL_SCRIPTED3
+#00000    UnSetGoal goal = GOAL_SCRIPTED3
 
-#00123    UnSetFlag flag = GOAL_STAT_POINT1
+#00000    UnSetFlag flag = GOAL_STAT_POINT1
 
-#00124    UnSetFlag flag = GOAL_STAT_POINT2
+#00000    UnSetFlag flag = GOAL_STAT_POINT2
 
-#00125    UnSetFlag flag = GOAL_STAT_POINT3
+#00000    UnSetFlag flag = GOAL_STAT_POINT3
 
-#00126    UnSetFlag flag = GOAL_STAT_POINT4
+#00000    UnSetFlag flag = GOAL_STAT_POINT4
 
-#00127    UnSetFlag flag = GOAL_STAT_POINT5
+#00000    UnSetFlag flag = GOAL_STAT_POINT5
 
-#00128    UnSetFlag flag = GOAL_STAT_POINTS
+#00000    UnSetFlag flag = GOAL_STAT_POINTS
 
-#00129    UnSetFlag flag = GOAL_DECK
+#00000    UnSetFlag flag = GOAL_DECK
 
-#00130    LaunchLocalMessage "Goals reset"
-#00132    IF CareerLevelIs LevelNum_Canada
-#00133      UnSetFlag flag = LEVEL_FLAG_AJC_CAN_LOG_LOADER_SEQUENCE_PLAYED_ALREADY
+#00000    LaunchLocalMessage "Goals reset"
+#00000    IF CareerLevelIs LevelNum_Canada
+#00000      UnSetFlag flag = LEVEL_FLAG_AJC_CAN_LOG_LOADER_SEQUENCE_PLAYED_ALREADY
 
-#00134      UnSetFlag flag = LEVEL_FLAG_AJC_CAN_LOG_LOADER_IS_UP
+#00000      UnSetFlag flag = LEVEL_FLAG_AJC_CAN_LOG_LOADER_IS_UP
 
-#00135      SetFlag flag = LEVEL_FLAG_AJC_CAN_LOG_LOADER_IS_DOWN
+#00000      SetFlag flag = LEVEL_FLAG_AJC_CAN_LOG_LOADER_IS_DOWN
 
-#00136    END IF
-#00137    IF CareerLevelIs LevelNum_Ship
-#00138      UnSetFlag flag = BDJ_SHP_POOL
+#00000    END IF
+#00000    IF CareerLevelIs LevelNum_Ship
+#00000      UnSetFlag flag = BDJ_SHP_POOL
 
-#00139      UnSetFlag flag = BDJ_SHP_FERRY
+#00000      UnSetFlag flag = BDJ_SHP_FERRY
 
-#00140      UnSetFlag flag = BDJ_SHP_NETS
+#00000      UnSetFlag flag = BDJ_SHP_NETS
 
-#00141      BDJ_SHP_RestartSetup
-#00142    END IF
-#00143  END FUNCTION
+#00000      BDJ_SHP_RestartSetup
+#00000    END IF
+#00000  END FUNCTION
 
-#00144  FUNCTION do_end_comp
-#00147    EndCompetition
-#00148  END FUNCTION
+#00000  FUNCTION do_end_comp
+#00000    EndCompetition
+#00000  END FUNCTION
 
-#00149  FUNCTION test_fragmentation
-#00151    LOOP
-#00152      Wait 0.05 second
-#00153      printf "Launching Message"
-#00154      LaunchLocalMessage id = BottomInfo
+#00000  FUNCTION test_fragmentation
+#00000    LOOP
+#00000      Wait 0.05 second
+#00000      printf "Launching Message"
+#00000      LaunchLocalMessage id = BottomInfo
             "Press X to Continue" panel_message_XtoContinue
-#00155    END LOOP
-#00156  END FUNCTION
+#00000    END LOOP
+#00000  END FUNCTION
 
-#00157  FUNCTION RefreshGameMenu_Replay
-#00160    PauseMusicAndStreams
-#00161    AddLine parent = game_menu
+#00000  FUNCTION RefreshGameMenu_Replay
+#00000    PauseMusicAndStreams
+#00000    AddLine parent = game_menu
           id = backend_continue
           text = "Continue"
           target = "do_backend_continue"
           kill_menu
-#00162    AddLine parent = end_run_menu
+#00000    AddLine parent = end_run_menu
           id = backend_watchreplay
           text = "Restart Replay"
           target = "WatchEndOfRunReplay"
           kill_menu
-#00163    IF ReplayModeEquals REPLAY_MODE_PLAY_AFTER_RUN
-#00164      AddLine parent = game_menu
+#00000    IF ReplayModeEquals REPLAY_MODE_PLAY_AFTER_RUN
+#00000      AddLine parent = game_menu
             id = backend_retry
             text = "Retry"
             target = "do_backend_retry"
             kill_menu
-#00165      AddLine parent = game_menu
+#00000      AddLine parent = game_menu
             id = save_replay_from_pause
             text = "Save Replay"
             link = "_EndRunSaveReplay"
 
-#00166      AddLine parent = game_menu
+#00000      AddLine parent = game_menu
             id = exit_replay_from_pause
             text = "Exit"
             link = "ExitReplayAfterEndOfRun"
 
-#00167    ELSE
-#00168      AddLine parent = game_menu
+#00000    ELSE
+#00000      AddLine parent = game_menu
             id = exit_replay_from_pause
             text = "Exit"
             link = "ExitSavedReplay"
 
-#00169    END IF
-#00170  END FUNCTION
+#00000    END IF
+#00000  END FUNCTION
 
-#00171  FUNCTION RefreshGameMenu
-#00174    printf "refreshing"
-#00175    helper_select_choose_back_centered
-#00176    IF InNetGame
-#00177    ELSE
-#00178      PauseMusicAndStreams
-#00179    END IF
-#00180    AddLine parent = game_menu
+#00000  FUNCTION RefreshGameMenu
+#00000    printf "refreshing"
+#00000    helper_select_choose_back_centered
+#00000    IF InNetGame
+#00000    ELSE
+#00000      PauseMusicAndStreams
+#00000    END IF
+#00000    AddLine parent = game_menu
           id = backend_continue
           text = "Continue"
           target = "do_backend_continue"
           kill_menu
-#00181    AddLine parent = game_menu
+#00000    AddLine parent = game_menu
           id = backend_retry
           text = "Retry"
           target = "do_backend_retry"
           kill_menu
-#00182    IF InSplitScreenGame
-#00184      DestroyElement id = goto_trickset_menu
+#00000    IF InSplitScreenGame
+#00000      DestroyElement id = goto_trickset_menu
 
-#00185    ELSE
-#00186      AddLine parent = game_menu
+#00000    ELSE
+#00000      AddLine parent = game_menu
             id = goto_trickset_menu
             text = "Edit Tricks"
             link = trick_menu_container
 
-#00187    END IF
-#00188    IF IsCareerMode
-#00189      IF IsCompetition
-#00190        DestroyElement id = backend_resetgoals
+#00000    END IF
+#00000    IF IsCareerMode
+#00000      IF IsCompetition
+#00000        DestroyElement id = backend_resetgoals
 
-#00191        DestroyElement id = ListAllGoals
+#00000        DestroyElement id = ListAllGoals
 
-#00192      ELSE
-#00193        AddLine parent = game_menu
+#00000      ELSE
+#00000        AddLine parent = game_menu
               id = ListAllGoals
               text = "View Goals List"
               target = "View_ListAllGoals"
               kill_menu
-#00194        IF CD
-#00195          DestroyElement id = backend_resetgoals
+#00000        IF CD
+#00000          DestroyElement id = backend_resetgoals
 
-#00196        ELSE
-#00197          AddLine parent = game_menu
+#00000        ELSE
+#00000          AddLine parent = game_menu
                 id = backend_resetgoals
                 text = "Reset Level Goals"
                 target = "ResetLevelGoals"
                 kill_menu
-#00198        END IF
-#00199      END IF
-#00200    ELSE
-#00201      DestroyElement id = backend_resetgoals
+#00000        END IF
+#00000      END IF
+#00000    ELSE
+#00000      DestroyElement id = backend_resetgoals
 
-#00202      DestroyElement id = ListAllGoals
+#00000      DestroyElement id = ListAllGoals
 
-#00203    END IF
-#00204    AddLine parent = game_menu
+#00000    END IF
+#00000    AddLine parent = game_menu
           id = backend_sound_options
           text = "Sound Options"
           link = sfx_menu_container
 
-#00206    DestroyElement id = backend_cheat_menu
+#00000    DestroyElement id = backend_cheat_menu
 
-#00208    IF InNetGame
-#00209    ELSE
-#00210      IF GetGlobalFlag flag = CHEAT_UNLOCKED_1
+#00000    IF InNetGame
+#00000    ELSE
+#00000      IF GetGlobalFlag flag = CHEAT_UNLOCKED_1
 
-#00211        AddLine parent = game_menu
+#00000        AddLine parent = game_menu
               id = backend_cheat_menu
               text = "Cheats"
               link = cheat_menu
 
-#00212      END IF
-#00213    END IF
-#00214    AddLine parent = game_menu
+#00000      END IF
+#00000    END IF
+#00000    AddLine parent = game_menu
           id = backend_end_run
           text = "End Run"
           target = "do_backend_end_run"
           kill_menu
-#00216    IF CD
-#00217      DestroyElement id = goto_restart_menu
+#00000    IF CD
+#00000      DestroyElement id = goto_restart_menu
 
-#00218      DestroyElement id = game_menu_debug
+#00000      DestroyElement id = game_menu_debug
 
-#00219    ELSE
-#00220      AddLine parent = game_menu
+#00000    ELSE
+#00000      AddLine parent = game_menu
             id = goto_restart_menu
             text = "Skip to Restart"
             link = restart_menu
 
-#00221      AddLine parent = game_menu
+#00000      AddLine parent = game_menu
             id = game_menu_debug
             text = "debug menu"
             link = debug_main_menu
 
-#00222    END IF
-#00223    IF IsCompetition
-#00224      AddLine parent = game_menu
+#00000    END IF
+#00000    IF IsCompetition
+#00000      AddLine parent = game_menu
             id = end_comp
             text = "End Competition"
             target = "do_end_comp"
             kill_menu
-#00225    ELSE
-#00226      DestroyElement id = end_comp
+#00000    ELSE
+#00000      DestroyElement id = end_comp
 
-#00227    END IF
-#00228    SelectElement id = backend_continue
+#00000    END IF
+#00000    SelectElement id = backend_continue
 
-#00229    IF CareerLevelIs LevelNum_Tutorials
-#00231      IF GetFlag flag = TUTORIAL_RUNNING
+#00000    IF CareerLevelIs LevelNum_Tutorials
+#00000      IF GetFlag flag = TUTORIAL_RUNNING
 
-#00232        AddLine parent = game_menu
+#00000        AddLine parent = game_menu
               id = end_tutorial_item
               text = "Tutorials Menu"
               target = "EndCurrentTutorial"
               kill_menu
-#00233      END IF
-#00234      DestroyElement id = goto_trickset_menu
+#00000      END IF
+#00000      DestroyElement id = goto_trickset_menu
 
-#00236      DestroyElement id = backend_cheat_menu
+#00000      DestroyElement id = backend_cheat_menu
 
-#00237      DestroyElement id = backend_retry
+#00000      DestroyElement id = backend_retry
 
-#00238      DestroyElement id = goto_restart_menu
+#00000      DestroyElement id = goto_restart_menu
 
-#00239      DestroyElement id = game_menu_debug
+#00000      DestroyElement id = game_menu_debug
 
-#00240      DestroyElement id = backend_end_run
+#00000      DestroyElement id = backend_end_run
 
-#00241    ELSE
-#00242    END IF
-#00243  END FUNCTION
+#00000    ELSE
+#00000    END IF
+#00000  END FUNCTION
 
-#00244  FUNCTION EndofRun_helper
-#00246    helper_hide
-#00247    helper_set_positions x1 = 190
+#00000  FUNCTION EndofRun_helper
+#00000    helper_hide
+#00000    helper_set_positions x1 = 190
           x2 = 330
 
-#00250    SetMenuElementText id = helper_menu_1
+#00000    SetMenuElementText id = helper_menu_1
           "бе Select"
-#00251    SetMenuElementText id = helper_menu_2
+#00000    SetMenuElementText id = helper_menu_2
           "м Accept"
-#00252  END FUNCTION
+#00000  END FUNCTION
 
-#00253  FUNCTION Refresh_EndofRunMenu
-#00256    EndofRun_helper
-#00257    IF InNetGame
-#00259    ELSE
-#00260      PauseMusicAndStreams
-#00261    END IF
-#00262    IF IsCareerMode
-#00263      IF GetGlobalFlag flag = JUST_UNLOCKED_LEVEL
+#00000  FUNCTION Refresh_EndofRunMenu
+#00000    EndofRun_helper
+#00000    IF InNetGame
+#00000    ELSE
+#00000      PauseMusicAndStreams
+#00000    END IF
+#00000    IF IsCareerMode
+#00000      IF GetGlobalFlag flag = JUST_UNLOCKED_LEVEL
 
-#00266        SelectElement id = backend_change_level
+#00000        SelectElement id = backend_change_level
 
-#00267      ELSE
-#00268        SelectElement id = backend_retry2
+#00000      ELSE
+#00000        SelectElement id = backend_retry2
 
-#00269      END IF
-#00270    ELSE
-#00271      SelectElement id = backend_retry2
+#00000      END IF
+#00000    ELSE
+#00000      SelectElement id = backend_retry2
 
-#00272    END IF
-#00273    IF IsCompetition
-#00274      AddLine parent = end_run_menu
+#00000    END IF
+#00000    IF IsCompetition
+#00000      AddLine parent = end_run_menu
             id = backend_retry2
             text = "Restart Comp"
             target = "do_backend_retry"
             kill_menu
-#00275    ELSE
-#00276      AddLine parent = end_run_menu
+#00000    ELSE
+#00000      AddLine parent = end_run_menu
             id = backend_retry2
             text = "Retry"
             target = "do_backend_retry"
             kill_menu
-#00277    END IF
-#00278    IF InSplitScreenGame
-#00280      AddLine parent = end_run_menu
+#00000    END IF
+#00000    IF InSplitScreenGame
+#00000      AddLine parent = end_run_menu
             id = gameoptions_item
             text = "Game options"
             link = splitscreen_setup_menu
 
-#00281    ELSE
-#00282      DestroyElement id = gameoptions_item
+#00000    ELSE
+#00000      DestroyElement id = gameoptions_item
 
-#00283    END IF
-#00284    IF IsCareerMode
-#00287      IF IsCompetition
-#00288        DestroyElement id = backend_watchreplay
+#00000    END IF
+#00000    IF IsCareerMode
+#00000      IF IsCompetition
+#00000        DestroyElement id = backend_watchreplay
 
-#00289      ELSE
-#00290        AddLine parent = end_run_menu
+#00000      ELSE
+#00000        AddLine parent = end_run_menu
               id = backend_watchreplay
               text = "Watch Replay"
               target = "WatchEndOfRunReplay"
               kill_menu
-#00291      END IF
-#00292    ELSE
-#00293      IF GameModeEquals is_singlesession
-#00294        IF IsCustomPark
-#00295          DestroyElement id = backend_watchreplay
+#00000      END IF
+#00000    ELSE
+#00000      IF GameModeEquals is_singlesession
+#00000        IF IsCustomPark
+#00000          DestroyElement id = backend_watchreplay
 
-#00296        ELSE
-#00297          AddLine parent = end_run_menu
+#00000        ELSE
+#00000          AddLine parent = end_run_menu
                 id = backend_watchreplay
                 text = "Watch Replay"
                 target = "WatchEndOfRunReplay"
                 kill_menu
-#00298        END IF
-#00299      ELSE
-#00300        DestroyElement id = backend_watchreplay
+#00000        END IF
+#00000      ELSE
+#00000        DestroyElement id = backend_watchreplay
 
-#00301      END IF
-#00302    END IF
-#00303    IF IsTrue ShouldDisableReplays
-#00306      DestroyElement id = backend_watchreplay
+#00000      END IF
+#00000    END IF
+#00000    IF IsTrue ShouldDisableReplays
+#00000      DestroyElement id = backend_watchreplay
 
-#00307    END IF
-#00308    DestroyElement id = backend_watchreplay
+#00000    END IF
+#00000    DestroyElement id = backend_watchreplay
 
-#00310    IF IsCareerMode
-#00313      IF IsCompetition
-#00314        DestroyElement id = view_goals_movies_element
+#00000    IF IsCareerMode
+#00000      IF IsCompetition
+#00000        DestroyElement id = view_goals_movies_element
 
-#00315      ELSE
-#00316        AddLine parent = end_run_menu
+#00000      ELSE
+#00000        AddLine parent = end_run_menu
               id = view_goals_movies_element
               text = "View Goal Movies"
               target = "View_Goal_movies"
               kill_menu
-#00317      END IF
-#00318    ELSE
-#00319      DestroyElement id = view_goals_movies_element
+#00000      END IF
+#00000    ELSE
+#00000      DestroyElement id = view_goals_movies_element
 
-#00320    END IF
-#00321    IF InSplitScreenGame
-#00322      DestroyElement id = goto_trickset_menu
+#00000    END IF
+#00000    IF InSplitScreenGame
+#00000      DestroyElement id = goto_trickset_menu
 
-#00323    ELSE
-#00324    END IF
-#00325    IF IsCareerMode
-#00326      AddLine parent = end_run_menu
+#00000    ELSE
+#00000    END IF
+#00000    IF IsCareerMode
+#00000      AddLine parent = end_run_menu
             id = backend_change_level
             text = "Change Level"
             link = career_change_level_menu
 
-#00327    ELSE
-#00328      AddLine parent = end_run_menu
+#00000    ELSE
+#00000      AddLine parent = end_run_menu
             id = backend_change_level
             text = "Change Level"
             link = change_level_menu
 
-#00329    END IF
-#00330    IF IsCustomPark
-#00331      DestroyElement id = backend_change_level
+#00000    END IF
+#00000    IF IsCustomPark
+#00000      DestroyElement id = backend_change_level
 
-#00332    END IF
-#00333    IF InSplitScreenGame
-#00334      DestroyElement id = edit_stats
+#00000    END IF
+#00000    IF InSplitScreenGame
+#00000      DestroyElement id = edit_stats
 
-#00335      DestroyElement id = goto_trickset_menu
+#00000      DestroyElement id = goto_trickset_menu
 
-#00336      DestroyElement id = save_game
+#00000      DestroyElement id = save_game
 
-#00337    ELSE
-#00338      AddLine parent = end_run_menu
+#00000    ELSE
+#00000      AddLine parent = end_run_menu
             id = edit_stats
             text = "Edit stats"
             link = stats_menu
 
-#00339      AddLine parent = end_run_menu
+#00000      AddLine parent = end_run_menu
             id = goto_trickset_menu
             text = "Edit Tricks"
             link = trick_menu_container
 
-#00340      AddLine parent = end_run_menu
+#00000      AddLine parent = end_run_menu
             id = save_game
             text = "Save game"
             target = "InGameSave"
 
-#00341    END IF
-#00342    DestroyElement id = endrun_cheat_menu
+#00000    END IF
+#00000    DestroyElement id = endrun_cheat_menu
 
-#00344    IF InNetGame
-#00345    ELSE
-#00346      IF GetGlobalFlag flag = CHEAT_UNLOCKED_1
+#00000    IF InNetGame
+#00000    ELSE
+#00000      IF GetGlobalFlag flag = CHEAT_UNLOCKED_1
 
-#00347        AddLine parent = end_run_menu
+#00000        AddLine parent = end_run_menu
               id = endrun_cheat_menu
               text = "Cheats"
               link = cheat_menu
 
-#00348      END IF
-#00349    END IF
-#00350    AddLine parent = end_run_menu
+#00000      END IF
+#00000    END IF
+#00000    AddLine parent = end_run_menu
           id = main_menu
           text = "Quit"
           link = quitgame_yesno_menu
 
-#00358    IF CD
-#00359      DestroyElement id = backend_debug_menu
+#00000    IF CD
+#00000      DestroyElement id = backend_debug_menu
 
-#00360      DestroyElement id = backend_change_test_level
+#00000      DestroyElement id = backend_change_test_level
 
-#00361    ELSE
-#00362      AddLine parent = end_run_menu
+#00000    ELSE
+#00000      AddLine parent = end_run_menu
             id = backend_debug_menu
             text = "Debug Menu"
             link = debug_main_menu
 
-#00363      AddLine parent = end_run_menu
+#00000      AddLine parent = end_run_menu
             id = backend_change_test_level
             text = "Change Test Level"
             link = test_level_menu
 
-#00364    END IF
-#00365  END FUNCTION
+#00000    END IF
+#00000  END FUNCTION
 
-#00367  FUNCTION goto_skateshop
-#00369    Change AutoLinkToCareerScreen = 1
+#00000  FUNCTION goto_skateshop
+#00000    Change AutoLinkToCareerScreen = 1
 
-#00372    chosen_leave_server
-#00373  END FUNCTION
+#00000    chosen_leave_server
+#00000  END FUNCTION
 
-#00374  FUNCTION InGameEndMemCardSaveLoad
-#00376    SwitchToMenu menu = end_run_menu
+#00000  FUNCTION InGameEndMemCardSaveLoad
+#00000    SwitchToMenu menu = end_run_menu
 
-#00377  END FUNCTION
+#00000  END FUNCTION
 
-#00383  FUNCTION _InGameEndMemCardSaveLoad
-#00385    SpawnScript InGameEndMemCardSaveLoad params = NULL
+#00000  FUNCTION _InGameEndMemCardSaveLoad
+#00000    SpawnScript InGameEndMemCardSaveLoad params = NULL
 
-#00386  END FUNCTION
+#00000  END FUNCTION
 
-#00387  FUNCTION InGameSave
-#00389    helper_hide
-#00390    SpawnScript SaveOptionsAndPros params = STRUCT{
+#00000  FUNCTION InGameSave
+#00000    helper_hide
+#00000    SpawnScript SaveOptionsAndPros params = STRUCT{
             EndScr = InGameEndMemCardSaveLoad
             }
 
-#00391  END FUNCTION
+#00000  END FUNCTION
 
-#00392  FUNCTION Continue_to_endofrun
-#00394    SwitchToMenu menu = end_run_menu
+#00000  FUNCTION Continue_to_endofrun
+#00000    SwitchToMenu menu = end_run_menu
 
-#00395  END FUNCTION
+#00000  END FUNCTION
 
-#00396  FUNCTION front_end_set_inactive
-#00398    FrontEndSetInactive
-#00399    IF CareerLevelIs LevelNum_Tutorials
-#00401      PauseStream 0
-#00402    ELSE
-#00403      UnPauseMusicAndStreams
-#00404    END IF
-#00405  END FUNCTION
+#00000  FUNCTION front_end_set_inactive
+#00000    FrontEndSetInactive
+#00000    IF CareerLevelIs LevelNum_Tutorials
+#00000      PauseStream 0
+#00000    ELSE
+#00000      UnPauseMusicAndStreams
+#00000    END IF
+#00000  END FUNCTION
 
-#00406  FUNCTION Select_No
-#00408    SelectElement id = quit_no
+#00000  FUNCTION Select_No
+#00000    SelectElement id = quit_no
 
-#00409    helper_select_choose_back_centered
-#00410  END FUNCTION
+#00000    helper_select_choose_back_centered
+#00000  END FUNCTION
 
-#00411  FUNCTION Server_Select_No
-#00413    SelectElement id = server_quit_no
+#00000  FUNCTION Server_Select_No
+#00000    SelectElement id = server_quit_no
 
-#00414    helper_select_choose_back_centered
-#00415  END FUNCTION
+#00000    helper_select_choose_back_centered
+#00000  END FUNCTION
 
-#00416  FUNCTION Client_Select_No
-#00418    SelectElement id = client_quit_no
+#00000  FUNCTION Client_Select_No
+#00000    SelectElement id = client_quit_no
 
-#00419    helper_select_choose_back_centered
-#00420  END FUNCTION
+#00000    helper_select_choose_back_centered
+#00000  END FUNCTION
 
-#00421  FUNCTION setup_backend_menu
-#00423    setdefaultproperty type = textdrawer
+#00000  FUNCTION setup_backend_menu
+#00000    setdefaultproperty type = textdrawer
           name = main
 
-#00433    createmenu STRUCT{
+#00000    createmenu STRUCT{
             type = menucontainer
             id = contain1
             dynamic_children = ARRAY(
@@ -581,7 +581,7 @@
             )
             }
 
-#00442    CreateAndAttachMenu STRUCT{
+#00000    CreateAndAttachMenu STRUCT{
             type = verticalmenu
             id = game_menu
             game_menu_properties blue_top eventhandlers = ARRAY(
@@ -608,7 +608,7 @@
             parent = contain1
             }
 
-#00461    CreateAndAttachMenu STRUCT{
+#00000    CreateAndAttachMenu STRUCT{
             type = verticalmenu
             id = restart_menu
             x = 100.0
@@ -618,7 +618,7 @@
             parent = contain1
             }
 
-#00469    CreateAndAttachMenu STRUCT{
+#00000    CreateAndAttachMenu STRUCT{
             type = verticalmenu
             id = savegame_yesno_menu
             x = 170.0
@@ -653,7 +653,7 @@
             )
             }
 
-#00494    CreateAndAttachMenu STRUCT{
+#00000    CreateAndAttachMenu STRUCT{
             type = verticalmenu
             id = quitgame_yesno_menu
             x = 170.0
@@ -688,8 +688,8 @@
             )
             }
 
-#00520    IF ENGLISH
-#00525      CreateAndAttachMenu STRUCT{
+#00000    IF ENGLISH
+#00000      CreateAndAttachMenu STRUCT{
               type = verticalmenu
               id = end_run_menu
               game_menu_properties blue_top eventhandler = STRUCT{
@@ -708,8 +708,8 @@
               parent = contain1
               }
 
-#00541    ELSE
-#00542      CreateAndAttachMenu STRUCT{
+#00000    ELSE
+#00000      CreateAndAttachMenu STRUCT{
               type = verticalmenu
               id = end_run_menu
               game_menu_properties w = 340
@@ -730,8 +730,8 @@
               parent = contain1
               }
 
-#00559    END IF
-#00560    CreateAndAttachMenu STRUCT{
+#00000    END IF
+#00000    CreateAndAttachMenu STRUCT{
             type = verticalmenu
             id = victorycondition_menu
             x = 120.0
@@ -768,7 +768,7 @@
             parent = contain1
             }
 
-#00590    CreateAndAttachMenu STRUCT{
+#00000    CreateAndAttachMenu STRUCT{
             type = verticalmenu
             id = gameoptions_menu
             x = 120.0
@@ -793,7 +793,7 @@
             parent = contain1
             }
 
-#00608    CreateAndAttachMenu STRUCT{
+#00000    CreateAndAttachMenu STRUCT{
             type = verticalmenu
             id = trickset_menu
             game_menu_properties blue_top children = ARRAY(
@@ -820,8 +820,8 @@
             parent = contain1
             }
 
-#00631    create_splitscreen_menu
-#00633    create_and_attach_generic_array_menu STRUCT{
+#00000    create_splitscreen_menu
+#00000    create_and_attach_generic_array_menu STRUCT{
             menu_id = network_time_limit_menu
             array_name = time_limit_options
             field = time_limit
@@ -833,7 +833,7 @@
             h = 400.0
             }
 
-#00644    CreateAndAttachMenu STRUCT{
+#00000    CreateAndAttachMenu STRUCT{
             type = verticalmenu
             id = server_pause_menu
             x = 120.0
@@ -960,7 +960,7 @@
             parent = contain1
             }
 
-#00702    CreateAndAttachMenu STRUCT{
+#00000    CreateAndAttachMenu STRUCT{
             type = verticalmenu
             id = server_choose_team_menu
             x = 170.0
@@ -1012,7 +1012,7 @@
             parent = contain1
             }
 
-#00742    CreateAndAttachMenu STRUCT{
+#00000    CreateAndAttachMenu STRUCT{
             type = verticalmenu
             id = client_choose_team_menu
             x = 170.0
@@ -1064,7 +1064,7 @@
             parent = contain1
             }
 
-#00782    CreateAndAttachMenu STRUCT{
+#00000    CreateAndAttachMenu STRUCT{
             type = verticalmenu
             id = net_level_menu
             x = 170.0
@@ -1100,7 +1100,7 @@
             parent = contain1
             }
 
-#00811    CreateAndAttachMenu STRUCT{
+#00000    CreateAndAttachMenu STRUCT{
             type = verticalmenu
             id = client_pause_menu
             x = 120.0
@@ -1192,7 +1192,7 @@
             parent = contain1
             }
 
-#00866    CreateAndAttachMenu STRUCT{
+#00000    CreateAndAttachMenu STRUCT{
             type = verticalmenu
             id = server_quitgame_yesno_menu
             x = 170.0
@@ -1227,7 +1227,7 @@
             )
             }
 
-#00892    CreateAndAttachMenu STRUCT{
+#00000    CreateAndAttachMenu STRUCT{
             type = verticalmenu
             id = client_quitgame_yesno_menu
             x = 170.0
@@ -1262,7 +1262,7 @@
             )
             }
 
-#00918    CreateAndAttachMenu STRUCT{
+#00000    CreateAndAttachMenu STRUCT{
             type = keyboardcontrol
             id = chat_message_control
             x = 160.0
@@ -1296,7 +1296,7 @@
             kill_on_close parent = contain1
             }
 
-#00942    CreateAndAttachMenu STRUCT{
+#00000    CreateAndAttachMenu STRUCT{
             type = keyboardcontrol
             id = kb_chat_message_control
             x = 160.0
@@ -1330,7 +1330,7 @@
             kill_on_close parent = contain1
             }
 
-#00967    CreateAndAttachMenu STRUCT{
+#00000    CreateAndAttachMenu STRUCT{
             type = verticalmenu
             id = net_game_options_menu
             x = 160.0
@@ -1451,7 +1451,7 @@
             parent = contain1
             }
 
-#01084    CreateAndAttachMenu STRUCT{
+#00000    CreateAndAttachMenu STRUCT{
             type = verticalmenu
             id = net_game_options_menu
             x = 160.0
@@ -1471,7 +1471,7 @@
             parent = contain1
             }
 
-#01101    create_and_attach_generic_array_menu STRUCT{
+#00000    create_and_attach_generic_array_menu STRUCT{
             menu_id = opts_net_num_players_menu
             array_name = num_players_info
             field = num_players
@@ -1484,7 +1484,7 @@
             h = 400.0
             }
 
-#01112    create_and_attach_generic_array_menu STRUCT{
+#00000    create_and_attach_generic_array_menu STRUCT{
             menu_id = opts_net_num_obs_menu
             array_name = num_observers_info
             field = num_observers
@@ -1496,7 +1496,7 @@
             h = 400.0
             }
 
-#01122    create_and_attach_generic_array_menu STRUCT{
+#00000    create_and_attach_generic_array_menu STRUCT{
             menu_id = opts_net_game_type_menu
             array_name = game_type_info
             field = game_type
@@ -1508,7 +1508,7 @@
             h = 400.0
             }
 
-#01132    CreateAndAttachMenu STRUCT{
+#00000    CreateAndAttachMenu STRUCT{
             type = keyboardcontrol
             id = opts_net_password_control
             x = 160.0
@@ -1546,7 +1546,7 @@
             parent = contain1
             }
 
-#01161    CreateAndAttachMenu STRUCT{
+#00000    CreateAndAttachMenu STRUCT{
             type = keyboardcontrol
             id = opts_net_server_name_control
             x = 160.0
@@ -1584,7 +1584,7 @@
             parent = contain1
             }
 
-#01190    CreateAndAttachMenu STRUCT{
+#00000    CreateAndAttachMenu STRUCT{
             type = verticalmenu
             id = change_level_menu
             x = 160.0
@@ -1611,7 +1611,7 @@
             parent = contain1
             }
 
-#01208    CreateAndAttachMenu STRUCT{
+#00000    CreateAndAttachMenu STRUCT{
             type = verticalmenu
             id = career_change_level_menu
             x = 140.0
@@ -1642,11 +1642,11 @@
             parent = contain1
             }
 
-#01232    DestroyElement id = career_level_names
+#00000    DestroyElement id = career_level_names
 
-#01233    DestroyElement id = career_level_goals
+#00000    DestroyElement id = career_level_goals
 
-#01234    createmenu STRUCT{
+#00000    createmenu STRUCT{
             type = verticalmenu
             id = career_level_names
             x = 0.0
@@ -1664,7 +1664,7 @@
             )
             }
 
-#01247    createmenu STRUCT{
+#00000    createmenu STRUCT{
             type = verticalmenu
             id = career_level_goals
             x = 280.0
@@ -1686,14 +1686,14 @@
             )
             }
 
-#01261    attachchild parent = career_levels_multi_container
+#00000    attachchild parent = career_levels_multi_container
           child = career_level_names
 
-#01263    attachchild parent = career_levels_multi_container
+#00000    attachchild parent = career_levels_multi_container
           child = career_level_goals
 
-#01264    printf "Going through master level list... regular change level"
-#01267    attach_new_stats_menu STRUCT{
+#00000    printf "Going through master level list... regular change level"
+#00000    attach_new_stats_menu STRUCT{
             menu_id = stats_menu
             container_id = contain1
             points_available_id = ingame_cas_points_available
@@ -1701,332 +1701,332 @@
             right_container_id = stats_right_container
             }
 
-#01279    AttachEventHandler STRUCT{
+#00000    AttachEventHandler STRUCT{
             type = showeventhandler
             object = stats_menu
             target = "helper_on_stat_menu"
             }
 
-#01285    helper_menu_create
-#01287    debug_menu_create
-#01288    level_menu_create
-#01289    stats_menu_create
-#01290    comp_menu_create
-#01291    horse_menu_create
-#01292    replay_menu_create
-#01293    cheat_menu_create
-#01294    replay_from_memcard_menu_create
-#01295    memcard_files_menu_create
-#01296  END FUNCTION
+#00000    helper_menu_create
+#00000    debug_menu_create
+#00000    level_menu_create
+#00000    stats_menu_create
+#00000    comp_menu_create
+#00000    horse_menu_create
+#00000    replay_menu_create
+#00000    cheat_menu_create
+#00000    replay_from_memcard_menu_create
+#00000    memcard_files_menu_create
+#00000  END FUNCTION
 
-#01298  FUNCTION populate_goals_menu
-#01301    DestroyElement id = level2
+#00000  FUNCTION populate_goals_menu
+#00000    DestroyElement id = level2
 
-#01304    DestroyElement id = level3
+#00000    DestroyElement id = level3
 
-#01305    DestroyElement id = level4
+#00000    DestroyElement id = level4
 
-#01306    DestroyElement id = level5
+#00000    DestroyElement id = level5
 
-#01307    DestroyElement id = level6
+#00000    DestroyElement id = level6
 
-#01308    DestroyElement id = level7
+#00000    DestroyElement id = level7
 
-#01309    DestroyElement id = level8
+#00000    DestroyElement id = level8
 
-#01310    DestroyElement id = level9
+#00000    DestroyElement id = level9
 
-#01311    GetGoalsCompleted LevelNum_Foundry
-#01313    AddLine parent = career_level_goals
+#00000    GetGoalsCompleted LevelNum_Foundry
+#00000    AddLine parent = career_level_goals
           id = level1
           text = GLOBAL.GoalsCompleted
 
-#01314    GetGoalsCompleted LevelNum_Canada
-#01316    IF GetGlobalFlag flag = LEVEL_UNLOCKED_CANADA
+#00000    GetGoalsCompleted LevelNum_Canada
+#00000    IF GetGlobalFlag flag = LEVEL_UNLOCKED_CANADA
 
-#01317      AddLine parent = career_level_goals
+#00000      AddLine parent = career_level_goals
             id = level2
             text = GLOBAL.GoalsCompleted
 
-#01318    ELSE
-#01319      AddLine parent = career_level_goals
+#00000    ELSE
+#00000      AddLine parent = career_level_goals
             id = level2
             text = GLOBAL.GoalsCompleted
             static
-#01320    END IF
-#01321    GetGoalsCompleted LevelNum_Rio
-#01323    IF GetGlobalFlag flag = LEVEL_UNLOCKED_RIO
+#00000    END IF
+#00000    GetGoalsCompleted LevelNum_Rio
+#00000    IF GetGlobalFlag flag = LEVEL_UNLOCKED_RIO
 
-#01324      AddLine parent = career_level_goals
+#00000      AddLine parent = career_level_goals
             id = level3
             text = GLOBAL.BestMedal
 
-#01325    ELSE
-#01326      printf "--------------------- Printing best medal for Rio"
-#01327      AddLine parent = career_level_goals
+#00000    ELSE
+#00000      printf "--------------------- Printing best medal for Rio"
+#00000      AddLine parent = career_level_goals
             id = level3
             text = GLOBAL.BestMedal
             static
-#01328    END IF
-#01329    GetGoalsCompleted LevelNum_Suburbia
-#01331    IF GetGlobalFlag flag = LEVEL_UNLOCKED_SUBURBIA
+#00000    END IF
+#00000    GetGoalsCompleted LevelNum_Suburbia
+#00000    IF GetGlobalFlag flag = LEVEL_UNLOCKED_SUBURBIA
 
-#01332      AddLine parent = career_level_goals
+#00000      AddLine parent = career_level_goals
             id = level4
             text = GLOBAL.GoalsCompleted
 
-#01333    ELSE
-#01334      AddLine parent = career_level_goals
+#00000    ELSE
+#00000      AddLine parent = career_level_goals
             id = level4
             text = GLOBAL.GoalsCompleted
             static
-#01335    END IF
-#01336    GetGoalsCompleted LevelNum_Airport
-#01338    IF GetGlobalFlag flag = LEVEL_UNLOCKED_AIRPORT
+#00000    END IF
+#00000    GetGoalsCompleted LevelNum_Airport
+#00000    IF GetGlobalFlag flag = LEVEL_UNLOCKED_AIRPORT
 
-#01339      AddLine parent = career_level_goals
+#00000      AddLine parent = career_level_goals
             id = level5
             text = GLOBAL.GoalsCompleted
 
-#01340    ELSE
-#01341      AddLine parent = career_level_goals
+#00000    ELSE
+#00000      AddLine parent = career_level_goals
             id = level5
             text = GLOBAL.GoalsCompleted
             static
-#01342    END IF
-#01343    GetGoalsCompleted LevelNum_SkaterIsland
-#01345    IF GetGlobalFlag flag = LEVEL_UNLOCKED_SKATERISLAND
+#00000    END IF
+#00000    GetGoalsCompleted LevelNum_SkaterIsland
+#00000    IF GetGlobalFlag flag = LEVEL_UNLOCKED_SKATERISLAND
 
-#01346      AddLine parent = career_level_goals
+#00000      AddLine parent = career_level_goals
             id = level6
             text = GLOBAL.BestMedal
 
-#01347    ELSE
-#01348      AddLine parent = career_level_goals
+#00000    ELSE
+#00000      AddLine parent = career_level_goals
             id = level6
             text = GLOBAL.BestMedal
             static
-#01349    END IF
-#01350    GetGoalsCompleted LevelNum_LA
-#01352    IF GetGlobalFlag flag = LEVEL_UNLOCKED_LOSANGELES
+#00000    END IF
+#00000    GetGoalsCompleted LevelNum_LA
+#00000    IF GetGlobalFlag flag = LEVEL_UNLOCKED_LOSANGELES
 
-#01353      AddLine parent = career_level_goals
+#00000      AddLine parent = career_level_goals
             id = level7
             text = GLOBAL.GoalsCompleted
 
-#01354    ELSE
-#01355      AddLine parent = career_level_goals
+#00000    ELSE
+#00000      AddLine parent = career_level_goals
             id = level7
             text = GLOBAL.GoalsCompleted
             static
-#01356    END IF
-#01357    GetGoalsCompleted LevelNum_Tokyo
-#01359    IF GetGlobalFlag flag = LEVEL_UNLOCKED_TOKYO
+#00000    END IF
+#00000    GetGoalsCompleted LevelNum_Tokyo
+#00000    IF GetGlobalFlag flag = LEVEL_UNLOCKED_TOKYO
 
-#01360      AddLine parent = career_level_goals
+#00000      AddLine parent = career_level_goals
             id = level8
             text = GLOBAL.BestMedal
 
-#01361    ELSE
-#01362      AddLine parent = career_level_goals
+#00000    ELSE
+#00000      AddLine parent = career_level_goals
             id = level8
             text = GLOBAL.BestMedal
             static
-#01363    END IF
-#01364    IF GetGlobalFlag flag = SPECIAL_HAS_SEEN_SHIP
+#00000    END IF
+#00000    IF GetGlobalFlag flag = SPECIAL_HAS_SEEN_SHIP
 
-#01366      GetGoalsCompleted LevelNum_Ship
-#01367      IF GetGlobalFlag flag = LEVEL_UNLOCKED_SHIP
+#00000      GetGoalsCompleted LevelNum_Ship
+#00000      IF GetGlobalFlag flag = LEVEL_UNLOCKED_SHIP
 
-#01368        AddLine parent = career_level_goals
+#00000        AddLine parent = career_level_goals
               id = level9
               text = GLOBAL.GoalsCompleted
 
-#01369      ELSE
-#01370        AddLine parent = career_level_goals
+#00000      ELSE
+#00000        AddLine parent = career_level_goals
               id = level9
               text = GLOBAL.GoalsCompleted
               static
-#01371      END IF
-#01372    ELSE
-#01373      DestroyElement id = level9
+#00000      END IF
+#00000    ELSE
+#00000      DestroyElement id = level9
 
-#01374    END IF
-#01375  END FUNCTION
+#00000    END IF
+#00000  END FUNCTION
 
-#01376  FUNCTION populate_level_menu
-#01381    helper_hide
-#01382    helper_select_choose_back x1 = 167
+#00000  FUNCTION populate_level_menu
+#00000    helper_hide
+#00000    helper_select_choose_back x1 = 167
           x2 = 282
           x3 = 392
 
-#01383    IF IsCareerMode
-#01386      populate_goals_menu
-#01387      GetNextLevelRequirements
-#01388      IF GotParam friggina
-#01389        IF GetGlobalFlag flag = SPECIAL_HAS_SEEN_SHIP
+#00000    IF IsCareerMode
+#00000      populate_goals_menu
+#00000      GetNextLevelRequirements
+#00000      IF GotParam friggina
+#00000        IF GetGlobalFlag flag = SPECIAL_HAS_SEEN_SHIP
 
-#01390          DestroyElement id = next_level_at
+#00000          DestroyElement id = next_level_at
 
-#01391          IF GetGlobalFlag flag = LEVEL_UNLOCKED_SHIP
+#00000          IF GetGlobalFlag flag = LEVEL_UNLOCKED_SHIP
 
-#01392            IF PAL
-#01393              AddLine parent = career_change_level_menu
+#00000            IF PAL
+#00000              AddLine parent = career_change_level_menu
                     id = next_level_at
                     text = "All levels unlocked"
                     static drawer = main_smaller
                     lock_layout y = 228
 
-#01394            ELSE
-#01395              AddLine parent = career_change_level_menu
+#00000            ELSE
+#00000              AddLine parent = career_change_level_menu
                     id = next_level_at
                     text = "All levels unlocked"
                     static drawer = main_smaller
                     lock_layout y = 220
 
-#01396            END IF
-#01397          ELSE
-#01398            IF PAL
-#01399              AddLine parent = career_change_level_menu
+#00000            END IF
+#00000          ELSE
+#00000            IF PAL
+#00000              AddLine parent = career_change_level_menu
                     id = next_level_at
                     text = GLOBAL.NextLevelRequirements
                     static drawer = main_smaller
                     lock_layout y = 228
 
-#01400            ELSE
-#01401              AddLine parent = career_change_level_menu
+#00000            ELSE
+#00000              AddLine parent = career_change_level_menu
                     id = next_level_at
                     text = GLOBAL.NextLevelRequirements
                     static drawer = main_smaller
                     lock_layout y = 220
 
-#01402            END IF
-#01403          END IF
-#01404        ELSE
-#01405          IF PAL
-#01406            AddLine parent = career_change_level_menu
+#00000            END IF
+#00000          END IF
+#00000        ELSE
+#00000          IF PAL
+#00000            AddLine parent = career_change_level_menu
                   id = next_level_at
                   text = GLOBAL.NextLevelRequirements
                   static drawer = main_smaller
                   lock_layout y = 209
 
-#01407          ELSE
-#01408            AddLine parent = career_change_level_menu
+#00000          ELSE
+#00000            AddLine parent = career_change_level_menu
                   id = next_level_at
                   text = GLOBAL.NextLevelRequirements
                   static drawer = main_smaller
                   lock_layout y = 201
 
-#01409          END IF
-#01410        END IF
-#01411      ELSE
-#01412        IF GetGlobalFlag flag = SPECIAL_HAS_SEEN_SHIP
+#00000          END IF
+#00000        END IF
+#00000      ELSE
+#00000        IF GetGlobalFlag flag = SPECIAL_HAS_SEEN_SHIP
 
-#01413          DestroyElement id = next_level_at
+#00000          DestroyElement id = next_level_at
 
-#01414          IF GetGlobalFlag flag = LEVEL_UNLOCKED_SHIP
+#00000          IF GetGlobalFlag flag = LEVEL_UNLOCKED_SHIP
 
-#01415            AddLine parent = career_change_level_menu
+#00000            AddLine parent = career_change_level_menu
                   id = next_level_at
                   text = "All levels unlocked"
                   static drawer = main_smaller
                   lock_layout y = 238
 
-#01416          ELSE
-#01417            AddLine parent = career_change_level_menu
+#00000          ELSE
+#00000            AddLine parent = career_change_level_menu
                   id = next_level_at
                   text = GLOBAL.NextLevelRequirements
                   static drawer = main_smaller
                   lock_layout y = 238
 
-#01418          END IF
-#01419        ELSE
-#01420          AddLine parent = career_change_level_menu
+#00000          END IF
+#00000        ELSE
+#00000          AddLine parent = career_change_level_menu
                 id = next_level_at
                 text = GLOBAL.NextLevelRequirements
                 static drawer = main_smaller
                 lock_layout y = 214
 
-#01421        END IF
-#01422      END IF
-#01423    ELSE
-#01424      DestroyElement id = next_level_at
+#00000        END IF
+#00000      END IF
+#00000    ELSE
+#00000      DestroyElement id = next_level_at
 
-#01425    END IF
-#01426    VerifyParam param = parent_menu
+#00000    END IF
+#00000    VerifyParam param = parent_menu
           func = populate_level_menu
           NULL
-#01427    VerifyParam param = choose_script
+#00000    VerifyParam param = choose_script
           func = populate_level_menu
           NULL
-#01428    ForEachIn master_level_list do = add_level_menu_item
+#00000    ForEachIn master_level_list do = add_level_menu_item
           params = STRUCT{
             mask = regular_level
             target_script = GLOBAL.choose_script
             parent_menu = GLOBAL.parent_menu
             }
 
-#01429  END FUNCTION
+#00000  END FUNCTION
 
-#01430  FUNCTION toggle_player_names
-#01432    TogglePlayerNames
-#01433  END FUNCTION
+#00000  FUNCTION toggle_player_names
+#00000    TogglePlayerNames
+#00000  END FUNCTION
 
-#01434  FUNCTION toggle_scores
-#01436    ToggleScores
-#01437  END FUNCTION
+#00000  FUNCTION toggle_scores
+#00000    ToggleScores
+#00000  END FUNCTION
 
-#01438  FUNCTION enter_observer_mode
-#01440    EnterObserverMode
-#01441  END FUNCTION
+#00000  FUNCTION enter_observer_mode
+#00000    EnterObserverMode
+#00000  END FUNCTION
 
-#01442  FUNCTION enter_chat_mode
-#01444  END FUNCTION
+#00000  FUNCTION enter_chat_mode
+#00000  END FUNCTION
 
-#01445  FUNCTION back_to_main
-#01447    printf "running back_to_main"
-#01448    LaunchMenuScreen screen = main_menu
+#00000  FUNCTION back_to_main
+#00000    printf "running back_to_main"
+#00000    LaunchMenuScreen screen = main_menu
 
-#01449  END FUNCTION
+#00000  END FUNCTION
 
-#01450  FUNCTION change_airtricks1
-#01452    Change Air_CircleL = Trick_Stiffy
+#00000  FUNCTION change_airtricks1
+#00000    Change Air_CircleL = Trick_Stiffy
 
-#01453  END FUNCTION
+#00000  END FUNCTION
 
-#01455  FUNCTION change_airtricks2
-#01457    Change Air_CircleR = Trick_Judo
+#00000  FUNCTION change_airtricks2
+#00000    Change Air_CircleR = Trick_Judo
 
-#01458  END FUNCTION
+#00000  END FUNCTION
 
-#01460  FUNCTION change_airtricks3
-#01462    Change Airtricks = Airtricks3
+#00000  FUNCTION change_airtricks3
+#00000    Change Airtricks = Airtricks3
 
-#01463    Change JumpTricks = Jumptricks3
+#00000    Change JumpTricks = Jumptricks3
 
-#01464  END FUNCTION
+#00000  END FUNCTION
 
-#01465  FUNCTION enter_kb_chat
-#01467    SwitchToMenu menu = kb_chat_message_control
+#00000  FUNCTION enter_kb_chat
+#00000    SwitchToMenu menu = kb_chat_message_control
           DoNotPause
-#01468  END FUNCTION
+#00000  END FUNCTION
 
-#01469  FUNCTION attach_new_stats_menu stats_left_width = 150
+#00000  FUNCTION attach_new_stats_menu stats_left_width = 150
           stats_right_width = 160
 
-#01471    VerifyParam param = menu_id
+#00000    VerifyParam param = menu_id
           func = attach_new_stats_menu
           NULL
-#01472    VerifyParam param = container_id
+#00000    VerifyParam param = container_id
           func = attach_new_stats_menu
           NULL
-#01473    VerifyParam param = left_container_id
+#00000    VerifyParam param = left_container_id
           func = attach_new_stats_menu
           NULL
-#01474    VerifyParam param = right_container_id
+#00000    VerifyParam param = right_container_id
           func = attach_new_stats_menu
           NULL
-#01475    CreateAndAttachMenu STRUCT{
+#00000    CreateAndAttachMenu STRUCT{
             type = verticalmenu
             id = GLOBAL.menu_id
             parent = GLOBAL.container_id
@@ -2040,17 +2040,17 @@
             )
             }
 
-#01486    IF GotParam is_pro_menu
-#01488    ELSE
-#01490      CreateAndAttachMenu STRUCT{
+#00000    IF GotParam is_pro_menu
+#00000    ELSE
+#00000      CreateAndAttachMenu STRUCT{
               type = textmenuelement
               auto_id parent = GLOBAL.menu_id
               text = "edit stats"
               static dont_gray drawer = title
               }
 
-#01498    END IF
-#01499    CreateAndAttachMenu STRUCT{
+#00000    END IF
+#00000    CreateAndAttachMenu STRUCT{
             type = menucontainer
             auto_id show_all_children parent = GLOBAL.menu_id
             eventhandler = STRUCT{
@@ -2077,12 +2077,12 @@
             )
             }
 
-#01523    IF GotParam is_pro_menu
-#01525    ELSE
-#01527      VerifyParam param = points_available_id
+#00000    IF GotParam is_pro_menu
+#00000    ELSE
+#00000      VerifyParam param = points_available_id
             func = attach_new_stats_menu
             NULL
-#01528      CreateAndAttachMenu STRUCT{
+#00000      CreateAndAttachMenu STRUCT{
               type = textmenuelement
               id = GLOBAL.points_available_id
               parent = GLOBAL.menu_id
@@ -2091,86 +2091,86 @@
               lock_layout y = 222.0
               }
 
-#01542    END IF
-#01543    IF GotParam is_pro_menu
-#01545      ForEachIn cas_stats_display_children do = attach_new_right_stats_menu_item
+#00000    END IF
+#00000    IF GotParam is_pro_menu
+#00000      ForEachIn cas_stats_display_children do = attach_new_right_stats_menu_item
             params = STRUCT{
               container_id = GLOBAL.right_container_id
               is_pro_menu stats_right_width = GLOBAL.stats_right_width
               }
 
-#01546    ELSE
-#01547      ForEachIn cas_stats_display_children do = attach_new_right_stats_menu_item
+#00000    ELSE
+#00000      ForEachIn cas_stats_display_children do = attach_new_right_stats_menu_item
             params = STRUCT{
               container_id = GLOBAL.right_container_id
               stats_right_width = GLOBAL.stats_right_width
               }
 
-#01548    END IF
-#01549    IF GotParam is_pro_menu
-#01552      ForEachIn cas_stats_children do = attach_new_left_stats_menu_item
+#00000    END IF
+#00000    IF GotParam is_pro_menu
+#00000      ForEachIn cas_stats_children do = attach_new_left_stats_menu_item
             params = STRUCT{
               container_id = GLOBAL.left_container_id
               is_pro_menu }
 
-#01554    ELSE
-#01555      ForEachIn cas_stats_children do = attach_new_left_stats_menu_item
+#00000    ELSE
+#00000      ForEachIn cas_stats_children do = attach_new_left_stats_menu_item
             params = STRUCT{
               container_id = GLOBAL.left_container_id
               }
 
-#01556    END IF
-#01557  END FUNCTION
+#00000    END IF
+#00000  END FUNCTION
 
-#01558  FUNCTION update_stats_elements
-#01560    printf "Update Stats Elements"
-#01561    UpdateStatsElements
-#01562  END FUNCTION
+#00000  FUNCTION update_stats_elements
+#00000    printf "Update Stats Elements"
+#00000    UpdateStatsElements
+#00000  END FUNCTION
 
-#01563  FUNCTION update_stats_ui
-#01565    UpdateStatsUI NULL
-#01566  END FUNCTION
+#00000  FUNCTION update_stats_ui
+#00000    UpdateStatsUI NULL
+#00000  END FUNCTION
 
-#01567  stats_left_menu_properties = STRUCT{
+#00000  stats_left_menu_properties = STRUCT{
           x = 0.0
           y = 0.0
           w = 150.0
           h = 400.0
           just_center_x just_center_y not_rounded }
 
-#01574  stats_right_menu_properties = STRUCT{
+#00000  stats_right_menu_properties = STRUCT{
           x = 150.0
           y = 0.0
           w = 200.0
           h = 400.0
           just_center_x just_center_y not_rounded }
 
-#01581  FUNCTION attach_new_left_stats_menu_item
-#01583    IF GotParam is_pro_menu
-#01584      CreateAndAttachMenu STRUCT{
+#00000  FUNCTION attach_new_left_stats_menu_item
+#00000    IF GotParam is_pro_menu
+#00000      CreateAndAttachMenu STRUCT{
               NULL parent = GLOBAL.container_id
               y = 0.0
               w = 140.0
               }
 
-#01592    ELSE
-#01593      CreateAndAttachMenu STRUCT{
+#00000    ELSE
+#00000      CreateAndAttachMenu STRUCT{
               NULL parent = GLOBAL.container_id
               y = 0.0
               }
 
-#01600    END IF
-#01601  END FUNCTION
+#00000    END IF
+#00000  END FUNCTION
 
-#01602  FUNCTION attach_new_right_stats_menu_item
-#01604    IF GotParam is_pro_menu
-#01605      VerifyParam param = pro_id
+#00000  FUNCTION attach_new_right_stats_menu_item
+#00000    IF GotParam is_pro_menu
+#00000      VerifyParam param = pro_id
             func = attach_new_right_stats_menu_item
             NULL
-#01606      VerifyParam param = stats_right_width
+#00000      VerifyParam param = stats_right_width
             func = attach_new_right_stats_menu_item
             NULL
-#01607      CreateAndAttachMenu STRUCT{
+#00000      CreateAndAttachMenu STRUCT{
               NULL id = GLOBAL.pro_id
               parent = GLOBAL.container_id
               y = 0.0
@@ -2181,14 +2181,14 @@
               a = 115
               }
 
-#01618    ELSE
-#01619      CreateAndAttachMenu STRUCT{
+#00000    ELSE
+#00000      CreateAndAttachMenu STRUCT{
               NULL parent = GLOBAL.container_id
               y = 0.0
               w = 170.0
               }
 
-#01627      AttachEventHandler STRUCT{
+#00000      AttachEventHandler STRUCT{
               type = ChooseEventHandler
               object = GLOBAL.id
               target = "go_back"
@@ -2197,50 +2197,50 @@
                 }
               }
 
-#01636    END IF
-#01637  END FUNCTION
+#00000    END IF
+#00000  END FUNCTION
 
-#01638  FUNCTION send_chat_message
-#01640    printf "Sending chat message..."
-#01641    SendChatMessage NULL
-#01642  END FUNCTION
+#00000  FUNCTION send_chat_message
+#00000    printf "Sending chat message..."
+#00000    SendChatMessage NULL
+#00000  END FUNCTION
 
-#01643  FUNCTION clear_keyboard_string
-#01645    VerifyParam param = control_id
+#00000  FUNCTION clear_keyboard_string
+#00000    VerifyParam param = control_id
           func = clear_keyboard_string
           NULL
-#01646    IF GotParam string
-#01648      LaunchEvent type = setcontents
+#00000    IF GotParam string
+#00000      LaunchEvent type = setcontents
             target = GLOBAL.control_id
             string = GLOBAL.string
 
-#01649    ELSE
-#01650      LaunchEvent type = setcontents
+#00000    ELSE
+#00000      LaunchEvent type = setcontents
             target = GLOBAL.control_id
             string = ""
 
-#01651    END IF
-#01652  END FUNCTION
+#00000    END IF
+#00000  END FUNCTION
 
-#01653  FUNCTION PreRunQueuedScripts
-#01655    SetSlomo 100.0
-#01656  END FUNCTION
+#00000  FUNCTION PreRunQueuedScripts
+#00000    SetSlomo 100.0
+#00000  END FUNCTION
 
-#01657  FUNCTION PostRunQueuedScripts
-#01659    SetSlomo 1
-#01660  END FUNCTION
+#00000  FUNCTION PostRunQueuedScripts
+#00000    SetSlomo 1
+#00000  END FUNCTION
 
-#01661  FUNCTION choose_team_on_show
-#01663    IF InTeamGame
-#01664      MakeTextMenuElementStatic GLOBAL.ElementId
+#00000  FUNCTION choose_team_on_show
+#00000    IF InTeamGame
+#00000      MakeTextMenuElementStatic GLOBAL.ElementId
             nonstatic = 1
 
-#01665    ELSE
-#01666      MakeTextMenuElementStatic GLOBAL.ElementId
+#00000    ELSE
+#00000      MakeTextMenuElementStatic GLOBAL.ElementId
 
-#01667    END IF
-#01668  END FUNCTION
+#00000    END IF
+#00000  END FUNCTION
 
-#01669  FUNCTION do_choose_team
-#01671    ChooseTeam NULL
-#01672  END FUNCTION
+#00000  FUNCTION do_choose_team
+#00000    ChooseTeam NULL
+#00000  END FUNCTION

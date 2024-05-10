@@ -1,1250 +1,1250 @@
 
-#00001  FUNCTION InitLevelLoadProcess
-#00008    printf "***********************InitLevelLoadProcess"
-#00012    UninitializeFrontEndSprites
-#00013    Cleanup
-#00014    StopMusic
-#00015    PauseMusic
-#00016    ClearMusicTrackList
-#00018    MouseShowCursor 0
-#00019  END FUNCTION
+#00000  FUNCTION InitLevelLoadProcess
+#00000    printf "***********************InitLevelLoadProcess"
+#00000    UninitializeFrontEndSprites
+#00000    Cleanup
+#00000    StopMusic
+#00000    PauseMusic
+#00000    ClearMusicTrackList
+#00000    MouseShowCursor 0
+#00000  END FUNCTION
 
-#00020  FUNCTION PreFreezeScreen
-#00022    SetArenaSize 1
-#00023  END FUNCTION
+#00000  FUNCTION PreFreezeScreen
+#00000    SetArenaSize 1
+#00000  END FUNCTION
 
-#00024  FUNCTION PostFreezeScreen
-#00026    SetArenaSize
-#00027  END FUNCTION
+#00000  FUNCTION PostFreezeScreen
+#00000    SetArenaSize
+#00000  END FUNCTION
 
-#00028  FUNCTION SetupForClipPlane
-#00030    EnableFog
-#00031    SetClippingDistances near = 12
+#00000  FUNCTION SetupForClipPlane
+#00000    EnableFog
+#00000    SetClippingDistances near = 12
           far = 1792
 
-#00032    SetBackgroundColor STRUCT{
+#00000    SetBackgroundColor STRUCT{
             r = 128
             g = 128
             b = 128
             alpha = 0
             }
 
-#00033    SetFogDistance distance = 1280
+#00000    SetFogDistance distance = 1280
 
-#00034    SetFogColor r = 128
+#00000    SetFogColor r = 128
           g = 128
           b = 128
 
-#00035  END FUNCTION
+#00000  END FUNCTION
 
-#00036  FUNCTION PreLevelLoad
-#00038    SetArenaSize 1
-#00039    SetUpBasicLights
-#00040    SetSfxReverb Instant
-#00041    ClearScoreGoals
-#00043    SetScoreGoal score = 10000
+#00000  FUNCTION PreLevelLoad
+#00000    SetArenaSize 1
+#00000    SetUpBasicLights
+#00000    SetSfxReverb Instant
+#00000    ClearScoreGoals
+#00000    SetScoreGoal score = 10000
           goalscript = DefaultHiScoreScript
           goal = GOAL_HIGHSCORE
 
-#00044    SetScoreGoal score = 50000
+#00000    SetScoreGoal score = 50000
           goalscript = DefaultProScoreScript
           goal = GOAL_PROSCORE
 
-#00045    ClearMusicTrackList
-#00046    IF GameModeEquals is_parkeditor
-#00048      IF InNetGame
-#00049        DisplayProperLoadingScreen net
-#00050      ELSE
-#00051        DisplayLoadingScreen "images\loadscrn_editor.png"
-#00052      END IF
-#00053    END IF
-#00054  END FUNCTION
+#00000    ClearMusicTrackList
+#00000    IF GameModeEquals is_parkeditor
+#00000      IF InNetGame
+#00000        DisplayProperLoadingScreen net
+#00000      ELSE
+#00000        DisplayLoadingScreen "images\loadscrn_editor.png"
+#00000      END IF
+#00000    END IF
+#00000  END FUNCTION
 
-#00055  FUNCTION DisplayProperLoadingScreen
-#00057    printf "DisplayProperLoadingScreen"
-#00058    IF InMultiPlayerGame
-#00059    ELSE
-#00060      Change FirstTimeFromSkateshop = 0
+#00000  FUNCTION DisplayProperLoadingScreen
+#00000    printf "DisplayProperLoadingScreen"
+#00000    IF InMultiPlayerGame
+#00000    ELSE
+#00000      Change FirstTimeFromSkateshop = 0
 
-#00061    END IF
-#00062    IF GotParam SkateShop
-#00066      DisplayLoadingScreen "images\loadscrn_ss.png"
-#00067    ELSE
-#00068      IF EnteringNetGame
-#00069        printf "Entering Net Game"
-#00070        IF OnServer
-#00071          DisplayLoadingScreen "images\loadscrn_Online.png"
-#00072        ELSE
-#00073          DisplayLoadingScreen "images\loadscrn_Online2.png"
-#00074        END IF
-#00075      ELSE
-#00076        IF IsTrue FirstTimeFromSkateshop
-#00077          DisplayLoadingScreen "images\loadscrn_2player.png"
-#00078        ELSE
-#00079          IF InNetGame
-#00080            IF GameModeEquals is_horse
-#00081              DisplayLoadingScreen "images\loadscrn_horse.png"
-#00082            ELSE
-#00083              IF GameTypePrefEquals netking
-#00084                DisplayLoadingScreen "images\loadscrn_koth.png"
-#00085              ELSE
-#00086                IF GameTypePrefEquals netslap
-#00087                  DisplayLoadingScreen "images\loadscrn_slap.png"
-#00088                ELSE
-#00089                  IF GameTypePrefEquals netgraffiti
-#00090                    DisplayLoadingScreen "images\loadscrn_Graffiti.png"
-#00091                  ELSE
-#00092                    IF GameTypePrefEquals nettrickattack
-#00093                      DisplayLoadingScreen "images\loadscrn_trick_attack.png"
-#00094                    ELSE
-#00095                      IF GameTypePrefEquals ctf
-#00096                        DisplayLoadingScreen "images\loadscrn_ctf.png"
-#00097                      ELSE
-#00098                        IF GameTypePrefEquals ownthezone
-#00099                          DisplayLoadingScreen "images\loadscrn_zone.png"
-#00100                        ELSE
-#00101                          IF GameTypePrefEquals beachball
-#00102                            DisplayLoadingScreen "images\loadscrn_beach.png"
-#00103                          ELSE
-#00104                            IF InSplitScreenGame
-#00105                              DisplayLoadingScreen "images\loadscrn_2player.png"
-#00106                            ELSE
-#00107                              LevelLoadingScreens NULL
-#00108                            END IF
-#00109                          END IF
-#00110                        END IF
-#00111                      END IF
-#00112                    END IF
-#00113                  END IF
-#00114                END IF
-#00115              END IF
-#00116            END IF
-#00117          ELSE
-#00118            LevelLoadingScreens NULL
-#00119          END IF
-#00120        END IF
-#00121      END IF
-#00122    END IF
-#00123  END FUNCTION
+#00000    END IF
+#00000    IF GotParam SkateShop
+#00000      DisplayLoadingScreen "images\loadscrn_ss.png"
+#00000    ELSE
+#00000      IF EnteringNetGame
+#00000        printf "Entering Net Game"
+#00000        IF OnServer
+#00000          DisplayLoadingScreen "images\loadscrn_Online.png"
+#00000        ELSE
+#00000          DisplayLoadingScreen "images\loadscrn_Online2.png"
+#00000        END IF
+#00000      ELSE
+#00000        IF IsTrue FirstTimeFromSkateshop
+#00000          DisplayLoadingScreen "images\loadscrn_2player.png"
+#00000        ELSE
+#00000          IF InNetGame
+#00000            IF GameModeEquals is_horse
+#00000              DisplayLoadingScreen "images\loadscrn_horse.png"
+#00000            ELSE
+#00000              IF GameTypePrefEquals netking
+#00000                DisplayLoadingScreen "images\loadscrn_koth.png"
+#00000              ELSE
+#00000                IF GameTypePrefEquals netslap
+#00000                  DisplayLoadingScreen "images\loadscrn_slap.png"
+#00000                ELSE
+#00000                  IF GameTypePrefEquals netgraffiti
+#00000                    DisplayLoadingScreen "images\loadscrn_Graffiti.png"
+#00000                  ELSE
+#00000                    IF GameTypePrefEquals nettrickattack
+#00000                      DisplayLoadingScreen "images\loadscrn_trick_attack.png"
+#00000                    ELSE
+#00000                      IF GameTypePrefEquals ctf
+#00000                        DisplayLoadingScreen "images\loadscrn_ctf.png"
+#00000                      ELSE
+#00000                        IF GameTypePrefEquals ownthezone
+#00000                          DisplayLoadingScreen "images\loadscrn_zone.png"
+#00000                        ELSE
+#00000                          IF GameTypePrefEquals beachball
+#00000                            DisplayLoadingScreen "images\loadscrn_beach.png"
+#00000                          ELSE
+#00000                            IF InSplitScreenGame
+#00000                              DisplayLoadingScreen "images\loadscrn_2player.png"
+#00000                            ELSE
+#00000                              LevelLoadingScreens NULL
+#00000                            END IF
+#00000                          END IF
+#00000                        END IF
+#00000                      END IF
+#00000                    END IF
+#00000                  END IF
+#00000                END IF
+#00000              END IF
+#00000            END IF
+#00000          ELSE
+#00000            LevelLoadingScreens NULL
+#00000          END IF
+#00000        END IF
+#00000      END IF
+#00000    END IF
+#00000  END FUNCTION
 
-#00124  FUNCTION LevelLoadingScreens
-#00126    IF GotParam Foundry
-#00127      DisplayLoadingScreen "images\loadscrn_foundry.png"
-#00129    END IF
-#00130    IF GotParam Canada
-#00131      DisplayLoadingScreen "images\loadscrn_can.png"
-#00132    END IF
-#00133    IF GotParam Suburbia
-#00134      DisplayLoadingScreen "images\loadscrn_sub.png"
-#00135    END IF
-#00136    IF GotParam SI
-#00137      IF IsCareerMode
-#00138        DisplayLoadingScreen "images\loadscrn_si_comp.png"
-#00139      ELSE
-#00140        DisplayLoadingScreen "images\loadscrn_si.png"
-#00141      END IF
-#00142    END IF
-#00143    IF GotParam Airport
-#00144      DisplayLoadingScreen "images\loadscrn_ap.png"
-#00145    END IF
-#00146    IF GotParam Rio
-#00147      IF IsCareerMode
-#00148        DisplayLoadingScreen "images\loadscrn_rio_comp.png"
-#00149      ELSE
-#00150        DisplayLoadingScreen "images\loadscrn_rio.png"
-#00151      END IF
-#00152    END IF
-#00153    IF GotParam LA
-#00154      DisplayLoadingScreen "images\loadscrn_la.png"
-#00155    END IF
-#00156    IF GotParam Tokyo
-#00157      IF IsCareerMode
-#00158        DisplayLoadingScreen "images\loadscrn_tok_comp.png"
-#00159      ELSE
-#00160        DisplayLoadingScreen "images\loadscrn_tok.png"
-#00161      END IF
-#00162    END IF
-#00163    IF GotParam Ship
-#00164      DisplayLoadingScreen "images\loadscrn_ship.png"
-#00165    END IF
-#00166    IF GotParam Oil
-#00167      DisplayLoadingScreen "images\loadscrn_generic.png"
-#00168    END IF
-#00169    IF GotParam Tutorials
-#00170      DisplayLoadingScreen "images\loadscrn_tutorials.png"
-#00171    END IF
-#00172    IF GotParam Warehouse
-#00173      DisplayLoadingScreen "images\loadscrn_warehouse.png"
-#00174    END IF
-#00175    IF GotParam Burnside
-#00176      DisplayLoadingScreen "images\loadscrn_burnside.png"
-#00177    END IF
-#00178    IF GotParam Roswell
-#00179      DisplayLoadingScreen "images\loadscrn_roswell.png"
-#00180    END IF
-#00181    IF GotParam Rooftops
-#00182      DisplayLoadingScreen "images\loadscrn_generic.png"
-#00183    END IF
-#00184    IF GotParam Generic
-#00185      DisplayLoadingScreen "images\loadscrn_generic.png"
-#00186    END IF
-#00187  END FUNCTION
+#00000  FUNCTION LevelLoadingScreens
+#00000    IF GotParam Foundry
+#00000      DisplayLoadingScreen "images\loadscrn_foundry.png"
+#00000    END IF
+#00000    IF GotParam Canada
+#00000      DisplayLoadingScreen "images\loadscrn_can.png"
+#00000    END IF
+#00000    IF GotParam Suburbia
+#00000      DisplayLoadingScreen "images\loadscrn_sub.png"
+#00000    END IF
+#00000    IF GotParam SI
+#00000      IF IsCareerMode
+#00000        DisplayLoadingScreen "images\loadscrn_si_comp.png"
+#00000      ELSE
+#00000        DisplayLoadingScreen "images\loadscrn_si.png"
+#00000      END IF
+#00000    END IF
+#00000    IF GotParam Airport
+#00000      DisplayLoadingScreen "images\loadscrn_ap.png"
+#00000    END IF
+#00000    IF GotParam Rio
+#00000      IF IsCareerMode
+#00000        DisplayLoadingScreen "images\loadscrn_rio_comp.png"
+#00000      ELSE
+#00000        DisplayLoadingScreen "images\loadscrn_rio.png"
+#00000      END IF
+#00000    END IF
+#00000    IF GotParam LA
+#00000      DisplayLoadingScreen "images\loadscrn_la.png"
+#00000    END IF
+#00000    IF GotParam Tokyo
+#00000      IF IsCareerMode
+#00000        DisplayLoadingScreen "images\loadscrn_tok_comp.png"
+#00000      ELSE
+#00000        DisplayLoadingScreen "images\loadscrn_tok.png"
+#00000      END IF
+#00000    END IF
+#00000    IF GotParam Ship
+#00000      DisplayLoadingScreen "images\loadscrn_ship.png"
+#00000    END IF
+#00000    IF GotParam Oil
+#00000      DisplayLoadingScreen "images\loadscrn_generic.png"
+#00000    END IF
+#00000    IF GotParam Tutorials
+#00000      DisplayLoadingScreen "images\loadscrn_tutorials.png"
+#00000    END IF
+#00000    IF GotParam Warehouse
+#00000      DisplayLoadingScreen "images\loadscrn_warehouse.png"
+#00000    END IF
+#00000    IF GotParam Burnside
+#00000      DisplayLoadingScreen "images\loadscrn_burnside.png"
+#00000    END IF
+#00000    IF GotParam Roswell
+#00000      DisplayLoadingScreen "images\loadscrn_roswell.png"
+#00000    END IF
+#00000    IF GotParam Rooftops
+#00000      DisplayLoadingScreen "images\loadscrn_generic.png"
+#00000    END IF
+#00000    IF GotParam Generic
+#00000      DisplayLoadingScreen "images\loadscrn_generic.png"
+#00000    END IF
+#00000  END FUNCTION
 
-#00188  FUNCTION PostLevelLoad
-#00190    SetArenaSize
-#00192  END FUNCTION
+#00000  FUNCTION PostLevelLoad
+#00000    SetArenaSize
+#00000  END FUNCTION
 
-#00193  FUNCTION script_assert NULL
-#00195    printf "SCRIPT ASSERT!"
-#00196    printf NULL
-#00197    LOOP
-#00198      wait 1 gameframe
-#00199    END LOOP
-#00200  END FUNCTION
+#00000  FUNCTION script_assert NULL
+#00000    printf "SCRIPT ASSERT!"
+#00000    printf NULL
+#00000    LOOP
+#00000      wait 1 gameframe
+#00000    END LOOP
+#00000  END FUNCTION
 
-#00201  FUNCTION request_level
-#00203    printf "Running script: request_level"
-#00204    IF GotParam level
-#00205      RequestLevel GLOBAL.level
+#00000  FUNCTION request_level
+#00000    printf "Running script: request_level"
+#00000    IF GotParam level
+#00000      RequestLevel GLOBAL.level
 
-#00206    ELSE
-#00208      script_assert "request_level needs a level param"
-#00209    END IF
-#00210  END FUNCTION
+#00000    ELSE
+#00000      script_assert "request_level needs a level param"
+#00000    END IF
+#00000  END FUNCTION
 
-#00211  FUNCTION LoadLevel
-#00213    printf "Running script: LoadLevel"
-#00214    MemPushContext 0
-#00215    PreLevelLoad
-#00217    LaunchLevel NULL
-#00218    PostLevelLoad
-#00219    MemPopContext
-#00221  END FUNCTION
+#00000  FUNCTION LoadLevel
+#00000    printf "Running script: LoadLevel"
+#00000    MemPushContext 0
+#00000    PreLevelLoad
+#00000    LaunchLevel NULL
+#00000    PostLevelLoad
+#00000    MemPopContext
+#00000  END FUNCTION
 
-#00222  FUNCTION FireUpGame
-#00224    ToggleSkater on
-#00225    SetGameState on
-#00226    LaunchMenuScreen screen = game_menu
+#00000  FUNCTION FireUpGame
+#00000    ToggleSkater on
+#00000    SetGameState on
+#00000    LaunchMenuScreen screen = game_menu
 
-#00227  END FUNCTION
+#00000  END FUNCTION
 
-#00228  LevelNum_Skateshop = 0
+#00000  LevelNum_Skateshop = 0
 
-#00230  LevelNum_Foundry = 1
+#00000  LevelNum_Foundry = 1
 
-#00231  LevelNum_Canada = 2
+#00000  LevelNum_Canada = 2
 
-#00232  LevelNum_Rio = 3
+#00000  LevelNum_Rio = 3
 
-#00233  LevelNum_Suburbia = 4
+#00000  LevelNum_Suburbia = 4
 
-#00234  LevelNum_Airport = 5
+#00000  LevelNum_Airport = 5
 
-#00235  LevelNum_SkaterIsland = 6
+#00000  LevelNum_SkaterIsland = 6
 
-#00236  LevelNum_LA = 7
+#00000  LevelNum_LA = 7
 
-#00237  LevelNum_Tokyo = 8
+#00000  LevelNum_Tokyo = 8
 
-#00238  LevelNum_Ship = 9
+#00000  LevelNum_Ship = 9
 
-#00239  LevelNum_Oil = 10
+#00000  LevelNum_Oil = 10
 
-#00240  LevelNum_Tutorials = 11
+#00000  LevelNum_Tutorials = 11
 
-#00241  LevelNum_Warehouse = 12
+#00000  LevelNum_Warehouse = 12
 
-#00242  LevelNum_Burnside = 13
+#00000  LevelNum_Burnside = 13
 
-#00243  LevelNum_Roswell = 14
+#00000  LevelNum_Roswell = 14
 
-#00244  LevelNum_Rooftops = 15
+#00000  LevelNum_Rooftops = 15
 
-#00245  FUNCTION DistinguishLevels
-#00248    SetCompetition LevelNum_Rio
-#00249    SetCompetition LevelNum_Tokyo
-#00250    SetCompetition LevelNum_SkaterIsland
-#00251  END FUNCTION
+#00000  FUNCTION DistinguishLevels
+#00000    SetCompetition LevelNum_Rio
+#00000    SetCompetition LevelNum_Tokyo
+#00000    SetCompetition LevelNum_SkaterIsland
+#00000  END FUNCTION
 
-#00252  FUNCTION Load_Ap
-#00264    AddMusicTrack "music\ap_amb"
-#00265    DisplayProperLoadingScreen Airport
-#00266    CareerStartLevel level = LevelNum_Airport
+#00000  FUNCTION Load_Ap
+#00000    AddMusicTrack "music\ap_amb"
+#00000    DisplayProperLoadingScreen Airport
+#00000    CareerStartLevel level = LevelNum_Airport
 
-#00267    SetUpAirportLights
-#00268    IF InMultiPlayerGame
-#00270      loadlevelgeometry level = "Levels\ap\ap.bsp"
+#00000    SetUpAirportLights
+#00000    IF InMultiPlayerGame
+#00000      loadlevelgeometry level = "Levels\ap\ap.bsp"
             Sky = ""
             Pre_set = "Ap"
 
-#00271      SetBackgroundColor STRUCT{
+#00000      SetBackgroundColor STRUCT{
               r = 151
               g = 180
               b = 214
               alpha = 0
               }
 
-#00272    ELSE
-#00273      loadlevelgeometry level = "Levels\ap\ap.bsp"
+#00000    ELSE
+#00000      loadlevelgeometry level = "Levels\ap\ap.bsp"
             Sky = "Levels\Ap_Sky\Ap_Sky.bsp"
             Pre_set = "Ap"
 
-#00274    END IF
-#00275    IF ClipPlaneEnabled
-#00277      SetupForClipPlane
-#00278    ELSE
-#00279      SetBackgroundColor STRUCT{
+#00000    END IF
+#00000    IF ClipPlaneEnabled
+#00000      SetupForClipPlane
+#00000    ELSE
+#00000      SetBackgroundColor STRUCT{
               r = 151
               g = 180
               b = 214
               alpha = 0
               }
 
-#00280      SetClippingDistances near = 12
+#00000      SetClippingDistances near = 12
             far = 92000
 
-#00281    END IF
-#00282    LoadNodeArray "levels\ap\ap.qb"
-#00284    LoadTerrain
-#00285    SetRenderModeVU
-#00286    SetBSPAmbientColor STRUCT{
+#00000    END IF
+#00000    LoadNodeArray "levels\ap\ap.qb"
+#00000    LoadTerrain
+#00000    SetRenderModeVU
+#00000    SetBSPAmbientColor STRUCT{
             r = 0
             g = 0
             b = 0
             alpha = 0
             }
 
-#00287    Ap_Startup
-#00288    UnloadPreFile "Ap.pre" dont_assert
-#00289  END FUNCTION
+#00000    Ap_Startup
+#00000    UnloadPreFile "Ap.pre" dont_assert
+#00000  END FUNCTION
 
-#00290  FUNCTION Load_Can
-#00295    AddMusicTrack "music\can_amb"
-#00296    DisplayProperLoadingScreen Canada
-#00297    CareerStartLevel level = LevelNum_Canada
+#00000  FUNCTION Load_Can
+#00000    AddMusicTrack "music\can_amb"
+#00000    DisplayProperLoadingScreen Canada
+#00000    CareerStartLevel level = LevelNum_Canada
 
-#00298    SetUpCanadaLights
-#00299    IF InMultiPlayerGame
-#00301      loadlevelgeometry level = "Levels\can\can.bsp"
+#00000    SetUpCanadaLights
+#00000    IF InMultiPlayerGame
+#00000      loadlevelgeometry level = "Levels\can\can.bsp"
             Sky = ""
             Pre_set = "Can"
 
-#00302    ELSE
-#00303      loadlevelgeometry level = "Levels\can\can.bsp"
+#00000    ELSE
+#00000      loadlevelgeometry level = "Levels\can\can.bsp"
             Sky = "Levels\Can_Sky\Can_Sky.bsp"
             Pre_set = "Can"
 
-#00304    END IF
-#00305    LoadNodeArray "levels\Can\Can.qb"
-#00306    LoadTerrain
-#00307    SetRenderModeVU
-#00308    SetBSPAmbientColor STRUCT{
+#00000    END IF
+#00000    LoadNodeArray "levels\Can\Can.qb"
+#00000    LoadTerrain
+#00000    SetRenderModeVU
+#00000    SetBSPAmbientColor STRUCT{
             r = 0
             g = 0
             b = 0
             alpha = 0
             }
 
-#00309    SetMovementVelocity 1500
-#00310    SetRotateVelocity 120
-#00311    IF ClipPlaneEnabled
-#00313      SetupForClipPlane
-#00314    ELSE
-#00315      EnableFog
-#00316      SetBackgroundColor STRUCT{
+#00000    SetMovementVelocity 1500
+#00000    SetRotateVelocity 120
+#00000    IF ClipPlaneEnabled
+#00000      SetupForClipPlane
+#00000    ELSE
+#00000      EnableFog
+#00000      SetBackgroundColor STRUCT{
               r = 167
               g = 175
               b = 197
               alpha = 0
               }
 
-#00317      SetFogColor r = 155
+#00000      SetFogColor r = 155
             g = 160
             b = 185
 
-#00318      SetFogDistance distance = 3000
+#00000      SetFogDistance distance = 3000
 
-#00319      SetClippingDistances near = 12
+#00000      SetClippingDistances near = 12
             far = 16000
 
-#00320    END IF
-#00321    Can_Startup
-#00323    UnloadPreFile "Can.pre" dont_assert
-#00324  END FUNCTION
+#00000    END IF
+#00000    Can_Startup
+#00000    UnloadPreFile "Can.pre" dont_assert
+#00000  END FUNCTION
 
-#00325  FUNCTION Load_Foun
-#00330    AddMusicTrack "music\foun_amb"
-#00331    DisplayProperLoadingScreen Foundry
-#00332    CareerStartLevel level = LevelNum_Foundry
+#00000  FUNCTION Load_Foun
+#00000    AddMusicTrack "music\foun_amb"
+#00000    DisplayProperLoadingScreen Foundry
+#00000    CareerStartLevel level = LevelNum_Foundry
 
-#00333    SetUpFoundryLights
-#00334    loadlevelgeometry level = "Levels\Foun\Foun.bsp"
+#00000    SetUpFoundryLights
+#00000    loadlevelgeometry level = "Levels\Foun\Foun.bsp"
           Sky = ""
           Pre_set = "Foun"
 
-#00336    LoadNodeArray "levels\Foun\Foun.qb"
-#00337    LoadTerrain
-#00338    SetRenderModeVU
-#00339    IF ClipPlaneEnabled
-#00340      SetupForClipPlane
-#00341    ELSE
-#00342      SetBackgroundColor STRUCT{
+#00000    LoadNodeArray "levels\Foun\Foun.qb"
+#00000    LoadTerrain
+#00000    SetRenderModeVU
+#00000    IF ClipPlaneEnabled
+#00000      SetupForClipPlane
+#00000    ELSE
+#00000      SetBackgroundColor STRUCT{
               r = 0
               g = 0
               b = 0
               alpha = 0
               }
 
-#00343      SetClippingDistances near = 12
+#00000      SetClippingDistances near = 12
             far = 20000
 
-#00344    END IF
-#00345    SetBSPAmbientColor STRUCT{
+#00000    END IF
+#00000    SetBSPAmbientColor STRUCT{
             r = 0
             g = 0
             b = 0
             alpha = 0
             }
 
-#00346    Foun_Startup
-#00347    UnloadPreFile "Foun.pre" dont_assert
-#00350  END FUNCTION
+#00000    Foun_Startup
+#00000    UnloadPreFile "Foun.pre" dont_assert
+#00000  END FUNCTION
 
-#00351  FUNCTION Load_La
-#00356    AddMusicTrack "music\la_amb"
-#00357    DisplayProperLoadingScreen LA
-#00358    CareerStartLevel level = LevelNum_LA
+#00000  FUNCTION Load_La
+#00000    AddMusicTrack "music\la_amb"
+#00000    DisplayProperLoadingScreen LA
+#00000    CareerStartLevel level = LevelNum_LA
 
-#00359    SetUpLosAngelesLights
-#00360    IF InMultiPlayerGame
-#00362      loadlevelgeometry level = "Levels\la\la.bsp"
+#00000    SetUpLosAngelesLights
+#00000    IF InMultiPlayerGame
+#00000      loadlevelgeometry level = "Levels\la\la.bsp"
             Sky = ""
             Pre_set = "La"
 
-#00363      IF ClipPlaneEnabled
-#00364        SetupForClipPlane
-#00365      ELSE
-#00366        SetBackgroundColor STRUCT{
+#00000      IF ClipPlaneEnabled
+#00000        SetupForClipPlane
+#00000      ELSE
+#00000        SetBackgroundColor STRUCT{
                 r = 158
                 g = 202
                 b = 220
                 alpha = 0
                 }
 
-#00367        SetClippingDistances near = 12
+#00000        SetClippingDistances near = 12
               far = 14000
 
-#00368      END IF
-#00369    ELSE
-#00371      loadlevelgeometry level = "Levels\la\la.bsp"
+#00000      END IF
+#00000    ELSE
+#00000      loadlevelgeometry level = "Levels\la\la.bsp"
             Sky = "Levels\La_Sky\La_Sky.bsp"
             Pre_set = "La"
 
-#00372      IF ClipPlaneEnabled
-#00373        SetupForClipPlane
-#00374      ELSE
-#00375        SetBackgroundColor STRUCT{
+#00000      IF ClipPlaneEnabled
+#00000        SetupForClipPlane
+#00000      ELSE
+#00000        SetBackgroundColor STRUCT{
                 r = 0
                 g = 0
                 b = 0
                 alpha = 0
                 }
 
-#00376        SetClippingDistances near = 12
+#00000        SetClippingDistances near = 12
               far = 14000
 
-#00377      END IF
-#00378    END IF
-#00379    LoadNodeArray "levels\la\la.qb"
-#00380    LoadTerrain
-#00381    SetRenderModeVU
-#00382    SetBSPAmbientColor STRUCT{
+#00000      END IF
+#00000    END IF
+#00000    LoadNodeArray "levels\la\la.qb"
+#00000    LoadTerrain
+#00000    SetRenderModeVU
+#00000    SetBSPAmbientColor STRUCT{
             r = 0
             g = 0
             b = 0
             alpha = 0
             }
 
-#00383    La_Startup
-#00386    UnloadPreFile "La.pre" dont_assert
-#00387  END FUNCTION
+#00000    La_Startup
+#00000    UnloadPreFile "La.pre" dont_assert
+#00000  END FUNCTION
 
-#00389  FUNCTION Load_Rio
-#00394    AddMusicTrack "music\rio_amb"
-#00395    DisplayProperLoadingScreen Rio
-#00396    CareerStartLevel level = LevelNum_Rio
+#00000  FUNCTION Load_Rio
+#00000    AddMusicTrack "music\rio_amb"
+#00000    DisplayProperLoadingScreen Rio
+#00000    CareerStartLevel level = LevelNum_Rio
           competition
-#00397    SetUpRioDeJaneiroLights
-#00398    IF InMultiPlayerGame
-#00400      loadlevelgeometry level = "Levels\Rio\Rio.bsp"
+#00000    SetUpRioDeJaneiroLights
+#00000    IF InMultiPlayerGame
+#00000      loadlevelgeometry level = "Levels\Rio\Rio.bsp"
             Sky = ""
             Pre_set = "Rio"
 
-#00401      IF ClipPlaneEnabled
-#00402        SetupForClipPlane
-#00403      ELSE
-#00404        SetBackgroundColor STRUCT{
+#00000      IF ClipPlaneEnabled
+#00000        SetupForClipPlane
+#00000      ELSE
+#00000        SetBackgroundColor STRUCT{
                 r = 145
                 g = 201
                 b = 242
                 alpha = 0
                 }
 
-#00405        SetClippingDistances near = 12
+#00000        SetClippingDistances near = 12
               far = 30000
 
-#00406      END IF
-#00407    ELSE
-#00408      loadlevelgeometry level = "Levels\Rio\Rio.bsp"
+#00000      END IF
+#00000    ELSE
+#00000      loadlevelgeometry level = "Levels\Rio\Rio.bsp"
             Sky = "Levels\Rio_Sky\Rio_Sky.bsp"
             Pre_set = "Rio"
 
-#00409      IF ClipPlaneEnabled
-#00410        SetupForClipPlane
-#00411      ELSE
-#00412        SetBackgroundColor STRUCT{
+#00000      IF ClipPlaneEnabled
+#00000        SetupForClipPlane
+#00000      ELSE
+#00000        SetBackgroundColor STRUCT{
                 r = 100
                 g = 110
                 b = 200
                 alpha = 0
                 }
 
-#00413        SetClippingDistances near = 12
+#00000        SetClippingDistances near = 12
               far = 30000
 
-#00414      END IF
-#00415    END IF
-#00416    LoadNodeArray "levels\Rio\Rio.qb"
-#00417    LoadTerrain
-#00418    SetRenderModeVU
-#00419    SetBSPAmbientColor STRUCT{
+#00000      END IF
+#00000    END IF
+#00000    LoadNodeArray "levels\Rio\Rio.qb"
+#00000    LoadTerrain
+#00000    SetRenderModeVU
+#00000    SetBSPAmbientColor STRUCT{
             r = 0
             g = 0
             b = 0
             alpha = 0
             }
 
-#00421    SetMovementVelocity 2000
-#00422    SetRotateVelocity 120
-#00423    Rio_Startup
-#00424    UnloadPreFile "Rio.pre" dont_assert
-#00427  END FUNCTION
+#00000    SetMovementVelocity 2000
+#00000    SetRotateVelocity 120
+#00000    Rio_Startup
+#00000    UnloadPreFile "Rio.pre" dont_assert
+#00000  END FUNCTION
 
-#00428  FUNCTION Load_Shp
-#00433    AddMusicTrack "music\ship_amb"
-#00434    DisplayProperLoadingScreen Ship
-#00435    CareerStartLevel level = LevelNum_Ship
+#00000  FUNCTION Load_Shp
+#00000    AddMusicTrack "music\ship_amb"
+#00000    DisplayProperLoadingScreen Ship
+#00000    CareerStartLevel level = LevelNum_Ship
 
-#00436    SetUpShipLights
-#00437    IF InMultiPlayerGame
-#00439      loadlevelgeometry level = "Levels\shp\shp.bsp"
+#00000    SetUpShipLights
+#00000    IF InMultiPlayerGame
+#00000      loadlevelgeometry level = "Levels\shp\shp.bsp"
             Sky = ""
             Pre_set = "Shp"
 
-#00440      IF ClipPlaneEnabled
-#00441        SetupForClipPlane
-#00442      ELSE
-#00443        SetBackgroundColor STRUCT{
+#00000      IF ClipPlaneEnabled
+#00000        SetupForClipPlane
+#00000      ELSE
+#00000        SetBackgroundColor STRUCT{
                 r = 143
                 g = 205
                 b = 233
                 alpha = 0
                 }
 
-#00444        SetClippingDistances near = 12
+#00000        SetClippingDistances near = 12
               far = 32000
 
-#00445      END IF
-#00446    ELSE
-#00448      loadlevelgeometry level = "Levels\shp\shp.bsp"
+#00000      END IF
+#00000    ELSE
+#00000      loadlevelgeometry level = "Levels\shp\shp.bsp"
             Sky = "Levels\Shp_Sky\Shp_Sky.bsp"
             Pre_set = "Shp"
 
-#00449      IF ClipPlaneEnabled
-#00450        SetupForClipPlane
-#00451      ELSE
-#00452        SetBackgroundColor STRUCT{
+#00000      IF ClipPlaneEnabled
+#00000        SetupForClipPlane
+#00000      ELSE
+#00000        SetBackgroundColor STRUCT{
                 r = 0
                 g = 100
                 b = 255
                 alpha = 0
                 }
 
-#00453        SetClippingDistances near = 12
+#00000        SetClippingDistances near = 12
               far = 32000
 
-#00454      END IF
-#00455    END IF
-#00456    LoadNodeArray "levels\shp\shp.qb"
-#00457    LoadTerrain
-#00458    SetRenderModeVU
-#00459    SetBSPAmbientColor STRUCT{
+#00000      END IF
+#00000    END IF
+#00000    LoadNodeArray "levels\shp\shp.qb"
+#00000    LoadTerrain
+#00000    SetRenderModeVU
+#00000    SetBSPAmbientColor STRUCT{
             r = 0
             g = 0
             b = 0
             alpha = 0
             }
 
-#00461    SetMovementVelocity 1500
-#00462    SetRotateVelocity 120
-#00463    SHP_Startup
-#00466    UnloadPreFile "Shp.pre" dont_assert
-#00467  END FUNCTION
+#00000    SetMovementVelocity 1500
+#00000    SetRotateVelocity 120
+#00000    SHP_Startup
+#00000    UnloadPreFile "Shp.pre" dont_assert
+#00000  END FUNCTION
 
-#00468  FUNCTION Load_Si
-#00473    AddMusicTrack "music\si_amb"
-#00474    DisplayProperLoadingScreen SI
-#00475    CareerStartLevel level = LevelNum_SkaterIsland
+#00000  FUNCTION Load_Si
+#00000    AddMusicTrack "music\si_amb"
+#00000    DisplayProperLoadingScreen SI
+#00000    CareerStartLevel level = LevelNum_SkaterIsland
           competition
-#00476    SetUpSkatersIslandLights
-#00477    IF InMultiPlayerGame
-#00479      loadlevelgeometry level = "Levels\si\si.bsp"
+#00000    SetUpSkatersIslandLights
+#00000    IF InMultiPlayerGame
+#00000      loadlevelgeometry level = "Levels\si\si.bsp"
             Sky = ""
             Pre_set = "SI"
 
-#00480      IF ClipPlaneEnabled
-#00481        SetupForClipPlane
-#00482      ELSE
-#00483        SetBackgroundColor STRUCT{
+#00000      IF ClipPlaneEnabled
+#00000        SetupForClipPlane
+#00000      ELSE
+#00000        SetBackgroundColor STRUCT{
                 r = 158
                 g = 211
                 b = 255
                 alpha = 0
                 }
 
-#00484        SetClippingDistances near = 12
+#00000        SetClippingDistances near = 12
               far = 12000
 
-#00485      END IF
-#00486    ELSE
-#00487      loadlevelgeometry level = "Levels\si\si.bsp"
+#00000      END IF
+#00000    ELSE
+#00000      loadlevelgeometry level = "Levels\si\si.bsp"
             Sky = "Levels\SI_Sky\SI_Sky.bsp"
             Pre_set = "SI"
 
-#00488      IF ClipPlaneEnabled
-#00489        SetupForClipPlane
-#00490      ELSE
-#00491        SetBackgroundColor STRUCT{
+#00000      IF ClipPlaneEnabled
+#00000        SetupForClipPlane
+#00000      ELSE
+#00000        SetBackgroundColor STRUCT{
                 r = 55
                 g = 135
                 b = 200
                 alpha = 0
                 }
 
-#00492        SetClippingDistances near = 12
+#00000        SetClippingDistances near = 12
               far = 12000
 
-#00493      END IF
-#00494    END IF
-#00495    LoadNodeArray "Levels\Si\Si.qb"
-#00496    LoadTerrain
-#00497    SetRenderModeVU
-#00498    SetBSPAmbientColor STRUCT{
+#00000      END IF
+#00000    END IF
+#00000    LoadNodeArray "Levels\Si\Si.qb"
+#00000    LoadTerrain
+#00000    SetRenderModeVU
+#00000    SetBSPAmbientColor STRUCT{
             r = 0
             g = 0
             b = 0
             alpha = 0
             }
 
-#00500    Si_Startup
-#00503    UnloadPreFile "Si.pre" dont_assert
-#00504  END FUNCTION
+#00000    Si_Startup
+#00000    UnloadPreFile "Si.pre" dont_assert
+#00000  END FUNCTION
 
-#00505  FUNCTION Load_Sub
-#00510    AddMusicTrack "music\sub_amb"
-#00511    DisplayProperLoadingScreen Suburbia
-#00512    CareerStartLevel level = LevelNum_Suburbia
+#00000  FUNCTION Load_Sub
+#00000    AddMusicTrack "music\sub_amb"
+#00000    DisplayProperLoadingScreen Suburbia
+#00000    CareerStartLevel level = LevelNum_Suburbia
 
-#00513    SetUpSuburbiaLights
-#00514    IF InMultiPlayerGame
-#00516      loadlevelgeometry level = "Levels\sub\sub.bsp"
+#00000    SetUpSuburbiaLights
+#00000    IF InMultiPlayerGame
+#00000      loadlevelgeometry level = "Levels\sub\sub.bsp"
             Sky = ""
             Pre_set = "Sub"
 
-#00517      IF ClipPlaneEnabled
-#00518        SetupForClipPlane
-#00519      ELSE
-#00520        SetBackgroundColor STRUCT{
+#00000      IF ClipPlaneEnabled
+#00000        SetupForClipPlane
+#00000      ELSE
+#00000        SetBackgroundColor STRUCT{
                 r = 165
                 g = 180
                 b = 202
                 alpha = 0
                 }
 
-#00521        SetClippingDistances near = 12
+#00000        SetClippingDistances near = 12
               far = 13500
 
-#00522      END IF
-#00523    ELSE
-#00524      loadlevelgeometry level = "Levels\sub\sub.bsp"
+#00000      END IF
+#00000    ELSE
+#00000      loadlevelgeometry level = "Levels\sub\sub.bsp"
             Sky = "Levels\Sub_Sky\Sub_Sky.bsp"
             Pre_set = "Sub"
 
-#00525      IF ClipPlaneEnabled
-#00526        SetupForClipPlane
-#00527      ELSE
-#00528        SetBackgroundColor STRUCT{
+#00000      IF ClipPlaneEnabled
+#00000        SetupForClipPlane
+#00000      ELSE
+#00000        SetBackgroundColor STRUCT{
                 r = 80
                 g = 80
                 b = 80
                 alpha = 0
                 }
 
-#00529        SetClippingDistances near = 12
+#00000        SetClippingDistances near = 12
               far = 13500
 
-#00530      END IF
-#00531    END IF
-#00532    LoadNodeArray "levels\sub\sub.qb"
-#00533    LoadTerrain
-#00534    SetRenderModeVU
-#00535    SetBSPAmbientColor STRUCT{
+#00000      END IF
+#00000    END IF
+#00000    LoadNodeArray "levels\sub\sub.qb"
+#00000    LoadTerrain
+#00000    SetRenderModeVU
+#00000    SetBSPAmbientColor STRUCT{
             r = 0
             g = 0
             b = 0
             alpha = 0
             }
 
-#00536    Sub_Startup
-#00537    UnloadPreFile "Sub.pre" dont_assert
-#00538  END FUNCTION
+#00000    Sub_Startup
+#00000    UnloadPreFile "Sub.pre" dont_assert
+#00000  END FUNCTION
 
-#00539  FUNCTION Load_Tok
-#00544    AddMusicTrack "music\tok_amb"
-#00545    DisplayProperLoadingScreen Tokyo
-#00546    CareerStartLevel level = LevelNum_Tokyo
+#00000  FUNCTION Load_Tok
+#00000    AddMusicTrack "music\tok_amb"
+#00000    DisplayProperLoadingScreen Tokyo
+#00000    CareerStartLevel level = LevelNum_Tokyo
           competition
-#00547    SetUpTokyoLights
-#00548    IF InNetGame
-#00550      loadlevelgeometry level = "Levels\tok\tok.bsp"
+#00000    SetUpTokyoLights
+#00000    IF InNetGame
+#00000      loadlevelgeometry level = "Levels\tok\tok.bsp"
             Sky = ""
             Pre_set = "Tok"
 
-#00551      IF ClipPlaneEnabled
-#00552        SetupForClipPlane
-#00553      ELSE
-#00554        SetBackgroundColor STRUCT{
+#00000      IF ClipPlaneEnabled
+#00000        SetupForClipPlane
+#00000      ELSE
+#00000        SetBackgroundColor STRUCT{
                 r = 16
                 g = 17
                 b = 26
                 alpha = 0
                 }
 
-#00555        SetClippingDistances near = 12
+#00000        SetClippingDistances near = 12
               far = 17000
 
-#00556        EnableFog
-#00557        SetFogColor r = 0
+#00000        EnableFog
+#00000        SetFogColor r = 0
               g = 0
               b = 0
 
-#00558        SetFogDistance distance = 1000
+#00000        SetFogDistance distance = 1000
 
-#00559      END IF
-#00560    ELSE
-#00561      loadlevelgeometry level = "Levels\tok\tok.bsp"
+#00000      END IF
+#00000    ELSE
+#00000      loadlevelgeometry level = "Levels\tok\tok.bsp"
             Sky = "Levels\Tok_Sky\Tok_Sky.bsp"
             Pre_set = "Tok"
 
-#00562      IF ClipPlaneEnabled
-#00563        SetupForClipPlane
-#00564      ELSE
-#00565        SetBackgroundColor STRUCT{
+#00000      IF ClipPlaneEnabled
+#00000        SetupForClipPlane
+#00000      ELSE
+#00000        SetBackgroundColor STRUCT{
                 r = 0
                 g = 0
                 b = 0
                 alpha = 0
                 }
 
-#00566        SetClippingDistances near = 12
+#00000        SetClippingDistances near = 12
               far = 17000
 
-#00567        EnableFog
-#00568        SetFogColor r = 0
+#00000        EnableFog
+#00000        SetFogColor r = 0
               g = 0
               b = 0
 
-#00569        SetFogDistance distance = 1000
+#00000        SetFogDistance distance = 1000
 
-#00570      END IF
-#00571    END IF
-#00572    LoadNodeArray "levels\tok\tok.qb"
-#00573    LoadTerrain
-#00574    SetRenderModeVU
-#00575    SetBSPAmbientColor STRUCT{
+#00000      END IF
+#00000    END IF
+#00000    LoadNodeArray "levels\tok\tok.qb"
+#00000    LoadTerrain
+#00000    SetRenderModeVU
+#00000    SetBSPAmbientColor STRUCT{
             r = 0
             g = 0
             b = 0
             alpha = 0
             }
 
-#00576    SetMovementVelocity 1000
-#00577    SetRotateVelocity 120
-#00578    Tok_Startup
-#00581    UnloadPreFile "Tok.pre" dont_assert
-#00583  END FUNCTION
+#00000    SetMovementVelocity 1000
+#00000    SetRotateVelocity 120
+#00000    Tok_Startup
+#00000    UnloadPreFile "Tok.pre" dont_assert
+#00000  END FUNCTION
 
-#00584  FUNCTION Load_Oil
-#00589    DisplayProperLoadingScreen Oil
-#00590    CareerStartLevel level = LevelNum_Oil
+#00000  FUNCTION Load_Oil
+#00000    DisplayProperLoadingScreen Oil
+#00000    CareerStartLevel level = LevelNum_Oil
 
-#00591    SetUpOilLights
-#00592    IF InMultiPlayerGame
-#00593      loadlevelgeometry level = "Levels\oil\oil.bsp"
+#00000    SetUpOilLights
+#00000    IF InMultiPlayerGame
+#00000      loadlevelgeometry level = "Levels\oil\oil.bsp"
             Sky = ""
             Pre_set = "Oil"
 
-#00594    ELSE
-#00595      loadlevelgeometry level = "Levels\oil\oil.bsp"
+#00000    ELSE
+#00000      loadlevelgeometry level = "Levels\oil\oil.bsp"
             Sky = "Levels\Oil_Sky\Oil_Sky.bsp"
             Pre_set = "Oil"
 
-#00596    END IF
-#00597    LoadNodeArray "levels\oil\oil.qb"
-#00598    SetRenderModeVU
-#00599    SetBackgroundColor STRUCT{
+#00000    END IF
+#00000    LoadNodeArray "levels\oil\oil.qb"
+#00000    SetRenderModeVU
+#00000    SetBackgroundColor STRUCT{
             r = 0
             g = 0
             b = 0
             alpha = 0
             }
 
-#00600    SetBSPAmbientColor STRUCT{
+#00000    SetBSPAmbientColor STRUCT{
             r = 0
             g = 0
             b = 0
             alpha = 0
             }
 
-#00601    SetClippingDistances near = 12
+#00000    SetClippingDistances near = 12
           far = 17000
 
-#00602    SetMovementVelocity 1000
-#00603    SetRotateVelocity 120
-#00604    Oil_Startup
-#00607    EnableFog
-#00608    SetFogColor r = 0
+#00000    SetMovementVelocity 1000
+#00000    SetRotateVelocity 120
+#00000    Oil_Startup
+#00000    EnableFog
+#00000    SetFogColor r = 0
           g = 0
           b = 0
 
-#00609    SetFogDistance distance = 1000
+#00000    SetFogDistance distance = 1000
 
-#00610    UnloadPreFile "Oil.pre" dont_assert
-#00611  END FUNCTION
+#00000    UnloadPreFile "Oil.pre" dont_assert
+#00000  END FUNCTION
 
-#00612  FUNCTION Load_Foo
-#00615    SetUpFoundryLights
-#00616    loadlevelgeometry level = "Levels\foo\foo.bsp"
+#00000  FUNCTION Load_Foo
+#00000    SetUpFoundryLights
+#00000    loadlevelgeometry level = "Levels\foo\foo.bsp"
           Sky = ""
           Pre_set = "Foo"
 
-#00617    LoadNodeArray "levels\foo\foo.qb"
-#00618    LoadTerrain
-#00619    SetRenderModeVU
-#00620    SetBackgroundColor STRUCT{
+#00000    LoadNodeArray "levels\foo\foo.qb"
+#00000    LoadTerrain
+#00000    SetRenderModeVU
+#00000    SetBackgroundColor STRUCT{
             r = 16
             g = 16
             b = 32
             alpha = 0
             }
 
-#00621    SetBSPAmbientColor STRUCT{
+#00000    SetBSPAmbientColor STRUCT{
             r = 0
             g = 0
             b = 0
             alpha = 0
             }
 
-#00622    SetClippingDistances near = 12
+#00000    SetClippingDistances near = 12
           far = 22000
 
-#00623    Foo_Startup
-#00626    UnloadPreFile "Foo.pre" dont_assert
-#00627  END FUNCTION
+#00000    Foo_Startup
+#00000    UnloadPreFile "Foo.pre" dont_assert
+#00000  END FUNCTION
 
-#00628  FUNCTION Load_Roof
-#00631    DisplayProperLoadingScreen Rooftops
-#00632    CareerStartLevel level = LevelNum_Rooftops
+#00000  FUNCTION Load_Roof
+#00000    DisplayProperLoadingScreen Rooftops
+#00000    CareerStartLevel level = LevelNum_Rooftops
 
-#00633    SetUpOilLights
-#00634    IF InMultiPlayerGame
-#00635      loadlevelgeometry level = "Levels\Roof\Roof.bsp"
+#00000    SetUpOilLights
+#00000    IF InMultiPlayerGame
+#00000      loadlevelgeometry level = "Levels\Roof\Roof.bsp"
             Sky = ""
             Pre_set = "Roof"
 
-#00636    ELSE
-#00637      loadlevelgeometry level = "Levels\Roof\Roof.bsp"
+#00000    ELSE
+#00000      loadlevelgeometry level = "Levels\Roof\Roof.bsp"
             Sky = "Levels\Roof_Sky\Roof_Sky.bsp"
             Pre_set = "Roof"
 
-#00638    END IF
-#00639    LoadNodeArray "levels\Roof\Roof.qb"
-#00640    LoadTerrain
-#00641    SetRenderModeVU
-#00642    SetBackgroundColor STRUCT{
+#00000    END IF
+#00000    LoadNodeArray "levels\Roof\Roof.qb"
+#00000    LoadTerrain
+#00000    SetRenderModeVU
+#00000    SetBackgroundColor STRUCT{
             r = 150
             g = 120
             b = 61
             alpha = 0
             }
 
-#00643    SetBSPAmbientColor STRUCT{
+#00000    SetBSPAmbientColor STRUCT{
             r = 0
             g = 0
             b = 0
             alpha = 0
             }
 
-#00644    SetClippingDistances near = 12
+#00000    SetClippingDistances near = 12
           far = 22000
 
-#00645    Roof_Startup
-#00648    UnloadPreFile "Roof.pre" dont_assert
-#00649  END FUNCTION
+#00000    Roof_Startup
+#00000    UnloadPreFile "Roof.pre" dont_assert
+#00000  END FUNCTION
 
-#00650  FUNCTION Load_Sk3Ed
-#00653  END FUNCTION
+#00000  FUNCTION Load_Sk3Ed
+#00000  END FUNCTION
 
-#00657  FUNCTION Load_Ware
-#00660    DisplayProperLoadingScreen Warehouse
-#00661    AddMusicTrack "music\ware_amb"
-#00662    CareerStartLevel level = LevelNum_Warehouse
+#00000  FUNCTION Load_Ware
+#00000    DisplayProperLoadingScreen Warehouse
+#00000    AddMusicTrack "music\ware_amb"
+#00000    CareerStartLevel level = LevelNum_Warehouse
 
-#00663    SetUpWareLights
-#00664    loadlevelgeometry level = "Levels\ware\ware.bsp"
+#00000    SetUpWareLights
+#00000    loadlevelgeometry level = "Levels\ware\ware.bsp"
           Sky = ""
           Pre_set = "Ware"
 
-#00666    LoadNodeArray "levels\ware\ware.qb"
-#00667    LoadTerrain
-#00668    Ware_Startup
-#00669    UnloadPreFile "Ware.pre" dont_assert
-#00670  END FUNCTION
+#00000    LoadNodeArray "levels\ware\ware.qb"
+#00000    LoadTerrain
+#00000    Ware_Startup
+#00000    UnloadPreFile "Ware.pre" dont_assert
+#00000  END FUNCTION
 
-#00671  FUNCTION Load_Burn
-#00674    DisplayProperLoadingScreen Burnside
-#00675    AddMusicTrack "music\burn_amb"
-#00676    CareerStartLevel level = LevelNum_Burnside
+#00000  FUNCTION Load_Burn
+#00000    DisplayProperLoadingScreen Burnside
+#00000    AddMusicTrack "music\burn_amb"
+#00000    CareerStartLevel level = LevelNum_Burnside
 
-#00677    SetUpBurnLights
-#00678    IF InMultiPlayerGame
-#00680      loadlevelgeometry level = "Levels\burn\burn.bsp"
+#00000    SetUpBurnLights
+#00000    IF InMultiPlayerGame
+#00000      loadlevelgeometry level = "Levels\burn\burn.bsp"
             Sky = ""
             Pre_set = "Burn"
 
-#00681      IF ClipPlaneEnabled
-#00682        SetupForClipPlane
-#00683      ELSE
-#00684        SetBackgroundColor STRUCT{
+#00000      IF ClipPlaneEnabled
+#00000        SetupForClipPlane
+#00000      ELSE
+#00000        SetBackgroundColor STRUCT{
                 r = 159
                 g = 183
                 b = 214
                 alpha = 0
                 }
 
-#00685        SetClippingDistances near = 12
+#00000        SetClippingDistances near = 12
               far = 20000
 
-#00686      END IF
-#00687    ELSE
-#00688      loadlevelgeometry level = "Levels\burn\burn.bsp"
+#00000      END IF
+#00000    ELSE
+#00000      loadlevelgeometry level = "Levels\burn\burn.bsp"
             Sky = "Levels\Burn_Sky\Burn_Sky.bsp"
             Pre_set = "Burn"
 
-#00689      IF ClipPlaneEnabled
-#00690        SetupForClipPlane
-#00691      ELSE
-#00692        SetBackgroundColor STRUCT{
+#00000      IF ClipPlaneEnabled
+#00000        SetupForClipPlane
+#00000      ELSE
+#00000        SetBackgroundColor STRUCT{
                 r = 128
                 g = 128
                 b = 128
                 alpha = 0
                 }
 
-#00693        SetClippingDistances near = 12
+#00000        SetClippingDistances near = 12
               far = 20000
 
-#00694      END IF
-#00695    END IF
-#00696    LoadNodeArray "levels\burn\burn.qb"
-#00697    SetBSPAmbientColor STRUCT{
+#00000      END IF
+#00000    END IF
+#00000    LoadNodeArray "levels\burn\burn.qb"
+#00000    SetBSPAmbientColor STRUCT{
             r = 84
             g = 84
             b = 84
             alpha = 0
             }
 
-#00699    LoadTerrain
-#00700    Burn_Startup
-#00701    UnloadPreFile "Burn.pre" dont_assert
-#00702  END FUNCTION
+#00000    LoadTerrain
+#00000    Burn_Startup
+#00000    UnloadPreFile "Burn.pre" dont_assert
+#00000  END FUNCTION
 
-#00703  FUNCTION Load_Ros
-#00706    DisplayProperLoadingScreen Roswell
-#00707    AddMusicTrack "music\ros_amb"
-#00708    CareerStartLevel level = LevelNum_Roswell
+#00000  FUNCTION Load_Ros
+#00000    DisplayProperLoadingScreen Roswell
+#00000    AddMusicTrack "music\ros_amb"
+#00000    CareerStartLevel level = LevelNum_Roswell
 
-#00709    SetUpRoswellLights
-#00710    IF InMultiPlayerGame
-#00712      loadlevelgeometry level = "Levels\ros\ros.bsp"
+#00000    SetUpRoswellLights
+#00000    IF InMultiPlayerGame
+#00000      loadlevelgeometry level = "Levels\ros\ros.bsp"
             Sky = ""
             Pre_set = "Ros"
 
-#00713      IF ClipPlaneEnabled
-#00714        SetupForClipPlane
-#00715      ELSE
-#00716        SetBackgroundColor STRUCT{
+#00000      IF ClipPlaneEnabled
+#00000        SetupForClipPlane
+#00000      ELSE
+#00000        SetBackgroundColor STRUCT{
                 r = 12
                 g = 8
                 b = 9
                 alpha = 0
                 }
 
-#00717        SetClippingDistances near = 12
+#00000        SetClippingDistances near = 12
               far = 9000
 
-#00718      END IF
-#00719    ELSE
-#00720      loadlevelgeometry level = "Levels\ros\ros.bsp"
+#00000      END IF
+#00000    ELSE
+#00000      loadlevelgeometry level = "Levels\ros\ros.bsp"
             Sky = "Levels\Ros_Sky\Ros_Sky.bsp"
             Pre_set = "Ros"
 
-#00721      IF ClipPlaneEnabled
-#00722        SetupForClipPlane
-#00723      ELSE
-#00724        SetBackgroundColor STRUCT{
+#00000      IF ClipPlaneEnabled
+#00000        SetupForClipPlane
+#00000      ELSE
+#00000        SetBackgroundColor STRUCT{
                 r = 0
                 g = 0
                 b = 0
                 alpha = 0
                 }
 
-#00725        SetClippingDistances near = 12
+#00000        SetClippingDistances near = 12
               far = 9000
 
-#00726      END IF
-#00727    END IF
-#00728    LoadNodeArray "levels\ros\ros.qb"
-#00729    SetBSPAmbientColor STRUCT{
+#00000      END IF
+#00000    END IF
+#00000    LoadNodeArray "levels\ros\ros.qb"
+#00000    SetBSPAmbientColor STRUCT{
             r = 84
             g = 84
             b = 84
             alpha = 0
             }
 
-#00732    LoadTerrain
-#00733    UnloadPreFile "Ros.pre" dont_assert
-#00735  END FUNCTION
+#00000    LoadTerrain
+#00000    UnloadPreFile "Ros.pre" dont_assert
+#00000  END FUNCTION
 
-#00736  FUNCTION Load_Tut
-#00739    DisplayProperLoadingScreen Tutorials
-#00740    CareerStartLevel level = LevelNum_Tutorials
+#00000  FUNCTION Load_Tut
+#00000    DisplayProperLoadingScreen Tutorials
+#00000    CareerStartLevel level = LevelNum_Tutorials
 
-#00741    SetUpLosAngelesLights
-#00742    loadlevelgeometry level = "Levels\tut\tut.bsp"
+#00000    SetUpLosAngelesLights
+#00000    loadlevelgeometry level = "Levels\tut\tut.bsp"
           Sky = "Levels\Sk3Ed_Bch_Sky\Sk3Ed_Bch_Sky.bsp"
           Pre_set = "Tut"
 
-#00744    LoadNodeArray "levels\tut\tut.qb"
-#00745    IF ClipPlaneEnabled
-#00746      SetupForClipPlane
-#00747    ELSE
-#00748      SetBackgroundColor STRUCT{
+#00000    LoadNodeArray "levels\tut\tut.qb"
+#00000    IF ClipPlaneEnabled
+#00000      SetupForClipPlane
+#00000    ELSE
+#00000      SetBackgroundColor STRUCT{
               r = 128
               g = 128
               b = 128
               alpha = 0
               }
 
-#00749      SetClippingDistances near = 12
+#00000      SetClippingDistances near = 12
             far = 20000
 
-#00750    END IF
-#00751    SetBSPAmbientColor STRUCT{
+#00000    END IF
+#00000    SetBSPAmbientColor STRUCT{
             r = 84
             g = 84
             b = 84
             alpha = 0
             }
 
-#00752    LoadTerrain
-#00754    Tut_Startup
-#00756    UnloadPreFile "Tut.pre" dont_assert
-#00757  END FUNCTION
+#00000    LoadTerrain
+#00000    Tut_Startup
+#00000    UnloadPreFile "Tut.pre" dont_assert
+#00000  END FUNCTION
 
-#00758  FUNCTION Load_Foo2
-#00761    SetUpWareLights
-#00762    loadlevelgeometry level = "Levels\foo2\foo2.bsp"
+#00000  FUNCTION Load_Foo2
+#00000    SetUpWareLights
+#00000    loadlevelgeometry level = "Levels\foo2\foo2.bsp"
           Sky = ""
 
-#00763    LoadNodeArray "levels\foo2\foo2.qb"
-#00764    LoadTerrain
-#00765    IF ClipPlaneEnabled
-#00766      SetupForClipPlane
-#00767    ELSE
-#00768      SetBackgroundColor STRUCT{
+#00000    LoadNodeArray "levels\foo2\foo2.qb"
+#00000    LoadTerrain
+#00000    IF ClipPlaneEnabled
+#00000      SetupForClipPlane
+#00000    ELSE
+#00000      SetBackgroundColor STRUCT{
               r = 0
               g = 0
               b = 0
               alpha = 0
               }
 
-#00769      SetClippingDistances near = 12
+#00000      SetClippingDistances near = 12
             far = 12000
 
-#00770    END IF
-#00771    SetBSPAmbientColor STRUCT{
+#00000    END IF
+#00000    SetBSPAmbientColor STRUCT{
             r = 84
             g = 84
             b = 84
             alpha = 0
             }
 
-#00772    SetDFFAmbientColor STRUCT{
+#00000    SetDFFAmbientColor STRUCT{
             r = 84
             g = 84
             b = 84
             alpha = 0
             }
 
-#00773  END FUNCTION
+#00000  END FUNCTION
 
-#00778  FUNCTION Load_Foo_Car
-#00780    loadlevelgeometry level = "Levels\foo_car\foo_car.bsp"
+#00000  FUNCTION Load_Foo_Car
+#00000    loadlevelgeometry level = "Levels\foo_car\foo_car.bsp"
           Sky = ""
 
-#00781    LoadNodeArray "levels\foo_car\foo_car.qb"
-#00782    SetBackgroundColor STRUCT{
+#00000    LoadNodeArray "levels\foo_car\foo_car.qb"
+#00000    SetBackgroundColor STRUCT{
             r = 120
             g = 120
             b = 120
             alpha = 0
             }
 
-#00783    SetBSPAmbientColor STRUCT{
+#00000    SetBSPAmbientColor STRUCT{
             r = 0
             g = 0
             b = 0
             alpha = 0
             }
 
-#00784    SetDFFAmbientColor STRUCT{
+#00000    SetDFFAmbientColor STRUCT{
             r = 120
             g = 120
             b = 120
             alpha = 0
             }
 
-#00785    SetClippingDistances near = 12
+#00000    SetClippingDistances near = 12
           far = 12000
 
-#00786  END FUNCTION
+#00000  END FUNCTION
 
-#00789  FUNCTION Load_Foo_CircCars
-#00791    SetUpWareLights
-#00792    loadlevelgeometry level = "Levels\foo_circcars\foo_circcars.bsp"
+#00000  FUNCTION Load_Foo_CircCars
+#00000    SetUpWareLights
+#00000    loadlevelgeometry level = "Levels\foo_circcars\foo_circcars.bsp"
           Sky = ""
 
-#00793    LoadNodeArray "levels\foo_circcars\foo_circcars.qb"
-#00794    LoadTerrain
-#00795    SetBackgroundColor STRUCT{
+#00000    LoadNodeArray "levels\foo_circcars\foo_circcars.qb"
+#00000    LoadTerrain
+#00000    SetBackgroundColor STRUCT{
             r = 0
             g = 0
             b = 0
             alpha = 0
             }
 
-#00796    SetBSPAmbientColor STRUCT{
+#00000    SetBSPAmbientColor STRUCT{
             r = 84
             g = 84
             b = 84
             alpha = 0
             }
 
-#00797    SetDFFAmbientColor STRUCT{
+#00000    SetDFFAmbientColor STRUCT{
             r = 84
             g = 84
             b = 84
             alpha = 0
             }
 
-#00798    SetClippingDistances near = 12
+#00000    SetClippingDistances near = 12
           far = 12000
 
-#00799    Foo_Startup
-#00802  END FUNCTION
+#00000    Foo_Startup
+#00000  END FUNCTION
 
-#00803  FUNCTION Load_Foo_CircCars2
-#00805    SetUpWareLights
-#00806    loadlevelgeometry level = "Levels\foo_circcars2\foo_circcars2.bsp"
+#00000  FUNCTION Load_Foo_CircCars2
+#00000    SetUpWareLights
+#00000    loadlevelgeometry level = "Levels\foo_circcars2\foo_circcars2.bsp"
           Sky = ""
 
-#00807    LoadNodeArray "levels\foo_circcars2\foo_circcars2.qb"
-#00808    LoadTerrain
-#00809    SetBackgroundColor STRUCT{
+#00000    LoadNodeArray "levels\foo_circcars2\foo_circcars2.qb"
+#00000    LoadTerrain
+#00000    SetBackgroundColor STRUCT{
             r = 0
             g = 0
             b = 0
             alpha = 0
             }
 
-#00810    SetBSPAmbientColor STRUCT{
+#00000    SetBSPAmbientColor STRUCT{
             r = 84
             g = 84
             b = 84
             alpha = 0
             }
 
-#00811    SetDFFAmbientColor STRUCT{
+#00000    SetDFFAmbientColor STRUCT{
             r = 84
             g = 84
             b = 84
             alpha = 0
             }
 
-#00812    SetClippingDistances near = 12
+#00000    SetClippingDistances near = 12
           far = 12000
 
-#00813    Foo_Startup
-#00816  END FUNCTION
+#00000    Foo_Startup
+#00000  END FUNCTION
 
-#00817  FUNCTION Load_SkateShop
-#00819    DisplayProperLoadingScreen SkateShop
-#00820    CareerStartLevel level = LevelNum_Skateshop
+#00000  FUNCTION Load_SkateShop
+#00000    DisplayProperLoadingScreen SkateShop
+#00000    CareerStartLevel level = LevelNum_Skateshop
 
-#00821    SetUpSkateShopLights
-#00822    loadlevelgeometry level = "Levels\skateshop\skateshop.bsp"
+#00000    SetUpSkateShopLights
+#00000    loadlevelgeometry level = "Levels\skateshop\skateshop.bsp"
           Sky = ""
           Pre_set = "SkateShop"
           KeepTexturesInMemory
-#00823    LoadNodeArray "levels\skateshop\skateshop.qb"
-#00824    LoadTerrain
-#00825    IF ClipPlaneEnabled
-#00826      SetupForClipPlane
-#00827    ELSE
-#00828      SetBackgroundColor STRUCT{
+#00000    LoadNodeArray "levels\skateshop\skateshop.qb"
+#00000    LoadTerrain
+#00000    IF ClipPlaneEnabled
+#00000      SetupForClipPlane
+#00000    ELSE
+#00000      SetBackgroundColor STRUCT{
               r = 0
               g = 0
               b = 32
               alpha = 0
               }
 
-#00829      SetClippingDistances near = 12
+#00000      SetClippingDistances near = 12
             far = 12000
 
-#00830    END IF
-#00831    SetBSPAmbientColor STRUCT{
+#00000    END IF
+#00000    SetBSPAmbientColor STRUCT{
             r = 0
             g = 0
             b = 0
             alpha = 0
             }
 
-#00832    SkateShop_Startup
-#00834    UnloadPreFile "SkateShop.pre" dont_assert
-#00835  END FUNCTION
+#00000    SkateShop_Startup
+#00000    UnloadPreFile "SkateShop.pre" dont_assert
+#00000  END FUNCTION
 
-#00836  master_level_list = ARRAY(
+#00000  master_level_list = ARRAY(
 
           STRUCT{
             level_name = "Foundry"
@@ -1386,8 +1386,8 @@
 
         )
 
-#01078  ui_colors =
-#01080
+#00000  ui_colors =
+#00000
         STRUCT{
           ui_white = ARRAY(
 
@@ -1459,14 +1459,14 @@
           )
           }
 
-#01100  indexed_ui_colors =
-#01102
+#00000  indexed_ui_colors =
+#00000
         ARRAY(
           ui_white ui_dark_white ui_blue ui_dark_blue ui_red ui_dark_red ui_green ui_dark_green ui_yellow ui_dark_yellow ui_cyan ui_dark_cyan ui_t50_dk_white ui_t50_dk_red ui_t50_dk_green ui_t50_dk_blue ui_invisible
         )
 
-#01122  invisible_colors =
-#01124
+#00000  invisible_colors =
+#00000
         STRUCT{
           normal = ui_invisible
           highlight = ui_invisible
@@ -1475,8 +1475,8 @@
           gray = ui_invisible
           }
 
-#01131  element_colors =
-#01133
+#00000  element_colors =
+#00000
         STRUCT{
           normal = ARRAY(
 
@@ -1496,8 +1496,8 @@
           )
           }
 
-#01139  black_colors =
-#01141
+#00000  black_colors =
+#00000
         STRUCT{
           normal = ARRAY(
 
@@ -1517,8 +1517,8 @@
           )
           }
 
-#01147  image_button_highlight_colors =
-#01149
+#00000  image_button_highlight_colors =
+#00000
         STRUCT{
           normal = ARRAY(
 
@@ -1542,8 +1542,8 @@
           )
           }
 
-#01156  on_off_colors =
-#01158
+#00000  on_off_colors =
+#00000
         STRUCT{
           normal = ARRAY(
 
@@ -1563,8 +1563,8 @@
           )
           }
 
-#01164  bright_colors =
-#01166
+#00000  bright_colors =
+#00000
         STRUCT{
           normal = ARRAY(
 
@@ -1584,8 +1584,8 @@
           )
           }
 
-#01172  gamespy_colors =
-#01174
+#00000  gamespy_colors =
+#00000
         STRUCT{
           normal = ARRAY(
 
@@ -1605,8 +1605,8 @@
           )
           }
 
-#01180  border_colors_1 =
-#01182
+#00000  border_colors_1 =
+#00000
         STRUCT{
           normal = ARRAY(
 
@@ -1630,8 +1630,8 @@
           )
           }
 
-#01189  img_fg_hilite_colors_1 =
-#01191
+#00000  img_fg_hilite_colors_1 =
+#00000
         STRUCT{
           normal = ARRAY(
 
@@ -1655,8 +1655,8 @@
           )
           }
 
-#01198  border_colors_2 =
-#01200
+#00000  border_colors_2 =
+#00000
         STRUCT{
           normal = ARRAY(
 
@@ -1680,8 +1680,8 @@
           )
           }
 
-#01207  colors_scroll_background =
-#01209
+#00000  colors_scroll_background =
+#00000
         STRUCT{
           normal = ARRAY(
 
@@ -1701,8 +1701,8 @@
           )
           }
 
-#01215  bg_window_foreground_colors =
-#01217
+#00000  bg_window_foreground_colors =
+#00000
         STRUCT{
           normal = ARRAY(
 
@@ -1722,8 +1722,8 @@
           )
           }
 
-#01223  client_area_colors =
-#01225
+#00000  client_area_colors =
+#00000
         STRUCT{
           normal = ARRAY(
 
@@ -1743,8 +1743,8 @@
           )
           }
 
-#01231  list_item_highlight_colors =
-#01233
+#00000  list_item_highlight_colors =
+#00000
         STRUCT{
           normal = ARRAY(
 
@@ -1768,8 +1768,8 @@
           )
           }
 
-#01240  button_bg_colors =
-#01242
+#00000  button_bg_colors =
+#00000
         STRUCT{
           normal = ARRAY(
 
@@ -1793,8 +1793,8 @@
           )
           }
 
-#01250  orange_colors =
-#01252
+#00000  orange_colors =
+#00000
         STRUCT{
           normal = ARRAY(
 
@@ -1818,8 +1818,8 @@
           )
           }
 
-#01259  image_button_orange_highlight_colors =
-#01261
+#00000  image_button_orange_highlight_colors =
+#00000
         STRUCT{
           normal = ARRAY(
 
@@ -1843,8 +1843,8 @@
           )
           }
 
-#01268  button_fg_colors =
-#01270
+#00000  button_fg_colors =
+#00000
         STRUCT{
           normal = ARRAY(
 
@@ -1864,8 +1864,8 @@
           )
           }
 
-#01276  playeritem_button_colors =
-#01278
+#00000  playeritem_button_colors =
+#00000
         STRUCT{
           normal = ARRAY(
 
@@ -1889,8 +1889,8 @@
           )
           }
 
-#01285  cap_icon_colors =
-#01287
+#00000  cap_icon_colors =
+#00000
         STRUCT{
           normal = ui_white
           highlight = ui_white
@@ -1902,8 +1902,8 @@
           )
           }
 
-#01294  mode_icon_bg_colors =
-#01296
+#00000  mode_icon_bg_colors =
+#00000
         STRUCT{
           normal = ARRAY(
 
@@ -1927,8 +1927,8 @@
           )
           }
 
-#01303  slider_thumb_properties =
-#01306
+#00000  slider_thumb_properties =
+#00000
         STRUCT{
           checksum = slider_thumb_properties
           x = 0.0
@@ -1942,8 +1942,8 @@
           )
           }
 
-#01326  slider_button_properties =
-#01328
+#00000  slider_button_properties =
+#00000
         STRUCT{
           checksum = slider_button_properties
           x = 0.0
@@ -1958,8 +1958,8 @@
           )
           }
 
-#01344  slider_element_properties =
-#01346
+#00000  slider_element_properties =
+#00000
         STRUCT{
           checksum = slider_element_properties
           type = sliderelement
@@ -1974,8 +1974,8 @@
           button_style = slider_button_properties
           forceclip drawfront }
 
-#01366  background_window_properties =
-#01369
+#00000  background_window_properties =
+#00000
         STRUCT{
           checksum = background_window_properties
           type = imageelement
@@ -1993,8 +1993,8 @@
             parent full }
           }
 
-#01398  background_full_round_window_properties =
-#01400
+#00000  background_full_round_window_properties =
+#00000
         STRUCT{
           checksum = background_full_round_window_properties
           type = imageelement
@@ -2012,8 +2012,8 @@
             parent full }
           }
 
-#01428  background_title_window_properties =
-#01430
+#00000  background_title_window_properties =
+#00000
         STRUCT{
           checksum = background_title_window_properties
           type = imageelement
@@ -2029,8 +2029,8 @@
             parent full }
           }
 
-#01456  client_area_properties =
-#01458
+#00000  client_area_properties =
+#00000
         STRUCT{
           checksum = client_area_properties
           type = uielement
@@ -2045,8 +2045,8 @@
           noselect static dont_gray background drawbehind background_colors = client_area_colors
           }
 
-#01475  game_modeicon_properties =
-#01477
+#00000  game_modeicon_properties =
+#00000
         STRUCT{
           checksum = game_modeicon_properties
           type = imageelement
@@ -2062,8 +2062,8 @@
           )
           }
 
-#01504  game_status_properties =
-#01506
+#00000  game_status_properties =
+#00000
         STRUCT{
           checksum = game_status_properties
           x = 40
@@ -2080,8 +2080,8 @@
           )
           }
 
-#01530  game_lock_properties =
-#01532
+#00000  game_lock_properties =
+#00000
         STRUCT{
           checksum = game_lock_properties
           type = imageelement
@@ -2098,8 +2098,8 @@
           )
           }
 
-#01555  game_players_properties =
-#01557
+#00000  game_players_properties =
+#00000
         STRUCT{
           checksum = game_players_properties
           type = textelement
@@ -2115,8 +2115,8 @@
           max_text = 1
           }
 
-#01578  game_name_properties =
-#01580
+#00000  game_name_properties =
+#00000
         STRUCT{
           checksum = game_name_properties
           type = textelement
@@ -2132,8 +2132,8 @@
           max_text = 1
           }
 
-#01601  game_item_properties =
-#01603
+#00000  game_item_properties =
+#00000
         STRUCT{
           checksum = game_item_properties
           type = uielement
@@ -2173,8 +2173,8 @@
           )
           }
 
-#01627  game_ping_properties =
-#01629
+#00000  game_ping_properties =
+#00000
         STRUCT{
           checksum = game_ping_properties
           type = pingelement
@@ -2246,8 +2246,8 @@
             }
           }
 
-#01662  window_title_properties =
-#01664
+#00000  window_title_properties =
+#00000
         STRUCT{
           checksum = window_title_properties
           type = textelement
@@ -2262,8 +2262,8 @@
           max_text = 1
           }
 
-#01687  game_server_list_scroller =
-#01689
+#00000  game_server_list_scroller =
+#00000
         STRUCT{
           checksum = game_server_list_scroller
           type = sliderelement
@@ -2278,8 +2278,8 @@
           button_style = slider_button_properties
           forceclip drawfront }
 
-#01707  game_server_list =
-#01709
+#00000  game_server_list =
+#00000
         STRUCT{
           checksum = game_server_list
           id = gs_server_list
@@ -2303,8 +2303,8 @@
           )
           }
 
-#01735  game_create_window =
-#01737
+#00000  game_create_window =
+#00000
         STRUCT{
           checksum = game_create_window
           id = gs_create_window
@@ -2374,8 +2374,8 @@
           )
           }
 
-#01782  game_staging_window =
-#01784
+#00000  game_staging_window =
+#00000
         STRUCT{
           checksum = game_staging_window
           id = gs_staging_window
@@ -2422,8 +2422,8 @@
           )
           }
 
-#01815  game_options_window =
-#01817
+#00000  game_options_window =
+#00000
         STRUCT{
           checksum = game_options_window
           id = gs_options_window
@@ -2477,8 +2477,8 @@
           )
           }
 
-#01856  game_filters_window =
-#01858
+#00000  game_filters_window =
+#00000
         STRUCT{
           checksum = game_filters_window
           id = gs_filters_window
@@ -2637,8 +2637,8 @@
           )
           }
 
-#01932  game_serverinfo_window =
-#01934
+#00000  game_serverinfo_window =
+#00000
         STRUCT{
           checksum = game_serverinfo_window
           id = gs_serverinfo_window
@@ -2747,8 +2747,8 @@
           )
           }
 
-#01966  text_players_list =
-#01968
+#00000  text_players_list =
+#00000
         STRUCT{
           checksum = text_players_list
           type = textelement
@@ -2768,8 +2768,8 @@
           border = 1.0
           noselect }
 
-#01997  gs_sb_text =
-#01999
+#00000  gs_sb_text =
+#00000
         STRUCT{
           checksum = gs_sb_text
           type = textelement
@@ -2784,8 +2784,8 @@
           max_text = 1
           }
 
-#02022  gs_sb_progress =
-#02024
+#00000  gs_sb_progress =
+#00000
         STRUCT{
           checksum = gs_sb_progress
           type = sliderelement
@@ -2799,8 +2799,8 @@
           noselect thumb_style = slider_thumb_properties
           forceclip }
 
-#02043  server_statusbar =
-#02046
+#00000  server_statusbar =
+#00000
         STRUCT{
           checksum = server_statusbar
           type = scrollwindow
@@ -2841,8 +2841,8 @@
           )
           }
 
-#02071  game_server_list_window =
-#02074
+#00000  game_server_list_window =
+#00000
         STRUCT{
           checksum = game_server_list_window
           type = scrollwindow
@@ -2881,8 +2881,8 @@
           )
           }
 
-#02104  server_info_window =
-#02107
+#00000  server_info_window =
+#00000
         STRUCT{
           checksum = server_info_window
           type = scrollwindow
@@ -2911,8 +2911,8 @@
           )
           }
 
-#02128  text_button =
-#02130
+#00000  text_button =
+#00000
         STRUCT{
           checksum = text_button
           type = textelement
@@ -2928,8 +2928,8 @@
           border_colors = border_colors_1
           }
 
-#02151  simple_image_button =
-#02153
+#00000  simple_image_button =
+#00000
         STRUCT{
           checksum = simple_image_button
           type = imageelement
@@ -2943,8 +2943,8 @@
           border_colors = border_colors_1
           }
 
-#02171  text_caption =
-#02173
+#00000  text_caption =
+#00000
         STRUCT{
           checksum = text_caption
           type = textelement
@@ -2963,8 +2963,8 @@
           border_colors = border_colors_1
           }
 
-#02196  static_text =
-#02198
+#00000  static_text =
+#00000
         STRUCT{
           checksum = static_text
           type = textelement
@@ -2979,8 +2979,8 @@
           border_colors = border_colors_1
           }
 
-#02216  server_toolbar =
-#02218
+#00000  server_toolbar =
+#00000
         STRUCT{
           checksum = server_toolbar
           type = scrollwindow
@@ -3127,8 +3127,8 @@
           )
           }
 
-#02257  text_entry_bar =
-#02259
+#00000  text_entry_bar =
+#00000
         STRUCT{
           checksum = text_entry_bar
           type = textelement
@@ -3148,8 +3148,8 @@
           maxentrychars = 200
           textentry truncate }
 
-#02290  text_screen =
-#02292
+#00000  text_screen =
+#00000
         STRUCT{
           checksum = text_screen
           type = textelement
@@ -3175,8 +3175,8 @@
           )
           }
 
-#02324  chat_window =
-#02326
+#00000  chat_window =
+#00000
         STRUCT{
           checksum = chat_window
           type = scrollwindow
@@ -3205,8 +3205,8 @@
           )
           }
 
-#02345  gs_logo_properties =
-#02347
+#00000  gs_logo_properties =
+#00000
         STRUCT{
           checksum = game_lock_properties
           type = imageelement
@@ -3223,8 +3223,8 @@
           )
           }
 
-#02371  gs_chat_window =
-#02374
+#00000  gs_chat_window =
+#00000
         STRUCT{
           checksum = gs_chat_window
           type = scrollwindow
@@ -3248,8 +3248,8 @@
           )
           }
 
-#02393  chat_text_container =
-#02395
+#00000  chat_text_container =
+#00000
         STRUCT{
           checksum = chat_text_container
           type = scrollwindow
@@ -3278,8 +3278,8 @@
           )
           }
 
-#02419  chat_text_window =
-#02421
+#00000  chat_text_window =
+#00000
         STRUCT{
           checksum = chat_text_window
           type = scrollwindow
@@ -3300,8 +3300,8 @@
           )
           }
 
-#02445  players_toolbar =
-#02447
+#00000  players_toolbar =
+#00000
         STRUCT{
           checksum = players_toolbar
           type = scrollwindow
@@ -3332,8 +3332,8 @@
           )
           }
 
-#02469  generic_toolbar =
-#02471
+#00000  generic_toolbar =
+#00000
         STRUCT{
           checksum = generic_toolbar
           type = scrollwindow
@@ -3347,8 +3347,8 @@
           border_colors = border_colors_1
           background }
 
-#02487  players_window =
-#02489
+#00000  players_window =
+#00000
         STRUCT{
           checksum = players_window
           type = scrollwindow
@@ -3378,8 +3378,8 @@
           )
           }
 
-#02508  gamespy_player_list_scroller =
-#02510
+#00000  gamespy_player_list_scroller =
+#00000
         STRUCT{
           checksum = gamespy_player_list_scroller
           type = sliderelement
@@ -3394,8 +3394,8 @@
           button_style = slider_button_properties
           forceclip drawfront }
 
-#02528  gamespy_players_window =
-#02531
+#00000  gamespy_players_window =
+#00000
         STRUCT{
           checksum = gamespy_players_window
           type = scrollwindow
@@ -3450,8 +3450,8 @@
           )
           }
 
-#02563  players_list =
-#02565
+#00000  players_list =
+#00000
         STRUCT{
           checksum = players_list
           type = scrollwindow
@@ -3472,8 +3472,8 @@
           )
           }
 
-#02588  room_players_list =
-#02590
+#00000  room_players_list =
+#00000
         STRUCT{
           checksum = room_players_list
           type = scrollwindow
@@ -3494,8 +3494,8 @@
           )
           }
 
-#02613  player_name_properties =
-#02616
+#00000  player_name_properties =
+#00000
         STRUCT{
           checksum = player_name_properties
           type = textelement
@@ -3511,8 +3511,8 @@
           max_text = 1
           }
 
-#02642  player_team_properties =
-#02644
+#00000  player_team_properties =
+#00000
         STRUCT{
           checksum = player_team_properties
           type = imageelement
@@ -3527,8 +3527,8 @@
           )
           }
 
-#02661  player_msg_properties =
-#02663
+#00000  player_msg_properties =
+#00000
         STRUCT{
           checksum = player_msg_properties
           type = imageelement
@@ -3545,8 +3545,8 @@
           )
           }
 
-#02682  player_ready_properties =
-#02684
+#00000  player_ready_properties =
+#00000
         STRUCT{
           checksum = player_ready_properties
           type = imageelement
@@ -3561,8 +3561,8 @@
           )
           }
 
-#02701  player_kick_properties =
-#02703
+#00000  player_kick_properties =
+#00000
         STRUCT{
           checksum = player_kick_properties
           type = imageelement
@@ -3579,8 +3579,8 @@
           )
           }
 
-#02722  player_item =
-#02724
+#00000  player_item =
+#00000
         STRUCT{
           checksum = player_item
           type = scrollwindow
@@ -3621,8 +3621,8 @@
           )
           }
 
-#02752  room_player_item =
-#02754
+#00000  room_player_item =
+#00000
         STRUCT{
           checksum = room_player_item
           type = scrollwindow
@@ -3667,8 +3667,8 @@
           )
           }
 
-#02781  gamespy_main_window =
-#02783
+#00000  gamespy_main_window =
+#00000
         STRUCT{
           checksum = gamespy_main_window
           type = uielement
@@ -3697,8 +3697,8 @@
           )
           }
 
-#02806  combo_box_def =
-#02811
+#00000  combo_box_def =
+#00000
         STRUCT{
           checksum = combo_box_def
           type = scrollwindow
@@ -3714,8 +3714,8 @@
           border_colors = border_colors_1
           }
 
-#02829  combo_box_def_noborder =
-#02831
+#00000  combo_box_def_noborder =
+#00000
         STRUCT{
           checksum = combo_box_def_noborder
           type = scrollwindow
@@ -3730,8 +3730,8 @@
           border_colors = border_colors_1
           }
 
-#02848  combo_btn_def =
-#02850
+#00000  combo_btn_def =
+#00000
         STRUCT{
           checksum = combo_btn_def
           type = imageelement
@@ -3748,8 +3748,8 @@
           )
           }
 
-#02870  check_btn_def =
-#02872
+#00000  check_btn_def =
+#00000
         STRUCT{
           checksum = check_btn_def
           type = imageelement
@@ -3769,8 +3769,8 @@
           )
           }
 
-#02896  combo_text_def =
-#02898
+#00000  combo_text_def =
+#00000
         STRUCT{
           checksum = combo_text_def
           type = textelement
@@ -3786,8 +3786,8 @@
           max_text = 1
           }
 
-#02922  combo_item_def =
-#02924
+#00000  combo_item_def =
+#00000
         STRUCT{
           checksum = combo_item_def
           type = textelement
@@ -3811,8 +3811,8 @@
           )
           }
 
-#02953  combo_slider_element_properties =
-#02955
+#00000  combo_slider_element_properties =
+#00000
         STRUCT{
           checksum = combo_slider_element_properties
           type = sliderelement
@@ -3828,8 +3828,8 @@
           button_style = slider_button_properties
           forceclip drawfront }
 
-#02974  combo_list_scroll_def =
-#02976
+#00000  combo_list_scroll_def =
+#00000
         STRUCT{
           checksum = combo_list_scroll_def
           type = scrollwindow
@@ -3846,8 +3846,8 @@
             parent full }
           }
 
-#02997  combo_list_sized_def =
-#02999
+#00000  combo_list_sized_def =
+#00000
         STRUCT{
           checksum = combo_list_sized_def
           type = scrollwindow
@@ -3863,8 +3863,8 @@
             parent full }
           }
 
-#03018  combo_layout_def =
-#03020
+#00000  combo_layout_def =
+#00000
         STRUCT{
           checksum = combo_layout_def
           type = scrollwindow
@@ -3879,8 +3879,8 @@
             parent full }
           }
 
-#03033  full_combo_box_def =
-#03035
+#00000  full_combo_box_def =
+#00000
         STRUCT{
           checksum = full_combo_box_def
           type = selectionelement
@@ -3899,8 +3899,8 @@
           choices = empty_choices
           }
 
-#03054  full_combo_box_def_2 =
-#03056
+#00000  full_combo_box_def_2 =
+#00000
         STRUCT{
           checksum = full_combo_box_def_2
           type = selectionelement
@@ -3919,12 +3919,12 @@
           choices = empty_choices
           }
 
-#03075  str_team_blue = 'Blue Team'
+#00000  str_team_blue = 'Blue Team'
 
-#03077  str_team_red = 'Red Team'
+#00000  str_team_red = 'Red Team'
 
-#03078  choices_none =
-#03080
+#00000  choices_none =
+#00000
         ARRAY(
           STRUCT{
             name = "None"
@@ -3933,8 +3933,8 @@
 
         )
 
-#03083  empty_choices =
-#03084
+#00000  empty_choices =
+#00000
         ARRAY(
           STRUCT{
             name = "None"
@@ -3944,8 +3944,8 @@
 
         )
 
-#03087  choices_boolean =
-#03088
+#00000  choices_boolean =
+#00000
         ARRAY(
           STRUCT{
             name = "No"
@@ -3960,8 +3960,8 @@
 
         )
 
-#03092  choices_team =
-#03093
+#00000  choices_team =
+#00000
         ARRAY(
           STRUCT{
             name = "Automatic"
@@ -3981,8 +3981,8 @@
 
         )
 
-#03098  choices_endgame_ctf =
-#03099
+#00000  choices_endgame_ctf =
+#00000
         ARRAY(
           STRUCT{
             name = "Timed"
@@ -3997,8 +3997,8 @@
 
         )
 
-#03103  choices_endgame_zone =
-#03104
+#00000  choices_endgame_zone =
+#00000
         ARRAY(
           STRUCT{
             name = "Timed"
@@ -4018,8 +4018,8 @@
 
         )
 
-#03109  choices_endgame_other =
-#03110
+#00000  choices_endgame_other =
+#00000
         ARRAY(
           STRUCT{
             name = "Timed"
@@ -4034,8 +4034,8 @@
 
         )
 
-#03114  choices_capture_limit =
-#03116
+#00000  choices_capture_limit =
+#00000
         ARRAY(
           STRUCT{
             name = "5 Captures"
@@ -4060,8 +4060,8 @@
 
         )
 
-#03122  choices_zone_control_limit =
-#03123
+#00000  choices_zone_control_limit =
+#00000
         ARRAY(
           STRUCT{
             name = "1 Time"
@@ -4086,8 +4086,8 @@
 
         )
 
-#03129  choices_score_limit =
-#03130
+#00000  choices_score_limit =
+#00000
         ARRAY(
           STRUCT{
             name = "250,000 pts"
@@ -4127,8 +4127,8 @@
 
         )
 
-#03140  choices_zone_score_limit =
-#03141
+#00000  choices_zone_score_limit =
+#00000
         ARRAY(
           STRUCT{
             name = "500 pts"
@@ -4163,8 +4163,8 @@
 
         )
 
-#03149  choices_level_type =
-#03151
+#00000  choices_level_type =
+#00000
         ARRAY(
           STRUCT{
             name = "Regular Levels"
@@ -4177,8 +4177,8 @@
 
         )
 
-#03155  choices_connect_speed =
-#03157
+#00000  choices_connect_speed =
+#00000
         ARRAY(
           STRUCT{
             name = "All"
@@ -4203,8 +4203,8 @@
 
         )
 
-#03163  choices_update_speed =
-#03164
+#00000  choices_update_speed =
+#00000
         ARRAY(
           STRUCT{
             name = "Slow"
@@ -4229,8 +4229,8 @@
 
         )
 
-#03170  choices_sorting =
-#03171
+#00000  choices_sorting =
+#00000
         ARRAY(
           STRUCT{
             name = "Name"
@@ -4255,7 +4255,7 @@
 
         )
 
-#03178  choices_num_players = ARRAY(
+#00000  choices_num_players = ARRAY(
 
           STRUCT{
             name = "2 Players"
@@ -4295,8 +4295,8 @@
 
         )
 
-#03191  level_pic_properties =
-#03197
+#00000  level_pic_properties =
+#00000
         STRUCT{
           checksum = level_pic_properties
           type = imageelement
@@ -4318,8 +4318,8 @@
           )
           }
 
-#03234  level_capabilities_item =
-#03236
+#00000  level_capabilities_item =
+#00000
         STRUCT{
           checksum = level_capabilities_item
           type = imageelement
@@ -4336,8 +4336,8 @@
           )
           }
 
-#03256  level_capabilities_properties =
-#03258
+#00000  level_capabilities_properties =
+#00000
         STRUCT{
           checksum = level_capabilities_properties
           type = scrollwindow
@@ -4427,8 +4427,8 @@
           )
           }
 
-#03284  game_settings_window =
-#03286
+#00000  game_settings_window =
+#00000
         STRUCT{
           checksum = game_settings_window
           type = scrollwindow
@@ -4453,8 +4453,8 @@
           )
           }
 
-#03306  game_settings_choices_window =
-#03308
+#00000  game_settings_choices_window =
+#00000
         STRUCT{
           checksum = game_settings_choices_window
           type = uielement
@@ -4572,12 +4572,12 @@
           )
           }
 
-#03352  ss_str_change_level = 'Change Level'
+#00000  ss_str_change_level = 'Change Level'
 
-#03354  ss_str_start_game = 'Start Game'
+#00000  ss_str_start_game = 'Start Game'
 
-#03355  choose_level_window =
-#03357
+#00000  choose_level_window =
+#00000
         STRUCT{
           checksum = choose_level_window
           type = scrollwindow
@@ -4602,8 +4602,8 @@
           )
           }
 
-#03376  choose_level_choices_window =
-#03378
+#00000  choose_level_choices_window =
+#00000
         STRUCT{
           checksum = choose_level_choices_window
           type = uielement
@@ -4668,8 +4668,8 @@
           )
           }
 
-#03411  player_settings_window =
-#03413
+#00000  player_settings_window =
+#00000
         STRUCT{
           checksum = player_settings_window
           type = scrollwindow
@@ -4694,8 +4694,8 @@
           )
           }
 
-#03432  player_settings_choices_window =
-#03434
+#00000  player_settings_choices_window =
+#00000
         STRUCT{
           checksum = player_settings_choices_window
           type = uielement
@@ -4744,8 +4744,8 @@
           )
           }
 
-#03462  player_name_entry =
-#03464
+#00000  player_name_entry =
+#00000
         STRUCT{
           checksum = player_name_entry
           type = textelement
@@ -4765,8 +4765,8 @@
           maxentrychars = 15
           textentry truncate }
 
-#03492  setup_window =
-#03495
+#00000  setup_window =
+#00000
         STRUCT{
           checksum = setup_window
           type = uielement
@@ -4799,8 +4799,8 @@
           )
           }
 
-#03514  dialog_main_window =
-#03516
+#00000  dialog_main_window =
+#00000
         STRUCT{
           checksum = dialog_main_window
           type = uielement
@@ -4817,8 +4817,8 @@
           )
           }
 
-#03529  dialog_client_window =
-#03531
+#00000  dialog_client_window =
+#00000
         STRUCT{
           checksum = dialog_client_window
           type = scrollwindow
@@ -4840,8 +4840,8 @@
           )
           }
 
-#03552  dialog_template =
-#03554
+#00000  dialog_template =
+#00000
         STRUCT{
           checksum = dialog_template
           type = scrollwindow
@@ -4866,8 +4866,8 @@
           )
           }
 
-#03573  dialog_main_children =
-#03575
+#00000  dialog_main_children =
+#00000
         STRUCT{
           children = ARRAY(
 
@@ -4878,8 +4878,8 @@
           )
           }
 
-#03581  dialog_button_props =
-#03583
+#00000  dialog_button_props =
+#00000
         STRUCT{
           checksum = dialog_button_props
           type = textelement
@@ -4898,8 +4898,8 @@
           border_colors = border_colors_1
           }
 
-#03606  dialog_prompt_props =
-#03608
+#00000  dialog_prompt_props =
+#00000
         STRUCT{
           checksum = dialog_prompt_props
           type = textelement
@@ -4916,8 +4916,8 @@
           border_colors = border_colors_2
           noselect }
 
-#03631  dialog_quit_yes_no =
-#03633
+#00000  dialog_quit_yes_no =
+#00000
         STRUCT{
           caption = 'Quit?'
           prompt = 'Would you like to exit the game?'
@@ -4927,8 +4927,8 @@
           )
           }
 
-#03642  dialog_ban_yes_no =
-#03644
+#00000  dialog_ban_yes_no =
+#00000
         STRUCT{
           caption = 'Ban Player?'
           prompt = 'Would you like to remove %s from the game?'
@@ -4938,7 +4938,7 @@
           )
           }
 
-#03653  gamespy_preferences = STRUCT{
+#00000  gamespy_preferences = STRUCT{
           gs_update_speed = STRUCT{
             ui_string = "Normal"
             checksum = update_normal
@@ -5026,4 +5026,4 @@
             }
           }
 
-#03678
+#00000

@@ -1,5 +1,5 @@
 
-#00001  DefaultCompParams = STRUCT{
+#00000  DefaultCompParams = STRUCT{
           Comp_Start_Script = NullScript
           Comp_StartComplete_Script = NullScript
           Comp_Run1_Script = NullScript
@@ -51,49 +51,49 @@
           Bail = 0.5
           }
 
-#00065  COMP_FLAG_3RD_PLACE_GO = 1
+#00000  COMP_FLAG_3RD_PLACE_GO = 1
 
-#00068  COMP_FLAG_2ND_PLACE_GO = 2
+#00000  COMP_FLAG_2ND_PLACE_GO = 2
 
-#00069  COMP_FLAG_1ST_PLACE_GO = 3
+#00000  COMP_FLAG_1ST_PLACE_GO = 3
 
-#00070  COMP_FLAG_LOADED_HAWK = 4
+#00000  COMP_FLAG_LOADED_HAWK = 4
 
-#00071  COMP_FLAG_LOADED_CABALLERO = 5
+#00000  COMP_FLAG_LOADED_CABALLERO = 5
 
-#00072  COMP_FLAG_LOADED_CAMPBELL = 6
+#00000  COMP_FLAG_LOADED_CAMPBELL = 6
 
-#00073  COMP_FLAG_LOADED_GLIFBERG = 7
+#00000  COMP_FLAG_LOADED_GLIFBERG = 7
 
-#00074  COMP_FLAG_LOADED_KOSTON = 8
+#00000  COMP_FLAG_LOADED_KOSTON = 8
 
-#00075  COMP_FLAG_LOADED_LASEK = 9
+#00000  COMP_FLAG_LOADED_LASEK = 9
 
-#00076  COMP_FLAG_LOADED_MARGERA = 10
+#00000  COMP_FLAG_LOADED_MARGERA = 10
 
-#00077  COMP_FLAG_LOADED_MULLEN = 11
+#00000  COMP_FLAG_LOADED_MULLEN = 11
 
-#00078  COMP_FLAG_LOADED_MUSKA = 12
+#00000  COMP_FLAG_LOADED_MUSKA = 12
 
-#00079  COMP_FLAG_LOADED_REYNOLDS = 13
+#00000  COMP_FLAG_LOADED_REYNOLDS = 13
 
-#00080  COMP_FLAG_LOADED_ROWLEY = 14
+#00000  COMP_FLAG_LOADED_ROWLEY = 14
 
-#00081  COMP_FLAG_LOADED_STEAMER = 15
+#00000  COMP_FLAG_LOADED_STEAMER = 15
 
-#00082  COMP_FLAG_LOADED_THOMAS = 16
+#00000  COMP_FLAG_LOADED_THOMAS = 16
 
-#00083  COMP_FLAG_SPOT1_FILLED = 17
+#00000  COMP_FLAG_SPOT1_FILLED = 17
 
-#00084  COMP_FLAG_SPOT2_FILLED = 18
+#00000  COMP_FLAG_SPOT2_FILLED = 18
 
-#00085  COMP_FLAG_SPOT3_FILLED = 19
+#00000  COMP_FLAG_SPOT3_FILLED = 19
 
-#00086  COMP_FLAG_SPOT4_FILLED = 20
+#00000  COMP_FLAG_SPOT4_FILLED = 20
 
-#00087  COMP_FLAG_SPOT5_FILLED = 21
+#00000  COMP_FLAG_SPOT5_FILLED = 21
 
-#00088  RioScoreParams = STRUCT{
+#00000  RioScoreParams = STRUCT{
           Bronze_Score = 25000
           Silver_Score = 70000
           Gold_Score = 120000
@@ -103,7 +103,7 @@
           Bail = 0.25
           }
 
-#00102  SIScoreParams = STRUCT{
+#00000  SIScoreParams = STRUCT{
           Bronze_Score = 45000
           Silver_Score = 80000
           Gold_Score = 150000
@@ -113,7 +113,7 @@
           Bail = 0.35
           }
 
-#00114  TokScoreParams = STRUCT{
+#00000  TokScoreParams = STRUCT{
           Bronze_Score = 100000
           Silver_Score = 150000
           Gold_Score = 200000
@@ -123,1188 +123,1188 @@
           Bail = 0.5
           }
 
-#00123  FUNCTION CompIntroSequence DefaultCompParams
-#00125    IF CareerLevelIs LevelNum_Rio
-#00126      CompIntroSequence2 RioCompParams RioScoreParams
-#00127    END IF
-#00128    IF CareerLevelIs LevelNum_SkaterIsland
-#00129      CompIntroSequence2 SICompParams SIScoreParams
-#00130    END IF
-#00131    IF CareerLevelIs LevelNum_Tokyo
-#00132      CompIntroSequence2 TokCompParams TokScoreParams
-#00133    END IF
-#00134  END FUNCTION
+#00000  FUNCTION CompIntroSequence DefaultCompParams
+#00000    IF CareerLevelIs LevelNum_Rio
+#00000      CompIntroSequence2 RioCompParams RioScoreParams
+#00000    END IF
+#00000    IF CareerLevelIs LevelNum_SkaterIsland
+#00000      CompIntroSequence2 SICompParams SIScoreParams
+#00000    END IF
+#00000    IF CareerLevelIs LevelNum_Tokyo
+#00000      CompIntroSequence2 TokCompParams TokScoreParams
+#00000    END IF
+#00000  END FUNCTION
 
-#00135  FUNCTION CompIntroSequence2 DefaultCompParams
-#00137    IF IsCareerMode
-#00138      SetUpSkaterDefaults
-#00139      CreateDeckIcon
-#00140      CreateTrickPoints2
-#00141      MakeSkaterGoto GLOBAL.CompSkaterWaitStart
+#00000  FUNCTION CompIntroSequence2 DefaultCompParams
+#00000    IF IsCareerMode
+#00000      SetUpSkaterDefaults
+#00000      CreateDeckIcon
+#00000      CreateTrickPoints2
+#00000      MakeSkaterGoto GLOBAL.CompSkaterWaitStart
             Params = NULL
 
-#00146      GLOBAL.Comp_Start_Script
+#00000      GLOBAL.Comp_Start_Script
 
-#00147      GLOBAL.Comp_CamRulesRuns_Script
+#00000      GLOBAL.Comp_CamRulesRuns_Script
 
-#00148      PlaySkaterCamAnim Skater = 0
+#00000      PlaySkaterCamAnim Skater = 0
             Name = GLOBAL.CameraCompRules_Runs
 
-#00149      LaunchPanelMessage "Competition Rules" Properties = Panel_Message_CompTitle
+#00000      LaunchPanelMessage "Competition Rules" Properties = Panel_Message_CompTitle
 
-#00150      Wait 10 Gameframes
-#00151      SetSkaterCamAnimSkippable Skater = 0
+#00000      Wait 10 Gameframes
+#00000      SetSkaterCamAnimSkippable Skater = 0
             Skippable = 1
 
-#00152      PlaySound GoalDone
-#00153      LaunchPanelMessage "Each Run Is 1 Minute" Properties = Panel_Message_CompRule
+#00000      PlaySound GoalDone
+#00000      LaunchPanelMessage "Each Run Is 1 Minute" Properties = Panel_Message_CompRule
 
-#00154      LOOP
-#00155        IF SkaterCamAnimFinished Skater = 0
+#00000      LOOP
+#00000        IF SkaterCamAnimFinished Skater = 0
                 Name = GLOBAL.CameraCompRules_Runs
 
-#00156          LaunchPanelMessage "" Properties = Panel_Message_CompRule
+#00000          LaunchPanelMessage "" Properties = Panel_Message_CompRule
 
-#00157          BREAK
+#00000          BREAK
 
-#00158        END IF
-#00159        Wait 1 Gameframes
-#00160      END LOOP 170
-#00161      PlaySound GoalDone
-#00162      LaunchPanelMessage "Skaters Get 3 Runs" Properties = Panel_Message_CompRule
+#00000        END IF
+#00000        Wait 1 Gameframes
+#00000      END LOOP 170
+#00000      PlaySound GoalDone
+#00000      LaunchPanelMessage "Skaters Get 3 Runs" Properties = Panel_Message_CompRule
 
-#00163      LOOP
-#00164        IF SkaterCamAnimFinished Skater = 0
+#00000      LOOP
+#00000        IF SkaterCamAnimFinished Skater = 0
                 Name = GLOBAL.CameraCompRules_Runs
 
-#00165          LaunchPanelMessage "" Properties = Panel_Message_CompRule
+#00000          LaunchPanelMessage "" Properties = Panel_Message_CompRule
 
-#00166          BREAK
+#00000          BREAK
 
-#00167        END IF
-#00168        Wait 1 Gameframes
-#00169      END LOOP
-#00170      PlaySound GoalDone
-#00171      LaunchPanelMessage "Bails Hurt Scores" Properties = Panel_Message_CompRule
+#00000        END IF
+#00000        Wait 1 Gameframes
+#00000      END LOOP
+#00000      PlaySound GoalDone
+#00000      LaunchPanelMessage "Bails Hurt Scores" Properties = Panel_Message_CompRule
 
-#00172      GLOBAL.Comp_CamRulesBails_Script
+#00000      GLOBAL.Comp_CamRulesBails_Script
 
-#00173      PlaySkaterCamAnim Skater = 0
+#00000      PlaySkaterCamAnim Skater = 0
             Name = GLOBAL.CameraCompRules_Bails
 
-#00174      Wait 10 Frames
-#00175      SetSkaterCamAnimSkippable Skater = 0
+#00000      Wait 10 Frames
+#00000      SetSkaterCamAnimSkippable Skater = 0
             Skippable = 1
 
-#00176      LOOP
-#00177        IF SkaterCamAnimFinished Skater = 0
+#00000      LOOP
+#00000        IF SkaterCamAnimFinished Skater = 0
                 Name = GLOBAL.CameraCompRules_Bails
 
-#00178          LaunchPanelMessage "" Properties = Panel_Message_CompRule
+#00000          LaunchPanelMessage "" Properties = Panel_Message_CompRule
 
-#00179          BREAK
+#00000          BREAK
 
-#00180        END IF
-#00181        Wait 1 Gameframes
-#00182      END LOOP
-#00183      PlaySound GoalDone
-#00184      LaunchPanelMessage "Average Of Top 2 Runs Is | Your Final Score" Properties = Panel_Message_CompRule
+#00000        END IF
+#00000        Wait 1 Gameframes
+#00000      END LOOP
+#00000      PlaySound GoalDone
+#00000      LaunchPanelMessage "Average Of Top 2 Runs Is | Your Final Score" Properties = Panel_Message_CompRule
 
-#00185      GLOBAL.Comp_CamRulesScores_Script
+#00000      GLOBAL.Comp_CamRulesScores_Script
 
-#00186      PlaySkaterCamAnim Skater = 0
+#00000      PlaySkaterCamAnim Skater = 0
             Name = GLOBAL.CameraCompRules_Scores
 
-#00187      Wait 10 Frames
-#00188      SetSkaterCamAnimSkippable Skater = 0
+#00000      Wait 10 Frames
+#00000      SetSkaterCamAnimSkippable Skater = 0
             Skippable = 1
 
-#00189      LOOP
-#00190        IF SkaterCamAnimFinished Skater = 0
+#00000      LOOP
+#00000        IF SkaterCamAnimFinished Skater = 0
                 Name = GLOBAL.CameraCompRules_Scores
 
-#00191          LaunchPanelMessage "" Properties = Panel_Message_CompRule
+#00000          LaunchPanelMessage "" Properties = Panel_Message_CompRule
 
-#00192          BREAK
+#00000          BREAK
 
-#00193        END IF
-#00194        Wait 1 Gameframes
-#00195      END LOOP
-#00196      PlaySound GoalDone
-#00197      LaunchPanelMessage "Finish Top 3 For A Medal" Properties = Panel_Message_CompRule
+#00000        END IF
+#00000        Wait 1 Gameframes
+#00000      END LOOP
+#00000      PlaySound GoalDone
+#00000      LaunchPanelMessage "Finish Top 3 For A Medal" Properties = Panel_Message_CompRule
 
-#00198      GLOBAL.Comp_CamRulesMedals_Script
+#00000      GLOBAL.Comp_CamRulesMedals_Script
 
-#00199      PlaySkaterCamAnim Skater = 0
+#00000      PlaySkaterCamAnim Skater = 0
             Name = GLOBAL.CameraCompRules_Medals
 
-#00200      Wait 10 Frames
-#00201      SetSkaterCamAnimSkippable Skater = 0
+#00000      Wait 10 Frames
+#00000      SetSkaterCamAnimSkippable Skater = 0
             Skippable = 1
 
-#00202      LOOP
-#00203        IF SkaterCamAnimFinished Skater = 0
+#00000      LOOP
+#00000        IF SkaterCamAnimFinished Skater = 0
                 Name = GLOBAL.CameraCompRules_Medals
 
-#00204          LaunchPanelMessage "" Properties = Panel_Message_CompRule
+#00000          LaunchPanelMessage "" Properties = Panel_Message_CompRule
 
-#00205          BREAK
+#00000          BREAK
 
-#00206        END IF
-#00207        Wait 1 Gameframes
-#00208      END LOOP
-#00209      GLOBAL.Comp_CamRulesList_Script
+#00000        END IF
+#00000        Wait 1 Gameframes
+#00000      END LOOP
+#00000      GLOBAL.Comp_CamRulesList_Script
 
-#00210      PlaySkaterCamAnim Skater = 0
+#00000      PlaySkaterCamAnim Skater = 0
             Name = GLOBAL.CameraCompRules_List
 
-#00211      LaunchPanelMessage "Each Run Is 1 Minute" Properties = Panel_Message_CompRule_List01
+#00000      LaunchPanelMessage "Each Run Is 1 Minute" Properties = Panel_Message_CompRule_List01
 
-#00212      Wait 0.15 Seconds
-#00213      LaunchPanelMessage "Skaters Get 3 Runs" Properties = Panel_Message_CompRule_List02
+#00000      Wait 0.15 Seconds
+#00000      LaunchPanelMessage "Skaters Get 3 Runs" Properties = Panel_Message_CompRule_List02
 
-#00214      Wait 0.15 Seconds
-#00215      LaunchPanelMessage "Bails Hurt Scores" Properties = Panel_Message_CompRule_List03
+#00000      Wait 0.15 Seconds
+#00000      LaunchPanelMessage "Bails Hurt Scores" Properties = Panel_Message_CompRule_List03
 
-#00216      Wait 0.15 Seconds
-#00217      LaunchPanelMessage "Average Of Top 2 Runs Is | Your Final Score" Properties = Panel_Message_CompRule_List04
+#00000      Wait 0.15 Seconds
+#00000      LaunchPanelMessage "Average Of Top 2 Runs Is | Your Final Score" Properties = Panel_Message_CompRule_List04
 
-#00218      Wait 0.15 Seconds
-#00219      LaunchPanelMessage "Finish Top 3 For A Medal" Properties = Panel_Message_CompRule_List05
+#00000      Wait 0.15 Seconds
+#00000      LaunchPanelMessage "Finish Top 3 For A Medal" Properties = Panel_Message_CompRule_List05
 
-#00220      Wait 10 Frames
-#00221      SetSkaterCamAnimSkippable Skater = 0
+#00000      Wait 10 Frames
+#00000      SetSkaterCamAnimSkippable Skater = 0
             Skippable = 1
 
-#00222      LOOP
-#00223        IF SkaterCamAnimFinished Skater = 0
+#00000      LOOP
+#00000        IF SkaterCamAnimFinished Skater = 0
                 Name = GLOBAL.CameraCompRules_List
 
-#00224          LaunchPanelMessage "" Properties = Panel_Message_CompRule_List01
+#00000          LaunchPanelMessage "" Properties = Panel_Message_CompRule_List01
 
-#00225          LaunchPanelMessage "" Properties = Panel_Message_CompRule_List02
+#00000          LaunchPanelMessage "" Properties = Panel_Message_CompRule_List02
 
-#00226          LaunchPanelMessage "" Properties = Panel_Message_CompRule_List03
+#00000          LaunchPanelMessage "" Properties = Panel_Message_CompRule_List03
 
-#00227          LaunchPanelMessage "" Properties = Panel_Message_CompRule_List04
+#00000          LaunchPanelMessage "" Properties = Panel_Message_CompRule_List04
 
-#00228          LaunchPanelMessage "" Properties = Panel_Message_CompRule_List05
+#00000          LaunchPanelMessage "" Properties = Panel_Message_CompRule_List05
 
-#00229          LaunchPanelMessage "" Properties = Panel_Message_CompTitle
+#00000          LaunchPanelMessage "" Properties = Panel_Message_CompTitle
 
-#00230          BREAK
+#00000          BREAK
 
-#00231        END IF
-#00232        Wait 1 Gameframes
-#00233      END LOOP
-#00234      GLOBAL.Comp_StartComplete_Script
+#00000        END IF
+#00000        Wait 1 Gameframes
+#00000      END LOOP
+#00000      GLOBAL.Comp_StartComplete_Script
 
-#00235      Wait 5 Gameframes
-#00236      UnPauseSkaters
-#00237    END IF
-#00239  END FUNCTION
+#00000      Wait 5 Gameframes
+#00000      UnPauseSkaters
+#00000    END IF
+#00000  END FUNCTION
 
-#00240  FUNCTION Comp_RunStart_Params_Pass
-#00243  END FUNCTION
+#00000  FUNCTION Comp_RunStart_Params_Pass
+#00000  END FUNCTION
 
-#00255  FUNCTION Comp_Wait_RunStart_setup
-#00267    AttachToSkater
-#00268    Obj_MoveToNode Name = GLOBAL.CompWaypointStart
+#00000  FUNCTION Comp_Wait_RunStart_setup
+#00000    AttachToSkater
+#00000    Obj_MoveToNode Name = GLOBAL.CompWaypointStart
           orient
-#00269    AttachToSkater End
-#00270    SpawnSkaterScript Comp_Wait_RunStart Params = NULL
+#00000    AttachToSkater End
+#00000    SpawnSkaterScript Comp_Wait_RunStart Params = NULL
 
-#00271  END FUNCTION
+#00000  END FUNCTION
 
-#00272  FUNCTION Comp_Wait_RunStart DefaultCompParams
-#00274    KillSpawnedScript Name = SkaterJudgedAnims_Idle
+#00000  FUNCTION Comp_Wait_RunStart DefaultCompParams
+#00000    KillSpawnedScript Name = SkaterJudgedAnims_Idle
 
-#00275    MakeSkaterGoto GLOBAL.CompSkaterWaitStart
+#00000    MakeSkaterGoto GLOBAL.CompSkaterWaitStart
           Params = NULL
 
-#00276    IF RoundIs 1
-#00277      LaunchPanelMessage "First Run" Properties = Panel_Message_RunNumber
+#00000    IF RoundIs 1
+#00000      LaunchPanelMessage "First Run" Properties = Panel_Message_RunNumber
 
-#00278    END IF
-#00279    IF RoundIs 2
-#00280      LaunchPanelMessage "Second Run" Properties = Panel_Message_RunNumber
+#00000    END IF
+#00000    IF RoundIs 2
+#00000      LaunchPanelMessage "Second Run" Properties = Panel_Message_RunNumber
 
-#00281    END IF
-#00282    IF RoundIs 3
-#00283      LaunchPanelMessage "Final Run" Properties = Panel_Message_RunNumber
+#00000    END IF
+#00000    IF RoundIs 3
+#00000      LaunchPanelMessage "Final Run" Properties = Panel_Message_RunNumber
 
-#00284    END IF
-#00285    LaunchLocalMessage id = BottomInfo
+#00000    END IF
+#00000    LaunchLocalMessage id = BottomInfo
           "Press ¬ to Continue" panel_message_XtoContinue
-#00286    WaitForControllerPressedX
-#00287    LaunchLocalMessage id = BottomInfo
+#00000    WaitForControllerPressedX
+#00000    LaunchLocalMessage id = BottomInfo
           " " panel_message_XtoContinue
-#00288    KillSpawnedScript Name = GLOBAL.CompSkaterWaitStart
+#00000    KillSpawnedScript Name = GLOBAL.CompSkaterWaitStart
 
-#00298    Unpause_Game_Flow
-#00299    UnPausePhysics
-#00300  END FUNCTION
+#00000    Unpause_Game_Flow
+#00000    UnPausePhysics
+#00000  END FUNCTION
 
-#00301  FUNCTION SkaterWaitForRunIn
-#00304    FreezeSkaterTemp
-#00305    Obj_MoveToNode Name = GLOBAL.CompWaypointStart
+#00000  FUNCTION SkaterWaitForRunIn
+#00000    FreezeSkaterTemp
+#00000    Obj_MoveToNode Name = GLOBAL.CompWaypointStart
           orient
-#00306    Obj_PlayAnim Anim = StandIdle2
+#00000    Obj_PlayAnim Anim = StandIdle2
           Cycle
-#00307  END FUNCTION
+#00000  END FUNCTION
 
-#00312  FUNCTION SkaterWaitForPushIn
-#00315    FreezeSkaterTemp
-#00317    Obj_MoveToNode Name = GLOBAL.CompWaypointStart
+#00000  FUNCTION SkaterWaitForPushIn
+#00000    FreezeSkaterTemp
+#00000    Obj_MoveToNode Name = GLOBAL.CompWaypointStart
           orient
-#00318    Obj_PlayAnim Anim = StartIdle
+#00000    Obj_PlayAnim Anim = StartIdle
           Cycle
-#00319  END FUNCTION
+#00000  END FUNCTION
 
-#00320  FUNCTION SkaterWaitForDropIn1
-#00323    FreezeSkaterTemp Lip
-#00324    Obj_MoveToNode Name = GLOBAL.CompWaypointStart
+#00000  FUNCTION SkaterWaitForDropIn1
+#00000    FreezeSkaterTemp Lip
+#00000    Obj_MoveToNode Name = GLOBAL.CompWaypointStart
 
-#00325    Obj_PlayAnim Anim = Dropin_Idle
+#00000    Obj_PlayAnim Anim = Dropin_Idle
           Cycle
-#00326    SetState Lip
-#00327  END FUNCTION
+#00000    SetState Lip
+#00000  END FUNCTION
 
-#00328  FUNCTION SkaterWaitForDropIn2
-#00331    FreezeSkaterTemp Lip
-#00332    Obj_MoveToNode Name = GLOBAL.CompWaypointStart
+#00000  FUNCTION SkaterWaitForDropIn2
+#00000    FreezeSkaterTemp Lip
+#00000    Obj_MoveToNode Name = GLOBAL.CompWaypointStart
 
-#00333    Obj_PlayAnim Anim = Dropin2_Idle
+#00000    Obj_PlayAnim Anim = Dropin2_Idle
           Cycle
-#00334    SetState Lip
-#00335  END FUNCTION
+#00000    SetState Lip
+#00000  END FUNCTION
 
-#00336  FUNCTION FreezeSkaterTemp
-#00344    ClearExceptions
-#00345    VibrateOff
-#00346    PauseClock
-#00347    DisablePlayerInput AllowCameraControl
-#00348    SwitchOnBoard
-#00349    IF ProfileEquals is_named = maul
+#00000  FUNCTION FreezeSkaterTemp
+#00000    ClearExceptions
+#00000    VibrateOff
+#00000    PauseClock
+#00000    DisablePlayerInput AllowCameraControl
+#00000    SwitchOnBoard
+#00000    IF ProfileEquals is_named = maul
 
-#00350      SwitchOffAtomic special_item
-#00351    END IF
-#00352    SetSpeed 0
-#00353    IF GotParam Lip
-#00354      printf "lip state.............."
-#00355      SetState Lip
-#00356    ELSE
-#00357      SetState Ground
-#00358    END IF
-#00359    SetRollingFriction 10000
-#00360    SetSkaterCamOverride
-#00361    PausePhysics
-#00362    CleanUpSpecialItems
-#00363  END FUNCTION
+#00000      SwitchOffAtomic special_item
+#00000    END IF
+#00000    SetSpeed 0
+#00000    IF GotParam Lip
+#00000      printf "lip state.............."
+#00000      SetState Lip
+#00000    ELSE
+#00000      SetState Ground
+#00000    END IF
+#00000    SetRollingFriction 10000
+#00000    SetSkaterCamOverride
+#00000    PausePhysics
+#00000    CleanUpSpecialItems
+#00000  END FUNCTION
 
-#00364  FUNCTION CompEndRun DefaultCompParams
-#00367    GLOBAL.Comp_CamJudged_Script
+#00000  FUNCTION CompEndRun DefaultCompParams
+#00000    GLOBAL.Comp_CamJudged_Script
 
-#00368    PlaySkaterCamAnim Skater = 0
+#00000    PlaySkaterCamAnim Skater = 0
           Name = GLOBAL.CameraJudgeFlyBy
           Play_Hold
-#00370    MakeSkaterGoto SkaterJudgedAnims_Idle
-#00371    GLOBAL.Comp_CamJudgedHold_Script
+#00000    MakeSkaterGoto SkaterJudgedAnims_Idle
+#00000    GLOBAL.Comp_CamJudgedHold_Script
 
-#00372  END FUNCTION
+#00000  END FUNCTION
 
-#00373  FUNCTION CompEndRun_Leaders DefaultCompParams
-#00376    MakeSkaterGoto SkaterJudgedAnims_Idle
-#00377    GLOBAL.Comp_CamJudgedChange_Script
+#00000  FUNCTION CompEndRun_Leaders DefaultCompParams
+#00000    MakeSkaterGoto SkaterJudgedAnims_Idle
+#00000    GLOBAL.Comp_CamJudgedChange_Script
 
-#00379    PlaySkaterCamAnim Skater = 0
+#00000    PlaySkaterCamAnim Skater = 0
           Name = GLOBAL.CameraSkaterJudged
           Play_Hold
-#00382  END FUNCTION
+#00000  END FUNCTION
 
-#00383  FUNCTION CompEndRun_LeadersDone DefaultCompParams
-#00386    GLOBAL.Comp_CamJudgedEnd_Script
+#00000  FUNCTION CompEndRun_LeadersDone DefaultCompParams
+#00000    GLOBAL.Comp_CamJudgedEnd_Script
 
-#00387  END FUNCTION
+#00000  END FUNCTION
 
-#00388  FUNCTION SkaterJudgedAnims_Idle
-#00391    Obj_MoveToNode Name = Waypoint_Skater_Judged
+#00000  FUNCTION SkaterJudgedAnims_Idle
+#00000    Obj_MoveToNode Name = Waypoint_Skater_Judged
           orient
-#00392    FreezeSkaterTemp
-#00393    LOOP
-#00394      Obj_CycleAnim Anim = SitIdle
+#00000    FreezeSkaterTemp
+#00000    LOOP
+#00000      Obj_CycleAnim Anim = SitIdle
             NumCycles = RANDOM[3][13; 24; 35]
 
 
-#00395      1
-#00396      JUMP 0x19000000 2
-#00397      JUMP 0x0a000000 3
-#00398
-#00399      Obj_CycleAnim Anim = RANDOM[2][9; 20]
+#00000      1
+#00000      JUMP 0x19000000 2
+#00000      JUMP 0x0a000000 3
+#00000
+#00000      Obj_CycleAnim Anim = RANDOM[2][9; 20]
 
 
-#00400      SitLeftRight
-#00401      JUMP 0x0a000000 SitLeftRight
-#00402
-#00403      Wait 1 Gameframes
-#00404    END LOOP
-#00405  END FUNCTION
+#00000      SitLeftRight
+#00000      JUMP 0x0a000000 SitLeftRight
+#00000
+#00000      Wait 1 Gameframes
+#00000    END LOOP
+#00000  END FUNCTION
 
-#00406  FUNCTION SkaterJudgedAnims_Poor
-#00409    Obj_CycleAnim Anim = RANDOM[2][9; 20]
-
-
-#00410    SitShake
-#00411    JUMP 0x0a000000 SitHands
-#00412
-#00413    SkaterJudgedAnims_Idle
-#00414  END FUNCTION
-
-#00415  FUNCTION SkaterJudgedAnims_Average
-#00418    Obj_CycleAnim Anim = RANDOM[2][9; 20]
+#00000  FUNCTION SkaterJudgedAnims_Poor
+#00000    Obj_CycleAnim Anim = RANDOM[2][9; 20]
 
 
-#00419    SitNod
-#00420    JUMP 0x0a000000 SitFist
-#00421
-#00422    SkaterJudgedAnims_Idle
-#00423  END FUNCTION
+#00000    SitShake
+#00000    JUMP 0x0a000000 SitHands
+#00000
+#00000    SkaterJudgedAnims_Idle
+#00000  END FUNCTION
 
-#00424  FUNCTION SkaterJudgedAnims_Good
-#00427    Obj_CycleAnim Anim = RANDOM[2][9; 20]
+#00000  FUNCTION SkaterJudgedAnims_Average
+#00000    Obj_CycleAnim Anim = RANDOM[2][9; 20]
 
 
-#00428    SitNod
-#00429    JUMP 0x0a000000 SitFist
-#00430
-#00431    SkaterJudgedAnims_Idle
-#00432  END FUNCTION
+#00000    SitNod
+#00000    JUMP 0x0a000000 SitFist
+#00000
+#00000    SkaterJudgedAnims_Idle
+#00000  END FUNCTION
 
-#00433  FUNCTION SkaterLoseAnims
-#00436    Obj_MoveToNode Name = Waypoint_Skater_Judged
+#00000  FUNCTION SkaterJudgedAnims_Good
+#00000    Obj_CycleAnim Anim = RANDOM[2][9; 20]
+
+
+#00000    SitNod
+#00000    JUMP 0x0a000000 SitFist
+#00000
+#00000    SkaterJudgedAnims_Idle
+#00000  END FUNCTION
+
+#00000  FUNCTION SkaterLoseAnims
+#00000    Obj_MoveToNode Name = Waypoint_Skater_Judged
           orient
-#00437    FreezeSkaterTemp
-#00438    LOOP
-#00439      Obj_CycleAnim Anim = SitIdle
+#00000    FreezeSkaterTemp
+#00000    LOOP
+#00000      Obj_CycleAnim Anim = SitIdle
             NumCycles = RANDOM[2][9; 20]
 
 
-#00440      1
-#00441      JUMP 0x0a000000 2
-#00442
-#00443      Obj_CycleAnim Anim = RANDOM[2][9; 20]
+#00000      1
+#00000      JUMP 0x0a000000 2
+#00000
+#00000      Obj_CycleAnim Anim = RANDOM[2][9; 20]
 
 
-#00444      SitShake
-#00445      JUMP 0x0a000000 SitHands
-#00446
-#00447      Obj_CycleAnim Anim = SitIdle
+#00000      SitShake
+#00000      JUMP 0x0a000000 SitHands
+#00000
+#00000      Obj_CycleAnim Anim = SitIdle
 
-#00448      Obj_CycleAnim Anim = RANDOM[2][9; 20]
+#00000      Obj_CycleAnim Anim = RANDOM[2][9; 20]
 
 
-#00449      SitLeftRight
-#00450      JUMP 0x0a000000 SitLeftRight
-#00451
-#00452      Wait 1 Gameframes
-#00453    END LOOP
-#00454  END FUNCTION
+#00000      SitLeftRight
+#00000      JUMP 0x0a000000 SitLeftRight
+#00000
+#00000      Wait 1 Gameframes
+#00000    END LOOP
+#00000  END FUNCTION
 
-#00455  FUNCTION CompEndSequence DefaultCompParams
-#00458  END FUNCTION
+#00000  FUNCTION CompEndSequence DefaultCompParams
+#00000  END FUNCTION
 
-#00459  FUNCTION CompEndSequence_1st DefaultCompParams
-#00462    IF IsCareerMode
-#00463      PauseStream 0
-#00464      DisablePlayerInput
-#00465      Kill Prefix = GLOBAL.CompNormalPeds
+#00000  FUNCTION CompEndSequence_1st DefaultCompParams
+#00000    IF IsCareerMode
+#00000      PauseStream 0
+#00000      DisablePlayerInput
+#00000      Kill Prefix = GLOBAL.CompNormalPeds
 
-#00466      Create Prefix = GLOBAL.CompEndPeds
+#00000      Create Prefix = GLOBAL.CompEndPeds
 
-#00467      MakeSkaterGoto Player_1st_Idle
-#00468      GLOBAL.Comp_CamEndCrowd_Script
+#00000      MakeSkaterGoto Player_1st_Idle
+#00000      GLOBAL.Comp_CamEndCrowd_Script
 
-#00469      PlaySkaterCamAnim Skater = 0
+#00000      PlaySkaterCamAnim Skater = 0
             Name = GLOBAL.CameraCompEnd_Crowd
 
-#00470      Wait 30 Gameframes
-#00471      LaunchPanelMessage "Final Results" Properties = Panel_Message_CompRule
+#00000      Wait 30 Gameframes
+#00000      LaunchPanelMessage "Final Results" Properties = Panel_Message_CompRule
 
-#00472      SetSkaterCamAnimSkippable Skater = 0
+#00000      SetSkaterCamAnimSkippable Skater = 0
             Skippable = 1
 
-#00473      LOOP
-#00474        IF SkaterCamAnimFinished Skater = 0
+#00000      LOOP
+#00000        IF SkaterCamAnimFinished Skater = 0
                 Name = GLOBAL.CameraCompRules_Crowd
 
-#00475          LaunchPanelMessage "" Properties = Panel_Message_CompRule
+#00000          LaunchPanelMessage "" Properties = Panel_Message_CompRule
 
-#00476          BREAK
+#00000          BREAK
 
-#00477        END IF
-#00478        Wait 1 gameframe
-#00479      END LOOP
-#00480      PlaySkaterCamAnim Skater = 0
+#00000        END IF
+#00000        Wait 1 gameframe
+#00000      END LOOP
+#00000      PlaySkaterCamAnim Skater = 0
             Name = GLOBAL.CameraCompEnd_Win
 
-#00481      Wait 30 Gameframes
-#00482      LaunchPanelMessage "1st Place" Properties = Panel_Message_CompSkaterPlace
+#00000      Wait 30 Gameframes
+#00000      LaunchPanelMessage "1st Place" Properties = Panel_Message_CompSkaterPlace
 
-#00483      SpawnScript PlayerReaction_1st_Skippable
-#00484      SetSkaterCamAnimSkippable Skater = 0
+#00000      SpawnScript PlayerReaction_1st_Skippable
+#00000      SetSkaterCamAnimSkippable Skater = 0
             Skippable = 1
 
-#00485      LOOP
-#00486        IF SkaterCamAnimFinished Skater = 0
+#00000      LOOP
+#00000        IF SkaterCamAnimFinished Skater = 0
                 Name = GLOBAL.CameraCompEnd_Win
 
-#00487          LaunchPanelMessage "" Properties = Panel_Message_CompSkaterPlace
+#00000          LaunchPanelMessage "" Properties = Panel_Message_CompSkaterPlace
 
-#00488          LaunchPanelMessage "" Properties = Panel_Message_CompSkaterName
+#00000          LaunchPanelMessage "" Properties = Panel_Message_CompSkaterName
 
-#00489          BREAK
+#00000          BREAK
 
-#00490        END IF
-#00491        Wait 1 Gameframes
-#00492      END LOOP
-#00493      PlaySkaterCamAnim Skater = 0
+#00000        END IF
+#00000        Wait 1 Gameframes
+#00000      END LOOP
+#00000      PlaySkaterCamAnim Skater = 0
             Name = GLOBAL.CameraCompEnd_Final
 
-#00494      KillSpawnedScript Name = PlayerReaction_1st_Skippable
+#00000      KillSpawnedScript Name = PlayerReaction_1st_Skippable
 
-#00495      SetFlag Flag = COMP_FLAG_1ST_PLACE_GO
+#00000      SetFlag Flag = COMP_FLAG_1ST_PLACE_GO
 
-#00496      Wait 30 Gameframes
-#00497      LaunchPanelMessage "Congratulations! | You Won The GOLD Medal!" Properties = Panel_Message_CompCongrats
+#00000      Wait 30 Gameframes
+#00000      LaunchPanelMessage "Congratulations! | You Won The GOLD Medal!" Properties = Panel_Message_CompCongrats
 
-#00498      SetSkaterCamAnimSkippable Skater = 0
+#00000      SetSkaterCamAnimSkippable Skater = 0
             Skippable = 1
 
-#00499      LOOP
-#00500        IF SkaterCamAnimFinished Skater = 0
+#00000      LOOP
+#00000        IF SkaterCamAnimFinished Skater = 0
                 Name = GLOBAL.CameraCompEnd_Final
 
-#00501          BREAK
+#00000          BREAK
 
-#00502        END IF
-#00503        Wait 1 Gameframes
-#00504      END LOOP
-#00505      PlaySkaterCamAnim Skater = 0
+#00000        END IF
+#00000        Wait 1 Gameframes
+#00000      END LOOP
+#00000      PlaySkaterCamAnim Skater = 0
             Name = GLOBAL.CameraCompEnd_Hold
             Play_Hold
-#00506      UnSetFlag Flag = COMP_FLAG_1ST_PLACE_GO
+#00000      UnSetFlag Flag = COMP_FLAG_1ST_PLACE_GO
 
-#00507      LaunchLocalMessage id = BottomInfo
+#00000      LaunchLocalMessage id = BottomInfo
             "Press ¬ to Continue" panel_message_XtoContinue
-#00508      WaitForControllerPressedX
-#00509      LaunchLocalMessage id = BottomInfo
+#00000      WaitForControllerPressedX
+#00000      LaunchLocalMessage id = BottomInfo
             " " panel_message_XtoContinue
-#00510      IF GetGoal Goal = GOAL_GOLD
+#00000      IF GetGoal Goal = GOAL_GOLD
 
-#00518      ELSE
-#00519        SetGoal Goal = GOAL_GOLD
+#00000      ELSE
+#00000        SetGoal Goal = GOAL_GOLD
 
-#00521        SetGlobalFlag Flag = PROMPT_FOR_SAVE
+#00000        SetGlobalFlag Flag = PROMPT_FOR_SAVE
 
-#00522        SetGlobalFlag Flag = SKATESHOP_JUST_GOT_MEDAL_GOLD
+#00000        SetGlobalFlag Flag = SKATESHOP_JUST_GOT_MEDAL_GOLD
 
-#00523      END IF
-#00524      EndRun_CheckForLevelsOpen
-#00525      LaunchPanelMessage "" Properties = Panel_Message_CompCongrats
+#00000      END IF
+#00000      EndRun_CheckForLevelsOpen
+#00000      LaunchPanelMessage "" Properties = Panel_Message_CompCongrats
 
-#00527      IF JustGotGoal Goal = GOAL_GOLD
+#00000      IF JustGotGoal Goal = GOAL_GOLD
 
-#00530        IF CareerLevelIs LevelNum_Rio
-#00531          SetGlobalFlag Flag = GOT_GOLD_RIO
+#00000        IF CareerLevelIs LevelNum_Rio
+#00000          SetGlobalFlag Flag = GOT_GOLD_RIO
 
-#00532          Goal_CheckProVideoUnlock
-#00533          Goal_UnlockingSecrets
-#00534        END IF
-#00535        IF CareerLevelIs LevelNum_SkaterIsland
-#00536          SetGlobalFlag Flag = GOT_GOLD_SI
+#00000          Goal_CheckProVideoUnlock
+#00000          Goal_UnlockingSecrets
+#00000        END IF
+#00000        IF CareerLevelIs LevelNum_SkaterIsland
+#00000          SetGlobalFlag Flag = GOT_GOLD_SI
 
-#00537          Goal_CheckProVideoUnlock
-#00538          Goal_UnlockingSecrets
-#00539        END IF
-#00540        IF CareerLevelIs LevelNum_Tokyo
-#00541          SetGlobalFlag Flag = GOT_GOLD_TOKYO
+#00000          Goal_CheckProVideoUnlock
+#00000          Goal_UnlockingSecrets
+#00000        END IF
+#00000        IF CareerLevelIs LevelNum_Tokyo
+#00000          SetGlobalFlag Flag = GOT_GOLD_TOKYO
 
-#00542          Goal_CheckProVideoUnlock
-#00543          Goal_UnlockingSecrets
-#00544        END IF
-#00545      END IF
-#00546      Unpause_Game_Flow
-#00547    END IF
-#00548  END FUNCTION
+#00000          Goal_CheckProVideoUnlock
+#00000          Goal_UnlockingSecrets
+#00000        END IF
+#00000      END IF
+#00000      Unpause_Game_Flow
+#00000    END IF
+#00000  END FUNCTION
 
-#00549  FUNCTION CompEndSequence_2nd DefaultCompParams
-#00552    IF IsCareerMode
-#00553      PauseStream 0
-#00554      DisablePlayerInput
-#00555      Kill Prefix = GLOBAL.CompNormalPeds
+#00000  FUNCTION CompEndSequence_2nd DefaultCompParams
+#00000    IF IsCareerMode
+#00000      PauseStream 0
+#00000      DisablePlayerInput
+#00000      Kill Prefix = GLOBAL.CompNormalPeds
 
-#00556      Create Prefix = GLOBAL.CompEndPeds
+#00000      Create Prefix = GLOBAL.CompEndPeds
 
-#00557      MakeSkaterGoto Player_2nd_Idle
-#00558      GLOBAL.Comp_CamEndCrowd_Script
+#00000      MakeSkaterGoto Player_2nd_Idle
+#00000      GLOBAL.Comp_CamEndCrowd_Script
 
-#00559      PlaySkaterCamAnim Skater = 0
+#00000      PlaySkaterCamAnim Skater = 0
             Name = GLOBAL.CameraCompEnd_Crowd
 
-#00560      Wait 30 Gameframes
-#00561      LaunchPanelMessage "Final Results" Properties = Panel_Message_CompRule
+#00000      Wait 30 Gameframes
+#00000      LaunchPanelMessage "Final Results" Properties = Panel_Message_CompRule
 
-#00562      SetSkaterCamAnimSkippable Skater = 0
+#00000      SetSkaterCamAnimSkippable Skater = 0
             Skippable = 1
 
-#00563      LOOP
-#00564        IF SkaterCamAnimFinished Skater = 0
+#00000      LOOP
+#00000        IF SkaterCamAnimFinished Skater = 0
                 Name = GLOBAL.CameraCompRules_Crowd
 
-#00565          LaunchPanelMessage "" Properties = Panel_Message_CompRule
+#00000          LaunchPanelMessage "" Properties = Panel_Message_CompRule
 
-#00566          BREAK
+#00000          BREAK
 
-#00567        END IF
-#00568        Wait 1 gameframe
-#00569      END LOOP
-#00570      PlaySkaterCamAnim Skater = 0
+#00000        END IF
+#00000        Wait 1 gameframe
+#00000      END LOOP
+#00000      PlaySkaterCamAnim Skater = 0
             Name = GLOBAL.CameraCompEnd_Win
 
-#00571      Wait 30 Gameframes
-#00572      LaunchPanelMessage "2nd Place" Properties = Panel_Message_CompSkaterPlace
+#00000      Wait 30 Gameframes
+#00000      LaunchPanelMessage "2nd Place" Properties = Panel_Message_CompSkaterPlace
 
-#00573      SpawnScript PlayerReaction_2nd_Skippable
-#00574      SetSkaterCamAnimSkippable Skater = 0
+#00000      SpawnScript PlayerReaction_2nd_Skippable
+#00000      SetSkaterCamAnimSkippable Skater = 0
             Skippable = 1
 
-#00575      LOOP
-#00576        IF SkaterCamAnimFinished Skater = 0
+#00000      LOOP
+#00000        IF SkaterCamAnimFinished Skater = 0
                 Name = GLOBAL.CameraCompEnd_Win
 
-#00577          LaunchPanelMessage "" Properties = Panel_Message_CompSkaterPlace
+#00000          LaunchPanelMessage "" Properties = Panel_Message_CompSkaterPlace
 
-#00578          LaunchPanelMessage "" Properties = Panel_Message_CompSkaterName
+#00000          LaunchPanelMessage "" Properties = Panel_Message_CompSkaterName
 
-#00579          BREAK
+#00000          BREAK
 
-#00580        END IF
-#00581        Wait 1 Gameframes
-#00582      END LOOP
-#00583      PlaySkaterCamAnim Skater = 0
+#00000        END IF
+#00000        Wait 1 Gameframes
+#00000      END LOOP
+#00000      PlaySkaterCamAnim Skater = 0
             Name = GLOBAL.CameraCompEnd_Final
 
-#00584      KillSpawnedScript Name = PlayerReaction_2nd_Skippable
+#00000      KillSpawnedScript Name = PlayerReaction_2nd_Skippable
 
-#00585      SetFlag Flag = COMP_FLAG_2ND_PLACE_GO
+#00000      SetFlag Flag = COMP_FLAG_2ND_PLACE_GO
 
-#00586      Wait 30 Gameframes
-#00587      LaunchPanelMessage "Congratulations! | You Won The SILVER Medal!" Properties = Panel_Message_CompCongrats
+#00000      Wait 30 Gameframes
+#00000      LaunchPanelMessage "Congratulations! | You Won The SILVER Medal!" Properties = Panel_Message_CompCongrats
 
-#00588      SetSkaterCamAnimSkippable Skater = 0
+#00000      SetSkaterCamAnimSkippable Skater = 0
             Skippable = 1
 
-#00589      LOOP
-#00590        IF SkaterCamAnimFinished Skater = 0
+#00000      LOOP
+#00000        IF SkaterCamAnimFinished Skater = 0
                 Name = GLOBAL.CameraCompEnd_Final
 
-#00591          BREAK
+#00000          BREAK
 
-#00592        END IF
-#00593        Wait 1 Gameframes
-#00594      END LOOP
-#00595      PlaySkaterCamAnim Skater = 0
+#00000        END IF
+#00000        Wait 1 Gameframes
+#00000      END LOOP
+#00000      PlaySkaterCamAnim Skater = 0
             Name = GLOBAL.CameraCompEnd_Hold
             Play_Hold
-#00596      UnSetFlag Flag = COMP_FLAG_2ND_PLACE_GO
+#00000      UnSetFlag Flag = COMP_FLAG_2ND_PLACE_GO
 
-#00597      LaunchLocalMessage id = BottomInfo
+#00000      LaunchLocalMessage id = BottomInfo
             "Press ¬ to Continue" panel_message_XtoContinue
-#00598      WaitForControllerPressedX
-#00599      LaunchLocalMessage id = BottomInfo
+#00000      WaitForControllerPressedX
+#00000      LaunchLocalMessage id = BottomInfo
             " " panel_message_XtoContinue
-#00600      IF GetGoal Goal = GOAL_GOLD
+#00000      IF GetGoal Goal = GOAL_GOLD
 
-#00608      ELSE
-#00609        IF GetGoal Goal = GOAL_SILVER
+#00000      ELSE
+#00000        IF GetGoal Goal = GOAL_SILVER
 
-#00610          SetGoal Goal = GOAL_SILVER
+#00000          SetGoal Goal = GOAL_SILVER
 
-#00612        ELSE
-#00613          SetGlobalFlag Flag = PROMPT_FOR_SAVE
+#00000        ELSE
+#00000          SetGlobalFlag Flag = PROMPT_FOR_SAVE
 
-#00615          SetGoal Goal = GOAL_SILVER
+#00000          SetGoal Goal = GOAL_SILVER
 
-#00616          SetGlobalFlag Flag = SKATESHOP_JUST_GOT_MEDAL_SILVER
+#00000          SetGlobalFlag Flag = SKATESHOP_JUST_GOT_MEDAL_SILVER
 
-#00617        END IF
-#00618      END IF
-#00619      EndRun_CheckForLevelsOpen
-#00620      LaunchPanelMessage "" Properties = Panel_Message_CompCongrats
+#00000        END IF
+#00000      END IF
+#00000      EndRun_CheckForLevelsOpen
+#00000      LaunchPanelMessage "" Properties = Panel_Message_CompCongrats
 
-#00622      Unpause_Game_Flow
-#00623    END IF
-#00624  END FUNCTION
+#00000      Unpause_Game_Flow
+#00000    END IF
+#00000  END FUNCTION
 
-#00625  FUNCTION CompEndSequence_3rd DefaultCompParams
-#00628    IF IsCareerMode
-#00629      PauseStream 0
-#00630      DisablePlayerInput
-#00631      Kill Prefix = GLOBAL.CompNormalPeds
+#00000  FUNCTION CompEndSequence_3rd DefaultCompParams
+#00000    IF IsCareerMode
+#00000      PauseStream 0
+#00000      DisablePlayerInput
+#00000      Kill Prefix = GLOBAL.CompNormalPeds
 
-#00632      Create Prefix = GLOBAL.CompEndPeds
+#00000      Create Prefix = GLOBAL.CompEndPeds
 
-#00633      MakeSkaterGoto Player_3rd_Idle
-#00634      GLOBAL.Comp_CamEndCrowd_Script
+#00000      MakeSkaterGoto Player_3rd_Idle
+#00000      GLOBAL.Comp_CamEndCrowd_Script
 
-#00635      PlaySkaterCamAnim Skater = 0
+#00000      PlaySkaterCamAnim Skater = 0
             Name = GLOBAL.CameraCompEnd_Crowd
 
-#00636      Wait 30 Gameframes
-#00637      LaunchPanelMessage "Final Results" Properties = Panel_Message_CompRule
+#00000      Wait 30 Gameframes
+#00000      LaunchPanelMessage "Final Results" Properties = Panel_Message_CompRule
 
-#00638      SetSkaterCamAnimSkippable Skater = 0
+#00000      SetSkaterCamAnimSkippable Skater = 0
             Skippable = 1
 
-#00639      LOOP
-#00640        IF SkaterCamAnimFinished Skater = 0
+#00000      LOOP
+#00000        IF SkaterCamAnimFinished Skater = 0
                 Name = GLOBAL.CameraCompRules_Crowd
 
-#00641          LaunchPanelMessage "" Properties = Panel_Message_CompRule
+#00000          LaunchPanelMessage "" Properties = Panel_Message_CompRule
 
-#00642          BREAK
+#00000          BREAK
 
-#00643        END IF
-#00644        Wait 1 gameframe
-#00645      END LOOP
-#00646      PlaySkaterCamAnim Skater = 0
+#00000        END IF
+#00000        Wait 1 gameframe
+#00000      END LOOP
+#00000      PlaySkaterCamAnim Skater = 0
             Name = GLOBAL.CameraCompEnd_Win
 
-#00647      Wait 30 Gameframes
-#00648      LaunchPanelMessage "3rd Place" Properties = Panel_Message_CompSkaterPlace
+#00000      Wait 30 Gameframes
+#00000      LaunchPanelMessage "3rd Place" Properties = Panel_Message_CompSkaterPlace
 
-#00649      SpawnScript PlayerReaction_3rd_Skippable
-#00650      SetSkaterCamAnimSkippable Skater = 0
+#00000      SpawnScript PlayerReaction_3rd_Skippable
+#00000      SetSkaterCamAnimSkippable Skater = 0
             Skippable = 1
 
-#00651      LOOP
-#00652        IF SkaterCamAnimFinished Skater = 0
+#00000      LOOP
+#00000        IF SkaterCamAnimFinished Skater = 0
                 Name = GLOBAL.CameraCompEnd_Win
 
-#00653          LaunchPanelMessage "" Properties = Panel_Message_CompSkaterPlace
+#00000          LaunchPanelMessage "" Properties = Panel_Message_CompSkaterPlace
 
-#00654          LaunchPanelMessage "" Properties = Panel_Message_CompSkaterName
+#00000          LaunchPanelMessage "" Properties = Panel_Message_CompSkaterName
 
-#00655          BREAK
+#00000          BREAK
 
-#00656        END IF
-#00657        Wait 1 Gameframes
-#00658      END LOOP
-#00659      PlaySkaterCamAnim Skater = 0
+#00000        END IF
+#00000        Wait 1 Gameframes
+#00000      END LOOP
+#00000      PlaySkaterCamAnim Skater = 0
             Name = GLOBAL.CameraCompEnd_Final
 
-#00660      KillSpawnedScript Name = PlayerReaction_3rd_Skippable
+#00000      KillSpawnedScript Name = PlayerReaction_3rd_Skippable
 
-#00661      SetFlag Flag = COMP_FLAG_3RD_PLACE_GO
+#00000      SetFlag Flag = COMP_FLAG_3RD_PLACE_GO
 
-#00662      Wait 30 Gameframes
-#00663      LaunchPanelMessage "Congratulations! | You Won The BRONZE Medal!" Properties = Panel_Message_CompCongrats
+#00000      Wait 30 Gameframes
+#00000      LaunchPanelMessage "Congratulations! | You Won The BRONZE Medal!" Properties = Panel_Message_CompCongrats
 
-#00664      SetSkaterCamAnimSkippable Skater = 0
+#00000      SetSkaterCamAnimSkippable Skater = 0
             Skippable = 1
 
-#00665      LOOP
-#00666        IF SkaterCamAnimFinished Skater = 0
+#00000      LOOP
+#00000        IF SkaterCamAnimFinished Skater = 0
                 Name = GLOBAL.CameraCompEnd_Final
 
-#00667          BREAK
+#00000          BREAK
 
-#00668        END IF
-#00669        Wait 1 Gameframes
-#00670      END LOOP
-#00671      PlaySkaterCamAnim Skater = 0
+#00000        END IF
+#00000        Wait 1 Gameframes
+#00000      END LOOP
+#00000      PlaySkaterCamAnim Skater = 0
             Name = GLOBAL.CameraCompEnd_Hold
             Play_Hold
-#00672      UnSetFlag Flag = COMP_FLAG_3RD_PLACE_GO
+#00000      UnSetFlag Flag = COMP_FLAG_3RD_PLACE_GO
 
-#00673      LaunchLocalMessage id = BottomInfo
+#00000      LaunchLocalMessage id = BottomInfo
             "Press ¬ to Continue" panel_message_XtoContinue
-#00674      WaitForControllerPressedX
-#00675      LaunchLocalMessage id = BottomInfo
+#00000      WaitForControllerPressedX
+#00000      LaunchLocalMessage id = BottomInfo
             " " panel_message_XtoContinue
-#00676      IF GetGoal Goal = GOAL_GOLD
+#00000      IF GetGoal Goal = GOAL_GOLD
 
-#00684      ELSE
-#00685        IF GetGoal Goal = GOAL_SILVER
+#00000      ELSE
+#00000        IF GetGoal Goal = GOAL_SILVER
 
-#00686        ELSE
-#00687          IF GetGoal Goal = GOAL_BRONZE
+#00000        ELSE
+#00000          IF GetGoal Goal = GOAL_BRONZE
 
-#00688            SetGoal Goal = GOAL_BRONZE
+#00000            SetGoal Goal = GOAL_BRONZE
 
-#00690          ELSE
-#00691            SetGlobalFlag Flag = PROMPT_FOR_SAVE
+#00000          ELSE
+#00000            SetGlobalFlag Flag = PROMPT_FOR_SAVE
 
-#00693            SetGoal Goal = GOAL_BRONZE
+#00000            SetGoal Goal = GOAL_BRONZE
 
-#00694            SetGlobalFlag Flag = SKATESHOP_JUST_GOT_MEDAL_BRONZE
+#00000            SetGlobalFlag Flag = SKATESHOP_JUST_GOT_MEDAL_BRONZE
 
-#00695          END IF
-#00696        END IF
-#00697      END IF
-#00698      EndRun_CheckForLevelsOpen
-#00699      LaunchPanelMessage "" Properties = Panel_Message_CompCongrats
+#00000          END IF
+#00000        END IF
+#00000      END IF
+#00000      EndRun_CheckForLevelsOpen
+#00000      LaunchPanelMessage "" Properties = Panel_Message_CompCongrats
 
-#00701      Unpause_Game_Flow
-#00702    END IF
-#00703  END FUNCTION
+#00000      Unpause_Game_Flow
+#00000    END IF
+#00000  END FUNCTION
 
-#00704  FUNCTION CompEndSequence_Lose DefaultCompParams
-#00707    IF IsCareerMode
-#00708      PauseStream 0
-#00709      DisablePlayerInput
-#00710      Kill Prefix = GLOBAL.CompNormalPeds
+#00000  FUNCTION CompEndSequence_Lose DefaultCompParams
+#00000    IF IsCareerMode
+#00000      PauseStream 0
+#00000      DisablePlayerInput
+#00000      Kill Prefix = GLOBAL.CompNormalPeds
 
-#00711      Create Prefix = GLOBAL.CompEndPeds
+#00000      Create Prefix = GLOBAL.CompEndPeds
 
-#00712      GLOBAL.Comp_CamEndCrowd_Script
+#00000      GLOBAL.Comp_CamEndCrowd_Script
 
-#00713      PlaySkaterCamAnim Skater = 0
+#00000      PlaySkaterCamAnim Skater = 0
             Name = GLOBAL.CameraCompEnd_Crowd
 
-#00714      Wait 30 Gameframes
-#00715      LaunchPanelMessage "Final Results" Properties = Panel_Message_CompRule
+#00000      Wait 30 Gameframes
+#00000      LaunchPanelMessage "Final Results" Properties = Panel_Message_CompRule
 
-#00716      SetSkaterCamAnimSkippable Skater = 0
+#00000      SetSkaterCamAnimSkippable Skater = 0
             Skippable = 1
 
-#00717      LOOP
-#00718        IF SkaterCamAnimFinished Skater = 0
+#00000      LOOP
+#00000        IF SkaterCamAnimFinished Skater = 0
                 Name = GLOBAL.CameraComp1Rules_Crowd
 
-#00719          LaunchPanelMessage "" Properties = Panel_Message_RunNumber
+#00000          LaunchPanelMessage "" Properties = Panel_Message_RunNumber
 
-#00720          BREAK
+#00000          BREAK
 
-#00721        END IF
-#00722        Wait 1 gameframe
-#00723      END LOOP
-#00724      PlaySkaterCamAnim Skater = 0
+#00000        END IF
+#00000        Wait 1 gameframe
+#00000      END LOOP
+#00000      PlaySkaterCamAnim Skater = 0
             Name = GLOBAL.CameraSkaterJudged
             Play_Hold
-#00725      MakeSkaterGoto SkaterLoseAnims
-#00726      LaunchPanelMessage "" Properties = Panel_Message_CompRule
+#00000      MakeSkaterGoto SkaterLoseAnims
+#00000      LaunchPanelMessage "" Properties = Panel_Message_CompRule
 
-#00727      Wait 1 Seconds
-#00728      LaunchPanelMessage "You Did Not Place.|                   | Maybe next time." Properties = Panel_Message_CompCongrats
+#00000      Wait 1 Seconds
+#00000      LaunchPanelMessage "You Did Not Place.|                   | Maybe next time." Properties = Panel_Message_CompCongrats
 
-#00729      LaunchLocalMessage id = BottomInfo
+#00000      LaunchLocalMessage id = BottomInfo
             "Press ¬ to Continue" panel_message_XtoContinue
-#00730      WaitForControllerPressedX
-#00731      LaunchLocalMessage id = BottomInfo
+#00000      WaitForControllerPressedX
+#00000      LaunchLocalMessage id = BottomInfo
             " " panel_message_XtoContinue
-#00732      EndRun_CheckForLevelsOpen
-#00740      Wait 1 frame
-#00743      LaunchPanelMessage "" Properties = Panel_Message_CompCongrats
+#00000      EndRun_CheckForLevelsOpen
+#00000      Wait 1 frame
+#00000      LaunchPanelMessage "" Properties = Panel_Message_CompCongrats
 
-#00744      Unpause_Game_Flow
-#00745    END IF
-#00746  END FUNCTION
+#00000      Unpause_Game_Flow
+#00000    END IF
+#00000  END FUNCTION
 
-#00747  FUNCTION Player_1st_Idle
-#00750    Obj_MoveToNode Name = Waypoint_Skater_1st
+#00000  FUNCTION Player_1st_Idle
+#00000    Obj_MoveToNode Name = Waypoint_Skater_1st
           orient
-#00751    FreezeSkaterTemp
-#00752    LOOP
-#00753      IF GetFlag Flag = COMP_FLAG_1ST_PLACE_GO
+#00000    FreezeSkaterTemp
+#00000    LOOP
+#00000      IF GetFlag Flag = COMP_FLAG_1ST_PLACE_GO
 
-#00754        UnSetFlag Flag = COMP_FLAG_1ST_PLACE_GO
+#00000        UnSetFlag Flag = COMP_FLAG_1ST_PLACE_GO
 
-#00755        BREAK
+#00000        BREAK
 
-#00756      END IF
-#00757      Obj_CycleAnim Anim = StandIdle
+#00000      END IF
+#00000      Obj_CycleAnim Anim = StandIdle
             NumCycles = RANDOM[2][4; 10]
 
             1 JUMP 0x05000000 2
-#00758      IF GetFlag Flag = COMP_FLAG_1ST_PLACE_GO
+#00000      IF GetFlag Flag = COMP_FLAG_1ST_PLACE_GO
 
-#00759        UnSetFlag Flag = COMP_FLAG_1ST_PLACE_GO
+#00000        UnSetFlag Flag = COMP_FLAG_1ST_PLACE_GO
 
-#00760        BREAK
+#00000        BREAK
 
-#00761      END IF
-#00762      Obj_CycleAnim Anim = RANDOM[3][13; 24; 35]
-
-
-#00763      StandCheckBoard
-#00764      JUMP 0x19000000 StandLeftRight
-#00765      JUMP 0x0a000000 StandShoulder
-#00766
-#00767      Wait 1 Gameframes
-#00768    END LOOP
-#00769    Player_1st_React
-#00770  END FUNCTION
-
-#00771  FUNCTION Player_1st_React
-#00774    Obj_CycleAnim Anim = StandFist
-
-#00775    Obj_CycleAnim Anim = RANDOM[2][9; 20]
+#00000      END IF
+#00000      Obj_CycleAnim Anim = RANDOM[3][13; 24; 35]
 
 
-#00776    StandRaiseBoard
-#00777    JUMP 0x0a000000 Stand2Hands
-#00778
-#00779    UnSetFlag Flag = COMP_FLAG_1ST_PLACE_GO
+#00000      StandCheckBoard
+#00000      JUMP 0x19000000 StandLeftRight
+#00000      JUMP 0x0a000000 StandShoulder
+#00000
+#00000      Wait 1 Gameframes
+#00000    END LOOP
+#00000    Player_1st_React
+#00000  END FUNCTION
 
-#00780    GoTo Player_1st_Idle
-#00781  END FUNCTION
+#00000  FUNCTION Player_1st_React
+#00000    Obj_CycleAnim Anim = StandFist
 
-#00782  FUNCTION Ped_1st_Idle
-#00785    LOOP
-#00786      IF GetFlag Flag = COMP_FLAG_1ST_PLACE_GO
+#00000    Obj_CycleAnim Anim = RANDOM[2][9; 20]
 
-#00787        UnSetFlag Flag = COMP_FLAG_1ST_PLACE_GO
 
-#00788        BREAK
+#00000    StandRaiseBoard
+#00000    JUMP 0x0a000000 Stand2Hands
+#00000
+#00000    UnSetFlag Flag = COMP_FLAG_1ST_PLACE_GO
 
-#00789      END IF
-#00790      Obj_CycleAnim Anim = StandIdle
+#00000    GoTo Player_1st_Idle
+#00000  END FUNCTION
+
+#00000  FUNCTION Ped_1st_Idle
+#00000    LOOP
+#00000      IF GetFlag Flag = COMP_FLAG_1ST_PLACE_GO
+
+#00000        UnSetFlag Flag = COMP_FLAG_1ST_PLACE_GO
+
+#00000        BREAK
+
+#00000      END IF
+#00000      Obj_CycleAnim Anim = StandIdle
             NumCycles = RANDOM[2][4; 10]
 
             1 JUMP 0x05000000 2
-#00791      IF GetFlag Flag = COMP_FLAG_1ST_PLACE_GO
+#00000      IF GetFlag Flag = COMP_FLAG_1ST_PLACE_GO
 
-#00792        UnSetFlag Flag = COMP_FLAG_1ST_PLACE_GO
+#00000        UnSetFlag Flag = COMP_FLAG_1ST_PLACE_GO
 
-#00793        BREAK
+#00000        BREAK
 
-#00794      END IF
-#00795      Obj_CycleAnim Anim = RANDOM[3][13; 24; 35]
-
-
-#00796      StandCheckBoard
-#00797      JUMP 0x19000000 StandLeftRight
-#00798      JUMP 0x0a000000 StandShoulder
-#00799
-#00800      Wait 1 Gameframes
-#00801    END LOOP
-#00802    Ped_1st_React
-#00803  END FUNCTION
-
-#00804  FUNCTION Ped_1st_React
-#00807    Obj_CycleAnim Anim = StandFist
-
-#00808    Obj_CycleAnim Anim = RANDOM[2][9; 20]
+#00000      END IF
+#00000      Obj_CycleAnim Anim = RANDOM[3][13; 24; 35]
 
 
-#00809    StandRaiseBoard
-#00810    JUMP 0x0a000000 Stand2Hands
-#00811
-#00812    UnSetFlag Flag = COMP_FLAG_1ST_PLACE_GO
+#00000      StandCheckBoard
+#00000      JUMP 0x19000000 StandLeftRight
+#00000      JUMP 0x0a000000 StandShoulder
+#00000
+#00000      Wait 1 Gameframes
+#00000    END LOOP
+#00000    Ped_1st_React
+#00000  END FUNCTION
 
-#00813  END FUNCTION
+#00000  FUNCTION Ped_1st_React
+#00000    Obj_CycleAnim Anim = StandFist
 
-#00814  FUNCTION Player_2nd_Idle
-#00817    Obj_MoveToNode Name = Waypoint_Skater_1st
+#00000    Obj_CycleAnim Anim = RANDOM[2][9; 20]
+
+
+#00000    StandRaiseBoard
+#00000    JUMP 0x0a000000 Stand2Hands
+#00000
+#00000    UnSetFlag Flag = COMP_FLAG_1ST_PLACE_GO
+
+#00000  END FUNCTION
+
+#00000  FUNCTION Player_2nd_Idle
+#00000    Obj_MoveToNode Name = Waypoint_Skater_1st
           orient
-#00818    FreezeSkaterTemp
-#00819    LOOP
-#00820      IF GetFlag Flag = COMP_FLAG_2ND_PLACE_GO
+#00000    FreezeSkaterTemp
+#00000    LOOP
+#00000      IF GetFlag Flag = COMP_FLAG_2ND_PLACE_GO
 
-#00821        UnSetFlag Flag = COMP_FLAG_2ND_PLACE_GO
+#00000        UnSetFlag Flag = COMP_FLAG_2ND_PLACE_GO
 
-#00822        BREAK
+#00000        BREAK
 
-#00823      END IF
-#00824      Obj_CycleAnim Anim = BoardIdle
+#00000      END IF
+#00000      Obj_CycleAnim Anim = BoardIdle
             NumCycles = RANDOM[2][4; 10]
 
             1 JUMP 0x05000000 2
-#00825      IF GetFlag Flag = COMP_FLAG_2ND_PLACE_GO
+#00000      IF GetFlag Flag = COMP_FLAG_2ND_PLACE_GO
 
-#00826        UnSetFlag Flag = COMP_FLAG_2ND_PLACE_GO
+#00000        UnSetFlag Flag = COMP_FLAG_2ND_PLACE_GO
 
-#00827        BREAK
+#00000        BREAK
 
-#00828      END IF
-#00829      Obj_CycleAnim Anim = RANDOM[2][9; 20]
-
-
-#00830      BoardShrug
-#00831      JUMP 0x0a000000 BoardClap
-#00832
-#00833      Wait 1 Gameframes
-#00834    END LOOP
-#00835    Player_2nd_React
-#00836  END FUNCTION
-
-#00837  FUNCTION Player_2nd_React
-#00840    Obj_CycleAnim Anim = BoardClap
-
-#00841    Obj_CycleAnim Anim = RANDOM[2][9; 20]
+#00000      END IF
+#00000      Obj_CycleAnim Anim = RANDOM[2][9; 20]
 
 
-#00842    BoardWave
-#00843    JUMP 0x0a000000 BoardPump
-#00844
-#00845    UnSetFlag Flag = COMP_FLAG_2ND_PLACE_GO
+#00000      BoardShrug
+#00000      JUMP 0x0a000000 BoardClap
+#00000
+#00000      Wait 1 Gameframes
+#00000    END LOOP
+#00000    Player_2nd_React
+#00000  END FUNCTION
 
-#00846    GoTo Player_2nd_Idle
-#00847  END FUNCTION
+#00000  FUNCTION Player_2nd_React
+#00000    Obj_CycleAnim Anim = BoardClap
 
-#00848  FUNCTION Ped_2nd_Idle
-#00851    LOOP
-#00852      IF GetFlag Flag = COMP_FLAG_2ND_PLACE_GO
+#00000    Obj_CycleAnim Anim = RANDOM[2][9; 20]
 
-#00853        UnSetFlag Flag = COMP_FLAG_2ND_PLACE_GO
 
-#00854        BREAK
+#00000    BoardWave
+#00000    JUMP 0x0a000000 BoardPump
+#00000
+#00000    UnSetFlag Flag = COMP_FLAG_2ND_PLACE_GO
 
-#00855      END IF
-#00856      Obj_CycleAnim Anim = BoardIdle
+#00000    GoTo Player_2nd_Idle
+#00000  END FUNCTION
+
+#00000  FUNCTION Ped_2nd_Idle
+#00000    LOOP
+#00000      IF GetFlag Flag = COMP_FLAG_2ND_PLACE_GO
+
+#00000        UnSetFlag Flag = COMP_FLAG_2ND_PLACE_GO
+
+#00000        BREAK
+
+#00000      END IF
+#00000      Obj_CycleAnim Anim = BoardIdle
             NumCycles = RANDOM[2][4; 10]
 
             1 JUMP 0x05000000 2
-#00857      IF GetFlag Flag = COMP_FLAG_2ND_PLACE_GO
+#00000      IF GetFlag Flag = COMP_FLAG_2ND_PLACE_GO
 
-#00858        UnSetFlag Flag = COMP_FLAG_2ND_PLACE_GO
+#00000        UnSetFlag Flag = COMP_FLAG_2ND_PLACE_GO
 
-#00859        BREAK
+#00000        BREAK
 
-#00860      END IF
-#00861      Obj_CycleAnim Anim = RANDOM[2][9; 20]
-
-
-#00862      BoardShrug
-#00863      JUMP 0x0a000000 BoardClap
-#00864
-#00865      Wait 1 Gameframes
-#00866    END LOOP
-#00867    Ped_2nd_React
-#00868  END FUNCTION
-
-#00869  FUNCTION Ped_2nd_React
-#00872    Obj_CycleAnim Anim = BoardClap
-
-#00873    Obj_CycleAnim Anim = RANDOM[2][9; 20]
+#00000      END IF
+#00000      Obj_CycleAnim Anim = RANDOM[2][9; 20]
 
 
-#00874    BoardWave
-#00875    JUMP 0x0a000000 BoardPump
-#00876
-#00877    UnSetFlag Flag = COMP_FLAG_2ND_PLACE_GO
+#00000      BoardShrug
+#00000      JUMP 0x0a000000 BoardClap
+#00000
+#00000      Wait 1 Gameframes
+#00000    END LOOP
+#00000    Ped_2nd_React
+#00000  END FUNCTION
 
-#00878  END FUNCTION
+#00000  FUNCTION Ped_2nd_React
+#00000    Obj_CycleAnim Anim = BoardClap
 
-#00879  FUNCTION Player_3rd_Idle
-#00882    Obj_MoveToNode Name = Waypoint_Skater_1st
+#00000    Obj_CycleAnim Anim = RANDOM[2][9; 20]
+
+
+#00000    BoardWave
+#00000    JUMP 0x0a000000 BoardPump
+#00000
+#00000    UnSetFlag Flag = COMP_FLAG_2ND_PLACE_GO
+
+#00000  END FUNCTION
+
+#00000  FUNCTION Player_3rd_Idle
+#00000    Obj_MoveToNode Name = Waypoint_Skater_1st
           orient
-#00883    FreezeSkaterTemp
-#00884    LOOP
-#00885      IF GetFlag Flag = COMP_FLAG_3RD_PLACE_GO
+#00000    FreezeSkaterTemp
+#00000    LOOP
+#00000      IF GetFlag Flag = COMP_FLAG_3RD_PLACE_GO
 
-#00886        UnSetFlag Flag = COMP_FLAG_3RD_PLACE_GO
+#00000        UnSetFlag Flag = COMP_FLAG_3RD_PLACE_GO
 
-#00887        BREAK
+#00000        BREAK
 
-#00888      END IF
-#00889      Obj_CycleAnim Anim = BoardIdle
+#00000      END IF
+#00000      Obj_CycleAnim Anim = BoardIdle
             NumCycles = RANDOM[2][4; 10]
 
             1 JUMP 0x05000000 2
-#00890      IF GetFlag Flag = COMP_FLAG_3RD_PLACE_GO
+#00000      IF GetFlag Flag = COMP_FLAG_3RD_PLACE_GO
 
-#00891        UnSetFlag Flag = COMP_FLAG_3RD_PLACE_GO
+#00000        UnSetFlag Flag = COMP_FLAG_3RD_PLACE_GO
 
-#00892        BREAK
+#00000        BREAK
 
-#00893      END IF
-#00894      Obj_CycleAnim Anim = RANDOM[2][9; 20]
-
-
-#00895      BoardShrug
-#00896      JUMP 0x0a000000 BoardClap
-#00897
-#00898      Wait 1 Gameframes
-#00899    END LOOP
-#00900    Player_3rd_React
-#00901  END FUNCTION
-
-#00902  FUNCTION Player_3rd_React
-#00905    Obj_CycleAnim Anim = BoardClap
-
-#00906    Obj_CycleAnim Anim = RANDOM[2][9; 20]
+#00000      END IF
+#00000      Obj_CycleAnim Anim = RANDOM[2][9; 20]
 
 
-#00907    BoardWave
-#00908    JUMP 0x0a000000 BoardPump
-#00909
-#00910    UnSetFlag Flag = COMP_FLAG_3RD_PLACE_GO
+#00000      BoardShrug
+#00000      JUMP 0x0a000000 BoardClap
+#00000
+#00000      Wait 1 Gameframes
+#00000    END LOOP
+#00000    Player_3rd_React
+#00000  END FUNCTION
 
-#00911    GoTo Player_3rd_Idle
-#00912  END FUNCTION
+#00000  FUNCTION Player_3rd_React
+#00000    Obj_CycleAnim Anim = BoardClap
 
-#00913  FUNCTION Ped_3rd_Idle
-#00916    LOOP
-#00917      IF GetFlag Flag = COMP_FLAG_3RD_PLACE_GO
+#00000    Obj_CycleAnim Anim = RANDOM[2][9; 20]
 
-#00918        UnSetFlag Flag = COMP_FLAG_3RD_PLACE_GO
 
-#00919        BREAK
+#00000    BoardWave
+#00000    JUMP 0x0a000000 BoardPump
+#00000
+#00000    UnSetFlag Flag = COMP_FLAG_3RD_PLACE_GO
 
-#00920      END IF
-#00921      Obj_CycleAnim Anim = BoardIdle
+#00000    GoTo Player_3rd_Idle
+#00000  END FUNCTION
+
+#00000  FUNCTION Ped_3rd_Idle
+#00000    LOOP
+#00000      IF GetFlag Flag = COMP_FLAG_3RD_PLACE_GO
+
+#00000        UnSetFlag Flag = COMP_FLAG_3RD_PLACE_GO
+
+#00000        BREAK
+
+#00000      END IF
+#00000      Obj_CycleAnim Anim = BoardIdle
             NumCycles = RANDOM[2][4; 10]
 
             1 JUMP 0x05000000 2
-#00922      IF GetFlag Flag = COMP_FLAG_3RD_PLACE_GO
+#00000      IF GetFlag Flag = COMP_FLAG_3RD_PLACE_GO
 
-#00923        UnSetFlag Flag = COMP_FLAG_3RD_PLACE_GO
+#00000        UnSetFlag Flag = COMP_FLAG_3RD_PLACE_GO
 
-#00924        BREAK
+#00000        BREAK
 
-#00925      END IF
-#00926      Obj_CycleAnim Anim = RANDOM[2][9; 20]
-
-
-#00927      BoardShrug
-#00928      JUMP 0x0a000000 BoardClap
-#00929
-#00930      Wait 1 Gameframes
-#00931    END LOOP
-#00932    Ped_3rd_React
-#00933  END FUNCTION
-
-#00934  FUNCTION Ped_3rd_React
-#00937    Obj_CycleAnim Anim = BoardClap
-
-#00938    Obj_CycleAnim Anim = RANDOM[2][9; 20]
+#00000      END IF
+#00000      Obj_CycleAnim Anim = RANDOM[2][9; 20]
 
 
-#00939    BoardWave
-#00940    JUMP 0x0a000000 BoardPump
-#00941
-#00942    UnSetFlag Flag = COMP_FLAG_3RD_PLACE_GO
+#00000      BoardShrug
+#00000      JUMP 0x0a000000 BoardClap
+#00000
+#00000      Wait 1 Gameframes
+#00000    END LOOP
+#00000    Ped_3rd_React
+#00000  END FUNCTION
 
-#00943  END FUNCTION
+#00000  FUNCTION Ped_3rd_React
+#00000    Obj_CycleAnim Anim = BoardClap
 
-#00944  FUNCTION Ped_Skater_End
-#00947    LOOP
-#00948      Obj_CycleAnim Anim = BoardIdle
+#00000    Obj_CycleAnim Anim = RANDOM[2][9; 20]
+
+
+#00000    BoardWave
+#00000    JUMP 0x0a000000 BoardPump
+#00000
+#00000    UnSetFlag Flag = COMP_FLAG_3RD_PLACE_GO
+
+#00000  END FUNCTION
+
+#00000  FUNCTION Ped_Skater_End
+#00000    LOOP
+#00000      Obj_CycleAnim Anim = BoardIdle
             NumCycles = RANDOM[3][8; 14; 20]
 
             1 JUMP 0x0f000000 2 JUMP 0x05000000 3
-#00949      Obj_CycleAnim Anim = RANDOM[3][13; 24; 35]
+#00000      Obj_CycleAnim Anim = RANDOM[3][13; 24; 35]
 
 
-#00950      BoardClap
-#00951      JUMP 0x19000000 BoardWave
-#00952      JUMP 0x0a000000 BoardPump
-#00953
-#00954      Wait 1 Gameframes
-#00955    END LOOP
-#00956  END FUNCTION
+#00000      BoardClap
+#00000      JUMP 0x19000000 BoardWave
+#00000      JUMP 0x0a000000 BoardPump
+#00000
+#00000      Wait 1 Gameframes
+#00000    END LOOP
+#00000  END FUNCTION
 
-#00957  FUNCTION Ped_Skater_End2
-#00960    LOOP
-#00961      Obj_CycleAnim Anim = StandIdle
+#00000  FUNCTION Ped_Skater_End2
+#00000    LOOP
+#00000      Obj_CycleAnim Anim = StandIdle
             NumCycles = RANDOM[3][8; 14; 20]
 
             1 JUMP 0x0f000000 2 JUMP 0x05000000 3
-#00962      Obj_CycleAnim Anim = RANDOM[3][13; 24; 35]
+#00000      Obj_CycleAnim Anim = RANDOM[3][13; 24; 35]
 
 
-#00963      StandCheckBoard
-#00964      JUMP 0x19000000 StandLeftRight
-#00965      JUMP 0x0a000000 StandShoulder
-#00966
-#00967      Wait 1 Gameframes
-#00968    END LOOP
-#00969  END FUNCTION
+#00000      StandCheckBoard
+#00000      JUMP 0x19000000 StandLeftRight
+#00000      JUMP 0x0a000000 StandShoulder
+#00000
+#00000      Wait 1 Gameframes
+#00000    END LOOP
+#00000  END FUNCTION
 
-#00970  FUNCTION PlayerReaction_1st_Skippable
-#00973    Wait 55 Gameframes
-#00974    SpawnScript Print_Skater_Place_Name
-#00975    SetFlag Flag = COMP_FLAG_1ST_PLACE_GO
+#00000  FUNCTION PlayerReaction_1st_Skippable
+#00000    Wait 55 Gameframes
+#00000    SpawnScript Print_Skater_Place_Name
+#00000    SetFlag Flag = COMP_FLAG_1ST_PLACE_GO
 
-#00976  END FUNCTION
+#00000  END FUNCTION
 
-#00977  FUNCTION PlayerReaction_2nd_Skippable
-#00980    Wait 55 Gameframes
-#00981    SpawnScript Print_Skater_Place_Name
-#00982    SetFlag Flag = COMP_FLAG_2ND_PLACE_GO
+#00000  FUNCTION PlayerReaction_2nd_Skippable
+#00000    Wait 55 Gameframes
+#00000    SpawnScript Print_Skater_Place_Name
+#00000    SetFlag Flag = COMP_FLAG_2ND_PLACE_GO
 
-#00983  END FUNCTION
+#00000  END FUNCTION
 
-#00984  FUNCTION PlayerReaction_3rd_Skippable
-#00987    Wait 55 Gameframes
-#00988    SpawnScript Print_Skater_Place_Name
-#00989    SetFlag Flag = COMP_FLAG_3RD_PLACE_GO
+#00000  FUNCTION PlayerReaction_3rd_Skippable
+#00000    Wait 55 Gameframes
+#00000    SpawnScript Print_Skater_Place_Name
+#00000    SetFlag Flag = COMP_FLAG_3RD_PLACE_GO
 
-#00990  END FUNCTION
+#00000  END FUNCTION
 
-#00991  FUNCTION Comp_PedEnd_Norm
-#00999    LOOP
-#01000      Obj_PlayAnim Anim = Idle
+#00000  FUNCTION Comp_PedEnd_Norm
+#00000    LOOP
+#00000      Obj_PlayAnim Anim = Idle
 
-#01001      Wait RANDOM[4][17; 33; 49; 65]
+#00000      Wait RANDOM[4][17; 33; 49; 65]
 
-#01002      0.25 Seconds
-#01003      JUMP 0x37000000 0.5 Seconds
-#01004      JUMP 0x23000000 0.75 Seconds
-#01005      JUMP 0x0f000000 1 Seconds
-#01006
-#01007      Obj_CycleAnim Anim = RANDOM[5][21; 32; 43; 54; 65]
+#00000      0.25 Seconds
+#00000      JUMP 0x37000000 0.5 Seconds
+#00000      JUMP 0x23000000 0.75 Seconds
+#00000      JUMP 0x0f000000 1 Seconds
+#00000
+#00000      Obj_CycleAnim Anim = RANDOM[5][21; 32; 43; 54; 65]
 
 
-#01008      Cheering
-#01009      JUMP 0x37000000 Clap
-#01010      JUMP 0x28000000 ShakeFist
-#01011      JUMP 0x19000000 Wave
-#01012      JUMP 0x0a000000 ThinManCheering
-#01013
-#01014    END LOOP
-#01015  END FUNCTION
+#00000      Cheering
+#00000      JUMP 0x37000000 Clap
+#00000      JUMP 0x28000000 ShakeFist
+#00000      JUMP 0x19000000 Wave
+#00000      JUMP 0x0a000000 ThinManCheering
+#00000
+#00000    END LOOP
+#00000  END FUNCTION
 
-#01016  FUNCTION Comp_PedEnd_Pro
-#01019    LOOP
-#01020      Obj_CycleAnim Anim = StandIdle
+#00000  FUNCTION Comp_PedEnd_Pro
+#00000    LOOP
+#00000      Obj_CycleAnim Anim = StandIdle
             NumCycles = 2
 
-#01021      Obj_CycleAnim Anim = RANDOM[3][13; 24; 35]
+#00000      Obj_CycleAnim Anim = RANDOM[3][13; 24; 35]
 
 
-#01022      StandLeftRight
-#01023      JUMP 0x19000000 StandCheckBoard
-#01024      JUMP 0x0a000000 StandShoulder
-#01025
-#01026      Wait 1 Gameframes
-#01027    END LOOP
-#01028  END FUNCTION
+#00000      StandLeftRight
+#00000      JUMP 0x19000000 StandCheckBoard
+#00000      JUMP 0x0a000000 StandShoulder
+#00000
+#00000      Wait 1 Gameframes
+#00000    END LOOP
+#00000  END FUNCTION
 
-#01029  FUNCTION Comp_BlinkXContinue
-#01037    LOOP
-#01038      LaunchPanelMessage "Press ¬ To Continue" Properties = Panel_Message_XMessage
+#00000  FUNCTION Comp_BlinkXContinue
+#00000    LOOP
+#00000      LaunchPanelMessage "Press ¬ To Continue" Properties = Panel_Message_XMessage
 
-#01039      Wait 1.25 Seconds
-#01040    END LOOP
-#01041  END FUNCTION
+#00000      Wait 1.25 Seconds
+#00000    END LOOP
+#00000  END FUNCTION
 
-#01042  FUNCTION Comp_BlinkXStartRun
-#01045    LOOP
-#01046      LaunchPanelMessage "Press ¬ To Start Run" Properties = Panel_Message_XMessage
+#00000  FUNCTION Comp_BlinkXStartRun
+#00000    LOOP
+#00000      LaunchPanelMessage "Press ¬ To Start Run" Properties = Panel_Message_XMessage
 
-#01047      Wait 1.25 Seconds
-#01048    END LOOP
-#01049  END FUNCTION
+#00000      Wait 1.25 Seconds
+#00000    END LOOP
+#00000  END FUNCTION
 
-#01050  FUNCTION Print_Skater_Place_Name
-#01053    LaunchPanelMessage 52 Properties = Panel_Message_CompSkaterName
+#00000  FUNCTION Print_Skater_Place_Name
+#00000    LaunchPanelMessage 52 Properties = Panel_Message_CompSkaterName
 
-#01054  END FUNCTION
+#00000  END FUNCTION
 
-#01055  Panel_Message_CompRule = STRUCT{
+#00000  Panel_Message_CompRule = STRUCT{
           Font = "title.fnt"
           Just = PAIR[0.0; 0.0]
           Dims = PAIR[600.0; 112.0]
@@ -1342,7 +1342,7 @@
           )
           }
 
-#01073  Panel_Message_RunNumber = STRUCT{
+#00000  Panel_Message_RunNumber = STRUCT{
           Font = "title.fnt"
           Just = PAIR[0.0; 0.0]
           Dims = PAIR[600.0; 112.0]
@@ -1395,7 +1395,7 @@
           )
           }
 
-#01090  Panel_Message_CompTitle = STRUCT{
+#00000  Panel_Message_CompTitle = STRUCT{
           Font = "title.fnt"
           Just = PAIR[0.0; 0.0]
           Dims = PAIR[600.0; 112.0]
@@ -1433,7 +1433,7 @@
           )
           }
 
-#01105  Panel_Message_CompSkaterPlace = STRUCT{
+#00000  Panel_Message_CompSkaterPlace = STRUCT{
           Font = "large.fnt"
           Just = PAIR[0.0; 0.0]
           Dims = PAIR[600.0; 112.0]
@@ -1483,7 +1483,7 @@
           )
           }
 
-#01122  Panel_Message_CompSkaterName = STRUCT{
+#00000  Panel_Message_CompSkaterName = STRUCT{
           Font = "title.fnt"
           Just = PAIR[0.0; 0.0]
           Dims = PAIR[600.0; 112.0]
@@ -1533,7 +1533,7 @@
           )
           }
 
-#01139  Panel_Message_CompRule_List01 = STRUCT{
+#00000  Panel_Message_CompRule_List01 = STRUCT{
           Font = "title.fnt"
           Just = PAIR[0.0; 0.0]
           Dims = PAIR[600.0; 112.0]
@@ -1581,7 +1581,7 @@
           )
           }
 
-#01156  Panel_Message_CompRule_List02 = STRUCT{
+#00000  Panel_Message_CompRule_List02 = STRUCT{
           Font = "title.fnt"
           Just = PAIR[0.0; 0.0]
           Dims = PAIR[600.0; 112.0]
@@ -1629,7 +1629,7 @@
           )
           }
 
-#01173  Panel_Message_CompRule_List03 = STRUCT{
+#00000  Panel_Message_CompRule_List03 = STRUCT{
           Font = "title.fnt"
           Just = PAIR[0.0; 0.0]
           Dims = PAIR[600.0; 112.0]
@@ -1677,7 +1677,7 @@
           )
           }
 
-#01190  Panel_Message_CompRule_List04 = STRUCT{
+#00000  Panel_Message_CompRule_List04 = STRUCT{
           Font = "title.fnt"
           Just = PAIR[0.0; 0.0]
           Dims = PAIR[600.0; 112.0]
@@ -1725,7 +1725,7 @@
           )
           }
 
-#01207  Panel_Message_CompRule_List05 = STRUCT{
+#00000  Panel_Message_CompRule_List05 = STRUCT{
           Font = "title.fnt"
           Just = PAIR[0.0; 0.0]
           Dims = PAIR[600.0; 112.0]
@@ -1773,7 +1773,7 @@
           )
           }
 
-#01224  Panel_Message_XMessage = STRUCT{
+#00000  Panel_Message_XMessage = STRUCT{
           Font = "large.fnt"
           Just = PAIR[0.0; 0.0]
           Dims = PAIR[600.0; 112.0]
@@ -1803,7 +1803,7 @@
           )
           }
 
-#01237  Panel_Message_CompCongrats = STRUCT{
+#00000  Panel_Message_CompCongrats = STRUCT{
           Font = "title.fnt"
           Just = PAIR[0.0; 0.0]
           Dims = PAIR[600.0; 112.0]
@@ -1853,4 +1853,4 @@
           )
           }
 
-#01254
+#00000
