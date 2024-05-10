@@ -1,0 +1,799 @@
+
+#00001  judge_default_box_props = STRUCT{
+          box_color = STRUCT{
+            VECTOR[40.0; 40.0; 40.0] alpha = 100 
+            }
+          box_pos_rel = PAIR[-6.0; -1.0] 
+          box_w = 180 
+          box_h = 23 
+          }
+        
+#00010  judge_default2_box_props = STRUCT{
+          box_color = STRUCT{
+            VECTOR[0.0; 0.0; 0.0] alpha = 100 
+            }
+          box_pos_rel = PAIR[0.0; -1.0] 
+          box_w = 110 
+          box_h = 30 
+          }
+        
+#00018  judge_left_box_props = STRUCT{
+          judge_default_box_props box_w = 200 
+          }
+        
+#00024  judge_right_box_props = STRUCT{
+          judge_default_box_props box_w = 110 
+          }
+        
+#00032  judge_top_box_props = STRUCT{
+          judge_default2_box_props box_w = 350 
+          box_h = 33 
+          box_pos_rel = PAIR[-6.0; -1.0] 
+          }
+        
+#00042  judge_font_props = STRUCT{
+          font = "Small.fnt" 
+          just = PAIR[0.0; 0.0] 
+          dims = PAIR[640.0; 448.0] 
+          colors = ARRAY(
+            
+            STRUCT{
+              VECTOR[128.0; 128.0; 148.0] alpha = 128 
+              }
+            
+          )
+          key_points = ARRAY(
+            
+            STRUCT{
+              pos = PAIR[320.0; 0.0] 
+              alpha = 0 
+              scale = 1.25 
+              time = 0 
+              }
+            STRUCT{
+              alpha = 128 
+              scale = 1.25 
+              time = 1.4 
+              }
+            STRUCT{
+              time = 10000000 
+              }
+            
+          )
+          }
+        
+#00057  judge_font2_props = STRUCT{
+          font = "title.fnt" 
+          just = PAIR[0.0; 0.0] 
+          dims = PAIR[640.0; 448.0] 
+          colors = ARRAY(
+            
+            STRUCT{
+              VECTOR[128.0; 128.0; 128.0] alpha = 128 
+              }
+            
+          )
+          key_points = ARRAY(
+            
+            STRUCT{
+              pos = PAIR[320.0; 0.0] 
+              alpha = 0 
+              scale = 1.0 
+              time = 0 
+              }
+            STRUCT{
+              alpha = 128 
+              scale = 1.0 
+              time = 1.4 
+              }
+            STRUCT{
+              time = 10000000 
+              }
+            
+          )
+          }
+        
+#00071  judge_fade_props = STRUCT{
+          judge_font_props key_points = ARRAY(
+            
+            STRUCT{
+              pos = PAIR[320.0; 0.0] 
+              alpha = 128 
+              scale = 1.25 
+              time = 0 
+              }
+            STRUCT{
+              alpha = 8 
+              scale = 1.25 
+              time = 1.5 
+              }
+            STRUCT{
+              time = 1000000 
+              }
+            
+          )
+          }
+        
+#00081  judge_fade = STRUCT{
+          key_points = ARRAY(
+            
+            STRUCT{
+              alpha = 192 
+              time = 0.2 
+              }
+            STRUCT{
+              alpha = 16 
+              time = 1.0 
+              }
+            STRUCT{
+              time = 1000000 
+              }
+            
+          )
+          }
+        
+#00089  judge_pulse = STRUCT{
+          key_points = ARRAY(
+            
+            STRUCT{
+              alpha = 200 
+              scale = 1.35 
+              time = 0.2 
+              }
+            STRUCT{
+              alpha = 128 
+              scale = 1.25 
+              time = 0.4 
+              }
+            STRUCT{
+              time = 1000000 
+              }
+            
+          )
+          }
+        
+#00097  judge_pulsex = STRUCT{
+          key_points = ARRAY(
+            
+            STRUCT{
+              alpha = 200 
+              time = 0.2 
+              }
+            STRUCT{
+              alpha = 64 
+              time = 0.4 
+              }
+            STRUCT{
+              time = 1000000 
+              }
+            
+          )
+          }
+        
+#00105  judge_clear = STRUCT{
+          key_points = ARRAY(
+            
+            STRUCT{
+              alpha = 0 
+              time = 0.2 
+              }
+            
+          )
+          }
+        
+#00109  FUNCTION clear_judge_line 
+#00111    ChangeLocalMessage NULL judge_clear 
+#00112  END FUNCTION
+          
+#00113  FUNCTION new_judge_screen_gameflow 
+#00115    PauseMusic 1 
+#00116    spawnskaterscript new_judge_screen_gameflow_task 
+#00117  END FUNCTION
+          
+#00118  FUNCTION KillLocalMessage 
+#00120    ChangeLocalMessage NULL STRUCT{
+            key_points = ARRAY(
+              
+              STRUCT{
+                alpha = 0 
+                time = 0.2 
+                }
+              
+            )
+            }
+          
+#00121  END FUNCTION
+          
+#00122  FUNCTION judge_effect 
+#00127    IF IsTopJudge GLOBAL.judge 
+            
+#00128      ChangeLocalMessage id = GLOBAL.id1 
+            judge_pulse 
+#00129      ChangeLocalMessage id = GLOBAL.id2 
+            judge_pulse 
+#00130    ELSE 
+#00131      ChangeLocalMessage id = GLOBAL.id1 
+            judge_fade 
+#00132      ChangeLocalMessage id = GLOBAL.id2 
+            judge_fade 
+#00133    END IF 
+#00134    wait 0.2 seconds 
+#00135  END FUNCTION
+          
+#00136  FUNCTION new_judge_screen_gameflow_task 
+#00139    printf "here we are in new_judge_screen_gameflow_task" 
+#00140    IF CareerLevelIs LevelNum_Rio 
+#00144      CompEndRun RioCompParams 
+#00145    END IF 
+#00146    IF CareerLevelIs LevelNum_SkaterIsland 
+#00147      CompEndRun SICompParams 
+#00148    END IF 
+#00149    IF CareerLevelIs LevelNum_Tokyo 
+#00150      CompEndRun TokCompParams 
+#00151    END IF 
+#00152    IF RoundIs 1 
+#00153      LaunchLocalMessage id = judge_title_heat 
+            "Heat 1 Over" judge_font2_props base_pos = PAIR[0.0; 80.0] 
+            judge_top_box_props 
+#00154    END IF 
+#00155    IF RoundIs 2 
+#00156      LaunchLocalMessage id = judge_title_heat 
+            "Heat 2 Over" judge_font2_props base_pos = PAIR[0.0; 80.0] 
+            judge_top_box_props 
+#00157    END IF 
+#00158    IF RoundIs 3 
+#00159      LaunchLocalMessage id = judge_title_heat 
+            "Heat 3 Over" judge_font2_props base_pos = PAIR[0.0; 80.0] 
+            judge_top_box_props 
+#00160    END IF 
+#00161    wait 0.2 seconds 
+#00162    LaunchLocalMessage id = judge_title_judge 
+          "Judge" judge_font_props base_pos = PAIR[-20.0; 120.0] 
+          just = PAIR[1.0; 0.0] 
+          judge_left_box_props 
+#00164    LaunchLocalMessage id = judge_title_score 
+          "Score" judge_font_props base_pos = PAIR[20.0; 120.0] 
+          just = PAIR[-1.0; 0.0] 
+          judge_left_box_props 
+#00165    wait 0.2 seconds 
+#00166    LaunchLocalMessage id = judge_line1 
+          0 judge_font_props base_pos = PAIR[-20.0; 160.0] 
+          just = PAIR[1.0; 0.0] 
+          judge_left_box_props 
+#00168    LaunchLocalMessage id = judge_line2 
+          1 judge_font_props base_pos = PAIR[20.0; 160.0] 
+          just = PAIR[-1.0; 0.0] 
+          judge_left_box_props 
+#00169    wait 0.2 seconds 
+#00170    LaunchLocalMessage id = judge_line3 
+          2 judge_font_props base_pos = PAIR[-20.0; 185.0] 
+          just = PAIR[1.0; 0.0] 
+          judge_left_box_props 
+#00172    LaunchLocalMessage id = judge_line4 
+          3 judge_font_props base_pos = PAIR[20.0; 185.0] 
+          just = PAIR[-1.0; 0.0] 
+          judge_left_box_props 
+#00173    wait 0.2 seconds 
+#00174    LaunchLocalMessage id = judge_line5 
+          4 judge_font_props base_pos = PAIR[-20.0; 210.0] 
+          just = PAIR[1.0; 0.0] 
+          judge_left_box_props 
+#00176    LaunchLocalMessage id = judge_line6 
+          5 judge_font_props base_pos = PAIR[20.0; 210.0] 
+          just = PAIR[-1.0; 0.0] 
+          judge_left_box_props 
+#00177    wait 0.2 seconds 
+#00178    LaunchLocalMessage id = judge_line7 
+          6 judge_font_props base_pos = PAIR[-20.0; 235.0] 
+          just = PAIR[1.0; 0.0] 
+          judge_left_box_props 
+#00180    LaunchLocalMessage id = judge_line8 
+          7 judge_font_props base_pos = PAIR[20.0; 235.0] 
+          just = PAIR[-1.0; 0.0] 
+          judge_left_box_props 
+#00181    wait 0.2 seconds 
+#00182    LaunchLocalMessage id = judge_line9 
+          8 judge_font_props base_pos = PAIR[-20.0; 260.0] 
+          just = PAIR[1.0; 0.0] 
+          judge_left_box_props 
+#00184    LaunchLocalMessage id = judge_line10 
+          9 judge_font_props base_pos = PAIR[20.0; 260.0] 
+          just = PAIR[-1.0; 0.0] 
+          judge_left_box_props 
+#00185    wait 0.5 seconds 
+#00187    judge_effect id1 = judge_line1 
+          id2 = judge_line2 
+          judge = 0 
+          
+#00190    judge_effect id1 = judge_line3 
+          id2 = judge_line4 
+          judge = 1 
+          
+#00191    judge_effect id1 = judge_line5 
+          id2 = judge_line6 
+          judge = 2 
+          
+#00192    judge_effect id1 = judge_line7 
+          id2 = judge_line8 
+          judge = 3 
+          
+#00193    judge_effect id1 = judge_line9 
+          id2 = judge_line10 
+          judge = 4 
+          
+#00194    LaunchLocalMessage id = judge_line11 
+          "Score" judge_font_props base_pos = PAIR[-20.0; 330.0] 
+          just = PAIR[1.0; 0.0] 
+          judge_left_box_props 
+#00198    LaunchLocalMessage id = judge_line12 
+          10 judge_font_props base_pos = PAIR[20.0; 330.0] 
+          just = PAIR[-1.0; 0.0] 
+          judge_left_box_props 
+#00199    ChangeLocalMessage id = judge_line11 
+          judge_pulse 
+#00201    ChangeLocalMessage id = judge_line12 
+          judge_pulse 
+#00202    LaunchLocalMessage id = BottomInfo 
+          "Press ¬ to Continue" panel_message_XtoContinue 
+#00212    WaitForControllerPressedX 
+#00213    LaunchLocalMessage id = BottomInfo 
+          " " panel_message_XtoContinue 
+#00214    clear_judge_line id = judge_title_heat 
+          
+#00226    wait 0.04 seconds 
+#00227    clear_judge_line id = judge_title_judge 
+          
+#00228    wait 0.04 seconds 
+#00229    clear_judge_line id = judge_title_score 
+          
+#00230    wait 0.04 seconds 
+#00231    clear_judge_line id = judge_line1 
+          
+#00232    wait 0.04 seconds 
+#00233    clear_judge_line id = judge_line2 
+          
+#00234    wait 0.04 seconds 
+#00235    clear_judge_line id = judge_line3 
+          
+#00236    wait 0.04 seconds 
+#00237    clear_judge_line id = judge_line4 
+          
+#00238    wait 0.04 seconds 
+#00239    clear_judge_line id = judge_line5 
+          
+#00240    wait 0.04 seconds 
+#00241    clear_judge_line id = judge_line6 
+          
+#00242    wait 0.04 seconds 
+#00243    clear_judge_line id = judge_line7 
+          
+#00244    wait 0.04 seconds 
+#00245    clear_judge_line id = judge_line8 
+          
+#00246    wait 0.04 seconds 
+#00247    clear_judge_line id = judge_line9 
+          
+#00248    wait 0.04 seconds 
+#00249    clear_judge_line id = judge_line10 
+          
+#00250    wait 0.04 seconds 
+#00251    clear_judge_line id = judge_line11 
+          
+#00252    wait 0.04 seconds 
+#00253    clear_judge_line id = judge_line12 
+          
+#00254    wait 0.04 seconds 
+#00255    wait 0.25 seconds 
+#00258    unpause_game_flow 
+#00260  END FUNCTION
+          
+#00261  FUNCTION Judge_BlinkXMessage 
+#00264    LOOP 
+#00265      ChangeLocalMessage id = judge_press_x 
+            judge_pulsex 
+#00266      wait 2 seconds 
+#00267    END LOOP 
+#00268  END FUNCTION
+          
+#00269  FUNCTION leader_screen_gameflow 
+#00272    spawnskaterscript leader_screen_gameflow_task 
+#00273    IF CareerLevelIs LevelNum_Rio 
+#00275      CompEndRun_Leaders RioCompParams 
+#00276    END IF 
+#00277    IF CareerLevelIs LevelNum_SkaterIsland 
+#00278      CompEndRun_Leaders SICompParams 
+#00279    END IF 
+#00280    IF CareerLevelIs LevelNum_Tokyo 
+#00281      CompEndRun_Leaders TokCompParams 
+#00282    END IF 
+#00283  END FUNCTION
+          
+#00285  leader_default_box_props = STRUCT{
+          box_color = STRUCT{
+            VECTOR[40.0; 40.0; 40.0] alpha = 100 
+            }
+          box_pos_rel = PAIR[0.0; -1.0] 
+          box_w = 270 
+          box_h = 18 
+          }
+        
+#00293  leader_box_1_props = STRUCT{
+          leader_default_box_props box_pos_rel = PAIR[-8.0; -1.0] 
+          box_w = 250 
+          truncation_width = 240 
+          }
+        
+#00301  leader_box_2_props = STRUCT{
+          leader_default_box_props box_pos_rel = PAIR[-4.0; -1.0] 
+          box_w = 68 
+          }
+        
+#00307  leader_top_box_props = STRUCT{
+          leader_default_box_props box_w = 390 
+          box_pos_rel = PAIR[-8.0; -1.0] 
+          }
+        
+#00316  leader_font_props = STRUCT{
+          font = "small.fnt" 
+          just = PAIR[0.0; 0.0] 
+          dims = PAIR[640.0; 448.0] 
+          colors = ARRAY(
+            
+            STRUCT{
+              VECTOR[128.0; 128.0; 128.0] alpha = 128 
+              }
+            STRUCT{
+              VECTOR[128.0; 128.0; 0.0] alpha = 128 
+              }
+            STRUCT{
+              VECTOR[32.0; 32.0; 32.0] alpha = 128 
+              }
+            STRUCT{
+              VECTOR[32.0; 32.0; 0.0] alpha = 128 
+              }
+            
+          )
+          key_points = ARRAY(
+            
+            STRUCT{
+              pos = PAIR[0.0; 0.0] 
+              alpha = 0 
+              scale = 1.0 
+              time = 0 
+              }
+            STRUCT{
+              alpha = 128 
+              time = 1.4 
+              }
+            STRUCT{
+              time = 10000000 
+              }
+            
+          )
+          }
+        
+#00334  FUNCTION leader_line 
+#00343    LaunchLocalMessage id = GLOBAL.id1 
+          GLOBAL.n1 
+          leader_font_props base_x = 40 
+          base_y = GLOBAL.line_y 
+          just = PAIR[-1.0; 0.0] 
+          leader_box_1_props 
+#00344    LaunchLocalMessage id = GLOBAL.id2 
+          GLOBAL.n2 
+          leader_font_props base_x = 295 
+          base_y = GLOBAL.line_y 
+          just = PAIR[-1.0; 0.0] 
+          leader_box_2_props 
+#00345    LaunchLocalMessage id = GLOBAL.id3 
+          GLOBAL.n3 
+          leader_font_props base_x = 365 
+          base_y = GLOBAL.line_y 
+          just = PAIR[-1.0; 0.0] 
+          leader_box_2_props 
+#00346    LaunchLocalMessage id = GLOBAL.id4 
+          GLOBAL.n4 
+          leader_font_props base_x = 435 
+          base_y = GLOBAL.line_y 
+          just = PAIR[-1.0; 0.0] 
+          leader_box_2_props 
+#00347    LaunchLocalMessage id = GLOBAL.id5 
+          GLOBAL.n5 
+          leader_font_props base_x = 525 
+          base_y = GLOBAL.line_y 
+          just = PAIR[-1.0; 0.0] 
+          leader_box_2_props 
+#00348    wait 0.1 seconds 
+#00349  END FUNCTION
+          
+#00350  FUNCTION leader_screen_gameflow_task 
+#00353    printf "xx " 
+#00354    leader_line id1 = lead_1_1 
+          id2 = lead_1_2 
+          id3 = lead_1_3 
+          id4 = lead_1_4 
+          id5 = lead_1_5 
+          n1 = 12 
+          n2 = 13 
+          n3 = 14 
+          n4 = 15 
+          n5 = 16 
+          line_y = 100 
+          
+#00356    leader_line id1 = lead_2_1 
+          id2 = lead_2_2 
+          id3 = lead_2_3 
+          id4 = lead_2_4 
+          id5 = lead_2_5 
+          n1 = 17 
+          n2 = 18 
+          n3 = 19 
+          n4 = 20 
+          n5 = 21 
+          line_y = 120 
+          
+#00357    leader_line id1 = lead_3_1 
+          id2 = lead_3_2 
+          id3 = lead_3_3 
+          id4 = lead_3_4 
+          id5 = lead_3_5 
+          n1 = 22 
+          n2 = 23 
+          n3 = 24 
+          n4 = 25 
+          n5 = 26 
+          line_y = 140 
+          
+#00358    leader_line id1 = lead_4_1 
+          id2 = lead_4_2 
+          id3 = lead_4_3 
+          id4 = lead_4_4 
+          id5 = lead_4_5 
+          n1 = 27 
+          n2 = 28 
+          n3 = 29 
+          n4 = 30 
+          n5 = 31 
+          line_y = 160 
+          
+#00359    leader_line id1 = lead_5_1 
+          id2 = lead_5_2 
+          id3 = lead_5_3 
+          id4 = lead_5_4 
+          id5 = lead_5_5 
+          n1 = 32 
+          n2 = 33 
+          n3 = 34 
+          n4 = 35 
+          n5 = 36 
+          line_y = 180 
+          
+#00360    leader_line id1 = lead_6_1 
+          id2 = lead_6_2 
+          id3 = lead_6_3 
+          id4 = lead_6_4 
+          id5 = lead_6_5 
+          n1 = 37 
+          n2 = 38 
+          n3 = 39 
+          n4 = 40 
+          n5 = 41 
+          line_y = 200 
+          
+#00361    leader_line id1 = lead_7_1 
+          id2 = lead_7_2 
+          id3 = lead_7_3 
+          id4 = lead_7_4 
+          id5 = lead_7_5 
+          n1 = 42 
+          n2 = 43 
+          n3 = 44 
+          n4 = 45 
+          n5 = 46 
+          line_y = 220 
+          
+#00362    leader_line id1 = lead_8_1 
+          id2 = lead_8_2 
+          id3 = lead_8_3 
+          id4 = lead_8_4 
+          id5 = lead_8_5 
+          n1 = 47 
+          n2 = 48 
+          n3 = 49 
+          n4 = 50 
+          n5 = 51 
+          line_y = 240 
+          
+#00363    IF PlaceIs 1 
+#00366      MakeSkaterGoTo SkaterJudgedAnims_Good 
+#00367    ELSE 
+#00368      IF PlaceIs 2 
+#00369        MakeSkaterGoTo SkaterJudgedAnims_Average 
+#00370      ELSE 
+#00371        IF PlaceIs 3 
+#00372          MakeSkaterGoTo SkaterJudgedAnims_Average 
+#00373        ELSE 
+#00374          MakeSkaterGoTo SkaterJudgedAnims_Poor 
+#00375        END IF 
+#00376      END IF 
+#00377    END IF 
+#00378    LaunchLocalMessage id = BottomInfo 
+          "Press ¬ to Continue" panel_message_XtoContinue 
+#00384    WaitForControllerPressedX 
+#00385    LaunchLocalMessage id = BottomInfo 
+          " " panel_message_XtoContinue 
+#00386    KillLocalMessage id = lead_1_1 
+          
+#00397    KillLocalMessage id = lead_1_2 
+          
+#00398    KillLocalMessage id = lead_1_3 
+          
+#00399    KillLocalMessage id = lead_1_4 
+          
+#00400    KillLocalMessage id = lead_1_5 
+          
+#00401    wait 0.03 seconds 
+#00403    KillLocalMessage id = lead_2_1 
+          
+#00405    KillLocalMessage id = lead_2_2 
+          
+#00406    KillLocalMessage id = lead_2_3 
+          
+#00407    KillLocalMessage id = lead_2_4 
+          
+#00408    KillLocalMessage id = lead_2_5 
+          
+#00409    wait 0.03 seconds 
+#00410    KillLocalMessage id = lead_3_1 
+          
+#00412    KillLocalMessage id = lead_3_2 
+          
+#00413    KillLocalMessage id = lead_3_3 
+          
+#00414    KillLocalMessage id = lead_3_4 
+          
+#00415    KillLocalMessage id = lead_3_5 
+          
+#00416    wait 0.03 seconds 
+#00417    KillLocalMessage id = lead_4_1 
+          
+#00419    KillLocalMessage id = lead_4_2 
+          
+#00420    KillLocalMessage id = lead_4_3 
+          
+#00421    KillLocalMessage id = lead_4_4 
+          
+#00422    KillLocalMessage id = lead_4_5 
+          
+#00423    wait 0.03 seconds 
+#00424    KillLocalMessage id = lead_5_1 
+          
+#00426    KillLocalMessage id = lead_5_2 
+          
+#00427    KillLocalMessage id = lead_5_3 
+          
+#00428    KillLocalMessage id = lead_5_4 
+          
+#00429    KillLocalMessage id = lead_5_5 
+          
+#00430    wait 0.03 seconds 
+#00431    KillLocalMessage id = lead_6_1 
+          
+#00433    KillLocalMessage id = lead_6_2 
+          
+#00434    KillLocalMessage id = lead_6_3 
+          
+#00435    KillLocalMessage id = lead_6_4 
+          
+#00436    KillLocalMessage id = lead_6_5 
+          
+#00437    wait 0.03 seconds 
+#00438    KillLocalMessage id = lead_7_1 
+          
+#00440    KillLocalMessage id = lead_7_2 
+          
+#00441    KillLocalMessage id = lead_7_3 
+          
+#00442    KillLocalMessage id = lead_7_4 
+          
+#00443    KillLocalMessage id = lead_7_5 
+          
+#00444    wait 0.03 seconds 
+#00445    KillLocalMessage id = lead_8_1 
+          
+#00447    KillLocalMessage id = lead_8_2 
+          
+#00448    KillLocalMessage id = lead_8_3 
+          
+#00449    KillLocalMessage id = lead_8_4 
+          
+#00450    KillLocalMessage id = lead_8_5 
+          
+#00451    wait 0.03 seconds 
+#00452    wait 0.3 seconds 
+#00454    IF CareerLevelIs LevelNum_Rio 
+#00457      CompEndRun_LeadersDone RioCompParams 
+#00458    END IF 
+#00459    IF CareerLevelIs LevelNum_SkaterIsland 
+#00460      CompEndRun_LeadersDone SICompParams 
+#00461    END IF 
+#00462    IF CareerLevelIs LevelNum_Tokyo 
+#00463      CompEndRun_LeadersDone TokCompParams 
+#00464    END IF 
+#00465    unpause_game_flow 
+#00466  END FUNCTION
+          
+#00469  FUNCTION x_cont 
+#00471    LaunchLocalMessage id = judge_press_x 
+          "Press ¬ to continue" judge_font_props base_pos = PAIR[0.0; 380.0] 
+          just = PAIR[0.0; 0.0] 
+          
+#00472    SpawnScript Judge_BlinkXMessage 
+#00473    LOOP 
+#00474      IF Held X 
+#00475        BREAK
+              
+#00476      END IF 
+#00477      wait 1 GameFrames 
+#00478    END LOOP 
+#00479    KillSpawnedScript Name = Judge_BlinkXMessage 
+          
+#00480    unpause_game_flow 
+#00481  END FUNCTION
+          
+#00482  FUNCTION placing_screen 
+#00485    AttachToSkater 
+#00487    IF PlaceIs 1 
+#00492      IF CareerLevelIs LevelNum_Rio 
+#00493        CompEndSequence_1st RioCompParams 
+#00494      END IF 
+#00495      IF CareerLevelIs LevelNum_SkaterIsland 
+#00496        CompEndSequence_1st SICompParams 
+#00497      END IF 
+#00498      IF CareerLevelIs LevelNum_Tokyo 
+#00499        CompEndSequence_1st TokCompParams 
+#00500      END IF 
+#00501    ELSE 
+#00502      IF PlaceIs 2 
+#00503        IF CareerLevelIs LevelNum_Rio 
+#00504          CompEndSequence_2nd RioCompParams 
+#00505        END IF 
+#00506        IF CareerLevelIs LevelNum_SkaterIsland 
+#00507          CompEndSequence_2nd SICompParams 
+#00508        END IF 
+#00509        IF CareerLevelIs LevelNum_Tokyo 
+#00510          CompEndSequence_2nd TokCompParams 
+#00511        END IF 
+#00512      ELSE 
+#00513        IF PlaceIs 3 
+#00514          IF CareerLevelIs LevelNum_Rio 
+#00515            CompEndSequence_3rd RioCompParams 
+#00516          END IF 
+#00517          IF CareerLevelIs LevelNum_SkaterIsland 
+#00518            CompEndSequence_3rd SICompParams 
+#00519          END IF 
+#00520          IF CareerLevelIs LevelNum_Tokyo 
+#00521            CompEndSequence_3rd TokCompParams 
+#00522          END IF 
+#00523        ELSE 
+#00524          IF CareerLevelIs LevelNum_Rio 
+#00525            CompEndSequence_Lose RioCompParams 
+#00526          END IF 
+#00527          IF CareerLevelIs LevelNum_SkaterIsland 
+#00528            CompEndSequence_Lose SICompParams 
+#00529          END IF 
+#00530          IF CareerLevelIs LevelNum_Tokyo 
+#00531            CompEndSequence_Lose TokCompParams 
+#00532          END IF 
+#00533        END IF 
+#00534      END IF 
+#00535    END IF 
+#00536    Kill Prefix = "TRG_Ped_End" 
+          
+#00548    Create Prefix = "TRG_Ped_Norm" 
+          
+#00549    AttachToSkater End 
+#00550    unpause_game_flow 
+#00551  END FUNCTION
+          
+#00553  
