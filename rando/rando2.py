@@ -28,6 +28,10 @@ def read_script_file(filename):
     with open(f'../vanilla-qbs/Scripts/{filename}.qb', 'r') as f:
         return f.readlines()
 
+def read_modified_script_file(filename):
+    with open(f'../modified-qbs/Scripts/{filename}.qb', 'r') as f:
+        return f.readlines()
+
 def memify(script):
     # make one long string, then split on lines, to include modified linebreaks
     script = ''.join(script)
@@ -45,9 +49,7 @@ def write_script_file(filename, contents):
     with open(full_filename, 'w', newline='\n') as fout:
         fout.writelines(contents)
 
-def patch_level_select(levelsqb, gameqb):
-    # patch in-game level select so Foundry is inaccessible when locked
-    levelsqb[1253] = "            once_on_exit = EndRunScript\n            unlock_flag = LEVEL_UNLOCKED_FOUNDRY\n"
+def patch_level_select(gameqb):
     # patch in-game level select so Foundry goal text is hidden when Foundry is locked
     gameqb[1739] = "#00000    IF GetGlobalFlag flag = LEVEL_UNLOCKED_FOUNDRY\n"
     gameqb[1740] = "#00000      AddLine parent = career_level_goals\n"
@@ -836,10 +838,10 @@ def junk_suburbia(alf):
 
 
 if __name__ == "__main__":
+    # unsorted reads
     mainmenu = read_script_file('mainmenu')
     goal_scripts = read_script_file('goal_scripts')
     comp_scripts = read_script_file('comp_scripts')
-    levelsqb = read_script_file('levels')
     skater_profile = read_script_file('skater_profile')
     gameqb = read_script_file('game')
     gamemode = read_script_file('gamemode')
@@ -853,14 +855,14 @@ if __name__ == "__main__":
     sk3_pedscripts = read_script_file('sk3_pedscripts')
     boardselect = read_script_file('boardselect')
 
+    # randomization logic
     levels = get_random_level_order(end_on_comp=True)
     print(
         levels[0].name, levels[1].name, levels[2].name,
         levels[3].name, levels[4].name, levels[5].name,
         levels[6].name, levels[7].name, levels[8].name,
     )
-
-    patch_level_select(levelsqb, gameqb)
+    patch_level_select(gameqb)
     patch_view_goals_menu(goal_scripts)
 
     randomize_level_requirements(levels, mainmenu, goal_scripts, comp_scripts)
@@ -883,10 +885,10 @@ if __name__ == "__main__":
 
     junk_suburbia(alf)
 
+    # unsorted writes
     write_script_file('mainmenu', mainmenu)
     write_script_file('goal_scripts', goal_scripts)
     write_script_file('comp_scripts', comp_scripts)
-    write_script_file('levels', levelsqb)
     write_script_file('skater_profile', skater_profile)
     write_script_file('game', gameqb)
     write_script_file('gamemode', gamemode)
@@ -899,3 +901,7 @@ if __name__ == "__main__":
     write_script_file('judges', judges)
     write_script_file('sk3_pedscripts', sk3_pedscripts)
     write_script_file('boardselect', boardselect)
+
+    # read and write modified QBs with no randomization
+    levelsqb = read_modified_script_file('levels')
+    write_script_file('levels', levelsqb)
