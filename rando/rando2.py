@@ -814,7 +814,7 @@ def junk_suburbia(alf):
 
 
 if __name__ == "__main__":
-    # unsorted reads
+    # read vanilla QBs
     mainmenu = read_script_file('mainmenu')
     goal_scripts = read_script_file('goal_scripts')
     comp_scripts = read_script_file('comp_scripts')
@@ -830,10 +830,11 @@ if __name__ == "__main__":
     boardselect = read_script_file('boardselect')
 
     # read modified QBs
+    gameqb = read_modified_script_file('game')
     judges = read_modified_script_file('judges')
+    levelsqb = read_modified_script_file('levels')
 
-
-    # randomization logic
+    # randomize QBs
     levels = get_random_level_order(end_on_comp=True)
     print(
         levels[0].name, levels[1].name, levels[2].name,
@@ -842,6 +843,7 @@ if __name__ == "__main__":
     )
     patch_view_goals_menu(goal_scripts)
 
+    gameqb = display_victory_requirements(gameqb)
     randomize_level_requirements(levels, mainmenu, goal_scripts, comp_scripts)
     randomize_score_goals(levels, goal_scripts)
     randomize_item_locations(levels)
@@ -862,7 +864,7 @@ if __name__ == "__main__":
 
     junk_suburbia(alf)
 
-    # unsorted writes
+    # write vanilla QBs
     write_script_file('mainmenu', mainmenu)
     write_script_file('goal_scripts', goal_scripts)
     write_script_file('comp_scripts', comp_scripts)
@@ -877,14 +879,7 @@ if __name__ == "__main__":
     write_script_file('sk3_pedscripts', sk3_pedscripts)
     write_script_file('boardselect', boardselect)
 
-    # read and write modified QBs with no randomization
-    levelsqb = read_modified_script_file('levels')
-    write_script_file('levels', levelsqb)
-
-    # read and write modified QBs
-    gameqb = read_modified_script_file('game')
-    gameqb = display_victory_requirements(gameqb)
-    write_script_file('game', gameqb)
-
     # write modified QBs
+    write_script_file('game', gameqb)
     write_script_file('judges', judges)
+    write_script_file('levels', levelsqb)
