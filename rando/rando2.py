@@ -365,7 +365,8 @@ def randomize_level_timer(gamemode):
     # randomize the time limit for normal levels
     # the time limit for competition levels might not be scriptable
     time_limit = random.randint(90, 150)
-    gamemode[275] = f"          default_time_limit = {time_limit}\n"
+    gamemode = gamemode.replace("{{rando_gamemode_career_time}}", str(time_limit))
+    return gamemode
 
 def randomize_trickspot_tricks(trick_type, ajc, alf, cjr, cpf, bdj):
     # Change required tricks for the street/vert goals
@@ -643,7 +644,6 @@ def junk_suburbia(alf):
 if __name__ == "__main__":
     # read vanilla QBs
     skater_profile = read_script_file('skater_profile')
-    gamemode = read_script_file('gamemode')
     ajc = read_script_file('ajc_scripts')
     alf = read_script_file('alf_scripts')
     bdj = read_script_file('bdj_scripts')
@@ -656,6 +656,7 @@ if __name__ == "__main__":
     boardselect = read_modified_script_file('boardselect')
     comp_scripts = read_modified_script_file('comp_scripts')
     gameqb = read_modified_script_file('game')
+    gamemode = read_modified_script_file('gamemode')
     goal_scripts = read_modified_script_file('goal_scripts')
     judges = read_modified_script_file('judges')
     levelsqb = read_modified_script_file('levels')
@@ -675,7 +676,7 @@ if __name__ == "__main__":
     randomize_item_locations(levels)
     skater_profile = randomize_stats(skater_profile)
     randomize_trickstyle(skater_profile)
-    randomize_level_timer(gamemode)
+    gamemode = randomize_level_timer(gamemode)
     trickspot_tricks = randomize_trickspot_tricks("wild", ajc, alf, cjr, cpf, bdj)
     randomize_trick_sets(protricks, trickspot_tricks)
     randomize_special_tricks(skater_profile, "easy")
@@ -692,7 +693,6 @@ if __name__ == "__main__":
 
     # write vanilla QBs
     write_script_file('skater_profile', skater_profile)
-    write_script_file('gamemode', gamemode)
     write_script_file('ajc_scripts', ajc)
     write_script_file('alf_scripts', alf)
     write_script_file('bdj_scripts', bdj)
@@ -705,6 +705,7 @@ if __name__ == "__main__":
     write_script_file('boardselect', boardselect)
     write_script_file('comp_scripts', comp_scripts)
     write_script_file('game', gameqb)
+    write_script_file('gamemode', gamemode)
     write_script_file('goal_scripts', goal_scripts)
     write_script_file('judges', judges)
     write_script_file('levels', levelsqb)
