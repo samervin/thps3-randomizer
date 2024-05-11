@@ -602,83 +602,83 @@
 #00000  END FUNCTION
 
 #00000  FoundryScoreParams = STRUCT{
-          Goal_HighScore_Text = "Get a HIGH SCORE:| 10,000 Points"
-          Goal_ProScore_Text = "Get a PRO SCORE:| 30,000 Points"
-          Goal_SickScore_Text = "Get a SICK SCORE:| 60,000 Points"
+          Goal_HighScore_Text = "Get a HIGH SCORE:| {{rando_goal_scripts_foundry_high}} Points"
+          Goal_ProScore_Text = "Get a PRO SCORE:| {{rando_goal_scripts_foundry_pro}} Points"
+          Goal_SickScore_Text = "Get a SICK SCORE:| {{rando_goal_scripts_foundry_sick}} Points"
           }
 
 #00000  CanadaScoreParams = STRUCT{
-          Goal_HighScore_Text = "Get a HIGH SCORE:| 35,000 Points"
-          Goal_ProScore_Text = "Get a PRO SCORE:| 70,000 Points"
-          Goal_SickScore_Text = "Get a SICK SCORE:| 120,000 Points"
+          Goal_HighScore_Text = "Get a HIGH SCORE:| {{rando_goal_scripts_canada_high}} Points"
+          Goal_ProScore_Text = "Get a PRO SCORE:| {{rando_goal_scripts_canada_pro}} Points"
+          Goal_SickScore_Text = "Get a SICK SCORE:| {{rando_goal_scripts_canada_sick}} Points"
           }
 
 #00000  SuburbiaScoreParams = STRUCT{
-          Goal_HighScore_Text = "Get a HIGH SCORE:| 55,000 Points"
-          Goal_ProScore_Text = "Get a PRO SCORE:| 110,000 Points"
-          Goal_SickScore_Text = "Get a SICK SCORE:| 200,000 Points"
+          Goal_HighScore_Text = "Get a HIGH SCORE:| {{rando_goal_scripts_suburbia_high}} Points"
+          Goal_ProScore_Text = "Get a PRO SCORE:| {{rando_goal_scripts_suburbia_pro}} Points"
+          Goal_SickScore_Text = "Get a SICK SCORE:| {{rando_goal_scripts_suburbia_sick}} Points"
           }
 
 #00000  AirportScoreParams = STRUCT{
-          Goal_HighScore_Text = "Get a HIGH SCORE:| 75,000 Points"
-          Goal_ProScore_Text = "Get a PRO SCORE:| 150,000 Points"
-          Goal_SickScore_Text = "Get a SICK SCORE:| 300,000 Points"
+          Goal_HighScore_Text = "Get a HIGH SCORE:| {{rando_goal_scripts_airport_high}} Points"
+          Goal_ProScore_Text = "Get a PRO SCORE:| {{rando_goal_scripts_airport_pro}} Points"
+          Goal_SickScore_Text = "Get a SICK SCORE:| {{rando_goal_scripts_airport_sick}} Points"
           }
 
 #00000  LosAngelesScoreParams = STRUCT{
-          Goal_HighScore_Text = "Get a HIGH SCORE:| 100,000 Points"
-          Goal_ProScore_Text = "Get a PRO SCORE:| 190,000 Points"
-          Goal_SickScore_Text = "Get a SICK SCORE:| 400,000 Points"
+          Goal_HighScore_Text = "Get a HIGH SCORE:| {{rando_goal_scripts_la_high}} Points"
+          Goal_ProScore_Text = "Get a PRO SCORE:| {{rando_goal_scripts_la_pro}} Points"
+          Goal_SickScore_Text = "Get a SICK SCORE:| {{rando_goal_scripts_la_sick}} Points"
           }
 
 #00000  ShipScoreParams = STRUCT{
-          Goal_HighScore_Text = "Get a HIGH SCORE:| 150,000 Points"
-          Goal_ProScore_Text = "Get a PRO SCORE:| 225,000 Points"
-          Goal_SickScore_Text = "Get a SICK SCORE:| 500,000 Points"
+          Goal_HighScore_Text = "Get a HIGH SCORE:| {{rando_goal_scripts_ship_high}} Points"
+          Goal_ProScore_Text = "Get a PRO SCORE:| {{rando_goal_scripts_ship_pro}} Points"
+          Goal_SickScore_Text = "Get a SICK SCORE:| {{rando_goal_scripts_ship_sick}} Points"
           }
 
 #00000  FUNCTION StartRunScript
 #00000    ClearScoreGoals
 #00000    IF CareerLevelIs LevelNum_Foundry
-#00000      SetScoreGoal Score = 10000
+#00000      SetScoreGoal Score = {{rando_goal_scripts_foundry_high}}
             GoalScript = Got_HighScore
             goal = GOAL_HIGHSCORE
 
-#00000      SetScoreGoal Score = 30000
+#00000      SetScoreGoal Score = {{rando_goal_scripts_foundry_pro}}
             GoalScript = Got_ProScore
             goal = GOAL_PROSCORE
 
-#00000      SetScoreGoal Score = 60000
+#00000      SetScoreGoal Score = {{rando_goal_scripts_foundry_sick}}
             GoalScript = Got_SickScore
             goal = GOAL_SICKSCORE
 
 #00000      GameStart FoundryGoalParams FoundryScoreParams
 #00000    END IF
 #00000    IF CareerLevelIs LevelNum_Canada
-#00000      SetScoreGoal Score = 35000
+#00000      SetScoreGoal Score = {{rando_goal_scripts_canada_high}}
             GoalScript = Got_HighScore
             goal = GOAL_HIGHSCORE
 
-#00000      SetScoreGoal Score = 70000
+#00000      SetScoreGoal Score = {{rando_goal_scripts_canada_pro}}
             GoalScript = Got_ProScore
             goal = GOAL_PROSCORE
 
-#00000      SetScoreGoal Score = 120000
+#00000      SetScoreGoal Score = {{rando_goal_scripts_canada_sick}}
             GoalScript = Got_SickScore
             goal = GOAL_SICKSCORE
 
 #00000      GameStart CanadaGoalParams CanadaScoreParams
 #00000    END IF
 #00000    IF CareerLevelIs LevelNum_Suburbia
-#00000      SetScoreGoal Score = 55000
+#00000      SetScoreGoal Score = {{rando_goal_scripts_suburbia_high}}
             GoalScript = Got_HighScore
             goal = GOAL_HIGHSCORE
 
-#00000      SetScoreGoal Score = 110000
+#00000      SetScoreGoal Score = {{rando_goal_scripts_suburbia_pro}}
             GoalScript = Got_ProScore
             goal = GOAL_PROSCORE
 
-#00000      SetScoreGoal Score = 200000
+#00000      SetScoreGoal Score = {{rando_goal_scripts_suburbia_sick}}
             GoalScript = Got_SickScore
             goal = GOAL_SICKSCORE
 
@@ -688,15 +688,15 @@
 #00000      CompIntroSequence SICompParams
 #00000    END IF
 #00000    IF CareerLevelIs LevelNum_Airport
-#00000      SetScoreGoal Score = 75000
+#00000      SetScoreGoal Score = {{rando_goal_scripts_airport_high}}
             GoalScript = Got_HighScore
             goal = GOAL_HIGHSCORE
 
-#00000      SetScoreGoal Score = 150000
+#00000      SetScoreGoal Score = {{rando_goal_scripts_airport_pro}}
             GoalScript = Got_ProScore
             goal = GOAL_PROSCORE
 
-#00000      SetScoreGoal Score = 300000
+#00000      SetScoreGoal Score = {{rando_goal_scripts_airport_sick}}
             GoalScript = Got_SickScore
             goal = GOAL_SICKSCORE
 
@@ -706,15 +706,15 @@
 #00000      CompIntroSequence RioCompParams
 #00000    END IF
 #00000    IF CareerLevelIs LevelNum_LA
-#00000      SetScoreGoal Score = 100000
+#00000      SetScoreGoal Score = {{rando_goal_scripts_la_high}}
             GoalScript = Got_HighScore
             goal = GOAL_HIGHSCORE
 
-#00000      SetScoreGoal Score = 190000
+#00000      SetScoreGoal Score = {{rando_goal_scripts_la_pro}}
             GoalScript = Got_ProScore
             goal = GOAL_PROSCORE
 
-#00000      SetScoreGoal Score = 400000
+#00000      SetScoreGoal Score = {{rando_goal_scripts_la_sick}}
             GoalScript = Got_SickScore
             goal = GOAL_SICKSCORE
 
@@ -724,15 +724,15 @@
 #00000      CompIntroSequence TokCompParams
 #00000    END IF
 #00000    IF CareerLevelIs LevelNum_Ship
-#00000      SetScoreGoal Score = 150000
+#00000      SetScoreGoal Score = {{rando_goal_scripts_ship_high}}
             GoalScript = Got_HighScore
             goal = GOAL_HIGHSCORE
 
-#00000      SetScoreGoal Score = 225000
+#00000      SetScoreGoal Score = {{rando_goal_scripts_ship_pro}}
             GoalScript = Got_ProScore
             goal = GOAL_PROSCORE
 
-#00000      SetScoreGoal Score = 500000
+#00000      SetScoreGoal Score = {{rando_goal_scripts_ship_sick}}
             GoalScript = Got_SickScore
             goal = GOAL_SICKSCORE
 
@@ -2099,7 +2099,7 @@
 
 #00000  FUNCTION Got_Secret_Tape
 #00000    Obj_ClearExceptions
-#00000    SpawnScript Got_Secret_Tape2
+#00000    SpawnScript Got_Secret_Tape2 {{rando_goal_scripts_tape_script}}
 #00000    Die
 #00000  END FUNCTION
 
@@ -2122,6 +2122,38 @@
 #00000    UnSetFlag flag = WAIT_FOR_TAPE
 
 #00000    MidGameCheckGoals
+#00000  END FUNCTION
+
+#00000  FUNCTION Got_Secret_TapeIfDeck
+#00000    IF GetFlag flag = GOAL_DECK
+
+#00000      SetGoal goal = GOAL_TAPE
+
+#00000      wait 4 frames
+#00000      WaitForGoalCompletionTextFree
+#00000      SetFlag flag = WAIT_FOR_TAPE
+
+#00000      LaunchLocalMessage id = GoalName
+            "Secret Tape!" panel_message_goalcomplete
+#00000      LaunchLocalMessage id = complete
+            "Complete" panel_message_goalcompleteline2
+#00000      SetGlobalFlag flag = SKATESHOP_JUST_GOT_GOAL
+
+#00000      PlaySound goaldone Vol = 100
+
+#00000      wait 2 seconds
+#00000      UnSetFlag flag = WAIT_FOR_TAPE
+
+#00000      MidGameCheckGoals
+#00000    ELSE
+#00000      LaunchLocalMessage id = GoalName
+            "Secret tape lost..." panel_message_goalcomplete
+#00000      LaunchLocalMessage id = complete
+            "You need the deck first!" panel_message_goalcompleteline2
+
+#00000      PlaySound GUI_buzzer01 Vol = 100
+#00000    END IF
+
 #00000  END FUNCTION
 
 #00000  FUNCTION Got_TrickSpot
@@ -6886,6 +6918,7 @@
             Play_Hold
 #00000      EndRun_CheckForLevelsOpen
 #00000      GoalViewAllGoalCompleteCheck From_movies
+#00000      Goal_UnlockingSecrets
 #00000      IF GetFlag flag = GOAL_ALL_GOALS
 
 #00000        IF GetFlag flag = AWARD_TRICKSLOT
@@ -6895,7 +6928,6 @@
 #00000          SetFlag flag = AWARD_TRICKSLOT
 
 #00000        END IF
-#00000        Goal_UnlockingSecrets
 #00000      ELSE
 #00000        ListAllGoals
 #00000        ControllerDebounce X time = 0.3
@@ -7487,10 +7519,10 @@
 
 #00000  SecretScripts = ARRAY(
 
-          THPS3_secret_1 THPS3_secret_2 THPS3_secret_3 THPS3_secret_4 THPS3_secret_5 THPS3_secret_6 THPS3_secret_7 THPS3_secret_8 THPS3_secret_9 THPS3_secret_10 THPS3_secret_11 THPS3_secret_12 THPS3_secret_13 THPS3_secret_14 THPS3_secret_15 THPS3_secret_16 THPS3_secret_17 THPS3_secret_18 THPS3_secret_19 THPS3_secret_20 THPS3_secret_21 THPS3_secret_22
+          THPS3_secret_1 THPS3_secret_2 THPS3_secret_3 THPS3_secret_4 THPS3_secret_5 THPS3_secret_6 THPS3_secret_7 THPS3_secret_8 THPS3_secret_9 THPS3_secret_10 THPS3_secret_11 THPS3_secret_12 THPS3_secret_13 THPS3_secret_14 THPS3_secret_15 THPS3_secret_16 THPS3_secret_17 THPS3_secret_18 THPS3_secret_19 THPS3_secret_20 THPS3_secret_21 THPS3_secret_22 THPS3_secret_23
         )
 
-#00000  FUNCTION THPS3_secretScript_1
+#00000  FUNCTION {{rando_goal_scripts_secret_a}}
 #00000    LaunchLocalMessage id = LegealStuff
           "Darth Maul ® 2001 Lucasfilm Ltd and TM or ® as indicated. |All rights reserved. Used under authorization.|Courtesy of LucasArts Entertainment Company LLC" panel_message_legalmumbojumbo
 #00000    UnlockSecretChar S_Name = "Darth Maul"
@@ -7498,7 +7530,7 @@
 
 #00000  END FUNCTION
 
-#00000  FUNCTION THPS3_secretScript_2
+#00000  FUNCTION {{rando_goal_scripts_secret_b}}
 #00000    LaunchLocalMessage id = LegealStuff
           "Marvel and Wolverine: TM and ® 2001 Marvel Characters, Inc. |All rights reserved. www.marvel.com. " panel_message_legalmumbojumbo
 #00000    UnlockSecretChar S_Name = "Wolverine"
@@ -7506,55 +7538,55 @@
 
 #00000  END FUNCTION
 
-#00000  FUNCTION THPS3_secretScript_3
+#00000  FUNCTION {{rando_goal_scripts_secret_c}}
 #00000    UnlockSecretLvl S_Name = "Warehouse"
           S_Flag = LEVEL_UNLOCKED_WAREHOUSE
 
 #00000  END FUNCTION
 
-#00000  FUNCTION THPS3_secretScript_4
+#00000  FUNCTION {{rando_goal_scripts_secret_d}}
 #00000    UnlockSecretChar S_Name = "Officer Dick"
           S_Flag = SKATER_UNLOCKED_DICK
 
 #00000  END FUNCTION
 
-#00000  FUNCTION THPS3_secretScript_5
+#00000  FUNCTION {{rando_goal_scripts_secret_e}}
 #00000    UnlockSecretChar S_Name = "Private Carrera"
           S_Flag = SKATER_UNLOCKED_CARRERA
 
 #00000  END FUNCTION
 
-#00000  FUNCTION THPS3_secretScript_6
+#00000  FUNCTION {{rando_goal_scripts_secret_f}}
 #00000    UnlockSecretLvl S_Name = "Burnside"
           S_Flag = LEVEL_UNLOCKED_BURNSIDE
 
 #00000  END FUNCTION
 
-#00000  FUNCTION THPS3_secretScript_7
+#00000  FUNCTION {{rando_goal_scripts_secret_g}}
 #00000    UnlockSecretChar S_Name = "Ollie the Bum"
           S_Flag = SKATER_UNLOCKED_BUM
 
 #00000  END FUNCTION
 
-#00000  FUNCTION THPS3_secretScript_8
+#00000  FUNCTION {{rando_goal_scripts_secret_h}}
 #00000    UnlockSecretChar S_Name = "Kelly Slater"
           S_Flag = SKATER_UNLOCKED_SLATER
 
 #00000  END FUNCTION
 
-#00000  FUNCTION THPS3_secretScript_9
+#00000  FUNCTION {{rando_goal_scripts_secret_i}}
 #00000    UnlockSecretLvl S_Name = "Roswell"
           S_Flag = LEVEL_UNLOCKED_ROSWELL
 
 #00000  END FUNCTION
 
-#00000  FUNCTION THPS3_secretScript_10
+#00000  FUNCTION {{rando_goal_scripts_secret_j}}
 #00000    UnlockSecretChar S_Name = "The Demoness"
           S_Flag = SKATER_UNLOCKED_DEMONESS
 
 #00000  END FUNCTION
 
-#00000  FUNCTION THPS3_secretScript_11
+#00000  FUNCTION {{rando_goal_scripts_secret_k}}
 #00000    LaunchLocalMessage id = LegealStuff
           "                 Cheat Menu Unlocked                 | Pause Game to Access Cheats" panel_message_CheatsUnlocked
 #00000    UnlockSecretCheat S_Name = "SNOWBOARD MODE"
@@ -7562,67 +7594,67 @@
 
 #00000  END FUNCTION
 
-#00000  FUNCTION THPS3_secretScript_12
+#00000  FUNCTION {{rando_goal_scripts_secret_l}}
 #00000    UnlockSecretCheat S_Name = "ALWAYS SPECIAL|MODE"
           S_Flag = CHEAT_UNLOCKED_2
 
 #00000  END FUNCTION
 
-#00000  FUNCTION THPS3_secretScript_13
+#00000  FUNCTION {{rando_goal_scripts_secret_m}}
 #00000    UnlockSecretCheat S_Name = "PERFECT RAIL| BALANCE MODE"
           S_Flag = CHEAT_UNLOCKED_3
 
 #00000  END FUNCTION
 
-#00000  FUNCTION THPS3_secretScript_14
+#00000  FUNCTION {{rando_goal_scripts_secret_n}}
 #00000    UnlockSecretCheat S_Name = "SUPER STATS| MODE"
           S_Flag = CHEAT_UNLOCKED_4
 
 #00000  END FUNCTION
 
-#00000  FUNCTION THPS3_secretScript_15
+#00000  FUNCTION {{rando_goal_scripts_secret_o}}
 #00000    UnlockSecretCheat S_Name = "GIANT MODE"
           S_Flag = CHEAT_UNLOCKED_5
 
 #00000  END FUNCTION
 
-#00000  FUNCTION THPS3_secretScript_16
+#00000  FUNCTION {{rando_goal_scripts_secret_p}}
 #00000    UnlockSecretCheat S_Name = "SLOWMO MODE"
           S_Flag = CHEAT_UNLOCKED_6
 
 #00000  END FUNCTION
 
-#00000  FUNCTION THPS3_secretScript_17
+#00000  FUNCTION {{rando_goal_scripts_secret_q}}
 #00000    UnlockSecretCheat S_Name = "PERFECT MANUAL| BALANCE MODE"
           S_Flag = CHEAT_UNLOCKED_7
 
 #00000  END FUNCTION
 
-#00000  FUNCTION THPS3_secretScript_18
+#00000  FUNCTION {{rando_goal_scripts_secret_r}}
 #00000    UnlockSecretCheat S_Name = "TINY MODE"
           S_Flag = CHEAT_UNLOCKED_8
 
 #00000  END FUNCTION
 
-#00000  FUNCTION THPS3_secretScript_19
+#00000  FUNCTION {{rando_goal_scripts_secret_s}}
 #00000    UnlockSecretCheat S_Name = "MOON PHYSICS| MODE"
           S_Flag = CHEAT_UNLOCKED_9
 
 #00000  END FUNCTION
 
-#00000  FUNCTION THPS3_secretScript_20
+#00000  FUNCTION {{rando_goal_scripts_secret_t}}
 #00000    UnlockSecretCheat S_Name = "EXPERT MODE"
           S_Flag = CHEAT_UNLOCKED_10
 
 #00000  END FUNCTION
 
-#00000  FUNCTION THPS3_secretScript_21
+#00000  FUNCTION {{rando_goal_scripts_secret_u}}
 #00000    UnlockSecretChar S_Name = "Neversoft Eyeball"
           S_Flag = SKATER_UNLOCKED_EYEBALL
 
 #00000  END FUNCTION
 
-#00000  FUNCTION THPS3_secretScript_22
+#00000  FUNCTION THPS3_secretScript_23
 #00000    UnlockSecretCheat S_Name = "FIRST PERSON| MODE"
           S_Flag = CHEAT_UNLOCKED_11
 
@@ -7643,7 +7675,7 @@
 #00000    END IF
 #00000  END FUNCTION
 
-#00000  FUNCTION THPS3_secretScript_23
+#00000  FUNCTION {{rando_goal_scripts_secret_v}}
 #00000    LaunchLocalMessage id = LegealStuff
           "DOOM character (c) 1999-2002 Id Software, Inc. Used under license. All Rights Reserved." panel_message_legalmumbojumbo
 #00000    UnlockSecretChar S_Name = "DOOM Guy"
@@ -8202,64 +8234,68 @@
 #00000    KillMessages
 #00000    UnSetGlobalFlag flag = JUST_UNLOCKED_LEVEL
 
-#00000    IF GoalsGreaterThan 2
-#00000      IF GetGlobalFlag flag = LEVEL_UNLOCKED_CANADA
+#00000    IF {{rando_goal_scripts_unlock_2_requirement}}
+#00000      IF GetGlobalFlag flag = {{rando_goal_scripts_unlock_2_flag}}
 
 #00000      ELSE
-#00000        UnlockNormalLvl S_Name = "CANADA"
-              S_Flag = LEVEL_UNLOCKED_CANADA
+#00000        UnlockNormalLvl S_Name = "{{rando_goal_scripts_unlock_2_name}}"
+              S_Flag = {{rando_goal_scripts_unlock_2_flag}}
 
 #00000      END IF
-#00000      IF GoalsGreaterThan 9
-#00000        IF GetGlobalFlag flag = LEVEL_UNLOCKED_RIO
+#00000      IF {{rando_goal_scripts_unlock_3_requirement}}
+#00000        IF GetGlobalFlag flag = {{rando_goal_scripts_unlock_3_flag}}
 
 #00000        ELSE
-#00000          UnlockNormalLvl S_Name = "RIO"
-                S_Flag = LEVEL_UNLOCKED_RIO
+#00000          UnlockNormalLvl S_Name = "{{rando_goal_scripts_unlock_3_name}}"
+                S_Flag = {{rando_goal_scripts_unlock_3_flag}}
 
 #00000        END IF
-#00000        IF MedalsGreaterThan 0
-#00000          IF GetGlobalFlag flag = LEVEL_UNLOCKED_SUBURBIA
+#00000        IF {{rando_goal_scripts_unlock_4_requirement}}
+#00000          IF GetGlobalFlag flag = {{rando_goal_scripts_unlock_4_flag}}
 
 #00000          ELSE
-#00000            UnlockNormalLvl S_Name = "SUBURBIA"
-                  S_Flag = LEVEL_UNLOCKED_SUBURBIA
+#00000            UnlockNormalLvl S_Name = "{{rando_goal_scripts_unlock_4_name}}"
+                  S_Flag = {{rando_goal_scripts_unlock_4_flag}}
 
 #00000          END IF
-#00000          IF GoalsGreaterThan 17
-#00000            IF GetGlobalFlag flag = LEVEL_UNLOCKED_AIRPORT
+#00000          IF {{rando_goal_scripts_unlock_5_requirement}}
+#00000            IF GetGlobalFlag flag = {{rando_goal_scripts_unlock_5_flag}}
 
 #00000            ELSE
-#00000              UnlockNormalLvl S_Name = "The Airport"
-                    S_Flag = LEVEL_UNLOCKED_AIRPORT
+#00000              UnlockNormalLvl S_Name = "{{rando_goal_scripts_unlock_5_name}}"
+                    S_Flag = {{rando_goal_scripts_unlock_5_flag}}
 
 #00000            END IF
-#00000            IF GoalsGreaterThan 25
-#00000              IF GetGlobalFlag flag = LEVEL_UNLOCKED_SKATERISLAND
+#00000            IF {{rando_goal_scripts_unlock_6_requirement}}
+#00000              IF GetGlobalFlag flag = {{rando_goal_scripts_unlock_6_flag}}
 
 #00000              ELSE
-#00000                UnlockNormalLvl S_Name = "Skater Island"
-                      S_Flag = LEVEL_UNLOCKED_SKATERISLAND
+#00000                UnlockNormalLvl S_Name = "{{rando_goal_scripts_unlock_6_name}}"
+                      S_Flag = {{rando_goal_scripts_unlock_6_flag}}
 
 #00000              END IF
-#00000              IF MedalsGreaterThan 1
-#00000                IF GetGlobalFlag flag = LEVEL_UNLOCKED_LOSANGELES
+#00000              IF {{rando_goal_scripts_unlock_7_requirement}}
+#00000                IF GetGlobalFlag flag = {{rando_goal_scripts_unlock_7_flag}}
 
 #00000                ELSE
-#00000                  UnlockNormalLvl S_Name = "LOS ANGELES"
-                        S_Flag = LEVEL_UNLOCKED_LOSANGELES
+#00000                  UnlockNormalLvl S_Name = "{{rando_goal_scripts_unlock_7_name}}"
+                        S_Flag = {{rando_goal_scripts_unlock_7_flag}}
 
 #00000                END IF
-#00000                IF GoalsGreaterThan 34
-#00000                  IF GetGlobalFlag flag = LEVEL_UNLOCKED_TOKYO
+#00000                IF {{rando_goal_scripts_unlock_8_requirement}}
+#00000                  IF GetGlobalFlag flag = {{rando_goal_scripts_unlock_8_flag}}
 
 #00000                  ELSE
-#00000                    UnlockNormalLvl S_Name = "Tokyo"
-                          S_Flag = LEVEL_UNLOCKED_TOKYO
+#00000                    UnlockNormalLvl S_Name = "{{rando_goal_scripts_unlock_8_name}}"
+                          S_Flag = {{rando_goal_scripts_unlock_8_flag}}
 
 #00000                  END IF
-#00000                  IF MedalsGreaterThan 2
-#00000                    IF GoalsGreaterThan 44
+#00000                  IF {{rando_goal_scripts_unlock_9_requirement}}
+#00000                    IF GetGlobalFlag flag = {{rando_goal_scripts_unlock_9_flag}}
+
+#00000                    ELSE
+#00000                      UnlockNormalLvl S_Name = "{{rando_goal_scripts_unlock_9_name}}"
+                            S_Flag = {{rando_goal_scripts_unlock_9_flag}}
 #00000                    END IF
 #00000                  END IF
 #00000                END IF
@@ -8285,6 +8321,7 @@
 #00000    GoalViewAllGoalCompleteCheck from_list
 #00000    wait 1 frame
 #00000    ListAllGoals
+#00000    wait 1 second
 #00000    WaitForControllerPressedXNoDebounce
 #00000    EnablePause
 #00000    LaunchLocalMessage id = BottomInfo
@@ -8804,27 +8841,16 @@
 #00000        END IF
 #00000      END IF
 #00000    END IF
-#00000    IF MedalsGreaterThan 2
-#00000      IF GetGlobalFlag flag = LEVEL_UNLOCKED_SHIP
-
-#00000      ELSE
-#00000        UnlockNormalLvl S_Name = "The Cruise Ship"
-              S_Flag = LEVEL_UNLOCKED_SHIP
-
-#00000        SetGlobalFlag flag = SPECIAL_HAS_SEEN_SHIP
-
-#00000      END IF
-#00000    END IF
 #00000  END FUNCTION
 
 #00000  FUNCTION Goal_UnlockingSecrets
-#00000    IF GetGlobalFlag flag = GOT_GOLD_RIO
+#00000    IF GetGlobalFlag flag = {{rando_goal_scripts_secret_gold_rio}}
 
-#00000      IF GetGlobalFlag flag = GOT_GOLD_SI
+#00000      IF GetGlobalFlag flag = {{rando_goal_scripts_secret_gold_si}}
 
-#00000        IF GetGlobalFlag flag = GOT_GOLD_TOKYO
+#00000        IF GetGlobalFlag flag = {{rando_goal_scripts_secret_gold_tokyo}}
 
-#00000          IF GoalsGreaterThan 53
+#00000          IF GoalsGreaterThan {{rando_goal_scripts_secret_goals}}
 #00000            IF ProfileEquals is_custom
 #00000              IF GetGlobalFlag flag = SPECIAL_CAS_CAREER_DONE
 
@@ -9049,6 +9075,11 @@
 
 #00000  END FUNCTION
 
+#00000  FUNCTION THPS3_secret_23
+#00000    SetGlobalFlag flag = CHEAT_UNLOCKED_12
+
+#00000  END FUNCTION
+
 #00000  FUNCTION ClearSecretFlags
 #00000    UnSetGlobalFlag flag = SECRET_UNLOCK_01
 
@@ -9209,22 +9240,23 @@
 #00000  END FUNCTION
 
 #00000  FUNCTION ExecuteNextSecret_20to29
-#00000    IF GetGlobalFlag flag = SECRET_UNLOCK_22
-
-#00000      THPS3_secretScript_22
-#00000    ELSE
-#00000      IF GetGlobalFlag flag = SECRET_UNLOCK_21
-
-#00000        THPS3_secretScript_21
-#00000      ELSE
-#00000        IF GetGlobalFlag flag = SECRET_UNLOCK_20
-
-#00000          THPS3_secretScript_20
-#00000        ELSE
-#00000        END IF
-#00000      END IF
-#00000    END IF
-#00000  END FUNCTION
+#09215    IF GetGlobalFlag flag = CHEAT_UNLOCKED_12
+#09216      THPS3_secretScript_23
+#09217    ELSE
+#09218      IF GetGlobalFlag flag = SECRET_UNLOCK_22
+#09219        THPS3_secretScript_22
+#09220      ELSE
+#09221        IF GetGlobalFlag flag = SECRET_UNLOCK_21
+#09222          THPS3_secretScript_21
+#09223        ELSE
+#09224          IF GetGlobalFlag flag = SECRET_UNLOCK_20
+#09225            THPS3_secretScript_20
+#09226          ELSE
+#09227          END IF
+#09228        END IF
+#09229      END IF
+#09230    END IF
+#09231  END FUNCTION
 
 #00000  FUNCTION CreatePhotoGuy
 #00000    IF IsCareerMode

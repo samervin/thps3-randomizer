@@ -147,58 +147,33 @@ def randomize_level_requirements(levels, mainmenu, goal_scripts):
     # patch to unlock the first level instead of always unlocking Foundry
     mainmenu = mainmenu.replace("{{rando_mainmenu_first_level_unlock}}", f"LEVEL_UNLOCKED_{levels[0].name_flag}")
 
-    # patch to prevent Cruise Ship from unlocking via 3 medals only
-    goal_scripts[8809] = "#00000\n"
-    goal_scripts[8810] = "#00000\n"
-    goal_scripts[8811] = "\n"
-    goal_scripts[8813] = "#00000\n"
-
     # patch end-of-run level unlock conditions
-    goal_scripts[8204] = f"#00000    IF {level_reqs[1][1]}sGreaterThan {level_reqs[1][0]-1}\n"
-    goal_scripts[8205] = f"#00000      IF GetGlobalFlag flag = LEVEL_UNLOCKED_{levels[1].name_flag}\n"
-    goal_scripts[8208] = f'#00000        UnlockNormalLvl S_Name = "{levels[1].name}"\n'
-    goal_scripts[8209] = f"              S_Flag = LEVEL_UNLOCKED_{levels[1].name_flag}\n"
+    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_2_requirement}}", f"{level_reqs[1][1]}sGreaterThan {level_reqs[1][0]-1}")
+    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_3_requirement}}", f"{level_reqs[2][1]}sGreaterThan {level_reqs[2][0]-1}")
+    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_4_requirement}}", f"{level_reqs[3][1]}sGreaterThan {level_reqs[3][0]-1}")
+    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_5_requirement}}", f"{level_reqs[4][1]}sGreaterThan {level_reqs[4][0]-1}")
+    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_6_requirement}}", f"{level_reqs[5][1]}sGreaterThan {level_reqs[5][0]-1}")
+    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_7_requirement}}", f"{level_reqs[6][1]}sGreaterThan {level_reqs[6][0]-1}")
+    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_8_requirement}}", f"{level_reqs[7][1]}sGreaterThan {level_reqs[7][0]-1}")
+    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_9_requirement}}", f"{level_reqs[8][1]}sGreaterThan {level_reqs[8][0]-1}")
+    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_2_flag}}", f"LEVEL_UNLOCKED_{levels[1].name_flag}")
+    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_3_flag}}", f"LEVEL_UNLOCKED_{levels[2].name_flag}")
+    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_4_flag}}", f"LEVEL_UNLOCKED_{levels[3].name_flag}")
+    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_5_flag}}", f"LEVEL_UNLOCKED_{levels[4].name_flag}")
+    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_6_flag}}", f"LEVEL_UNLOCKED_{levels[5].name_flag}")
+    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_7_flag}}", f"LEVEL_UNLOCKED_{levels[6].name_flag}")
+    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_8_flag}}", f"LEVEL_UNLOCKED_{levels[7].name_flag}")
+    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_9_flag}}", f"LEVEL_UNLOCKED_{levels[8].name_flag}")
+    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_2_name}}", levels[1].name)
+    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_3_name}}", levels[2].name)
+    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_4_name}}", levels[3].name)
+    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_5_name}}", levels[4].name)
+    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_6_name}}", levels[5].name)
+    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_7_name}}", levels[6].name)
+    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_8_name}}", levels[7].name)
+    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_9_name}}", levels[8].name)
 
-    goal_scripts[8212] = f"#00000      IF {level_reqs[2][1]}sGreaterThan {level_reqs[2][0]-1}\n"
-    goal_scripts[8213] = f"#00000        IF GetGlobalFlag flag = LEVEL_UNLOCKED_{levels[2].name_flag}\n"
-    goal_scripts[8216] = f'#00000          UnlockNormalLvl S_Name = "{levels[2].name}"\n'
-    goal_scripts[8217] = f"                S_Flag = LEVEL_UNLOCKED_{levels[2].name_flag}\n"
-
-    goal_scripts[8220] = f"#00000        IF {level_reqs[3][1]}sGreaterThan {level_reqs[3][0]-1}\n"
-    goal_scripts[8221] = f"#00000          IF GetGlobalFlag flag = LEVEL_UNLOCKED_{levels[3].name_flag}\n"
-    goal_scripts[8224] = f'#00000            UnlockNormalLvl S_Name = "{levels[3].name}"\n'
-    goal_scripts[8225] = f"                  S_Flag = LEVEL_UNLOCKED_{levels[3].name_flag}\n"
-
-    goal_scripts[8228] = f"#00000          IF {level_reqs[4][1]}sGreaterThan {level_reqs[4][0]-1}\n"
-    goal_scripts[8229] = f"#00000            IF GetGlobalFlag flag = LEVEL_UNLOCKED_{levels[4].name_flag}\n"
-    goal_scripts[8232] = f'#00000              UnlockNormalLvl S_Name = "{levels[4].name}"\n'
-    goal_scripts[8233] = f"                    S_Flag = LEVEL_UNLOCKED_{levels[4].name_flag}\n"
-
-    goal_scripts[8236] = f"#00000            IF {level_reqs[5][1]}sGreaterThan {level_reqs[5][0]-1}\n"
-    goal_scripts[8237] = f"#00000              IF GetGlobalFlag flag = LEVEL_UNLOCKED_{levels[5].name_flag}\n"
-    goal_scripts[8240] = f'#00000                UnlockNormalLvl S_Name = "{levels[5].name}"\n'
-    goal_scripts[8241] = f"                      S_Flag = LEVEL_UNLOCKED_{levels[5].name_flag}\n"
-
-    goal_scripts[8244] = f"#00000              IF {level_reqs[6][1]}sGreaterThan {level_reqs[6][0]-1}\n"
-    goal_scripts[8245] = f"#00000                IF GetGlobalFlag flag = LEVEL_UNLOCKED_{levels[6].name_flag}\n"
-    goal_scripts[8248] = f'#00000                  UnlockNormalLvl S_Name = "{levels[6].name}"\n'
-    goal_scripts[8249] = f"                        S_Flag = LEVEL_UNLOCKED_{levels[6].name_flag}\n"
-
-    goal_scripts[8252] = f"#00000                IF {level_reqs[7][1]}sGreaterThan {level_reqs[7][0]-1}\n"
-    goal_scripts[8253] = f"#00000                  IF GetGlobalFlag flag = LEVEL_UNLOCKED_{levels[7].name_flag}\n"
-    goal_scripts[8256] = f'#00000                    UnlockNormalLvl S_Name = "{levels[7].name}"\n'
-    goal_scripts[8257] = f"                          S_Flag = LEVEL_UNLOCKED_{levels[7].name_flag}\n"
-
-    # add additional if-block to account for all 8 unlockable levels
-    goal_scripts[8260] = f"#00000                  IF {level_reqs[8][1]}sGreaterThan {level_reqs[8][0]-1}\n"
-    goal_scripts[8261] = f"#00000                    IF GetGlobalFlag flag = LEVEL_UNLOCKED_{levels[8].name_flag}\n"
-    goal_scripts[8262] = f"""#00000                    ELSE
-    #00000                      UnlockNormalLvl S_Name = "{levels[8].name}"
-                                S_Flag = LEVEL_UNLOCKED_{levels[8].name_flag}
-    #00000                    END IF
-    """
-
-    return mainmenu
+    return goal_scripts, mainmenu
 
 def randomize_score_goals(levels, goal_scripts, comp_scripts):
     # randomize score goals
@@ -236,28 +211,23 @@ def randomize_score_goals(levels, goal_scripts, comp_scripts):
     for i in range(8):
         comp_goals.append(comp_goals[i] + random.randint(15, 35))
 
+    # patch score goals into goal scripts
     for i, level in enumerate(levels):
         match level.name_flag:
             case "FOUNDRY":
                 foundry_high = score_goals.pop(0)
                 foundry_pro = score_goals.pop(0)
                 foundry_sick = score_goals.pop(0)
-                goal_scripts[604] = f'          Goal_HighScore_Text = "Get a HIGH SCORE:| {foundry_high},000 Points"\n'
-                goal_scripts[605] = f'          Goal_ProScore_Text = "Get a PRO SCORE:| {foundry_pro},000 Points"\n'
-                goal_scripts[606] = f'          Goal_SickScore_Text = "Get a SICK SCORE:| {foundry_sick},000 Points"\n'
-                goal_scripts[642] = f"#00000      SetScoreGoal Score = {foundry_high}000\n"
-                goal_scripts[646] = f"#00000      SetScoreGoal Score = {foundry_pro}000\n"
-                goal_scripts[650] = f"#00000      SetScoreGoal Score = {foundry_sick}000\n"
+                goal_scripts = goal_scripts.replace("{{rando_goal_scripts_foundry_high}}", f"{foundry_high}000")
+                goal_scripts = goal_scripts.replace("{{rando_goal_scripts_foundry_pro}}", f"{foundry_pro}000")
+                goal_scripts = goal_scripts.replace("{{rando_goal_scripts_foundry_sick}}", f"{foundry_sick}000")
             case "CANADA":
                 canada_high = score_goals.pop(0)
                 canada_pro = score_goals.pop(0)
                 canada_sick = score_goals.pop(0)
-                goal_scripts[610] = f'          Goal_HighScore_Text = "Get a HIGH SCORE:| {canada_high},000 Points"\n'
-                goal_scripts[611] = f'          Goal_ProScore_Text = "Get a PRO SCORE:| {canada_pro},000 Points"\n'
-                goal_scripts[612] = f'          Goal_SickScore_Text = "Get a SICK SCORE:| {canada_sick},000 Points"\n'
-                goal_scripts[657] = f"#00000      SetScoreGoal Score = {canada_high}000\n"
-                goal_scripts[661] = f"#00000      SetScoreGoal Score = {canada_pro}000\n"
-                goal_scripts[665] = f"#00000      SetScoreGoal Score = {canada_sick}000\n"
+                goal_scripts = goal_scripts.replace("{{rando_goal_scripts_canada_high}}", f"{canada_high}000")
+                goal_scripts = goal_scripts.replace("{{rando_goal_scripts_canada_pro}}", f"{canada_pro}000")
+                goal_scripts = goal_scripts.replace("{{rando_goal_scripts_canada_sick}}", f"{canada_sick}000")
             case "RIO":
                 rio_bronze = comp_goals.pop(0)
                 rio_silver = comp_goals.pop(0)
@@ -269,22 +239,16 @@ def randomize_score_goals(levels, goal_scripts, comp_scripts):
                 suburbia_high = score_goals.pop(0)
                 suburbia_pro = score_goals.pop(0)
                 suburbia_sick = score_goals.pop(0)
-                goal_scripts[616] = f'          Goal_HighScore_Text = "Get a HIGH SCORE:| {suburbia_high},000 Points"\n'
-                goal_scripts[617] = f'          Goal_ProScore_Text = "Get a PRO SCORE:| {suburbia_pro},000 Points"\n'
-                goal_scripts[618] = f'          Goal_SickScore_Text = "Get a SICK SCORE:| {suburbia_sick},000 Points"\n'
-                goal_scripts[672] = f"#00000      SetScoreGoal Score = {suburbia_high}000\n"
-                goal_scripts[676] = f"#00000      SetScoreGoal Score = {suburbia_pro}000\n"
-                goal_scripts[680] = f"#00000      SetScoreGoal Score = {suburbia_sick}000\n"
+                goal_scripts = goal_scripts.replace("{{rando_goal_scripts_suburbia_high}}", f"{suburbia_high}000")
+                goal_scripts = goal_scripts.replace("{{rando_goal_scripts_suburbia_pro}}", f"{suburbia_pro}000")
+                goal_scripts = goal_scripts.replace("{{rando_goal_scripts_suburbia_sick}}", f"{suburbia_sick}000")
             case "AIRPORT":
                 airport_high = score_goals.pop(0)
                 airport_pro = score_goals.pop(0)
                 airport_sick = score_goals.pop(0)
-                goal_scripts[622] = f'          Goal_HighScore_Text = "Get a HIGH SCORE:| {airport_high},000 Points"\n'
-                goal_scripts[623] = f'          Goal_ProScore_Text = "Get a PRO SCORE:| {airport_pro},000 Points"\n'
-                goal_scripts[624] = f'          Goal_SickScore_Text = "Get a SICK SCORE:| {airport_sick},000 Points"\n'
-                goal_scripts[690] = f"#00000      SetScoreGoal Score = {airport_high}000\n"
-                goal_scripts[694] = f"#00000      SetScoreGoal Score = {airport_pro}000\n"
-                goal_scripts[698] = f"#00000      SetScoreGoal Score = {airport_sick}000\n"
+                goal_scripts = goal_scripts.replace("{{rando_goal_scripts_airport_high}}", f"{airport_high}000")
+                goal_scripts = goal_scripts.replace("{{rando_goal_scripts_airport_pro}}", f"{airport_pro}000")
+                goal_scripts = goal_scripts.replace("{{rando_goal_scripts_airport_sick}}", f"{airport_sick}000")
             case "SKATERISLAND":
                 skater_island_bronze = comp_goals.pop(0)
                 skater_island_silver = comp_goals.pop(0)
@@ -296,12 +260,9 @@ def randomize_score_goals(levels, goal_scripts, comp_scripts):
                 los_angeles_high = score_goals.pop(0)
                 los_angeles_pro = score_goals.pop(0)
                 los_angeles_sick = score_goals.pop(0)
-                goal_scripts[628] = f'          Goal_HighScore_Text = "Get a HIGH SCORE:| {los_angeles_high},000 Points"\n'
-                goal_scripts[629] = f'          Goal_ProScore_Text = "Get a PRO SCORE:| {los_angeles_pro},000 Points"\n'
-                goal_scripts[630] = f'          Goal_SickScore_Text = "Get a SICK SCORE:| {los_angeles_sick},000 Points"\n'
-                goal_scripts[708] = f"#00000      SetScoreGoal Score = {los_angeles_high}000\n"
-                goal_scripts[712] = f"#00000      SetScoreGoal Score = {los_angeles_pro}000\n"
-                goal_scripts[716] = f"#00000      SetScoreGoal Score = {los_angeles_sick}000\n"
+                goal_scripts = goal_scripts.replace("{{rando_goal_scripts_la_high}}", f"{los_angeles_high}000")
+                goal_scripts = goal_scripts.replace("{{rando_goal_scripts_la_pro}}", f"{los_angeles_pro}000")
+                goal_scripts = goal_scripts.replace("{{rando_goal_scripts_la_sick}}", f"{los_angeles_sick}000")
             case "TOKYO":
                 tokyo_bronze = comp_goals.pop(0)
                 tokyo_silver = comp_goals.pop(0)
@@ -313,15 +274,12 @@ def randomize_score_goals(levels, goal_scripts, comp_scripts):
                 cruise_ship_high = score_goals.pop(0)
                 cruise_ship_pro = score_goals.pop(0)
                 cruise_ship_sick = score_goals.pop(0)
-                goal_scripts[634] = f'          Goal_HighScore_Text = "Get a HIGH SCORE:| {cruise_ship_high},000 Points"\n'
-                goal_scripts[635] = f'          Goal_ProScore_Text = "Get a PRO SCORE:| {cruise_ship_pro},000 Points"\n'
-                goal_scripts[636] = f'          Goal_SickScore_Text = "Get a SICK SCORE:| {cruise_ship_sick},000 Points"\n'
-                goal_scripts[726] = f"#00000      SetScoreGoal Score = {cruise_ship_high}000\n"
-                goal_scripts[730] = f"#00000      SetScoreGoal Score = {cruise_ship_pro}000\n"
-                goal_scripts[734] = f"#00000      SetScoreGoal Score = {cruise_ship_sick}000\n"
+                goal_scripts = goal_scripts.replace("{{rando_goal_scripts_ship_high}}", f"{cruise_ship_high}000")
+                goal_scripts = goal_scripts.replace("{{rando_goal_scripts_ship_pro}}", f"{cruise_ship_pro}000")
+                goal_scripts = goal_scripts.replace("{{rando_goal_scripts_ship_sick}}", f"{cruise_ship_sick}000")
             case _:
                 raise Exception("invalid level")
-    return comp_scripts
+    return comp_scripts, goal_scripts
 
 def randomize_item_locations(levels):
     for level in levels:
@@ -372,48 +330,17 @@ def randomize_trickstyle(skater_profile):
     for index, line in enumerate(skater_profile):
         skater_profile[index] = re.sub(r'(?<=trickstyle = )\w+', _get_random_trickstyle(), line)
 
-def patch_view_goals_menu(goal_scripts):
-    # patch goal menu to actually wait a sec before it lets you back out
-    goal_scripts[8285] = "#00000    ListAllGoals\n"
-    goal_scripts[8286] = "#00000    wait 1 second\n"
-
 def require_deck_for_tape(goal_scripts):
     # require the deck to be collected before the tape goal will complete
     # note: as currently implemented, if you get the tape before the deck, you will have to retry the run to respawn the tape
-
-    goal_scripts[2101] = "#00000    SpawnScript Got_Secret_TapeIfDeck\n"
-    goal_scripts[9298] = """#00000  FUNCTION Got_Secret_TapeIfDeck
-    #00000    IF GetFlag flag = GOAL_DECK
-
-    #00000      SetGoal goal = GOAL_TAPE
-
-    #00000      wait 4 frames
-    #00000      WaitForGoalCompletionTextFree
-    #00000      SetFlag flag = WAIT_FOR_TAPE
-
-    #00000      LaunchLocalMessage id = GoalName
-                "Secret Tape!" panel_message_goalcomplete
-    #00000      LaunchLocalMessage id = complete
-                "Complete" panel_message_goalcompleteline2
-    #00000      SetGlobalFlag flag = SKATESHOP_JUST_GOT_GOAL
-
-    #00000      PlaySound goaldone Vol = 100
-
-    #00000      wait 2 seconds
-    #00000      UnSetFlag flag = WAIT_FOR_TAPE
-
-    #00000      MidGameCheckGoals
-    #00000    ELSE
-    #00000      LaunchLocalMessage id = GoalName
-                "Secret tape lost..." panel_message_goalcomplete
-    #00000      LaunchLocalMessage id = complete
-                "You need the deck first!" panel_message_goalcompleteline2
-
-    #00000      PlaySound GUI_buzzer01 Vol = 100
-    #00000    END IF
-
-    #00000  END FUNCTION
-    """
+    deck_required_for_tape = True
+    if deck_required_for_tape:
+        # Got_Secret_TapeIfDeck is a custom function added to the modified QB
+        goal_scripts = goal_scripts.replace("{{rando_goal_scripts_tape_script}}", "Got_Secret_TapeIfDeck")
+    else:
+        # Got_Secret_Tape2 is the default with no additional requirements
+        goal_scripts = goal_scripts.replace("{{rando_goal_scripts_tape_script}}", "Got_Secret_Tape2")
+    return goal_scripts
 
 def require_deck_for_medal(judges, comp_scripts):
     flag_medal_req = "{{rando_judges_medal_requirement}}"
@@ -643,75 +570,58 @@ def randomize_decks(boardselect):
         boardselect[802 + (i*5)] = f'            texture = "{decks[i].texture}"\n'
 
 def randomize_secrets(goal_scripts):
-    # UnlockNextSecret is a builtin, but seems to key off the SecretScripts array
+    # UnlockNextSecret is a builtin which keys off the SecretScripts array
 
-    # There are 22 "normal" secrets for 100% completion, add a 23rd for Doomguy
-    goal_scripts[7489] = "          THPS3_secret_1 THPS3_secret_2 THPS3_secret_3 THPS3_secret_4 THPS3_secret_5 THPS3_secret_6 THPS3_secret_7 THPS3_secret_8 THPS3_secret_9 THPS3_secret_10 THPS3_secret_11 THPS3_secret_12 THPS3_secret_13 THPS3_secret_14 THPS3_secret_15 THPS3_secret_16 THPS3_secret_17 THPS3_secret_18 THPS3_secret_19 THPS3_secret_20 THPS3_secret_21 THPS3_secret_22 THPS3_secret_23\n"
-    # Rewrite ExecuteNextSecret_20to29 to fit in 23rd secret condition
-    # Global flags seem to be hardcoded, but CHEAT_UNLOCKED_12 is not used, so we can repurpose it here
-    goal_scripts[9211:9227] = ["" for line in goal_scripts[9211:9227]]
-    goal_scripts[9210] = """#00000  FUNCTION ExecuteNextSecret_20to29
-    #00000    IF GetGlobalFlag flag = CHEAT_UNLOCKED_12
-    #00000      THPS3_secretScript_23
-    #00000    ELSE
-    #00000      IF GetGlobalFlag flag = SECRET_UNLOCK_22
-    #00000        THPS3_secretScript_22
-    #00000      ELSE
-    #00000        IF GetGlobalFlag flag = SECRET_UNLOCK_21
-    #00000          THPS3_secretScript_21
-    #00000        ELSE
-    #00000          IF GetGlobalFlag flag = SECRET_UNLOCK_20
-    #00000            THPS3_secretScript_20
-    #00000          ELSE
-    #00000          END IF
-    #00000        END IF
-    #00000      END IF
-    #00000    END IF
-    #00000  END FUNCTION
-    """
+    # Rewrite ExecuteNextSecret_20to29 to fit in 23rd secret condition (Doomguy)
+    # Global flags are hardcoded, but CHEAT_UNLOCKED_12 is not used, so we repurpose it for the 23rd secret
+
     # TODO: For now, first person mode is always 23rd/last:
     # It contains "Entire Game complete" logic and the last secret cannot be a skater anyway
-    goal_scripts[7624] = "#00000  FUNCTION THPS3_secretScript_23\n"
+
     # Shuffle the remaining secrets 1-22
     secrets = _shuffle([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22])
-    goal_scripts[7492] = f"#00000  FUNCTION THPS3_secretScript_{secrets.pop()} \n"
-    goal_scripts[7500] = f"#00000  FUNCTION THPS3_secretScript_{secrets.pop()} \n"
-    goal_scripts[7508] = f"#00000  FUNCTION THPS3_secretScript_{secrets.pop()} \n"
-    goal_scripts[7514] = f"#00000  FUNCTION THPS3_secretScript_{secrets.pop()} \n"
-    goal_scripts[7520] = f"#00000  FUNCTION THPS3_secretScript_{secrets.pop()} \n"
-    goal_scripts[7526] = f"#00000  FUNCTION THPS3_secretScript_{secrets.pop()} \n"
-    goal_scripts[7532] = f"#00000  FUNCTION THPS3_secretScript_{secrets.pop()} \n"
-    goal_scripts[7538] = f"#00000  FUNCTION THPS3_secretScript_{secrets.pop()} \n"
-    goal_scripts[7544] = f"#00000  FUNCTION THPS3_secretScript_{secrets.pop()} \n"
-    goal_scripts[7550] = f"#00000  FUNCTION THPS3_secretScript_{secrets.pop()} \n"
-    goal_scripts[7556] = f"#00000  FUNCTION THPS3_secretScript_{secrets.pop()} \n"
-    goal_scripts[7564] = f"#00000  FUNCTION THPS3_secretScript_{secrets.pop()} \n"
-    goal_scripts[7570] = f"#00000  FUNCTION THPS3_secretScript_{secrets.pop()} \n"
-    goal_scripts[7576] = f"#00000  FUNCTION THPS3_secretScript_{secrets.pop()} \n"
-    goal_scripts[7582] = f"#00000  FUNCTION THPS3_secretScript_{secrets.pop()} \n"
-    goal_scripts[7588] = f"#00000  FUNCTION THPS3_secretScript_{secrets.pop()} \n"
-    goal_scripts[7594] = f"#00000  FUNCTION THPS3_secretScript_{secrets.pop()} \n"
-    goal_scripts[7600] = f"#00000  FUNCTION THPS3_secretScript_{secrets.pop()} \n"
-    goal_scripts[7606] = f"#00000  FUNCTION THPS3_secretScript_{secrets.pop()} \n"
-    goal_scripts[7612] = f"#00000  FUNCTION THPS3_secretScript_{secrets.pop()} \n"
-    goal_scripts[7618] = f"#00000  FUNCTION THPS3_secretScript_{secrets.pop()} \n"
-    goal_scripts[7645] = f"#00000  FUNCTION THPS3_secretScript_{secrets.pop()} \n"
-    # Add new method at the bottom of goal_scripts, again reusing CHEAT_UNLOCKED_12
-    # Memory addresses account for require_deck_for_tape function defined elsewhere
-    goal_scripts.append(f"\n#00000  FUNCTION THPS3_secret_23\n#00000    SetGlobalFlag flag = CHEAT_UNLOCKED_12\n#00000  END FUNCTION\n")
+    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_a}}", f"THPS3_secretScript_{secrets.pop()}")
+    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_b}}", f"THPS3_secretScript_{secrets.pop()}")
+    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_c}}", f"THPS3_secretScript_{secrets.pop()}")
+    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_d}}", f"THPS3_secretScript_{secrets.pop()}")
+    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_e}}", f"THPS3_secretScript_{secrets.pop()}")
+    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_f}}", f"THPS3_secretScript_{secrets.pop()}")
+    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_g}}", f"THPS3_secretScript_{secrets.pop()}")
+    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_h}}", f"THPS3_secretScript_{secrets.pop()}")
+    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_i}}", f"THPS3_secretScript_{secrets.pop()}")
+    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_j}}", f"THPS3_secretScript_{secrets.pop()}")
+    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_k}}", f"THPS3_secretScript_{secrets.pop()}")
+    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_l}}", f"THPS3_secretScript_{secrets.pop()}")
+    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_m}}", f"THPS3_secretScript_{secrets.pop()}")
+    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_n}}", f"THPS3_secretScript_{secrets.pop()}")
+    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_o}}", f"THPS3_secretScript_{secrets.pop()}")
+    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_p}}", f"THPS3_secretScript_{secrets.pop()}")
+    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_q}}", f"THPS3_secretScript_{secrets.pop()}")
+    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_r}}", f"THPS3_secretScript_{secrets.pop()}")
+    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_s}}", f"THPS3_secretScript_{secrets.pop()}")
+    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_t}}", f"THPS3_secretScript_{secrets.pop()}")
+    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_u}}", f"THPS3_secretScript_{secrets.pop()}")
+    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_v}}", f"THPS3_secretScript_{secrets.pop()}")
 
     # TODO: Edit Cheat menu to appear when the first cheat is unlocked, rather than only Snowboard mode
 
-    # Demonstration: Remove medal requirements from secret unlock
-    # goal_scripts[8820:8826] = ["\n" for line in goal_scripts[8820:8826]]
-    # goal_scripts[8847:8850] = ["\n" for line in goal_scripts[8847:8850]]
-    # Demonstration: Reduce goal requirements down to 1
-    goal_scripts[8826] = "#00000          IF GoalsGreaterThan 0\n"
+    golds_required_for_secret = True
+    if golds_required_for_secret:
+        goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_gold_rio}}", "GOT_GOLD_RIO")
+        goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_gold_si}}", "GOT_GOLD_SI")
+        goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_gold_tokyo}}", "GOT_GOLD_TOKYO")
+    else:
+        # Flag 159 is always true
+        goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_gold_rio}}", "159")
+        goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_gold_si}}", "159")
+        goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_gold_tokyo}}", "159")
 
-    # Move secret unlock check for normal levels so that all goals are not required
-    goal_scripts[6887] = "#00000      GoalViewAllGoalCompleteCheck From_movies\n#00000      Goal_UnlockingSecrets\n"
-    goal_scripts[6897] = "\n"
+    goals_required_for_secret = 0
+    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_goals}}", str(goals_required_for_secret))
+
+    # For normal levels, secret unlock check is moved so that all goals are not required
     # TODO: move secret unlock for comp levels as well
+    return goal_scripts
 
 def lock_characters(skater_profile):
     noncharacter_flags = Secrets().secret_flags_levels + Secrets().secret_flags_cheats
@@ -739,7 +649,6 @@ def junk_suburbia(alf):
 
 if __name__ == "__main__":
     # read vanilla QBs
-    goal_scripts = read_script_file('goal_scripts')
     skater_profile = read_script_file('skater_profile')
     gamemode = read_script_file('gamemode')
     ajc = read_script_file('ajc_scripts')
@@ -754,6 +663,7 @@ if __name__ == "__main__":
     # read modified QBs
     comp_scripts = read_modified_script_file('comp_scripts')
     gameqb = read_modified_script_file('game')
+    goal_scripts = read_modified_script_file('goal_scripts')
     judges = read_modified_script_file('judges')
     levelsqb = read_modified_script_file('levels')
     mainmenu = read_modified_script_file('mainmenu')
@@ -765,11 +675,10 @@ if __name__ == "__main__":
         levels[3].name, levels[4].name, levels[5].name,
         levels[6].name, levels[7].name, levels[8].name,
     )
-    patch_view_goals_menu(goal_scripts)
 
     gameqb = display_victory_requirements(gameqb)
-    mainmenu = randomize_level_requirements(levels, mainmenu, goal_scripts)
-    comp_scripts = randomize_score_goals(levels, goal_scripts, comp_scripts)
+    goal_scripts, mainmenu = randomize_level_requirements(levels, mainmenu, goal_scripts)
+    comp_scripts, goal_scripts = randomize_score_goals(levels, goal_scripts, comp_scripts)
     randomize_item_locations(levels)
     skater_profile = randomize_stats(skater_profile)
     randomize_trickstyle(skater_profile)
@@ -780,16 +689,15 @@ if __name__ == "__main__":
     randomize_impress_ped_scores(sk3_pedscripts, ajc, bdj)
     randomize_decks(boardselect)
 
-    require_deck_for_tape(goal_scripts)
+    goal_scripts = require_deck_for_tape(goal_scripts)
     judges, comp_scripts = require_deck_for_medal(judges, comp_scripts)
 
-    randomize_secrets(goal_scripts)
+    goal_scripts = randomize_secrets(goal_scripts)
     lock_characters(skater_profile)
 
     junk_suburbia(alf)
 
     # write vanilla QBs
-    write_script_file('goal_scripts', goal_scripts)
     write_script_file('skater_profile', skater_profile)
     write_script_file('gamemode', gamemode)
     write_script_file('ajc_scripts', ajc)
@@ -804,6 +712,7 @@ if __name__ == "__main__":
     # write modified QBs
     write_script_file('comp_scripts', comp_scripts)
     write_script_file('game', gameqb)
+    write_script_file('goal_scripts', goal_scripts)
     write_script_file('judges', judges)
     write_script_file('levels', levelsqb)
     write_script_file('mainmenu', mainmenu)
