@@ -1,0 +1,935 @@
+
+#00001  FUNCTION launchgamemode
+#00031    SetGameType NULL
+#00032    SetGameState On
+#00033    printf "script launchgamemode\n"
+#00035    LaunchMenuScreen screen = game_menu
+
+#00036  END FUNCTION
+
+#00037  FUNCTION launchgamemode_freeskate
+#00039    launchgamemode freeskate
+#00040  END FUNCTION
+
+#00041  FUNCTION launchgamemode_singlesession
+#00043    launchgamemode singlesession
+#00044  END FUNCTION
+
+#00045  FUNCTION launchgamemode_trickattack
+#00047    launchgamemode trickattack
+#00048  END FUNCTION
+
+#00049  FUNCTION gamemode_menu_create
+#00051    createmenu STRUCT{
+            type = verticalmenu
+            id = gamemode_menu
+            x = 160.0
+            y = 68.0
+            w = 320.0
+            h = 236.0
+            just_center_x just_center_y drawer = viewertext
+            children = ARRAY(
+
+              STRUCT{
+                type = textmenuelement
+                id = freeskate_id
+                text = "Free skate"
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler
+                  target = "launchgamemode_freeskate"
+                  kill_menu }
+                }
+              STRUCT{
+                type = textmenuelement
+                id = singlesession_id
+                text = "Single Session"
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler
+                  target = "launchgamemode_singlesession"
+                  kill_menu }
+                }
+              STRUCT{
+                type = textmenuelement
+                id = trickattack_id
+                text = "Trick Attack"
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler
+                  target = "launchgamemode_trickattack"
+                  kill_menu }
+                }
+
+            )
+            }
+
+#00069    attachchild parent = contain1
+          child = gamemode_menu
+
+#00071  END FUNCTION
+
+#00073  mode_info = ARRAY(
+
+          STRUCT{
+            name = "Free Skate"
+            checksum = freeskate
+            definition = "mode_freeskate"
+            }
+          STRUCT{
+            name = "2 Player Free Skate"
+            checksum = freeskate2p
+            definition = "mode_freeskate2p"
+            }
+          STRUCT{
+            name = "Single Session"
+            checksum = singlesession
+            definition = "mode_singlesession"
+            }
+          STRUCT{
+            name = "Trick Attack"
+            checksum = trickattack
+            definition = "mode_trickattack"
+            }
+          STRUCT{
+            name = "Graffiti"
+            checksum = graffiti
+            definition = "mode_graffiti"
+            }
+          STRUCT{
+            name = "Slap!"
+            checksum = slap
+            definition = "mode_slap"
+            }
+          STRUCT{
+            name = "King of the Hill"
+            checksum = king
+            definition = "mode_king"
+            }
+          STRUCT{
+            name = "Horse"
+            checksum = horse
+            definition = "mode_horse"
+            }
+          STRUCT{
+            name = "Hamburger"
+            checksum = hamburger
+            definition = "mode_hamburger"
+            }
+          STRUCT{
+            name = "Strip Skate"
+            checksum = stripskate
+            definition = "mode_stripskate"
+            }
+          STRUCT{
+            name = "Career"
+            checksum = career
+            definition = "mode_career"
+            }
+          STRUCT{
+            name = "Contest"
+            checksum = contest
+            definition = "mode_contest"
+            }
+          STRUCT{
+            name = "Lobby"
+            checksum = netlobby
+            definition = "mode_netlobby"
+            }
+          STRUCT{
+            name = "Trick Attack"
+            checksum = nettrickattack
+            definition = "mode_nettrickattack"
+            }
+          STRUCT{
+            name = "Graffiti"
+            checksum = netgraffiti
+            definition = "mode_netgraffiti"
+            }
+          STRUCT{
+            name = "Slap!"
+            checksum = netslap
+            definition = "mode_netslap"
+            }
+          STRUCT{
+            name = "King of the Hill"
+            checksum = netking
+            definition = "mode_netking"
+            }
+          STRUCT{
+            name = "Skate Shop"
+            checksum = skateshop
+            definition = "mode_skateshop"
+            }
+          STRUCT{
+            name = "Park Editor"
+            checksum = parkeditor
+            definition = "mode_parkeditor"
+            }
+          STRUCT{
+            name = "Keep-Away"
+            checksum = beachball
+            definition = "mode_beachball"
+            }
+          STRUCT{
+            name = "Control Zone"
+            checksum = ownthezone
+            definition = "mode_ownthezone"
+            }
+          STRUCT{
+            name = "Capture the Flag"
+            checksum = ctf
+            definition = "mode_ctf"
+            }
+
+        )
+
+#00167  mode_freeskate = STRUCT{
+          name = freeskate
+          initial_players = 1
+          max_players = 1
+          time_limit_type = fixed
+          default_time_limit = 0
+          victory_condition_type = fixed
+          accumulate_score = 0
+          track_trick_score = 1
+          degrade_score = 0
+          is_lobby = 0
+          is_frontend = 0
+          screenmode = single
+          should_run_intro_camera = 1
+          should_run_intro_camera_noncd = 1
+          show_ranking_screen = 0
+          is_career = 0
+          is_singlesession = 0
+          is_parkeditor = 0
+          should_modulate_color = 0
+          is_horse = 0
+          is_king = 0
+          is_trick_attack = 0
+          show_leader_messages = 0
+          timer_beeps = 0
+          teamplay_type = fixed
+          is_teamplay = 1
+          }
+
+#00196  mode_freeskate2p = STRUCT{
+          name = freeskate
+          initial_players = 2
+          max_players = 2
+          time_limit_type = fixed
+          default_time_limit = 0
+          victory_condition_type = fixed
+          accumulate_score = 0
+          track_trick_score = 1
+          degrade_score = 0
+          is_lobby = 0
+          is_frontend = 0
+          screenmode = splitscreen
+          should_run_intro_camera = 1
+          should_run_intro_camera_noncd = 1
+          show_ranking_screen = 0
+          is_career = 0
+          is_singlesession = 0
+          is_parkeditor = 0
+          should_modulate_color = 0
+          is_horse = 0
+          is_king = 0
+          is_trick_attack = 0
+          show_leader_messages = 0
+          timer_beeps = 0
+          teamplay_type = fixed
+          is_teamplay = 1
+          }
+
+#00225  mode_singlesession = STRUCT{
+          name = singlesession
+          initial_players = 1
+          max_players = 1
+          time_limit_type = fixed
+          default_time_limit = 120
+          victory_condition_type = fixed
+          accumulate_score = 1
+          track_trick_score = 1
+          degrade_score = 1
+          is_lobby = 0
+          is_frontend = 0
+          screenmode = single
+          should_run_intro_camera = 0
+          should_run_intro_camera_noncd = 0
+          show_ranking_screen = 0
+          is_career = 0
+          is_singlesession = 1
+          is_parkeditor = 0
+          should_modulate_color = 0
+          is_horse = 0
+          is_king = 0
+          is_trick_attack = 0
+          show_leader_messages = 0
+          timer_beeps = 1
+          teamplay_type = fixed
+          is_teamplay = 1
+          }
+
+#00254  mode_career = STRUCT{
+          name = career
+          initial_players = 1
+          max_players = 1
+          time_limit_type = fixed
+          default_time_limit = 120
+          victory_condition_type = fixed
+          accumulate_score = 1
+          track_trick_score = 1
+          degrade_score = 1
+          is_lobby = 0
+          is_frontend = 0
+          screenmode = single
+          should_run_intro_camera = 1
+          should_run_intro_camera_noncd = 1
+          show_ranking_screen = 0
+          is_career = 1
+          is_singlesession = 0
+          is_parkeditor = 0
+          should_modulate_color = 0
+          is_horse = 0
+          is_king = 0
+          is_trick_attack = 0
+          show_leader_messages = 0
+          timer_beeps = 1
+          teamplay_type = fixed
+          is_teamplay = 1
+          }
+
+#00283  mode_trickattack = STRUCT{
+          name = trickattack
+          initial_players = 2
+          max_players = 2
+          time_limit_type = config
+          default_time_limit = 120
+          victory_condition_type = config
+          accumulate_score = 1
+          track_trick_score = 1
+          degrade_score = 1
+          is_lobby = 0
+          is_frontend = 0
+          screenmode = splitscreen
+          victory_conditions = ARRAY(
+
+            STRUCT{
+              type = highest_score
+              }
+
+          )
+          should_run_intro_camera = 0
+          should_run_intro_camera_noncd = 0
+          show_ranking_screen = 1
+          is_career = 0
+          is_singlesession = 0
+          is_parkeditor = 0
+          should_modulate_color = 0
+          is_horse = 0
+          is_king = 0
+          is_trick_attack = 1
+          show_leader_messages = 1
+          timer_beeps = 1
+          teamplay_type = fixed
+          is_teamplay = 1
+          }
+
+#00315  mode_nettrickattack = STRUCT{
+          name = nettrickattack
+          initial_players = 1
+          max_players = 32
+          time_limit_type = config
+          default_time_limit = 90
+          victory_condition_type = config
+          accumulate_score = 1
+          track_trick_score = 1
+          degrade_score = 1
+          is_lobby = 0
+          is_frontend = 0
+          screenmode = single
+          victory_conditions = ARRAY(
+
+            STRUCT{
+              type = highest_score
+              }
+
+          )
+          should_run_intro_camera = 0
+          should_run_intro_camera_noncd = 0
+          show_ranking_screen = 1
+          is_career = 0
+          is_singlesession = 0
+          is_parkeditor = 0
+          should_modulate_color = 0
+          is_horse = 0
+          is_king = 0
+          is_trick_attack = 1
+          show_leader_messages = 1
+          timer_beeps = 1
+          teamplay_type = fixed
+          is_teamplay = 1
+          }
+
+#00348  mode_graffiti = STRUCT{
+          name = graffiti
+          initial_players = 2
+          max_players = 2
+          time_limit_type = config
+          default_time_limit = 120
+          victory_condition_type = config
+          accumulate_score = 1
+          track_trick_score = 1
+          degrade_score = 1
+          is_lobby = 0
+          is_frontend = 0
+          screenmode = splitscreen
+          victory_conditions = ARRAY(
+
+            STRUCT{
+              type = highest_score
+              }
+
+          )
+          should_run_intro_camera = 0
+          should_run_intro_camera_noncd = 0
+          show_ranking_screen = 1
+          is_career = 0
+          is_singlesession = 0
+          is_parkeditor = 0
+          should_modulate_color = 1
+          is_horse = 0
+          is_king = 0
+          is_trick_attack = 0
+          show_leader_messages = 1
+          timer_beeps = 1
+          teamplay_type = fixed
+          is_teamplay = 1
+          }
+
+#00380  mode_netgraffiti = STRUCT{
+          name = netgraffiti
+          initial_players = 1
+          max_players = 32
+          time_limit_type = config
+          default_time_limit = 90
+          victory_condition_type = config
+          accumulate_score = 1
+          track_trick_score = 1
+          degrade_score = 1
+          is_lobby = 0
+          is_frontend = 0
+          screenmode = single
+          victory_conditions = ARRAY(
+
+            STRUCT{
+              type = highest_score
+              }
+
+          )
+          should_run_intro_camera = 0
+          should_run_intro_camera_noncd = 0
+          show_ranking_screen = 1
+          is_career = 0
+          is_singlesession = 0
+          is_parkeditor = 0
+          should_modulate_color = 1
+          is_horse = 0
+          is_king = 0
+          is_trick_attack = 0
+          show_leader_messages = 1
+          timer_beeps = 1
+          teamplay_type = fixed
+          is_teamplay = 1
+          }
+
+#00413  mode_slap = STRUCT{
+          name = slap
+          initial_players = 2
+          max_players = 2
+          time_limit_type = config
+          default_time_limit = 120
+          victory_condition_type = config
+          accumulate_score = 1
+          track_trick_score = 0
+          degrade_score = 1
+          is_lobby = 0
+          is_frontend = 0
+          screenmode = splitscreen
+          victory_conditions = ARRAY(
+
+            STRUCT{
+              type = highest_score
+              }
+
+          )
+          should_run_intro_camera = 0
+          should_run_intro_camera_noncd = 0
+          show_ranking_screen = 1
+          is_career = 0
+          is_singlesession = 0
+          is_parkeditor = 0
+          should_modulate_color = 0
+          is_horse = 0
+          is_king = 0
+          is_trick_attack = 0
+          show_leader_messages = 1
+          timer_beeps = 1
+          teamplay_type = fixed
+          is_teamplay = 1
+          }
+
+#00445  mode_netslap = STRUCT{
+          name = netslap
+          initial_players = 1
+          max_players = 32
+          time_limit_type = config
+          default_time_limit = 90
+          victory_condition_type = config
+          accumulate_score = 1
+          track_trick_score = 0
+          degrade_score = 1
+          is_lobby = 0
+          is_frontend = 0
+          screenmode = single
+          victory_conditions = ARRAY(
+
+            STRUCT{
+              type = highest_score
+              }
+
+          )
+          should_run_intro_camera = 0
+          should_run_intro_camera_noncd = 0
+          show_ranking_screen = 1
+          is_career = 0
+          is_singlesession = 0
+          is_parkeditor = 0
+          should_modulate_color = 0
+          is_horse = 0
+          is_king = 0
+          is_trick_attack = 0
+          show_leader_messages = 1
+          timer_beeps = 1
+          teamplay_type = fixed
+          is_teamplay = 1
+          }
+
+#00478  mode_netking = STRUCT{
+          name = netking
+          initial_players = 1
+          max_players = 32
+          time_limit_type = config
+          default_time_limit = 0
+          victory_condition_type = config
+          accumulate_score = 1
+          track_trick_score = 0
+          degrade_score = 1
+          is_lobby = 0
+          is_frontend = 0
+          screenmode = single
+          victory_conditions = ARRAY(
+
+            STRUCT{
+              type = target_score
+              score = 120000
+              }
+
+          )
+          should_run_intro_camera = 0
+          should_run_intro_camera_noncd = 0
+          show_ranking_screen = 1
+          is_career = 0
+          is_singlesession = 0
+          is_parkeditor = 0
+          should_modulate_color = 0
+          is_horse = 0
+          is_king = 1
+          is_trick_attack = 0
+          show_leader_messages = 1
+          timer_beeps = 0
+          teamplay_type = fixed
+          is_teamplay = 1
+          }
+
+#00511  mode_king = STRUCT{
+          name = king
+          initial_players = 2
+          max_players = 2
+          time_limit_type = config
+          default_time_limit = 0
+          victory_condition_type = config
+          accumulate_score = 1
+          track_trick_score = 0
+          degrade_score = 1
+          is_lobby = 0
+          is_frontend = 0
+          screenmode = splitscreen
+          victory_conditions = ARRAY(
+
+            STRUCT{
+              type = target_score
+              score = 120000
+              }
+
+          )
+          should_run_intro_camera = 0
+          should_run_intro_camera_noncd = 0
+          show_ranking_screen = 1
+          is_career = 0
+          is_singlesession = 0
+          is_parkeditor = 0
+          should_modulate_color = 0
+          is_horse = 0
+          is_king = 1
+          is_trick_attack = 0
+          show_leader_messages = 1
+          timer_beeps = 0
+          teamplay_type = fixed
+          is_teamplay = 1
+          }
+
+#00543  targetScoreArray = ARRAY(
+
+          STRUCT{
+            type = target_score
+            score = 10000
+            }
+
+        )
+
+#00547  mode_netlobby = STRUCT{
+          name = netlobby
+          initial_players = 1
+          max_players = 8
+          time_limit_type = fixed
+          default_time_limit = 0
+          victory_condition_type = fixed
+          accumulate_score = 0
+          track_trick_score = 1
+          degrade_score = 0
+          is_lobby = 1
+          is_frontend = 0
+          screenmode = single
+          should_run_intro_camera = 0
+          should_run_intro_camera_noncd = 0
+          show_ranking_screen = 0
+          is_career = 0
+          is_singlesession = 0
+          is_parkeditor = 0
+          should_modulate_color = 0
+          is_horse = 0
+          is_king = 0
+          is_trick_attack = 0
+          show_leader_messages = 0
+          timer_beeps = 0
+          teamplay_type = fixed
+          is_teamplay = 1
+          }
+
+#00576  mode_skateshop = STRUCT{
+          name = skateshop
+          initial_players = 1
+          max_players = 1
+          time_limit_type = fixed
+          default_time_limit = 0
+          victory_condition_type = fixed
+          accumulate_score = 0
+          track_trick_score = 0
+          degrade_score = 0
+          is_lobby = 0
+          is_frontend = 1
+          screenmode = single
+          should_run_intro_camera = 0
+          should_run_intro_camera_noncd = 0
+          show_ranking_screen = 0
+          is_career = 0
+          is_singlesession = 0
+          is_parkeditor = 0
+          should_modulate_color = 0
+          is_horse = 0
+          is_king = 0
+          is_trick_attack = 0
+          show_leader_messages = 0
+          timer_beeps = 0
+          teamplay_type = fixed
+          is_teamplay = 1
+          }
+
+#00605  mode_parkeditor = STRUCT{
+          name = parkeditor
+          initial_players = 1
+          max_players = 0
+          time_limit_type = fixed
+          default_time_limit = 0
+          victory_condition_type = fixed
+          accumulate_score = 0
+          track_trick_score = 1
+          degrade_score = 0
+          is_lobby = 0
+          is_frontend = 0
+          screenmode = single
+          should_run_intro_camera = 0
+          should_run_intro_camera_noncd = 0
+          show_ranking_screen = 0
+          is_career = 0
+          is_singlesession = 0
+          is_parkeditor = 1
+          should_modulate_color = 0
+          is_horse = 0
+          is_king = 0
+          is_trick_attack = 0
+          show_leader_messages = 0
+          timer_beeps = 0
+          teamplay_type = fixed
+          is_teamplay = 1
+          }
+
+#00634  mode_horse = STRUCT{
+          name = horse
+          initial_players = 2
+          max_players = 2
+          time_limit_type = config
+          default_time_limit = 10
+          victory_condition_type = fixed
+          accumulate_score = 1
+          track_trick_score = 1
+          degrade_score = 0
+          is_lobby = 0
+          is_frontend = 0
+          screenmode = horse
+          should_run_intro_camera = 0
+          should_run_intro_camera_noncd = 0
+          show_ranking_screen = 0
+          is_career = 0
+          is_singlesession = 0
+          is_parkeditor = 0
+          should_modulate_color = 0
+          is_horse = 1
+          is_king = 0
+          is_trick_attack = 0
+          show_leader_messages = 0
+          timer_beeps = 0
+          teamplay_type = fixed
+          is_teamplay = 1
+          }
+
+#00664  mode_stagingarea = STRUCT{
+          name = stagingarea
+          initial_players = 1
+          max_players = 32
+          time_limit_type = fixed
+          default_time_limit = 0
+          victory_condition_type = fixed
+          accumulate_score = 0
+          track_trick_score = 0
+          degrade_score = 0
+          is_lobby = 0
+          is_frontend = 0
+          screenmode = single
+          should_run_intro_camera = 0
+          should_run_intro_camera_noncd = 0
+          show_ranking_screen = 0
+          is_career = 0
+          is_singlesession = 0
+          is_parkeditor = 0
+          should_modulate_color = 0
+          is_horse = 0
+          is_king = 0
+          is_trick_attack = 0
+          show_leader_messages = 0
+          timer_beeps = 0
+          teamplay_type = fixed
+          is_teamplay = 1
+          }
+
+#00694  mode_beachball = STRUCT{
+          name = beachball
+          initial_players = 1
+          max_players = 32
+          time_limit_type = fixed
+          default_time_limit = 0
+          victory_condition_type = fixed
+          accumulate_score = 1
+          track_trick_score = 1
+          degrade_score = 1
+          is_lobby = 0
+          is_frontend = 0
+          screenmode = single
+          should_run_intro_camera = 0
+          should_run_intro_camera_noncd = 0
+          show_ranking_screen = 1
+          is_career = 0
+          is_singlesession = 0
+          is_parkeditor = 0
+          should_modulate_color = 0
+          is_horse = 0
+          is_king = 0
+          is_trick_attack = 0
+          show_leader_messages = 1
+          timer_beeps = 1
+          teamplay_type = config
+          is_teamplay = 0
+          }
+
+#00724  mode_ownthezone = STRUCT{
+          name = ownthezone
+          initial_players = 1
+          max_players = 32
+          time_limit_type = fixed
+          default_time_limit = 0
+          victory_condition_type = fixed
+          accumulate_score = 1
+          track_trick_score = 1
+          degrade_score = 1
+          is_lobby = 0
+          is_frontend = 0
+          screenmode = single
+          should_run_intro_camera = 0
+          should_run_intro_camera_noncd = 0
+          show_ranking_screen = 1
+          is_career = 0
+          is_singlesession = 0
+          is_parkeditor = 0
+          should_modulate_color = 0
+          is_horse = 0
+          is_king = 0
+          is_trick_attack = 0
+          show_leader_messages = 0
+          timer_beeps = 1
+          teamplay_type = config
+          is_teamplay = 1
+          }
+
+#00753  mode_ctf = STRUCT{
+          name = ctf
+          initial_players = 1
+          max_players = 32
+          time_limit_type = fixed
+          default_time_limit = 0
+          victory_condition_type = fixed
+          accumulate_score = 1
+          track_trick_score = 1
+          degrade_score = 1
+          is_lobby = 0
+          is_frontend = 0
+          screenmode = single
+          should_run_intro_camera = 0
+          should_run_intro_camera_noncd = 0
+          show_ranking_screen = 1
+          is_career = 0
+          is_singlesession = 0
+          is_parkeditor = 0
+          should_modulate_color = 0
+          is_horse = 0
+          is_king = 0
+          is_trick_attack = 0
+          show_leader_messages = 0
+          timer_beeps = 1
+          teamplay_type = fixed
+          is_teamplay = 1
+          }
+
+#00782  teamplay_info =
+#00784
+        ARRAY(
+          STRUCT{
+            name = "Team Play"
+            checksum = num_0
+            }
+          STRUCT{
+            name = "Free for all"
+            checksum = num_1
+            }
+
+        )
+
+#00788  crown_info =
+#00790
+        STRUCT{
+          name = "crown"
+          mesh = "models/crown/crown.dff"
+          texdir = "models/crown"
+          tex = "models/crown/crown.tex"
+          node_type_checksum = crown
+          autoreturn = 0
+          }
+
+#00798  flag1_info =
+#00800
+        STRUCT{
+          name = "blue flag"
+          mesh = "models/blue_flg/blue_flg.dff"
+          texdir = "models/blue_flg"
+          tex = "models/blue_flg/blue_flg.tex"
+          node_type_checksum = ctf_1
+          autoreturn = 30
+          scale = 0.35
+          rotate_speed = 1
+          }
+
+#00810  flag2_info =
+#00812
+        STRUCT{
+          name = "red flag"
+          mesh = "models/red_flg/red_flg.dff"
+          texdir = "models/red_flg"
+          tex = "models/red_flg/red_flg.tex"
+          node_type_checksum = ctf_2
+          autoreturn = 30
+          scale = 0.35
+          rotate_speed = 1
+          }
+
+#00822  ball_info =
+#00824
+        STRUCT{
+          bounciness = 0.75
+          name = "beach ball"
+          mesh = "models/beachball/beachball.dff"
+          texdir = "models/beachball"
+          tex = "models/beachball/beachball.tex"
+          node_type_checksum = crown
+          bouncesound = beach_ball_bounce
+          autoreturn = 30
+          scale = 0.7
+          rotate_speed = 2
+          }
+
+#00836  key_info =
+#00838
+        STRUCT{
+          name = "Zone Key"
+          mesh = "models/key/key.dff"
+          texdir = "models/key"
+          tex = "models/key/key.tex"
+          node_type_checksum = zone_key
+          autoreturn = 15
+          scale = 0.4
+          rotate_speed = 1
+          offset = VECTOR[-40.0; 0.0; 0.0]
+          bounciness = 0.25
+          }
+
+#00850  zone_info =
+#00852
+        STRUCT{
+          node_type_checksum = zone
+          alt_node_type_checksum = crown
+          model_info = ARRAY(
+
+            STRUCT{
+              mesh = "models/cpblue/cpblue.dff"
+              tex = "models/cpblue/cpblue.tex"
+              }
+            STRUCT{
+              mesh = "models/cpred/cpred.dff"
+              tex = "models/cpred/cpred.tex"
+              }
+            STRUCT{
+              mesh = "models/cpwhite/cpwhite.dff"
+              tex = "models/cpwhite/cpwhite.tex"
+              }
+
+          )
+          }
+
+#00871
