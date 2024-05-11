@@ -549,25 +549,18 @@ def randomize_impress_ped_scores(sk3_pedscripts, ajc, bdj):
     bdj[82] = f'          Goal_Scripted3_Text = "Impress Neversoft Girls| With {ped_ship_score},000 Points"\n'
 
 def randomize_decks(boardselect):
+    # Randomize grip tape textures and skater default grip tapes
+    # TODO: Changing your grip still doesn't match between the skateshop and in-level
     grips = _shuffle(Boards().get_grips())
-    # Randomize default grip tapes (don't change the descriptions here!)
     for i in range(32):
-        boardselect[1957 + (i*5)] = f'            texture = "{grips[i].texture}"\n'
-    # Randomize selectable grip tapes in the skate shop menu
-    for i in range(10):
-        boardselect[292 + (i*4)] = f'                GripTapeDescription = "{grips[i].name}"\n'
-        boardselect[293 + (i*4)] = f'                GripTapeTexture = "{grips[i].texture}"\n'
-    for i in range(10):
-        boardselect[339 + (i*4)] = f'                GripTapeDescription = "{grips[i+10].name}"\n'
-        boardselect[340 + (i*4)] = f'                GripTapeTexture = "{grips[i+10].texture}"\n'
-    for i in range(10):
-        boardselect[386 + (i*4)] = f'                GripTapeDescription = "{grips[i+20].name}"\n'
-        boardselect[387 + (i*4)] = f'                GripTapeTexture = "{grips[i+20].texture}"\n'
-
+        boardselect = boardselect.replace("{{" + f"rando_boardselect_grip_texture_{i}" + "}}", grips[i].texture)
+        boardselect = boardselect.replace("{{" + f"rando_boardselect_grip_description_{i}" + "}}", grips[i].name)
+    # Randomize deck textures
+    # TODO: Change the in-game names too?
     decks = _shuffle(Boards().get_decks())
     for i in range(230):
-        # TODO: Change name too
-        boardselect[802 + (i*5)] = f'            texture = "{decks[i].texture}"\n'
+        boardselect = boardselect.replace("{{" + f"rando_boardselect_deck_texture_{i}" + "}}", decks[i].texture)
+    return boardselect
 
 def randomize_secrets(goal_scripts):
     # UnlockNextSecret is a builtin which keys off the SecretScripts array
@@ -658,9 +651,9 @@ if __name__ == "__main__":
     cpf = read_script_file('cpf_scripts')
     protricks = read_script_file('protricks')
     sk3_pedscripts = read_script_file('sk3_pedscripts')
-    boardselect = read_script_file('boardselect')
 
     # read modified QBs
+    boardselect = read_modified_script_file('boardselect')
     comp_scripts = read_modified_script_file('comp_scripts')
     gameqb = read_modified_script_file('game')
     goal_scripts = read_modified_script_file('goal_scripts')
@@ -687,7 +680,7 @@ if __name__ == "__main__":
     randomize_trick_sets(protricks, trickspot_tricks)
     randomize_special_tricks(skater_profile, "easy")
     randomize_impress_ped_scores(sk3_pedscripts, ajc, bdj)
-    randomize_decks(boardselect)
+    boardselect = randomize_decks(boardselect)
 
     goal_scripts = require_deck_for_tape(goal_scripts)
     judges, comp_scripts = require_deck_for_medal(judges, comp_scripts)
@@ -707,9 +700,9 @@ if __name__ == "__main__":
     write_script_file('cpf_scripts', cpf)
     write_script_file('protricks', protricks)
     write_script_file('sk3_pedscripts', sk3_pedscripts)
-    write_script_file('boardselect', boardselect)
 
     # write modified QBs
+    write_script_file('boardselect', boardselect)
     write_script_file('comp_scripts', comp_scripts)
     write_script_file('game', gameqb)
     write_script_file('goal_scripts', goal_scripts)
