@@ -448,43 +448,122 @@ def randomize_trick_sets(protricks, trickspot_tricks):
 
     vert_lips = _shuffle(Tricks().get_regular_lips())[:(8-len(trickspot_lips))] # first 8 entries, fewer if trickspots exist
     vert_lips = _shuffle(vert_lips + trickspot_lips)
-    for i in range(4, 12):
-        protricks[i] = f"          {ButtonBinds().get_regular_lip_binds()[i-4].name} = {vert_lips.pop().name_script}\n"
+    protricks = protricks.replace("{{rando_protricks_vertlip_ul}}", vert_lips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_vertlip_ur}}", vert_lips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_vertlip_dl}}", vert_lips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_vertlip_dr}}", vert_lips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_vertlip_l}}", vert_lips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_vertlip_r}}", vert_lips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_vertlip_d}}", vert_lips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_vertlip_u}}", vert_lips.pop().name_script)
     street_lips = _shuffle(Tricks().get_regular_lips())[:(8-len(trickspot_lips))] # first 8 entries, fewer if trickspots exist
     street_lips = _shuffle(street_lips + trickspot_lips)
-    for i in range(17, 25):
-        protricks[i] = f"          {ButtonBinds().get_regular_lip_binds()[i-17].name} = {street_lips.pop().name_script}\n"
+    protricks = protricks.replace("{{rando_protricks_streetlip_ul}}", street_lips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_streetlip_ur}}", street_lips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_streetlip_dl}}", street_lips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_streetlip_dr}}", street_lips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_streetlip_l}}", street_lips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_streetlip_r}}", street_lips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_streetlip_d}}", street_lips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_streetlip_u}}", street_lips.pop().name_script)
     hawk_lips = _shuffle(Tricks().get_regular_lips())[:(8-len(trickspot_lips))] # first 8 entries, fewer if trickspots exist
     hawk_lips = _shuffle(hawk_lips + trickspot_lips)
-    for i in range(30, 38):
-        protricks[i] = f"          {ButtonBinds().get_regular_lip_binds()[i-30].name} = {hawk_lips.pop().name_script}\n"
+    protricks = protricks.replace("{{rando_protricks_hawklip_ul}}", hawk_lips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_hawklip_ur}}", hawk_lips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_hawklip_dl}}", hawk_lips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_hawklip_dr}}", hawk_lips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_hawklip_l}}", hawk_lips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_hawklip_r}}", hawk_lips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_hawklip_d}}", hawk_lips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_hawklip_u}}", hawk_lips.pop().name_script)
+
     all_around_grabs = _shuffle(Tricks().get_regular_grabs())[:(12-len(trickspot_grabs))] # first 12 entries, fewer if trickspots exist
     all_around_grabs = _shuffle(all_around_grabs + trickspot_grabs)
-    for i in range(43, 55):
-        protricks[i] = f"          {ButtonBinds().get_regular_grab_binds()[i-43].name} = {all_around_grabs.pop().name_script}\n"
+    protricks = protricks.replace("{{rando_protricks_allaroundgrabs_ul}}", all_around_grabs.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_allaroundgrabs_ur}}", all_around_grabs.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_allaroundgrabs_dl}}", all_around_grabs.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_allaroundgrabs_dr}}", all_around_grabs.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_allaroundgrabs_l}}", all_around_grabs.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_allaroundgrabs_r}}", all_around_grabs.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_allaroundgrabs_d}}", all_around_grabs.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_allaroundgrabs_u}}", all_around_grabs.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_allaroundgrabs_ll}}", all_around_grabs.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_allaroundgrabs_rr}}", all_around_grabs.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_allaroundgrabs_uu}}", all_around_grabs.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_allaroundgrabs_dd}}", all_around_grabs.pop().name_script)
     street_grabs = _shuffle(Tricks().get_regular_grabs())[:(12-len(trickspot_grabs))] # first 12 entries, fewer if trickspots exist
     street_grabs = _shuffle(street_grabs + trickspot_grabs)
-    for i in range(60, 72):
-        protricks[i] = f"          {ButtonBinds().get_regular_grab_binds()[i-60].name} = {street_grabs.pop().name_script}\n"
+    protricks = protricks.replace("{{rando_protricks_streetgrabs_ul}}", street_grabs.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_streetgrabs_ur}}", street_grabs.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_streetgrabs_dl}}", street_grabs.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_streetgrabs_dr}}", street_grabs.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_streetgrabs_l}}", street_grabs.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_streetgrabs_r}}", street_grabs.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_streetgrabs_d}}", street_grabs.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_streetgrabs_u}}", street_grabs.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_streetgrabs_ll}}", street_grabs.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_streetgrabs_rr}}", street_grabs.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_streetgrabs_uu}}", street_grabs.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_streetgrabs_dd}}", street_grabs.pop().name_script)
     vert_grabs = _shuffle(Tricks().get_regular_grabs())[:(12-len(trickspot_grabs))] # first 12 entries, fewer if trickspots exist
     vert_grabs = _shuffle(vert_grabs + trickspot_grabs)
-    for i in range(77, 89):
-        protricks[i] = f"          {ButtonBinds().get_regular_grab_binds()[i-77].name} = {vert_grabs.pop().name_script}\n"
+    protricks = protricks.replace("{{rando_protricks_vertgrabs_ul}}", vert_grabs.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_vertgrabs_ur}}", vert_grabs.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_vertgrabs_dl}}", vert_grabs.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_vertgrabs_dr}}", vert_grabs.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_vertgrabs_l}}", vert_grabs.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_vertgrabs_r}}", vert_grabs.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_vertgrabs_d}}", vert_grabs.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_vertgrabs_u}}", vert_grabs.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_vertgrabs_ll}}", vert_grabs.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_vertgrabs_rr}}", vert_grabs.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_vertgrabs_uu}}", vert_grabs.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_vertgrabs_dd}}", vert_grabs.pop().name_script)
+
     vert_flips = _shuffle(Tricks().get_regular_flips())[:(12-len(trickspot_flips))] # first 12 entries, fewer if trickspots exist
     vert_flips = _shuffle(vert_flips + trickspot_flips)
-    for i in range(94, 106):
-        protricks[i] = f"          {ButtonBinds().get_regular_flip_binds()[i-94].name} = {vert_flips.pop().name_script}\n"
+    protricks = protricks.replace("{{rando_protricks_vertflips_ul}}", vert_flips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_vertflips_ur}}", vert_flips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_vertflips_dl}}", vert_flips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_vertflips_dr}}", vert_flips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_vertflips_l}}", vert_flips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_vertflips_r}}", vert_flips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_vertflips_d}}", vert_flips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_vertflips_u}}", vert_flips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_vertflips_ll}}", vert_flips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_vertflips_rr}}", vert_flips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_vertflips_uu}}", vert_flips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_vertflips_dd}}", vert_flips.pop().name_script)
     freestyle_flips = _shuffle(Tricks().get_regular_flips())[:(12-len(trickspot_flips))] # first 12 entries, fewer if trickspots exist
     freestyle_flips = _shuffle(freestyle_flips + trickspot_flips)
-    for i in range(111, 123):
-        protricks[i] = f"          {ButtonBinds().get_regular_flip_binds()[i-111].name} = {freestyle_flips.pop().name_script}\n"
+    protricks = protricks.replace("{{rando_protricks_freestyleflips_ul}}", freestyle_flips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_freestyleflips_ur}}", freestyle_flips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_freestyleflips_dl}}", freestyle_flips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_freestyleflips_dr}}", freestyle_flips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_freestyleflips_l}}", freestyle_flips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_freestyleflips_r}}", freestyle_flips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_freestyleflips_d}}", freestyle_flips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_freestyleflips_u}}", freestyle_flips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_freestyleflips_ll}}", freestyle_flips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_freestyleflips_rr}}", freestyle_flips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_freestyleflips_uu}}", freestyle_flips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_freestyleflips_dd}}", freestyle_flips.pop().name_script)
     street_flips = _shuffle(Tricks().get_regular_flips())[:(12-len(trickspot_flips))] # first 12 entries, fewer if trickspots exist
     street_flips = _shuffle(street_flips + trickspot_flips)
-    for i in range(128, 140):
-        protricks[i] = f"          {ButtonBinds().get_regular_flip_binds()[i-128].name} = {street_flips.pop().name_script}\n"
-    # Tony Hawk doesn't get to be special anymore
-    protricks[289] = f"          HawkLip VertFlips VertGrabs ExtraSlot1 = Trick_Revert\n          ExtraSlot2 = Trick_Revert\n          JumpSlot = Trick_Fastplant\n"
-    protricks[290:316] = ["" for line in protricks[290:316]]
+    protricks = protricks.replace("{{rando_protricks_streetflips_ul}}", street_flips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_streetflips_ur}}", street_flips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_streetflips_dl}}", street_flips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_streetflips_dr}}", street_flips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_streetflips_l}}", street_flips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_streetflips_r}}", street_flips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_streetflips_d}}", street_flips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_streetflips_u}}", street_flips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_streetflips_ll}}", street_flips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_streetflips_rr}}", street_flips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_streetflips_uu}}", street_flips.pop().name_script)
+    protricks = protricks.replace("{{rando_protricks_streetflips_dd}}", street_flips.pop().name_script)
+
+    return protricks
 
 def randomize_special_tricks(skater_profile, difficulty=None):
     default_special_lines = [ # one per character for now
@@ -649,7 +728,6 @@ if __name__ == "__main__":
     bdj = read_script_file('bdj_scripts')
     cjr = read_script_file('cjr_scripts')
     cpf = read_script_file('cpf_scripts')
-    protricks = read_script_file('protricks')
     sk3_pedscripts = read_script_file('sk3_pedscripts')
 
     # read modified QBs
@@ -661,6 +739,7 @@ if __name__ == "__main__":
     judges = read_modified_script_file('judges')
     levelsqb = read_modified_script_file('levels')
     mainmenu = read_modified_script_file('mainmenu')
+    protricks = read_modified_script_file('protricks')
 
     # randomize QBs
     levels = get_random_level_order(end_on_comp=True)
@@ -678,7 +757,7 @@ if __name__ == "__main__":
     randomize_trickstyle(skater_profile)
     gamemode = randomize_level_timer(gamemode)
     trickspot_tricks = randomize_trickspot_tricks("wild", ajc, alf, cjr, cpf, bdj)
-    randomize_trick_sets(protricks, trickspot_tricks)
+    protricks = randomize_trick_sets(protricks, trickspot_tricks)
     randomize_special_tricks(skater_profile, "easy")
     randomize_impress_ped_scores(sk3_pedscripts, ajc, bdj)
     boardselect = randomize_decks(boardselect)
@@ -698,7 +777,6 @@ if __name__ == "__main__":
     write_script_file('bdj_scripts', bdj)
     write_script_file('cjr_scripts', cjr)
     write_script_file('cpf_scripts', cpf)
-    write_script_file('protricks', protricks)
     write_script_file('sk3_pedscripts', sk3_pedscripts)
 
     # write modified QBs
@@ -710,3 +788,4 @@ if __name__ == "__main__":
     write_script_file('judges', judges)
     write_script_file('levels', levelsqb)
     write_script_file('mainmenu', mainmenu)
+    write_script_file('protricks', protricks)
