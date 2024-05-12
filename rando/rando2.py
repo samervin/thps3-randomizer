@@ -18,6 +18,7 @@ from tricks import Tricks
 from button_binds import ButtonBinds
 from boards import Boards
 from secrets import Secrets
+from skaters import Skaters
 
 def _shuffle(any_list):
     shuffled = any_list.copy()
@@ -288,7 +289,6 @@ def randomize_item_locations(levels):
 def randomize_stats(skater_profile):
     # this game lets you remap all stats for all characters, so there is not much point to random stats
     # note: these stats only apply to fresh unsaved games
-
     stat_presets = ["max", "easy", "default", "hard", "impossible"]
     stat_presets = _shuffle(stat_presets)
 
@@ -298,27 +298,15 @@ def randomize_stats(skater_profile):
         case "easy":
             stat_num = 7
         case "default":
-            stat_num = None
+            stat_num = 5
         case "hard":
             stat_num = 2
         case "impossible":
             stat_num = 0
         case _:
-            stat_num = None
+            raise Exception("invalid stat preset: " + stat_presets[0])
 
-    if stat_num is not None:
-        skater_profile = ''.join(skater_profile)
-        skater_profile = re.sub(r'(?<=air = )\d+', str(stat_num), skater_profile)
-        skater_profile = re.sub(r'(?<=hangtime = )\d+', str(stat_num), skater_profile)
-        skater_profile = re.sub(r'(?<=ollie = )\d+', str(stat_num), skater_profile)
-        skater_profile = re.sub(r'(?<=speed = )\d+', str(stat_num), skater_profile)
-        skater_profile = re.sub(r'(?<=spin = )\d+', str(stat_num), skater_profile)
-        skater_profile = re.sub(r'(?<=switch = )\d+', str(stat_num), skater_profile)
-        skater_profile = re.sub(r'(?<=rail_balance = )\d+', str(stat_num), skater_profile)
-        skater_profile = re.sub(r'(?<=lip_balance = )\d+', str(stat_num), skater_profile)
-        skater_profile = re.sub(r'(?<=manual_balance = )\d+', str(stat_num), skater_profile)
-        skater_profile = skater_profile.splitlines(keepends=True)
-
+    skater_profile = skater_profile.replace("{{rando_skater_profile_global_stat}}", str(stat_num))
     return skater_profile
 
 def _get_random_trickstyle():
@@ -327,8 +315,12 @@ def _get_random_trickstyle():
 
 def randomize_trickstyle(skater_profile):
     # randomize whether each skater is street or vert
-    for index, line in enumerate(skater_profile):
-        skater_profile[index] = re.sub(r'(?<=trickstyle = )\w+', _get_random_trickstyle(), line)
+    for skater in Skaters().all_skaters:
+        skater_profile = skater_profile.replace(
+            "{{" + f"rando_skater_profile_{skater.script_name}_trickstyle" + "}}",
+            _get_random_trickstyle()
+        )
+    return skater_profile
 
 def require_deck_for_tape(goal_scripts):
     # require the deck to be collected before the tape goal will complete
@@ -566,51 +558,43 @@ def randomize_trick_sets(protricks, trickspot_tricks):
     return protricks
 
 def randomize_special_tricks(skater_profile, difficulty=None):
-    default_special_lines = [ # one per character for now
-        1468, # 1472, 1476, 1480,
-        1544, # 1548, 1552, 1556,
-        1620, # 1624, 1628, 1632,
-        1696, # 1700, 1704, 1708,
-        1772, # 1776, 1780, 1784,
-        1848, # 1852, 1856, 1860,
-        1924, # 1928, 1932, 1936,
-        2000, # 2004, 2008, 2012,
-        2076, # 2080, 2084, 2088,
-        2152, # 2156, 2160, 2164,
-        2228, # 2232, 2236, 2240,
-        2304, # 2308, 2312, 2316,
-        2380, # 2384, 2388, 2392,
-        2457, # 2461, 2465, 2469,
-        2534, # 2538, 2542, 2546,
-        2611, # 2615, 2619, 2623,
-        2688, # 2692, 2696, 2700,
-        2765, # 2769, 2773, 2777,
-        2842, # 2846, 2850, 2854,
-        2919, # 2923, 2927, 2931,
-        2996, # 3000, 3004, 3008,
-        3073, # 3077, 3081, 3085,
-        3150, # 3154, 3158, 3162,
-    ]
-    for line in default_special_lines:
+    for skater in Skaters().all_skaters:
         four_specials = _shuffle(Tricks().get_all_special_tricks())[:4]
         binds = ButtonBinds()
-        grind_binds = binds.get_special_grind_binds(difficulty)
-        air_binds = binds.get_special_air_binds(difficulty)
-        lip_binds = binds.get_special_lip_binds(difficulty)
-        manual_binds = binds.get_special_manual_binds(difficulty)
+        grind_binds = _shuffle(binds.get_special_grind_binds(difficulty))
+        air_binds = _shuffle(binds.get_special_air_binds(difficulty))
+        lip_binds = _shuffle(binds.get_special_lip_binds(difficulty))
+        manual_binds = _shuffle(binds.get_special_manual_binds(difficulty))
+
         for i, special in enumerate(four_specials):
-            skater_profile[(i*4)+line+1] = f"                  trickname = {special.name_script}\n"
+            skater_profile = skater_profile.replace(
+                "{{" + f"rando_skater_profile_{skater.script_name}_special_name_{i}" + "}}",
+                special.name_script
+            )
             match special.trick_type:
                 case "grind":
-                    skater_profile[(i*4)+line] = f"                  trickslot = {grind_binds.pop().name}\n"
+                    skater_profile = skater_profile.replace(
+                        "{{" + f"rando_skater_profile_{skater.script_name}_special_slot_{i}" + "}}",
+                        grind_binds.pop().name
+                    )
                 case "grab" | "flip":
-                    skater_profile[(i*4)+line] = f"                  trickslot = {air_binds.pop().name}\n"
+                    skater_profile = skater_profile.replace(
+                        "{{" + f"rando_skater_profile_{skater.script_name}_special_slot_{i}" + "}}",
+                        air_binds.pop().name
+                    )
                 case "lip":
-                    skater_profile[(i*4)+line] = f"                  trickslot = {lip_binds.pop().name}\n"
+                    skater_profile = skater_profile.replace(
+                        "{{" + f"rando_skater_profile_{skater.script_name}_special_slot_{i}" + "}}",
+                        lip_binds.pop().name
+                    )
                 case "manual":
-                    skater_profile[(i*4)+line] = f"                  trickslot = {manual_binds.pop().name}\n"
+                    skater_profile = skater_profile.replace(
+                        "{{" + f"rando_skater_profile_{skater.script_name}_special_slot_{i}" + "}}",
+                        manual_binds.pop().name
+                    )
                 case _:
                     raise Exception("invalid trick type")
+    return skater_profile
 
 def randomize_impress_ped_scores(sk3_pedscripts, ajc, bdj):
     ped_canada_score = random.randint(2, 25)
@@ -696,22 +680,22 @@ def randomize_secrets(goal_scripts):
     # TODO: move secret unlock for comp levels as well
     return goal_scripts
 
-def lock_characters(skater_profile):
-    noncharacter_flags = Secrets().secret_flags_levels + Secrets().secret_flags_cheats
-    noncharacter_flags = _shuffle(noncharacter_flags)
-    skater_profile[1539] = f"            default_trick_mapping = CaballeroTricks\n            unlock_flag = {noncharacter_flags.pop()}\n"
-    skater_profile[1615] = f"            default_trick_mapping = CampbellTricks\n            unlock_flag = {noncharacter_flags.pop()}\n"
-    skater_profile[1691] = f"            default_trick_mapping = GlifbergTricks\n            unlock_flag = {noncharacter_flags.pop()}\n"
-    skater_profile[1767] = f"            default_trick_mapping = KostonTricks\n            unlock_flag = {noncharacter_flags.pop()}\n"
-    skater_profile[1843] = f"            default_trick_mapping = LasekTricks\n            unlock_flag = {noncharacter_flags.pop()}\n"
-    skater_profile[1919] = f"            default_trick_mapping = MargeraTricks\n            unlock_flag = {noncharacter_flags.pop()}\n"
-    skater_profile[1995] = f"            default_trick_mapping = MullenTricks\n            unlock_flag = {noncharacter_flags.pop()}\n"
-    skater_profile[2071] = f"            default_trick_mapping = MuskaTricks\n            unlock_flag = {noncharacter_flags.pop()}\n"
-    skater_profile[2147] = f"            default_trick_mapping = ReynoldsTricks\n            unlock_flag = {noncharacter_flags.pop()}\n"
-    skater_profile[2223] = f"            default_trick_mapping = RowleyTricks\n            unlock_flag = {noncharacter_flags.pop()}\n"
-    skater_profile[2299] = f"            default_trick_mapping = SteamerTricks\n            unlock_flag = {noncharacter_flags.pop()}\n"
-    skater_profile[2375] = f"            default_trick_mapping = ThomasTricks\n            unlock_flag = {noncharacter_flags.pop()}\n"
-    skater_profile[3145] = f"            default_trick_mapping = CustomTricks\n            unlock_flag = {noncharacter_flags.pop()}\n"
+# def lock_characters(skater_profile):
+#     noncharacter_flags = Secrets().secret_flags_levels + Secrets().secret_flags_cheats
+#     noncharacter_flags = _shuffle(noncharacter_flags)
+#     skater_profile[1539] = f"            default_trick_mapping = CaballeroTricks\n            unlock_flag = {noncharacter_flags.pop()}\n"
+#     skater_profile[1615] = f"            default_trick_mapping = CampbellTricks\n            unlock_flag = {noncharacter_flags.pop()}\n"
+#     skater_profile[1691] = f"            default_trick_mapping = GlifbergTricks\n            unlock_flag = {noncharacter_flags.pop()}\n"
+#     skater_profile[1767] = f"            default_trick_mapping = KostonTricks\n            unlock_flag = {noncharacter_flags.pop()}\n"
+#     skater_profile[1843] = f"            default_trick_mapping = LasekTricks\n            unlock_flag = {noncharacter_flags.pop()}\n"
+#     skater_profile[1919] = f"            default_trick_mapping = MargeraTricks\n            unlock_flag = {noncharacter_flags.pop()}\n"
+#     skater_profile[1995] = f"            default_trick_mapping = MullenTricks\n            unlock_flag = {noncharacter_flags.pop()}\n"
+#     skater_profile[2071] = f"            default_trick_mapping = MuskaTricks\n            unlock_flag = {noncharacter_flags.pop()}\n"
+#     skater_profile[2147] = f"            default_trick_mapping = ReynoldsTricks\n            unlock_flag = {noncharacter_flags.pop()}\n"
+#     skater_profile[2223] = f"            default_trick_mapping = RowleyTricks\n            unlock_flag = {noncharacter_flags.pop()}\n"
+#     skater_profile[2299] = f"            default_trick_mapping = SteamerTricks\n            unlock_flag = {noncharacter_flags.pop()}\n"
+#     skater_profile[2375] = f"            default_trick_mapping = ThomasTricks\n            unlock_flag = {noncharacter_flags.pop()}\n"
+#     skater_profile[3145] = f"            default_trick_mapping = CustomTricks\n            unlock_flag = {noncharacter_flags.pop()}\n"
 
 def junk_suburbia(alf):
     # Increase ice cream truck from 20 mph
@@ -722,7 +706,6 @@ def junk_suburbia(alf):
 
 if __name__ == "__main__":
     # read vanilla QBs
-    skater_profile = read_script_file('skater_profile')
     ajc = read_script_file('ajc_scripts')
     alf = read_script_file('alf_scripts')
     bdj = read_script_file('bdj_scripts')
@@ -740,6 +723,7 @@ if __name__ == "__main__":
     levelsqb = read_modified_script_file('levels')
     mainmenu = read_modified_script_file('mainmenu')
     protricks = read_modified_script_file('protricks')
+    skater_profile = read_modified_script_file('skater_profile')
 
     # randomize QBs
     levels = get_random_level_order(end_on_comp=True)
@@ -754,11 +738,11 @@ if __name__ == "__main__":
     comp_scripts, goal_scripts = randomize_score_goals(levels, goal_scripts, comp_scripts)
     randomize_item_locations(levels)
     skater_profile = randomize_stats(skater_profile)
-    randomize_trickstyle(skater_profile)
+    skater_profile = randomize_trickstyle(skater_profile)
     gamemode = randomize_level_timer(gamemode)
     trickspot_tricks = randomize_trickspot_tricks("wild", ajc, alf, cjr, cpf, bdj)
     protricks = randomize_trick_sets(protricks, trickspot_tricks)
-    randomize_special_tricks(skater_profile, "easy")
+    skater_profile = randomize_special_tricks(skater_profile, "easy")
     randomize_impress_ped_scores(sk3_pedscripts, ajc, bdj)
     boardselect = randomize_decks(boardselect)
 
@@ -766,12 +750,11 @@ if __name__ == "__main__":
     judges, comp_scripts = require_deck_for_medal(judges, comp_scripts)
 
     goal_scripts = randomize_secrets(goal_scripts)
-    lock_characters(skater_profile)
+    # skater_profile = lock_characters(skater_profile)
 
     junk_suburbia(alf)
 
     # write vanilla QBs
-    write_script_file('skater_profile', skater_profile)
     write_script_file('ajc_scripts', ajc)
     write_script_file('alf_scripts', alf)
     write_script_file('bdj_scripts', bdj)
@@ -789,3 +772,4 @@ if __name__ == "__main__":
     write_script_file('levels', levelsqb)
     write_script_file('mainmenu', mainmenu)
     write_script_file('protricks', protricks)
+    write_script_file('skater_profile', skater_profile)
