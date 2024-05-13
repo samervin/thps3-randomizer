@@ -1273,8 +1273,8 @@
           Goal_SickScore_Text = "Get a SICK SCORE | 100,000 Points"
           Goal_Skate_Text = "Collect S-K-A-T-E"
           Goal_Tape_Text = "Get the Secret Tape"
-          Goal_TrickSpotStreet_Text = "50-50 TC's Rail"
-          Goal_TrickSpotVert_Text = "Cannonball Over the | Half Pipe"
+          Goal_TrickSpotStreet_Text = "{{rando_cjr_trickspot_street_text}} | TC's Rail"
+          Goal_TrickSpotVert_Text = "{{rando_cjr_trickspot_vert_text}}  | Over the Half Pipe"
           Goal_Scripted1_Text = "Grind the | Molten Bucket"
           Goal_Scripted2_Text = "Un-Jam 5 Valves"
           Goal_Scripted3_Text = "Soak the Foreman"
@@ -4612,7 +4612,7 @@
 #03188  FUNCTION CJR_Foun_PipeTrickGap
 #03194    IF ProfileEquals TrickStyle = Vert
 
-#03195      StartGapTrick TrickText = "Cannonball"
+#03195      StartGapTrick TrickText = "{{rando_cjr_trickspot_vert_trick}}"
             GapScript = Got_TrickSpot
 
 #03196    END IF
@@ -4621,7 +4621,7 @@
 #03198  FUNCTION CJR_Foun_RailTrickGap
 #03201    IF ProfileEquals TrickStyle = Street
 
-#03202      StartGapTrick TrickText = "50-50"
+#03202      StartGapTrick TrickText = "{{rando_cjr_trickspot_street_trick}}"
             GapScript = Got_TrickSpot
 
 #03203    END IF

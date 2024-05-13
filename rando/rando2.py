@@ -360,7 +360,7 @@ def randomize_level_timer(gamemode):
     gamemode = gamemode.replace("{{rando_gamemode_career_time}}", str(time_limit))
     return gamemode
 
-def randomize_trickspot_tricks(trick_type, ajc, alf, cjr, cpf, bdj):
+def randomize_trickspot_tricks(trick_type, ajc, alf, bdj, cjr, cpf):
     # Change required tricks for the street/vert goals
     n_grinds = _shuffle(Tricks().get_regular_grinds())
     n_grabs = _shuffle(Tricks().get_regular_grabs())
@@ -400,36 +400,36 @@ def randomize_trickspot_tricks(trick_type, ajc, alf, cjr, cpf, bdj):
         case _:
             raise Exception("invalid trickspot trick type")
 
-    cjr[1275] = f'          Goal_TrickSpotStreet_Text = "{foundry_street_trick.name_goal}| TC\'s Rail"\n'
-    cjr[1276] = f'          Goal_TrickSpotVert_Text = "{foundry_vert_trick.name_goal}| Over the Half Pipe"\n'
-    cjr[4623] = f'#00000      StartGapTrick TrickText = "{foundry_street_trick.name}"\n'
-    cjr[4614] = f'#00000      StartGapTrick TrickText = "{foundry_vert_trick.name}"\n'
-    ajc[20] = f'          Goal_TrickspotStreet_Text = "{canada_street_trick.name_goal}| Around the Horn"\n'
-    ajc[21] = f'          Goal_TrickspotVert_Text = "{canada_vert_trick.name_goal}| Over the Blade"\n'
-    ajc[2567] = f'#00000      StartGapTrick tricktext = "{canada_street_trick.name}"\n'
-    ajc[2576] = f'#00000      StartGapTrick tricktext = "{canada_vert_trick.name}"\n'
-    alf[214] = f'          Goal_TrickspotStreet_Text = "{suburbia_street_trick.name_goal}| the Trailer Hop"\n'
-    alf[215] = f'          Goal_TrickspotVert_Text = "{suburbia_vert_trick.name_goal}| Between the Ramps"\n'
-    alf[734] = f'#00000        StartGapTrick tricktext = "{suburbia_street_trick.name}"\n'
-    alf[721] = f'#00000        StartGapTrick tricktext = "{suburbia_vert_trick.name}"\n'
-    cpf[23] = f'          Goal_TrickspotStreet_Text = "{airport_street_trick.name_goal}| Around the Baggage Claim"\n'
-    cpf[24] = f'          Goal_TrickspotVert_Text = "{airport_vert_trick.name_goal}| Over an Escalator"\n'
-    cpf[6838] = f'#00000      StartGapTrick tricktext = "{airport_street_trick.name}"\n'
-    cpf[6771] = f'#00000      StartGapTrick tricktext = "{airport_vert_trick.name}"\n'
-    cpf[255] = f'          Goal_TrickspotStreet_Text = "{la_street_trick.name_goal}| the Tower Rails Gap"\n'
-    cpf[256] = f'          Goal_TrickspotVert_Text = "{la_vert_trick.name_goal}| the Tower Poppin\' Transfer"\n'
-    cpf[6874] = f'#00000      StartGapTrick tricktext = "{la_street_trick.name}"\n'
-    cpf[6909] = f'#00000      StartGapTrick tricktext = "{la_vert_trick.name}"\n'
-    bdj[78] = f'          Goal_TrickspotStreet_Text = "{ship_street_trick.name_goal}| an Awning"\n'
-    bdj[79] = f'          Goal_TrickspotVert_Text = "{ship_vert_trick.name_goal}| the High Wires"\n'
-    bdj[286] = f'#00000    StartGapTrick TrickText = "{ship_street_trick.name}"\n'
-    bdj[278] = f'#00000        StartGapTrick TrickText = "{ship_vert_trick.name}"\n'
+    cjr = cjr.replace("{{rando_cjr_trickspot_street_text}}", foundry_street_trick.name_goal)
+    cjr = cjr.replace("{{rando_cjr_trickspot_vert_text}}", foundry_vert_trick.name_goal)
+    cjr = cjr.replace("{{rando_cjr_trickspot_street_trick}}", foundry_street_trick.name)
+    cjr = cjr.replace("{{rando_cjr_trickspot_vert_trick}}", foundry_vert_trick.name)
+    ajc = ajc.replace("{{rando_ajc_trickspot_street_text}}", canada_street_trick.name_goal)
+    ajc = ajc.replace("{{rando_ajc_trickspot_vert_text}}", canada_vert_trick.name_goal)
+    ajc = ajc.replace("{{rando_ajc_trickspot_street_trick}}", canada_street_trick.name)
+    ajc = ajc.replace("{{rando_ajc_trickspot_vert_trick}}", canada_vert_trick.name)
+    alf = alf.replace("{{rando_alf_trickspot_street_text}}", suburbia_street_trick.name_goal)
+    alf = alf.replace("{{rando_alf_trickspot_vert_text}}", suburbia_vert_trick.name_goal)
+    alf = alf.replace("{{rando_alf_trickspot_street_trick}}", suburbia_street_trick.name)
+    alf = alf.replace("{{rando_alf_trickspot_vert_trick}}", suburbia_vert_trick.name)
+    cpf = cpf.replace("{{rando_cpf_airport_trickspot_street_text}}", airport_street_trick.name_goal)
+    cpf = cpf.replace("{{rando_cpf_airport_trickspot_vert_text}}", airport_vert_trick.name_goal)
+    cpf = cpf.replace("{{rando_cpf_airport_trickspot_street_trick}}", airport_street_trick.name)
+    cpf = cpf.replace("{{rando_cpf_airport_trickspot_vert_trick}}", airport_vert_trick.name)
+    cpf = cpf.replace("{{rando_cpf_la_trickspot_street_text}}", la_street_trick.name_goal)
+    cpf = cpf.replace("{{rando_cpf_la_trickspot_vert_text}}", la_vert_trick.name_goal)
+    cpf = cpf.replace("{{rando_cpf_la_trickspot_street_trick}}", la_street_trick.name)
+    cpf = cpf.replace("{{rando_cpf_la_trickspot_vert_trick}}", la_vert_trick.name)
+    bdj = bdj.replace("{{rando_bdj_trickspot_street_text}}", ship_street_trick.name_goal)
+    bdj = bdj.replace("{{rando_bdj_trickspot_vert_text}}", ship_vert_trick.name_goal)
+    bdj = bdj.replace("{{rando_bdj_trickspot_street_trick}}", ship_street_trick.name)
+    bdj = bdj.replace("{{rando_bdj_trickspot_vert_trick}}", ship_vert_trick.name)
 
     return [
         foundry_street_trick, foundry_vert_trick, canada_street_trick, canada_vert_trick,
         suburbia_street_trick, suburbia_vert_trick, airport_street_trick, airport_vert_trick,
         la_street_trick, la_vert_trick, ship_street_trick, ship_vert_trick
-    ]
+    ], ajc, alf, bdj, cjr, cpf
 
 def randomize_trick_sets(protricks, trickspot_tricks):
     # ensure tricks used in trickspots are shuffled into default binds
@@ -597,20 +597,21 @@ def randomize_special_tricks(skater_profile, difficulty=None):
     return skater_profile
 
 def randomize_impress_ped_scores(sk3_pedscripts, ajc, bdj):
-    ped_canada_score = random.randint(2, 25)
+    ped_canada_score = random.randint(2, 25) * 1000
     ped_canada_chatter = int(ped_canada_score/2) # Used for voice lines
-    ped_ship_score = random.randint(2, 25)
+    ped_ship_score = random.randint(2, 25) * 1000
     ped_ship_chatter = int(ped_ship_score/2) # Used for voice lines
-    sk3_pedscripts[265] = f"          MinPropsScoreDuring = {ped_ship_chatter}000\n"
-    sk3_pedscripts[266] = f"          MinPropsScoreDuring2 = {ped_ship_score}000\n"
-    sk3_pedscripts[267] = f"          MinPropsScoreLanding = {ped_ship_chatter}000\n"
-    sk3_pedscripts[268] = f"          MinPropsScoreLanding2 = {ped_ship_score}000\n"
-    sk3_pedscripts[484] = f"          MinPropsScoreDuring = {ped_canada_chatter}000\n"
-    sk3_pedscripts[485] = f"          MinPropsScoreDuring2 = {ped_canada_score}000\n"
-    sk3_pedscripts[486] = f"          MinPropsScoreLanding = {ped_canada_chatter}000\n"
-    sk3_pedscripts[487] = f"          MinPropsScoreLanding2 = {ped_canada_score}000\n"
-    ajc[23] = f'          Goal_Scripted2_Text = "Impress the Skaters| With {ped_canada_score},000 Points"\n'
-    bdj[82] = f'          Goal_Scripted3_Text = "Impress Neversoft Girls| With {ped_ship_score},000 Points"\n'
+    sk3_pedscripts[265] = f"          MinPropsScoreDuring = {ped_ship_chatter}\n"
+    sk3_pedscripts[266] = f"          MinPropsScoreDuring2 = {ped_ship_score}\n"
+    sk3_pedscripts[267] = f"          MinPropsScoreLanding = {ped_ship_chatter}\n"
+    sk3_pedscripts[268] = f"          MinPropsScoreLanding2 = {ped_ship_score}\n"
+    sk3_pedscripts[484] = f"          MinPropsScoreDuring = {ped_canada_chatter}\n"
+    sk3_pedscripts[485] = f"          MinPropsScoreDuring2 = {ped_canada_score}\n"
+    sk3_pedscripts[486] = f"          MinPropsScoreLanding = {ped_canada_chatter}\n"
+    sk3_pedscripts[487] = f"          MinPropsScoreLanding2 = {ped_canada_score}\n"
+    ajc = ajc.replace("{{rando_ajc_skater_points}}", str(ped_canada_score))
+    bdj = bdj.replace("{{rando_bdj_girl_points}}", str(ped_ship_score))
+    return ajc, bdj
 
 def randomize_decks(boardselect):
     # Randomize grip tape textures and skater default grip tapes
@@ -717,23 +718,24 @@ def lock_characters(skater_profile):
 
 def junk_suburbia(alf):
     # Increase ice cream truck from 20 mph
-    alf[2977] = '#00000    Obj_SetPathVelocity 100 mph '
+    alf = alf.replace("{{rando_alf_icecreamtruck_speed}}", "100")
     # Make the thin man fall in love with Tony Hawk
-    alf[2010] = '#00000        IF ProfileEquals Is_Named = hawk '
+    alf = alf.replace("{{rando_alf_thinman_hearts_skater}}", "hawk")
+    return alf
 
 
 if __name__ == "__main__":
     # read vanilla QBs
-    ajc = read_script_file('ajc_scripts')
-    alf = read_script_file('alf_scripts')
-    bdj = read_script_file('bdj_scripts')
-    cjr = read_script_file('cjr_scripts')
-    cpf = read_script_file('cpf_scripts')
     sk3_pedscripts = read_script_file('sk3_pedscripts')
 
     # read modified QBs
+    ajc = read_modified_script_file('ajc_scripts')
+    alf = read_modified_script_file('alf_scripts')
+    bdj = read_modified_script_file('bdj_scripts')
     boardselect = read_modified_script_file('boardselect')
+    cjr = read_modified_script_file('cjr_scripts')
     comp_scripts = read_modified_script_file('comp_scripts')
+    cpf = read_modified_script_file('cpf_scripts')
     gameqb = read_modified_script_file('game')
     gamemode = read_modified_script_file('gamemode')
     goal_scripts = read_modified_script_file('goal_scripts')
@@ -758,10 +760,10 @@ if __name__ == "__main__":
     skater_profile = randomize_stats(skater_profile)
     skater_profile = randomize_trickstyle(skater_profile)
     gamemode = randomize_level_timer(gamemode)
-    trickspot_tricks = randomize_trickspot_tricks("wild", ajc, alf, cjr, cpf, bdj)
+    trickspot_tricks, ajc, alf, bdj, cjr, cpf = randomize_trickspot_tricks("wild", ajc, alf, bdj, cjr, cpf)
     protricks = randomize_trick_sets(protricks, trickspot_tricks)
     skater_profile = randomize_special_tricks(skater_profile, "easy")
-    randomize_impress_ped_scores(sk3_pedscripts, ajc, bdj)
+    ajc, bdj = randomize_impress_ped_scores(sk3_pedscripts, ajc, bdj)
     boardselect = randomize_decks(boardselect)
 
     goal_scripts = require_deck_for_tape(goal_scripts)
@@ -770,19 +772,19 @@ if __name__ == "__main__":
     goal_scripts = randomize_secrets(goal_scripts)
     skater_profile = lock_characters(skater_profile)
 
-    junk_suburbia(alf)
+    alf = junk_suburbia(alf)
 
     # write vanilla QBs
-    write_script_file('ajc_scripts', ajc)
-    write_script_file('alf_scripts', alf)
-    write_script_file('bdj_scripts', bdj)
-    write_script_file('cjr_scripts', cjr)
-    write_script_file('cpf_scripts', cpf)
     write_script_file('sk3_pedscripts', sk3_pedscripts)
 
     # write modified QBs
+    write_script_file('alf_scripts', alf)
+    write_script_file('ajc_scripts', ajc)
+    write_script_file('bdj_scripts', bdj)
     write_script_file('boardselect', boardselect)
+    write_script_file('cjr_scripts', cjr)
     write_script_file('comp_scripts', comp_scripts)
+    write_script_file('cpf_scripts', cpf)
     write_script_file('game', gameqb)
     write_script_file('gamemode', gamemode)
     write_script_file('goal_scripts', goal_scripts)

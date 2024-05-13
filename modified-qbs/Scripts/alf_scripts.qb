@@ -212,8 +212,8 @@ FUNCTION ALF_Placeholder
           Goal_SickScore_Text = "Get a SICK SCORE: | 300,000 Points"
           Goal_SKATE_Text = "Collect S-K-A-T-E"
           Goal_Tape_Text = "Get the Secret Tape"
-          Goal_TrickspotStreet_Text = "Heelflip the | Trailer Hop"
-          Goal_TrickspotVert_Text = "Nosegrab | Between The Ramps"
+          Goal_TrickspotStreet_Text = "{{rando_alf_trickspot_street_text}}| the Trailer Hop"
+          Goal_TrickspotVert_Text = "{{rando_alf_trickspot_vert_text}}| Between The Ramps"
           Goal_Scripted1_Text = "Help The Thin Man"
           Goal_Scripted2_Text = "Restore Power | To The Dish"
           Goal_Scripted3_Text = "Squash 5 Pumpkins"
@@ -719,7 +719,7 @@ FUNCTION ALF_Placeholder
 #00537    ELSE
 #00538      IF ProfileEquals trickstyle = Vert
 
-#00539        StartGapTrick tricktext = "nosegrab"
+#00539        StartGapTrick tricktext = "{{rando_alf_trickspot_vert_trick}}"
               GapScript = Got_Trickspot
 
 #00540      END IF
@@ -732,7 +732,7 @@ FUNCTION ALF_Placeholder
 #00547    ELSE
 #00548      IF ProfileEquals trickstyle = street
 
-#00549        StartGapTrick tricktext = "heelflip"
+#00549        StartGapTrick tricktext = "{{rando_alf_trickspot_street_trick}}"
               GapScript = Got_Trickspot
 
 #00550      END IF
@@ -2008,7 +2008,7 @@ FUNCTION ALF_Placeholder
 #01624          JUMP 0x14000000 Sub_TM_FearFear
 #01625          JUMP 0x05000000 Sub_TM_VeryAfraid
 #01626        END IF
-#01627        IF ProfileEquals Is_Named = demoness
+#01627        IF ProfileEquals Is_Named = {{rando_alf_thinman_hearts_skater}}
 
 #01628          SetParticleSysVisibility system = "THINMAN_HEARTS01"
                 visible = 1
@@ -2975,7 +2975,7 @@ FUNCTION ALF_Placeholder
 #02554    Obj_FollowPathLinked
 #02555    Obj_StickToGround Off
 #02558    Obj_SetConstantHeight -30.0
-#02559    Obj_SetPathVelocity 20 mph
+#02559    Obj_SetPathVelocity {{rando_alf_icecreamtruck_speed}} mph
 #02560    Obj_SetPathTurnDist 30 feet
 #02561    Obj_SetPathMinStopVel 1 mph
 #02562    Obj_SetPathAcceleration 20 mphps

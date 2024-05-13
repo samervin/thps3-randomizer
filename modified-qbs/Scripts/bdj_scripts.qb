@@ -76,11 +76,11 @@
           Goal_SickScore_Text = "SICK SCORE:| 1,000,000"
           Goal_SKATE_Text = "Collect| S-K-A-T-E"
           Goal_Tape_Text = "Get the| Secret Tape"
-          Goal_TrickspotStreet_Text = "Noseblunt Slide| an Awning"
-          Goal_TrickspotVert_Text = "Invert the| High Wires"
+          Goal_TrickspotStreet_Text = "{{rando_bdj_trickspot_street_text}}| an Awning"
+          Goal_TrickspotVert_Text = "{{rando_bdj_trickspot_vert_text}}| the High Wires"
           Goal_Scripted1_Text = "Raise| the Ferry"
           Goal_Scripted2_Text = "Trash the| Museum"
-          Goal_Scripted3_Text = "Impress the| Neversoft Girls"
+          Goal_Scripted3_Text = "Impress Neversoft Girls| With {{rando_bdj_girl_points}} Points"
           NetPlayScript = NullScript
           CareerPlayScript = NullScript
           Goal_Start_Script = BDJ_SHP_IntroStartScript
@@ -276,7 +276,7 @@
 #00248    ELSE
 #00249      IF ProfileEquals TrickStyle = Vert
 
-#00250        StartGapTrick TrickText = "Invert"
+#00250        StartGapTrick TrickText = "{{rando_bdj_trickspot_vert_trick}}"
               GapScript = Got_TrickSpot
 
 #00251      END IF
@@ -284,7 +284,7 @@
 #00253  END FUNCTION
 
 #00254  FUNCTION BDJ_SHP_GotStreetTrick
-#00256    StartGapTrick TrickText = "nosebluntslide"
+#00256    StartGapTrick TrickText = "{{rando_bdj_trickspot_street_trick}}"
           GapScript = BDJ_SHP_GotStreetTrick2
 
 #00257  END FUNCTION

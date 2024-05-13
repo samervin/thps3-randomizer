@@ -18,10 +18,10 @@ CanadaGoalParams = STRUCT{
           Goal_SickScore_Text = "Get a SICK SCORE:| 200,000 Points"
           Goal_SKATE_Text = "Collect S-K-A-T-E"
           Goal_Tape_Text = "Get the Secret Tape"
-          Goal_TrickspotStreet_Text = "Nosegrind| Around the Horn"
-          Goal_TrickspotVert_Text = "Melon Grab| Over the Blade"
+          Goal_TrickspotStreet_Text = "{{rando_ajc_trickspot_street_text}}| Around the Horn"
+          Goal_TrickspotVert_Text = "{{rando_ajc_trickspot_vert_text}}| Over the Blade"
           Goal_Scripted1_Text = "Bury that Bully!"
-          Goal_Scripted2_Text = "Impress the Skaters"
+          Goal_Scripted2_Text = "Impress the Skaters| With {{rando_ajc_skater_points}} Points"
           Goal_Scripted3_Text = "Get Chuck| Unstuck"
           Goal_Scripted1_Start_Script = AJC_Can_Script_Bully_Closeup
           Goal_Scripted1_End_Script = AJC_Can_Script_Bully_Cleanup
@@ -2565,7 +2565,7 @@ CanadaGoalParams = STRUCT{
 #01886  FUNCTION AJC_Can_Script_Around_The_Horn
 #01888    IF ProfileEquals Trickstyle = street
 
-#01889      StartGapTrick tricktext = "Nosegrind"
+#01889      StartGapTrick tricktext = "{{rando_ajc_trickspot_street_trick}}"
             gapscript = Got_Trickspot
 
 #01890    END IF
@@ -2574,7 +2574,7 @@ CanadaGoalParams = STRUCT{
 #01892  FUNCTION AJC_Can_Script_Vert_Gap
 #01894    IF ProfileEquals Trickstyle = vert
 
-#01895      StartGapTrick tricktext = "melon"
+#01895      StartGapTrick tricktext = "{{rando_ajc_trickspot_vert_trick}}"
             gapscript = Got_Trickspot
 
 #01896    END IF

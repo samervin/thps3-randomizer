@@ -21,8 +21,8 @@
           Goal_SickScore_Text = "Get a SICK SCORE:| 400,000 Points"
           Goal_SKATE_Text = "Collect S-K-A-T-E"
           Goal_Tape_Text = "Get the Secret Tape"
-          Goal_TrickspotStreet_Text = "Crooked Grind |Around Baggage Claim"
-          Goal_TrickspotVert_Text = "Airwalk Over| an Escalator"
+          Goal_TrickspotStreet_Text = "{{rando_cpf_airport_trickspot_street_text}} |Around the Baggage Claim"
+          Goal_TrickspotVert_Text = "{{rando_cpf_airport_trickspot_vert_text}}| Over an Escalator"
           Goal_Scripted1_Text = "Get the tickets to| your Skate Buddy"
           Goal_Scripted2_Text = "Stop the |pickpockets"
           Goal_Scripted3_Text = "Visit 10 countries"
@@ -253,8 +253,8 @@
           Goal_SickScore_Text = "Get a SICK SCORE:| 500,000 Points"
           Goal_SKATE_Text = "Collect S-K-A-T-E"
           Goal_Tape_Text = "Get the Secret Tape"
-          Goal_TrickspotStreet_Text = "Varial Kickflip the| Tower Rails Gap"
-          Goal_TrickspotVert_Text = "One Foot Japan the| Tower Poppin' Transfer"
+          Goal_TrickspotStreet_Text = "{{rando_cpf_la_trickspot_street_text}}| the Tower Rails Gap"
+          Goal_TrickspotVert_Text = "{{rando_cpf_la_trickspot_vert_text}}| the Tower Poppin' Transfer"
           Goal_Scripted1_Text = "Start the Earthquake"
           Goal_Scripted2_Text = "Block the Car Chase"
           Goal_Scripted3_Text = "Free Ballin'"
@@ -6769,7 +6769,7 @@
 #04728  FUNCTION CPF_AP_Escalator
 #04730    IF ProfileEquals trickstyle = vert
 
-#04731      StartGapTrick tricktext = "Airwalk"
+#04731      StartGapTrick tricktext = "{{rando_cpf_airport_trickspot_vert_trick}}"
             gapscript = CPF_AP_Escalator2
 
 #04732    END IF
@@ -6836,7 +6836,7 @@
 #04773  FUNCTION CPF_AP_BaggageGrind
 #04775    IF ProfileEquals trickstyle = street
 
-#04776      StartGapTrick tricktext = "Crooked"
+#04776      StartGapTrick tricktext = "{{rando_cpf_airport_trickspot_street_trick}}"
             gapscript = CPF_AP_BaggageGrind2
 
 #04777    END IF
@@ -6872,7 +6872,7 @@
 #04803  FUNCTION CPF_LA_ArcoGap
 #04805    IF ProfileEquals trickstyle = street
 
-#04806      StartGapTrick tricktext = "Varial Kickflip"
+#04806      StartGapTrick tricktext = "{{rando_cpf_la_trickspot_street_trick}}"
             gapscript = CPF_LA_Varial
             Kickflip_Arco
 #04807    END IF
@@ -6907,7 +6907,7 @@
 #04827  FUNCTION CPF_LA_ArcoVert
 #04829    IF ProfileEquals trickstyle = vert
 
-#04831      StartGapTrick tricktext = "One Foot Japan"
+#04831      StartGapTrick tricktext = "{{rando_cpf_la_trickspot_vert_trick}}"
             gapscript = CPF_LA_OneFootJapan_Arco
 
 #04832    END IF
