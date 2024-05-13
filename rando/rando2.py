@@ -680,22 +680,40 @@ def randomize_secrets(goal_scripts):
     # TODO: move secret unlock for comp levels as well
     return goal_scripts
 
-# def lock_characters(skater_profile):
-#     noncharacter_flags = Secrets().secret_flags_levels + Secrets().secret_flags_cheats
-#     noncharacter_flags = _shuffle(noncharacter_flags)
-#     skater_profile[1539] = f"            default_trick_mapping = CaballeroTricks\n            unlock_flag = {noncharacter_flags.pop()}\n"
-#     skater_profile[1615] = f"            default_trick_mapping = CampbellTricks\n            unlock_flag = {noncharacter_flags.pop()}\n"
-#     skater_profile[1691] = f"            default_trick_mapping = GlifbergTricks\n            unlock_flag = {noncharacter_flags.pop()}\n"
-#     skater_profile[1767] = f"            default_trick_mapping = KostonTricks\n            unlock_flag = {noncharacter_flags.pop()}\n"
-#     skater_profile[1843] = f"            default_trick_mapping = LasekTricks\n            unlock_flag = {noncharacter_flags.pop()}\n"
-#     skater_profile[1919] = f"            default_trick_mapping = MargeraTricks\n            unlock_flag = {noncharacter_flags.pop()}\n"
-#     skater_profile[1995] = f"            default_trick_mapping = MullenTricks\n            unlock_flag = {noncharacter_flags.pop()}\n"
-#     skater_profile[2071] = f"            default_trick_mapping = MuskaTricks\n            unlock_flag = {noncharacter_flags.pop()}\n"
-#     skater_profile[2147] = f"            default_trick_mapping = ReynoldsTricks\n            unlock_flag = {noncharacter_flags.pop()}\n"
-#     skater_profile[2223] = f"            default_trick_mapping = RowleyTricks\n            unlock_flag = {noncharacter_flags.pop()}\n"
-#     skater_profile[2299] = f"            default_trick_mapping = SteamerTricks\n            unlock_flag = {noncharacter_flags.pop()}\n"
-#     skater_profile[2375] = f"            default_trick_mapping = ThomasTricks\n            unlock_flag = {noncharacter_flags.pop()}\n"
-#     skater_profile[3145] = f"            default_trick_mapping = CustomTricks\n            unlock_flag = {noncharacter_flags.pop()}\n"
+def lock_characters(skater_profile):
+    lock_pros = True
+    if lock_pros:
+        # Lock custom skater and all non-Tony pro skaters behind a non-character global secret flag
+        noncharacter_flags = Secrets().secret_flags_levels + Secrets().secret_flags_cheats
+        noncharacter_flags = _shuffle(noncharacter_flags)
+        skater_profile = skater_profile.replace("{{rando_skater_profile_caballero_unlock_flag}}", f"unlock_flag = {noncharacter_flags.pop()}")
+        skater_profile = skater_profile.replace("{{rando_skater_profile_campbell_unlock_flag}}", f"unlock_flag = {noncharacter_flags.pop()}")
+        skater_profile = skater_profile.replace("{{rando_skater_profile_glifberg_unlock_flag}}", f"unlock_flag = {noncharacter_flags.pop()}")
+        skater_profile = skater_profile.replace("{{rando_skater_profile_koston_unlock_flag}}", f"unlock_flag = {noncharacter_flags.pop()}")
+        skater_profile = skater_profile.replace("{{rando_skater_profile_lasek_unlock_flag}}", f"unlock_flag = {noncharacter_flags.pop()}")
+        skater_profile = skater_profile.replace("{{rando_skater_profile_margera_unlock_flag}}", f"unlock_flag = {noncharacter_flags.pop()}")
+        skater_profile = skater_profile.replace("{{rando_skater_profile_mullen_unlock_flag}}", f"unlock_flag = {noncharacter_flags.pop()}")
+        skater_profile = skater_profile.replace("{{rando_skater_profile_muska_unlock_flag}}", f"unlock_flag = {noncharacter_flags.pop()}")
+        skater_profile = skater_profile.replace("{{rando_skater_profile_reynolds_unlock_flag}}", f"unlock_flag = {noncharacter_flags.pop()}")
+        skater_profile = skater_profile.replace("{{rando_skater_profile_rowley_unlock_flag}}", f"unlock_flag = {noncharacter_flags.pop()}")
+        skater_profile = skater_profile.replace("{{rando_skater_profile_steamer_unlock_flag}}", f"unlock_flag = {noncharacter_flags.pop()}")
+        skater_profile = skater_profile.replace("{{rando_skater_profile_thomas_unlock_flag}}", f"unlock_flag = {noncharacter_flags.pop()}")
+        skater_profile = skater_profile.replace("{{rando_skater_profile_custom_unlock_flag}}", f"unlock_flag = {noncharacter_flags.pop()}")
+    else:
+        skater_profile = skater_profile.replace("{{rando_skater_profile_caballero_unlock_flag}}", "")
+        skater_profile = skater_profile.replace("{{rando_skater_profile_campbell_unlock_flag}}", "")
+        skater_profile = skater_profile.replace("{{rando_skater_profile_glifberg_unlock_flag}}", "")
+        skater_profile = skater_profile.replace("{{rando_skater_profile_koston_unlock_flag}}", "")
+        skater_profile = skater_profile.replace("{{rando_skater_profile_lasek_unlock_flag}}", "")
+        skater_profile = skater_profile.replace("{{rando_skater_profile_margera_unlock_flag}}", "")
+        skater_profile = skater_profile.replace("{{rando_skater_profile_mullen_unlock_flag}}", "")
+        skater_profile = skater_profile.replace("{{rando_skater_profile_muska_unlock_flag}}", "")
+        skater_profile = skater_profile.replace("{{rando_skater_profile_reynolds_unlock_flag}}", "")
+        skater_profile = skater_profile.replace("{{rando_skater_profile_rowley_unlock_flag}}", "")
+        skater_profile = skater_profile.replace("{{rando_skater_profile_steamer_unlock_flag}}", "")
+        skater_profile = skater_profile.replace("{{rando_skater_profile_thomas_unlock_flag}}", "")
+        skater_profile = skater_profile.replace("{{rando_skater_profile_custom_unlock_flag}}", "")
+    return skater_profile
 
 def junk_suburbia(alf):
     # Increase ice cream truck from 20 mph
@@ -750,7 +768,7 @@ if __name__ == "__main__":
     judges, comp_scripts = require_deck_for_medal(judges, comp_scripts)
 
     goal_scripts = randomize_secrets(goal_scripts)
-    # skater_profile = lock_characters(skater_profile)
+    skater_profile = lock_characters(skater_profile)
 
     junk_suburbia(alf)
 
