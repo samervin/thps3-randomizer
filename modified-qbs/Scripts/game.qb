@@ -251,14 +251,12 @@
 
 #00000    IF InNetGame
 #00000    ELSE
-#00000      IF GetGlobalFlag flag = CHEAT_UNLOCKED_1
 
-#00000        AddLine parent = game_menu
-              id = backend_cheat_menu
-              text = "Cheats"
-              link = cheat_menu
+#00000      AddLine parent = game_menu
+            id = backend_cheat_menu
+            text = "Cheats"
+            link = cheat_menu
 
-#00000      END IF
 #00000    END IF
 #00000    AddLine parent = game_menu
           id = backend_end_run
