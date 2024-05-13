@@ -82,5 +82,5 @@ class Secrets:
         "CHEAT_UNLOCKED_8",
         "CHEAT_UNLOCKED_9",
         "CHEAT_UNLOCKED_10",
-        "CHEAT_UNLOCKED_11",
+        # "CHEAT_UNLOCKED_11", # TODO: This is first-person mode, but we don't want to shuffle it in
     ]

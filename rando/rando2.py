@@ -630,7 +630,7 @@ def randomize_secrets(goal_scripts):
     # UnlockNextSecret is a builtin which keys off the SecretScripts array
 
     # Rewrite ExecuteNextSecret_20to29 to fit in 23rd secret condition (Doomguy)
-    # Global flags are hardcoded, but CHEAT_UNLOCKED_12 is not used, so we repurpose it for the 23rd secret
+    # Global secret flags are hardcoded (SECRET_UNLOCK_#) but CHEAT_UNLOCKED_12 is not used so we use it in place of the missing SECRET_UNLOCK_23
 
     # TODO: For now, first person mode is always 23rd/last:
     # It contains "Entire Game complete" logic and the last secret cannot be a skater anyway
