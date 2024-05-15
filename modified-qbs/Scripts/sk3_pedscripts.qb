@@ -1,0 +1,4400 @@
+
+#00001  PED_FRIENDLY = 0
+
+#00003  PED_MEAN = 1
+
+#00004  PED_WATCHER = 2
+
+#00005  PED_AVOID = 3
+
+#00006  PED_FALL = 4
+
+#00007  PED_KNOCK = 5
+
+#00008  PED_IGNORE = 6
+
+#00009  PED_NOMOVE = 7
+
+#00010  PED_CHICK = 8
+
+#00011  PED_IN_PANIC = 9
+
+#00012  PED_LOW = 10
+
+#00013  PED_HIGH = 11
+
+#00014  PED_PROPS = 12
+
+#00015  PED_GOAL = 13
+
+#00016  PED_LAUGHER = 14
+
+#00017  PED_CHATTER = 15
+
+#00018  PED_STOP_LAUGHING = 16
+
+#00019  PED_ON_FENCE = 17
+
+#00020  PED_ON_GROUND = 18
+
+#00021  PED_STREAMER = 19
+
+#00022  PED_FOUN = 20
+
+#00025  PED_CAN = 21
+
+#00026  PED_SUB = 22
+
+#00027  PED_SI = 23
+
+#00028  PED_RIO = 24
+
+#00029  PED_SHRUNK = 25
+
+#00030  PED_LA = 26
+
+#00031  PED_TOK = 27
+
+#00032  PED_SHP = 28
+
+#00033  PED_OIL = 29
+
+#00034  PED_TUT = 30
+
+#00035  DefaultParams = STRUCT{
+          MinPropsScoreDuring = 3000
+          MinPropsScoreLanding = 3000
+          vo_entice1 = la_vo_entice1_cr
+          vo_entice2 = la_vo_entice2_cr
+          vo_entice3 = la_vo_entice3_cr
+          vo_entice4 = la_vo_entice4_cr
+          vo_gettinggood1 = la_vo_thresh1_1_cr
+          vo_gettinggood2 = la_vo_thresh1_2_cr
+          vo_gettinggood3 = la_vo_thresh1_3_cr
+          vo_gettinggood4 = la_vo_thresh1_4_cr
+          vo_gettinggood5 = la_vo_thresh1_5_cr
+          vo_impressed1 = la_vo_thresh2_1_cr
+          vo_impressed2 = la_vo_thresh2_2_cr
+          vo_impressed3 = la_vo_thresh2_3_cr
+          vo_impressed4 = la_vo_thresh2_4_cr
+          vo_impressed5 = la_vo_thresh2_5_cr
+          vo_bail_over1 = can_vo_bail_over1_cr
+          vo_bail_over2 = can_vo_bail_over4_cr
+          vo_bail_under1 = la_vo_bail_under1_cr
+          vo_bail_under2 = la_vo_bail_under2_cr
+          vo_bail_under3 = la_vo_bail_under3_cr
+          vo_bail_under4 = la_vo_bail_under4_cr
+          vo_bail_under5 = la_vo_bail_under2_cr
+          vo_bail_under6 = la_vo_bail_under3_cr
+          vo_bored1 = la_vo_under1_cr
+          vo_bored2 = la_vo_under3_cr
+          vo_bored3 = la_vo_under4_cr
+          vo_bored4 = la_vo_under5_cr
+          vo_pedhit1 = la_vo_approach1_cr
+          vo_pedhit2 = la_vo_approach2_cr
+          vo_pedhit3 = la_vo_approach3_cr
+          vo_pedhit4 = la_vo_approach4_cr
+          vo_pedangry1 = la_vo_avoid2a_cr
+          vo_pedangry2 = la_vo_avoid2c_cr
+          vo_pedangry3 = la_vo_avoid2d_cr
+          vo_threaten1 = la_vo_avoid3b_cr
+          vo_threaten2 = la_vo_avoid3c_cr
+          vo_threaten3 = la_vo_avoid3d_cr
+          vo_threaten4 = la_vo_avoid3b_cr
+          vo_threaten5 = la_vo_avoid3c_cr
+          vo_threaten6 = la_vo_avoid3d_cr
+          vo_skaterhit01 = la_vo_knock1_cr
+          vo_skaterhit02 = la_vo_knock2_cr
+          vo_skaterhit03 = la_vo_knock3_cr
+          vo_skaterhit04 = la_vo_knock4_cr
+          vo_skaterhit05 = la_vo_knock1_cr
+          vo_skaterhit06 = la_vo_knock2_cr
+          vo_skaterhit07 = la_vo_knock3_cr
+          vo_skaterhit08 = la_vo_knock4_cr
+          vo_skaterhit09 = la_vo_knock1_cr
+          vo_skaterhit10 = la_vo_knock2_cr
+          vo_skaterhit11 = la_vo_knock3_cr
+          vo_skaterhit12 = la_vo_knock4_cr
+          vo_skaterhit13 = la_vo_knock2_cr
+          vo_skaterhit14 = la_vo_knock3_cr
+          vo2_entice1 = la2_vo_entice1_cr
+          vo2_entice2 = la2_vo_entice2_cr
+          vo2_entice3 = la2_vo_entice3_cr
+          vo2_entice4 = la2_vo_entice4_cr
+          vo2_gettinggood1 = la2_vo_thresh1_1_cr
+          vo2_gettinggood2 = la2_vo_thresh1_2_cr
+          vo2_gettinggood3 = la2_vo_thresh1_3_cr
+          vo2_gettinggood4 = la2_vo_thresh1_4_cr
+          vo2_gettinggood5 = la2_vo_thresh1_5_cr
+          vo2_impressed1 = la2_vo_thresh2_1_cr
+          vo2_impressed2 = la2_vo_thresh2_2_cr
+          vo2_impressed3 = la2_vo_thresh2_3_cr
+          vo2_impressed4 = la2_vo_thresh2_4_cr
+          vo2_impressed5 = la2_vo_thresh2_5_cr
+          vo2_bail_under1 = la2_vo_bail_under1_cr
+          vo2_bail_under2 = la2_vo_bail_under2_cr
+          vo2_bail_under3 = la2_vo_bail_under3_cr
+          vo2_bail_under4 = la2_vo_bail_under4_cr
+          vo2_bored1 = la2_vo_under1_cr
+          vo2_bored2 = la2_vo_under3_cr
+          vo2_bored3 = la2_vo_under4_cr
+          vo2_bored4 = la2_vo_under5_cr
+          vo2_pedhit1 = la2_vo_approach1_cr
+          vo2_pedhit2 = la2_vo_approach2_cr
+          vo2_pedhit3 = la2_vo_approach3_cr
+          vo2_pedhit4 = la2_vo_approach4_cr
+          vo2_pedangry1 = la2_vo_avoid2a_cr
+          vo2_pedangry2 = la2_vo_avoid2c_cr
+          vo2_pedangry3 = la2_vo_avoid2d_cr
+          vo2_threaten1 = la2_vo_avoid3b_cr
+          vo2_threaten2 = la2_vo_avoid3c_cr
+          vo2_threaten3 = la2_vo_avoid3d_cr
+          vo2_skaterhit1 = la2_vo_knock1_cr
+          vo2_skaterhit2 = la2_vo_knock2_cr
+          vo2_skaterhit3 = la2_vo_knock3_cr
+          vo2_skaterhit4 = la2_vo_knock4_cr
+          vo3_entice1 = la3_vo_entice1_cr
+          vo3_entice2 = la3_vo_entice2_cr
+          vo3_entice3 = la3_vo_entice3_cr
+          vo3_entice4 = la3_vo_entice4_cr
+          vo3_gettinggood1 = la3_vo_thresh1_1_cr
+          vo3_gettinggood2 = la3_vo_thresh1_2_cr
+          vo3_gettinggood3 = la3_vo_thresh1_3_cr
+          vo3_gettinggood4 = la3_vo_thresh1_4_cr
+          vo3_gettinggood5 = la3_vo_thresh1_5_cr
+          vo3_impressed1 = la3_vo_thresh2_1_cr
+          vo3_impressed2 = la3_vo_thresh2_2_cr
+          vo3_impressed3 = la3_vo_thresh2_3_cr
+          vo3_impressed4 = la3_vo_thresh2_4_cr
+          vo3_impressed5 = la3_vo_thresh2_5_cr
+          vo3_bail_under1 = la3_vo_bail_under1_cr
+          vo3_bail_under2 = la3_vo_bail_under2_cr
+          vo3_bail_under3 = la3_vo_bail_under3_cr
+          vo3_bail_under4 = la3_vo_bail_under4_cr
+          vo3_bored1 = la3_vo_under1_cr
+          vo3_bored2 = la3_vo_under3_cr
+          vo3_bored3 = la3_vo_under4_cr
+          vo3_bored4 = la3_vo_under5_cr
+          vo3_pedhit1 = la3_vo_approach1_cr
+          vo3_pedhit2 = la3_vo_approach2_cr
+          vo3_pedhit3 = la3_vo_approach3_cr
+          vo3_pedhit4 = la3_vo_approach4_cr
+          vo3_pedangry1 = la3_vo_avoid2a_cr
+          vo3_pedangry2 = la3_vo_avoid2c_cr
+          vo3_pedangry3 = la3_vo_avoid2d_cr
+          vo3_threaten1 = la3_vo_avoid3b_cr
+          vo3_threaten2 = la3_vo_avoid3c_cr
+          vo3_threaten3 = la3_vo_avoid3d_cr
+          vo3_skaterhit1 = la3_vo_knock1_cr
+          vo3_skaterhit2 = la3_vo_knock2_cr
+          vo3_skaterhit3 = la3_vo_knock3_cr
+          vo3_skaterhit4 = la3_vo_knock4_cr
+          GroundOffset = 3.1
+          feet PathTurnDist = 2.5
+          feet KnockedByPlayerDist = 5
+          Idle = Idle
+          Idle2 = Idle2
+          IdleToIdle2 = IdleToIdle2
+          Idle2ToIdle = Idle2ToIdle
+          Idle3 = Idle3
+          IdleToIdle3 = IdleToIdle3
+          Idle3ToIdle = Idle3ToIdle
+          Rotate = RotateLeft
+          IdleToWalk = IdleToWalk
+          WalkToIdle = WalkToIdle
+          Walk = Walk1
+          Wave = PlayerWave
+          WalkingWave = WalkingWave
+          Disgust1 = Disgust
+          Disgust2 = ShakeFist
+          Disgust3 = ShakeFist
+          Laugh = bullylaugh
+          PlayerPoint = PlayerPoint
+          Fidget1 = GrommetShiftWeight
+          Fidget2 = GrommetChickenCall
+          Talk1 = Talk
+          Talk2 = Talk2
+          UpYours = ShakeFist
+          Bored1 = LookAtWatch
+          Bored2 = ScratchChin
+          Bored3 = GrommetNotBad
+          Bored4 = GrommetWeakTrick1
+          Bored5 = GrommetWeakTrick2
+          Bored6 = ShakeFist
+          GettingGood1 = PlayerWave
+          GettingGood2 = PlayerPoint
+          GettingGood3 = Clap
+          GettingGood4 = Cheering
+          GettingGood5 = Clap
+          GettingGood6 = PlayerPoint
+          Impressed1 = PlayerWave
+          Impressed2 = PlayerPoint
+          Impressed3 = Clap
+          Impressed4 = Cheering
+          Impressed5 = Clap
+          Impressed6 = PlayerPoint
+          JumpForward = JumpForward
+          JumpBack = JumpBack
+          JumpLeft = JumpLeft
+          HitBySkater = HitBySkater
+          HitBySkaterTwitch1 = HitBySkater
+          from = 88
+          to = 81
+          HitBySkaterTwitch2 = HitBySkater
+          from = 81
+          to = 88
+          HitFromFront = HitFromFront
+          HitFromFrontTwitch1 = HitFromFront
+          from = 122
+          to = 110
+          HitFromFrontTwitch2 = HitFromFront
+          from = 111
+          to = 122
+          HitFromBack = HitFromBack
+          HitFromBackTwitch1 = HitFromBack
+          from = 86
+          to = 80
+          HitFromBackTwitch2 = HitFromBack
+          from = 81
+          to = 86
+          GetUp = GetUp
+          Attack1 = Punch
+          Attack2 = Push
+          }
+
+#00240  ChickParams = STRUCT{
+          MinPropsScoreDuring = 500
+          MinPropsScoreDuring2 = 2500
+          MinPropsScoreLanding = 500
+          MinPropsScoreLanding2 = 2500
+          GroundOffset = 3.4
+          feet PathTurnDist = 2.5
+          feet KnockedByPlayerDist = 1.5
+          NoticePlayerDist = 50
+          ForgetPlayerDist = 70
+          ImpressedDoneDist = 150
+          ImpressedGoal = GOAL_Scripted3
+          vo_entice1 = shp_bikini_new01a
+          vo_entice2 = shp_bikini_new02a
+          vo_entice3 = shp_bikini_new03
+          vo_entice4 = shp_bikini_new03
+          vo_gettinggood1 = Shp_bikini_new_11
+          vo_gettinggood2 = Shp_bikini_new_12
+          vo_gettinggood3 = Shp_bikini_new_11
+          vo_gettinggood4 = Shp_bikini_new_12
+          vo_gettinggood5 = Shp_bikini_new_12a
+          vo_impressed1 = Shp_bikini_new_10
+          vo_impressed2 = Shp_bikini_new_13
+          vo_impressed3 = Shp_bikini_new_14
+          vo_impressed4 = Shp_bikini_new_16
+          vo_impressed5 = Shp_bikini_new_17a
+          vo_bail_over1 = Shp_bikini_new_09
+          vo_bail_over2 = Shp_bikini_new_38
+          vo_bail_under1 = Shp_bikini_new_05
+          vo_bail_under2 = Shp_bikini_new_08a
+          vo_bail_under3 = Shp_bikini_new_09a
+          vo_bail_under4 = Shp_bikini_new_32a
+          vo_bail_under5 = Shp_bikini_new_38
+          vo_bail_under6 = Shp_bikini_new_39
+          vo_bored1 = Shp_bikini_new_07
+          vo_bored2 = Shp_bikini_new_04
+          vo_bored3 = Shp_bikini_new_32a
+          vo_bored4 = Shp_bikini_new_05
+          vo_pedhit1 = Shp_bikini_new_18a
+          vo_pedhit2 = Shp_bikini_new_18a
+          vo_pedhit3 = Shp_bikini_new_18a
+          vo_pedhit4 = Shp_bikini_new_18a
+          vo_pedangry1 = Shp_bikini_new_18a
+          vo_pedangry2 = Shp_bikini_new_20
+          vo_pedangry3 = Shp_bikini_new_25
+          vo_threaten1 = Shp_bikini_new_18a
+          vo_threaten2 = Shp_bikini_new_20
+          vo_threaten3 = Shp_bikini_new_25
+          vo_threaten4 = Shp_bikini_new_26
+          vo_threaten5 = Shp_bikini_new_27
+          vo_threaten6 = Shp_bikini_new_25
+          vo_skaterhit01 = Shp_bikini_new_18a
+          vo_skaterhit02 = Shp_bikini_new_19
+          vo_skaterhit03 = Shp_bikini_new_21a
+          vo_skaterhit04 = Shp_bikini_new_22a
+          vo_skaterhit05 = Shp_bikini_new_23
+          vo_skaterhit06 = Shp_bikini_new_24a
+          vo_skaterhit07 = Shp_bikini_new_29
+          vo_skaterhit08 = Shp_bikini_new_33
+          vo_skaterhit09 = Shp_bikini_new_35
+          vo_skaterhit10 = Shp_bikini_new_36
+          vo_skaterhit11 = Shp_bikini_new_38
+          vo_skaterhit12 = Shp_bikini_new_39
+          vo_skaterhit13 = Shp_bikini_new_07
+          vo_skaterhit14 = Shp_bikini_new_08a
+          impvo_entice01 = shp_chickns_entice01
+          impvo_entice02 = shp_chickns_entice02
+          impvo_entice03 = shp_chickns_entice03
+          impvo_entice04 = shp_chickns_new_01
+          impvo_entice05 = shp_chickns_new_02
+          impvo_entice06 = shp_chickns_new_03
+          impvo_entice07 = shp_chickns_new_04
+          impvo_entice08 = shp_chickns_new_05
+          impvo_entice09 = shp_chickns_new_06a
+          impvo_trickunder01 = shp_chickns_good01
+          impvo_trickunder02 = shp_chickns_good02
+          impvo_trickunder03 = shp_chickns_good03
+          impvo_trickunder04 = shp_chickns_good04
+          impvo_trickunder05 = shp_chickns_new_07
+          impvo_trickunder06 = shp_chickns_new_08
+          impvo_trickunder07 = shp_chickns_new_10
+          impvo_trickover01 = shp_chickns_impressed02
+          impvo_trickover02 = shp_chickns_impressed04
+          impvo_trickover03 = shp_chickns_new_12a
+          impvo_trickover04 = shp_chickns_new_13
+          impvo_trickover05 = shp_chickns_new_14
+          impvo_trickover06 = shp_chickns_new_13
+          impvo_trickover07 = shp_chickns_new_12a
+          impvo_trickover08 = shp_chickns_impressed02
+          impvo_trickover09 = shp_chickns_impressed04
+          impvo_trickover10 = shp_chickns_new_14
+          impvo_landover01 = shp_chickns_impressed05
+          impvo_landover02 = shp_chickns_new_23a
+          impvo_landover03 = shp_chickns_new_24
+          impvo_landover04 = shp_chickns_new_26
+          impvo_landover05 = shp_chickns_new_27a
+          impvo_landover06 = shp_chickns_new_28
+          impvo_landover07 = shp_chickns_new_27a
+          impvo_landover08 = shp_chickns_new_26
+          impvo_landover09 = shp_chickns_new_24
+          impvo_landunder01 = shp_chickns_bail04
+          impvo_landunder02 = shp_chickns_new_09
+          impvo_landunder03 = shp_chickns_new_15
+          impvo_landunder04 = shp_chickns_new_16
+          impvo_landunder05 = shp_chickns_new_17
+          impvo_landunder06 = shp_chickns_new_18
+          impvo_landunder07 = shp_chickns_new_19a
+          impvo_landunder08 = shp_chickns_new_20
+          impvo_landunder09 = shp_chickns_new_21
+          impvo_landunder10 = shp_chickns_new_21
+          impvo_bailover01 = shp_chickns_bail01a
+          impvo_bailover02 = shp_chickns_bail02
+          impvo_bailover03 = shp_chickns_bail03
+          impvo_bailover04 = shp_chickns_bail04
+          impvo_bailover05 = shp_chickns_new_29
+          impvo_bailover06 = shp_chickns_new_30
+          impvo_bailover07 = shp_chickns_new_38
+          impvo_bailover08 = shp_chickns_new_39
+          impvo_bailover09 = shp_chickns_new_40
+          impvo_bailover10 = shp_chickns_new_41
+          impvo_bailover11 = shp_chickns_new_42
+          impvo_bailover12 = shp_chickns_new_43a00
+          impvo_bailover13 = shp_chickns_new_44
+          impvo_bailunder01 = shp_chickns_new_22a
+          impvo_bailunder02 = shp_chickns_new_31
+          impvo_bailunder03 = shp_chickns_new_32a
+          impvo_bailunder04 = shp_chickns_new_33
+          impvo_bailunder05 = shp_chickns_new_34
+          impvo_bailunder06 = shp_chickns_new_35
+          impvo_bailunder07 = shp_chickns_new_36a
+          impvo_bailunder08 = shp_chickns_new_37
+          impvo_bailunder09 = shp_chickns_new_36a
+          impvo_bailunder10 = shp_chickns_new_35
+          impvo_bailunder11 = shp_chickns_new_34
+          impvo_react01 = shp_chickns_hitskater01a
+          impvo_react02 = shp_chickns_hitskater02a
+          impvo_react03 = shp_chickns_hitskater03a
+          impvo_react04 = shp_chickns_new_45a
+          impvo_react05 = shp_chickns_new_46a
+          impvo_react06 = shp_chickns_new_47a
+          impvo_react07 = shp_chickns_new_48a
+          impvo_react08 = shp_chickns_new_49a
+          impvo_react09 = shp_chickns_new_50a
+          impvo_react10 = shp_chickns_new_51a
+          impvo_react11 = shp_chickns_new_52a
+          sfx_pedknockdown = Smashcake
+          Idle = Idle1
+          Idle2 = Idle2
+          IdleToIdle2 = Idle1ToIdle2
+          Idle2ToIdle = Idle2ToIdle1
+          Idle3 = Idle2
+          IdleToIdle3 = Idle1ToIdle2
+          Idle3ToIdle = Idle2ToIdle1
+          Rotate = Idle1Rotate
+          IdleToWalk = Idle1ToWalk
+          WalkToIdle = WalkToIdle1
+          Walk = Walk
+          Wave = Wave
+          WalkingWave = Walk
+          Disgust1 = Disgust
+          Disgust2 = Yell
+          Disgust3 = Taunt
+          Laugh = Taunt
+          Clap = Clap
+          Cheering = Jump
+          Cheering2 = Clap
+          PlayerPoint = Yell
+          Fidget1 = Idle2
+          Fidget2 = Idle2
+          Talk1 = Talk1
+          Talk2 = Talk1
+          UpYours = Yell
+          Bored1 = Talk1
+          Bored2 = Talk1
+          Bored3 = Talk1
+          Bored4 = Taunt
+          Bored5 = Disgust
+          Bored6 = Yell
+          GettingGood1 = Clap
+          GettingGood2 = Clap
+          GettingGood3 = Clap
+          GettingGood4 = Clap
+          GettingGood5 = Jump
+          GettingGood6 = Jump
+          Impressed1 = Jump
+          Impressed2 = Jump
+          Impressed3 = Jump
+          Impressed4 = Jump
+          Impressed5 = Clap
+          Impressed6 = Clap
+          JumpForward = JumpLeft
+          JumpBack = JumpLeft
+          JumpLeft = JumpLeft
+          HitBySkater = KnockDown
+          HitBySkaterTwitch1 = KnockDown
+          from = 80
+          to = 38
+          HitBySkaterTwitch2 = KnockDown
+          from = 38
+          to = 80
+          HitFromFront = KnockDown
+          HitFromFrontTwitch1 = KnockDown
+          from = 38
+          to = 80
+          HitFromFrontTwitch2 = KnockDown
+          from = 80
+          to = 38
+          HitFromBack = KnockDown
+          HitFromBackTwitch1 = KnockDown
+          from = 38
+          to = 80
+          HitFromBackTwitch2 = KnockDown
+          from = 80
+          to = 38
+          GetUp = GetUp
+          Attack1 = Push
+          Attack2 = Push
+          }
+
+#00492  GrommetParams = STRUCT{
+          MinPropsScoreDuring = 1000
+          MinPropsScoreDuring2 = 2500
+          MinPropsScoreLanding = 1000
+          MinPropsScoreLanding2 = 2500
+          ImpressedGoal = GOAL_Scripted2
+          GroundOffset = 3.1
+          feet PathTurnDist = 2.5
+          feet KnockedByPlayerDist = 5
+          NoticePlayerDist = 70
+          ForgetPlayerDist = 100
+          ImpressedDoneDist = 150
+          vo_entice1 = can_vo_entice_cr
+          vo_entice2 = can_vo_showme2
+          vo_entice3 = can_vo_entice5_cr
+          vo_gettinggood1 = can_vo_thresh1a_cr
+          vo_gettinggood2 = can_vo_thresh1b_cr
+          vo_gettinggood3 = can_vo_thresh1a_cr
+          vo_gettinggood4 = can_vo_thresh1b_cr
+          vo_impressed1 = can_vo_thresh1c_cr
+          vo_impressed2 = can_vo_thresh1d_cr
+          vo_impressed3 = can_vo_thresh2b_cr
+          vo_impressed4 = can_vo_thresh2e_cr
+          vo_bail_over1 = can_vo_bail_over1_cr
+          vo_bail_over2 = can_vo_bail_over4_cr
+          vo_bail_under1 = can_vo_bail_under1_cr
+          vo_bail_under2 = can_vo_bail_under3_cr
+          vo_bail_under3 = can_vo_bail_under5_cr
+          vo_pedhit1 = can_vo_whoa
+          vo_pedhit2 = can_vo_whoa
+          impvo_entice01 = can_vo_showme2
+          impvo_entice02 = can_vo_entice_cr
+          impvo_entice03 = can_vo_entice5_cr
+          impvo_entice04 = Can_new_01
+          impvo_entice05 = Can_new_02
+          impvo_entice06 = can_new_03
+          impvo_entice07 = Can_new_04
+          impvo_entice08 = Can_new_05
+          impvo_entice09 = Can_new_02
+          impvo_trickunder01 = Can_new_06
+          impvo_trickunder02 = Can_new_07
+          impvo_trickunder03 = Can_new_08
+          impvo_trickunder04 = Can_new_09
+          impvo_trickunder05 = Can_new_10b
+          impvo_trickunder06 = Can_new_11
+          impvo_trickunder07 = Can_new_06
+          impvo_trickover01 = can_vo_thresh1a_cr
+          impvo_trickover02 = can_vo_thresh1b_cr
+          impvo_trickover03 = can_vo_thresh1c_cr
+          impvo_trickover04 = can_vo_thresh1d_cr
+          impvo_trickover05 = Can_new_12
+          impvo_trickover06 = Can_new_13
+          impvo_trickover07 = Can_new_14
+          impvo_trickover08 = Can_new_15
+          impvo_trickover09 = Can_new_16
+          impvo_trickover10 = Can_new_17a
+          impvo_landover01 = can_vo_thresh2b_cr
+          impvo_landover02 = Can_new_26
+          impvo_landover03 = Can_new_27
+          impvo_landover04 = Can_new_28
+          impvo_landover05 = Can_new_29
+          impvo_landover06 = Can_new_30
+          impvo_landover07 = Can_new_31a
+          impvo_landover08 = Can_new_32
+          impvo_landover09 = can_vo_thresh2e_cr
+          impvo_landunder01 = Can_vo_under2_cr
+          impvo_landunder02 = Can_vo_under1_cr
+          impvo_landunder03 = Can_new_18
+          impvo_landunder04 = Can_new_19
+          impvo_landunder05 = Can_new_20
+          impvo_landunder06 = Can_new_21
+          impvo_landunder07 = Can_new_22
+          impvo_landunder08 = Can_new_23
+          impvo_landunder09 = Can_new_24
+          impvo_landunder10 = Can_new_25
+          impvo_bailover01 = can_vo_bail_over1_cr
+          impvo_bailover02 = can_vo_bail_over4_cr
+          impvo_bailover03 = can_new_39
+          impvo_bailover04 = can_new_40a
+          impvo_bailover05 = can_new_41
+          impvo_bailover06 = can_new_42
+          impvo_bailover07 = can_new_43
+          impvo_bailover08 = can_new_44
+          impvo_bailover09 = can_new_45
+          impvo_bailover10 = can_new_46
+          impvo_bailover11 = can_new_47
+          impvo_bailover12 = can_new_48
+          impvo_bailover13 = can_new_49
+          impvo_bailunder01 = can_vo_bail_under1_cr
+          impvo_bailunder02 = can_vo_bail_under3_cr
+          impvo_bailunder03 = can_vo_bail_under5_cr
+          impvo_bailunder04 = can_vo_bail_over1_cr
+          impvo_bailunder05 = can_vo_bail_over4_cr
+          impvo_bailunder06 = can_new_33
+          impvo_bailunder07 = can_new_34
+          impvo_bailunder08 = can_new_35
+          impvo_bailunder09 = can_new_36
+          impvo_bailunder10 = can_new_37
+          impvo_bailunder11 = can_new_38
+          impvo_react01 = can_vo_whoa
+          impvo_react02 = can_vo_whoa
+          impvo_react03 = can_vo_whoa
+          impvo_react04 = can_vo_whoa
+          impvo_react05 = can_vo_whoa
+          impvo_react06 = can_vo_whoa
+          impvo_react07 = can_vo_whoa
+          impvo_react08 = can_vo_whoa
+          impvo_react09 = can_vo_whoa
+          impvo_react10 = can_vo_whoa
+          impvo_react11 = can_vo_whoa
+          sfx_pedknockdown = Smashcake
+          Idle = GrommetIdle
+          Idle2 = GrommetIdle
+          IdleToIdle2 = IdleToIdle2
+          Idle2ToIdle = Idle2ToIdle
+          Idle3 = Idle3
+          IdleToIdle3 = IdleToIdle3
+          Idle3ToIdle = Idle3ToIdle
+          Rotate = RotateLeft
+          IdleToWalk = IdleToWalk
+          WalkToIdle = WalkToIdle
+          Walk = Walk1
+          Wave = PlayerWave
+          WalkingWave = WalkingWave
+          Disgust1 = Disgust
+          Disgust2 = ShakeFist
+          Disgust3 = ShakeFist
+          Laugh = bullylaugh
+          Clap = GrommetSmackCoping
+          Cheering = GrommetSmackCoping
+          Cheering2 = GrommetSmackCoping
+          PlayerPoint = PlayerPoint
+          Fidget1 = GrommetShiftWeight
+          Fidget2 = GrommetChickenCall
+          Talk1 = Talk
+          Talk2 = Talk2
+          UpYours = ShakeFist
+          Bored1 = GrommetWeakTrick1
+          Bored2 = GrommetWeakTrick1
+          Bored3 = GrommetWeakTrick1
+          Bored4 = GrommetWeakTrick2
+          Bored5 = GrommetWeakTrick2
+          Bored6 = GrommetWeakTrick2
+          GettingGood1 = GrommetNotBad
+          GettingGood2 = GrommetNotBad
+          GettingGood3 = GrommetNotBad
+          GettingGood4 = GrommetNotBad
+          GettingGood5 = GrommetNotBad
+          GettingGood6 = GrommetNotBad
+          Impressed1 = GrommetSmackCoping
+          Impressed2 = GrommetSmackCoping
+          Impressed3 = GrommetSmackCoping
+          Impressed4 = GrommetSmackCoping
+          Impressed5 = GrommetSmackCoping
+          Impressed6 = GrommetSmackCoping
+          JumpForward = JumpForward
+          JumpBack = JumpBack
+          JumpLeft = JumpLeft
+          HitBySkater = HitBySkater
+          HitBySkaterTwitch1 = HitBySkater
+          from = 88
+          to = 81
+          HitBySkaterTwitch2 = HitBySkater
+          from = 81
+          to = 88
+          HitFromFront = HitBySkater
+          HitFromFrontTwitch1 = HitBySkater
+          from = 122
+          to = 110
+          HitFromFrontTwitch2 = HitBySkater
+          from = 111
+          to = 122
+          HitFromBack = HitBySkater
+          HitFromBackTwitch1 = HitBySkater
+          from = 86
+          to = 80
+          HitFromBackTwitch2 = HitBySkater
+          from = 81
+          to = 86
+          GetUp = GetUp
+          Attack1 = Punch
+          Attack2 = Push
+          }
+
+#00707  EXCEPTION_PED_SHOULD_DIE = 2
+
+#00709  FUNCTION CPF_PedGeneric
+#00712    SK3_PedScript NULL
+#00713  END FUNCTION
+
+#00714  FUNCTION SK3_PedScript
+#00716    IF GotParam Friendly
+#00718      Obj_SetFlag PED_FRIENDLY
+#00719    END IF
+#00720    IF GotParam Mean
+#00721      Obj_SetFlag PED_MEAN
+#00722    END IF
+#00723    IF GotParam Watcher
+#00724      Obj_SetFlag PED_WATCHER
+#00725    END IF
+#00726    IF GotParam Avoid
+#00727      Obj_SetFlag PED_AVOID
+#00728    END IF
+#00729    IF GotParam Fall
+#00730      Obj_SetFlag PED_FALL
+#00731    END IF
+#00732    IF GotParam Knock
+#00733      Obj_SetFlag PED_KNOCK
+#00734    END IF
+#00735    IF GotParam Ignore
+#00736      Obj_SetFlag PED_IGNORE
+#00737    END IF
+#00738    IF GotParam NoMove
+#00739      Obj_SetFlag PED_NOMOVE
+#00740    END IF
+#00741    IF GotParam LOW
+#00742      Obj_SetFlag PED_LOW
+#00743    END IF
+#00744    IF GotParam High
+#00745      Obj_SetFlag PED_HIGH
+#00746    END IF
+#00747    IF GotParam Goal
+#00748      Obj_SetFlag PED_GOAL
+#00749    END IF
+#00750    IF GotParam Laugher
+#00751      Obj_ClearFlag PED_AVOID
+#00752      Obj_SetFlag PED_FALL
+#00753      Obj_SetFlag PED_LAUGHER
+#00754      Obj_SetFlag PED_NOMOVE
+#00755    END IF
+#00756    IF GotParam Chatter
+#00757      Obj_SetFlag PED_CHATTER
+#00758      Obj_SetFlag PED_NOMOVE
+#00759    END IF
+#00761    IF GotParam Streamer
+#00762      Obj_SetFlag PED_STREAMER
+#00763    END IF
+#00764    IF CareerLevelIs LevelNum_Foundry
+#00767      Obj_SetFlag PED_FOUN
+#00768    END IF
+#00769    IF CareerLevelIs LevelNum_Canada
+#00770      Obj_SetFlag PED_CAN
+#00771    END IF
+#00772    IF CareerLevelIs LevelNum_Rio
+#00773      Obj_SetFlag PED_RIO
+#00774    END IF
+#00775    IF CareerLevelIs LevelNum_Suburbia
+#00776      Obj_SetFlag PED_SUB
+#00777    END IF
+#00778    IF CareerLevelIs LevelNum_SkaterIsland
+#00779      Obj_SetFlag PED_SI
+#00780    END IF
+#00781    IF GotParam LA
+#00785      Obj_SetFlag PED_LA
+#00786    END IF
+#00787    IF CareerLevelIs LevelNum_Tokyo
+#00788      Obj_SetFlag PED_TOK
+#00789    END IF
+#00790    IF CareerLevelIs LevelNum_Ship
+#00791      Obj_SetFlag PED_SHP
+#00792    END IF
+#00793    IF CareerLevelIs LevelNum_Oil
+#00794      Obj_SetFlag PED_OIL
+#00795    END IF
+#00796    IF GotParam chick
+#00797      Obj_SetFlag PED_CHICK
+#00798      PedScript2 ChickParams NULL
+#00799    ELSE
+#00800      PedScript2 DefaultParams NULL
+#00801    END IF
+#00802  END FUNCTION
+
+#00803  FUNCTION PedScript2
+#00805    Obj_SetGroundOffset GLOBAL.GroundOffset
+
+#00807    Obj_StickToGround distAbove = 3
+          distBelow = 6
+
+#00808    Obj_SetPathTurnDist GLOBAL.PathTurnDist
+
+#00809    Obj_StickToGround off
+#00810    IF Obj_FlagSet PED_LAUGHER
+#00811      Obj_SetConstantHeight
+#00812    END IF
+#00813    Obj_PathHeading On
+#00814    Obj_SetPathVelocity 5 fps
+#00816    IF Obj_FlagSet PED_NOMOVE
+#00817      IF Obj_FlagNotSet PED_LAUGHER
+#00818        Obj_LookAtNodeLinked time = 0.3
+
+#00819        Obj_PlayAnim Anim = GLOBAL.Rotate
+              Cycle
+#00820        Obj_WaitRotate
+#00821        Obj_SetAnimCycleMode off
+#00822        Obj_WaitAnimFinished
+#00823      ELSE
+#00824        GotoPreserveParams Ped_GenericWaiting
+#00825      END IF
+#00826      IF Obj_FlagSet PED_CHATTER
+#00827        Obj_PlayAnim Anim = RANDOM[14][52; 59; 66; 73; 80; 87; 94; 101; 108; 115; 122; 129; 136; 143]
+
+              GLOBAL.Idle
+              JUMP 0x8a000000 GLOBAL.Idle
+              JUMP 0x7f000000 GLOBAL.Idle
+              JUMP 0x74000000 GLOBAL.Idle
+              JUMP 0x69000000 GLOBAL.Talk1
+              JUMP 0x5e000000 GLOBAL.Talk2
+              JUMP 0x53000000 GLOBAL.Talk1
+              JUMP 0x48000000 GLOBAL.Talk2
+              JUMP 0x3d000000 GLOBAL.Bored1
+              JUMP 0x32000000 GLOBAL.Bored2
+              JUMP 0x27000000 GLOBAL.Bored3
+              JUMP 0x1c000000 GLOBAL.Bored4
+              JUMP 0x11000000 GLOBAL.Bored5
+              JUMP 0x06000000 GLOBAL.Bored6
+              Cycle
+#00828      ELSE
+#00829        Obj_PlayAnim Anim = GLOBAL.Idle
+              Cycle
+#00830      END IF
+#00831    ELSE
+#00832      IF GotParam PathToFollow
+#00833        Obj_FollowPath name = GLOBAL.PathToFollow
+
+#00834      ELSE
+#00835        Obj_FollowPathLinked
+#00836      END IF
+#00837      Obj_PlayAnim Anim = GLOBAL.IdleToWalk
+
+#00838      IF GotParam PathToFollow
+#00839        Obj_FollowPath name = GLOBAL.PathToFollow
+
+#00840      ELSE
+#00841        Obj_FollowPathLinked
+#00842      END IF
+#00843      Obj_WaitAnimFinished
+#00844      Obj_PlayAnim Anim = GLOBAL.Walk
+            Cycle
+#00846    END IF
+#00847    GotoPreserveParams Ped_GenericCheckForTalking
+#00848  END FUNCTION
+
+#00849  FUNCTION Ped_GenericCheckForTalking
+#00851    Obj_ClearFlag PED_PROPS
+#00852    Obj_ClearExceptions
+#00853    IF Obj_FlagSet PED_FRIENDLY
+#00856      Obj_SetInnerRadius 30
+#00858      Obj_SetOuterRadius 35
+#00859      Obj_SetException ex = SkaterInRadius
+            scr = Ped_GenericCheckForReacting
+            params = STRUCT{
+              NULL }
+
+#00860      GotoPreserveParams Ped_GenericWaiting
+#00861    END IF
+#00862    IF Obj_FlagSet PED_MEAN
+#00863      Obj_SetInnerRadius 20
+#00865      Obj_SetOuterRadius 25
+#00866      Obj_SetException ex = SkaterInRadius
+            scr = Ped_GenericCheckForReacting
+            params = STRUCT{
+              NULL }
+
+#00867      GotoPreserveParams Ped_GenericWaiting
+#00868    END IF
+#00869    IF Obj_FlagSet PED_WATCHER
+#00870      IF Obj_FlagSet PED_SHP
+#00872        IF Obj_FlagSet PED_GOAL
+#00873          Obj_SetInnerRadius 100
+#00874          Obj_SetOuterRadius 150
+#00875        ELSE
+#00876          Obj_SetInnerRadius 35
+#00877          Obj_SetOuterRadius 130
+#00878        END IF
+#00879      ELSE
+#00880        Obj_SetInnerRadius 35
+#00881        Obj_SetOuterRadius 130
+#00882      END IF
+#00883      Obj_SetException ex = SkaterInRadius
+            scr = Ped_GenericCheckForReacting
+            params = STRUCT{
+              NULL }
+
+#00884      GotoPreserveParams Ped_GenericWaiting
+#00885    END IF
+#00886    GotoPreserveParams Ped_GenericCheckForReacting
+#00888  END FUNCTION
+
+#00889  FUNCTION Ped_GenericWaiting
+#00891    IF GotParam Quaker
+#00894      LOOP
+#00895        IF Obj_FlagSet PED_IN_PANIC
+#00896          Obj_StopAlongPath
+#00897          Obj_SwitchScript CPF_Ped_QuakePanic params = STRUCT{
+                  NULL }
+
+#00898        END IF
+#00899        Wait 10 frames
+#00900      END LOOP
+#00901    END IF
+#00902    IF Obj_FlagSet PED_LAUGHER
+#00903      Obj_SetException ex = SkaterInRadius
+            scr = Ped_FallForSkater
+            params = STRUCT{
+              NULL }
+
+#00904      IF Obj_FlagSet PED_ON_FENCE
+#00905        Obj_SetInnerRadius 20
+#00906        LOOP
+#00907          IF SkaterCurrentScorePotGreaterThan GLOBAL.MinPropsScoreDuring
+
+#00908            RANDOM[2][9; 31]
+
+#00909            Obj_PlayAnim Anim = FenceLean_Idle
+
+#00910            JUMP 0x15000000 Obj_PlayAnim Anim = FenceLean_Cheer
+
+#00911
+#00912          ELSE
+#00913            Obj_PlayAnim Anim = FenceLean_Idle
+
+#00914            RANDOM[6][20; 21; 22; 23; 24; 30]
+                  JUMP 0x39000000 JUMP 0x34000000 JUMP 0x2f000000 JUMP 0x2a000000
+#00915            JUMP 0x20000000 Obj_PlayStream Can_Laugh22b volume = 200
+                  radius = 100
+
+#00916          END IF
+#00917          Obj_WaitAnimFinished
+#00918        END LOOP
+#00919      ELSE
+#00920        Obj_SetInnerRadius 2
+#00921        LOOP
+#00922          Obj_PlayAnim Anim = RANDOM[4][12; 19; 26; 33]
+
+                GLOBAL.Laugh
+                JUMP 0x1c000000 GLOBAL.Disgust2
+                JUMP 0x11000000 GLOBAL.PlayerPoint
+                JUMP 0x06000000 GLOBAL.Disgust1
+
+#00923          RANDOM[19][77; 83; 89; 95; 133; 171; 209; 247; 285; 323; 361; 399; 437; 475; 513; 551; 589; 627; 665]
+
+#00924
+#00925          JUMP 0xaf020000
+#00926          JUMP 0xa5020000
+#00927          JUMP 0x9b020000 Obj_PlayStream can_laugh_01b volume = 250
+                radius = 100
+
+#00928          JUMP 0x71020000 Obj_PlayStream can_laugh_02b volume = 250
+                radius = 100
+
+#00929          JUMP 0x47020000 Obj_PlayStream can_laugh_03b volume = 250
+                radius = 100
+
+#00930          JUMP 0x1d020000 Obj_PlayStream can_laugh_04b volume = 250
+                radius = 100
+
+#00931          JUMP 0xf3010000 Obj_PlayStream can_laugh_05b2 volume = 250
+                radius = 100
+
+#00932          JUMP 0xc9010000 Obj_PlayStream can_laugh_06a volume = 250
+                radius = 100
+
+#00933          JUMP 0x9f010000 Obj_PlayStream can_laugh_07a volume = 250
+                radius = 100
+
+#00934          JUMP 0x75010000 Obj_PlayStream can_laugh_08a volume = 250
+                radius = 100
+
+#00935          JUMP 0x4b010000 Obj_PlayStream can_laugh_09a volume = 250
+                radius = 100
+
+#00936          JUMP 0x21010000 Obj_PlayStream can_laugh_10a volume = 250
+                radius = 100
+
+#00937          JUMP 0xf7000000 Obj_PlayStream can_laugh_10a2 volume = 250
+                radius = 100
+
+#00938          JUMP 0xcd000000 Obj_PlayStream can_laugh_11a volume = 250
+                radius = 100
+
+#00939          JUMP 0xa3000000 Obj_PlayStream can_laugh_12b volume = 250
+                radius = 100
+
+#00940          JUMP 0x79000000 Obj_PlayStream can_laugh_13b volume = 250
+                radius = 100
+
+#00941          JUMP 0x4f000000 Obj_PlayStream can_laugh_14b volume = 250
+                radius = 100
+
+#00942          JUMP 0x25000000 Obj_PlayStream can_laugh_15a volume = 250
+                radius = 100
+
+#00943
+#00944          IF Obj_FlagSet PED_STOP_LAUGHING
+#00945            GotoPreserveParams Ped_StopLaughing
+#00946          ELSE
+#00947            IF CareerLevelIs LevelNum_Canada
+#00948              IF IsAlive name = TRG_Ped_Tongue_Stuck01
+
+#00949                IF QueryFlag FLAG_AJC_CAN_GOT_THIS_GOAL name = TRG_Ped_Tongue_Stuck01
+
+#00950                  GotoPreserveParams Ped_StopLaughing
+#00951                END IF
+#00952                IF GetGoal Goal = GOAL_Scripted3
+
+#00953                  GotoPreserveParams Ped_StopLaughing
+#00954                END IF
+#00955              END IF
+#00956            END IF
+#00957          END IF
+#00958          Obj_WaitAnimFinished
+#00959        END LOOP
+#00960      END IF
+#00961    END IF
+#00962    IF Obj_FlagSet PED_NOMOVE
+#00963      Obj_SetAnimCycleMode off
+#00964      Obj_WaitAnimFinished
+#00965      LOOP
+#00966        IF Obj_FlagSet PED_CHATTER
+#00967          RANDOM[3][13; 244; 267]
+
+#00968          Obj_PlayAnim Anim = GLOBAL.Idle2ToIdle
+
+#00969          Obj_WaitAnimFinished
+#00970          Obj_PlayAnim Anim = RANDOM[10][36; 43; 50; 57; 64; 71; 78; 85; 92; 99]
+
+                GLOBAL.Talk1
+                JUMP 0x5e000000 GLOBAL.Talk2
+                JUMP 0x53000000 GLOBAL.Talk1
+                JUMP 0x48000000 GLOBAL.Talk2
+                JUMP 0x3d000000 GLOBAL.Bored1
+                JUMP 0x32000000 GLOBAL.Bored2
+                JUMP 0x27000000 GLOBAL.Bored3
+                JUMP 0x1c000000 GLOBAL.Bored4
+                JUMP 0x11000000 GLOBAL.Bored5
+                JUMP 0x06000000 GLOBAL.Bored6
+
+#00971          Obj_WaitAnimFinished
+#00972          Obj_PlayAnim Anim = GLOBAL.IdleToIdle2
+
+#00973          JUMP 0x31000000 Obj_PlayAnim Anim = GLOBAL.Idle2
+
+#00974          JUMP 0x16000000 Obj_PlayAnim Anim = GLOBAL.Idle2
+
+#00975
+#00976        ELSE
+#00977          Obj_PlayAnim Anim = GLOBAL.Idle
+
+#00978        END IF
+#00979        Obj_WaitAnimFinished
+#00980      END LOOP
+#00981    END IF
+#00982  END FUNCTION
+
+#00983  FUNCTION Ped_ReturnToWalking
+#00985    Obj_VarSet var = 0
+          value = 0
+
+#00986    Obj_ClearExceptions
+#00987    IF Obj_FlagSet PED_NOMOVE
+#00988      Obj_LookAtNodeLinked time = 0.3
+
+#00992      Obj_PlayAnim Anim = GLOBAL.Rotate
+            Cycle
+#00994      Obj_WaitRotate
+#00995      Obj_SetAnimCycleMode off
+#00996      Obj_WaitAnimFinished
+#00997      Obj_PlayAnim Anim = GLOBAL.Idle
+            Cycle
+#00998    ELSE
+#00999      Obj_LookAtNodeLinked time = 0.3
+
+#01004      Obj_PlayAnim Anim = GLOBAL.Rotate
+            Cycle
+#01006      Obj_WaitRotate
+#01007      Obj_SetAnimCycleMode off
+#01008      Obj_WaitAnimFinished
+#01009      IF GotParam PathToFollow
+#01010        Obj_FollowPath name = GLOBAL.PathToFollow
+
+#01011      ELSE
+#01012        Obj_FollowPathLinked
+#01013      END IF
+#01014      Obj_StartAlongPath
+#01015      Obj_PlayAnim Anim = GLOBAL.IdleToWalk
+
+#01016      Obj_WaitAnimFinished
+#01017      Obj_SetAnimCycleMode off
+#01018      Obj_PlayAnim Anim = GLOBAL.Walk
+            Cycle
+#01019    END IF
+#01020    GotoPreserveParams Ped_ReturnToGenericCheckForTalking
+#01021  END FUNCTION
+
+#01022  FUNCTION Ped_ReturnToGenericCheckForTalking
+#01024    Obj_ClearExceptions
+#01026    Obj_SetInnerRadius 0
+#01027    Obj_SetOuterRadius 0
+#01028    GotoPreserveParams Ped_GenericCheckForTalking
+#01029  END FUNCTION
+
+#01030  FUNCTION Ped_GenericCheckForReacting
+#01032    IF Obj_FlagSet PED_FALL
+#01037      Obj_SetInnerRadius 4
+#01039      Obj_SetException ex = SkaterInRadius
+            scr = Ped_FallForSkater
+            params = STRUCT{
+              NULL }
+
+#01040      GotoPreserveParams Ped_StartTalking
+#01041    END IF
+#01042    IF Obj_FlagSet PED_LAUGHER
+#01044      Obj_SetInnerRadius 2
+#01045      Obj_SetException ex = SkaterInRadius
+            scr = Ped_FallForSkater
+            params = STRUCT{
+              NULL }
+
+#01046      GotoPreserveParams Ped_StartTalking
+#01047    END IF
+#01048    IF Obj_FlagSet PED_KNOCK
+#01050      Obj_SetInnerRadius 2
+#01052      Obj_SetException ex = SkaterInRadius
+            scr = Ped_KnockDownSkater
+            params = STRUCT{
+              NULL }
+
+#01053      GotoPreserveParams Ped_StartTalking
+#01054    END IF
+#01055    IF Obj_FlagSet PED_IGNORE
+#01057      Obj_SetInnerRadius 0
+#01059      Obj_ClearExceptions
+#01060      GotoPreserveParams Ped_StartTalking
+#01061    END IF
+#01062    Obj_SetException ex = SkaterInRadius
+          scr = Ped_GettingReadyToAvoidSkater
+          params = STRUCT{
+            NULL }
+
+#01066    Obj_SetInnerRadius 4
+#01067    GotoPreserveParams Ped_StartTalking
+#01068  END FUNCTION
+
+#01069  FUNCTION Ped_StartTalking
+#01071    IF Obj_FlagSet PED_FRIENDLY
+#01073      RANDOM[2][9; 573]
+
+#01075      Obj_SetAnimCycleMode off
+#01077      IF Obj_FlagSet PED_NOMOVE
+#01078        Obj_SetAnimCycleMode off
+#01079        Obj_WaitAnimFinished
+#01080        Obj_PlayAnim Anim = GLOBAL.Idle
+              Cycle
+#01081      ELSE
+#01082        Obj_WaitAnimFinished
+#01083        Obj_StopAlongPath
+#01084        Obj_PlayAnim Anim = GLOBAL.WalkToIdle
+
+#01085        Obj_WaitAnimFinished
+#01086      END IF
+#01087      Obj_LookAtObject type = skater
+            time = 0.3
+
+#01088      Obj_PlayAnim Anim = GLOBAL.Rotate
+            Cycle
+#01089      Obj_WaitRotate
+#01090      Obj_SetAnimCycleMode off
+#01091      Obj_WaitAnimFinished
+#01092      Obj_PlayAnim Anim = GLOBAL.Wave
+
+#01093      Obj_WaitAnimFinished
+#01094      IF Obj_FlagSet PED_NOMOVE
+#01095        Obj_LookAtNodeLinked time = 0.3
+
+#01099        Obj_PlayAnim Anim = GLOBAL.Rotate
+              Cycle
+#01101        Obj_WaitRotate
+#01102        Obj_SetAnimCycleMode off
+#01103        Obj_WaitAnimFinished
+#01104        Obj_PlayAnim Anim = GLOBAL.Idle
+              Cycle
+#01105      ELSE
+#01106        Obj_LookAtNodeLinked time = 0.3
+
+#01110        Obj_PlayAnim Anim = GLOBAL.Rotate
+              Cycle
+#01112        Obj_WaitRotate
+#01113        Obj_SetAnimCycleMode off
+#01114        Obj_WaitAnimFinished
+#01115        Obj_StartAlongPath
+#01116        Obj_PlayAnim Anim = GLOBAL.IdleToWalk
+
+#01117        Obj_WaitAnimFinished
+#01118        Obj_PlayAnim Anim = GLOBAL.Walk
+              Cycle
+#01119      END IF
+#01120      JUMP 0x14010000 Obj_SetAnimCycleMode off
+#01122      IF Obj_FlagSet PED_NOMOVE
+#01123        Obj_SetAnimCycleMode off
+#01124        Obj_WaitAnimFinished
+#01125        Obj_PlayAnim Anim = GLOBAL.Wave
+
+#01126        Obj_WaitAnimFinished
+#01127        Obj_LookAtNodeLinked time = 0.3
+
+#01131        Obj_PlayAnim Anim = GLOBAL.Rotate
+              Cycle
+#01133        Obj_WaitRotate
+#01134        Obj_PlayAnim Anim = GLOBAL.Idle
+              Cycle
+#01135      ELSE
+#01136        Obj_WaitAnimFinished
+#01137        Obj_PlayAnim Anim = GLOBAL.WalkingWave
+
+#01138        IF Obj_FlagSet PED_NOMOVE
+#01139        END IF
+#01141        Obj_WaitAnimFinished
+#01142        Obj_PlayAnim Anim = GLOBAL.Walk
+              Cycle
+#01143      END IF
+#01144
+#01145    END IF
+#01146    IF Obj_FlagSet PED_MEAN
+#01147      RANDOM[2][9; 657]
+
+#01149      Obj_SetAnimCycleMode off
+#01151      IF Obj_FlagSet PED_NOMOVE
+#01152        Obj_SetAnimCycleMode off
+#01153        Obj_WaitAnimFinished
+#01154        Obj_PlayAnim Anim = GLOBAL.Idle
+              Cycle
+#01155      ELSE
+#01156        Obj_WaitAnimFinished
+#01157        Obj_StopAlongPath
+#01158        Obj_PlayAnim Anim = GLOBAL.WalkToIdle
+
+#01159        Obj_WaitAnimFinished
+#01160      END IF
+#01161      Obj_LookAtObject type = skater
+            time = 0.3
+
+#01162      Obj_PlayAnim Anim = GLOBAL.Rotate
+            Cycle
+#01163      Obj_WaitRotate
+#01164      Obj_SetAnimCycleMode off
+#01165      Obj_WaitAnimFinished
+#01166      Obj_PlayAnim Anim = RANDOM[6][20; 27; 34; 41; 48; 55]
+
+            GLOBAL.Wave
+            JUMP 0x32000000 GLOBAL.Disgust1
+            JUMP 0x27000000 GLOBAL.PlayerPoint
+            JUMP 0x1c000000 GLOBAL.Talk1
+            JUMP 0x11000000 GLOBAL.Talk2
+            JUMP 0x06000000 GLOBAL.UpYours
+
+#01167      Obj_WaitAnimFinished
+#01168      IF Obj_FlagSet PED_NOMOVE
+#01169        Obj_LookAtNodeLinked time = 0.3
+
+#01173        Obj_PlayAnim Anim = GLOBAL.Rotate
+              Cycle
+#01175        Obj_WaitRotate
+#01176        Obj_SetAnimCycleMode off
+#01177        Obj_WaitAnimFinished
+#01178        Obj_PlayAnim Anim = GLOBAL.Idle
+              Cycle
+#01179      ELSE
+#01180        Obj_LookAtNodeLinked time = 0.3
+
+#01184        Obj_PlayAnim Anim = GLOBAL.Rotate
+              Cycle
+#01186        Obj_WaitRotate
+#01187        Obj_SetAnimCycleMode off
+#01188        Obj_WaitAnimFinished
+#01189        Obj_StartAlongPath
+#01190        Obj_PlayAnim Anim = GLOBAL.IdleToWalk
+
+#01191        Obj_WaitAnimFinished
+#01192        Obj_PlayAnim Anim = GLOBAL.Walk
+              Cycle
+#01193      END IF
+#01194      JUMP 0x6c010000 Obj_SetAnimCycleMode off
+#01196      IF Obj_FlagSet PED_NOMOVE
+#01197        Obj_SetAnimCycleMode off
+#01198        Obj_LookAtObject type = skater
+              time = 0.3
+
+#01199        Obj_PlayAnim Anim = GLOBAL.Rotate
+              Cycle
+#01200        Obj_WaitRotate
+#01201        Obj_SetAnimCycleMode off
+#01202        Obj_WaitAnimFinished
+#01203        Obj_PlayAnim Anim = RANDOM[6][20; 27; 34; 41; 48; 55]
+
+              GLOBAL.Wave
+              JUMP 0x32000000 GLOBAL.Disgust1
+              JUMP 0x27000000 GLOBAL.PlayerPoint
+              JUMP 0x1c000000 GLOBAL.Talk1
+              JUMP 0x11000000 GLOBAL.Talk2
+              JUMP 0x06000000 GLOBAL.UpYours
+
+#01204        Obj_WaitAnimFinished
+#01207        Obj_PlayAnim Anim = GLOBAL.Idle
+              Cycle
+#01208      ELSE
+#01209        Obj_WaitAnimFinished
+#01210        Obj_PlayAnim Anim = GLOBAL.WalkingWave
+
+#01211        Obj_WaitAnimFinished
+#01214        Obj_PlayAnim Anim = GLOBAL.Walk
+              Cycle
+#01215      END IF
+#01216
+#01217    END IF
+#01218    IF Obj_FlagSet PED_WATCHER
+#01219      IF Obj_FlagSet PED_NOMOVE
+#01221        Obj_SetAnimCycleMode off
+#01222        Obj_WaitAnimFinished
+#01223      ELSE
+#01224        Obj_SetAnimCycleMode off
+#01225        Obj_WaitAnimFinished
+#01226        Obj_StopAlongPath
+#01227        Obj_PlayAnim Anim = GLOBAL.WalkToIdle
+
+#01228        Obj_WaitAnimFinished
+#01229      END IF
+#01230      Obj_SetException ex = SkaterLanded
+            scr = Ped_WatcherSeeingTrick
+            params = STRUCT{
+              NULL }
+
+#01231      Obj_SetException ex = SkaterBailed
+            scr = Ped_WatcherSeeingBail
+            params = STRUCT{
+              NULL }
+
+#01232      IF Obj_FlagSet PED_LA
+#01233        IF Obj_FlagSet PED_LOW
+#01235          Obj_PlaySound RANDOM[4][12; 18; 24; 30]
+                la_vo_entice1_cr JUMP 0x19000000 la_vo_entice2_cr JUMP 0x0f000000 la_vo_entice3_cr JUMP 0x05000000 la_vo_entice4_cr Vol = 400
+                pitch = 80
+
+#01237        ELSE
+#01238          IF Obj_FlagSet PED_HIGH
+#01239            Obj_PlaySound RANDOM[4][12; 18; 24; 30]
+                  la_vo_entice1_cr JUMP 0x19000000 la_vo_entice2_cr JUMP 0x0f000000 la_vo_entice3_cr JUMP 0x05000000 la_vo_entice4_cr Vol = 400
+                  pitch = 100
+
+#01241          ELSE
+#01242            Obj_PlaySound RANDOM[4][12; 18; 24; 30]
+                  la_vo_entice1_cr JUMP 0x19000000 la_vo_entice2_cr JUMP 0x0f000000 la_vo_entice3_cr JUMP 0x05000000 la_vo_entice4_cr Vol = 400
+                  pitch = 90
+
+#01243          END IF
+#01244        END IF
+#01245      END IF
+#01246      IF Obj_FlagSet PED_STREAMER
+#01247        IF Obj_FlagSet PED_LOW
+#01248          Obj_PlayStream RANDOM[4][12; 19; 26; 33]
+                GLOBAL.vo2_entice1
+                JUMP 0x1c000000 GLOBAL.vo2_entice2
+                JUMP 0x11000000 GLOBAL.vo2_entice3
+                JUMP 0x06000000 GLOBAL.vo2_entice4
+                Vol = 400
+                pitch = 100
+
+#01249        ELSE
+#01250          IF Obj_FlagSet PED_HIGH
+#01251            Obj_PlayStream RANDOM[4][12; 19; 26; 33]
+                  GLOBAL.vo3_entice1
+                  JUMP 0x1c000000 GLOBAL.vo3_entice2
+                  JUMP 0x11000000 GLOBAL.vo3_entice3
+                  JUMP 0x06000000 GLOBAL.vo3_entice4
+                  Vol = 400
+                  pitch = 100
+
+#01252          ELSE
+#01253            Obj_PlayStream RANDOM[4][12; 19; 26; 33]
+                  GLOBAL.vo_entice1
+                  JUMP 0x1c000000 GLOBAL.vo_entice2
+                  JUMP 0x11000000 GLOBAL.vo_entice3
+                  JUMP 0x06000000 GLOBAL.vo_entice4
+                  Vol = 400
+                  pitch = 100
+
+#01254          END IF
+#01255        END IF
+#01256      END IF
+#01257      LOOP
+#01258        Obj_LookAtObject type = skater
+              time = 0.3
+
+#01259        Obj_PlayAnim Anim = GLOBAL.Rotate
+              Cycle
+#01260        Obj_WaitRotate
+#01261        Obj_SetAnimCycleMode off
+#01262        Obj_WaitAnimFinished
+#01263        RANDOM[3][13; 46; 165]
+
+#01264        Obj_PlayAnim Anim = GLOBAL.Idle
+
+#01265        Obj_WaitAnimFinished
+#01266        JUMP 0xf1000000 Obj_PlayAnim Anim = GLOBAL.IdleToIdle2
+
+#01267        Obj_WaitAnimFinished
+#01268        CheckFor_PedProps NULL
+#01269        Obj_PlayAnim Anim = GLOBAL.Idle2
+
+#01270        Obj_WaitAnimFinished
+#01271        CheckFor_PedProps NULL
+#01272        Obj_PlayAnim Anim = GLOBAL.Idle2ToIdle
+
+#01273        Obj_WaitAnimFinished
+#01274        JUMP 0x76000000 Obj_PlayAnim Anim = GLOBAL.IdleToIdle3
+
+#01275        Obj_WaitAnimFinished
+#01276        CheckFor_PedProps NULL
+#01277        Obj_PlayAnim Anim = GLOBAL.Idle3
+
+#01278        Obj_WaitAnimFinished
+#01279        CheckFor_PedProps NULL
+#01280        Obj_PlayAnim Anim = GLOBAL.Idle3ToIdle
+
+#01281        Obj_WaitAnimFinished
+#01282
+#01283        Obj_WaitAnimFinished
+#01284        IF Obj_FlagSet PED_LA
+#01285          IF Obj_FlagSet PED_LOW
+#01287            RANDOM[3][8; 19; 30]
+                  Wait 1 JUMP 0x62000000 Wait 1 JUMP 0x53000000 Obj_PlaySound RANDOM[4][12; 18; 24; 30]
+                  la_vo_entice1_cr JUMP 0x19000000 la_vo_entice2_cr JUMP 0x0f000000 la_vo_entice3_cr JUMP 0x05000000 la_vo_entice4_cr Vol = 400
+                  pitch = 80
+
+#01289          ELSE
+#01290            IF Obj_FlagSet PED_HIGH
+#01291              RANDOM[3][8; 19; 30]
+                    Wait 1 JUMP 0x62000000 Wait 1 JUMP 0x53000000 Obj_PlaySound RANDOM[4][12; 18; 24; 30]
+                    la_vo_entice1_cr JUMP 0x19000000 la_vo_entice2_cr JUMP 0x0f000000 la_vo_entice3_cr JUMP 0x05000000 la_vo_entice4_cr Vol = 400
+                    pitch = 100
+
+#01293            ELSE
+#01294              RANDOM[3][8; 19; 30]
+                    Wait 1 JUMP 0x62000000 Wait 1 JUMP 0x53000000 Obj_PlaySound RANDOM[4][12; 18; 24; 30]
+                    la_vo_entice1_cr JUMP 0x19000000 la_vo_entice2_cr JUMP 0x0f000000 la_vo_entice3_cr JUMP 0x05000000 la_vo_entice4_cr Vol = 400
+                    pitch = 90
+
+#01295            END IF
+#01296          END IF
+#01297        END IF
+#01298        IF Obj_FlagSet PED_STREAMER
+#01299          IF Obj_FlagSet PED_LOW
+#01300            RANDOM[3][8; 19; 30]
+                  Wait 1 JUMP 0x66000000 Wait 1 JUMP 0x57000000 Obj_PlayStream RANDOM[4][12; 19; 26; 33]
+                  GLOBAL.vo2_entice1
+                  JUMP 0x1c000000 GLOBAL.vo2_entice2
+                  JUMP 0x11000000 GLOBAL.vo2_entice3
+                  JUMP 0x06000000 GLOBAL.vo2_entice4
+                  Vol = 400
+                  pitch = 100
+
+#01301          ELSE
+#01302            IF Obj_FlagSet PED_HIGH
+#01303              RANDOM[3][8; 19; 30]
+                    Wait 1 JUMP 0x66000000 Wait 1 JUMP 0x57000000 Obj_PlayStream RANDOM[4][12; 19; 26; 33]
+                    GLOBAL.vo3_entice1
+                    JUMP 0x1c000000 GLOBAL.vo3_entice2
+                    JUMP 0x11000000 GLOBAL.vo3_entice3
+                    JUMP 0x06000000 GLOBAL.vo3_entice4
+                    Vol = 400
+                    pitch = 100
+
+#01304            ELSE
+#01305              RANDOM[3][8; 19; 30]
+                    Wait 1 JUMP 0x66000000 Wait 1 JUMP 0x57000000 Obj_PlayStream RANDOM[4][12; 19; 26; 33]
+                    GLOBAL.vo_entice1
+                    JUMP 0x1c000000 GLOBAL.vo_entice2
+                    JUMP 0x11000000 GLOBAL.vo_entice3
+                    JUMP 0x06000000 GLOBAL.vo_entice4
+                    Vol = 400
+                    pitch = 100
+
+#01306            END IF
+#01307          END IF
+#01308        END IF
+#01309      END LOOP 5
+#01310      GotoPreserveParams Ped_ReturnToWalking
+#01311    END IF
+#01312    IF Obj_FlagSet PED_NOMOVE
+#01315      GotoPreserveParams Ped_GenericWaiting
+#01316    END IF
+#01317    Obj_SetException ex = SkaterOutOfRadius
+          scr = Ped_ReturnToGenericCheckForTalking
+          params = STRUCT{
+            NULL }
+
+#01318  END FUNCTION
+
+#01319  FUNCTION Ped_WatcherSeeingTrick
+#01321    Obj_LookAtObject type = skater
+          time = 0.3
+
+#01323    Obj_ClearExceptions
+#01324    Obj_PlayAnim Anim = GLOBAL.Rotate
+          Cycle
+#01325    Obj_WaitRotate
+#01326    Obj_SetAnimCycleMode off
+#01327    Obj_WaitAnimFinished
+#01328    IF SkaterLastScoreLandedGreaterThan GLOBAL.MinPropsScoreLanding
+
+#01329      Obj_PlayAnim Anim = RANDOM[6][20; 27; 34; 41; 48; 55]
+
+            GLOBAL.Impressed1
+            JUMP 0x32000000 GLOBAL.Impressed2
+            JUMP 0x27000000 GLOBAL.Impressed3
+            JUMP 0x1c000000 GLOBAL.Impressed4
+            JUMP 0x11000000 GLOBAL.Impressed5
+            JUMP 0x06000000 GLOBAL.Impressed6
+
+#01331      IF Obj_FlagSet PED_SHP
+#01332        IF IsCareerMode
+#01333          IF Obj_FlagSet PED_GOAL
+#01334            SendException BDJ_SHP_ExcChickImpressed name = TRG_ChickCounter
+
+#01335            GotoPreserveParams BDJ_SHP_ImpressedChickCleanup
+#01336          END IF
+#01337        END IF
+#01338      END IF
+#01339      IF Obj_FlagSet PED_LA
+#01340        IF Obj_FlagSet PED_LOW
+#01342          Obj_PlaySound RANDOM[5][16; 22; 28; 34; 40]
+                la_vo_thresh2_1_cr JUMP 0x23000000 la_vo_thresh2_2_cr JUMP 0x19000000 la_vo_thresh2_3_cr JUMP 0x0f000000 la_vo_thresh2_4_cr JUMP 0x05000000 la_vo_thresh2_5_cr Vol = 400
+                pitch = 80
+
+#01344        ELSE
+#01345          IF Obj_FlagSet PED_HIGH
+#01346            Obj_PlaySound RANDOM[5][16; 22; 28; 34; 40]
+                  la_vo_thresh2_1_cr JUMP 0x23000000 la_vo_thresh2_2_cr JUMP 0x19000000 la_vo_thresh2_3_cr JUMP 0x0f000000 la_vo_thresh2_4_cr JUMP 0x05000000 la_vo_thresh2_5_cr Vol = 400
+                  pitch = 100
+
+#01348          ELSE
+#01349            Obj_PlaySound RANDOM[5][16; 22; 28; 34; 40]
+                  la_vo_thresh2_1_cr JUMP 0x23000000 la_vo_thresh2_2_cr JUMP 0x19000000 la_vo_thresh2_3_cr JUMP 0x0f000000 la_vo_thresh2_4_cr JUMP 0x05000000 la_vo_thresh2_5_cr Vol = 400
+                  pitch = 90
+
+#01350          END IF
+#01351        END IF
+#01352      END IF
+#01353      IF Obj_FlagSet PED_STREAMER
+#01354        IF Obj_FlagSet PED_LOW
+#01355          Obj_PlayStream RANDOM[5][16; 23; 30; 37; 44]
+                GLOBAL.vo2_impressed1
+                JUMP 0x27000000 GLOBAL.vo2_impressed2
+                JUMP 0x1c000000 GLOBAL.vo2_impressed3
+                JUMP 0x11000000 GLOBAL.vo2_impressed4
+                JUMP 0x06000000 GLOBAL.vo2_impressed5
+                Vol = 400
+                pitch = 100
+
+#01356        ELSE
+#01357          IF Obj_FlagSet PED_HIGH
+#01358            Obj_PlayStream RANDOM[5][16; 23; 30; 37; 44]
+                  GLOBAL.vo3_impressed1
+                  JUMP 0x27000000 GLOBAL.vo3_impressed2
+                  JUMP 0x1c000000 GLOBAL.vo3_impressed3
+                  JUMP 0x11000000 GLOBAL.vo3_impressed4
+                  JUMP 0x06000000 GLOBAL.vo3_impressed5
+                  Vol = 400
+                  pitch = 100
+
+#01359          ELSE
+#01360            Obj_PlayStream RANDOM[5][16; 23; 30; 37; 44]
+                  GLOBAL.vo_impressed1
+                  JUMP 0x27000000 GLOBAL.vo_impressed2
+                  JUMP 0x1c000000 GLOBAL.vo_impressed3
+                  JUMP 0x11000000 GLOBAL.vo_impressed4
+                  JUMP 0x06000000 GLOBAL.vo_impressed5
+                  Vol = 400
+                  pitch = 100
+
+#01361          END IF
+#01362        END IF
+#01363      END IF
+#01364      Obj_WaitAnimFinished
+#01365    ELSE
+#01366      IF SkaterLastScoreLandedGreaterThan 300
+#01367        Obj_PlayAnim Anim = RANDOM[6][20; 27; 34; 41; 48; 55]
+
+              GLOBAL.Bored1
+              JUMP 0x32000000 GLOBAL.Bored2
+              JUMP 0x27000000 GLOBAL.Bored3
+              JUMP 0x1c000000 GLOBAL.Bored4
+              JUMP 0x11000000 GLOBAL.Bored5
+              JUMP 0x06000000 GLOBAL.Bored6
+
+#01369        IF Obj_FlagSet PED_LA
+#01370          IF Obj_FlagSet PED_LOW
+#01372            Obj_PlaySound RANDOM[4][12; 18; 24; 30]
+                  la_vo_under1_cr JUMP 0x19000000 la_vo_under3_cr JUMP 0x0f000000 la_vo_under4_cr JUMP 0x05000000 la_vo_under5_cr Vol = 400
+                  pitch = 80
+
+#01374          ELSE
+#01375            IF Obj_FlagSet PED_HIGH
+#01376              Obj_PlaySound RANDOM[4][12; 18; 24; 30]
+                    la_vo_under1_cr JUMP 0x19000000 la_vo_under3_cr JUMP 0x0f000000 la_vo_under4_cr JUMP 0x05000000 la_vo_under5_cr Vol = 400
+                    pitch = 100
+
+#01378            ELSE
+#01379              Obj_PlaySound RANDOM[4][12; 18; 24; 30]
+                    la_vo_under1_cr JUMP 0x19000000 la_vo_under3_cr JUMP 0x0f000000 la_vo_under4_cr JUMP 0x05000000 la_vo_under5_cr Vol = 400
+                    pitch = 90
+
+#01380            END IF
+#01381          END IF
+#01382        END IF
+#01383        IF Obj_FlagSet PED_STREAMER
+#01384          IF Obj_FlagSet PED_LOW
+#01385            Obj_PlayStream RANDOM[4][12; 19; 26; 33]
+                  GLOBAL.vo2_bored1
+                  JUMP 0x1c000000 GLOBAL.vo2_bored2
+                  JUMP 0x11000000 GLOBAL.vo2_bored3
+                  JUMP 0x06000000 GLOBAL.vo2_bored4
+                  Vol = 400
+                  pitch = 100
+
+#01386          ELSE
+#01387            IF Obj_FlagSet PED_HIGH
+#01388              Obj_PlayStream RANDOM[4][12; 19; 26; 33]
+                    GLOBAL.vo3_bored1
+                    JUMP 0x1c000000 GLOBAL.vo3_bored2
+                    JUMP 0x11000000 GLOBAL.vo3_bored3
+                    JUMP 0x06000000 GLOBAL.vo3_bored4
+                    Vol = 400
+                    pitch = 100
+
+#01389            ELSE
+#01390              Obj_PlayStream RANDOM[4][12; 19; 26; 33]
+                    GLOBAL.vo_bored1
+                    JUMP 0x1c000000 GLOBAL.vo_bored2
+                    JUMP 0x11000000 GLOBAL.vo_bored3
+                    JUMP 0x06000000 GLOBAL.vo_bored4
+                    Vol = 400
+                    pitch = 100
+
+#01391            END IF
+#01392          END IF
+#01393        END IF
+#01394        Obj_WaitAnimFinished
+#01395      END IF
+#01396    END IF
+#01397    Obj_WaitAnimFinished
+#01398    Obj_WaitAnimFinished
+#01399    Obj_SetException ex = SkaterInRadius
+          scr = Ped_ReturnToGenericCheckForTalking
+          params = STRUCT{
+            NULL }
+
+#01400    Obj_SetException ex = SkaterOutOfRadius
+          scr = Ped_WatcherReturnToTalkingChecks
+          params = STRUCT{
+            NULL }
+
+#01401    Obj_SetException ex = SkaterLanded
+          scr = Ped_WatcherSeeingTrick
+          params = STRUCT{
+            NULL }
+
+#01402    Obj_SetException ex = SkaterBailed
+          scr = Ped_WatcherSeeingBail
+          params = STRUCT{
+            NULL }
+
+#01403    GotoPreserveParams Ped_ReturnToWalking
+#01404  END FUNCTION
+
+#01405  FUNCTION CheckFor_PedProps
+#01407    IF Obj_FlagSet PED_PROPS
+#01408    ELSE
+#01410      IF SkaterCurrentScorePotGreaterThan GLOBAL.MinPropsScoreDuring
+
+#01412        SpawnSkaterScript PedProps
+#01414        GotoPreserveParams Ped_WatcherGiveProps
+#01415      END IF
+#01416    END IF
+#01417  END FUNCTION
+
+#01418  FUNCTION Ped_WatcherGiveProps
+#01420    Obj_SetFlag PED_PROPS
+#01421    Obj_SetException ex = SkaterInRadius
+          scr = Ped_ReturnToGenericCheckForTalking
+          params = STRUCT{
+            NULL }
+
+#01423    Obj_SetException ex = SkaterOutOfRadius
+          scr = Ped_WatcherReturnToTalkingChecks
+          params = STRUCT{
+            NULL }
+
+#01424    Obj_PlayAnim Anim = RANDOM[5][16; 23; 30; 37; 44]
+
+          GLOBAL.GettingGood1
+          JUMP 0x27000000 GLOBAL.GettingGood2
+          JUMP 0x1c000000 GLOBAL.GettingGood3
+          JUMP 0x11000000 GLOBAL.GettingGood4
+          JUMP 0x06000000 GLOBAL.GettingGood5
+
+#01426    IF Obj_FlagSet PED_LA
+#01427      IF Obj_FlagSet PED_LOW
+#01429        Obj_PlaySound RANDOM[5][16; 22; 28; 34; 40]
+              la_vo_thresh1_1_cr JUMP 0x23000000 la_vo_thresh1_2_cr JUMP 0x19000000 la_vo_thresh1_3_cr JUMP 0x0f000000 la_vo_thresh1_4_cr JUMP 0x05000000 la_vo_thresh1_5_cr Vol = 400
+              pitch = 80
+
+#01431      ELSE
+#01432        IF Obj_FlagSet PED_HIGH
+#01433          Obj_PlaySound RANDOM[5][16; 22; 28; 34; 40]
+                la_vo_thresh1_1_cr JUMP 0x23000000 la_vo_thresh1_2_cr JUMP 0x19000000 la_vo_thresh1_3_cr JUMP 0x0f000000 la_vo_thresh1_4_cr JUMP 0x05000000 la_vo_thresh1_5_cr Vol = 400
+                pitch = 100
+
+#01435        ELSE
+#01436          Obj_PlaySound RANDOM[5][16; 22; 28; 34; 40]
+                la_vo_thresh1_1_cr JUMP 0x23000000 la_vo_thresh1_2_cr JUMP 0x19000000 la_vo_thresh1_3_cr JUMP 0x0f000000 la_vo_thresh1_4_cr JUMP 0x05000000 la_vo_thresh1_5_cr Vol = 400
+                pitch = 90
+
+#01437        END IF
+#01438      END IF
+#01439    END IF
+#01440    IF Obj_FlagSet PED_STREAMER
+#01441      IF Obj_FlagSet PED_LOW
+#01442        Obj_PlayStream RANDOM[5][16; 23; 30; 37; 44]
+              GLOBAL.vo2_gettinggood1
+              JUMP 0x27000000 GLOBAL.vo2_gettinggood2
+              JUMP 0x1c000000 GLOBAL.vo2_gettinggood3
+              JUMP 0x11000000 GLOBAL.vo2_gettinggood4
+              JUMP 0x06000000 GLOBAL.vo2_gettinggood5
+              Vol = 400
+              pitch = 100
+
+#01443      ELSE
+#01444        IF Obj_FlagSet PED_HIGH
+#01445          Obj_PlayStream RANDOM[5][16; 23; 30; 37; 44]
+                GLOBAL.vo3_gettinggood1
+                JUMP 0x27000000 GLOBAL.vo3_gettinggood2
+                JUMP 0x1c000000 GLOBAL.vo3_gettinggood3
+                JUMP 0x11000000 GLOBAL.vo3_gettinggood4
+                JUMP 0x06000000 GLOBAL.vo3_gettinggood5
+                Vol = 400
+                pitch = 100
+
+#01446        ELSE
+#01447          Obj_PlayStream RANDOM[5][16; 23; 30; 37; 44]
+                GLOBAL.vo_gettinggood1
+                JUMP 0x27000000 GLOBAL.vo_gettinggood2
+                JUMP 0x1c000000 GLOBAL.vo_gettinggood3
+                JUMP 0x11000000 GLOBAL.vo_gettinggood4
+                JUMP 0x06000000 GLOBAL.vo_gettinggood5
+                Vol = 400
+                pitch = 100
+
+#01448        END IF
+#01449      END IF
+#01450    END IF
+#01451    Obj_WaitAnimFinished
+#01452    LOOP
+#01453      Obj_LookAtObject type = skater
+            time = 0.3
+
+#01454      Obj_PlayAnim Anim = GLOBAL.Rotate
+            Cycle
+#01455      Obj_WaitRotate
+#01456      Obj_SetAnimCycleMode off
+#01457      Obj_WaitAnimFinished
+#01458      RANDOM[3][13; 46; 165]
+
+#01459      Obj_PlayAnim Anim = GLOBAL.Idle
+
+#01460      Obj_WaitAnimFinished
+#01461      JUMP 0xf1000000 Obj_PlayAnim Anim = GLOBAL.IdleToIdle2
+
+#01462      Obj_WaitAnimFinished
+#01463      CheckFor_PedProps NULL
+#01464      Obj_PlayAnim Anim = GLOBAL.Idle2
+
+#01465      Obj_WaitAnimFinished
+#01466      CheckFor_PedProps NULL
+#01467      Obj_PlayAnim Anim = GLOBAL.Idle2ToIdle
+
+#01468      Obj_WaitAnimFinished
+#01469      JUMP 0x76000000 Obj_PlayAnim Anim = GLOBAL.IdleToIdle3
+
+#01470      Obj_WaitAnimFinished
+#01471      CheckFor_PedProps NULL
+#01472      Obj_PlayAnim Anim = GLOBAL.Idle3
+
+#01473      Obj_WaitAnimFinished
+#01474      CheckFor_PedProps NULL
+#01475      Obj_PlayAnim Anim = GLOBAL.Idle3ToIdle
+
+#01476      Obj_WaitAnimFinished
+#01477
+#01478      Obj_WaitAnimFinished
+#01479      IF Obj_FlagSet PED_LA
+#01480        IF Obj_FlagSet PED_LOW
+#01482          RANDOM[3][8; 19; 30]
+                Wait 1 JUMP 0x62000000 Wait 1 JUMP 0x53000000 Obj_PlaySound RANDOM[4][12; 18; 24; 30]
+                la_vo_entice1_cr JUMP 0x19000000 la_vo_entice2_cr JUMP 0x0f000000 la_vo_entice3_cr JUMP 0x05000000 la_vo_entice4_cr Vol = 400
+                pitch = 80
+
+#01484        ELSE
+#01485          IF Obj_FlagSet PED_HIGH
+#01486            RANDOM[3][8; 19; 30]
+                  Wait 1 JUMP 0x62000000 Wait 1 JUMP 0x53000000 Obj_PlaySound RANDOM[4][12; 18; 24; 30]
+                  la_vo_entice1_cr JUMP 0x19000000 la_vo_entice2_cr JUMP 0x0f000000 la_vo_entice3_cr JUMP 0x05000000 la_vo_entice4_cr Vol = 400
+                  pitch = 100
+
+#01488          ELSE
+#01489            RANDOM[3][8; 19; 30]
+                  Wait 1 JUMP 0x62000000 Wait 1 JUMP 0x53000000 Obj_PlaySound RANDOM[4][12; 18; 24; 30]
+                  la_vo_entice1_cr JUMP 0x19000000 la_vo_entice2_cr JUMP 0x0f000000 la_vo_entice3_cr JUMP 0x05000000 la_vo_entice4_cr Vol = 400
+                  pitch = 90
+
+#01490          END IF
+#01491        END IF
+#01492      END IF
+#01493      IF Obj_FlagSet PED_STREAMER
+#01494        IF Obj_FlagSet PED_LOW
+#01495          RANDOM[3][8; 19; 30]
+                Wait 1 JUMP 0x66000000 Wait 1 JUMP 0x57000000 Obj_PlayStream RANDOM[4][12; 19; 26; 33]
+                GLOBAL.vo2_entice1
+                JUMP 0x1c000000 GLOBAL.vo2_entice2
+                JUMP 0x11000000 GLOBAL.vo2_entice3
+                JUMP 0x06000000 GLOBAL.vo2_entice4
+                Vol = 400
+                pitch = 100
+
+#01496        ELSE
+#01497          IF Obj_FlagSet PED_HIGH
+#01498            RANDOM[3][8; 19; 30]
+                  Wait 1 JUMP 0x66000000 Wait 1 JUMP 0x57000000 Obj_PlayStream RANDOM[4][12; 19; 26; 33]
+                  GLOBAL.vo3_entice1
+                  JUMP 0x1c000000 GLOBAL.vo3_entice2
+                  JUMP 0x11000000 GLOBAL.vo3_entice3
+                  JUMP 0x06000000 GLOBAL.vo3_entice4
+                  Vol = 400
+                  pitch = 100
+
+#01499          ELSE
+#01500            RANDOM[3][8; 19; 30]
+                  Wait 1 JUMP 0x66000000 Wait 1 JUMP 0x57000000 Obj_PlayStream RANDOM[4][12; 19; 26; 33]
+                  GLOBAL.vo_entice1
+                  JUMP 0x1c000000 GLOBAL.vo_entice2
+                  JUMP 0x11000000 GLOBAL.vo_entice3
+                  JUMP 0x06000000 GLOBAL.vo_entice4
+                  Vol = 400
+                  pitch = 100
+
+#01501          END IF
+#01502        END IF
+#01503      END IF
+#01504    END LOOP 5
+#01506    GotoPreserveParams Ped_ReturnToWalking
+#01507  END FUNCTION
+
+#01509  FUNCTION Ped_WatcherSeeingBail
+#01511    Obj_LookAtObject type = skater
+          time = 0.3
+
+#01512    Obj_ClearExceptions
+#01513    Obj_PlayAnim Anim = GLOBAL.Rotate
+          Cycle
+#01514    Obj_WaitRotate
+#01515    Obj_SetAnimCycleMode off
+#01516    Obj_WaitAnimFinished
+#01517    Obj_PlayAnim Anim = RANDOM[1][0]
+
+          GLOBAL.Disgust1
+
+#01519    IF Obj_FlagSet PED_LA
+#01520      IF Obj_FlagSet PED_LOW
+#01522        Obj_PlaySound RANDOM[4][12; 18; 24; 30]
+              la_vo_bail_under1_cr JUMP 0x19000000 la_vo_bail_under2_cr JUMP 0x0f000000 la_vo_bail_under3_cr JUMP 0x05000000 la_vo_bail_under4_cr Vol = 400
+              pitch = 80
+
+#01524      ELSE
+#01525        IF Obj_FlagSet PED_HIGH
+#01526          Obj_PlaySound RANDOM[4][12; 18; 24; 30]
+                la_vo_bail_under1_cr JUMP 0x19000000 la_vo_bail_under2_cr JUMP 0x0f000000 la_vo_bail_under3_cr JUMP 0x05000000 la_vo_bail_under4_cr Vol = 400
+                pitch = 100
+
+#01528        ELSE
+#01529          Obj_PlaySound RANDOM[4][12; 18; 24; 30]
+                la_vo_bail_under1_cr JUMP 0x19000000 la_vo_bail_under2_cr JUMP 0x0f000000 la_vo_bail_under3_cr JUMP 0x05000000 la_vo_bail_under4_cr Vol = 400
+                pitch = 90
+
+#01530        END IF
+#01531      END IF
+#01532    END IF
+#01533    IF Obj_FlagSet PED_STREAMER
+#01534      IF Obj_FlagSet PED_LOW
+#01535        Obj_PlayStream RANDOM[4][12; 19; 26; 33]
+              GLOBAL.vo2_bail_under1
+              JUMP 0x1c000000 GLOBAL.vo2_bail_under2
+              JUMP 0x11000000 GLOBAL.vo2_bail_under3
+              JUMP 0x06000000 GLOBAL.vo2_bail_under4
+              Vol = 400
+              pitch = 100
+
+#01536      ELSE
+#01537        IF Obj_FlagSet PED_HIGH
+#01538          Obj_PlayStream RANDOM[4][12; 19; 26; 33]
+                GLOBAL.vo3_bail_under1
+                JUMP 0x1c000000 GLOBAL.vo3_bail_under2
+                JUMP 0x11000000 GLOBAL.vo3_bail_under3
+                JUMP 0x06000000 GLOBAL.vo3_bail_under4
+                Vol = 400
+                pitch = 100
+
+#01539        ELSE
+#01540          Obj_PlayStream RANDOM[6][20; 27; 34; 41; 48; 55]
+                GLOBAL.vo_bail_under1
+                JUMP 0x32000000 GLOBAL.vo_bail_under2
+                JUMP 0x27000000 GLOBAL.vo_bail_under3
+                JUMP 0x1c000000 GLOBAL.vo_bail_under4
+                JUMP 0x11000000 GLOBAL.vo_bail_under5
+                JUMP 0x06000000 GLOBAL.vo_bail_under6
+                Vol = 400
+                pitch = 100
+
+#01541        END IF
+#01542      END IF
+#01543    END IF
+#01544    Obj_WaitAnimFinished
+#01545    Obj_PlayAnim Anim = RANDOM[2][4; 11]
+
+          GLOBAL.Disgust1
+          JUMP 0x06000000 GLOBAL.Laugh
+
+#01546    Obj_WaitAnimFinished
+#01547    Obj_PlayAnim Anim = RANDOM[2][4; 11]
+
+          GLOBAL.Disgust1
+          JUMP 0x06000000 GLOBAL.Laugh
+
+#01548    Obj_WaitAnimFinished
+#01549    Obj_SetException ex = SkaterInRadius
+          scr = Ped_ReturnToGenericCheckForTalking
+          params = STRUCT{
+            NULL }
+
+#01550    Obj_SetException ex = SkaterOutOfRadius
+          scr = Ped_WatcherReturnToTalkingChecks
+          params = STRUCT{
+            NULL }
+
+#01551    Obj_SetException ex = SkaterLanded
+          scr = Ped_WatcherSeeingTrick
+          params = STRUCT{
+            NULL }
+
+#01552    Obj_SetException ex = SkaterBailed
+          scr = Ped_WatcherSeeingBail
+          params = STRUCT{
+            NULL }
+
+#01553    LOOP
+#01554      Obj_LookAtObject type = skater
+            time = 0.3
+
+#01555      Obj_PlayAnim Anim = GLOBAL.Rotate
+            Cycle
+#01556      Obj_WaitRotate
+#01557      Obj_SetAnimCycleMode off
+#01558      Obj_WaitAnimFinished
+#01559      RANDOM[3][13; 57; 187]
+
+#01560      Obj_PlayAnim Anim = GLOBAL.Idle
+
+#01561      Obj_WaitAnimFinished
+#01562      CheckFor_PedProps NULL
+#01563      JUMP 0x07010000 Obj_PlayAnim Anim = GLOBAL.IdleToIdle2
+
+#01564      Obj_WaitAnimFinished
+#01565      CheckFor_PedProps NULL
+#01566      Obj_PlayAnim Anim = GLOBAL.Idle2
+
+#01567      Obj_WaitAnimFinished
+#01568      CheckFor_PedProps NULL
+#01569      Obj_PlayAnim Anim = GLOBAL.Idle2ToIdle
+
+#01570      Obj_WaitAnimFinished
+#01571      CheckFor_PedProps NULL
+#01572      JUMP 0x81000000 Obj_PlayAnim Anim = GLOBAL.IdleToIdle3
+
+#01573      Obj_WaitAnimFinished
+#01574      CheckFor_PedProps NULL
+#01575      Obj_PlayAnim Anim = GLOBAL.Idle3
+
+#01576      Obj_WaitAnimFinished
+#01577      CheckFor_PedProps NULL
+#01578      Obj_PlayAnim Anim = GLOBAL.Idle3ToIdle
+
+#01579      Obj_WaitAnimFinished
+#01580      CheckFor_PedProps NULL
+#01581
+#01582      Obj_WaitAnimFinished
+#01583      IF Obj_FlagSet PED_LA
+#01584        IF Obj_FlagSet PED_LOW
+#01586          RANDOM[3][8; 19; 30]
+                Wait 1 JUMP 0x62000000 Wait 1 JUMP 0x53000000 Obj_PlaySound RANDOM[4][12; 18; 24; 30]
+                la_vo_entice1_cr JUMP 0x19000000 la_vo_entice2_cr JUMP 0x0f000000 la_vo_entice3_cr JUMP 0x05000000 la_vo_entice4_cr Vol = 400
+                pitch = 80
+
+#01588        ELSE
+#01589          IF Obj_FlagSet PED_HIGH
+#01590            RANDOM[3][8; 19; 30]
+                  Wait 1 JUMP 0x62000000 Wait 1 JUMP 0x53000000 Obj_PlaySound RANDOM[4][12; 18; 24; 30]
+                  la_vo_entice1_cr JUMP 0x19000000 la_vo_entice2_cr JUMP 0x0f000000 la_vo_entice3_cr JUMP 0x05000000 la_vo_entice4_cr Vol = 400
+                  pitch = 100
+
+#01592          ELSE
+#01593            RANDOM[3][8; 19; 30]
+                  Wait 1 JUMP 0x62000000 Wait 1 JUMP 0x53000000 Obj_PlaySound RANDOM[4][12; 18; 24; 30]
+                  la_vo_entice1_cr JUMP 0x19000000 la_vo_entice2_cr JUMP 0x0f000000 la_vo_entice3_cr JUMP 0x05000000 la_vo_entice4_cr Vol = 400
+                  pitch = 90
+
+#01594          END IF
+#01595        END IF
+#01596      END IF
+#01597      IF Obj_FlagSet PED_STREAMER
+#01598        IF Obj_FlagSet PED_LOW
+#01599          RANDOM[3][8; 19; 30]
+                Wait 1 JUMP 0x66000000 Wait 1 JUMP 0x57000000 Obj_PlayStream RANDOM[4][12; 19; 26; 33]
+                GLOBAL.vo2_entice1
+                JUMP 0x1c000000 GLOBAL.vo2_entice2
+                JUMP 0x11000000 GLOBAL.vo2_entice3
+                JUMP 0x06000000 GLOBAL.vo2_entice4
+                Vol = 400
+                pitch = 100
+
+#01600        ELSE
+#01601          IF Obj_FlagSet PED_HIGH
+#01602            RANDOM[3][8; 19; 30]
+                  Wait 1 JUMP 0x66000000 Wait 1 JUMP 0x57000000 Obj_PlayStream RANDOM[4][12; 19; 26; 33]
+                  GLOBAL.vo3_entice1
+                  JUMP 0x1c000000 GLOBAL.vo3_entice2
+                  JUMP 0x11000000 GLOBAL.vo3_entice3
+                  JUMP 0x06000000 GLOBAL.vo3_entice4
+                  Vol = 400
+                  pitch = 100
+
+#01603          ELSE
+#01604            RANDOM[3][8; 19; 30]
+                  Wait 1 JUMP 0x66000000 Wait 1 JUMP 0x57000000 Obj_PlayStream RANDOM[4][12; 19; 26; 33]
+                  GLOBAL.vo_entice1
+                  JUMP 0x1c000000 GLOBAL.vo_entice2
+                  JUMP 0x11000000 GLOBAL.vo_entice3
+                  JUMP 0x06000000 GLOBAL.vo_entice4
+                  Vol = 400
+                  pitch = 100
+
+#01605          END IF
+#01606        END IF
+#01607      END IF
+#01608    END LOOP 5
+#01610    GotoPreserveParams Ped_ReturnToWalking
+#01611  END FUNCTION
+
+#01612  FUNCTION Ped_WatcherReturnToTalkingChecks
+#01614    IF Obj_FlagSet PED_NOMOVE
+#01615      Obj_LookAtNodeLinked time = 0.3
+
+#01619      Obj_PlayAnim Anim = GLOBAL.Rotate
+            Cycle
+#01621      Obj_WaitRotate
+#01622      Obj_SetAnimCycleMode off
+#01623      Obj_WaitAnimFinished
+#01624      Obj_PlayAnim Anim = GLOBAL.Idle
+            Cycle
+#01625    ELSE
+#01626      Obj_SetAnimCycleMode off
+#01627      Obj_WaitAnimFinished
+#01628      Obj_LookAtNodeLinked time = 0.3
+
+#01632      Obj_PlayAnim Anim = GLOBAL.Rotate
+            Cycle
+#01634      Obj_WaitRotate
+#01635      Obj_SetAnimCycleMode off
+#01636      Obj_WaitAnimFinished
+#01637      Obj_StartAlongPath
+#01638      Obj_PlayAnim Anim = GLOBAL.IdleToWalk
+
+#01639      Obj_WaitAnimFinished
+#01640      Obj_PlayAnim Anim = GLOBAL.Walk
+            Cycle
+#01641    END IF
+#01642    GotoPreserveParams Ped_ReturnToGenericCheckForTalking
+#01643  END FUNCTION
+
+#01644  FUNCTION Ped_GettingReadyToAvoidSkater
+#01651    Obj_ClearExceptions
+#01652    Obj_SetInnerRadius 0
+#01653    Obj_StorePos
+#01654    Obj_StoreNode
+#01655    IF SkaterSpeedLessThan 1
+#01656      GotoPreserveParams PedStopAndThreatenSkater
+#01657    END IF
+#01658    IF SkaterSpeedGreaterThan 700
+#01659      GotoPreserveParams Ped_FallForSkater
+#01660    END IF
+#01661    Obj_StopMovingAndRotating
+#01663    Obj_PlayAnim Anim = GLOBAL.Idle
+          Cycle
+#01665    GotoPreserveParams Ped_AvoidSkaterScript
+#01666  END FUNCTION
+
+#01667  FUNCTION Ped_GettingReadyToAvoidSkater_NoNodeStored
+#01669    Obj_ClearExceptions
+#01670    Obj_SetInnerRadius 0
+#01671    IF SkaterSpeedLessThan 1
+#01672      GotoPreserveParams PedStopAndThreatenSkater
+#01673    END IF
+#01674    IF SkaterSpeedGreaterThan 700
+#01675      GotoPreserveParams Ped_FallForSkater
+#01676    END IF
+#01677    Obj_StopMovingAndRotating
+#01678    Obj_PlayAnim Anim = GLOBAL.Idle
+          Cycle
+#01679    GotoPreserveParams Ped_AvoidSkaterScript
+#01680  END FUNCTION
+
+#01681  FUNCTION PedStopAndThreatenSkater
+#01683    Obj_ClearExceptions
+#01684    Obj_SetInnerRadius 2
+#01685    Obj_SetOuterRadius 15
+#01686    IF Obj_FlagSet PED_LAUGHER
+#01687      Obj_SetOuterRadius 30
+#01688      Obj_SetException ex = SkaterInRadius
+            scr = Ped_KnockDownSkater
+            params = STRUCT{
+              NULL }
+
+#01689    ELSE
+#01690      Obj_SetException ex = SkaterInRadius
+            scr = Ped_AvoidSkaterScript
+            params = STRUCT{
+              NULL }
+
+#01691    END IF
+#01692    Obj_SetException ex = SkaterOutOfRadius
+          scr = Ped_ReturnToPathAfterAvoidSkater
+          params = STRUCT{
+            NULL }
+
+#01693    Obj_StopMovingAndRotating
+#01694    Obj_StopAlongPath
+#01695    Obj_SetAnimCycleMode off
+#01698    IF Obj_FlagSet PED_LAUGHER
+#01700      Obj_PlayAnim Anim = GLOBAL.WalkToIdle
+
+#01701      Obj_PlayStream RANDOM[3][8; 14; 20]
+            can_laugh30a JUMP 0x0f000000 can_laugh31a JUMP 0x05000000 can_laugh32a volume = 250
+            radius = 100
+
+#01702      Obj_WaitAnimFinished
+#01703    END IF
+#01704    Obj_PlayAnim Anim = GLOBAL.Idle
+          Cycle
+#01705    Obj_LookAtObject type = skater
+          time = 0.3
+
+#01706    Obj_PlayAnim Anim = GLOBAL.Rotate
+          Cycle
+#01707    Obj_WaitRotate
+#01708    Obj_SetAnimCycleMode off
+#01709    Obj_WaitAnimFinished
+#01710    IF Obj_FlagSet PED_CHICK
+#01711      Obj_PlayAnim Anim = RANDOM[3][8; 15; 22]
+
+            GLOBAL.Disgust1
+            JUMP 0x11000000 GLOBAL.Disgust2
+            JUMP 0x06000000 GLOBAL.Disgust3
+
+#01712    ELSE
+#01713      IF Obj_FlagSet PED_LAUGHER
+#01714        Obj_PlayAnim Anim = RANDOM[3][8; 15; 22]
+
+              GLOBAL.Disgust1
+              JUMP 0x11000000 GLOBAL.Disgust2
+              JUMP 0x06000000 GLOBAL.Disgust3
+
+#01715        Obj_PlayStream RANDOM[3][8; 14; 20]
+              can_laugh_30a JUMP 0x0f000000 can_laugh_31a JUMP 0x05000000 can_laugh_32a volume = 250
+              radius = 100
+
+#01716      ELSE
+#01717        IF Obj_FlagSet PED_CHATTER
+#01718          Obj_PlayAnim Anim = RANDOM[3][8; 15; 22]
+
+                GLOBAL.Disgust1
+                JUMP 0x11000000 GLOBAL.Disgust2
+                JUMP 0x06000000 GLOBAL.Disgust3
+
+#01719        ELSE
+#01720          IF ProfileEquals Is_Named = demoness
+
+#01721            Ped_Scale_From_Demoness
+#01722          ELSE
+#01723            IF ProfileEquals Is_Named = maul
+
+#01724              Ped_Float_ForDarth
+#01725            ELSE
+#01726              IF ProfileEquals Is_Named = carrera
+
+#01727                Ped_Dance_For_Private
+#01728              ELSE
+#01729                IF ProfileEquals Is_Named = wolverine
+
+#01730                  Ped_Fight_Wolverine
+#01731                ELSE
+#01732                  IF ProfileEquals Is_Named = dick
+
+#01733                    Ped_Fear_The_Cops
+#01734                  ELSE
+#01735                    Obj_PlayAnim Anim = RANDOM[3][8; 15; 22]
+
+                          GLOBAL.Disgust1
+                          JUMP 0x11000000 GLOBAL.Disgust2
+                          JUMP 0x06000000 GLOBAL.Disgust3
+
+#01736                  END IF
+#01737                END IF
+#01738              END IF
+#01739            END IF
+#01740          END IF
+#01741        END IF
+#01742      END IF
+#01743    END IF
+#01744    IF Obj_FlagSet PED_LA
+#01746      IF Obj_FlagSet PED_LOW
+#01748        Obj_PlaySound RANDOM[3][8; 14; 20]
+              la_vo_avoid2a_cr JUMP 0x0f000000 la_vo_avoid2c_cr JUMP 0x05000000 la_vo_avoid2d_cr Vol = 400
+              pitch = 80
+
+#01750      ELSE
+#01751        IF Obj_FlagSet PED_HIGH
+#01752          Obj_PlaySound RANDOM[3][8; 14; 20]
+                la_vo_avoid2a_cr JUMP 0x0f000000 la_vo_avoid2c_cr JUMP 0x05000000 la_vo_avoid2d_cr Vol = 400
+                pitch = 100
+
+#01754        ELSE
+#01755          Obj_PlaySound RANDOM[3][8; 14; 20]
+                la_vo_avoid2a_cr JUMP 0x0f000000 la_vo_avoid2c_cr JUMP 0x05000000 la_vo_avoid2d_cr Vol = 400
+                pitch = 90
+
+#01756        END IF
+#01757      END IF
+#01758    END IF
+#01759    IF Obj_FlagSet PED_STREAMER
+#01760      IF Obj_FlagSet PED_LOW
+#01761        Obj_PlayStream RANDOM[3][8; 15; 22]
+              GLOBAL.vo2_pedangry1
+              JUMP 0x11000000 GLOBAL.vo2_pedangry2
+              JUMP 0x06000000 GLOBAL.vo2_pedangry3
+              Vol = 400
+              pitch = 100
+
+#01762      ELSE
+#01763        IF Obj_FlagSet PED_HIGH
+#01764          Obj_PlayStream RANDOM[3][8; 15; 22]
+                GLOBAL.vo3_pedangry1
+                JUMP 0x11000000 GLOBAL.vo3_pedangry2
+                JUMP 0x06000000 GLOBAL.vo3_pedangry3
+                Vol = 400
+                pitch = 100
+
+#01765        ELSE
+#01766          Obj_PlayStream RANDOM[3][8; 15; 22]
+                GLOBAL.vo_pedangry1
+                JUMP 0x11000000 GLOBAL.vo_pedangry2
+                JUMP 0x06000000 GLOBAL.vo_pedangry3
+                Vol = 400
+                pitch = 100
+
+#01767        END IF
+#01768      END IF
+#01769    END IF
+#01770    Obj_WaitAnimFinished
+#01771    Obj_LookAtObject type = skater
+          time = 0.3
+
+#01772    Obj_PlayAnim Anim = GLOBAL.Rotate
+          Cycle
+#01773    Obj_WaitRotate
+#01774    Obj_SetAnimCycleMode off
+#01775    Obj_WaitAnimFinished
+#01776    Obj_PlayAnim Anim = RANDOM[3][8; 15; 22]
+
+          GLOBAL.Disgust1
+          JUMP 0x11000000 GLOBAL.Disgust2
+          JUMP 0x06000000 GLOBAL.Disgust3
+
+#01777    IF Obj_FlagSet PED_LA
+#01778      IF Obj_FlagSet PED_LOW
+#01780        Obj_PlaySound RANDOM[3][8; 14; 20]
+              la_vo_avoid3b_cr JUMP 0x0f000000 la_vo_avoid3c_cr JUMP 0x05000000 la_vo_avoid3d_cr Vol = 400
+              pitch = 80
+
+#01782      ELSE
+#01783        IF Obj_FlagSet PED_HIGH
+#01784          Obj_PlaySound RANDOM[3][8; 14; 20]
+                la_vo_avoid3b_cr JUMP 0x0f000000 la_vo_avoid3c_cr JUMP 0x05000000 la_vo_avoid3d_cr Vol = 400
+                pitch = 100
+
+#01786        ELSE
+#01787          Obj_PlaySound RANDOM[3][8; 14; 20]
+                la_vo_avoid3b_cr JUMP 0x0f000000 la_vo_avoid3c_cr JUMP 0x05000000 la_vo_avoid3d_cr Vol = 400
+                pitch = 90
+
+#01788        END IF
+#01789      END IF
+#01790    END IF
+#01791    IF Obj_FlagSet PED_STREAMER
+#01792      IF Obj_FlagSet PED_LOW
+#01793        Obj_PlayStream RANDOM[3][8; 15; 22]
+              GLOBAL.vo2_threaten1
+              JUMP 0x11000000 GLOBAL.vo2_threaten2
+              JUMP 0x06000000 GLOBAL.vo2_threaten3
+              Vol = 400
+              pitch = 100
+
+#01794      ELSE
+#01795        IF Obj_FlagSet PED_HIGH
+#01796          Obj_PlayStream RANDOM[3][8; 15; 22]
+                GLOBAL.vo3_threaten1
+                JUMP 0x11000000 GLOBAL.vo3_threaten2
+                JUMP 0x06000000 GLOBAL.vo3_threaten3
+                Vol = 400
+                pitch = 100
+
+#01797        ELSE
+#01798          Obj_PlayStream RANDOM[6][20; 27; 34; 41; 48; 55]
+                GLOBAL.vo_threaten1
+                JUMP 0x32000000 GLOBAL.vo_threaten2
+                JUMP 0x27000000 GLOBAL.vo_threaten3
+                JUMP 0x1c000000 GLOBAL.vo_threaten4
+                JUMP 0x11000000 GLOBAL.vo_threaten5
+                JUMP 0x06000000 GLOBAL.vo_threaten6
+                Vol = 400
+                pitch = 100
+
+#01799        END IF
+#01800      END IF
+#01801    END IF
+#01802    Obj_WaitAnimFinished
+#01803    IF Obj_FlagSet PED_LAUGHER
+#01804      GotoPreserveParams PedStopAndThreatenSkater
+#01805    ELSE
+#01806      GotoPreserveParams Ped_KnockDownSkater
+#01807    END IF
+#01808  END FUNCTION
+
+#01809  FUNCTION Ped_AvoidSkaterScript
+#01811    Obj_ClearExceptions
+#01812    Obj_VarInc var = 0
+
+#01814    Ped_AvoidSkater JumpLeft = GLOBAL.JumpLeft
+          JumpForward = GLOBAL.JumpForward
+          JumpBack = GLOBAL.JumpBack
+          Idle = GLOBAL.Idle
+
+#01815    IF Obj_FlagSet PED_LA
+#01817      IF Obj_FlagSet PED_LOW
+#01819        Obj_PlaySound RANDOM[4][12; 18; 24; 30]
+              la_vo_approach1_cr JUMP 0x19000000 la_vo_approach2_cr JUMP 0x0f000000 la_vo_approach3_cr JUMP 0x05000000 la_vo_approach4_cr Vol = 400
+              pitch = 80
+
+#01821      ELSE
+#01822        IF Obj_FlagSet PED_HIGH
+#01823          Obj_PlaySound RANDOM[4][12; 18; 24; 30]
+                la_vo_approach1_cr JUMP 0x19000000 la_vo_approach2_cr JUMP 0x0f000000 la_vo_approach3_cr JUMP 0x05000000 la_vo_approach4_cr Vol = 400
+                pitch = 100
+
+#01825        ELSE
+#01826          Obj_PlaySound RANDOM[4][12; 18; 24; 30]
+                la_vo_approach1_cr JUMP 0x19000000 la_vo_approach2_cr JUMP 0x0f000000 la_vo_approach3_cr JUMP 0x05000000 la_vo_approach4_cr Vol = 400
+                pitch = 90
+
+#01827        END IF
+#01828      END IF
+#01829    END IF
+#01830    IF Obj_FlagSet PED_STREAMER
+#01831      IF Obj_FlagSet PED_LOW
+#01832        Obj_PlayStream RANDOM[4][12; 19; 26; 33]
+              GLOBAL.vo2_pedhit1
+              JUMP 0x1c000000 GLOBAL.vo2_pedhit2
+              JUMP 0x11000000 GLOBAL.vo2_pedhit3
+              JUMP 0x06000000 GLOBAL.vo2_pedhit4
+              Vol = 400
+              pitch = 100
+
+#01833      ELSE
+#01834        IF Obj_FlagSet PED_HIGH
+#01835          Obj_PlayStream RANDOM[4][12; 19; 26; 33]
+                GLOBAL.vo3_pedhit1
+                JUMP 0x1c000000 GLOBAL.vo3_pedhit2
+                JUMP 0x11000000 GLOBAL.vo3_pedhit3
+                JUMP 0x06000000 GLOBAL.vo3_pedhit4
+                Vol = 400
+                pitch = 100
+
+#01836        ELSE
+#01837          Obj_PlayStream RANDOM[4][12; 19; 26; 33]
+                GLOBAL.vo_pedhit1
+                JUMP 0x1c000000 GLOBAL.vo_pedhit2
+                JUMP 0x11000000 GLOBAL.vo_pedhit3
+                JUMP 0x06000000 GLOBAL.vo_pedhit4
+                Vol = 400
+                pitch = 100
+
+#01838        END IF
+#01839      END IF
+#01840    END IF
+#01841    Obj_SetOuterRadius 0
+#01842    Obj_SetException ex = LandedEscapeJump
+          scr = Ped_PissedAfterAvoidSkater
+          params = STRUCT{
+            NULL }
+
+#01843  END FUNCTION
+
+#01844  FUNCTION Ped_Fear_The_Cops
+#01846    Obj_PlayAnim Anim = OfficerDick_Init
+
+#01847    Obj_WaitAnimFinished
+#01848    Obj_PlayAnim Anim = OfficerDick_Idle
+
+#01849    Obj_WaitAnimFinished
+#01850  END FUNCTION
+
+#01851  FUNCTION Ped_Fight_Wolverine
+#01853    Obj_PlayAnim Anim = Wolverine_Init
+
+#01854    Obj_WaitAnimFinished
+#01855    Obj_PlayAnim Anim = Wolverine_Idle
+
+#01856    Obj_WaitAnimFinished
+#01857    Obj_PlayAnim Anim = Wolverine_Idle
+
+#01858    Obj_WaitAnimFinished
+#01859    Obj_PlayAnim Anim = Wolverine_Idle
+
+#01860    Obj_WaitAnimFinished
+#01861    Obj_PlayAnim Anim = Wolverine_Idle
+
+#01862    Obj_WaitAnimFinished
+#01863    Obj_PlayAnim Anim = Wolverine_Idle
+
+#01864    Obj_WaitAnimFinished
+#01865  END FUNCTION
+
+#01866  FUNCTION Ped_Dance_For_Private
+#01868    Obj_PlayAnim Anim = PrivateCarrera_Init
+
+#01869    Obj_WaitAnimFinished
+#01870    Obj_PlayAnim Anim = PrivateCarrera_Idle
+
+#01871    Obj_WaitAnimFinished
+#01872    Obj_PlayAnim Anim = PrivateCarrera_Idle
+
+#01873    Obj_WaitAnimFinished
+#01874    Obj_PlayAnim Anim = PrivateCarrera_Idle
+
+#01875    Obj_WaitAnimFinished
+#01876    Obj_PlayAnim Anim = PrivateCarrera_Idle
+
+#01877    Obj_WaitAnimFinished
+#01878  END FUNCTION
+
+#01879  FUNCTION Ped_Float_ForDarth
+#01881    Obj_PlayAnim Anim = DarthMaul_Init
+
+#01882    Obj_WaitAnimFinished
+#01883    Obj_PlayAnim Anim = DarthMaul_Idle
+
+#01884    Obj_WaitAnimFinished
+#01885    Obj_PlayAnim Anim = DarthMaul_Idle
+
+#01886    Obj_WaitAnimFinished
+#01887    Obj_PlayAnim Anim = DarthMaul_Idle
+
+#01888    Obj_WaitAnimFinished
+#01889    Obj_PlayAnim Anim = DarthMaul_Out
+
+#01890    Obj_WaitAnimFinished
+#01891  END FUNCTION
+
+#01892  FUNCTION Ped_Scale_From_Demoness
+#01894    Obj_PlayAnim Anim = Demoness_Init
+
+#01895    IF Obj_FlagSet PED_SHRUNK
+#01896    ELSE
+#01897      Obj_SetFlag PED_SHRUNK
+#01898      Obj_ApplyScaling x = 1
+            y = 1
+            z = 1
+
+#01899      Wait 2 frames
+#01900      Obj_ApplyScaling x = 0.9
+            y = 0.9
+            z = 0.9
+
+#01901      Wait 2 frames
+#01902      Obj_ApplyScaling x = 0.8
+            y = 0.8
+            z = 0.8
+
+#01903      Wait 2 frames
+#01904      Obj_ApplyScaling x = 0.7
+            y = 0.7
+            z = 0.7
+
+#01905      Wait 2 frames
+#01906      Obj_ApplyScaling x = 0.6
+            y = 0.6
+            z = 0.6
+
+#01907      Wait 2 frames
+#01908      Obj_ApplyScaling x = 0.5
+            y = 0.5
+            z = 0.5
+
+#01909      Wait 2 frames
+#01910      Obj_ApplyScaling x = 0.4
+            y = 0.4
+            z = 0.4
+
+#01911      Wait 2 frames
+#01912      Obj_ApplyScaling x = 0.3
+            y = 0.3
+            z = 0.3
+
+#01913      Wait 2 frames
+#01914      Obj_ApplyScaling x = 0.2
+            y = 0.2
+            z = 0.2
+
+#01915    END IF
+#01916    Obj_WaitAnimFinished
+#01917    Obj_PlayAnim Anim = Demoness_Idle
+
+#01918    Obj_WaitAnimFinished
+#01919    Obj_PlayAnim Anim = Demoness_Idle
+
+#01920  END FUNCTION
+
+#01921  FUNCTION Ped_BurnForDemoness
+#01923    Obj_ClearExceptions
+#01924    Obj_PlayAnim Anim = GLOBAL.Idle
+          Cycle
+#01925    Obj_StopAlongPath
+#01926    Obj_ApplyScaling x = 1
+          y = 1
+          z = 1
+
+#01927    Wait 2 frames
+#01928    Obj_ApplyScaling x = 0.9
+          y = 0.9
+          z = 0.9
+
+#01929    Wait 2 frames
+#01930    Obj_ApplyScaling x = 0.8
+          y = 0.8
+          z = 0.8
+
+#01931    Wait 2 frames
+#01932    Obj_ApplyScaling x = 0.7
+          y = 0.7
+          z = 0.7
+
+#01933    Wait 2 frames
+#01934    Obj_ApplyScaling x = 0.6
+          y = 0.6
+          z = 0.6
+
+#01935    Wait 2 frames
+#01936    Obj_ApplyScaling x = 0.5
+          y = 0.5
+          z = 0.5
+
+#01937    Wait 2 frames
+#01938    Obj_ApplyScaling x = 0.4
+          y = 0.4
+          z = 0.4
+
+#01939    Wait 2 frames
+#01940    Obj_ApplyScaling x = 0.3
+          y = 0.3
+          z = 0.3
+
+#01941    Wait 2 frames
+#01942    Obj_ApplyScaling x = 0.2
+          y = 0.2
+          z = 0.2
+
+#01943  END FUNCTION
+
+#01945  FUNCTION Ped_PissedAfterAvoidSkater
+#01947    Obj_SetInnerRadius 5
+#01950    Obj_SetOuterRadius 15
+#01951    IF Obj_VarGE var = 0
+            value = 2
+
+#01952      Obj_SetException ex = SkaterInRadius
+            scr = Ped_KnockDownSkater
+            params = STRUCT{
+              NULL }
+
+#01953    ELSE
+#01954      Obj_SetException ex = SkaterInRadius
+            scr = Ped_AvoidSkaterScript
+            params = STRUCT{
+              NULL }
+
+#01955    END IF
+#01956    Obj_SetException ex = SkaterOutOfRadius
+          scr = Ped_ReturnToPathAfterAvoidSkater
+          params = STRUCT{
+            NULL }
+
+#01957    Obj_LookAtObject type = skater
+          time = 0.3
+
+#01958    Obj_PlayAnim Anim = GLOBAL.Rotate
+          Cycle
+#01959    Obj_WaitRotate
+#01960    Obj_SetAnimCycleMode off
+#01961    Obj_WaitAnimFinished
+#01962    IF Obj_FlagSet PED_CHICK
+#01963      Obj_PlayAnim Anim = RANDOM[3][8; 15; 22]
+
+            GLOBAL.Disgust1
+            JUMP 0x11000000 GLOBAL.Disgust2
+            JUMP 0x06000000 GLOBAL.Disgust3
+
+#01964    ELSE
+#01965      IF Obj_FlagSet PED_LAUGHER
+#01966        Obj_PlayAnim Anim = RANDOM[3][8; 15; 22]
+
+              GLOBAL.Disgust1
+              JUMP 0x11000000 GLOBAL.Disgust2
+              JUMP 0x06000000 GLOBAL.Disgust3
+
+#01967        RANDOM[6][25; 31; 37; 43; 65; 87]
+
+#01968
+#01969        JUMP 0x5d000000
+#01970        JUMP 0x53000000
+#01971        JUMP 0x49000000 Obj_PlayStream la2_vo_avoid1a_cr 0x08 vag
+#01972        JUMP 0x2f000000 Obj_PlayStream la2_vo_avoid2a_cr 0x08 vag
+#01973        JUMP 0x15000000 Obj_PlayStream la2_vo_avoid2d_cr 0x08 vag
+#01974
+#01975      ELSE
+#01976        IF Obj_FlagSet PED_CHATTER
+#01977          Obj_PlayAnim Anim = RANDOM[3][8; 15; 22]
+
+                GLOBAL.Disgust1
+                JUMP 0x11000000 GLOBAL.Disgust2
+                JUMP 0x06000000 GLOBAL.Disgust3
+
+#01978        ELSE
+#01979          IF ProfileEquals Is_Named = demoness
+
+#01980            Ped_Scale_From_Demoness
+#01981          ELSE
+#01982            IF ProfileEquals Is_Named = maul
+
+#01983              Ped_Float_ForDarth
+#01984            ELSE
+#01985              IF ProfileEquals Is_Named = carrera
+
+#01986                Ped_Dance_For_Private
+#01987              ELSE
+#01988                IF ProfileEquals Is_Named = wolverine
+
+#01989                  Ped_Fight_Wolverine
+#01990                ELSE
+#01991                  IF ProfileEquals Is_Named = dick
+
+#01992                    Ped_Fear_The_Cops
+#01993                  ELSE
+#01994                    Obj_PlayAnim Anim = RANDOM[3][8; 15; 22]
+
+                          GLOBAL.Disgust1
+                          JUMP 0x11000000 GLOBAL.Disgust2
+                          JUMP 0x06000000 GLOBAL.Disgust3
+
+#01995                  END IF
+#01996                END IF
+#01997              END IF
+#01998            END IF
+#01999          END IF
+#02000        END IF
+#02001      END IF
+#02002    END IF
+#02003    IF Obj_FlagSet PED_LA
+#02004      IF Obj_FlagSet PED_LOW
+#02006        Obj_PlaySound RANDOM[3][8; 14; 20]
+              la_vo_avoid2a_cr JUMP 0x0f000000 la_vo_avoid2c_cr JUMP 0x05000000 la_vo_avoid2d_cr Vol = 400
+              pitch = 80
+
+#02008      ELSE
+#02009        IF Obj_FlagSet PED_HIGH
+#02010          Obj_PlaySound RANDOM[3][8; 14; 20]
+                la_vo_avoid2a_cr JUMP 0x0f000000 la_vo_avoid2c_cr JUMP 0x05000000 la_vo_avoid2d_cr Vol = 400
+                pitch = 100
+
+#02012        ELSE
+#02013          Obj_PlaySound RANDOM[3][8; 14; 20]
+                la_vo_avoid2a_cr JUMP 0x0f000000 la_vo_avoid2c_cr JUMP 0x05000000 la_vo_avoid2d_cr Vol = 400
+                pitch = 90
+
+#02014        END IF
+#02015      END IF
+#02016    END IF
+#02017    IF Obj_FlagSet PED_STREAMER
+#02018      IF Obj_FlagSet PED_LOW
+#02019        Obj_PlayStream RANDOM[3][8; 15; 22]
+              GLOBAL.vo2_pedangry1
+              JUMP 0x11000000 GLOBAL.vo2_pedangry2
+              JUMP 0x06000000 GLOBAL.vo2_pedangry3
+              Vol = 400
+              pitch = 100
+
+#02020      ELSE
+#02021        IF Obj_FlagSet PED_HIGH
+#02022          Obj_PlayStream RANDOM[3][8; 15; 22]
+                GLOBAL.vo3_pedangry1
+                JUMP 0x11000000 GLOBAL.vo3_pedangry2
+                JUMP 0x06000000 GLOBAL.vo3_pedangry3
+                Vol = 400
+                pitch = 100
+
+#02023        ELSE
+#02024          Obj_PlayStream RANDOM[3][8; 15; 22]
+                GLOBAL.vo_pedangry1
+                JUMP 0x11000000 GLOBAL.vo_pedangry2
+                JUMP 0x06000000 GLOBAL.vo_pedangry3
+                Vol = 400
+                pitch = 100
+
+#02025        END IF
+#02026      END IF
+#02027    END IF
+#02028    Obj_WaitAnimFinished
+#02029    Obj_LookAtObject type = skater
+          time = 0.3
+
+#02030    Obj_PlayAnim Anim = GLOBAL.Rotate
+          Cycle
+#02031    Obj_WaitRotate
+#02032    Obj_SetAnimCycleMode off
+#02033    Obj_WaitAnimFinished
+#02034    Obj_PlayAnim Anim = RANDOM[3][8; 15; 22]
+
+          GLOBAL.Disgust1
+          JUMP 0x11000000 GLOBAL.Disgust2
+          JUMP 0x06000000 GLOBAL.Disgust3
+
+#02035    IF Obj_FlagSet PED_LA
+#02036      IF Obj_FlagSet PED_LOW
+#02038        Obj_PlaySound RANDOM[3][8; 14; 20]
+              la_vo_avoid3b_cr JUMP 0x0f000000 la_vo_avoid3c_cr JUMP 0x05000000 la_vo_avoid3d_cr Vol = 400
+              pitch = 80
+
+#02040      ELSE
+#02041        IF Obj_FlagSet PED_HIGH
+#02042          Obj_PlaySound RANDOM[3][8; 14; 20]
+                la_vo_avoid3b_cr JUMP 0x0f000000 la_vo_avoid3c_cr JUMP 0x05000000 la_vo_avoid3d_cr Vol = 400
+                pitch = 100
+
+#02044        ELSE
+#02045          Obj_PlaySound RANDOM[3][8; 14; 20]
+                la_vo_avoid3b_cr JUMP 0x0f000000 la_vo_avoid3c_cr JUMP 0x05000000 la_vo_avoid3d_cr Vol = 400
+                pitch = 90
+
+#02046        END IF
+#02047      END IF
+#02048    END IF
+#02049    IF Obj_FlagSet PED_STREAMER
+#02050      IF Obj_FlagSet PED_LOW
+#02051        Obj_PlayStream RANDOM[3][8; 15; 22]
+              GLOBAL.vo2_threaten1
+              JUMP 0x11000000 GLOBAL.vo2_threaten2
+              JUMP 0x06000000 GLOBAL.vo2_threaten3
+              Vol = 400
+              pitch = 100
+
+#02052      ELSE
+#02053        IF Obj_FlagSet PED_HIGH
+#02054          Obj_PlayStream RANDOM[3][8; 15; 22]
+                GLOBAL.vo3_threaten1
+                JUMP 0x11000000 GLOBAL.vo3_threaten2
+                JUMP 0x06000000 GLOBAL.vo3_threaten3
+                Vol = 400
+                pitch = 100
+
+#02055        ELSE
+#02056          Obj_PlayStream RANDOM[6][20; 27; 34; 41; 48; 55]
+                GLOBAL.vo_threaten1
+                JUMP 0x32000000 GLOBAL.vo_threaten2
+                JUMP 0x27000000 GLOBAL.vo_threaten3
+                JUMP 0x1c000000 GLOBAL.vo_threaten4
+                JUMP 0x11000000 GLOBAL.vo_threaten5
+                JUMP 0x06000000 GLOBAL.vo_threaten6
+                Vol = 400
+                pitch = 100
+
+#02057        END IF
+#02058      END IF
+#02059    END IF
+#02060    Obj_WaitAnimFinished
+#02061    Obj_VarSet var = 0
+          value = 0
+
+#02062    GotoPreserveParams Ped_ReturnToPathAfterAvoidSkater
+#02063  END FUNCTION
+
+#02064  FUNCTION Ped_ReturnToPathAfterAvoidSkater
+#02066    Obj_ClearExceptions
+#02067    IF Obj_FlagSet PED_ON_FENCE
+#02068      GotoPreserveParams Ped_StopLaughing
+#02069    END IF
+#02070    IF Obj_FlagSet PED_LAUGHER
+#02071      Obj_LookAtNodeLinked
+#02072      Obj_PlayAnim Anim = GLOBAL.GetUp
+
+#02073      Obj_WaitAnimFinished
+#02074      Obj_SetException ex = SkaterInRadius
+            scr = Ped_FallForSkater
+            params = STRUCT{
+              NULL }
+
+#02075      GotoPreserveParams Ped_GenericWaiting
+#02076    END IF
+#02077    Obj_SetException ex = SkaterInRadius
+          scr = Ped_GettingReadyToAvoidSkater_NoNodeStored
+          params = STRUCT{
+            NULL }
+
+#02079    Obj_VarSet var = 0
+          value = 0
+
+#02080    Obj_SetInnerRadius 5
+#02084    Obj_SetAnimCycleMode off
+#02086    Obj_WaitAnimFinished
+#02087    Obj_LookAtPosStored time = 0.3
+
+#02089    Obj_PlayAnim Anim = GLOBAL.Rotate
+          Cycle
+#02090    Obj_WaitRotate
+#02091    Obj_SetAnimCycleMode off
+#02092    Obj_WaitAnimFinished
+#02093    Obj_PlayAnim Anim = GLOBAL.IdleToWalk
+
+#02094    Obj_MoveToPosStored speed = 2
+
+#02095    Obj_WaitAnimFinished
+#02096    Obj_PlayAnim Anim = GLOBAL.Walk
+          Cycle
+#02097    Obj_WaitMove
+#02098    Obj_SetAnimCycleMode off
+#02099    Obj_WaitAnimFinished
+#02100    Obj_PlayAnim Anim = GLOBAL.WalkToIdle
+
+#02101    IF Obj_FlagSet PED_NOMOVE
+#02102      Obj_LookAtNodeLinked time = 0.3
+
+#02106      Obj_PlayAnim Anim = GLOBAL.Rotate
+            Cycle
+#02108      Obj_WaitRotate
+#02109      Obj_SetAnimCycleMode off
+#02110      Obj_WaitAnimFinished
+#02111      Obj_PlayAnim Anim = GLOBAL.Idle
+            Cycle
+#02112    ELSE
+#02113      Obj_WaitAnimFinished
+#02114      Obj_LookAtNodeStored time = 0.3
+
+#02115      Obj_PlayAnim Anim = GLOBAL.Rotate
+            Cycle
+#02116      Obj_WaitRotate
+#02117      Obj_SetAnimCycleMode off
+#02118      Obj_WaitAnimFinished
+#02119    END IF
+#02127    GotoPreserveParams Ped_ReturnToWalking
+#02128  END FUNCTION
+
+#02129  FUNCTION Ped_FallForSkater
+#02131    IF Obj_FlagSet PED_LAUGHER
+#02132      Obj_ClearExceptions
+#02133      IF Obj_FlagSet PED_ON_FENCE
+#02135        Obj_PlayAnim Anim = FenceLean_Down
+
+#02136        Obj_PlayStream RANDOM[6][25; 36; 47; 58; 69; 80]
+
+#02137        can_laugh23a
+#02138        JUMP 0x46000000 can_laugh23b
+#02139        JUMP 0x37000000 can_laugh24a
+#02140        JUMP 0x28000000 can_laugh24b2
+#02141        JUMP 0x19000000 can_laugh25a
+#02142        JUMP 0x0a000000 can_laugh25b
+#02143
+#02144        Obj_SetInnerRadius 2
+#02145        Obj_SetException ex = SkaterInRadius
+              scr = Ped_KnockDownSkater
+              params = STRUCT{
+                NULL }
+
+#02146        Obj_SetOuterRadius 30
+#02147        Obj_SetException ex = SkaterOutOfRadius
+              scr = Ped_ReturnToPathAfterAvoidSkater
+              params = STRUCT{
+                NULL }
+
+#02148        Obj_WaitAnimFinished
+#02149        GotoPreserveParams PedStopAndThreatenSkater
+#02150      ELSE
+#02151        Obj_StopStream channel = 0
+
+#02152        Obj_PlaySound Smashcake
+#02153        Wait 1 frame
+#02154        Obj_StopStream channel = 1
+
+#02155        Obj_PlayAnim Anim = GLOBAL.HitBySkater
+
+#02156        Obj_SetOuterRadius 10
+#02157        Obj_SetException ex = SkaterOutOfRadius
+              scr = Ped_ReturnToPathAfterAvoidSkater
+              params = STRUCT{
+                NULL }
+
+#02158        LOOP
+#02159          Wait 10 seconds
+#02160        END LOOP
+#02161      END IF
+#02162      Obj_WaitAnimFinished
+#02163    END IF
+#02164    IF SkaterSpeedLessThan 1
+#02165      Obj_StorePos
+#02166      GotoPreserveParams PedStopAndThreatenSkater
+#02167    END IF
+#02168    Obj_ClearExceptions
+#02169    Obj_SetInnerRadius 0
+#02170    IF SkaterCurrentScorePotLessThan 1
+#02172      MakeSkaterGoto SkaterPushPed
+#02174    END IF
+#02175    Obj_PlaySound bail04 Vol = 100
+
+#02176    IF Obj_FlagSet PED_LA
+#02177      IF Obj_FlagSet PED_LOW
+#02179        Obj_PlaySound RANDOM[4][12; 18; 24; 30]
+              la_vo_approach1_cr JUMP 0x19000000 la_vo_approach2_cr JUMP 0x0f000000 la_vo_approach3_cr JUMP 0x05000000 la_vo_approach4_cr Vol = 400
+              pitch = 80
+
+#02181      ELSE
+#02182        IF Obj_FlagSet PED_HIGH
+#02183          Obj_PlaySound RANDOM[4][12; 18; 24; 30]
+                la_vo_approach1_cr JUMP 0x19000000 la_vo_approach2_cr JUMP 0x0f000000 la_vo_approach3_cr JUMP 0x05000000 la_vo_approach4_cr Vol = 400
+                pitch = 100
+
+#02185        ELSE
+#02186          Obj_PlaySound RANDOM[4][12; 18; 24; 30]
+                la_vo_approach1_cr JUMP 0x19000000 la_vo_approach2_cr JUMP 0x0f000000 la_vo_approach3_cr JUMP 0x05000000 la_vo_approach4_cr Vol = 400
+                pitch = 90
+
+#02187        END IF
+#02188      END IF
+#02189    END IF
+#02190    IF Obj_FlagSet PED_STREAMER
+#02191      IF Obj_FlagSet PED_LOW
+#02192        Obj_PlayStream RANDOM[4][12; 19; 26; 33]
+              GLOBAL.vo2_pedhit1
+              JUMP 0x1c000000 GLOBAL.vo2_pedhit2
+              JUMP 0x11000000 GLOBAL.vo2_pedhit3
+              JUMP 0x06000000 GLOBAL.vo2_pedhit4
+              Vol = 400
+              pitch = 100
+
+#02193      ELSE
+#02194        IF Obj_FlagSet PED_HIGH
+#02195          Obj_PlayStream RANDOM[4][12; 19; 26; 33]
+                GLOBAL.vo3_pedhit1
+                JUMP 0x1c000000 GLOBAL.vo3_pedhit2
+                JUMP 0x11000000 GLOBAL.vo3_pedhit3
+                JUMP 0x06000000 GLOBAL.vo3_pedhit4
+                Vol = 400
+                pitch = 100
+
+#02196        ELSE
+#02197          Obj_PlayStream RANDOM[4][12; 19; 26; 33]
+                GLOBAL.vo_pedhit1
+                JUMP 0x1c000000 GLOBAL.vo_pedhit2
+                JUMP 0x11000000 GLOBAL.vo_pedhit3
+                JUMP 0x06000000 GLOBAL.vo_pedhit4
+                Vol = 400
+                pitch = 100
+
+#02198        END IF
+#02199      END IF
+#02200    END IF
+#02201    Obj_StopAlongPath
+#02202    Obj_SetInnerRadius 0
+#02203    RANDOM[3][13; 333; 599]
+
+#02204    Obj_PlayAnim Anim = GLOBAL.HitBySkater
+
+#02205    Obj_WaitAnimFinished
+#02206    Obj_SetOuterRadius 20
+#02207    Obj_SetException ex = SkaterOutOfRadius
+          scr = Ped_GetUpAfterFall
+          params = STRUCT{
+            NULL }
+
+#02208    LOOP
+#02209      Wait RANDOM[3][8; 14; 20]
+            10 JUMP 0x0f000000 60 JUMP 0x05000000 90 frames
+#02210      Obj_PlayAnim Anim = GLOBAL.HitBySkaterTwitch1
+            from = 88
+            to = 81
+
+#02211      Obj_WaitAnimFinished
+#02212      Obj_PlayAnim Anim = GLOBAL.HitBySkaterTwitch2
+            from = 81
+            to = 88
+
+#02213      Obj_WaitAnimFinished
+#02214      Obj_PlayAnim Anim = GLOBAL.HitBySkaterTwitch1
+            from = 88
+            to = 81
+
+#02215      Obj_WaitAnimFinished
+#02216    END LOOP
+#02217    JUMP 0x17020000 Obj_PlayAnim Anim = GLOBAL.HitFromFront
+
+#02218    Obj_WaitAnimFinished
+#02219    Obj_SetOuterRadius 20
+#02220    Obj_SetException ex = SkaterOutOfRadius
+          scr = Ped_GetUpAfterFall
+          params = STRUCT{
+            NULL }
+
+#02221    LOOP
+#02222      Wait RANDOM[3][8; 14; 20]
+            10 JUMP 0x0f000000 60 JUMP 0x05000000 90 frames
+#02223      Obj_PlayAnim Anim = GLOBAL.HitFromFrontTwitch1
+            from = 122
+            to = 110
+
+#02224      Obj_WaitAnimFinished
+#02225      Obj_PlayAnim Anim = GLOBAL.HitFromFrontTwitch2
+            from = 111
+            to = 122
+
+#02226      Obj_WaitAnimFinished
+#02227    END LOOP
+#02228    JUMP 0x09010000 Obj_PlayAnim Anim = GLOBAL.HitFromBack
+
+#02229    Obj_WaitAnimFinished
+#02230    Obj_SetOuterRadius 20
+#02231    Obj_SetException ex = SkaterOutOfRadius
+          scr = Ped_GetUpAfterFall
+          params = STRUCT{
+            NULL }
+
+#02232    LOOP
+#02233      Wait RANDOM[3][8; 14; 20]
+            10 JUMP 0x0f000000 60 JUMP 0x05000000 90 frames
+#02234      Obj_PlayAnim Anim = GLOBAL.HitFromBackTwitch1
+            from = 86
+            to = 80
+
+#02235      Obj_WaitAnimFinished
+#02236      Obj_PlayAnim Anim = GLOBAL.HitFromBackTwitch2
+            from = 81
+            to = 86
+
+#02237      Obj_WaitAnimFinished
+#02238    END LOOP
+#02239
+#02240  END FUNCTION
+
+#02241  FUNCTION Ped_GetUpAfterFall
+#02243    Obj_ClearExceptions
+#02244    Obj_SetException ex = SkaterInRadius
+          scr = Ped_FallForSkater
+          params = STRUCT{
+            NULL }
+
+#02245    Obj_SetInnerRadius 2
+#02246    Obj_PlayAnim Anim = GLOBAL.GetUp
+
+#02247    Obj_WaitAnimFinished
+#02248    Obj_LookAtObject type = skater
+          time = 0.3
+
+#02249    Obj_PlayAnim Anim = GLOBAL.Rotate
+          Cycle
+#02250    Obj_WaitRotate
+#02251    Obj_SetAnimCycleMode off
+#02252    Obj_WaitAnimFinished
+#02253    Obj_PlayAnim Anim = RANDOM[2][4; 11]
+
+          GLOBAL.Disgust1
+          JUMP 0x06000000 GLOBAL.Disgust2
+
+#02254    IF Obj_FlagSet PED_NOMOVE
+#02255      Obj_LookAtNodeLinked time = 0.3
+
+#02259      Obj_PlayAnim Anim = GLOBAL.Rotate
+            Cycle
+#02261      Obj_WaitRotate
+#02262      Obj_SetAnimCycleMode off
+#02263      Obj_WaitAnimFinished
+#02264      Obj_PlayAnim Anim = GLOBAL.Idle
+            Cycle
+#02265    ELSE
+#02266      Obj_WaitAnimFinished
+#02267      Obj_LookAtNodeLinked time = 0.3
+
+#02271      Obj_PlayAnim Anim = GLOBAL.Rotate
+            Cycle
+#02273      Obj_WaitRotate
+#02274      Obj_SetAnimCycleMode off
+#02275      Obj_WaitAnimFinished
+#02276      Obj_StartAlongPath
+#02277      Obj_PlayAnim Anim = GLOBAL.IdleToWalk
+
+#02278      Obj_WaitAnimFinished
+#02279      Obj_PlayAnim Anim = GLOBAL.Walk
+            Cycle
+#02280    END IF
+#02281    GotoPreserveParams Ped_ReturnToGenericCheckForTalking
+#02282  END FUNCTION
+
+#02283  FUNCTION Ped_KnockDownSkater
+#02285    Obj_ClearExceptions
+#02291    Obj_SetInnerRadius 0
+#02292    Obj_LookAtObject type = skater
+          time = 0.05
+
+#02293    Obj_PlayAnim Anim = RANDOM[2][4; 11]
+
+          GLOBAL.Attack1
+          JUMP 0x06000000 GLOBAL.Attack2
+
+#02294    IF Obj_FlagSet PED_LAUGHER
+#02295      Obj_PlayStream RANDOM[2][4; 10]
+            Can_laugh26a JUMP 0x05000000 can_laugh26b volume = 250
+
+#02296    END IF
+#02297    Wait 0.05
+#02298    Obj_PlaySound bail04 Vol = 200
+
+#02299    Obj_PlaySound bail05 Vol = 200
+
+#02300    Obj_LookAtObject type = skater
+          time = 0.05
+
+#02301    MakeSkaterGoto PedKnockDown
+#02302    Obj_SetAnimCycleMode off
+#02303    Wait 0.05
+#02304    Obj_LookAtObject type = skater
+          time = 0.05
+
+#02305    Obj_WaitAnimFinished
+#02306    Obj_StopAlongPath
+#02307    Obj_WaitAnimFinished
+#02308    IF Obj_FlagSet PED_LAUGHER
+#02309      Obj_PlayStream RANDOM[5][16; 22; 28; 34; 40]
+            Can_laugh27b JUMP 0x23000000 can_laugh28a JUMP 0x19000000 can_laugh28b JUMP 0x0f000000 can_laugh29a JUMP 0x05000000 can_laugh29b volume = 250
+
+#02310    END IF
+#02311    IF Obj_FlagSet PED_LA
+#02312      IF Obj_FlagSet PED_LOW
+#02314        Obj_PlaySound RANDOM[4][12; 18; 24; 30]
+              la_vo_knock1_cr JUMP 0x19000000 la_vo_knock2_cr JUMP 0x0f000000 la_vo_knock3_cr JUMP 0x05000000 la_vo_knock4_cr Vol = 400
+              pitch = 80
+
+#02316      ELSE
+#02317        IF Obj_FlagSet PED_HIGH
+#02318          Obj_PlaySound RANDOM[4][12; 18; 24; 30]
+                la_vo_knock1_cr JUMP 0x19000000 la_vo_knock2_cr JUMP 0x0f000000 la_vo_knock3_cr JUMP 0x05000000 la_vo_knock4_cr Vol = 400
+                pitch = 100
+
+#02320        ELSE
+#02321          Obj_PlaySound RANDOM[4][12; 18; 24; 30]
+                la_vo_knock1_cr JUMP 0x19000000 la_vo_knock2_cr JUMP 0x0f000000 la_vo_knock3_cr JUMP 0x05000000 la_vo_knock4_cr Vol = 400
+                pitch = 90
+
+#02322        END IF
+#02323      END IF
+#02324    END IF
+#02325    IF Obj_FlagSet PED_STREAMER
+#02326      IF Obj_FlagSet PED_LOW
+#02327        Obj_PlayStream RANDOM[4][12; 19; 26; 33]
+              GLOBAL.vo2_skaterhit1
+              JUMP 0x1c000000 GLOBAL.vo2_skaterhit2
+              JUMP 0x11000000 GLOBAL.vo2_skaterhit3
+              JUMP 0x06000000 GLOBAL.vo2_skaterhit4
+              Vol = 400
+              pitch = 100
+
+#02328      ELSE
+#02329        IF Obj_FlagSet PED_HIGH
+#02330          Obj_PlayStream RANDOM[4][12; 19; 26; 33]
+                GLOBAL.vo3_skaterhit1
+                JUMP 0x1c000000 GLOBAL.vo3_skaterhit2
+                JUMP 0x11000000 GLOBAL.vo3_skaterhit3
+                JUMP 0x06000000 GLOBAL.vo3_skaterhit4
+                Vol = 400
+                pitch = 100
+
+#02331        ELSE
+#02332          Obj_PlayStream RANDOM[14][52; 59; 66; 73; 80; 87; 94; 101; 108; 115; 122; 129; 136; 143]
+                GLOBAL.vo_skaterhit01
+                JUMP 0x8a000000 GLOBAL.vo_skaterhit02
+                JUMP 0x7f000000 GLOBAL.vo_skaterhit03
+                JUMP 0x74000000 GLOBAL.vo_skaterhit04
+                JUMP 0x69000000 GLOBAL.vo_skaterhit05
+                JUMP 0x5e000000 GLOBAL.vo_skaterhit06
+                JUMP 0x53000000 GLOBAL.vo_skaterhit07
+                JUMP 0x48000000 GLOBAL.vo_skaterhit08
+                JUMP 0x3d000000 GLOBAL.vo_skaterhit09
+                JUMP 0x32000000 GLOBAL.vo_skaterhit10
+                JUMP 0x27000000 GLOBAL.vo_skaterhit11
+                JUMP 0x1c000000 GLOBAL.vo_skaterhit12
+                JUMP 0x11000000 GLOBAL.vo_skaterhit13
+                JUMP 0x06000000 GLOBAL.vo_skaterhit14
+                Vol = 400
+                pitch = 100
+
+#02333        END IF
+#02334      END IF
+#02335    END IF
+#02336    Obj_LookAtObject type = skater
+          time = 0.3
+
+#02337    Obj_PlayAnim Anim = GLOBAL.Rotate
+          Cycle
+#02338    Obj_WaitRotate
+#02339    Obj_SetAnimCycleMode off
+#02340    Obj_WaitAnimFinished
+#02341    Obj_PlayAnim Anim = RANDOM[4][12; 19; 26; 33]
+
+          GLOBAL.Laugh
+          JUMP 0x1c000000 GLOBAL.Disgust2
+          JUMP 0x11000000 GLOBAL.PlayerPoint
+          JUMP 0x06000000 GLOBAL.Disgust1
+
+#02342    Obj_WaitAnimFinished
+#02343    IF Obj_FlagSet PED_NOMOVE
+#02344      Obj_LookAtNodeLinked time = 0.3
+
+#02348      Obj_PlayAnim Anim = GLOBAL.Rotate
+            Cycle
+#02350      Obj_WaitRotate
+#02351      Obj_SetAnimCycleMode off
+#02352      Obj_WaitAnimFinished
+#02353      Obj_PlayAnim Anim = GLOBAL.Idle
+            Cycle
+#02354    ELSE
+#02355      Obj_LookAtNodeLinked time = 0.3
+
+#02359      Obj_PlayAnim Anim = GLOBAL.Rotate
+            Cycle
+#02361      Obj_WaitRotate
+#02362      Obj_SetAnimCycleMode off
+#02363      Obj_WaitAnimFinished
+#02364      Obj_StartAlongPath
+#02365      Obj_PlayAnim Anim = GLOBAL.IdleToWalk
+
+#02366      Obj_WaitAnimFinished
+#02367      Obj_PlayAnim Anim = GLOBAL.Walk
+            Cycle
+#02368      Obj_StartAlongPath
+#02369    END IF
+#02370    IF Obj_FlagSet PED_LAUGHER
+#02371      GotoPreserveParams Ped_StopLaughing
+#02372    ELSE
+#02373      GotoPreserveParams Ped_ReturnToWalking
+#02374    END IF
+#02375  END FUNCTION
+
+#02376  EXC_IMPRESSED = 1
+
+#02405  VAR_COUNTER = 0
+
+#02406  FUNCTION SK3_ImpressMePed
+#02408    IF GotParam chick
+#02409      Obj_SetFlag PED_CHICK
+#02410      Obj_SetFlag PED_KNOCK
+#02411      ImpressPed_Startup ChickParams NULL
+#02412    ELSE
+#02413      ImpressPed_Startup GrommetParams NULL
+#02414    END IF
+#02415  END FUNCTION
+
+#02416  FUNCTION ImpressPed_Startup
+#02418    IF IsCareerMode
+#02419      IF GetGoal Goal = GLOBAL.ImpressedGoal
+
+#02420        ImpressPed_Goodbye
+#02421      END IF
+#02422    END IF
+#02423    IF GetFlag Flag = GLOBAL.MyFlag
+
+#02424      ImpressPed_Goodbye
+#02425    END IF
+#02426    IF Obj_ObjectInRadius type = skater
+            radius = 2000
+
+#02427    ELSE
+#02428      ImpressPed_Goodbye
+#02429    END IF
+#02430    Obj_SetGroundOffset GLOBAL.GroundOffset
+
+#02431    Obj_SetPathTurnDist GLOBAL.PathTurnDist
+
+#02432    Obj_StickToGround distAbove = 3
+          distBelow = 6
+
+#02433    Obj_StickToGround off
+#02434    ImpressPed_Waiting NULL
+#02435  END FUNCTION
+
+#02436  FUNCTION ImpressPed_Waiting
+#02438    Obj_ClearExceptions
+#02440    Obj_SetInnerRadius GLOBAL.NoticePlayerDist
+
+#02441    IF Obj_FlagSet PED_CHICK
+#02442      Obj_PlayAnim Anim = GLOBAL.IdleToIdle2
+
+#02443      Obj_WaitAnimFinished
+#02444    END IF
+#02445    Obj_SetException ex = SkaterInRadius
+          scr = ImpressPed_SkaterIsNear
+          params = STRUCT{
+            NULL }
+
+#02446    Obj_SetException ex = EXCEPTION_PED_SHOULD_DIE
+          scr = ImpressPed_Goodbye
+          params = STRUCT{
+            NULL }
+
+#02447    LOOP
+#02448      Obj_LookAtObject type = skater
+            time = 0.3
+
+#02449      RANDOM[3][13; 47; 81]
+
+#02450      Obj_CycleAnim NumCycles = 1
+            Anim = GLOBAL.Idle2
+
+#02451      JUMP 0x47000000 Obj_CycleAnim NumCycles = 1
+            Anim = GLOBAL.Fidget1
+
+#02452      JUMP 0x21000000 Obj_CycleAnim NumCycles = 1
+            Anim = GLOBAL.Fidget2
+
+#02453
+#02454    END LOOP
+#02455  END FUNCTION
+
+#02456  FUNCTION ImpressPed_SkaterIsNear
+#02458    Obj_ClearExceptions
+#02459    IF Obj_ObjectInRadius type = skater
+            radius = GLOBAL.NoticePlayerDist
+
+#02460      IF SkaterCurrentScorePotGreaterThan 1
+#02461      ELSE
+#02462        RANDOM[27][109; 137; 165; 193; 221; 249; 277; 305; 333; 361; 362; 363; 364; 365; 366; 367; 368; 369; 370; 371; 372; 373; 374; 375; 376; 377; 378]
+
+#02463        Obj_PlayStream GLOBAL.impvo_entice01
+              Vol = 100
+
+#02464        JUMP 0x5a010000 Obj_PlayStream GLOBAL.impvo_entice02
+              Vol = 100
+
+#02465        JUMP 0x3a010000 Obj_PlayStream GLOBAL.impvo_entice03
+              Vol = 100
+
+#02466        JUMP 0x1a010000 Obj_PlayStream GLOBAL.impvo_entice04
+              Vol = 100
+
+#02467        JUMP 0xfa000000 Obj_PlayStream GLOBAL.impvo_entice05
+              Vol = 100
+
+#02468        JUMP 0xda000000 Obj_PlayStream GLOBAL.impvo_entice06
+              Vol = 100
+
+#02469        JUMP 0xba000000 Obj_PlayStream GLOBAL.impvo_entice07
+              Vol = 100
+
+#02470        JUMP 0x9a000000 Obj_PlayStream GLOBAL.impvo_entice08
+              Vol = 100
+
+#02471        JUMP 0x7a000000 Obj_PlayStream GLOBAL.impvo_entice09
+              Vol = 100
+
+#02472        JUMP 0x5a000000 JUMP 0x55000000 JUMP 0x50000000 JUMP 0x4b000000 JUMP 0x46000000 JUMP 0x41000000 JUMP 0x3c000000 JUMP 0x37000000 JUMP 0x32000000 JUMP 0x2d000000 JUMP 0x28000000 JUMP 0x23000000 JUMP 0x1e000000 JUMP 0x19000000 JUMP 0x14000000 JUMP 0x0f000000 JUMP 0x0a000000 JUMP 0x05000000
+#02473
+#02474      END IF
+#02475    END IF
+#02476    Obj_SetInnerRadius GLOBAL.KnockedByPlayerDist
+
+#02477    Obj_SetOuterRadius GLOBAL.ForgetPlayerDist
+
+#02478    IF Obj_FlagSet PED_KNOCK
+#02480      Obj_SetException ex = SkaterInRadius
+            scr = ImpressPed_KnockSkater
+            params = STRUCT{
+              ReturnScript = ImpressPed_Waiting
+              NULL }
+
+#02481    ELSE
+#02482      Obj_SetException ex = SkaterInRadius
+            scr = ImpressPed_FallForSkater
+            params = STRUCT{
+              ReturnScript = ImpressPed_Waiting
+              NULL }
+
+#02483    END IF
+#02484    IF SkaterCurrentScorePotGreaterThan 1
+#02486    ELSE
+#02487      Obj_SetException ex = SkaterOutOfRadius
+            scr = ImpressPed_Waiting
+            params = STRUCT{
+              NULL }
+
+#02488      Obj_SetException ex = EXCEPTION_PED_SHOULD_DIE
+            scr = ImpressPed_Goodbye
+            params = STRUCT{
+              NULL }
+
+#02489    END IF
+#02490    Obj_SetException ex = SkaterBailed
+          scr = ImpressPed_Laugh
+          params = STRUCT{
+            NULL }
+
+#02491    Obj_SetException ex = SkaterLanded
+          scr = ImpressPed_Praise
+          params = STRUCT{
+            NULL }
+
+#02492    LOOP
+#02493      Obj_LookAtObject type = skater
+            time = 0.3
+
+#02494      IF SkaterCurrentScorePotGreaterThan GLOBAL.MinPropsScoreDuring2
+
+#02495        Obj_ClearException SkaterOutOfRadius
+#02497        Obj_ClearException EXCEPTION_PED_SHOULD_DIE
+#02498        Obj_StopSound
+#02499        IF Obj_ObjectInRadius type = skater
+                radius = GLOBAL.NoticePlayerDist
+
+#02500          RANDOM[10][41; 69; 97; 125; 153; 181; 209; 237; 265; 293]
+
+#02501          Obj_PlayStream GLOBAL.impvo_trickover01
+                Vol = 100
+
+#02502          JUMP 0x1b010000 Obj_PlayStream GLOBAL.impvo_trickover02
+                Vol = 100
+
+#02503          JUMP 0xfb000000 Obj_PlayStream GLOBAL.impvo_trickover03
+                Vol = 100
+
+#02504          JUMP 0xdb000000 Obj_PlayStream GLOBAL.impvo_trickover04
+                Vol = 100
+
+#02505          JUMP 0xbb000000 Obj_PlayStream GLOBAL.impvo_trickover05
+                Vol = 100
+
+#02506          JUMP 0x9b000000 Obj_PlayStream GLOBAL.impvo_trickover06
+                Vol = 100
+
+#02507          JUMP 0x7b000000 Obj_PlayStream GLOBAL.impvo_trickover07
+                Vol = 100
+
+#02508          JUMP 0x5b000000 Obj_PlayStream GLOBAL.impvo_trickover08
+                Vol = 100
+
+#02509          JUMP 0x3b000000 Obj_PlayStream GLOBAL.impvo_trickover09
+                Vol = 100
+
+#02510          JUMP 0x1b000000 Obj_PlayStream GLOBAL.impvo_trickover10
+                Vol = 100
+
+#02511
+#02512        END IF
+#02513      ELSE
+#02514        IF SkaterCurrentScorePotGreaterThan GLOBAL.MinPropsScoreDuring
+
+#02515          Obj_ClearException SkaterOutOfRadius
+#02517          Obj_StopSound
+#02518          IF Obj_ObjectInRadius type = skater
+                  radius = GLOBAL.NoticePlayerDist
+
+#02519            RANDOM[7][29; 57; 85; 113; 141; 169; 197]
+
+#02520            Obj_PlayStream GLOBAL.impvo_trickunder01
+                  Vol = 100
+
+#02521            JUMP 0xbb000000 Obj_PlayStream GLOBAL.impvo_trickunder02
+                  Vol = 100
+
+#02522            JUMP 0x9b000000 Obj_PlayStream GLOBAL.impvo_trickunder03
+                  Vol = 100
+
+#02523            JUMP 0x7b000000 Obj_PlayStream GLOBAL.impvo_trickunder04
+                  Vol = 100
+
+#02524            JUMP 0x5b000000 Obj_PlayStream GLOBAL.impvo_trickunder05
+                  Vol = 100
+
+#02525            JUMP 0x3b000000 Obj_PlayStream GLOBAL.impvo_trickunder06
+                  Vol = 100
+
+#02526            JUMP 0x1b000000 Obj_PlayStream GLOBAL.impvo_trickunder07
+                  Vol = 100
+
+#02527
+#02528          END IF
+#02529        END IF
+#02530      END IF
+#02531      RANDOM[3][13; 47; 81]
+
+#02532      Obj_CycleAnim NumCycles = 1
+            Anim = GLOBAL.Idle2
+
+#02533      JUMP 0x47000000 Obj_CycleAnim NumCycles = 1
+            Anim = GLOBAL.Fidget1
+
+#02534      JUMP 0x21000000 Obj_CycleAnim NumCycles = 1
+            Anim = GLOBAL.Fidget2
+
+#02535
+#02536    END LOOP
+#02537  END FUNCTION
+
+#02538  FUNCTION ImpressPed_Praise
+#02540    Obj_LookAtObject type = skater
+          time = 0.3
+
+#02541    Obj_ClearExceptions
+#02542    IF SkaterLastScoreLandedGreaterThan GLOBAL.MinPropsScoreLanding2
+
+#02547      IF IsCareerMode
+#02549        Wait GLOBAL.MyWait
+              frames
+#02550        SetFlag Flag = GLOBAL.MyFlag
+
+#02551        IF CareerLevelIs LevelNum_Canada
+#02552          SendException EXCEPTION_GROMMET_IMPRESSED name = TRG_Grommet_Counter
+
+#02553        ELSE
+#02554          SendException EXC_IMPRESSED name = TRG_Counter
+
+#02555        END IF
+#02556      END IF
+#02557      IF Obj_FlagSet PED_KNOCK
+#02558        Obj_SetException ex = SkaterInRadius
+              scr = ImpressPed_KnockThenDie
+              params = STRUCT{
+                ReturnScript = ImpressPed_Waiting
+                NULL }
+
+#02559      ELSE
+#02560        Obj_SetException ex = SkaterInRadius
+              scr = ImpressPed_FallThenDie
+              params = STRUCT{
+                ReturnScript = ImpressPed_Waiting
+                NULL }
+
+#02561      END IF
+#02562      IF Obj_ObjectInRadius type = skater
+              radius = GLOBAL.NoticePlayerDist
+
+#02563        RANDOM[9][37; 65; 93; 121; 149; 177; 205; 233; 261]
+
+#02564        Obj_PlayStream GLOBAL.impvo_landover01
+              Vol = 100
+
+#02565        JUMP 0xfb000000 Obj_PlayStream GLOBAL.impvo_landover02
+              Vol = 100
+
+#02566        JUMP 0xdb000000 Obj_PlayStream GLOBAL.impvo_landover03
+              Vol = 100
+
+#02567        JUMP 0xbb000000 Obj_PlayStream GLOBAL.impvo_landover04
+              Vol = 100
+
+#02568        JUMP 0x9b000000 Obj_PlayStream GLOBAL.impvo_landover05
+              Vol = 100
+
+#02569        JUMP 0x7b000000 Obj_PlayStream GLOBAL.impvo_landover06
+              Vol = 100
+
+#02570        JUMP 0x5b000000 Obj_PlayStream GLOBAL.impvo_landover07
+              Vol = 100
+
+#02571        JUMP 0x3b000000 Obj_PlayStream GLOBAL.impvo_landover08
+              Vol = 100
+
+#02572        JUMP 0x1b000000 Obj_PlayStream GLOBAL.impvo_landover09
+              Vol = 100
+
+#02573
+#02574      END IF
+#02575      Obj_SetOuterRadius GLOBAL.ImpressedDoneDist
+
+#02576      IF IsCareerMode
+#02577        Obj_SetException ex = SkaterOutOfRadius
+              scr = ImpressPed_Goodbye
+
+#02578        Obj_SetException ex = EXCEPTION_PED_SHOULD_DIE
+              scr = ImpressPed_Goodbye
+              params = STRUCT{
+                NULL }
+
+#02579      ELSE
+#02580        Obj_SetException ex = SkaterOutOfRadius
+              scr = ImpressPed_Waiting
+              params = STRUCT{
+                NULL }
+
+#02581      END IF
+#02582      IF Obj_FlagSet PED_CHICK
+#02583        Obj_PlayAnim Anim = GLOBAL.Idle2ToIdle
+
+#02584        Obj_WaitAnimFinished
+#02585      END IF
+#02586      LOOP
+#02587        Obj_LookAtObject type = skater
+              time = 0.3
+
+#02589        IF Obj_ObjectInRadius type = skater
+                radius = GLOBAL.NoticePlayerDist
+
+#02590          RANDOM[27][109; 137; 165; 193; 221; 249; 277; 305; 333; 361; 362; 363; 364; 365; 366; 367; 368; 369; 370; 371; 372; 373; 374; 375; 376; 377; 378]
+
+#02591          Obj_PlayStream GLOBAL.impvo_landover01
+                Vol = 100
+
+#02592          JUMP 0x5a010000 Obj_PlayStream GLOBAL.impvo_landover02
+                Vol = 100
+
+#02593          JUMP 0x3a010000 Obj_PlayStream GLOBAL.impvo_landover03
+                Vol = 100
+
+#02594          JUMP 0x1a010000 Obj_PlayStream GLOBAL.impvo_landover04
+                Vol = 100
+
+#02595          JUMP 0xfa000000 Obj_PlayStream GLOBAL.impvo_landover05
+                Vol = 100
+
+#02596          JUMP 0xda000000 Obj_PlayStream GLOBAL.impvo_landover06
+                Vol = 100
+
+#02597          JUMP 0xba000000 Obj_PlayStream GLOBAL.impvo_landover07
+                Vol = 100
+
+#02598          JUMP 0x9a000000 Obj_PlayStream GLOBAL.impvo_landover08
+                Vol = 100
+
+#02599          JUMP 0x7a000000 Obj_PlayStream GLOBAL.impvo_landover09
+                Vol = 100
+
+#02600          JUMP 0x5a000000 JUMP 0x55000000 JUMP 0x50000000 JUMP 0x4b000000 JUMP 0x46000000 JUMP 0x41000000 JUMP 0x3c000000 JUMP 0x37000000 JUMP 0x32000000 JUMP 0x2d000000 JUMP 0x28000000 JUMP 0x23000000 JUMP 0x1e000000 JUMP 0x19000000 JUMP 0x14000000 JUMP 0x0f000000 JUMP 0x0a000000 JUMP 0x05000000
+#02601
+#02602        END IF
+#02603        Obj_PlayAnim NumCycles = 1
+              Anim = RANDOM[6][20; 27; 34; 41; 48; 55]
+
+              GLOBAL.Impressed1
+              JUMP 0x32000000 GLOBAL.Impressed2
+              JUMP 0x27000000 GLOBAL.Impressed3
+              JUMP 0x1c000000 GLOBAL.Impressed4
+              JUMP 0x11000000 GLOBAL.Impressed5
+              JUMP 0x06000000 GLOBAL.Impressed6
+
+#02604        IF CareerLevelIs LevelNum_Canada
+#02605          Wait 47 frames
+#02606          Obj_PlaySound Can_CopingSmack Vol = RANDOM[3][8; 14; 20]
+
+                80 JUMP 0x0f000000 115 JUMP 0x05000000 100 pitch = RANDOM[3][8; 14; 20]
+
+                80 JUMP 0x0f000000 60 JUMP 0x05000000 70
+#02607          Wait 30 frames
+#02608          Obj_PlaySound Can_CopingSmack Vol = RANDOM[3][8; 14; 20]
+
+                80 JUMP 0x0f000000 115 JUMP 0x05000000 100 pitch = RANDOM[3][8; 14; 20]
+
+                80 JUMP 0x0f000000 60 JUMP 0x05000000 70
+#02609          Wait 30 frames
+#02610          Obj_PlaySound Can_CopingSmack Vol = RANDOM[3][8; 14; 20]
+
+                80 JUMP 0x0f000000 115 JUMP 0x05000000 100 pitch = RANDOM[3][8; 14; 20]
+
+                80 JUMP 0x0f000000 60 JUMP 0x05000000 70
+#02611        END IF
+#02612        Obj_WaitAnimFinished
+#02613      END LOOP
+#02614    ELSE
+#02615      IF Obj_FlagSet PED_KNOCK
+#02617        Obj_SetException ex = SkaterInRadius
+              scr = ImpressPed_KnockSkater
+              params = STRUCT{
+                ReturnScript = ImpressPed_Waiting
+                NULL }
+
+#02618      ELSE
+#02619        Obj_SetException ex = SkaterInRadius
+              scr = ImpressPed_FallForSkater
+              params = STRUCT{
+                ReturnScript = ImpressPed_Waiting
+                NULL }
+
+#02620      END IF
+#02621      IF Obj_FlagSet PED_CHICK
+#02622        Obj_PlayAnim Anim = GLOBAL.Idle2ToIdle
+
+#02623        Obj_WaitAnimFinished
+#02624      END IF
+#02625      IF Obj_ObjectInRadius type = skater
+              radius = 100
+
+#02626        RANDOM[10][41; 69; 97; 125; 153; 181; 209; 237; 265; 293]
+
+#02627        Obj_PlayStream GLOBAL.impvo_landunder01
+              Vol = 100
+
+#02628        JUMP 0x1b010000 Obj_PlayStream GLOBAL.impvo_landunder02
+              Vol = 100
+
+#02629        JUMP 0xfb000000 Obj_PlayStream GLOBAL.impvo_landunder03
+              Vol = 100
+
+#02630        JUMP 0xdb000000 Obj_PlayStream GLOBAL.impvo_landunder04
+              Vol = 100
+
+#02631        JUMP 0xbb000000 Obj_PlayStream GLOBAL.impvo_landunder05
+              Vol = 100
+
+#02632        JUMP 0x9b000000 Obj_PlayStream GLOBAL.impvo_landunder06
+              Vol = 100
+
+#02633        JUMP 0x7b000000 Obj_PlayStream GLOBAL.impvo_landunder07
+              Vol = 100
+
+#02634        JUMP 0x5b000000 Obj_PlayStream GLOBAL.impvo_landunder08
+              Vol = 100
+
+#02635        JUMP 0x3b000000 Obj_PlayStream GLOBAL.impvo_landunder09
+              Vol = 100
+
+#02636        JUMP 0x1b000000 Obj_PlayStream GLOBAL.impvo_landunder10
+              Vol = 100
+
+#02637
+#02638      END IF
+#02639      Obj_CycleAnim NumCycles = 1
+            Anim = RANDOM[6][20; 27; 34; 41; 48; 55]
+
+            GLOBAL.Bored1
+            JUMP 0x32000000 GLOBAL.Bored2
+            JUMP 0x27000000 GLOBAL.Bored3
+            JUMP 0x1c000000 GLOBAL.Bored4
+            JUMP 0x11000000 GLOBAL.Bored5
+            JUMP 0x06000000 GLOBAL.Bored6
+
+#02640    END IF
+#02641    ImpressPed_Waiting NULL
+#02642  END FUNCTION
+
+#02643  FUNCTION ImpressPed_Laugh
+#02645    Obj_ClearExceptions
+#02646    Obj_SetException ex = EXCEPTION_PED_SHOULD_DIE
+          scr = ImpressPed_Goodbye
+          params = STRUCT{
+            NULL }
+
+#02647    IF Obj_FlagSet PED_KNOCK
+#02648      Obj_SetException ex = SkaterInRadius
+            scr = ImpressPed_KnockSkater
+            params = STRUCT{
+              ReturnScript = ImpressPed_Waiting
+              NULL }
+
+#02649    ELSE
+#02650      Obj_SetException ex = SkaterInRadius
+            scr = ImpressPed_FallForSkater
+            params = STRUCT{
+              ReturnScript = ImpressPed_Waiting
+              NULL }
+
+#02651    END IF
+#02652    IF SkaterCurrentScorePotGreaterThan GLOBAL.MinPropsScoreLanding2
+
+#02653      IF Obj_ObjectInRadius type = skater
+              radius = GLOBAL.NoticePlayerDist
+
+#02654        RANDOM[13][53; 81; 109; 137; 165; 193; 221; 249; 277; 305; 333; 361; 389]
+
+#02655        Obj_PlayStream GLOBAL.impvo_bailover01
+              Vol = 100
+
+#02656        JUMP 0x7b010000 Obj_PlayStream GLOBAL.impvo_bailover02
+              Vol = 100
+
+#02657        JUMP 0x5b010000 Obj_PlayStream GLOBAL.impvo_bailover03
+              Vol = 100
+
+#02658        JUMP 0x3b010000 Obj_PlayStream GLOBAL.impvo_bailover04
+              Vol = 100
+
+#02659        JUMP 0x1b010000 Obj_PlayStream GLOBAL.impvo_bailover05
+              Vol = 100
+
+#02660        JUMP 0xfb000000 Obj_PlayStream GLOBAL.impvo_bailover06
+              Vol = 100
+
+#02661        JUMP 0xdb000000 Obj_PlayStream GLOBAL.impvo_bailover07
+              Vol = 100
+
+#02662        JUMP 0xbb000000 Obj_PlayStream GLOBAL.impvo_bailover08
+              Vol = 100
+
+#02663        JUMP 0x9b000000 Obj_PlayStream GLOBAL.impvo_bailover09
+              Vol = 100
+
+#02664        JUMP 0x7b000000 Obj_PlayStream GLOBAL.impvo_bailover10
+              Vol = 100
+
+#02665        JUMP 0x5b000000 Obj_PlayStream GLOBAL.impvo_bailover11
+              Vol = 100
+
+#02666        JUMP 0x3b000000 Obj_PlayStream GLOBAL.impvo_bailover12
+              Vol = 100
+
+#02667        JUMP 0x1b000000 Obj_PlayStream GLOBAL.impvo_bailover13
+              Vol = 100
+
+#02668
+#02669      END IF
+#02670      Obj_PlayAnim Anim = RANDOM[3][8; 15; 22]
+
+            GLOBAL.Bored1
+            JUMP 0x11000000 GLOBAL.Bored2
+            JUMP 0x06000000 GLOBAL.Bored3
+
+#02671    ELSE
+#02672      IF Obj_ObjectInRadius type = skater
+              radius = GLOBAL.NoticePlayerDist
+
+#02673        RANDOM[11][45; 73; 101; 129; 157; 185; 213; 241; 269; 297; 325]
+
+#02674        Obj_PlayStream GLOBAL.impvo_bailunder01
+              Vol = 100
+
+#02675        JUMP 0x3b010000 Obj_PlayStream GLOBAL.impvo_bailunder02
+              Vol = 100
+
+#02676        JUMP 0x1b010000 Obj_PlayStream GLOBAL.impvo_bailunder03
+              Vol = 100
+
+#02677        JUMP 0xfb000000 Obj_PlayStream GLOBAL.impvo_bailunder04
+              Vol = 100
+
+#02678        JUMP 0xdb000000 Obj_PlayStream GLOBAL.impvo_bailunder05
+              Vol = 100
+
+#02679        JUMP 0xbb000000 Obj_PlayStream GLOBAL.impvo_bailunder06
+              Vol = 100
+
+#02680        JUMP 0x9b000000 Obj_PlayStream GLOBAL.impvo_bailunder07
+              Vol = 100
+
+#02681        JUMP 0x7b000000 Obj_PlayStream GLOBAL.impvo_bailunder08
+              Vol = 100
+
+#02682        JUMP 0x5b000000 Obj_PlayStream GLOBAL.impvo_bailunder09
+              Vol = 100
+
+#02683        JUMP 0x3b000000 Obj_PlayStream GLOBAL.impvo_bailunder10
+              Vol = 100
+
+#02684        JUMP 0x1b000000 Obj_PlayStream GLOBAL.impvo_bailunder11
+              Vol = 100
+
+#02685
+#02686      END IF
+#02687      Obj_PlayAnim Anim = RANDOM[3][8; 15; 22]
+
+            GLOBAL.Bored4
+            JUMP 0x11000000 GLOBAL.Bored5
+            JUMP 0x06000000 GLOBAL.Bored6
+
+#02688    END IF
+#02689    IF Obj_FlagSet PED_CHICK
+#02691      Obj_PlayAnim Anim = GLOBAL.Idle2ToIdle
+
+#02692      Obj_WaitAnimFinished
+#02693    END IF
+#02694    Obj_WaitAnimFinished
+#02695    ImpressPed_Waiting NULL
+#02696  END FUNCTION
+
+#02697  FUNCTION ImpressPed_FallForSkater
+#02699    Obj_ClearExceptions
+#02700    Obj_SetException ex = EXCEPTION_PED_SHOULD_DIE
+          scr = ImpressPed_Goodbye
+          params = STRUCT{
+            NULL }
+
+#02701    Obj_SetInnerRadius 0
+#02702    Obj_PlaySound GLOBAL.sfx_pedknockdown
+
+#02703    IF Obj_ObjectInRadius type = skater
+            radius = GLOBAL.NoticePlayerDist
+
+#02704      StopStream
+#02705      RANDOM[11][45; 73; 101; 129; 157; 185; 213; 241; 269; 297; 325]
+
+#02706      Obj_PlayStream GLOBAL.impvo_react01
+            Vol = 100
+
+#02707      JUMP 0x3b010000 Obj_PlayStream GLOBAL.impvo_react02
+            Vol = 100
+
+#02708      JUMP 0x1b010000 Obj_PlayStream GLOBAL.impvo_react03
+            Vol = 100
+
+#02709      JUMP 0xfb000000 Obj_PlayStream GLOBAL.impvo_react04
+            Vol = 100
+
+#02710      JUMP 0xdb000000 Obj_PlayStream GLOBAL.impvo_react05
+            Vol = 100
+
+#02711      JUMP 0xbb000000 Obj_PlayStream GLOBAL.impvo_react06
+            Vol = 100
+
+#02712      JUMP 0x9b000000 Obj_PlayStream GLOBAL.impvo_react07
+            Vol = 100
+
+#02713      JUMP 0x7b000000 Obj_PlayStream GLOBAL.impvo_react08
+            Vol = 100
+
+#02714      JUMP 0x5b000000 Obj_PlayStream GLOBAL.impvo_react09
+            Vol = 100
+
+#02715      JUMP 0x3b000000 Obj_PlayStream GLOBAL.impvo_react10
+            Vol = 100
+
+#02716      JUMP 0x1b000000 Obj_PlayStream GLOBAL.impvo_react11
+            Vol = 100
+
+#02717
+#02718    END IF
+#02719    Obj_PlayAnim Anim = RANDOM[3][8; 15; 22]
+
+          GLOBAL.HitBySkater
+          JUMP 0x11000000 GLOBAL.HitFromFront
+          JUMP 0x06000000 GLOBAL.HitFromBack
+
+#02720    IF Obj_FlagSet PED_CHICK
+#02721    ELSE
+#02722      Obj_MoveToRelPos VECTOR[0.0; 3.0; 0.0] speed = 1
+
+#02723    END IF
+#02724    Obj_WaitAnimFinished
+#02725    Obj_SetOuterRadius 10
+#02726    Obj_SetException ex = SkaterOutOfRadius
+          scr = ImpressPed_GetUpAfterFall
+          params = STRUCT{
+            NULL }
+
+#02727  END FUNCTION
+
+#02728  FUNCTION ImpressPed_FallThenDie
+#02730    Obj_ClearExceptions
+#02731    Obj_PlaySound GLOBAL.sfx_pedknockdown
+
+#02732    IF Obj_ObjectInRadius type = skater
+            radius = GLOBAL.NoticePlayerDist
+
+#02733      StopStream
+#02734      RANDOM[11][45; 73; 101; 129; 157; 185; 213; 241; 269; 297; 325]
+
+#02735      Obj_PlayStream GLOBAL.impvo_react01
+            Vol = 100
+
+#02736      JUMP 0x3b010000 Obj_PlayStream GLOBAL.impvo_react02
+            Vol = 100
+
+#02737      JUMP 0x1b010000 Obj_PlayStream GLOBAL.impvo_react03
+            Vol = 100
+
+#02738      JUMP 0xfb000000 Obj_PlayStream GLOBAL.impvo_react04
+            Vol = 100
+
+#02739      JUMP 0xdb000000 Obj_PlayStream GLOBAL.impvo_react05
+            Vol = 100
+
+#02740      JUMP 0xbb000000 Obj_PlayStream GLOBAL.impvo_react06
+            Vol = 100
+
+#02741      JUMP 0x9b000000 Obj_PlayStream GLOBAL.impvo_react07
+            Vol = 100
+
+#02742      JUMP 0x7b000000 Obj_PlayStream GLOBAL.impvo_react08
+            Vol = 100
+
+#02743      JUMP 0x5b000000 Obj_PlayStream GLOBAL.impvo_react09
+            Vol = 100
+
+#02744      JUMP 0x3b000000 Obj_PlayStream GLOBAL.impvo_react10
+            Vol = 100
+
+#02745      JUMP 0x1b000000 Obj_PlayStream GLOBAL.impvo_react11
+            Vol = 100
+
+#02746
+#02747    END IF
+#02748    IF Obj_FlagSet PED_CHICK
+#02749    ELSE
+#02750      Obj_MoveToRelPos VECTOR[0.0; 3.0; 0.0] speed = 1
+
+#02751    END IF
+#02752    Obj_PlayAnim Anim = RANDOM[3][8; 15; 22]
+
+          GLOBAL.HitBySkater
+          JUMP 0x11000000 GLOBAL.HitFromFront
+          JUMP 0x06000000 GLOBAL.HitFromBack
+
+#02753    Obj_WaitAnimFinished
+#02754    Obj_SetOuterRadius 100
+#02755    Obj_SetException ex = SkaterOutOfRadius
+          scr = ImpressPed_Goodbye
+          params = STRUCT{
+            NULL }
+
+#02756  END FUNCTION
+
+#02757  FUNCTION ImpressPed_GetUpAfterFall
+#02759    Obj_ClearExceptions
+#02760    Obj_SetException ex = SkaterInRadius
+          scr = ImpressPed_FallForSkater
+          params = STRUCT{
+            NULL }
+
+#02761    Obj_SetException ex = EXCEPTION_PED_SHOULD_DIE
+          scr = ImpressPed_Goodbye
+          params = STRUCT{
+            NULL }
+
+#02762    Obj_SetInnerRadius 2
+#02763    IF Obj_FlagSet PED_CHICK
+#02764    ELSE
+#02765      Obj_MoveToRelPos VECTOR[0.0; -3.0; 0.0] speed = 1
+
+#02766    END IF
+#02767    Obj_PlayAnim Anim = GLOBAL.GetUp
+
+#02768    Obj_WaitAnimFinished
+#02769    Obj_SwitchScript GLOBAL.ReturnScript
+          params = STRUCT{
+            NULL }
+
+#02770  END FUNCTION
+
+#02771  FUNCTION ImpressPed_KnockSkater
+#02773    Obj_ClearExceptions
+#02779    Obj_SetInnerRadius 0
+#02780    Obj_LookAtObject type = skater
+          time = 0.05
+
+#02781    Obj_PlayAnim Anim = RANDOM[2][4; 11]
+
+          GLOBAL.Attack1
+          JUMP 0x06000000 GLOBAL.Attack2
+
+#02782    Wait 0.05
+#02783    Obj_PlaySound bail04 Vol = 200
+
+#02784    Obj_PlaySound bail05 Vol = 200
+
+#02785    Obj_LookAtObject type = skater
+          time = 0.05
+
+#02786    MakeSkaterGoto PedKnockDown
+#02787    Obj_SetAnimCycleMode off
+#02788    Wait 0.05
+#02789    Obj_LookAtObject type = skater
+          time = 0.05
+
+#02790    Obj_WaitAnimFinished
+#02791    Obj_StopAlongPath
+#02792    Obj_WaitAnimFinished
+#02793    Obj_StopStream
+#02794    RANDOM[11][45; 73; 101; 129; 157; 185; 213; 241; 269; 297; 325]
+
+#02795    Obj_PlayStream GLOBAL.impvo_react01
+          Vol = 100
+
+#02796    JUMP 0x3b010000 Obj_PlayStream GLOBAL.impvo_react02
+          Vol = 100
+
+#02797    JUMP 0x1b010000 Obj_PlayStream GLOBAL.impvo_react03
+          Vol = 100
+
+#02798    JUMP 0xfb000000 Obj_PlayStream GLOBAL.impvo_react04
+          Vol = 100
+
+#02799    JUMP 0xdb000000 Obj_PlayStream GLOBAL.impvo_react05
+          Vol = 100
+
+#02800    JUMP 0xbb000000 Obj_PlayStream GLOBAL.impvo_react06
+          Vol = 100
+
+#02801    JUMP 0x9b000000 Obj_PlayStream GLOBAL.impvo_react07
+          Vol = 100
+
+#02802    JUMP 0x7b000000 Obj_PlayStream GLOBAL.impvo_react08
+          Vol = 100
+
+#02803    JUMP 0x5b000000 Obj_PlayStream GLOBAL.impvo_react09
+          Vol = 100
+
+#02804    JUMP 0x3b000000 Obj_PlayStream GLOBAL.impvo_react10
+          Vol = 100
+
+#02805    JUMP 0x1b000000 Obj_PlayStream GLOBAL.impvo_react11
+          Vol = 100
+
+#02806
+#02807    Obj_LookAtObject type = skater
+          time = 0.3
+
+#02808    Obj_PlayAnim Anim = GLOBAL.Rotate
+          Cycle
+#02809    Obj_WaitRotate
+#02810    Obj_SetAnimCycleMode off
+#02811    Obj_WaitAnimFinished
+#02812    Obj_PlayAnim Anim = RANDOM[4][12; 19; 26; 33]
+
+          GLOBAL.Laugh
+          JUMP 0x1c000000 GLOBAL.Disgust2
+          JUMP 0x11000000 GLOBAL.PlayerPoint
+          JUMP 0x06000000 GLOBAL.Disgust1
+
+#02813    Obj_WaitAnimFinished
+#02814    Obj_LookAtNodeLinked time = 0.3
+
+#02815    Obj_PlayAnim Anim = GLOBAL.Rotate
+          Cycle
+#02816    Obj_WaitRotate
+#02817    Obj_SetAnimCycleMode off
+#02818    Obj_WaitAnimFinished
+#02819    Obj_PlayAnim Anim = GLOBAL.Idle
+          Cycle
+#02820    Obj_SwitchScript GLOBAL.ReturnScript
+          params = STRUCT{
+            NULL }
+
+#02821  END FUNCTION
+
+#02822  FUNCTION ImpressPed_KnockThenDie
+#02824    Obj_ClearExceptions
+#02825    Obj_SetInnerRadius 0
+#02826    Obj_LookAtObject type = skater
+          time = 0.05
+
+#02827    Obj_PlayAnim Anim = RANDOM[2][4; 11]
+
+          GLOBAL.Attack1
+          JUMP 0x06000000 GLOBAL.Attack2
+
+#02828    Wait 0.05
+#02829    Obj_PlaySound bail04 Vol = 200
+
+#02830    Obj_PlaySound bail05 Vol = 200
+
+#02831    Obj_LookAtObject type = skater
+          time = 0.05
+
+#02832    MakeSkaterGoto PedKnockDown
+#02833    Obj_SetAnimCycleMode off
+#02834    Wait 0.05
+#02835    Obj_LookAtObject type = skater
+          time = 0.05
+
+#02836    Obj_WaitAnimFinished
+#02837    Obj_StopAlongPath
+#02838    Obj_WaitAnimFinished
+#02839    Obj_StopStream
+#02840    RANDOM[11][45; 73; 101; 129; 157; 185; 213; 241; 269; 297; 325]
+
+#02841    Obj_PlayStream GLOBAL.impvo_react01
+          Vol = 100
+
+#02842    JUMP 0x3b010000 Obj_PlayStream GLOBAL.impvo_react02
+          Vol = 100
+
+#02843    JUMP 0x1b010000 Obj_PlayStream GLOBAL.impvo_react03
+          Vol = 100
+
+#02844    JUMP 0xfb000000 Obj_PlayStream GLOBAL.impvo_react04
+          Vol = 100
+
+#02845    JUMP 0xdb000000 Obj_PlayStream GLOBAL.impvo_react05
+          Vol = 100
+
+#02846    JUMP 0xbb000000 Obj_PlayStream GLOBAL.impvo_react06
+          Vol = 100
+
+#02847    JUMP 0x9b000000 Obj_PlayStream GLOBAL.impvo_react07
+          Vol = 100
+
+#02848    JUMP 0x7b000000 Obj_PlayStream GLOBAL.impvo_react08
+          Vol = 100
+
+#02849    JUMP 0x5b000000 Obj_PlayStream GLOBAL.impvo_react09
+          Vol = 100
+
+#02850    JUMP 0x3b000000 Obj_PlayStream GLOBAL.impvo_react10
+          Vol = 100
+
+#02851    JUMP 0x1b000000 Obj_PlayStream GLOBAL.impvo_react11
+          Vol = 100
+
+#02852
+#02853    Obj_LookAtObject type = skater
+          time = 0.3
+
+#02854    Obj_PlayAnim Anim = GLOBAL.Rotate
+          Cycle
+#02855    Obj_WaitRotate
+#02856    Obj_SetAnimCycleMode off
+#02857    Obj_WaitAnimFinished
+#02858    Obj_SetInnerRadius GLOBAL.KnockedByPlayerDist
+
+#02860    Obj_SetException ex = SkaterInRadius
+          scr = ImpressPed_KnockThenDie
+          params = STRUCT{
+            ReturnScript = ImpressPed_Waiting
+            NULL }
+
+#02861    Obj_PlayAnim Anim = RANDOM[4][12; 19; 26; 33]
+
+          GLOBAL.Laugh
+          JUMP 0x1c000000 GLOBAL.Disgust2
+          JUMP 0x11000000 GLOBAL.PlayerPoint
+          JUMP 0x06000000 GLOBAL.Disgust1
+
+#02863    Obj_WaitAnimFinished
+#02864    Obj_LookAtObject type = skater
+          time = 0.3
+
+#02865    Obj_PlayAnim Anim = GLOBAL.Rotate
+          Cycle
+#02867    Obj_WaitRotate
+#02868    Obj_SetAnimCycleMode off
+#02869    Obj_WaitAnimFinished
+#02870    Obj_SetOuterRadius 100
+#02877    Obj_SetException ex = SkaterOutOfRadius
+          scr = ImpressPed_Goodbye
+          params = STRUCT{
+            NULL }
+
+#02878    LOOP
+#02880      Obj_LookAtObject type = skater
+            time = 0.3
+
+#02882      Obj_PlayAnim NumCycles = 1
+            Anim = RANDOM[3][8; 15; 22]
+
+            GLOBAL.Impressed4
+            JUMP 0x11000000 GLOBAL.Impressed5
+            JUMP 0x06000000 GLOBAL.Impressed6
+
+#02897      Obj_WaitAnimFinished
+#02898    END LOOP
+#02899  END FUNCTION
+
+#02900  FUNCTION ImpressPed_Goodbye
+#02902    Die
+#02903  END FUNCTION
+
+#02904  FUNCTION ImpressPed_Show
+#02906    IF GetFlag Flag = GLOBAL.MyFlag
+
+#02907    ELSE
+#02908      IF IsAlive name = GLOBAL.MyPed
+
+#02909      ELSE
+#02910        create name = GLOBAL.MyPed
+
+#02911      END IF
+#02912    END IF
+#02913  END FUNCTION
+
+#02914  FUNCTION ImpressPed_Hide
+#02916    IF GetFlag Flag = GLOBAL.MyFlag
+
+#02917    ELSE
+#02918      IF IsAlive name = GLOBAL.MyPed
+
+#02919        SendException EXCEPTION_PED_SHOULD_DIE name = GLOBAL.MyPed
+
+#02920      END IF
+#02921    END IF
+#02922  END FUNCTION
+
+#02923  FUNCTION ImpressPed_Proximity
+#02925    IF inside
+#02926      ImpressPed_Show NULL
+#02927    ELSE
+#02928      ImpressPed_Hide NULL
+#02929    END IF
+#02930  END FUNCTION
+
+#02931  FUNCTION Ped_StopLaughing
+#02933    Obj_SetFlag PED_NOMOVE
+#02935    Obj_SetFlag PED_KNOCK
+#02936    Obj_SetFlag PED_STOP_LAUGHING
+#02937    Obj_ClearFlag PED_AVOID
+#02938    Obj_SetException ex = SkaterInRadius
+          scr = Ped_FallForSkater
+          params = STRUCT{
+            NULL }
+
+#02939    Obj_PlayAnim Anim = GLOBAL.Idle
+
+#02946    Obj_SetAnimCycleMode On
+#02947    Wait 2 seconds
+#02948    IF Obj_FlagSet PED_CHATTER
+#02949      RANDOM[2][9; 218]
+
+#02950      Obj_PlayStream can_laugh_16a volume = 250
+            radius = 100
+
+#02951      Wait 3 seconds
+#02952      Obj_PlayStream can_laugh_17b volume = 250
+            radius = 100
+
+#02953      Wait 3 seconds
+#02954      Obj_PlayStream can_laugh_21a volume = 250
+            radius = 100
+
+#02955      Wait 3 seconds
+#02956      Obj_PlayStream can_laugh_22b volume = 250
+            radius = 100
+
+#02957      JUMP 0x97000000 Obj_PlayStream can_laugh_18b volume = 250
+            radius = 100
+
+#02958      Wait 3 seconds
+#02959      Obj_PlayStream can_laugh_19a volume = 250
+            radius = 100
+
+#02960      Wait 3 seconds
+#02961      Obj_PlayStream can_laugh_20b volume = 250
+            radius = 100
+
+#02962
+#02963    END IF
+#02964    Obj_SetAnimCycleMode off
+#02965    Obj_WaitAnimFinished
+#02966    Obj_PlayAnim Anim = GLOBAL.IdleToWalk
+
+#02967    Obj_WaitAnimFinished
+#02968    IF GotParam PathToFollow
+#02969      Obj_FollowPath name = GLOBAL.PathToFollow
+
+#02970    ELSE
+#02971      Obj_FollowPathLinked
+#02972    END IF
+#02973    Obj_WaitAnimFinished
+#02974    Obj_PlayAnim Anim = GLOBAL.Walk
+          Cycle
+#02976    Obj_WaitMove
+#02977    Obj_StopAlongPath
+#02978    Obj_PlayAnim Anim = WalkToIdle
+
+#02979    Obj_WaitAnimFinished
+#02980    Obj_ClearExceptions
+#02981    Obj_PlayAnim Anim = FenceLean_Up
+
+#02982    Obj_SetFlag PED_ON_FENCE
+#02983    Obj_WaitAnimFinished
+#02984    GotoPreserveParams Ped_GenericWaiting
+#02985  END FUNCTION
+
+#02986  FUNCTION Ped_Suicide
+#02988    Die
+#02989  END FUNCTION
+
+#02990  FUNCTION Ped_HeightCheck
+#02992    Obj_StickToGround On
+#02994  END FUNCTION
+
+#02995  FUNCTION Ped_NoHeightCheck
+#02997    Obj_StickToGround off
+#02999    Obj_SetConstantHeight
+#03000  END FUNCTION
+
+#03001
