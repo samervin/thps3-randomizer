@@ -596,22 +596,18 @@ def randomize_special_tricks(skater_profile, difficulty=None):
                     raise Exception("invalid trick type")
     return skater_profile
 
-def randomize_impress_ped_scores(sk3_pedscripts, ajc, bdj):
+def randomize_impress_ped_scores(ajc, bdj, sk3_pedscripts):
     ped_canada_score = random.randint(2, 25) * 1000
     ped_canada_chatter = int(ped_canada_score/2) # Used for voice lines
     ped_ship_score = random.randint(2, 25) * 1000
     ped_ship_chatter = int(ped_ship_score/2) # Used for voice lines
-    sk3_pedscripts[265] = f"          MinPropsScoreDuring = {ped_ship_chatter}\n"
-    sk3_pedscripts[266] = f"          MinPropsScoreDuring2 = {ped_ship_score}\n"
-    sk3_pedscripts[267] = f"          MinPropsScoreLanding = {ped_ship_chatter}\n"
-    sk3_pedscripts[268] = f"          MinPropsScoreLanding2 = {ped_ship_score}\n"
-    sk3_pedscripts[484] = f"          MinPropsScoreDuring = {ped_canada_chatter}\n"
-    sk3_pedscripts[485] = f"          MinPropsScoreDuring2 = {ped_canada_score}\n"
-    sk3_pedscripts[486] = f"          MinPropsScoreLanding = {ped_canada_chatter}\n"
-    sk3_pedscripts[487] = f"          MinPropsScoreLanding2 = {ped_canada_score}\n"
+    sk3_pedscripts = sk3_pedscripts.replace("{{rando_sk3_pedscripts_skater_chatter}}", str(ped_canada_chatter))
+    sk3_pedscripts = sk3_pedscripts.replace("{{rando_sk3_pedscripts_skater_score}}", str(ped_canada_score))
+    sk3_pedscripts = sk3_pedscripts.replace("{{rando_sk3_pedscripts_girl_chatter}}", str(ped_ship_chatter))
+    sk3_pedscripts = sk3_pedscripts.replace("{{rando_sk3_pedscripts_girl_score}}", str(ped_ship_score))
     ajc = ajc.replace("{{rando_ajc_skater_points}}", str(ped_canada_score))
     bdj = bdj.replace("{{rando_bdj_girl_points}}", str(ped_ship_score))
-    return ajc, bdj
+    return ajc, bdj, sk3_pedscripts
 
 def randomize_decks(boardselect):
     # Randomize grip tape textures and skater default grip tapes
@@ -725,9 +721,6 @@ def junk_suburbia(alf):
 
 
 if __name__ == "__main__":
-    # read vanilla QBs
-    sk3_pedscripts = read_script_file('sk3_pedscripts')
-
     # read modified QBs
     ajc = read_modified_script_file('ajc_scripts')
     alf = read_modified_script_file('alf_scripts')
@@ -743,6 +736,7 @@ if __name__ == "__main__":
     levelsqb = read_modified_script_file('levels')
     mainmenu = read_modified_script_file('mainmenu')
     protricks = read_modified_script_file('protricks')
+    sk3_pedscripts = read_modified_script_file('sk3_pedscripts')
     skater_profile = read_modified_script_file('skater_profile')
 
     # randomize QBs
@@ -763,7 +757,7 @@ if __name__ == "__main__":
     trickspot_tricks, ajc, alf, bdj, cjr, cpf = randomize_trickspot_tricks("wild", ajc, alf, bdj, cjr, cpf)
     protricks = randomize_trick_sets(protricks, trickspot_tricks)
     skater_profile = randomize_special_tricks(skater_profile, "easy")
-    ajc, bdj = randomize_impress_ped_scores(sk3_pedscripts, ajc, bdj)
+    ajc, bdj, sk3_pedscripts = randomize_impress_ped_scores(ajc, bdj, sk3_pedscripts)
     boardselect = randomize_decks(boardselect)
 
     goal_scripts = require_deck_for_tape(goal_scripts)
@@ -773,9 +767,6 @@ if __name__ == "__main__":
     skater_profile = lock_characters(skater_profile)
 
     alf = junk_suburbia(alf)
-
-    # write vanilla QBs
-    write_script_file('sk3_pedscripts', sk3_pedscripts)
 
     # write modified QBs
     write_script_file('alf_scripts', alf)
@@ -792,4 +783,5 @@ if __name__ == "__main__":
     write_script_file('levels', levelsqb)
     write_script_file('mainmenu', mainmenu)
     write_script_file('protricks', protricks)
+    write_script_file('sk3_pedscripts', sk3_pedscripts)
     write_script_file('skater_profile', skater_profile)
