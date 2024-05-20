@@ -55,7 +55,7 @@ class Level2:
             case "normal":
                 location_names = constants.new_location_names
             case "comp":
-                location_names = constants.competition_location_names
+                location_names = constants.new_competition_location_names
             case _:
                 raise Exception("invalid type")
         for loc in location_names:
