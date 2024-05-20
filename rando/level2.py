@@ -61,7 +61,7 @@ class Level2:
         for loc in location_names:
             vector_name = "{{" + f"rando_{self.filename}_vector_{loc}" + "}}"
             vector = vectors.pop()
-            vector_value = f"VECTOR[{vector[0]}; {vector[1]}; {vector[2]}]"
+            vector_value = f"VECTOR[{vector[0]:f}; {vector[1]:f}; {vector[2]:f}]"
             data = data.replace(vector_name, vector_value)
         return data
 
