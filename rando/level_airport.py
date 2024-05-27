@@ -1,4 +1,5 @@
 from level2 import Level2
+import random
 
 class LevelAirport(Level2):
 
@@ -49,3 +50,31 @@ class LevelAirport(Level2):
             (1201.6841, -637.08093, -4701.9434),
             (-1894.7393, -614.4857, -2494.5352),
         ]
+        # -X = right of spawn
+        # +X = left of spawn
+        # -Y = lower to ground
+        # +Y = higher above ground
+        # -Z = farther from spawn
+        # +Z = closer to spawn
+
+    def _shuffle(self, any_list):
+        shuffled = any_list.copy()
+        random.shuffle(shuffled)
+        return shuffled
+
+    def shuffle_pedestrian_location_vectors(self, data):
+        default_buddy_vector = [(-1474.0542, -1003.2954, -7001.33)]
+        buddy2_offset_x = -22
+        buddy2_offset_z = -56
+        custom_buddy_vectors = [
+            (4232.0, -12.0, 7570.0), # Upper area on right
+        ]
+
+        vectors = self._shuffle(default_buddy_vector + custom_buddy_vectors)
+
+        vector = vectors.pop()
+        vector_value = f"VECTOR[{vector[0]}; {vector[1]}; {vector[2]}]"
+        vector2_value = f"VECTOR[{vector[0] + buddy2_offset_x}; {vector[1]}; {vector[2] + buddy2_offset_z}]"
+        data = data.replace("{{" + f"rando_ap_vector_ticket_buddy1" + "}}", vector_value)
+        data = data.replace("{{" + f"rando_ap_vector_ticket_buddy2" + "}}", vector2_value)
+        return data

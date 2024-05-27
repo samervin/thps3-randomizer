@@ -19601,12 +19601,12 @@ NodeArray =
             )
             }
           STRUCT{
-            Position = VECTOR[-1474.0542; -1003.2954; -7001.33]
+            Position = {{rando_ap_vector_ticket_buddy1}}
             Angles = VECTOR[0.0; 0.0; 0.0]
             Name = TRG_Ped_Family01
             Class = Pedestrian
             Type = Ped_Canada_D
-            AbsentInNetGames IgnoredLights = ARRAY(
+            CreatedAtStart AbsentInNetGames IgnoredLights = ARRAY(
 
               0 1
             )
@@ -19684,7 +19684,7 @@ NodeArray =
             )
             }
           STRUCT{
-            Position = VECTOR[-1496.7742; -997.7187; -7057.4517]
+            Position = {{rando_ap_vector_ticket_buddy2}}
             Angles = VECTOR[0.0; 2.015856; 0.0]
             Name = TRG_Ped_Family08
             Class = Pedestrian
@@ -19697,7 +19697,7 @@ NodeArray =
             model_lod1 = "pedfem_f_LOD01"
             lod_dist1 = 25
             lod_dist2 = 200
-            TriggerScript = APTRG_Ped_Family08Script
+            CreatedAtStart TriggerScript = APTRG_Ped_Family08Script
             }
           STRUCT{
             Position = VECTOR[3066.7031; -561.42365; 4514.2285]
@@ -32476,9 +32476,6 @@ NodeArray =
 #31868    IF GetGoal goal = GOAL_SCRIPTED1
 
 #31869    ELSE
-#31870      Create Name = TRG_Ped_Family01
-
-#31871      Create Name = TRG_Ped_Family08
 
 #31872    END IF
 #31873  END FUNCTION
@@ -33219,9 +33216,6 @@ NodeArray =
 #32608    IF GetGoal goal = GOAL_SCRIPTED1
 
 #32609    ELSE
-#32610      Kill Name = TRG_Ped_Family01
-
-#32611      Kill Name = TRG_Ped_Family08
 
 #32612    END IF
 #32613  END FUNCTION
