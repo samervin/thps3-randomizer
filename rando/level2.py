@@ -61,7 +61,12 @@ class Level2:
         for loc in location_names:
             vector_name = "{{" + f"rando_{self.filename}_vector_{loc}" + "}}"
             vector = vectors.pop()
-            vector_value = f"VECTOR[{vector[0]:f}; {vector[1]:f}; {vector[2]:f}]"
+            # Random offsets for level collectables
+            # TODO: Test whether this range works for all locations
+            random_x = random.randrange(-100, 100)
+            random_y = random.randrange(-100, 100)
+            random_z = random.randrange(-100, 100)
+            vector_value = f"VECTOR[{vector[0] + random_x:f}; {vector[1] + random_y:f}; {vector[2] + random_z:f}]"
             data = data.replace(vector_name, vector_value)
         return data
 
