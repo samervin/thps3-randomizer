@@ -1,0 +1,672 @@
+FUNCTION WaitFrameLoop
+#00000    LOOP
+#00000      wait 1 gameframe
+#00000    END LOOP
+#00000  END FUNCTION
+
+#00000  FUNCTION InitializeGameFlow
+#00000    IF OnServer
+#00000      printf "*** START SERVER HERE ***"
+#00000      SetServerMode
+#00000      StartServer
+#00000    END IF
+#00000    IF InFrontEnd
+#00000    ELSE
+#00000      LaunchMenuScreen screen = game_menu
+            not_active
+#00000    END IF
+#00000    IF OnServer
+#00000      printf "*** JOIN SERVER HERE ***"
+#00000      JoinServer NULL
+#00000      CreatePanels
+#00000    END IF
+#00000    printf "***************************    LOADING LEVEL ****************************************************"
+#00000    LoadRequestedLevel
+#00000    IF InFrontEnd
+#00000      InitializeFrontEndSprites
+#00000      InitTVScreensVisibility
+#00000      LoadSkaters
+#00000      spawnscript helper_scanner
+#00000    END IF
+#00000    StandardGameFlow
+#00000  END FUNCTION
+
+#00000  FUNCTION ChangeLevelGameFlow
+#00000    change FirstTimeInSplitScreen = 1
+
+#00000    LoadRequestedLevel
+#00000    ReinsertSkaters
+#00000    IF InNetGame
+#00000      SetGameType netlobby
+#00000      SetCurrentGameType
+#00000    END IF
+#00000    LOOP
+#00000      IF InFrontEnd
+#00000        IF SkatersAreReady
+#00000          BREAK
+
+#00000        END IF
+#00000        wait 1 gameframe
+#00000      ELSE
+#00000        wait 1 gameframe
+#00000        IF SkatersAreReady
+#00000          BREAK
+
+#00000        END IF
+#00000      END IF
+#00000    END LOOP
+#00000    WaitFrameLoop
+#00000  END FUNCTION
+
+#00000  FUNCTION RestartGameFlow
+#00000    StandardGameFlow
+#00000  END FUNCTION
+
+#00000  FUNCTION pause_game_flow
+#00000    printf "Pausing game flow"
+#00000    PauseGameFlow
+#00000    wait 1 gameframe
+#00000  END FUNCTION
+
+#00000  FUNCTION unpause_game_flow
+#00000    printf "Unpausing game flow"
+#00000    UnpauseGameFlow
+#00000  END FUNCTION
+
+#00000  FirstTimeInGameFlow_Startup = 1
+
+#00000  FUNCTION GameFlow_Startup
+#00000    printf "Running standard game flow"
+#00000    IF GameModeEquals is_career
+#00000      SetGlobalFlag flag = SKATESHOP_RETURN_FROM_CAREER
+
+#00000    ELSE
+#00000      IF GameModeEquals is_singlesession
+#00000        SetGlobalFlag flag = SKATESHOP_RETURN_FROM_SINGLE
+
+#00000      ELSE
+#00000        IF GameModeEquals is_parkeditor
+#00000          SetGlobalFlag flag = SKATESHOP_RETURN_FROM_PARKEDIT
+
+#00000        ELSE
+#00000          IF InNetGame
+#00000            SetGlobalFlag flag = SKATESHOP_RETURN_FROM_ONLINE
+
+#00000          ELSE
+#00000            SetGlobalFlag flag = SKATESHOP_RETURN_FROM_FREESKATE
+
+#00000          END IF
+#00000        END IF
+#00000      END IF
+#00000    END IF
+#00000    DisablePause
+#00000    UnSetWaitForGoalFlags
+#00000    SetScreenMode one_camera
+#00000    LOOP
+#00000      IF InFrontEnd
+#00000        IF SkatersAreReady
+#00000          BREAK
+
+#00000        END IF
+#00000        wait 1 gameframe
+#00000      ELSE
+#00000        wait 1 gameframe
+#00000        IF SkatersAreReady
+#00000          BREAK
+
+#00000        END IF
+#00000      END IF
+#00000    END LOOP
+#00000    HideClock
+#00000    IF GameModeEquals is_parkeditor
+#00000      printf "freezing skater"
+#00000      Ed_RemoveSkater
+#00000    END IF
+#00000    RestartLevel
+#00000    IF InFrontEnd
+#00000      WaitFrameLoop
+#00000    END IF
+#00000    IF GameModeEquals is_parkeditor
+#00000    ELSE
+#00000      RefreshGameMenu
+#00000    END IF
+#00000    InitializeSkaters
+#00000    KillMessages
+#00000    TogglePanel 0
+#00000    IF CareerLevelIs LevelNum_Tutorials
+#00000      PauseMusic 1
+#00000    ELSE
+#00000    END IF
+#00000    PauseStream 0
+#00000    HideLoadingScreen
+#00000    IF InNetGame
+#00000      IF GameModeEquals is_lobby
+#00000        IF OnServer
+#00000          server_enter_free_skate
+#00000        ELSE
+#00000          client_enter_free_skate
+#00000        END IF
+#00000      END IF
+#00000    END IF
+#00000    IF IsTrue FirstTimeFromSkateshop
+#00000      change FirstTimeFromSkateshop = 0
+
+#00000    ELSE
+#00000    END IF
+#00000    IF InSplitScreenGame
+#00000      ResetSkaters
+#00000      IF IsTrue FirstTimeInSplitScreen
+#00000        MakeSkaterGosub remove_skater_from_world skater = 0
+
+#00000        MakeSkaterGosub remove_skater_from_world skater = 1
+
+#00000        SwitchToMenu menu = splitscreen_setup_menu
+
+#00000        pause_game_flow
+#00000        change FirstTimeInSplitScreen = 0
+
+#00000      END IF
+#00000      ApplySplitScreenOptions
+#00000      MakeSkaterGosub add_skater_to_world skater = 0
+
+#00000      MakeSkaterGosub add_skater_to_world skater = 1
+
+#00000    END IF
+#00000    SetScreenModeFromGameMode
+#00000    IF ShouldRunIntroScript
+#00000      DisablePause
+#00000      SpawnLevelScript target = once_on_startup
+            callback = unpause_game_flow
+
+#00000    END IF
+#00000    LOOP
+#00000      IF IntroScriptFinished
+#00000        BREAK
+
+#00000      END IF
+#00000      wait 1 gameframe
+#00000    END LOOP
+#00000    IF IsCompetition
+#00000      IF CareerLevelIs LevelNum_Rio
+#00000        StartCompetition RioCompParams RioScoreParams
+#00000      END IF
+#00000      IF CareerLevelIs LevelNum_SkaterIsland
+#00000        StartCompetition SICompParams SIScoreParams
+#00000      END IF
+#00000      IF CareerLevelIs LevelNum_Tokyo
+#00000        StartCompetition TokCompParams TokScoreParams
+#00000      END IF
+#00000    END IF
+#00000    IF GameModeEquals is_horse
+#00000      StartHorse
+#00000    END IF
+#00000  END FUNCTION
+
+#00000  FUNCTION GameFlow_StartRun
+#00000    IF IsCompetition
+#00000      StartCompetitionRun
+#00000      PlaySkaterCamAnim skater = 0
+            stop
+#00000      KillMessages
+#00000      DisablePause
+#00000      IF CareerLevelIs LevelNum_Rio
+#00000        printf "going to spawn comp_wait_runstart"
+#00000        Comp_Wait_RunStart_Setup RioCompParams
+#00000      END IF
+#00000      IF CareerLevelIs LevelNum_SkaterIsland
+#00000        Comp_Wait_RunStart_Setup SICompParams
+#00000      END IF
+#00000      IF CareerLevelIs LevelNum_Tokyo
+#00000        Comp_Wait_RunStart_Setup TokCompParams
+#00000      END IF
+#00000      pause_game_flow
+#00000    ELSE
+#00000      PlaySkaterCamAnim skater = 0
+            stop
+#00000    END IF
+#00000    TogglePanel 1
+#00000    DisablePause
+#00000    IF ReplayModeEquals REPLAY_MODE_PLAY_SAVED
+#00000      SwitchToMenu menu = replay_from_memcard_menu
+            DoNotOpen
+#00000      PauseStream 0
+#00000    ELSE
+#00000      IF ReplayModeEquals REPLAY_MODE_PLAY_AFTER_RUN
+#00000        SwitchToMenu menu = replay_menu
+              DoNotOpen
+#00000        PauseStream 0
+#00000      END IF
+#00000    END IF
+#00000    enable_replays
+#00000    IF InMultiplayerGame
+#00000    ELSE
+#00000    END IF
+#00000    ReplayInit
+#00000    IF TestGameType parkeditor
+#00000    ELSE
+#00000      ResetLevel
+#00000    END IF
+#00000    IF IsCareerMode
+#00000      KillTrickPoints
+#00000      SetUpSkaterDefaults
+#00000      CreateTrickPoints2
+#00000      CreateSkateLines2
+#00000      CreateDeckIcon
+#00000      CreatePhotoGuy
+#00000      UnSetGlobalFlag flag = PROMPT_FOR_SAVE
+
+#00000    END IF
+#00000    IF CareerLevelIs LevelNum_Tutorials
+#00000      PauseMusic 1
+#00000    ELSE
+#00000      printf "starting a run....skip tracks and crank up the music"
+#00000      IF GameModeEquals is_horse
+#00000      ELSE
+#00000        SkipMusicTrack
+#00000      END IF
+#00000      PauseMusic 0
+#00000    END IF
+#00000    IF GameModeEquals default_time_limit
+#00000      ResetClock
+#00000      UnpauseClock
+#00000      ShowClock
+#00000    ELSE
+#00000      HideClock
+#00000    END IF
+#00000    SetTeamMode 0
+#00000    IF GameModeEquals is_king
+#00000      SpawnCrown
+#00000      SpawnCompass
+#00000    END IF
+#00000    IF GameModeEquals is_horse
+#00000      horse_start_run
+#00000    END IF
+#00000    IF GameModeChecksumEquals ctf
+#00000      SpawnCTF
+#00000      SetTeamMode 1
+#00000      SpawnCompass
+#00000    END IF
+#00000    IF GameModeChecksumEquals ownthezone
+#00000      SpawnZones
+#00000      SetTeamMode 1
+#00000      SpawnCompass
+#00000    END IF
+#00000    IF GameModeChecksumEquals beachball
+#00000      SpawnBeachball
+#00000      SpawnCompass
+#00000    END IF
+#00000    SetTeamMode 2
+#00000    ResetSkaters
+#00000    IF InMultiplayerGame
+#00000      spawnscript Splitscreen_StartupScript
+#00000    END IF
+#00000    IF InNetGame
+#00000      IF OnServer
+#00000      ELSE
+#00000        LaunchQueuedScripts
+#00000        IF IsObserving
+#00000          ShowAllObjects
+#00000        END IF
+#00000      END IF
+#00000    END IF
+#00000    IF InNetGame
+#00000      LoadMultiplayerSounds
+#00000      IF GameModeEquals is_lobby
+#00000        IF IsTrue FirstTimeInGameFlow_Startup
+#00000          change FirstTimeInGameFlow_Startup = 0
+
+#00000          InvokeScreen screen = ss_main_window
+
+#00000        ELSE
+#00000          DoDeferredStart
+#00000        END IF
+#00000      END IF
+#00000    END IF
+#00000  END FUNCTION
+
+#00000  FUNCTION GameFlow_PlayRun
+#00000    wait 3 gameframe
+#00000    IF InMultiplayerGame
+#00000      UseBothPadsInFrontEnd
+#00000    ELSE
+#00000      UseOnePadInFrontEnd
+#00000    END IF
+#00000    EnableActuators
+#00000    EnablePause
+#00000    LOOP
+#00000      IF ShouldEndRun
+#00000        BREAK
+
+#00000      END IF
+#00000      IF IsCompetition
+#00000        IF CompetitionEnded
+#00000          BREAK
+
+#00000        END IF
+#00000      END IF
+#00000      IF GameModeEquals is_horse
+#00000        IF FirstTrickStarted
+#00000          HideClock
+#00000          BREAK
+
+#00000        END IF
+#00000      END IF
+#00000      wait 1 gameframe
+#00000    END LOOP
+#00000  END FUNCTION
+
+#00000  FUNCTION GameFlow_WaitEnd
+#00000    LOOP
+#00000      IF EndRunSelected
+#00000        BREAK
+
+#00000      END IF
+#00000      IF IsCompetition
+#00000        IF CompetitionEnded
+#00000          BREAK
+
+#00000        END IF
+#00000      END IF
+#00000      IF AllSkatersAreIdle
+#00000        BREAK
+
+#00000      END IF
+#00000      wait 1 gameframe
+#00000    END LOOP
+#00000    EnableActuators 0
+#00000    printf "About to disable"
+#00000    DisablePause
+#00000    wait 2 game frames
+#00000    UnpauseGame
+#00000    DisablePause
+#00000    FrontEndSetInactive
+#00000    DisablePause
+#00000    wait 2 game frames
+#00000    TogglePanel 0
+#00000    KillMessages
+#00000    SetReplayMode REPLAY_MODE_OFF
+#00000    KillSpawnedScript name = SK3_Killskater_Finish
+
+#00000  END FUNCTION
+
+#00000  FUNCTION GameFlow_End
+#00000    IF IsCompetition
+#00000      placing_screen
+#00000    END IF
+#00000    LOOP
+#00000      IF CalculateFinalScores
+#00000        BREAK
+
+#00000      END IF
+#00000      wait 1 gameframe
+#00000    END LOOP
+#00000    SpawnLevelScript target = once_on_exit
+
+#00000    LOOP
+#00000      IF IntroScriptFinished
+#00000        BREAK
+
+#00000      END IF
+#00000      wait 1 gameframe
+#00000    END LOOP
+#00000    IF IsCareerMode
+#00000      Goal_CheckProVideoUnlock
+#00000      IF GetGlobalFlag flag = SHOW_CREDITS
+
+#00000        UnSetGlobalFlag flag = SHOW_CREDITS
+
+#00000        IF CD
+#00000          wait 1 gameframe
+#00000          ingame_play_movie "movies\credits"
+#00000        END IF
+#00000      END IF
+#00000      IF IsCompetition
+#00000      ELSE
+#00000        UpdateRecords
+#00000        Statistics_screen
+#00000      END IF
+#00000    ELSE
+#00000      IF IsCustomPark
+#00000      ELSE
+#00000        IF GameModeEquals is_singlesession
+#00000          UpdateRecords
+#00000          Statistics_screen
+#00000        END IF
+#00000      END IF
+#00000    END IF
+#00000    change EnteringStatsMenuFromGameFlow = 1
+
+#00000    IF JustGotFlag flag = GOAL_STAT_POINT1
+
+#00000      printf "stat point"
+#00000      SwitchToMenu menu = stats_menu
+
+#00000      pause_game_flow
+#00000    ELSE
+#00000      IF JustGotFlag flag = GOAL_STAT_POINT2
+
+#00000        printf "stat point"
+#00000        SwitchToMenu menu = stats_menu
+
+#00000        pause_game_flow
+#00000      ELSE
+#00000        IF JustGotFlag flag = GOAL_STAT_POINT3
+
+#00000          printf "stat point"
+#00000          SwitchToMenu menu = stats_menu
+
+#00000          pause_game_flow
+#00000        ELSE
+#00000          IF JustGotFlag flag = GOAL_STAT_POINT4
+
+#00000            printf "stat point"
+#00000            SwitchToMenu menu = stats_menu
+
+#00000            pause_game_flow
+#00000          ELSE
+#00000            IF JustGotFlag flag = GOAL_STAT_POINT5
+
+#00000              printf "stat point"
+#00000              SwitchToMenu menu = stats_menu
+
+#00000              pause_game_flow
+#00000            END IF
+#00000          END IF
+#00000        END IF
+#00000      END IF
+#00000    END IF
+#00000    change EnteringStatsMenuFromGameFlow = 0
+
+#00000    helper_select_choose_back_centered
+#00000    IF InNetGame
+#00000      SwitchToMenu menu = end_run_menu
+            DontPauseWhenActive
+#00000    ELSE
+#00000      IF IsCareerMode
+#00000        IF GetGlobalFlag flag = PROMPT_FOR_SAVE
+
+#00000          SwitchToMenu menu = end_run_menu
+
+#00000        ELSE
+#00000          SwitchToMenu menu = end_run_menu
+
+#00000        END IF
+#00000      ELSE
+#00000        SwitchToMenu menu = end_run_menu
+
+#00000      END IF
+#00000    END IF
+#00000    IF GameModeEquals show_ranking_screen
+#00000      helper_hide
+#00000      KillMessages all_panels
+#00000      SwitchToMenu menu = winner_screen
+
+#00000    END IF
+#00000    IF InNetGame
+#00000      ResetClock
+#00000      IF OnServer
+#00000        wait 5 gameframes
+#00000        LoadPendingPlayers
+#00000      END IF
+#00000    END IF
+#00000  END FUNCTION
+
+#00000  FUNCTION StandardGameFlow
+#00000    GameFlow_Startup
+#00000    LOOP
+#00000      GameFlow_StartRun
+#00000      IF ReplayModeEquals REPLAY_MODE_PLAY_SAVED
+#00000        GameFlow_PlayRun
+#00000        GameFlow_WaitEnd
+#00000        SwitchToMenu menu = replay_from_memcard_menu
+
+#00000        pause_game_flow
+#00000      ELSE
+#00000        IF ReplayModeEquals REPLAY_MODE_PLAY_AFTER_RUN
+#00000          GameFlow_PlayRun
+#00000          GameFlow_WaitEnd
+#00000          SwitchToMenu menu = replay_menu
+
+#00000          pause_game_flow
+#00000        ELSE
+#00000          GameFlow_PlayRun
+#00000          GameFlow_WaitEnd
+#00000          IF IsCompetition
+#00000            IF CompetitionEnded
+#00000              EndCompetitionRun
+#00000              PauseMusic 1
+#00000              leader_screen_gameflow
+#00000              pause_game_flow
+#00000              BREAK
+
+#00000            ELSE
+#00000              EndCompetitionRun
+#00000              New_Judge_screen_gameflow
+#00000              pause_game_flow
+#00000              leader_screen_gameflow
+#00000              pause_game_flow
+#00000              IF RoundIs 3
+#00000                BREAK
+
+#00000              ELSE
+#00000                InitializeSkaters
+#00000              END IF
+#00000            END IF
+#00000          ELSE
+#00000            IF GameModeEquals is_horse
+#00000              IF EndRunSelected
+#00000                BREAK
+
+#00000              END IF
+#00000              horse_end_run
+#00000              IF HorseEnded
+#00000                BREAK
+
+#00000              ELSE
+#00000                InitializeSkaters
+#00000              END IF
+#00000            ELSE
+#00000              BREAK
+
+#00000            END IF
+#00000          END IF
+#00000        END IF
+#00000      END IF
+#00000    END LOOP
+#00000    horse_uninit
+#00000    GameFlow_End
+#00000    WaitFrameLoop
+#00000  END FUNCTION
+
+#00000  FUNCTION spawn_movie
+#00000    spawnscript play_movie_task params = STRUCT{
+            NULL }
+
+#00000  END FUNCTION
+
+#00000  FUNCTION play_movie_task
+#00000    playmovie_script NULL
+#00000  END FUNCTION
+
+#00000  FUNCTION gf
+#00000    cleanup
+#00000    request_level level = load_rio
+
+#00000    ChangeLevelGameFlow
+#00000  END FUNCTION
+
+#00000  FUNCTION ShowAllObjects
+#00000    IF CareerLevelIs LevelNum_Foundry
+#00000    END IF
+#00000    IF CareerLevelIs LevelNum_Canada
+#00000      AJC_Script_Can_Network_Startup
+#00000    END IF
+#00000    IF CareerLevelIs LevelNum_Suburbia
+#00000    END IF
+#00000    IF CareerLevelIs LevelNum_SkaterIsland
+#00000    END IF
+#00000    IF CareerLevelIs LevelNum_Airport
+#00000      CPF_AP_BeginAt_ShowAll
+#00000    END IF
+#00000    IF CareerLevelIs LevelNum_Rio
+#00000    END IF
+#00000    IF CareerLevelIs LevelNum_LA
+#00000    END IF
+#00000    IF CareerLevelIs LevelNum_Tokyo
+#00000      JS_Tok_NetObserver
+#00000    END IF
+#00000    IF CareerLevelIs LevelNum_Ship
+#00000      BDJ_SHP_NetObserverStartup
+#00000    END IF
+#00000    IF LevelIs load_ware
+#00000      JKU_Ware_IsObserver
+#00000    END IF
+#00000  END FUNCTION
+
+#00000  FUNCTION Splitscreen_StartupScript
+#00000    IF LevelIs Load_Shp
+#00000      printf "Launching BDJ_SHP_LoadingScript................................."
+#00000      BDJ_SHP_LoadingScript
+#00000    END IF
+#00000  END FUNCTION
+
+#00000  FUNCTION LoadMultiplayerSounds
+#00000    IF GameModeChecksumEquals ctf
+#00000      LoadSound "MP\ctf_flag_captured1_crowd" vol = 100
+
+#00000      LoadSound "MP\ctf_flag_captured2_crowd" vol = 100
+
+#00000      LoadSound "MP\ctf_flag_dropped" vol = 100
+
+#00000      LoadSound "MP\ctf_flag_returned" vol = 100
+
+#00000      LoadSound "MP\ctf_flag_taken1_crowd" vol = 100
+
+#00000      LoadSound "MP\ctf_flag_taken2_crowd" vol = 100
+
+#00000    END IF
+#00000    IF GameModeChecksumEquals ownthezone
+#00000      LoadSound "MP\zone_control_all" vol = 100
+
+#00000      LoadSound "MP\zone_control_zone" vol = 100
+
+#00000      LoadSound "MP\zone_drop_key" vol = 100
+
+#00000      LoadSound "MP\zone_get_key" vol = 100
+
+#00000      LoadSound "MP\zone_lose_all" vol = 100
+
+#00000      LoadSound "MP\zone_lose_zone" vol = 100
+
+#00000    END IF
+#00000    IF GameModeChecksumEquals beachball
+#00000      LoadSound "MP\beach_ball_bounce" vol = 100
+
+#00000      LoadSound "MP\beach_ball_dropped" vol = 100
+
+#00000      LoadSound "MP\beach_ball_taken" vol = 100
+
+#00000    END IF
+#00000  END FUNCTION
+
+#00000
