@@ -720,8 +720,24 @@ def junk_suburbia(alf):
     return alf
 
 
+def unlock_trick_scores(airtricks, levels):
+    # Trick types will score only 1 unless you have unlocked the corresponding level
+    # TODO: Add additional trick types and unlock flags
+    unlock_trick_scores = True
+    if unlock_trick_scores:
+        airtricks = airtricks.replace("{{rando_airtricks_fliptrick_score}}", f"LEVEL_UNLOCKED_{levels[1].name_flag}")
+        airtricks = airtricks.replace("{{rando_airtricks_grabtrick_score}}", f"LEVEL_UNLOCKED_{levels[2].name_flag}")
+        airtricks = airtricks.replace("{{rando_airtricks_flipgrabblend_score}}", f"LEVEL_UNLOCKED_{levels[2].name_flag}")
+    else:
+        airtricks = airtricks.replace("{{rando_airtricks_fliptrick_score}}", "159")
+        airtricks = airtricks.replace("{{rando_airtricks_grabtrick_score}}", "159")
+        airtricks = airtricks.replace("{{rando_airtricks_flipgrabblend_score}}", "159")
+    return airtricks
+
+
 if __name__ == "__main__":
     # read modified QBs
+    airtricks = read_modified_script_file('airtricks')
     ajc = read_modified_script_file('ajc_scripts')
     alf = read_modified_script_file('alf_scripts')
     bdj = read_modified_script_file('bdj_scripts')
@@ -729,6 +745,7 @@ if __name__ == "__main__":
     cjr = read_modified_script_file('cjr_scripts')
     comp_scripts = read_modified_script_file('comp_scripts')
     cpf = read_modified_script_file('cpf_scripts')
+    gameflow = read_modified_script_file('gameflow')
     gameqb = read_modified_script_file('game')
     gamemode = read_modified_script_file('gamemode')
     goal_scripts = read_modified_script_file('goal_scripts')
@@ -740,7 +757,7 @@ if __name__ == "__main__":
     skater_profile = read_modified_script_file('skater_profile')
 
     # randomize QBs
-    levels = get_random_level_order(end_on_comp=True)
+    levels = get_random_level_order(end_on_comp=False)
     print(
         levels[0].name, levels[1].name, levels[2].name,
         levels[3].name, levels[4].name, levels[5].name,
@@ -762,6 +779,7 @@ if __name__ == "__main__":
 
     goal_scripts = require_deck_for_tape(goal_scripts)
     judges, comp_scripts = require_deck_for_medal(judges, comp_scripts)
+    airtricks = unlock_trick_scores(airtricks, levels)
 
     goal_scripts = randomize_secrets(goal_scripts)
     skater_profile = lock_characters(skater_profile)
@@ -769,6 +787,7 @@ if __name__ == "__main__":
     alf = junk_suburbia(alf)
 
     # write modified QBs
+    write_script_file('airtricks', airtricks)
     write_script_file('alf_scripts', alf)
     write_script_file('ajc_scripts', ajc)
     write_script_file('bdj_scripts', bdj)
@@ -777,6 +796,7 @@ if __name__ == "__main__":
     write_script_file('comp_scripts', comp_scripts)
     write_script_file('cpf_scripts', cpf)
     write_script_file('game', gameqb)
+    write_script_file('gameflow', gameflow)
     write_script_file('gamemode', gamemode)
     write_script_file('goal_scripts', goal_scripts)
     write_script_file('judges', judges)
