@@ -1,0 +1,7119 @@
+
+#00001  BDJ_CAM_MOVE_DONE = 0
+
+#00003  BDJ_BOARDBROKEN = 1
+
+#00005  BDJ_TIMER = 2
+
+#00007  BDJ_SHP_CounterStarted = 3
+
+#00009  BDJ_SHP_WireSnapA = 6
+
+#00011  BDJ_SHP_WireSnapB = 7
+
+#00013  BDJ_SHP_TakeOff = 8
+
+#00015  BDJ_SHP_StartMove = 9
+
+#00017  BDJ_SHP_VarChickCounter = 0
+
+#00019  BDJ_SHP_StopFlap = 6
+
+#00021  BDJ_SHP_NETS = 2
+
+#00023  BDJ_SHP_UmbWasAlive = 4
+
+#00025  BDJ_SHP_GotUmb = 5
+
+#00027  BDJ_SHP_Lipped = 6
+
+#00029  BDJ_SHP_OtherWireSnapped = 7
+
+#00031  BDJ_SHP_WireASnapped = 8
+
+#00033  BDJ_SHP_POOLCAREER = 9
+
+#00035  BDJ_SHP_POOL = 10
+
+#00037  BDJ_SHP_FERRY = 11
+
+#00039  BDJ_SHP_ABORT = 12
+
+#00041  BDJ_SHP_TIMER = 13
+
+#00043  BDJ_SHP_ANNOUNCE_ON = 14
+
+#00045  BDJ_SHP_CHOPPERPILOT_OFF = 15
+
+#00047  EXCEPTION_ABORT = 2
+
+#00049  EX_FERRY_RAISED = 3
+
+#00051  ShipGoalParams = STRUCT{
+          CameraStart = "sgc_Goals"
+          CameraLevelEnd = "sgc_Goals"
+          CameraTape = "sgc_Goal_04"
+          CameraTrickspotVert = "sgc_Goal_05vert"
+          CameraTrickspotVertComplete = "sgc_Goal_Complete_05vert"
+          Goal_Trickspot_VertAnimName = MUTEINVERT_INIT
+          Goal_Trickspot_VertAnimFrame1 = 18
+          Goal_Trickspot_VertAnimFrame2 = 32
+          Goal_Trickspot_VertAnimFrame3 = 54
+          CameraTrickspotStreet = "sgc_Goal_05street"
+          CameraTrickspotStreetComplete = "sgc_Goal_Complete_05street"
+          Goal_Trickspot_StreetAnimName = INIT_BSNOSEBLUNT
+          Goal_Trickspot_StreetAnimFrame1 = 3
+          Goal_Trickspot_StreetAnimFrame2 = 12
+          Goal_Trickspot_StreetAnimFrame3 = 21
+          CameraScripted1 = "sgc_Goal_06"
+          CameraScripted1Complete = "sgc_Goal_Complete_06"
+          CameraScripted2 = "sgc_Goal_07"
+          CameraScripted2Complete = "sgc_Goal_Complete_07"
+          CameraScripted3 = "sgc_Goal_08"
+          CameraScripted3Complete = "sgc_Goal_Complete_08"
+          Goal_HighScore_Text = "HIGH SCORE:| 160,000"
+          Goal_ProScore_Text = "PRO SCORE:| 500,000"
+          Goal_SickScore_Text = "SICK SCORE:| 1,000,000"
+          Goal_SKATE_Text = "Collect| S-K-A-T-E"
+          Goal_Tape_Text = "Get the| Secret Tape"
+          Goal_TrickspotStreet_Text = "Airwalk Grab| an Awning"
+          Goal_TrickspotVert_Text = "Axle Stall Lip| the High Wires"
+          Goal_Scripted1_Text = "Raise| the Ferry"
+          Goal_Scripted2_Text = "Trash the| Museum"
+          Goal_Scripted3_Text = "Impress Neversoft Girls| With 9000 Points"
+          NetPlayScript = NullScript
+          CareerPlayScript = NullScript
+          Goal_Start_Script = BDJ_SHP_IntroStartScript
+          Goal_Start_End_Script = BDJ_SHP_IntroStartEndScript
+          Goal_Trickspot_Start_Script = BDJ_SHP_TrickspotStartScript
+          Goal_Scripted1_Start_Script = BDJ_SHP_Scripted1
+          Goal_Scripted1_End_Script = NullScript
+          Goal_Scripted2_Start_Script = BDJ_SHP_Scripted2
+          Goal_Scripted3_Start_Script = BDJ_SHP_Scripted3
+          Goal_End_Script = BDJ_SHP_IntroEndScript
+          Goal_Complete_Start_Script = BDJ_SHP_OutroStartScript
+          Goal_TrickspotVert_Complete_Start_Script = NullScript
+          Goal_TrickspotStreet_Complete_Start_Script = NullScript
+          Goal_Scripted1_Complete_Start_Script = NullScript
+          Goal_Scripted1_Complete_End_Script = NullScript
+          Goal_Scripted2_Complete_Start_Script = NullScript
+          Goal_Scripted3_Complete_Start_Script = BDJ_SHP_Scripted3_Complete
+          Goal_Complete_End_Script = NullScript
+          }
+
+#00103  BDJ_SHP_ShipChunkParams = STRUCT{
+          BounceMult = 0.1
+          UpMagnitude = 32
+          Bounciness = 1.0
+          MinBounceVel = 1.0
+          MinInitialVel = 20
+          ConstRot = 720
+          BounceRot = 180
+          RestOrientationType = 0
+          Gravity = 32
+          BounceSound = 0
+          }
+
+#00116  FUNCTION BDJ_SHP_IntroStartScript
+#00117    BDJ_SHP_RestartSetup
+#00118    BDJ_SHP_ShowAll
+#00119    BDJ_SHP_HideLeft
+#00120    BDJ_SHP_HideBack
+#00121    invisible name = sl_AtriumVerts02
+
+#00123    invisible name = sf_2ndFloorVert
+
+#00125    invisible name = sf_cloud_box_01
+
+#00127    invisible name = sf_HelipadQuarterPipe02a
+
+#00129    invisible name = sf_HelipadQuarterPipe01a
+
+#00131    StopStream
+#00132    UnSetFlag flag = BDJ_SHP_ANNOUNCE_ON
+
+#00134    KillSpawnedScript name = BDJ_SHP_PlayIntroVO
+
+#00136    SpawnScript BDJ_SHP_PlayIntroVO
+#00137    SpawnScript BDJ_SHP_PlayIntroChopper
+#00138    KillSpawnedScript name = BDJ_SHP_IntroHideUnhide
+
+#00140    SpawnScript BDJ_SHP_IntroHideUnhide
+#00141  END FUNCTION
+
+#00143  FUNCTION BDJ_SHP_IntroHideUnhide
+#00144    wait 4.5 seconds
+#00145    BDJ_SHP_ShowLeft
+#00146    wait 2 seconds
+#00147    BDJ_SHP_HideRight
+#00148    BDJ_SHP_ShowBackLeft
+#00149  END FUNCTION
+
+#00151  FUNCTION BDJ_SHP_IntroStartEndScript
+#00152    KillSpawnedScript name = BDJ_SHP_IntroHideUnhide
+
+#00154    BDJ_SHP_ShowAll
+#00155  END FUNCTION
+
+#00157  FUNCTION BDJ_SHP_TrickspotStartScript
+#00158    kill name = TRG_IntroChopper
+
+#00160    kill name = TRG_IntroChopperBladesA
+
+#00162    kill name = TRG_IntroChopperBladesB
+
+#00164  END FUNCTION
+
+#00166  FUNCTION BDJ_SHP_Scripted1
+#00167    kill name = TRG_IntroChopper
+
+#00169    kill name = TRG_IntroChopperBladesA
+
+#00171    kill name = TRG_IntroChopperBladesB
+
+#00173  END FUNCTION
+
+#00175  FUNCTION BDJ_SHP_Scripted2
+#00176    kill name = TRG_IntroChopper
+
+#00178    kill name = TRG_IntroChopperBladesA
+
+#00180    kill name = TRG_IntroChopperBladesB
+
+#00182  END FUNCTION
+
+#00184  FUNCTION BDJ_SHP_Scripted3
+#00185    kill name = TRG_IntroChopper
+
+#00187    kill name = TRG_IntroChopperBladesA
+
+#00189    kill name = TRG_IntroChopperBladesB
+
+#00191    IF isAlive name = TRG_NeversoftGirl01
+
+#00193      kill name = TRG_NeversoftGirl01
+
+#00195    END IF
+#00196    kill name = TRG_NeversoftGirlStanding
+
+#00198    create name = TRG_NeversoftGirlStanding
+
+#00200  END FUNCTION
+
+#00202  FUNCTION BDJ_SHP_PlayIntroChopper
+#00203    kill name = TRG_IntroChopper
+
+#00205    kill name = TRG_IntroChopperBladesA
+
+#00207    kill name = TRG_IntroChopperBladesB
+
+#00209    kill name = sfo_Chopper
+
+#00211    kill name = sfo_ChopperBlades
+
+#00213    kill name = sfo_ChopperBlades02
+
+#00215    kill name = sfo_ChopperBlades03
+
+#00217    create name = TRG_IntroChopper
+
+#00219    create name = TRG_IntroChopperBladesA
+
+#00221    create name = TRG_IntroChopperBladesB
+
+#00223  END FUNCTION
+
+#00225  FUNCTION BDJ_SHP_OutroStartScript
+#00226    StopStream
+#00227    BDJ_SHP_ShowAll
+#00228    invisible name = sf_2ndFloorVert
+
+#00230    invisible name = sf_cloud_box_01
+
+#00232    invisible name = sf_HelipadQuarterPipe02a
+
+#00234    invisible name = sf_HelipadQuarterPipe01a
+
+#00236    KillSpawnedScript name = BDJ_SHP_IntroHideUnhide
+
+#00238  END FUNCTION
+
+#00240  FUNCTION BDJ_SHP_PlayIntroVO
+#00241    wait 5 seconds
+#00242    IF GetGlobalFlag flag = SHIP_SECRET_UNLOCKED
+
+#00244      PlayStream SHP_CapnBDJ_Intro01 vol = 100
+
+#00246    ELSE
+#00247      PlayStream SHP_Capn_Intro_1 vol = 150
+
+#00249    END IF
+#00250  END FUNCTION
+
+#00252  FUNCTION BDJ_SHP_IntroEndScript
+#00253    kill name = TRG_IntroChopper
+
+#00255    kill name = TRG_IntroChopperBladesA
+
+#00257    kill name = TRG_IntroChopperBladesB
+
+#00259    kill name = TRG_NeversoftGirlStanding
+
+#00261    SetFlag flag = BDJ_SHP_ANNOUNCE_ON
+
+#00263  END FUNCTION
+
+#00265  FUNCTION BDJ_SHP_Scripted3_Complete
+#00266    kill name = TRG_NeversoftGirlJumping
+
+#00268    create name = TRG_NeversoftGirlJumping
+
+#00270  END FUNCTION
+
+#00272  FUNCTION BDJ_SHP_GotVertTrick
+#00273    IF GetGoal goal = GOAL_TRICKSPOT
+
+#00275    ELSE
+#00276      IF ProfileEquals TrickStyle = Vert
+
+#00278        StartGapTrick TrickText = "Axle Stall"
+              GapScript = Got_TrickSpot
+
+#00281      END IF
+#00282    END IF
+#00283  END FUNCTION
+
+#00285  FUNCTION BDJ_SHP_GotStreetTrick
+#00286    StartGapTrick TrickText = "Airwalk"
+          GapScript = BDJ_SHP_GotStreetTrick2
+
+#00289  END FUNCTION
+
+#00291  FUNCTION BDJ_SHP_GotStreetTrick2
+#00292    IF GetGoal goal = GOAL_TRICKSPOT
+
+#00294    ELSE
+#00295      IF ProfileEquals TrickStyle = Street
+
+#00297        Got_TrickSpot
+#00298      END IF
+#00299    END IF
+#00300  END FUNCTION
+
+#00302  FUNCTION SHP_Startup
+#00303    LoadStreamHeader "streams\shp\streams"
+#00304    LoadSound "shared\gapsound" vol = 100
+          dropoff = 0
+
+#00307    LoadSound "shared\goaldone" vol = 100
+          dropoff = 0
+
+#00310    LoadSound "shared\FallWater" vol = 100
+          dropoff = 50
+
+#00313    LoadSound "shared\flush2" vol = 100
+          dropoff = 50
+
+#00316    LoadSound "shared\GlassPane2X" vol = 100
+          dropoff = 50
+
+#00319    LoadSound "shp\SHP_anchordoor" vol = 200
+          dropoff = 0
+          posUpdate
+#00322    LoadSound "shp\SHP_nets1" vol = 200
+          dropoff = 0
+          posUpdate
+#00325    LoadSound "shp\SHP_cake2" vol = 100
+          dropoff = 0
+          posUpdate
+#00328    LoadSound "shp\SHP_exhaust" vol = 50
+          dropoff = 80
+          posUpdate
+#00331    LoadSound "shp\SHP_tugboat" vol = 80
+          dropoff = 160
+          posUpdate
+#00334    LoadSound "Foun\foun_spark2x" vol = 100
+          dropoff = 200
+
+#00337    LoadSound "shp\SHP_winchloop" vol = 200
+          dropoff = 500
+          posUpdate
+#00340    LoadSound "shp\SHP_splash" vol = 200
+          dropoff = 500
+          posUpdate
+#00343    LoadSound "shp\SHP_propcrash" vol = 50
+          dropoff = 80
+          posUpdate
+#00346    LoadSound "shp\SHP_plank2" vol = 100
+          dropoff = 300
+
+#00349    LoadSound "shp\SHP_lounge" vol = 200
+          dropoff = 150
+          posUpdate
+#00352    LoadSound "shp\SHP_chair" vol = 200
+          dropoff = 150
+          posUpdate
+#00355    LoadSound "shp\SHP_table" vol = 200
+          dropoff = 150
+          posUpdate
+#00358    LoadSound "shp\SHP_speedboat" vol = 100
+          dropoff = 350
+          PosUpdateWithDoppler
+#00361    LoadSound "shp\SHP_shipthruocean" vol = 100
+          dropoff = 160
+          posUpdate
+#00364    LoadSound "ap\helicopter15" vol = 150
+          dropoff = 350
+          PosUpdateWithDoppler
+#00367    LoadSound "shp\SHP_hit_flag" vol = 120
+
+#00369    LoadSound "shp\shp_bonkbush" vol = 75
+          dropoff = 0
+
+#00372    LoadSound "shp\shp_sprinklers" vol = 100
+          dropoff = 150
+          posUpdate
+#00375    SetParticleSysVisibility system = "sfp_Splash"
+          visible = 0
+
+#00378    SetParticleSysVisibility system = "sbp_CakeSplat"
+          visible = 0
+
+#00381    SetParticleSysVisibility system = "sbp_CakeSteam01"
+          visible = 0
+
+#00384    SetParticleSysVisibility system = "sbp_CakeSteam02"
+          visible = 0
+
+#00387    SetParticleSysVisibility system = "sbp_CakeSteam03"
+          visible = 0
+
+#00390    SetParticleSysVisibility system = "sbp_CakeSteam04"
+          visible = 0
+
+#00393    SetParticleSysVisibility system = "sbp_CakeSpark01"
+          visible = 0
+
+#00396    SetParticleSysVisibility system = "sbp_CakeSpark02"
+          visible = 0
+
+#00399    SetParticleSysVisibility system = "sbp_CakeSpark03"
+          visible = 0
+
+#00402    SetParticleSysVisibility system = "sbp_CakeSpark04"
+          visible = 0
+
+#00405    SetParticleSysVisibility system = "sbp_CakeSpark05"
+          visible = 0
+
+#00408    SetParticleSysVisibility system = "sbp_CakeSpark06"
+          visible = 0
+
+#00411    SetParticleSysVisibility system = "sbp_CakeSpark07"
+          visible = 0
+
+#00414    SetParticleSysVisibility system = "sbp_CakeSpark08"
+          visible = 0
+
+#00417    SetParticleSysVisibility system = "sbp_CakeSpark09"
+          visible = 0
+
+#00420    SetParticleSysVisibility system = "sbp_CakeSpark10"
+          visible = 0
+
+#00423    SetParticleSysVisibility system = "sbp_CakeSpark11"
+          visible = 0
+
+#00426    SetParticleSysVisibility system = "sbp_CakeSpark12"
+          visible = 0
+
+#00429    SetParticleSysVisibility system = "sbp_CakeSpark13"
+          visible = 0
+
+#00432    SetParticleSysVisibility system = "stp_DrainPipeSpray"
+          visible = 0
+
+#00435    SetParticleSysVisibility system = "stp_DrainPipeSpray02"
+          visible = 0
+
+#00438    SetParticleSysVisibility system = "slp_SprinklerA01"
+          visible = 0
+
+#00441    SetParticleSysVisibility system = "slp_SprinklerA02"
+          visible = 0
+
+#00444    SetParticleSysVisibility system = "slp_SprinklerA03"
+          visible = 0
+
+#00447    SetParticleSysVisibility system = "slp_SprinklerB01"
+          visible = 0
+
+#00450    SetParticleSysVisibility system = "slp_SprinklerC01"
+          visible = 0
+
+#00453    SetParticleSysVisibility system = "slp_SprinklerC02"
+          visible = 0
+
+#00456    SetParticleSysVisibility system = "slp_SprinklerC03"
+          visible = 0
+
+#00459    SetParticleSysVisibility system = "slp_SprinklerD01"
+          visible = 0
+
+#00462    SetParticleSysVisibility system = "slp_SprinklerD02"
+          visible = 0
+
+#00465    SetParticleSysVisibility system = "slp_SprinklerD03"
+          visible = 0
+
+#00468    SetParticleSysVisibility system = "slp_SprinklerD04"
+          visible = 0
+
+#00471    SetParticleSysVisibility system = "slp_SprinklerD05"
+          visible = 0
+
+#00474    SetParticleSysVisibility system = "slp_SprinklerD06"
+          visible = 0
+
+#00477    SetParticleSysVisibility system = "sfp_FerryWash01"
+          visible = 0
+
+#00480    SetParticleSysVisibility system = "sfp_FerryWash02"
+          visible = 0
+
+#00483    IF IsCareerMode
+#00484      IF GetGoal goal = GOAL_SCRIPTED1
+
+#00486        SetFlag flag = BDJ_SHP_FERRY
+
+#00488      ELSE
+#00489        UnSetFlag flag = BDJ_SHP_FERRY
+
+#00491      END IF
+#00492      IF GetGoal goal = GOAL_SCRIPTED2
+
+#00494        SetFlag flag = BDJ_SHP_NETS
+
+#00496      ELSE
+#00497        UnSetFlag flag = BDJ_SHP_NETS
+
+#00499      END IF
+#00500      IF GetFlag flag = BDJ_SHP_POOLCAREER
+
+#00502        SetFlag flag = BDJ_SHP_POOL
+
+#00504      ELSE
+#00505        UnSetFlag flag = BDJ_SHP_POOL
+
+#00507      END IF
+#00508    ELSE
+#00509      UnSetFlag flag = BDJ_SHP_NETS
+
+#00511      UnSetFlag flag = BDJ_SHP_POOL
+
+#00513      UnSetFlag flag = BDJ_SHP_FERRY
+
+#00515    END IF
+#00516    UnSetFlag flag = BDJ_SHP_CHOPPERPILOT_OFF
+
+#00518  END FUNCTION
+
+#00520  FUNCTION BDJ_SHP_LoadingScript
+#00521    UnSetFlag flag = BDJ_SHP_OtherWireSnapped
+
+#00523    UnSetFlag flag = BDJ_SHP_WireASnapped
+
+#00525    StopStream
+#00526    KillSpawnedScript name = BDJ_SHP_Announcements
+
+#00528    SetFlag flag = BDJ_SHP_ANNOUNCE_ON
+
+#00530    SpawnScript BDJ_SHP_Announcements
+#00531    IF InSplitScreenGame
+#00532    ELSE
+#00533      UnSetFlag flag = BDJ_SHP_UmbWasAlive
+
+#00535      SpawnSkaterScript BDJ_SHP_UmbrellaLogic
+#00536    END IF
+#00537    IF IsCareerMode
+#00538      kill name = sfo_Chopper
+
+#00540      kill name = sfo_ChopperBlades
+
+#00542      create name = sfo_Chopper
+
+#00544      create name = sfo_ChopperBlades
+
+#00546      IF GetGoal goal = GOAL_SCRIPTED1
+
+#00548        SetFlag flag = BDJ_SHP_FERRY
+
+#00550      ELSE
+#00551        UnSetFlag flag = BDJ_SHP_FERRY
+
+#00553      END IF
+#00554      IF GetGoal goal = GOAL_SCRIPTED2
+
+#00556        SetFlag flag = BDJ_SHP_NETS
+
+#00558      ELSE
+#00559        UnSetFlag flag = BDJ_SHP_NETS
+
+#00561      END IF
+#00562      IF GetFlag flag = BDJ_SHP_POOLCAREER
+
+#00564        SetFlag flag = BDJ_SHP_POOL
+
+#00566      ELSE
+#00567        UnSetFlag flag = BDJ_SHP_POOL
+
+#00569      END IF
+#00570    ELSE
+#00571      UnSetFlag flag = BDJ_SHP_NETS
+
+#00573      UnSetFlag flag = BDJ_SHP_POOL
+
+#00575      UnSetFlag flag = BDJ_SHP_FERRY
+
+#00577    END IF
+#00578    IF IsCareerMode
+#00579      IF GetGoal goal = GOAL_SCRIPTED3
+
+#00581        SetFlag flag = LEVEL_FLAG_PED_1_IMPRESSED
+
+#00583        SetFlag flag = LEVEL_FLAG_PED_2_IMPRESSED
+
+#00585        SetFlag flag = LEVEL_FLAG_PED_3_IMPRESSED
+
+#00587        SetFlag flag = LEVEL_FLAG_PED_4_IMPRESSED
+
+#00589        SetFlag flag = LEVEL_FLAG_PED_5_IMPRESSED
+
+#00591        SetFlag flag = LEVEL_FLAG_PED_6_IMPRESSED
+
+#00593        SetFlag flag = LEVEL_FLAG_PED_7_IMPRESSED
+
+#00595      ELSE
+#00596        UnSetFlag flag = LEVEL_FLAG_PED_1_IMPRESSED
+
+#00598        UnSetFlag flag = LEVEL_FLAG_PED_2_IMPRESSED
+
+#00600        UnSetFlag flag = LEVEL_FLAG_PED_3_IMPRESSED
+
+#00602        UnSetFlag flag = LEVEL_FLAG_PED_4_IMPRESSED
+
+#00604        UnSetFlag flag = LEVEL_FLAG_PED_5_IMPRESSED
+
+#00606        UnSetFlag flag = LEVEL_FLAG_PED_6_IMPRESSED
+
+#00608        UnSetFlag flag = LEVEL_FLAG_PED_7_IMPRESSED
+
+#00610      END IF
+#00611    ELSE
+#00612      UnSetFlag flag = LEVEL_FLAG_PED_1_IMPRESSED
+
+#00614      UnSetFlag flag = LEVEL_FLAG_PED_2_IMPRESSED
+
+#00616      UnSetFlag flag = LEVEL_FLAG_PED_3_IMPRESSED
+
+#00618      UnSetFlag flag = LEVEL_FLAG_PED_4_IMPRESSED
+
+#00620      UnSetFlag flag = LEVEL_FLAG_PED_5_IMPRESSED
+
+#00622      UnSetFlag flag = LEVEL_FLAG_PED_6_IMPRESSED
+
+#00624      UnSetFlag flag = LEVEL_FLAG_PED_7_IMPRESSED
+
+#00626    END IF
+#00627    SetUpSkaterDefaults
+#00628    CreateSkateLines
+#00629    CreateSecretTape
+#00630    CreateTrickPoints
+#00631  END FUNCTION
+
+#00633  FUNCTION BDJ_SHP_RestartSetup
+#00634    IF inMultiplayerGame
+#00635      BDJ_SHP_RestartSetupNet
+#00636    ELSE
+#00637      kill name = TRG_NeversoftGirlJumping
+
+#00639      SetParticleSysVisibility system = "sfp_Splash"
+            visible = 0
+
+#00642      SetParticleSysVisibility system = "sbp_CakeSplat"
+            visible = 0
+
+#00645      SetParticleSysVisibility system = "sbp_CakeSteam01"
+            visible = 0
+
+#00648      SetParticleSysVisibility system = "sbp_CakeSteam02"
+            visible = 0
+
+#00651      SetParticleSysVisibility system = "sbp_CakeSteam03"
+            visible = 0
+
+#00654      SetParticleSysVisibility system = "sbp_CakeSteam04"
+            visible = 0
+
+#00657      SetParticleSysVisibility system = "sbp_CakeSpark01"
+            visible = 0
+
+#00660      SetParticleSysVisibility system = "sbp_CakeSpark02"
+            visible = 0
+
+#00663      SetParticleSysVisibility system = "sbp_CakeSpark03"
+            visible = 0
+
+#00666      SetParticleSysVisibility system = "sbp_CakeSpark04"
+            visible = 0
+
+#00669      SetParticleSysVisibility system = "sbp_CakeSpark05"
+            visible = 0
+
+#00672      SetParticleSysVisibility system = "sbp_CakeSpark06"
+            visible = 0
+
+#00675      SetParticleSysVisibility system = "sbp_CakeSpark07"
+            visible = 0
+
+#00678      SetParticleSysVisibility system = "sbp_CakeSpark08"
+            visible = 0
+
+#00681      SetParticleSysVisibility system = "sbp_CakeSpark09"
+            visible = 0
+
+#00684      SetParticleSysVisibility system = "sbp_CakeSpark10"
+            visible = 0
+
+#00687      SetParticleSysVisibility system = "sbp_CakeSpark11"
+            visible = 0
+
+#00690      SetParticleSysVisibility system = "sbp_CakeSpark12"
+            visible = 0
+
+#00693      SetParticleSysVisibility system = "sbp_CakeSpark13"
+            visible = 0
+
+#00696      SetParticleSysVisibility system = "stp_DrainPipeSpray"
+            visible = 0
+
+#00699      SetParticleSysVisibility system = "stp_DrainPipeSpray02"
+            visible = 0
+
+#00702      SetParticleSysVisibility system = "slp_SprinklerA01"
+            visible = 0
+
+#00705      SetParticleSysVisibility system = "slp_SprinklerA02"
+            visible = 0
+
+#00708      SetParticleSysVisibility system = "slp_SprinklerA03"
+            visible = 0
+
+#00711      SetParticleSysVisibility system = "slp_SprinklerB01"
+            visible = 0
+
+#00714      SetParticleSysVisibility system = "slp_SprinklerC01"
+            visible = 0
+
+#00717      SetParticleSysVisibility system = "slp_SprinklerC02"
+            visible = 0
+
+#00720      SetParticleSysVisibility system = "slp_SprinklerC03"
+            visible = 0
+
+#00723      SetParticleSysVisibility system = "slp_SprinklerD01"
+            visible = 0
+
+#00726      SetParticleSysVisibility system = "slp_SprinklerD02"
+            visible = 0
+
+#00729      SetParticleSysVisibility system = "slp_SprinklerD03"
+            visible = 0
+
+#00732      SetParticleSysVisibility system = "slp_SprinklerD04"
+            visible = 0
+
+#00735      SetParticleSysVisibility system = "slp_SprinklerD05"
+            visible = 0
+
+#00738      SetParticleSysVisibility system = "slp_SprinklerD06"
+            visible = 0
+
+#00741      SetParticleSysVisibility system = "sfp_FerryWash01"
+            visible = 0
+
+#00744      SetParticleSysVisibility system = "sfp_FerryWash02"
+            visible = 0
+
+#00747      IF inMultiplayerGame
+#00748      ELSE
+#00749        create name = st_TanChair01
+
+#00751        create name = st_TanChair02
+
+#00753        create name = st_TanChair03
+
+#00755        create name = st_TanChair04
+
+#00757        create name = st_TanChair05
+
+#00759        create name = st_TanChair06
+
+#00761        create name = st_TanChair07
+
+#00763        create name = st_TanChair08
+
+#00765        create name = st_TanChair09
+
+#00767        create name = st_TanChair10
+
+#00769        create name = st_TanChair11
+
+#00771        create name = st_TanChair12
+
+#00773        create name = st_TanChair13
+
+#00775        create prefix = "st_TanChairA"
+
+#00777        kill prefix = "st_TanChairB"
+
+#00779      END IF
+#00780      IF GetFlag flag = BDJ_SHP_NETS
+
+#00782        SetFlag flag = BDJ_SHP_OtherWireSnapped
+
+#00784        SetFlag flag = BDJ_SHP_WireASnapped
+
+#00786        kill name = sf_RampBreakA
+
+#00788        kill prefix = "TRG_RampBreakA"
+
+#00790        create name = sf_RampBreakB
+
+#00792        create prefix = "sfc_RampBreakB"
+
+#00794        create prefix = "TRG_RampBreakB"
+
+#00796        kill name = sf_2ndFloorWindow05
+
+#00798        kill name = sf_2ndFloorWindowReflect05
+
+#00800        kill name = sf_2ndFloorWindow06
+
+#00802        kill name = sf_2ndFloorWindowReflect06
+
+#00804        kill name = sf_WallBreakA
+
+#00806        kill name = sf_MuseumFloorA
+
+#00808        create name = sf_WallBreakB
+
+#00810        create name = sf_MuseumFloorB
+
+#00812        kill name = sf_ArchwayBreakA
+
+#00814        create name = sf_ArchwayBreakB
+
+#00816        kill name = sf_RailingBreakA
+
+#00818        create name = sf_RailingBreakB
+
+#00820        kill name = sf_Deck00A
+
+#00822        create prefix = "sf_Deck00B"
+
+#00824        kill prefix = "sf_PropA"
+
+#00826        kill prefix = "sft_SnapWire"
+
+#00828        create name = sf_PropC01
+
+#00830        create name = sf_PropC01_reflect
+
+#00832        kill name = sf_WireA
+
+#00834        kill name = sf_WireB
+
+#00836        kill name = sf_AnchorDoorA01
+
+#00838        kill name = sf_AnchorDoorA02
+
+#00840        create name = sfc_RampVertsA01
+
+#00842        create name = sft_EndAnchorChainAirA01
+
+#00844        kill name = sf_AnchorDoorB01
+
+#00846        kill name = sf_AnchorDoorB02
+
+#00848        create name = sft_EndAnchorChainAirB01
+
+#00850        create name = sfc_RampVertsB01
+
+#00852        create name = sf_AnchorDoorOpenA01
+
+#00854        create name = sf_AnchorDoorOpenA02
+
+#00856        create name = sf_AnchorDoorOpenB01
+
+#00858        create name = sf_AnchorDoorOpenB02
+
+#00860        create prefix = "TRG_AnchorRailX"
+
+#00862        create name = sf_NetRailLeft
+
+#00864        create name = sf_NetRailRight
+
+#00866        create name = sf_NetRailMid
+
+#00868        create prefix = "TRG_NettingRails"
+
+#00870        SetParticleSysVisibility system = "sfp_PipeSteam"
+              visible = 1
+
+#00873        kill name = sfo_BustedWireA
+
+#00875        kill name = sfo_BustedWireB
+
+#00877        kill name = sfo_RollingProp01
+
+#00879        kill name = sfo_RollingProp02
+
+#00881        kill name = TRG_FlyingPed
+
+#00883      ELSE
+#00884        UnSetFlag flag = BDJ_SHP_OtherWireSnapped
+
+#00886        UnSetFlag flag = BDJ_SHP_WireASnapped
+
+#00888        create name = sf_RampBreakA
+
+#00890        create prefix = "TRG_RampBreakA"
+
+#00892        kill name = sf_RampBreakB
+
+#00894        kill prefix = "sfc_RampBreakB"
+
+#00896        kill prefix = "TRG_RampBreakB"
+
+#00898        create name = sf_WallBreakA
+
+#00900        create name = sf_MuseumFloorA
+
+#00902        kill name = sf_WallBreakB
+
+#00904        kill name = sf_MuseumFloorB
+
+#00906        create name = sf_ArchwayBreakA
+
+#00908        kill name = sf_ArchwayBreakB
+
+#00910        create name = sf_RailingBreakA
+
+#00912        kill name = sf_RailingBreakB
+
+#00914        create name = sf_Deck00A
+
+#00916        kill prefix = "sf_Deck00B"
+
+#00918        create prefix = "sf_PropA"
+
+#00920        create prefix = "sft_SnapWire"
+
+#00922        kill name = sf_PropC01
+
+#00924        kill name = sf_PropC01_reflect
+
+#00926        create name = sf_WireA
+
+#00928        create name = sf_WireB
+
+#00930        create name = sf_AnchorDoorA01
+
+#00932        create name = sf_AnchorDoorA02
+
+#00934        kill name = sfc_RampVertsA01
+
+#00936        kill name = sft_EndAnchorChainAirA01
+
+#00938        create name = sf_AnchorDoorB01
+
+#00940        create name = sf_AnchorDoorB02
+
+#00942        kill name = sft_EndAnchorChainAirB01
+
+#00944        kill name = sfc_RampVertsB01
+
+#00946        kill name = sf_AnchorDoorOpenA01
+
+#00948        kill name = sf_AnchorDoorOpenA02
+
+#00950        kill name = sf_AnchorDoorOpenB01
+
+#00952        kill name = sf_AnchorDoorOpenB02
+
+#00954        kill prefix = "TRG_AnchorRailX"
+
+#00956        kill name = sf_NetRailLeft
+
+#00958        kill name = sf_NetRailRight
+
+#00960        kill name = sf_NetRailMid
+
+#00962        kill prefix = "TRG_NettingRails"
+
+#00964        SetParticleSysVisibility system = "sfp_PipeSteam"
+              visible = 0
+
+#00967        kill name = sfo_BustedWireA
+
+#00969        kill name = sfo_BustedWireB
+
+#00971        kill name = sfo_RollingProp01
+
+#00973        kill name = sfo_RollingProp02
+
+#00975        kill name = TRG_FlyingPed
+
+#00977      END IF
+#00978      IF GetFlag flag = BDJ_SHP_POOL
+
+#00980        kill name = st_PoolWater01
+
+#00982        kill name = st_SlideSpray01
+
+#00984        SetParticleSysVisibility system = "stp_SlideSpray"
+              visible = 0
+
+#00987        kill name = stt_EmptyPool
+
+#00989        kill name = st_PoolWaterShimmer01
+
+#00991      ELSE
+#00992        create name = st_PoolWater01
+
+#00994        create name = st_SlideSpray01
+
+#00996        SetParticleSysVisibility system = "stp_SlideSpray"
+              visible = 1
+
+#00999        create name = stt_EmptyPool
+
+#01001        create name = st_PoolWaterShimmer01
+
+#01003      END IF
+#01004      IF GetFlag flag = BDJ_SHP_FERRY
+
+#01006        kill name = TRG_PedPowerBoxGuy
+
+#01008        create name = sf_PowerBoxB
+
+#01010        kill name = sf_PowerBoxA
+
+#01012        kill name = sft_RaiseFerryBox
+
+#01014        kill prefix = "TRG_FerryRailsA"
+
+#01016        create prefix = "TRG_FerryRailsB"
+
+#01018        kill prefix = "sf_FerryA_"
+
+#01020        create prefix = "sf_FerryB_"
+
+#01022        kill prefix = "sf_FerrySupportA"
+
+#01024        create prefix = "sf_FerrySupportB"
+
+#01026        create name = sft_FerryCollisionB
+
+#01028        kill name = sfa_FerryWinch01
+
+#01030      ELSE
+#01031        kill name = TRG_PedPowerBoxGuy
+
+#01033        create name = TRG_PedPowerBoxGuy
+
+#01035        create name = sf_PowerBoxA
+
+#01037        create name = sft_RaiseFerryBox
+
+#01039        kill name = sf_PowerBoxB
+
+#01041        create prefix = "TRG_FerryRailsA"
+
+#01043        kill prefix = "TRG_FerryRailsB"
+
+#01045        create prefix = "sf_FerryA_"
+
+#01047        kill prefix = "sf_FerryB_"
+
+#01049        create prefix = "sf_FerrySupportA"
+
+#01051        kill prefix = "sf_FerrySupportB"
+
+#01053        kill name = sft_FerryCollisionB
+
+#01055        kill name = sfa_FerryWinch01
+
+#01057      END IF
+#01058    END IF
+#01059  END FUNCTION
+
+#01061  FUNCTION BDJ_SHP_NetObserverStartup
+#01062    BDJ_SHP_ShowAll
+#01063    BDJ_SHP_RestartSetupNet
+#01064  END FUNCTION
+
+#01066  FUNCTION BDJ_SHP_RestartSetupNet
+#01067    kill name = TRG_NeversoftGirlJumping
+
+#01069    kill name = sf_RampBreakA
+
+#01071    kill prefix = "TRG_RampBreakA"
+
+#01073    create name = sf_RampBreakB
+
+#01075    create prefix = "sfc_RampBreakB"
+
+#01077    create prefix = "TRG_RampBreakB"
+
+#01079    kill name = sf_2ndFloorWindow05
+
+#01081    kill name = sf_2ndFloorWindowReflect05
+
+#01083    kill name = sf_2ndFloorWindow06
+
+#01085    kill name = sf_2ndFloorWindowReflect06
+
+#01087    kill name = sf_WallBreakA
+
+#01089    kill name = sf_MuseumFloorA
+
+#01091    create name = sf_WallBreakB
+
+#01093    create name = sf_MuseumFloorB
+
+#01095    kill name = sf_ArchwayBreakA
+
+#01097    create name = sf_ArchwayBreakB
+
+#01099    kill name = sf_RailingBreakA
+
+#01101    create name = sf_RailingBreakB
+
+#01103    kill name = sf_Deck00A
+
+#01105    create prefix = "sf_Deck00B"
+
+#01107    kill prefix = "sf_PropA"
+
+#01109    kill prefix = "sft_SnapWire"
+
+#01111    create name = sf_PropC01
+
+#01113    create name = sf_PropC01_reflect
+
+#01115    kill name = sf_WireA
+
+#01117    kill name = sf_WireB
+
+#01119    kill name = sf_AnchorDoorA01
+
+#01121    kill name = sf_AnchorDoorA02
+
+#01123    create name = sfc_RampVertsA01
+
+#01125    create name = sft_EndAnchorChainAirA01
+
+#01127    kill name = sf_AnchorDoorB01
+
+#01129    kill name = sf_AnchorDoorB02
+
+#01131    create name = sft_EndAnchorChainAirB01
+
+#01133    create name = sfc_RampVertsB01
+
+#01135    create name = sf_AnchorDoorOpenA01
+
+#01137    create name = sf_AnchorDoorOpenA02
+
+#01139    create name = sf_AnchorDoorOpenB01
+
+#01141    create name = sf_AnchorDoorOpenB02
+
+#01143    create prefix = "TRG_AnchorRailX"
+
+#01145    create name = sf_NetRailLeft
+
+#01147    create name = sf_NetRailRight
+
+#01149    create name = sf_NetRailMid
+
+#01151    create prefix = "TRG_NettingRails"
+
+#01153    kill name = sfo_BustedWireA
+
+#01155    kill name = sfo_BustedWireB
+
+#01157    kill name = sfo_RollingProp01
+
+#01159    kill name = sfo_RollingProp02
+
+#01161    kill name = TRG_FlyingPed
+
+#01163    IF GetFlag flag = BDJ_SHP_POOL
+
+#01165      kill name = st_PoolWater01
+
+#01167      kill name = st_SlideSpray01
+
+#01169      SetParticleSysVisibility system = "stp_SlideSpray"
+            visible = 0
+
+#01172      kill name = stt_EmptyPool
+
+#01174      kill name = st_PoolWaterShimmer01
+
+#01176    ELSE
+#01177      create name = st_PoolWater01
+
+#01179      create name = st_SlideSpray01
+
+#01181      SetParticleSysVisibility system = "stp_SlideSpray"
+            visible = 1
+
+#01184      create name = stt_EmptyPool
+
+#01186      create name = st_PoolWaterShimmer01
+
+#01188    END IF
+#01189    kill name = TRG_PedPowerBoxGuy
+
+#01191    create name = TRG_PedPowerBoxGuy
+
+#01193    create name = sf_PowerBoxB
+
+#01195    kill name = sf_PowerBoxA
+
+#01197    kill name = sft_RaiseFerryBox
+
+#01199    kill prefix = "TRG_FerryRailsA"
+
+#01201    create prefix = "TRG_FerryRailsB"
+
+#01203    kill prefix = "sf_FerryA_"
+
+#01205    create prefix = "sf_FerryB_"
+
+#01207    kill prefix = "sf_FerrySupportA"
+
+#01209    create prefix = "sf_FerrySupportB"
+
+#01211    create name = sft_FerryCollisionB
+
+#01213    kill name = sfa_FerryWinch01
+
+#01215  END FUNCTION
+
+#01217  FUNCTION BDJ_SHP_OceanStream
+#01218    Obj_PlaySound SHP_shipthruocean vol = 100
+          dropoff = 200
+
+#01221  END FUNCTION
+
+#01223  FUNCTION BDJ_SHP_Announcements
+#01224    wait RANDOM[3][8; 14; 20]
+          40 JUMP 0x0f000000 50 JUMP 0x05000000 60 seconds
+#01226    IF GetFlag flag = BDJ_SHP_ANNOUNCE_ON
+
+#01228      RANDOM[11][45; 61; 77; 93; 109; 125; 141; 157; 173; 189; 205]
+
+#01230      goto BDJ_SHP_Announce01
+#01231      JUMP 0xc3000000 goto BDJ_SHP_Announce02
+#01232      JUMP 0xaf000000 goto BDJ_SHP_Announce03
+#01233      JUMP 0x9b000000 goto BDJ_SHP_Announce04
+#01234      JUMP 0x87000000 goto BDJ_SHP_Announce05
+#01235      JUMP 0x73000000 goto BDJ_SHP_Announce06
+#01236      JUMP 0x5f000000 goto BDJ_SHP_Announce09
+#01237      JUMP 0x4b000000 goto BDJ_SHP_Announce10
+#01238      JUMP 0x37000000 goto BDJ_SHP_Announce11
+#01239      JUMP 0x23000000 goto BDJ_SHP_Announce12
+#01240      JUMP 0x0f000000 goto BDJ_SHP_Announce13
+#01241
+#01242    ELSE
+#01243      goto BDJ_SHP_NoAnnounce
+#01244    END IF
+#01245  END FUNCTION
+
+#01247  FUNCTION BDJ_SHP_Announce01
+#01248    IF GetGlobalFlag flag = SHIP_SECRET_UNLOCKED
+
+#01250      PlayStream SHP_CapnBDJ_Gen01 vol = 150
+
+#01252    ELSE
+#01253      PlayStream SHP_Capn_Gen01 vol = 150
+
+#01255    END IF
+#01256    wait RANDOM[3][8; 14; 20]
+          40 JUMP 0x0f000000 50 JUMP 0x05000000 60 seconds
+#01258    IF GetFlag flag = BDJ_SHP_ANNOUNCE_ON
+
+#01260      goto BDJ_SHP_Announce02
+#01261    ELSE
+#01262      goto BDJ_SHP_NoAnnounce
+#01263    END IF
+#01264  END FUNCTION
+
+#01266  FUNCTION BDJ_SHP_Announce02
+#01267    IF GetGlobalFlag flag = SHIP_SECRET_UNLOCKED
+
+#01269      PlayStream SHP_CapnBDJ_Gen02 vol = 150
+
+#01271    ELSE
+#01272      PlayStream SHP_Capn_Gen02 vol = 150
+
+#01274    END IF
+#01275    wait RANDOM[3][8; 14; 20]
+          40 JUMP 0x0f000000 50 JUMP 0x05000000 60 seconds
+#01277    IF GetFlag flag = BDJ_SHP_ANNOUNCE_ON
+
+#01279      goto BDJ_SHP_Announce03
+#01280    ELSE
+#01281      goto BDJ_SHP_NoAnnounce
+#01282    END IF
+#01283  END FUNCTION
+
+#01285  FUNCTION BDJ_SHP_Announce03
+#01286    IF GetFlag flag = BDJ_SHP_NETS
+
+#01288      goto BDJ_SHP_Announce04
+#01289    ELSE
+#01290      IF GetGlobalFlag flag = SHIP_SECRET_UNLOCKED
+
+#01292        PlayStream SHP_CapnBDJ_Gen03 vol = 150
+
+#01294      ELSE
+#01295        PlayStream SHP_Capn_Gen03 vol = 150
+
+#01297      END IF
+#01298      wait RANDOM[3][8; 14; 20]
+            40 JUMP 0x0f000000 50 JUMP 0x05000000 60 seconds
+#01300      IF GetFlag flag = BDJ_SHP_ANNOUNCE_ON
+
+#01302        goto BDJ_SHP_Announce04
+#01303      ELSE
+#01304        goto BDJ_SHP_NoAnnounce
+#01305      END IF
+#01306    END IF
+#01307  END FUNCTION
+
+#01309  FUNCTION BDJ_SHP_Announce04
+#01310    IF GetGlobalFlag flag = SHIP_SECRET_UNLOCKED
+
+#01312      PlayStream SHP_CapnBDJ_Gen04 vol = 150
+
+#01314    ELSE
+#01315      PlayStream SHP_Capn_Gen04 vol = 150
+
+#01317    END IF
+#01318    wait RANDOM[3][8; 14; 20]
+          40 JUMP 0x0f000000 50 JUMP 0x05000000 60 seconds
+#01320    IF GetFlag flag = BDJ_SHP_ANNOUNCE_ON
+
+#01322      goto BDJ_SHP_Announce05
+#01323    ELSE
+#01324      goto BDJ_SHP_NoAnnounce
+#01325    END IF
+#01326  END FUNCTION
+
+#01328  FUNCTION BDJ_SHP_Announce05
+#01329    IF GetGlobalFlag flag = SHIP_SECRET_UNLOCKED
+
+#01331      PlayStream SHP_CapnBDJ_Gen05 vol = 150
+
+#01333    ELSE
+#01334      PlayStream SHP_Capn_Gen05 vol = 150
+
+#01336    END IF
+#01337    wait RANDOM[3][8; 14; 20]
+          40 JUMP 0x0f000000 50 JUMP 0x05000000 60 seconds
+#01339    IF GetFlag flag = BDJ_SHP_ANNOUNCE_ON
+
+#01341      goto BDJ_SHP_Announce06
+#01342    ELSE
+#01343      goto BDJ_SHP_NoAnnounce
+#01344    END IF
+#01345  END FUNCTION
+
+#01347  FUNCTION BDJ_SHP_Announce06
+#01348    IF GetGlobalFlag flag = SHIP_SECRET_UNLOCKED
+
+#01350      PlayStream shp_capnbdj_new01 vol = 150
+
+#01352    ELSE
+#01353      PlayStream Shp_capn_new01 vol = 150
+
+#01355    END IF
+#01356    wait RANDOM[3][8; 14; 20]
+          40 JUMP 0x0f000000 50 JUMP 0x05000000 60 seconds
+#01358    IF GetFlag flag = BDJ_SHP_ANNOUNCE_ON
+
+#01360      goto BDJ_SHP_Announce07
+#01361    ELSE
+#01362      goto BDJ_SHP_NoAnnounce
+#01363    END IF
+#01364  END FUNCTION
+
+#01366  FUNCTION BDJ_SHP_Announce07
+#01367    IF GetGlobalFlag flag = SHIP_SECRET_UNLOCKED
+
+#01369      PlayStream SHP_CapnBDJ_Gen07 vol = 150
+
+#01371      wait RANDOM[3][8; 14; 20]
+            40 JUMP 0x0f000000 50 JUMP 0x05000000 60 seconds
+#01373    ELSE
+#01374      PlayStream SHP_Capn_Gen07 vol = 150
+
+#01376      wait RANDOM[3][8; 14; 20]
+            80 JUMP 0x0f000000 100 JUMP 0x05000000 120 seconds
+#01378    END IF
+#01379    IF GetFlag flag = BDJ_SHP_ANNOUNCE_ON
+
+#01381      goto BDJ_SHP_Announce08
+#01382    ELSE
+#01383      goto BDJ_SHP_NoAnnounce
+#01384    END IF
+#01385  END FUNCTION
+
+#01387  FUNCTION BDJ_SHP_Announce08
+#01388    IF GetGlobalFlag flag = SHIP_SECRET_UNLOCKED
+
+#01390      PlayStream SHP_CapnBDJ_Gen06 vol = 150
+
+#01392    ELSE
+#01393      PlayStream Shp_Conv_01 vol = 150
+
+#01395    END IF
+#01396    wait 60 seconds
+#01397    IF GetFlag flag = BDJ_SHP_ANNOUNCE_ON
+
+#01399      goto BDJ_SHP_Announce09
+#01400    ELSE
+#01401      goto BDJ_SHP_NoAnnounce
+#01402    END IF
+#01403  END FUNCTION
+
+#01405  FUNCTION BDJ_SHP_Announce09
+#01406    IF GetGlobalFlag flag = SHIP_SECRET_UNLOCKED
+
+#01408      PlayStream SHP_CapnBDJ_new02 vol = 150
+
+#01410    ELSE
+#01411      PlayStream Shp_capn_new02 vol = 150
+
+#01413    END IF
+#01414    wait RANDOM[3][8; 14; 20]
+          40 JUMP 0x0f000000 50 JUMP 0x05000000 60 seconds
+#01416    IF GetFlag flag = BDJ_SHP_ANNOUNCE_ON
+
+#01418      goto BDJ_SHP_Announce10
+#01419    ELSE
+#01420      goto BDJ_SHP_NoAnnounce
+#01421    END IF
+#01422  END FUNCTION
+
+#01424  FUNCTION BDJ_SHP_Announce10
+#01425    IF GetGlobalFlag flag = SHIP_SECRET_UNLOCKED
+
+#01427      PlayStream SHP_CapnBDJ_new03 vol = 150
+
+#01429    ELSE
+#01430      PlayStream SHP_Capn_new03 vol = 150
+
+#01432    END IF
+#01433    wait RANDOM[3][8; 14; 20]
+          40 JUMP 0x0f000000 50 JUMP 0x05000000 60 seconds
+#01435    IF GetFlag flag = BDJ_SHP_ANNOUNCE_ON
+
+#01437      goto BDJ_SHP_Announce11
+#01438    ELSE
+#01439      goto BDJ_SHP_NoAnnounce
+#01440    END IF
+#01441  END FUNCTION
+
+#01443  FUNCTION BDJ_SHP_Announce11
+#01444    IF GetGlobalFlag flag = SHIP_SECRET_UNLOCKED
+
+#01446      PlayStream SHP_CapnBDJ_new04 vol = 150
+
+#01448    ELSE
+#01449      PlayStream SHP_Capn_new04 vol = 150
+
+#01451    END IF
+#01452    wait RANDOM[3][8; 14; 20]
+          40 JUMP 0x0f000000 50 JUMP 0x05000000 60 seconds
+#01454    IF GetFlag flag = BDJ_SHP_ANNOUNCE_ON
+
+#01456      goto BDJ_SHP_Announce12
+#01457    ELSE
+#01458      goto BDJ_SHP_NoAnnounce
+#01459    END IF
+#01460  END FUNCTION
+
+#01462  FUNCTION BDJ_SHP_Announce12
+#01463    IF GetGlobalFlag flag = SHIP_SECRET_UNLOCKED
+
+#01465      PlayStream SHP_CapnBDJ_new05 vol = 150
+
+#01467    ELSE
+#01468      PlayStream SHP_Capn_new05 vol = 150
+
+#01470    END IF
+#01471    wait RANDOM[3][8; 14; 20]
+          40 JUMP 0x0f000000 50 JUMP 0x05000000 60 seconds
+#01473    IF GetFlag flag = BDJ_SHP_ANNOUNCE_ON
+
+#01475      goto BDJ_SHP_Announce13
+#01476    ELSE
+#01477      goto BDJ_SHP_NoAnnounce
+#01478    END IF
+#01479  END FUNCTION
+
+#01481  FUNCTION BDJ_SHP_Announce13
+#01482    IF GetGlobalFlag flag = SHIP_SECRET_UNLOCKED
+
+#01484      PlayStream SHP_CapnBDJ_new06 vol = 150
+
+#01486    ELSE
+#01487      PlayStream SHP_Capn_new06 vol = 150
+
+#01489    END IF
+#01490    wait RANDOM[3][8; 14; 20]
+          40 JUMP 0x0f000000 50 JUMP 0x05000000 60 seconds
+#01492    IF GetFlag flag = BDJ_SHP_ANNOUNCE_ON
+
+#01494      goto BDJ_SHP_Announce14
+#01495    ELSE
+#01496      goto BDJ_SHP_NoAnnounce
+#01497    END IF
+#01498  END FUNCTION
+
+#01500  FUNCTION BDJ_SHP_Announce14
+#01501    IF GetGlobalFlag flag = SHIP_SECRET_UNLOCKED
+
+#01503      PlayStream SHP_CapnBDJ_Gen07 vol = 150
+
+#01505    ELSE
+#01506      PlayStream Shp_Conv_02 vol = 150
+
+#01508    END IF
+#01509    wait 60 seconds
+#01510    IF GetFlag flag = BDJ_SHP_ANNOUNCE_ON
+
+#01512      goto BDJ_SHP_Announce01
+#01513    ELSE
+#01514      goto BDJ_SHP_NoAnnounce
+#01515    END IF
+#01516  END FUNCTION
+
+#01518  FUNCTION BDJ_SHP_NoAnnounce
+#01519    LOOP
+#01520      wait 10 frames
+#01521      IF GetFlag flag = BDJ_SHP_ANNOUNCE_ON
+
+#01523        goto BDJ_SHP_Announcements
+#01524      END IF
+#01525    END LOOP
+#01526  END FUNCTION
+
+#01528  FUNCTION BDJ_SHP_RestartTopLeftDropInLoad
+#01529    PlaySkaterCamAnim skater = 0
+          stop
+#01531    BDJ_SHP_LoadingScript
+#01532    BDJ_SHP_RestartSetup
+#01533    BDJ_SHP_HideLeft
+#01534    BDJ_SHP_HideRight
+#01535    BDJ_SHP_HideBack
+#01536    BDJ_SHP_ShowFront
+#01537    BDJ_SHP_ShowTop
+#01538    BDJ_SHP_ShowLeftAmb
+#01539    MakeSkaterGoto DropIn
+#01540  END FUNCTION
+
+#01542  FUNCTION BDJ_SHP_RestartTopLeftDropIn
+#01543    PlaySkaterCamAnim skater = 0
+          stop
+#01545    BDJ_SHP_RestartSetup
+#01546    BDJ_SHP_HideLeft
+#01547    BDJ_SHP_HideRight
+#01548    BDJ_SHP_HideBack
+#01549    BDJ_SHP_ShowFront
+#01550    BDJ_SHP_ShowTop
+#01551    BDJ_SHP_ShowLeftAmb
+#01552    MakeSkaterGoto DropIn
+#01553  END FUNCTION
+
+#01555  FUNCTION BDJ_SHP_RestartTopRightDropIn
+#01556    PlaySkaterCamAnim skater = 0
+          stop
+#01558    BDJ_SHP_RestartSetup
+#01559    BDJ_SHP_HideLeft
+#01560    BDJ_SHP_HideRight
+#01561    BDJ_SHP_HideBack
+#01562    BDJ_SHP_ShowFront
+#01563    BDJ_SHP_ShowTop
+#01564    BDJ_SHP_ShowRightAmb
+#01565    MakeSkaterGoto DropIn
+#01566  END FUNCTION
+
+#01568  FUNCTION BDJ_SHP_RestartFront
+#01569    PlaySkaterCamAnim skater = 0
+          stop
+#01571    BDJ_SHP_RestartSetup
+#01572    BDJ_SHP_HideLeft
+#01573    BDJ_SHP_HideRight
+#01574    BDJ_SHP_HideBack
+#01575    BDJ_SHP_HideTop
+#01576    BDJ_SHP_ShowFront
+#01577    BDJ_SHP_ShowLeftAmb
+#01578    BDJ_SHP_ShowRightAmb
+#01579    IF GameModeEquals is_horse
+#01580    ELSE
+#01581      MakeSkaterGoto StartSkating1
+#01582    END IF
+#01583  END FUNCTION
+
+#01585  FUNCTION BDJ_SHP_RestartFrontTop
+#01586    PlaySkaterCamAnim skater = 0
+          stop
+#01588    BDJ_SHP_RestartSetup
+#01589    BDJ_SHP_HideLeft
+#01590    BDJ_SHP_HideRight
+#01591    BDJ_SHP_HideBack
+#01592    BDJ_SHP_ShowTop
+#01593    BDJ_SHP_ShowFront
+#01594    BDJ_SHP_ShowLeftAmb
+#01595    BDJ_SHP_ShowRightAmb
+#01596    IF GameModeEquals is_horse
+#01597    ELSE
+#01598      MakeSkaterGoto StartSkating1
+#01599    END IF
+#01600  END FUNCTION
+
+#01602  FUNCTION BDJ_SHP_RestartFrontDropIn
+#01603    PlaySkaterCamAnim skater = 0
+          stop
+#01605    BDJ_SHP_RestartSetup
+#01606    BDJ_SHP_HideLeft
+#01607    BDJ_SHP_HideRight
+#01608    BDJ_SHP_HideBack
+#01609    BDJ_SHP_ShowFront
+#01610    BDJ_SHP_ShowTop
+#01611    BDJ_SHP_ShowLeftAmb
+#01612    BDJ_SHP_ShowRightAmb
+#01613    MakeSkaterGoto DropIn
+#01614  END FUNCTION
+
+#01616  FUNCTION BDJ_SHP_RestartBack
+#01617    PlaySkaterCamAnim skater = 0
+          stop
+#01619    BDJ_SHP_RestartSetup
+#01620    BDJ_SHP_HideFront
+#01621    BDJ_SHP_HideLeft
+#01622    BDJ_SHP_HideRight
+#01623    BDJ_SHP_ShowTop
+#01624    BDJ_SHP_ShowBack
+#01625    BDJ_SHP_ShowLeftAmb
+#01626    BDJ_SHP_ShowRightAmb
+#01627    IF GameModeEquals is_horse
+#01628    ELSE
+#01629      MakeSkaterGoto StartSkating1
+#01630    END IF
+#01631  END FUNCTION
+
+#01633  FUNCTION BDJ_SHP_RestartTop
+#01634    PlaySkaterCamAnim skater = 0
+          stop
+#01636    BDJ_SHP_RestartSetup
+#01637    BDJ_SHP_HideLeft
+#01638    BDJ_SHP_HideRight
+#01639    BDJ_SHP_HideBack
+#01640    BDJ_SHP_HideFront
+#01641    BDJ_SHP_ShowTop
+#01642    BDJ_SHP_ShowFrontTop
+#01643    BDJ_SHP_ShowBackTop
+#01644    BDJ_SHP_ShowLeftAmb
+#01645    BDJ_SHP_ShowRightAmb
+#01646    IF GameModeEquals is_horse
+#01647    ELSE
+#01648      MakeSkaterGoto StartSkating1
+#01649    END IF
+#01650  END FUNCTION
+
+#01652  FUNCTION BDJ_SHP_RestartFin
+#01653    PlaySkaterCamAnim skater = 0
+          stop
+#01655    BDJ_SHP_RestartSetup
+#01656    BDJ_SHP_HideFront
+#01657    BDJ_SHP_ShowFrontTop
+#01658    BDJ_SHP_ShowLeft
+#01659    BDJ_SHP_ShowRight
+#01660    BDJ_SHP_ShowTop
+#01661    BDJ_SHP_ShowBack
+#01662    BDJ_SHP_ShowLeftAmb
+#01663    BDJ_SHP_ShowRightAmb
+#01664  END FUNCTION
+
+#01666  FUNCTION BDJ_SHP_RestartBuffet
+#01667    PlaySkaterCamAnim skater = 0
+          stop
+#01669    BDJ_SHP_RestartSetup
+#01670    BDJ_SHP_HideFront
+#01671    BDJ_SHP_HideTop
+#01672    BDJ_SHP_HideLeft
+#01673    BDJ_SHP_HideRight
+#01674    BDJ_SHP_ShowBack
+#01675    BDJ_SHP_ShowLeftAmb
+#01676    BDJ_SHP_ShowRightAmb
+#01677    IF GameModeEquals is_horse
+#01678    ELSE
+#01679      MakeSkaterGoto StartSkating1
+#01680    END IF
+#01681  END FUNCTION
+
+#01683  FUNCTION BDJ_SHP_RestartLeft
+#01684    PlaySkaterCamAnim skater = 0
+          stop
+#01686    BDJ_SHP_RestartSetup
+#01687    BDJ_SHP_HideTop
+#01688    BDJ_SHP_HideFront
+#01689    BDJ_SHP_HideRight
+#01690    BDJ_SHP_HideBack
+#01691    BDJ_SHP_ShowLeft
+#01692    BDJ_SHP_ShowLeftAmb
+#01693    BDJ_SHP_ShowFrontLeft
+#01694    BDJ_SHP_ShowBackLeft
+#01695    MakeSkaterGoto StartSkating1
+#01696  END FUNCTION
+
+#01698  FUNCTION BDJ_SHP_RestartRight
+#01699    PlaySkaterCamAnim skater = 0
+          stop
+#01701    BDJ_SHP_RestartSetup
+#01702    BDJ_SHP_HideTop
+#01703    BDJ_SHP_HideLeft
+#01704    BDJ_SHP_HideFront
+#01705    BDJ_SHP_HideBack
+#01706    BDJ_SHP_ShowRight
+#01707    BDJ_SHP_ShowRightAmb
+#01708    BDJ_SHP_ShowFrontRight
+#01709    BDJ_SHP_ShowBackRight
+#01710    MakeSkaterGoto StartSkating1
+#01711  END FUNCTION
+
+#01713  FUNCTION BDJ_SHP_RestartShowAll
+#01714    PlaySkaterCamAnim skater = 0
+          stop
+#01716    BDJ_SHP_ShowAll
+#01717    BDJ_SHP_RestartSetup
+#01718  END FUNCTION
+
+#01720  FUNCTION BDJ_SHP_ShowAll
+#01721    BDJ_SHP_HideFront
+#01722    BDJ_SHP_HideTop
+#01723    BDJ_SHP_HideLeft
+#01724    BDJ_SHP_HideRight
+#01725    BDJ_SHP_HideBack
+#01726    visible prefix = "sf_"
+
+#01728    visible prefix = "st_"
+
+#01730    visible prefix = "sl_"
+
+#01732    visible prefix = "sr_"
+
+#01734    visible prefix = "sb_"
+
+#01736    BDJ_SHP_ShowLeftAmb
+#01737    SetParticleSysVisibility system = "stp_DrainPipeSpray"
+          visible = 0
+
+#01740    SetParticleSysVisibility system = "stp_DrainPipeSpray02"
+          visible = 0
+
+#01743  END FUNCTION
+
+#01745  FUNCTION BDJ_SHP_HideAll
+#01746    BDJ_SHP_HideFront
+#01747    BDJ_SHP_HideTop
+#01748    BDJ_SHP_HideLeft
+#01749    BDJ_SHP_HideRight
+#01750    BDJ_SHP_HideBack
+#01751    BDJ_SHP_HideLeftAmb
+#01752    BDJ_SHP_HideRightAmb
+#01753  END FUNCTION
+
+#01755  FUNCTION BDJ_SHP_ShowFront
+#01756    visible prefix = "sf_"
+
+#01758    kill prefix = "TRGsf_"
+
+#01760    create prefix = "TRGsf_"
+
+#01762    ImpressPed_Show myFlag = LEVEL_FLAG_PED_2_IMPRESSED
+          myPed = TRG_NeversoftGirl02
+
+#01765    ImpressPed_Show myFlag = LEVEL_FLAG_PED_3_IMPRESSED
+          myPed = TRG_NeversoftGirl03
+
+#01768  END FUNCTION
+
+#01770  FUNCTION BDJ_SHP_HideFront
+#01771    kill prefix = "TRGsf_"
+
+#01773    invisible prefix = "sf_"
+
+#01775    ImpressPed_Hide myFlag = LEVEL_FLAG_PED_2_IMPRESSED
+          myPed = TRG_NeversoftGirl02
+
+#01778    ImpressPed_Hide myFlag = LEVEL_FLAG_PED_3_IMPRESSED
+          myPed = TRG_NeversoftGirl03
+
+#01781  END FUNCTION
+
+#01783  FUNCTION BDJ_SHP_ShowFrontLeft
+#01784    visible name = sf_AnchorDoorB01
+
+#01786    visible name = sf_AnchorDoorOpenB01
+
+#01788    visible name = sf_AtriumOuterWallKicker03
+
+#01790    visible name = sf_BowVert
+
+#01792    visible prefix = "sf_Deck00"
+
+#01794    visible name = sf_Deck02
+
+#01796    visible name = sf_FrontDeck01
+
+#01798    visible name = sf_FrontDeck03
+
+#01800    visible name = sf_FrontDeck05
+
+#01802    visible name = sf_MastBalconyRailing
+
+#01804    visible name = sf_Mooring02
+
+#01806    visible name = sf_MooringSupport02
+
+#01808    visible name = sf_OutsideRailing01
+
+#01810    visible name = sf_OutsideRailing02
+
+#01812    visible name = sf_OutsideRailing04
+
+#01814    visible name = sf_OutsideRailing05
+
+#01816    visible name = sf_OutsideRailing06
+
+#01818    visible name = sf_PropC01
+
+#01820    visible name = sf_RailingBreakA
+
+#01822    visible name = sf_RailingBreakB
+
+#01824    visible name = sf_Ramp01
+
+#01826    visible name = sf_Ramp02
+
+#01828    visible name = sf_RampBreakA
+
+#01830    visible name = sf_RampBreakB
+
+#01832    visible name = sf_Shell04
+
+#01834    visible name = sf_WalkwayRailing01
+
+#01836    visible name = sf_WalkwayRailing03
+
+#01838    visible name = sf_WallPipes03
+
+#01840    visible name = sf_WallPipes02
+
+#01842    visible name = sf_Walls01
+
+#01844    visible name = sf_Walls02
+
+#01846    visible name = sf_WindowRamp01
+
+#01848    visible name = sf_WindowRamp02
+
+#01850    visible name = sf_WoodRamp00
+
+#01852    visible name = sf_WoodRamp01
+
+#01854    visible name = sf_WoodRamp01
+
+#01856  END FUNCTION
+
+#01858  FUNCTION BDJ_SHP_ShowFrontRight
+#01859    visible name = sf_AnchorDoorA01
+
+#01861    visible name = sf_BowVert
+
+#01863    visible name = sf_Deck01
+
+#01865    visible name = sf_Deck02
+
+#01867    visible name = sf_FerryA_01
+
+#01869    visible name = sf_FerryA_02
+
+#01871    visible name = sf_FerryA_Wake
+
+#01873    visible name = sf_FerryB_01
+
+#01875    visible name = sf_FerryB_02
+
+#01877    visible name = sf_FerryBalconyRailing
+
+#01879    visible name = sf_FerryDivotA
+
+#01881    visible name = sf_FerryHolderRailing
+
+#01883    visible name = sf_FerrySupportA01
+
+#01885    visible name = sf_FerrySupportA03
+
+#01887    visible name = sf_FerrySupportB01
+
+#01889    visible name = sf_FerrySupportB03
+
+#01891    visible name = sf_FrontDeck01
+
+#01893    visible name = sf_FrontDeck04
+
+#01895    visible name = sf_OutsideRailing02
+
+#01897    visible name = sf_OutsideRailing03
+
+#01899    visible name = sf_OutsideRailing03
+
+#01901    visible name = sf_PowerBoxA
+
+#01903    visible name = sf_PowerBoxB
+
+#01905    visible name = sf_PowerBoxCord
+
+#01907    visible name = sf_Ramp03
+
+#01909    visible name = sf_RampRail01
+
+#01911    visible name = sf_Shell02
+
+#01913    visible name = sf_WalkwayRailing02
+
+#01915    visible name = sf_WalkwayRailing04
+
+#01917    visible name = sf_WallPipes04
+
+#01919    visible name = sf_Walls00
+
+#01921    visible name = sf_Walls03
+
+#01923    visible name = sf_WallPipes04
+
+#01925    visible name = sf_AnchorDoorOpenA01
+
+#01927  END FUNCTION
+
+#01929  FUNCTION BDJ_SHP_ShowFrontTop
+#01930    visible name = sf_02
+
+#01932    visible name = sf_03
+
+#01934    visible name = sf_04
+
+#01936    visible name = sf_2ndFloorCaptainsWindows
+
+#01938    visible name = sf_2ndFloorWindow02
+
+#01940    visible name = sf_2ndFloorWindow03
+
+#01942    visible name = sf_2ndFloorWindow04
+
+#01944    visible name = sf_2ndFloorWindow05
+
+#01946    visible name = sf_CaptainsVert01
+
+#01948    visible name = sf_CaptainsVert02
+
+#01950    visible name = sf_CommTower01
+
+#01952    visible name = sf_CommTower06
+
+#01954    visible name = sf_FlagSupport03
+
+#01956    visible name = sf_Helipad
+
+#01958    visible name = sf_Helipad02
+
+#01960    visible name = sf_HelipadDirt01
+
+#01962    visible name = sf_HelipadKicker
+
+#01964    visible name = sf_HelipadQuarterPipe01
+
+#01966    visible name = sf_HelipadQuarterPipe02
+
+#01968    visible name = sf_HelipadQuarterPipe01a
+
+#01970    visible name = sf_HelipadQuarterPipe02a
+
+#01972    visible name = sf_MuseumBanner01
+
+#01974    visible name = sf_MuseumFloorA
+
+#01976    visible name = sf_MuseumFloorB
+
+#01978    visible name = sf_MuseumKicker01
+
+#01980    visible name = sf_MuseumKicker02
+
+#01982    visible name = sf_MuseumRailing03
+
+#01984    visible name = sf_MuseumRamp
+
+#01986    visible name = sf_PropA01
+
+#01988    visible name = sf_Railing01
+
+#01990    visible name = sf_Railing02
+
+#01992    visible name = sf_RoofBumperBox
+
+#01994    visible name = sf_SideRamp01
+
+#01996    visible name = sf_SideRamp02
+
+#01998    visible name = sf_Vent01
+
+#02000    visible name = sf_Vent02
+
+#02002    visible name = sf_WalkwayRailing01
+
+#02004    visible name = sf_WalkwayRailing02
+
+#02006    visible name = sf_Walls00
+
+#02008    visible name = sf_Walls04
+
+#02010    visible name = sf_Walls05
+
+#02012    visible name = sf_WingRailing
+
+#02014    visible name = sf_WingRailing02
+
+#02016    visible name = sf_Wires01
+
+#02018    visible name = sf_cloud_box_03
+
+#02020    visible name = sf_cloud_box_04
+
+#02022    visible name = sf_cloud_box_04
+
+#02024  END FUNCTION
+
+#02026  FUNCTION BDJ_SHP_ShowBack
+#02027    kill prefix = "TRGsb_"
+
+#02029    create prefix = "TRGsb_"
+
+#02031    visible prefix = "sb_"
+
+#02033    ImpressPed_Show myFlag = LEVEL_FLAG_PED_6_IMPRESSED
+          myPed = TRG_NeversoftGirl06
+
+#02036    ImpressPed_Show myFlag = LEVEL_FLAG_PED_7_IMPRESSED
+          myPed = TRG_NeversoftGirl07
+
+#02039  END FUNCTION
+
+#02041  FUNCTION BDJ_SHP_HideBack
+#02042    kill prefix = "TRGsb_"
+
+#02044    invisible prefix = "sb_"
+
+#02046    ImpressPed_Hide myFlag = LEVEL_FLAG_PED_6_IMPRESSED
+          myPed = TRG_NeversoftGirl06
+
+#02049    ImpressPed_Hide myFlag = LEVEL_FLAG_PED_7_IMPRESSED
+          myPed = TRG_NeversoftGirl07
+
+#02052  END FUNCTION
+
+#02054  FUNCTION BDJ_SHP_ShowBackTop
+#02055    visible name = sb_Walls01
+
+#02057    visible name = sb_Railing08
+
+#02059    visible name = sb_Railing09
+
+#02061    visible name = sb_Railing11
+
+#02063    visible name = sb_Railing10
+
+#02065    visible name = sb_Walls02
+
+#02067    visible name = sb_Flags01
+
+#02069    visible name = sb_Flags03
+
+#02071    visible name = sb_Sculpture01
+
+#02073    visible name = sb_Sculpture02
+
+#02075  END FUNCTION
+
+#02077  FUNCTION BDJ_SHP_ShowBackLeft
+#02078    visible name = sb_BoatShell01
+
+#02080    visible name = sb_OuterRailing08
+
+#02082    visible name = sb_RearRailing02
+
+#02084    visible name = sb_RearRailing03
+
+#02086    visible name = sb_PoolLightRigging01
+
+#02088    visible name = sb_PoolLight02
+
+#02090    visible name = sb_Flags04
+
+#02092    visible name = sb_Flags03
+
+#02094    visible name = sb_SpiralStaircaseRailing03
+
+#02096    visible name = sb_SpiralStairs05
+
+#02098    visible name = sb_SpiralStaircaseRailing04
+
+#02100    visible name = sb_RearOverhang
+
+#02102    visible name = sb_RearPipe03
+
+#02104    visible name = sb_RearPipe02
+
+#02106    visible name = sb_Deck05
+
+#02108    visible name = sb_Deck03
+
+#02110    visible name = sb_Deck01
+
+#02112    visible name = sb_Walls04
+
+#02114    visible name = sb_Walls02
+
+#02116    visible name = sb_WallPipes02
+
+#02118    visible name = sb_SpiralStairs03
+
+#02120    visible name = sb_OuterRailingBottom01
+
+#02122  END FUNCTION
+
+#02124  FUNCTION BDJ_SHP_ShowBackRight
+#02125    visible name = sb_Walls01
+
+#02127    visible name = sb_Walls03
+
+#02129    visible name = sb_Flags01
+
+#02131    visible name = sb_Flags02
+
+#02133    visible name = sb_PoolLightRigging01
+
+#02135    visible name = sb_PoolLight01
+
+#02137    visible name = sb_RearOverhang
+
+#02139    visible name = sb_RearRailing03
+
+#02141    visible name = sb_OuterRailing07
+
+#02143    visible name = sb_OuterRailing09
+
+#02145    visible name = sb_RearPipe03
+
+#02147    visible name = sb_RearPipe01
+
+#02149    visible name = sb_Deck05
+
+#02151    visible name = sb_SpiralStaircaseRailing02
+
+#02153    visible name = sb_SpiralStaircaseRailing01
+
+#02155    visible name = sb_SpiralStairs02
+
+#02157    visible name = sb_SpiralStairs00
+
+#02159    visible name = sb_Deck04
+
+#02161    visible name = sb_Deck01
+
+#02163    visible name = sb_BoatShell02
+
+#02165    visible name = sb_Sculpture02
+
+#02167    visible name = sb_OuterRailingBottom01
+
+#02169  END FUNCTION
+
+#02171  FUNCTION BDJ_SHP_ShowTop
+#02172    kill prefix = "TRGst_"
+
+#02174    create prefix = "TRGst_"
+
+#02176    IF inMultiplayerGame
+#02177    ELSE
+#02178      create name = st_TanChair01
+
+#02180      create name = st_TanChair02
+
+#02182      create name = st_TanChair03
+
+#02184      create name = st_TanChair04
+
+#02186      create name = st_TanChair05
+
+#02188      create name = st_TanChair06
+
+#02190      create name = st_TanChair07
+
+#02192      create name = st_TanChair08
+
+#02194      create name = st_TanChair09
+
+#02196      create name = st_TanChair10
+
+#02198      create name = st_TanChair11
+
+#02200      create name = st_TanChair12
+
+#02202      create name = st_TanChair13
+
+#02204      create prefix = "st_TanChairA"
+
+#02206      kill prefix = "st_TanChairB"
+
+#02208    END IF
+#02209    visible prefix = "st_"
+
+#02211    ImpressPed_Show myFlag = LEVEL_FLAG_PED_1_IMPRESSED
+          myPed = TRG_NeversoftGirl01
+
+#02214  END FUNCTION
+
+#02216  FUNCTION BDJ_SHP_HideTop
+#02217    kill prefix = "TRGst_"
+
+#02219    invisible prefix = "st_"
+
+#02221    ImpressPed_Hide myFlag = LEVEL_FLAG_PED_1_IMPRESSED
+          myPed = TRG_NeversoftGirl01
+
+#02224  END FUNCTION
+
+#02226  FUNCTION BDJ_SHP_ShowLeft
+#02227    kill prefix = "TRGsl_"
+
+#02229    create prefix = "TRGsl_"
+
+#02231    visible prefix = "sl_"
+
+#02233    BDJ_SHP_ShowFrontLeft
+#02234    BDJ_SHP_ShowBackLeft
+#02235    ImpressPed_Show myFlag = LEVEL_FLAG_PED_5_IMPRESSED
+          myPed = TRG_NeversoftGirl05
+
+#02238  END FUNCTION
+
+#02240  FUNCTION BDJ_SHP_HideLeft
+#02241    kill prefix = "TRGsl_"
+
+#02243    invisible prefix = "sl_"
+
+#02245    ImpressPed_Hide myFlag = LEVEL_FLAG_PED_5_IMPRESSED
+          myPed = TRG_NeversoftGirl05
+
+#02248  END FUNCTION
+
+#02250  FUNCTION BDJ_SHP_ShowRight
+#02251    kill prefix = "TRGsr_"
+
+#02253    create prefix = "TRGsr_"
+
+#02255    visible prefix = "sr_"
+
+#02257    BDJ_SHP_ShowFrontRight
+#02258    BDJ_SHP_ShowBackRight
+#02259    ImpressPed_Show myFlag = LEVEL_FLAG_PED_4_IMPRESSED
+          myPed = TRG_NeversoftGirl04
+
+#02262  END FUNCTION
+
+#02264  FUNCTION BDJ_SHP_HideRight
+#02265    kill prefix = "TRGsr_"
+
+#02267    invisible prefix = "sr_"
+
+#02269    ImpressPed_Hide myFlag = LEVEL_FLAG_PED_4_IMPRESSED
+          myPed = TRG_NeversoftGirl04
+
+#02272  END FUNCTION
+
+#02274  FUNCTION BDJ_SHP_ShowLeftAmb
+#02275    IF inMultiplayerGame
+#02276    ELSE
+#02277      kill prefix = "TRG_LeftAmb"
+
+#02279      kill prefix = "sgo_LeftAmb"
+
+#02281      create prefix = "TRG_LeftAmb"
+
+#02283      create prefix = "sgo_LeftAmb"
+
+#02285    END IF
+#02286  END FUNCTION
+
+#02288  FUNCTION BDJ_SHP_HideLeftAmb
+#02289    IF inMultiplayerGame
+#02290    ELSE
+#02291      kill prefix = "TRG_LeftAmb"
+
+#02293      kill prefix = "sgo_LeftAmb"
+
+#02295    END IF
+#02296  END FUNCTION
+
+#02298  FUNCTION BDJ_SHP_ShowRightAmb
+#02299    IF inMultiplayerGame
+#02300    ELSE
+#02301      kill prefix = "TRG_RightAmb"
+
+#02303      kill prefix = "sgo_RightAmb"
+
+#02305      create prefix = "TRG_RightAmb"
+
+#02307      create prefix = "sgo_RightAmb"
+
+#02309    END IF
+#02310  END FUNCTION
+
+#02312  FUNCTION BDJ_SHP_HideRightAmb
+#02313    IF inMultiplayerGame
+#02314    ELSE
+#02315      kill prefix = "TRG_RightAmb"
+
+#02317      kill prefix = "sgo_RightAmb"
+
+#02319    END IF
+#02320  END FUNCTION
+
+#02322  FUNCTION BDJ_SHP_BubbleRight
+#02323    BDJ_SHP_HideFront
+#02324    BDJ_SHP_HideBack
+#02325    BDJ_SHP_ShowFrontRight
+#02326    BDJ_SHP_ShowBackRight
+#02327  END FUNCTION
+
+#02329  FUNCTION BDJ_SHP_BubbleTopRight
+#02330    BDJ_SHP_HideFront
+#02331    BDJ_SHP_ShowFrontRight
+#02332    BDJ_SHP_ShowFrontTop
+#02333    BDJ_SHP_ShowBackTop
+#02334    BDJ_SHP_ShowBackRight
+#02335  END FUNCTION
+
+#02337  FUNCTION BDJ_SHP_BubbleLeft
+#02338    BDJ_SHP_HideFront
+#02339    BDJ_SHP_HideBack
+#02340    BDJ_SHP_ShowFrontLeft
+#02341    BDJ_SHP_ShowBackLeft
+#02342  END FUNCTION
+
+#02344  FUNCTION BDJ_SHP_BubbleTopLeft
+#02345    BDJ_SHP_HideFront
+#02346    BDJ_SHP_ShowFrontTop
+#02347    BDJ_SHP_ShowFrontLeft
+#02348    BDJ_SHP_ShowBackTop
+#02349    BDJ_SHP_ShowBackLeft
+#02350  END FUNCTION
+
+#02352  FUNCTION BDJ_SHP_BubbleTop
+#02353    BDJ_SHP_HideFront
+#02354    BDJ_SHP_ShowFrontTop
+#02355    BDJ_SHP_ShowBackTop
+#02356  END FUNCTION
+
+#02358  FUNCTION BDJ_SHP_KillSkaterNet
+#02359    SK3_KillSkater bail deathsound = SHP_hit_flag
+          message1 = "Nuthin' but Net!"
+          message2 = "Caught a biggun'!"
+          message3 = "Saved by the Net!"
+          message4 = "Nets to the Rescue!"
+
+#02365  END FUNCTION
+
+#02367  FUNCTION BDJ_SHP_StartTimer
+#02368    UnSetFlag flag = BDJ_SHP_TIMER
+
+#02370    wait GLOBAL.timer
+          seconds
+#02372    SetFlag flag = BDJ_SHP_TIMER
+
+#02374  END FUNCTION
+
+#02376  FUNCTION BDJ_SHP_CutsceneDelay
+#02377    UnSetFlag flag = BDJ_SHP_ABORT
+
+#02379    wait 1 second
+#02380    debounce X time = 1.0
+
+#02382    LOOP
+#02383      IF Held X
+#02384        SetFlag flag = BDJ_SHP_ABORT
+
+#02386      END IF
+#02387      wait 1 frame
+#02388    END LOOP
+#02389  END FUNCTION
+
+#02391  FUNCTION BDJ_SHP_AbortPropCutscene
+#02392    StopStream
+#02393    IF GetGlobalFlag flag = SHIP_SECRET_UNLOCKED
+
+#02395      PlayStream SHP_CapnBDJ_Nets03 vol = 100
+
+#02397    ELSE
+#02398      PlayStream SHP_Capn_Nets03 vol = 150
+
+#02400    END IF
+#02401    goto BDJ_SHP_AbortPropCutsceneB
+#02402  END FUNCTION
+
+#02404  FUNCTION BDJ_SHP_AbortPropCutsceneB
+#02405    SetFlag flag = BDJ_SHP_NETS
+
+#02407    IF IsCareerMode
+#02408      Got_Scripted2
+#02409    END IF
+#02410    PlaySkaterCamAnim skater = 0
+          stop
+#02412    BDJ_SHP_RestartSetup
+#02413    BDJ_SHP_HideLeft
+#02414    BDJ_SHP_HideRight
+#02415    BDJ_SHP_HideBack
+#02416    BDJ_SHP_ShowFront
+#02417    BDJ_SHP_ShowTop
+#02418    kill prefix = "TRGsf_"
+
+#02420    create prefix = "TRGsf_"
+
+#02422    SpawnSkaterScript MoveThePlayerBack
+#02423    UnPauseSkaters
+#02424    wait 1 gameframe
+#02425    BDJ_SHP_RestartSetup
+#02426    IF GetGlobalFlag flag = SHIP_SECRET_UNLOCKED
+
+#02428      wait 16 seconds
+#02429      StopStream
+#02430      PlayStream SHP_CapnBDJ_Nets02 vol = 75
+
+#02432    ELSE
+#02433    END IF
+#02434    wait 16 seconds
+#02435    SetFlag flag = BDJ_SHP_ANNOUNCE_ON
+
+#02437  END FUNCTION
+
+#02439  FUNCTION BDJ_SHP_TriggerPropLogicA
+#02440    Obj_SetFlag BDJ_SHP_WireSnapA
+#02441    goto BDJ_SHP_TriggerPropLogic
+#02442  END FUNCTION
+
+#02444  FUNCTION BDJ_SHP_TriggerPropLogicB
+#02445    Obj_ClearFlag BDJ_SHP_WireSnapA
+#02446    goto BDJ_SHP_TriggerPropLogic
+#02447  END FUNCTION
+
+#02449  FUNCTION BDJ_SHP_TriggerPropLogic
+#02450    IF GetFlag flag = BDJ_SHP_OtherWireSnapped
+
+#02452      goto BDJ_SHP_TriggerPropLogic2
+#02453    ELSE
+#02454      SetFlag flag = BDJ_SHP_OtherWireSnapped
+
+#02456      IF Obj_FlagSet BDJ_SHP_WireSnapA
+#02457        SetFlag flag = BDJ_SHP_WireASnapped
+
+#02459        kill name = sf_WireA
+
+#02461        kill name = sft_SnapWireA
+
+#02463        create name = sfo_BustedWireA
+
+#02465        Obj_ClearFlag BDJ_SHP_WireSnapA
+#02466      ELSE
+#02467        UnSetFlag flag = BDJ_SHP_WireASnapped
+
+#02469        kill name = sf_WireB
+
+#02471        kill name = sft_SnapWireB
+
+#02473        create name = sfo_BustedWireB
+
+#02475        Obj_ClearFlag BDJ_SHP_WireSnapB
+#02476      END IF
+#02477    END IF
+#02478  END FUNCTION
+
+#02480  FUNCTION MoveThePlayerAway
+#02481    Obj_MoveToRelPos VECTOR[0.0; -100.0; 0.0]
+#02482  END FUNCTION
+
+#02484  FUNCTION MoveThePlayerBack
+#02485    Obj_MoveToRelPos VECTOR[0.0; 100.0; 0.0]
+#02486  END FUNCTION
+
+#02488  FUNCTION BDJ_SHP_TriggerPropLogic2
+#02489    IF GetFlag flag = BDJ_SHP_WireASnapped
+
+#02491      kill name = sf_WireB
+
+#02493      create name = sfo_BustedWireB
+
+#02495    ELSE
+#02496      kill name = sf_WireA
+
+#02498      create name = sfo_BustedWireA
+
+#02500    END IF
+#02501    UnSetFlag flag = BDJ_SHP_ANNOUNCE_ON
+
+#02503    wait 0.3 seconds
+#02504    UnSetFlag flag = BDJ_SHP_ABORT
+
+#02506    UnSetFlag flag = BDJ_SHP_TIMER
+
+#02508    PauseSkaters
+#02509    SpawnSkaterScript MoveThePlayerAway
+#02510    kill prefix = "TRGsf_"
+
+#02512    BDJ_SHP_ShowAll
+#02513    kill prefix = "sf_PropA"
+
+#02515    kill prefix = "sft_SnapWire"
+
+#02517    create name = sfo_RollingProp01
+
+#02519    PlaySkaterCamAnim skater = 0
+          name = "sfc_PropCam01"
+
+#02522    Obj_KillSpawnedScript name = BDJ_SHP_CutsceneDelay
+
+#02524    Obj_SpawnScript BDJ_SHP_CutsceneDelay
+#02525    Obj_KillSpawnedScript name = BDJ_SHP_StartTimer
+
+#02527    Obj_SpawnScript BDJ_SHP_StartTimer params = STRUCT{
+            timer = 0.1
+            }
+
+#02531    LOOP
+#02532      wait 1 gameframe
+#02533      IF SkaterCamAnimFinished skater = 0
+              name = "sfc_PropCam01"
+
+#02536        BREAK
+
+#02538      END IF
+#02539      IF GetFlag flag = BDJ_SHP_ABORT
+
+#02541        goto BDJ_SHP_AbortPropCutscene
+#02542      END IF
+#02543      IF GetFlag flag = BDJ_SHP_TIMER
+              clear
+#02545        BREAK
+
+#02547      END IF
+#02548    END LOOP
+#02549    create name = TRG_FlyingPed
+
+#02551    Obj_KillSpawnedScript name = BDJ_SHP_StartTimer
+
+#02553    Obj_SpawnScript BDJ_SHP_StartTimer params = STRUCT{
+            timer = 5.3
+            }
+
+#02557    LOOP
+#02558      wait 1 gameframe
+#02559      IF SkaterCamAnimFinished skater = 0
+              name = "sfc_PropCam01"
+
+#02562        BREAK
+
+#02564      END IF
+#02565      IF GetFlag flag = BDJ_SHP_ABORT
+
+#02567        goto BDJ_SHP_AbortPropCutscene
+#02568      END IF
+#02569      IF GetFlag flag = BDJ_SHP_TIMER
+              clear
+#02571        BREAK
+
+#02573      END IF
+#02574    END LOOP
+#02575    PlaySkaterCamAnim skater = 0
+          name = "sfc_PropCam02"
+
+#02578    Obj_KillSpawnedScript name = BDJ_SHP_StartTimer
+
+#02580    Obj_SpawnScript BDJ_SHP_StartTimer params = STRUCT{
+            timer = 3.5
+            }
+
+#02584    LOOP
+#02585      wait 1 gameframe
+#02586      IF SkaterCamAnimFinished skater = 0
+              name = "sfc_PropCam02"
+
+#02589        BREAK
+
+#02591      END IF
+#02592      IF GetFlag flag = BDJ_SHP_ABORT
+
+#02594        goto BDJ_SHP_AbortPropCutscene
+#02595      END IF
+#02596      IF GetFlag flag = BDJ_SHP_TIMER
+              clear
+#02598        BREAK
+
+#02600      END IF
+#02601    END LOOP
+#02602    PlayStream SHP_plank vol = 100
+
+#02604    IF GetGlobalFlag flag = SHIP_SECRET_UNLOCKED
+
+#02606      PlayStream RANDOM[7][24; 30; 36; 42; 48; 54; 60]
+            SHP_Ken_Exclaim01 JUMP 0x37000000 SHP_Ken_Exclaim02 JUMP 0x2d000000 SHP_Ken_Exclaim03 JUMP 0x23000000 SHP_Ken_Exclaim04 JUMP 0x19000000 SHP_Ken_Exclaim05 JUMP 0x0f000000 SHP_Ken_Exclaim06 JUMP 0x05000000 SHP_Ken_Exclaim07 vol = 100
+
+#02609    ELSE
+#02610      PlayStream RANDOM[7][24; 30; 36; 42; 48; 54; 60]
+            Shp_prop_01 JUMP 0x37000000 Shp_prop_02 JUMP 0x2d000000 Shp_prop_03 JUMP 0x23000000 Shp_prop_04 JUMP 0x19000000 Shp_prop_05 JUMP 0x0f000000 Shp_prop_06 JUMP 0x05000000 Shp_prop_07 vol = 100
+
+#02613    END IF
+#02614    Obj_KillSpawnedScript name = BDJ_SHP_StartTimer
+
+#02616    Obj_SpawnScript BDJ_SHP_StartTimer params = STRUCT{
+            timer = 2.5
+            }
+
+#02620    LOOP
+#02621      wait 1 gameframe
+#02622      IF SkaterCamAnimFinished skater = 0
+              name = "sfc_PropCam02"
+
+#02625        BREAK
+
+#02627      END IF
+#02628      IF GetFlag flag = BDJ_SHP_ABORT
+
+#02630        goto BDJ_SHP_AbortPropCutscene
+#02631      END IF
+#02632      IF GetFlag flag = BDJ_SHP_TIMER
+              clear
+#02634        BREAK
+
+#02636      END IF
+#02637    END LOOP
+#02638    PlaySound SHP_plank2
+#02639    IF GetGlobalFlag flag = SHIP_SECRET_UNLOCKED
+
+#02641      PlayStream RANDOM[7][24; 30; 36; 42; 48; 54; 60]
+            SHP_Ken_Flying01 JUMP 0x37000000 SHP_Ken_Flying02 JUMP 0x2d000000 SHP_Ken_Flying03 JUMP 0x23000000 SHP_Ken_Flying04 JUMP 0x19000000 SHP_Ken_Flying05 JUMP 0x0f000000 SHP_Ken_Flying06 JUMP 0x05000000 SHP_Ken_Flying07 vol = 100
+
+#02644    ELSE
+#02645      PlayStream RANDOM[7][24; 30; 36; 42; 48; 54; 60]
+            Shp_prop_08 JUMP 0x37000000 Shp_prop_09 JUMP 0x2d000000 Shp_prop_10 JUMP 0x23000000 Shp_prop_11 JUMP 0x19000000 Shp_prop_12 JUMP 0x0f000000 Shp_prop_13 JUMP 0x05000000 Shp_prop_14 vol = 100
+
+#02648    END IF
+#02649    kill name = sf_Deck00A
+
+#02651    create name = sf_Deck00B01
+
+#02653    create name = sfo_Pipe
+
+#02655    SetParticleSysVisibility system = "sfp_PipeSteam"
+          visible = 1
+
+#02658    SendFlag name = TRG_FlyingPed
+          BDJ_BOARDBROKEN
+#02660    Obj_KillSpawnedScript name = BDJ_SHP_StartTimer
+
+#02662    Obj_SpawnScript BDJ_SHP_StartTimer params = STRUCT{
+            timer = 2.0
+            }
+
+#02666    LOOP
+#02667      wait 1 gameframe
+#02668      IF SkaterCamAnimFinished skater = 0
+              name = "sfc_PropCam02"
+
+#02671        BREAK
+
+#02673      END IF
+#02674      IF GetFlag flag = BDJ_SHP_ABORT
+
+#02676        goto BDJ_SHP_AbortPropCutsceneB
+#02677      END IF
+#02678      IF GetFlag flag = BDJ_SHP_TIMER
+              clear
+#02680        BREAK
+
+#02682      END IF
+#02683    END LOOP
+#02684    BDJ_SHP_HideLeftAmb
+#02685    BDJ_SHP_ShowLeftAmb
+#02686    PlaySkaterCamAnim skater = 0
+          name = "sfc_PropCam03a"
+
+#02689    Obj_KillSpawnedScript name = BDJ_SHP_StartTimer
+
+#02691    Obj_SpawnScript BDJ_SHP_StartTimer params = STRUCT{
+            timer = 3.5
+            }
+
+#02695    LOOP
+#02696      wait 1 gameframe
+#02697      IF SkaterCamAnimFinished skater = 0
+              name = "sfc_PropCam03a"
+
+#02700        BREAK
+
+#02702      END IF
+#02703      IF GetFlag flag = BDJ_SHP_ABORT
+
+#02705        goto BDJ_SHP_AbortPropCutscene
+#02706      END IF
+#02707      IF GetFlag flag = BDJ_SHP_TIMER
+              clear
+#02709        BREAK
+
+#02711      END IF
+#02712    END LOOP
+#02713    StopStream
+#02714    IF GetGlobalFlag flag = SHIP_SECRET_UNLOCKED
+
+#02716      PlayStream SHP_CapnBDJ_Nets03 vol = 100
+
+#02718    ELSE
+#02719      PlayStream SHP_Capn_Nets03 vol = 150
+
+#02721    END IF
+#02722    SpawnScript BDJ_SHP_OpenAnchorDoors
+#02723    PlaySkaterCamAnim skater = 0
+          name = "sfc_PropCam04"
+
+#02726    Obj_KillSpawnedScript name = BDJ_SHP_StartTimer
+
+#02728    Obj_SpawnScript BDJ_SHP_StartTimer params = STRUCT{
+            timer = 4
+            }
+
+#02732    LOOP
+#02733      wait 1 gameframe
+#02734      IF SkaterCamAnimFinished skater = 0
+              name = "sfc_PropCam04"
+
+#02737        BREAK
+
+#02739      END IF
+#02740      IF GetFlag flag = BDJ_SHP_ABORT
+
+#02742        goto BDJ_SHP_AbortPropCutsceneB
+#02743      END IF
+#02744      IF GetFlag flag = BDJ_SHP_TIMER
+              clear
+#02746        BREAK
+
+#02748      END IF
+#02749    END LOOP
+#02750    PlaySkaterCamAnim skater = 0
+          name = "sfc_PropCam05"
+
+#02753    Obj_KillSpawnedScript name = BDJ_SHP_StartTimer
+
+#02755    Obj_SpawnScript BDJ_SHP_StartTimer params = STRUCT{
+            timer = 6
+            }
+
+#02759    LOOP
+#02760      wait 1 gameframe
+#02761      IF SkaterCamAnimFinished skater = 0
+              name = "sfc_PropCam05"
+
+#02764        BREAK
+
+#02766      END IF
+#02767      IF GetFlag flag = BDJ_SHP_ABORT
+
+#02769        goto BDJ_SHP_AbortPropCutsceneB
+#02770      END IF
+#02771      IF GetFlag flag = BDJ_SHP_TIMER
+              clear
+#02773        BREAK
+
+#02775      END IF
+#02776    END LOOP
+#02777    goto BDJ_SHP_AbortPropCutsceneB
+#02778  END FUNCTION
+
+#02780  FUNCTION BDJ_SHP_TriggerSplash
+#02781    create name = sfo_Splash
+
+#02783    SetParticleSysVisibility system = "sfp_Splash"
+          visible = 1
+
+#02786    PlaySound FallWater vol = 100
+
+#02788    wait 0.5 seconds
+#02789    SetParticleSysVisibility system = "sfp_Splash"
+          visible = 0
+
+#02792  END FUNCTION
+
+#02794  FUNCTION BDJ_SHP_ScaleSplash
+#02795    Obj_ApplyScaling X = 1
+          y = 0.0
+          z = 1.0
+
+#02799    wait 1 gameframe
+#02800    Obj_ApplyScaling X = 1
+          y = 0.1
+          z = 1.0
+
+#02804    wait 1 gameframe
+#02805    Obj_ApplyScaling X = 1
+          y = 0.2
+          z = 1.0
+
+#02809    wait 1 gameframe
+#02810    Obj_ApplyScaling X = 1
+          y = 0.3
+          z = 1.0
+
+#02814    wait 1 gameframe
+#02815    Obj_ApplyScaling X = 1
+          y = 0.4
+          z = 1.0
+
+#02819    wait 1 gameframe
+#02820    Obj_ApplyScaling X = 1
+          y = 0.5
+          z = 1.0
+
+#02824    wait 1 gameframe
+#02825    Obj_ApplyScaling X = 1
+          y = 0.6
+          z = 1.0
+
+#02829    wait 1 gameframe
+#02830    Obj_ApplyScaling X = 1
+          y = 0.7
+          z = 1.0
+
+#02834    wait 1 gameframe
+#02835    Obj_ApplyScaling X = 1
+          y = 0.75
+          z = 1.0
+
+#02839    wait 1 gameframe
+#02840    Obj_ApplyScaling X = 1
+          y = 0.8
+          z = 1.0
+
+#02844    wait 1 gameframe
+#02845    Obj_ApplyScaling X = 1
+          y = 0.84
+          z = 1.0
+
+#02849    wait 1 gameframe
+#02850    Obj_ApplyScaling X = 1
+          y = 0.87
+          z = 1.0
+
+#02854    wait 1 gameframe
+#02855    Obj_ApplyScaling X = 1
+          y = 0.9
+          z = 1.0
+
+#02859    wait 1 gameframe
+#02860    Obj_ApplyScaling X = 1
+          y = 0.95
+          z = 1.0
+
+#02864    wait 1 gameframe
+#02865    Obj_ApplyScaling X = 1
+          y = 0.975
+          z = 1.0
+
+#02869    wait 1 gameframe
+#02870    Obj_ApplyScaling X = 1
+          y = 0.986
+          z = 1.0
+
+#02874    wait 1 gameframe
+#02875    Obj_ApplyScaling X = 1
+          y = 0.993
+          z = 1.0
+
+#02879    wait 1 gameframe
+#02880    Obj_ApplyScaling X = 1
+          y = 0.998
+          z = 1.0
+
+#02884    wait 1 gameframe
+#02885    Obj_ApplyScaling X = 1
+          y = 1.0
+          z = 1.0
+
+#02889    wait 2 gameframe
+#02890    Obj_MoveToRelPos VECTOR[0.0; 0.0; 80.0] acceleration = 1
+          speed = 10
+          FLAG_MAX_COORDS
+#02893    Obj_WaitMove
+#02894    die
+#02895  END FUNCTION
+
+#02897  FUNCTION BDJ_SHP_FlyingPed
+#02898    Obj_ClearFlag BDJ_BOARDBROKEN
+#02899    wait 3 seconds
+#02900    Obj_MoveToNode name = TRG_FlyingPedStart01
+
+#02902    Obj_PlayAnim Anim = Walk2
+          Cycle
+#02904    Obj_MoveToNode name = TRG_FlyingPedStart02
+          speed = 5
+          fps
+#02907    Obj_WaitMove
+#02908    Obj_PlayAnim Anim = WalkToIdle
+
+#02910    Obj_WaitAnimFinished
+#02911    Obj_PlayAnim Anim = Idle
+
+#02913    Obj_WaitAnimFinished
+#02914    Obj_PlayAnim Anim = Stagger
+
+#02916    Obj_WaitAnimFinished
+#02917    Obj_PlayAnim Anim = ScratchChin
+
+#02919    Obj_SetPathVelocity 80
+#02920    Obj_SetPathAcceleration 0
+#02921    Obj_StickToGround Off
+#02922    Obj_PathHeading Off
+#02923    LOOP
+#02924      IF Obj_FlagSet BDJ_BOARDBROKEN
+#02925        BREAK
+
+#02927      END IF
+#02928      wait 1 gameframe
+#02929    END LOOP
+#02930    Obj_FollowPathLinked
+#02931    Obj_RotY speed = 360
+          FLAG_MAX_COORDS
+#02933    Obj_PlayAnim Anim = HitBySkater
+          PingPong
+#02935    Obj_WaitAnimFinished
+#02936  END FUNCTION
+
+#02938  FUNCTION BDJ_SHP_RollingProp01
+#02939    kill name = sf_PropC01
+
+#02941    kill name = sf_PropC01_reflect
+
+#02943    wait 0.2 seconds
+#02944    create name = sf_WallBreakA
+
+#02946    create name = sf_MuseumFloorA
+
+#02948    kill name = sf_WallBreakB
+
+#02950    kill name = sf_MuseumFloorB
+
+#02952    create name = sf_ArchwayBreakA
+
+#02954    kill name = sf_ArchwayBreakB
+
+#02956    create name = sf_RailingBreakA
+
+#02958    kill name = sf_RailingBreakB
+
+#02960    create name = sf_RampBreakA
+
+#02962    create prefix = "TRG_RampBreakA"
+
+#02964    kill name = sf_RampBreakB
+
+#02966    kill prefix = "sfc_RampBreakB"
+
+#02968    kill prefix = "TRG_RampBreakB"
+
+#02970    PlayStream SHP_propfall_sway vol = 100
+
+#02972    Obj_Rotate absolute = VECTOR[-0.74; 0.0; 0.0]
+          time = 0.1
+          FLAG_MAX_COORDS
+#02975    wait 0.1 seconds
+#02976    Obj_Rotate absolute = VECTOR[-2.96; 0.0; 0.0]
+          time = 0.1
+          FLAG_MAX_COORDS
+#02979    wait 0.1 seconds
+#02980    Obj_Rotate absolute = VECTOR[-5.92; 0.0; 0.0]
+          time = 0.1
+          FLAG_MAX_COORDS
+#02983    wait 0.1 seconds
+#02984    Obj_Rotate absolute = VECTOR[-10.36; 0.0; 0.0]
+          time = 0.1
+          FLAG_MAX_COORDS
+#02987    wait 0.1 seconds
+#02988    Obj_Rotate absolute = VECTOR[-16.28; 0.0; 0.0]
+          time = 0.1
+          FLAG_MAX_COORDS
+#02991    wait 0.1 seconds
+#02992    Obj_Rotate absolute = VECTOR[-23.68; 0.0; 0.0]
+          time = 0.1
+          FLAG_MAX_COORDS
+#02995    wait 0.1 seconds
+#02996    Obj_Rotate absolute = VECTOR[-32.56; 0.0; 0.0]
+          time = 0.1
+          FLAG_MAX_COORDS
+#02999    wait 0.1 seconds
+#03000    Obj_Rotate absolute = VECTOR[-44.5; 0.0; 0.0]
+          time = 0.1
+          FLAG_MAX_COORDS
+#03003    wait 0.1 seconds
+#03004    Obj_Rotate absolute = VECTOR[-56.24; 0.0; 0.0]
+          time = 0.1
+          FLAG_MAX_COORDS
+#03007    wait 0.1 seconds
+#03008    Obj_Rotate absolute = VECTOR[-65.12; 0.0; 0.0]
+          time = 0.1
+          FLAG_MAX_COORDS
+#03011    wait 0.1 seconds
+#03012    Obj_Rotate absolute = VECTOR[-72.52; 0.0; 0.0]
+          time = 0.1
+          FLAG_MAX_COORDS
+#03015    wait 0.1 seconds
+#03016    Obj_Rotate absolute = VECTOR[-76.96; 0.0; 0.0]
+          time = 0.1
+          FLAG_MAX_COORDS
+#03019    wait 0.1 seconds
+#03020    Obj_Rotate absolute = VECTOR[-78.44; 0.0; 0.0]
+          time = 0.1
+          FLAG_MAX_COORDS
+#03023    wait 0.1 seconds
+#03024    Obj_Rotate absolute = VECTOR[-76.96; 0.0; 0.0]
+          time = 0.1
+          FLAG_MAX_COORDS
+#03027    wait 0.1 seconds
+#03028    Obj_Rotate absolute = VECTOR[-72.52; 0.0; 0.0]
+          time = 0.1
+          FLAG_MAX_COORDS
+#03031    wait 0.1 seconds
+#03032    Obj_Rotate absolute = VECTOR[-65.12; 0.0; 0.0]
+          time = 0.1
+          FLAG_MAX_COORDS
+#03035    wait 0.1 seconds
+#03036    Obj_MoveToNode name = TRG_RollingProp01
+          acceleration = 4
+          speed = 64
+          fps
+#03040    Obj_Rotate absolute = VECTOR[-56.24; 0.0; 0.0]
+          time = 0.1
+          FLAG_MAX_COORDS
+#03043    wait 0.1 seconds
+#03044    Obj_Rotate absolute = VECTOR[-44.5; 0.0; 0.0]
+          time = 0.1
+          FLAG_MAX_COORDS
+#03047    wait 0.1 seconds
+#03048    Obj_WaitMove
+#03049    Obj_MoveToRelPos VECTOR[0.0; 5.0; 0.0] time = 0.0333
+          frames
+#03051    wait 2 frames
+#03052    Obj_MoveToRelPos VECTOR[0.0; 2.0; 0.0] time = 0.0333
+          frames
+#03054    wait 2 frames
+#03055    Obj_MoveToRelPos VECTOR[0.0; 1.0; 0.0] time = 0.0333
+          frames
+#03057    wait 2 frames
+#03058    Obj_MoveToRelPos VECTOR[0.0; -1.0; 0.0] time = 0.0333
+          frames
+#03060    wait 2 frames
+#03061    Obj_MoveToRelPos VECTOR[0.0; -2.0; 0.0] time = 0.0333
+          frames
+#03063    wait 2 frames
+#03064    Obj_MoveToRelPos VECTOR[0.0; -5.0; 0.0] time = 0.0333
+          frames
+#03066    wait 2 frames
+#03067    create name = sfo_RollingProp02
+
+#03069    die
+#03070  END FUNCTION
+
+#03072  FUNCTION BDJ_SHP_RollingProp02
+#03073    Obj_SetPathVelocity 18
+#03074    Obj_SetPathAcceleration 6
+#03075    Obj_SetPathDeceleration 30
+#03076    Obj_StickToGround Off
+#03077    Obj_PathHeading Off
+#03078    Obj_FollowPathLinked
+#03079    Obj_RotY speed = 135
+          acceleration = 45
+          FLAG_MAX_COORDS
+#03082    Obj_WaitMove
+#03083    Obj_StopRotating
+#03084    kill name = sf_RampBreakA
+
+#03086    kill prefix = "TRG_RampBreakA"
+
+#03088    create name = sf_RampBreakB
+
+#03090    create prefix = "sfc_RampBreakB"
+
+#03092    create prefix = "TRG_RampBreakB"
+
+#03094    create prefix = "sfb_RampChunk"
+
+#03096    PlaySound SHP_propcrash vol = 150
+
+#03098    Obj_Rotate absolute = VECTOR[21.0; -19.5; 0.0]
+          time = 0
+          FLAG_MAX_COORDS
+#03101    wait 10
+#03102    Obj_Rotate absolute = VECTOR[-21.0; -19.5; 0.0]
+          time = 0
+          FLAG_MAX_COORDS
+#03105    wait 10
+#03106    Obj_Rotate absolute = VECTOR[18.0; -19.5; 0.0]
+          time = 0
+          FLAG_MAX_COORDS
+#03109    wait 10
+#03110    Obj_Rotate absolute = VECTOR[-18.0; -19.5; 0.0]
+          time = 0
+          FLAG_MAX_COORDS
+#03113    wait 10
+#03114    Obj_Rotate absolute = VECTOR[15.0; -19.5; 0.0]
+          time = 0
+          FLAG_MAX_COORDS
+#03117    wait 10
+#03118    Obj_Rotate absolute = VECTOR[-15.0; -19.5; 0.0]
+          time = 0
+          FLAG_MAX_COORDS
+#03121    wait 10
+#03122    Obj_Rotate absolute = VECTOR[12.0; -19.5; 0.0]
+          time = 0
+          FLAG_MAX_COORDS
+#03125    wait 10
+#03126    Obj_Rotate absolute = VECTOR[-12.0; -19.5; 0.0]
+          time = 0
+          FLAG_MAX_COORDS
+#03129    wait 10
+#03130    Obj_Rotate absolute = VECTOR[9.0; -19.5; 0.0]
+          time = 0
+          FLAG_MAX_COORDS
+#03133    wait 10
+#03134    Obj_Rotate absolute = VECTOR[-9.0; -19.5; 0.0]
+          time = 0
+          FLAG_MAX_COORDS
+#03137    wait 10
+#03138    Obj_Rotate absolute = VECTOR[7.0; -19.5; 0.0]
+          time = 0
+          FLAG_MAX_COORDS
+#03141    wait 10
+#03142    Obj_Rotate absolute = VECTOR[-7.0; -19.5; 0.0]
+          time = 0
+          FLAG_MAX_COORDS
+#03145    wait 10
+#03146    Obj_Rotate absolute = VECTOR[5.0; -19.5; 0.0]
+          time = 0
+          FLAG_MAX_COORDS
+#03149    wait 10
+#03150    Obj_Rotate absolute = VECTOR[-5.0; -19.5; 0.0]
+          time = 0
+          FLAG_MAX_COORDS
+#03153    wait 10
+#03154    Obj_Rotate absolute = VECTOR[4.0; -19.5; 0.0]
+          time = 0
+          FLAG_MAX_COORDS
+#03157    wait 10
+#03158    Obj_Rotate absolute = VECTOR[-4.0; -19.5; 0.0]
+          time = 0
+          FLAG_MAX_COORDS
+#03161    wait 10
+#03162    Obj_Rotate absolute = VECTOR[3.0; -19.5; 0.0]
+          time = 0
+          FLAG_MAX_COORDS
+#03165    wait 10
+#03166    Obj_Rotate absolute = VECTOR[-3.0; -19.5; 0.0]
+          time = 0
+          FLAG_MAX_COORDS
+#03169    wait 10
+#03170    Obj_Rotate absolute = VECTOR[2.0; -19.5; 0.0]
+          time = 0
+          FLAG_MAX_COORDS
+#03173    wait 10
+#03174    Obj_Rotate absolute = VECTOR[-2.0; -19.5; 0.0]
+          time = 0
+          FLAG_MAX_COORDS
+#03177    wait 10
+#03178    Obj_Rotate absolute = VECTOR[1.0; -19.5; 0.0]
+          time = 0
+          FLAG_MAX_COORDS
+#03181    wait 10
+#03182    Obj_Rotate absolute = VECTOR[-1.0; -19.5; 0.0]
+          time = 0
+          FLAG_MAX_COORDS
+#03185    wait 10
+#03186    Obj_Rotate absolute = VECTOR[0.5; -19.5; 0.0]
+          time = 0
+          FLAG_MAX_COORDS
+#03189    wait 10
+#03190    Obj_Rotate absolute = VECTOR[-0.5; -19.5; 0.0]
+          time = 0
+          FLAG_MAX_COORDS
+#03193    wait 10
+#03194    wait 5 second
+#03195    create name = sf_PropC01
+
+#03197    create name = sf_PropC01_reflect
+
+#03199    die
+#03200  END FUNCTION
+
+#03202  FUNCTION BDJ_SHP_PropPath07
+#03203    IF isAlive name = sf_2ndFloorWindow05
+
+#03205      kill name = sf_2ndFloorWindowReflect05
+
+#03207      BDJ_SHP_BreakGlass obj = sf_2ndFloorWindow05
+
+#03209    END IF
+#03210    wait 0.2 seconds
+#03211    kill name = sf_WallBreakA
+
+#03213    kill name = sf_MuseumFloorA
+
+#03215    create name = sf_WallBreakB
+
+#03217    create name = sf_MuseumFloorB
+
+#03219    create prefix = "sfb_PillarChunk"
+
+#03221    PlaySound GlassPane2x Pitch = RANDOM[3][8; 14; 20]
+
+          50 JUMP 0x0f000000 60 JUMP 0x05000000 70
+#03224    wait 0.2 seconds
+#03225    IF isAlive name = sf_2ndFloorWindow06
+
+#03227      kill name = sf_2ndFloorWindowReflect06
+
+#03229      BDJ_SHP_BreakGlass obj = sf_2ndFloorWindow06
+
+#03231    END IF
+#03232  END FUNCTION
+
+#03234  FUNCTION BDJ_SHP_PropPath11
+#03235    wait 0.1 seconds
+#03236    kill name = sf_ArchwayBreakA
+
+#03238    create name = sf_ArchwayBreakB
+
+#03240    create prefix = "sfb_ArchwayChunk"
+
+#03242    PlaySound GlassPane2x Pitch = RANDOM[3][8; 14; 20]
+
+          50 JUMP 0x0f000000 60 JUMP 0x05000000 70
+#03245  END FUNCTION
+
+#03247  FUNCTION BDJ_SHP_PropPath14
+#03248    kill name = sf_RailingBreakA
+
+#03250    create name = sf_RailingBreakB
+
+#03252    create prefix = "sfb_RailingChunk"
+
+#03254    PlaySound GlassPane2x Pitch = RANDOM[3][8; 14; 20]
+
+          50 JUMP 0x0f000000 60 JUMP 0x05000000 70
+#03257  END FUNCTION
+
+#03259  FUNCTION BDJ_SHP_PropPath15
+#03260    Obj_SetPathVelocity 2
+#03261    wait 0.2 seconds
+#03262    Obj_RotY speed = 15
+          acceleration = 10
+          FLAG_MAX_COORDS
+#03265  END FUNCTION
+
+#03267  FUNCTION BDJ_SHP_PropPath16
+#03268    Obj_SetPathVelocity 60
+#03269    Obj_SetPathAcceleration 32
+#03270    wait 0.1 seconds
+#03271    Obj_RotY speed = 900
+          acceleration = 900
+          FLAG_MAX_COORDS
+#03274  END FUNCTION
+
+#03276  FUNCTION BDJ_SHP_ArchwayChunk01
+#03277    BouncyObj_Go VECTOR[-750.0; -225.0; -250.0]
+#03278    Shatter name = sfs_ArchwayShatter01
+          area = RANDOM[3][8; 14; 20]
+
+          1000 JUMP 0x0f000000 1200 JUMP 0x05000000 1300 variance = 20
+          vel_x = -20
+          vel_y = 0
+          vel_z = 10
+          spread = 1.0
+          FLAG_MAX_COORDS
+#03287  END FUNCTION
+
+#03289  FUNCTION BDJ_SHP_ArchwayChunk02
+#03290    BouncyObj_Go VECTOR[-750.0; 0.0; 0.0]
+#03291  END FUNCTION
+
+#03293  FUNCTION BDJ_SHP_ArchwayChunk03
+#03294    BouncyObj_Go VECTOR[-750.0; 0.0; 300.0]
+#03295  END FUNCTION
+
+#03297  FUNCTION BDJ_SHP_PillarChunk01
+#03298    BouncyObj_Go VECTOR[-750.0; -225.0; -250.0]
+#03299    Shatter name = sfs_PillarShatter01
+          area = RANDOM[3][8; 14; 20]
+
+          1000 JUMP 0x0f000000 1200 JUMP 0x05000000 1300 variance = 20
+          vel_x = -20
+          vel_y = 0
+          vel_z = 10
+          spread = 1.0
+          FLAG_MAX_COORDS
+#03308  END FUNCTION
+
+#03310  FUNCTION BDJ_SHP_PillarChunk02
+#03311    BouncyObj_Go VECTOR[-750.0; 0.0; 0.0]
+#03312  END FUNCTION
+
+#03314  FUNCTION BDJ_SHP_PillarChunk03
+#03315    BouncyObj_Go VECTOR[-750.0; 0.0; 300.0]
+#03316  END FUNCTION
+
+#03318  FUNCTION BDJ_SHP_RampSettingsOn
+#03319    Obj_StickToGround On
+#03320  END FUNCTION
+
+#03322  FUNCTION BDJ_SHP_RampSettingsOff
+#03323    Obj_StickToGround Off
+#03324    Obj_SetConstantHeight
+#03325  END FUNCTION
+
+#03327  FUNCTION BDJ_SHP_PropChunks
+#03328    RANDOM[100][401; 430; 454; 478; 502; 526; 550; 574; 598; 622; 646; 670; 694; 718; 742; 766; 790; 814; 838; 862; 886; 910; 934; 958; 982; 1006; 1030; 1054; 1078; 1102; 1126; 1150; 1174; 1198; 1222; 1246; 1270; 1294; 1318; 1342; 1366; 1390; 1414; 1438; 1462; 1486; 1510; 1534; 1558; 1582; 1606; 1630; 1654; 1678; 1702; 1726; 1750; 1774; 1798; 1822; 1846; 1870; 1894; 1918; 1942; 1966; 1990; 2014; 2038; 2062; 2086; 2110; 2134; 2158; 2182; 2206; 2230; 2254; 2278; 2302; 2326; 2350; 2374; 2398; 2422; 2446; 2470; 2494; 2518; 2542; 2566; 2590; 2614; 2638; 2662; 2686; 2710; 2734; 2758; 2782]
+
+#03330    BouncyObj_Go VECTOR[-750.0; 0.0; 0.0] FLAG_MAX_COORDS
+#03331    JUMP 0xcf0a0000 BouncyObj_Go VECTOR[-750.0; 100.0; 0.0]
+#03332    JUMP 0xb30a0000 BouncyObj_Go VECTOR[-750.0; 200.0; 0.0]
+#03333    JUMP 0x970a0000 BouncyObj_Go VECTOR[-750.0; 300.0; 0.0]
+#03334    JUMP 0x7b0a0000 BouncyObj_Go VECTOR[-750.0; 400.0; 0.0]
+#03335    JUMP 0x5f0a0000 BouncyObj_Go VECTOR[-750.0; 0.0; 100.0]
+#03336    JUMP 0x430a0000 BouncyObj_Go VECTOR[-750.0; 100.0; 100.0]
+#03337    JUMP 0x270a0000 BouncyObj_Go VECTOR[-750.0; 200.0; 100.0]
+#03338    JUMP 0x0b0a0000 BouncyObj_Go VECTOR[-750.0; 300.0; 100.0]
+#03339    JUMP 0xef090000 BouncyObj_Go VECTOR[-750.0; 400.0; 100.0]
+#03340    JUMP 0xd3090000 BouncyObj_Go VECTOR[-750.0; 0.0; 200.0]
+#03341    JUMP 0xb7090000 BouncyObj_Go VECTOR[-750.0; 100.0; 200.0]
+#03342    JUMP 0x9b090000 BouncyObj_Go VECTOR[-750.0; 200.0; 200.0]
+#03343    JUMP 0x7f090000 BouncyObj_Go VECTOR[-750.0; 300.0; 200.0]
+#03344    JUMP 0x63090000 BouncyObj_Go VECTOR[-750.0; 400.0; 200.0]
+#03345    JUMP 0x47090000 BouncyObj_Go VECTOR[-750.0; 0.0; 300.0]
+#03346    JUMP 0x2b090000 BouncyObj_Go VECTOR[-750.0; 100.0; 300.0]
+#03347    JUMP 0x0f090000 BouncyObj_Go VECTOR[-750.0; 200.0; 300.0]
+#03348    JUMP 0xf3080000 BouncyObj_Go VECTOR[-750.0; 300.0; 300.0]
+#03349    JUMP 0xd7080000 BouncyObj_Go VECTOR[-750.0; 400.0; 300.0]
+#03350    JUMP 0xbb080000 BouncyObj_Go VECTOR[-750.0; 0.0; 400.0]
+#03351    JUMP 0x9f080000 BouncyObj_Go VECTOR[-750.0; 100.0; 400.0]
+#03352    JUMP 0x83080000 BouncyObj_Go VECTOR[-750.0; 200.0; 400.0]
+#03353    JUMP 0x67080000 BouncyObj_Go VECTOR[-750.0; 300.0; 400.0]
+#03354    JUMP 0x4b080000 BouncyObj_Go VECTOR[-750.0; 400.0; 400.0]
+#03355    JUMP 0x2f080000 BouncyObj_Go VECTOR[-750.0; 0.0; 0.0]
+#03356    JUMP 0x13080000 BouncyObj_Go VECTOR[-750.0; -100.0; 0.0]
+#03357    JUMP 0xf7070000 BouncyObj_Go VECTOR[-750.0; -200.0; 0.0]
+#03358    JUMP 0xdb070000 BouncyObj_Go VECTOR[-750.0; -300.0; 0.0]
+#03359    JUMP 0xbf070000 BouncyObj_Go VECTOR[-750.0; -400.0; 0.0]
+#03360    JUMP 0xa3070000 BouncyObj_Go VECTOR[-750.0; 0.0; 100.0]
+#03361    JUMP 0x87070000 BouncyObj_Go VECTOR[-750.0; -100.0; 100.0]
+#03362    JUMP 0x6b070000 BouncyObj_Go VECTOR[-750.0; -200.0; 100.0]
+#03363    JUMP 0x4f070000 BouncyObj_Go VECTOR[-750.0; -300.0; 100.0]
+#03364    JUMP 0x33070000 BouncyObj_Go VECTOR[-750.0; -400.0; 100.0]
+#03365    JUMP 0x17070000 BouncyObj_Go VECTOR[-750.0; 0.0; 200.0]
+#03366    JUMP 0xfb060000 BouncyObj_Go VECTOR[-750.0; -100.0; 200.0]
+#03367    JUMP 0xdf060000 BouncyObj_Go VECTOR[-750.0; -200.0; 200.0]
+#03368    JUMP 0xc3060000 BouncyObj_Go VECTOR[-750.0; -300.0; 200.0]
+#03369    JUMP 0xa7060000 BouncyObj_Go VECTOR[-750.0; -400.0; 200.0]
+#03370    JUMP 0x8b060000 BouncyObj_Go VECTOR[-750.0; 0.0; 300.0]
+#03371    JUMP 0x6f060000 BouncyObj_Go VECTOR[-750.0; -100.0; 300.0]
+#03372    JUMP 0x53060000 BouncyObj_Go VECTOR[-750.0; -200.0; 300.0]
+#03373    JUMP 0x37060000 BouncyObj_Go VECTOR[-750.0; -300.0; 300.0]
+#03374    JUMP 0x1b060000 BouncyObj_Go VECTOR[-750.0; -400.0; 300.0]
+#03375    JUMP 0xff050000 BouncyObj_Go VECTOR[-750.0; 0.0; 400.0]
+#03376    JUMP 0xe3050000 BouncyObj_Go VECTOR[-750.0; -100.0; 400.0]
+#03377    JUMP 0xc7050000 BouncyObj_Go VECTOR[-750.0; -200.0; 400.0]
+#03378    JUMP 0xab050000 BouncyObj_Go VECTOR[-750.0; -300.0; 400.0]
+#03379    JUMP 0x8f050000 BouncyObj_Go VECTOR[-750.0; -400.0; 400.0]
+#03380    JUMP 0x73050000 BouncyObj_Go VECTOR[-750.0; 0.0; 0.0]
+#03381    JUMP 0x57050000 BouncyObj_Go VECTOR[-750.0; 100.0; 0.0]
+#03382    JUMP 0x3b050000 BouncyObj_Go VECTOR[-750.0; 200.0; 0.0]
+#03383    JUMP 0x1f050000 BouncyObj_Go VECTOR[-750.0; 300.0; 0.0]
+#03384    JUMP 0x03050000 BouncyObj_Go VECTOR[-750.0; 400.0; 0.0]
+#03385    JUMP 0xe7040000 BouncyObj_Go VECTOR[-750.0; 0.0; -100.0]
+#03386    JUMP 0xcb040000 BouncyObj_Go VECTOR[-750.0; 100.0; -100.0]
+#03387    JUMP 0xaf040000 BouncyObj_Go VECTOR[-750.0; 200.0; -100.0]
+#03388    JUMP 0x93040000 BouncyObj_Go VECTOR[-750.0; 300.0; -100.0]
+#03389    JUMP 0x77040000 BouncyObj_Go VECTOR[-750.0; 400.0; -100.0]
+#03390    JUMP 0x5b040000 BouncyObj_Go VECTOR[-750.0; 0.0; -200.0]
+#03391    JUMP 0x3f040000 BouncyObj_Go VECTOR[-750.0; 100.0; -200.0]
+#03392    JUMP 0x23040000 BouncyObj_Go VECTOR[-750.0; 200.0; -200.0]
+#03393    JUMP 0x07040000 BouncyObj_Go VECTOR[-750.0; 300.0; -200.0]
+#03394    JUMP 0xeb030000 BouncyObj_Go VECTOR[-750.0; 400.0; -200.0]
+#03395    JUMP 0xcf030000 BouncyObj_Go VECTOR[-750.0; 0.0; -300.0]
+#03396    JUMP 0xb3030000 BouncyObj_Go VECTOR[-750.0; 100.0; -300.0]
+#03397    JUMP 0x97030000 BouncyObj_Go VECTOR[-750.0; 200.0; -300.0]
+#03398    JUMP 0x7b030000 BouncyObj_Go VECTOR[-750.0; 300.0; -300.0]
+#03399    JUMP 0x5f030000 BouncyObj_Go VECTOR[-750.0; 400.0; -300.0]
+#03400    JUMP 0x43030000 BouncyObj_Go VECTOR[-750.0; 0.0; -400.0]
+#03401    JUMP 0x27030000 BouncyObj_Go VECTOR[-750.0; 100.0; -400.0]
+#03402    JUMP 0x0b030000 BouncyObj_Go VECTOR[-750.0; 200.0; -400.0]
+#03403    JUMP 0xef020000 BouncyObj_Go VECTOR[-750.0; 300.0; -400.0]
+#03404    JUMP 0xd3020000 BouncyObj_Go VECTOR[-750.0; 400.0; -400.0]
+#03405    JUMP 0xb7020000 BouncyObj_Go VECTOR[-750.0; 0.0; 0.0]
+#03406    JUMP 0x9b020000 BouncyObj_Go VECTOR[-750.0; -100.0; 0.0]
+#03407    JUMP 0x7f020000 BouncyObj_Go VECTOR[-750.0; -200.0; 0.0]
+#03408    JUMP 0x63020000 BouncyObj_Go VECTOR[-750.0; -300.0; 0.0]
+#03409    JUMP 0x47020000 BouncyObj_Go VECTOR[-750.0; -400.0; 0.0]
+#03410    JUMP 0x2b020000 BouncyObj_Go VECTOR[-750.0; 0.0; -100.0]
+#03411    JUMP 0x0f020000 BouncyObj_Go VECTOR[-750.0; -100.0; -100.0]
+#03412    JUMP 0xf3010000 BouncyObj_Go VECTOR[-750.0; -200.0; -100.0]
+#03413    JUMP 0xd7010000 BouncyObj_Go VECTOR[-750.0; -300.0; -100.0]
+#03414    JUMP 0xbb010000 BouncyObj_Go VECTOR[-750.0; -400.0; -100.0]
+#03415    JUMP 0x9f010000 BouncyObj_Go VECTOR[-750.0; 0.0; -200.0]
+#03416    JUMP 0x83010000 BouncyObj_Go VECTOR[-750.0; -100.0; -200.0]
+#03417    JUMP 0x67010000 BouncyObj_Go VECTOR[-750.0; -200.0; -200.0]
+#03418    JUMP 0x4b010000 BouncyObj_Go VECTOR[-750.0; -300.0; -200.0]
+#03419    JUMP 0x2f010000 BouncyObj_Go VECTOR[-750.0; -400.0; -200.0]
+#03420    JUMP 0x13010000 BouncyObj_Go VECTOR[-750.0; 0.0; -300.0]
+#03421    JUMP 0xf7000000 BouncyObj_Go VECTOR[-750.0; -100.0; -300.0]
+#03422    JUMP 0xdb000000 BouncyObj_Go VECTOR[-750.0; -200.0; -300.0]
+#03423    JUMP 0xbf000000 BouncyObj_Go VECTOR[-750.0; -300.0; -300.0]
+#03424    JUMP 0xa3000000 BouncyObj_Go VECTOR[-750.0; -400.0; -300.0]
+#03425    JUMP 0x87000000 BouncyObj_Go VECTOR[-750.0; 0.0; -400.0]
+#03426    JUMP 0x6b000000 BouncyObj_Go VECTOR[-750.0; -100.0; -400.0]
+#03427    JUMP 0x4f000000 BouncyObj_Go VECTOR[-750.0; -200.0; -400.0]
+#03428    JUMP 0x33000000 BouncyObj_Go VECTOR[-750.0; -300.0; -400.0]
+#03429    JUMP 0x17000000 BouncyObj_Go VECTOR[-750.0; -400.0; -400.0]
+#03430
+#03431  END FUNCTION
+
+#03433  FUNCTION BDJ_SHP_PropChunksUp
+#03434    RANDOM[36][145; 169; 193; 217; 241; 265; 289; 313; 337; 361; 385; 409; 433; 457; 481; 505; 529; 553; 577; 601; 625; 649; 673; 697; 721; 745; 769; 793; 817; 841; 865; 889; 913; 937; 961; 985]
+
+#03436    BouncyObj_Go VECTOR[-150.0; -100.0; 1000.0]
+#03437    JUMP 0xcf030000 BouncyObj_Go VECTOR[-150.0; -100.0; 2000.0]
+#03438    JUMP 0xb3030000 BouncyObj_Go VECTOR[-150.0; -100.0; 3000.0]
+#03439    JUMP 0x97030000 BouncyObj_Go VECTOR[-150.0; -100.0; 4000.0]
+#03440    JUMP 0x7b030000 BouncyObj_Go VECTOR[-150.0; -200.0; 1000.0]
+#03441    JUMP 0x5f030000 BouncyObj_Go VECTOR[-150.0; -200.0; 2000.0]
+#03442    JUMP 0x43030000 BouncyObj_Go VECTOR[-150.0; -200.0; 3000.0]
+#03443    JUMP 0x27030000 BouncyObj_Go VECTOR[-150.0; -200.0; 4000.0]
+#03444    JUMP 0x0b030000 BouncyObj_Go VECTOR[-150.0; -300.0; 1000.0]
+#03445    JUMP 0xef020000 BouncyObj_Go VECTOR[-150.0; -300.0; 2000.0]
+#03446    JUMP 0xd3020000 BouncyObj_Go VECTOR[-150.0; -300.0; 3000.0]
+#03447    JUMP 0xb7020000 BouncyObj_Go VECTOR[-150.0; -300.0; 4000.0]
+#03448    JUMP 0x9b020000 BouncyObj_Go VECTOR[-150.0; -400.0; 1000.0]
+#03449    JUMP 0x7f020000 BouncyObj_Go VECTOR[-150.0; -400.0; 2000.0]
+#03450    JUMP 0x63020000 BouncyObj_Go VECTOR[-150.0; -400.0; 3000.0]
+#03451    JUMP 0x47020000 BouncyObj_Go VECTOR[-150.0; -400.0; 4000.0]
+#03452    JUMP 0x2b020000 BouncyObj_Go VECTOR[-150.0; 0.0; 1000.0]
+#03453    JUMP 0x0f020000 BouncyObj_Go VECTOR[-150.0; 0.0; 2000.0]
+#03454    JUMP 0xf3010000 BouncyObj_Go VECTOR[-150.0; 0.0; 3000.0]
+#03455    JUMP 0xd7010000 BouncyObj_Go VECTOR[-150.0; 0.0; 4000.0]
+#03456    JUMP 0xbb010000 BouncyObj_Go VECTOR[-150.0; 100.0; 1000.0]
+#03457    JUMP 0x9f010000 BouncyObj_Go VECTOR[-150.0; 100.0; 2000.0]
+#03458    JUMP 0x83010000 BouncyObj_Go VECTOR[-150.0; 100.0; 3000.0]
+#03459    JUMP 0x67010000 BouncyObj_Go VECTOR[-150.0; 100.0; 4000.0]
+#03460    JUMP 0x4b010000 BouncyObj_Go VECTOR[-150.0; 200.0; 1000.0]
+#03461    JUMP 0x2f010000 BouncyObj_Go VECTOR[-150.0; 200.0; 2000.0]
+#03462    JUMP 0x13010000 BouncyObj_Go VECTOR[-150.0; 200.0; 3000.0]
+#03463    JUMP 0xf7000000 BouncyObj_Go VECTOR[-150.0; 200.0; 4000.0]
+#03464    JUMP 0xdb000000 BouncyObj_Go VECTOR[-150.0; 300.0; 1000.0]
+#03465    JUMP 0xbf000000 BouncyObj_Go VECTOR[-150.0; 300.0; 2000.0]
+#03466    JUMP 0xa3000000 BouncyObj_Go VECTOR[-150.0; 300.0; 3000.0]
+#03467    JUMP 0x87000000 BouncyObj_Go VECTOR[-150.0; 300.0; 4000.0]
+#03468    JUMP 0x6b000000 BouncyObj_Go VECTOR[-150.0; 400.0; 1000.0]
+#03469    JUMP 0x4f000000 BouncyObj_Go VECTOR[-150.0; 400.0; 2000.0]
+#03470    JUMP 0x33000000 BouncyObj_Go VECTOR[-150.0; 400.0; 3000.0]
+#03471    JUMP 0x17000000 BouncyObj_Go VECTOR[-150.0; 400.0; 4000.0]
+#03472
+#03473  END FUNCTION
+
+#03475  FUNCTION BDJ_SHP_QuiveringPipe
+#03476    kill name = sf_Deck00B02
+
+#03478    Obj_MoveToRelPos VECTOR[0.0; 3.0; 0.0]
+#03479    wait 2 frames
+#03480    Obj_MoveToRelPos VECTOR[0.0; -2.5; 0.0]
+#03481    wait 2 frames
+#03482    Obj_MoveToRelPos VECTOR[0.0; 2.08; 0.0]
+#03483    wait 2 frames
+#03484    Obj_MoveToRelPos VECTOR[0.0; -1.74; 0.0]
+#03485    wait 2 frames
+#03486    Obj_MoveToRelPos VECTOR[0.0; 1.45; 0.0]
+#03487    wait 2 frames
+#03488    Obj_MoveToRelPos VECTOR[0.0; -1.21; 0.0]
+#03489    wait 2 frames
+#03490    Obj_MoveToRelPos VECTOR[0.0; 1.0; 0.0]
+#03491    wait 2 frames
+#03492    Obj_MoveToRelPos VECTOR[0.0; -0.84; 0.0]
+#03493    wait 2 frames
+#03494    Obj_MoveToRelPos VECTOR[0.0; 0.7; 0.0]
+#03495    wait 2 frames
+#03496    Obj_MoveToRelPos VECTOR[0.0; -0.58; 0.0]
+#03497    wait 2 frames
+#03498    Obj_MoveToRelPos VECTOR[0.0; 0.48; 0.0]
+#03499    wait 2 frames
+#03500    Obj_MoveToRelPos VECTOR[0.0; -0.4; 0.0]
+#03501    wait 2 frames
+#03502    Obj_MoveToRelPos VECTOR[0.0; 0.34; 0.0]
+#03503    wait 2 frames
+#03504    Obj_MoveToRelPos VECTOR[0.0; -0.28; 0.0]
+#03505    wait 2 frames
+#03506    Obj_MoveToRelPos VECTOR[0.0; 0.23; 0.0]
+#03507    wait 2 frames
+#03508    Obj_MoveToRelPos VECTOR[0.0; -0.19; 0.0]
+#03509    wait 2 frames
+#03510    Obj_MoveToRelPos VECTOR[0.0; 0.16; 0.0]
+#03511    wait 2 frames
+#03512    Obj_MoveToRelPos VECTOR[0.0; -0.14; 0.0]
+#03513    wait 2 frames
+#03514    Obj_MoveToRelPos VECTOR[0.0; 0.11; 0.0]
+#03515    wait 2 frames
+#03516    Obj_MoveToRelPos VECTOR[0.0; -0.09; 0.0]
+#03517    wait 2 frames
+#03518    Obj_MoveToRelPos VECTOR[0.0; 0.08; 0.0]
+#03519    wait 2 frames
+#03520    Obj_MoveToRelPos VECTOR[0.0; -0.07; 0.0]
+#03521    wait 2 frames
+#03522    Obj_MoveToRelPos VECTOR[0.0; 0.06; 0.0]
+#03523    wait 2 frames
+#03524    Obj_MoveToRelPos VECTOR[0.0; -0.05; 0.0]
+#03525    wait 2 frames
+#03526    Obj_MoveToRelPos VECTOR[0.0; 0.04; 0.0]
+#03527    wait 2 frames
+#03528    Obj_MoveToRelPos VECTOR[0.0; -0.03; 0.0]
+#03529    wait 2 frames
+#03530    Obj_MoveToRelPos VECTOR[0.0; 0.02; 0.0]
+#03531    wait 2 frames
+#03532    Obj_MoveToRelPos VECTOR[0.0; -0.01; 0.0]
+#03533    wait 2 frames
+#03534    Obj_MoveToRelPos VECTOR[0.0; 0.01; 0.0]
+#03535    wait 2 frames
+#03536    wait 2 second
+#03537    create name = sf_Deck00B02
+
+#03539    die
+#03540  END FUNCTION
+
+#03542  FUNCTION BDJ_SHP_OpenAnchorDoors
+#03543    kill name = sf_AnchorDoorA01
+
+#03545    kill name = sf_AnchorDoorA02
+
+#03547    create name = sft_EndAnchorChainAirA01
+
+#03549    create name = sfc_RampVertsA01
+
+#03551    create name = sfo_AnchorDoorA01
+
+#03553    create name = sfo_AnchorDoorA02
+
+#03555    kill name = sf_AnchorDoorB01
+
+#03557    kill name = sf_AnchorDoorB02
+
+#03559    create name = sft_EndAnchorChainAirB01
+
+#03561    create name = sfc_RampVertsB01
+
+#03563    create name = sfo_AnchorDoorB01
+
+#03565    create name = sfo_AnchorDoorB02
+
+#03567    wait 4 seconds
+#03568    create name = sf_AnchorDoorOpenA01
+
+#03570    create name = sf_AnchorDoorOpenA02
+
+#03572    create name = sf_AnchorDoorOpenB01
+
+#03574    create name = sf_AnchorDoorOpenB02
+
+#03576    kill name = sfo_AnchorDoorA01
+
+#03578    kill name = sfo_AnchorDoorA02
+
+#03580    kill name = sfo_AnchorDoorB01
+
+#03582    kill name = sfo_AnchorDoorB02
+
+#03584    create prefix = "TRG_AnchorRailX"
+
+#03586    create name = sfo_NetRailLeft
+
+#03588    create name = sfo_NetRailRight
+
+#03590    create name = sfo_NetRailMid
+
+#03592    wait 5.25 seconds
+#03593    create name = sf_NetRailLeft
+
+#03595    create name = sf_NetRailRight
+
+#03597    create name = sf_NetRailMid
+
+#03599    kill name = sfo_NetRailLeft
+
+#03601    kill name = sfo_NetRailRight
+
+#03603    kill name = sfo_NetRailMid
+
+#03605    create prefix = "TRG_NettingRails"
+
+#03607  END FUNCTION
+
+#03609  FUNCTION BDJ_SHP_MoveNetLeft
+#03610    Obj_PlaySound SHP_nets1 vol = 50
+          dropoff = 300
+          Pitch = 80
+
+#03614    Obj_MoveToNode name = TRG_NetRailLeft
+          time = 5.25
+
+#03617  END FUNCTION
+
+#03619  FUNCTION BDJ_SHP_MoveNetRight
+#03620    Obj_PlaySound SHP_nets1 vol = 50
+          dropoff = 300
+          Pitch = 80
+
+#03624    Obj_MoveToNode name = TRG_NetRailRight
+          time = 5.25
+
+#03627  END FUNCTION
+
+#03629  FUNCTION BDJ_SHP_MoveNetMid
+#03630    Obj_PlaySound SHP_nets1 vol = 50
+          dropoff = 300
+          Pitch = 80
+
+#03634    Obj_MoveToNode name = TRG_NetRailMid01
+          time = 4
+
+#03637    Obj_WaitMove
+#03638    wait 0.25 seconds
+#03639    Obj_MoveToNode name = TRG_NetRailMid02
+          time = 1
+
+#03642  END FUNCTION
+
+#03644  FUNCTION BDJ_SHP_MoveAnchorDoor
+#03645    Obj_PlaySound SHP_anchordoor vol = 60
+          dropoff = 100
+          Pitch = 70
+
+#03649    Obj_MoveToNode name = GLOBAL.point1
+          time = 1
+
+#03652    Obj_WaitMove
+#03653    Obj_StopSound SHP_anchordoor
+#03654    wait 0.25 seconds
+#03655    Obj_PlaySound SHP_anchordoor vol = 20
+          dropoff = 100
+          Pitch = 50
+
+#03659    Obj_MoveToNode name = GLOBAL.point2
+          time = 3
+
+#03662    Obj_WaitMove
+#03663    die
+#03664  END FUNCTION
+
+#03666  FUNCTION BDJ_SHP_Bouncify
+#03667    create links
+#03668    kill name = GLOBAL.id1
+
+#03670    IF gotParam id2
+#03671      IF isAlive name = GLOBAL.id2
+
+#03673        kill name = GLOBAL.id2
+
+#03675      END IF
+#03676    END IF
+#03677  END FUNCTION
+
+#03679  FUNCTION BDJ_SHP_BouncifyTable
+#03680    BDJ_SHP_Bouncify id1 = GLOBAL.me
+
+#03682    IF isAlive name = GLOBAL.umb
+
+#03684      kill name = GLOBAL.umb
+
+#03686      create name = GLOBAL.umbObj
+
+#03688    END IF
+#03689    PlaySound GlassPane2x Pitch = RANDOM[3][8; 14; 20]
+
+          50 JUMP 0x0f000000 60 JUMP 0x05000000 70
+#03692    Shatter name = GLOBAL.glass
+          area = RANDOM[3][8; 14; 20]
+
+          500 JUMP 0x0f000000 600 JUMP 0x05000000 700 variance = 3
+          vel_x = 0
+          vel_y = 30
+          vel_z = 0
+          spread = 0.5
+          FLAG_MAX_COORDS
+#03701    kill name = GLOBAL.glass
+
+#03703  END FUNCTION
+
+#03705  FUNCTION BDJ_SHP_BreakGlass
+#03706    PlaySound GlassPane2x Pitch = RANDOM[3][8; 14; 20]
+
+          50 JUMP 0x0f000000 60 JUMP 0x05000000 70
+#03709    Shatter name = GLOBAL.obj
+          area = RANDOM[3][8; 14; 20]
+
+          6000 JUMP 0x0f000000 7000 JUMP 0x05000000 8000 variance = 4.6
+          vel_x = RANDOM[3][8; 14; 20]
+
+          0.0 JUMP 0x0f000000 30 JUMP 0x05000000 -30 vel_y = -150
+          vel_z = RANDOM[3][8; 14; 20]
+
+          0 JUMP 0x0f000000 30 JUMP 0x05000000 -30 spread = 1.0
+          FLAG_MAX_COORDS
+#03720    kill name = GLOBAL.obj
+
+#03722  END FUNCTION
+
+#03724  FUNCTION BDJ_SHP_IntroChopper
+#03725    Obj_SetPathVelocity 75
+#03726    Obj_PlaySound helicopter15 Pitch = 180
+          vol = 100
+          dropoff = 500
+
+#03730    goto BDJ_SHP_MoveIntroChopper
+#03731  END FUNCTION
+
+#03733  FUNCTION BDJ_SHP_IntroChopperBladesA
+#03734    Obj_PathHeading Off
+#03735    Obj_SetPathVelocity 77
+#03736    Obj_RotZ speed = 2000
+          FLAG_MAX_COORDS
+#03738    goto BDJ_SHP_MoveIntroChopperBlades
+#03739  END FUNCTION
+
+#03741  FUNCTION BDJ_SHP_IntroChopperBladesB
+#03742    Obj_PathHeading Off
+#03743    Obj_SetPathVelocity 77
+#03744    Obj_RotZ speed = -2500
+          FLAG_MAX_COORDS
+#03746    goto BDJ_SHP_MoveIntroChopperBlades
+#03747  END FUNCTION
+
+#03749  FUNCTION BDJ_SHP_MoveIntroChopper
+#03750    Obj_SetPathTurnDist 120
+#03751    Obj_StickToGround Off
+#03752    Obj_SetPathAcceleration 0
+#03753    Obj_SetPathDeceleration 5
+#03754    Obj_FollowPathLinked
+#03755    Obj_WaitMove
+#03756    Obj_AdjustSound helicopter15 volumePercent = 0
+          pitchPercent = 80
+          volumeStep = 0.3
+          pitchStep = 0.6
+
+#03761    Obj_MoveToRelPos VECTOR[0.0; -480.0; 0.0] time = 8
+          acceleration = 0.2
+
+#03764    Obj_RotZ angle = 180
+          speed = 40
+          acceleration = 15
+          FLAG_MAX_COORDS
+#03768    Obj_WaitMove
+#03769  END FUNCTION
+
+#03771  FUNCTION BDJ_SHP_MoveIntroChopperBlades
+#03772    Obj_SetPathTurnDist 120
+#03773    Obj_StickToGround Off
+#03774    Obj_SetPathAcceleration 0
+#03775    Obj_SetPathDeceleration 5
+#03776    Obj_FollowPathLinked
+#03777    Obj_WaitMove
+#03778    Obj_MoveToRelPos VECTOR[0.0; -480.0; 0.0] time = 8
+          acceleration = 0.2
+
+#03781    Obj_WaitMove
+#03782  END FUNCTION
+
+#03784  FUNCTION BDJ_SHP_FlapFlag
+#03785    IF gotParam FlagA
+#03786      IF gotParam Right
+#03787        BDJ_SHP_FlapFlag2 startAngle = VECTOR[0.0; 10.0; 0.0]
+              endAngle = VECTOR[0.0; -10.0; 0.0]
+              upAngle = VECTOR[0.0; 3.0; 0.0]
+              downAngle = VECTOR[0.0; -3.0; 0.0]
+
+#03792      ELSE
+#03793        BDJ_SHP_FlapFlag2 startAngle = VECTOR[0.0; -10.0; 0.0]
+              endAngle = VECTOR[0.0; 10.0; 0.0]
+              upAngle = VECTOR[0.0; 3.0; 0.0]
+              downAngle = VECTOR[0.0; -3.0; 0.0]
+
+#03798      END IF
+#03799    END IF
+#03800    IF gotParam FlagB
+#03801      IF gotParam Right
+#03802        BDJ_SHP_FlapFlag2 startAngle = VECTOR[0.0; 20.0; 0.0]
+              endAngle = VECTOR[0.0; -20.0; 0.0]
+              upAngle = VECTOR[0.0; 5.0; 0.0]
+              downAngle = VECTOR[0.0; -5.0; 0.0]
+
+#03807      ELSE
+#03808        BDJ_SHP_FlapFlag2 startAngle = VECTOR[0.0; -20.0; 0.0]
+              endAngle = VECTOR[0.0; 20.0; 0.0]
+              upAngle = VECTOR[0.0; 5.0; 0.0]
+              downAngle = VECTOR[0.0; -5.0; 0.0]
+
+#03813      END IF
+#03814    END IF
+#03815    IF gotParam FlagC
+#03816      IF gotParam Right
+#03817        BDJ_SHP_FlapFlag2 startAngle = VECTOR[0.0; 30.0; 0.0]
+              endAngle = VECTOR[0.0; -30.0; 0.0]
+              upAngle = VECTOR[0.0; 8.0; 0.0]
+              downAngle = VECTOR[0.0; -8.0; 0.0]
+
+#03822      ELSE
+#03823        BDJ_SHP_FlapFlag2 startAngle = VECTOR[0.0; -30.0; 0.0]
+              endAngle = VECTOR[0.0; 30.0; 0.0]
+              upAngle = VECTOR[0.0; 8.0; 0.0]
+              downAngle = VECTOR[0.0; -8.0; 0.0]
+
+#03828      END IF
+#03829    END IF
+#03830    IF gotParam FlagD
+#03831      IF gotParam Right
+#03832        BDJ_SHP_FlapFlag2 startAngle = VECTOR[0.0; 50.0; 0.0]
+              endAngle = VECTOR[0.0; -50.0; 0.0]
+              upAngle = VECTOR[0.0; 10.0; 0.0]
+              downAngle = VECTOR[0.0; -10.0; 0.0]
+
+#03837      ELSE
+#03838        BDJ_SHP_FlapFlag2 startAngle = VECTOR[0.0; -50.0; 0.0]
+              endAngle = VECTOR[0.0; 50.0; 0.0]
+              upAngle = VECTOR[0.0; 10.0; 0.0]
+              downAngle = VECTOR[0.0; -10.0; 0.0]
+
+#03843      END IF
+#03844    END IF
+#03845    IF gotParam FlagE
+#03846      IF gotParam Right
+#03847        BDJ_SHP_FlapFlag2 startAngle = VECTOR[0.0; 60.0; 0.0]
+              endAngle = VECTOR[0.0; -60.0; 0.0]
+              upAngle = VECTOR[0.0; 15.0; 0.0]
+              downAngle = VECTOR[0.0; -15.0; 0.0]
+
+#03852      ELSE
+#03853        BDJ_SHP_FlapFlag2 startAngle = VECTOR[0.0; -60.0; 0.0]
+              endAngle = VECTOR[0.0; 60.0; 0.0]
+              upAngle = VECTOR[0.0; 15.0; 0.0]
+              downAngle = VECTOR[0.0; -15.0; 0.0]
+
+#03858      END IF
+#03859    END IF
+#03860    IF gotParam FlagF
+#03861      IF gotParam Right
+#03862        BDJ_SHP_FlapFlag2 startAngle = VECTOR[0.0; 70.0; 0.0]
+              endAngle = VECTOR[0.0; -70.0; 0.0]
+              upAngle = VECTOR[0.0; 20.0; 0.0]
+              downAngle = VECTOR[0.0; -20.0; 0.0]
+
+#03867      ELSE
+#03868        BDJ_SHP_FlapFlag2 startAngle = VECTOR[0.0; -70.0; 0.0]
+              endAngle = VECTOR[0.0; 70.0; 0.0]
+              upAngle = VECTOR[0.0; 20.0; 0.0]
+              downAngle = VECTOR[0.0; -20.0; 0.0]
+
+#03873      END IF
+#03874    END IF
+#03875    IF gotParam FlagG
+#03876      IF gotParam Right
+#03877        BDJ_SHP_FlapFlag2 startAngle = VECTOR[0.0; 80.0; 0.0]
+              endAngle = VECTOR[0.0; -80.0; 0.0]
+              upAngle = VECTOR[0.0; 25.0; 0.0]
+              downAngle = VECTOR[0.0; -25.0; 0.0]
+
+#03882      ELSE
+#03883        BDJ_SHP_FlapFlag2 startAngle = VECTOR[0.0; -80.0; 0.0]
+              endAngle = VECTOR[0.0; 80.0; 0.0]
+              upAngle = VECTOR[0.0; 25.0; 0.0]
+              downAngle = VECTOR[0.0; -25.0; 0.0]
+
+#03888      END IF
+#03889    END IF
+#03890  END FUNCTION
+
+#03892  FUNCTION BDJ_SHP_FlapFlag2
+#03893    Obj_Rotate time = RANDOM[3][8; 14; 20]
+
+          0.5 JUMP 0x0f000000 1 JUMP 0x05000000 1.5 relative = GLOBAL.startAngle
+          FLAG_MAX_COORDS
+#03897    Obj_WaitRotate
+#03898    LOOP
+#03899      Obj_Rotate time = 0.02
+            relative = GLOBAL.upAngle
+            FLAG_MAX_COORDS
+#03902      Obj_WaitRotate
+#03903      Obj_Rotate time = 0.04
+            relative = GLOBAL.downAngle
+            FLAG_MAX_COORDS
+#03906      Obj_WaitRotate
+#03907      IF Obj_FlagSet BDJ_SHP_StopFlap
+#03908        BREAK
+
+#03910      END IF
+#03911    END LOOP
+#03912    Obj_Rotate time = RANDOM[3][8; 14; 20]
+
+          0.5 JUMP 0x0f000000 1 JUMP 0x05000000 1.5 relative = GLOBAL.endAngle
+          FLAG_MAX_COORDS
+#03916  END FUNCTION
+
+#03918  FUNCTION BDJ_SHP_EndFlagFlap
+#03919    wait 3 seconds
+#03920    IF isAlive name = sto_FlagFlap01
+
+#03922      SendFlag name = sto_FlagFlap01
+            BDJ_SHP_StopFlap
+#03924      SendFlag name = sto_FlagFlap02
+            BDJ_SHP_StopFlap
+#03926      SendFlag name = sto_FlagFlap03
+            BDJ_SHP_StopFlap
+#03928      SendFlag name = sto_FlagFlap04
+            BDJ_SHP_StopFlap
+#03930      SendFlag name = sto_FlagFlap05
+            BDJ_SHP_StopFlap
+#03932      SendFlag name = sto_FlagFlap06
+            BDJ_SHP_StopFlap
+#03934      SendFlag name = sto_FlagFlap07
+            BDJ_SHP_StopFlap
+#03936      SendFlag name = sto_FlagFlap08
+            BDJ_SHP_StopFlap
+#03938      SendFlag name = sto_FlagFlap09
+            BDJ_SHP_StopFlap
+#03940      SendFlag name = sto_FlagFlap10
+            BDJ_SHP_StopFlap
+#03942      SendFlag name = sto_FlagFlap11
+            BDJ_SHP_StopFlap
+#03944      SendFlag name = sto_FlagFlap12
+            BDJ_SHP_StopFlap
+#03946      SendFlag name = sto_FlagFlap13
+            BDJ_SHP_StopFlap
+#03948      SendFlag name = sto_FlagFlap14
+            BDJ_SHP_StopFlap
+#03950      SendFlag name = sto_FlagFlap15
+            BDJ_SHP_StopFlap
+#03952      SendFlag name = sto_FlagFlap16
+            BDJ_SHP_StopFlap
+#03954    END IF
+#03955    wait 4 seconds
+#03956    kill prefix = "sto_FlagFlap"
+
+#03958    create name = st_FlappingFlags
+
+#03960  END FUNCTION
+
+#03962  FUNCTION BDJ_SHP_Chopper
+#03963    create name = sfc_ChopperCollision
+
+#03965    Obj_SetPathVelocity 5 fps
+#03966    Obj_StickToGround Off
+#03967    Obj_PlaySound helicopter15 Pitch = 80
+          vol = 50
+
+#03970    Obj_AdjustSound helicopter15 volumePercent = 200
+          pitchPercent = 180
+          volumeStep = 0.2
+          pitchStep = 0.2
+
+#03975    kill name = st_FlappingFlags
+
+#03977    create prefix = "sto_FlagFlap"
+
+#03979    wait 2 seconds
+#03980    IF GetFlag flag = BDJ_SHP_CHOPPERPILOT_OFF
+
+#03982    ELSE
+#03983      SetFlag flag = BDJ_SHP_CHOPPERPILOT_OFF
+
+#03985      IF ProfileEquals is_custom
+#03986        Obj_PlayStream Shp_heli_01 vol = 150
+              dropoff = 200
+
+#03989      END IF
+#03990      IF ProfileEquals is_named = hawk
+
+#03992        RANDOM[2][9; 47]
+
+#03994        Obj_PlayStream Shp_heli_01 vol = 150
+              dropoff = 200
+
+#03997        JUMP 0x25000000 Obj_PlayStream Shp_heli_02 vol = 150
+              dropoff = 200
+
+#04000
+#04001      END IF
+#04002      IF ProfileEquals is_named = caballero
+
+#04004        RANDOM[2][9; 47]
+
+#04006        Obj_PlayStream Shp_heli_01 vol = 150
+              dropoff = 200
+
+#04009        JUMP 0x25000000 Obj_PlayStream Shp_heli_02 vol = 150
+              dropoff = 200
+
+#04012
+#04013      END IF
+#04014      IF ProfileEquals is_named = campbell
+
+#04016        RANDOM[2][9; 47]
+
+#04018        Obj_PlayStream Shp_heli_01 vol = 150
+              dropoff = 200
+
+#04021        JUMP 0x25000000 Obj_PlayStream Shp_heli_02 vol = 150
+              dropoff = 200
+
+#04024
+#04025      END IF
+#04026      IF ProfileEquals is_named = glifberg
+
+#04028        RANDOM[2][9; 47]
+
+#04030        Obj_PlayStream Shp_heli_01 vol = 150
+              dropoff = 200
+
+#04033        JUMP 0x25000000 Obj_PlayStream Shp_heli_02 vol = 150
+              dropoff = 200
+
+#04036
+#04037      END IF
+#04038      IF ProfileEquals is_named = koston
+
+#04040        RANDOM[2][9; 47]
+
+#04042        Obj_PlayStream Shp_heli_01 vol = 150
+              dropoff = 200
+
+#04045        JUMP 0x25000000 Obj_PlayStream Shp_heli_02 vol = 150
+              dropoff = 200
+
+#04048
+#04049      END IF
+#04050      IF ProfileEquals is_named = lasek
+
+#04052        RANDOM[2][9; 47]
+
+#04054        Obj_PlayStream Shp_heli_01 vol = 150
+              dropoff = 200
+
+#04057        JUMP 0x25000000 Obj_PlayStream Shp_heli_02 vol = 150
+              dropoff = 200
+
+#04060
+#04061      END IF
+#04062      IF ProfileEquals is_named = margera
+
+#04064        RANDOM[2][9; 47]
+
+#04066        Obj_PlayStream Shp_heli_01 vol = 150
+              dropoff = 200
+
+#04069        JUMP 0x25000000 Obj_PlayStream Shp_heli_02 vol = 150
+              dropoff = 200
+
+#04072
+#04073      END IF
+#04074      IF ProfileEquals is_named = mullen
+
+#04076        RANDOM[2][9; 47]
+
+#04078        Obj_PlayStream Shp_heli_01 vol = 150
+              dropoff = 200
+
+#04081        JUMP 0x25000000 Obj_PlayStream Shp_heli_02 vol = 150
+              dropoff = 200
+
+#04084
+#04085      END IF
+#04086      IF ProfileEquals is_named = muska
+
+#04088        RANDOM[2][9; 47]
+
+#04090        Obj_PlayStream Shp_heli_01 vol = 150
+              dropoff = 200
+
+#04093        JUMP 0x25000000 Obj_PlayStream Shp_heli_02 vol = 150
+              dropoff = 200
+
+#04096
+#04097      END IF
+#04098      IF ProfileEquals is_named = reynolds
+
+#04100        RANDOM[2][9; 47]
+
+#04102        Obj_PlayStream Shp_heli_01 vol = 150
+              dropoff = 200
+
+#04105        JUMP 0x25000000 Obj_PlayStream Shp_heli_02 vol = 150
+              dropoff = 200
+
+#04108
+#04109      END IF
+#04110      IF ProfileEquals is_named = rowley
+
+#04112        RANDOM[2][9; 47]
+
+#04114        Obj_PlayStream Shp_heli_01 vol = 150
+              dropoff = 200
+
+#04117        JUMP 0x25000000 Obj_PlayStream Shp_heli_02 vol = 150
+              dropoff = 200
+
+#04120
+#04121      END IF
+#04122      IF ProfileEquals is_named = steamer
+
+#04124        RANDOM[2][9; 47]
+
+#04126        Obj_PlayStream Shp_heli_01 vol = 150
+              dropoff = 200
+
+#04129        JUMP 0x25000000 Obj_PlayStream Shp_heli_03 vol = 150
+              dropoff = 200
+
+#04132
+#04133      END IF
+#04134      IF ProfileEquals is_named = thomas
+
+#04136        RANDOM[2][9; 47]
+
+#04138        Obj_PlayStream Shp_heli_01 vol = 150
+              dropoff = 200
+
+#04141        JUMP 0x25000000 Obj_PlayStream Shp_heli_02 vol = 150
+              dropoff = 200
+
+#04144
+#04145      END IF
+#04146      IF ProfileEquals is_named = carrera
+
+#04148        RANDOM[2][9; 47]
+
+#04150        Obj_PlayStream Shp_heli_01 vol = 150
+              dropoff = 200
+
+#04153        JUMP 0x25000000 Obj_PlayStream Shp_heli_03 vol = 150
+              dropoff = 200
+
+#04156
+#04157      END IF
+#04158      IF ProfileEquals is_named = Dick
+
+#04160        RANDOM[2][9; 47]
+
+#04162        Obj_PlayStream Shp_heli_01 vol = 150
+              dropoff = 200
+
+#04165        JUMP 0x25000000 Obj_PlayStream Shp_heli_02 vol = 150
+              dropoff = 200
+
+#04168
+#04169      END IF
+#04170      IF ProfileEquals is_named = demoness
+
+#04172        RANDOM[2][9; 47]
+
+#04174        Obj_PlayStream Shp_heli_01 vol = 150
+              dropoff = 200
+
+#04177        JUMP 0x25000000 Obj_PlayStream Shp_heli_03 vol = 150
+              dropoff = 200
+
+#04180
+#04181      END IF
+#04182      IF ProfileEquals is_named = wolverine
+
+#04184        RANDOM[2][9; 47]
+
+#04186        Obj_PlayStream Shp_heli_01 vol = 150
+              dropoff = 200
+
+#04189        JUMP 0x25000000 Obj_PlayStream Shp_heli_02 vol = 150
+              dropoff = 200
+
+#04192
+#04193      END IF
+#04194      IF ProfileEquals is_named = maul
+
+#04196        RANDOM[2][9; 47]
+
+#04198        Obj_PlayStream Shp_heli_01 vol = 150
+              dropoff = 200
+
+#04201        JUMP 0x25000000 Obj_PlayStream Shp_heli_02 vol = 150
+              dropoff = 200
+
+#04204
+#04205      END IF
+#04206      IF ProfileEquals is_named = slater
+
+#04208        RANDOM[2][9; 47]
+
+#04210        Obj_PlayStream Shp_heli_01 vol = 150
+              dropoff = 200
+
+#04213        JUMP 0x25000000 Obj_PlayStream Shp_heli_02 vol = 150
+              dropoff = 200
+
+#04216
+#04217      END IF
+#04218      IF ProfileEquals is_named = ollie
+
+#04220        RANDOM[2][9; 47]
+
+#04222        Obj_PlayStream Shp_heli_01 vol = 150
+              dropoff = 200
+
+#04225        JUMP 0x25000000 Obj_PlayStream Shp_heli_02 vol = 150
+              dropoff = 200
+
+#04228
+#04229      END IF
+#04230      IF ProfileEquals is_named = eyeball
+
+#04232        RANDOM[2][9; 47]
+
+#04234        Obj_PlayStream Shp_heli_01 vol = 150
+              dropoff = 200
+
+#04237        JUMP 0x25000000 Obj_PlayStream Shp_heli_02 vol = 150
+              dropoff = 200
+
+#04240
+#04241      END IF
+#04242      IF ProfileEquals is_named = doomguy
+
+#04244        RANDOM[2][9; 47]
+
+#04246        Obj_PlayStream Shp_heli_01 vol = 150
+              dropoff = 200
+
+#04249        JUMP 0x25000000 Obj_PlayStream Shp_heli_02 vol = 150
+              dropoff = 200
+
+#04252
+#04253      END IF
+#04254    END IF
+#04255    wait 2 seconds
+#04256    IF isAlive name = sfo_ChopperBlades02
+
+#04258      SendFlag name = sfo_ChopperBlades02
+            BDJ_SHP_TakeOff
+#04260    END IF
+#04261    IF isAlive name = sfo_ChopperBlades03
+
+#04263      SendFlag name = sfo_ChopperBlades03
+            BDJ_SHP_TakeOff
+#04265    END IF
+#04266    goto BDJ_SHP_MoveChopper
+#04267  END FUNCTION
+
+#04269  FUNCTION BDJ_SHP_ChopperBlades
+#04270    Obj_SetPathAcceleration 5
+#04271    Obj_SetPathVelocity 5 fps
+#04272    Obj_StickToGround Off
+#04273    Obj_RotZ speed = 2000
+          acceleration = 850
+          FLAG_MAX_COORDS
+#04276    wait 2 seconds
+#04277    create name = sfo_ChopperBlades02
+
+#04279    wait 1 second
+#04280    create name = sfo_ChopperBlades03
+
+#04282    wait 1 second
+#04283    die
+#04284  END FUNCTION
+
+#04286  FUNCTION BDJ_SHP_ChopperBlades02
+#04287    Obj_SetPathAcceleration 5
+#04288    Obj_SetPathVelocity 5 fps
+#04289    Obj_StickToGround Off
+#04290    Obj_RotZ speed = 2000
+          FLAG_MAX_COORDS
+#04292    LOOP
+#04293      wait 1 gameframe
+#04294      IF Obj_FlagSet BDJ_SHP_TakeOff
+#04295        BREAK
+
+#04297      END IF
+#04298    END LOOP
+#04299    goto BDJ_SHP_MoveChopperBlades
+#04300  END FUNCTION
+
+#04302  FUNCTION BDJ_SHP_ChopperBlades03
+#04303    Obj_SetPathAcceleration 5
+#04304    Obj_SetPathVelocity 5 fps
+#04305    Obj_RotZ speed = -2500
+          FLAG_MAX_COORDS
+#04307    LOOP
+#04308      wait 1 gameframe
+#04309      IF Obj_FlagSet BDJ_SHP_TakeOff
+#04310        BREAK
+
+#04312      END IF
+#04313    END LOOP
+#04314    goto BDJ_SHP_MoveChopperBlades
+#04315  END FUNCTION
+
+#04317  FUNCTION BDJ_SHP_MoveChopper
+#04318    Obj_MoveToRelPos VECTOR[0.0; 400.0; 0.0] time = 8
+          acceleration = 0.1
+
+#04321    Obj_RotX angle = -5
+          speed = 30
+          acceleration = 10
+          FLAG_MAX_COORDS
+#04325    Obj_WaitRotate
+#04326    wait 0.2 seconds
+#04327    Obj_RotX angle = 5
+          speed = 30
+          acceleration = 10
+          FLAG_MAX_COORDS
+#04331    Obj_WaitRotate
+#04332    Obj_RotZ angle = 110
+          speed = 30
+          acceleration = 8
+          FLAG_MAX_COORDS
+#04336    kill name = sfc_ChopperCollision
+
+#04338    Obj_WaitMove
+#04339    IF isAlive name = sfo_ChopperBlades02
+
+#04341      SendFlag name = sfo_ChopperBlades02
+            BDJ_SHP_StartMove
+#04343    END IF
+#04344    IF isAlive name = sfo_ChopperBlades03
+
+#04346      SendFlag name = sfo_ChopperBlades03
+            BDJ_SHP_StartMove
+#04348    END IF
+#04349    SpawnScript BDJ_SHP_EndFlagFlap
+#04350    Obj_SetConstantHeight
+#04351    Obj_SetPathVelocity 40
+#04352    Obj_SetPathAcceleration 5
+#04353    Obj_SetPathDeceleration 5
+#04354    Obj_SetPathTurnDist 80
+#04355    LOOP
+#04356      Obj_FollowPath name = TRG_ChopperPath
+
+#04358      Obj_WaitMove
+#04359    END LOOP
+#04360  END FUNCTION
+
+#04362  FUNCTION BDJ_SHP_MoveChopperBlades
+#04363    Obj_MoveToRelPos VECTOR[0.0; 400.0; 0.0] time = 8
+          acceleration = 0.1
+
+#04366    Obj_PathHeading Off
+#04367    LOOP
+#04368      wait 1 gameframe
+#04369      IF Obj_FlagSet BDJ_SHP_StartMove
+#04370        BREAK
+
+#04372      END IF
+#04373    END LOOP
+#04374    Obj_SetConstantHeight
+#04375    Obj_SetPathVelocity 40
+#04376    Obj_SetPathAcceleration 5
+#04377    Obj_SetPathDeceleration 5
+#04378    Obj_SetPathTurnDist 80
+#04379    LOOP
+#04380      Obj_FollowPath name = TRG_ChopperPath
+
+#04382      Obj_WaitMove
+#04383    END LOOP
+#04384  END FUNCTION
+
+#04386  FUNCTION BDJ_SHP_EmptyTopPool
+#04387    kill name = st_DrainPipeCap01
+
+#04389    kill name = stt_EmptyPool
+
+#04391    Obj_KillSpawnedScript name = BDJ_SHP_CutsceneDelay
+
+#04393    Obj_SpawnScript BDJ_SHP_CutsceneDelay
+#04394    IF inMultiplayerGame
+#04395    ELSE
+#04396      PauseSkaters
+#04397      PlaySkaterCamAnim skater = 0
+            name = "stc_EmptyTopPoolCam"
+
+#04400    END IF
+#04401    SetParticleSysVisibility system = "stp_DrainPipeSpray02"
+          visible = 1
+
+#04404    IF inMultiplayerGame
+#04405      SetParticleSysVisibility system = "stp_DrainPipeSpray"
+            visible = 1
+
+#04408    END IF
+#04409    SetFlag flag = BDJ_SHP_POOL
+
+#04411    IF IsCareerMode
+#04412      SetFlag flag = BDJ_SHP_POOLCAREER
+
+#04414    END IF
+#04415    wait 0.1 second
+#04416    kill name = st_PoolWater01
+
+#04418    kill name = st_SlideSpray01
+
+#04420    SetParticleSysVisibility system = "stp_SlideSpray"
+          visible = 0
+
+#04423    kill name = st_PoolWaterShimmer01
+
+#04425    create name = sto_PoolWaterObj
+
+#04427    PlaySound flush2
+#04428    IF inMultiplayerGame
+#04429    ELSE
+#04430      LOOP
+#04431        IF SkaterCamAnimFinished skater = 0
+                name = "stc_EmptyTopPoolCam"
+
+#04434          BREAK
+
+#04436        END IF
+#04437        IF GetFlag flag = BDJ_SHP_ABORT
+
+#04439          PlaySkaterCamAnim skater = 0
+                stop
+#04441          BREAK
+
+#04443        END IF
+#04444        wait 1 gameframe
+#04445      END LOOP
+#04446      UnPauseSkaters
+#04447    END IF
+#04448    create name = stt_PoolWaterDrainingkill01
+
+#04450    wait 3 seconds
+#04451    kill name = stt_PoolWaterDrainingkill01
+
+#04453    wait 3 seconds
+#04454    kill name = sto_PoolWaterObj
+
+#04456    SetParticleSysVisibility system = "stp_DrainPipeSpray"
+          visible = 0
+
+#04459    SetParticleSysVisibility system = "stp_DrainPipeSpray02"
+          visible = 0
+
+#04462  END FUNCTION
+
+#04464  FUNCTION BDJ_SHP_BustCakeA
+#04465    Obj_PlaySound SHP_cake2
+#04466    kill name = sb_CakeA
+
+#04468    create prefix = "sbb_CakeChunkA"
+
+#04470    BDJ_SHP_EndBustCakeA
+#04471    SetParticleSysVisibility system = "sbp_CakeSpark01"
+          visible = 0
+
+#04474    SetParticleSysVisibility system = "sbp_CakeSpark02"
+          visible = 0
+
+#04477    SetParticleSysVisibility system = "sbp_CakeSpark03"
+          visible = 0
+
+#04480    SetParticleSysVisibility system = "sbp_CakeSpark04"
+          visible = 0
+
+#04483    SetParticleSysVisibility system = "sbp_CakeSpark05"
+          visible = 0
+
+#04486    SetParticleSysVisibility system = "sbp_CakeSpark06"
+          visible = 0
+
+#04489    SetParticleSysVisibility system = "sbp_CakeSpark07"
+          visible = 0
+
+#04492    SetParticleSysVisibility system = "sbp_CakeSpark08"
+          visible = 0
+
+#04495    SetParticleSysVisibility system = "sbp_CakeSpark09"
+          visible = 0
+
+#04498    SetParticleSysVisibility system = "sbp_CakeSpark10"
+          visible = 0
+
+#04501    SetParticleSysVisibility system = "sbp_CakeSpark11"
+          visible = 0
+
+#04504    SetParticleSysVisibility system = "sbp_CakeSpark12"
+          visible = 0
+
+#04507    SetParticleSysVisibility system = "sbp_CakeSpark13"
+          visible = 0
+
+#04510    SetParticleSysVisibility system = "sbp_CakeSplat"
+          visible = 1
+
+#04513    wait 0.5 second
+#04514    SetParticleSysVisibility system = "sbp_CakeSplat"
+          visible = 0
+
+#04517    wait 0.5 second
+#04518    SetParticleSysVisibility system = "sbp_CakeSteam01"
+          visible = 1
+
+#04521    SetParticleSysVisibility system = "sbp_CakeSteam02"
+          visible = 1
+
+#04524    SetParticleSysVisibility system = "sbp_CakeSteam03"
+          visible = 1
+
+#04527    SetParticleSysVisibility system = "sbp_CakeSteam04"
+          visible = 1
+
+#04530    create name = sbc_CakeHoleCollision
+
+#04532    kill name = sb_CakeHoleCover
+
+#04534    create name = sbo_CakeHoleCover
+
+#04536    create name = sbo_CakeB
+
+#04538    wait 3 seconds
+#04539    SetParticleSysVisibility system = "sbp_CakeSteam01"
+          visible = 0
+
+#04542    SetParticleSysVisibility system = "sbp_CakeSteam02"
+          visible = 0
+
+#04545    SetParticleSysVisibility system = "sbp_CakeSteam03"
+          visible = 0
+
+#04548    SetParticleSysVisibility system = "sbp_CakeSteam04"
+          visible = 0
+
+#04551    SetParticleSysVisibility system = "sbp_CakeSpark01"
+          visible = 1
+
+#04554    SetParticleSysVisibility system = "sbp_CakeSpark02"
+          visible = 1
+
+#04557    SetParticleSysVisibility system = "sbp_CakeSpark03"
+          visible = 1
+
+#04560    SetParticleSysVisibility system = "sbp_CakeSpark04"
+          visible = 1
+
+#04563    SetParticleSysVisibility system = "sbp_CakeSpark05"
+          visible = 1
+
+#04566    SetParticleSysVisibility system = "sbp_CakeSpark06"
+          visible = 1
+
+#04569    SetParticleSysVisibility system = "sbp_CakeSpark07"
+          visible = 1
+
+#04572    SetParticleSysVisibility system = "sbp_CakeSpark08"
+          visible = 1
+
+#04575    SetParticleSysVisibility system = "sbp_CakeSpark09"
+          visible = 1
+
+#04578    SetParticleSysVisibility system = "sbp_CakeSpark10"
+          visible = 1
+
+#04581    SetParticleSysVisibility system = "sbp_CakeSpark11"
+          visible = 1
+
+#04584    SetParticleSysVisibility system = "sbp_CakeSpark12"
+          visible = 1
+
+#04587    SetParticleSysVisibility system = "sbp_CakeSpark13"
+          visible = 1
+
+#04590    kill name = sbc_CakeHoleCollision
+
+#04592    kill name = sbo_CakeB
+
+#04594    create name = sb_CakeB
+
+#04596    create name = sb_CakeHoleCover
+
+#04598  END FUNCTION
+
+#04600  FUNCTION BDJ_SHP_BustCakeB
+#04601    Obj_PlaySound SHP_cake2
+#04602    kill name = sb_CakeB
+
+#04604    create prefix = "sbb_CakeChunkB"
+
+#04606    BDJ_SHP_EndBustCakeB
+#04607    SetParticleSysVisibility system = "sbp_CakeSpark01"
+          visible = 0
+
+#04610    SetParticleSysVisibility system = "sbp_CakeSpark02"
+          visible = 0
+
+#04613    SetParticleSysVisibility system = "sbp_CakeSpark03"
+          visible = 0
+
+#04616    SetParticleSysVisibility system = "sbp_CakeSpark04"
+          visible = 0
+
+#04619    SetParticleSysVisibility system = "sbp_CakeSpark05"
+          visible = 0
+
+#04622    SetParticleSysVisibility system = "sbp_CakeSpark06"
+          visible = 0
+
+#04625    SetParticleSysVisibility system = "sbp_CakeSpark07"
+          visible = 0
+
+#04628    SetParticleSysVisibility system = "sbp_CakeSpark08"
+          visible = 0
+
+#04631    SetParticleSysVisibility system = "sbp_CakeSpark09"
+          visible = 0
+
+#04634    SetParticleSysVisibility system = "sbp_CakeSpark10"
+          visible = 0
+
+#04637    SetParticleSysVisibility system = "sbp_CakeSpark11"
+          visible = 0
+
+#04640    SetParticleSysVisibility system = "sbp_CakeSpark12"
+          visible = 0
+
+#04643    SetParticleSysVisibility system = "sbp_CakeSpark13"
+          visible = 0
+
+#04646    SetParticleSysVisibility system = "sbp_CakeSplat"
+          visible = 1
+
+#04649    wait 0.5 second
+#04650    SetParticleSysVisibility system = "sbp_CakeSplat"
+          visible = 0
+
+#04653    wait 0.5 second
+#04654    SetParticleSysVisibility system = "sbp_CakeSteam01"
+          visible = 1
+
+#04657    SetParticleSysVisibility system = "sbp_CakeSteam02"
+          visible = 1
+
+#04660    SetParticleSysVisibility system = "sbp_CakeSteam03"
+          visible = 1
+
+#04663    SetParticleSysVisibility system = "sbp_CakeSteam04"
+          visible = 1
+
+#04666    create name = sbc_CakeHoleCollision
+
+#04668    kill name = sb_CakeHoleCover
+
+#04670    create name = sbo_CakeHoleCover
+
+#04672    create name = sbo_CakeC
+
+#04674    wait 3 seconds
+#04675    SetParticleSysVisibility system = "sbp_CakeSteam01"
+          visible = 0
+
+#04678    SetParticleSysVisibility system = "sbp_CakeSteam02"
+          visible = 0
+
+#04681    SetParticleSysVisibility system = "sbp_CakeSteam03"
+          visible = 0
+
+#04684    SetParticleSysVisibility system = "sbp_CakeSteam04"
+          visible = 0
+
+#04687    SetParticleSysVisibility system = "sbp_CakeSpark01"
+          visible = 1
+
+#04690    SetParticleSysVisibility system = "sbp_CakeSpark02"
+          visible = 1
+
+#04693    SetParticleSysVisibility system = "sbp_CakeSpark03"
+          visible = 1
+
+#04696    SetParticleSysVisibility system = "sbp_CakeSpark04"
+          visible = 1
+
+#04699    SetParticleSysVisibility system = "sbp_CakeSpark05"
+          visible = 1
+
+#04702    SetParticleSysVisibility system = "sbp_CakeSpark06"
+          visible = 1
+
+#04705    SetParticleSysVisibility system = "sbp_CakeSpark07"
+          visible = 1
+
+#04708    SetParticleSysVisibility system = "sbp_CakeSpark08"
+          visible = 1
+
+#04711    SetParticleSysVisibility system = "sbp_CakeSpark09"
+          visible = 1
+
+#04714    SetParticleSysVisibility system = "sbp_CakeSpark10"
+          visible = 1
+
+#04717    SetParticleSysVisibility system = "sbp_CakeSpark11"
+          visible = 1
+
+#04720    SetParticleSysVisibility system = "sbp_CakeSpark12"
+          visible = 1
+
+#04723    SetParticleSysVisibility system = "sbp_CakeSpark13"
+          visible = 1
+
+#04726    kill name = sbc_CakeHoleCollision
+
+#04728    kill name = sbo_CakeC
+
+#04730    create name = sb_CakeC
+
+#04732    create name = sb_CakeHoleCover
+
+#04734  END FUNCTION
+
+#04736  FUNCTION BDJ_SHP_BustCakeC
+#04737    Obj_PlaySound SHP_cake2
+#04738    kill name = sb_CakeC
+
+#04740    create prefix = "sbb_CakeChunkC"
+
+#04742    BDJ_SHP_EndBustCakeC
+#04743    SetParticleSysVisibility system = "sbp_CakeSpark01"
+          visible = 0
+
+#04746    SetParticleSysVisibility system = "sbp_CakeSpark02"
+          visible = 0
+
+#04749    SetParticleSysVisibility system = "sbp_CakeSpark03"
+          visible = 0
+
+#04752    SetParticleSysVisibility system = "sbp_CakeSpark04"
+          visible = 0
+
+#04755    SetParticleSysVisibility system = "sbp_CakeSpark05"
+          visible = 0
+
+#04758    SetParticleSysVisibility system = "sbp_CakeSpark06"
+          visible = 0
+
+#04761    SetParticleSysVisibility system = "sbp_CakeSpark07"
+          visible = 0
+
+#04764    SetParticleSysVisibility system = "sbp_CakeSpark08"
+          visible = 0
+
+#04767    SetParticleSysVisibility system = "sbp_CakeSpark09"
+          visible = 0
+
+#04770    SetParticleSysVisibility system = "sbp_CakeSpark10"
+          visible = 0
+
+#04773    SetParticleSysVisibility system = "sbp_CakeSpark11"
+          visible = 0
+
+#04776    SetParticleSysVisibility system = "sbp_CakeSpark12"
+          visible = 0
+
+#04779    SetParticleSysVisibility system = "sbp_CakeSpark13"
+          visible = 0
+
+#04782    SetParticleSysVisibility system = "sbp_CakeSplat"
+          visible = 1
+
+#04785    wait 0.5 second
+#04786    SetParticleSysVisibility system = "sbp_CakeSplat"
+          visible = 0
+
+#04789    wait 0.5 second
+#04790    SetParticleSysVisibility system = "sbp_CakeSteam01"
+          visible = 1
+
+#04793    SetParticleSysVisibility system = "sbp_CakeSteam02"
+          visible = 1
+
+#04796    SetParticleSysVisibility system = "sbp_CakeSteam03"
+          visible = 1
+
+#04799    SetParticleSysVisibility system = "sbp_CakeSteam04"
+          visible = 1
+
+#04802    create name = sbc_CakeHoleCollision
+
+#04804    kill name = sb_CakeHoleCover
+
+#04806    create name = sbo_CakeHoleCover
+
+#04808    create name = sbo_CakeA
+
+#04810    wait 3 seconds
+#04811    SetParticleSysVisibility system = "sbp_CakeSteam01"
+          visible = 0
+
+#04814    SetParticleSysVisibility system = "sbp_CakeSteam02"
+          visible = 0
+
+#04817    SetParticleSysVisibility system = "sbp_CakeSteam03"
+          visible = 0
+
+#04820    SetParticleSysVisibility system = "sbp_CakeSteam04"
+          visible = 0
+
+#04823    kill name = sbc_CakeHoleCollision
+
+#04825    kill name = sbo_CakeA
+
+#04827    create name = sb_CakeA
+
+#04829    create name = sb_CakeHoleCover
+
+#04831  END FUNCTION
+
+#04833  FUNCTION BDJ_SHP_EndBustCakeA
+#04834    StartGap gapID = TakesTheCake
+          flags = CANCEL_GROUND
+
+#04837    wait 2 gameframe
+#04838    EndGap gapID = TakesTheCake
+          score = 50
+          text = "Sweet Temptation!"
+
+#04842  END FUNCTION
+
+#04844  FUNCTION BDJ_SHP_EndBustCakeB
+#04845    StartGap gapID = TakesTheCake
+          flags = CANCEL_GROUND
+
+#04848    wait 2 gameframe
+#04849    EndGap gapID = TakesTheCake
+          score = 50
+          text = "Star Spangled Splatter"
+
+#04853  END FUNCTION
+
+#04855  FUNCTION BDJ_SHP_EndBustCakeC
+#04856    StartGap gapID = TakesTheCake
+          flags = CANCEL_GROUND
+
+#04859    wait 2 gameframe
+#04860    EndGap gapID = TakesTheCake
+          score = 50
+          text = "God Save the Cake!"
+
+#04864  END FUNCTION
+
+#04866  FUNCTION BDJ_SHP_CakeChunk01
+#04867    RANDOM[5][21; 45; 69; 93; 117]
+
+#04869    BouncyObj_Go VECTOR[-100.0; 250.0; -100.0]
+#04870    JUMP 0x6b000000 BouncyObj_Go VECTOR[-150.0; 300.0; -100.0]
+#04871    JUMP 0x4f000000 BouncyObj_Go VECTOR[-100.0; 250.0; -200.0]
+#04872    JUMP 0x33000000 BouncyObj_Go VECTOR[-100.0; 200.0; -50.0]
+#04873    JUMP 0x17000000 BouncyObj_Go VECTOR[-50.0; 400.0; -150.0]
+#04874
+#04875  END FUNCTION
+
+#04877  FUNCTION BDJ_SHP_CakeChunk02
+#04878    RANDOM[5][21; 45; 69; 93; 117]
+
+#04880    BouncyObj_Go VECTOR[0.0; 250.0; 200.0]
+#04881    JUMP 0x6b000000 BouncyObj_Go VECTOR[0.0; 300.0; 200.0]
+#04882    JUMP 0x4f000000 BouncyObj_Go VECTOR[0.0; 250.0; 300.0]
+#04883    JUMP 0x33000000 BouncyObj_Go VECTOR[0.0; 200.0; 100.0]
+#04884    JUMP 0x17000000 BouncyObj_Go VECTOR[0.0; 400.0; 300.0]
+#04885
+#04886  END FUNCTION
+
+#04888  FUNCTION BDJ_SHP_CakeChunk03
+#04889    RANDOM[5][21; 45; 69; 93; 117]
+
+#04891    BouncyObj_Go VECTOR[100.0; 250.0; -100.0]
+#04892    JUMP 0x6b000000 BouncyObj_Go VECTOR[150.0; 300.0; -100.0]
+#04893    JUMP 0x4f000000 BouncyObj_Go VECTOR[100.0; 250.0; -200.0]
+#04894    JUMP 0x33000000 BouncyObj_Go VECTOR[100.0; 200.0; -50.0]
+#04895    JUMP 0x17000000 BouncyObj_Go VECTOR[50.0; 400.0; -150.0]
+#04896
+#04897  END FUNCTION
+
+#04899  FUNCTION BDJ_SHP_PowerBoxSparks
+#04900    Obj_ClearExceptions
+#04901    Obj_SetOuterRadius 50
+#04902    Obj_SetException Ex = SkaterOutOfRadius
+          Scr = BDJ_SHP_PowerBoxSparks_Hold
+
+#04905    LOOP
+#04906      RANDOM[3][13; 183; 353]
+
+#04908      wait RANDOM[3][8; 19; 30]
+            1 seconds JUMP 0x19000000 0.5 seconds JUMP 0x0a000000 0.75 seconds
+#04910      Shatter name = sfo_Sparks01
+            area = 6.25
+            variance = 1
+            vel_x = 25
+            vel_y = 10
+            vel_z = 0
+            spread = 0.1
+
+#04918      Obj_PlaySound foun_spark2x
+#04919      JUMP 0xf1000000 wait RANDOM[3][8; 19; 30]
+            1 seconds JUMP 0x19000000 0.5 seconds JUMP 0x0a000000 0.75 seconds
+#04921      Shatter name = sfo_Sparks01
+            area = 6.25
+            variance = 1
+            vel_x = 25
+            vel_y = 10
+            vel_z = 0
+            spread = 0.1
+
+#04929      Obj_PlaySound foun_spark2x
+#04930      JUMP 0x43000000 wait RANDOM[3][8; 19; 30]
+            1.5 seconds JUMP 0x19000000 1.75 seconds JUMP 0x0a000000 2 seconds
+#04932
+#04933    END LOOP
+#04934  END FUNCTION
+
+#04936  FUNCTION BDJ_SHP_PowerBoxSparks_Hold
+#04937    Obj_ClearExceptions
+#04938    Obj_SetInnerRadius 50
+#04939    Obj_SetException Ex = SkaterInRadius
+          Scr = BDJ_SHP_PowerBoxSparks
+
+#04942  END FUNCTION
+
+#04944  FUNCTION BDJ_SHP_PowerBoxA
+#04945    UnSetFlag flag = BDJ_SHP_ANNOUNCE_ON
+
+#04947    kill name = sf_PowerBoxA
+
+#04949    kill name = sft_RaiseFerryBox
+
+#04951    create name = sf_PowerBoxB
+
+#04953    PlaySound GlassPane2x Pitch = RANDOM[3][8; 14; 20]
+
+          50 JUMP 0x0f000000 60 JUMP 0x05000000 70
+#04956    kill prefix = "TRG_FerryRailsA"
+
+#04958    create prefix = "TRG_FerryRailsB"
+
+#04960    create name = sft_FerryCollisionB
+
+#04962    wait 0.2 seconds
+#04963    PauseSkaters
+#04964    kill prefix = "sf_FerryA_"
+
+#04966    create name = TRG_FerryA
+
+#04968    create name = sfa_FerryWinch01
+
+#04970    create name = sfa_FerryLift
+
+#04972    SetParticleSysVisibility system = "sfp_FerryWash01"
+          visible = 1
+
+#04975    SetParticleSysVisibility system = "sfp_FerryWash02"
+          visible = 1
+
+#04978    PlaySkaterCamAnim skater = 0
+          name = "sfc_FerryCamA01"
+
+#04981    Obj_KillSpawnedScript name = BDJ_SHP_CutsceneDelay
+
+#04983    Obj_SpawnScript BDJ_SHP_CutsceneDelay
+#04984    wait 1 gameframe
+#04985    LOOP
+#04986      IF SkaterCamAnimFinished skater = 0
+              name = "sfc_FerryCamA01"
+
+#04989        BREAK
+
+#04991      END IF
+#04992      IF GetFlag flag = BDJ_SHP_ABORT
+
+#04994        goto BDJ_SHP_AbortFerryCutscene
+#04995      END IF
+#04996      wait 1 frame
+#04997    END LOOP
+#04998    SendFlag name = TRG_FerryA
+          BDJ_CAM_MOVE_DONE
+#05000    SetParticleSysVisibility system = "sfp_FerryWash01"
+          visible = 0
+
+#05003    SetParticleSysVisibility system = "sfp_FerryWash02"
+          visible = 0
+
+#05006    kill name = sfa_FerryWinch01
+
+#05008    create name = sfa_FerryWinchEnd
+
+#05010    kill prefix = "sf_FerrySupportA"
+
+#05012    create name = TRG_FerrySupportA
+
+#05014    PlaySkaterCamAnim skater = 0
+          name = "sfc_FerryCamA02"
+
+#05017    LOOP
+#05018      IF SkaterCamAnimFinished skater = 0
+              name = "sfc_FerryCamA02"
+
+#05021        BREAK
+
+#05023      END IF
+#05024      IF GetFlag flag = BDJ_SHP_ABORT
+
+#05026        goto BDJ_SHP_AbortFerryCutscene
+#05027      END IF
+#05028      wait 1 gameframe
+#05029    END LOOP
+#05030    goto BDJ_SHP_AbortFerryCutscene
+#05031  END FUNCTION
+
+#05033  FUNCTION BDJ_SHP_AbortFerryCutscene
+#05034    PlaySkaterCamAnim skater = 0
+          stop
+#05036    kill name = sfa_FerryWinch01
+
+#05038    kill name = TRG_FerryA
+
+#05040    create prefix = "sf_FerryB_"
+
+#05042    kill name = TRG_FerrySupportA
+
+#05044    create prefix = "sf_FerrySupportB"
+
+#05046    SetFlag flag = BDJ_SHP_FERRY
+
+#05048    IF isAlive name = TRG_PedPowerBoxGuy
+
+#05050      SendException EX_FERRY_RAISED name = TRG_PedPowerBoxGuy
+
+#05052    END IF
+#05053    UnPauseSkaters
+#05054    IF IsCareerMode
+#05055      Got_Scripted1
+#05056    END IF
+#05057    StopStream
+#05058    PlayStream shp_powerguy_done01 vol = 100
+
+#05060    wait 5 seconds
+#05061    IF GetGlobalFlag flag = SHIP_SECRET_UNLOCKED
+
+#05063      PlayStream SHP_CapnBDJ_Ferry01 vol = 100
+
+#05065    ELSE
+#05066      PlayStream SHP_Capn_Ferry01 vol = 120
+
+#05068    END IF
+#05069    wait 15 seconds
+#05070    SetFlag flag = BDJ_SHP_ANNOUNCE_ON
+
+#05072  END FUNCTION
+
+#05074  FUNCTION BDJ_SHP_MoveFerryA
+#05075    Obj_MoveToNode name = TRG_Ferry01
+          time = 5
+
+#05078    LOOP
+#05079      IF Obj_FlagSet BDJ_CAM_MOVE_DONE
+#05080        BREAK
+
+#05082      END IF
+#05083      wait 1 gameframe
+#05084    END LOOP
+#05085    Obj_MoveToNode name = TRG_Ferry02
+
+#05087    wait 1 gameframe
+#05088    Obj_MoveToNode name = TRG_Ferry03
+          time = 1
+
+#05091    wait 1 second
+#05092    die
+#05093  END FUNCTION
+
+#05095  FUNCTION BDJ_SHP_MoveFerryB
+#05096    Obj_MoveToNode name = TRG_Ferry01
+          time = 3
+
+#05099    Obj_WaitMove
+#05100    die
+#05101  END FUNCTION
+
+#05103  FUNCTION BDJ_SHP_MoveFerrySupportA
+#05104    Obj_MoveToNode name = TRG_Ferry03
+          time = 1
+
+#05107    wait 1 second
+#05108    die
+#05109  END FUNCTION
+
+#05111  FUNCTION BDJ_SHP_MoveLand
+#05112    LOOP
+#05113      Obj_MoveToLink speed = 20
+
+#05115      Obj_WaitMove
+#05116      Obj_MoveToLink
+#05117      Obj_WaitMove
+#05118    END LOOP
+#05119  END FUNCTION
+
+#05121  FUNCTION BDJ_SHP_MoveTugBoat
+#05122    LOOP
+#05123      Obj_MoveToLink speed = 5
+
+#05125      Obj_WaitMove
+#05126      Obj_MoveToLink
+#05127      Obj_WaitMove
+#05128    END LOOP
+#05129  END FUNCTION
+
+#05131  FUNCTION BDJ_SHP_MoveSailboatA
+#05132    LOOP
+#05133      Obj_MoveToLink speed = 15
+
+#05135      Obj_WaitMove
+#05136      Obj_MoveToLink
+#05137      Obj_WaitMove
+#05138    END LOOP
+#05139  END FUNCTION
+
+#05141  FUNCTION BDJ_SHP_MoveSailboatB
+#05142    LOOP
+#05143      Obj_MoveToLink speed = 20
+
+#05145      Obj_WaitMove
+#05146      Obj_MoveToLink
+#05147      Obj_WaitMove
+#05148    END LOOP
+#05149  END FUNCTION
+
+#05151  FUNCTION BDJ_SHP_MoveSailboatC
+#05152    LOOP
+#05153      Obj_MoveToLink speed = 10
+
+#05155      Obj_WaitMove
+#05156      Obj_MoveToLink
+#05157      Obj_WaitMove
+#05158    END LOOP
+#05159  END FUNCTION
+
+#05161  FUNCTION BDJ_SHP_MoveSailboatD
+#05162    LOOP
+#05163      Obj_MoveToLink speed = 20
+
+#05165      Obj_WaitMove
+#05166      Obj_MoveToLink
+#05167      Obj_WaitMove
+#05168    END LOOP
+#05169  END FUNCTION
+
+#05171  FUNCTION BDJ_SHP_MoveSailboatE
+#05172    LOOP
+#05173      Obj_MoveToLink speed = 20
+
+#05175      Obj_WaitMove
+#05176      Obj_MoveToLink
+#05177      Obj_WaitMove
+#05178    END LOOP
+#05179  END FUNCTION
+
+#05181  FUNCTION BDJ_SHP_MoveSub
+#05182    Obj_Rotate absolute = VECTOR[0.0; 0.0; 180.0]
+          FLAG_MAX_COORDS
+#05184    LOOP
+#05185      Obj_MoveToLink speed = 5
+
+#05187      Obj_WaitMove
+#05188      Obj_MoveToLink
+#05189      Obj_WaitMove
+#05190    END LOOP
+#05191  END FUNCTION
+
+#05193  FUNCTION BDJ_SHP_ObjTimer
+#05194    Obj_ClearFlag BDJ_TIMER
+#05195    wait GLOBAL.time
+          seconds
+#05197    Obj_SetFlag BDJ_TIMER
+#05198  END FUNCTION
+
+#05200  FUNCTION BDJ_SHP_LoungePedSitsWest
+#05201    BDJ_SHP_LoungePedSits NULL angle = VECTOR[0.0; 0.0; -90.0]
+          move1 = VECTOR[0.0; -25.0; 0.0]
+          move2 = VECTOR[0.0; 25.0; 0.0]
+          chair1 = GLOBAL.chair1
+          chair2 = GLOBAL.chair2
+          chair2prefix = GLOBAL.chair2prefix
+
+#05208  END FUNCTION
+
+#05210  FUNCTION BDJ_SHP_LoungePedSitsEast
+#05211    BDJ_SHP_LoungePedSits NULL angle = VECTOR[0.0; 0.0; 90.0]
+          move1 = VECTOR[0.0; 25.0; 0.0]
+          move2 = VECTOR[0.0; -25.0; 0.0]
+          chair1 = GLOBAL.chair1
+          chair2 = GLOBAL.chair2
+          chair2prefix = GLOBAL.chair2prefix
+
+#05218  END FUNCTION
+
+#05220  FUNCTION BDJ_SHP_LoungePedSits MinPropsScoreDuring = 1000
+          MinPropsScoreLanding = 10000
+
+#05223    Obj_ClearExceptions
+#05224    Obj_SetInnerRadius 0
+#05225    Obj_StopAlongPath
+#05226    IF isAlive name = GLOBAL.chair1
+
+#05228      kill name = GLOBAL.chair1
+
+#05230      create prefix = GLOBAL.chair2prefix
+
+#05232      Obj_PlayAnim Anim = WalktoIdle1
+            From = 12
+            To = 40
+
+#05236      Obj_Rotate time = 0.25
+            seconds absolute = GLOBAL.angle
+            FLAG_MAX_COORDS
+#05239      Obj_WaitAnimFinished
+#05240      Obj_PlayAnim Anim = Idle1ToSunBathe
+
+#05242      wait 0.5 seconds
+#05243      Obj_MoveToRelPos GLOBAL.move1
+            time = 1
+            FLAG_MAX_COORDS
+#05246      Obj_WaitAnimFinished
+#05247      Obj_PlayAnim Anim = SunBathe
+            Cycle
+#05249      Obj_SpawnScript BDJ_SHP_ObjTimer params = STRUCT{
+              time = 10
+              }
+
+#05253      LOOP
+#05254        wait 5 gameframes
+#05255        IF Obj_FlagSet BDJ_TIMER clear
+#05256          BREAK
+
+#05258        END IF
+#05259      END LOOP
+#05260      Obj_SetAnimCycleMode Off
+#05261      Obj_WaitAnimFinished
+#05262      Obj_PlayAnim Anim = SunBatheToIdle1
+
+#05264      wait 0.5 seconds
+#05265      Obj_MoveToRelPos GLOBAL.move2
+            time = 1
+            FLAG_MAX_COORDS
+#05268      Obj_WaitAnimFinished
+#05269      create name = GLOBAL.chair1
+
+#05271      kill prefix = GLOBAL.chair2prefix
+
+#05273    ELSE
+#05274      Obj_PlayAnim Anim = WalktoIdle2
+            From = 12
+            To = 40
+
+#05278      Obj_WaitAnimFinished
+#05279      Obj_PlayAnim Anim = Idle2
+            Cycle
+#05281      Obj_SpawnScript BDJ_SHP_ObjTimer params = STRUCT{
+              time = 10
+              }
+
+#05285      LOOP
+#05286        wait 5 gameframes
+#05287        IF Obj_FlagSet BDJ_TIMER clear
+#05288          BREAK
+
+#05290        END IF
+#05291        IF Obj_ObjectInRadius radius = 10
+                feet type = skater
+
+#05294          IF SkaterCurrentScorePotGreaterThan GLOBAL.MinPropsScoreDuring
+
+#05296            BREAK
+
+#05298          END IF
+#05299          IF SkaterLastScoreLandedGreaterThan GLOBAL.MinPropsScoreLanding
+
+#05301            BREAK
+
+#05303          END IF
+#05304        END IF
+#05305      END LOOP
+#05306      Obj_SetAnimCycleMode Off
+#05307      Obj_WaitAnimFinished
+#05308    END IF
+#05309    goto SK3_PedScript params = STRUCT{
+            Chick Watcher }
+
+#05312  END FUNCTION
+
+#05314  FUNCTION BDJ_SHP_ChairBailVO
+#05315    wait 0.5 seconds
+#05316    Obj_PlayStream RANDOM[14][52; 58; 64; 70; 76; 82; 88; 94; 100; 106; 112; 118; 124; 130]
+          shp_bikini_new_08a JUMP 0x7d000000 shp_bikini_new_07 JUMP 0x73000000 shp_bikini_new_09 JUMP 0x69000000 shp_bikini_new_28 JUMP 0x5f000000 shp_bikini_new_29 JUMP 0x55000000 shp_bikini_new_30 JUMP 0x4b000000 shp_bikini_new_31 JUMP 0x41000000 shp_bikini_new_34 JUMP 0x37000000 shp_bikini_new_33 JUMP 0x2d000000 shp_bikini_new_35 JUMP 0x23000000 shp_bikini_new_36 JUMP 0x19000000 shp_bikini_new_37 JUMP 0x0f000000 shp_bikini_new_40 JUMP 0x05000000 shp_bikini_new_41 vol = 200
+          dropoff = 100
+
+#05320  END FUNCTION
+
+#05322  FUNCTION BDJ_SHP_ChickCounter
+#05323    IF GetGoal goal = GOAL_SCRIPTED3
+
+#05325    ELSE
+#05326      IF Obj_FlagNotSet BDJ_SHP_CounterStarted
+#05327        Obj_VarSet var = BDJ_SHP_VarChickCounter
+              value = 0
+
+#05330        Obj_SetFlag BDJ_SHP_CounterStarted
+#05331      END IF
+#05332      Obj_SetException Ex = EXC_IMPRESSED
+            Scr = BDJ_SHP_ChickCounterCheck
+
+#05335      LOOP
+#05336        wait 10 seconds
+#05337      END LOOP
+#05338    END IF
+#05339  END FUNCTION
+
+#05341  FUNCTION BDJ_SHP_ChickCounterCheck
+#05342    Obj_VarInc var = BDJ_SHP_VarChickCounter
+
+#05344    wait 10 frames
+#05345    IF Obj_VarEq var = BDJ_SHP_VarChickCounter
+            value = 1
+
+#05348      LaunchPanelMessage "1 of 7 Neversoft Girls Impressed" properties = panel_message_goalcomplete7
+
+#05350    ELSE
+#05351      IF Obj_VarEq var = BDJ_SHP_VarChickCounter
+              value = 2
+
+#05354        LaunchPanelMessage "2 of 7 Neversoft Girls Impressed" properties = panel_message_goalcomplete7
+
+#05356      ELSE
+#05357        IF Obj_VarEq var = BDJ_SHP_VarChickCounter
+                value = 3
+
+#05360          LaunchPanelMessage "3 of 7 Neversoft Girls Impressed" properties = panel_message_goalcomplete7
+
+#05362        ELSE
+#05363          IF Obj_VarEq var = BDJ_SHP_VarChickCounter
+                  value = 4
+
+#05366            LaunchPanelMessage "4 of 7 Neversoft Girls Impressed" properties = panel_message_goalcomplete7
+
+#05368          ELSE
+#05369            IF Obj_VarEq var = BDJ_SHP_VarChickCounter
+                    value = 5
+
+#05372              LaunchPanelMessage "5 of 7 Neversoft Girls Impressed" properties = panel_message_goalcomplete7
+
+#05374            ELSE
+#05375              IF Obj_VarEq var = BDJ_SHP_VarChickCounter
+                      value = 6
+
+#05378                LaunchPanelMessage "6 of 7 Neversoft Girls Impressed" properties = panel_message_goalcomplete7
+
+#05380              ELSE
+#05381                IF Obj_VarEq var = BDJ_SHP_VarChickCounter
+                        value = 7
+
+#05384                  LaunchPanelMessage "7 of 7 Neversoft Girls Impressed" properties = panel_message_goalcomplete7
+
+#05386                  Got_Scripted3
+#05387                  die
+#05388                END IF
+#05389              END IF
+#05390            END IF
+#05391          END IF
+#05392        END IF
+#05393      END IF
+#05394    END IF
+#05395    goto BDJ_SHP_ChickCounter
+#05396  END FUNCTION
+
+#05398  FUNCTION BDJ_SHP_ImpressedChickCleanup
+#05399    Obj_SetOuterRadius 150
+#05400    Obj_SetException Ex = SkaterOutOfRadius
+          Scr = BDJ_SHP_ChickGoodbye
+
+#05403    Obj_WaitAnimFinished
+#05404    LOOP
+#05405      Obj_PlayAnim Anim = RANDOM[5][16; 23; 30; 37; 44]
+
+            GLOBAL.Impressed1
+            JUMP 0x27000000 GLOBAL.Impressed2
+            JUMP 0x1c000000 GLOBAL.Impressed3
+            JUMP 0x11000000 GLOBAL.Impressed4
+            JUMP 0x06000000 GLOBAL.Impressed5
+
+#05413      Obj_WaitAnimFinished
+#05414    END LOOP
+#05415  END FUNCTION
+
+#05417  FUNCTION BDJ_SHP_ChickGoodbye
+#05418    die
+#05419  END FUNCTION
+
+#05421  FUNCTION BDJ_SHP_JumpingGirl ChickParams
+#05422    LOOP
+#05423      Obj_PlayAnim Anim = RANDOM[5][16; 22; 28; 34; 40]
+
+            Jump JUMP 0x23000000 Jump JUMP 0x19000000 Jump JUMP 0x0f000000 Clap JUMP 0x05000000 Clap
+#05426      Obj_WaitAnimFinished
+#05427    END LOOP
+#05428  END FUNCTION
+
+#05430  FUNCTION BDJ_SHP_StandingGirl ChickParams
+#05431    LOOP
+#05432      Obj_PlayAnim Anim = Idle2
+
+#05434      Obj_WaitAnimFinished
+#05435      Obj_PlayAnim Anim = Idle2ToIdle1
+
+#05437      Obj_WaitAnimFinished
+#05438      RANDOM[4][17; 141; 307; 473]
+
+#05440      Obj_PlayAnim Anim = Wave
+
+#05442      Obj_PlayStream RANDOM[5][16; 22; 28; 34; 40]
+            shp_chickns_new_01 JUMP 0x23000000 Shp_Chickns_new_19 JUMP 0x19000000 Shp_Chickns_new_37 JUMP 0x0f000000 Shp_Chickns_new_45a JUMP 0x05000000 Shp_Chickns_new_47a vol = 200
+            dropoff = 100
+
+#05446      JUMP 0xf9010000 Obj_PlayAnim Anim = Yell
+
+#05448      Obj_PlayStream RANDOM[8][28; 34; 40; 46; 52; 58; 64; 70]
+            Shp_Chickns_new_46a JUMP 0x41000000 shp_chickns_new_01 JUMP 0x37000000 shp_chickns_new_03 JUMP 0x2d000000 shp_chickns_new_04 JUMP 0x23000000 shp_chickns_new_05 JUMP 0x19000000 shp_chickns_new_06a JUMP 0x0f000000 Shp_Chickns_new_19 JUMP 0x05000000 Shp_Chickns_new_45a vol = 200
+            dropoff = 100
+
+#05452      JUMP 0x4f010000 Obj_PlayAnim Anim = Taunt
+
+#05454      Obj_PlayStream RANDOM[8][28; 34; 40; 46; 52; 58; 64; 70]
+            Shp_Chickns_new_46a JUMP 0x41000000 shp_chickns_new_04 JUMP 0x37000000 shp_chickns_new_05 JUMP 0x2d000000 Shp_Chickns_new_16 JUMP 0x23000000 Shp_Chickns_new_22 JUMP 0x19000000 Shp_Chickns_new_31 JUMP 0x0f000000 Shp_Chickns_new_46a JUMP 0x05000000 Shp_Chickns_new_47a vol = 200
+            dropoff = 100
+
+#05458      JUMP 0xa5000000 Obj_PlayAnim Anim = Disgust
+
+#05460      Obj_PlayStream RANDOM[8][28; 34; 40; 46; 52; 58; 64; 70]
+            Shp_Chickns_new_46a JUMP 0x41000000 shp_chickns_new_04 JUMP 0x37000000 shp_chickns_new_05 JUMP 0x2d000000 Shp_Chickns_new_16 JUMP 0x23000000 Shp_Chickns_new_22 JUMP 0x19000000 Shp_Chickns_new_31 JUMP 0x0f000000 Shp_Chickns_new_46a JUMP 0x05000000 Shp_Chickns_new_47a vol = 200
+            dropoff = 100
+
+#05464
+#05465      Obj_WaitAnimFinished
+#05466      Obj_PlayAnim Anim = Idle1ToIdle2
+
+#05468      Obj_WaitAnimFinished
+#05469      Obj_PlayAnim Anim = Idle2
+
+#05471      Obj_WaitAnimFinished
+#05472    END LOOP
+#05473  END FUNCTION
+
+#05475  FUNCTION BDJ_SHP_StartGapBuffet2Fountain
+#05476    StartGap gapID = Buffet2Fountain
+          flags = PURE_AIR
+
+#05479  END FUNCTION
+
+#05481  FUNCTION BDJ_SHP_EndGapBuffet2Fountain
+#05482    EndGap gapID = Buffet2Fountain
+          score = 50
+          text = "Buffet 2 Fountain"
+
+#05486  END FUNCTION
+
+#05488  FUNCTION BDJ_SHP_StartGapRailingToAwning
+#05489    StartGap gapID = UpToAwning
+          flags = PURE_AIR
+
+#05492  END FUNCTION
+
+#05494  FUNCTION BDJ_SHP_EndGapRailingToAwning
+#05495    EndGap gapID = UpToAwning
+          score = 250
+          text = "Up to Awning"
+
+#05499  END FUNCTION
+
+#05501  FUNCTION BDJ_SHP_StartGapFerrySupportToSupport
+#05502    EndGap gapID = GLOBAL.id1
+
+#05504    StartGap gapID = GLOBAL.id1
+          flags = PURE_AIR
+
+#05507  END FUNCTION
+
+#05509  FUNCTION BDJ_SHP_EndGapFerrySupportToSupport
+#05510    EndGap gapID = GLOBAL.id1
+          score = 100
+          text = "Ferry Support Shuffle"
+
+#05514  END FUNCTION
+
+#05516  FUNCTION BDJ_SHP_StartGapFerrySupportToAwning
+#05517    EndGap gapID = SupportToAwning
+
+#05519    StartGap gapID = SupportToAwning
+          flags = PURE_AIR
+
+#05522  END FUNCTION
+
+#05524  FUNCTION BDJ_SHP_EndGapFerrySupportToAwning
+#05525    EndGap gapID = SupportToAwning
+          score = 1000
+          text = "Support Lines to Awning"
+
+#05529  END FUNCTION
+
+#05531  FUNCTION BDJ_SHP_GapFerrySupportToRailing
+#05532    EndGap gapID = SupportToRailing
+
+#05534    StartGap gapID = SupportToRailing
+          flags = PURE_AIR
+
+#05537  END FUNCTION
+
+#05539  FUNCTION BDJ_SHP_EndGapFerrySupportToRailing
+#05540    EndGap gapID = SupportToRailing
+          score = 100
+          text = "Nice Landing!"
+
+#05544  END FUNCTION
+
+#05546  FUNCTION BDJ_SHP_StartGapUpToFerrySupport
+#05547    StartGap gapID = UpToFerrySupport
+          flags = PURE_AIR
+
+#05550  END FUNCTION
+
+#05552  FUNCTION BDJ_SHP_EndGapUpToFerrySupport
+#05553    EndGap gapID = UpToFerrySupport
+          score = 500
+          text = "To The Ferry Supports"
+
+#05557  END FUNCTION
+
+#05559  FUNCTION BDJ_SHP_StartGapAwningToAwning
+#05560    EndGap gapID = GLOBAL.id1
+
+#05562    BDJ_SHP_EndGapAwningToAwning id1 = AwningPop01
+
+#05564    BDJ_SHP_EndGapAwningToAwning id1 = AwningPop02
+
+#05566    StartGap gapID = GLOBAL.id1
+          flags = PURE_AIR
+
+#05569  END FUNCTION
+
+#05571  FUNCTION BDJ_SHP_EndGapAwningToAwning
+#05572    EndGap gapID = GLOBAL.id1
+          score = 250
+          text = "Awning Pop"
+
+#05576  END FUNCTION
+
+#05578  FUNCTION BDJ_SHP_EndGapStackToPool
+#05579    EndGap gapID = StackToPool02
+          score = 2000
+          text = "Aaaaaeeeiiii!"
+
+#05583  END FUNCTION
+
+#05585  FUNCTION BDJ_SHP_GapThePool01
+#05586    EndGap gapID = GapThePool01
+
+#05588    StartGap gapID = GapThePool01
+          flags = PURE_AIR
+
+#05591    BDJ_SHP_EndGapThePool id1 = GapThePool02
+
+#05593  END FUNCTION
+
+#05595  FUNCTION BDJ_SHP_GapThePool02
+#05596    EndGap gapID = GapThePool02
+
+#05598    StartGap gapID = GapThePool02
+          flags = PURE_AIR
+
+#05601    BDJ_SHP_EndGapThePool id1 = GapThePool01
+
+#05603  END FUNCTION
+
+#05605  FUNCTION BDJ_SHP_EndGapThePool
+#05606    EndGap gapID = GLOBAL.id1
+          score = 100
+          text = "Gap the Pool"
+
+#05610  END FUNCTION
+
+#05612  FUNCTION BDJ_SHP_EndGapSpiralGrind
+#05613    EndGap gapID = SpiralGrind
+          score = 150
+          text = "Spiral Slide!"
+
+#05617  END FUNCTION
+
+#05619  FUNCTION BDJ_SHP_EndGapStaircaseSpiral
+#05620    EndGap gapID = StaircaseSpiral
+          score = 150
+          text = "Spiral Staircase!"
+
+#05624  END FUNCTION
+
+#05626  FUNCTION BDJ_SHP_EndGapSculptureSpiral
+#05627    EndGap gapID = SculptureSpiral
+          score = 150
+          text = "Spiral Sculpture!"
+
+#05631  END FUNCTION
+
+#05633  FUNCTION BDJ_SHP_GapAtriumBox
+#05634    EndGap gapID = GLOBAL.id1
+
+#05636    EndGap gapID = AtriumBoxTo808
+
+#05638    EndGap gapID = AtriumBoxToRail
+
+#05640    StartGap gapID = GLOBAL.id1
+          flags = PURE_AIR
+
+#05643    StartGap gapID = AtriumBoxTo808
+          flags = PURE_AIR
+
+#05646    StartGap gapID = AtriumBoxToRail
+          flags = PURE_AIR
+
+#05649    BDJ_SHP_EndGapBoxToBox NULL
+#05650    BDJ_SHP_EndGapRailToBox
+#05651    BDJ_SHP_EndGap808ToBox
+#05652  END FUNCTION
+
+#05654  FUNCTION BDJ_SHP_GapAtriumRail
+#05655    EndGap gapID = AtriumRailTo808
+
+#05657    EndGap gapID = AtriumRailToBox
+
+#05659    StartGap gapID = AtriumRailTo808
+          flags = PURE_AIR
+
+#05662    StartGap gapID = AtriumRailToBox
+          flags = PURE_AIR
+
+#05665    BDJ_SHP_EndGapBoxToRail
+#05666    BDJ_SHP_EndGap808ToRail
+#05667  END FUNCTION
+
+#05669  FUNCTION BDJ_SHP_GapAtrium808
+#05670    EndGap gapID = Atrium808ToRail
+
+#05672    EndGap gapID = Atrium808ToBox
+
+#05674    StartGap gapID = Atrium808ToRail
+          flags = PURE_AIR
+
+#05677    StartGap gapID = Atrium808ToBox
+          flags = PURE_AIR
+
+#05680    BDJ_SHP_EndGapBoxTo808
+#05681    BDJ_SHP_EndGapRailTo808
+#05682  END FUNCTION
+
+#05684  FUNCTION BDJ_SHP_EndGapBoxToBox
+#05685    EndGap gapID = GLOBAL.id2
+          score = 100
+          text = "Box-to-Box Action"
+
+#05689    EndGap gapID = AtriumBoxTo808
+
+#05691  END FUNCTION
+
+#05693  FUNCTION BDJ_SHP_EndGapBoxTo808
+#05694    EndGap gapID = AtriumBoxTo808
+          score = 100
+          text = "Box 2 808"
+
+#05698    EndGap gapID = AtriumBoxToRail
+
+#05700  END FUNCTION
+
+#05702  FUNCTION BDJ_SHP_EndGapBoxToRail
+#05703    EndGap gapID = AtriumBoxToRail
+          score = 100
+          text = "Box 2 Rail"
+
+#05707    EndGap gapID = AtriumBoxTo808
+
+#05709  END FUNCTION
+
+#05711  FUNCTION BDJ_SHP_EndGap808ToBox
+#05712    EndGap gapID = Atrium808ToBox
+          score = 100
+          text = "808 2 Box"
+
+#05716    EndGap gapID = Atrium808ToRail
+
+#05718  END FUNCTION
+
+#05720  FUNCTION BDJ_SHP_EndGap808ToRail
+#05721    EndGap gapID = Atrium808ToBox
+
+#05723  END FUNCTION
+
+#05725  FUNCTION BDJ_SHP_EndGapRailTo808
+#05726    EndGap gapID = AtriumRailToBox
+
+#05728  END FUNCTION
+
+#05730  FUNCTION BDJ_SHP_EndGapRailToBox
+#05731    EndGap gapID = AtriumRailToBox
+          score = 100
+          text = "Rail 2 Box"
+
+#05735    EndGap gapID = AtriumRailTo808
+
+#05737  END FUNCTION
+
+#05739  FUNCTION BDJ_SHP_GapPlanterPopStart
+#05740    EndGap gapID = GLOBAL.id1
+
+#05742    StartGap gapID = GLOBAL.id1
+          flags = PURE_AIR
+
+#05745  END FUNCTION
+
+#05747  FUNCTION BDJ_SHP_StartGapAtriumHigh
+#05748  END FUNCTION
+
+#05750  FUNCTION BDJ_SHP_StartGapUpToAtirumHigh
+#05751    EndGap gapID = AtriumHigh
+
+#05753    StartGap gapID = AtriumHigh
+          flags = PURE_AIR
+
+#05756  END FUNCTION
+
+#05758  FUNCTION BDJ_SHP_EndGapAtriumHigh
+#05759    IF Triggertype ARRAY(
+              TRIGGER_LIP_ON
+            )
+
+#05763    ELSE
+#05764      EndGap gapID = AtriumHigh
+            score = 250
+            text = "Atrium High Lines"
+
+#05768    END IF
+#05769  END FUNCTION
+
+#05771  FUNCTION BDJ_SHP_EndGapRamp2Rail
+#05772    EndGap gapID = Ramp2Rail
+          score = 50
+          text = "Ramp 2 Rail"
+
+#05776  END FUNCTION
+
+#05778  FUNCTION BDJ_SHP_EndGapToHighWires
+#05779    IF Triggertype TRIGGER_LIP_ON
+#05780    ELSE
+#05781      EndGap gapID = ToHighWires
+            score = 100
+            text = "Takin' the High Road"
+
+#05785    END IF
+#05786  END FUNCTION
+
+#05788  FUNCTION BDJ_SHP_GapCommLipLow
+#05789    IF Triggertype TRIGGER_LIP_ON
+#05790      EndGap gapID = CommLip
+            score = 100
+            text = "Lower Comm Lip"
+
+#05794    ELSE
+#05795      EndGap gapID = CommLip
+
+#05797    END IF
+#05798  END FUNCTION
+
+#05800  FUNCTION BDJ_SHP_GapCommLipHigh
+#05801    IF Triggertype TRIGGER_LIP_ON
+#05802      EndGap gapID = CommLip
+            score = 100
+            text = "Upper Comm Lip"
+
+#05806    ELSE
+#05807      EndGap gapID = CommLip
+
+#05809    END IF
+#05810  END FUNCTION
+
+#05812  FUNCTION BDJ_SHP_EndGapVertOverSlide
+#05813    EndGap gapID = VertOverSlide
+          score = 250
+          text = "Air Over the Slide"
+
+#05817  END FUNCTION
+
+#05819  FUNCTION BDJ_SHP_GapPopOverSlide
+#05820    EndGap gapID = GLOBAL.id3
+          score = 100
+          text = "Pop Over the Slide"
+
+#05824    EndGap gapID = GLOBAL.id1
+          continue = STRUCT{
+            gapID = GLOBAL.id2
+            flags = PURE_AIR
+            }
+
+#05830  END FUNCTION
+
+#05832  FUNCTION BDJ_SHP_GapBalconyHop
+#05833    EndGap gapID = GLOBAL.id1
+
+#05835    StartGap gapID = GLOBAL.id1
+          flags = PURE_AIR
+
+#05838    EndGap gapID = GLOBAL.id2
+          score = 50
+          text = "Balcony Hop"
+
+#05842  END FUNCTION
+
+#05844  FUNCTION BDJ_SHP_GapRailingHopA
+#05845    EndGap gapID = GLOBAL.id1
+
+#05847    BDJ_SHP_EndGapRailingHop id1 = RailingHopA01
+
+#05849    BDJ_SHP_EndGapRailingHop id1 = RailingHopA02
+
+#05851    BDJ_SHP_EndGapRailingHop id1 = RailingHopA03
+
+#05853    StartGap gapID = GLOBAL.id1
+          flags = PURE_AIR
+
+#05856  END FUNCTION
+
+#05858  FUNCTION BDJ_SHP_GapRailingHopB
+#05859    EndGap gapID = GLOBAL.id1
+
+#05861    BDJ_SHP_EndGapRailingHop id1 = RailingHopB01
+
+#05863    BDJ_SHP_EndGapRailingHop id1 = RailingHopB02
+
+#05865    BDJ_SHP_EndGapRailingHop id1 = RailingHopB03
+
+#05867    StartGap gapID = GLOBAL.id1
+          flags = PURE_AIR
+
+#05870  END FUNCTION
+
+#05872  FUNCTION BDJ_SHP_GapRailingHopC
+#05873    EndGap gapID = GLOBAL.id1
+
+#05875    BDJ_SHP_EndGapRailingHop id1 = RailingHopC01
+
+#05877    BDJ_SHP_EndGapRailingHop id1 = RailingHopC02
+
+#05879    BDJ_SHP_EndGapRailingHop id1 = RailingHopC03
+
+#05881    StartGap gapID = GLOBAL.id1
+          flags = PURE_AIR
+
+#05884  END FUNCTION
+
+#05886  FUNCTION BDJ_SHP_EndGapRailingHop
+#05887    EndGap gapID = GLOBAL.id1
+          score = 50
+          text = "Railing Hop"
+
+#05891  END FUNCTION
+
+#05893  FUNCTION BDJ_SHP_GapTrickyPop
+#05894    EndGap gapID = GLOBAL.id1
+
+#05896    BDJ_SHP_EndGapTrickyPop id1 = tricky01
+
+#05898    BDJ_SHP_EndGapTrickyPop id1 = tricky02
+
+#05900    BDJ_SHP_EndGapTrickyPop id1 = tricky03
+
+#05902    BDJ_SHP_EndGapTrickyPop id1 = tricky04
+
+#05904    StartGap gapID = GLOBAL.id1
+          flags = PURE_AIR
+
+#05907  END FUNCTION
+
+#05909  FUNCTION BDJ_SHP_EndGapTrickyPop
+#05910    EndGap gapID = GLOBAL.id1
+          score = 100
+          text = "Tricky Pop!"
+
+#05914  END FUNCTION
+
+#05916  FUNCTION BDJ_SHP_EndGapBumperHop
+#05917    EndGap gapID = GLOBAL.id1
+          score = 50
+          text = "Bumper Hop"
+
+#05921  END FUNCTION
+
+#05923  FUNCTION BDJ_SHP_EndGapCatchFerry
+#05924    EndGap gapID = LeaveFerry
+
+#05926    EndGap gapID = CatchFerry
+          score = 50
+          text = "Embarking"
+
+#05930    StartGap gapID = LeaveFerry
+          flags = PURE_AIR
+
+#05933  END FUNCTION
+
+#05935  FUNCTION BDJ_SHP_EndGapLeaveFerry
+#05936    EndGap gapID = CatchFerry
+
+#05938    EndGap gapID = LeaveFerry
+          score = 50
+          text = "Disembarking"
+
+#05942    StartGap gapID = CatchFerry
+          flags = PURE_AIR
+
+#05945  END FUNCTION
+
+#05947  FUNCTION BDJ_SHP_EndGapUm
+#05948    EndGap gapID = Um
+          score = 50
+          text = "Um..."
+
+#05952  END FUNCTION
+
+#05954  FUNCTION BDJ_SHP_EndGapChainLink
+#05955    EndGap gapID = ChainLink
+          score = 100
+          text = "A Linkin' the Chain"
+
+#05959  END FUNCTION
+
+#05961  FUNCTION BDJ_SHP_GapFlagLineHop
+#05962    EndGap gapID = GLOBAL.id1
+
+#05964    StartGap gapID = GLOBAL.id1
+          flags = PURE_AIR
+
+#05967    EndGap gapID = GLOBAL.id2
+          score = 100
+          text = "Flag Line Hop"
+
+#05971  END FUNCTION
+
+#05973  FUNCTION BDJ_SHP_EndGapAnchorChainAir
+#05974    EndGap gapID = AnchorChainAir
+          score = 250
+          text = "Anchor Chain Air"
+
+#05978  END FUNCTION
+
+#05980  FUNCTION BDJ_SHP_EndGapBlindFaith
+#05981    EndGap gapID = BlindFaith
+          score = 500
+          text = "Blind Faith!!"
+
+#05985  END FUNCTION
+
+#05987  FUNCTION BDJ_SHP_EndGapDeckDropA
+#05988    EndGap gapID = DeckDropA
+          GapScript = BDJ_SHP_EndGapDeckDropA2
+
+#05991  END FUNCTION
+
+#05993  FUNCTION BDJ_SHP_EndGapDeckDropA2
+#05994    StartGap gapID = DeckDropAlt
+
+#05996    BDJ_SHP_EndGapDeckDropDone id1 = DeckDropAlt
+
+#05998    StartGap gapID = DeckDropMore
+          flags = PURE_AIR
+
+#06001  END FUNCTION
+
+#06003  FUNCTION BDJ_SHP_EndGapDeckDropB
+#06004    BDJ_SHP_EndGapDeckDropDone id1 = DeckDropB
+
+#06006  END FUNCTION
+
+#06008  FUNCTION BDJ_SHP_EndGapDeckDropDone
+#06009    EndGap gapID = GLOBAL.id1
+          score = 250
+          text = "Drop a Deck!"
+
+#06013  END FUNCTION
+
+#06015  FUNCTION BDJ_SHP_EndGapDeckDropMore
+#06016    EndGap gapID = DeckDropMore
+          score = 500
+          text = "Drop ANOTHER Deck!!"
+
+#06020  END FUNCTION
+
+#06022  FUNCTION BDJ_SHP_StartGapLounge
+#06023    EndGap gapID = LoungeGap
+
+#06025    StartGap gapID = LoungeGap
+          flags = PURE_AIR
+
+#06028  END FUNCTION
+
+#06030  FUNCTION BDJ_SHP_EndGapLounge
+#06031    RANDOM[17][69; 123; 186; 249; 304; 360; 424; 482; 534; 595; 651; 704; 755; 813; 873; 931; 993]
+
+#06033    EndGap gapID = LoungeGap
+          score = 50
+          text = "Sun Block"
+
+#06037    JUMP 0xde030000 EndGap gapID = LoungeGap
+          score = 50
+          text = "Sun Worshipper Pop"
+
+#06041    JUMP 0x9b030000 EndGap gapID = LoungeGap
+          score = 50
+          text = "Cresting the Peaks"
+
+#06045    JUMP 0x58030000 EndGap gapID = LoungeGap
+          score = 50
+          text = "Itsy Bitsy"
+
+#06049    JUMP 0x1d030000 EndGap gapID = LoungeGap
+          score = 50
+          text = "Teeny Weeny"
+
+#06053    JUMP 0xe1020000 EndGap gapID = LoungeGap
+          score = 50
+          text = "Purple Polka Dotted"
+
+#06057    JUMP 0x9d020000 EndGap gapID = LoungeGap
+          score = 50
+          text = "String Bikini"
+
+#06061    JUMP 0x5f020000 EndGap gapID = LoungeGap
+          score = 50
+          text = "Tan Air"
+
+#06065    JUMP 0x27020000 EndGap gapID = LoungeGap
+          score = 50
+          text = "Lounge Clearance"
+
+#06069    JUMP 0xe6010000 EndGap gapID = LoungeGap
+          score = 50
+          text = "Chaise Cool"
+
+#06073    JUMP 0xaa010000 EndGap gapID = LoungeGap
+          score = 50
+          text = "Silicone"
+
+#06077    JUMP 0x71010000 EndGap gapID = LoungeGap
+          score = 50
+          text = "Cherry"
+
+#06081    JUMP 0x3a010000 EndGap gapID = LoungeGap
+          score = 50
+          text = "Catchin' Wood"
+
+#06085    JUMP 0xfc000000 EndGap gapID = LoungeGap
+          score = 50
+          text = "Are those Real?"
+
+#06089    JUMP 0xbc000000 EndGap gapID = LoungeGap
+          score = 50
+          text = "Hey, My Hair!"
+
+#06093    JUMP 0x7e000000 EndGap gapID = LoungeGap
+          score = 50
+          text = "Over the Tan Line"
+
+#06097    JUMP 0x3c000000 EndGap gapID = LoungeGap
+          score = 50
+          text = "No, Don't Get Up"
+
+#06101
+#06102  END FUNCTION
+
+#06104  FUNCTION BDJ_SHP_StartGapBustinOut
+#06105    EndGap gapID = BustinOut
+
+#06107    StartGap gapID = BustinOut
+          flags = PURE_AIR
+
+#06110  END FUNCTION
+
+#06112  FUNCTION BDJ_SHP_EndGapBustinOut
+#06113    EndGap gapID = BustinOut
+          score = 100
+          text = "Over the Atrium Wall"
+
+#06117  END FUNCTION
+
+#06119  FUNCTION BDJ_SHP_TrackGlass
+#06120    LOOP
+#06121      IF isAlive name = sl_GlassSide01
+
+#06123      ELSE
+#06124        BREAK
+
+#06126      END IF
+#06127      wait 1 gameframe
+#06128    END LOOP
+#06129    LOOP
+#06130      IF isAlive name = sl_GlassSide02
+
+#06132      ELSE
+#06133        IF isAlive name = sl_GlassSide03
+
+#06135        ELSE
+#06136          IF isAlive name = sl_GlassSide04
+
+#06138          ELSE
+#06139            IF isAlive name = sl_GlassSide05
+
+#06141            ELSE
+#06142              IF isAlive name = sl_GlassSide06
+
+#06144              ELSE
+#06145                IF isAlive name = sl_GlassSide07
+
+#06147                ELSE
+#06148                  IF isAlive name = sl_GlassSide08
+
+#06150                  ELSE
+#06151                    IF isAlive name = sl_GlassSide09
+
+#06153                    ELSE
+#06154                      IF isAlive name = sl_GlassSide10
+
+#06156                      ELSE
+#06157                        IF isAlive name = sl_GlassSide11
+
+#06159                        ELSE
+#06160                          IF isAlive name = sl_GlassSide12
+
+#06162                          ELSE
+#06163                            IF isAlive name = sl_GlassSide16
+
+#06165                            ELSE
+#06166                              IF isAlive name = sl_GlassSide17
+
+#06168                              ELSE
+#06169                                IF isAlive name = sl_GlassSide18
+
+#06171                                ELSE
+#06172                                  IF isAlive name = sl_GlassSide19
+
+#06174                                  ELSE
+#06175                                    IF isAlive name = sl_GlassSide20
+
+#06177                                    ELSE
+#06178                                      IF isAlive name = sl_GlassSide21
+
+#06180                                      ELSE
+#06181                                        IF isAlive name = sl_GlassSide22
+
+#06183                                        ELSE
+#06184                                          IF isAlive name = sl_GlassSide23
+
+#06186                                          ELSE
+#06187                                            IF isAlive name = sl_GlassSide24
+
+#06189                                            ELSE
+#06190                                              IF isAlive name = sl_GlassSide25
+
+#06192                                              ELSE
+#06193                                                IF isAlive name = sl_GlassSide26
+
+#06195                                                ELSE
+#06196                                                  IF isAlive name = sl_GlassSide27
+
+#06198                                                  ELSE
+#06199                                                    BREAK
+
+#06201                                                  END IF
+#06202                                                END IF
+#06203                                              END IF
+#06204                                            END IF
+#06205                                          END IF
+#06206                                        END IF
+#06207                                      END IF
+#06208                                    END IF
+#06209                                  END IF
+#06210                                END IF
+#06211                              END IF
+#06212                            END IF
+#06213                          END IF
+#06214                        END IF
+#06215                      END IF
+#06216                    END IF
+#06217                  END IF
+#06218                END IF
+#06219              END IF
+#06220            END IF
+#06221          END IF
+#06222        END IF
+#06223      END IF
+#06224      wait 1 gameframe
+#06225    END LOOP
+#06226    LOOP
+#06227      IF isAlive name = sl_GlassCenter01
+
+#06229      ELSE
+#06230        IF isAlive name = sl_GlassCenter02
+
+#06232        ELSE
+#06233          IF isAlive name = sl_GlassCenter03
+
+#06235          ELSE
+#06236            IF isAlive name = sl_GlassCenter04
+
+#06238            ELSE
+#06239              IF isAlive name = sl_GlassCenter05
+
+#06241              ELSE
+#06242                IF isAlive name = sl_GlassCenter06
+
+#06244                ELSE
+#06245                  IF isAlive name = sl_GlassCenter07
+
+#06247                  ELSE
+#06248                    IF isAlive name = sl_GlassCenter08
+
+#06250                    ELSE
+#06251                      IF isAlive name = sl_GlassCenter09
+
+#06253                      ELSE
+#06254                        IF isAlive name = sl_GlassCenter10
+
+#06256                        ELSE
+#06257                          IF isAlive name = sl_GlassCenter11
+
+#06259                          ELSE
+#06260                            IF isAlive name = sl_GlassCenter12
+
+#06262                            ELSE
+#06263                              IF isAlive name = sl_GlassCenter13
+
+#06265                              ELSE
+#06266                                IF isAlive name = sl_GlassCenter14
+
+#06268                                ELSE
+#06269                                  IF isAlive name = sl_GlassCenter15
+
+#06271                                  ELSE
+#06272                                    IF isAlive name = sl_GlassCenter17
+
+#06274                                    ELSE
+#06275                                      IF isAlive name = sl_GlassCenter18
+
+#06277                                      ELSE
+#06278                                        IF isAlive name = sl_GlassCenter19
+
+#06280                                        ELSE
+#06281                                          IF isAlive name = sl_GlassCenter20
+
+#06283                                          ELSE
+#06284                                            IF isAlive name = sl_GlassCenter21
+
+#06286                                            ELSE
+#06287                                              BREAK
+
+#06289                                            END IF
+#06290                                          END IF
+#06291                                        END IF
+#06292                                      END IF
+#06293                                    END IF
+#06294                                  END IF
+#06295                                END IF
+#06296                              END IF
+#06297                            END IF
+#06298                          END IF
+#06299                        END IF
+#06300                      END IF
+#06301                    END IF
+#06302                  END IF
+#06303                END IF
+#06304              END IF
+#06305            END IF
+#06306          END IF
+#06307        END IF
+#06308      END IF
+#06309      wait 1 gameframe
+#06310    END LOOP
+#06311    LOOP
+#06312      IF isAlive name = sl_GlassCenter23
+
+#06314      ELSE
+#06315        IF isAlive name = sl_GlassCenter24
+
+#06317        ELSE
+#06318          IF isAlive name = sl_GlassCenter25
+
+#06320          ELSE
+#06321            IF isAlive name = sl_GlassCenter26
+
+#06323            ELSE
+#06324              IF isAlive name = sl_GlassCenter27
+
+#06326              ELSE
+#06327                IF isAlive name = sl_GlassCenter28
+
+#06329                ELSE
+#06330                  IF isAlive name = sl_GlassCenter29
+
+#06332                  ELSE
+#06333                    IF isAlive name = sl_GlassCenter30
+
+#06335                    ELSE
+#06336                      IF isAlive name = sl_GlassCenter31
+
+#06338                      ELSE
+#06339                        IF isAlive name = sl_GlassCenter32
+
+#06341                        ELSE
+#06342                          IF isAlive name = sl_GlassCenter33
+
+#06344                          ELSE
+#06345                            IF isAlive name = sl_GlassCenter34
+
+#06347                            ELSE
+#06348                              IF isAlive name = sl_GlassCenter35
+
+#06350                              ELSE
+#06351                                IF isAlive name = sl_GlassCenter36
+
+#06353                                ELSE
+#06354                                  IF isAlive name = sl_GlassCenter37
+
+#06356                                  ELSE
+#06357                                    IF isAlive name = sl_GlassCenter39
+
+#06359                                    ELSE
+#06360                                      IF isAlive name = sl_GlassCenter40
+
+#06362                                      ELSE
+#06363                                        IF isAlive name = sl_GlassCenter41
+
+#06365                                        ELSE
+#06366                                          IF isAlive name = sl_GlassCenter42
+
+#06368                                          ELSE
+#06369                                            IF isAlive name = sl_GlassCenter43
+
+#06371                                            ELSE
+#06372                                              BREAK
+
+#06374                                            END IF
+#06375                                          END IF
+#06376                                        END IF
+#06377                                      END IF
+#06378                                    END IF
+#06379                                  END IF
+#06380                                END IF
+#06381                              END IF
+#06382                            END IF
+#06383                          END IF
+#06384                        END IF
+#06385                      END IF
+#06386                    END IF
+#06387                  END IF
+#06388                END IF
+#06389              END IF
+#06390            END IF
+#06391          END IF
+#06392        END IF
+#06393      END IF
+#06394      wait 1 gameframe
+#06395    END LOOP
+#06396    IF GetGlobalFlag flag = SHIP_SECRET_UNLOCKED
+
+#06398    ELSE
+#06399      SetGlobalFlag flag = SHIP_SECRET_UNLOCKED
+
+#06401      UnSetFlag flag = BDJ_SHP_ANNOUNCE_ON
+
+#06403      StopStream
+#06404      PlayStream SHP_capnBDJ_fight01 vol = 100
+
+#06406      wait 60 seconds
+#06407      SetFlag flag = BDJ_SHP_ANNOUNCE_ON
+
+#06409    END IF
+#06410  END FUNCTION
+
+#06412  FUNCTION BDJ_SHP_EndGapWall2Wall
+#06413    EndGap gapID = GLOBAL.id1
+          score = 100
+          text = "Wall 2 Wall"
+
+#06417  END FUNCTION
+
+#06419  FUNCTION BDJ_SHP_GapSprinkle
+#06420    EndGap gapID = GLOBAL.id1
+
+#06422    BDJ_SHP_EndGapSprinkle id1 = Sprinkle01
+
+#06424    BDJ_SHP_EndGapSprinkle id1 = Sprinkle02
+
+#06426    StartGap gapID = GLOBAL.id1
+          flags = PURE_AIR
+
+#06429  END FUNCTION
+
+#06431  FUNCTION BDJ_SHP_EndGapSprinkle
+#06432    EndGap gapID = GLOBAL.id1
+          score = 50
+          text = "Sprinkle Yer Shorts!"
+          GapScript = BDJ_SHP_SprinklersOn
+
+#06437  END FUNCTION
+
+#06439  FUNCTION BDJ_SHP_SprinklersOn
+#06440    create prefix = "slo_SprinklerSoundA"
+
+#06442    SetParticleSysVisibility system = "slp_SprinklerD01"
+          visible = 1
+
+#06445    SetParticleSysVisibility system = "slp_SprinklerD02"
+          visible = 1
+
+#06448    SetParticleSysVisibility system = "slp_SprinklerD03"
+          visible = 1
+
+#06451    SetParticleSysVisibility system = "slp_SprinklerD04"
+          visible = 1
+
+#06454    SetParticleSysVisibility system = "slp_SprinklerD05"
+          visible = 1
+
+#06457    SetParticleSysVisibility system = "slp_SprinklerD06"
+          visible = 1
+
+#06460    wait 3 seconds
+#06461    kill prefix = "slo_SprinklerSoundA"
+
+#06463    SetParticleSysVisibility system = "slp_SprinklerD01"
+          visible = 0
+
+#06466    SetParticleSysVisibility system = "slp_SprinklerD02"
+          visible = 0
+
+#06469    SetParticleSysVisibility system = "slp_SprinklerD03"
+          visible = 0
+
+#06472    SetParticleSysVisibility system = "slp_SprinklerD04"
+          visible = 0
+
+#06475    SetParticleSysVisibility system = "slp_SprinklerD05"
+          visible = 0
+
+#06478    SetParticleSysVisibility system = "slp_SprinklerD06"
+          visible = 0
+
+#06481  END FUNCTION
+
+#06483  FUNCTION BDJ_SHP_EndGapAtriumPillar
+#06484    EndGap gapID = AtriumPillar
+          score = 100
+          text = "Over the Pillar"
+
+#06488  END FUNCTION
+
+#06490  FUNCTION BDJ_SHP_EndGapBackPlanter
+#06491    EndGap gapID = BackPlanter
+          score = 500
+          text = "Over the Planter"
+
+#06495  END FUNCTION
+
+#06497  FUNCTION BDJ_SHP_StartGap808
+#06498    EndGap gapID = GLOBAL.id1
+
+#06500    StartGap gapID = GLOBAL.id1
+          flags = PURE_RAIL
+
+#06503  END FUNCTION
+
+#06505  FUNCTION BDJ_SHP_EndGap808
+#06506    EndGap gapID = GLOBAL.id1
+          score = 1000
+          text = "Complete 808!"
+          GapScript = BDJ_SHP_EndGap808WrapUp
+
+#06511  END FUNCTION
+
+#06513  FUNCTION BDJ_SHP_EndGap808WrapUp
+#06514    EndGap gapID = Gap808_01
+
+#06516    wait 1 gameframe
+#06517    EndGap gapID = Gap808_02
+
+#06519    wait 1 gameframe
+#06520    EndGap gapID = Gap808_03
+
+#06522    wait 1 gameframe
+#06523    EndGap gapID = Gap808_04
+
+#06525    wait 1 gameframe
+#06526    EndGap gapID = Gap808_05
+
+#06528    wait 1 gameframe
+#06529    EndGap gapID = Gap808_06
+
+#06531    wait 1 gameframe
+#06532    EndGap gapID = Gap808_07
+
+#06534    wait 1 gameframe
+#06535    EndGap gapID = Gap808_08
+
+#06537    wait 1 gameframe
+#06538    EndGap gapID = Gap808_09
+
+#06540    wait 1 gameframe
+#06541    EndGap gapID = Gap808_10
+
+#06543  END FUNCTION
+
+#06545  FUNCTION BDJ_SHP_EndGapAtriumTop
+#06546    EndGap gapID = AtriumTop
+          score = 500
+          text = "Top o' the Atrium 2 Ya!"
+
+#06550  END FUNCTION
+
+#06552  FUNCTION BDJ_SHP_EndGapAbandonShip
+#06553    EndGap gapID = AbandonShip
+          score = 250
+          text = "Leaping to the Life Line"
+
+#06557  END FUNCTION
+
+#06559  FUNCTION BDJ_SHP_GapShopPop
+#06560    EndGap gapID = GLOBAL.id1
+
+#06562    BDJ_SHP_EndGapShopPop id1 = ShopPop01
+
+#06564    BDJ_SHP_EndGapShopPop id1 = ShopPop02
+
+#06566    StartGap gapID = GLOBAL.id1
+          flags = PURE_AIR
+
+#06569  END FUNCTION
+
+#06571  FUNCTION BDJ_SHP_EndGapShopPop
+#06572    EndGap gapID = GLOBAL.id1
+          score = 50
+          text = "Shop 'n' Pop"
+
+#06576  END FUNCTION
+
+#06578  FUNCTION BDJ_SHP_EndGapAirSupport
+#06579    EndGap gapID = AirSupport
+          score = 250
+          text = "Air Support!"
+
+#06583  END FUNCTION
+
+#06585  FUNCTION BDJ_SHP_EndGapLifeboatTransfer
+#06586    EndGap gapID = LifeboatTransfer
+          score = 1500
+          text = "Crazy Lifeboat Transfer!!"
+
+#06590  END FUNCTION
+
+#06592  FUNCTION BDJ_SHP_GapNewBoat
+#06593    EndGap gapID = GLOBAL.id1
+
+#06595    BDJ_SHP_EndGapNewBoat id1 = NewBoat01
+
+#06597    BDJ_SHP_EndGapNewBoat id1 = NewBoat02
+
+#06599    StartGap gapID = GLOBAL.id1
+          flags = PURE_AIR
+
+#06602  END FUNCTION
+
+#06604  FUNCTION BDJ_SHP_EndGapNewBoat
+#06605    EndGap gapID = GLOBAL.id1
+          score = 250
+          text = "New Boat!"
+
+#06609  END FUNCTION
+
+#06611  FUNCTION BDJ_SHP_EndGapNetRailQuickie
+#06612    EndGap gapID = NetQuickie
+          score = 250
+          text = "Netting Sidetrack Quickie!"
+
+#06616  END FUNCTION
+
+#06618  FUNCTION BDJ_SHP_EndGapYouSure
+#06619    EndGap gapID = YouSure
+          score = 100
+          text = "Sure About That?"
+
+#06623  END FUNCTION
+
+#06625  FUNCTION BDJ_SHP_EndGapBrokenRailing
+#06626    EndGap gapID = BrokenRailingSpecial
+          score = 500
+          text = "Ten Point Landing"
+
+#06630  END FUNCTION
+
+#06632  FUNCTION BDJ_SHP_EndGapAwningToSupport
+#06633    EndGap gapID = AwningToSupport
+          score = 500
+          text = "Awning to Ferry Support"
+
+#06637  END FUNCTION
+
+#06639  FUNCTION BDJ_SHP_EndGapBitOSlide
+#06640    EndGap gapID = rideslide01
+          score = 50
+          text = "Ride a Bit o' Slide"
+          continue = STRUCT{
+            gapID = rideslide02
+            flags = ARRAY(
+
+              CANCEL_MANUAL CANCEL_RAIL CANCEL_LIP CANCEL_WALL
+            )
+            }
+
+#06651    EndGap gapID = manualslide01
+          score = 100
+          text = "Manual a Bit o' Slide"
+          continue = STRUCT{
+            gapID = manualslide02
+            flags = PURE_MANUAL
+            }
+
+#06659  END FUNCTION
+
+#06661  FUNCTION BDJ_SHP_EndGapHalfTheSlide
+#06662    EndGap gapID = rideslide02
+          score = 100
+          text = "Ride Half the Slide!"
+          continue = STRUCT{
+            gapID = rideslide03
+            flags = ARRAY(
+
+              CANCEL_MANUAL CANCEL_RAIL CANCEL_LIP CANCEL_WALL
+            )
+            }
+
+#06673    EndGap gapID = manualslide02
+          score = 250
+          text = "Manual Half the Slide!"
+          continue = STRUCT{
+            gapID = manualslide03
+            flags = PURE_MANUAL
+            }
+
+#06681  END FUNCTION
+
+#06683  FUNCTION BDJ_SHP_EndGapWholeSlide
+#06684    EndGap gapID = rideslide03
+          score = 250
+          text = "Ride the WHOLE Slide!!"
+
+#06688    EndGap gapID = manualslide03
+          score = 500
+          text = "Manual the WHOLE Slide!!"
+
+#06692  END FUNCTION
+
+#06694  FUNCTION BDJ_SHP_EndGapCaptains
+#06695    EndGap gapID = CaptainsGap
+          score = 100
+          text = "Captain's Gap"
+
+#06699  END FUNCTION
+
+#06701  FUNCTION BDJ_SHP_EndGapRUHigh
+#06702    EndGap gapID = AreYouHigh
+          score = 750
+          text = "Don't Look Down!!!"
+
+#06706  END FUNCTION
+
+#06708  FUNCTION BDJ_SHP_EndGapDownFront
+#06709    EndGap gapID = DownFront
+          score = 50
+          text = "Down in Front!"
+
+#06713  END FUNCTION
+
+#06715  FUNCTION BDJ_SHP_EndGapKingOWorld
+#06716    StartGap gapID = KingOWorld
+
+#06718    EndGap gapID = KingOWorld
+          score = 250
+          text = "Bow Down Before Me!"
+
+#06722  END FUNCTION
+
+#06724  FUNCTION BDJ_SHP_GapKingOWorldLip
+#06725    IF Triggertype TRIGGER_LIP_ON
+#06726      EndGap gapID = KingOWorldLip
+            score = 200
+            text = "King of the World!"
+
+#06730    ELSE
+#06731      EndGap gapID = KingOWorldLip
+
+#06733    END IF
+#06734  END FUNCTION
+
+#06736  FUNCTION BDJ_SHP_EndGapDeckAir
+#06737    EndGap gapID = ClearLoadingDeck
+          score = 250
+          text = "Loading Deck Air"
+
+#06741  END FUNCTION
+
+#06743  FUNCTION BDJ_SHP_EndGapAbandonAtrium
+#06744    StartGap gapID = AbandonAtrium2
+
+#06746    EndGap gapID = AbandonAtrium2
+          score = 250
+          text = "Abandon Atrium!"
+
+#06750  END FUNCTION
+
+#06752  FUNCTION BDJ_SHP_EndGapOverComm
+#06753    EndGap gapID = OverComm
+          score = 250
+          text = "Over Comm, Comm Over!"
+
+#06757  END FUNCTION
+
+#06759  FUNCTION BDJ_SHP_EndGapOverProp
+#06760    EndGap gapID = OverProp
+          score = 150
+          text = "Prop Air!"
+
+#06764  END FUNCTION
+
+#06766  FUNCTION BDJ_SHP_EndGapShopSideManual
+#06767    EndGap gapID = ShopSideManual
+          score = 1000
+          text = "Shop-Side Manual"
+
+#06771  END FUNCTION
+
+#06773  FUNCTION BDJ_SHP_GapPassinThru
+#06774    StartGap gapID = PassingThru
+          flags = PURE_AIR
+
+#06777    EndGap gapID = PassingThru
+          score = 50
+          text = "Passin' Thru!"
+
+#06781  END FUNCTION
+
+#06783  FUNCTION BDJ_SHP_GapAhoy
+#06784    StartGap gapID = AhoyCapn
+          flags = PURE_AIR
+
+#06787    EndGap gapID = AhoyCapn
+          score = 50
+          text = "Ahoy, Cap'n!"
+
+#06791  END FUNCTION
+
+#06793  FUNCTION BDJ_SHP_GapPoolNotch
+#06794    EndGap gapID = GLOBAL.id1
+
+#06796    BDJ_SHP_EndGapPoolNotch id1 = PoolNotch01
+
+#06798    BDJ_SHP_EndGapPoolNotch id1 = PoolNotch02
+
+#06800    StartGap gapID = GLOBAL.id1
+          flags = PURE_AIR
+
+#06803  END FUNCTION
+
+#06805  FUNCTION BDJ_SHP_EndGapPoolNotch
+#06806    EndGap gapID = GLOBAL.id1
+          score = 50
+          text = "Pop the Notch"
+
+#06810  END FUNCTION
+
+#06812  FUNCTION BDJ_SHP_GapSprinklerLip
+#06813    IF Triggertype TRIGGER_LIP_ON
+#06814      EndGap gapID = SpinklerLip1
+            score = 100
+            text = "Sprinkler Extension"
+
+#06818      create prefix = "slo_SprinklerSoundA"
+
+#06820      SetParticleSysVisibility system = "slp_SprinklerD01"
+            visible = 1
+
+#06823      SetParticleSysVisibility system = "slp_SprinklerD02"
+            visible = 1
+
+#06826      SetParticleSysVisibility system = "slp_SprinklerD03"
+            visible = 1
+
+#06829      SetParticleSysVisibility system = "slp_SprinklerD04"
+            visible = 1
+
+#06832      SetParticleSysVisibility system = "slp_SprinklerD05"
+            visible = 1
+
+#06835      SetParticleSysVisibility system = "slp_SprinklerD06"
+            visible = 1
+
+#06838      wait 3 seconds
+#06839      kill prefix = "slo_SprinklerSoundA"
+
+#06841      SetParticleSysVisibility system = "slp_SprinklerD01"
+            visible = 0
+
+#06844      SetParticleSysVisibility system = "slp_SprinklerD02"
+            visible = 0
+
+#06847      SetParticleSysVisibility system = "slp_SprinklerD03"
+            visible = 0
+
+#06850      SetParticleSysVisibility system = "slp_SprinklerD04"
+            visible = 0
+
+#06853      SetParticleSysVisibility system = "slp_SprinklerD05"
+            visible = 0
+
+#06856      SetParticleSysVisibility system = "slp_SprinklerD06"
+            visible = 0
+
+#06859    ELSE
+#06860      EndGap gapID = SprinklerLip1
+
+#06862    END IF
+#06863  END FUNCTION
+
+#06865  FUNCTION BDJ_SHP_TriggerAtriumSprinklers
+#06866    KillSpawnedScript name = BDJ_SHP_AtirumSprinklersOn
+
+#06868    SpawnScript BDJ_SHP_AtirumSprinklersOn
+#06869  END FUNCTION
+
+#06871  FUNCTION BDJ_SHP_AtirumSprinklersOn
+#06872    create prefix = "slo_SprinklerSoundB"
+
+#06874    SetParticleSysVisibility system = "slp_SprinklerA01"
+          visible = 1
+
+#06877    SetParticleSysVisibility system = "slp_SprinklerA02"
+          visible = 1
+
+#06880    SetParticleSysVisibility system = "slp_SprinklerA03"
+          visible = 1
+
+#06883    SetParticleSysVisibility system = "slp_SprinklerB01"
+          visible = 1
+
+#06886    SetParticleSysVisibility system = "slp_SprinklerC01"
+          visible = 1
+
+#06889    SetParticleSysVisibility system = "slp_SprinklerC02"
+          visible = 1
+
+#06892    SetParticleSysVisibility system = "slp_SprinklerC03"
+          visible = 1
+
+#06895    wait 3 seconds
+#06896    kill prefix = "slo_SprinklerSoundB"
+
+#06898    SetParticleSysVisibility system = "slp_SprinklerA01"
+          visible = 0
+
+#06901    SetParticleSysVisibility system = "slp_SprinklerA02"
+          visible = 0
+
+#06904    SetParticleSysVisibility system = "slp_SprinklerA03"
+          visible = 0
+
+#06907    SetParticleSysVisibility system = "slp_SprinklerB01"
+          visible = 0
+
+#06910    SetParticleSysVisibility system = "slp_SprinklerC01"
+          visible = 0
+
+#06913    SetParticleSysVisibility system = "slp_SprinklerC02"
+          visible = 0
+
+#06916    SetParticleSysVisibility system = "slp_SprinklerC03"
+          visible = 0
+
+#06919  END FUNCTION
+
+#06921  FUNCTION BDJ_SHP_GapAtriumSupportLipLow
+#06922    IF Triggertype TRIGGER_LIP_ON
+#06923      EndGap gapID = SupportLipLow
+            score = 100
+            text = "Lower Glass Support"
+
+#06927    ELSE
+#06928      EndGap gapID = SupportLipLow
+
+#06930    END IF
+#06931  END FUNCTION
+
+#06933  FUNCTION BDJ_SHP_GapAtriumSupportLipHigh
+#06934    IF Triggertype TRIGGER_LIP_ON
+#06935      EndGap gapID = SupportLipHigh
+            score = 200
+            text = "Upper Glass Support!"
+
+#06939    ELSE
+#06940      EndGap gapID = SupportLipHigh
+
+#06942    END IF
+#06943  END FUNCTION
+
+#06945  FUNCTION BDJ_SHP_GapPipeLip
+#06946    IF Triggertype TRIGGER_LIP_ON
+#06947      EndGap gapID = PipeLip
+            score = 100
+            text = "Pipe Extension"
+
+#06951    ELSE
+#06952      EndGap gapID = PipeLip
+
+#06954    END IF
+#06955  END FUNCTION
+
+#06957  FUNCTION BDJ_SHP_GapBackRailingLip
+#06958    IF Triggertype TRIGGER_LIP_ON
+#06959      EndGap gapID = RiggingLip
+            score = 100
+            text = "Railing Stomp"
+
+#06963    ELSE
+#06964      EndGap gapID = RiggingLip
+
+#06966    END IF
+#06967  END FUNCTION
+
+#06969  FUNCTION BDJ_SHP_GapLightRiggingLip
+#06970    IF Triggertype TRIGGER_LIP_ON
+#06971      EndGap gapID = RiggingLip
+            score = 150
+            text = "Gaffer's Perch"
+
+#06975    ELSE
+#06976      EndGap gapID = RiggingLip
+
+#06978    END IF
+#06979  END FUNCTION
+
+#06981  FUNCTION BDJ_SHP_GapFlagLineLip
+#06982    StartGap gapID = FlagLineLip
+          flags = PURE_LIP
+
+#06985    IF Triggertype TRIGGER_LIP_ON
+#06986      EndGap gapID = FlagLineLip
+            score = 500
+            text = "The Flagline Spectacular!"
+            GapScript = BDJ_SHP_GotVertTrick
+
+#06991    ELSE
+#06992      EndGap gapID = FlagLineLip
+
+#06994    END IF
+#06995  END FUNCTION
+
+#06997  FUNCTION BDJ_SHP_EndGapWaveWallPlant
+#06998    IF Triggertype TRIGGER_LIP_ON
+#06999      EndGap gapID = WaveWallLip
+            score = 200
+            text = "Wave Wall Plant"
+
+#07003    ELSE
+#07004      EndGap gapID = WaveWallLip
+
+#07006    END IF
+#07007  END FUNCTION
+
+#07009  FUNCTION BDJ_SHP_GapTable
+#07010    IF isAlive name = GLOBAL.table
+
+#07012      StartGap gapID = TableGap
+            flags = PURE_AIR
+
+#07015      IF isAlive name = GLOBAL.umb
+
+#07017        SetFlag flag = BDJ_SHP_UmbWasAlive
+
+#07019      END IF
+#07020    ELSE
+#07021      kill name = GLOBAL.me
+
+#07023    END IF
+#07024  END FUNCTION
+
+#07026  FUNCTION BDJ_SHP_EndGapTable
+#07027    IF isAlive name = GLOBAL.table
+
+#07029      IF GetFlag flag = BDJ_SHP_UmbWasAlive
+
+#07031        SetFlag flag = BDJ_SHP_GotUmb
+
+#07033        UnSetFlag flag = BDJ_SHP_UmbWasAlive
+
+#07035      ELSE
+#07036        EndGap gapID = TableGap
+              score = 50
+              text = "Table Pop"
+
+#07040      END IF
+#07041    ELSE
+#07042      EndGap gapID = TableGap
+
+#07044      kill name = GLOBAL.me
+
+#07046    END IF
+#07047  END FUNCTION
+
+#07049  FUNCTION BDJ_SHP_UmbrellaLogic
+#07050    UnSetFlag flag = BDJ_SHP_GotUmb
+
+#07052    UnSetFlag flag = BDJ_SHP_UmbWasAlive
+
+#07054    LOOP
+#07055      wait 1 gameframe
+#07056      IF GetFlag flag = BDJ_SHP_GotUmb
+
+#07058        UnSetFlag flag = BDJ_SHP_GotUmb
+
+#07060        BREAK
+
+#07062      END IF
+#07063    END LOOP
+#07064    StartGap gapID = OneUmbrella
+
+#07066    EndGap gapID = OneUmbrella
+          score = 100
+          text = "One Umbrella..."
+
+#07070    LOOP
+#07071      wait 1 gameframe
+#07072      IF GetFlag flag = BDJ_SHP_GotUmb
+
+#07074        UnSetFlag flag = BDJ_SHP_GotUmb
+
+#07076        BREAK
+
+#07078      END IF
+#07079    END LOOP
+#07080    StartGap gapID = TwoUmbrella
+
+#07082    EndGap gapID = TwoUmbrella
+          score = 250
+          text = "Two Umbrella..."
+
+#07086    LOOP
+#07087      wait 1 gameframe
+#07088      IF GetFlag flag = BDJ_SHP_GotUmb
+
+#07090        UnSetFlag flag = BDJ_SHP_GotUmb
+
+#07092        BREAK
+
+#07094      END IF
+#07095    END LOOP
+#07096    StartGap gapID = ThreeUmbrella
+
+#07098    EndGap gapID = ThreeUmbrella
+          score = 500
+          text = "Three Umbrella..!"
+
+#07102    LOOP
+#07103      wait 1 gameframe
+#07104      IF GetFlag flag = BDJ_SHP_GotUmb
+
+#07106        UnSetFlag flag = BDJ_SHP_GotUmb
+
+#07108        BREAK
+
+#07110      END IF
+#07111    END LOOP
+#07112    StartGap gapID = FourUmbrella
+
+#07114    EndGap gapID = FourUmbrella
+          score = 1000
+          text = "Four!!!"
+
+#07118  END FUNCTION

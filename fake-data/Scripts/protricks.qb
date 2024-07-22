@@ -1,0 +1,713 @@
+
+#00001  VertLip =
+#00002
+        STRUCT{
+          Lip_TriangleUL = Trick_RockToFakie
+          Lip_TriangleUR = Trick_Switcheroo
+          Lip_TriangleDL = Trick_AxleStall
+          Lip_TriangleDR = Trick_Switcheroo
+          Lip_TriangleL = Trick_Invert
+          Lip_TriangleR = Trick_Noseblunt
+          Lip_TriangleD = Trick_OneFootInvert
+          Lip_TriangleU = Trick_AndrectInvert
+          }
+
+#00014  StreetLip =
+#00015
+        STRUCT{
+          Lip_TriangleUL = Trick_OneFootInvert
+          Lip_TriangleUR = Trick_Blunt
+          Lip_TriangleDL = Trick_AxleStall
+          Lip_TriangleDR = Trick_Noseblunt
+          Lip_TriangleL = Trick_Switcheroo
+          Lip_TriangleR = Trick_GymnastPlant
+          Lip_TriangleD = Trick_Invert
+          Lip_TriangleU = Trick_Eggplant
+          }
+
+#00027  HawkLip =
+#00028
+        STRUCT{
+          Lip_TriangleUL = Trick_Disaster
+          Lip_TriangleUR = Trick_AxleStall
+          Lip_TriangleDL = Trick_Invert
+          Lip_TriangleDR = Trick_Switcheroo
+          Lip_TriangleL = Trick_Nosepick
+          Lip_TriangleR = Trick_AxleStall
+          Lip_TriangleD = Trick_OneFootInvert
+          Lip_TriangleU = Trick_Blunt
+          }
+
+#00040  AllAroundGrabs =
+#00041
+        STRUCT{
+          Air_CircleUL = Trick_Airwalk
+          Air_CircleUR = Trick_Judo
+          Air_CircleDL = Trick_Japan
+          Air_CircleDR = Trick_Roastbeef
+          Air_CircleU = Trick_Cannonball
+          Air_CircleD = Trick_Melon
+          Air_CircleR = Trick_Airwalk
+          Air_CircleL = Trick_Stiffy
+          Air_L_L_Circle = Trick_Madonna
+          Air_R_R_Circle = Trick_Method
+          Air_U_U_Circle = Trick_Indy
+          Air_D_D_Circle = Trick_Seatbelt
+          }
+
+#00057  StreetGrabs =
+#00058
+        STRUCT{
+          Air_CircleUL = Trick_Indy
+          Air_CircleUR = Trick_Airwalk
+          Air_CircleDL = Trick_SaranWrap
+          Air_CircleDR = Trick_Melon
+          Air_CircleU = Trick_CrookedCop
+          Air_CircleD = Trick_Madonna
+          Air_CircleR = Trick_Judo
+          Air_CircleL = Trick_Method
+          Air_L_L_Circle = Trick_Tailgrab
+          Air_R_R_Circle = Trick_Stiffy
+          Air_U_U_Circle = Trick_Airwalk
+          Air_D_D_Circle = Trick_Melon
+          }
+
+#00074  VertGrabs =
+#00075
+        STRUCT{
+          Air_CircleUL = Trick_Airwalk
+          Air_CircleUR = Trick_Seatbelt
+          Air_CircleDL = Trick_TuckKnee
+          Air_CircleDR = Trick_DelMarIndy
+          Air_CircleU = Trick_Judo
+          Air_CircleD = Trick_Stiffy
+          Air_CircleR = Trick_Indy
+          Air_CircleL = Trick_Judo
+          Air_L_L_Circle = Trick_Roastbeef
+          Air_R_R_Circle = Trick_Melon
+          Air_U_U_Circle = Trick_Madonna
+          Air_D_D_Circle = Trick_Rocket
+          }
+
+#00091  VertFlips =
+#00092
+        STRUCT{
+          Air_SquareUL = Trick_FSShoveIt
+          Air_SquareUR = Trick_PopShoveIt
+          Air_SquareDL = Trick_Heelflip
+          Air_SquareDR = Trick_Varial
+          Air_SquareU = Trick_Kickflip
+          Air_SquareD = Trick_180Varial
+          Air_SquareL = Trick_InwardHeelflip
+          Air_SquareR = Trick_HFVarialLien
+          Air_L_L_Square = Trick_OllieNorth
+          Air_R_R_Square = Trick_Heelflip
+          Air_U_U_Square = Trick_VarialKickflip
+          Air_D_D_Square = Trick_Impossible
+          }
+
+#00108  FreestyleFlips =
+#00109
+        STRUCT{
+          Air_SquareUL = Trick_Hardflip
+          Air_SquareUR = Trick_Varial
+          Air_SquareDL = Trick_Heelflip
+          Air_SquareDR = Trick_VarialKickflip
+          Air_SquareU = Trick_VarialKickflip
+          Air_SquareD = Trick_OllieAirwalk
+          Air_SquareL = Trick_SalFlip
+          Air_SquareR = Trick_InwardHeelflip
+          Air_L_L_Square = Trick_HFVarialLien
+          Air_R_R_Square = Trick_PopShoveIt
+          Air_U_U_Square = Trick_360Flip
+          Air_D_D_Square = Trick_Kickflip
+          }
+
+#00125  StreetFlips =
+#00126
+        STRUCT{
+          Air_SquareUL = Trick_Heelflip
+          Air_SquareUR = Trick_Fingerflip
+          Air_SquareDL = Trick_FSShoveIt
+          Air_SquareDR = Trick_Impossible
+          Air_SquareU = Trick_360Flip
+          Air_SquareD = Trick_VarialKickflip
+          Air_SquareL = Trick_Kickflip
+          Air_SquareR = Trick_OllieAirwalk
+          Air_L_L_Square = Trick_PopShoveIt
+          Air_R_R_Square = Trick_360Varial
+          Air_U_U_Square = Trick_SalFlip
+          Air_D_D_Square = Trick_180Varial
+          }
+
+#00142  CaballeroTricks_default =
+#00143
+        STRUCT{
+          VertLip FreestyleFlips AllAroundGrabs ExtraSlot1 = Trick_Revert
+          ExtraSlot2 = Trick_Revert
+          JumpSlot = Trick_Beanplant
+          }
+
+#00150  CampbellTricks_default =
+#00151
+        STRUCT{
+          VertLip FreestyleFlips AllAroundGrabs ExtraSlot1 = Trick_Revert
+          ExtraSlot2 = Trick_Revert
+          JumpSlot = Trick_Boneless
+          }
+
+#00158  GlifbergTricks_default =
+#00159
+        STRUCT{
+          VertLip StreetFlips AllAroundGrabs ExtraSlot1 = Trick_Revert
+          ExtraSlot2 = Trick_Revert
+          JumpSlot = Trick_Boneless
+          }
+
+#00166  KostonTricks_default =
+#00167
+        STRUCT{
+          StreetLip StreetFlips StreetGrabs ExtraSlot1 = Trick_Revert
+          ExtraSlot2 = Trick_Revert
+          JumpSlot = Trick_Boneless
+          }
+
+#00174  LasekTricks_default =
+#00175
+        STRUCT{
+          VertLip VertFlips VertGrabs ExtraSlot1 = Trick_Revert
+          ExtraSlot2 = Trick_Revert
+          JumpSlot = Trick_Fastplant
+          }
+
+#00182  MargeraTricks_default =
+#00183
+        STRUCT{
+          StreetLip StreetFlips AllAroundGrabs ExtraSlot1 = Trick_Revert
+          ExtraSlot2 = Trick_Revert
+          JumpSlot = Trick_Beanplant
+          }
+
+#00190  MullenTricks_default =
+#00191
+        STRUCT{
+          StreetLip FreestyleFlips AllAroundGrabs ExtraSlot1 = Trick_Revert
+          ExtraSlot2 = Trick_Revert
+          JumpSlot = Trick_Beanplant
+          }
+
+#00198  MuskaTricks_default =
+#00199
+        STRUCT{
+          StreetLip StreetFlips StreetGrabs ExtraSlot1 = Trick_Revert
+          ExtraSlot2 = Trick_Revert
+          JumpSlot = Trick_Boneless
+          }
+
+#00206  ReynoldsTricks_default =
+#00207
+        STRUCT{
+          StreetLip StreetFlips StreetGrabs ExtraSlot1 = Trick_Revert
+          ExtraSlot2 = Trick_Revert
+          JumpSlot = Trick_Boneless
+          }
+
+#00214  RowleyTricks_default =
+#00215
+        STRUCT{
+          StreetLip StreetFlips StreetGrabs ExtraSlot1 = Trick_Revert
+          ExtraSlot2 = Trick_Revert
+          JumpSlot = Trick_Boneless
+          }
+
+#00222  SteamerTricks_default =
+#00223
+        STRUCT{
+          StreetLip FreestyleFlips AllAroundGrabs ExtraSlot1 = Trick_Revert
+          ExtraSlot2 = Trick_Revert
+          JumpSlot = Trick_Beanplant
+          }
+
+#00230  ThomasTricks_default =
+#00231
+        STRUCT{
+          StreetLip StreetFlips StreetGrabs ExtraSlot1 = Trick_Revert
+          ExtraSlot2 = Trick_Revert
+          JumpSlot = Trick_Boneless
+          }
+
+#00238  DickTricks_default =
+#00239
+        STRUCT{
+          HawkLip FreestyleFlips AllAroundGrabs ExtraSlot1 = Trick_Revert
+          ExtraSlot2 = Trick_Revert
+          JumpSlot = Trick_Beanplant
+          }
+
+#00246  CarreraTricks_default =
+#00247
+        STRUCT{
+          VertLip VertFlips VertGrabs ExtraSlot1 = Trick_Revert
+          ExtraSlot2 = Trick_Revert
+          JumpSlot = Trick_Beanplant
+          }
+
+#00254  DemonessTricks_default =
+#00255
+        STRUCT{
+          StreetLip StreetFlips StreetGrabs ExtraSlot1 = Trick_Revert
+          ExtraSlot2 = Trick_Revert
+          JumpSlot = Trick_Boneless
+          }
+
+#00262  WolverineTricks_default =
+#00263
+        STRUCT{
+          VertLip StreetFlips StreetGrabs ExtraSlot1 = Trick_Revert
+          ExtraSlot2 = Trick_Revert
+          JumpSlot = Trick_Boneless
+          }
+
+#00270  MaulTricks_default =
+#00271
+        STRUCT{
+          VertLip VertFlips VertGrabs ExtraSlot1 = Trick_Revert
+          ExtraSlot2 = Trick_Revert
+          JumpSlot = Trick_Boneless
+          }
+
+#00278  BumTricks_default =
+#00279
+        STRUCT{
+          VertLip StreetFlips VertGrabs ExtraSlot1 = Trick_Revert
+          ExtraSlot2 = Trick_Revert
+          JumpSlot = Trick_Beanplant
+          }
+
+#00286  HawkTricks_default =
+#00287
+        STRUCT{
+          HawkLip VertFlips VertGrabs ExtraSlot1 = Trick_Revert
+          ExtraSlot2 = Trick_Revert
+          JumpSlot = Trick_Fastplant
+          }
+
+#00294  HawkTricks = HawkTricks_default
+
+#00296  CaballeroTricks = CaballeroTricks_default
+
+#00298  CampbellTricks = CampbellTricks_default
+
+#00300  GlifbergTricks = GlifbergTricks_default
+
+#00302  KostonTricks = KostonTricks_default
+
+#00304  LasekTricks = LasekTricks_default
+
+#00306  MargeraTricks = MargeraTricks_default
+
+#00308  MullenTricks = MullenTricks_default
+
+#00310  MuskaTricks = MuskaTricks_default
+
+#00312  ReynoldsTricks = ReynoldsTricks_default
+
+#00314  RowleyTricks = RowleyTricks_default
+
+#00316  SteamerTricks = SteamerTricks_default
+
+#00318  ThomasTricks = ThomasTricks_default
+
+#00320  CustomTricks = HawkTricks_default
+
+#00322  DickTricks = DickTricks_default
+
+#00324  CarreraTricks = CarreraTricks_default
+
+#00326  DemonessTricks = DemonessTricks_default
+
+#00328  WolverineTricks = WolverineTricks_default
+
+#00330  DarthMaulTricks = MaulTricks_default
+
+#00332  SlaterTricks = HawkTricks_default
+
+#00334  EyeballTricks = HawkTricks_default
+
+#00336  DOOMGuyTricks = HawkTricks_default
+
+#00338  BumTricks = BumTricks_default
+
+#00340  FUNCTION Make_ChangeTricks_menus
+#00341    CreateSimpleMenu menu_id = proset_menu
+          header = "Pro Tricks"
+          y = 30
+
+#00345    AddSimpleLine parent = proset_menu
+          id = TH_tricks
+          text = "Hawk's Tricks"
+          target = "Remap_ProTricks"
+          Params = STRUCT{
+            TargetTricks = HawkTricks
+            }
+          kill_menu
+#00353    AddSimpleLine parent = proset_menu
+          id = SC_tricks
+          text = "Caballero's Tricks"
+          target = "Remap_ProTricks"
+          Params = STRUCT{
+            TargetTricks = CaballeroTricks
+            }
+          kill_menu
+#00361    AddSimpleLine parent = proset_menu
+          id = KC_tricks
+          text = "Campbell's Tricks"
+          target = "Remap_ProTricks"
+          Params = STRUCT{
+            TargetTricks = CampbellTricks
+            }
+          kill_menu
+#00369    AddSimpleLine parent = proset_menu
+          id = RG_tricks
+          text = "Glifberg's Tricks"
+          target = "Remap_ProTricks"
+          Params = STRUCT{
+            TargetTricks = GlifbergTricks
+            }
+          kill_menu
+#00377    AddSimpleLine parent = proset_menu
+          id = EK_tricks
+          text = "Koston's Tricks"
+          target = "Remap_ProTricks"
+          Params = STRUCT{
+            TargetTricks = KostonTricks
+            }
+          kill_menu
+#00385    AddSimpleLine parent = proset_menu
+          id = BL_tricks
+          text = "Lasek's Tricks"
+          target = "Remap_ProTricks"
+          Params = STRUCT{
+            TargetTricks = LasekTricks
+            }
+          kill_menu
+#00393    AddSimpleLine parent = proset_menu
+          id = BM_tricks
+          text = "Margera's Tricks"
+          target = "Remap_ProTricks"
+          Params = STRUCT{
+            TargetTricks = MargeraTricks
+            }
+          kill_menu
+#00401    AddSimpleLine parent = proset_menu
+          id = RM_tricks
+          text = "Mullen's Tricks"
+          target = "Remap_ProTricks"
+          Params = STRUCT{
+            TargetTricks = MullenTricks
+            }
+          kill_menu
+#00409    AddSimpleLine parent = proset_menu
+          id = CM_tricks
+          text = "Muska's Tricks"
+          target = "Remap_ProTricks"
+          Params = STRUCT{
+            TargetTricks = MuskaTricks
+            }
+          kill_menu
+#00417    AddSimpleLine parent = proset_menu
+          id = AR_tricks
+          text = "Reynolds' Tricks"
+          target = "Remap_ProTricks"
+          Params = STRUCT{
+            TargetTricks = ReynoldsTricks
+            }
+          kill_menu
+#00425    AddSimpleLine parent = proset_menu
+          id = GR_tricks
+          text = "Rowley's Tricks"
+          target = "Remap_ProTricks"
+          Params = STRUCT{
+            TargetTricks = RowleyTricks
+            }
+          kill_menu
+#00433    AddSimpleLine parent = proset_menu
+          id = ES_tricks
+          text = "Steamer's Tricks"
+          target = "Remap_ProTricks"
+          Params = STRUCT{
+            TargetTricks = SteamerTricks
+            }
+          kill_menu
+#00441    AddSimpleLine parent = proset_menu
+          id = JT_tricks
+          text = "Thomas' Tricks"
+          target = "Remap_ProTricks"
+          Params = STRUCT{
+            TargetTricks = ThomasTricks
+            }
+          kill_menu
+#00449    IF CD
+#00450    ELSE
+#00451      AddSimpleLine parent = proset_menu
+            id = OD_tricks
+            text = "Dick's Tricks"
+            target = "Remap_ProTricks"
+            Params = STRUCT{
+              TargetTricks = DickTricks
+              }
+            kill_menu
+#00459      AddSimpleLine parent = proset_menu
+            id = PC_tricks
+            text = "Carrera's Tricks"
+            target = "Remap_ProTricks"
+            Params = STRUCT{
+              TargetTricks = CarreraTricks
+              }
+            kill_menu
+#00467      AddSimpleLine parent = proset_menu
+            id = DE_tricks
+            text = "Demoness' Tricks"
+            target = "Remap_ProTricks"
+            Params = STRUCT{
+              TargetTricks = DemonessTricks
+              }
+            kill_menu
+#00475      AddSimpleLine parent = proset_menu
+            id = WO_tricks
+            text = "Wolverine's Tricks"
+            target = "Remap_ProTricks"
+            Params = STRUCT{
+              TargetTricks = WolverineTricks
+              }
+            kill_menu
+#00483      AddSimpleLine parent = proset_menu
+            id = DM_tricks
+            text = "Maul's Tricks"
+            target = "Remap_ProTricks"
+            Params = STRUCT{
+              TargetTricks = DarthMaulTricks
+              }
+            kill_menu
+#00491    END IF
+#00492    CreateSimpleMenu menu_id = grabtrickskey_menu
+          header = "Grab Tricks"
+
+#00495    AddSimpleLine parent = grabtrickskey_menu
+          id = circleu
+          text = "Circle + Up"
+          link = grablist_menu
+
+#00500    AddSimpleLine parent = grabtrickskey_menu
+          id = circled
+          text = "Circle + Down"
+          static
+#00504    AddSimpleLine parent = grabtrickskey_menu
+          id = circlel
+          text = "Circle + Left"
+          static
+#00508    AddSimpleLine parent = grabtrickskey_menu
+          id = circler
+          text = "Circle + Right"
+          static
+#00512    AddSimpleLine parent = grabtrickskey_menu
+          id = circledr
+          text = "Circle + DR"
+          static
+#00516    AddSimpleLine parent = grabtrickskey_menu
+          id = circledl
+          text = "Circle + DL"
+          static
+#00520    AddSimpleLine parent = grabtrickskey_menu
+          id = circleul
+          text = "Circle + UL"
+          static
+#00524    AddSimpleLine parent = grabtrickskey_menu
+          id = circleur
+          text = "Circle + UR"
+          static
+#00528    CreateSimpleMenu menu_id = grablist_menu
+          parent = grabtrickskey_menu
+
+#00531    AddSimpleLine parent = grablist_menu
+          id = madonna
+          text = "Madonna"
+          target = "Remap_Madonna"
+          kill_menu
+#00536    AddSimpleLine parent = grablist_menu
+          id = stiffy
+          text = "Stiffy"
+          target = "Remap_Stiffy"
+          kill_menu
+#00541    AddSimpleLine parent = grablist_menu
+          id = graba
+          text = "another grab"
+          static
+#00545    AddSimpleLine parent = grablist_menu
+          id = grabb
+          text = "another grab"
+          static
+#00549    AddSimpleLine parent = grablist_menu
+          id = grabc
+          text = "another grab"
+          static
+#00553    AddSimpleLine parent = grablist_menu
+          id = grabd
+          text = "another grab"
+          static
+#00557    AddSimpleLine parent = grablist_menu
+          id = grabe
+          text = "another grab"
+          static
+#00561    AddSimpleLine parent = grablist_menu
+          id = grabf
+          text = "etc...."
+          static
+#00565    LaunchSimpleMenu header = "Edit Tricks"
+          w = 360
+          x = 140
+          Lines = ARRAY(
+
+            STRUCT{
+              id = pro_set
+              text = "Change to Pro Set"
+              link = proset_menu
+              }
+            STRUCT{
+              id = grab_tricks
+              text = "Grab Tricks"
+              link = grabtrickskey_menu
+              }
+            STRUCT{
+              id = flip_tricks
+              text = "Flip Tricks"
+              static }
+            STRUCT{
+              id = lip_tricks
+              text = "Lip Tricks"
+              static }
+            STRUCT{
+              id = other_tricks
+              text = "Other Tricks"
+              static }
+            STRUCT{
+              id = specialgrab_tricks
+              text = "Special Grabs"
+              static }
+            STRUCT{
+              id = specialflip_tricks
+              text = "Special Flip Trick"
+              static }
+            STRUCT{
+              id = specialgrind_tricks
+              text = "Sp. Grinds and Mans"
+              static }
+            STRUCT{
+              id = backup_tricks
+              text = "Back"
+              target = "Back_to_Pause"
+              kill_menu }
+
+          )
+
+#00612  END FUNCTION
+
+#00614  FUNCTION Back_to_Pause
+#00615    SwitchToMenu menu = game_menu
+
+#00617  END FUNCTION
+
+#00619  FUNCTION poopoo
+#00620  END FUNCTION
+
+#00622  FUNCTION Remap_Madonna
+#00623    SpawnSkaterScript Remap_Trickslot Params = STRUCT{
+            Slot = Air_CircleU
+            Trick = Trick_Madonna
+            }
+
+#00628  END FUNCTION
+
+#00630  FUNCTION Remap_Stiffy
+#00631    SpawnSkaterScript Remap_Trickslot Params = STRUCT{
+            Slot = Air_CircleU
+            Trick = Trick_Stiffy
+            }
+
+#00636  END FUNCTION
+
+#00638  FUNCTION Remap_Trickslot
+#00639    SetSlotTrick Slot = GLOBAL.Slot
+          Trick = GLOBAL.Trick
+
+#00642  END FUNCTION
+
+#00644  FUNCTION Remap_ProTricks TargetTricks = HawkTricks_default
+
+#00646    SpawnSkaterScript Remap_Protricks2 Params = NULL
+
+#00648  END FUNCTION
+
+#00650  FUNCTION Remap_Protricks2 TargetTricks = HawkTricks_default
+
+#00652    printstruct NULL
+#00653    ChangeProTricks GLOBAL.TargetTricks
+
+#00655  END FUNCTION
+
+#00657  FUNCTION Remap_HawkTricks
+#00658    ChangeProTricks HawkTricks = CaballeroTricks_default
+
+#00660  END FUNCTION
+
+#00662  FUNCTION Remap_CaballeroTricks
+#00663    printf "remapping cab"
+#00664    ChangeProTricks HawkTricks = DefaultTricks2
+
+#00666  END FUNCTION
+
+#00668  FUNCTION Remap_CampbellTricks
+#00669    ChangeProTricks HawkTricks = CampbellTricks
+
+#00671  END FUNCTION
+
+#00673  FUNCTION mick_line_1
+#00674    launchlocalmessage "mick line 1"
+#00675  END FUNCTION
+
+#00677  FUNCTION mick_line_2
+#00678    launchlocalmessage "mick line 2"
+#00679  END FUNCTION
+
+#00681  FUNCTION Make_ChangeTricks_menus_foo
+#00682    CreateSimpleMenu menu_id = menu2
+
+#00684    AddSimpleLine parent = menu2
+          id = mick_sub_line1
+          text = "Brand new!"
+          target = "mick_line_1"
+          kill_menu
+#00689    LaunchSimpleMenu w = 200
+          Lines = ARRAY(
+
+            STRUCT{
+              id = mick_line2
+              text = "Line 1"
+              target = "mick_line_1"
+              kill_menu }
+            STRUCT{
+              id = mick_line3
+              text = "Line2"
+              target = "mick_line_2"
+              kill_menu }
+            STRUCT{
+              id = mick_line1
+              text = "other menu"
+              link = menu2
+              }
+
+          )
+
+#00710  END FUNCTION
+
+#00712

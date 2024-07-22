@@ -1,0 +1,2172 @@
+
+#00001  load_icon_properties = STRUCT{
+          x = 50.0
+          y = 50.0
+          anim_delay = 16
+          images = ARRAY(
+
+            "images/panelsprites/wheel_001.png" "images/panelsprites/wheel_002.png" "images/panelsprites/wheel_003.png" "images/panelsprites/wheel_004.png" "images/panelsprites/wheel_005.png" "images/panelsprites/wheel_006.png"
+          )
+          }
+
+#00011  game_menu_properties = STRUCT{
+          x = 150.0
+          y = 90.0
+          w = 320.0
+          h = 336.0
+          just_center_x just_center_y }
+
+#00018  EnteringStatsMenuFromGameFlow = 0
+
+#00020  FUNCTION PauseMusicAndStreams
+#00021    PauseMusic 1
+#00022    PauseStream 1
+#00023  END FUNCTION
+
+#00025  FUNCTION UnPauseMusicAndStreams
+#00026    PauseMusic 0
+#00027    PauseStream 0
+#00028  END FUNCTION
+
+#00030  FUNCTION do_backend_retry
+#00031    SpawnScript do_screen_freeze
+#00032  END FUNCTION
+
+#00034  FUNCTION do_screen_freeze
+#00035    PauseGame
+#00036    IF InNetGame
+#00037      StartNetworkLobby
+#00038    END IF
+#00039    Wait 2 gameframe
+#00040    DisplayLoadingScreen CurrentScreen
+#00041    unpausegame
+#00042    retry
+#00043  END FUNCTION
+
+#00045  FUNCTION do_backend_end_run
+#00046    IF InSplitScreenGame
+#00047      UseBothPadsInFrontEnd
+#00048    END IF
+#00049    EndRun
+#00050  END FUNCTION
+
+#00052  FUNCTION Paused_menu_backevent
+#00053    IF CareerLevelIs LevelNum_Tutorials
+#00054      PauseStream 0
+#00055    ELSE
+#00056      UnPauseMusicAndStreams
+#00057    END IF
+#00058  END FUNCTION
+
+#00060  FUNCTION do_backend_continue
+#00061    IF CareerLevelIs LevelNum_Tutorials
+#00062      PauseStream 0
+#00063    ELSE
+#00064      UnPauseMusicAndStreams
+#00065    END IF
+#00066  END FUNCTION
+
+#00068  FUNCTION do_backend_continue_delay
+#00069    Wait 0.2 seconds
+#00070  END FUNCTION
+
+#00072  FUNCTION View_Goal_movies
+#00073    printf "viewing movies -----------------------"
+#00074    SpawnSkaterScript StartRunScript params = STRUCT{
+            from_menu }
+
+#00077  END FUNCTION
+
+#00079  FUNCTION View_ListAllGoals
+#00080    SpawnSkaterScript MidLevel_GoalCheck params = STRUCT{
+            from_pause_menu }
+
+#00083  END FUNCTION
+
+#00085  FUNCTION ResetLevelGoals
+#00086    UnSetGoal goal = GOAL_HIGHSCORE
+
+#00088    UnSetGoal goal = GOAL_PROSCORE
+
+#00090    UnSetGoal goal = GOAL_SICKSCORE
+
+#00092    UnSetGoal goal = GOAL_SKATE
+
+#00094    UnSetGoal goal = GOAL_TRICKSPOT
+
+#00096    UnSetGoal goal = GOAL_TAPE
+
+#00098    UnSetGoal goal = GOAL_SCRIPTED1
+
+#00100    UnSetGoal goal = GOAL_SCRIPTED2
+
+#00102    UnSetGoal goal = GOAL_SCRIPTED3
+
+#00104    UnSetFlag flag = GOAL_STAT_POINT1
+
+#00106    UnSetFlag flag = GOAL_STAT_POINT2
+
+#00108    UnSetFlag flag = GOAL_STAT_POINT3
+
+#00110    UnSetFlag flag = GOAL_STAT_POINT4
+
+#00112    UnSetFlag flag = GOAL_STAT_POINT5
+
+#00114    UnSetFlag flag = GOAL_STAT_POINTS
+
+#00116    UnSetFlag flag = GOAL_DECK
+
+#00118    LaunchLocalMessage "Goals reset"
+#00119    IF CareerLevelIs LevelNum_Canada
+#00120      UnSetFlag flag = LEVEL_FLAG_AJC_CAN_LOG_LOADER_SEQUENCE_PLAYED_ALREADY
+
+#00122      UnSetFlag flag = LEVEL_FLAG_AJC_CAN_LOG_LOADER_IS_UP
+
+#00124      SetFlag flag = LEVEL_FLAG_AJC_CAN_LOG_LOADER_IS_DOWN
+
+#00126    END IF
+#00127    IF CareerLevelIs LevelNum_Ship
+#00128      UnSetFlag flag = BDJ_SHP_POOL
+
+#00130      UnSetFlag flag = BDJ_SHP_FERRY
+
+#00132      UnSetFlag flag = BDJ_SHP_NETS
+
+#00134      BDJ_SHP_RestartSetup
+#00135    END IF
+#00136  END FUNCTION
+
+#00138  FUNCTION do_end_comp
+#00139    EndCompetition
+#00140  END FUNCTION
+
+#00142  FUNCTION test_fragmentation
+#00143    LOOP
+#00144      Wait 0.05 second
+#00145      printf "Launching Message"
+#00146      LaunchLocalMessage id = BottomInfo
+            "Press X to Continue" panel_message_XtoContinue
+#00148    END LOOP
+#00149  END FUNCTION
+
+#00151  FUNCTION RefreshGameMenu_Replay
+#00152    PauseMusicAndStreams
+#00153    AddLine parent = game_menu
+          id = backend_continue
+          text = "Continue"
+          target = "do_backend_continue"
+          kill_menu
+#00158    AddLine parent = end_run_menu
+          id = backend_watchreplay
+          text = "Restart Replay"
+          target = "WatchEndOfRunReplay"
+          kill_menu
+#00163    IF ReplayModeEquals REPLAY_MODE_PLAY_AFTER_RUN
+#00164      AddLine parent = game_menu
+            id = backend_retry
+            text = "Retry"
+            target = "do_backend_retry"
+            kill_menu
+#00169      AddLine parent = game_menu
+            id = save_replay_from_pause
+            text = "Save Replay"
+            link = "_EndRunSaveReplay"
+
+#00174      AddLine parent = game_menu
+            id = exit_replay_from_pause
+            text = "Exit"
+            link = "ExitReplayAfterEndOfRun"
+
+#00179    ELSE
+#00180      AddLine parent = game_menu
+            id = exit_replay_from_pause
+            text = "Exit"
+            link = "ExitSavedReplay"
+
+#00185    END IF
+#00186  END FUNCTION
+
+#00188  FUNCTION RefreshGameMenu
+#00189    printf "refreshing"
+#00190    helper_select_choose_back_centered
+#00191    IF InNetGame
+#00192    ELSE
+#00193      PauseMusicAndStreams
+#00194    END IF
+#00195    AddLine parent = game_menu
+          id = backend_continue
+          text = "Continue"
+          target = "do_backend_continue"
+          kill_menu
+#00200    AddLine parent = game_menu
+          id = backend_retry
+          text = "Retry"
+          target = "do_backend_retry"
+          kill_menu
+#00205    IF InSplitScreenGame
+#00206      DestroyElement id = goto_trickset_menu
+
+#00208    ELSE
+#00209      AddLine parent = game_menu
+            id = goto_trickset_menu
+            text = "Edit Tricks"
+            link = trick_menu_container
+
+#00214    END IF
+#00215    IF IsCareerMode
+#00216      IF IsCompetition
+#00217        DestroyElement id = backend_resetgoals
+
+#00219        DestroyElement id = ListAllGoals
+
+#00221      ELSE
+#00222        AddLine parent = game_menu
+              id = ListAllGoals
+              text = "View Goals List"
+              target = "View_ListAllGoals"
+              kill_menu
+#00227        IF CD
+#00228          DestroyElement id = backend_resetgoals
+
+#00230        ELSE
+#00231          AddLine parent = game_menu
+                id = backend_resetgoals
+                text = "Reset Level Goals"
+                target = "ResetLevelGoals"
+                kill_menu
+#00236        END IF
+#00237      END IF
+#00238    ELSE
+#00239      DestroyElement id = backend_resetgoals
+
+#00241      DestroyElement id = ListAllGoals
+
+#00243    END IF
+#00244    AddLine parent = game_menu
+          id = backend_sound_options
+          text = "Sound Options"
+          link = sfx_menu_container
+
+#00249    DestroyElement id = backend_cheat_menu
+
+#00251    IF InNetGame
+#00252    ELSE
+
+#00254      AddLine parent = game_menu
+            id = backend_cheat_menu
+            text = "Cheats"
+            link = cheat_menu
+
+#00259    END IF
+#00260    AddLine parent = game_menu
+          id = backend_end_run
+          text = "End Run"
+          target = "do_backend_end_run"
+          kill_menu
+#00265    IF CD
+#00266      DestroyElement id = goto_restart_menu
+
+#00268      DestroyElement id = game_menu_debug
+
+#00270    ELSE
+#00271      AddLine parent = game_menu
+            id = goto_restart_menu
+            text = "Skip to Restart"
+            link = restart_menu
+
+#00276      AddLine parent = game_menu
+            id = game_menu_debug
+            text = "debug menu"
+            link = debug_main_menu
+
+#00281    END IF
+#00282    IF IsCompetition
+#00283      AddLine parent = game_menu
+            id = end_comp
+            text = "End Competition"
+            target = "do_end_comp"
+            kill_menu
+#00288    ELSE
+#00289      DestroyElement id = end_comp
+
+#00291    END IF
+#00292    SelectElement id = backend_continue
+
+#00294    IF CareerLevelIs LevelNum_Tutorials
+#00295      IF GetFlag flag = TUTORIAL_RUNNING
+
+#00297        AddLine parent = game_menu
+              id = end_tutorial_item
+              text = "Tutorials Menu"
+              target = "EndCurrentTutorial"
+              kill_menu
+#00302      END IF
+#00303      DestroyElement id = goto_trickset_menu
+
+#00305      DestroyElement id = backend_cheat_menu
+
+#00307      DestroyElement id = backend_retry
+
+#00309      DestroyElement id = goto_restart_menu
+
+#00311      DestroyElement id = game_menu_debug
+
+#00313      DestroyElement id = backend_end_run
+
+#00315    ELSE
+#00316    END IF
+#00317  END FUNCTION
+
+#00319  FUNCTION EndofRun_helper
+#00320    helper_hide
+#00321    helper_set_positions x1 = 190
+          x2 = 330
+
+#00324    SetMenuElementText id = helper_menu_1
+          "бе Select"
+#00326    SetMenuElementText id = helper_menu_2
+          "м Accept"
+#00328  END FUNCTION
+
+#00330  FUNCTION Refresh_EndofRunMenu
+#00331    EndofRun_helper
+#00332    IF InNetGame
+#00333    ELSE
+#00334      PauseMusicAndStreams
+#00335    END IF
+#00336    IF IsCareerMode
+#00337      IF GetGlobalFlag flag = JUST_UNLOCKED_LEVEL
+
+#00339        SelectElement id = backend_change_level
+
+#00341      ELSE
+#00342        SelectElement id = backend_retry2
+
+#00344      END IF
+#00345    ELSE
+#00346      SelectElement id = backend_retry2
+
+#00348    END IF
+#00349    IF IsCompetition
+#00350      AddLine parent = end_run_menu
+            id = backend_retry2
+            text = "Restart Comp"
+            target = "do_backend_retry"
+            kill_menu
+#00355    ELSE
+#00356      AddLine parent = end_run_menu
+            id = backend_retry2
+            text = "Retry"
+            target = "do_backend_retry"
+            kill_menu
+#00361    END IF
+#00362    IF InSplitScreenGame
+#00363      AddLine parent = end_run_menu
+            id = gameoptions_item
+            text = "Game options"
+            link = splitscreen_setup_menu
+
+#00368    ELSE
+#00369      DestroyElement id = gameoptions_item
+
+#00371    END IF
+#00372    IF IsCareerMode
+#00373      IF IsCompetition
+#00374        DestroyElement id = backend_watchreplay
+
+#00376      ELSE
+#00377        AddLine parent = end_run_menu
+              id = backend_watchreplay
+              text = "Watch Replay"
+              target = "WatchEndOfRunReplay"
+              kill_menu
+#00382      END IF
+#00383    ELSE
+#00384      IF GameModeEquals is_singlesession
+#00385        IF IsCustomPark
+#00386          DestroyElement id = backend_watchreplay
+
+#00388        ELSE
+#00389          AddLine parent = end_run_menu
+                id = backend_watchreplay
+                text = "Watch Replay"
+                target = "WatchEndOfRunReplay"
+                kill_menu
+#00394        END IF
+#00395      ELSE
+#00396        DestroyElement id = backend_watchreplay
+
+#00398      END IF
+#00399    END IF
+#00400    IF IsTrue ShouldDisableReplays
+#00401      DestroyElement id = backend_watchreplay
+
+#00403    END IF
+#00404    DestroyElement id = backend_watchreplay
+
+#00406    IF IsCareerMode
+#00407      IF IsCompetition
+#00408        DestroyElement id = view_goals_movies_element
+
+#00410      ELSE
+#00411        AddLine parent = end_run_menu
+              id = view_goals_movies_element
+              text = "View Goal Movies"
+              target = "View_Goal_movies"
+              kill_menu
+#00416      END IF
+#00417    ELSE
+#00418      DestroyElement id = view_goals_movies_element
+
+#00420    END IF
+#00421    IF InSplitScreenGame
+#00422      DestroyElement id = goto_trickset_menu
+
+#00424    ELSE
+#00425    END IF
+#00426    IF IsCareerMode
+#00427      AddLine parent = end_run_menu
+            id = backend_change_level
+            text = "Change Level"
+            link = career_change_level_menu
+
+#00432    ELSE
+#00433      AddLine parent = end_run_menu
+            id = backend_change_level
+            text = "Change Level"
+            link = change_level_menu
+
+#00438    END IF
+#00439    IF IsCustomPark
+#00440      DestroyElement id = backend_change_level
+
+#00442    END IF
+#00443    IF InSplitScreenGame
+#00444      DestroyElement id = edit_stats
+
+#00446      DestroyElement id = goto_trickset_menu
+
+#00448      DestroyElement id = save_game
+
+#00450    ELSE
+#00451      AddLine parent = end_run_menu
+            id = edit_stats
+            text = "Edit stats"
+            link = stats_menu
+
+#00456      AddLine parent = end_run_menu
+            id = goto_trickset_menu
+            text = "Edit Tricks"
+            link = trick_menu_container
+
+#00461      AddLine parent = end_run_menu
+            id = save_game
+            text = "Save game"
+            target = "InGameSave"
+
+#00466    END IF
+#00467    DestroyElement id = endrun_cheat_menu
+
+#00469    IF InNetGame
+#00470    ELSE
+#00471      IF GetGlobalFlag flag = CHEAT_UNLOCKED_1
+
+#00473        AddLine parent = end_run_menu
+              id = endrun_cheat_menu
+              text = "Cheats"
+              link = cheat_menu
+
+#00478      END IF
+#00479    END IF
+#00480    AddLine parent = end_run_menu
+          id = main_menu
+          text = "Quit"
+          link = quitgame_yesno_menu
+
+#00485    IF CD
+#00486      DestroyElement id = backend_debug_menu
+
+#00488      DestroyElement id = backend_change_test_level
+
+#00490    ELSE
+#00491      AddLine parent = end_run_menu
+            id = backend_debug_menu
+            text = "Debug Menu"
+            link = debug_main_menu
+
+#00496      AddLine parent = end_run_menu
+            id = backend_change_test_level
+            text = "Change Test Level"
+            link = test_level_menu
+
+#00501    END IF
+#00502  END FUNCTION
+
+#00504  FUNCTION goto_skateshop
+#00505    Change AutoLinkToCareerScreen = 1
+
+#00507    chosen_leave_server
+#00508  END FUNCTION
+
+#00510  FUNCTION InGameEndMemCardSaveLoad
+#00511    SwitchToMenu menu = end_run_menu
+
+#00513  END FUNCTION
+
+#00515  FUNCTION _InGameEndMemCardSaveLoad
+#00516    SpawnScript InGameEndMemCardSaveLoad params = NULL
+
+#00518  END FUNCTION
+
+#00520  FUNCTION InGameSave
+#00521    helper_hide
+#00522    SpawnScript SaveOptionsAndPros params = STRUCT{
+            EndScr = InGameEndMemCardSaveLoad
+            }
+
+#00526  END FUNCTION
+
+#00528  FUNCTION Continue_to_endofrun
+#00529    SwitchToMenu menu = end_run_menu
+
+#00531  END FUNCTION
+
+#00533  FUNCTION front_end_set_inactive
+#00534    FrontEndSetInactive
+#00535    IF CareerLevelIs LevelNum_Tutorials
+#00536      PauseStream 0
+#00537    ELSE
+#00538      UnPauseMusicAndStreams
+#00539    END IF
+#00540  END FUNCTION
+
+#00542  FUNCTION Select_No
+#00543    SelectElement id = quit_no
+
+#00545    helper_select_choose_back_centered
+#00546  END FUNCTION
+
+#00548  FUNCTION Server_Select_No
+#00549    SelectElement id = server_quit_no
+
+#00551    helper_select_choose_back_centered
+#00552  END FUNCTION
+
+#00554  FUNCTION Client_Select_No
+#00555    SelectElement id = client_quit_no
+
+#00557    helper_select_choose_back_centered
+#00558  END FUNCTION
+
+#00560  FUNCTION setup_backend_menu
+#00561    setdefaultproperty type = textdrawer
+          name = main
+
+#00564    createmenu STRUCT{
+            type = menucontainer
+            id = contain1
+            dynamic_children = ARRAY(
+
+              STRUCT{
+                id = sfx_menu_container
+                target_script = sfx_menu_create
+                }
+              STRUCT{
+                id = trick_menu_container
+                target_script = trick_menu_create
+                }
+
+            )
+            }
+
+#00581    CreateAndAttachMenu STRUCT{
+            type = verticalmenu
+            id = game_menu
+            game_menu_properties blue_top eventhandlers = ARRAY(
+
+              STRUCT{
+                type = showeventhandler
+                target = "RefreshGameMenu"
+                }
+              STRUCT{
+                type = backeventhandler
+                target = "front_end_set_inactive"
+                }
+
+            )
+            children = ARRAY(
+
+              STRUCT{
+                type = textmenuelement
+                auto_id text = "paused"
+                static dont_gray drawer = title
+                }
+
+            )
+            parent = contain1
+            }
+
+#00608    CreateAndAttachMenu STRUCT{
+            type = verticalmenu
+            id = restart_menu
+            x = 100.0
+            y = 70.0
+            w = 410.0
+            h = 224.0
+            parent = contain1
+            }
+
+#00618    CreateAndAttachMenu STRUCT{
+            type = verticalmenu
+            id = savegame_yesno_menu
+            x = 170.0
+            y = 150.0
+            w = 300.0
+            h = 336.0
+            just_center_x just_center_y blue_top eventhandler = STRUCT{
+              type = showeventhandler
+              target = "EndofRun_helper"
+              }
+            parent = contain1
+            children = ARRAY(
+
+              STRUCT{
+                type = textmenuelement
+                auto_id text = "Save Game"
+                static dont_gray drawer = title
+                }
+              STRUCT{
+                type = textmenuelement
+                id = savegame_yes
+                text = "Yes"
+                target = "InGameSave"
+                }
+              STRUCT{
+                type = textmenuelement
+                id = savegame_no
+                text = "No"
+                target = "Continue_to_endofrun"
+                kill_menu }
+
+            )
+            }
+
+#00653    CreateAndAttachMenu STRUCT{
+            type = verticalmenu
+            id = quitgame_yesno_menu
+            x = 170.0
+            y = 150.0
+            w = 300.0
+            h = 336.0
+            just_center_x just_center_y blue_top eventhandler = STRUCT{
+              type = showeventhandler
+              target = "Select_no"
+              }
+            parent = contain1
+            children = ARRAY(
+
+              STRUCT{
+                type = textmenuelement
+                auto_id text = "Quit?"
+                static dont_gray drawer = title
+                }
+              STRUCT{
+                type = textmenuelement
+                id = quit_yes
+                text = "Yes"
+                target = "chosen_leave_server"
+                kill_menu }
+              STRUCT{
+                type = textmenuelement
+                id = quit_no
+                text = "No"
+                link = end_run_menu
+                }
+
+            )
+            }
+
+#00688    IF ENGLISH
+#00689      CreateAndAttachMenu STRUCT{
+              type = verticalmenu
+              id = end_run_menu
+              game_menu_properties blue_top eventhandler = STRUCT{
+                type = showeventhandler
+                target = "Refresh_EndofRunMenu"
+                }
+              children = ARRAY(
+
+                STRUCT{
+                  type = textmenuelement
+                  auto_id text = "end of run"
+                  static dont_gray drawer = title
+                  }
+
+              )
+              parent = contain1
+              }
+
+#00708    ELSE
+#00709      CreateAndAttachMenu STRUCT{
+              type = verticalmenu
+              id = end_run_menu
+              game_menu_properties w = 340
+              x = 150
+              blue_top eventhandler = STRUCT{
+                type = showeventhandler
+                target = "Refresh_EndofRunMenu"
+                }
+              children = ARRAY(
+
+                STRUCT{
+                  type = textmenuelement
+                  auto_id text = "end of run"
+                  static dont_gray drawer = title
+                  }
+
+              )
+              parent = contain1
+              }
+
+#00730    END IF
+#00731    CreateAndAttachMenu STRUCT{
+            type = verticalmenu
+            id = victorycondition_menu
+            x = 120.0
+            y = 70.0
+            w = 420.0
+            h = 336.0
+            just_center_x just_center_y blue_top children = ARRAY(
+
+              STRUCT{
+                type = textmenuelement
+                auto_id text = "set victory"
+                static dont_gray drawer = title
+                }
+              STRUCT{
+                type = textmenuelement
+                id = victorycondition_highestscore
+                text = "Highest Score Wins"
+                target = "do_victorycondition_highestscore"
+                adds_task }
+              STRUCT{
+                type = textmenuelement
+                id = victorycondition_target10000
+                text = "First Skater to 10000 Wins"
+                target = "do_victorycondition_target10000"
+                adds_task }
+              STRUCT{
+                type = textmenuelement
+                id = victorycondition_target50000
+                text = "First Skater to 50000 Wins"
+                target = "do_victorycondition_target50000"
+                adds_task }
+
+            )
+            parent = contain1
+            }
+
+#00768    CreateAndAttachMenu STRUCT{
+            type = verticalmenu
+            id = gameoptions_menu
+            x = 120.0
+            y = 70.0
+            w = 400.0
+            h = 336.0
+            just_center_x just_center_y blue_top children = ARRAY(
+
+              STRUCT{
+                type = textmenuelement
+                auto_id text = "game options"
+                static dont_gray drawer = title
+                }
+              STRUCT{
+                type = textmenuelement
+                id = gameoptions_victorycondition
+                text = "Set Victory Conditions"
+                link = victorycondition_menu
+                }
+
+            )
+            parent = contain1
+            }
+
+#00793    CreateAndAttachMenu STRUCT{
+            type = verticalmenu
+            id = trickset_menu
+            game_menu_properties blue_top children = ARRAY(
+
+              STRUCT{
+                type = textmenuelement
+                auto_id text = "trickset"
+                static dont_gray drawer = title
+                }
+              STRUCT{
+                type = textmenuelement
+                id = airtricks1
+                text = "Left+Circle"
+                target = "change_airtricks1"
+                kill_menu }
+              STRUCT{
+                type = textmenuelement
+                id = airtricks2
+                text = "Right+Circle"
+                target = "change_airtricks2"
+                kill_menu }
+
+            )
+            parent = contain1
+            }
+
+#00820    create_splitscreen_menu
+#00821    create_and_attach_generic_array_menu STRUCT{
+            menu_id = network_time_limit_menu
+            array_name = time_limit_options
+            field = time_limit
+            title = "Time Limit"
+            prefs = network
+            x = 170.0
+            y = 90.0
+            w = 300.0
+            h = 400.0
+            }
+
+#00833    CreateAndAttachMenu STRUCT{
+            type = verticalmenu
+            id = server_pause_menu
+            x = 120.0
+            y = 80.0
+            w = 400.0
+            h = 336.0
+            blue_top eventhandler = STRUCT{
+              type = backeventhandler
+              target = "front_end_set_inactive"
+              }
+            children = ARRAY(
+
+              STRUCT{
+                type = textmenuelement
+                auto_id text = "Server Pause"
+                static dont_gray drawer = title
+                }
+              STRUCT{
+                type = textmenuelement
+                auto_id text = "Settings (TEMP)"
+                kill_menu eventhandler = STRUCT{
+                  type = ChooseEventHandler
+                  target = "invokeUIScreen"
+                  params = STRUCT{
+                    screen = ss_main_window
+                    }
+                  }
+                }
+              STRUCT{
+                type = textmenuelement
+                id = server_pause_menu_continue_item
+                text = "Continue"
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler
+                  }
+                }
+              STRUCT{
+                type = textmenuelement
+                id = server_pause_menu_start_game_item
+                text = "Start Game"
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler
+                  }
+                }
+              STRUCT{
+                type = textmenuelement
+                id = server_choose_team_item
+                text = "Choose Team"
+                eventhandlers = ARRAY(
+
+                  STRUCT{
+                    type = ChooseEventHandler
+                    link = server_choose_team_menu
+                    }
+
+                )
+                }
+              STRUCT{
+                type = textmenuelement
+                id = server_game_options_item
+                text = "Game Options"
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler
+                  link = net_game_options_menu
+                  }
+                }
+              STRUCT{
+                type = textmenuelement
+                id = server_change_level_item
+                text = "Change Level"
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler
+                  link = net_level_menu
+                  }
+                }
+              STRUCT{
+                type = textmenuelement
+                id = server_pause_menu_ban_player_item
+                text = "Ban Player..."
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler
+                  link = ban_player_menu
+                  }
+                }
+              STRUCT{
+                type = textmenuelement
+                id = server_pause_menu_toggle_names_item
+                text = "Toggle Player Names"
+                }
+              STRUCT{
+                type = textmenuelement
+                id = server_pause_menu_toggle_scores_item
+                text = "Toggle Scores"
+                }
+              STRUCT{
+                type = textmenuelement
+                id = server_pause_menu_chat_item
+                text = "Enter Chat Message"
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler
+                  link = chat_message_control
+                  }
+                }
+              STRUCT{
+                type = textmenuelement
+                id = server_pause_sound_options
+                text = "Sound Options"
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler
+                  link = sfx_menu_container
+                  }
+                }
+              STRUCT{
+                type = textmenuelement
+                id = server_pause_menu_quit_item
+                text = "Quit"
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler
+                  link = server_quitgame_yesno_menu
+                  }
+                }
+
+            )
+            parent = contain1
+            }
+
+#00960    CreateAndAttachMenu STRUCT{
+            type = verticalmenu
+            id = server_choose_team_menu
+            x = 170.0
+            y = 80.0
+            w = 300.0
+            h = 400.0
+            just_center_x just_center_y blue_top children = ARRAY(
+
+              STRUCT{
+                type = textmenuelement
+                auto_id text = "Choose Team"
+                static dont_gray drawer = title
+                }
+              STRUCT{
+                type = textmenuelement
+                auto_id text = "Automatic"
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler
+                  link = server_pause_menu
+                  target = "do_choose_team"
+                  params = STRUCT{
+                    automatic }
+                  }
+                }
+              STRUCT{
+                type = textmenuelement
+                auto_id text = "Blue"
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler
+                  link = server_pause_menu
+                  target = "do_choose_team"
+                  params = STRUCT{
+                    blue }
+                  }
+                }
+              STRUCT{
+                type = textmenuelement
+                auto_id text = "Red"
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler
+                  link = server_pause_menu
+                  target = "do_choose_team"
+                  params = STRUCT{
+                    red }
+                  }
+                }
+
+            )
+            parent = contain1
+            }
+
+#01012    CreateAndAttachMenu STRUCT{
+            type = verticalmenu
+            id = client_choose_team_menu
+            x = 170.0
+            y = 80.0
+            w = 300.0
+            h = 400.0
+            just_center_x just_center_y blue_top children = ARRAY(
+
+              STRUCT{
+                type = textmenuelement
+                auto_id text = "Choose Team"
+                static dont_gray drawer = title
+                }
+              STRUCT{
+                type = textmenuelement
+                auto_id text = "Automatic"
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler
+                  link = server_pause_menu
+                  target = "do_choose_team"
+                  params = STRUCT{
+                    automatic }
+                  }
+                }
+              STRUCT{
+                type = textmenuelement
+                auto_id text = "Blue"
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler
+                  link = server_pause_menu
+                  target = "do_choose_team"
+                  params = STRUCT{
+                    blue }
+                  }
+                }
+              STRUCT{
+                type = textmenuelement
+                auto_id text = "Red"
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler
+                  link = server_pause_menu
+                  target = "do_choose_team"
+                  params = STRUCT{
+                    red }
+                  }
+                }
+
+            )
+            parent = contain1
+            }
+
+#01064    CreateAndAttachMenu STRUCT{
+            type = verticalmenu
+            id = net_level_menu
+            x = 170.0
+            y = 80.0
+            w = 300.0
+            h = 400.0
+            just_center_x just_center_y blue_top eventhandlers = ARRAY(
+
+              STRUCT{
+                type = showeventhandler
+                target = "populate_level_menu"
+                params = STRUCT{
+                  choose_script = "change_level"
+                  parent_menu = net_level_menu
+                  }
+                }
+
+            )
+            children = ARRAY(
+
+              STRUCT{
+                type = textmenuelement
+                auto_id text = "Levels"
+                static dont_gray drawer = title
+                }
+              STRUCT{
+                type = textmenuelement
+                auto_id text = "Play Custom Park"
+                target = "_NetMenuParkEditorLoad"
+                }
+
+            )
+            parent = contain1
+            }
+
+#01100    CreateAndAttachMenu STRUCT{
+            type = verticalmenu
+            id = client_pause_menu
+            x = 120.0
+            y = 80.0
+            w = 400.0
+            h = 336.0
+            blue_top eventhandler = STRUCT{
+              type = backeventhandler
+              target = "front_end_set_inactive"
+              }
+            children = ARRAY(
+
+              STRUCT{
+                type = textmenuelement
+                auto_id text = "Client Pause"
+                static dont_gray drawer = title
+                }
+              STRUCT{
+                type = textmenuelement
+                auto_id text = "Settings (TEMP)"
+                eventhandler = STRUCT{
+                  kill_menu type = ChooseEventHandler
+                  target = "invokeUIScreen"
+                  params = STRUCT{
+                    screen = ss_main_window
+                    }
+                  }
+                }
+              STRUCT{
+                type = textmenuelement
+                id = client_pause_menu_continue_item
+                text = "Continue"
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler
+                  }
+                }
+              STRUCT{
+                type = textmenuelement
+                id = client_choose_team_item
+                text = "Choose Team"
+                eventhandlers = ARRAY(
+
+                  STRUCT{
+                    type = ChooseEventHandler
+                    link = client_choose_team_menu
+                    }
+
+                )
+                }
+              STRUCT{
+                type = textmenuelement
+                id = client_pause_menu_toggle_names_item
+                text = "Toggle Player Names"
+                }
+              STRUCT{
+                type = textmenuelement
+                id = client_pause_menu_toggle_scores_item
+                text = "Toggle Scores"
+                }
+              STRUCT{
+                type = textmenuelement
+                id = client_pause_menu_chat_item
+                text = "Enter Chat Message"
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler
+                  link = chat_message_control
+                  }
+                }
+              STRUCT{
+                type = textmenuelement
+                id = client_pause_sound_options
+                text = "Sound Options"
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler
+                  link = sfx_menu_container
+                  }
+                }
+              STRUCT{
+                type = textmenuelement
+                id = client_pause_menu_quit_item
+                text = "Quit"
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler
+                  link = client_quitgame_yesno_menu
+                  }
+                }
+
+            )
+            parent = contain1
+            }
+
+#01192    CreateAndAttachMenu STRUCT{
+            type = verticalmenu
+            id = server_quitgame_yesno_menu
+            x = 170.0
+            y = 150.0
+            w = 300.0
+            h = 336.0
+            just_center_x just_center_y blue_top eventhandler = STRUCT{
+              type = showeventhandler
+              target = "Server_Select_No"
+              }
+            parent = contain1
+            children = ARRAY(
+
+              STRUCT{
+                type = textmenuelement
+                auto_id text = "Quit?"
+                static dont_gray drawer = title
+                }
+              STRUCT{
+                type = textmenuelement
+                id = server_quit_yes
+                text = "Yes"
+                target = "chosen_leave_server"
+                }
+              STRUCT{
+                type = textmenuelement
+                id = server_quit_no
+                text = "No"
+                link = server_pause_menu
+                }
+
+            )
+            }
+
+#01227    CreateAndAttachMenu STRUCT{
+            type = verticalmenu
+            id = client_quitgame_yesno_menu
+            x = 170.0
+            y = 150.0
+            w = 300.0
+            h = 336.0
+            just_center_x just_center_y blue_top eventhandler = STRUCT{
+              type = showeventhandler
+              target = "Client_Select_No"
+              }
+            parent = contain1
+            children = ARRAY(
+
+              STRUCT{
+                type = textmenuelement
+                auto_id text = "Quit?"
+                static dont_gray drawer = title
+                }
+              STRUCT{
+                type = textmenuelement
+                id = client_quit_yes
+                text = "Yes"
+                target = "chosen_leave_server"
+                }
+              STRUCT{
+                type = textmenuelement
+                id = client_quit_no
+                text = "No"
+                link = client_pause_menu
+                }
+
+            )
+            }
+
+#01262    CreateAndAttachMenu STRUCT{
+            type = keyboardcontrol
+            id = chat_message_control
+            x = 160.0
+            y = 56.0
+            w = 320.0
+            h = 336.0
+            just_center_x just_center_y num_columns = 13
+            standard_charset allow_uppercase allow_lowercase min_chars = 0
+            max_chars = 30
+            title_string = "Enter chat message:"
+            default_string = ""
+            eventhandlers = ARRAY(
+
+              STRUCT{
+                type = showeventhandler
+                target = "clear_keyboard_string"
+                params = STRUCT{
+                  control_id = chat_message_control
+                  }
+                }
+              STRUCT{
+                type = contentschangedeventhandler
+                target = "send_chat_message"
+                }
+              STRUCT{
+                type = showeventhandler
+                target = "helper_on_keyboard_control"
+                }
+
+            )
+            kill_on_close parent = contain1
+            }
+
+#01296    CreateAndAttachMenu STRUCT{
+            type = keyboardcontrol
+            id = kb_chat_message_control
+            x = 160.0
+            y = 56.0
+            w = 320.0
+            h = 336.0
+            just_center_x just_center_y num_columns = 13
+            no_gui allow_uppercase allow_lowercase allow_slashes min_chars = 0
+            max_chars = 30
+            title_string = "Enter chat message:"
+            default_string = ""
+            eventhandlers = ARRAY(
+
+              STRUCT{
+                type = showeventhandler
+                target = "clear_keyboard_string"
+                params = STRUCT{
+                  control_id = kb_chat_message_control
+                  }
+                }
+              STRUCT{
+                type = contentschangedeventhandler
+                target = "send_chat_message"
+                }
+              STRUCT{
+                type = showeventhandler
+                target = "helper_on_keyboard_control_no_gui"
+                }
+
+            )
+            kill_on_close parent = contain1
+            }
+
+#01330    CreateAndAttachMenu STRUCT{
+            type = verticalmenu
+            id = net_game_options_menu
+            x = 160.0
+            y = 56.0
+            w = 320.0
+            h = 336.0
+            just_center_x just_center_y blue_top children = ARRAY(
+
+              STRUCT{
+                type = textmenuelement
+                auto_id text = "Game Options"
+                static dont_gray drawer = title
+                }
+              STRUCT{
+                type = textmenuelement
+                auto_id text = "Server Name"
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler
+                  link = opts_net_server_name_control
+                  }
+                }
+              STRUCT{
+                type = textmenuelement
+                auto_id text = "Current Server Name"
+                static dont_gray drawer = keyboard_property
+                eventhandler = STRUCT{
+                  type = showeventhandler
+                  target = "set_ui_from_preferences"
+                  params = STRUCT{
+                    prefs = network
+                    field = "server_name"
+                    }
+                  }
+                }
+              STRUCT{
+                type = textmenuelement
+                auto_id text = "Game Type"
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler
+                  link = opts_net_game_type_menu
+                  }
+                }
+              STRUCT{
+                type = textmenuelement
+                auto_id text = "Current Game"
+                static dont_gray drawer = keyboard_property
+                eventhandler = STRUCT{
+                  type = showeventhandler
+                  target = "set_ui_from_preferences"
+                  params = STRUCT{
+                    prefs = network
+                    field = "game_type"
+                    }
+                  }
+                }
+              STRUCT{
+                type = textmenuelement
+                auto_id text = "Time Limit"
+                link = network_time_limit_menu
+                }
+              STRUCT{
+                type = textmenuelement
+                auto_id text = "Current Time Limit"
+                static dont_gray drawer = keyboard_property
+                eventhandler = STRUCT{
+                  type = showeventhandler
+                  target = "set_ui_from_preferences"
+                  params = STRUCT{
+                    prefs = network
+                    field = "time_limit"
+                    }
+                  }
+                }
+              STRUCT{
+                type = textmenuelement
+                auto_id text = "Maximum Players"
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler
+                  link = opts_net_num_players_menu
+                  }
+                }
+              STRUCT{
+                type = textmenuelement
+                auto_id text = "Current Players"
+                static dont_gray drawer = keyboard_property
+                eventhandler = STRUCT{
+                  type = showeventhandler
+                  target = "set_ui_from_preferences"
+                  params = STRUCT{
+                    prefs = network
+                    field = "num_players"
+                    }
+                  }
+                }
+              STRUCT{
+                type = textmenuelement
+                auto_id text = "Password"
+                eventhandler = STRUCT{
+                  type = ChooseEventHandler
+                  link = opts_net_password_control
+                  }
+                }
+              STRUCT{
+                type = textmenuelement
+                auto_id text = "Current Password"
+                static dont_gray drawer = keyboard_property
+                eventhandler = STRUCT{
+                  type = showeventhandler
+                  target = "set_ui_from_preferences"
+                  params = STRUCT{
+                    prefs = network
+                    field = "password"
+                    }
+                  }
+                }
+
+            )
+            parent = contain1
+            }
+
+#01451    CreateAndAttachMenu STRUCT{
+            type = verticalmenu
+            id = net_game_options_menu
+            x = 160.0
+            y = 56.0
+            w = 320.0
+            h = 336.0
+            just_center_x just_center_y id = ban_player_menu
+            blue_top children = ARRAY(
+
+              STRUCT{
+                type = textmenuelement
+                auto_id text = "Ban Player"
+                static dont_gray drawer = title
+                }
+
+            )
+            parent = contain1
+            }
+
+#01471    create_and_attach_generic_array_menu STRUCT{
+            menu_id = opts_net_num_players_menu
+            array_name = num_players_info
+            field = num_players
+            title = "Number of Players"
+            prefs = network
+            validationscript = "validate_player_option"
+            x = 140.0
+            y = 120.0
+            w = 360.0
+            h = 400.0
+            }
+
+#01484    create_and_attach_generic_array_menu STRUCT{
+            menu_id = opts_net_num_obs_menu
+            array_name = num_observers_info
+            field = num_observers
+            title = "Number of Observers"
+            prefs = network
+            x = 120.0
+            y = 120.0
+            w = 400.0
+            h = 400.0
+            }
+
+#01496    create_and_attach_generic_array_menu STRUCT{
+            menu_id = opts_net_game_type_menu
+            array_name = game_type_info
+            field = game_type
+            title = "Game Type"
+            prefs = network
+            x = 170.0
+            y = 120.0
+            w = 300.0
+            h = 400.0
+            }
+
+#01508    CreateAndAttachMenu STRUCT{
+            type = keyboardcontrol
+            id = opts_net_password_control
+            x = 160.0
+            y = 56.0
+            w = 320.0
+            h = 336.0
+            just_center_x just_center_y num_columns = 13
+            standard_charset min_chars = 0
+            max_chars = 8
+            title_string = "Enter password:"
+            eventhandlers = ARRAY(
+
+              STRUCT{
+                type = showeventhandler
+                target = "set_ui_from_preferences"
+                params = STRUCT{
+                  prefs = network
+                  field = "password"
+                  }
+                }
+              STRUCT{
+                type = contentschangedeventhandler
+                target = "set_preferences_from_ui"
+                params = STRUCT{
+                  prefs = network
+                  field = "password"
+                  }
+                }
+              STRUCT{
+                type = showeventhandler
+                target = "helper_on_keyboard_control"
+                }
+
+            )
+            parent = contain1
+            }
+
+#01546    CreateAndAttachMenu STRUCT{
+            type = keyboardcontrol
+            id = opts_net_server_name_control
+            x = 160.0
+            y = 56.0
+            w = 320.0
+            h = 336.0
+            just_center_x just_center_y num_columns = 13
+            standard_charset min_chars = 3
+            max_chars = 15
+            title_string = "Enter server name:"
+            eventhandlers = ARRAY(
+
+              STRUCT{
+                type = showeventhandler
+                target = "set_ui_from_preferences"
+                params = STRUCT{
+                  prefs = network
+                  field = "server_name"
+                  }
+                }
+              STRUCT{
+                type = contentschangedeventhandler
+                target = "set_preferences_from_ui"
+                params = STRUCT{
+                  prefs = network
+                  field = "server_name"
+                  }
+                }
+              STRUCT{
+                type = showeventhandler
+                target = "helper_on_keyboard_control"
+                }
+
+            )
+            parent = contain1
+            }
+
+#01584    CreateAndAttachMenu STRUCT{
+            type = verticalmenu
+            id = change_level_menu
+            x = 160.0
+            y = 70.0
+            w = 300.0
+            h = 400.0
+            just_center_x just_center_y blue_top eventhandler = STRUCT{
+              type = showeventhandler
+              target = "populate_level_menu"
+              params = STRUCT{
+                choose_script = "change_level"
+                parent_menu = change_level_menu
+                }
+              }
+            children = ARRAY(
+
+              STRUCT{
+                type = textmenuelement
+                auto_id text = "Levels"
+                static dont_gray drawer = title
+                }
+
+            )
+            parent = contain1
+            }
+
+#01611    CreateAndAttachMenu STRUCT{
+            type = verticalmenu
+            id = career_change_level_menu
+            x = 140.0
+            y = 90.0
+            w = 360.0
+            h = 400.0
+            just_center_x just_center_y blue_top eventhandler = STRUCT{
+              type = showeventhandler
+              target = "populate_level_menu"
+              params = STRUCT{
+                choose_script = "change_level"
+                parent_menu = career_level_names
+                }
+              }
+            children = ARRAY(
+
+              STRUCT{
+                type = textmenuelement
+                auto_id text = "Levels"
+                static dont_gray drawer = title
+                }
+              STRUCT{
+                type = menucontainer
+                id = career_levels_multi_container
+                show_all_children }
+
+            )
+            parent = contain1
+            }
+
+#01642    DestroyElement id = career_level_names
+
+#01644    DestroyElement id = career_level_goals
+
+#01646    createmenu STRUCT{
+            type = verticalmenu
+            id = career_level_names
+            x = 0.0
+            y = 0.0
+            w = 280.0
+            h = 336.0
+            just_center_x just_center_y not_rounded children = ARRAY(
+
+              STRUCT{
+                type = textmenuelement
+                auto_id text = "Name"
+                static drawer = main_smaller
+                }
+
+            )
+            }
+
+#01664    createmenu STRUCT{
+            type = verticalmenu
+            id = career_level_goals
+            x = 280.0
+            y = 0.0
+            w = 80.0
+            h = 336.0
+            just_center_x just_center_y not_rounded static eventhandler = STRUCT{
+              type = showeventhandler
+              target = "populate_goals_menu"
+              }
+            children = ARRAY(
+
+              STRUCT{
+                type = textmenuelement
+                auto_id text = "Goals"
+                static drawer = main_smaller
+                }
+
+            )
+            }
+
+#01686    attachchild parent = career_levels_multi_container
+          child = career_level_names
+
+#01689    attachchild parent = career_levels_multi_container
+          child = career_level_goals
+
+#01692    printf "Going through master level list... regular change level"
+#01693    attach_new_stats_menu STRUCT{
+            menu_id = stats_menu
+            container_id = contain1
+            points_available_id = ingame_cas_points_available
+            left_container_id = stats_left_container
+            right_container_id = stats_right_container
+            }
+
+#01701    AttachEventHandler STRUCT{
+            type = showeventhandler
+            object = stats_menu
+            target = "helper_on_stat_menu"
+            }
+
+#01707    helper_menu_create
+#01708    debug_menu_create
+#01709    level_menu_create
+#01710    stats_menu_create
+#01711    comp_menu_create
+#01712    horse_menu_create
+#01713    replay_menu_create
+#01714    cheat_menu_create
+#01715    replay_from_memcard_menu_create
+#01716    memcard_files_menu_create
+#01717  END FUNCTION
+
+#01719  FUNCTION populate_goals_menu
+
+#01721    DestroyElement id = level1
+
+#01723    DestroyElement id = level2
+
+#01725    DestroyElement id = level3
+
+#01727    DestroyElement id = level4
+
+#01729    DestroyElement id = level5
+
+#01731    DestroyElement id = level6
+
+#01733    DestroyElement id = level7
+
+#01735    DestroyElement id = level8
+
+#01737    DestroyElement id = level9
+
+#01739    GetGoalsCompleted LevelNum_Foundry
+#01740    IF GetGlobalFlag flag = LEVEL_UNLOCKED_FOUNDRY
+#01741      AddLine parent = career_level_goals
+            id = level1
+            text = GLOBAL.GoalsCompleted
+#01744    ELSE
+#01745      AddLine parent = career_level_goals
+            id = level1
+            text = GLOBAL.GoalsCompleted
+            static
+#01749    END IF
+
+#01751    GetGoalsCompleted LevelNum_Canada
+#01752    IF GetGlobalFlag flag = LEVEL_UNLOCKED_CANADA
+
+#01754      AddLine parent = career_level_goals
+            id = level2
+            text = GLOBAL.GoalsCompleted
+
+#01758    ELSE
+#01759      AddLine parent = career_level_goals
+            id = level2
+            text = GLOBAL.GoalsCompleted
+            static
+#01763    END IF
+#01764    GetGoalsCompleted LevelNum_Rio
+#01765    IF GetGlobalFlag flag = LEVEL_UNLOCKED_RIO
+
+#01767      AddLine parent = career_level_goals
+            id = level3
+            text = GLOBAL.BestMedal
+
+#01771    ELSE
+#01772      printf "--------------------- Printing best medal for Rio"
+#01773      AddLine parent = career_level_goals
+            id = level3
+            text = GLOBAL.BestMedal
+            static
+#01777    END IF
+#01778    GetGoalsCompleted LevelNum_Suburbia
+#01779    IF GetGlobalFlag flag = LEVEL_UNLOCKED_SUBURBIA
+
+#01781      AddLine parent = career_level_goals
+            id = level4
+            text = GLOBAL.GoalsCompleted
+
+#01785    ELSE
+#01786      AddLine parent = career_level_goals
+            id = level4
+            text = GLOBAL.GoalsCompleted
+            static
+#01790    END IF
+#01791    GetGoalsCompleted LevelNum_Airport
+#01792    IF GetGlobalFlag flag = LEVEL_UNLOCKED_AIRPORT
+
+#01794      AddLine parent = career_level_goals
+            id = level5
+            text = GLOBAL.GoalsCompleted
+
+#01798    ELSE
+#01799      AddLine parent = career_level_goals
+            id = level5
+            text = GLOBAL.GoalsCompleted
+            static
+#01803    END IF
+#01804    GetGoalsCompleted LevelNum_SkaterIsland
+#01805    IF GetGlobalFlag flag = LEVEL_UNLOCKED_SKATERISLAND
+
+#01807      AddLine parent = career_level_goals
+            id = level6
+            text = GLOBAL.BestMedal
+
+#01811    ELSE
+#01812      AddLine parent = career_level_goals
+            id = level6
+            text = GLOBAL.BestMedal
+            static
+#01816    END IF
+#01817    GetGoalsCompleted LevelNum_LA
+#01818    IF GetGlobalFlag flag = LEVEL_UNLOCKED_LOSANGELES
+
+#01820      AddLine parent = career_level_goals
+            id = level7
+            text = GLOBAL.GoalsCompleted
+
+#01824    ELSE
+#01825      AddLine parent = career_level_goals
+            id = level7
+            text = GLOBAL.GoalsCompleted
+            static
+#01829    END IF
+#01830    GetGoalsCompleted LevelNum_Tokyo
+#01831    IF GetGlobalFlag flag = LEVEL_UNLOCKED_TOKYO
+
+#01833      AddLine parent = career_level_goals
+            id = level8
+            text = GLOBAL.BestMedal
+
+#01837    ELSE
+#01838      AddLine parent = career_level_goals
+            id = level8
+            text = GLOBAL.BestMedal
+            static
+#01842    END IF
+#01843    IF GetGlobalFlag flag = SPECIAL_HAS_SEEN_SHIP
+
+#01845      GetGoalsCompleted LevelNum_Ship
+#01846      IF GetGlobalFlag flag = LEVEL_UNLOCKED_SHIP
+
+#01848        AddLine parent = career_level_goals
+              id = level9
+              text = GLOBAL.GoalsCompleted
+
+#01852      ELSE
+#01853        AddLine parent = career_level_goals
+              id = level9
+              text = GLOBAL.GoalsCompleted
+              static
+#01857      END IF
+#01858    ELSE
+#01859      DestroyElement id = level9
+
+#01861    END IF
+#01862  END FUNCTION
+
+#01864  FUNCTION populate_level_menu
+#01865    helper_hide
+#01866    helper_select_choose_back x1 = 167
+          x2 = 282
+          x3 = 392
+
+#01870    IF IsCareerMode
+#01871      populate_goals_menu
+#01872      AddLine parent = career_change_level_menu
+                id = next_level_at
+                text = "3 Golds with All Skaters"
+                static drawer = main_smaller
+                lock_layout y = 220
+#01877    ELSE
+#01878      DestroyElement id = next_level_at
+
+#01880    END IF
+#01881    VerifyParam param = parent_menu
+          func = populate_level_menu
+          NULL
+#01884    VerifyParam param = choose_script
+          func = populate_level_menu
+          NULL
+#01887    ForEachIn master_level_list do = add_level_menu_item
+          params = STRUCT{
+            mask = regular_level
+            target_script = GLOBAL.choose_script
+            parent_menu = GLOBAL.parent_menu
+            }
+
+#01894  END FUNCTION
+
+#01896  FUNCTION toggle_player_names
+#01897    TogglePlayerNames
+#01898  END FUNCTION
+
+#01900  FUNCTION toggle_scores
+#01901    ToggleScores
+#01902  END FUNCTION
+
+#01904  FUNCTION enter_observer_mode
+#01905    EnterObserverMode
+#01906  END FUNCTION
+
+#01908  FUNCTION enter_chat_mode
+#01909  END FUNCTION
+
+#01911  FUNCTION back_to_main
+#01912    printf "running back_to_main"
+#01913    LaunchMenuScreen screen = main_menu
+
+#01915  END FUNCTION
+
+#01917  FUNCTION change_airtricks1
+#01918    Change Air_CircleL = Trick_Stiffy
+
+#01920  END FUNCTION
+
+#01922  FUNCTION change_airtricks2
+#01923    Change Air_CircleR = Trick_Judo
+
+#01925  END FUNCTION
+
+#01927  FUNCTION change_airtricks3
+#01928    Change Airtricks = Airtricks3
+
+#01930    Change JumpTricks = Jumptricks3
+
+#01932  END FUNCTION
+
+#01934  FUNCTION enter_kb_chat
+#01935    SwitchToMenu menu = kb_chat_message_control
+          DoNotPause
+#01937  END FUNCTION
+
+#01939  FUNCTION attach_new_stats_menu stats_left_width = 150
+          stats_right_width = 160
+
+#01942    VerifyParam param = menu_id
+          func = attach_new_stats_menu
+          NULL
+#01945    VerifyParam param = container_id
+          func = attach_new_stats_menu
+          NULL
+#01948    VerifyParam param = left_container_id
+          func = attach_new_stats_menu
+          NULL
+#01951    VerifyParam param = right_container_id
+          func = attach_new_stats_menu
+          NULL
+#01954    CreateAndAttachMenu STRUCT{
+            type = verticalmenu
+            id = GLOBAL.menu_id
+            parent = GLOBAL.container_id
+            game_menu_properties blue_top eventhandlers = ARRAY(
+
+              STRUCT{
+                type = showeventhandler
+                target = "update_stats_elements"
+                }
+
+            )
+            }
+
+#01968    IF GotParam is_pro_menu
+#01969    ELSE
+#01970      CreateAndAttachMenu STRUCT{
+              type = textmenuelement
+              auto_id parent = GLOBAL.menu_id
+              text = "edit stats"
+              static dont_gray drawer = title
+              }
+
+#01977    END IF
+#01978    CreateAndAttachMenu STRUCT{
+            type = menucontainer
+            auto_id show_all_children parent = GLOBAL.menu_id
+            eventhandler = STRUCT{
+              type = leftrightcontroller
+              left = GLOBAL.left_container_id
+              right = GLOBAL.right_container_id
+              }
+            children = ARRAY(
+
+              STRUCT{
+                type = verticalmenu
+                cas_right_menu_properties y = 0.0
+                x = GLOBAL.stats_left_width
+                w = GLOBAL.stats_right_width
+                id = GLOBAL.right_container_id
+                }
+              STRUCT{
+                type = verticalmenu
+                cas_left_menu_properties y = 0.0
+                w = GLOBAL.stats_left_width
+                id = GLOBAL.left_container_id
+                }
+
+            )
+            }
+
+#02005    IF GotParam is_pro_menu
+#02006    ELSE
+#02007      VerifyParam param = points_available_id
+            func = attach_new_stats_menu
+            NULL
+#02010      CreateAndAttachMenu STRUCT{
+              type = textmenuelement
+              id = GLOBAL.points_available_id
+              parent = GLOBAL.menu_id
+              text = "current points"
+              static dont_gray drawer = points_available_property
+              lock_layout y = 222.0
+              }
+
+#02019    END IF
+#02020    IF GotParam is_pro_menu
+#02021      ForEachIn cas_stats_display_children do = attach_new_right_stats_menu_item
+            params = STRUCT{
+              container_id = GLOBAL.right_container_id
+              is_pro_menu stats_right_width = GLOBAL.stats_right_width
+              }
+
+#02027    ELSE
+#02028      ForEachIn cas_stats_display_children do = attach_new_right_stats_menu_item
+            params = STRUCT{
+              container_id = GLOBAL.right_container_id
+              stats_right_width = GLOBAL.stats_right_width
+              }
+
+#02034    END IF
+#02035    IF GotParam is_pro_menu
+#02036      ForEachIn cas_stats_children do = attach_new_left_stats_menu_item
+            params = STRUCT{
+              container_id = GLOBAL.left_container_id
+              is_pro_menu }
+
+#02041    ELSE
+#02042      ForEachIn cas_stats_children do = attach_new_left_stats_menu_item
+            params = STRUCT{
+              container_id = GLOBAL.left_container_id
+              }
+
+#02047    END IF
+#02048  END FUNCTION
+
+#02050  FUNCTION update_stats_elements
+#02051    printf "Update Stats Elements"
+#02052    UpdateStatsElements
+#02053  END FUNCTION
+
+#02055  FUNCTION update_stats_ui
+#02056    UpdateStatsUI NULL
+#02057  END FUNCTION
+
+#02059  stats_left_menu_properties = STRUCT{
+          x = 0.0
+          y = 0.0
+          w = 150.0
+          h = 400.0
+          just_center_x just_center_y not_rounded }
+
+#02066  stats_right_menu_properties = STRUCT{
+          x = 150.0
+          y = 0.0
+          w = 200.0
+          h = 400.0
+          just_center_x just_center_y not_rounded }
+
+#02073  FUNCTION attach_new_left_stats_menu_item
+#02074    IF GotParam is_pro_menu
+#02075      CreateAndAttachMenu STRUCT{
+              NULL parent = GLOBAL.container_id
+              y = 0.0
+              w = 140.0
+              }
+
+#02081    ELSE
+#02082      CreateAndAttachMenu STRUCT{
+              NULL parent = GLOBAL.container_id
+              y = 0.0
+              }
+
+#02087    END IF
+#02088  END FUNCTION
+
+#02090  FUNCTION attach_new_right_stats_menu_item
+#02091    IF GotParam is_pro_menu
+#02092      VerifyParam param = pro_id
+            func = attach_new_right_stats_menu_item
+            NULL
+#02095      VerifyParam param = stats_right_width
+            func = attach_new_right_stats_menu_item
+            NULL
+#02098      CreateAndAttachMenu STRUCT{
+              NULL id = GLOBAL.pro_id
+              parent = GLOBAL.container_id
+              y = 0.0
+              w = GLOBAL.stats_right_width
+              static dont_gray r = 100
+              g = 65
+              b = 0
+              a = 115
+              }
+
+#02109    ELSE
+#02110      CreateAndAttachMenu STRUCT{
+              NULL parent = GLOBAL.container_id
+              y = 0.0
+              w = 170.0
+              }
+
+#02116      AttachEventHandler STRUCT{
+              type = ChooseEventHandler
+              object = GLOBAL.id
+              target = "go_back"
+              params = STRUCT{
+                id = GLOBAL.container_id
+                }
+              }
+
+#02125    END IF
+#02126  END FUNCTION
+
+#02128  FUNCTION send_chat_message
+#02129    printf "Sending chat message..."
+#02130    SendChatMessage NULL
+#02131  END FUNCTION
+
+#02133  FUNCTION clear_keyboard_string
+#02134    VerifyParam param = control_id
+          func = clear_keyboard_string
+          NULL
+#02137    IF GotParam string
+#02138      LaunchEvent type = setcontents
+            target = GLOBAL.control_id
+            string = GLOBAL.string
+
+#02142    ELSE
+#02143      LaunchEvent type = setcontents
+            target = GLOBAL.control_id
+            string = ""
+
+#02147    END IF
+#02148  END FUNCTION
+
+#02150  FUNCTION PreRunQueuedScripts
+#02151    SetSlomo 100.0
+#02152  END FUNCTION
+
+#02154  FUNCTION PostRunQueuedScripts
+#02155    SetSlomo 1
+#02156  END FUNCTION
+
+#02158  FUNCTION choose_team_on_show
+#02159    IF InTeamGame
+#02160      MakeTextMenuElementStatic GLOBAL.ElementId
+            nonstatic = 1
+
+#02163    ELSE
+#02164      MakeTextMenuElementStatic GLOBAL.ElementId
+
+#02166    END IF
+#02167  END FUNCTION
+
+#02169  FUNCTION do_choose_team
+#02170    ChooseTeam NULL
+#02171  END FUNCTION

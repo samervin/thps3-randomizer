@@ -1,0 +1,6510 @@
+FUNCTION ALF_Placeholder
+#00001  END FUNCTION
+
+#00003  FUNCTION Sub_Startup
+#00004    LoadStreamHeader "streams\sub\streams"
+#00005    LoadSound "shared\gapsound" vol = 100
+          dropoff = 0
+
+#00008    LoadSound "shared\goaldone" vol = 100
+          dropoff = 0
+
+#00011    LoadSound "shared\bonkbush" vol = 75
+          dropoff = 0
+
+#00014    LoadSound "shared\glasspane2x" vol = 100
+          dropoff = 0
+
+#00017    LoadSound "shared\hitflimsywood" vol = 100
+          dropoff = 0
+
+#00020    LoadSound "SUB\SUB_IceCream2" vol = 60
+          dropoff = 150
+          PosUpdate
+#00023    LoadSound "SUB\SUB_sprinklers3" vol = 100
+          dropoff = 150
+          PosUpdate
+#00026    LoadSound "SUB\SUB_Mouse" vol = 100
+          dropoff = 150
+          PosUpdate
+#00029    LoadSound "SUB\SUB_slam" vol = 100
+          dropoff = 150
+          posupdatewithdoppler
+#00032    LoadSound "SUB\SUB_squirrel" vol = 100
+          dropoff = 150
+          PosUpdate
+#00035    LoadSound "SUB\SUB_Batloop" vol = 100
+          dropoff = 150
+          PosUpdate
+#00038    LoadSound "SUB\SUB_flies" vol = 100
+          dropoff = 150
+          PosUpdate
+#00041    LoadSound "SUB\SUB_groan2" vol = 100
+          dropoff = 100
+
+#00044    LoadSound "SUB\SUB_dish" vol = 100
+          dropoff = 150
+          PosUpdate
+#00047    LoadSound "SUB\SUB_spark2x" vol = 100
+          dropoff = 150
+          PosUpdate
+#00050    LoadSound "SUB\SUB_Creak" vol = 100
+          dropoff = 150
+          PosUpdate
+#00053    LoadSound "SUB\SUB_Axeman" vol = 100
+          dropoff = 150
+          PosUpdate
+#00056    LoadSound "SUB\SUB_HitSheet" vol = 60
+          dropoff = 150
+          PosUpdate
+#00059    LoadSound "SUB\SUB_House1" vol = 90
+          dropoff = 150
+          PosUpdate
+#00062    LoadSound "SUB\SUB_pumpkin2" vol = 100
+          dropoff = 80
+          PosUpdate
+#00065    LoadSound "SUB\SUB_Haunted" vol = 100
+          dropoff = 80
+          PosUpdate
+#00068    LoadSound "SUB\SUB_furnacelite" vol = 100
+          dropoff = 80
+          PosUpdate
+#00071    LoadSound "Can\Can_Bird1" vol = 100
+          dropoff = 200
+          PosUpdate
+#00074    LoadSound "Can\Can_Bird2" vol = 100
+          dropoff = 200
+          PosUpdate
+#00077    LoadSound "la\la_vo_knockped1" vol = 100
+          dropoff = 0
+
+#00080    LoadSound "ap\ap_prop" vol = 100
+          dropoff = 200
+          posupdatewithdoppler
+#00083  END FUNCTION
+
+#00085  FUNCTION SI_Startup
+#00086    LoadStreamHeader "streams\si\streams"
+#00087    LoadSound "shared\gapsound" vol = 100
+          dropoff = 0
+
+#00090    LoadSound "SUB\SUB_House1" vol = 90
+          dropoff = 150
+          PosUpdate
+#00093    LoadSound "shared\goaldone" vol = 100
+          dropoff = 0
+
+#00096    LoadSound "SUB\SUB_sprinklers3" vol = 100
+          dropoff = 150
+          PosUpdate
+#00099    LoadSound "SI\SI_cannon" vol = 100
+          dropoff = 150
+          PosUpdate
+#00102    LoadSound "SI\SI_Shark2" vol = 100
+          dropoff = 80
+          PosUpdate
+#00105    LoadSound "SI\SI_sailrip2" vol = 150
+          dropoff = 80
+          PosUpdate
+#00108    LoadSound "SI\SI_Palm2" vol = 150
+          dropoff = 80
+          PosUpdate
+#00111    LoadSound "SI\SI_sailflap2" vol = 200
+          dropoff = 100
+          PosUpdate
+#00114    LoadSound "SI\Ocean2" vol = 75
+          dropoff = 200
+          PosUpdate
+#00117    LoadSound "SI\Seagull1" vol = 100
+          dropoff = 300
+          PosUpdate
+#00120    LoadSound "SI\Seagull7" vol = 100
+          dropoff = 300
+          PosUpdate
+#00123    LoadSound "shared\hitflimsywood" vol = 100
+          dropoff = 0
+
+#00126    LoadSound "terrains\grindrope" vol = 50
+          pitch = 70
+
+#00129    LoadSound "la\la_vo_approach1_cr" vol = 100
+          dropoff = 0
+
+#00132    LoadSound "la\la_vo_approach2_cr" vol = 100
+          dropoff = 0
+
+#00135    LoadSound "la\la_vo_approach3_cr" vol = 100
+          dropoff = 0
+
+#00138    LoadSound "la\la_vo_approach4_cr" vol = 100
+          dropoff = 0
+
+#00141    LoadSound "si\crowdC01" vol = 30
+          dropoff = 250
+          PosUpdate
+#00144    LoadSound "si\crowdC02" vol = 30
+          dropoff = 250
+          PosUpdate
+#00147    LoadSound "si\crowdC03" vol = 30
+          dropoff = 250
+          PosUpdate
+#00150    LoadSound "si\crowdC05" vol = 20
+          dropoff = 250
+          PosUpdate
+#00153    LoadSound "Can\Can_Bird1" vol = 100
+          dropoff = 200
+          PosUpdate
+#00156    LoadSound "Can\Can_Bird2" vol = 100
+          dropoff = 200
+          PosUpdate
+#00159    SetTerrainGrindRope
+#00160    SetSfxReverb 50 mode = REV_MODE_HALL
+
+#00162    UnSetFlag flag = SI_FLAG_OUTSIDE_OPEN
+
+#00164    UnSetFlag flag = SI_FLAG_CANNONS_FIRED
+
+#00166  END FUNCTION
+
+#00168  FLAG_GOT_BRANCH1 = 0
+
+#00170  FLAG_GOT_BRANCH2 = 1
+
+#00172  FLAG_GOT_BRANCH3 = 2
+
+#00174  FLAG_GOT_BRANCH4 = 3
+
+#00176  FLAG_BBQ_LIT = 4
+
+#00178  FLAG_RICH_OWNER_WALKING = 5
+
+#00180  FLAG_GOT_PUMPKIN = 6
+
+#00182  FLAG_CREATE_THINMAN_AXE = 7
+
+#00184  FLAG_SIGN_SMACKED_EXCEPTION = 8
+
+#00186  FLAG_FART_EXCEPTION = 9
+
+#00188  ALF_SKIP_CUTSCENE_EXCEPTION = 10
+
+#00190  FLAG_SATTELITE_ALIGN = 29
+
+#00192  FLAG_SKATER_HAS_AXE = 30
+
+#00194  SuburbiaGoalParams = STRUCT{
+          Goal_Start_Script = NullScript
+          Goal_Complete_Start_Script = ALF_SUB_FogOff
+          NetPlayScript = NullScript
+          CareerPlayScript = NullScript
+          CameraStart = "Cam_Goals"
+          CameraTape = "Cam_Goal_04"
+          CameraTrickspotVert = "Cam_Goal_05vert"
+          CameraTrickspotStreet = "Cam_Goal_05street"
+          CameraScripted1 = "Cam_Goal_06"
+          CameraScripted1Complete = "Cam_Goal_Complete_06"
+          CameraScripted2 = "Cam_Goal_07"
+          CameraScripted2Complete = "Cam_Goal_Complete_07"
+          CameraScripted3 = "Cam_Goal_08"
+          CameraScripted3Complete = "Cam_Goal_Complete_08"
+          Goal_HighScore_Text = "Get a HIGH SCORE: | 60,000 Points"
+          Goal_ProScore_Text = "Get a PRO SCORE: | 120,000 Points"
+          Goal_SickScore_Text = "Get a SICK SCORE: | 300,000 Points"
+          Goal_SKATE_Text = "Collect S-K-A-T-E"
+          Goal_Tape_Text = "Get the Secret Tape"
+          Goal_TrickspotStreet_Text = "Indy Grab| the Trailer Hop"
+          Goal_TrickspotVert_Text = "Overcrook Grind| Between The Ramps"
+          Goal_Scripted1_Text = "Help The Thin Man"
+          Goal_Scripted2_Text = "Restore Power | To The Dish"
+          Goal_Scripted3_Text = "Squash 5 Pumpkins"
+          Goal_Scripted1_Start_Script = NullScript
+          Goal_Scripted1_End_Script = NullScript
+          Goal_Scripted1_Complete_Start_Script = NullScript
+          Goal_Scripted1_Complete_End_Script = NullScript
+          Goal_Scripted2_Start_Script = ALF_Scripted2_Start_Script
+          Goal_Scripted2_Complete_Start_Script = ALF_Scripted2_End_Script
+          Goal_Scripted3_Start_Script = ALF_SUB_Scripted3StartScript
+          Goal_Scripted3_End_Script = ALF_SUB_Scripted3EndScript
+          Goal_Scripted3_Complete_Start_Script = ALF_SUB_Scripted3CompleteStart
+          Goal_End_Script = NullScript
+          Goal_Complete_End_Script = NullScript
+          CameraTrickspotVertComplete = "Cam_Goal_Complete_05vert"
+          CameraTrickspotStreetComplete = "Cam_Goal_Complete_05street"
+          Goal_Trickspot_VertAnimName = Nosegrab
+          Goal_Trickspot_VertAnimFrame1 = 10
+          Goal_Trickspot_VertAnimFrame2 = 25
+          Goal_Trickspot_VertAnimFrame3 = 50
+          Goal_Trickspot_StreetAnimName = Heelflip
+          Goal_Trickspot_StreetAnimFrame1 = 5
+          Goal_Trickspot_StreetAnimFrame2 = 15
+          Goal_Trickspot_StreetAnimFrame3 = 25
+          }
+
+#00242  FUNCTION ALF_SUB_LoadingScript
+#00243    SetUpSkaterDefaults
+#00244    CreateSkateLines
+#00245    CreateDeckIcon
+#00246    CreateSecretTape
+#00247    CreateTrickPoints
+#00248    SetClippingDistances near = 12
+          far = 13500
+
+#00251    DisableFog
+#00252  END FUNCTION
+
+#00254  panel_message_thinman_old = STRUCT{
+          font = "trick.fnt"
+          just = PAIR[0.0; 0.0]
+          dims = PAIR[600.0; 112.0]
+          colors = ARRAY(
+
+            STRUCT{
+              VECTOR[128.0; 128.0; 128.0] alpha = 128
+              }
+
+          )
+          key_points = ARRAY(
+
+            STRUCT{
+              pos = PAIR[320.0; 112.0]
+              alpha = 128
+              scale = 2
+              time = 0
+              }
+            STRUCT{
+              scale = 0.5
+              alpha = 0
+              time = 0.7
+              }
+
+          )
+          }
+
+#00282  panel_message_thinman = STRUCT{
+          font = "trick.fnt"
+          just = PAIR[0.0; 0.0]
+          dims = PAIR[600.0; 112.0]
+          colors = ARRAY(
+
+            STRUCT{
+              VECTOR[128.0; 128.0; 128.0] alpha = 128
+              }
+
+          )
+          key_points = ARRAY(
+
+            STRUCT{
+              pos = PAIR[320.0; 302.0]
+              alpha = 128
+              scale = 1.51
+              time = 0
+              }
+            STRUCT{
+              time = 1.7
+              }
+
+          )
+          }
+
+#00308  panel_message_pirate = STRUCT{
+          font = "trick.fnt"
+          just = PAIR[0.0; 0.0]
+          dims = PAIR[600.0; 112.0]
+          colors = ARRAY(
+
+            STRUCT{
+              VECTOR[128.0; 128.0; 128.0] alpha = 128
+              }
+
+          )
+          key_points = ARRAY(
+
+            STRUCT{
+              pos = PAIR[320.0; 302.0]
+              alpha = 128
+              scale = 1.51
+              time = 0
+              }
+            STRUCT{
+              time = 4.0
+              }
+
+          )
+          }
+
+#00334  FUNCTION ALF_SUB_Scripted3StartScript
+#00335    Create name = TRG_PumpkinGuyIntro
+
+#00337  END FUNCTION
+
+#00339  FUNCTION ALF_SUB_Scripted3EndScript
+#00340    Kill name = TRG_PumpkinGuyIntro
+
+#00342  END FUNCTION
+
+#00344  FUNCTION ALF_SUB_Scripted3CompleteStart
+#00345    Create name = TRG_PumpkinGuy
+
+#00347  END FUNCTION
+
+#00349  FUNCTION ALF_SUB_GameStartCam
+#00350    PauseMusic 1
+#00351    IF InNetGame
+#00352    ELSE
+#00353      PauseSkaters
+#00354      PlaySkaterCamAnim Skater = 0
+            name = "Cam_Goals"
+
+#00357      IF GetGoal goal = GOAL_HIGHSCORE
+
+#00359      ELSE
+#00360        ALF_SUB_Goal_High_Score
+#00361      END IF
+#00362      IF GetGoal goal = GOAL_PROSCORE
+
+#00364      ELSE
+#00365        ALF_SUB_Goal_Pro_Score
+#00366      END IF
+#00367      IF GetGoal goal = GOAL_SKATE
+
+#00369      ELSE
+#00370        ALF_SUB_Goal_Collect_Skate
+#00371      END IF
+#00372      IF GetGoal goal = GOAL_TAPE
+
+#00374      ELSE
+#00375        ALF_SUB_Goal_Secret_Tape
+#00376      END IF
+#00377      IF GetGoal goal = GOAL_TRICKSPOT
+
+#00379      ELSE
+#00380        ALF_SUB_Goal_TrickSpot
+#00381      END IF
+#00382      IF GetGoal goal = GOAL_SCRIPTED1
+
+#00384      ELSE
+#00385        ALF_SUB_Goal_ThinMan
+#00386      END IF
+#00387      IF GetGoal goal = GOAL_SCRIPTED2
+
+#00389      ELSE
+#00390        ALF_SUB_Goal_Align
+#00391      END IF
+#00392      PlaySkaterCamAnim Skater = 0
+            name = "Cam_Dummy"
+
+#00395      UnPauseSkaters
+#00396    END IF
+#00397    PauseMusic 0
+#00398  END FUNCTION
+
+#00400  FUNCTION ALF_SUB_EndGame
+#00401    PauseMusic 1
+#00402    IF JustGotGoal goal = GOAL_HIGHSCORE
+
+#00404      AF_SUB_Goal_High_Score_Complete
+#00405    END IF
+#00406    IF JustGotGoal goal = GOAL_PROSCORE
+
+#00408      AF_SUB_Goal_Pro_Score_Complete
+#00409    END IF
+#00410    IF JustGotGoal goal = GOAL_SKATE
+
+#00412      AF_SUB_Goal_Collect_SKATE_Complete
+#00413    END IF
+#00414    IF JustGotGoal goal = GOAL_TAPE
+
+#00416      AF_SUB_Goal_Find_Secret_Tape_Complete
+#00417    END IF
+#00418    IF JustGotGoal goal = GOAL_TRICKSPOT
+
+#00420      AF_SUB_Goal_TrickSpot_Complete
+#00421    END IF
+#00422    IF JustGotGoal goal = GOAL_SCRIPTED1
+
+#00424      AF_SUB_Goal_Scripted1_Complete
+#00425    END IF
+#00426    IF JustGotGoal goal = GOAL_SCRIPTED2
+
+#00428      AF_SUB_Goal_Scripted2_Complete
+#00429    END IF
+#00430    IF GetGoal goal = GOAL_SCRIPTED2
+
+#00432      IF GetGoal goal = GOAL_SCRIPTED1
+
+#00434        IF GetGoal goal = GOAL_TRICKSPOT
+
+#00436          IF GetGoal goal = GOAL_TAPE
+
+#00438            IF GetGoal goal = GOAL_SKATE
+
+#00440              IF GetGoal goal = GOAL_PROSCORE
+
+#00442                IF GetGoal goal = GOAL_HIGHSCORE
+
+#00444                  SetGoal goal = GOAL_ALL_GOALS
+
+#00446                  IF GetGoal goal = GOAL_TRICK_POINT1
+
+#00448                    IF GetGoal goal = GOAL_TRICK_POINT2
+
+#00450                      IF GetGoal goal = GOAL_TRICK_POINT3
+
+#00452                        IF GetGoal goal = GOAL_TRICK_POINT4
+
+#00454                          IF GetGoal goal = GOAL_TRICK_POINT5
+
+#00456                            IF GetGoal goal = GOAL_DECK
+
+#00458                              SetGoal goal = GOAL_100_PERCENT
+
+#00460                            END IF
+#00461                          END IF
+#00462                        END IF
+#00463                      END IF
+#00464                    END IF
+#00465                  END IF
+#00466                END IF
+#00467              END IF
+#00468            END IF
+#00469          END IF
+#00470        END IF
+#00471      END IF
+#00472    END IF
+#00473    IF JustGotGoal goal = GOAL_ALL_GOALS
+
+#00475      LaunchPanelMessage "All Goals Completed" properties = panel_message_goalcomplete
+
+#00477    END IF
+#00478    IF JustGotGoal goal = GOAL_100_PERCENT
+
+#00480      LaunchPanelMessage "100% goals, deck and trick points" properties = panel_message_goalcomplete
+
+#00482    END IF
+#00483  END FUNCTION
+
+#00485  FUNCTION AF_SUB_Goal_High_Score_Complete
+#00486    PlaySound goaldone vol = 50
+
+#00488    LaunchPanelMessage "HIGH SCORE Goal Complete" properties = panel_message_goalcomplete1
+
+#00490    Wait 75 gameframe S
+#00491  END FUNCTION
+
+#00493  FUNCTION AF_SUB_Goal_Pro_Score_Complete
+#00494    PlaySound goaldone vol = 50
+
+#00496    LaunchPanelMessage "PRO SCORE Goal Complete" properties = panel_message_goalcomplete2
+
+#00498    Wait 75 frames
+#00499  END FUNCTION
+
+#00501  FUNCTION AF_SUB_Goal_Collect_SKATE_Complete
+#00502    PlaySound goaldone vol = 50
+
+#00504    LaunchPanelMessage "Collect S-K-A-T-E Goal Complete" properties = panel_message_goalcomplete3
+
+#00506    Wait 75 frames
+#00507  END FUNCTION
+
+#00509  FUNCTION AF_SUB_Goal_Find_Secret_Tape_Complete
+#00510    PlaySound goaldone vol = 50
+
+#00512    LaunchPanelMessage "Secret Tape Goal Complete" properties = panel_message_goalcomplete4
+
+#00514    Wait 70 frames
+#00515  END FUNCTION
+
+#00517  FUNCTION AF_SUB_Goal_TrickSpot_Complete
+#00518    PlaySound goaldone vol = 50
+
+#00520    IF ProfileEquals trickstyle = Vert
+
+#00522      LaunchPanelMessage "Nosegrab Between The Ramps | Complete" properties = panel_message_goalcomplete5
+
+#00524    ELSE
+#00525      LaunchPanelMessage "Heelflip the trailer hop | Complete" properties = panel_message_goalcomplete5
+
+#00527    END IF
+#00528    Wait 70 frames
+#00529  END FUNCTION
+
+#00531  FUNCTION AF_SUB_Goal_Scripted1_Complete
+#00532    PlaySound goaldone vol = 50
+
+#00534    LaunchPanelMessage "Help the Thin Man Complete" properties = panel_message_goalcomplete6
+
+#00536    Wait 70 frames
+#00537  END FUNCTION
+
+#00539  FUNCTION AF_SUB_Goal_Scripted2_Complete
+#00540    PlaySound goaldone vol = 50
+
+#00542    LaunchPanelMessage "Align the Satellite Dish Complete" properties = panel_message_goalcomplete7
+
+#00544    Wait 70 frames
+#00545  END FUNCTION
+
+#00547  FUNCTION ALF_SUB_Goal_High_Score
+#00548    PlaySound goaldone vol = 50
+
+#00550    LaunchPanelMessage "Get a HIGH SCORE: 60,000 Points" properties = panel_message_goal
+
+#00552    Wait 5 gameframe
+#00553    SetSkaterCamAnimSkippable Skater = 0
+          skippable = 1
+
+#00556    LOOP
+#00557      IF SkaterCamAnimFinished Skater = 0
+              name = "Cam_Goals"
+
+#00560        BREAK
+
+#00562      END IF
+#00563      Wait 1 Gameframes
+#00564    END LOOP 80
+#00565  END FUNCTION
+
+#00567  FUNCTION ALF_SUB_Goal_Pro_Score
+#00568    PlaySound goaldone vol = 50
+
+#00570    LaunchPanelMessage "Get a PRO SCORE: 250,000 Points" properties = panel_message_goal
+
+#00572    LOOP
+#00573      IF SkaterCamAnimFinished Skater = 0
+              name = "Cam_Goals"
+
+#00576        BREAK
+
+#00578      END IF
+#00579      Wait 1 Gameframes
+#00580    END LOOP 80
+#00581  END FUNCTION
+
+#00583  FUNCTION ALF_SUB_Goal_Collect_Skate
+#00584    PlaySound goaldone vol = 50
+
+#00586    LaunchPanelMessage "3 - Collect S-K-A-T-E" properties = panel_message_goal
+
+#00588    LOOP
+#00589      IF SkaterCamAnimFinished Skater = 0
+              name = "Cam_Goals"
+
+#00592        BREAK
+
+#00594      END IF
+#00595      Wait 1 Gameframes
+#00596    END LOOP 240
+#00597  END FUNCTION
+
+#00599  FUNCTION ALF_SUB_Goal_Secret_Tape
+#00600    PlaySound goaldone vol = 50
+
+#00602    LaunchPanelMessage "4 - Get the Secret Tape" properties = panel_message_goal
+
+#00604    PlaySkaterCamAnim Skater = 0
+          name = "Cam_Goal_Tape"
+
+#00607    Wait 20 frames
+#00608    SetSkaterCamAnimSkippable Skater = 0
+          skippable = 1
+
+#00611    LOOP
+#00612      IF SkaterCamAnimFinished Skater = 0
+              name = "Cam_Goal_Tape"
+
+#00615        BREAK
+
+#00617      END IF
+#00618      Wait 1 Gameframes
+#00619    END LOOP 120
+#00620  END FUNCTION
+
+#00622  FUNCTION ALF_SUB_Goal_TrickSpot
+#00623    PlaySound goaldone vol = 50
+
+#00625    IF ProfileEquals trickstyle = Vert
+
+#00627      LaunchPanelMessage "5 - Nosegrab Between The Ramps" properties = panel_message_goal
+
+#00629      PlaySkaterCamAnim Skater = 0
+            name = "Cam_Goal_Trickspot_Vert"
+
+#00632      Wait 20 frames
+#00633      SetSkaterCamAnimSkippable Skater = 0
+            skippable = 1
+
+#00636      LOOP
+#00637        IF SkaterCamAnimFinished Skater = 0
+                name = "Cam_Goal_Trickspot_Vert"
+
+#00640          BREAK
+
+#00642        END IF
+#00643        Wait 1 Gameframes
+#00644      END LOOP 120
+#00645    END IF
+#00646    IF ProfileEquals trickstyle = street
+
+#00648      LaunchPanelMessage "5 - Heelflip the Trailer Hop" properties = panel_message_goal
+
+#00650      PlaySkaterCamAnim Skater = 0
+            name = "Cam_Goal_Trickspot_Street"
+
+#00653      Wait 20 frames
+#00654      SetSkaterCamAnimSkippable Skater = 0
+            skippable = 1
+
+#00657      LOOP
+#00658        IF SkaterCamAnimFinished Skater = 0
+                name = "Cam_Goal_Trickspot_Street"
+
+#00661          BREAK
+
+#00663        END IF
+#00664        Wait 1 Gameframes
+#00665      END LOOP 120
+#00666    END IF
+#00667  END FUNCTION
+
+#00669  FUNCTION ALF_SUB_Goal_ThinMan
+#00670    PlaySound goaldone vol = 50
+
+#00672    LaunchPanelMessage "6 - Help the Thin Man" properties = panel_message_goal
+
+#00674    PlaySkaterCamAnim Skater = 0
+          name = "Cam_Goal_ThinMan"
+
+#00677    Wait 20 frames
+#00678    SetSkaterCamAnimSkippable Skater = 0
+          skippable = 1
+
+#00681    LOOP
+#00682      IF SkaterCamAnimFinished Skater = 0
+              name = "Cam_Goal_ThinMan"
+
+#00685        BREAK
+
+#00687      END IF
+#00688      Wait 1 Gameframes
+#00689    END LOOP 150
+#00690  END FUNCTION
+
+#00692  FUNCTION ALF_SUB_Goal_Align
+#00693    PlaySound goaldone vol = 50
+
+#00695    LaunchPanelMessage "7 - Align the Satelite Dish" properties = panel_message_goal
+
+#00697    PlaySkaterCamAnim Skater = 0
+          name = "Cam_Goal_Align"
+
+#00700    Wait 20 frames
+#00701    SetSkaterCamAnimSkippable Skater = 0
+          skippable = 1
+
+#00704    LOOP
+#00705      IF SkaterCamAnimFinished Skater = 0
+              name = "Cam_Goal_Align"
+
+#00708        BREAK
+
+#00710      END IF
+#00711      Wait 1 Gameframes
+#00712    END LOOP 150
+#00713  END FUNCTION
+
+#00715  FUNCTION ALF_SUB_Trickspot_Check_Vert
+#00716    IF GetGoal goal = GOAL_TRICKSPOT
+
+#00718    ELSE
+#00719      IF ProfileEquals trickstyle = Vert
+
+#00721        StartGapTrick tricktext = "Overcrook"
+              GapScript = Got_Trickspot
+
+#00724      END IF
+#00725    END IF
+#00726  END FUNCTION
+
+#00728  FUNCTION ALF_SUB_Trickspot_Check_Street
+#00729    IF GetGoal goal = GOAL_TRICKSPOT
+
+#00731    ELSE
+#00732      IF ProfileEquals trickstyle = street
+
+#00734        StartGapTrick tricktext = "Indy"
+              GapScript = Got_Trickspot
+
+#00737      END IF
+#00738    END IF
+#00739  END FUNCTION
+
+#00741  FUNCTION ALF_SUB_Init
+#00742    Kill prefix = "BATS_"
+
+#00744    Create name = SUB_hh_bay_window_03
+
+#00746    Create name = SUB_hh_bay_window_01
+
+#00748    Create name = BOARDED_01
+
+#00750    Create prefix = "SUB_hh_frnch_drs_"
+
+#00752    Create prefix = "FENCE_"
+
+#00754    Create prefix = "GRAF_"
+
+#00756    Kill prefix = "FALL_"
+
+#00758    Kill prefix = "FALLEN_"
+
+#00760    Create name = SUB_DishStart
+
+#00762    Kill name = SUB_DishEnd
+
+#00764    ClearFlag name = Sub_Status
+          FLAG_SATTELITE_ALIGN
+#00766    Kill name = Sub_Status
+
+#00768    Create name = Sub_Status
+
+#00770  END FUNCTION
+
+#00772  FUNCTION ALF_SUB_Gap_Start_Stop
+#00773    StartGap GapID = StopSign
+          flags = ARRAY(
+
+            PURE_AIR
+          )
+
+#00779  END FUNCTION
+
+#00781  FUNCTION ALF_SUB_Gap_End_Stop
+#00782    EndGap GapID = StopSign
+          Text = "Stop Gap"
+          Score = 100
+
+#00786  END FUNCTION
+
+#00788  FUNCTION ALF_SUB_Gap_Start_Trip
+#00789    StartGap GapID = FenceTrip
+          flags = ARRAY(
+
+            CANCEL_GROUND
+          )
+
+#00795  END FUNCTION
+
+#00797  FUNCTION ALF_SUB_Gap_End_Trip
+#00798    EndGap GapID = FenceTrip
+          Text = "Fence Trippin'"
+          Score = 100
+
+#00802  END FUNCTION
+
+#00804  FUNCTION ALF_SUB_Gap_Start_Trip2
+#00805    StartGap GapID = FenceTrip2
+          flags = ARRAY(
+
+            CANCEL_GROUND
+          )
+
+#00811  END FUNCTION
+
+#00813  FUNCTION ALF_SUB_Gap_End_Trip2
+#00814    EndGap GapID = FenceTrip2
+          Text = "Fence Trippin'"
+          Score = 100
+
+#00818  END FUNCTION
+
+#00820  FUNCTION ALF_SUB_Gap_CULDESAC_Start
+#00821    StartGap flags = ARRAY(
+
+            PURE_MANUAL
+          )
+
+#00826  END FUNCTION
+
+#00828  FUNCTION ALF_SUB_Gap_CULDESAC_Half
+#00829    EndGap GapScript = ALF_SUB_Halfway
+          continue = STRUCT{
+            flags = ARRAY(
+
+              PURE_MANUAL
+            )
+            }
+
+#00837  END FUNCTION
+
+#00839  FUNCTION ALF_SUB_Halfway
+#00840    LaunchPanelMessage "Half way there!" 1
+#00841  END FUNCTION
+
+#00843  FUNCTION ALF_SUB_Gap_CULDESAC_Almost
+#00844    EndGap GapScript = ALF_SUB_Almost
+          continue = STRUCT{
+            flags = ARRAY(
+
+              PURE_MANUAL
+            )
+            }
+
+#00852  END FUNCTION
+
+#00854  FUNCTION ALF_SUB_Almost
+#00855    LaunchPanelMessage "Not far now!" 1
+#00856  END FUNCTION
+
+#00858  FUNCTION ALF_SUB_Gap_CULDESAC_End
+#00859    EndGap Text = "Manual the Sac!"
+          Score = 1000
+          GapScript = ALF_SUB_Congrats
+
+#00863  END FUNCTION
+
+#00865  FUNCTION ALF_SUB_Congrats
+#00866    LaunchPanelMessage "Congratulations!" 1
+#00867  END FUNCTION
+
+#00869  FUNCTION ALF_SUB_Gap_Start_NoRest
+#00870    StartGap GapID = NoRest
+          flags = ARRAY(
+
+            CANCEL_GROUND
+          )
+
+#00876  END FUNCTION
+
+#00878  FUNCTION ALF_SUB_Gap_End_NoRest
+#00879    EndGap GapID = NoRest
+          Text = "No Rest For The Wicked Grind"
+          Score = 100
+
+#00883  END FUNCTION
+
+#00885  FUNCTION ALF_SUB_Gap_Start_Powerup
+#00886    StartGap GapID = PowerUp
+          flags = ARRAY(
+
+            CANCEL_GROUND
+          )
+
+#00892  END FUNCTION
+
+#00894  FUNCTION ALF_SUB_Gap_End_Powerup
+#00895    EndGap GapID = PowerUp
+          Text = "Power Up Gap"
+          Score = 250
+
+#00899  END FUNCTION
+
+#00901  FUNCTION ALF_SUB_SatDish
+#00902    SendFlag name = Sub_Status
+          FLAG_SATTELITE_ALIGN
+#00904  END FUNCTION
+
+#00906  FUNCTION ALF_SUB_ParticleInitializer
+#00907    SetParticleSysVisibility system = "THINMAN_HEARTS01"
+          visible = 0
+
+#00910    SetParticleSysVisibility system = "THINMAN_FLAMES01"
+          visible = 0
+
+#00913    SetParticleSysVisibility system = "THINMAN_FLAMES02"
+          visible = 0
+
+#00916    SetParticleSysVisibility system = "THINMAN_FLAMES03"
+          visible = 0
+
+#00919    SetParticleSysVisibility system = "NExtParticle_bats_01"
+          visible = 0
+
+#00922    SetParticleSysVisibility system = "NExtParticle_bats_02"
+          visible = 0
+
+#00925    SetParticleSysVisibility system = "BBQ_FLAMES"
+          visible = 0
+
+#00928    SetParticleSysVisibility system = "NextParticleTorch01"
+          visible = 0
+
+#00931    SetParticleSysVisibility system = "NextParticleTorch02"
+          visible = 0
+
+#00934    SetParticleSysVisibility system = "NextParticleTorch03"
+          visible = 0
+
+#00937    SetParticleSysVisibility system = "NextParticleTorch04"
+          visible = 0
+
+#00940    IF InMultiplayerGame
+#00941      SetParticleSysVisibility system = "BBQ_SMOKE_01"
+            visible = 0
+
+#00944      SetParticleSysVisibility system = "NExtParticle_bats_01"
+            visible = 0
+
+#00947      SetParticleSysVisibility system = "NExtParticle_house_flame_01"
+            visible = 0
+
+#00950      SetParticleSysVisibility system = "NExtParticle_house_flame_02"
+            visible = 0
+
+#00953      SetParticleSysVisibility system = "NExtParticle_house_flame_03"
+            visible = 0
+
+#00956      SetParticleSysVisibility system = "NExtParticle_house_smoke_01"
+            visible = 0
+
+#00959      SetParticleSysVisibility system = "NExtParticle_house_smoke_02"
+            visible = 0
+
+#00962      SetParticleSysVisibility system = "NExtParticle_house_smoke_03"
+            visible = 0
+
+#00965      SetParticleSysVisibility system = "NExtParticle01"
+            visible = 0
+
+#00968      SetParticleSysVisibility system = "NExtParticleSprinkler01"
+            visible = 0
+
+#00971      SetParticleSysVisibility system = "NExtParticleSprinkler02"
+            visible = 0
+
+#00974      SetParticleSysVisibility system = "NExtParticleSprinkler03"
+            visible = 0
+
+#00977      SetParticleSysVisibility system = "NExtParticleSprinkler04"
+            visible = 0
+
+#00980      Kill prefix = "BOARDED_"
+
+#00982      Create prefix = "UNBOARDED_"
+
+#00984      Kill prefix = "SUB_Blocker"
+
+#00986      Kill prefix = "FLYING_"
+
+#00988    ELSE
+#00989    END IF
+#00990    Die
+#00991  END FUNCTION
+
+#00993  FUNCTION ALF_SUB_Status
+#00994    IF InMultiplayerGame
+#00995      Die
+#00996    END IF
+#00997    IF GetGoal goal = GOAL_SCRIPTED1
+
+#00999      Kill name = TRG_Ped_ThinMan
+
+#01001      Kill name = SUB_Axe
+
+#01003      Kill name = SUB_AXE_SHADOW
+
+#01005      Kill prefix = "BOARDED_"
+
+#01007      Kill prefix = "SUB_Blocker"
+
+#01009      Create prefix = "UNBOARDED_"
+
+#01011      Create prefix = "TRG_Rail_Blocker"
+
+#01013      Create prefix = "TRG_RAIL_OPEN_"
+            FLAG_WHOLE_RAIL
+#01015      Kill prefix = "TRG_RAIL_CLOSED_"
+            FLAG_WHOLE_RAIL
+#01017    END IF
+#01018    IF GetGoal goal = GOAL_SCRIPTED2
+
+#01020      Kill prefix = "DISHSTART_"
+
+#01022      Create prefix = "DISHEND_"
+
+#01024      Kill prefix = "SUB_Branch"
+
+#01026      Kill prefix = "TRG_SparkController"
+
+#01028      Kill prefix = "SPARKS_"
+
+#01030      Kill name = TRG_Ped_RichOwner
+
+#01032      Kill name = UNLIT_CURTAIN
+
+#01034      Create name = LIT_CURTAIN
+
+#01036      Create name = TRG_PornMusic
+
+#01038      Die
+#01039    END IF
+#01040    IF IsCareerMode
+#01041    ELSE
+#01042      Kill name = SUB_Axe
+
+#01044      Kill name = SUB_AXE_SHADOW
+
+#01046      Kill prefix = "SUB_Branch"
+
+#01048      Kill prefix = "TRG_SparkController"
+
+#01050      Kill prefix = "SPARKS_"
+
+#01052      Kill name = TRG_Ped_RichOwner
+
+#01054    END IF
+#01055    LOOP
+#01056      IF Obj_FlagSet FLAG_GOT_BRANCH1
+#01057        IF Obj_FlagSet FLAG_GOT_BRANCH2
+#01058          IF Obj_FlagSet FLAG_GOT_BRANCH3
+#01059            IF Obj_FlagSet FLAG_GOT_BRANCH4
+#01060              PauseSkaters
+#01061              Kill name = TRG_Ped_RichOwner
+
+#01063              Kill name = SUB_BranchCounter
+
+#01065              Kill name = UNLIT_CURTAIN
+
+#01067              Create name = LIT_CURTAIN
+
+#01069              Create name = TRG_PornMusic
+
+#01071              Kill prefix = "DISHSTART_"
+
+#01073              Create prefix = "DISHMOV_"
+
+#01075              PlaySkaterCamAnim Skater = 0
+                    name = "Cam_Sat01"
+
+#01078              Got_Scripted2
+#01079              PlaySound SUB_Dish
+#01080              Wait 1.9 seconds
+#01081              UnPauseSkaters
+#01082              Playstream TV_Dude_Thanks vol = 70
+                    channel = 1
+
+#01085              BREAK
+
+#01087            END IF
+#01088          END IF
+#01089        END IF
+#01090      END IF
+#01091      Wait 30
+#01092    END LOOP
+#01093  END FUNCTION
+
+#01095  FUNCTION ALF_SUB_Cam_Secret_Tape
+#01096    IF InNetGame
+#01097    ELSE
+#01098      PauseSkaters
+#01099      PlaySkaterCamAnim Skater = 0
+            name = "Cam_Secret_Tape"
+
+#01102      Wait 1.9 seconds
+#01103      UnPauseSkaters
+#01104    END IF
+#01105  END FUNCTION
+
+#01107  FUNCTION ALF_SUB_Secret_Tape
+#01108    Obj_RotY speed = 200
+
+#01110    LOOP
+#01111      IF Obj_ObjectInRadius radius = 50
+              feet type = Skater
+
+#01114        LOOP
+#01115          IF Obj_ObjectInRadius radius = 3
+                  feet type = Skater
+
+#01118            PlaySound goaldone vol = 100
+
+#01120            LaunchPanelMessage "Secret Tape Goal Complete" properties = panel_message_goalcomplete
+
+#01122            Die
+#01123          END IF
+#01124          IF Obj_ObjectNotInRadius radius = 50
+                  feet type = Skater
+
+#01127            BREAK
+
+#01129          END IF
+#01130          Wait 2 frames
+#01131        END LOOP
+#01132      END IF
+#01133      Wait 10 frames
+#01134    END LOOP
+#01135  END FUNCTION
+
+#01137  FUNCTION ALF_SUB_Hide_Const_Pool
+#01138    IF inside
+#01139      visible prefix = "SUB_CPOOL_"
+
+#01141    ELSE
+#01142      Invisible prefix = "SUB_CPOOL_"
+
+#01144    END IF
+#01145  END FUNCTION
+
+#01147  FUNCTION ALF_SUB_Hide_Nude_Bowl
+#01148    IF inside
+#01149      visible prefix = "SUB_NUDE_BOWL_"
+
+#01151    ELSE
+#01152      Invisible prefix = "SUB_NUDE_BOWL_"
+
+#01154    END IF
+#01155  END FUNCTION
+
+#01157  FUNCTION ALF_SUB_Hide_Nude_Side
+#01158    IF inside
+#01159      visible name = SUB_nb_house_side_01
+
+#01161      visible name = SUB_Nude_Deck01
+
+#01163      visible name = SUB_nude_ramp_02
+
+#01165      visible name = SUB_Nude_Ramp_Coping04
+
+#01167    ELSE
+#01168      Invisible name = SUB_nb_house_side_01
+
+#01170      Invisible name = SUB_Nude_Deck01
+
+#01172      Invisible name = SUB_nude_ramp_02
+
+#01174      Invisible name = SUB_Nude_Ramp_Coping04
+
+#01176    END IF
+#01177  END FUNCTION
+
+#01179  FUNCTION ALF_SUB_Hide_Nude_Side2
+#01180    IF inside
+#01181      Invisible name = SUB_nb_window_01
+
+#01183      Invisible name = SUB_nb_house_02
+
+#01185      Invisible name = SUB_nude_planter_01
+
+#01187      Invisible name = SUB_nude_planter_04
+
+#01189      Invisible name = SUB_Nude_Deck01
+
+#01191    ELSE
+#01192      visible name = SUB_nb_window_01
+
+#01194      visible name = SUB_nb_house_02
+
+#01196      visible name = SUB_nude_planter_01
+
+#01198      visible name = SUB_nude_planter_04
+
+#01200      visible name = SUB_Nude_Deck01
+
+#01202    END IF
+#01203  END FUNCTION
+
+#01205  FUNCTION ALF_SUB_Hide_RichRamp
+#01206    IF inside
+#01207      visible prefix = "SUB_RichRamp"
+
+#01209      visible name = SUB_Rich_House_B_frame
+
+#01211      visible name = SUB_Rich_House_Cactus
+
+#01213      visible name = SUB_Rich_House_Flower
+
+#01215      visible name = SUB_rich_roofplanter01
+
+#01217      visible name = SUB_Rich_House_Backside
+
+#01219    ELSE
+#01220      Invisible prefix = "SUB_RichRamp"
+
+#01222      Invisible name = SUB_Rich_House_B_frame
+
+#01224      Invisible name = SUB_Rich_House_Cactus
+
+#01226      Invisible name = SUB_Rich_House_Flower
+
+#01228      Invisible name = SUB_rich_roofplanter01
+
+#01230      Invisible name = SUB_Rich_House_Backside
+
+#01232    END IF
+#01233  END FUNCTION
+
+#01235  FUNCTION ALF_SUB_Hide_RichSide
+#01236  END FUNCTION
+
+#01238  FUNCTION ALF_SUB_Hide_HauntedYard
+#01239    IF inside
+#01240      visible prefix = "SUB_HHByard"
+
+#01242      visible prefix = "SkeletonHand"
+
+#01244    ELSE
+#01245      Invisible prefix = "SUB_HHByard"
+
+#01247      Invisible prefix = "SkeletonHand"
+
+#01249    END IF
+#01250  END FUNCTION
+
+#01252  FUNCTION ALF_SUB_Hide_FireEngine
+#01253    IF inside
+#01254      visible prefix = "FE_"
+
+#01256    ELSE
+#01257      Invisible prefix = "FE_"
+
+#01259    END IF
+#01260  END FUNCTION
+
+#01262  FUNCTION ALF_SUB_Hide_TrailerStuff
+#01263    IF inside
+#01264      Invisible prefix = "SUB_TRbase"
+
+#01266      Invisible prefix = "SUB_TRamp"
+
+#01268      Invisible name = SUB_TTonyRamp02
+
+#01270    ELSE
+#01271      visible prefix = "SUB_TRbase"
+
+#01273      visible prefix = "SUB_TRamp"
+
+#01275      visible name = SUB_TTonyRamp02
+
+#01277    END IF
+#01278  END FUNCTION
+
+#01280  FUNCTION ALF_SUB_Hide_HauntedBottom
+#01281    IF inside
+#01282      visible prefix = "SUB_HHbottom_hall_"
+
+#01284      visible name = SUB_hh_web_01
+
+#01286      visible name = SUB_HauntedRamp01
+
+#01288      visible name = SUB_Haunted_Coping02
+
+#01290    ELSE
+#01291      Invisible prefix = "SUB_HHbottom_hall_"
+
+#01293      Invisible name = SUB_hh_web_01
+
+#01295      Invisible name = SUB_HauntedRamp01
+
+#01297      Invisible name = SUB_Haunted_Coping02
+
+#01299    END IF
+#01300  END FUNCTION
+
+#01302  FUNCTION ALF_SUB_Hide_HauntedHall
+#01303    IF inside
+#01304      visible prefix = "SUB_hh_top_hall_"
+
+#01306      visible name = SUB_hh_candleabra_01
+
+#01308      visible name = SUB_hh_candleabra_02
+
+#01310      visible name = SUB_hh_Coffin
+
+#01312      visible name = SUB_hh_Coffin_shadow
+
+#01314    ELSE
+#01315      Invisible prefix = "SUB_hh_top_hall_"
+
+#01317      Invisible name = SUB_hh_candleabra_01
+
+#01319      Invisible name = SUB_hh_candleabra_02
+
+#01321      Invisible name = SUB_hh_Coffin
+
+#01323      Invisible name = SUB_hh_Coffin_shadow
+
+#01325    END IF
+#01326  END FUNCTION
+
+#01328  FUNCTION ALF_SUB_Hide_Flames
+#01329    IF inside
+#01330      SetParticleSysVisibility system = "NExtParticle_house_flame_01"
+            visible = 1
+
+#01333      SetParticleSysVisibility system = "NExtParticle_house_flame_02"
+            visible = 1
+
+#01336      SetParticleSysVisibility system = "NExtParticle_house_flame_03"
+            visible = 1
+
+#01339    ELSE
+#01340      SetParticleSysVisibility system = "NExtParticle_house_flame_01"
+            visible = 0
+
+#01343      SetParticleSysVisibility system = "NExtParticle_house_flame_02"
+            visible = 0
+
+#01346      SetParticleSysVisibility system = "NExtParticle_house_flame_03"
+            visible = 0
+
+#01349    END IF
+#01350  END FUNCTION
+
+#01352  FUNCTION ALF_SUB_DishMov
+#01353    Obj_RotY angle = 180
+          speed = 90
+
+#01356    Obj_WaitRotate
+#01357    Create prefix = "DISHEND_"
+
+#01359    Die
+#01360  END FUNCTION
+
+#01362  FUNCTION ALF_SUB_DishMov2
+#01363    Obj_RotY angle = 180
+          speed = 90
+
+#01366    Obj_WaitRotate
+#01367    Die
+#01368  END FUNCTION
+
+#01370  FUNCTION ALF_Scripted2_Start_Script
+#01371    Create prefix = "TRG_ScriptedBird"
+
+#01373    Kill name = SUB_Squirrel03
+
+#01375    Wait 35 frames
+#01376    PlaySound Can_Bird1
+#01377    Shatter name = SPARKS_02
+          Area = 2.25
+          Variance = 1
+          Vel_x = 30
+          Vel_y = 30
+          Vel_z = 0
+          Spread = 5.5
+
+#01385    Wait 5 frames
+#01386    Shatter name = SPARKS_02
+          Area = 2.25
+          Variance = 1
+          Vel_x = -30
+          Vel_y = 30
+          Vel_z = 0
+          Spread = 5.5
+
+#01394    PlaySound sub_spark2x
+#01395    Create name = SUB_Spark02
+
+#01397    Wait 60 frames
+#01398    Shatter name = SPARKS_01
+          Area = 2.25
+          Variance = 1
+          Vel_x = 30
+          Vel_y = 30
+          Vel_z = 0
+          Spread = 5.5
+
+#01406    PlaySound Can_Bird2
+#01407    Wait 5 frames
+#01408    Create name = SUB_Spark01
+
+#01410    Shatter name = SPARKS_01
+          Area = 2.25
+          Variance = 1
+          Vel_x = -30
+          Vel_y = 30
+          Vel_z = 0
+          Spread = 5.5
+
+#01418    PlaySound sub_spark2x
+#01419  END FUNCTION
+
+#01421  FUNCTION ALF_Scripted2_End_Script
+#01422    Kill prefix = "TRG_ScriptedBird"
+
+#01424    Create name = SUB_Squirrel03
+
+#01426  END FUNCTION
+
+#01428  FUNCTION ALF_Sub_Scripted2Bird
+#01429    Obj_PlayAnim anim = Flap
+          cycle
+#01431    Obj_MoveToRelPos VECTOR[0.0; 300.0; 0.0] speed = 3
+          acceleration = 2
+
+#01434    Wait 4 seconds
+#01435    Die
+#01436  END FUNCTION
+
+#01438  FUNCTION ALF_SUB_Sparks
+#01439    Obj_ClearExceptions
+#01440    Obj_SetOuterRadius 50
+#01441    Obj_SetException Ex = SkaterOutOfRadius
+          Scr = ALF_SUB_Sparks_Hold
+          params = STRUCT{
+            NULL }
+
+#01446    LOOP
+#01447      Wait RANDOM[3][8; 19; 30]
+            0.25 seconds JUMP 0x19000000 0.5 seconds JUMP 0x0a000000 0.75 seconds
+#01449      Shatter name = GLOBAL.SparkNode
+            Area = 2.25
+            Variance = 1
+            Vel_x = 30
+            Vel_y = 30
+            Vel_z = 0
+            Spread = 5.5
+
+#01457      Obj_PlaySound sub_spark2x
+#01458      Create links
+#01459      Wait RANDOM[3][8; 19; 30]
+            0.25 seconds JUMP 0x19000000 0.5 seconds JUMP 0x0a000000 0.75 seconds
+#01461      Shatter name = GLOBAL.SparkNode
+            Area = 2.25
+            Variance = 1
+            Vel_x = -30
+            Vel_y = 30
+            Vel_z = 0
+            Spread = 5.5
+
+#01469      Obj_PlaySound sub_spark2x
+#01470      Create links
+#01471      Wait RANDOM[3][8; 19; 30]
+            0.25 seconds JUMP 0x19000000 0.5 seconds JUMP 0x0a000000 0.75 seconds
+#01473      Shatter name = GLOBAL.SparkNode
+            Area = 2.25
+            Variance = 1
+            Vel_x = 50
+            Vel_y = 30
+            Vel_z = 0
+            Spread = 5.5
+
+#01481      Obj_PlaySound sub_spark2x
+#01482      Create links
+#01483      Wait RANDOM[3][8; 19; 30]
+            0.25 seconds JUMP 0x19000000 0.5 seconds JUMP 0x0a000000 0.75 seconds
+#01485      Shatter name = GLOBAL.SparkNode
+            Area = 2.25
+            Variance = 1
+            Vel_x = -50
+            Vel_y = 30
+            Vel_z = 0
+            Spread = 5.5
+
+#01493      Obj_PlaySound sub_spark2x
+#01494      Create links
+#01495      Wait RANDOM[3][8; 19; 30]
+            1.5 seconds JUMP 0x19000000 1.75 seconds JUMP 0x0a000000 2 seconds
+#01497    END LOOP
+#01498  END FUNCTION
+
+#01500  FUNCTION ALF_SUB_Sparks_Hold
+#01501    Obj_ClearExceptions
+#01502    Obj_SetInnerRadius 50
+#01503    Obj_SetException Ex = SkaterInRadius
+          Scr = ALF_SUB_Sparks
+          params = STRUCT{
+            NULL }
+
+#01508    LOOP
+#01509      Wait 1000 seconds
+#01510    END LOOP
+#01511  END FUNCTION
+
+#01513  FUNCTION ALF_SUB_SparkGeo
+#01514    Wait 5 frames
+#01515    Die
+#01516  END FUNCTION
+
+#01518  FUNCTION ALF_SUB_Light_BBQ
+#01519    IF InMultiplayerGame
+#01520    ELSE
+#01521      PlaySound SUB_furnacelite
+#01522      DoFlash duration = 0.15
+            start_r = 0
+            start_g = 0
+            start_b = 0
+            start_a = 155
+            end_r = 255
+            end_g = 0
+            end_b = 0
+            end_a = 0
+
+#01532      SetParticleSysVisibility system = "BBQ_FLAMES"
+            visible = 1
+
+#01535      Create name = SUB_bbq_wibble
+
+#01537      SendFlag name = TRG_Ped_BBQ_Guy
+            FLAG_BBQ_LIT
+#01539      StopStream
+#01540      Create name = TRGP_Gap_End_HotFoot02
+
+#01542      Kill name = TRGP_Gap_End_HotFoot
+
+#01544      Obj_StopStream
+#01545      Playstream RANDOM[3][8; 19; 30]
+            Sub_BBQ_Eyebrows
+#01547      JUMP 0x14000000 Sub_BBQ_NowWereCookin
+#01548      JUMP 0x05000000 Sub_BBQ_ThatIsAFire
+#01549    END IF
+#01550  END FUNCTION
+
+#01552  FUNCTION ALF_SUB_PumpkinGuyIntro
+#01553    Obj_CycleAnim anim = IdletoIdle2
+
+#01555    Obj_CycleAnim anim = Idle2
+
+#01557    Obj_PlayAnim anim = Idle2toIdle
+
+#01559  END FUNCTION
+
+#01561  FUNCTION ALF_SUB_PumpkinGuy
+#01562    Obj_CycleAnim anim = ShakeFist
+
+#01564  END FUNCTION
+
+#01566  FUNCTION ALF_SUB_Ped_Scardey
+#01567    LOOP
+#01568      Obj_PlayAnim anim = Cower
+
+#01570      Obj_WaitAnimFinished
+#01571    END LOOP
+#01572  END FUNCTION
+
+#01574  FUNCTION ALF_SUB_Ped_RichOwner
+#01575    Obj_ClearExceptions
+#01576    Obj_LookAtNodeLinked
+#01577    Obj_SetInnerRadius 20
+#01578    Obj_SetException Ex = SkaterInRadius
+          Scr = ALF_SUB_Ped_RichOwner_Talking
+
+#01581    LOOP
+#01582      Obj_PlayAnim anim = Idle
+
+#01584      Obj_WaitAnimFinished
+#01585      Obj_PlayAnim anim = RichKidJump1
+
+#01587      Wait 55 Gameframes
+#01588      Obj_PlaySound LandConc vol = 60
+            dropoff = 100
+            pitch = 45
+
+#01592      Obj_WaitAnimFinished
+#01593      Obj_PlayAnim anim = RichKidJump2
+
+#01595      Wait 50 Gameframes
+#01596      Obj_PlaySound LandConc vol = 50
+            dropoff = 100
+            pitch = 50
+
+#01600      Obj_WaitAnimFinished
+#01601      Obj_PlayAnim anim = RichKidJump2
+
+#01603      Wait 50 Gameframes
+#01604      Obj_PlaySound LandConc vol = 60
+            dropoff = 100
+            pitch = 45
+
+#01608      Obj_WaitAnimFinished
+#01609    END LOOP
+#01610  END FUNCTION
+
+#01612  FUNCTION ALF_SUB_Ped_RichOwner_Talking
+#01613    Obj_ClearExceptions
+#01614    Obj_SetInnerRadius 3
+#01615    Obj_SetOuterRadius 100
+#01616    Obj_SetException Ex = SkaterOutOfRadius
+          Scr = ALF_SUB_Ped_RichOwner
+
+#01619    Obj_SetException Ex = SkaterInRadius
+          Scr = ALF_SUB_Ped_RichOwner_Falling
+
+#01622    IF Obj_AnimEquals RichKidJump1
+#01623      Obj_WaitAnimFinished
+#01624    END IF
+#01625    IF Obj_AnimEquals RichKidJump2
+#01626      Obj_WaitAnimFinished
+#01627    END IF
+#01628    LOOP
+#01629      Obj_PlayAnim anim = RichKidPoint
+
+#01631      Obj_Playstream RANDOM[16][65; 76; 87; 98; 109; 120; 131; 142; 153; 164; 175; 186; 197; 208; 219; 230]
+
+#01633      TV_Dude_17ftTaller
+#01634      JUMP 0xd7000000 TV_Dude_ALittleHelp
+#01635      JUMP 0xc8000000 TV_Dude_Almost
+#01636      JUMP 0xb9000000 TV_Dude_BranchesScrewing
+#01637      JUMP 0xaa000000 TV_Dude_CuttingPowerToDish
+#01638      JUMP 0x9b000000 TV_Dude_GetUpThere
+#01639      JUMP 0x8c000000 TV_Dude_GottaBeAWayUp
+#01640      JUMP 0x7d000000 TV_Dude_HelpMe
+#01641      JUMP 0x6e000000 TV_Dude_HelpMeWIthBranches
+#01642      JUMP 0x5f000000 TV_Dude_LittleBitFurther
+#01643      JUMP 0x50000000 TV_Dude_MissingFavShow
+#01644      JUMP 0x41000000 TV_Dude_StupidBranches
+#01645      JUMP 0x32000000 TV_Dude_ThisSucks
+#01646      JUMP 0x23000000 TV_Dude_Uhhgh
+#01647      JUMP 0x14000000 TV_Dude_Uhhgh02
+#01648      JUMP 0x05000000 TV_Dude_Uhhgh03
+#01649      Obj_WaitAnimFinished
+#01650      Obj_PlayAnim anim = RichKidJump1
+
+#01652      Wait 55 Gameframes
+#01653      Obj_PlaySound LandConc vol = 60
+            dropoff = 100
+            pitch = 45
+
+#01657      Obj_WaitAnimFinished
+#01658      Obj_PlayAnim anim = RichKidJump2
+
+#01660      Wait 50 Gameframes
+#01661      Obj_PlaySound LandConc vol = 65
+            dropoff = 100
+            pitch = 42
+
+#01665      Obj_WaitAnimFinished
+#01666      Obj_PlayAnim anim = RichKidJump2
+
+#01668      Wait 50 Gameframes
+#01669      Obj_PlaySound LandConc vol = 50
+            dropoff = 100
+            pitch = 50
+
+#01673      Obj_WaitAnimFinished
+#01674      Obj_PlayAnim anim = RichKidJump1
+
+#01676      Wait 55 Gameframes
+#01677      Obj_PlaySound LandConc vol = 60
+            dropoff = 100
+            pitch = 45
+
+#01681      Obj_WaitAnimFinished
+#01682    END LOOP
+#01683  END FUNCTION
+
+#01685  FUNCTION ALF_SUB_Ped_RichOwner_Falling
+#01686    Obj_ClearExceptions
+#01687    Obj_SetOuterRadius 20
+#01688    Obj_SetException Ex = SkaterOutOfRadius
+          Scr = ALF_SUB_Ped_RichOwner_GetUp
+
+#01691    PlaySound bitchslap2
+#01692    StopStream
+#01693    Obj_PlayAnim anim = HitBySkater
+
+#01695    PlaySound la_vo_knockped1
+#01696    Obj_WaitAnimFinished
+#01697    LOOP
+#01698      Wait RANDOM[3][8; 14; 20]
+            10 JUMP 0x0f000000 60 JUMP 0x05000000 90 frames
+#01700      Obj_PlayAnim anim = HitBySkater
+            from = 88
+            to = 81
+
+#01704      Obj_WaitAnimFinished
+#01705      Obj_PlayAnim anim = HitBySkater
+            from = 81
+            to = 88
+
+#01709      Obj_WaitAnimFinished
+#01710    END LOOP
+#01711  END FUNCTION
+
+#01713  FUNCTION ALF_SUB_Ped_RichOwner_GetUp
+#01714    Obj_ClearExceptions
+#01715    Obj_PlayAnim anim = GetUp
+
+#01717    Obj_WaitAnimFinished
+#01718    Goto ALF_SUB_Ped_RichOwner
+#01719  END FUNCTION
+
+#01721  FUNCTION ALF_SUB_Ped_RichOwner_Walking
+#01722    Obj_ClearExceptions
+#01723    Obj_SetInnerRadius 3
+#01724    Obj_SetException Ex = SkaterInRadius
+          Scr = ALF_SUB_Ped_RichOwner_Walk_Fall
+
+#01727    Obj_SetGroundOffset 3.1 feet
+#01728    Obj_StickToGround distAbove = 3
+          distBelow = 6
+
+#01731    Obj_SetPathTurnDist 2.5 feet
+#01732    Obj_PathHeading On
+#01733    Obj_SetPathVelocity 5 fps
+#01734    Obj_FollowPathLinked
+#01735    LOOP
+#01736      IF Obj_IsMoving
+#01737        SendFlag name = TRG_Ped_RichOwnerWalking
+              FLAG_RICH_OWNER_WALKING
+#01739        Obj_CycleAnim anim = Walk1
+
+#01741      ELSE
+#01742        ClearFlag name = TRG_Ped_RichOwnerWalking
+              FLAG_RICH_OWNER_WALKING
+#01744        LOOP
+#01745          Obj_CycleAnim anim = Idle
+
+#01747          Obj_CycleAnim anim = Idle
+
+#01749          Obj_CycleAnim anim = Talk
+
+#01751        END LOOP
+#01752      END IF
+#01753    END LOOP
+#01754  END FUNCTION
+
+#01756  FUNCTION ALF_SUB_Ped_RichOwner_Stand_Talking
+#01757    Obj_ClearExceptions
+#01758    Obj_SetInnerRadius 3
+#01759    Obj_SetException Ex = SkaterInRadius
+          Scr = ALF_SUB_Ped_RichOwner_Walk_Fall
+
+#01762    LOOP
+#01763      Obj_CycleAnim anim = Idle
+
+#01765      Obj_CycleAnim anim = Idle
+
+#01767      Obj_CycleAnim anim = Talk
+
+#01769    END LOOP
+#01770  END FUNCTION
+
+#01772  FUNCTION ALF_SUB_Ped_RichOwner_Walk_Fall
+#01773    IF Obj_FlagSet FLAG_RICH_OWNER_WALKING
+#01774      Obj_StopAlongPath
+#01775    END IF
+#01776    Obj_ClearExceptions
+#01777    Obj_SetOuterRadius 20
+#01778    Obj_SetException Ex = SkaterOutOfRadius
+          Scr = ALF_SUB_Ped_RichOwner_GetUp_Walk
+
+#01781    PlaySound bitchslap2
+#01782    Obj_CycleAnim anim = HitBySkater
+
+#01784    LOOP
+#01785      Wait RANDOM[3][8; 14; 20]
+            10 JUMP 0x0f000000 60 JUMP 0x05000000 90 frames
+#01787      Obj_PlayAnim anim = HitBySkater
+            from = 88
+            to = 81
+
+#01791      Obj_WaitAnimFinished
+#01792      Obj_PlayAnim anim = HitBySkater
+            from = 81
+            to = 88
+
+#01796      Obj_WaitAnimFinished
+#01797    END LOOP
+#01798  END FUNCTION
+
+#01800  FUNCTION ALF_SUB_Ped_RichOwner_GetUp_Walk
+#01801    Obj_ClearExceptions
+#01802    Obj_CycleAnim anim = GetUp
+
+#01804    IF Obj_FlagSet FLAG_RICH_OWNER_WALKING
+#01805      Obj_StartAlongPath
+#01806      Goto ALF_SUB_Ped_RichOwner_Walking
+#01807    ELSE
+#01808      Goto ALF_SUB_Ped_RichOwner_Stand_Talking
+#01809    END IF
+#01810  END FUNCTION
+
+#01812  FUNCTION ALF_SUB_BBQ_GUY
+#01813    Obj_ClearExceptions
+#01814    Obj_SetInnerRadius 20
+#01815    Obj_SetException Ex = SkaterInRadius
+          Scr = ALF_SUB_BBQ_Talk
+
+#01818    LOOP
+#01819      Obj_CycleAnim anim = Idle
+
+#01821      Obj_CycleAnim anim = BbqGuyFan
+
+#01823      Obj_CycleAnim anim = BbqGuyFan
+
+#01825      Obj_CycleAnim anim = BbqGuyFluid
+
+#01827    END LOOP
+#01828  END FUNCTION
+
+#01830  FUNCTION ALF_SUB_BBQ_Talk
+#01831    Obj_ClearExceptions
+#01832    Obj_SetOuterRadius 100
+#01833    Obj_SetInnerRadius 3
+#01834    Obj_SetException Ex = SkaterOutOfRadius
+          Scr = ALF_SUB_BBQ_GUY
+
+#01837    Obj_SetException Ex = SkaterInRadius
+          Scr = ALF_SUB_BBQ_FALL
+
+#01840    LOOP
+#01841      IF Obj_FlagSet FLAG_BBQ_LIT
+#01842        Obj_Playstream RANDOM[5][21; 32; 43; 54; 65]
+
+#01844        Sub_BBQ_BurntToCrisp
+#01845        JUMP 0x32000000 Sub_BBQ_CharredOrBurnt
+#01846        JUMP 0x23000000 Sub_BBQ_HowYouWantYours
+#01847        JUMP 0x14000000 Sub_BBQ_SquirrelGoodEating
+#01848        JUMP 0x05000000 Sub_BBQ_VeggiesNot
+#01849        Obj_CycleAnim anim = Talk
+
+#01851      ELSE
+#01852        Obj_Playstream RANDOM[6][25; 36; 47; 58; 69; 80]
+
+#01854        Sub_BBQ_CantGetThisLight
+#01855        JUMP 0x41000000 Sub_BBQ_GetThisDarnThingLight
+#01856        JUMP 0x32000000 Sub_BBQ_LastQtOfLighterFluid
+#01857        JUMP 0x23000000 Sub_BBQ_New01
+#01858        JUMP 0x14000000 Sub_BBQ_SureAmHungry
+#01859        JUMP 0x05000000 Sub_BBQ_MoreLighterFluid
+#01860        Obj_CycleAnim anim = Talk
+
+#01862        Obj_CycleAnim anim = BBQGuyBrow
+
+#01864      END IF
+#01865      IF Obj_FlagSet FLAG_BBQ_LIT
+#01866        Obj_CycleAnim anim = BBQGuyFlip
+
+#01868        Obj_CycleAnim anim = BBQGuyFlip
+
+#01870        Obj_CycleAnim anim = BBQGuyBrow
+
+#01872      ELSE
+#01873        Obj_CycleAnim anim = Idle
+
+#01875        Obj_CycleAnim anim = BbqGuyFan
+
+#01877        Obj_CycleAnim anim = BbqGuyFan
+
+#01879        Obj_CycleAnim anim = BbqGuyFluid
+
+#01881      END IF
+#01882    END LOOP
+#01883  END FUNCTION
+
+#01885  FUNCTION ALF_SUB_BBQ_FALL
+#01886    Obj_ClearExceptions
+#01887    Obj_SetOuterRadius 20
+#01888    Obj_SetException Ex = SkaterOutOfRadius
+          Scr = ALF_SUB_BBQ_GETUP
+
+#01891    PlaySound bitchslap2
+#01892    StopStream
+#01893    PlaySound la_vo_knockped1
+#01894    Obj_CycleAnim anim = HitBySkater
+
+#01896    LOOP
+#01897      Wait RANDOM[3][8; 14; 20]
+            10 JUMP 0x0f000000 60 JUMP 0x05000000 90 frames
+#01899      Obj_PlayAnim anim = HitBySkater
+            from = 88
+            to = 81
+
+#01903      Obj_WaitAnimFinished
+#01904      Obj_PlayAnim anim = HitBySkater
+            from = 81
+            to = 88
+
+#01908      Obj_WaitAnimFinished
+#01909    END LOOP
+#01910  END FUNCTION
+
+#01912  FUNCTION ALF_SUB_BBQ_GETUP
+#01913    Obj_ClearExceptions
+#01914    Obj_CycleAnim anim = GetUp
+
+#01916    Goto ALF_SUB_BBQ_GUY
+#01917  END FUNCTION
+
+#01919  FUNCTION ALF_SUB_ThinMan
+#01920    IF IsCareerMode
+#01921    ELSE
+#01922      Die
+#01923    END IF
+#01924    Obj_ApplyScaling x = 1.1
+          y = 1.4
+          z = 1.1
+
+#01928    Obj_ClearExceptions
+#01929    Obj_SetInnerRadius 20
+#01930    Obj_SetException Ex = SkaterInRadius
+          Scr = ALF_SUB_ThinMan_Talk
+
+#01933    LOOP
+#01934      Obj_LookAtObject type = Skater
+
+#01936      Obj_CycleAnim anim = Idle3
+
+#01938    END LOOP
+#01939  END FUNCTION
+
+#01941  FUNCTION ALF_SUB_ThinMan_Talk
+#01942    Obj_ClearExceptions
+#01943    Obj_SetOuterRadius 25
+#01944    Obj_SetInnerRadius 3
+#01945    Obj_SetException Ex = SkaterOutOfRadius
+          Scr = ALF_SUB_ThinMan
+
+#01948    Obj_SetException Ex = SkaterInRadius
+          Scr = ALF_SUB_ThinMan_Punch
+
+#01951    Obj_LookAtObject type = Skater
+
+#01953    LOOP
+#01954      IF Obj_FlagSet FLAG_SKATER_HAS_AXE
+#01955        Obj_ClearExceptions
+#01956        Create name = TRG_Ped_ThinMan_Axe
+
+#01958        Wait 3 Gameframes
+#01959        Die
+#01960      ELSE
+#01961        Obj_CycleAnim anim = Idle3ToIdle
+
+#01963        IF Obj_VarEQ var = 0
+                value = 0
+
+#01966          Obj_Playstream Sub_TM_LockedOut
+#01967          Obj_VarSet var = 0
+                value = 1
+
+#01970          LaunchPanelMessage "Bring Me My Key!" properties = panel_message_thinman
+
+#01972        ELSE
+#01973          Obj_VarInc var = 0
+
+#01975          IF Obj_VarGT var = 0
+                  value = 5
+
+#01978            LaunchPanelMessage RANDOM[2][4; 41]
+                  "My Key Can Chop Open The Door!" JUMP 0x21000000 "My Key Has A Wooden Handle!" properties = panel_message_thinman
+
+#01981          ELSE
+#01982            LaunchPanelMessage RANDOM[2][4; 26]
+                  "Where's My Key?" JUMP 0x18000000 "That's Not My Key!" properties = panel_message_thinman
+
+#01985          END IF
+#01986          Obj_Playstream RANDOM[21][85; 96; 107; 118; 129; 140; 151; 162; 173; 184; 195; 206; 217; 228; 239; 250; 261; 272; 283; 294; 305]
+
+#01988          Sub_TM_FindMyKey
+#01989          JUMP 0x22010000 Sub_TM_DontComeBackWithoutKey
+#01990          JUMP 0x13010000 Sub_TM_DoYouHaveKey
+#01991          JUMP 0x04010000 Sub_TM_BreakTheseBoards
+#01992          JUMP 0xf5000000 Sub_TM_GetMyKey
+#01993          JUMP 0xe6000000 Sub_TM_AxToGrind
+#01994          JUMP 0xd7000000 Sub_TM_LongWoodHandle
+#01995          JUMP 0xc8000000 Sub_TM_AxYouAgain
+#01996          JUMP 0xb9000000 Sub_TM_NoseToGrindstone
+#01997          JUMP 0xaa000000 Sub_TM_SharpenWits
+#01998          JUMP 0x9b000000 Sub_TM_Axident
+#01999          JUMP 0x8c000000 Sub_TM_BigChopper
+#02000          JUMP 0x7d000000 Sub_TM_LivingScream
+#02001          JUMP 0x6e000000 Sub_TM_Icecream
+#02002          JUMP 0x5f000000 Sub_TM_NotTonyHawk
+#02003          JUMP 0x50000000 Sub_TM_TonyHawk
+#02004          JUMP 0x41000000 Sub_TM_ComeOutAtNight
+#02005          JUMP 0x32000000 Sub_TM_Mummy
+#02006          JUMP 0x23000000 Sub_TM_NothingAfraid
+#02007          JUMP 0x14000000 Sub_TM_FearFear
+#02008          JUMP 0x05000000 Sub_TM_VeryAfraid
+#02009        END IF
+#02010        IF ProfileEquals Is_Named = hawk
+
+#02012          SetParticleSysVisibility system = "THINMAN_HEARTS01"
+                visible = 1
+
+#02015          Obj_CycleAnim anim = PrivateCarrera_Init
+
+#02017          Obj_CycleAnim anim = PrivateCarrera_Idle
+                Numcycles = 3
+
+#02020          SetParticleSysVisibility system = "THINMAN_HEARTS01"
+                visible = 0
+
+#02023        ELSE
+#02024          Obj_CycleAnim anim = Talk
+
+#02026        END IF
+#02027        Obj_CycleAnim anim = IdleToIdle3
+
+#02029      END IF
+#02030      Obj_LookAtObject type = Skater
+
+#02032      Obj_CycleAnim anim = Idle3
+            Numcycles = 3
+
+#02035    END LOOP
+#02036  END FUNCTION
+
+#02038  FUNCTION ALF_SUB_ThinMan_Axe
+#02039    Obj_ClearExceptions
+#02040    Obj_SetException Ex = ALF_SKIP_CUTSCENE_EXCEPTION
+          Scr = ALF_SUB_ThinManSkipped
+
+#02043    Got_Scripted1
+#02044    SetGlobalFlag flag = SKATESHOP_JUST_GOT_LEVEL4_GOAL
+
+#02046    Obj_SpawnScript ALF_SUB_ThinManCamera params = STRUCT{
+            NULL }
+
+#02049    LaunchLocalMessage id = A01
+          "@" panel_message_PickUpVoided
+#02051    Obj_ApplyScaling x = 1.1
+          y = 1.4
+          z = 1.1
+
+#02055    Wait 2 Gameframes
+#02056    PauseSkaters
+#02057    TeleportSkaterDown
+#02058    Obj_PlayAnim anim = Idle3ToIdle
+
+#02060    Obj_MoveToNode name = TRG_Ped_ThinMan_Axe_Nav
+
+#02062    Obj_WaitAnimFinished
+#02063    Obj_Playstream RANDOM[2][9; 20]
+
+#02065    Sub_TM_HomeImprovement
+#02066    JUMP 0x05000000 Sub_TM_LittlePig
+#02067    Obj_PlayAnim anim = Talk
+
+#02069    Obj_WaitAnimFinished
+#02070    Obj_LookAtNode name = TRG_Ped_ThinManNav01
+          speed = 270
+
+#02073    Obj_CycleAnim anim = RotateLeft
+
+#02075    Obj_FollowPath name = TRG_Ped_ThinMan_Axe_Nav
+
+#02077    Obj_CycleAnim anim = IdleToWalk
+
+#02079    Obj_StickToGround Off
+#02080    Obj_CycleAnim anim = Walk1
+          Numcycles = 2
+
+#02083    Obj_CycleAnim anim = IdleToThinmanChop
+
+#02085    Obj_PlayAnim anim = ThinmanChop
+
+#02087    Wait 35 Gameframes
+#02088    Obj_PlaySound SUB_Axeman
+#02089    Wait 5 Gameframes
+#02090    Create prefix = "SPLINTER_"
+
+#02092    Obj_WaitAnimFinished
+#02093    Obj_PlayAnim anim = ThinmanChop
+
+#02095    Wait 35 Gameframes
+#02096    Obj_PlaySound SUB_Axeman
+#02097    Wait 0.1 seconds
+#02098    Create prefix = "SPLINTER_"
+
+#02100    PlaySound hitflimsywood vol = 100
+
+#02102    Kill prefix = "BOARDED_"
+
+#02104    Create prefix = "UNBOARDED_"
+
+#02106    Create prefix = "FLYING_BOARDS_"
+
+#02108    Kill name = FLYING_BOARDS_04
+
+#02110    Shatter name = FLYING_BOARDS_04
+          Area = 1500
+          Variance = 4.6
+          Vel_x = RANDOM[3][8; 14; 20]
+
+          0.0 JUMP 0x0f000000 30 JUMP 0x05000000 -30 Vel_y = 10.0
+          Vel_z = RANDOM[3][8; 14; 20]
+
+          0.0 JUMP 0x0f000000 30 JUMP 0x05000000 -30 Spread = 1.5
+
+#02120    Create prefix = "TRG_RAIL_OPEN_"
+          FLAG_WHOLE_RAIL
+#02122    Kill prefix = "TRG_RAIL_CLOSED_"
+          FLAG_WHOLE_RAIL
+#02124    Obj_WaitAnimFinished
+#02125    Obj_Playstream sub_TM_Howl channel = 0
+
+#02127    Obj_CycleAnim anim = ThinmanChopToIdle
+
+#02129    Playstream SUB_thinmanflame vol = 200
+          channel = 1
+
+#02132    SetParticleSysVisibility system = "THINMAN_FLAMES01"
+          visible = 1
+
+#02135    SetParticleSysVisibility system = "THINMAN_FLAMES02"
+          visible = 1
+
+#02138    SetParticleSysVisibility system = "THINMAN_FLAMES03"
+          visible = 1
+
+#02141    Obj_LookAtObject type = Skater
+
+#02143    Obj_PlayAnim anim = ThinmanCheering
+
+#02145    Obj_MoveToRelPos VECTOR[0.0; -250.0; 0.0] speed = 5
+
+#02147    Wait 75 Gameframes
+#02148    SetParticleSysVisibility system = "THINMAN_FLAMES01"
+          visible = 0
+
+#02151    SetParticleSysVisibility system = "THINMAN_FLAMES02"
+          visible = 0
+
+#02154    SetParticleSysVisibility system = "THINMAN_FLAMES03"
+          visible = 0
+
+#02157    TeleportSkaterUp
+#02158    Kill prefix = "SUB_Blocker"
+
+#02160    Create prefix = "TRG_Rail_Blocker"
+
+#02162    UnPauseSkaters
+#02163    Die
+#02164  END FUNCTION
+
+#02166  FUNCTION ALF_SUB_ThinManSkipped
+#02167    Kill prefix = "BOARDED_"
+
+#02169    Create prefix = "UNBOARDED_"
+
+#02171    Kill prefix = "SUB_Blocker"
+
+#02173    Create prefix = "TRG_Rail_Blocker"
+
+#02175    Create prefix = "TRG_RAIL_OPEN_"
+          FLAG_WHOLE_RAIL
+#02177    Kill prefix = "TRG_RAIL_CLOSED_"
+          FLAG_WHOLE_RAIL
+#02179    SetParticleSysVisibility system = "THINMAN_FLAMES01"
+          visible = 0
+
+#02182    SetParticleSysVisibility system = "THINMAN_FLAMES02"
+          visible = 0
+
+#02185    SetParticleSysVisibility system = "THINMAN_FLAMES03"
+          visible = 0
+
+#02188    TeleportSkaterUp
+#02189    UnPauseSkaters
+#02190    Die
+#02191  END FUNCTION
+
+#02193  FUNCTION ALF_SUB_ThinManCamera
+#02194    PlaySkaterCamAnim Skater = 0
+          name = "Cam_ThinManAxe"
+
+#02197    WaitForSkippable
+#02198    SetSkaterCamAnimSkippable Skater = 0
+          skippable = 1
+
+#02201    LOOP
+#02202      IF SkaterCamAnimFinished Skater = 0
+              name = "Cam_ThinManAxe"
+
+#02205        SendException name = TRG_Ped_ThinMan_Axe
+              ALF_SKIP_CUTSCENE_EXCEPTION
+#02207        BREAK
+
+#02209      END IF
+#02210      Wait 1 frame
+#02211    END LOOP 730
+#02212  END FUNCTION
+
+#02214  FUNCTION ALF_SUB_Skater_Fall
+#02215    Obj_ClearExceptions
+#02216    MakeSkaterGoto PedKnockDown
+#02217    Wait 20 frames
+#02218    Obj_SetInnerRadius 3
+#02219    Obj_SetException Ex = SkaterInRadius
+          Scr = ALF_SUB_Skater_Fall
+          CallInsteadOfGoto
+#02222  END FUNCTION
+
+#02224  FUNCTION ALF_SUB_ThinMan_Waiting
+#02225    Obj_ClearExceptions
+#02226    Obj_SetOuterRadius 25
+#02227    Obj_SetInnerRadius 3
+#02228    Obj_SetException Ex = SkaterOutOfRadius
+          Scr = ALF_SUB_ThinMan
+
+#02231    Obj_SetException Ex = SkaterInRadius
+          Scr = ALF_SUB_ThinMan_Punch
+
+#02234    LOOP
+#02235      Obj_LookAtObject type = Skater
+
+#02237      Obj_CycleAnim anim = Idle3
+
+#02239    END LOOP
+#02240  END FUNCTION
+
+#02242  FUNCTION ALF_SUB_ThinMan_Punch
+#02243    Obj_ClearExceptions
+#02244    Obj_SetInnerRadius 0
+#02245    Obj_LookAtObject type = Skater
+          time = 0.05
+
+#02248    Obj_PlayAnim anim = punch
+
+#02250    Wait 0.05
+#02251    Obj_PlaySound bail04 vol = 200
+
+#02253    Obj_PlaySound bail05 vol = 200
+
+#02255    StopStream
+#02256    Obj_Playstream RANDOM[4][17; 28; 39; 50]
+
+#02258    Sub_TM_DumbAx
+#02259    JUMP 0x23000000 Sub_TM_CantHackIt
+#02260    JUMP 0x14000000 Sub_TM_Axident02
+#02261    JUMP 0x05000000 Sub_TM_BuckingMad
+#02262    Obj_LookAtObject type = Skater
+          time = 0.05
+
+#02265    MakeSkaterGoto PedKnockDown
+#02266    Obj_SetAnimCycleMode Off
+#02267    Wait 0.05
+#02268    Obj_LookAtObject type = Skater
+          time = 0.05
+
+#02271    Obj_WaitAnimFinished
+#02272    Obj_StopAlongPath
+#02273    Obj_WaitAnimFinished
+#02274    Obj_LookAtObject type = Skater
+          time = 0.3
+
+#02277    Obj_PlayAnim anim = RotateLeft
+          cycle
+#02279    Obj_WaitRotate
+#02280    Obj_SetAnimCycleMode Off
+#02281    Obj_WaitAnimFinished
+#02282    Obj_CycleAnim anim = Idle3
+
+#02284    Goto ALF_SUB_ThinMan_Waiting
+#02285  END FUNCTION
+
+#02287  FUNCTION ALF_SUB_Farter
+#02288    Obj_ClearExceptions
+#02289    Obj_SetInnerRadius 25
+#02290    Obj_SetException Ex = SkaterInRadius
+          Scr = ALF_SUB_Farter_Farting
+
+#02293    LOOP
+#02294      Obj_CycleAnim anim = Idle
+
+#02296    END LOOP
+#02297  END FUNCTION
+
+#02299  FUNCTION ALF_SUB_Farter_Farting
+#02300    Obj_ClearExceptions
+#02301    Obj_SetInnerRadius 3
+#02302    Obj_SetOuterRadius 100
+#02303    Obj_SetException Ex = SkaterOutOfRadius
+          Scr = ALF_SUB_Farter
+
+#02306    Obj_SetException Ex = SkaterInRadius
+          Scr = ALF_SUB_Farter_Punch
+
+#02309    LOOP
+#02310      RANDOM[4][17; 266; 515; 660]
+
+#02312
+#02313      LOOP
+#02314        Obj_CycleAnim anim = IdletoWelding
+
+#02316        Obj_PlayAnim anim = WelderFart
+
+#02318        Wait 30 frames
+#02319        SendException FLAG_FART_EXCEPTION name = TRG_ConstForeman
+
+#02321        Obj_Playstream RANDOM[4][17; 28; 39; 50]
+
+#02323        Sub_confart_CrawledDied
+#02324        JUMP 0x23000000 Sub_confart_Deadline
+#02325        JUMP 0x14000000 Sub_confart_KnockItOff
+#02326        JUMP 0x05000000 Sub_confart_MouthOpened
+#02327        Obj_WaitAnimFinished
+#02328        Obj_CycleAnim anim = WelderBadSmell
+
+#02330        Obj_CycleAnim anim = WeldingtoIdle
+
+#02332      END LOOP 1
+#02333      JUMP 0x16020000
+#02334      LOOP
+#02335        Obj_CycleAnim anim = IdletoWelding
+
+#02337        Obj_PlayAnim anim = WelderFart
+
+#02339        Wait 30 frames
+#02340        SendException FLAG_FART_EXCEPTION name = TRG_ConstForeman
+
+#02342        Obj_Playstream RANDOM[4][17; 28; 39; 50]
+
+#02344        Sub_confart_GotAnotherOne
+#02345        JUMP 0x23000000 Sub_confart_Squirrel
+#02346        JUMP 0x14000000 Sub_confart_Sick
+#02347        JUMP 0x05000000 Sub_confart_WhatDidYouEat
+#02348        Obj_WaitAnimFinished
+#02349        Obj_CycleAnim anim = WelderBadSmell
+
+#02351        Obj_CycleAnim anim = WeldingtoIdle
+
+#02353      END LOOP 1
+#02354      JUMP 0x19010000
+#02355      LOOP
+#02356        Obj_PlayAnim anim = Talk
+
+#02358        Obj_Playstream RANDOM[4][17; 28; 39; 50]
+
+#02360        Sub_con_WhereChicks
+#02361        JUMP 0x28000000 Sub_Con2_WhensLunch
+#02362        JUMP 0x19000000 Sub_Con2_WhatHappPlywood
+#02363        JUMP 0x0a000000 Sub_confart_PullMyFinger
+#02364
+#02365        Obj_WaitAnimFinished
+#02366      END LOOP 1
+#02367      JUMP 0x84000000
+#02368      LOOP
+#02369        Obj_PlayAnim anim = LookAtWatch
+
+#02371        SendException FLAG_FART_EXCEPTION name = TRG_ConstForeman
+
+#02373        Obj_Playstream RANDOM[2][9; 20]
+
+#02375        Sub_Con2_Slowpoke
+#02376        JUMP 0x0a000000 Sub_Con2_BeSlower
+#02377
+#02378        Obj_WaitAnimFinished
+#02379      END LOOP 1
+#02380
+#02381      Obj_CycleAnim anim = Idle
+            Numcycles = 2
+
+#02384      Obj_CycleAnim anim = IdletoWelding
+
+#02386      Obj_CycleAnim anim = WelderInspect
+
+#02388      Obj_CycleAnim anim = WeldingtoIdle
+
+#02390    END LOOP
+#02391  END FUNCTION
+
+#02393  FUNCTION ALF_SUB_Inhaler
+#02394    Obj_ClearExceptions
+#02395    Obj_SetInnerRadius 3
+#02396    Obj_SetException Ex = SkaterInRadius
+          Scr = ALF_SUB_Inhaler_Punch
+
+#02399    Obj_SetException Ex = FLAG_FART_EXCEPTION
+          Scr = ALF_SUB_Inhaler_Disgust
+
+#02402    LOOP
+#02403      Obj_CycleAnim anim = ClipBoardIdle
+            Numcycles = 3
+
+#02406      Obj_CycleAnim anim = ClipBoardWriting
+
+#02408    END LOOP
+#02409  END FUNCTION
+
+#02411  FUNCTION ALF_SUB_Inhaler_Disgust
+#02412    Obj_ClearExceptions
+#02413    Obj_SetInnerRadius 3
+#02414    Obj_SetException Ex = SkaterInRadius
+          Scr = ALF_SUB_Inhaler_Punch
+
+#02417    Obj_CycleAnim anim = ClipBoardIdleToIdle
+
+#02419    Obj_CycleAnim anim = Disgust
+
+#02421    Obj_CycleAnim anim = IdleToClipBoardIdle
+
+#02423    Goto ALF_SUB_Inhaler
+#02424  END FUNCTION
+
+#02426  FUNCTION ALF_SUB_Farter_Punch
+#02427    Obj_ClearExceptions
+#02428    Obj_PlayAnim anim = punch
+
+#02430    Wait 0.05
+#02431    Obj_PlaySound bail04 vol = 200
+
+#02433    Obj_PlaySound bail05 vol = 200
+
+#02435    StopStream
+#02436    MakeSkaterGoto PedKnockDown
+#02437    StopStream
+#02438    Obj_Playstream RANDOM[6][25; 36; 47; 58; 69; 80]
+
+#02440    Sub_con_NoSkaters
+#02441    JUMP 0x41000000 Sub_con_OffSite
+#02442    JUMP 0x32000000 Sub_con_OuttaHere
+#02443    JUMP 0x23000000 Sub_con_YouAintUnion
+#02444    JUMP 0x14000000 Sub_con_JustGit
+#02445    JUMP 0x05000000 Sub_con_WheresHardHat
+#02446    Wait 30 frames
+#02447    Goto ALF_SUB_Farter_Farting
+#02448  END FUNCTION
+
+#02450  FUNCTION ALF_SUB_Inhaler_Punch
+#02451    Obj_ClearExceptions
+#02452    Obj_PlayAnim anim = punch
+
+#02454    Wait 0.05
+#02455    Obj_PlaySound bail04 vol = 200
+
+#02457    Obj_PlaySound bail05 vol = 200
+
+#02459    MakeSkaterGoto PedKnockDown
+#02460    Wait 30 frames
+#02461    Goto ALF_SUB_Inhaler
+#02462  END FUNCTION
+
+#02464  FUNCTION ALF_SUB_JKU_Const_Vo
+#02465    Wait 2 seconds
+#02466    Obj_ClearExceptions
+#02467    Obj_SetInnerRadius 100
+#02468    Obj_SetException Ex = SkaterInRadius
+          Scr = ALF_SUB_JKU_Const_Blabber
+
+#02471  END FUNCTION
+
+#02473  FUNCTION ALF_SUB_JKU_Const_Blabber
+#02474    Obj_ClearExceptions
+#02475    Obj_SetOuterRadius 100
+#02476    Obj_SetException Ex = SkaterOutOfRadius
+          Scr = ALF_SUB_JKU_Const_Vo
+
+#02479    Obj_Playstream RANDOM[26][105; 116; 127; 138; 149; 160; 171; 182; 193; 204; 215; 226; 237; 248; 259; 270; 281; 292; 303; 314; 325; 336; 347; 358; 369; 380]
+
+#02481    Sub_con_WhereChicks
+#02482    JUMP 0x72010000 Sub_Con2_BeSlower
+#02483    JUMP 0x63010000 Sub_Con2_Slowpoke
+#02484    JUMP 0x54010000 Sub_Con2_WhatHappPlywood
+#02485    JUMP 0x45010000 Sub_Con2_WhensLunch
+#02486    JUMP 0x36010000 Sub_confart_30Min
+#02487    JUMP 0x27010000 Sub_confart_AintFallingForThat
+#02488    JUMP 0x18010000 Sub_confart_CrawledDied
+#02489    JUMP 0x09010000 Sub_confart_Crowning
+#02490    JUMP 0xfa000000 Sub_confart_Deadline
+#02491    JUMP 0xeb000000 Sub_confart_GotAnotherOne
+#02492    JUMP 0xdc000000 Sub_confart_KnockItOff
+#02493    JUMP 0xcd000000 Sub_confart_MouthOpened
+#02494    JUMP 0xbe000000 Sub_confart_PullMyFinger
+#02495    JUMP 0xaf000000 Sub_confart_Sick
+#02496    JUMP 0xa0000000 Sub_confart_Squirrel
+#02497    JUMP 0x91000000 Sub_confart_Turtle
+#02498    JUMP 0x82000000 Sub_confart_WhatDidYouEat
+#02499    JUMP 0x73000000 Sub_confart_YouHeardThis
+#02500    JUMP 0x64000000 Sub_con_JustGit
+#02501    JUMP 0x55000000 Sub_con_NoSkaters
+#02502    JUMP 0x46000000 Sub_con_OffSite
+#02503    JUMP 0x37000000 Sub_con_OuttaHere
+#02504    JUMP 0x28000000 Sub_con_WhatTheHell
+#02505    JUMP 0x19000000 Sub_con_WheresHardHat
+#02506    JUMP 0x0a000000 Sub_con_YouAintUnion
+#02507
+#02508  END FUNCTION
+
+#02510  FUNCTION ALF_SUB_Rats
+#02511    Obj_StickToGround Off
+#02512    Obj_SetConstantHeight 24.0
+#02513    Obj_SetPathTurnDist 2.5 feet
+#02514    Obj_PathHeading On
+#02515    Obj_SetPathVelocity 35 fps
+#02516    Obj_FollowPathLinked
+#02517    Obj_PlaySound SUB_Mouse vol = 70
+          dropoff = 100
+
+#02520    Obj_WaitMove
+#02521    Wait 5 seconds
+#02522    Die
+#02523  END FUNCTION
+
+#02525  FUNCTION ALF_SUB_Squirrel
+#02526    Obj_StickToGround Off
+#02527    Obj_ClearExceptions
+#02528    Obj_SetInnerRadius 1
+#02529    Obj_SetException Ex = SkaterInRadius
+          Scr = ALF_SUB_Squirrel_Dead
+
+#02532    Obj_SetPathTurnDist 2.5 feet
+#02533    Obj_PathHeading On
+#02534    Obj_SetPathVelocity 35 fps
+#02535    Obj_FollowPathLinked
+#02536    LOOP
+#02537      Obj_StopAlongPath
+#02538      Obj_PlaySound SUB_squirrel vol = 70
+            dropoff = 70
+
+#02541      Wait RANDOM[3][8; 14; 20]
+            30 JUMP 0x0f000000 45 JUMP 0x05000000 60 frames
+#02543      Obj_StartAlongPath
+#02544      Wait RANDOM[3][8; 14; 20]
+            120 JUMP 0x0f000000 150 JUMP 0x05000000 180 frames
+#02546    END LOOP
+#02547  END FUNCTION
+
+#02549  FUNCTION ALF_SUB_Squirrel_Dead
+#02550    Obj_ClearExceptions
+#02551    SpawnSkaterScript SquirrelSquash
+#02552    PlaySound SUB_pumpkin2
+#02553    Die
+#02554  END FUNCTION
+
+#02556  FUNCTION ALF_SUB_RatSingle
+#02557    Obj_StickToGround Off
+#02558    Obj_SetConstantHeight 24.0
+#02559    Obj_SetPathTurnDist 2.5 feet
+#02560    Obj_PathHeading On
+#02561    Obj_SetPathVelocity 35 fps
+#02562    Obj_PlaySound SUB_Mouse vol = 70
+          dropoff = 100
+
+#02565    Obj_FollowPathLinked
+#02566    Obj_WaitMove
+#02567    Die
+#02568  END FUNCTION
+
+#02570  FUNCTION ALF_SUB_Spawn_RatSingle
+#02571    IF InMultiplayerGame
+#02572    ELSE
+#02573      RANDOM[2][9; 47]
+
+#02575      Create prefix = "SUB_Rat_Single_"
+
+#02577      JUMP 0x14000000 Wait 1 frame
+#02578
+#02579    END IF
+#02580  END FUNCTION
+
+#02582  FUNCTION ALF_SUB_SprinklerOff01
+#02583    SetParticleSysVisibility system = "NExtParticleSprinkler01"
+          visible = 0
+
+#02586    Obj_StopSound SUB_sprinklers3
+#02587    IF InMultiplayerGame
+#02588    ELSE
+#02589      Obj_ClearExceptions
+#02590      Obj_SetInnerRadius 25
+#02591      Obj_SetException Ex = SkaterInRadius
+            Scr = ALF_SUB_SprinklerOn01
+
+#02594      LOOP
+#02595        Wait 30 Gameframes
+#02596      END LOOP
+#02597    END IF
+#02598  END FUNCTION
+
+#02600  FUNCTION ALF_SUB_SprinklerOn01
+#02601    SetParticleSysVisibility system = "NExtParticleSprinkler01"
+          visible = 1
+
+#02604    Obj_ClearExceptions
+#02605    Obj_SetOuterRadius 30
+#02606    Obj_SetException Ex = SkaterOutOfRadius
+          Scr = ALF_SUB_SprinklerOff01
+
+#02609    Obj_PlaySound SUB_sprinklers3 vol = 70
+          dropoff = 100
+
+#02612    LOOP
+#02613      Wait 30 Gameframes
+#02614    END LOOP
+#02615  END FUNCTION
+
+#02617  FUNCTION ALF_SUB_SprinklerOff02
+#02618    SetParticleSysVisibility system = "NExtParticleSprinkler02"
+          visible = 0
+
+#02621    Obj_StopSound SUB_sprinklers3
+#02622    IF InMultiplayerGame
+#02623    ELSE
+#02624      Obj_ClearExceptions
+#02625      Obj_SetInnerRadius 25
+#02626      Obj_SetException Ex = SkaterInRadius
+            Scr = ALF_SUB_SprinklerOn02
+
+#02629      LOOP
+#02630        Wait 30 Gameframes
+#02631      END LOOP
+#02632    END IF
+#02633  END FUNCTION
+
+#02635  FUNCTION ALF_SUB_SprinklerOn02
+#02636    SetParticleSysVisibility system = "NExtParticleSprinkler02"
+          visible = 1
+
+#02639    Obj_ClearExceptions
+#02640    Obj_SetOuterRadius 30
+#02641    Obj_SetException Ex = SkaterOutOfRadius
+          Scr = ALF_SUB_SprinklerOff02
+
+#02644    Obj_PlaySound SUB_sprinklers3 vol = 70
+          dropoff = 100
+
+#02647    LOOP
+#02648      Wait 30 Gameframes
+#02649    END LOOP
+#02650  END FUNCTION
+
+#02652  FUNCTION ALF_SUB_SprinklerOff03
+#02653    SetParticleSysVisibility system = "NExtParticleSprinkler03"
+          visible = 0
+
+#02656    Obj_StopSound SUB_sprinklers3
+#02657    IF InMultiplayerGame
+#02658    ELSE
+#02659      Obj_ClearExceptions
+#02660      Obj_SetInnerRadius 25
+#02661      Obj_SetException Ex = SkaterInRadius
+            Scr = ALF_SUB_SprinklerOn03
+
+#02664      LOOP
+#02665        Wait 30 Gameframes
+#02666      END LOOP
+#02667    END IF
+#02668  END FUNCTION
+
+#02670  FUNCTION ALF_SUB_SprinklerOn03
+#02671    SetParticleSysVisibility system = "NExtParticleSprinkler03"
+          visible = 1
+
+#02674    Obj_ClearExceptions
+#02675    Obj_SetOuterRadius 30
+#02676    Obj_SetException Ex = SkaterOutOfRadius
+          Scr = ALF_SUB_SprinklerOff03
+
+#02679    Obj_PlaySound SUB_sprinklers3 vol = 70
+          dropoff = 100
+
+#02682    LOOP
+#02683      Wait 30 Gameframes
+#02684    END LOOP
+#02685  END FUNCTION
+
+#02687  FUNCTION ALF_SUB_SprinklerOff04
+#02688    SetParticleSysVisibility system = "NExtParticleSprinkler04"
+          visible = 0
+
+#02691    Obj_StopSound SUB_sprinklers3
+#02692    IF InMultiplayerGame
+#02693    ELSE
+#02694      Obj_ClearExceptions
+#02695      Obj_SetInnerRadius 25
+#02696      Obj_SetException Ex = SkaterInRadius
+            Scr = ALF_SUB_SprinklerOn04
+
+#02699      LOOP
+#02700        Wait 30 Gameframes
+#02701      END LOOP
+#02702    END IF
+#02703  END FUNCTION
+
+#02705  FUNCTION ALF_SUB_SprinklerOn04
+#02706    SetParticleSysVisibility system = "NExtParticleSprinkler04"
+          visible = 1
+
+#02709    Obj_ClearExceptions
+#02710    Obj_SetOuterRadius 30
+#02711    Obj_SetException Ex = SkaterOutOfRadius
+          Scr = ALF_SUB_SprinklerOff04
+
+#02714    Obj_PlaySound SUB_sprinklers3 vol = 70
+          dropoff = 100
+
+#02717    LOOP
+#02718      Wait 30 Gameframes
+#02719    END LOOP
+#02720  END FUNCTION
+
+#02722  FUNCTION ALF_SUB_Axe_Gap
+#02723    IF InMultiplayerGame
+#02724    ELSE
+#02725      IF GetGoal goal = GOAL_SCRIPTED1
+
+#02727      ELSE
+#02728        IF IsCareerMode
+#02729          LaunchPanelMessage "You've found an axe!" 1
+#02730          SendFlag name = TRG_Ped_ThinMan
+                FLAG_SKATER_HAS_AXE
+#02732          Kill name = SUB_Axe
+
+#02734          Kill name = SUB_AXE_SHADOW
+
+#02736          PlaySound goaldone vol = 100
+
+#02738          Create name = TRGP_Gap_End_RampToTree2
+
+#02740          Create name = TRGP_Gap_Start_RampToTree2
+
+#02742          Kill name = TRGP_Gap_End_RampToTree
+
+#02744          Kill name = TRGP_Gap_Start_RampToTree
+
+#02746        END IF
+#02747      END IF
+#02748    END IF
+#02749  END FUNCTION
+
+#02751  FUNCTION ALF_SI_Cheering_Ped
+#02752    LOOP
+#02753      Obj_LookAtObject type = Skater
+
+#02755      IF Obj_ObjectInRadius radius = 50
+              feet type = Skater
+
+#02758        Obj_PlayAnim anim = Cheering
+
+#02760        Obj_WaitAnimFinished
+#02761      ELSE
+#02762        Obj_PlayAnim anim = Idle
+
+#02764        Obj_WaitAnimFinished
+#02765      END IF
+#02766    END LOOP
+#02767  END FUNCTION
+
+#02769  FUNCTION ALF_SI_Cheering_Ped2
+#02770    Wait 1 second
+#02771    LOOP
+#02772      Obj_LookAtObject type = Skater
+
+#02774      IF Obj_ObjectInRadius radius = 50
+              feet type = Skater
+
+#02777        Obj_PlayAnim anim = Clap
+
+#02779        Obj_WaitAnimFinished
+#02780      ELSE
+#02781        Obj_PlayAnim anim = Idle
+
+#02783        Obj_WaitAnimFinished
+#02784      END IF
+#02785    END LOOP
+#02786  END FUNCTION
+
+#02788  FUNCTION ALF_SI_Perched_Ped
+#02789    Obj_ShadowOff
+#02790    Obj_ClearExceptions
+#02791    Obj_SetException Ex = FLAG_LIP_TRICK_EXCEPTION
+          Scr = ALF_SI_Perched_Ped_React
+
+#02794    LOOP
+#02795      Obj_CycleAnim anim = SittingIdle
+
+#02797    END LOOP
+#02798  END FUNCTION
+
+#02800  FUNCTION ALF_SI_Perched_Ped_React
+#02801    Obj_ClearExceptions
+#02802    RANDOM[3][13; 406; 623]
+
+#02804
+#02805    LOOP
+#02806      Obj_PlayAnim anim = FenceSit_Cheer
+
+#02808      Obj_Playstream vol = 200
+            RANDOM[17][69; 80; 91; 102; 113; 124; 135; 146; 157; 168; 179; 190; 201; 212; 223; 234; 245]
+
+#02811      si_pirate_CabinBoy
+#02812      JUMP 0xeb000000 si_pirate_CrossBones
+#02813      JUMP 0xdc000000 si_pirate_KeelHaul
+#02814      JUMP 0xcd000000 si_pirate_Plank
+#02815      JUMP 0xbe000000 si_pirate_SharkFood
+#02816      JUMP 0xaf000000 si_pirate_SheBlows
+#02817      JUMP 0xa0000000 si_pirate_ShootMe
+#02818      JUMP 0x91000000 si_pirate_Software
+#02819      JUMP 0x82000000 si_pirate_SportsDrink
+#02820      JUMP 0x73000000 si_pirate_Starboard
+#02821      JUMP 0x64000000 si_pirate_StayOut
+#02822      JUMP 0x55000000 si_pirate_StickTo
+#02823      JUMP 0x46000000 si_pirate_TaleOf
+#02824      JUMP 0x37000000 si_pirate_New02
+#02825      JUMP 0x28000000 si_pirate_New03
+#02826      JUMP 0x19000000 si_pirate_New04
+#02827      JUMP 0x0a000000 si_pirate_New05
+#02828
+#02829    END LOOP 1
+#02830    JUMP 0xa7010000
+#02831    LOOP
+#02832      Obj_PlayAnim anim = SittingIdle
+
+#02834      Obj_Playstream vol = 200
+            RANDOM[8][33; 44; 55; 66; 77; 88; 99; 110]
+
+#02837      si_parrot_cheat
+#02838      JUMP 0x5f000000 si_parrot_DontLook
+#02839      JUMP 0x50000000 si_parrot_Knickers
+#02840      JUMP 0x41000000 si_parrot_LipTrick
+#02841      JUMP 0x32000000 si_parrot_LookIt
+#02842      JUMP 0x23000000 si_parrot_RealSkills
+#02843      JUMP 0x14000000 si_parrot_Shoes
+#02844      JUMP 0x05000000 si_parrot_SuckIRule
+#02845    END LOOP 1
+#02846    JUMP 0xca000000
+#02847    LOOP
+#02848      Obj_PlayAnim anim = FenceSit_Cheer
+
+#02850      Obj_Playstream vol = 200
+            RANDOM[7][29; 40; 51; 62; 73; 84; 95]
+
+#02853      si_conv_01
+#02854      JUMP 0x55000000 si_conv_03
+#02855      JUMP 0x46000000 si_conv_05
+#02856      JUMP 0x37000000 si_conv_06
+#02857      JUMP 0x28000000 si_conv_07
+#02858      JUMP 0x19000000 si_conv_08
+#02859      JUMP 0x0a000000 si_conv_09
+#02860
+#02861    END LOOP 1
+#02862
+#02863    Obj_WaitAnimFinished
+#02864    Goto ALF_SI_Perched_Ped
+#02865  END FUNCTION
+
+#02867  FUNCTION ALF_SI_PerchedNosestall
+#02868  END FUNCTION
+
+#02870  FUNCTION ALF_SI_PerchedParrot
+#02871    Obj_ClearExceptions
+#02872    Obj_SetException Ex = FLAG_LIP_TRICK_EXCEPTION
+          Scr = ALF_SI_FlappingParrotCreate
+
+#02875    LOOP
+#02876      Wait 100 seconds
+#02877    END LOOP
+#02878  END FUNCTION
+
+#02880  FUNCTION ALF_SI_Crab
+#02881    Obj_ClearExceptions
+#02882    Obj_StickToGround On distAbove = 3
+          distBelow = 6
+
+#02885    Obj_SetInnerRadius 25
+#02886    Obj_SetException Ex = SkaterInRadius
+          Scr = ALF_SI_Crab_Hide
+
+#02889    Obj_SetPathTurnDist 2.5 feet
+#02890    Obj_PathHeading Off
+#02891    Obj_SetPathVelocity 10 fps
+#02892    Obj_FollowPathLinked
+#02893    LOOP
+#02894      Wait RANDOM[1][0]
+            1 second 1.5 seconds 2 seconds
+#02896      Obj_StopAlongPath
+#02897      Wait RANDOM[1][0]
+            1 second 1.5 seconds 2 seconds
+#02899      Obj_StartAlongPath
+#02900    END LOOP
+#02901  END FUNCTION
+
+#02903  FUNCTION ALF_SI_Crab_Hide
+#02904    Obj_ClearExceptions
+#02905    Obj_MoveToNode name = TRG_CrabWaypointHide
+          speed = 30
+
+#02908    Obj_WaitMove
+#02909    Obj_MoveToNode name = TRG_CrabWaypointHide01
+          speed = 30
+
+#02912    Obj_WaitMove
+#02913    Die
+#02914  END FUNCTION
+
+#02916  FUNCTION ALF_SI_FlappingParrotCreate
+#02917    Obj_ClearExceptions
+#02918    Create links
+#02919    Die
+#02920  END FUNCTION
+
+#02922  FUNCTION ALF_SI_FlappingParrot
+#02923    Obj_ClearExceptions
+#02924    Obj_PlayAnim anim = Flap
+          cycle
+#02926    Obj_MoveToRelPos VECTOR[0.0; 30.0; 0.0] speed = 3
+          acceleration = 2
+
+#02929    Obj_WaitMove
+#02930    Obj_MoveToRelPos VECTOR[0.0; -30.0; 0.0] speed = 1
+          acceleration = 1
+
+#02933    Obj_WaitMove
+#02934    Create links
+#02935    Die
+#02936  END FUNCTION
+
+#02938  FUNCTION ALF_SI_LipTrick
+#02939    IF InMultiplayerGame
+#02940    ELSE
+#02941      IF Triggertype ARRAY(
+                TRIGGER_LIP_ON
+              )
+
+#02945        Wait 20 frames
+#02946        IF IsAlive name = TRG_Parrot_Resting
+
+#02948          SendException FLAG_LIP_TRICK_EXCEPTION name = TRG_Ped_PerchedPirate
+
+#02950          SendException FLAG_LIP_TRICK_EXCEPTION name = TRG_Parrot_Resting
+
+#02952        END IF
+#02953      END IF
+#02954    END IF
+#02955  END FUNCTION
+
+#02957  FUNCTION ALF_SI_Crowd
+#02958    IF IsCareerMode
+#02959    ELSE
+#02960      Die
+#02961    END IF
+#02962    LOOP
+#02963      Obj_CycleAnim anim = RANDOM[6][20; 26; 32; 38; 44; 50]
+
+            CrowdIdleMove JUMP 0x2d000000 CrowdIdle JUMP 0x23000000 CrowdClapMove JUMP 0x19000000 CrowdClap JUMP 0x0f000000 CrowdWildMove JUMP 0x05000000 CrowdWild
+#02966      Obj_CycleAnim anim = CrowdIdle
+            Numcycles = RANDOM[2][4; 10]
+
+            1 JUMP 0x05000000 2
+#02970    END LOOP
+#02971  END FUNCTION
+
+#02973  FUNCTION ALF_SUB_IceCreamTruck
+#02974    Obj_FollowPathLinked
+#02975    Obj_StickToGround Off
+#02976    Obj_SetConstantHeight -30.0
+#02977    Obj_SetPathVelocity 100 mph
+#02978    Obj_SetPathTurnDist 30 feet
+#02979    Obj_SetPathMinStopVel 1 mph
+#02980    Obj_SetPathAcceleration 20 mphps
+#02981    Obj_SetPathDeceleration 45 mphps
+#02982    Wait 2 Gameframes
+#02983    Obj_PlaySound SUB_IceCream2
+#02984  END FUNCTION
+
+#02986  FUNCTION ALF_SUB_Car
+#02987    Obj_FollowPathLinked
+#02988    Obj_StickToGround Off
+#02989    Obj_SetConstantHeight -30.0
+#02990    Obj_SetPathVelocity 30 mph
+#02991    Obj_SetPathTurnDist 25 feet
+#02992    Obj_SetPathMinStopVel 1 mph
+#02993    Obj_SetPathAcceleration 20 mphps
+#02994    Obj_SetPathDeceleration 45 mphps
+#02995  END FUNCTION
+
+#02997  FUNCTION ALF_SUB_HauntedDoor
+#02998    Obj_ClearExceptions
+#02999    Obj_SetInnerRadius 25
+#03000    Obj_SetException Ex = SkaterInRadius
+          Scr = ALF_SUB_HauntedDoorSlam
+
+#03003    LOOP
+#03004      IF InMultiplayerGame
+#03005        Wait 10 seconds
+#03006      ELSE
+#03007        Obj_PlaySound SUB_Creak vol = 70
+              dropoff = 80
+
+#03010        Obj_RotY angle = -25
+              speed = 15
+
+#03013        Kill name = DOOR_HALF
+
+#03015        Create name = DOOR_BLOCKER
+
+#03017        Obj_WaitRotate
+#03018        Wait 1 seconds
+#03019        Obj_LookAtNode name = TRG_DoorLookAt
+              speed = 15
+
+#03022        Obj_WaitRotate
+#03023        Create name = DOOR_HALF
+
+#03025        Kill name = DOOR_BLOCKER
+
+#03027      END IF
+#03028    END LOOP
+#03029  END FUNCTION
+
+#03031  FUNCTION ALF_SUB_HauntedDoorSlam
+#03032    Obj_ClearExceptions
+#03033    Obj_SetOuterRadius 30
+#03034    Obj_SetException Ex = SkaterOutOfRadius
+          Scr = ALF_SUB_HauntedDoor
+
+#03037    IF InMultiplayerGame
+#03038    ELSE
+#03039      PlaySound SUB_slam dropoff = 25
+
+#03041      Obj_LookAtNode name = TRG_DoorLookAt
+            speed = 50
+            acceleration = 50
+
+#03045      Obj_WaitRotate
+#03046      Kill name = DOOR_BLOCKER
+
+#03048      Create name = DOOR_HALF
+
+#03050    END IF
+#03051    LOOP
+#03052      Wait 1 second
+#03053    END LOOP
+#03054  END FUNCTION
+
+#03056  FUNCTION ALF_SUB_Leaves01
+#03057    LOOP
+#03058      Obj_RotY speed = 450
+
+#03060      Obj_MoveToRelPos VECTOR[0.0; 60.0; 0.0] acceleration = 1
+            speed = 5
+
+#03063      Obj_WaitMove
+#03064      Obj_MoveToRelPos VECTOR[0.0; -60.0; 0.0] acceleration = 1
+            speed = 5
+
+#03067      Obj_WaitMove
+#03068      Obj_MoveToRelPos VECTOR[0.0; 30.0; 0.0] acceleration = 1
+            speed = 5
+
+#03071      Obj_WaitMove
+#03072      Obj_MoveToRelPos VECTOR[0.0; -30.0; 0.0] acceleration = 1
+            speed = 5
+
+#03075      Obj_WaitMove
+#03076      Obj_MoveToRelPos VECTOR[0.0; 50.0; 0.0] acceleration = 1
+            speed = 5
+
+#03079      Obj_WaitMove
+#03080      Obj_MoveToRelPos VECTOR[0.0; -50.0; 0.0] acceleration = 1
+            speed = 5
+
+#03083      Obj_WaitMove
+#03084      Obj_RotY speed = 0
+
+#03086      Wait 2 seconds
+#03087    END LOOP
+#03088  END FUNCTION
+
+#03090  FUNCTION ALF_SUB_Leaves02
+#03091    Wait 0.5 seconds
+#03092    LOOP
+#03093      Obj_RotY speed = 500
+
+#03095      Obj_MoveToRelPos VECTOR[0.0; 60.0; 0.0] acceleration = 1
+            speed = 5
+
+#03098      Obj_WaitMove
+#03099      Obj_MoveToRelPos VECTOR[0.0; -60.0; 0.0] acceleration = 1
+            speed = 5
+
+#03102      Obj_WaitMove
+#03103      Obj_MoveToRelPos VECTOR[0.0; 30.0; 0.0] acceleration = 1
+            speed = 5
+
+#03106      Obj_WaitMove
+#03107      Obj_MoveToRelPos VECTOR[0.0; -30.0; 0.0] acceleration = 1
+            speed = 5
+
+#03110      Obj_WaitMove
+#03111      Obj_MoveToRelPos VECTOR[0.0; 50.0; 0.0] acceleration = 1
+            speed = 5
+
+#03114      Obj_WaitMove
+#03115      Obj_MoveToRelPos VECTOR[0.0; -50.0; 0.0] acceleration = 1
+            speed = 5
+
+#03118      Obj_WaitMove
+#03119      Obj_RotY speed = 0
+
+#03121      Wait 2 seconds
+#03122    END LOOP
+#03123  END FUNCTION
+
+#03125  FUNCTION ALF_SUB_Utopia_Sign_Hit
+#03126    SendException FLAG_SIGN_SMACKED_EXCEPTION name = SIGN_DROP01
+
+#03128  END FUNCTION
+
+#03130  FUNCTION ALF_SUB_Utopia_Sign
+#03131    Obj_ClearExceptions
+#03132    Obj_SetException Ex = FLAG_SIGN_SMACKED_EXCEPTION
+          Scr = ALF_SUB_Utopia_Sign_Drop
+
+#03135    LOOP
+#03136      Wait 1000 seconds
+#03137    END LOOP
+#03138  END FUNCTION
+
+#03140  FUNCTION ALF_SUB_Utopia_Sign_Drop
+#03141    Obj_ClearExceptions
+#03142    Create name = UTOPIA_LIGHTS_ON
+
+#03144    Kill name = UTOPIA_LIGHTS_OFF
+
+#03146    Obj_MoveToRelPos VECTOR[0.0; -50.0; 0.0] speed = 15
+
+#03148    Obj_WaitMove
+#03149    Obj_PlaySound sub_spark2x
+#03150    Create name = SIGN_FALLEN01
+
+#03152    Create name = UTOPIA_LIGHTS_OFF
+
+#03154    Kill name = UTOPIA_LIGHTS_ON
+
+#03156    Obj_MoveToRelPos VECTOR[0.0; -50.0; 0.0] speed = 15
+
+#03158    Obj_WaitMove
+#03159    LOOP
+#03160      Wait 1000 seconds
+#03161    END LOOP
+#03162  END FUNCTION
+
+#03164  FUNCTION ALF_SUB_Doorbell
+#03165    Playstream SUB_Doorbell
+#03166  END FUNCTION
+
+#03168  FUNCTION ALF_SUB_HitSheet
+#03169    PlaySound SUB_HitSheet
+#03170  END FUNCTION
+
+#03172  FUNCTION ALF_SUB_GroanNoise
+#03173    LOOP
+#03174      Obj_PlaySound SUB_groan2 pitch = RANDOM[3][8; 14; 20]
+
+            50 JUMP 0x0f000000 55 JUMP 0x05000000 60 vol = 150
+
+#03178      Wait RANDOM[3][8; 14; 20]
+            3 JUMP 0x0f000000 4 JUMP 0x05000000 5 seconds
+#03180    END LOOP
+#03181  END FUNCTION
+
+#03183  FUNCTION ALF_SUB_PlaneNoise
+#03184    Obj_PlaySound ap_prop pitch = 130
+          vol = 300
+          dropoff = 100
+
+#03188    Wait 5 seconds
+#03189    Die
+#03190  END FUNCTION
+
+#03192  FUNCTION ALF_SUB_Porn
+#03193    LOOP
+#03194      Obj_Playstream sub_porn dropoff = 100
+            vol = 100
+
+#03197      Wait 11.5 seconds
+#03198      Wait RANDOM[3][8; 19; 30]
+            30 frames JUMP 0x19000000 45 frames JUMP 0x0a000000 60 frames
+#03200    END LOOP
+#03201  END FUNCTION
+
+#03203  FUNCTION ALF_SUB_BurningNoise
+#03204    Obj_PlaySound SUB_House1
+#03205  END FUNCTION
+
+#03207  FUNCTION ALF_SUB_DogBark
+#03208    LOOP
+#03209      Obj_Playstream SUB_dog vol = RANDOM[3][8; 14; 20]
+
+            125 JUMP 0x0f000000 150 JUMP 0x05000000 200
+#03212      Wait RANDOM[1][0]
+            4.5 seconds 5 seconds 6 seconds
+#03214    END LOOP
+#03215  END FUNCTION
+
+#03217  FUNCTION ALF_SUB_FlyNoise
+#03218    Obj_ClearExceptions
+#03219    Obj_SetInnerRadius 45
+#03220    Obj_SetException Ex = SkaterInRadius
+          Scr = ALF_SUB_FlyNoise_Play
+
+#03223    LOOP
+#03224      Wait 30 Gameframes
+#03225    END LOOP
+#03226  END FUNCTION
+
+#03228  FUNCTION ALF_SUB_FlyNoise_Play
+#03229    Obj_ClearExceptions
+#03230    Obj_PlaySound SUB_flies vol = 70
+          dropoff = 70
+
+#03233  END FUNCTION
+
+#03235  FUNCTION ALF_SUB_Flies01
+#03236    Wait 3 frames
+#03237    Obj_RotY speed = 900
+
+#03239    LOOP
+#03240      Obj_MoveToRelPos VECTOR[0.0; 10.0; 0.0] acceleration = 1
+            speed = 2
+
+#03243      Obj_WaitMove
+#03244      Obj_MoveToRelPos VECTOR[0.0; -10.0; 0.0] acceleration = 1
+            speed = 2
+
+#03247      Obj_WaitMove
+#03248    END LOOP
+#03249  END FUNCTION
+
+#03251  FUNCTION ALF_SUB_Flies02
+#03252    Obj_RotY speed = -800
+
+#03254    LOOP
+#03255      Obj_MoveToRelPos VECTOR[0.0; -10.0; 0.0] acceleration = 1
+            speed = 1
+
+#03258      Obj_WaitMove
+#03259      Obj_MoveToRelPos VECTOR[0.0; 10.0; 0.0] acceleration = 1
+            speed = 1
+
+#03262      Obj_WaitMove
+#03263    END LOOP
+#03264  END FUNCTION
+
+#03266  FUNCTION ALF_SUB_KillFlies
+#03267    Obj_StopSound SUB_flies
+#03268    Kill name = SUB_Flies01
+
+#03270    Kill name = SUB_Flies02
+
+#03272    Kill name = TRGP_KillFlies01
+
+#03274    Kill name = TRG_FlyNoise
+
+#03276  END FUNCTION
+
+#03278  FUNCTION ALF_SUB_SkeletonHands
+#03279    LOOP
+#03280      Obj_MoveToNode name = TRG_SkeletonNav01
+            speed = 5
+            mph
+#03283      Obj_WaitMove
+#03284      Obj_MoveToNode name = TRG_SkeletonNav02
+            speed = 5
+            mph
+#03287      Obj_WaitMove
+#03288    END LOOP
+#03289  END FUNCTION
+
+#03291  FUNCTION ALF_SUB_SkeletonHands2
+#03292    Wait 25 Gameframes
+#03293    LOOP
+#03294      Obj_MoveToNode name = TRG_SkeletonNav01
+            speed = 5
+            mph
+#03297      Obj_WaitMove
+#03298      Obj_MoveToNode name = TRG_SkeletonNav02
+            speed = 5
+            mph
+#03301      Obj_WaitMove
+#03302    END LOOP
+#03303  END FUNCTION
+
+#03305  FUNCTION ALF_SUB_CoffinLid
+#03306    LOOP
+#03307      Obj_MoveToNode name = TRG_CoffinNav01
+            speed = 1
+            mph acceleration = 1
+
+#03311      Obj_WaitMove
+#03312      Wait 1 seconds
+#03313      Obj_MoveToNode name = TRG_CoffinNav02
+            speed = 1
+            mph acceleration = 1
+
+#03317      Obj_WaitMove
+#03318    END LOOP
+#03319  END FUNCTION
+
+#03321  FUNCTION ALF_SUB_Coffin
+#03322    Obj_FollowPathLinked
+#03323    Obj_PathHeading Off
+#03324    Obj_StickToGround Off
+#03325    Obj_SetPathVelocity 1 mph
+#03326    Obj_SetPathTurnDist 1 feet
+#03327    Obj_SetPathMinStopVel 1 mph
+#03328    Obj_SetPathAcceleration 1 mphps
+#03329    Obj_SetPathDeceleration 1 mphps
+#03330  END FUNCTION
+
+#03332  FUNCTION ALF_SUB_Coffin_Shadow
+#03333    Obj_FollowPathLinked
+#03334    Obj_PathHeading Off
+#03335    Obj_StickToGround Off
+#03336    Obj_SetConstantHeight 497.0
+#03337    Obj_SetPathVelocity 1 mph
+#03338    Obj_SetPathTurnDist 1 feet
+#03339    Obj_SetPathMinStopVel 1 mph
+#03340    Obj_SetPathAcceleration 1 mphps
+#03341    Obj_SetPathDeceleration 1 mphps
+#03342  END FUNCTION
+
+#03344  FUNCTION ALF_SUB_PlaneLight
+#03345    Obj_ClearExceptions
+#03346    Obj_SetInnerRadius 10
+#03347    Obj_SetException Ex = SkaterInRadius
+          Scr = ALF_SUB_PlaneDropoff
+
+#03350    Obj_SetPathTurnDist 75 feet
+#03351    Obj_PathHeading On
+#03352    Obj_SetPathAcceleration 10 fpsps
+#03353    Obj_SetPathVelocity 45 fps
+#03354    Obj_StickToGround Off
+#03355    Obj_PlaySound ap_prop pitch = 130
+
+#03357    Obj_FollowPathLinked
+#03358    LOOP
+#03359      Wait 1000
+#03360    END LOOP
+#03361  END FUNCTION
+
+#03363  FUNCTION ALF_SUB_PlaneDropoff
+#03364    IF IsAlive name = SUB_PlaneDropoff
+
+#03366    ELSE
+#03367      Create name = SUB_PlaneDropoff
+
+#03369    END IF
+#03370    IF IsAlive name = TRG_PlaneNoise
+
+#03372    ELSE
+#03373      Create name = TRG_PlaneNoise
+
+#03375    END IF
+#03376    Wait 5 seconds
+#03377    Kill name = SUB_PlaneDropoff
+
+#03379    Goto ALF_SUB_PlaneWait
+#03380  END FUNCTION
+
+#03382  FUNCTION ALF_SUB_PlaneWait
+#03383    Obj_ClearExceptions
+#03384    Obj_SetInnerRadius 10
+#03385    Obj_SetException Ex = SkaterInRadius
+          Scr = ALF_SUB_PlaneDropoff
+
+#03388    LOOP
+#03389      Wait 1000
+#03390    END LOOP
+#03391  END FUNCTION
+
+#03393  FUNCTION ALF_SUB_BatsBreakWindow
+#03394    SetParticleSysVisibility system = "NExtParticle_bats_01"
+          visible = 1
+
+#03397    SetParticleSysVisibility system = "NExtParticle_bats_02"
+          visible = 1
+
+#03400    Create prefix = "TRG_BatNoise_"
+
+#03402    Obj_SpawnScript ALF_SUB_Lightning2
+#03403  END FUNCTION
+
+#03405  FUNCTION ALF_SUB_BatLoop
+#03406    Obj_PlaySound SUB_Batloop vol = 200
+          dropoff = 50
+
+#03409  END FUNCTION
+
+#03411  FUNCTION ALF_SUB_BatSound
+#03412    Playstream SUB_Bats vol = 200
+
+#03414  END FUNCTION
+
+#03416  FUNCTION ALF_SUB_HauntedSound
+#03417    Obj_PlaySound SUB_Haunted vol = 100
+          dropoff = 100
+
+#03420  END FUNCTION
+
+#03422  FUNCTION ALF_SUB_BreakWindow
+#03423    Kill name = SUB_hh_bay_window_01
+
+#03425    PlaySound glasspane2x vol = 100
+
+#03427  END FUNCTION
+
+#03429  FUNCTION ALF_SUB_BreakFrenchDoor02
+#03430    Kill name = SUB_hh_frnch_drs_02
+
+#03432    Create prefix = "FRENCH_DEBRIS_B_"
+
+#03434    PlaySound glasspane2x vol = 100
+
+#03436  END FUNCTION
+
+#03438  FUNCTION ALF_SUB_BreakFrenchDoor03
+#03439    Kill name = SUB_hh_frnch_drs_03
+
+#03441    Create prefix = "FRENCH_DEBRIS_C_"
+
+#03443    PlaySound glasspane2x vol = 100
+
+#03445  END FUNCTION
+
+#03447  FUNCTION ALF_SUB_BreakFrenchDoor04
+#03448    Kill name = SUB_hh_frnch_drs_04
+
+#03450    Create prefix = "FRENCH_DEBRIS_D_"
+
+#03452    PlaySound glasspane2x vol = 100
+
+#03454  END FUNCTION
+
+#03456  FUNCTION ALF_SUB_BreakFrenchDoor01
+#03457    Kill name = SUB_hh_frnch_drs_01
+
+#03459    Create prefix = "FRENCH_DEBRIS_A_"
+
+#03461    PlaySound glasspane2x vol = 100
+
+#03463  END FUNCTION
+
+#03465  FUNCTION ALF_SUB_BreakFence01
+#03466    Kill name = FENCE_01
+
+#03468    Kill name = FENCE_05
+
+#03470    Kill name = FENCE_SHADOW
+
+#03472    Create prefix = "FENCE_DEBRIS_"
+
+#03474    PlaySound hitflimsywood vol = 100
+
+#03476    Wait 0.5 seconds
+#03477    Kill name = FENCE_02
+
+#03479    Kill name = GRAF_02
+
+#03481    Create name = FALL_02
+
+#03483    PlaySound hitflimsywood vol = 100
+
+#03485  END FUNCTION
+
+#03487  FUNCTION ALF_SUB_Debris
+#03488    Obj_RotX speed = 720
+
+#03490    Obj_RotY speed = 720
+
+#03492    Obj_RotZ speed = 720
+
+#03494    Obj_FollowPathLinked
+#03495    Obj_SetPathVelocity 25 mph
+#03496    Obj_PathHeading Off
+#03497    Obj_SetPathAcceleration 0
+#03498    Obj_SetPathDeceleration 0
+#03499  END FUNCTION
+
+#03501  FUNCTION ALF_SUB_BreakFence02
+#03502    Kill name = FENCE_02
+
+#03504    Kill name = GRAF_02
+
+#03506    Create name = FALL_02
+
+#03508    PlaySound hitflimsywood vol = 100
+
+#03510  END FUNCTION
+
+#03512  FUNCTION ALF_SUB_FallingFence02
+#03513    Obj_RotX angle = -85
+          speed = 360
+          acceleration = 180
+
+#03517    Obj_WaitRotate
+#03518    Create name = FALLEN_02
+
+#03520    Kill prefix = "TRG_Rail_FallenFence"
+
+#03522    Die
+#03523  END FUNCTION
+
+#03525  FUNCTION ALF_SUB_BreakFence03
+#03526    Kill name = FENCE_03
+
+#03528    Kill name = GRAF_03
+
+#03530    PlaySound hitflimsywood vol = 100
+
+#03532  END FUNCTION
+
+#03534  FUNCTION ALF_SUB_BreakFence04
+#03535    Kill name = FENCE_04
+
+#03537    Kill name = GRAF_04
+
+#03539    PlaySound hitflimsywood vol = 100
+
+#03541  END FUNCTION
+
+#03543  FUNCTION ALF_SUB_BranchCounter
+#03544    LOOP
+#03545      IF Obj_FlagSet FLAG_GOT_BRANCH1
+#03546        IF Obj_FlagSet FLAG_GOT_BRANCH2
+#03547          Wait 1 second
+#03548          Playstream TV_Dude_ThatsIt vol = 70
+
+#03550          Goto ALF_SUB_WaitForever
+#03551        END IF
+#03552      END IF
+#03553      IF Obj_FlagSet FLAG_GOT_BRANCH3
+#03554        IF Obj_FlagSet FLAG_GOT_BRANCH4
+#03555          Wait 1 second
+#03556          Playstream TV_Dude_ThatsIt vol = 70
+
+#03558          Goto ALF_SUB_WaitForever
+#03559        END IF
+#03560      END IF
+#03561      Wait 30
+#03562    END LOOP
+#03563  END FUNCTION
+
+#03565  FUNCTION ALF_SUB_Pumpkin
+#03566    Obj_ClearExceptions
+#03567    IF GetGoal goal = GOAL_SCRIPTED3
+
+#03569      Die
+#03570    END IF
+#03571    IF IsCareerMode
+#03572    ELSE
+#03573      Die
+#03574    END IF
+#03575    Obj_SetInnerRadius 3
+#03576    Obj_SetException Ex = SkaterInRadius
+          Scr = ALF_SUB_Pumpkin_Squash
+
+#03579    LOOP
+#03580      Wait 10 seconds
+#03581    END LOOP
+#03582  END FUNCTION
+
+#03584  FUNCTION ALF_SUB_Pumpkin_Squash
+#03585    Obj_ClearExceptions
+#03586    SendFlag name = SUB_PumpkinCounter
+          FLAG_GOT_PUMPKIN
+#03588    PlaySound SUB_pumpkin2
+#03589    Create links
+#03590    SpawnSkaterScript PumpkinSquash
+#03591    IF IsAlive name = TRG_Double_Pumpkin_Counter
+
+#03593      SendException FLAG_GOT_PUMPKIN name = TRG_Double_Pumpkin_Counter
+
+#03595    ELSE
+#03596      Create name = TRG_Double_Pumpkin_Counter
+
+#03598    END IF
+#03599    Die
+#03600  END FUNCTION
+
+#03602  FUNCTION ALF_SUB_Double_Pumpkin_Counter
+#03603    Obj_ClearExceptions
+#03604    Obj_ClearFlag ALL
+#03605    Obj_SetException Ex = SkaterLanded
+          Scr = ALF_SUB_DoubleDie
+
+#03608    Obj_SetException Ex = SkaterBailed
+          Scr = ALF_SUB_DoubleDie
+
+#03611    Obj_SetException Ex = FLAG_GOT_PUMPKIN
+          Scr = ALF_SUB_ScoreDouble
+
+#03614    LOOP
+#03615      Wait 10 seconds
+#03616    END LOOP
+#03617  END FUNCTION
+
+#03619  FUNCTION ALF_SUB_DoubleDie
+#03620    Die
+#03621  END FUNCTION
+
+#03623  FUNCTION ALF_SUB_ScoreDouble
+#03624    SpawnSkaterScript DoublePumpkinSquash
+#03625  END FUNCTION
+
+#03627  FUNCTION PumpkinSquash name = "Pumpkin Squash"
+          Score = 100
+
+#03630    PlaySound HUD_jumpgap vol = 500
+
+#03632    SetTrickName GLOBAL.name
+
+#03634    SetTrickScore GLOBAL.Score
+
+#03636    Display BlockSpin
+#03637    WaitOneGameFrame
+#03638    IF Onground
+#03639      IF DoingTrick
+#03640      ELSE
+#03641        CheckGapTricks
+#03642        ClearGapTricks
+#03643        ClearPanel_Landed
+#03644      END IF
+#03645    END IF
+#03646  END FUNCTION
+
+#03648  FUNCTION DoublePumpkinSquash name = "Double Pumpkin Squash"
+          Score = 500
+
+#03651    PlaySound HUD_jumpgap vol = 500
+
+#03653    SetTrickName GLOBAL.name
+
+#03655    SetTrickScore GLOBAL.Score
+
+#03657    Display BlockSpin
+#03658    WaitOneGameFrame
+#03659    IF Onground
+#03660      IF DoingTrick
+#03661      ELSE
+#03662        CheckGapTricks
+#03663        ClearGapTricks
+#03664        ClearPanel_Landed
+#03665      END IF
+#03666    END IF
+#03667  END FUNCTION
+
+#03669  FUNCTION SquirrelSquash name = "Squirrel Stew"
+          Score = 100
+
+#03672    PlaySound HUD_jumpgap vol = 500
+
+#03674    SetTrickName GLOBAL.name
+
+#03676    SetTrickScore GLOBAL.Score
+
+#03678    Display BlockSpin
+#03679    WaitOneGameFrame
+#03680    IF Onground
+#03681      IF DoingTrick
+#03682      ELSE
+#03683        CheckGapTricks
+#03684        ClearGapTricks
+#03685        ClearPanel_Landed
+#03686      END IF
+#03687    END IF
+#03688  END FUNCTION
+
+#03690  FUNCTION ALF_SUB_PumpkinCounter
+#03691    Obj_VarSet var = 0
+          value = 0
+
+#03694    LOOP
+#03695      IF Obj_FlagSet FLAG_GOT_PUMPKIN
+#03696        ClearFlag name = SUB_PumpkinCounter
+              FLAG_GOT_PUMPKIN
+#03698        Obj_VarInc var = 0
+
+#03700        IF Obj_VarEQ var = 0
+                value = 1
+
+#03703          LaunchPanelMessage "1 of 5 Pumpkins Squashed"
+#03704        END IF
+#03705        IF Obj_VarEQ var = 0
+                value = 2
+
+#03708          LaunchPanelMessage "2 of 5 Pumpkins Squashed"
+#03709        END IF
+#03710        IF Obj_VarEQ var = 0
+                value = 3
+
+#03713          LaunchPanelMessage "3 of 5 Pumpkins Squashed"
+#03714        END IF
+#03715        IF Obj_VarEQ var = 0
+                value = 4
+
+#03718          LaunchPanelMessage "4 of 5 Pumpkins Squashed"
+#03719        END IF
+#03720        IF Obj_VarEQ var = 0
+                value = 5
+
+#03723          Wait 10 frames
+#03724          Got_Scripted3
+#03725        END IF
+#03726      END IF
+#03727      Wait 2 Gameframes
+#03728    END LOOP
+#03729  END FUNCTION
+
+#03731  FUNCTION ALF_SUB_Lightning
+#03732    Wait 1 second
+#03733    DoFlash duration = 0.25
+          start_r = 0
+          start_g = 0
+          start_b = 0
+          start_a = 255
+          end_r = 255
+          end_g = 255
+          end_b = 255
+          end_a = 0
+
+#03743    Playstream SUB_thunder2 vol = 200
+
+#03745    Wait 25 Gameframes
+#03746    DoFlash duration = 0.15
+          start_r = 0
+          start_g = 0
+          start_b = 0
+          start_a = 255
+          end_r = 255
+          end_g = 255
+          end_b = 255
+          end_a = 0
+
+#03756  END FUNCTION
+
+#03758  FUNCTION ALF_SUB_Lightning2
+#03759    DoFlash duration = 0.25
+          start_r = 0
+          start_g = 0
+          start_b = 0
+          start_a = 255
+          end_r = 255
+          end_g = 255
+          end_b = 255
+          end_a = 0
+
+#03769    Playstream SUB_thunder2 vol = 200
+
+#03771    Wait 25 Gameframes
+#03772    DoFlash duration = 0.15
+          start_r = 0
+          start_g = 0
+          start_b = 0
+          start_a = 255
+          end_r = 255
+          end_g = 255
+          end_b = 255
+          end_a = 0
+
+#03782  END FUNCTION
+
+#03784  FUNCTION ALF_SUB_LightningFogOn
+#03785    Wait 1 second
+#03786    DoFlash duration = 0.25
+          start_r = 0
+          start_g = 0
+          start_b = 0
+          start_a = 255
+          end_r = 255
+          end_g = 255
+          end_b = 255
+          end_a = 0
+
+#03796    Playstream SUB_thunder2 vol = 200
+
+#03798    IF InMultiplayerGame
+#03799    ELSE
+#03800      SetClippingDistances near = 12
+            far = 3000
+
+#03803      EnableFog
+#03804      SetFogColor r = 100
+            g = 100
+            b = 100
+
+#03808      SetFogDistance distance = 12
+
+#03810    END IF
+#03811    Wait 25 Gameframes
+#03812    DoFlash duration = 0.15
+          start_r = 0
+          start_g = 0
+          start_b = 0
+          start_a = 255
+          end_r = 255
+          end_g = 255
+          end_b = 255
+          end_a = 0
+
+#03822    Wait 15 frames
+#03823    SetParticleSysVisibility system = "NextParticleTorch01"
+          visible = 1
+
+#03826    SetParticleSysVisibility system = "NextParticleTorch02"
+          visible = 1
+
+#03829    SetParticleSysVisibility system = "NextParticleTorch03"
+          visible = 1
+
+#03832    SetParticleSysVisibility system = "NextParticleTorch04"
+          visible = 1
+
+#03835    Wait 10 frames
+#03836    Create name = SUB_TorchFlicker
+
+#03838  END FUNCTION
+
+#03840  FUNCTION ALF_SUB_LightningFogOnNoWait
+#03841    DoFlash duration = 0.25
+          start_r = 0
+          start_g = 0
+          start_b = 0
+          start_a = 255
+          end_r = 255
+          end_g = 255
+          end_b = 255
+          end_a = 0
+
+#03851    Playstream SUB_thunder2 vol = 200
+
+#03853    IF InMultiplayerGame
+#03854    ELSE
+#03855      SetClippingDistances near = 12
+            far = 3000
+
+#03858      EnableFog
+#03859      SetFogColor r = 100
+            g = 100
+            b = 100
+
+#03863      SetFogDistance distance = 12
+
+#03865    END IF
+#03866    Wait 25 Gameframes
+#03867    DoFlash duration = 0.15
+          start_r = 0
+          start_g = 0
+          start_b = 0
+          start_a = 255
+          end_r = 255
+          end_g = 255
+          end_b = 255
+          end_a = 0
+
+#03877    Wait 15 frames
+#03878    SetParticleSysVisibility system = "NextParticleTorch01"
+          visible = 1
+
+#03881    SetParticleSysVisibility system = "NextParticleTorch02"
+          visible = 1
+
+#03884    SetParticleSysVisibility system = "NextParticleTorch03"
+          visible = 1
+
+#03887    SetParticleSysVisibility system = "NextParticleTorch04"
+          visible = 1
+
+#03890    Wait 10 frames
+#03891    Create name = SUB_TorchFlicker
+
+#03893  END FUNCTION
+
+#03895  FUNCTION ALF_SUB_LightningFogOff
+#03896    SetParticleSysVisibility system = "NextParticleTorch01"
+          visible = 0
+
+#03899    SetParticleSysVisibility system = "NextParticleTorch02"
+          visible = 0
+
+#03902    SetParticleSysVisibility system = "NextParticleTorch03"
+          visible = 0
+
+#03905    SetParticleSysVisibility system = "NextParticleTorch04"
+          visible = 0
+
+#03908    Kill name = SUB_TorchFlicker
+
+#03910    DoFlash duration = 0.25
+          start_r = 0
+          start_g = 0
+          start_b = 0
+          start_a = 255
+          end_r = 255
+          end_g = 255
+          end_b = 255
+          end_a = 0
+
+#03920    Playstream SUB_thunder2 vol = 200
+
+#03922    SetClippingDistances near = 12
+          far = 13500
+
+#03925    DisableFog
+#03926    Wait 25 Gameframes
+#03927    DoFlash duration = 0.15
+          start_r = 0
+          start_g = 0
+          start_b = 0
+          start_a = 255
+          end_r = 255
+          end_g = 255
+          end_b = 255
+          end_a = 0
+
+#03937  END FUNCTION
+
+#03939  FUNCTION ALF_SUB_FogOff
+#03940    SetClippingDistances near = 12
+          far = 13500
+
+#03943    DisableFog
+#03944    SetParticleSysVisibility system = "NextParticleTorch01"
+          visible = 0
+
+#03947    SetParticleSysVisibility system = "NextParticleTorch02"
+          visible = 0
+
+#03950    SetParticleSysVisibility system = "NextParticleTorch03"
+          visible = 0
+
+#03953    SetParticleSysVisibility system = "NextParticleTorch04"
+          visible = 0
+
+#03956    Kill name = SUB_TorchFlicker
+
+#03958  END FUNCTION
+
+#03960  FUNCTION ALF_SUB_WaitForever
+#03961    LOOP
+#03962      Wait 1000 seconds
+#03963    END LOOP
+#03964  END FUNCTION
+
+#03966  FUNCTION ALF_SUB_Axe
+#03967    IF IsCareerMode
+#03968    ELSE
+#03969      Kill name = SUB_AXE_SHADOW
+
+#03971      Die
+#03972    END IF
+#03973    Obj_ClearExceptions
+#03974    Obj_SetInnerRadius 5
+#03975    Obj_SetException Ex = SkaterInRadius
+          Scr = ALF_SUB_Axe_Grab
+
+#03978    LOOP
+#03979      Obj_SetColor h = 0
+            S = 0
+            v = 50
+
+#03983      Wait 45 Gameframes
+#03984      Obj_SetColor h = 0
+            S = 0
+            v = 45
+
+#03988      Wait 7 Gameframes
+#03989      Obj_SetColor h = 0
+            S = 0
+            v = 40
+
+#03993      Wait 7 Gameframes
+#03994      Obj_SetColor h = 0
+            S = 0
+            v = 45
+
+#03998      Wait 7 Gameframes
+#03999    END LOOP
+#04000  END FUNCTION
+
+#04002  FUNCTION ALF_SUB_Axe_Grab
+#04003    LaunchPanelMessage "You've found an axe!" properties = panel_message_goalcomplete
+
+#04005    LaunchLocalMessage id = A01
+          "@" panel_message_PickUp
+#04007    SendFlag name = TRG_Ped_ThinMan
+          FLAG_SKATER_HAS_AXE
+#04009    PlaySound goaldone vol = 100
+
+#04011    Kill name = SUB_AXE_SHADOW
+
+#04013    Die
+#04014  END FUNCTION
+
+#04016  FUNCTION ALF_SUB_Branch1
+#04017    IF InMultiplayerGame
+#04018    ELSE
+#04019      PlaySound goaldone vol = 100
+
+#04021      SendFlag name = Sub_Status
+            FLAG_GOT_BRANCH1
+#04023      SendFlag name = SUB_BranchCounter
+            FLAG_GOT_BRANCH1
+#04025      Create name = SAT_BRANCH_01
+
+#04027      Kill links
+#04028      Kill name = SUB_Branch01
+
+#04030    END IF
+#04031  END FUNCTION
+
+#04033  FUNCTION ALF_SUB_Branch2
+#04034    IF InMultiplayerGame
+#04035    ELSE
+#04036      PlaySound goaldone vol = 100
+
+#04038      SendFlag name = Sub_Status
+            FLAG_GOT_BRANCH2
+#04040      SendFlag name = SUB_BranchCounter
+            FLAG_GOT_BRANCH2
+#04042      Create name = SAT_BRANCH_02
+
+#04044      Kill links
+#04045      Kill name = SUB_Branch02
+
+#04047    END IF
+#04048  END FUNCTION
+
+#04050  FUNCTION ALF_SUB_Branch3
+#04051    IF InMultiplayerGame
+#04052    ELSE
+#04053      PlaySound goaldone vol = 100
+
+#04055      SendFlag name = Sub_Status
+            FLAG_GOT_BRANCH3
+#04057      SendFlag name = SUB_BranchCounter
+            FLAG_GOT_BRANCH3
+#04059      Create name = SAT_BRANCH_03
+
+#04061      Kill links
+#04062      Kill name = SUB_Branch03
+
+#04064    END IF
+#04065  END FUNCTION
+
+#04067  FUNCTION ALF_SUB_Branch4
+#04068    IF InMultiplayerGame
+#04069    ELSE
+#04070      PlaySound goaldone vol = 100
+
+#04072      SendFlag name = Sub_Status
+            FLAG_GOT_BRANCH4
+#04074      SendFlag name = SUB_BranchCounter
+            FLAG_GOT_BRANCH4
+#04076      Create name = SAT_BRANCH_04
+
+#04078      Kill links
+#04079      Kill name = SUB_Branch04
+
+#04081    END IF
+#04082  END FUNCTION
+
+#04084  SICompParams = STRUCT{
+          Comp_Start_Script = NullScript
+          Comp_StartComplete_Script = NullScript
+          Comp_Run1_Script = NullScript
+          Comp_Run1Complete_Script = NullScript
+          Comp_Run2_Script = NullScript
+          Comp_Run2Complete_Script = NullScript
+          Comp_Run3_Script = NullScript
+          Comp_Run3Complete_Script = NullScript
+          Comp_End_Script = NullScript
+          Comp_EndComplete_Script = NullScript
+          Comp_CamRulesRuns_Script = ALF_SI_RulesRunsScript
+          Comp_CamRulesBails_Script = ALF_SI_RulesBailsScript
+          Comp_CamRulesScores_Script = ALF_SI_RulesScoresScript
+          Comp_CamRulesMedals_Script = ALF_SI_RulesMedalsScript
+          Comp_CamRulesList_Script = ALF_SI_RulesListScript
+          Comp_CamEndCrowd_Script = NullScript
+          Comp_CamEndFinal_Script = NullScript
+          Comp_CamJudged_Script = ALF_SI_JudgedScript
+          Comp_CamJudgedHold_Script = NullScript
+          Comp_CamJudgedChange_Script = ALF_SI_JudgedChangeScript
+          Comp_CamJudgedEnd_Script = ALF_SI_JudgedEndScript
+          NetPlayScript = NullScript
+          CareerPlayScript = NullScript
+          CameraCompRules_Runs = "Cam_CompRules_Runs"
+          CameraCompRules_Bails = "Cam_CompRules_Bails"
+          CameraCompRules_Scores = "Cam_CompRules_Scores"
+          CameraCompRules_Medals = "Cam_CompRules_Medals"
+          CameraCompRules_List = "Cam_CompRules_List"
+          CameraCompEnd_Crowd = "Cam_CompEnd_Crowd"
+          CameraCompEnd_Win = "Cam_CompEnd_Win"
+          CameraCompEnd_Final = "Cam_CompEnd_Final"
+          CameraSkaterJudged = "Cam_Skater_Judged"
+          CameraCompEnd_Hold = "Cam_CompEnd_Hold"
+          CameraJudgeFlyBy = "Cam_CompJudge_FlyBy"
+          CompIntroPeds = "Ped_CompIntro"
+          CompRun1JudgedPeds = "Ped_CompRun1"
+          CompRun2JudgedPeds = "Ped_CompRun2"
+          CompRun3JudgesPeds = "Ped_CompRun3"
+          CompEndPeds = "Ped_CompEnd"
+          CompNormalPeds = "Ped_CompNorm"
+          Comp1stPlaceSkaterPed = "Ped_1stPlaceSkater"
+          Comp2ndPlaceSkaterPed = "Ped_2ndPlaceSkater"
+          Comp3rdPlaceSkaterPed = "Ped_3rdPlaceSkater"
+          CompSkaterWaitStart = SkaterWaitForRunIn
+          CompWaypointStart = TRG_Restart_Player1
+          Bronze = 90
+          Silver = 92.5
+          Gold = 95
+          Bail = 0.5
+          }
+
+#04136  ALF_FLAG_3RD_PLACE_GO = 0
+
+#04138  ALF_FLAG_2ND_PLACE_GO = 1
+
+#04140  ALF_FLAG_1ST_PLACE_GO = 2
+
+#04142  ALF_FLAG_NEXT_MEDAL_GO = 3
+
+#04144  SI_FLAG_OUTSIDE_OPEN = 4
+
+#04146  SI_FLAG_CANNONS_FIRED = 5
+
+#04148  FUNCTION ALF_SI_Ped_Cheer_Temp
+#04149    Wait RANDOM[3][8; 14; 20]
+          5 JUMP 0x0f000000 10 JUMP 0x05000000 15 frames
+#04151    LOOP
+#04152      Obj_CycleAnim anim = RANDOM[3][8; 14; 20]
+
+            Cheering JUMP 0x0f000000 Clap JUMP 0x05000000 Wave Numcycles = RANDOM[3][8; 14; 20]
+
+            1 JUMP 0x0f000000 2 JUMP 0x05000000 3
+#04157      Obj_CycleAnim anim = Idle
+            Numcycles = RANDOM[2][4; 10]
+
+            1 JUMP 0x05000000 2
+#04161    END LOOP
+#04162  END FUNCTION
+
+#04164  FUNCTION ALF_SI_Ped_Skater_3rd
+#04165    LOOP
+#04166      IF Obj_FlagSet ALF_FLAG_3RD_PLACE_GO
+#04167        Obj_CycleAnim anim = RANDOM[4][12; 23; 34; 45]
+
+              Playerwave
+#04170        JUMP 0x23000000 GrommetNotBad
+#04171        JUMP 0x14000000 Clap
+#04172        JUMP 0x05000000 ShakeFist
+#04173        Obj_CycleAnim anim = RANDOM[4][12; 23; 34; 45]
+
+              Playerwave
+#04176        JUMP 0x23000000 GrommetNotBad
+#04177        JUMP 0x14000000 Clap
+#04178        JUMP 0x05000000 ShakeFist
+#04179        BREAK
+
+#04181      END IF
+#04182      Wait 1 Gameframes
+#04183    END LOOP
+#04184    Obj_SpawnScript ALF_SI_Ped_Skater_3rd_End
+#04185    Obj_CycleAnim anim = IdleToIdle3
+
+#04187    Obj_CycleAnim anim = Idle3
+          cycle
+#04189  END FUNCTION
+
+#04191  FUNCTION ALF_SI_Ped_Skater_3rd_End
+#04192    Wait 2 seconds
+#04193    Obj_ClearFlag ALL
+#04194    SendFlag name = Obj_Flag_Set_Medals
+          ALF_FLAG_NEXT_MEDAL_GO
+#04196  END FUNCTION
+
+#04198  FUNCTION ALF_SI_Ped_Skater_2nd
+#04199    LOOP
+#04200      IF Obj_FlagSet ALF_FLAG_2ND_PLACE_GO
+#04201        Obj_CycleAnim anim = Cheer1
+
+#04203        Obj_CycleAnim anim = Taunt3
+
+#04205        BREAK
+
+#04207      END IF
+#04208      Wait 1 Gameframes
+#04209    END LOOP
+#04210    Obj_SpawnScript ALF_SI_Ped_Skater_2nd_End
+#04211    Obj_CycleAnim anim = BrakeIdle
+
+#04213  END FUNCTION
+
+#04215  FUNCTION ALF_SI_Ped_Skater_2nd_End
+#04216    Wait 2 seconds
+#04217    Obj_ClearFlag ALL
+#04218    SendFlag name = Obj_Flag_Set_Medals
+          ALF_FLAG_NEXT_MEDAL_GO
+#04220  END FUNCTION
+
+#04222  FUNCTION ALF_SI_Ped_Skater_1st
+#04223    LOOP
+#04224      IF Obj_FlagSet ALF_FLAG_1ST_PLACE_GO
+#04225        Obj_CycleAnim anim = Cheering
+              Numcycles = 2
+
+#04228        Obj_LookAtNode name = TRG_Ped_End07
+              speed = 30
+
+#04231        Obj_CycleAnim anim = RotateRight
+
+#04233        Obj_CycleAnim anim = PlayerPoint
+
+#04235        Obj_LookAtNode name = TRG_Ped_End05
+              speed = 45
+
+#04238        Obj_CycleAnim anim = RotateLeft
+
+#04240        Obj_CycleAnim anim = PlayerPoint
+
+#04242        BREAK
+
+#04244      END IF
+#04245      Wait 1 Gameframes
+#04246    END LOOP
+#04247    Obj_SpawnScript ALF_SI_Ped_Skater_1st_End
+#04248    Obj_CycleAnim anim = Idle
+          cycle
+#04250  END FUNCTION
+
+#04252  FUNCTION ALF_SI_Ped_Skater_1st_End
+#04253    Wait 2 seconds
+#04254    Obj_ClearFlag ALL
+#04255    SendFlag name = Obj_Flag_Set_Medals
+          ALF_FLAG_NEXT_MEDAL_GO
+#04257  END FUNCTION
+
+#04259  FUNCTION ALF_Comp_Ped_Judge_Idle
+#04260    LOOP
+#04261      Obj_CycleAnim anim = Judge_StandIdle
+            Numcycles = RANDOM[4][12; 18; 24; 30]
+
+            1 JUMP 0x19000000 2 JUMP 0x0f000000 3 JUMP 0x05000000 4
+#04265      Obj_CycleAnim anim = RANDOM[2][4; 10]
+
+            Judge_StandRight JUMP 0x05000000 Judge_StandLeft
+#04268    END LOOP
+#04269  END FUNCTION
+
+#04271  FUNCTION ALF_Comp_Ped_Judge
+#04272    LOOP
+#04273      Obj_PlayAnim anim = Judge_Idle
+            cycle
+#04275      Wait RANDOM[3][8; 14; 25]
+            0.25 JUMP 0x19000000 0.5 seconds JUMP 0x0a000000 1 seconds
+#04277      Obj_CycleAnim anim = RANDOM[3][8; 14; 20]
+
+            Judge_Left JUMP 0x0f000000 Judge_Right JUMP 0x05000000 Judge_Check
+#04280    END LOOP
+#04281  END FUNCTION
+
+#04283  FUNCTION ALF_Comp_Ped_JudgeLeftHand
+#04284    IF IsCareerMode
+#04285    ELSE
+#04286      Die
+#04287    END IF
+#04288    LOOP
+#04289      Obj_PlayAnim anim = Judge_Idle
+            cycle
+#04291      Wait RANDOM[3][8; 14; 25]
+            0.25 JUMP 0x19000000 0.5 seconds JUMP 0x0a000000 1 seconds
+#04293      Obj_CycleAnim anim = RANDOM[2][4; 10]
+
+            Judge_Right JUMP 0x05000000 Judge_Check
+#04296    END LOOP
+#04297  END FUNCTION
+
+#04299  FUNCTION ALF_Comp_Ped_JudgeRightHand
+#04300    IF IsCareerMode
+#04301    ELSE
+#04302      Die
+#04303    END IF
+#04304    LOOP
+#04305      Obj_PlayAnim anim = Judge_Idle
+            cycle
+#04307      Wait RANDOM[3][8; 14; 25]
+            0.25 JUMP 0x19000000 0.5 seconds JUMP 0x0a000000 1 seconds
+#04309      Obj_CycleAnim anim = RANDOM[2][4; 10]
+
+            Judge_Left JUMP 0x05000000 Judge_Check
+#04312    END LOOP
+#04313  END FUNCTION
+
+#04315  FUNCTION ALF_SI_Init
+#04316    Create prefix = "DEST_"
+
+#04318    Kill prefix = "CREAT_"
+
+#04320    Create name = TRGP_FireCannons
+
+#04322    Create name = SI_OuterDoor
+
+#04324  END FUNCTION
+
+#04326  FUNCTION ALF_SI_SprinklerNoise
+#04327    Obj_PlaySound SUB_sprinklers3 vol = 70
+          dropoff = 100
+
+#04330  END FUNCTION
+
+#04332  FUNCTION ALF_SI_SharkFin
+#04333    Obj_RotY speed = 35
+
+#04335  END FUNCTION
+
+#04337  FUNCTION ALF_SI_Fish
+#04338    Obj_StickToGround Off
+#04339    Obj_PathHeading On
+#04340    Obj_SetPathVelocity 5 fps
+#04341    Obj_SetPathTurnDist 8 feet
+#04342    Obj_FollowPathLinked
+#04343  END FUNCTION
+
+#04345  FUNCTION ALF_SI_Shark
+#04346    Obj_StickToGround Off
+#04347    Obj_SetPathTurnDist 20 feet
+#04348    Obj_PathHeading On
+#04349    Obj_SetPathVelocity 10 fps
+#04350    Obj_FollowPathLinked
+#04351  END FUNCTION
+
+#04353  FUNCTION ALF_SI_SharkLooking
+#04354    Obj_ApplyScaling x = 4
+          y = 4
+          z = 4
+
+#04358    Obj_PlayAnim anim = Shark_Swim
+          cycle
+#04360    Obj_StickToGround Off
+#04361    Obj_PathHeading Off
+#04362    Obj_SetPathVelocity 10 fps
+#04363    Obj_FollowPathLinked
+#04364    LOOP
+#04365      Obj_LookAtNode name = TRG_SharkLookat
+            time = 0.1
+            seconds
+#04368      Wait 0.1 seconds
+#04369    END LOOP
+#04370  END FUNCTION
+
+#04372  FUNCTION ALF_SI_SharkBig
+#04373    Obj_ApplyScaling x = 5
+          y = 5
+          z = 5
+
+#04377    Obj_PlayAnim anim = Shark_Swim
+          cycle
+#04379    Obj_StickToGround Off
+#04380    Obj_PathHeading Off
+#04381    Obj_SetPathVelocity 10 fps
+#04382    Obj_FollowPathLinked
+#04383  END FUNCTION
+
+#04385  FUNCTION ALF_SI_SharkSmall
+#04386    Obj_ApplyScaling x = 3
+          y = 3
+          z = 3
+
+#04390    Obj_PlayAnim anim = Shark_Swim
+          cycle
+#04392    Obj_StickToGround Off
+#04393    Obj_PathHeading Off
+#04394    Obj_SetPathVelocity 10 fps
+#04395    Obj_FollowPathLinked
+#04396  END FUNCTION
+
+#04398  FUNCTION ALF_SI_Moving_Cannon
+#04399    Obj_ClearExceptions
+#04400    IF InMultiplayerGame
+#04401    ELSE
+#04402      Obj_SetException Ex = FLAG_SI_CANNON_MOVE
+            Scr = ALF_SI_CannonMove
+
+#04405      LOOP
+#04406        Wait 10 seconds
+#04407      END LOOP
+#04408    END IF
+#04409  END FUNCTION
+
+#04411  FUNCTION ALF_SI_CannonMove
+#04412    Obj_ClearExceptions
+#04413    Obj_MoveToRelPos VECTOR[0.0; 0.0; -20.0] speed = 50
+          acceleration = 5
+
+#04416    Obj_WaitMove
+#04417    Obj_MoveToRelPos VECTOR[0.0; 0.0; 20.0] speed = 20
+          acceleration = 2
+
+#04420    Obj_WaitMove
+#04421    Goto ALF_SI_Moving_Cannon
+#04422  END FUNCTION
+
+#04424  FUNCTION ALF_SI_Moving_Cannon2
+#04425    Obj_ClearExceptions
+#04426    IF InMultiplayerGame
+#04427    ELSE
+#04428      Obj_SetException Ex = FLAG_SI_CANNON_MOVE
+            Scr = ALF_SI_CannonMove2
+
+#04431      LOOP
+#04432        Wait 10 seconds
+#04433      END LOOP
+#04434    END IF
+#04435  END FUNCTION
+
+#04437  FUNCTION ALF_SI_CannonMove2
+#04438    Obj_ClearExceptions
+#04439    Obj_MoveToRelPos VECTOR[0.0; 0.0; 30.0] speed = 50
+          acceleration = 5
+
+#04442    Obj_WaitMove
+#04443    Obj_MoveToRelPos VECTOR[0.0; 0.0; -30.0] speed = 10
+          acceleration = 1
+
+#04446    Obj_WaitMove
+#04447  END FUNCTION
+
+#04449  FUNCTION ALF_SI_LidOpen
+#04450    Obj_RotX angle = 160
+          speed = 90
+
+#04453    Obj_WaitRotate
+#04454    Create name = Lid_End_01
+
+#04456    Die
+#04457  END FUNCTION
+
+#04459  FUNCTION ALF_SI_ACNoise
+#04460  END FUNCTION
+
+#04462  FUNCTION ALF_SI_SailNoise
+#04463    LOOP
+#04464      Obj_PlaySound SI_sailflap2
+#04465      Wait RANDOM[3][8; 14; 20]
+            120 JUMP 0x0f000000 180 JUMP 0x05000000 240 frames
+#04467    END LOOP
+#04468  END FUNCTION
+
+#04470  FUNCTION ALF_SI_OceanNoise
+#04471    Obj_PlaySound Ocean2
+#04472  END FUNCTION
+
+#04474  FUNCTION ALF_SI_Seagulls
+#04475    LOOP
+#04476      Obj_PlaySound RANDOM[2][4; 10]
+            Seagull1 JUMP 0x05000000 Seagull7
+#04478      Wait RANDOM[3][8; 19; 30]
+            3 seconds JUMP 0x19000000 3.5 seconds JUMP 0x0a000000 4 seconds
+#04480    END LOOP
+#04481  END FUNCTION
+
+#04483  FUNCTION ALF_SI_Chest
+#04484    Create name = LID_Move_01
+
+#04486    Create name = CHEST01
+
+#04488    LaunchPanelMessage "Open Sesame!!!" 1
+#04489    Kill name = TRG_CHEST01
+
+#04491  END FUNCTION
+
+#04493  FUNCTION ALF_SI_FrontSail
+#04494    PlaySound SI_sailrip2
+#04495    Kill name = SI_FSMaster_Start
+
+#04497    Kill name = SI_FrontSail
+
+#04499    Create name = SI_FSMaster_Mid01
+
+#04501    Wait 45 frames
+#04502    Kill name = SI_FSMaster_Mid01
+
+#04504    Create name = SI_FSMaster_End
+
+#04506  END FUNCTION
+
+#04508  FUNCTION SailRip name = "Sail Rip"
+          Score = 100
+
+#04511    PlaySound HUD_jumpgap vol = 500
+
+#04513    SetTrickName GLOBAL.name
+
+#04515    SetTrickScore GLOBAL.Score
+
+#04517    Display BlockSpin
+#04518    WaitOneGameFrame
+#04519    IF Onground
+#04520      IF DoingTrick
+#04521      ELSE
+#04522        CheckGapTricks
+#04523        ClearGapTricks
+#04524        ClearPanel_Landed
+#04525      END IF
+#04526    END IF
+#04527  END FUNCTION
+
+#04529  FUNCTION ALF_SI_KillSkater_Plane
+#04530    Sk3_Killskater deathsound = gapsound
+          vol = 0
+          message1 = "Need a lift?"
+          message2 = "Geronimo!"
+          message3 = "No Parachute?"
+          message4 = "Look Out Below!"
+          r = 155
+          g = 155
+          b = 155
+
+#04540  END FUNCTION
+
+#04542  FUNCTION ALF_SI_KillSkater_Hell
+#04543    Sk3_Killskater deathsound = SUB_groan2
+          message1 = "AAAhhhhh!!!"
+          message2 = "AAAhhhhh!!!"
+          message3 = "AAAhhhhh!!!"
+          message4 = "AAAhhhhh!!!"
+          r = 0
+          g = 0
+          b = 0
+
+#04552  END FUNCTION
+
+#04554  FUNCTION ALF_SI_KillSkater_Demoness
+#04555    Sk3_Killskater deathsound = SUB_groan2
+          message1 = "Welcome Home!"
+          message2 = "Welcome Home!"
+          message3 = "Welcome Home!"
+          message4 = "Welcome Home!"
+          r = 0
+          g = 0
+          b = 0
+
+#04564  END FUNCTION
+
+#04566  FUNCTION ALF_SI_KillSkater_Dark
+#04567    Sk3_Killskater message1 = " "
+          message2 = " "
+          message3 = " "
+          message4 = " "
+          r = 0
+          g = 0
+          b = 0
+
+#04575  END FUNCTION
+
+#04577  FUNCTION ALF_SI_KillSkater_Shark
+#04578    DoFlash duration = 0.9
+          start_r = 180
+          start_g = 50
+          start_b = 50
+          start_a = 50
+          end_r = 90
+          end_g = 0
+          end_b = 0
+          end_a = 0
+          texture = "cw_SI_skullnBones_2.png"
+
+#04589    Sk3_Killskater deathsound = SI_Shark2
+          message1 = "Shark Bait!"
+          message2 = "Jaws of Death!"
+          message3 = "Shark Attack!"
+          message4 = "Swimming with Sharks!"
+          r = 0
+          g = 0
+          b = 155
+
+#04598  END FUNCTION
+
+#04600  FUNCTION ALF_SI_FireCannons
+#04601    SetFlag flag = SI_FLAG_CANNONS_FIRED
+
+#04603    IF InMultiplayerGame
+#04604    ELSE
+#04605      PauseSkaters
+#04606      PlaySkaterCamAnim Skater = 0
+            name = "Cam_Fire_Cannons"
+
+#04609      Wait 0.8 seconds
+#04610    END IF
+#04611    Wait 0.2 seconds
+#04612    Create name = Si_ShipFlash
+
+#04614    Create prefix = "SI_BlastShadow"
+
+#04616    Create prefix = "CANNON_"
+
+#04618    Kill name = TRGP_FireCannons
+
+#04620    Vibrate Actuator = 0
+          Percent = 62
+
+#04623    PlaySound SI_cannon
+#04624    SetParticleSysVisibility system = "ParticleFlash01"
+          visible = 1
+
+#04627    Wait 0.05 seconds
+#04628    SetParticleSysVisibility system = "ParticleFlash02"
+          visible = 1
+
+#04631    Wait 0.05 seconds
+#04632    PlaySound SI_cannon
+#04633    SetParticleSysVisibility system = "ParticleSparks01"
+          visible = 1
+
+#04636    SendException name = CAN_01
+          FLAG_SI_CANNON_MOVE
+#04638    SetParticleSysVisibility system = "ParticleSparks02"
+          visible = 1
+
+#04641    SetParticleSysVisibility system = "ParticleSparks03"
+          visible = 1
+
+#04644    SetParticleSysVisibility system = "ParticleSparks04"
+          visible = 1
+
+#04647    SetParticleSysVisibility system = "ParticleFireSmoke01"
+          visible = 1
+
+#04650    SetParticleSysVisibility system = "ParticleFireSmoke02"
+          visible = 1
+
+#04653    Wait 0.1 seconds
+#04654    SendException name = CAN_02
+          FLAG_SI_CANNON_MOVE
+#04656    Kill name = Si_ShipFlash
+
+#04658    Kill prefix = "SI_BlastShadow"
+
+#04660    PlaySound SI_cannon
+#04661    Wait 0.1 seconds
+#04662    SendException name = CAN_03
+          FLAG_SI_CANNON_MOVE
+#04664    PlaySound SI_cannon
+#04665    SetParticleSysVisibility system = "ParticleFlash01"
+          visible = 0
+
+#04668    SetParticleSysVisibility system = "ParticleFlash02"
+          visible = 0
+
+#04671    Wait 0.3 second
+#04672    Playstream explode1
+#04673    Wait 0.3 second
+#04674    Kill prefix = "DEST_"
+
+#04676    Shatter name = DEST_WALL01
+          Area = 10000
+          Variance = 4.6
+          Vel_x = RANDOM[2][4; 10]
+
+          30 JUMP 0x05000000 -30 Vel_y = 10.0
+          Vel_z = RANDOM[2][4; 10]
+
+          30 JUMP 0x05000000 -30 Spread = 1.5
+
+#04686    Kill prefix = "TRG_Rail_DEST_"
+
+#04688    Create prefix = "CREAT_"
+
+#04690    Wait 0.5 second
+#04691    Vibrate Off
+#04692    SetParticleSysVisibility system = "ParticleSparks01"
+          visible = 0
+
+#04695    SetParticleSysVisibility system = "ParticleSparks02"
+          visible = 0
+
+#04698    SetParticleSysVisibility system = "ParticleSparks03"
+          visible = 0
+
+#04701    SetParticleSysVisibility system = "ParticleSparks04"
+          visible = 0
+
+#04704    SetParticleSysVisibility system = "ParticleFireSmoke01"
+          visible = 0
+
+#04707    SetParticleSysVisibility system = "ParticleFireSmoke02"
+          visible = 0
+
+#04710    IF InMultiplayerGame
+#04711    ELSE
+#04712      SetParticleSysVisibility system = "ParticleSmoke01"
+            visible = 1
+
+#04715      SetParticleSysVisibility system = "ParticleSmoke02"
+            visible = 1
+
+#04718    END IF
+#04719    UnPauseSkaters
+#04720  END FUNCTION
+
+#04722  FUNCTION ALF_SI_FireCannonGrind
+#04723    IF InMultiplayerGame
+#04724    ELSE
+#04725      Create name = Si_ShipFlash
+
+#04727      Create prefix = "SI_BlastShadow"
+
+#04729      Create prefix = "CANNON_"
+
+#04731      DoFlash duration = 0.15
+            start_r = 0
+            start_g = 0
+            start_b = 0
+            start_a = 155
+            end_r = 255
+            end_g = 0
+            end_b = 0
+            end_a = 0
+
+#04741      SetParticleSysVisibility system = "ParticleFlash01"
+            visible = 1
+
+#04744      Vibrate Actuator = 0
+            Percent = 62
+
+#04747      PlaySound SI_cannon
+#04748      Wait 0.1 seconds
+#04749      PlaySound SI_cannon
+#04750      SetParticleSysVisibility system = "ParticleSparks01"
+            visible = 1
+
+#04753      SetParticleSysVisibility system = "ParticleSparks02"
+            visible = 1
+
+#04756      Wait 0.1 seconds
+#04757      Kill name = Si_ShipFlash
+
+#04759      Kill prefix = "SI_BlastShadow"
+
+#04761      PlaySound SI_cannon
+#04762      Wait 0.1 seconds
+#04763      PlaySound SI_cannon
+#04764      DoFlash duration = 0.15
+            start_r = 0
+            start_g = 0
+            start_b = 0
+            start_a = 155
+            end_r = 255
+            end_g = 0
+            end_b = 0
+            end_a = 0
+
+#04774      Wait 0.3 second
+#04775      Playstream explode1
+#04776      Wait 0.5 second
+#04777      Vibrate Off
+#04778      SetParticleSysVisibility system = "ParticleFlash01"
+            visible = 0
+
+#04781      SetParticleSysVisibility system = "ParticleSparks01"
+            visible = 0
+
+#04784      SetParticleSysVisibility system = "ParticleSparks02"
+            visible = 0
+
+#04787    END IF
+#04788  END FUNCTION
+
+#04790  FUNCTION ALF_SI_FireCannons2
+#04791    IF InMultiplayerGame
+#04792    ELSE
+#04793      Create prefix = "CBALL_"
+
+#04795      Vibrate Actuator = 0
+            Percent = 62
+
+#04798      PlaySound SI_cannon
+#04799      DoFlash duration = 0.15
+            start_r = 0
+            start_g = 0
+            start_b = 0
+            start_a = 155
+            end_r = 255
+            end_g = 0
+            end_b = 0
+            end_a = 0
+
+#04809      SetParticleSysVisibility system = "ParticleFlash04"
+            visible = 1
+
+#04812      Wait 0.1 seconds
+#04813      SetParticleSysVisibility system = "ParticleFlash06"
+            visible = 1
+
+#04816      Wait 0.2 seconds
+#04817      PlaySound SI_cannon
+#04818      SetParticleSysVisibility system = "ParticleFlash03"
+            visible = 1
+
+#04821      SetParticleSysVisibility system = "ParticleSparks07"
+            visible = 1
+
+#04824      SetParticleSysVisibility system = "ParticleSparks08"
+            visible = 1
+
+#04827      SetParticleSysVisibility system = "ParticleFireSmoke04"
+            visible = 1
+
+#04830      SetParticleSysVisibility system = "ParticleFlash06"
+            visible = 0
+
+#04833      Wait 0.1 seconds
+#04834      SetParticleSysVisibility system = "ParticleSparks11"
+            visible = 1
+
+#04837      SetParticleSysVisibility system = "ParticleSparks12"
+            visible = 1
+
+#04840      SetParticleSysVisibility system = "ParticleFireSmoke06"
+            visible = 1
+
+#04843      PlaySound SI_cannon
+#04844      DoFlash duration = 0.15
+            start_r = 0
+            start_g = 0
+            start_b = 0
+            start_a = 155
+            end_r = 255
+            end_g = 0
+            end_b = 0
+            end_a = 0
+
+#04854      SetParticleSysVisibility system = "ParticleFlash05"
+            visible = 1
+
+#04857      SetParticleSysVisibility system = "ParticleSparks05"
+            visible = 1
+
+#04860      SetParticleSysVisibility system = "ParticleSparks06"
+            visible = 1
+
+#04863      SetParticleSysVisibility system = "ParticleFireSmoke03"
+            visible = 1
+
+#04866      SetParticleSysVisibility system = "ParticleFlash04"
+            visible = 0
+
+#04869      Wait 0.1 seconds
+#04870      PlaySound SI_cannon
+#04871      SetParticleSysVisibility system = "ParticleSparks09"
+            visible = 1
+
+#04874      SetParticleSysVisibility system = "ParticleSparks10"
+            visible = 1
+
+#04877      SetParticleSysVisibility system = "ParticleFireSmoke05"
+            visible = 1
+
+#04880      SetParticleSysVisibility system = "ParticleFlash03"
+            visible = 0
+
+#04883      Wait 0.1 seconds
+#04884      SetParticleSysVisibility system = "ParticleSparks11"
+            visible = 0
+
+#04887      SetParticleSysVisibility system = "ParticleSparks12"
+            visible = 0
+
+#04890      SetParticleSysVisibility system = "ParticleFireSmoke06"
+            visible = 0
+
+#04893      SetParticleSysVisibility system = "ParticleSparks07"
+            visible = 0
+
+#04896      SetParticleSysVisibility system = "ParticleSparks08"
+            visible = 0
+
+#04899      SetParticleSysVisibility system = "ParticleFireSmoke04"
+            visible = 0
+
+#04902      Wait 0.1 seconds
+#04903      SetParticleSysVisibility system = "ParticleSparks05"
+            visible = 0
+
+#04906      SetParticleSysVisibility system = "ParticleSparks06"
+            visible = 0
+
+#04909      SetParticleSysVisibility system = "ParticleFireSmoke03"
+            visible = 0
+
+#04912      SetParticleSysVisibility system = "ParticleFlash05"
+            visible = 0
+
+#04915      SetParticleSysVisibility system = "ParticleSparks09"
+            visible = 0
+
+#04918      SetParticleSysVisibility system = "ParticleSparks10"
+            visible = 0
+
+#04921      SetParticleSysVisibility system = "ParticleFireSmoke05"
+            visible = 0
+
+#04924      VibrateOff
+#04925    END IF
+#04926  END FUNCTION
+
+#04928  FUNCTION ALF_SI_FireCannons_Wait
+#04929    IF InMultiplayerGame
+#04930    ELSE
+#04931      Wait 30 frames
+#04932      Vibrate Actuator = 0
+            Percent = 62
+
+#04935      PlaySound SI_cannon
+#04936      DoFlash duration = 0.15
+            start_r = 0
+            start_g = 0
+            start_b = 0
+            start_a = 155
+            end_r = 255
+            end_g = 0
+            end_b = 0
+            end_a = 0
+
+#04946      SetParticleSysVisibility system = "ParticleFlash04"
+            visible = 1
+
+#04949      Wait 0.1 seconds
+#04950      SetParticleSysVisibility system = "ParticleFlash06"
+            visible = 1
+
+#04953      Wait 0.2 seconds
+#04954      Create prefix = "CBALL_"
+
+#04956      PlaySound SI_cannon
+#04957      SetParticleSysVisibility system = "ParticleFlash03"
+            visible = 1
+
+#04960      SetParticleSysVisibility system = "ParticleSparks07"
+            visible = 1
+
+#04963      SetParticleSysVisibility system = "ParticleSparks08"
+            visible = 1
+
+#04966      SendException name = MOVING_CANNON02
+            FLAG_SI_CANNON_MOVE
+#04968      SetParticleSysVisibility system = "ParticleFireSmoke04"
+            visible = 1
+
+#04971      SetParticleSysVisibility system = "ParticleFlash06"
+            visible = 0
+
+#04974      Wait 0.1 seconds
+#04975      SetParticleSysVisibility system = "ParticleSparks11"
+            visible = 1
+
+#04978      SendException name = MOVING_CANNON04
+            FLAG_SI_CANNON_MOVE
+#04980      SetParticleSysVisibility system = "ParticleSparks12"
+            visible = 1
+
+#04983      SetParticleSysVisibility system = "ParticleFireSmoke06"
+            visible = 1
+
+#04986      PlaySound SI_cannon
+#04987      DoFlash duration = 0.15
+            start_r = 0
+            start_g = 0
+            start_b = 0
+            start_a = 155
+            end_r = 255
+            end_g = 0
+            end_b = 0
+            end_a = 0
+
+#04997      SetParticleSysVisibility system = "ParticleFlash05"
+            visible = 1
+
+#05000      SetParticleSysVisibility system = "ParticleSparks05"
+            visible = 1
+
+#05003      SetParticleSysVisibility system = "ParticleSparks06"
+            visible = 1
+
+#05006      SendException name = MOVING_CANNON01
+            FLAG_SI_CANNON_MOVE
+#05008      SetParticleSysVisibility system = "ParticleFireSmoke03"
+            visible = 1
+
+#05011      SetParticleSysVisibility system = "ParticleFlash04"
+            visible = 0
+
+#05014      Wait 0.1 seconds
+#05015      PlaySound SI_cannon
+#05016      SetParticleSysVisibility system = "ParticleSparks09"
+            visible = 1
+
+#05019      SetParticleSysVisibility system = "ParticleSparks10"
+            visible = 1
+
+#05022      SendException name = MOVING_CANNON03
+            FLAG_SI_CANNON_MOVE
+#05024      SetParticleSysVisibility system = "ParticleFireSmoke05"
+            visible = 1
+
+#05027      SetParticleSysVisibility system = "ParticleFlash03"
+            visible = 0
+
+#05030      Wait 0.1 seconds
+#05031      SetParticleSysVisibility system = "ParticleSparks11"
+            visible = 0
+
+#05034      SetParticleSysVisibility system = "ParticleSparks12"
+            visible = 0
+
+#05037      SetParticleSysVisibility system = "ParticleFireSmoke06"
+            visible = 0
+
+#05040      SetParticleSysVisibility system = "ParticleSparks07"
+            visible = 0
+
+#05043      SetParticleSysVisibility system = "ParticleSparks08"
+            visible = 0
+
+#05046      SetParticleSysVisibility system = "ParticleFireSmoke04"
+            visible = 0
+
+#05049      Wait 0.1 seconds
+#05050      SetParticleSysVisibility system = "ParticleSparks05"
+            visible = 0
+
+#05053      SetParticleSysVisibility system = "ParticleSparks06"
+            visible = 0
+
+#05056      SetParticleSysVisibility system = "ParticleFireSmoke03"
+            visible = 0
+
+#05059      SetParticleSysVisibility system = "ParticleFlash05"
+            visible = 0
+
+#05062      SetParticleSysVisibility system = "ParticleSparks09"
+            visible = 0
+
+#05065      SetParticleSysVisibility system = "ParticleSparks10"
+            visible = 0
+
+#05068      SetParticleSysVisibility system = "ParticleFireSmoke05"
+            visible = 0
+
+#05071      VibrateOff
+#05072    END IF
+#05073  END FUNCTION
+
+#05075  FUNCTION ALF_SI_CannonBalls
+#05076    Obj_MoveToLink speed = 150
+          mph
+#05078    Obj_WaitMove
+#05079    Die
+#05080  END FUNCTION
+
+#05082  FUNCTION ALF_SI_Debris
+#05083    Obj_RotX speed = 720
+
+#05085    Obj_RotY speed = 720
+
+#05087    Obj_RotZ speed = 720
+
+#05089    Obj_FollowPathLinked
+#05090    Obj_SetPathVelocity 55 mph
+#05091    Obj_PathHeading Off
+#05092    Obj_SetPathAcceleration 0
+#05093    Obj_SetPathDeceleration 0
+#05094    Obj_WaitMove
+#05095    Die
+#05096  END FUNCTION
+
+#05098  FUNCTION ALF_SI_ScalingExplo
+#05099    Obj_ApplyScaling x = 1.0
+          y = 1.0
+          z = 1.0
+
+#05103    Wait 1 frame
+#05104    Obj_ApplyScaling x = 1.3
+          y = 1.3
+          z = 1.3
+
+#05108    Wait 1 frame
+#05109    Obj_ApplyScaling x = 1.5
+          y = 1.5
+          z = 1.5
+
+#05113    Wait 1 frame
+#05114    Obj_ApplyScaling x = 2.0
+          y = 2.0
+          z = 2.0
+
+#05118    Wait 1 frame
+#05119    Obj_ApplyScaling x = 2.3
+          y = 2.3
+          z = 2.3
+
+#05123    Wait 1 frame
+#05124    Obj_ApplyScaling x = 3.0
+          y = 3.0
+          z = 3.0
+
+#05128    Wait 1 frame
+#05129    Obj_ApplyScaling x = 3.4
+          y = 3.4
+          z = 3.4
+
+#05133    Wait 1 frame
+#05134    Obj_ApplyScaling x = 4.0
+          y = 4.0
+          z = 4.0
+
+#05138    Wait 1 frame
+#05139    Obj_ApplyScaling x = 5.0
+          y = 5.0
+          z = 5.0
+
+#05143    Wait 1 frame
+#05144    Die
+#05145  END FUNCTION
+
+#05147  FUNCTION ALF_SI_Unhide_Inside
+#05148    visible prefix = "SI_SNAKE_"
+
+#05150    visible prefix = "SI_SnakeDirt"
+
+#05152    visible prefix = "SI_SHALLOW_"
+
+#05154    visible prefix = "SI_PEANUT_"
+
+#05156    visible prefix = "CREAT_Reflect"
+
+#05158    visible prefix = "SI_SponsorsInside"
+
+#05160    visible name = SI_Walls02
+
+#05162    SetParticleSysVisibility system = "NExtParticleGold01"
+          visible = 0
+
+#05165    SetParticleSysVisibility system = "NExtParticleGold02"
+          visible = 0
+
+#05168    SetParticleSysVisibility system = "NExtParticleGold03"
+          visible = 0
+
+#05171    SetParticleSysVisibility system = "NExtParticleGold04"
+          visible = 0
+
+#05174    SetParticleSysVisibility system = "NExtParticleGold05"
+          visible = 0
+
+#05177    Invisible prefix = "SI_Treasure"
+
+#05179    Invisible prefix = "SI_ShipBackside"
+
+#05181    IF InMultiplayerGame
+#05182      Kill name = SI_OuterDoor
+
+#05184      Kill name = SI_Sponsors06
+
+#05186      Kill name = si_lighting02
+
+#05188    END IF
+#05189  END FUNCTION
+
+#05191  FUNCTION ALF_SI_hide_Inside
+#05192    Invisible prefix = "SI_SNAKE_"
+
+#05194    Invisible prefix = "SI_SnakeDirt"
+
+#05196    Invisible prefix = "SI_SHALLOW_"
+
+#05198    Invisible prefix = "SI_PEANUT_"
+
+#05200    Invisible prefix = "CREAT_Reflect"
+
+#05202    Invisible prefix = "SI_SponsorsInside"
+
+#05204    Invisible name = SI_Walls02
+
+#05206    SetParticleSysVisibility system = "NExtParticleGold01"
+          visible = 1
+
+#05209    SetParticleSysVisibility system = "NExtParticleGold02"
+          visible = 1
+
+#05212    SetParticleSysVisibility system = "NExtParticleGold03"
+          visible = 1
+
+#05215    SetParticleSysVisibility system = "NExtParticleGold04"
+          visible = 1
+
+#05218    SetParticleSysVisibility system = "NExtParticleGold05"
+          visible = 1
+
+#05221    visible prefix = "SI_Treasure"
+
+#05223    visible prefix = "SI_ShipBackside"
+
+#05225  END FUNCTION
+
+#05227  FUNCTION ALF_SI_Hide_Fire
+#05228    IF InMultiplayerGame
+#05229      SetParticleSysVisibility system = "NExtParticleFire01"
+            visible = 0
+
+#05232      SetParticleSysVisibility system = "NExtParticleFire02"
+            visible = 0
+
+#05235      SetParticleSysVisibility system = "NExtParticleFire03"
+            visible = 0
+
+#05238      SetParticleSysVisibility system = "NExtParticleFire04"
+            visible = 0
+
+#05241      SetParticleSysVisibility system = "NExtParticleFire05"
+            visible = 0
+
+#05244    ELSE
+#05245      IF inside
+#05246        SetParticleSysVisibility system = "NExtParticleFire01"
+              visible = 1
+
+#05249        SetParticleSysVisibility system = "NExtParticleFire02"
+              visible = 1
+
+#05252        SetParticleSysVisibility system = "NExtParticleFire03"
+              visible = 1
+
+#05255        SetParticleSysVisibility system = "NExtParticleFire04"
+              visible = 1
+
+#05258        SetParticleSysVisibility system = "NExtParticleFire05"
+              visible = 1
+
+#05261      ELSE
+#05262        SetParticleSysVisibility system = "NExtParticleFire01"
+              visible = 0
+
+#05265        SetParticleSysVisibility system = "NExtParticleFire02"
+              visible = 0
+
+#05268        SetParticleSysVisibility system = "NExtParticleFire03"
+              visible = 0
+
+#05271        SetParticleSysVisibility system = "NExtParticleFire04"
+              visible = 0
+
+#05274        SetParticleSysVisibility system = "NExtParticleFire05"
+              visible = 0
+
+#05277      END IF
+#05278    END IF
+#05279  END FUNCTION
+
+#05281  FUNCTION ALF_SI_Hide_VertRamp
+#05282    IF inside
+#05283      visible prefix = "SI_VertRamp_"
+
+#05285      visible prefix = "SI_VRDirt"
+
+#05287      visible name = SI_O2
+
+#05289      visible prefix = "SI_BoxLight"
+
+#05291      visible name = SI_PedPlatform
+
+#05293      visible name = SI_PedPlatform01
+
+#05295      visible prefix = "SI_SpectatorStand"
+
+#05297      visible name = SI_ScaffCagew_Banner
+
+#05299      visible name = SI_ScaffoldPole01
+
+#05301      visible name = SI_Walls05
+
+#05303      visible name = SI_Walls08
+
+#05305      visible prefix = "SI_Observe"
+
+#05307      visible prefix = "SI_SnakeDeck"
+
+#05309      visible name = SI_Support2
+
+#05311      visible name = SI_Ramp01
+
+#05313      visible name = SI_Handrail
+
+#05315      visible name = SI_PeanutBowlStairs
+
+#05317      visible name = SI_StairBowl
+
+#05319      visible name = SI_CornerPipe01
+
+#05321      visible prefix = "SI_BigBeam"
+
+#05323      visible name = SI_SmallBeam
+
+#05325    ELSE
+#05326      Invisible prefix = "SI_VertRamp_"
+
+#05328      Invisible prefix = "SI_VRDirt"
+
+#05330      Invisible name = SI_O2
+
+#05332      Invisible prefix = "SI_BoxLight"
+
+#05334      Invisible name = SI_PedPlatform
+
+#05336      Invisible name = SI_PedPlatform01
+
+#05338      Invisible prefix = "SI_SpectatorStand"
+
+#05340      Invisible name = SI_ScaffCagew_Banner
+
+#05342      Invisible name = SI_ScaffoldPole01
+
+#05344      Invisible name = SI_Walls05
+
+#05346      Invisible name = SI_Walls08
+
+#05348      Invisible prefix = "SI_Observe"
+
+#05350      Invisible prefix = "SI_SnakeDeck"
+
+#05352      Invisible name = SI_Support2
+
+#05354      Invisible name = SI_Ramp01
+
+#05356      Invisible name = SI_Handrail
+
+#05358      Invisible name = SI_PeanutBowlStairs
+
+#05360      Invisible name = SI_StairBowl
+
+#05362      Invisible name = SI_CornerPipe01
+
+#05364      Invisible prefix = "SI_BigBeam"
+
+#05366      Invisible name = SI_SmallBeam
+
+#05368    END IF
+#05369  END FUNCTION
+
+#05371  FUNCTION ALF_SI_DreamerGap
+#05372    EndGap GapID = Dreamer
+          Text = "The Dreamer Gap"
+          Score = 250
+
+#05376  END FUNCTION
+
+#05378  FUNCTION ALF_SI_Fearless_Gap
+#05379    StartGap flags = ARRAY(
+
+            PURE_AIR
+          )
+
+#05384    EndGap Text = "Fearless Shark Hop"
+          Score = 250
+
+#05387  END FUNCTION
+
+#05389  FUNCTION ALF_SI_Start_Treasure_Gap
+#05390    StartGap GapID = Treasure
+          flags = ARRAY(
+
+            PURE_AIR
+          )
+
+#05396  END FUNCTION
+
+#05398  FUNCTION ALF_SI_End_Treasure_Gap
+#05399    EndGap GapID = Treasure
+          Text = "Treasure Trip"
+          Score = 250
+
+#05403  END FUNCTION
+
+#05405  FUNCTION ALF_SI_Start_Violet_Gap
+#05406    StartGap GapID = Violet
+          flags = ARRAY(
+
+            PURE_AIR
+          )
+
+#05412  END FUNCTION
+
+#05414  FUNCTION ALF_SI_End_Violet_Gap
+#05415    EndGap GapID = Violet
+          Text = "Violet's Gap"
+          Score = 250
+
+#05419  END FUNCTION
+
+#05421  FUNCTION ALF_SI_Start_Russian_Gap
+#05422    StartGap GapID = Russian
+          flags = ARRAY(
+
+            PURE_AIR
+          )
+
+#05428  END FUNCTION
+
+#05430  FUNCTION ALF_SI_End_Russian_Gap
+#05431    EndGap GapID = Russian
+          Text = "Russian Tease Gap"
+          Score = 250
+
+#05435  END FUNCTION
+
+#05437  FUNCTION ALF_SI_Start_SurfsUp_Gap
+#05438    StartGap GapID = Surf
+          flags = ARRAY(
+
+            PURE_AIR
+          )
+
+#05444  END FUNCTION
+
+#05446  FUNCTION ALF_SI_End_SurfsUp_Gap
+#05447    EndGap GapID = Surf
+          Text = "Surf's Up"
+          Score = 150
+
+#05451  END FUNCTION
+
+#05453  FLAG_OUTSIDE_OPEN = 1
+
+#05455  FLAG_LIP_TRICK_EXCEPTION = 2
+
+#05457  FLAG_SI_CANNON_MOVE = 9
+
+#05459  FUNCTION ALF_SI_Ahoy
+#05460    IF IsCareerMode
+#05461      IF GetFlag flag = SI_FLAG_OUTSIDE_OPEN
+
+#05463      ELSE
+#05464        SetFlag flag = SI_FLAG_OUTSIDE_OPEN
+
+#05466        SendException FLAG_OUTSIDE_OPEN name = TRG_DoorKiller
+
+#05468      END IF
+#05469    ELSE
+#05470      SendException FLAG_OUTSIDE_OPEN name = TRG_DoorKiller
+
+#05472    END IF
+#05473  END FUNCTION
+
+#05475  FUNCTION ALF_SI_DoorKiller
+#05476    Obj_SetException Ex = FLAG_OUTSIDE_OPEN
+          Scr = ALF_SI_BlowDoor
+
+#05479    LOOP
+#05480      Wait 1000 seconds
+#05481    END LOOP
+#05482  END FUNCTION
+
+#05484  FUNCTION ALF_SI_BlowDoor
+#05485    Obj_ClearExceptions
+#05486    Kill name = SI_OuterDoor
+
+#05488    Shatter name = SI_OuterDoor
+          Area = 5000
+          Variance = 4.6
+          Vel_x = RANDOM[3][8; 14; 20]
+
+          0.0 JUMP 0x0f000000 30 JUMP 0x05000000 -30 Vel_y = 10.0
+          Vel_z = RANDOM[3][8; 14; 20]
+
+          0.0 JUMP 0x0f000000 30 JUMP 0x05000000 -30 Spread = 1.5
+
+#05498    Kill name = SI_Sponsors06
+
+#05500    PlaySound SI_cannon
+#05501    Kill name = si_lighting02
+
+#05503    IF InSplitScreenGame
+#05504      LaunchPanelMessage "Ahoy, Thar Be More|Skatin' Outside!!!" properties = panel_message_pirate
+
+#05506    ELSE
+#05507      LaunchPanelMessage "Ahoy, Thar Be More Skatin' Outside!!!" properties = panel_message_pirate
+
+#05509    END IF
+#05510    PlaySound goaldone vol = 100
+
+#05512    LOOP
+#05513      Wait 1000 seconds
+#05514    END LOOP
+#05515  END FUNCTION
+
+#05517  FUNCTION ALF_SI_CheckDoor
+#05518  END FUNCTION
+
+#05520  FUNCTION ALF_SI_ParticlesOff
+#05521    SetParticleSysVisibility system = "NExtParticleSprinkler01"
+          visible = 0
+
+#05524    SetParticleSysVisibility system = "NExtParticleSprinkler02"
+          visible = 0
+
+#05527    SetParticleSysVisibility system = "NExtParticleSprinkler03"
+          visible = 0
+
+#05530    SetParticleSysVisibility system = "NExtParticleSprinkler04"
+          visible = 0
+
+#05533    SetParticleSysVisibility system = "NExtParticleSprinkler05"
+          visible = 0
+
+#05536    SetParticleSysVisibility system = "NExtParticleSprinkler06"
+          visible = 0
+
+#05539    SetParticleSysVisibility system = "NExtParticleSprinkler07"
+          visible = 0
+
+#05542    SetParticleSysVisibility system = "NExtParticleSprinkler08"
+          visible = 0
+
+#05545    SetParticleSysVisibility system = "NExtParticleSprinkler09"
+          visible = 0
+
+#05548    SetParticleSysVisibility system = "NExtParticleGold01"
+          visible = 0
+
+#05551    SetParticleSysVisibility system = "NExtParticleGold02"
+          visible = 0
+
+#05554    SetParticleSysVisibility system = "NExtParticleGold03"
+          visible = 0
+
+#05557    SetParticleSysVisibility system = "NExtParticleGold04"
+          visible = 0
+
+#05560    SetParticleSysVisibility system = "NExtParticleGold05"
+          visible = 0
+
+#05563    SetParticleSysVisibility system = "ParticleFlash01"
+          visible = 0
+
+#05566    SetParticleSysVisibility system = "ParticleFlash02"
+          visible = 0
+
+#05569    SetParticleSysVisibility system = "ParticleFlash03"
+          visible = 0
+
+#05572    SetParticleSysVisibility system = "ParticleFlash04"
+          visible = 0
+
+#05575    SetParticleSysVisibility system = "ParticleFlash05"
+          visible = 0
+
+#05578    SetParticleSysVisibility system = "ParticleFlash06"
+          visible = 0
+
+#05581    SetParticleSysVisibility system = "ParticleSMOKE01"
+          visible = 0
+
+#05584    SetParticleSysVisibility system = "ParticleSMOKE02"
+          visible = 0
+
+#05587    SetParticleSysVisibility system = "ParticleFireSMOKE01"
+          visible = 0
+
+#05590    SetParticleSysVisibility system = "ParticleFireSMOKE02"
+          visible = 0
+
+#05593    SetParticleSysVisibility system = "ParticleFireSMOKE03"
+          visible = 0
+
+#05596    SetParticleSysVisibility system = "ParticleFireSMOKE04"
+          visible = 0
+
+#05599    SetParticleSysVisibility system = "ParticleFireSMOKE05"
+          visible = 0
+
+#05602    SetParticleSysVisibility system = "ParticleFireSMOKE06"
+          visible = 0
+
+#05605    SetParticleSysVisibility system = "ParticleSparks01"
+          visible = 0
+
+#05608    SetParticleSysVisibility system = "ParticleSparks02"
+          visible = 0
+
+#05611    SetParticleSysVisibility system = "ParticleSparks03"
+          visible = 0
+
+#05614    SetParticleSysVisibility system = "ParticleSparks04"
+          visible = 0
+
+#05617    SetParticleSysVisibility system = "ParticleSparks05"
+          visible = 0
+
+#05620    SetParticleSysVisibility system = "ParticleSparks06"
+          visible = 0
+
+#05623    SetParticleSysVisibility system = "ParticleSparks07"
+          visible = 0
+
+#05626    SetParticleSysVisibility system = "ParticleSparks08"
+          visible = 0
+
+#05629    SetParticleSysVisibility system = "ParticleSparks09"
+          visible = 0
+
+#05632    SetParticleSysVisibility system = "ParticleSparks10"
+          visible = 0
+
+#05635    SetParticleSysVisibility system = "ParticleSparks11"
+          visible = 0
+
+#05638    SetParticleSysVisibility system = "ParticleSparks12"
+          visible = 0
+          Die
+#05641  END FUNCTION
+
+#05643  FUNCTION ALF_SI_OutsideOFF
+#05644    IF IsObserving
+#05645    ELSE
+#05646      SetParticleSysVisibility system = "NExtParticleGold01"
+            visible = 0
+
+#05649      SetParticleSysVisibility system = "NExtParticleGold02"
+            visible = 0
+
+#05652      SetParticleSysVisibility system = "NExtParticleGold03"
+            visible = 0
+
+#05655      SetParticleSysVisibility system = "NExtParticleGold04"
+            visible = 0
+
+#05658      SetParticleSysVisibility system = "NExtParticleGold05"
+            visible = 0
+
+#05661      Invisible prefix = "SI_Treasure"
+
+#05663      Invisible prefix = "SI_ShipBackside"
+
+#05665    END IF
+#05666  END FUNCTION
+
+#05668  FUNCTION ALF_SI_SprinklersOn
+#05669    IF InMultiplayerGame
+#05670    ELSE
+#05671      Create prefix = "TRG_SprinklerNoise"
+
+#05673      SetParticleSysVisibility system = "NExtParticleSprinkler01"
+            visible = 1
+
+#05676      SetParticleSysVisibility system = "NExtParticleSprinkler02"
+            visible = 1
+
+#05679      SetParticleSysVisibility system = "NExtParticleSprinkler03"
+            visible = 1
+
+#05682      SetParticleSysVisibility system = "NExtParticleSprinkler04"
+            visible = 1
+
+#05685      SetParticleSysVisibility system = "NExtParticleSprinkler05"
+            visible = 1
+
+#05688      SetParticleSysVisibility system = "NExtParticleSprinkler06"
+            visible = 1
+
+#05691      SetParticleSysVisibility system = "NExtParticleSprinkler07"
+            visible = 1
+
+#05694      SetParticleSysVisibility system = "NExtParticleSprinkler08"
+            visible = 1
+
+#05697      SetParticleSysVisibility system = "NExtParticleSprinkler09"
+            visible = 1
+
+#05700    END IF
+#05701  END FUNCTION
+
+#05703  FUNCTION ALF_SI_FlashTest
+#05704    IF inside
+#05705      DoFlash duration = 0.3
+            start_r = 0
+            start_g = 0
+            start_b = 0
+            start_a = 0
+            end_r = 0
+            end_g = 0
+            end_b = 155
+            end_a = 10
+            texture = "SI_ALF_PirateFlag01.png"
+
+#05716    ELSE
+#05717    END IF
+#05718  END FUNCTION
+
+#05720  FUNCTION ALF_SI_CheckFlags
+#05721    IF IsCareerMode
+#05722      IF GetFlag flag = SI_FLAG_OUTSIDE_OPEN
+
+#05724        Kill name = SI_OuterDoor
+
+#05726        Kill name = SI_Sponsors06
+
+#05728        Kill name = si_lighting02
+
+#05730      END IF
+#05731      IF GetFlag flag = SI_FLAG_CANNONS_FIRED
+
+#05733        Kill prefix = "DEST_"
+
+#05735        Kill prefix = "TRG_Rail_DEST_"
+
+#05737        Create prefix = "CREAT_"
+
+#05739        Kill name = TRGP_FireCannons
+
+#05741        Wait 1 second
+#05742        SetParticleSysVisibility system = "ParticleSmoke01"
+              visible = 1
+
+#05745        SetParticleSysVisibility system = "ParticleSmoke02"
+              visible = 1
+
+#05748      END IF
+#05749    END IF
+#05750  END FUNCTION
+
+#05752  FUNCTION ALF_SI_RulesRunsScript
+#05753    Create prefix = "TRG_Ped_RulesRuns"
+
+#05755  END FUNCTION
+
+#05757  FUNCTION ALF_SI_RulesBailsScript
+#05758    Kill prefix = "TRG_Ped_RulesRuns"
+
+#05760    Create prefix = "TRG_Ped_RulesBails"
+
+#05762  END FUNCTION
+
+#05764  FUNCTION ALF_SI_RulesScoresScript
+#05765    Create prefix = "TRG_Ped_RulesScores"
+
+#05767    Kill prefix = "TRG_Ped_RulesBails"
+
+#05769  END FUNCTION
+
+#05771  FUNCTION ALF_SI_RulesMedalsScript
+#05772    Kill prefix = "TRG_Ped_RulesScores"
+
+#05774    Create prefix = "TRG_Ped_RulesMedals"
+
+#05776  END FUNCTION
+
+#05778  FUNCTION ALF_SI_RulesListScript
+#05779    Kill prefix = "	TRG_Ped_RulesMedals"
+
+#05781  END FUNCTION
+
+#05783  FUNCTION ALF_SI_JudgedScript
+#05784    Create name = TRG_JudgeNoises
+
+#05786    visible name = SI_Walls02
+
+#05788  END FUNCTION
+
+#05790  FUNCTION ALF_SI_JudgedChangeScript
+#05791    Create prefix = "TRG_Ped_Judged_Still"
+
+#05793    IF ProfileEquals Is_Named = mullen
+
+#05795      Create name = RANDOM[11][45; 56; 67; 78; 89; 100; 111; 122; 133; 144; 155]
+
+
+#05798      TRG_Ped_Judged01
+#05799      JUMP 0x91000000 TRG_Ped_Judged02
+#05800      JUMP 0x82000000 TRG_Ped_Judged03
+#05801      JUMP 0x73000000 TRG_Ped_Judged04
+#05802      JUMP 0x64000000 TRG_Ped_Judged_Dummy
+#05803      JUMP 0x55000000 TRG_Ped_Judged07
+#05804      JUMP 0x46000000 TRG_Ped_Judged08
+#05805      JUMP 0x37000000 TRG_Ped_Judged_Dummy
+#05806      JUMP 0x28000000 TRG_Ped_Judged09
+#05807      JUMP 0x19000000 TRG_Ped_Judged11
+#05808      JUMP 0x0a000000 TRG_Ped_Judged12
+#05809
+#05810    ELSE
+#05811      IF ProfileEquals Is_Named = margera
+
+#05813        Create name = RANDOM[11][45; 56; 67; 78; 89; 100; 111; 122; 133; 144; 155]
+
+
+#05816        TRG_Ped_Judged01
+#05817        JUMP 0x91000000 TRG_Ped_Judged02
+#05818        JUMP 0x82000000 TRG_Ped_Judged04
+#05819        JUMP 0x73000000 TRG_Ped_Judged_Dummy
+#05820        JUMP 0x64000000 TRG_Ped_Judged05
+#05821        JUMP 0x55000000 TRG_Ped_Judged06
+#05822        JUMP 0x46000000 TRG_Ped_Judged07
+#05823        JUMP 0x37000000 TRG_Ped_Judged08
+#05824        JUMP 0x28000000 TRG_Ped_Judged_Dummy
+#05825        JUMP 0x19000000 TRG_Ped_Judged10
+#05826        JUMP 0x0a000000 TRG_Ped_Judged12
+#05827
+#05828      ELSE
+#05829        IF ProfileEquals Is_Named = steamer
+
+#05831          Create name = RANDOM[11][45; 56; 67; 78; 89; 100; 111; 122; 133; 144; 155]
+
+
+#05834          TRG_Ped_Judged02
+#05835          JUMP 0x91000000 TRG_Ped_Judged03
+#05836          JUMP 0x82000000 TRG_Ped_Judged_Dummy
+#05837          JUMP 0x73000000 TRG_Ped_Judged05
+#05838          JUMP 0x64000000 TRG_Ped_Judged06
+#05839          JUMP 0x55000000 TRG_Ped_Judged07
+#05840          JUMP 0x46000000 TRG_Ped_Judged_Dummy
+#05841          JUMP 0x37000000 TRG_Ped_Judged09
+#05842          JUMP 0x28000000 TRG_Ped_Judged10
+#05843          JUMP 0x19000000 TRG_Ped_Judged11
+#05844          JUMP 0x0a000000 TRG_Ped_Judged12
+#05845
+#05846        ELSE
+#05847          IF ProfileEquals Is_Named = campbell
+
+#05849            Create name = RANDOM[11][45; 56; 67; 78; 89; 100; 111; 122; 133; 144; 155]
+
+
+#05852            TRG_Ped_Judged01
+#05853            JUMP 0x91000000 TRG_Ped_Judged03
+#05854            JUMP 0x82000000 TRG_Ped_Judged04
+#05855            JUMP 0x73000000 TRG_Ped_Judged_Dummy
+#05856            JUMP 0x64000000 TRG_Ped_Judged05
+#05857            JUMP 0x55000000 TRG_Ped_Judged06
+#05858            JUMP 0x46000000 TRG_Ped_Judged08
+#05859            JUMP 0x37000000 TRG_Ped_Judged_Dummy
+#05860            JUMP 0x28000000 TRG_Ped_Judged09
+#05861            JUMP 0x19000000 TRG_Ped_Judged10
+#05862            JUMP 0x0a000000 TRG_Ped_Judged11
+#05863
+#05864          ELSE
+#05865            Create name = RANDOM[14][57; 68; 79; 90; 101; 112; 123; 134; 145; 156; 167; 178; 189; 200]
+
+
+#05868            TRG_Ped_Judged01
+#05869            JUMP 0xbe000000 TRG_Ped_Judged02
+#05870            JUMP 0xaf000000 TRG_Ped_Judged03
+#05871            JUMP 0xa0000000 TRG_Ped_Judged04
+#05872            JUMP 0x91000000 TRG_Ped_Judged_Dummy
+#05873            JUMP 0x82000000 TRG_Ped_Judged05
+#05874            JUMP 0x73000000 TRG_Ped_Judged06
+#05875            JUMP 0x64000000 TRG_Ped_Judged07
+#05876            JUMP 0x55000000 TRG_Ped_Judged08
+#05877            JUMP 0x46000000 TRG_Ped_Judged_Dummy
+#05878            JUMP 0x37000000 TRG_Ped_Judged09
+#05879            JUMP 0x28000000 TRG_Ped_Judged10
+#05880            JUMP 0x19000000 TRG_Ped_Judged11
+#05881            JUMP 0x0a000000 TRG_Ped_Judged12
+#05882
+#05883          END IF
+#05884        END IF
+#05885      END IF
+#05886    END IF
+#05887  END FUNCTION
+
+#05889  FUNCTION ALF_SI_JudgedEndScript
+#05890    Kill prefix = "TRG_Ped_Judged"
+
+#05892    Kill name = TRG_JudgeNoises
+
+#05894  END FUNCTION
+
+#05896  FUNCTION ALF_Ped_SkaterDudeCrouch
+#05897    Obj_StickToGround Off
+#05898    Obj_SetPathTurnDist 5.0 feet
+#05899    Obj_SetPathAcceleration 20 mphps
+#05900    Obj_PathHeading On
+#05901    Obj_SetPathVelocity 30 mph
+#05902    Obj_FollowPathLinked
+#05903    LOOP
+#05904      Obj_CycleAnim anim = CrouchIdle
+
+#05906    END LOOP
+#05907  END FUNCTION
+
+#05909  FUNCTION ALF_Ped_SkaterDudeOllie
+#05910    Obj_CycleAnim anim = Ollie
+
+#05912    Obj_CycleAnim anim = CrouchedLand
+
+#05914  END FUNCTION
+
+#05916  FUNCTION ALF_Ped_SkaterDudeManual
+#05917    Obj_StickToGround Off
+#05918    Obj_SetPathTurnDist 5.0 feet
+#05919    Obj_SetPathAcceleration 20 mphps
+#05920    Obj_PathHeading On
+#05921    Obj_SetPathVelocity 30 mph
+#05922    Wait 1 second
+#05923    Obj_FollowPathLinked
+#05924    LOOP
+#05925      Obj_PlayAnim anim = Manual_Range
+            from = 20
+            to = 30
+
+#05929      Obj_WaitAnimFinished
+#05930      Obj_PlayAnim anim = Manual_Range
+            from = 30
+            to = 20
+
+#05934    END LOOP
+#05935  END FUNCTION
+
+#05937  FUNCTION ALF_Ped_SkaterDudeCasper
+#05938    Obj_StickToGround Off
+#05939    Obj_SetPathTurnDist 5.0 feet
+#05940    Obj_SetPathAcceleration 20 mphps
+#05941    Obj_PathHeading On
+#05942    Obj_SetPathVelocity 15 mph
+#05943    Obj_FollowPathLinked
+#05944    LOOP
+#05945      Obj_PlayAnim anim = Casper_Range
+            from = 20
+            to = 25
+
+#05949      Obj_WaitAnimFinished
+#05950      Obj_PlayAnim anim = Casper_Range
+            from = 24
+            to = 21
+
+#05954      Obj_WaitAnimFinished
+#05955    END LOOP
+#05956  END FUNCTION
+
+#05958  FUNCTION ALF_Ped_SkaterDudeHandStand
+#05959    Obj_StickToGround Off
+#05960    Obj_SetPathTurnDist 5.0 feet
+#05961    Obj_SetPathAcceleration 20 mphps
+#05962    Obj_PathHeading On
+#05963    Obj_SetPathVelocity 10 mph
+#05964    Obj_FollowPathLinked
+#05965    Obj_PlayAnim anim = HandStandHandFlip_Range
+          from = 22
+          to = 23
+
+#05969    LOOP
+#05970      Wait 3 seconds
+#05971      Obj_PlayAnim anim = HandStandHandFlip_Range
+            from = 23
+            to = 34
+
+#05975      Obj_WaitAnimFinished
+#05976      Wait 0.5 seconds
+#05977      Obj_PlayAnim anim = HandStandHandFlip_Range
+            from = 33
+            to = 18
+
+#05981      Obj_WaitAnimFinished
+#05982      Obj_PlayAnim anim = HandStandHandFlip_Range
+            from = 19
+            to = 23
+
+#05986      Obj_WaitAnimFinished
+#05987    END LOOP
+#05988  END FUNCTION
+
+#05990  FUNCTION ALF_Ped_SkaterDudePushCycle
+#05991    Obj_StickToGround Off
+#05992    Obj_SetPathTurnDist 5.0 feet
+#05993    Obj_SetPathAcceleration 20 mphps
+#05994    Obj_PathHeading On
+#05995    Obj_SetPathVelocity 20 mph
+#05996    Obj_FollowPathLinked
+#05997    LOOP
+#05998      Obj_CycleAnim anim = PushCycle
+
+#06000    END LOOP
+#06001  END FUNCTION
+
+#06003  FUNCTION ALF_Ped_SkaterDudeLasyAss
+#06004    Obj_StickToGround Off
+#06005    Obj_SetPathTurnDist 5.0 feet
+#06006    Obj_SetPathAcceleration 20 mphps
+#06007    Obj_PathHeading On
+#06008    Obj_SetPathVelocity 10 mph
+#06009    Obj_FollowPathLinked
+#06010    LOOP
+#06011      Obj_CycleAnim anim = LazyAss_Idle
+
+#06013    END LOOP
+#06014  END FUNCTION
+
+#06016  FUNCTION ALF_Ped_SkaterDudeMullen
+#06017    Obj_StickToGround Off
+#06018    Obj_SetPathTurnDist 5.0 feet
+#06019    Obj_SetPathAcceleration 20 mphps
+#06020    Obj_PathHeading On
+#06021    Obj_SetPathVelocity 20 mph
+#06022    Obj_CycleAnim anim = MullenStart
+
+#06024    Obj_PlayAnim anim = Crouch
+          from = 24
+          to = 1
+
+#06028    Obj_WaitAnimFinished
+#06029    Obj_PlayAnim anim = Push
+
+#06031    Wait 10 frames
+#06032    Obj_FollowPathLinked
+#06033    Obj_WaitAnimFinished
+#06034    LOOP
+#06035      Obj_CycleAnim anim = PushCycle
+
+#06037    END LOOP
+#06038  END FUNCTION
+
+#06040  FUNCTION ALF_Ped_SkaterDudeTruckStand
+#06041    Obj_CycleAnim anim = Idle
+
+#06043    Obj_CycleAnim anim = Truckstand_Init
+
+#06045    Obj_CycleAnim anim = Truckstand_Flip
+
+#06047    Obj_CycleAnim anim = TruckStand_Out
+
+#06049  END FUNCTION
+
+#06051  FUNCTION ALF_Ped_SkaterDudeBail
+#06052    Obj_ShadowOff
+#06053    Obj_StickToGround Off
+#06054    Obj_SetPathTurnDist 5.0 feet
+#06055    Obj_SetPathAcceleration 20 mphps
+#06056    Obj_PathHeading On
+#06057    Obj_SetPathVelocity 10 mph
+#06058    Obj_FollowPathLinked
+#06059    Obj_CycleAnim anim = LandPartiallyOnBoard
+
+#06061  END FUNCTION
+
+#06063  FUNCTION ALF_Ped_SkaterDudeNutter
+#06064    Obj_ShadowOff
+#06065    Obj_StickToGround Off
+#06066    Obj_SetPathTurnDist 5.0 feet
+#06067    Obj_SetPathAcceleration 20 mphps
+#06068    Obj_PathHeading On
+#06069    Obj_SetPathVelocity 10 mph
+#06070    Obj_FollowPathLinked
+#06071    Obj_CycleAnim anim = NutterFallForward
+
+#06073  END FUNCTION
+
+#06075  FUNCTION ALF_Ped_SkaterDudeSlip
+#06076    Obj_ShadowOff
+#06077    Obj_StickToGround Off
+#06078    Obj_SetPathTurnDist 5.0 feet
+#06079    Obj_SetPathAcceleration 20 mphps
+#06080    Obj_PathHeading On
+#06081    Obj_SetPathVelocity 10 mph
+#06082    Obj_FollowPathLinked
+#06083    Obj_CycleAnim anim = SlipBackwards
+
+#06085  END FUNCTION
+
+#06087  FUNCTION ALF_Ped_SkaterDudeZZZZ
+#06088    Obj_StickToGround Off
+#06089    Obj_SetPathTurnDist 5.0 feet
+#06090    LOOP
+#06091      Obj_CycleAnim anim = ZzzzManual_Idle
+
+#06093    END LOOP
+#06094  END FUNCTION
+
+#06096  ALF_CROWD_MOOD_A = 0
+
+#06098  ALF_CROWD_MOOD_B = 1
+
+#06100  ALF_CROWD_MOOD_C = 2
+
+#06102  ALF_CROWD_MOOD_D = 3
+
+#06104  FUNCTION ALF_CrowdAmbience
+#06105    Obj_ClearExceptions
+#06106    Obj_SetInnerRadius 200
+#06107    Obj_SetException Ex = SkaterInRadius
+          Scr = ALF_CrowdAmbiencePlay
+
+#06110    LOOP
+#06111      Wait 30 Gameframes
+#06112    END LOOP
+#06113  END FUNCTION
+
+#06115  FUNCTION ALF_CrowdAmbiencePlay
+#06116    Obj_ClearExceptions
+#06117    Obj_PlaySound crowdC05
+#06118    LOOP
+#06119      RANDOM[3][13; 71; 129]
+
+#06121
+#06122      LOOP
+#06123        Obj_PlaySound crowdC01
+#06124        Wait 3.8 seconds
+#06125      END LOOP 1
+#06126      JUMP 0x77000000
+#06127      LOOP
+#06128        Obj_PlaySound crowdC02
+#06129        Wait 4.4 seconds
+#06130      END LOOP 1
+#06131      JUMP 0x39000000
+#06132      LOOP
+#06133        Obj_PlaySound crowdC03
+#06134        Wait 3.3 seconds
+#06135      END LOOP 1
+#06136
+#06137    END LOOP
+#06138  END FUNCTION
+
+#06140  FUNCTION ALF_JudgeNoises
+#06141    Obj_PlaySound crowdC05
+#06142    LOOP
+#06143      RANDOM[3][13; 71; 129]
+
+#06145
+#06146      LOOP
+#06147        Obj_PlaySound crowdC01
+#06148        Wait 3.8 seconds
+#06149      END LOOP 1
+#06150      JUMP 0x77000000
+#06151      LOOP
+#06152        Obj_PlaySound crowdC02
+#06153        Wait 4.4 seconds
+#06154      END LOOP 1
+#06155      JUMP 0x39000000
+#06156      LOOP
+#06157        Obj_PlaySound crowdC03
+#06158        Wait 3.3 seconds
+#06159      END LOOP 1
+#06160
+#06161    END LOOP
+#06162  END FUNCTION
+
+#06164  FUNCTION ALF_EndCrowd
+#06165    IF PlaceIs 1
+#06166      ALF_END_CheerNoises
+#06167    ELSE
+#06168      IF PlaceIs 2
+#06169        ALF_END_CheerNoises
+#06170      ELSE
+#06171        IF PlaceIs 3
+#06172          ALF_END_CheerNoises
+#06173        ELSE
+#06174          ALF_END_BooNoises
+#06175        END IF
+#06176      END IF
+#06177    END IF
+#06178  END FUNCTION
+
+#06180  FUNCTION ALF_END_CheerNoises
+#06181    LOOP
+#06182      Playstream RANDOM[3][8; 14; 20]
+            crowdI01 JUMP 0x0f000000 crowdK01 JUMP 0x05000000 crowdM01 channel = 0
+
+#06185      Wait RANDOM[2][4; 25]
+            1.5 seconds 2.0 seconds JUMP 0x0a000000 2.5 seconds
+#06187      Playstream RANDOM[3][8; 14; 20]
+            crowdI02 JUMP 0x0f000000 crowdK02 JUMP 0x05000000 crowdM02 channel = 1
+
+#06190      Wait RANDOM[2][4; 25]
+            1.5 seconds 2.0 seconds JUMP 0x0a000000 2.5 seconds
+#06192    END LOOP 8
+#06193  END FUNCTION
+
+#06195  FUNCTION ALF_END_BooNoises
+#06196    LOOP
+#06197      Playstream RANDOM[4][12; 18; 24; 30]
+            crowdE01 JUMP 0x19000000 crowdE02 JUMP 0x0f000000 crowdE03 JUMP 0x05000000 crowdE04 channel = 0
+
+#06200      Wait RANDOM[2][4; 25]
+            1.5 seconds 2.0 seconds JUMP 0x0a000000 2.5 seconds
+#06202      Playstream RANDOM[4][12; 18; 24; 30]
+            crowdE01 JUMP 0x19000000 crowdE02 JUMP 0x0f000000 crowdE03 JUMP 0x05000000 crowdE04 channel = 1
+
+#06205      Wait RANDOM[2][4; 25]
+            1.5 seconds 2.0 seconds JUMP 0x0a000000 2.5 seconds
+#06207    END LOOP 2
+#06208  END FUNCTION
+
+#06210  FUNCTION ALF_CrowdCheers
+#06211    Obj_SetException Ex = SkaterLanded
+          Scr = ALF_CrowdSeesTrick
+          params = STRUCT{
+            NULL }
+
+#06216    Obj_SetException Ex = SkaterBailed
+          Scr = ALF_CrowdSeesBail
+          params = STRUCT{
+            NULL }
+
+#06221    Obj_SetFlag ALF_CROWD_MOOD_C
+#06222    GotoPreserveParams ALF_CrowdIsWaiting
+#06223  END FUNCTION
+
+#06225  FUNCTION ALF_CrowdIsWaiting
+#06226    Wait 3 seconds
+#06227    Obj_SetException Ex = SkaterLanded
+          Scr = ALF_CrowdSeesTrick
+          params = STRUCT{
+            NULL }
+
+#06232    Obj_SetException Ex = SkaterBailed
+          Scr = ALF_CrowdSeesBail
+          params = STRUCT{
+            NULL }
+
+#06237    LOOP
+#06238      Wait 1 second
+#06239      IF SkaterCurrentScorePotGreaterThan 500
+#06240        Obj_Playstream RANDOM[4][12; 18; 24; 30]
+              crowdM01 JUMP 0x19000000 crowdM02 JUMP 0x0f000000 crowdM03 JUMP 0x05000000 crowdM04 vol = 150
+              dropoff = 350
+              channel = 0
+
+#06245        Wait 3.0 seconds
+#06246        IF SkaterCurrentScorePotGreaterThan 1500
+#06247          Obj_Playstream RANDOM[4][12; 18; 24; 30]
+                crowdK01 JUMP 0x19000000 crowdK02 JUMP 0x0f000000 crowdK03 JUMP 0x05000000 crowdK04 vol = 150
+                dropoff = 350
+                channel = 0
+
+#06252          Wait 3.5 seconds
+#06253          IF SkaterCurrentScorePotGreaterThan 3500
+#06254            Obj_Playstream RANDOM[4][12; 18; 24; 30]
+                  crowdI01 JUMP 0x19000000 crowdI02 JUMP 0x0f000000 crowdI03 JUMP 0x05000000 crowdI04 vol = 150
+                  dropoff = 350
+                  channel = 0
+
+#06259            Wait 3.0 seconds
+#06260            IF SkaterCurrentScorePotGreaterThan 5500
+#06261              Obj_Playstream RANDOM[4][12; 18; 24; 30]
+                    crowdB01 JUMP 0x19000000 crowdB02 JUMP 0x0f000000 crowdB03 JUMP 0x05000000 crowdB04 vol = 150
+                    dropoff = 350
+                    channel = 0
+
+#06266              Wait 3.5 seconds
+#06267              IF SkaterCurrentScorePotGreaterThan 7500
+#06268                Obj_Playstream RANDOM[4][12; 18; 24; 30]
+                      crowdA01 JUMP 0x19000000 crowdA02 JUMP 0x0f000000 crowdA03 JUMP 0x05000000 crowdA04 vol = 150
+                      dropoff = 350
+                      channel = 0
+
+#06273                Wait 1 second
+#06274              END IF
+#06275            END IF
+#06276          END IF
+#06277        END IF
+#06278      END IF
+#06279    END LOOP
+#06280  END FUNCTION
+
+#06282  FUNCTION ALF_CrowdSeesTrick
+#06283    Obj_ClearExceptions
+#06284    Obj_SetException Ex = SkaterBailed
+          Scr = ALF_CrowdSeesBail
+          params = STRUCT{
+            NULL }
+
+#06289    IF Obj_FlagSet ALF_CROWD_MOOD_A
+#06290      IF SkaterLastScoreLandedGreaterThan 10000
+#06291        Obj_Playstream RANDOM[4][12; 18; 24; 30]
+              crowdA01 JUMP 0x19000000 crowdA02 JUMP 0x0f000000 crowdA03 JUMP 0x05000000 crowdA04 vol = 150
+              dropoff = 350
+              channel = 1
+
+#06296        Wait 1 second
+#06297        Obj_Playstream RANDOM[4][12; 18; 24; 30]
+              crowdG01 JUMP 0x19000000 crowdG01 JUMP 0x0f000000 crowdG03 JUMP 0x05000000 crowdG04 vol = 150
+              dropoff = 350
+              channel = 0
+
+#06302      ELSE
+#06303        IF SkaterLastScoreLandedGreaterThan 2000
+#06304          Obj_Playstream RANDOM[4][12; 18; 24; 30]
+                crowdA01 JUMP 0x19000000 crowdA02 JUMP 0x0f000000 crowdA03 JUMP 0x05000000 crowdA04 vol = 150
+                dropoff = 350
+                channel = 1
+
+#06309        ELSE
+#06310          IF SkaterLastScoreLandedGreaterThan 200
+#06311            Obj_Playstream RANDOM[4][12; 18; 24; 30]
+                  crowdB01 JUMP 0x19000000 crowdB02 JUMP 0x0f000000 crowdB03 JUMP 0x05000000 crowdB04 vol = 150
+                  dropoff = 350
+                  channel = 1
+
+#06316          END IF
+#06317        END IF
+#06318      END IF
+#06319      GotoPreserveParams ALF_CrowdIsWaiting
+#06320    END IF
+#06321    IF Obj_FlagSet ALF_CROWD_MOOD_B
+#06322      IF SkaterLastScoreLandedGreaterThan 10000
+#06323        Obj_Playstream RANDOM[4][12; 18; 24; 30]
+              crowdA01 JUMP 0x19000000 crowdA02 JUMP 0x0f000000 crowdA03 JUMP 0x05000000 crowdA04 vol = 150
+              dropoff = 350
+              channel = 1
+
+#06328        Wait 1 second
+#06329        Obj_Playstream RANDOM[4][12; 18; 24; 30]
+              crowdI01 JUMP 0x19000000 crowdI02 JUMP 0x0f000000 crowdI03 JUMP 0x05000000 crowdI04 vol = 150
+              dropoff = 350
+              channel = 0
+
+#06334        Obj_SetFlag ALF_CROWD_MOOD_A
+#06335        Obj_ClearFlag ALF_CROWD_MOOD_B
+#06336      ELSE
+#06337        IF SkaterLastScoreLandedGreaterThan 2000
+#06338          Obj_Playstream RANDOM[4][12; 18; 24; 30]
+                crowdB01 JUMP 0x19000000 crowdB02 JUMP 0x0f000000 crowdB03 JUMP 0x05000000 crowdB04 vol = 150
+                dropoff = 350
+                channel = 1
+
+#06343          Wait 1 second
+#06344          Obj_Playstream RANDOM[4][12; 18; 24; 30]
+                crowdI01 JUMP 0x19000000 crowdI02 JUMP 0x0f000000 crowdI03 JUMP 0x05000000 crowdI04 vol = 150
+                dropoff = 350
+                channel = 0
+
+#06349        ELSE
+#06350          IF SkaterLastScoreLandedGreaterThan 200
+#06351            Obj_Playstream RANDOM[4][12; 18; 24; 30]
+                  crowdM01 JUMP 0x19000000 crowdM02 JUMP 0x0f000000 crowdM03 JUMP 0x05000000 crowdM04 vol = 150
+                  dropoff = 350
+                  channel = 1
+
+#06356          END IF
+#06357        END IF
+#06358      END IF
+#06359      GotoPreserveParams ALF_CrowdIsWaiting
+#06360    END IF
+#06361    IF Obj_FlagSet ALF_CROWD_MOOD_C
+#06362      IF SkaterLastScoreLandedGreaterThan 5000
+#06363        Obj_Playstream RANDOM[4][12; 18; 24; 30]
+              crowdB01 JUMP 0x19000000 crowdB02 JUMP 0x0f000000 crowdB03 JUMP 0x05000000 crowdB04 vol = 150
+              dropoff = 350
+              channel = 1
+
+#06368        Wait 1 second
+#06369        Obj_Playstream RANDOM[4][12; 18; 24; 30]
+              crowdK01 JUMP 0x19000000 crowdK02 JUMP 0x0f000000 crowdK03 JUMP 0x05000000 crowdK04 vol = 150
+              dropoff = 350
+              channel = 0
+
+#06374        Obj_SetFlag ALF_CROWD_MOOD_B
+#06375        Obj_ClearFlag ALF_CROWD_MOOD_C
+#06376      ELSE
+#06377        IF SkaterLastScoreLandedGreaterThan 1500
+#06378          Obj_Playstream RANDOM[4][12; 18; 24; 30]
+                crowdM01 JUMP 0x19000000 crowdM02 JUMP 0x0f000000 crowdM03 JUMP 0x05000000 crowdM04 vol = 150
+                dropoff = 350
+                channel = 1
+
+#06383        ELSE
+#06384          IF SkaterLastScoreLandedGreaterThan 200
+#06385            Obj_Playstream RANDOM[4][12; 18; 24; 30]
+                  crowdM01 JUMP 0x19000000 crowdM02 JUMP 0x0f000000 crowdM03 JUMP 0x05000000 crowdM04 vol = 150
+                  dropoff = 350
+                  channel = 1
+
+#06390          END IF
+#06391        END IF
+#06392      END IF
+#06393      GotoPreserveParams ALF_CrowdIsWaiting
+#06394    END IF
+#06395    IF Obj_FlagSet ALF_CROWD_MOOD_D
+#06396      IF SkaterLastScoreLandedGreaterThan 1000
+#06397        Obj_Playstream RANDOM[4][12; 18; 24; 30]
+              crowdM01 JUMP 0x19000000 crowdM02 JUMP 0x0f000000 crowdM03 JUMP 0x05000000 crowdM04 vol = 150
+              dropoff = 350
+              channel = 1
+
+#06402        Obj_SetFlag ALF_CROWD_MOOD_C
+#06403        Obj_ClearFlag ALF_CROWD_MOOD_D
+#06404      ELSE
+#06405        IF SkaterLastScoreLandedGreaterThan 500
+#06406          Obj_Playstream RANDOM[4][12; 18; 24; 30]
+                crowdM01 JUMP 0x19000000 crowdM02 JUMP 0x0f000000 crowdM03 JUMP 0x05000000 crowdM04 vol = 150
+                dropoff = 350
+                channel = 1
+
+#06411        ELSE
+#06412          IF SkaterLastScoreLandedGreaterThan 100
+#06413            Obj_Playstream RANDOM[4][12; 18; 24; 30]
+                  crowdM01 JUMP 0x19000000 crowdM02 JUMP 0x0f000000 crowdM03 JUMP 0x05000000 crowdM04 vol = 150
+                  dropoff = 350
+                  channel = 1
+
+#06418          END IF
+#06419        END IF
+#06420      END IF
+#06421      GotoPreserveParams ALF_CrowdIsWaiting
+#06422    END IF
+#06423    GotoPreserveParams ALF_CrowdIsWaiting
+#06424  END FUNCTION
+
+#06426  FUNCTION ALF_CrowdSeesBail params = NULL
+
+#06428    Obj_ClearExceptions
+#06429    IF Obj_FlagSet ALF_CROWD_MOOD_A
+#06430      Obj_Playstream RANDOM[4][12; 18; 24; 30]
+            crowdF01 JUMP 0x19000000 crowdF02 JUMP 0x0f000000 crowdF03 JUMP 0x05000000 crowdF04 vol = 150
+            dropoff = 350
+            channel = 1
+
+#06435      Wait 1 seconds
+#06436      Obj_Playstream RANDOM[4][12; 18; 24; 30]
+            crowdL01 JUMP 0x19000000 crowdL02 JUMP 0x0f000000 crowdL03 JUMP 0x05000000 crowdL04 vol = 150
+            dropoff = 350
+            channel = 0
+
+#06441      Obj_SetFlag ALF_CROWD_MOOD_B
+#06442      Obj_ClearFlag ALF_CROWD_MOOD_A
+#06443      GotoPreserveParams ALF_CrowdIsWaiting
+#06444    END IF
+#06445    IF Obj_FlagSet ALF_CROWD_MOOD_B
+#06446      Obj_Playstream RANDOM[4][12; 18; 24; 30]
+            crowdL01 JUMP 0x19000000 crowdL02 JUMP 0x0f000000 crowdL03 JUMP 0x05000000 crowdL04 vol = 150
+            dropoff = 350
+            channel = 1
+
+#06451      Wait 1 seconds
+#06452      Obj_Playstream RANDOM[4][12; 18; 24; 30]
+            crowdL01 JUMP 0x19000000 crowdL02 JUMP 0x0f000000 crowdL03 JUMP 0x05000000 crowdL04 vol = 150
+            dropoff = 350
+            channel = 0
+
+#06457      Obj_SetFlag ALF_CROWD_MOOD_C
+#06458      Obj_ClearFlag ALF_CROWD_MOOD_B
+#06459      GotoPreserveParams ALF_CrowdIsWaiting
+#06460    END IF
+#06461    IF Obj_FlagSet ALF_CROWD_MOOD_C
+#06462      Obj_Playstream RANDOM[4][12; 18; 24; 30]
+            crowdL01 JUMP 0x19000000 crowdL02 JUMP 0x0f000000 crowdL03 JUMP 0x05000000 crowdL04 vol = 150
+            dropoff = 350
+            channel = 1
+
+#06467      Wait 1 seconds
+#06468      Obj_Playstream RANDOM[4][12; 18; 24; 30]
+            crowdE01 JUMP 0x19000000 crowdE02 JUMP 0x0f000000 crowdE03 JUMP 0x05000000 crowdE04 vol = 150
+            dropoff = 350
+            channel = 0
+
+#06473      Obj_SetFlag ALF_CROWD_MOOD_D
+#06474      Obj_ClearFlag ALF_CROWD_MOOD_C
+#06475      GotoPreserveParams ALF_CrowdIsWaiting
+#06476    END IF
+#06477    IF Obj_FlagSet ALF_CROWD_MOOD_D
+#06478      Obj_Playstream RANDOM[4][12; 18; 24; 30]
+            crowdE01 JUMP 0x19000000 crowdE02 JUMP 0x0f000000 crowdE03 JUMP 0x05000000 crowdE04 vol = 150
+            dropoff = 350
+            channel = 1
+
+#06483      Wait 1 seconds
+#06484      Obj_Playstream RANDOM[4][12; 18; 24; 30]
+            crowdE01 JUMP 0x19000000 crowdE02 JUMP 0x0f000000 crowdE03 JUMP 0x05000000 crowdE04 vol = 150
+            dropoff = 350
+            channel = 0
+
+#06489      GotoPreserveParams ALF_CrowdIsWaiting
+#06490    END IF
+#06491    Wait 10 seconds
+#06492    GotoPreserveParams ALF_CrowdIsWaiting
+#06493  END FUNCTION
+
+#06495  FUNCTION ALF_SI_ReverbON
+#06496    SetSfxReverb 50 mode = REV_MODE_HALL
+
+#06498    Create prefix = "TRG_CrowdCheers"
+
+#06500  END FUNCTION
+
+#06502  FUNCTION ALF_SI_ReverbOFF
+#06503    SetSfxReverb 0 mode = REV_MODE_HALL
+
+#06505    Kill prefix = "TRG_CrowdCheers"
+
+#06507  END FUNCTION
+
+#06509

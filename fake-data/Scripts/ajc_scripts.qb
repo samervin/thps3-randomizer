@@ -1,0 +1,3065 @@
+CanadaGoalParams = STRUCT{
+          Goal_Start_Script = NullScript
+          Goal_Complete_Start_Script = NullScript
+          NetPlayScript = NullScript
+          CareerPlayScript = NullScript
+          CameraStart = "Cam_Goals"
+          CameraTape = "Cam_Goal_04"
+          CameraTrickspotVert = "Cam_Goal_05vert"
+          CameraTrickspotStreet = "Cam_Goal_05street"
+          CameraScripted1 = "Cam_Goal_06"
+          CameraScripted1Complete = "Cam_Goal_Complete_06"
+          CameraScripted2 = "Cam_Goal_07"
+          CameraScripted2Complete = "Cam_Goal_Complete_07"
+          CameraScripted3 = "Cam_Free_Chuck"
+          CameraScripted3Complete = "Cam_Free_Chuck_Complete"
+          Goal_HighScore_Text = "Get a HIGH SCORE:| 35,000 Points"
+          Goal_ProScore_Text = "Get a PRO SCORE:| 70,000 Points"
+          Goal_SickScore_Text = "Get a SICK SCORE:| 200,000 Points"
+          Goal_SKATE_Text = "Collect S-K-A-T-E"
+          Goal_Tape_Text = "Get the Secret Tape"
+          Goal_TrickspotStreet_Text = "Melon Grab| Around the Horn"
+          Goal_TrickspotVert_Text = "Heelflip| Over the Blade"
+          Goal_Scripted1_Text = "Bury that Bully!"
+          Goal_Scripted2_Text = "Impress the Skaters| With 8000 Points"
+          Goal_Scripted3_Text = "Get Chuck| Unstuck"
+          Goal_Scripted1_Start_Script = AJC_Can_Script_Bully_Closeup
+          Goal_Scripted1_End_Script = AJC_Can_Script_Bully_Cleanup
+          Goal_Scripted1_Complete_Start_Script = NullScript
+          Goal_Scripted1_Complete_End_Script = NullScript
+          Goal_Scripted2_Start_Script = AJC_Can_Script_Grommet_Closeup
+          Goal_Scripted2_End_Script = AJC_Can_Script_Grommet_Closeup_Complete
+          Goal_Scripted2_Complete_Start_Script = AJC_Can_Script_Grommet_Closeup
+          Goal_Scripted2_Complete_End_Script = AJC_Can_Script_Grommet_Closeup_Complete
+          Goal_Scripted3_Start_Script = AJC_Can_Script_Trigger_Chuck
+          Goal_Scripted3_End_Script = NullScript
+          Goal_Scripted3_Complete_Start_Script = NullScript
+          Goal_Scripted3_Complete_End_Script = NullScript
+          Goal_End_Script = AJC_Can_Script_Cleanup
+          Goal_Complete_End_Script = NullScript
+          CameraTrickspotVertComplete = "Cam_Goal_Complete_05vert"
+          CameraTrickspotStreetComplete = "Cam_Goal_Complete_05street"
+          Goal_Trickspot_VertAnimName = Melongrab_idle
+          Goal_Trickspot_VertAnimFrame1 = 18
+          Goal_Trickspot_VertAnimFrame2 = 30
+          Goal_Trickspot_VertAnimFrame3 = 39
+          Goal_Trickspot_StreetAnimName = Nosegrind_Range
+          Goal_Trickspot_StreetAnimFrame1 = 30
+          Goal_Trickspot_StreetAnimFrame2 = 44
+          Goal_Trickspot_StreetAnimFrame3 = 37
+          }
+
+#00051  LEVEL_FLAG_AJC_CAN_LOG_LOADER_SEQUENCE_PLAYED_ALREADY = 0
+
+#00053  LEVEL_FLAG_AJC_CAN_LOG_LOADER_IS_UP = 1
+
+#00055  LEVEL_FLAG_AJC_CAN_LOG_LOADER_IS_DOWN = 2
+
+#00057  LEVEL_FLAG_AJC_CAN_VICTIM_DONE_WALKING = 3
+
+#00059  LEVEL_FLAG_AJC_CAN_SNOW_IS_ON_BULLY = 4
+
+#00061  FLAG_AJC_CAN_GOT_THIS_GOAL = 1
+
+#00063  BullyRadius = 20
+
+#00065  VictimRadius = 60
+
+#00067  CHUCKER = 0
+
+#00069  VICTIM = 1
+
+#00071  BULLY = 0
+
+#00073  SNOW = 0
+
+#00075  SITTER = 0
+
+#00077  GROMMET = 0
+
+#00079  BIRD = 0
+
+#00081  SNOWBALL = 0
+
+#00083  LOADER = 0
+
+#00085  CRANE = 0
+
+#00087  CHUCK = 0
+
+#00089  TOWER = 1
+
+#00091  FUNCTION Can_Startup
+#00092    IF GetGoal Goal = GOAL_SCRIPTED2
+
+#00094      IF IsCareerMode
+#00095        SetFlag Flag = LEVEL_FLAG_PED_1_IMPRESSED
+
+#00097        SetFlag Flag = LEVEL_FLAG_PED_2_IMPRESSED
+
+#00099        SetFlag Flag = LEVEL_FLAG_PED_3_IMPRESSED
+
+#00101        SetFlag Flag = LEVEL_FLAG_PED_4_IMPRESSED
+
+#00103        SetFlag Flag = LEVEL_FLAG_PED_5_IMPRESSED
+
+#00105        SetFlag Flag = LEVEL_FLAG_PED_6_IMPRESSED
+
+#00107      END IF
+#00108    ELSE
+#00109      UnSetFlag Flag = LEVEL_FLAG_PED_1_IMPRESSED
+
+#00111      UnSetFlag Flag = LEVEL_FLAG_PED_2_IMPRESSED
+
+#00113      UnSetFlag Flag = LEVEL_FLAG_PED_3_IMPRESSED
+
+#00115      UnSetFlag Flag = LEVEL_FLAG_PED_4_IMPRESSED
+
+#00117      UnSetFlag Flag = LEVEL_FLAG_PED_5_IMPRESSED
+
+#00119      UnSetFlag Flag = LEVEL_FLAG_PED_6_IMPRESSED
+
+#00121    END IF
+#00122    LoadStreamHeader "streams\can\streams"
+#00123    LoadSound "Can\Can_Bird1" vol = 100
+          dropoff = 200
+          PosUpdate
+#00126    LoadSound "Can\Can_Bird2" vol = 100
+          dropoff = 200
+          PosUpdate
+#00129    LoadSound "Can\Can_CopingSmack" vol = 100
+          dropoff = 100
+          PosUpdate
+#00132    LoadSound "Can\Can_Gen_Loop" vol = 100
+          dropoff = 200
+          PosUpdate
+#00135    LoadSound "Can\Can_Gen_Start" vol = 100
+          dropoff = 200
+          PosUpdate
+#00138    LoadSound "Can\Can_Getoff" vol = 500
+          dropoff = 200
+          PosUpdate
+#00141    LoadSound "Can\Can_Lever" vol = 100
+          dropoff = 200
+          PosUpdate
+#00144    LoadSound "Can\Can_RampPlatform_Loop" vol = 100
+          dropoff = 200
+          PosUpdate
+#00147    LoadSound "Can\Can_RampPlatform_Open" vol = 100
+          dropoff = 200
+          PosUpdate
+#00150    LoadSound "Can\Can_RampPlatform_Stop" vol = 100
+          dropoff = 200
+
+#00153    LoadSound "Can\Can_Snowmobile1a" vol = 100
+          dropoff = 200
+          PosUpdate
+#00156    LoadSound "Can\Can_Totem1" vol = 300
+          dropoff = 200
+          PosUpdate
+#00159    LoadSound "Can\Can_Totem2" vol = 300
+          dropoff = 200
+          PosUpdate
+#00162    LoadSound "Shared\FallWater" vol = 100
+          dropoff = 0
+
+#00165    LoadSound "Shared\FallPungee" vol = 70
+          pitch = 45
+          dropoff = 0
+
+#00169    LoadSound "Shared\gapsound" vol = 100
+          dropoff = 0
+
+#00172    LoadSound "Shared\goaldone" vol = 100
+          dropoff = 20
+
+#00175    LoadSound "Shared\HitBushX" vol = 100
+          dropoff = 20
+
+#00178    LoadSound "Shared\hitflimsywood" vol = 100
+          dropoff = 20
+
+#00181    LoadSound "Shared\River1X" vol = 100
+          dropoff = 20
+          PosUpdate
+#00184    LoadSound "Shared\Smashcake" vol = 100
+          dropoff = 50
+
+#00187    SetParticleSysVisibility system = "Wilderness_Tree_Snow_Particles"
+          visible = 0
+
+#00190    SetParticleSysVisibility system = "Wilderness_Tree_Snow_Particles01"
+          visible = 0
+
+#00193    SetParticleSysVisibility system = "Wilderness_Tree_Snow_Particles02"
+          visible = 0
+
+#00196    SetParticleSysVisibility system = "Wilderness_Tree_Snow_Particles03"
+          visible = 0
+
+#00199    SetParticleSysVisibility system = "Wilderness_Tree_Snow_Particles04"
+          visible = 0
+
+#00202    SetParticleSysVisibility system = "Wilderness_Tree_Snow_Particles05"
+          visible = 0
+
+#00205    IF GetGoal Goal = GOAL_SCRIPTED1
+
+#00207      SetFlag Flag = LEVEL_FLAG_AJC_CAN_SNOW_IS_ON_BULLY
+
+#00209      SetFlag Flag = LEVEL_FLAG_AJC_CAN_VICTIM_DONE_WALKING
+
+#00211    ELSE
+#00212      UnSetFlag Flag = LEVEL_FLAG_AJC_CAN_SNOW_IS_ON_BULLY
+
+#00214      UnSetFlag Flag = LEVEL_FLAG_AJC_CAN_VICTIM_DONE_WALKING
+
+#00216    END IF
+#00217    IF InMultiplayerGame
+#00218      kill name = SnowballCone
+
+#00220      kill name = TRG_Pee_Steam_Prox_Node
+
+#00222      kill name = TRG_Cabin_Smoke_ProxNode01
+
+#00224      kill name = TRG_Cabin_Smoke_ProxNode02
+
+#00226      kill name = TRG_Cabin_Smoke_ProxNode03
+
+#00228      kill name = TRG_Cabin_Smoke_ProxNode04
+
+#00230      kill name = TRG_Cabin_Smoke_ProxNode05
+
+#00232      kill name = TRG_Cabin_Smoke_ProxNode06
+
+#00234      SetParticleSysVisibility system = "Wilderness_Lake_Pee_Particle"
+            visible = 0
+
+#00237      SetParticleSysVisibility system = "Wilderness_Lake_Piss_Steam"
+            visible = 0
+
+#00240      SetParticleSysVisibility system = "Wilderness_Lake_Piss_Steam01"
+            visible = 0
+
+#00243      SetParticleSysVisibility system = "Wilderness_Lake_Piss_Steam02"
+            visible = 0
+
+#00246      SetParticleSysVisibility system = "Wilderness_Lake_Piss_Steam03"
+            visible = 0
+
+#00249      SetParticleSysVisibility system = "Wilderness_Lake_Piss_Steam04"
+            visible = 0
+
+#00252      SetParticleSysVisibility system = "Urban_Cabin_SmokeParticle01"
+            visible = 0
+
+#00255      SetParticleSysVisibility system = "Urban_Cabin_SmokeParticle02"
+            visible = 0
+
+#00258      SetParticleSysVisibility system = "Urban_Cabin_SmokeParticle03"
+            visible = 0
+
+#00261      SetParticleSysVisibility system = "Urban_Cabin_SmokeParticle04"
+            visible = 0
+
+#00264      SetParticleSysVisibility system = "Urban_Cabin_SmokeParticle05"
+            visible = 0
+
+#00267      SetParticleSysVisibility system = "Urban_Cabin_SmokeParticle06"
+            visible = 0
+
+#00270      SetParticleSysVisibility system = "Urban_Cabin_SmokeParticle07"
+            visible = 0
+
+#00273    ELSE
+#00274    END IF
+#00275  END FUNCTION
+
+#00277  FUNCTION AJC_Can_Script_Cleanup
+#00278    IF GetGoal Goal = GOAL_SCRIPTED1
+
+#00280    ELSE
+#00281      UnSetFlag Flag = LEVEL_FLAG_AJC_CAN_SNOW_IS_ON_BULLY
+
+#00283    END IF
+#00284  END FUNCTION
+
+#00286  FUNCTION AJC_Script_Can_Loading_Script
+#00287    SetUpSkaterDefaults
+#00288    CreateSkateLines
+#00289    CreateDeckIcon
+#00290    CreateSecretTape
+#00291    CreateTrickPoints
+#00292    MakeSkaterGoto StartSkating1
+#00293    SetParticleSysVisibility system = "Wilderness_Tree_Snow_Particles"
+          visible = 0
+
+#00296    SetParticleSysVisibility system = "Wilderness_Tree_Snow_Particles01"
+          visible = 0
+
+#00299    SetParticleSysVisibility system = "Wilderness_Tree_Snow_Particles02"
+          visible = 0
+
+#00302    SetParticleSysVisibility system = "Wilderness_Tree_Snow_Particles03"
+          visible = 0
+
+#00305    SetParticleSysVisibility system = "Wilderness_Tree_Snow_Particles04"
+          visible = 0
+
+#00308    SetParticleSysVisibility system = "Wilderness_Tree_Snow_Particles05"
+          visible = 0
+
+#00311    IF GetGoal Goal = GOAL_SCRIPTED1
+
+#00313    ELSE
+#00314      UnSetFlag Flag = LEVEL_FLAG_AJC_CAN_VICTIM_DONE_WALKING
+
+#00316      UnSetFlag Flag = LEVEL_FLAG_AJC_CAN_SNOW_IS_ON_BULLY
+
+#00318    END IF
+#00319    IF GetGoal Goal = GOAL_SCRIPTED2
+
+#00321      SetFlag Flag = LEVEL_FLAG_PED_1_IMPRESSED
+
+#00323      SetFlag Flag = LEVEL_FLAG_PED_2_IMPRESSED
+
+#00325      SetFlag Flag = LEVEL_FLAG_PED_3_IMPRESSED
+
+#00327      SetFlag Flag = LEVEL_FLAG_PED_4_IMPRESSED
+
+#00329      SetFlag Flag = LEVEL_FLAG_PED_5_IMPRESSED
+
+#00331      SetFlag Flag = LEVEL_FLAG_PED_6_IMPRESSED
+
+#00333    ELSE
+#00334      UnSetFlag Flag = LEVEL_FLAG_PED_1_IMPRESSED
+
+#00336      UnSetFlag Flag = LEVEL_FLAG_PED_2_IMPRESSED
+
+#00338      UnSetFlag Flag = LEVEL_FLAG_PED_3_IMPRESSED
+
+#00340      UnSetFlag Flag = LEVEL_FLAG_PED_4_IMPRESSED
+
+#00342      UnSetFlag Flag = LEVEL_FLAG_PED_5_IMPRESSED
+
+#00344      UnSetFlag Flag = LEVEL_FLAG_PED_6_IMPRESSED
+
+#00346    END IF
+#00347    IF InMultiplayerGame
+#00348      kill name = SnowballCone
+
+#00350      kill name = TRG_Pee_Steam_Prox_Node
+
+#00352      kill name = TRG_Cabin_Smoke_ProxNode01
+
+#00354      kill name = TRG_Cabin_Smoke_ProxNode02
+
+#00356      kill name = TRG_Cabin_Smoke_ProxNode03
+
+#00358      kill name = TRG_Cabin_Smoke_ProxNode04
+
+#00360      kill name = TRG_Cabin_Smoke_ProxNode05
+
+#00362      kill name = TRG_Cabin_Smoke_ProxNode06
+
+#00364      SetParticleSysVisibility system = "Wilderness_Lake_Pee_Particle"
+            visible = 0
+
+#00367      SetParticleSysVisibility system = "Wilderness_Lake_Piss_Steam"
+            visible = 0
+
+#00370      SetParticleSysVisibility system = "Wilderness_Lake_Piss_Steam01"
+            visible = 0
+
+#00373      SetParticleSysVisibility system = "Wilderness_Lake_Piss_Steam02"
+            visible = 0
+
+#00376      SetParticleSysVisibility system = "Wilderness_Lake_Piss_Steam03"
+            visible = 0
+
+#00379      SetParticleSysVisibility system = "Wilderness_Lake_Piss_Steam04"
+            visible = 0
+
+#00382      SetParticleSysVisibility system = "Urban_Cabin_SmokeParticle01"
+            visible = 0
+
+#00385      SetParticleSysVisibility system = "Urban_Cabin_SmokeParticle02"
+            visible = 0
+
+#00388      SetParticleSysVisibility system = "Urban_Cabin_SmokeParticle03"
+            visible = 0
+
+#00391      SetParticleSysVisibility system = "Urban_Cabin_SmokeParticle04"
+            visible = 0
+
+#00394      SetParticleSysVisibility system = "Urban_Cabin_SmokeParticle05"
+            visible = 0
+
+#00397      SetParticleSysVisibility system = "Urban_Cabin_SmokeParticle06"
+            visible = 0
+
+#00400      SetParticleSysVisibility system = "Urban_Cabin_SmokeParticle07"
+            visible = 0
+
+#00403    ELSE
+#00404    END IF
+#00405  END FUNCTION
+
+#00407  FUNCTION AJC_Script_Can_Network_Startup
+#00408    IF InMultiplayerGame
+#00409      kill name = SnowballCone
+
+#00411      kill name = TRG_Pee_Steam_Prox_Node
+
+#00413      kill name = TRG_Cabin_Smoke_ProxNode01
+
+#00415      kill name = TRG_Cabin_Smoke_ProxNode02
+
+#00417      kill name = TRG_Cabin_Smoke_ProxNode03
+
+#00419      kill name = TRG_Cabin_Smoke_ProxNode04
+
+#00421      kill name = TRG_Cabin_Smoke_ProxNode05
+
+#00423      kill name = TRG_Cabin_Smoke_ProxNode06
+
+#00425      SetParticleSysVisibility system = "Wilderness_Lake_Pee_Particle"
+            visible = 0
+
+#00428      SetParticleSysVisibility system = "Wilderness_Lake_Piss_Steam"
+            visible = 0
+
+#00431      SetParticleSysVisibility system = "Wilderness_Lake_Piss_Steam01"
+            visible = 0
+
+#00434      SetParticleSysVisibility system = "Wilderness_Lake_Piss_Steam02"
+            visible = 0
+
+#00437      SetParticleSysVisibility system = "Wilderness_Lake_Piss_Steam03"
+            visible = 0
+
+#00440      SetParticleSysVisibility system = "Wilderness_Lake_Piss_Steam04"
+            visible = 0
+
+#00443      SetParticleSysVisibility system = "Urban_Cabin_SmokeParticle01"
+            visible = 0
+
+#00446      SetParticleSysVisibility system = "Urban_Cabin_SmokeParticle02"
+            visible = 0
+
+#00449      SetParticleSysVisibility system = "Urban_Cabin_SmokeParticle03"
+            visible = 0
+
+#00452      SetParticleSysVisibility system = "Urban_Cabin_SmokeParticle04"
+            visible = 0
+
+#00455      SetParticleSysVisibility system = "Urban_Cabin_SmokeParticle05"
+            visible = 0
+
+#00458      SetParticleSysVisibility system = "Urban_Cabin_SmokeParticle06"
+            visible = 0
+
+#00461      SetParticleSysVisibility system = "Urban_Cabin_SmokeParticle07"
+            visible = 0
+
+#00464    ELSE
+#00465    END IF
+#00466  END FUNCTION
+
+#00468  FUNCTION AJC_Can_Script_Bully_Closeup
+#00469    wait 2 frames
+#00470    kill name = TRG_Snowball_Bully01
+
+#00472    kill name = TRG_Snowball_Bully_With_Closeup
+
+#00474    kill name = TRG_Snowball_Bully_With_Whiplash
+
+#00476    Create name = TRG_Snowball_Bully_With_Closeup
+
+#00478  END FUNCTION
+
+#00480  FUNCTION AJC_Can_Script_Bully_Cleanup
+#00481    kill name = TRG_Snowball_Bully_With_Closeup
+
+#00483    Create name = TRG_Snowball_Bully01
+
+#00485  END FUNCTION
+
+#00487  FUNCTION AJC_Can_Script_Trigger_Chuck
+#00488    IF IsAlive name = TRG_Ped_Tongue_Stuck01
+
+#00490      SendException EXCEPTION_TONGUE_STUCK_CLOSEUP name = TRG_Ped_Tongue_Stuck01
+
+#00492    ELSE
+#00493    END IF
+#00494  END FUNCTION
+
+#00496  FUNCTION AJC_Can_Script_Grommet_Closeup
+#00497    TeleportSkaterDown
+#00498    wait 1 frame
+#00499    kill name = TRG_Conc_Park_Bully08
+
+#00501    kill name = TRG_Conc_Park_Bully01
+
+#00503    Create name = TRG_Conc_Park_Bully01
+
+#00505    IF IsAlive name = TRG_Conc_Park_Bully01
+
+#00507      SendFlag FLAG_AJC_CAN_CONC_PARK_GROMMET_READY_FOR_MY_CLOSEUP name = TRG_Conc_Park_Bully01
+
+#00509    ELSE
+#00510    END IF
+#00511  END FUNCTION
+
+#00513  FUNCTION AJC_Can_Script_Grommet_Closeup_Complete
+#00514    kill name = TRG_Conc_Park_Bully01
+
+#00516    kill name = TRG_Conc_Park_Bully08
+
+#00518    Create name = TRG_Conc_Park_Bully08
+
+#00520  END FUNCTION
+
+#00522  FLAG_AJC_CAN_SNOWBALLERS_START_THROWING = 1
+
+#00524  FUNCTION AJC_Can_Script_Speed_Up_Car
+#00525    Obj_SetPathVelocity 50 mph
+#00526  END FUNCTION
+
+#00528  FUNCTION AJC_Can_SetSpeed_5
+#00529    Obj_StopSound CAN_snowmobile1a
+#00530    Obj_PlaySound CAN_snowmobile1a pitch = 40
+          vol = 120
+
+#00533    Obj_SetPathVelocity 5 mph
+#00534  END FUNCTION
+
+#00536  FUNCTION AJC_Can_SetSpeed_10
+#00537    Obj_StopSound CAN_snowmobile1a
+#00538    Obj_PlaySound CAN_snowmobile1a pitch = 43
+          vol = 110
+
+#00541    Obj_SetPathVelocity 10 mph
+#00542  END FUNCTION
+
+#00544  FUNCTION AJC_Can_SetSpeed_15
+#00545    Obj_StopSound CAN_snowmobile1a
+#00546    Obj_PlaySound CAN_snowmobile1a pitch = 45
+          vol = 105
+
+#00549    Obj_SetPathVelocity 15 mph
+#00550  END FUNCTION
+
+#00552  FUNCTION AJC_Can_SetSpeed_20
+#00553    Obj_StopSound CAN_snowmobile1a
+#00554    Obj_PlaySound CAN_snowmobile1a pitch = 48
+          vol = 100
+
+#00557    Obj_SetPathVelocity 20 mph
+#00558  END FUNCTION
+
+#00560  FUNCTION AJC_Can_SetSpeed_25
+#00561    Obj_StopSound CAN_snowmobile1a
+#00562    Obj_PlaySound CAN_snowmobile1a pitch = 50
+          vol = 95
+
+#00565    Obj_SetPathVelocity 25 mph
+#00566  END FUNCTION
+
+#00568  FUNCTION AJC_Can_SetSpeed_30
+#00569    Obj_StopSound CAN_snowmobile1a
+#00570    Obj_PlaySound CAN_snowmobile1a pitch = 52
+          vol = 90
+
+#00573    Obj_SetPathVelocity 30 mph
+#00574  END FUNCTION
+
+#00576  FUNCTION AJC_Can_SetSpeed_35
+#00577    Obj_StopSound CAN_snowmobile1a
+#00578    Obj_PlaySound CAN_snowmobile1a pitch = 55
+          vol = 85
+
+#00581    Obj_SetPathVelocity 35 mph
+#00582  END FUNCTION
+
+#00584  FUNCTION AJC_Can_SetSpeed_40
+#00585    Obj_StopSound CAN_snowmobile1a
+#00586    Obj_PlaySound CAN_snowmobile1a pitch = 60
+          vol = 80
+
+#00589    Obj_SetPathVelocity 40 mph
+#00590  END FUNCTION
+
+#00592  FUNCTION AJC_Can_Script_Set_Car_Snowball_Flag
+#00593    Obj_SetFlag FLAG_AJC_CAN_SNOWBALLERS_START_THROWING
+#00594  END FUNCTION
+
+#00596  FUNCTION AJC_Can_Script_Clear_Car_Snowball_Flag
+#00597    Obj_ClearFlag FLAG_AJC_CAN_SNOWBALLERS_START_THROWING
+#00598    Obj_SetPathVelocity 10 mph
+#00599  END FUNCTION
+
+#00601  FUNCTION AJC_Can_Script_Car_Snowball_Target
+#00602    Obj_SetGroundOffset 0 feet
+#00603    Obj_StickToGround distAbove = 3
+          distBelow = 6
+
+#00606    Obj_SetPathVelocity 10 mph
+#00607    Obj_SetPathTurnDist 10 feet
+#00608    Obj_PathHeading On
+#00609    Obj_SetPathAcceleration 15 mphps
+#00610    Obj_FollowPath name = TRG_UTurnCarPath02
+
+#00612    LOOP
+#00613      Obj_WaitMove
+#00614    END LOOP
+#00615  END FUNCTION
+
+#00617  FLAG_AJC_CAN_CHUCKER_SPOKE = 0
+
+#00619  FLAG_AJC_CAN_CHUCKER_1_MAY_SPEAK = 1
+
+#00621  FLAG_AJC_CAN_CHUCKER_2_MAY_SPEAK = 2
+
+#00623  FUNCTION AJC_Can_Script_Snowball_Chucker01
+#00624    IF Obj_FlagNotSet FLAG_AJC_CAN_GOT_THIS_GOAL
+#00625      Obj_SetFlag FLAG_AJC_CAN_GOT_THIS_GOAL
+#00626      Obj_ApplyScaling STRUCT{
+              x = RANDOM[4][12; 18; 24; 30]
+
+              0.95 JUMP 0x19000000 1.0 JUMP 0x0f000000 1.1 JUMP 0x05000000 1.2 y = RANDOM[3][8; 14; 20]
+
+              0.95 JUMP 0x0f000000 1.0 JUMP 0x05000000 1.25 z = RANDOM[4][12; 18; 24; 30]
+
+              0.95 JUMP 0x19000000 1.0 JUMP 0x0f000000 1.1 JUMP 0x05000000 1.2 }
+
+#00635    END IF
+#00636    Obj_EnableScaling
+#00637    Obj_StickToGround Off
+#00638    Obj_SetPathTurnDist 2.5 feet
+#00639    Obj_PathHeading Off
+#00640    Obj_SetPathVelocity 5 fps
+#00641    Obj_ClearExceptions
+#00642    Obj_SetInnerRadius 5
+#00643    Obj_SetException ex = SkaterInRadius
+          scr = AJC_Can_Script_Ped_FallForSkater
+          params = STRUCT{
+            ReturnScript = AJC_Can_Script_Snowball_Chucker01
+            NULL }
+
+#00649    Obj_PlayAnim Anim = Idle
+
+#00651    Obj_WaitAnimFinished
+#00652    LOOP
+#00653      IF QueryFlag FLAG_AJC_CAN_SNOWBALLERS_START_THROWING name = TRG_Cop_Car01
+
+#00655        IF QueryFlag GLOBAL.FlagToSpeak
+                name = TRG_Chucker_Speech_Coordinator
+
+#00658          IF Obj_ObjectInRadius Type = Skater
+                  Radius = 100
+
+#00661            RANDOM[5][16; 22; 60; 155; 193]
+
+#00663            JUMP 0xdc000000 Obj_PlayStream Can_New_65 vol = 250
+                  dropoff = 100
+
+#00666            JUMP 0xb2000000 Obj_PlayStream Can_New_63a vol = 250
+                  dropoff = 100
+
+#00669            wait 2 seconds
+#00670            Obj_PlayStream Can_New_64 vol = 250
+                  dropoff = 100
+
+#00673            JUMP 0x4f000000 Obj_PlayStream Can_New_66 vol = 250
+                  dropoff = 100
+
+#00676            JUMP 0x25000000 Obj_PlayStream can_vo_chucker3_cr vol = 250
+                  dropoff = 100
+
+#00679
+#00680          END IF
+#00681        ELSE
+#00682        END IF
+#00683        wait RANDOM[3][8; 19; 30]
+              3 frames JUMP 0x19000000 5 frames JUMP 0x0a000000 7 frames
+#00685        Obj_CycleAnim Anim = MakeSnowball
+              NumCycles = 1
+
+#00688        Obj_PlayAnim Anim = ThrowSnowball
+
+#00690        wait 49 frames
+#00691        Obj_Spawnscript AJC_Can_Script_Create_Snowball params = STRUCT{
+                SNOWBALL = GLOBAL.SNOWBALL
+                }
+
+#00695        Obj_WaitAnimFinished
+#00696        IF QueryFlag GLOBAL.FlagToSpeak
+                name = TRG_Chucker_Speech_Coordinator
+
+#00699          IF Obj_ObjectInRadius Type = Skater
+                  Radius = 100
+
+#00702            Obj_PlayStream STRUCT{
+                    RANDOM[3][8; 14; 20]
+                    can_vo_chucker2_cr JUMP 0x0f000000 can_New_62a JUMP 0x05000000 can_New_61 vol = 250
+                    dropoff = 100
+                    }
+
+#00708          END IF
+#00709          IF IsAlive name = TRG_Chucker_Speech_Coordinator
+
+#00711            SendFlag FLAG_AJC_CAN_CHUCKER_SPOKE name = TRG_Chucker_Speech_Coordinator
+
+#00713          ELSE
+#00714          END IF
+#00715        ELSE
+#00716        END IF
+#00717        Obj_CycleAnim Anim = RANDOM[3][8; 14; 20]
+
+              Clap JUMP 0x0f000000 Cheering JUMP 0x05000000 Wave NumCycles = 1
+
+#00721      END IF
+#00722      Obj_CycleAnim Anim = RANDOM[14][52; 58; 64; 70; 76; 82; 88; 94; 100; 106; 112; 118; 124; 130]
+
+            Idle JUMP 0x7d000000 Shiver JUMP 0x73000000 ScratchChin JUMP 0x69000000 LookAtWatch JUMP 0x5f000000 Talk JUMP 0x55000000 Talk2 JUMP 0x4b000000 LookLeftRight JUMP 0x41000000 LookRight JUMP 0x37000000 LookLeftDown JUMP 0x2d000000 ScratchChin JUMP 0x23000000 LookAtWatch JUMP 0x19000000 ShakeFist JUMP 0x0f000000 Disgust JUMP 0x05000000 PlayerPoint NumCycles = 1
+
+#00726    END LOOP
+#00727  END FUNCTION
+
+#00729  FUNCTION AJC_Can_Script_Chucker_Speech_Coordinator
+#00730    Obj_ClearFlag FLAG_AJC_CAN_CHUCKER_1_MAY_SPEAK
+#00731    Obj_ClearFlag FLAG_AJC_CAN_CHUCKER_2_MAY_SPEAK
+#00732    LOOP
+#00733      Obj_SetFlag FLAG_AJC_CAN_CHUCKER_1_MAY_SPEAK
+#00734      LOOP
+#00735        IF Obj_FlagSet FLAG_AJC_CAN_CHUCKER_SPOKE
+#00736          Obj_ClearFlag FLAG_AJC_CAN_CHUCKER_SPOKE
+#00737          Obj_ClearFlag FLAG_AJC_CAN_CHUCKER_1_MAY_SPEAK
+#00738          BREAK
+
+#00740        END IF
+#00741        wait 1 seconds
+#00742      END LOOP
+#00743      wait 10 seconds
+#00744      Obj_SetFlag FLAG_AJC_CAN_CHUCKER_2_MAY_SPEAK
+#00745      LOOP
+#00746        IF Obj_FlagSet FLAG_AJC_CAN_CHUCKER_SPOKE
+#00747          Obj_ClearFlag FLAG_AJC_CAN_CHUCKER_SPOKE
+#00748          Obj_ClearFlag FLAG_AJC_CAN_CHUCKER_2_MAY_SPEAK
+#00749          BREAK
+
+#00751        END IF
+#00752        wait 1 seconds
+#00753      END LOOP
+#00754      wait 10 seconds
+#00755    END LOOP
+#00756  END FUNCTION
+
+#00758  FLAG_AJC_CAN_GOAL_SNOW_FALLING = 5
+
+#00760  FLAG_AJC_CAN_GOAL_SNOW_ON_BULLY = 6
+
+#00762  EXCEPTION_BULLY_SNOW_DUMPING_START = 1
+
+#00764  EXCEPTION_BULLY_SNOW_FALLING_NOW = 2
+
+#00766  FUNCTION AJC_Can_Script_Dump_Snow
+#00767    IF InMultiplayerGame
+#00768    ELSE
+#00769      IF IsAlive name = TRG_Snowball_Victim01
+
+#00771        IF QueryFlag FLAG_AJC_CAN_GOAL_SNOW_ON_BULLY name = TRG_Snowball_Victim01
+
+#00773        ELSE
+#00774          IF IsAlive name = TRG_Snowball_Bully01
+
+#00776            SendException EXCEPTION_BULLY_SNOW_DUMPING_START name = TRG_Snowball_Bully01
+
+#00778          ELSE
+#00779          END IF
+#00780        END IF
+#00781      ELSE
+#00782      END IF
+#00783    END IF
+#00784  END FUNCTION
+
+#00786  FUNCTION AJC_Can_Script_Snowball_Bully_With_Closeup
+#00787    Obj_StickToGround Off
+#00788    Obj_SetPathTurnDist 2.5 feet
+#00789    Obj_SetPathAcceleration 28 fpsps
+#00790    Obj_PathHeading On
+#00791    Obj_PlayAnim Anim = ThrowSnowball
+
+#00793    wait 49 frames
+#00794    Obj_Spawnscript AJC_Can_Script_Create_Snowball params = STRUCT{
+            SNOWBALL = GLOBAL.SNOWBALL
+            }
+
+#00798    Obj_WaitAnimFinished
+#00799    Obj_CycleAnim NumCycles = 1
+          Anim = RANDOM[4][12; 18; 24; 30]
+
+          BullyLaugh JUMP 0x19000000 Cheering JUMP 0x0f000000 Clap JUMP 0x05000000 BullyLaugh
+#00803    GotoPreserveParams AJC_Can_Script_Snowball_Bully
+#00804    Die
+#00805  END FUNCTION
+
+#00807  FUNCTION AJC_Can_Script_Snowball_Bully_With_Whiplash
+#00808    Obj_ClearExceptions
+#00809    Obj_PlaySound Smashcake
+#00810    Obj_PlayAnim Anim = BullyHitBySnowball
+
+#00812    Obj_WaitAnimFinished
+#00813    IF Obj_ObjectInRadius Type = Skater
+            Radius = BullyRadius
+            ft
+#00816      Obj_StopStream
+#00817      RANDOM[5][21; 59; 97; 135; 173]
+
+#00819      Obj_PlayStream can_Bully36 vol = 250
+            dropoff = 100
+
+#00822      JUMP 0xa3000000 Obj_PlayStream can_Bully37a vol = 250
+            dropoff = 100
+
+#00825      JUMP 0x79000000 Obj_PlayStream can_Bully35 vol = 250
+            dropoff = 100
+
+#00828      JUMP 0x4f000000 Obj_PlayStream can_Bully34 vol = 250
+            dropoff = 100
+
+#00831      JUMP 0x25000000 Obj_PlayStream can_Bully33 vol = 250
+            dropoff = 100
+
+#00834
+#00835    END IF
+#00836    GotoPreserveParams AJC_Can_Script_Bully_Struggle
+#00837  END FUNCTION
+
+#00839  FUNCTION AJC_Can_Script_Snowball_Bully SNOWBALL = TRG_Snowball01
+
+#00841    Obj_StickToGround Off distAbove = 6
+          distBelow = 6
+
+#00844    Obj_SetPathTurnDist 2.5 feet
+#00845    Obj_SetPathAcceleration 28 fpsps
+#00846    Obj_PathHeading On
+#00847    Obj_ClearExceptions
+#00848    Obj_SetInnerRadius 5
+#00849    Obj_SetException ex = SkaterInRadius
+          scr = AJC_Can_Script_Bully_KnockDownSkater
+
+#00852    Obj_SetException ex = EXCEPTION_BULLY_SNOW_DUMPING_START
+          scr = AJC_Can_Script_Goal_Finished
+
+#00855    Obj_LookAtNode name = TRG_Snowball_Victim01
+          time = 1
+
+#00858    IF GetFlag Flag = LEVEL_FLAG_AJC_CAN_SNOW_IS_ON_BULLY
+
+#00860      Obj_SwitchScript AJC_Can_Script_Goal_Finished
+#00861    END IF
+#00862    LOOP
+#00863      LOOP
+#00864        IF Obj_ObjectInRadius Type = Skater
+                Radius = BullyRadius
+
+#00867          RANDOM[20][81; 97; 103; 109; 115; 153; 191; 229; 267; 305; 343; 381; 419; 457; 495; 533; 571; 609; 647; 685]
+
+#00869          Obj_PlayStream Can_vo_bully2_cr
+#00870          JUMP 0xb9020000
+#00871          JUMP 0xaf020000
+#00872          JUMP 0xa5020000
+#00873          JUMP 0x9b020000 Obj_PlayStream Can_Bully02a vol = 250
+                dropoff = 100
+
+#00876          JUMP 0x71020000 Obj_PlayStream Can_Bully03 vol = 250
+                dropoff = 100
+
+#00879          JUMP 0x47020000 Obj_PlayStream Can_Bully04 vol = 250
+                dropoff = 100
+
+#00882          JUMP 0x1d020000 Obj_PlayStream Can_Bully05 vol = 250
+                dropoff = 100
+
+#00885          JUMP 0xf3010000 Obj_PlayStream Can_Bully06 vol = 250
+                dropoff = 100
+
+#00888          JUMP 0xc9010000 Obj_PlayStream Can_Bully07 vol = 250
+                dropoff = 100
+
+#00891          JUMP 0x9f010000 Obj_PlayStream Can_Bully09 vol = 250
+                dropoff = 100
+
+#00894          JUMP 0x75010000 Obj_PlayStream Can_Bully10a vol = 250
+                dropoff = 100
+
+#00897          JUMP 0x4b010000 Obj_PlayStream Can_Bully11 vol = 250
+                dropoff = 100
+
+#00900          JUMP 0x21010000 Obj_PlayStream Can_Bully12 vol = 250
+                dropoff = 100
+
+#00903          JUMP 0xf7000000 Obj_PlayStream Can_Bully13a vol = 250
+                dropoff = 100
+
+#00906          JUMP 0xcd000000 Obj_PlayStream Can_Bully14 vol = 250
+                dropoff = 100
+
+#00909          JUMP 0xa3000000 Obj_PlayStream Can_Bully15 vol = 250
+                dropoff = 100
+
+#00912          JUMP 0x79000000 Obj_PlayStream Can_Bully16 vol = 250
+                dropoff = 100
+
+#00915          JUMP 0x4f000000 Obj_PlayStream Can_Bully25 vol = 250
+                dropoff = 100
+
+#00918          JUMP 0x25000000 Obj_PlayStream Can_Bully25b vol = 250
+                dropoff = 100
+
+#00921
+#00922        END IF
+#00923        Obj_CycleAnim NumCycles = 1
+              Anim = MakeSnowball
+
+#00926        Obj_PlayAnim Anim = ThrowSnowball
+
+#00928        wait 49 frames
+#00929        Create name = GLOBAL.SNOWBALL
+
+#00931        Obj_WaitAnimFinished
+#00932      END LOOP RANDOM[5][16; 22; 28; 34; 40]
+            4 JUMP 0x23000000 5 JUMP 0x19000000 6 JUMP 0x0f000000 7 JUMP 0x05000000 8
+#00934      Obj_CycleAnim NumCycles = 1
+            Anim = RANDOM[4][12; 18; 24; 30]
+
+            BullyLaugh JUMP 0x19000000 Cheering JUMP 0x0f000000 Clap JUMP 0x05000000 BullyLaugh
+#00938    END LOOP
+#00939  END FUNCTION
+
+#00941  FUNCTION AJC_Can_Script_Bully_KnockDownSkater
+#00942    Obj_ClearExceptions
+#00943    Obj_LookAtObject Type = Skater
+          time = 0.05
+
+#00946    Obj_PlayAnim Anim = RANDOM[2][4; 10]
+
+          punch JUMP 0x05000000 Push
+#00949    wait 0.05
+#00950    Obj_LookAtObject Type = Skater
+          time = 0.05
+
+#00953    MakeSkaterGoto PedKnockDown
+#00954    Obj_WaitAnimFinished
+#00955    wait 0.05
+#00956    RANDOM[19][77; 115; 153; 191; 229; 267; 305; 343; 381; 419; 457; 495; 533; 571; 609; 647; 685; 723; 761]
+
+#00958    Obj_PlayStream Can_Bully08 vol = 250
+          dropoff = 100
+
+#00961    JUMP 0xef020000 Obj_PlayStream Can_Bully16 vol = 250
+          dropoff = 100
+
+#00964    JUMP 0xc5020000 Obj_PlayStream Can_Bully17 vol = 250
+          dropoff = 100
+
+#00967    JUMP 0x9b020000 Obj_PlayStream Can_Bully18a vol = 250
+          dropoff = 100
+
+#00970    JUMP 0x71020000 Obj_PlayStream Can_Bully19 vol = 250
+          dropoff = 100
+
+#00973    JUMP 0x47020000 Obj_PlayStream Can_Bully20 vol = 250
+          dropoff = 100
+
+#00976    JUMP 0x1d020000 Obj_PlayStream Can_Bully21a vol = 250
+          dropoff = 100
+
+#00979    JUMP 0xf3010000 Obj_PlayStream Can_Bully22a vol = 250
+          dropoff = 100
+
+#00982    JUMP 0xc9010000 Obj_PlayStream Can_Bully23 vol = 250
+          dropoff = 100
+
+#00985    JUMP 0x9f010000 Obj_PlayStream Can_Bully24 vol = 250
+          dropoff = 100
+
+#00988    JUMP 0x75010000 Obj_PlayStream Can_Bully24b vol = 250
+          dropoff = 100
+
+#00991    JUMP 0x4b010000 Obj_PlayStream Can_Bully25 vol = 250
+          dropoff = 100
+
+#00994    JUMP 0x21010000 Obj_PlayStream Can_Bully25b vol = 250
+          dropoff = 100
+
+#00997    JUMP 0xf7000000 Obj_PlayStream Can_Bully26a vol = 250
+          dropoff = 100
+
+#01000    JUMP 0xcd000000 Obj_PlayStream Can_Bully27 vol = 250
+          dropoff = 100
+
+#01003    JUMP 0xa3000000 Obj_PlayStream Can_Bully28 vol = 250
+          dropoff = 100
+
+#01006    JUMP 0x79000000 Obj_PlayStream Can_Bully29 vol = 250
+          dropoff = 100
+
+#01009    JUMP 0x4f000000 Obj_PlayStream Can_Bully30 vol = 250
+          dropoff = 100
+
+#01012    JUMP 0x25000000 Obj_PlayStream Can_Bully31a vol = 250
+          dropoff = 100
+
+#01015
+#01016    Obj_LookAtObject Type = Skater
+          time = 0.05
+
+#01019    Obj_WaitRotate
+#01020    Obj_PlayAnim Anim = RANDOM[4][12; 18; 24; 30]
+
+          BullyLaugh JUMP 0x19000000 ShakeFist JUMP 0x0f000000 PlayerPoint JUMP 0x05000000 Disgust
+#01023    Obj_WaitAnimFinished
+#01024    Obj_SetInnerRadius 5
+#01025    Obj_SetOuterRadius 15
+#01026    Obj_SetException ex = SkaterInRadius
+          scr = AJC_Can_Script_Bully_KnockDownSkater
+
+#01029    Obj_SetException ex = SkaterOutOfRadius
+          scr = AJC_Can_Script_Snowball_Bully
+
+#01032    LOOP
+#01033      Obj_LookAtObject Type = Skater
+            time = 0.5
+
+#01036      Obj_CycleAnim NumCycles = 1
+            Anim = Idle
+
+#01039    END LOOP
+#01040  END FUNCTION
+
+#01042  FUNCTION AJC_Can_Script_Goal_Finished
+#01043    IF IsAlive name = TRG_Snowball_Victim01
+
+#01045      SendFlag FLAG_AJC_CAN_GOAL_SNOW_ON_BULLY name = TRG_Snowball_Victim01
+
+#01047    ELSE
+#01048    END IF
+#01049    IF GetFlag Flag = LEVEL_FLAG_AJC_CAN_SNOW_IS_ON_BULLY
+
+#01051      Create name = Wilderness_Goal_Snow_Dest_Pile
+
+#01053      Create name = Wild_Pine_Tree_No_Snow
+
+#01055      kill name = Wild_Pine_Tree_With_Snow
+
+#01057      LOOP
+#01058        Obj_CycleAnim Anim = BullyStruggle
+              NumCycles = RANDOM[3][8; 14; 20]
+
+              3 JUMP 0x0f000000 5 JUMP 0x05000000 8
+#01062        IF Obj_ObjectInRadius Type = Skater
+                Radius = 100
+
+#01065          RANDOM[2][9; 47]
+
+#01067          Obj_PlayStream can_vo_Bully37 vol = 250
+                dropoff = 100
+
+#01070          JUMP 0x25000000 Obj_PlayStream can_vo_Bully32 vol = 250
+                dropoff = 100
+
+#01073
+#01074        END IF
+#01075      END LOOP
+#01076    ELSE
+#01077      PauseClock
+#01078      kill name = Wild_Pine_Tree_With_Snow
+
+#01080      Create name = Wild_Pine_Tree_No_Snow
+
+#01082      Create name = Wilderness_Goal_Snow01
+
+#01084      Create name = Wilderness_Goal_Snow02
+
+#01086      Create name = Wilderness_Goal_Snow03
+
+#01088      Create name = Wilderness_Goal_Snow04
+
+#01090      PlaySkaterCamAnim Skater = 0
+            name = "Cam_Snow_Dumping_On_Bully"
+
+#01093      PauseSkaters
+#01094      TeleportSkaterUp
+#01095      IF IsCareerMode
+#01096        Got_Scripted1
+#01097      END IF
+#01098      Obj_ClearExceptions
+#01099      Obj_SetException ex = EXCEPTION_BULLY_SNOW_FALLING_NOW
+            scr = AJC_Can_Script_Bully_Cower_To_Idle
+
+#01102      Obj_StopAlongPath
+#01103      Obj_PlayAnim Anim = IdleToCower
+
+#01105      LOOP
+#01106        IF Obj_AnimComplete
+#01107          SetSkaterCamAnimSkippable Skater = 0
+                skippable = 1
+
+#01110          BREAK
+
+#01112        END IF
+#01113        wait 1 gameframe
+#01114      END LOOP
+#01115      LOOP
+#01116        IF SkaterCamAnimFinished Skater = 0
+                name = "Cam_Snow_Dumping_On_Bully"
+
+#01119          Goto AJC_Can_Script_Bully_Resume_Playing
+#01120        END IF
+#01121        IF Obj_AnimComplete
+#01122          Obj_PlayAnim Anim = Cower
+
+#01124        END IF
+#01125        wait 1 frame
+#01126      END LOOP
+#01127    END IF
+#01128  END FUNCTION
+
+#01130  FUNCTION AJC_Can_Script_Bully_Cower_To_Idle
+#01131    IF SkaterCamAnimFinished Skater = 0
+            name = "Cam_Snow_Dumping_On_Bully"
+
+#01134    ELSE
+#01135      Obj_PlayAnim Anim = CowerToIdleQuick
+
+#01137    END IF
+#01138    LOOP
+#01139      IF SkaterCamAnimFinished Skater = 0
+              name = "Cam_Snow_Dumping_On_Bully"
+
+#01142        Goto AJC_Can_Script_Bully_Resume_Playing
+#01143      END IF
+#01144      IF Obj_AnimComplete
+#01145        BREAK
+
+#01147      END IF
+#01148      wait 1 frame
+#01149    END LOOP
+#01150    Obj_VarSet var = 0
+          value = 0
+
+#01153    LOOP
+#01154      IF SkaterCamAnimFinished Skater = 0
+              name = "Cam_Snow_Dumping_On_Bully"
+
+#01157        Goto AJC_Can_Script_Bully_Resume_Playing
+#01158      END IF
+#01159      IF Obj_AnimComplete
+#01160        IF Obj_VarEQ var = 0
+                value = 4
+
+#01163          IF Obj_ObjectInRadius Type = Skater
+                  Radius = BullyRadius
+
+#01166            RANDOM[7][29; 35; 41; 47; 85; 123; 161]
+
+#01168
+#01169            JUMP 0xb7000000
+#01170            JUMP 0xad000000
+#01171            JUMP 0xa3000000 Obj_PlayStream can_Bully37 vol = 250
+                  dropoff = 100
+
+#01174            JUMP 0x79000000 Obj_PlayStream can_Bully33 vol = 250
+                  dropoff = 100
+
+#01177            JUMP 0x4f000000 Obj_PlayStream can_Bully33a vol = 250
+                  dropoff = 100
+
+#01180            JUMP 0x25000000 Obj_PlayStream can_Bully32a vol = 250
+                  dropoff = 100
+
+#01183
+#01184          END IF
+#01185          Obj_VarSet var = 0
+                value = 0
+
+#01188        ELSE
+#01189          Obj_VarInc var = 0
+
+#01191        END IF
+#01192        Obj_PlayAnim Anim = BullyStruggle
+
+#01194      END IF
+#01195      wait 1 gameframe
+#01196    END LOOP
+#01197    Goto AJC_Can_Script_Bully_Resume_Playing
+#01198  END FUNCTION
+
+#01200  FUNCTION AJC_Can_Script_Bully_Resume_Playing
+#01201    SetFlag Flag = LEVEL_FLAG_AJC_CAN_SNOW_IS_ON_BULLY
+
+#01203    TeleportSkaterDown
+#01204    Create name = Wilderness_Goal_Snow_Dest_Pile
+
+#01206    kill name = Wilderness_Goal_Snow01
+
+#01208    kill name = Wilderness_Goal_Snow02
+
+#01210    kill name = Wilderness_Goal_Snow03
+
+#01212    kill name = Wilderness_Goal_Snow04
+
+#01214    SetParticleSysVisibility system = "Wilderness_Tree_Snow_Particles"
+          visible = 0
+
+#01217    SetParticleSysVisibility system = "Wilderness_Tree_Snow_Particles01"
+          visible = 0
+
+#01220    SetParticleSysVisibility system = "Wilderness_Tree_Snow_Particles02"
+          visible = 0
+
+#01223    SetParticleSysVisibility system = "Wilderness_Tree_Snow_Particles03"
+          visible = 0
+
+#01226    SetParticleSysVisibility system = "Wilderness_Tree_Snow_Particles04"
+          visible = 0
+
+#01229    SetParticleSysVisibility system = "Wilderness_Tree_Snow_Particles05"
+          visible = 0
+
+#01232    UnPauseSkaters
+#01233    UnPauseClock
+#01234    Goto AJC_Can_Script_Bully_Struggle
+#01235  END FUNCTION
+
+#01237  FUNCTION AJC_Can_Script_Bully_Struggle
+#01238    Obj_ClearExceptions
+#01239    Obj_SetInnerRadius 5
+#01240    Obj_SetException ex = SkaterInRadius
+          scr = AJC_Can_Script_Snowball_Bully_With_Whiplash
+
+#01243    LOOP
+#01244      Obj_CycleAnim Anim = BullyStruggle
+            NumCycles = RANDOM[3][8; 14; 20]
+
+            3 JUMP 0x0f000000 5 JUMP 0x05000000 8
+#01248      IF Obj_ObjectInRadius Type = Skater
+              Radius = BullyRadius
+
+#01251        RANDOM[6][25; 31; 37; 75; 113; 151]
+
+#01253
+#01254        JUMP 0xad000000
+#01255        JUMP 0xa3000000 Obj_PlayStream can_Bully37 vol = 250
+              dropoff = 100
+
+#01258        JUMP 0x79000000 Obj_PlayStream can_Bully32a vol = 250
+              dropoff = 100
+
+#01261        JUMP 0x4f000000 Obj_PlayStream can_Bully33 vol = 250
+              dropoff = 100
+
+#01264        JUMP 0x25000000 Obj_PlayStream can_Bully33a vol = 250
+              dropoff = 100
+
+#01267
+#01268      END IF
+#01269    END LOOP
+#01270  END FUNCTION
+
+#01272  FUNCTION AJC_Can_Script_Goal_Finished_Victim
+#01273    Obj_StopAlongPath
+#01274    Obj_CycleAnim Anim = RANDOM[8][28; 34; 40; 46; 52; 58; 64; 70]
+
+          ShakeFist JUMP 0x41000000 Disgust JUMP 0x37000000 PlayerPoint JUMP 0x2d000000 PlayerWave JUMP 0x23000000 Clap JUMP 0x19000000 Cheering JUMP 0x0f000000 Talk JUMP 0x05000000 Talk2
+#01277  END FUNCTION
+
+#01279  FLAG_AJC_CAN_VICTIM_IS_WALKING = 1
+
+#01281  FLAG_AJC_CAN_VICTIM_ALREADY_WALKED = 2
+
+#01283  FLAG_AJC_CAN_VICTIM_CREATED_BUDDY = 3
+
+#01285  FLAG_AJC_CAN_BUDDY_DONE_WALKING = 1
+
+#01287  FUNCTION AJC_Can_Script_Snowball_Victim01
+#01288    IF GetFlag Flag = LEVEL_FLAG_AJC_CAN_VICTIM_DONE_WALKING
+
+#01290      Obj_SetInnerRadius 5 ft
+#01291      Obj_SetException ex = SkaterInRadius
+            scr = AJC_Can_Script_Ped_FallForSkater
+            params = STRUCT{
+              ReturnScript = AJC_Can_Script_Snowball_Victim01
+              NULL }
+
+#01297      Obj_SetPathAcceleration 200 fpsps
+#01298      Obj_SetPathVelocity 200 fps
+#01299      Obj_FollowPathLinked
+#01300      Obj_WaitMove
+#01301      IF Obj_FlagNotSet FLAG_AJC_CAN_VICTIM_CREATED_BUDDY
+#01302        Obj_SetFlag FLAG_AJC_CAN_VICTIM_CREATED_BUDDY
+#01303        Create name = TRG_Snowball_Victim_Buddy01
+
+#01305        IF Obj_ObjectInRadius Type = Skater
+                Radius = VictimRadius
+                ft
+#01308          Obj_PlayStream Can_Kid_21 vol = 250
+                dropoff = 100
+
+#01311        END IF
+#01312      END IF
+#01313      GotoPreserveParams AJC_Can_Script_Snowball_Pelt_Bully
+#01314    END IF
+#01315    Obj_StickToGround On distAbove = 6
+          distBelow = 6
+
+#01318    Obj_SetPathTurnDist 2.5 feet
+#01319    Obj_SetPathAcceleration 7 fpsps
+#01320    Obj_SetPathVelocity 8 fps
+#01321    Obj_ClearExceptions
+#01322    Obj_SetInnerRadius 5
+#01323    Obj_SetException ex = SkaterInRadius
+          scr = AJC_Can_Script_Ped_FallForSkater
+          params = STRUCT{
+            ReturnScript = AJC_Can_Script_Snowball_Victim01
+            NULL }
+
+#01329    Obj_PathHeading On
+#01330    LOOP
+#01331      IF Obj_FlagSet FLAG_AJC_CAN_GOAL_SNOW_ON_BULLY
+#01332        BREAK
+
+#01334      END IF
+#01335      RANDOM[5][16; 27; 38; 49; 60]
+            AJC_Can_Script_Snowball_Victim_Idle01
+#01337      JUMP 0x37000000 AJC_Can_Script_Snowball_Victim_Idle02
+#01338      JUMP 0x28000000 AJC_Can_Script_Snowball_Victim_Idle03
+#01339      JUMP 0x19000000 AJC_Can_Script_Snowball_Victim_Idle04
+#01340      JUMP 0x0a000000 AJC_Can_Script_Snowball_Victim_Idle05
+#01341
+#01342    END LOOP
+#01343    IF Obj_FlagNotSet FLAG_AJC_CAN_VICTIM_CREATED_BUDDY
+#01344      Obj_SetFlag FLAG_AJC_CAN_VICTIM_CREATED_BUDDY
+#01345      Create name = TRG_Snowball_Victim_Buddy01
+
+#01347      IF Obj_ObjectInRadius Type = Skater
+              Radius = VictimRadius
+              ft
+#01350        Obj_PlayStream Can_Kid_21 vol = 250
+              dropoff = 100
+
+#01353      END IF
+#01354    END IF
+#01355    IF Obj_FlagNotSet FLAG_AJC_CAN_VICTIM_IS_WALKING
+#01356      Obj_SetException ex = SkaterInRadius
+            scr = AJC_Can_Script_Ped_FallForSkater
+            params = STRUCT{
+              ReturnScript = AJC_Can_Script_Snowball_Victim01
+              STOPALONGPATH NULL }
+
+#01362      Obj_CycleAnim NumCycles = 1
+            Anim = IdleToWalk
+
+#01365      Obj_FollowPathLinked
+#01366      LOOP
+#01367        Obj_CycleAnim NumCycles = 1
+              Anim = Walk
+
+#01370        IF Obj_IsMoving
+#01371        ELSE
+#01372          BREAK
+
+#01374        END IF
+#01375      END LOOP
+#01376      Obj_CycleAnim NumCycles = 1
+            Anim = WalkToIdle
+
+#01379    END IF
+#01380    Obj_SetFlag FLAG_AJC_CAN_VICTIM_IS_WALKING
+#01381    Obj_SetException ex = SkaterInRadius
+          scr = AJC_Can_Script_Ped_FallForSkater
+          params = STRUCT{
+            ReturnScript = AJC_Can_Script_Snowball_Victim01
+            NULL }
+
+#01387    IF Obj_FlagNotSet FLAG_AJC_CAN_VICTIM_CREATED_BUDDY
+#01388      Obj_SetFlag FLAG_AJC_CAN_VICTIM_CREATED_BUDDY
+#01389      IF Obj_ObjectInRadius Type = Skater
+              Radius = VictimRadius
+              ft
+#01392        Obj_PlayStream Can_Kid_21 vol = 250
+              dropoff = 100
+
+#01395      END IF
+#01396    END IF
+#01397    SetFlag Flag = LEVEL_FLAG_AJC_CAN_VICTIM_DONE_WALKING
+
+#01399    GotoPreserveParams AJC_Can_Script_Snowball_Pelt_Bully
+#01400  END FUNCTION
+
+#01402  FUNCTION AJC_Can_Script_Snowball_Pelt_Bully
+#01403    Obj_SetInnerRadius 5 ft
+#01404    Obj_SetException ex = SkaterInRadius
+          scr = AJC_Can_Script_Ped_FallForSkater
+          params = STRUCT{
+            ReturnScript = AJC_Can_Script_Snowball_Pelt_Bully
+            NULL }
+
+#01410    LOOP
+#01411      Obj_CycleAnim NumCycles = 1
+            Anim = RANDOM[4][12; 18; 24; 30]
+
+            BullyLaugh JUMP 0x19000000 Cheering JUMP 0x0f000000 Clap JUMP 0x05000000 BullyLaugh
+#01415      Obj_CycleAnim NumCycles = 1
+            Anim = RANDOM[4][12; 18; 24; 30]
+
+            BullyLaugh JUMP 0x19000000 Cheering JUMP 0x0f000000 Clap JUMP 0x05000000 BullyLaugh
+#01419      Obj_CycleAnim NumCycles = 1
+            Anim = MakeSnowball
+
+#01422      Obj_PlayAnim Anim = ThrowSnowball
+
+#01424      wait 49 frames
+#01425      Obj_Spawnscript AJC_Can_Script_Create_Snowball params = STRUCT{
+              SNOWBALL = GLOBAL.SNOWBALL
+              }
+
+#01429      wait 44 frames
+#01430      kill name = TRG_Snowball_Bully01
+
+#01432      kill name = TRG_Snowball_Bully_With_Whiplash
+
+#01434      Create name = TRG_Snowball_Bully_With_Whiplash
+
+#01436      IF Obj_ObjectInRadius Type = Skater
+              Radius = VictimRadius
+              ft
+#01439        RANDOM[9][32; 38; 44; 50; 88; 126; 164; 202; 240]
+
+#01441        JUMP 0x0b010000
+#01442        JUMP 0x01010000
+#01443        JUMP 0xf7000000 Obj_PlayStream Can_Kid_20 vol = 250
+              dropoff = 100
+
+#01446        JUMP 0xcd000000 Obj_PlayStream Can_Kid_19 vol = 250
+              dropoff = 100
+
+#01449        JUMP 0xa3000000 Obj_PlayStream Can_Kid_18 vol = 250
+              dropoff = 100
+
+#01452        JUMP 0x79000000 Obj_PlayStream Can_Kid_17 vol = 250
+              dropoff = 100
+
+#01455        JUMP 0x4f000000 Obj_PlayStream Can_Kid_16 vol = 250
+              dropoff = 100
+
+#01458        JUMP 0x25000000 Obj_PlayStream Can_Kid_15 vol = 250
+              dropoff = 100
+
+#01461
+#01462      END IF
+#01463      Obj_WaitAnimFinished
+#01464    END LOOP
+#01465  END FUNCTION
+
+#01467  FUNCTION AJC_Can_Script_Snowball_Buddy
+#01468    IF IsCareerMode
+#01469      IF GetFlag Flag = LEVEL_FLAG_AJC_CAN_SNOW_IS_ON_BULLY
+
+#01471      ELSE
+#01472        Die
+#01473      END IF
+#01474    END IF
+#01475    Obj_StickToGround On distAbove = 6
+          distBelow = 6
+
+#01478    Obj_SetPathTurnDist 2.5 feet
+#01479    IF GetFlag Flag = LEVEL_FLAG_AJC_CAN_VICTIM_DONE_WALKING
+
+#01481      Obj_SetPathAcceleration 800 fpsps
+#01482      Obj_SetPathVelocity 800 fps
+#01483    ELSE
+#01484      Obj_SetPathAcceleration 7 fpsps
+#01485      Obj_SetPathVelocity 8 fps
+#01486    END IF
+#01487    Obj_PathHeading On
+#01488    Obj_SetInnerRadius 5
+#01489    IF Obj_FlagNotSet FLAG_AJC_CAN_BUDDY_DONE_WALKING
+#01490      Obj_SetException ex = SkaterInRadius
+            scr = AJC_Can_Script_Ped_FallForSkater
+            params = STRUCT{
+              ReturnScript = AJC_Can_Script_Snowball_Buddy
+              STOPALONGPATH NULL }
+
+#01496      Obj_CycleAnim NumCycles = 1
+            Anim = IdleToWalk
+
+#01499      Obj_FollowPathLinked
+#01500      LOOP
+#01501        Obj_CycleAnim NumCycles = 1
+              Anim = Walk
+
+#01504        IF Obj_IsMoving
+#01505        ELSE
+#01506          BREAK
+
+#01508        END IF
+#01509      END LOOP
+#01510      Obj_CycleAnim NumCycles = 1
+            Anim = WalkToIdle
+
+#01513    END IF
+#01514    Obj_SetFlag FLAG_AJC_CAN_BUDDY_DONE_WALKING
+#01515    Obj_SetException ex = SkaterInRadius
+          scr = AJC_Can_Script_Ped_FallForSkater
+          params = STRUCT{
+            ReturnScript = AJC_Can_Script_Snowball_Buddy
+            NULL }
+
+#01521    LOOP
+#01522      Obj_PlayStream RANDOM[3][8; 9; 10]
+            JUMP 0x0a000000 JUMP 0x05000000 can_laugh_05b vol = 200
+            dropoff = 100
+
+#01526      Obj_PlayAnim Anim = ThrowSnowball
+
+#01528      wait 49 frames
+#01529      Obj_Spawnscript AJC_Can_Script_Create_Snowball params = STRUCT{
+              SNOWBALL = GLOBAL.SNOWBALL
+              }
+
+#01533      Obj_WaitAnimFinished
+#01534      Obj_CycleAnim NumCycles = 1
+            Anim = RANDOM[4][12; 18; 24; 30]
+
+            BullyLaugh JUMP 0x19000000 Cheering JUMP 0x0f000000 Clap JUMP 0x05000000 BullyLaugh
+#01538      Obj_CycleAnim NumCycles = 1
+            Anim = RANDOM[4][12; 18; 24; 30]
+
+            BullyLaugh JUMP 0x19000000 Cheering JUMP 0x0f000000 Clap JUMP 0x05000000 BullyLaugh
+#01542      Obj_CycleAnim NumCycles = 1
+            Anim = MakeSnowball
+
+#01545    END LOOP
+#01546  END FUNCTION
+
+#01548  FUNCTION AJC_Can_Script_Snowball_Victim_Idle01
+#01549    Obj_CycleAnim NumCycles = 2
+          Anim = ShakeFist
+
+#01552    IF Obj_ObjectInRadius Type = Skater
+            Radius = VictimRadius
+
+#01555      RANDOM[3][8; 14; 52]
+
+#01557      JUMP 0x4f000000 Obj_PlayStream can_Kid_05 vol = 250
+            dropoff = 100
+
+#01560      JUMP 0x25000000 Obj_PlayStream Can_Kid_03a vol = 250
+            dropoff = 100
+
+#01563
+#01564    END IF
+#01565  END FUNCTION
+
+#01567  FUNCTION AJC_Can_Script_Snowball_Victim_Idle02
+#01568    Obj_CycleAnim NumCycles = 1
+          Anim = IdleToCower
+
+#01571    Obj_CycleAnim NumCycles = 1
+          Anim = Cower
+
+#01574    Obj_CycleAnim NumCycles = 1
+          Anim = CowerToIdle
+
+#01577    IF Obj_ObjectInRadius Type = Skater
+            Radius = VictimRadius
+
+#01580      RANDOM[3][8; 14; 52]
+
+#01582      JUMP 0x4f000000 Obj_PlayStream Can_Kid_04 vol = 250
+            dropoff = 100
+
+#01585      JUMP 0x25000000 Obj_PlayStream Can_Kid_14 vol = 250
+            dropoff = 100
+
+#01588
+#01589    END IF
+#01590  END FUNCTION
+
+#01592  FUNCTION AJC_Can_Script_Snowball_Victim_Idle03
+#01593    Obj_CycleAnim NumCycles = 1
+          Anim = IdleToCower
+
+#01596    Obj_CycleAnim NumCycles = 1
+          Anim = Cower
+
+#01599    Obj_CycleAnim NumCycles = 1
+          Anim = CowerToIdleQuick
+
+#01602    IF Obj_ObjectInRadius Type = Skater
+            Radius = VictimRadius
+
+#01605      RANDOM[3][8; 14; 52]
+
+#01607      JUMP 0x4f000000 Obj_PlayStream Can_Kid_06 vol = 250
+            dropoff = 100
+
+#01610      JUMP 0x25000000 Obj_PlayStream Can_Kid_13 vol = 250
+            dropoff = 100
+
+#01613
+#01614    END IF
+#01615  END FUNCTION
+
+#01617  FUNCTION AJC_Can_Script_Snowball_Victim_Idle04
+#01618    Obj_CycleAnim NumCycles = 1
+          Anim = DuckSnowball
+
+#01621    IF Obj_ObjectInRadius Type = Skater
+            Radius = VictimRadius
+
+#01624      RANDOM[4][12; 18; 56; 94]
+
+#01626      JUMP 0x79000000 Obj_PlayStream Can_Kid_02 vol = 250
+            dropoff = 100
+
+#01629      JUMP 0x4f000000 Obj_PlayStream Can_Kid_12 vol = 250
+            dropoff = 100
+
+#01632      JUMP 0x25000000 Obj_PlayStream Can_Kid_09 vol = 250
+            dropoff = 100
+
+#01635
+#01636    END IF
+#01637  END FUNCTION
+
+#01639  FUNCTION AJC_Can_Script_Snowball_Victim_Idle05
+#01640    Obj_CycleAnim NumCycles = 1
+          Anim = Stagger
+
+#01643    IF Obj_ObjectInRadius Type = Skater
+            Radius = VictimRadius
+
+#01646      RANDOM[4][12; 18; 56; 94]
+
+#01648      JUMP 0x79000000 Obj_PlayStream Can_Kid_01 vol = 250
+            dropoff = 100
+
+#01651      JUMP 0x4f000000 Obj_PlayStream Can_Kid_11 vol = 250
+            dropoff = 100
+
+#01654      JUMP 0x25000000 Obj_PlayStream Can_Kid_07 vol = 250
+            dropoff = 100
+
+#01657
+#01658    END IF
+#01659  END FUNCTION
+
+#01661  FUNCTION AJC_Can_Script_Buddy_Volley
+#01662    Obj_SetFlag FLAG_AJC_CAN_BUDDY_VOLLEY
+#01663  END FUNCTION
+
+#01665  FUNCTION AJC_Can_Script_Buddy_Wait_For_Volley
+#01666    Obj_SetFlag FLAG_AJC_CAN_BUDDY_WAIT
+#01667  END FUNCTION
+
+#01669  FUNCTION AJC_Can_Script_Victim_Gets_Buddies
+#01670    Obj_SetFlag FLAG_AJC_CAN_VICTIM_GETS_BUDDIES
+#01671  END FUNCTION
+
+#01673  FLAG_AJC_CAN_CONC_PARK_GROMMET_READY_FOR_MY_CLOSEUP = 3
+
+#01675  FLAG_AJC_CAN_CONC_PARK_GROMMET_IMPRESSED = 1
+
+#01677  FLAG_AJC_CAN_CONC_PARK_GROMMET_MAY_DIE = 2
+
+#01679  EXCEPTION_GROMMET_IMPRESSED = 1
+
+#01681  VAR_GROMMET_COUNTER = 0
+
+#01683  FUNCTION AJC_Can_Script_Grommet
+#01684    wait 5 gameframes
+#01685    SK3_ImpressMePed NULL
+#01686  END FUNCTION
+
+#01688  FUNCTION AJC_Can_Script_Grommet_With_Closeup
+#01689    Obj_StickToGround Off
+#01690    Obj_SetPathTurnDist 2.5 feet
+#01691    Obj_SetPathAcceleration 7 fpsps
+#01692    Obj_SetPathVelocity 18 fps
+#01693    LOOP
+#01694      Obj_PlayAnim Anim = GrommetSmackCoping
+
+#01696      wait 47 frames
+#01697      Obj_PlaySound Can_CopingSmack pitch = RANDOM[3][8; 14; 20]
+
+            80 JUMP 0x0f000000 60 JUMP 0x05000000 70
+#01700      wait 30 frames
+#01701      Obj_PlaySound Can_CopingSmack pitch = RANDOM[3][8; 14; 20]
+
+            80 JUMP 0x0f000000 60 JUMP 0x05000000 70
+#01704      wait 30 frames
+#01705      Obj_PlaySound Can_CopingSmack pitch = RANDOM[3][8; 14; 20]
+
+            80 JUMP 0x0f000000 60 JUMP 0x05000000 70
+#01708      Obj_WaitAnimFinished
+#01709    END LOOP 3
+#01710    Create name = TRG_Conc_Park_Bully08
+
+#01712    Die
+#01713    Goto AJC_Can_Script_Grommet NULL
+#01714  END FUNCTION
+
+#01716  FUNCTION AJC_Can_Script_Grommet_Count
+#01717    IF GetGoal Goal = GOAL_SCRIPTED2
+
+#01719    ELSE
+#01720      IF Obj_FlagNotSet FLAG_AJC_CAN_GOT_THIS_GOAL
+#01721        Obj_VarSet var = VAR_GROMMET_COUNTER
+              value = 0
+
+#01724        Obj_SetFlag FLAG_AJC_CAN_GOT_THIS_GOAL
+#01725      END IF
+#01726      Obj_ClearExceptions
+#01727      Obj_SetException ex = EXCEPTION_GROMMET_IMPRESSED
+            scr = AJC_Can_Script_Grommet_Increment_Count
+
+#01730      LOOP
+#01731        wait 10 seconds
+#01732      END LOOP
+#01733    END IF
+#01734  END FUNCTION
+
+#01736  FUNCTION AJC_Can_Script_Grommet_Increment_Count
+#01737    Obj_VarInc var = VAR_GROMMET_COUNTER
+
+#01739    Obj_ClearExceptions
+#01740    Obj_SetException ex = EXCEPTION_GROMMET_IMPRESSED
+          scr = AJC_Can_Script_Grommet_Increment_Count
+
+#01743    wait 40 frames
+#01744    IF Obj_VarEQ var = VAR_GROMMET_COUNTER
+            value = 1
+
+#01747      LaunchPanelMessage "1 of 5 Skaters Impressed" properties = panel_message_goalcomplete7
+
+#01749    ELSE
+#01750      IF Obj_VarEQ var = VAR_GROMMET_COUNTER
+              value = 2
+
+#01753        LaunchPanelMessage "2 of 5 Skaters Impressed" properties = panel_message_goalcomplete7
+
+#01755      ELSE
+#01756        IF Obj_VarEQ var = VAR_GROMMET_COUNTER
+                value = 3
+
+#01759          LaunchPanelMessage "3 of 5 Skaters Impressed" properties = panel_message_goalcomplete7
+
+#01761        ELSE
+#01762          IF Obj_VarEQ var = VAR_GROMMET_COUNTER
+                  value = 4
+
+#01765            LaunchPanelMessage "4 of 5 Skaters Impressed" properties = panel_message_goalcomplete7
+
+#01767          ELSE
+#01768            IF Obj_VarEQ var = VAR_GROMMET_COUNTER
+                    value = 5
+
+#01771              LaunchPanelMessage "5 of 5 Skaters Impressed" properties = panel_message_goalcomplete7
+
+#01773              Got_Scripted2
+#01774              SetGlobalFlag Flag = SKATESHOP_JUST_GOT_LEVEL2_GOAL
+
+#01776              Die
+#01777            ELSE
+#01778            END IF
+#01779          END IF
+#01780        END IF
+#01781      END IF
+#01782    END IF
+#01783    Goto AJC_Can_Script_Grommet_Count
+#01784  END FUNCTION
+
+#01786  FLAG_AJC_CAN_CONC_PARK_RAIL_SITTER = 1
+
+#01788  FLAG_AJC_CAN_CONC_PARK_RAIL_SITTER_IS_DOWN = 2
+
+#01790  EXCEPTION_TONGUE_STUCK_CLOSEUP = 3
+
+#01792  FUNCTION AJC_Can_Script_Ped_Rail_Sitter
+#01793    Obj_ClearExceptions
+#01794    Obj_ClearFlag FLAG_AJC_CAN_CONC_PARK_RAIL_SITTER_IS_DOWN
+#01795    Obj_SetInnerRadius 25
+#01796    Obj_SetException ex = SkaterInRadius
+          scr = AJC_Can_Script_Ped_Rail_Sitter_Dodge_NOW
+
+#01799    LOOP
+#01800      Obj_CycleAnim NumCycles = 1
+            Anim = SittingIdle
+
+#01803    END LOOP
+#01804  END FUNCTION
+
+#01806  FUNCTION AJC_Can_Script_Ped_Rail_Sitter_Dodge_NOW
+#01807    LOOP
+#01808      Obj_ClearExceptions
+#01809      Obj_MoveToNode speed = 50
+            name = TRG_Ped_Rail_Sitter_JumpTo01
+
+#01812      IF Obj_ObjectInRadius Type = Skater
+              Radius = 100
+
+#01815        Obj_PlayStream Can_Vo_Whoa vol = 250
+              dropoff = 100
+
+#01818      END IF
+#01819      Obj_CycleAnim NumCycles = 1
+            Anim = RailJumpDown
+
+#01822      Obj_SetFlag FLAG_AJC_CAN_CONC_PARK_RAIL_SITTER_IS_DOWN
+#01823      Obj_SetOuterRadius 50
+#01824      Obj_SetException ex = SkaterOutOfRadius
+            scr = AJC_Can_Script_Ped_Rail_Sitter_Return
+
+#01827      Obj_SetInnerRadius 5
+#01828      Obj_SetException ex = SkaterInRadius
+            scr = AJC_Can_Script_Ped_Rail_Sitter_Fight
+
+#01831      Obj_CycleAnim NumCycles = 2
+            Anim = ShakeFist
+
+#01834      LOOP
+#01835        RANDOM[7][24; 56; 88; 120; 152; 263; 374]
+              Obj_PlayAnim Anim = Idle
+
+#01838        Obj_WaitAnimFinished
+#01839        JUMP 0xc0010000 Obj_PlayAnim Anim = Idle
+
+#01841        Obj_WaitAnimFinished
+#01842        JUMP 0x9c010000 Obj_PlayAnim Anim = Idle
+
+#01844        Obj_WaitAnimFinished
+#01845        JUMP 0x78010000 Obj_PlayAnim Anim = Idle
+
+#01847        Obj_WaitAnimFinished
+#01848        JUMP 0x54010000 Obj_PlayStream la2_vo_avoid1a_cr vol = 250
+              dropoff = 100
+
+#01851        Obj_CycleAnim NumCycles = 1
+              Anim = ShakeFist
+
+#01854        Obj_WaitAnimFinished
+#01855        Obj_PlayAnim Anim = Idle
+
+#01857        Obj_WaitAnimFinished
+#01858        JUMP 0xe1000000 Obj_PlayStream la2_vo_avoid2a_cr vol = 250
+              dropoff = 100
+
+#01861        Obj_CycleAnim NumCycles = 1
+              Anim = ShakeFist
+
+#01864        Obj_WaitAnimFinished
+#01865        Obj_PlayAnim Anim = Idle
+
+#01867        Obj_WaitAnimFinished
+#01868        JUMP 0x6e000000 Obj_PlayStream la2_vo_avoid2d_cr vol = 250
+              dropoff = 100
+
+#01871        Obj_CycleAnim NumCycles = 1
+              Anim = ShakeFist
+
+#01874        Obj_WaitAnimFinished
+#01875        Obj_PlayAnim Anim = Idle
+
+#01877        Obj_WaitAnimFinished
+#01878
+#01879        Obj_LookAtObject Type = Skater
+              time = 0.3
+
+#01882      END LOOP
+#01883    END LOOP
+#01884  END FUNCTION
+
+#01886  FUNCTION AJC_Can_Script_Ped_Rail_Sitter_Return
+#01887    Obj_ClearExceptions
+#01888    Obj_LookAtNode name = TRG_Ped_Rail_Sitter01
+          speed = 1
+
+#01891    Obj_MoveToNode speed = 3000
+          name = TRG_Ped_Rail_Sitter01
+
+#01894    Obj_WaitMove
+#01895    Obj_ClearFlag FLAG_AJC_CAN_CONC_PARK_RAIL_SITTER_IS_DOWN
+#01896    Obj_LookAtNode name = TRG_Ped_Rail_Sitter_JumpTo01
+          speed = 500
+
+#01899    Obj_CycleAnim NumCycles = 1
+          Anim = RailJumpUp
+
+#01902    Obj_SwitchScript AJC_Can_Script_Ped_Rail_Sitter
+#01903  END FUNCTION
+
+#01905  FUNCTION AJC_Can_Script_Ped_Rail_Sitter_Fight
+#01906    Obj_ClearExceptions
+#01907    Obj_LookAtObject Type = Skater
+          time = 0.05
+
+#01910    Obj_PlayAnim Anim = RANDOM[2][4; 10]
+
+          punch JUMP 0x05000000 Push
+#01913    wait 0.05
+#01914    Obj_LookAtObject Type = Skater
+          time = 0.05
+
+#01917    MakeSkaterGoto PedKnockDown
+#01918    Obj_WaitAnimFinished
+#01919    wait 0.05
+#01920    Obj_LookAtObject Type = Skater
+          time = 0.05
+
+#01923    Obj_WaitRotate
+#01924    Obj_PlayAnim Anim = RANDOM[4][12; 18; 24; 30]
+
+          BullyLaugh JUMP 0x19000000 ShakeFist JUMP 0x0f000000 PlayerPoint JUMP 0x05000000 Disgust
+#01927    Obj_WaitAnimFinished
+#01928    Obj_SetInnerRadius 5
+#01929    Obj_SetOuterRadius 25
+#01930    Obj_SetException ex = SkaterInRadius
+          scr = AJC_Can_Script_Ped_Rail_Sitter_Fight
+
+#01933    Obj_SetException ex = SkaterOutOfRadius
+          scr = AJC_Can_Script_Ped_Rail_Sitter_Return
+
+#01936    LOOP
+#01937      Obj_LookAtObject Type = Skater
+            time = 0.5
+
+#01940      Obj_CycleAnim NumCycles = 1
+            Anim = Idle
+
+#01943    END LOOP
+#01944  END FUNCTION
+
+#01946  FUNCTION AJC_Can_Script_Chuck
+#01947    Obj_ClearExceptions
+#01948    Obj_SetInnerRadius 5 feet
+#01949    Obj_SetException ex = SkaterInRadius
+          scr = AJC_Can_Script_Chuck_Knockdown
+
+#01952    IF GetGoal Goal = GOAL_SCRIPTED3
+
+#01954      GotoPreserveParams AJC_Can_Script_Chuck_RunAround
+#01955    END IF
+#01956    Obj_SetException ex = EXCEPTION_TONGUE_STUCK_CLOSEUP
+          scr = AJC_Can_Script_Chuck_Closeup
+
+#01959    LOOP
+#01960      Obj_CycleAnim Anim = StuckPull
+            NumCycles = RANDOM[6][20; 26; 32; 38; 44; 50]
+
+            1 JUMP 0x2d000000 2 JUMP 0x23000000 3 JUMP 0x19000000 4 JUMP 0x0f000000 5 JUMP 0x05000000 6
+#01964      RANDOM[10][41; 79; 117; 155; 193; 231; 269; 307; 345; 383]
+
+#01966      Obj_PlayStream Can_getoff vol = 100
+            dropoff = 100
+
+#01969      JUMP 0x75010000 Obj_PlayStream Can_new_56 vol = 100
+            dropoff = 100
+
+#01972      JUMP 0x4b010000 Obj_PlayStream Can_new_56 vol = 100
+            dropoff = 100
+
+#01975      JUMP 0x21010000 Obj_PlayStream Can_new_55 vol = 100
+            dropoff = 100
+
+#01978      JUMP 0xf7000000 Obj_PlayStream Can_new_54 vol = 100
+            dropoff = 100
+
+#01981      JUMP 0xcd000000 Obj_PlayStream Can_new_53 vol = 100
+            dropoff = 100
+
+#01984      JUMP 0xa3000000 Obj_PlayStream Can_new_52 vol = 100
+            dropoff = 100
+
+#01987      JUMP 0x79000000 Obj_PlayStream Can_new_52a vol = 100
+            dropoff = 100
+
+#01990      JUMP 0x4f000000 Obj_PlayStream Can_new_51 vol = 100
+            dropoff = 100
+
+#01993      JUMP 0x25000000 Obj_PlayStream Can_new_50 vol = 100
+            dropoff = 100
+
+#01996
+#01997      Obj_CycleAnim Anim = StuckShrug
+
+#01999    END LOOP
+#02000  END FUNCTION
+
+#02002  FUNCTION AJC_Can_Script_Chuck_Closeup
+#02003    Obj_PlayStream Can_getoff dropoff = 100
+
+#02005    Obj_CycleAnim Anim = StuckShrug
+
+#02007    Goto AJC_Can_Script_Chuck
+#02008  END FUNCTION
+
+#02010  FUNCTION AJC_Can_Script_Chuck_Knockdown
+#02011    IF GetGoal Goal = GOAL_SCRIPTED3
+
+#02013      Obj_SetFlag FLAG_AJC_CAN_GOT_THIS_GOAL
+#02014    END IF
+#02015    Obj_ClearExceptions
+#02016    IF Obj_FlagNotSet FLAG_AJC_CAN_GOT_THIS_GOAL
+#02017      IF Obj_ObjectInRadius Type = Skater
+              Radius = 100
+
+#02020        Obj_StopStream
+#02021        wait 1 gameframe
+#02022        Obj_PlayStream Can_New_59 vol = 250
+              dropoff = 100
+
+#02025      END IF
+#02026      Obj_SetFlag FLAG_AJC_CAN_GOT_THIS_GOAL
+#02027      IF IsAlive name = TRG_Ped_Chuck_Laugher01
+
+#02029        SendFlag PED_STOP_LAUGHING name = TRG_Ped_Chuck_Laugher01
+
+#02031      ELSE
+#02032      END IF
+#02033      IF IsAlive name = TRG_Ped_Chuck_Laugher02
+
+#02035        SendFlag PED_STOP_LAUGHING name = TRG_Ped_Chuck_Laugher02
+
+#02037      ELSE
+#02038      END IF
+#02039    END IF
+#02040    Obj_ClearExceptions
+#02041    Obj_StopAlongPath
+#02042    Obj_SetOuterRadius 10
+#02043    Obj_SetException ex = SkaterOutOfRadius
+          scr = AJC_Can_Script_Chuck_GetUpAfterFall
+
+#02046    Obj_PlaySound Smashcake volume = 300
+
+#02048    Obj_PlayStream Can_Vo_Whoa vol = 250
+          dropoff = 100
+
+#02051    Got_Scripted3
+#02052    Obj_PlayAnim Anim = HitBySkater
+
+#02054    Obj_WaitAnimFinished
+#02055    wait 5 seconds
+#02056    Obj_PlayStream Can_vo_victim_cr vol = 250
+          dropoff = 100
+
+#02059    LOOP
+#02060      wait 5 seconds
+#02061      RANDOM[4][17; 18; 19; 25]
+
+#02063      JUMP 0x1e000000 JUMP 0x19000000
+#02064      JUMP 0x0f000000 Obj_PlayStream Can_vo_victim_cr
+#02065
+#02066    END LOOP
+#02067  END FUNCTION
+
+#02069  FUNCTION AJC_Can_Script_Chuck_GetUpAfterFall
+#02070    Obj_ClearExceptions
+#02071    Obj_SetException ex = SkaterInRadius
+          scr = AJC_Can_Script_Chuck_Knockdown
+
+#02074    Obj_PlayAnim Anim = Getup
+
+#02076    Obj_WaitAnimFinished
+#02077    Obj_PlayAnim Anim = DrunkIdle
+
+#02079    Obj_WaitAnimFinished
+#02080    Goto AJC_Can_Script_Chuck_RunAround
+#02081  END FUNCTION
+
+#02083  FUNCTION AJC_Can_Script_Manage_Laughers
+#02084    IF inside
+#02085      Create name = TRG_Ped_Chuck_Laugher01
+
+#02087      Create name = TRG_Ped_Chuck_Laugher02
+
+#02089      IF GetGoal Goal = GOAL_SCRIPTED3
+
+#02091        IF IsAlive name = TRG_Ped_Chuck_Laugher01
+
+#02093          SendFlag PED_STOP_LAUGHING name = TRG_Ped_Chuck_Laugher01
+
+#02095        ELSE
+#02096        END IF
+#02097        IF IsAlive name = TRG_Ped_Chuck_Laugher02
+
+#02099          SendFlag PED_STOP_LAUGHING name = TRG_Ped_Chuck_Laugher02
+
+#02101        ELSE
+#02102        END IF
+#02103      END IF
+#02104    ELSE
+#02105      kill name = TRG_Ped_Chuck_Laugher01
+
+#02107      kill name = TRG_Ped_Chuck_Laugher02
+
+#02109    END IF
+#02110  END FUNCTION
+
+#02112  FUNCTION AJC_Can_Script_Chuck_RunAround
+#02113    Obj_StickToGround On distAbove = 6
+          distBelow = 6
+
+#02116    Obj_SetPathTurnDist 2.5 feet
+#02117    Obj_SetPathAcceleration 7 fpsps
+#02118    Obj_SetPathVelocity 10 fps
+#02119    Obj_LookAtNodeLinked time = 0.3
+
+#02121    Obj_PlayAnim Anim = RotateLeft
+          Cycle
+#02123    Obj_PathHeading On
+#02124    Obj_SetInnerRadius 5
+#02125    Obj_SetException ex = SkaterInRadius
+          scr = AJC_Can_Script_Chuck_Knockdown
+
+#02128    Obj_FollowPathLinked
+#02129    Obj_StartAlongPath
+#02130    Obj_PlayAnim Anim = IdleToTongueRun
+
+#02132    Obj_WaitAnimFinished
+#02133    LOOP
+#02134      IF Obj_ObjectInRadius Type = Skater
+              Radius = 100
+
+#02137        RANDOM[5][21; 59; 97; 135; 173]
+
+#02139        Obj_PlayStream Can_Vo_Whoa vol = 100
+              dropoff = 100
+
+#02142        JUMP 0xa3000000 Obj_PlayStream Can_new_60 vol = 100
+              dropoff = 100
+
+#02145        JUMP 0x79000000 Obj_PlayStream Can_new_58 vol = 100
+              dropoff = 100
+
+#02148        JUMP 0x4f000000 Obj_PlayStream Can_new_58a vol = 100
+              dropoff = 100
+
+#02151        JUMP 0x25000000 Obj_PlayStream Can_new_57alta vol = 100
+              dropoff = 100
+
+#02154
+#02155      END IF
+#02156      Obj_PlayAnim Anim = TongueRun
+
+#02158      Obj_WaitAnimFinished
+#02159      Obj_PlayAnim Anim = TongueRun
+
+#02161      Obj_WaitAnimFinished
+#02162    END LOOP
+#02163  END FUNCTION
+
+#02165  FUNCTION AJC_Can_Script_Chuck_KnockedOut
+#02166    Obj_ClearExceptions
+#02167    Obj_StopAlongPath
+#02168    Obj_StickToGround Off
+#02169    Obj_PlaySound Smashcake volume = 300
+
+#02171    IF Obj_ObjectInRadius Type = Skater
+            Radius = 100
+
+#02174      Obj_PlayStream Can_Vo_Whoa pitch = 65
+            volume = 400
+            dropoff = 150
+
+#02178    END IF
+#02179    Obj_PlayAnim Anim = HitBySkater
+
+#02181    Obj_WaitAnimFinished
+#02182  END FUNCTION
+
+#02184  FUNCTION AJC_Can_Script_Goal_Snow_Pile
+#02185    Obj_PlayStream Can_bully vol = 250
+          dropoff = 100
+
+#02188    SetParticleSysVisibility system = "Wilderness_Tree_Snow_Particles"
+          visible = 1
+
+#02191    wait 40 frames
+#02192    SetParticleSysVisibility system = "Wilderness_Tree_Snow_Particles01"
+          visible = 1
+
+#02195    wait 40 frames
+#02196    SetParticleSysVisibility system = "Wilderness_Tree_Snow_Particles02"
+          visible = 1
+
+#02199    wait 40 frames
+#02200    Obj_MoveToRelPos VECTOR[0.0; -3000.0; 0.0] acceleration = 1
+          speed = 30
+
+#02203    SetParticleSysVisibility system = "Wilderness_Tree_Snow_Particles03"
+          visible = 1
+
+#02206    wait 40 frames
+#02207    SetParticleSysVisibility system = "Wilderness_Tree_Snow_Particles04"
+          visible = 1
+
+#02210    wait 40 frames
+#02211    SetParticleSysVisibility system = "Wilderness_Tree_Snow_Particles05"
+          visible = 1
+
+#02214    Create name = Wilderness_Goal_Snow_Dest_Pile
+
+#02216    IF IsAlive name = TRG_Snowball_Bully01
+
+#02218      SendException EXCEPTION_BULLY_SNOW_FALLING_NOW name = TRG_Snowball_Bully01
+
+#02220    ELSE
+#02221    END IF
+#02222    SetParticleSysVisibility system = "Wilderness_Tree_Snow_Particles05"
+          visible = 0
+
+#02225    wait 30 frames
+#02226    SetParticleSysVisibility system = "Wilderness_Tree_Snow_Particles04"
+          visible = 0
+
+#02229    wait 30 frames
+#02230    SetParticleSysVisibility system = "Wilderness_Tree_Snow_Particles03"
+          visible = 0
+
+#02233    wait 30 frames
+#02234    SetParticleSysVisibility system = "Wilderness_Tree_Snow_Particles02"
+          visible = 0
+
+#02237    wait 30 frames
+#02238    SetParticleSysVisibility system = "Wilderness_Tree_Snow_Particles01"
+          visible = 0
+
+#02241    wait 30 frames
+#02242    SetParticleSysVisibility system = "Wilderness_Tree_Snow_Particles"
+          visible = 0
+
+#02245    Obj_WaitMove
+#02246    Die
+#02247  END FUNCTION
+
+#02249  FUNCTION AJC_Can_Script_Goal_Snow_Pile_No_Create
+#02250    wait 120 frames
+#02251    Obj_MoveToRelPos VECTOR[0.0; -3000.0; 0.0] acceleration = 1
+          speed = 30
+
+#02254    Obj_WaitMove
+#02255    Die
+#02256  END FUNCTION
+
+#02258  FLAG_AJC_CAN_BIRDS_ON_STREET_SPINE = 0
+
+#02260  EXCEPTION_PISSER_KNOCKED_OFF = 1
+
+#02262  FUNCTION AJC_Can_Script_Lake_Pisser
+#02263    Obj_SetException ex = EXCEPTION_PISSER_KNOCKED_OFF
+          scr = AJC_Can_Script_Lake_Pisser_Knocked_Off
+
+#02266    LOOP
+#02267      Obj_CycleAnim Anim = Idle2
+            NumCycles = RANDOM[4][12; 18; 24; 30]
+
+            1 JUMP 0x19000000 2 JUMP 0x0f000000 3 JUMP 0x05000000 4
+#02271      Obj_CycleAnim Anim = IdleToIdle2
+            Backwards
+#02273      Obj_PlayStream RANDOM[4][17; 28; 39; 50]
+
+#02275      can_leak_01
+#02276      JUMP 0x28000000 can_leak_03
+#02277      JUMP 0x19000000 can_leak_05
+#02278      JUMP 0x0a000000 can_leak_08
+#02279
+#02280      Obj_CycleAnim Anim = LookAtWatch
+
+#02282      Obj_CycleAnim Anim = IdleToIdle3
+
+#02284      Obj_CycleAnim Anim = Idle3
+            NumCycles = RANDOM[4][12; 18; 24; 30]
+
+            1 JUMP 0x19000000 2 JUMP 0x0f000000 3 JUMP 0x05000000 4
+#02288      Obj_PlayStream RANDOM[4][17; 28; 39; 50]
+
+#02290      can_leak_02
+#02291      JUMP 0x28000000 can_leak_04
+#02292      JUMP 0x19000000 can_leak_07a
+#02293      JUMP 0x0a000000 can_leak_09
+#02294
+#02295      Obj_CycleAnim Anim = IdleToIdle3
+            Backwards
+#02297      Obj_CycleAnim Anim = LookAtWatch
+
+#02299      Obj_CycleAnim Anim = IdleToIdle2
+
+#02301    END LOOP
+#02302  END FUNCTION
+
+#02304  FUNCTION AJC_Can_Script_Lake_Pisser_Knocked_Off
+#02305    kill TRG_Pee_Steam_Prox_Node
+#02306    SetParticleSysVisibility system = "Wilderness_Lake_Pee_Particle"
+          visible = 0
+
+#02309    SetParticleSysVisibility system = "Wilderness_Lake_Piss_Steam"
+          visible = 0
+
+#02312    SetParticleSysVisibility system = "Wilderness_Lake_Piss_Steam01"
+          visible = 0
+
+#02315    SetParticleSysVisibility system = "Wilderness_Lake_Piss_Steam02"
+          visible = 0
+
+#02318    SetParticleSysVisibility system = "Wilderness_Lake_Piss_Steam03"
+          visible = 0
+
+#02321    SetParticleSysVisibility system = "Wilderness_Lake_Piss_Steam04"
+          visible = 0
+
+#02324    Obj_ClearExceptions
+#02325    Obj_SetPathVelocity 10
+#02326    Obj_SetPathAcceleration 10
+#02327    Obj_StickToGround Off
+#02328    Obj_PathHeading Off
+#02329    Obj_StopStream
+#02330    Obj_FollowPathLinked
+#02331    Obj_PlayStream can_leak_fall vol = 200
+          falloff = 500
+          pitch = 95
+
+#02335    Obj_PlayAnim Anim = ForemanHit1
+
+#02337    Obj_WaitMove
+#02338    Die
+#02339  END FUNCTION
+
+#02341  FUNCTION AJC_Can_Script_Knock_Pisser_Off
+#02342    IF IsAlive name = TRG_Ped_Lake_Pisser01
+
+#02344      SendException EXCEPTION_PISSER_KNOCKED_OFF name = TRG_Ped_Lake_Pisser01
+
+#02346    END IF
+#02347  END FUNCTION
+
+#02349  FUNCTION AJC_Can_Script_Perching_Bird01
+#02350    Obj_ClearExceptions
+#02351    Obj_SetInnerRadius 50
+#02352    Obj_SetException ex = SkaterInRadius
+          scr = AJC_Can_Script_Perching_Bird_React
+          params = STRUCT{
+            NULL }
+
+#02357    LOOP
+#02358      wait 100 seconds
+#02359    END LOOP
+#02360  END FUNCTION
+
+#02362  FUNCTION AJC_Can_Script_Perching_Bird_React
+#02363    Obj_ClearExceptions
+#02364    Create name = GLOBAL.FlyingBird
+
+#02366    Die
+#02367  END FUNCTION
+
+#02369  FUNCTION AJC_Can_Script_Perching_Bird_Fly
+#02370    Obj_ClearExceptions
+#02371    Obj_SetOuterRadius 100
+#02372    Obj_PlayAnim Anim = Flap
+          Cycle
+#02374    Obj_SetException ex = SkaterOutOfRadius
+          scr = AJC_Can_Script_Perching_Bird_Return
+          params = STRUCT{
+            NULL }
+
+#02379    wait RANDOM[5][16; 22; 28; 34; 40]
+          1 JUMP 0x23000000 2 JUMP 0x19000000 3 JUMP 0x0f000000 4 JUMP 0x05000000 5
+#02381    Obj_PlaySound RANDOM[2][4; 10]
+          Can_Bird1 JUMP 0x05000000 Can_Bird2 vol = RANDOM[6][20; 26; 32; 38; 44; 50]
+
+          100 JUMP 0x2d000000 150 JUMP 0x23000000 0 JUMP 0x19000000 0 JUMP 0x0f000000 0 JUMP 0x05000000 0 pitch = RANDOM[5][16; 22; 28; 34; 40]
+
+          80 JUMP 0x23000000 75 JUMP 0x19000000 70 JUMP 0x0f000000 65 JUMP 0x05000000 60
+#02387    Obj_Rotate absolute = VECTOR[0.0; 100.0; 0.0]
+          time = 1
+
+#02390    Obj_MoveToRelPos VECTOR[0.0; 0.0; -146.0] speed = 10
+          acceleration = 5
+          FLAG_MAX_COORDS
+#02393    LOOP
+#02394      Obj_WaitMove
+#02395      Obj_RotY angle = 45
+            speed = 45
+
+#02398      Obj_MoveToRelPos VECTOR[-70.0; -28.0; -20.0] speed = 5
+            FLAG_MAX_COORDS
+#02400      Obj_WaitMove
+#02401      Obj_RotY angle = 45
+            speed = 45
+
+#02404      Obj_MoveToRelPos VECTOR[-28.0; -70.0; -15.0] speed = 5
+            FLAG_MAX_COORDS
+#02406      Obj_WaitMove
+#02407      Obj_RotY angle = 45
+            speed = 45
+
+#02410      Obj_MoveToRelPos VECTOR[28.0; -70.0; -10.0] speed = 5
+            FLAG_MAX_COORDS
+#02412      Obj_WaitMove
+#02413      Obj_RotY angle = 45
+            speed = 45
+
+#02416      Obj_MoveToRelPos VECTOR[70.0; -28.0; -5.0] speed = 5
+            FLAG_MAX_COORDS
+#02418      Obj_WaitMove
+#02419      Obj_RotY angle = 45
+            speed = 45
+
+#02422      Obj_MoveToRelPos VECTOR[70.0; 28.0; 0.0] speed = 5
+            FLAG_MAX_COORDS
+#02424      Obj_WaitMove
+#02425      Obj_RotY angle = 45
+            speed = 45
+
+#02428      Obj_MoveToRelPos VECTOR[28.0; 70.0; 5.0] speed = 5
+            FLAG_MAX_COORDS
+#02430      Obj_WaitMove
+#02431      Obj_RotY angle = 45
+            speed = 45
+
+#02434      Obj_MoveToRelPos VECTOR[-28.0; 70.0; 10.0] speed = 5
+            FLAG_MAX_COORDS
+#02436      Obj_WaitMove
+#02437      Obj_RotY angle = 45
+            speed = 45
+
+#02440      Obj_MoveToRelPos VECTOR[-70.0; 28.0; 15.0] speed = 5
+            FLAG_MAX_COORDS
+#02442    END LOOP
+#02443  END FUNCTION
+
+#02445  FUNCTION AJC_Can_Script_Perching_Bird_Tree
+#02446    Obj_ClearExceptions
+#02447    Obj_SetInnerRadius 35
+#02448    Obj_SetException ex = SkaterInRadius
+          scr = AJC_Can_Script_Tree_Bird_React
+          params = STRUCT{
+            NULL }
+
+#02453    LOOP
+#02454      wait 100 seconds
+#02455    END LOOP
+#02456  END FUNCTION
+
+#02458  FUNCTION AJC_Can_Script_Tree_Bird_React
+#02459    Obj_ClearExceptions
+#02460    Obj_PlayAnim Anim = Flap
+          Cycle
+#02462    Obj_StickToGround Off
+#02463    Obj_SetPathVelocity RANDOM[3][8; 14; 20]
+          12 JUMP 0x0f000000 10 JUMP 0x05000000 7 mph
+#02465    Obj_SetPathTurnDist 40 feet
+#02466    Obj_PathHeading On
+#02467    Obj_FollowPathLinked
+#02468    Obj_PlaySound RANDOM[2][4; 10]
+          Can_Bird1 JUMP 0x05000000 Can_Bird2 vol = RANDOM[6][20; 26; 32; 38; 44; 50]
+
+          100 JUMP 0x2d000000 150 JUMP 0x23000000 0 JUMP 0x19000000 0 JUMP 0x0f000000 0 JUMP 0x05000000 0 pitch = RANDOM[5][16; 22; 28; 34; 40]
+
+          80 JUMP 0x23000000 75 JUMP 0x19000000 70 JUMP 0x0f000000 65 JUMP 0x05000000 60
+#02474    Obj_WaitMove
+#02475    Obj_SetAnimCycleMode Off
+#02476    Die
+#02477  END FUNCTION
+
+#02479  FUNCTION AJC_Can_Script_Perching_Bird_Return
+#02480    Die
+#02481    Obj_ClearExceptions
+#02482    Obj_SetInnerRadius 50
+#02483    Obj_SetException ex = SkaterInRadius
+          scr = AJC_Can_Script_Perching_Bird_Fly
+          params = STRUCT{
+            NULL }
+
+#02488    Obj_Rotate absolute = VECTOR[0.0; 0.0; 0.0]
+          time = 1
+
+#02491    Obj_MoveToNode name = GLOBAL.RestingBird
+          speed = 5
+          acceleration = 2
+
+#02495    LOOP
+#02496      wait 5 gameframes
+#02497      IF Obj_IsMoving
+#02498      ELSE
+#02499        Obj_KillSpawnedScript name = AJC_Can_Script_Perching_Bird_Flap
+
+#02501        Create name = GLOBAL.RestingBird
+
+#02503        Die
+#02504        BREAK
+
+#02506      END IF
+#02507    END LOOP
+#02508  END FUNCTION
+
+#02510  FUNCTION AJC_Can_Script_Perching_Bird_Flap_and_Move
+#02511    Obj_SetGroundOffset 0 feet
+#02512    Obj_StickToGround Off
+#02513    Obj_SetPathVelocity RANDOM[6][20; 26; 32; 38; 44; 50]
+          14 JUMP 0x2d000000 16 JUMP 0x23000000 18 JUMP 0x19000000 20 JUMP 0x0f000000 22 JUMP 0x05000000 24 mph
+#02515    Obj_SetPathTurnDist 100 feet
+#02516    Obj_PathHeading On
+#02517    Obj_SetPathAcceleration 120 mphps
+#02518    Obj_FollowPathLinked
+#02519    LOOP
+#02520      Obj_CycleAnim Anim = Flap
+
+#02522    END LOOP
+#02523  END FUNCTION
+
+#02525  FUNCTION AJC_Can_Script_Bird_Check_For_Skater_When_Coming_Home
+#02526    LOOP
+#02527      IF Obj_ObjectInRadius Radius = 50
+              feet Type = Skater
+
+#02530        Obj_MoveToNode speed = 15
+              acceleration = 2
+              name = GLOBAL.EscapeNode1
+
+#02534        Obj_WaitMove
+#02535        Obj_MoveToNode speed = 15
+              acceleration = 2
+              name = GLOBAL.RoostNode
+
+#02539      END IF
+#02540      IF Obj_IsMoving
+#02541      ELSE
+#02542        BREAK
+
+#02544      END IF
+#02545      wait 30 frames
+#02546    END LOOP
+#02547  END FUNCTION
+
+#02549  FUNCTION AJC_Can_Script_Snowmobile
+#02550    Obj_SetGroundOffset 1 feet
+#02551    Obj_StickToGround distAbove = 12
+          distBelow = 12
+
+#02554    Obj_SetPathVelocity 30 mph
+#02555    Obj_SetPathTurnDist 10 feet
+#02556    Obj_PathHeading On
+#02557    Obj_SetPathAcceleration 15 mphps
+#02558    Obj_FollowPathLinked
+#02559    LOOP
+#02560      wait 100 seconds
+#02561    END LOOP
+#02562  END FUNCTION
+
+#02564  FUNCTION AJC_Can_Script_Around_The_Horn
+#02565    IF ProfileEquals Trickstyle = street
+
+#02567      StartGapTrick tricktext = "Melon"
+            gapscript = Got_Trickspot
+
+#02570    END IF
+#02571  END FUNCTION
+
+#02573  FUNCTION AJC_Can_Script_Vert_Gap
+#02574    IF ProfileEquals Trickstyle = vert
+
+#02576      StartGapTrick tricktext = "Heelflip"
+            gapscript = Got_Trickspot
+
+#02579    END IF
+#02580  END FUNCTION
+
+#02582  FUNCTION AJC_Can_Script_Create_Snowball
+#02583    IF GotParam SprayScript
+#02584      Obj_Spawnscript GLOBAL.SprayScript
+
+#02586    END IF
+#02587    IF GotParam SNOWBALL
+#02588      Create name = GLOBAL.SNOWBALL
+
+#02590    END IF
+#02591  END FUNCTION
+
+#02593  FUNCTION AJC_Can_Script_Cloud CloudSpeed = 35
+
+#02595    Obj_SetGroundOffset 0 feet
+#02596    Obj_StickToGround Off
+#02597    Obj_SetPathVelocity GLOBAL.CloudSpeed
+          mph
+#02599    Obj_SetPathTurnDist 150 feet
+#02600    Obj_PathHeading Off
+#02601    Obj_FollowPathLinked
+#02602  END FUNCTION
+
+#02604  FLAG_AJC_CAN_TOGGLE_LOG_LOADER = 0
+
+#02606  FLAG_AJC_CAN_TOGGLE_LOG_LOADER_GO_UP = 7
+
+#02608  FLAG_AJC_CAN_TOGGLE_LOG_LOADER_GO_DOWN = 6
+
+#02610  FLAG_AJC_CAN_TOGGLE_LOG_LOADER_IS_DOWN = 5
+
+#02612  FLAG_AJC_CAN_TOGGLE_LOG_LOADER_IS_UP = 4
+
+#02614  FUNCTION AJC_Can_Script_Log_Loader_Base
+#02615    Obj_PlaySound Can_RampPlatform_Loop vol = 300
+          dropoff = 300
+
+#02618    Obj_MoveToRelPos VECTOR[0.0; 0.0; -240.0] speed = 72
+          ips acceleration = 4
+          FLAG_MAX_COORDS
+#02621    Obj_WaitMove
+#02622    Obj_StopSound Can_RampPlatform_Loop
+#02623    Obj_PlaySound Can_RampPlatform_Stop vol = 300
+          dropoff = 600
+
+#02626    Create name = wild_Log_Loader_Base_High
+
+#02628    Die
+#02629  END FUNCTION
+
+#02631  EXCEPTION_AJC_CAN_LOG_LOADER_UP = 1
+
+#02633  EXCEPTION_AJC_CAN_LOG_LOADER_DOWN = 2
+
+#02635  FUNCTION AJC_Can_Script_Loader_Controller
+#02636    IF InMultiplayerGame
+#02637      kill name = Wild_Log_Loader_Base_Low
+
+#02639      kill name = Wild_Log_Loader_Claw_Base_Low
+
+#02641      Create name = wild_Log_Loader_Base_High
+
+#02643      Create name = Wild_Log_Loader_Claw_Base_High
+
+#02645      Create name = wild_Log_Loader_Claw_Press_Stationary
+
+#02647      Create name = TRG_Loader_Rail_Claw_High07
+
+#02649      Create name = TRG_Loader_Rail_Claw_High05
+
+#02651      Die
+#02652    ELSE
+#02653      Obj_ClearExceptions
+#02654      IF GetFlag Flag = LEVEL_FLAG_AJC_CAN_LOG_LOADER_IS_UP
+
+#02656        kill name = wild_Log_Loader_Base
+
+#02658        kill name = Wild_Log_Loader_Base_Low
+
+#02660        kill name = wild_Log_Loader_Base_High
+
+#02662        kill name = wild_Log_Loader_Claw_Press_Stationary
+
+#02664        kill name = Wild_Log_Loader_Claw_Press
+
+#02666        kill name = Wild_Log_Loader_Claw_Base_Low
+
+#02668        kill name = Wild_Log_Loader_Claw_Base_High
+
+#02670        kill name = Wild_Log_Loader_Claw_Base
+
+#02672        Create name = wild_Log_Loader_Base_High
+
+#02674        Create name = wild_Log_Loader_Claw_Press_Stationary
+
+#02676        Create name = Wild_Log_Loader_Claw_Base_High
+
+#02678        Create name = TRG_Loader_Rail_Claw_High07
+
+#02680        Create name = TRG_Loader_Rail_Claw_High05
+
+#02682        kill name = TRG_Loader_Rail_Claw_Low01
+
+#02684        kill name = TRG_Loader_Rail_Claw_Low04
+
+#02686        kill name = Wilderness_Steam_Gen_Lever_Low
+
+#02688        Create name = Wilderness_Steam_Gen_Lever_High
+
+#02690        Obj_PlaySound Can_Gen_Loop vol = 250
+              dropoff = 100
+
+#02693      ELSE
+#02694        kill name = wild_Log_Loader_Base
+
+#02696        kill name = Wild_Log_Loader_Base_Low
+
+#02698        kill name = wild_Log_Loader_Base_High
+
+#02700        kill name = wild_Log_Loader_Claw_Press_Stationary
+
+#02702        kill name = Wild_Log_Loader_Claw_Press
+
+#02704        kill name = Wild_Log_Loader_Claw_Base_Low
+
+#02706        kill name = Wild_Log_Loader_Claw_Base_High
+
+#02708        kill name = Wild_Log_Loader_Claw_Base
+
+#02710        Create name = Wild_Log_Loader_Base_Low
+
+#02712        Create name = Wild_Log_Loader_Claw_Base_Low
+
+#02714        kill name = TRG_Loader_Rail_Claw_High07
+
+#02716        kill name = TRG_Loader_Rail_Claw_High05
+
+#02718        Create name = TRG_Loader_Rail_Claw_Low01
+
+#02720        Create name = TRG_Loader_Rail_Claw_Low04
+
+#02722        Create name = Wilderness_Steam_Gen_Lever_Low
+
+#02724        kill name = Wilderness_Steam_Gen_Lever_High
+
+#02726        Obj_SetException ex = EXCEPTION_AJC_CAN_LOG_LOADER_UP
+              scr = AJC_Can_Script_Log_Loader_Up
+
+#02729      END IF
+#02730    END IF
+#02731  END FUNCTION
+
+#02733  FUNCTION AJC_Can_Script_Log_Loader_Up
+#02734    IF IsCareerMode
+#02735      SetFlag Flag = LEVEL_FLAG_AJC_CAN_LOG_LOADER_IS_UP
+
+#02737      UnSetFlag Flag = LEVEL_FLAG_AJC_CAN_LOG_LOADER_IS_DOWN
+
+#02739    END IF
+#02740    IF GetFlag Flag = LEVEL_FLAG_AJC_CAN_LOG_LOADER_SEQUENCE_PLAYED_ALREADY
+
+#02742    ELSE
+#02743      wait 15 frames
+#02744      PauseClock
+#02745      PauseSkaters
+#02746      TeleportSkaterUp dist = 200
+
+#02748      TogglePanel 0
+#02749      PlaySkaterCamAnim Skater = 0
+            name = "Cam_Log_Loader_Moving"
+
+#02752      IF IsAlive name = Wilderness_Steam_Gen_Cap
+
+#02754        SendException EXCEPTION_AJC_CAN_LOG_LOADER_UP name = Wilderness_Steam_Gen_Cap
+
+#02756      ELSE
+#02757      END IF
+#02758      SetParticleSysVisibility system = "Wilderness_Steam_Gen_Smoke"
+            visible = 1
+
+#02761      Create name = Wilderness_Steam_Gen_Lever
+
+#02763      Create name = TRG_Log_Bird01
+
+#02765      Create name = TRG_Log_Bird02
+
+#02767      Create name = TRG_Log_Bird03
+
+#02769      Create name = TRG_Log_Bird04
+
+#02771    END IF
+#02772    IF GetFlag Flag = LEVEL_FLAG_AJC_CAN_LOG_LOADER_SEQUENCE_PLAYED_ALREADY
+
+#02774    ELSE
+#02775      wait 60 frames
+#02776      SetSkaterCamAnimSkippable Skater = 0
+            skippable = 1
+
+#02779      LOOP
+#02780        IF SkaterCamAnimFinished Skater = 0
+                name = "Cam_Log_Loader_Moving"
+
+#02783          BREAK
+
+#02785        END IF
+#02786        wait 1 gameframe
+#02787      END LOOP 2
+#02788      Create name = wild_Log_Loader_Base
+
+#02790      Create name = Wild_Log_Loader_Claw_Base
+
+#02792    END IF
+#02793    kill name = Wild_Log_Loader_Base_Low
+
+#02795    kill name = Wild_Log_Loader_Claw_Base_Low
+
+#02797    IF GetFlag Flag = LEVEL_FLAG_AJC_CAN_LOG_LOADER_SEQUENCE_PLAYED_ALREADY
+
+#02799    ELSE
+#02800      LOOP
+#02801        IF SkaterCamAnimFinished Skater = 0
+                name = "Cam_Log_Loader_Moving"
+
+#02804          BREAK
+
+#02806        END IF
+#02807        wait 1 gameframe
+#02808      END LOOP 60
+#02809    END IF
+#02810    Create name = TRG_Loader_Rail_Claw_High07
+
+#02812    Create name = TRG_Loader_Rail_Claw_High05
+
+#02814    kill name = TRG_Loader_Rail_Claw_Low01
+
+#02816    kill name = TRG_Loader_Rail_Claw_Low04
+
+#02818    IF GetFlag Flag = LEVEL_FLAG_AJC_CAN_LOG_LOADER_SEQUENCE_PLAYED_ALREADY
+
+#02820    ELSE
+#02821      LOOP
+#02822        IF SkaterCamAnimFinished Skater = 0
+                name = "Cam_Log_Loader_Moving"
+
+#02825          BREAK
+
+#02827        END IF
+#02828        wait 1 gameframe
+#02829      END LOOP
+#02830      TogglePanel 1
+#02831      TeleportSkaterDown dist = -200
+
+#02833      UnPauseSkaters
+#02834      UnPauseClock
+#02835    END IF
+#02836    IF IsCareerMode
+#02837      SetFlag Flag = LEVEL_FLAG_AJC_CAN_LOG_LOADER_SEQUENCE_PLAYED_ALREADY
+
+#02839    END IF
+#02840    kill name = TRGP_Toggle_Log_Loader02
+
+#02842    kill name = wild_Log_Loader_Base
+
+#02844    kill name = Wild_Log_Loader_Base_Low
+
+#02846    kill name = wild_Log_Loader_Base_High
+
+#02848    kill name = Wild_Log_Loader_Claw_Press
+
+#02850    kill name = Wild_Log_Loader_Claw_Base_Low
+
+#02852    kill name = Wild_Log_Loader_Claw_Base_High
+
+#02854    kill name = Wild_Log_Loader_Claw_Base
+
+#02856    kill name = Wilderness_Steam_Gen_Lever_High
+
+#02858    Create name = Wilderness_Steam_Gen_Lever_High
+
+#02860    Create name = wild_Log_Loader_Base_High
+
+#02862    Create name = Wild_Log_Loader_Claw_Base_High
+
+#02864  END FUNCTION
+
+#02866  FUNCTION AJC_Can_Script_Raise_Loader
+#02867    IF IsAlive name = TRG_Loader_Control
+
+#02869      SendException EXCEPTION_AJC_CAN_LOG_LOADER_UP name = TRG_Loader_Control
+
+#02871    ELSE
+#02872    END IF
+#02873  END FUNCTION
+
+#02875  FUNCTION AJC_Can_Script_Log_Loader_Claw
+#02876    Obj_MoveToRelPos VECTOR[0.0; 0.0; -240.0] speed = 72
+          ips acceleration = 4
+          FLAG_MAX_COORDS
+#02879    Obj_WaitMove
+#02880    Create name = Wild_Log_Loader_Claw_Press
+
+#02882    kill name = wild_Log_Loader_Claw_Press_Stationary
+
+#02884    Obj_PlaySound Can_RampPlatform_Open vol = 300
+          dropoff = 300
+
+#02887    Obj_Rotate relative = VECTOR[-45.0; 0.0; 0.0]
+          time = 3
+          FLAG_MAX_COORDS
+#02890    Obj_WaitRotate
+#02891    Obj_PlaySound Can_RampPlatform_Stop vol = 500
+          dropoff = 500
+
+#02894    wait 60 frames
+#02895    Create name = Wild_Log_Loader_Claw_Base_High
+
+#02897    Die
+#02898  END FUNCTION
+
+#02900  FUNCTION AJC_Can_Script_Log_Loader_Claw_Press
+#02901    Obj_MoveToRelPos VECTOR[-12.0; -12.0; 16.0] speed = 8
+          ips FLAG_MAX_COORDS
+#02903    Obj_WaitMove
+#02904    Create name = wild_Log_Loader_Claw_Press_Stationary
+
+#02906    Die
+#02907  END FUNCTION
+
+#02909  FUNCTION AJC_Can_Script_Steam_Gen_Lever
+#02910    Obj_Invisible
+#02911    Obj_RotX angle = -20
+          speed = 2000
+
+#02914    Obj_WaitRotate
+#02915    Obj_Visible
+#02916    kill name = Wilderness_Steam_Gen_Lever_Low
+
+#02918    Obj_PlaySound Can_Lever vol = 250
+          dropoff = 100
+
+#02921    Obj_PlaySound Can_Gen_Start vol = 250
+          dropoff = 100
+
+#02924    Obj_RotX angle = 40
+          speed = 20
+
+#02927    Obj_WaitRotate
+#02928    Create name = Wilderness_Steam_Gen_Lever_High
+
+#02930    Obj_PlaySound Can_Gen_Loop vol = 250
+          dropoff = 100
+
+#02933  END FUNCTION
+
+#02935  FUNCTION AJC_Can_Script_Steam_Gen_Cap
+#02936    IF GetFlag Flag = LEVEL_FLAG_AJC_CAN_LOG_LOADER_IS_UP
+
+#02938      Goto AJC_Can_Script_Steam_Gen_Cap_On
+#02939    END IF
+#02940    Obj_Rotate absolue = VECTOR[0.0; 0.0; 0.0]
+          time = 0.01
+
+#02943    SetParticleSysVisibility system = "Wilderness_Steam_Gen_Smoke"
+          visible = 0
+
+#02946    Obj_ClearExceptions
+#02947    Obj_SetException ex = EXCEPTION_AJC_CAN_LOG_LOADER_UP
+          scr = AJC_Can_Script_Steam_Gen_Cap_On
+
+#02950  END FUNCTION
+
+#02952  FUNCTION AJC_Can_Script_Steam_Gen_Cap_On
+#02953    LOOP
+#02954      RANDOM[4][12; 18; 24; 30]
+            AJC_Can_Script_Cap_Bounce1 JUMP 0x19000000 AJC_Can_Script_Cap_Bounce2 JUMP 0x0f000000 AJC_Can_Script_Cap_Bounce3 JUMP 0x05000000 AJC_Can_Script_Cap_Bounce4
+#02956    END LOOP
+#02957  END FUNCTION
+
+#02959  FUNCTION AJC_Can_Script_Cap_Bounce1
+#02960    Obj_Rotate relative = VECTOR[-62.0; 0.0; 0.0]
+          time = 0.2
+
+#02963    Obj_WaitRotate
+#02964    Obj_Rotate relative = VECTOR[62.0; 0.0; 0.0]
+          time = 0.2
+
+#02967    Obj_WaitRotate
+#02968  END FUNCTION
+
+#02970  FUNCTION AJC_Can_Script_Cap_Bounce2
+#02971    Obj_Rotate relative = VECTOR[-16.0; 0.0; 0.0]
+          time = 0.05
+
+#02974    Obj_WaitRotate
+#02975    Obj_Rotate relative = VECTOR[16.0; 0.0; 0.0]
+          time = 0.05
+
+#02978    Obj_WaitRotate
+#02979  END FUNCTION
+
+#02981  FUNCTION AJC_Can_Script_Cap_Bounce3
+#02982    Obj_Rotate relative = VECTOR[-38.0; 0.0; 0.0]
+          time = 0.1
+
+#02985    Obj_WaitRotate
+#02986    Obj_Rotate relative = VECTOR[38.0; 0.0; 0.0]
+          time = 0.1
+
+#02989    Obj_WaitRotate
+#02990  END FUNCTION
+
+#02992  FUNCTION AJC_Can_Script_Cap_Bounce4
+#02993    Obj_Rotate relative = VECTOR[-54.0; 0.0; 0.0]
+          time = 0.15
+
+#02996    Obj_WaitRotate
+#02997    Obj_Rotate relative = VECTOR[54.0; 0.0; 0.0]
+          time = 0.15
+
+#03000    Obj_WaitRotate
+#03001  END FUNCTION
+
+#03003  FLAG_AJC_CAN_RAISE_THE_ROOF = 1
+
+#03005  FLAG_AJC_CAN_ROOF_IS_RAISED = 2
+
+#03007  FUNCTION AJC_Script_Follow_Ground_On
+#03008    Obj_StickToGround distAbove = 3
+          distBelow = 6
+
+#03011  END FUNCTION
+
+#03013  FUNCTION AJC_Script_Follow_Ground_Off
+#03014    Obj_StickToGround Off
+#03015  END FUNCTION
+
+#03017  FUNCTION AJC_Can_Script_Ped_FallForSkater
+#03018    Obj_ClearExceptions
+#03019    Obj_SetInnerRadius 0
+#03020    Obj_StopStream
+#03021    Obj_PlaySound Smashcake
+#03022    IF Obj_ObjectInRadius Type = Skater
+            Radius = 100
+
+#03025      Obj_PlayStream Can_Vo_Whoa vol = 250
+            dropoff = 100
+
+#03028    END IF
+#03029    IF GotParam STOPALONGPATH
+#03030      Obj_StopAlongPath
+#03031    END IF
+#03032    Obj_PlayAnim Anim = RANDOM[3][8; 14; 20]
+
+          HitBySkater JUMP 0x0f000000 HitFromFront JUMP 0x05000000 HitFromBack
+#03035    Obj_WaitAnimFinished
+#03036    Obj_SetException ex = SkaterOutOfRadius
+          scr = AJC_Can_Script_Grommet_GetUpAfterFall
+          params = STRUCT{
+            NULL }
+
+#03041    Obj_SetOuterRadius 10
+#03042  END FUNCTION
+
+#03044  FUNCTION AJC_Can_Script_Grommet_GetUpAfterFall
+#03045    Obj_ClearExceptions
+#03046    Obj_SetException ex = SkaterInRadius
+          scr = AJC_Can_Script_Ped_FallForSkater
+          params = STRUCT{
+            NULL }
+
+#03051    Obj_SetInnerRadius 2
+#03052    Obj_PlayAnim Anim = Getup
+
+#03054    Obj_WaitAnimFinished
+#03055    IF GotParam STOPALONGPATH
+#03056      Obj_StopAlongPath
+#03057    END IF
+#03058    Obj_SwitchScript GLOBAL.ReturnScript
+          params = STRUCT{
+            NULL }
+
+#03062  END FUNCTION
+
+#03064

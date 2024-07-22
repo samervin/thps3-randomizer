@@ -1,0 +1,1848 @@
+
+#00001  SpecialTricks =
+#00002
+        ARRAY(
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Up Right Square 400 }
+            TrickSlot = SpAir_U_R_Square
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Up Down Square 400 }
+            TrickSlot = SpAir_U_D_Square
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Up Left Square 400 }
+            TrickSlot = SpAir_U_L_Square
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Right Up Square 400 }
+            TrickSlot = SpAir_R_U_Square
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Right Down Square 400 }
+            TrickSlot = SpAir_R_D_Square
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Right Left Square 400 }
+            TrickSlot = SpAir_R_L_Square
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Down Up Square 400 }
+            TrickSlot = SpAir_D_U_Square
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Down Right Square 400 }
+            TrickSlot = SpAir_D_R_Square
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Down Left Square 400 }
+            TrickSlot = SpAir_D_L_Square
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Left Up Square 400 }
+            TrickSlot = SpAir_L_U_Square
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Left Right Square 400 }
+            TrickSlot = SpAir_L_R_Square
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Left Down Square 400 }
+            TrickSlot = SpAir_L_D_Square
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Up Right Circle 400 }
+            TrickSlot = SpAir_U_R_Circle
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Up Down Circle 400 }
+            TrickSlot = SpAir_U_D_Circle
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Up Left Circle 400 }
+            TrickSlot = SpAir_U_L_Circle
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Right Up Circle 400 }
+            TrickSlot = SpAir_R_U_Circle
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Right Down Circle 400 }
+            TrickSlot = SpAir_R_D_Circle
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Right Left Circle 400 }
+            TrickSlot = SpAir_R_L_Circle
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Down Up Circle 400 }
+            TrickSlot = SpAir_D_U_Circle
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Down Right Circle 400 }
+            TrickSlot = SpAir_D_R_Circle
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Down Left Circle 400 }
+            TrickSlot = SpAir_D_L_Circle
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Left Up Circle 400 }
+            TrickSlot = SpAir_L_U_Circle
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Left Right Circle 400 }
+            TrickSlot = SpAir_L_R_Circle
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Left Down Circle 400 }
+            TrickSlot = SpAir_L_D_Circle
+            }
+
+        )
+
+#00127  GRABTWEAK_SMALL = 15
+
+#00129  GRABTWEAK_MEDIUM = 20
+
+#00131  GRABTWEAK_LARGE = 30
+
+#00133  GRABTWEAK_SPECIAL = 35
+
+#00135  Trick_The900 = STRUCT{
+          Scr = FlipTrick
+          Params = STRUCT{
+            Name = 'The 900'
+            Score = 6500
+            Anim = The900
+            IsSpecial BoardRotate trickslack = 20
+            RotateAfter NoSpin Speed = 1.3
+            }
+          }
+
+#00146  Trick_KFBackflip = STRUCT{
+          Scr = FlipTrick
+          Params = STRUCT{
+            Name = 'Kickflip Backflip'
+            Score = 4500
+            Anim = KickFlipBodyBackFlip
+            IsSpecial Speed = 1.0
+            NoSpin trickslack = 15
+            Spinslack = 25
+            }
+          }
+
+#00158  Trick_StaleFrontFlip = STRUCT{
+          Scr = FlipTrick
+          Params = STRUCT{
+            Name = 'Stalefish FrontFlip'
+            Score = 4500
+            Anim = StalefishFrontFlip
+            IsSpecial Speed = 1.1
+            NoSpin trickslack = 15
+            Spinslack = 30
+            }
+          }
+
+#00170  Trick_StaleBackFlip = STRUCT{
+          Scr = FlipTrick
+          Params = STRUCT{
+            Name = 'Stalefish BackFlip'
+            Score = 4500
+            Anim = StalefishBackFlip
+            IsSpecial Speed = 1.1
+            NoSpin trickslack = 15
+            Spinslack = 30
+            }
+          }
+
+#00182  Trick_MistyFlip = STRUCT{
+          Scr = FlipTrick
+          Params = STRUCT{
+            Name = 'Misty Flip'
+            Score = 5000
+            Anim = MistyFlip
+            IsSpecial Speed = 1.2
+            NoSpin trickslack = 15
+            Spinslack = 30
+            }
+          }
+
+#00194  Trick_FS540HeelFlip = STRUCT{
+          Scr = FlipTrick
+          Params = STRUCT{
+            Name = 'FS 540 HeelFlip'
+            Score = 4500
+            Anim = FS540HeelFlip
+            BoardRotate IsSpecial Speed = 1.2
+            RevertBS RotateAfter NoSpin trickslack = 15
+            Spinslack = 20
+            }
+          }
+
+#00206  Trick_FS540 = STRUCT{
+          Scr = FlipTrick
+          Params = STRUCT{
+            Name = 'FS 540'
+            Score = 4500
+            Anim = FS540
+            BoardRotate IsSpecial trickslack = 10
+            RevertBS RotateAfter NoSpin Speed = 1.0
+            Spinslack = 40
+            }
+          }
+
+#00218  Trick_McTwist = STRUCT{
+          Scr = FlipTrick
+          Params = STRUCT{
+            Name = 'McTwist'
+            Score = 5000
+            Anim = McTwist
+            BoardRotate IsSpecial RevertBS NoSpin trickslack = 10
+            RotateAfter Speed = 1.0
+            Spinslack = 20
+            }
+          }
+
+#00230  Trick_Layout = STRUCT{
+          Scr = FlipTrick
+          Params = STRUCT{
+            Name = 'Handspring Layout'
+            UnlockFlag = SKATER_UNLOCKED_CARRERA
+            Score = 3000
+            Anim = Maul
+            IsSpecial Speed = 1.0
+            trickslack = 30
+            Spinslack = 25
+            }
+          }
+
+#00243  Trick_MaulForceGrab = STRUCT{
+          Scr = GrabTrick
+          Params = STRUCT{
+            Name = 'Force Grab'
+            UnlockFlag = SKATER_UNLOCKED_MAUL
+            Score = 1300
+            Anim = MaulForceGrab_Init
+            Idle = MaulForceGrab_Idle
+            OutAnim = MaulForceGrab_Out
+            IsSpecial ForceInit }
+          }
+
+#00255  Trick_RodeoClown = STRUCT{
+          Scr = GrabTrick
+          Params = STRUCT{
+            Name = 'Rodeo Clown'
+            UnlockFlag = SKATER_UNLOCKED_SLATER
+            Score = 1500
+            Anim = RodeoClown_Init
+            Idle = RodeoClown_Idle
+            OutAnim = RodeoClown_Out
+            NoSpin IsSpecial ForceInit Rotate x = -360
+            duration = 1
+            }
+          }
+
+#00269  Trick_SuperHandClap = STRUCT{
+          Scr = GrabTrick
+          Params = STRUCT{
+            Name = 'Super Hand Clap'
+            UnlockFlag = SKATER_UNLOCKED_EYEBALL
+            Score = 1000
+            Anim = Eyeball_Init
+            Idle = Eyeball_Idle
+            IsSpecial ForceInit }
+          }
+
+#00280  Trick_WorkForFood = STRUCT{
+          Scr = GrabTrick
+          Params = STRUCT{
+            Name = 'Panhandling'
+            UnlockFlag = SKATER_UNLOCKED_BUM
+            OnlyWith = Ollie
+            Score = 2000
+            Anim = WorkForFood_Init
+            Idle = WorkForFood_Idle
+            IsSpecial ForceInit }
+          }
+
+#00292  Trick_ACAir = STRUCT{
+          Scr = GrabTrick
+          Params = STRUCT{
+            Name = 'AC Air'
+            UnlockFlag = SKATER_UNLOCKED_DEMONESS
+            Score = 666
+            Anim = ACAir_Init
+            Idle = ACAir_Idle
+            OutAnim = ACAir_Out
+            IsSpecial ForceInit }
+          }
+
+#00304  Trick_SackTap = STRUCT{
+          Scr = GrabTrick
+          Params = STRUCT{
+            Name = 'Sacktap'
+            Score = 1500
+            Anim = Sacktap_Init
+            Idle = Sacktap_Range
+            OutAnim = Sacktap_out
+            IsSpecial Speed = 1.1
+            ForceInit trickslack = 20
+            }
+          }
+
+#00317  Trick_JudoMadonna = STRUCT{
+          Scr = GrabTrick
+          Params = STRUCT{
+            Name = 'Judo Madonna'
+            Score = 1250
+            Anim = JudoMadonna_Init
+            Idle = Madonna_Idle
+            BackwardsAnim = Madonna
+            IsSpecial ForceInit trickslack = 10
+            }
+          }
+
+#00329  Trick_ChristAir = STRUCT{
+          Scr = GrabTrick
+          Params = STRUCT{
+            Name = 'Christ Air'
+            Score = 1000
+            Anim = ChristAir_Init
+            Idle = ChristAir_Range
+            OutAnim = ChristAir_Out
+            IsSpecial ForceInit }
+          }
+
+#00340  Trick_KFSuperman = STRUCT{
+          Scr = GrabTrick
+          Params = STRUCT{
+            Name = 'Kickflip Superman'
+            Score = 1500
+            Anim = KFSupermanGrab_Init
+            Idle = KFSupermanGrab_Range
+            OutAnim = KFSupermanGrab_Out
+            IsSpecial ForceInit }
+          }
+
+#00351  Trick_2KickMadonnaFlip = STRUCT{
+          Scr = GrabTrick
+          Params = STRUCT{
+            Name = 'Double Kickflip Madonna'
+            Score = 1500
+            Anim = _2KickMadonnaFlip_Init
+            Idle = Madonna_Idle
+            OutAnim = _2KickMadonnaFlip_Out
+            IsSpecial ForceInit trickslack = 15
+            Speed = 1.15
+            }
+          }
+
+#00364  Trick_AssumePosition = STRUCT{
+          Scr = GrabTrick
+          Params = STRUCT{
+            Name = 'Assume The Position II'
+            UnlockFlag = SKATER_UNLOCKED_DICK
+            Score = 1250
+            Anim = AssumePosition_Init
+            Idle = AssumePosition_Idle
+            IsSpecial ForceInit trickslack = 10
+            }
+          }
+
+#00376  Trick_AirCasperFlip = STRUCT{
+          Scr = GrabTrick
+          Params = STRUCT{
+            Name = 'Casper Flip 360 Flip'
+            Score = 2500
+            Anim = AirCasperFlip_Init
+            Idle = AirCasperFlip_Idle
+            OutAnim = AirCasperFlip_Out
+            IsSpecial Speed = 1.1
+            ForceInit trickslack = 20
+            }
+          }
+
+#00389  Trick_PizzaGuy = STRUCT{
+          Scr = GrabTrick
+          Params = STRUCT{
+            Name = 'Pizza Guy'
+            Score = 1500
+            Anim = PizzaGuy_Init
+            Idle = PizzaGuy_Idle
+            OutAnim = PizzaGuy_Out
+            IsSpecial ForceInit BoardRotate Speed = 1.0
+            trickslack = 20
+            }
+          }
+
+#00402  Trick_KickFlipOneFootTail = STRUCT{
+          Scr = GrabTrick
+          Params = STRUCT{
+            Name = 'Kickflip One Foot Tail'
+            Score = 1100
+            Anim = KickFlipOneFootTail_Init
+            Idle = KickFlipOneFootTail_Range
+            OutAnim = KickFlipOneFootTail_Out
+            IsSpecial ForceInit trickslack = 15
+            }
+          }
+
+#00414  Trick_540TailWhip = STRUCT{
+          Scr = FlipTrick
+          Params = STRUCT{
+            Name = '540 TailWhip'
+            Score = 2000
+            Anim = _540TailWhip
+            IsSpecial BoardRotate Speed = 1.1
+            trickslack = 15
+            }
+          }
+
+#00425  Trick_Gazelle = STRUCT{
+          Scr = FlipTrick
+          Params = STRUCT{
+            Name = 'Gazelle Underflip'
+            Score = 3500
+            Anim = GazelleUnderflip
+            IsSpecial BoardRotate trickslack = 20
+            NoSpin }
+          }
+
+#00435  Trick_GhettoBird = STRUCT{
+          Scr = FlipTrick
+          Params = STRUCT{
+            Name = 'Ghetto Bird'
+            Score = 3500
+            Anim = GhettoBird
+            IsSpecial BoardRotate trickslack = 20
+            FlipAfter NoSpin Speed = 1.0
+            }
+          }
+
+#00446  Trick_Berzerker = STRUCT{
+          Scr = FlipTrick
+          Params = STRUCT{
+            Name = 'The Berzerker'
+            UnlockFlag = SKATER_UNLOCKED_WOLVERINE
+            OnlyWith = Wolverine
+            Score = 2500
+            Anim = Berzerker
+            IsSpecial Speed = 1.1
+            trickslack = 50
+            grindslack = 50
+            }
+          }
+
+#00460  Trick_ClawPunch = STRUCT{
+          Scr = FlipTrick
+          Params = STRUCT{
+            Name = 'Claw Punch'
+            UnlockFlag = SKATER_UNLOCKED_WOLVERINE
+            OnlyWith = Wolverine
+            OnlyWith = Wolverine
+            Score = 3000
+            Anim = ClawPunch
+            IsSpecial Speed = 1.0
+            trickslack = 20
+            }
+          }
+
+#00474  Trick_FingerFlipAirWalk = STRUCT{
+          Scr = FlipTrick
+          Params = STRUCT{
+            Name = 'Fingerflip Airwalk'
+            Score = 1500
+            Anim = FingerFlipAirWalk
+            IsSpecial BoardRotate Speed = 1.15
+            trickslack = 30
+            }
+          }
+
+#00485  Trick_Jackass = STRUCT{
+          Scr = FlipTrick
+          Params = STRUCT{
+            Name = 'The Jackass'
+            Score = 1500
+            Anim = Jackass
+            IsSpecial Speed = 1
+            trickslack = 20
+            BloodFrame = 1
+            }
+          }
+
+#00497  Trick_1234 = STRUCT{
+          Scr = FlipTrick
+          Params = STRUCT{
+            Name = '1-2-3-4'
+            Score = 2500
+            Anim = _1234
+            IsSpecial Speed = 1.25
+            trickslack = 20
+            }
+          }
+
+#00508  Trick_DoubleKFindy = STRUCT{
+          Scr = FlipTrick
+          Params = STRUCT{
+            Name = 'Double Kickflip Indy'
+            Score = 2000
+            Anim = DoubleKFVarialIndy
+            trickslack = 20
+            IsSpecial BoardRotate }
+          }
+
+#00518  Trick_LaserFlip = STRUCT{
+          Scr = FlipTrick
+          Params = STRUCT{
+            Name = 'Laser Flip'
+            Score = 1350
+            Anim = laserflip
+            IsSpecial }
+          }
+
+#00527  Trick_540Flip = STRUCT{
+          Scr = FlipTrick
+          Params = STRUCT{
+            Name = '540 Flip'
+            Score = 1450
+            Anim = _540flip
+            BoardRotate IsSpecial Speed = 1.1
+            trickslack = 20
+            }
+          }
+
+#00538  Trick_BetweenLegsSlam = STRUCT{
+          Scr = FlipTrick
+          Params = STRUCT{
+            Name = 'Slamma Jamma'
+            Score = 1750
+            Anim = BetweenLegsSlam
+            IsSpecial trickslack = 20
+            Speed = 1.0
+            }
+          }
+
+#00549  Trick_NollieFlipUnderflip = STRUCT{
+          Scr = FlipTrick
+          Params = STRUCT{
+            Name = 'Nollie Flip Underflip'
+            Score = 1400
+            Anim = NollieFlipUnderFlip
+            IsSpecial trickslack = 10
+            Speed = 1.0
+            }
+          }
+
+#00560  Trick_HardFlipBackFootFlip = STRUCT{
+          Scr = FlipTrick
+          Params = STRUCT{
+            Name = 'Hardflip Late Flip'
+            Score = 1500
+            Anim = HardFlipBackFootFlip
+            IsSpecial trickslack = 15
+            Speed = 1.0
+            BoardRotate }
+          }
+
+#00571  Trick_KickFlipUnderFlip = STRUCT{
+          Scr = FlipTrick
+          Params = STRUCT{
+            Name = 'Kickflip Underflip'
+            Score = 1500
+            Anim = KickFlipUnderFlip
+            IsSpecial trickslack = 10
+            Speed = 1.0
+            }
+          }
+
+#00582  Trick_360Hardflip = STRUCT{
+          Scr = FlipTrick
+          Params = STRUCT{
+            Name = '360 Hardflip'
+            Score = 1350
+            Anim = _360Hardflip
+            IsSpecial Speed = 1.1
+            }
+          }
+
+#00592  Trick_QuadrupleHeelFlip = STRUCT{
+          Scr = FlipTrick
+          Params = STRUCT{
+            Name = 'Quad Heelflip'
+            Score = 1350
+            Anim = QuadrupleHeelFlip
+            IsSpecial Speed = 1.0
+            }
+          }
+
+#00602  Trick_VarialKickflip = STRUCT{
+          Scr = FlipTrick
+          Params = STRUCT{
+            Name = 'Varial Kickflip'
+            Score = 300
+            Anim = VarialKickflip
+            BoardRotate Nollie = NollieVarialKickflip
+            }
+          }
+
+#00612  Trick_VarialHeelflip = STRUCT{
+          Scr = FlipTrick
+          Params = STRUCT{
+            Name = 'Varial Heelflip'
+            Score = 300
+            Anim = VarialHeelflip
+            BoardRotate Nollie = NollieVarialHeelflip
+            }
+          }
+
+#00622  Trick_Hardflip = STRUCT{
+          Scr = FlipTrick
+          Params = STRUCT{
+            Name = 'Hardflip'
+            Score = 300
+            Anim = Hardflip
+            BoardRotate Nollie = NollieHardflip
+            }
+          }
+
+#00632  Trick_InwardHeelflip = STRUCT{
+          Scr = FlipTrick
+          Params = STRUCT{
+            Name = 'Inward Heelflip'
+            Score = 350
+            Anim = InwardHeelflip
+            BoardRotate Nollie = NollieInwardFlip
+            trickslack = 15
+            }
+          }
+
+#00643  Trick_Impossible = STRUCT{
+          Scr = FlipTrick
+          Params = STRUCT{
+            Name = 'Impossible'
+            Score = 100
+            Anim = Impossible
+            Nollie = NollieImpossible
+            ExtraTricks = DoubleImpossible
+            }
+          }
+
+#00654  Trick_PopShoveIt = STRUCT{
+          Scr = FlipTrick
+          Params = STRUCT{
+            Name = 'Pop Shove-It'
+            Score = 100
+            Anim = PopShoveIt
+            BoardRotate Nollie = NollieBSShoveIt
+            ExtraTricks = Extra360ShoveIt
+            }
+          }
+
+#00665  Trick_Kickflip = STRUCT{
+          Scr = FlipTrick
+          Params = STRUCT{
+            Name = 'Kickflip'
+            Score = 100
+            Anim = Kickflip
+            Nollie = NollieKickflip
+            ExtraTricks = KickflipExtras
+            }
+          }
+
+#00676  Trick_Heelflip = STRUCT{
+          Scr = FlipTrick
+          Params = STRUCT{
+            Name = 'Heelflip'
+            Score = 100
+            Anim = Heelflip
+            Nollie = NollieHeelflip
+            ExtraTricks = DoubleHeelflip
+            }
+          }
+
+#00687  Trick_KFIndy = STRUCT{
+          Scr = FlipGrabBlendFS
+          Params = STRUCT{
+            Name = 'Kickflip to Indy'
+            Score = 750
+            Anim = Kickflip
+            IsExtra }
+          }
+
+#00696  Trick_KFMelon = STRUCT{
+          Scr = FlipGrabBlendBS
+          Params = STRUCT{
+            Name = 'Kickflip to Melon'
+            Score = 750
+            Anim = Heelflip
+            IsExtra }
+          }
+
+#00705  Trick_OllieAirwalk = STRUCT{
+          Scr = FlipTrick
+          Params = STRUCT{
+            Name = 'Ollie Airwalk'
+            Score = 500
+            Speed = 1.0
+            Anim = OllieAirwalk
+            }
+          }
+
+#00715  Trick_OllieNorth = STRUCT{
+          Scr = FlipTrick
+          Params = STRUCT{
+            Name = 'Ollie North'
+            Score = 500
+            Anim = OllieNorth
+            Speed = 1.2
+            trickslack = 15
+            }
+          }
+
+#00726  Trick_FSShoveIt = STRUCT{
+          Scr = FlipTrick
+          Params = STRUCT{
+            Name = 'FS Shove-It'
+            Score = 100
+            Anim = PopShoveItBS
+            Nollie = NollieFSShoveIt
+            BoardRotate ExtraTricks = ExtraFS360ShoveIt
+            }
+          }
+
+#00737  Trick_FFImpossible = STRUCT{
+          Scr = FlipTrick
+          Params = STRUCT{
+            Name = 'Front Foot Impossible'
+            Score = 500
+            Anim = FrontFootImposs
+            trickslack = 20
+            }
+          }
+
+#00747  Trick_360Flip = STRUCT{
+          Scr = FlipTrick
+          Params = STRUCT{
+            Name = '360 Flip'
+            Score = 500
+            Anim = _360Flip
+            Nollie = Nollie360Flip
+            }
+          }
+
+#00757  Trick_HFVarialLien = STRUCT{
+          Scr = FlipTrick
+          Params = STRUCT{
+            Name = 'Heelflip Varial Lien'
+            Score = 800
+            Anim = HeelflipVarialLien
+            BoardRotate trickslack = 15
+            }
+          }
+
+#00767  Trick_Fingerflip = STRUCT{
+          Scr = FlipTrick
+          Params = STRUCT{
+            Name = 'Fingerflip'
+            Score = 800
+            Anim = FingerFlipVert
+            trickslack = 25
+            }
+          }
+
+#00777  Trick_SalFlip = STRUCT{
+          Scr = FlipTrick
+          Params = STRUCT{
+            Name = 'Sal Flip'
+            Score = 900
+            Anim = SalFlip
+            trickslack = 25
+            }
+          }
+
+#00787  Trick_Varial = STRUCT{
+          Scr = FlipTrick
+          Params = STRUCT{
+            Name = 'Varial'
+            Score = 900
+            Anim = BigVarial
+            BoardRotate trickslack = 25
+            }
+          }
+
+#00797  Trick_180Varial = STRUCT{
+          Scr = FlipTrick
+          Params = STRUCT{
+            Name = '180 Varial'
+            Score = 700
+            Anim = _180Varial
+            BoardRotate Speed = 1.0
+            trickslack = 25
+            }
+          }
+
+#00808  Trick_360Varial = STRUCT{
+          Scr = FlipTrick
+          Params = STRUCT{
+            Name = '360 Varial'
+            Score = 900
+            Anim = _360Varial
+            Speed = 1.0
+            trickslack = 25
+            }
+          }
+
+#00819  Trick_OneFootJapan = STRUCT{
+          Scr = GrabTrick
+          Params = STRUCT{
+            Name = 'One Foot Japan'
+            Score = 800
+            TweakTrick = GRABTWEAK_LARGE
+            Anim = OneFootJapan
+            Idle = OneFootJapan_Idle
+            }
+          }
+
+#00830  Trick_Japan = STRUCT{
+          Scr = GrabTrick
+          Params = STRUCT{
+            Name = 'Japan'
+            Score = 350
+            Anim = JapanAir
+            Idle = JapanAir_Idle
+            }
+          }
+
+#00840  Trick_CrookedCop = STRUCT{
+          Scr = GrabTrick
+          Params = STRUCT{
+            Name = 'CrookedCop'
+            Score = 350
+            Anim = CrookedCop
+            Idle = CrookedCop_Idle
+            }
+          }
+
+#00850  Trick_TuckKnee = STRUCT{
+          Scr = GrabTrick
+          Params = STRUCT{
+            Name = 'TuckKnee'
+            Score = 350
+            Anim = TuckKnee
+            Idle = TuckKnee_Idle
+            }
+          }
+
+#00860  Trick_Crail = STRUCT{
+          Scr = GrabTrick
+          Params = STRUCT{
+            Name = 'Crail Grab'
+            Score = 300
+            Anim = Crail
+            Idle = Crail_Idle
+            }
+          }
+
+#00870  Trick_Seatbelt = STRUCT{
+          Scr = GrabTrick
+          Params = STRUCT{
+            Name = 'Seatbelt Air'
+            Score = 300
+            Anim = Seatbelt
+            Idle = SeatBelt_Idle
+            }
+          }
+
+#00880  Trick_SaranWrap = STRUCT{
+          Scr = GrabTrick
+          Params = STRUCT{
+            Name = 'Wrap Around'
+            Score = 700
+            TweakTrick = GRABTWEAK_LARGE
+            Anim = SaranWrap
+            Idle = SaranWrap_Idle
+            OutAnim = AirIdle
+            }
+          }
+
+#00892  Trick_Cannonball = STRUCT{
+          Scr = GrabTrick
+          Params = STRUCT{
+            Name = 'Cannonball'
+            Score = 250
+            TweakTrick = GRABTWEAK_SMALL
+            Anim = Cannonball
+            Idle = Cannonball_Idle
+            Speed = 0.75
+            }
+          }
+
+#00904  Trick_Stalefish = STRUCT{
+          Scr = GrabTrick
+          Params = STRUCT{
+            Name = 'Stalefish'
+            Score = 350
+            Anim = Stalefish
+            Idle = Stalefish_Idle
+            }
+          }
+
+#00914  Trick_Benihana = STRUCT{
+          Scr = GrabTrick
+          Params = STRUCT{
+            Name = 'Benihana'
+            Score = 300
+            Anim = Benihana
+            Idle = Benihana_Idle
+            OutAnim = Benihana_Out
+            ExtraTricks = BenihanaFingerflip
+            }
+          }
+
+#00926  Trick_Crossbone = STRUCT{
+          Scr = GrabTrick
+          Params = STRUCT{
+            Name = 'Crossbone'
+            Score = 350
+            Anim = Crossbone
+            Idle = Crossbone_Idle
+            }
+          }
+
+#00936  Trick_Airwalk = STRUCT{
+          Scr = GrabTrick
+          Params = STRUCT{
+            Name = 'Airwalk'
+            Score = 400
+            Anim = Airwalk
+            Idle = Airwalk_Idle2
+            }
+          }
+
+#00946  Trick_Method = STRUCT{
+          Scr = GrabTrick
+          Params = STRUCT{
+            Name = 'Method'
+            Score = 400
+            Anim = Method
+            Idle = Method_Idle
+            }
+          }
+
+#00956  Trick_IndyNosebone = STRUCT{
+          Scr = GrabTrick
+          Params = STRUCT{
+            Name = 'Indy Nosebone'
+            Score = 350
+            Anim = Nosebone
+            Idle = Nosebone_Idle
+            }
+          }
+
+#00966  Trick_Tailgrab = STRUCT{
+          Scr = GrabTrick
+          Params = STRUCT{
+            Name = 'Tailgrab'
+            Score = 300
+            Anim = Tailgrab
+            Idle = Tailgrab_Idle
+            }
+          }
+
+#00976  Trick_DelMarIndy = STRUCT{
+          Scr = GrabTrick
+          Params = STRUCT{
+            Name = 'Del Mar Indy'
+            Score = 350
+            Anim = IndyDelMar
+            Idle = IndyDelMar_Idle
+            }
+          }
+
+#00986  Trick_Madonna = STRUCT{
+          Scr = GrabTrick
+          Params = STRUCT{
+            Name = 'Madonna'
+            Score = 600
+            TweakTrick = GRABTWEAK_LARGE
+            Anim = Madonna
+            Idle = Madonna_Idle
+            }
+          }
+
+#00997  Trick_Judo = STRUCT{
+          Scr = GrabTrick
+          Params = STRUCT{
+            Name = 'Judo'
+            Score = 800
+            TweakTrick = GRABTWEAK_LARGE
+            Anim = JudoGrab
+            Idle = JudoGrab_Idle
+            Speed = 1.1
+            }
+          }
+
+#01009  Trick_FSShifty = STRUCT{
+          Scr = GrabTrick
+          Params = STRUCT{
+            Name = 'FS Shifty'
+            Score = 500
+            Anim = Shifty
+            Idle = Shifty_Idle
+            }
+          }
+
+#01019  Trick_Rocket = STRUCT{
+          Scr = GrabTrick
+          Params = STRUCT{
+            Name = 'Rocket Air'
+            Score = 400
+            Anim = RocketAir
+            Idle = RocketAir_Idle
+            }
+          }
+
+#01029  Trick_Melon = STRUCT{
+          Scr = GrabTrick
+          Params = STRUCT{
+            Name = 'Melon'
+            Score = 300
+            Anim = MelonGrab
+            Idle = MelonGrab_Idle
+            }
+          }
+
+#01039  Trick_Stiffy = STRUCT{
+          Scr = GrabTrick
+          Params = STRUCT{
+            Name = 'Stiffy'
+            Score = 500
+            Anim = Stiffy
+            Idle = Stiffy_Idle
+            Speed = 1.15
+            }
+          }
+
+#01050  Trick_Nosegrab = STRUCT{
+          Scr = GrabTrick
+          Params = STRUCT{
+            Name = 'Nosegrab'
+            Score = 300
+            Anim = Nosegrab
+            Idle = Nosegrab_Idle
+            }
+          }
+
+#01060  Trick_Mute = STRUCT{
+          Scr = GrabTrick
+          Params = STRUCT{
+            Name = 'Mute'
+            Score = 350
+            Anim = MuteGrab
+            Idle = MuteGrab_Idle
+            }
+          }
+
+#01070  Trick_Indy = STRUCT{
+          Scr = GrabTrick
+          Params = STRUCT{
+            Name = 'Indy'
+            Score = 300
+            Anim = Indy
+            Idle = Indy_Idle
+            }
+          }
+
+#01080  Trick_Roastbeef = STRUCT{
+          Scr = GrabTrick
+          Params = STRUCT{
+            Name = 'RoastBeef'
+            Score = 300
+            Anim = Roastbeef
+            Idle = Roastbeef_Idle
+            }
+          }
+
+#01090  Trick_Revert = STRUCT{
+          Scr = Revert
+          }
+
+#01094  AirTricks =
+#01095
+        ARRAY(
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Left Left Square 300 }
+            TrickSlot = Air_L_L_Square
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Right Right Square 300 }
+            TrickSlot = Air_R_R_Square
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Up Up Square 300 }
+            TrickSlot = Air_U_U_Square
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Down Down Square 300 }
+            TrickSlot = Air_D_D_Square
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              AirTrickLogic Square UpLeft 500 }
+            TrickSlot = Air_SquareUL
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              AirTrickLogic Square UpRight 500 }
+            TrickSlot = Air_SquareUR
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              AirTrickLogic Square DownLeft 500 }
+            TrickSlot = Air_SquareDL
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              AirTrickLogic Square DownRight 500 }
+            TrickSlot = Air_SquareDR
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              AirTrickLogic Square Up 500 }
+            TrickSlot = Air_SquareU
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              AirTrickLogic Square Down 500 }
+            TrickSlot = Air_SquareD
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              AirTrickLogic Square Left 500 }
+            TrickSlot = Air_SquareL
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              AirTrickLogic Square Right 500 }
+            TrickSlot = Air_SquareR
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Left Left Circle 300 }
+            TrickSlot = Air_L_L_Circle
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Right Right Circle 300 }
+            TrickSlot = Air_R_R_Circle
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Up Up Circle 300 }
+            TrickSlot = Air_U_U_Circle
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              TripleInOrder Down Down Circle 300 }
+            TrickSlot = Air_D_D_Circle
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              AirTrickLogic Circle UpLeft 500 }
+            TrickSlot = Air_CircleUL
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              AirTrickLogic Circle UpRight 500 }
+            TrickSlot = Air_CircleUR
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              AirTrickLogic Circle DownLeft 500 }
+            TrickSlot = Air_CircleDL
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              AirTrickLogic Circle DownRight 500 }
+            TrickSlot = Air_CircleDR
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              AirTrickLogic Circle Up 500 }
+            TrickSlot = Air_CircleU
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              AirTrickLogic Circle Down 500 }
+            TrickSlot = Air_CircleD
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              AirTrickLogic Circle Right 500 }
+            TrickSlot = Air_CircleR
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              AirTrickLogic Circle Left 500 }
+            TrickSlot = Air_CircleL
+            }
+
+        )
+
+#01220  Extra360ShoveIt =
+#01221
+        ARRAY(
+          STRUCT{
+            Trigger = STRUCT{
+              Press Square 300 }
+            Scr = FlipTrick
+            Params = STRUCT{
+              Name = '360 Shove-It'
+              Score = 500
+              Anim = _360ShoveIt
+              Nollie = Nollie360ShoveIt
+              ExtraTricks = Extra540ShoveIt
+              IsExtra UseCurrent }
+            }
+
+        )
+
+#01238  Extra540ShoveIt =
+#01239
+        ARRAY(
+          STRUCT{
+            Trigger = STRUCT{
+              Press Square 300 }
+            Scr = FlipTrick
+            Params = STRUCT{
+              Name = '540 Shove-It'
+              Score = 1000
+              Anim = _540ShoveIt
+              Nollie = Nollie360ShoveIt
+              IsExtra BoardRotate UseCurrent }
+            }
+
+        )
+
+#01255  ExtraFS360ShoveIt =
+#01256
+        ARRAY(
+          STRUCT{
+            Trigger = STRUCT{
+              Press Square 300 }
+            Scr = FlipTrick
+            Params = STRUCT{
+              Name = '360 FS Shove-It'
+              Score = 500
+              Anim = FS360ShoveIt
+              ExtraTricks = ExtraFS540ShoveIt
+              IsExtra UseCurrent }
+            }
+
+        )
+
+#01272  ExtraFS540ShoveIt =
+#01273
+        ARRAY(
+          STRUCT{
+            Trigger = STRUCT{
+              Press Square 300 }
+            Scr = FlipTrick
+            Params = STRUCT{
+              Name = '540 FS Shove-It'
+              Score = 1000
+              Anim = FS540ShoveIt
+              IsExtra BoardRotate UseCurrent }
+            }
+
+        )
+
+#01288  DoubleKickflip =
+#01289
+        ARRAY(
+          STRUCT{
+            Trigger = STRUCT{
+              Press Square 300 }
+            Scr = FlipTrick
+            Params = STRUCT{
+              Name = 'Double Kickflip'
+              Score = 500
+              Anim = DoubleKickflip
+              ExtraTricks = TripleKickflip
+              IsExtra UseCurrent }
+            }
+
+        )
+
+#01305  TripleKickflip =
+#01306
+        ARRAY(
+          STRUCT{
+            Trigger = STRUCT{
+              Press Square 300 }
+            Scr = FlipTrick
+            Params = STRUCT{
+              Name = 'Triple Kickflip'
+              Score = 1000
+              Anim = TripleKickflip
+              IsExtra UseCurrent }
+            }
+
+        )
+
+#01321  TripleHeelflip =
+#01322
+        ARRAY(
+          STRUCT{
+            Trigger = STRUCT{
+              Press Square 300 }
+            Scr = FlipTrick
+            Params = STRUCT{
+              Name = 'Triple Heelflip'
+              Score = 1000
+              Anim = TripleHeelflip
+              IsExtra UseCurrent }
+            }
+
+        )
+
+#01337  DoubleHeelflip =
+#01338
+        ARRAY(
+          STRUCT{
+            Trigger = STRUCT{
+              Press Square 300 }
+            Scr = FlipTrick
+            Params = STRUCT{
+              Name = 'Double Heelflip'
+              Score = 500
+              Anim = DoubleHeelflip
+              ExtraTricks = TripleHeelflip
+              IsExtra UseCurrent }
+            }
+
+        )
+
+#01354  DoubleImpossible =
+#01355
+        ARRAY(
+          STRUCT{
+            Trigger = STRUCT{
+              Press Square 300 }
+            Scr = FlipTrick
+            Params = STRUCT{
+              Name = 'Double Impossible'
+              Score = 500
+              Anim = DoubleImpossible
+              ExtraTricks = TripleImpossible
+              IsExtra UseCurrent }
+            }
+
+        )
+
+#01371  TripleImpossible =
+#01372
+        ARRAY(
+          STRUCT{
+            Trigger = STRUCT{
+              Press Square 300 }
+            Scr = FlipTrick
+            Params = STRUCT{
+              Name = 'Triple Impossible'
+              Score = 1000
+              Anim = TripleImpossible
+              ExtraTricks = TripleImpossible
+              IsExtra UseCurrent }
+            }
+
+        )
+
+#01388  KickflipExtras =
+#01389
+        ARRAY(
+          STRUCT{
+            Trigger = STRUCT{
+              Press Square 300 }
+            Scr = FlipTrick
+            Params = STRUCT{
+              Name = 'Double Kickflip'
+              Score = 500
+              Anim = DoubleKickflip
+              ExtraTricks = TripleKickflip
+              IsExtra UseCurrent }
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              AirTrickLogic Circle Right 300 }
+            Scr = FlipGrabBlend
+            Params = STRUCT{
+              Name = 'Kickflip to Indy'
+              Score = 400
+              Anim1 = KickFlipBlendFS
+              Anim2 = Indy
+              IsExtra }
+            }
+          STRUCT{
+            Trigger = STRUCT{
+              AirTrickLogic Circle Up 300 }
+            Scr = FlipGrabBlend
+            Params = STRUCT{
+              Name = 'Kickflip to Crail'
+              Score = 400
+              Anim1 = KickFlipBlendFS
+              Anim2 = Crail
+              IsExtra GrabStart = 5
+              Speed = 1
+              }
+            }
+
+        )
+
+#01429  KickflipToMelon =
+#01430
+        ARRAY(
+          STRUCT{
+            Trigger = STRUCT{
+              AirTrickLogic Circle Left 500 }
+            Scr = FlipGrabBlendBS
+            Params = STRUCT{
+              Name = 'Kickflip to Melon'
+              Score = 800
+              Anim = Heelflip
+              Nollie = NollieHeelflip
+              IsExtra }
+            }
+
+        )
+
+#01446  BenihanaFingerflip =
+#01447
+        ARRAY(
+          STRUCT{
+            Trigger = STRUCT{
+              AirTrickLogic Square Up 500 }
+            Scr = FlipTrick
+            Params = STRUCT{
+              Name = 'Beni Fingerflip'
+              Score = 1000
+              Anim = BenihanaFingerflip
+              IsExtra }
+            }
+
+        )
+
+#01462  FUNCTION FlipTrick Speed = 1.0
+          trickslack = 10
+          grindslack = 25
+
+#01466    ClearTricksFrom Jumptricks Jumptricks0 Jumptricks
+#01467    CheckForOllie
+#01468    KillExtraTricks
+#01469    BailOn
+#01470    IF GotParam NoSpin
+#01471      NoSpin
+#01472    END IF
+#01473    IF GotParam RevertFS
+#01474      Obj_SetFlag FLAG_SKATER_REVERTFS
+#01475    END IF
+#01476    IF GotParam RevertBS
+#01477      Obj_SetFlag FLAG_SKATER_REVERTBS
+#01478    END IF
+#01479    IF InNollie
+#01480      IF GotParam Nollie
+#01481        NollieOff
+#01482        PlayAnim Anim = GLOBAL.Nollie
+              BlendPeriod = 0.3
+
+#01485      ELSE
+#01486        PlayAnim Anim = GLOBAL.Anim
+              BlendPeriod = 0.3
+
+#01489      END IF
+#01490    ELSE
+#01491      IF GotParam UseCurrent
+#01492        PlayAnim Anim = GLOBAL.Anim
+              From = Current
+              BlendPeriod = 0.3
+              Speed = GLOBAL.Speed
+
+#01497      ELSE
+#01498        PlayAnim Anim = GLOBAL.Anim
+              BlendPeriod = 0.3
+              Speed = GLOBAL.Speed
+
+#01502      END IF
+#01503    END IF
+#01504    IF GotParam BoardRotate
+#01505      BlendperiodOut 0
+#01506      BoardRotateAfter
+#01507    END IF
+#01508    IF GotParam RotateAfter
+#01509      BlendperiodOut 0
+#01510      RotateAfter
+#01511    END IF
+#01512    IF GotParam FlipAfter
+#01513      BlendperiodOut 0
+#01514      FlipAfter
+#01515    END IF
+#01516    IF GotParam ExtraTricks
+#01517      SetExtraTricks tricks = GLOBAL.ExtraTricks
+            duration = 15
+
+#01520    END IF
+#01521    Wait 15 frames
+#01522    SetTrickName GLOBAL.Name
+
+#01524    IF GetGlobalFlag flag = LEVEL_UNLOCKED_CANADA
+#01525      SetTrickScore GLOBAL.Score
+#01526    ELSE
+#01527      SetTrickScore 1
+#01528    END IF
+
+#01530    Display
+#01531    IF GotParam IsExtra
+#01532      LaunchExtraMessage
+#01533    END IF
+#01534    IF GotParam IsSpecial
+#01535      LaunchSpecialMessage
+#01536    END IF
+#01537    IF GotParam BloodFrame
+#01538      Wait GLOBAL.BloodFrame
+            frames
+#01540      PlaySound bitchslap2 pitch = 90
+
+#01542      Bloodsplat
+#01543      SpawnSkaterScript BloodCar
+#01544      Wait 1 frame
+#01545      PlaySound headsmackB
+#01546    END IF
+#01547    IF GotParam Spinslack
+#01548      WaitAnim GLOBAL.Spinslack
+            frames fromend
+#01550      Canspin
+#01551    END IF
+#01552    IF GotParam grindslack
+#01553      WaitAnim GLOBAL.grindslack
+            frames fromend
+#01555    END IF
+#01556    Bailoff
+#01557    WaitAnim GLOBAL.trickslack
+          frames fromend
+#01559    DoNextTrick
+#01560    Canspin
+#01561    WaitAnimFinished
+#01562    goto Airborne
+#01563  END FUNCTION
+
+#01565  FUNCTION CheckForOllie
+#01566    IF GotException Ollied
+#01567      SetException Ex = Ollied
+            Scr = CalledOllie
+            CallInsteadOfGoto
+#01570    END IF
+#01571  END FUNCTION
+
+#01573  FUNCTION CalledOllie
+#01574    IF AirTimeGreaterThan Skater_Late_Jump_Slop
+#01575      ClearException Ollied
+#01576    ELSE
+#01577      Jump
+#01578      ClearException Ollied
+#01579    END IF
+#01580  END FUNCTION
+
+#01582  FUNCTION GrabTrick Speed = 1.0
+          x = -180
+          duration = 1.0
+          GrabTweak = GRABTWEAK_MEDIUM
+
+#01587    ClearTricksFrom Jumptricks Jumptricks0 Jumptricks
+#01588    CheckForOllie
+#01589    KillExtraTricks
+#01590    ClearExtraGrindTrick
+#01591    BailOn
+#01592    PlayAnim Anim = GLOBAL.Anim
+          BlendPeriod = 0.3
+          Speed = GLOBAL.Speed
+
+#01596    IF AnimEquals DarkJedi_init
+#01597      SpawnSkaterScript MaulSFX
+#01598    END IF
+#01599    IF AnimEquals MaulForceGrab_Init
+#01600      PlaySound SaberTwirl5 pitch = 70
+
+#01602    END IF
+#01603    IF AnimEquals WorkForFood_Init
+#01604      SpawnSkaterScript Ollie_Signage
+#01605    END IF
+#01606    Wait 10 frames
+#01607    SetTrickName GLOBAL.Name
+
+#01609    IF GetGlobalFlag flag = LEVEL_UNLOCKED_RIO
+#01610      SetTrickScore GLOBAL.Score
+#01611    ELSE
+#01612      SetTrickScore 1
+#01613    END IF
+
+#01615    Display
+#01616    IF GotParam ExtraTricks
+#01617      SetExtraTricks tricks = GLOBAL.ExtraTricks
+            duration = 1000
+
+#01620    END IF
+#01621    IF GotParam IsSpecial
+#01622      LaunchSpecialMessage
+#01623    END IF
+#01624    IF GotParam ForceInit
+#01625      WaitAnimFinished
+#01626    ELSE
+#01627      Wait 20 frames
+#01628    END IF
+#01629    LOOP
+#01630      IF Released Circle
+#01631        BREAK
+
+#01633      END IF
+#01634      IF AnimFinished
+#01635        PlayAnim Anim = GLOBAL.Idle
+              cycle Speed = GLOBAL.Speed
+
+#01638        IF AnimEquals Eyeball_Idle
+#01639          SpawnSkaterScript Eyeball_SFX
+#01640        END IF
+#01641        BREAK
+
+#01643      END IF
+#01644      WaitOneGameFrame
+#01645    END LOOP
+#01646    LOOP
+#01647      IF Released Circle
+#01648        IF GotParam OutAnim
+#01649          PlayAnim Anim = GLOBAL.OutAnim
+                BlendPeriod = 0.2
+                Speed = GLOBAL.Speed
+
+#01653          BREAK
+
+#01655        END IF
+#01656        IF GotParam BackwardsAnim
+#01657          PlayAnim Anim = GLOBAL.BackwardsAnim
+                Backwards BlendPeriod = 0.2
+                Speed = GLOBAL.Speed
+
+#01661          BREAK
+
+#01663        END IF
+#01664        IF AnimEquals Airwalk
+#01665          PlayAnim Anim = GLOBAL.Anim
+                From = Current
+                To = 0
+                BlendPeriod = 0.2
+                Speed = GLOBAL.Speed
+
+#01671        ELSE
+#01672          PlayAnim Anim = GLOBAL.Anim
+                Backwards BlendPeriod = 0.2
+                Speed = GLOBAL.Speed
+
+#01676        END IF
+#01677        BREAK
+
+#01679      END IF
+#01680      WaitOneGameFrame
+#01681      IF GotParam IsSpecial
+#01682        TweakTrick GRABTWEAK_SPECIAL
+#01683      ELSE
+#01684        TweakTrick GLOBAL.GrabTweak
+
+#01686      END IF
+#01687    END LOOP
+#01688    IF GotParam BoardRotate
+#01689      BlendperiodOut 0
+#01690      BoardRotateAfter
+#01691    END IF
+#01692    IF GotParam trickslack
+#01693      WaitAnim GLOBAL.trickslack
+            frames fromend
+#01695    END IF
+#01696    Bailoff
+#01697    DoNextTrick
+#01698    Wait 2 frames
+#01699    KillExtraTricks
+#01700    WaitAnimWhilstChecking
+#01701    goto Airborne
+#01702  END FUNCTION
+
+#01704  FUNCTION Eyeball_SFX
+#01705    LOOP
+#01706      IF AnimEquals Eyeball_Idle
+#01707        IF frameis 2
+#01708          PlaySound bitchslap2 pitch = 120
+
+#01710        END IF
+#01711      ELSE
+#01712        BREAK
+
+#01714      END IF
+#01715      WaitOneGameFrame
+#01716    END LOOP
+#01717  END FUNCTION
+
+#01719  FUNCTION MaulSFX
+#01720    PlaySound SaberTwirl5
+#01721    Wait 10
+#01722    PlaySound SaberTwirl5
+#01723    Wait 10
+#01724    PlaySound SaberTwirl5
+#01725    Wait 100
+#01726    PlaySound SaberTwirl5
+#01727    Wait 600
+#01728    PlaySound SaberHit1
+#01729  END FUNCTION
+
+#01731  FUNCTION MaulSFX2
+#01732    PlaySound SaberHit1 pitch = 90
+
+#01734  END FUNCTION
+
+#01736  FUNCTION Ollie_Signage
+#01737    SwitchOnAtomic special_item
+#01738    LOOP
+#01739      IF AnimEquals WorkForFood_Init
+#01740      ELSE
+#01741        IF AnimEquals WorkForFood_Idle
+#01742        ELSE
+#01743          BREAK
+
+#01745        END IF
+#01746      END IF
+#01747      WaitOneGameFrame
+#01748    END LOOP
+#01749    SwitchOffAtomic special_item
+#01750  END FUNCTION
+
+#01752  FUNCTION FlipGrabBlendFS Name = 'Kickflip to Indy'
+
+#01754    CheckForOllie
+#01755    ClearExtraGrindTrick
+#01756    KillExtraTricks
+#01757    IF GotParam IsExtra
+#01758      LaunchExtraMessage
+#01759    END IF
+#01760    PlayAnim Anim = KickFlipBlendFS
+          BlendPeriod = 0.3
+          From = Current
+
+#01764    SetTrickName GLOBAL.Name
+
+#01766    Wait 15 frames
+#01767    Display
+#01768    Wait 5 frames
+#01769    PlayAnim Anim = Indy
+          From = 10
+          To = End
+          BlendPeriod = 0.3
+          Speed = 1.5
+
+#01775    WaitAnim 10 frames fromend
+#01776    DoNextTrick
+#01777    WaitAnimFinished
+#01778    Reverse
+#01779    WaitAnimWhilstChecking
+#01780  END FUNCTION
+
+#01782  FUNCTION FlipGrabBlendBS Name = 'Kickflip to Melon'
+
+#01784    CheckForOllie
+#01785    ClearExtraGrindTrick
+#01786    KillExtraTricks
+#01787    IF GotParam IsExtra
+#01788      LaunchExtraMessage
+#01789    END IF
+#01790    PlayAnim Anim = KickFlipBlendBS
+          BlendPeriod = 0.3
+
+#01793    SetTrickName GLOBAL.Name
+
+#01795    WaitAnim 15 frames
+#01796    Display
+#01797    Wait 10 frames
+#01798    PlayAnim Anim = MelonGrab
+          From = 20
+          To = End
+          BlendPeriod = 0.3
+          Speed = 1.4
+
+#01804    WaitAnimFinished
+#01805    Reverse
+#01806    DoNextTrick
+#01807    WaitAnimWhilstChecking
+#01808  END FUNCTION
+
+#01810  FUNCTION FlipGrabBlend GrabStart = 10
+          GrabSpeed = 1.5
+
+#01813    CheckForOllie
+#01814    ClearManualTrick
+#01815    ClearExtraGrindTrick
+#01816    KillExtraTricks
+#01817    IF GotParam IsExtra
+#01818      LaunchExtraMessage
+#01819    END IF
+#01820    PlayAnim Anim = GLOBAL.Anim1
+          BlendPeriod = 0.3
+          From = Current
+
+#01824    SetTrickName GLOBAL.Name
+
+#01826    IF GetGlobalFlag flag = LEVEL_UNLOCKED_RIO
+#01827      SetTrickScore GLOBAL.Score
+#01828    ELSE
+#01829      SetTrickScore 1
+#01830    END IF
+
+#01832    Display
+#01833    Wait 15 frames
+#01834    PlayAnim Anim = GLOBAL.Anim2
+          From = GLOBAL.GrabStart
+          To = End
+          BlendPeriod = 0.3
+          Speed = GLOBAL.GrabSpeed
+
+#01840    WaitAnim 10 frames fromend
+#01841    DoNextTrick
+#01842    WaitAnimFinished
+#01843    Reverse
+#01844    WaitAnimWhilstChecking
+#01845  END FUNCTION
+
+#01847

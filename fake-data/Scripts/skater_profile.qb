@@ -1,0 +1,3210 @@
+full_optionset_list =
+#00001
+        ARRAY(
+          STRUCT{
+            bodytype = male
+            frontenddesc = "Male"
+            animscript = "skater_m"
+            basicmesh = cas_male_basicmesh
+            optionset = "cas_male_options"
+            defaultprofile = appearance_default_male
+            prefile = "cas_male.pre"
+            frontend_prefile = "cas_male_fe.pre"
+            exception_table = cas_general_exceptions
+            }
+          STRUCT{
+            bodytype = female
+            frontenddesc = "Female"
+            animscript = "skater_m"
+            basicmesh = cas_female_basicmesh
+            optionset = "cas_female_options"
+            defaultprofile = appearance_default_female
+            prefile = "cas_female.pre"
+            frontend_prefile = "cas_female_fe.pre"
+            exception_table = cas_general_exceptions
+            }
+          STRUCT{
+            bodytype = demoness
+            frontenddesc = "Female"
+            animscript = "skater_m"
+            basicmesh = cas_demoness_basicmesh
+            optionset = "cas_demoness_options"
+            defaultprofile = appearance_demoness
+            prefile = "cas_secret.pre"
+            frontend_prefile = "cas_secret_fe.pre"
+            }
+          STRUCT{
+            bodytype = wolverine
+            frontenddesc = "Male"
+            animscript = "skater_m"
+            basicmesh = cas_wolverine_basicmesh
+            optionset = "cas_wolverine_options"
+            defaultprofile = appearance_wolverine
+            prefile = "cas_secret.pre"
+            frontend_prefile = "cas_secret_fe.pre"
+            }
+          STRUCT{
+            bodytype = darthmaul
+            frontenddesc = "Male"
+            animscript = "skater_m"
+            basicmesh = cas_darth_maul_basicmesh
+            optionset = "cas_darth_maul_options"
+            defaultprofile = appearance_darth_maul
+            prefile = "cas_secret.pre"
+            frontend_prefile = "cas_secret_fe.pre"
+            }
+          STRUCT{
+            bodytype = slater
+            frontenddesc = "Male"
+            animscript = "skater_m"
+            basicmesh = cas_slater_basicmesh
+            optionset = "cas_male_options"
+            defaultprofile = appearance_kelly_slater
+            prefile = "cas_male.pre"
+            frontend_prefile = "cas_male_fe.pre"
+            exception_table = cas_general_exceptions
+            }
+          STRUCT{
+            bodytype = ollie
+            frontenddesc = "Male"
+            animscript = "skater_m"
+            basicmesh = cas_ollie_basicmesh
+            optionset = "cas_ollie_options"
+            defaultprofile = appearance_ollie
+            prefile = "cas_secret.pre"
+            frontend_prefile = "cas_secret_fe.pre"
+            }
+          STRUCT{
+            bodytype = eyeball
+            frontenddesc = "Male"
+            animscript = "skater_m"
+            basicmesh = cas_eyeball_basicmesh
+            optionset = "cas_eyeball_options"
+            defaultprofile = appearance_eyeball
+            prefile = "cas_secret.pre"
+            frontend_prefile = "cas_secret_fe.pre"
+            maxexceptions = 0
+            no_exceptions }
+          STRUCT{
+            bodytype = doomguy
+            frontenddesc = "Male"
+            animscript = "skater_m"
+            basicmesh = cas_doomguy_basicmesh
+            optionset = "cas_doomguy_options"
+            defaultprofile = appearance_doomguy
+            prefile = "cas_secret.pre"
+            frontend_prefile = "cas_secret_fe.pre"
+            }
+
+        )
+
+#00100  appearance_reset_structure = STRUCT{
+          body_type = STRUCT{
+            value = male
+            }
+          head = STRUCT{
+            desc = "None"
+            }
+          hat = STRUCT{
+            desc = "None"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          hair = STRUCT{
+            desc = "None"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          jaw = STRUCT{
+            desc = "None"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          shoes = STRUCT{
+            desc = "None"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          torso = STRUCT{
+            desc = "None"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          legs = STRUCT{
+            desc = "None"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          kneepads = STRUCT{
+            desc = "None"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          elbowpads = STRUCT{
+            desc = "None"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          backpack = STRUCT{
+            desc = "None"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          glasses = STRUCT{
+            desc = "None"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          boardup = STRUCT{
+            desc = "None"
+            }
+          boarddown = STRUCT{
+            desc = "None"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          helmet = STRUCT{
+            desc = "None"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          hat_logo = STRUCT{
+            desc = "None"
+            }
+          helmet_logo = STRUCT{
+            desc = "None"
+            }
+          front_logo = STRUCT{
+            desc = "None"
+            }
+          back_logo = STRUCT{
+            desc = "None"
+            }
+          accessories = STRUCT{
+            desc = "None"
+            }
+          chest_tattoo = STRUCT{
+            desc = "None"
+            }
+          back_tattoo = STRUCT{
+            desc = "None"
+            }
+          left_arm_tattoo = STRUCT{
+            desc = "None"
+            }
+          right_arm_tattoo = STRUCT{
+            desc = "None"
+            }
+          socks = STRUCT{
+            desc = "None"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          left_leg_tattoo = STRUCT{
+            desc = "None"
+            }
+          right_leg_tattoo = STRUCT{
+            desc = "None"
+            }
+          special_item = STRUCT{
+            desc = "None"
+            }
+          special_item_2 = STRUCT{
+            desc = "None"
+            }
+          skin = STRUCT{
+            h = 180
+            s = 100
+            v = 100
+            use_default_hsv = 1
+            }
+          height_scale = STRUCT{
+            scale = 1.0
+            }
+          weight_scale = STRUCT{
+            scale = 1.0
+            }
+          scaling_mode = STRUCT{
+            value = apply_normal_mode
+            }
+          }
+
+#00257  appearance_default_female = appearance_custom_skater_female
+
+#00259  appearance_default_male = appearance_custom_skater_male
+
+#00261  appearance_tony_hawk =
+#00262
+        STRUCT{
+          body_type = STRUCT{
+            value = male
+            }
+          head = STRUCT{
+            desc = "Tony Hawk"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          hat = STRUCT{
+            desc = "None"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          torso = STRUCT{
+            desc = "Hawk's Shirt"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          legs = STRUCT{
+            desc = "Hawk's Shorts"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          shoes = STRUCT{
+            desc = "Hawk's"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          boardup = STRUCT{
+            desc = "Hawk"
+            }
+          boarddown = STRUCT{
+            desc = "Birdman Crest"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          height_scale = STRUCT{
+            scale = 1.03
+            }
+          weight_scale = STRUCT{
+            scale = 0.97
+            }
+          }
+
+#00320  appearance_steve_caballero =
+#00321
+        STRUCT{
+          body_type = STRUCT{
+            value = male
+            }
+          head = STRUCT{
+            desc = "Steve Caballero"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          torso = STRUCT{
+            desc = "Caballero's Shirt"
+            h = 0
+            s = 0
+            v = 100
+            use_default_hsv = 1
+            }
+          legs = STRUCT{
+            desc = "Caballero's Pants"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          shoes = STRUCT{
+            desc = "Caballero's"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          boardup = STRUCT{
+            desc = "Cab"
+            }
+          boarddown = STRUCT{
+            desc = "Chin Series - 1999"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          height_scale = STRUCT{
+            scale = 0.94
+            }
+          weight_scale = STRUCT{
+            scale = 1.05
+            }
+          scaling_mode = STRUCT{
+            value = apply_caballero_mode
+            }
+          }
+
+#00375  appearance_kareem_campbell =
+#00376
+        STRUCT{
+          body_type = STRUCT{
+            value = male
+            }
+          head = STRUCT{
+            desc = "Kareem Campbell"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          torso = STRUCT{
+            desc = "Campbell's Tank-Top"
+            h = 0
+            s = 0
+            v = 100
+            use_default_hsv = 1
+            }
+          legs = STRUCT{
+            desc = "Campbell's Pants"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          shoes = STRUCT{
+            desc = "Campbell's"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          height_scale = STRUCT{
+            scale = 1.0
+            }
+          weight_scale = STRUCT{
+            scale = 0.98
+            }
+          boardup = STRUCT{
+            desc = "Solid"
+            }
+          boarddown = STRUCT{
+            desc = "Citybot 8"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          }
+
+#00427  appearance_rune_glifberg =
+#00428
+        STRUCT{
+          body_type = STRUCT{
+            value = male
+            }
+          head = STRUCT{
+            desc = "Rune Glifberg"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          torso = STRUCT{
+            desc = "Glifberg's Tank-Top"
+            h = 0
+            s = 0
+            v = 100
+            use_default_hsv = 1
+            }
+          accessories = STRUCT{
+            desc = "L Watch Silver"
+            }
+          legs = STRUCT{
+            desc = "Glifberg's Cargos"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          shoes = STRUCT{
+            desc = "Glifberg's"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          boardup = STRUCT{
+            desc = "Glifberg"
+            }
+          boarddown = STRUCT{
+            desc = "Glifberg 1"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          height_scale = STRUCT{
+            scale = 0.98
+            }
+          weight_scale = STRUCT{
+            scale = 0.98
+            }
+          }
+
+#00482  appearance_eric_koston =
+#00483
+        STRUCT{
+          body_type = STRUCT{
+            value = male
+            }
+          head = STRUCT{
+            desc = "Eric Koston"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          torso = STRUCT{
+            desc = "Koston's Shirt"
+            h = 44
+            s = 36
+            v = 75
+            use_default_hsv = 0
+            }
+          legs = STRUCT{
+            desc = "Koston's Pants"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          shoes = STRUCT{
+            desc = "Koston's"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          boardup = STRUCT{
+            desc = "Koston"
+            }
+          boarddown = STRUCT{
+            desc = "Classic Koston"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          height_scale = STRUCT{
+            scale = 1.0
+            }
+          weight_scale = STRUCT{
+            scale = 1.0
+            }
+          }
+
+#00534  appearance_bucky_lasek =
+#00535
+        STRUCT{
+          body_type = STRUCT{
+            value = male
+            }
+          head = STRUCT{
+            desc = "Bucky Lasek"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          torso = STRUCT{
+            desc = "Wind Breaker"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          legs = STRUCT{
+            desc = "Lasek's Pants"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          shoes = STRUCT{
+            desc = "Lasek's"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          boardup = STRUCT{
+            desc = "Solid"
+            }
+          boarddown = STRUCT{
+            desc = "Paradise Slammers"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          height_scale = STRUCT{
+            scale = 0.99
+            }
+          weight_scale = STRUCT{
+            scale = 0.99
+            }
+          }
+
+#00586  appearance_bam_margera =
+#00587
+        STRUCT{
+          body_type = STRUCT{
+            value = male
+            }
+          head = STRUCT{
+            desc = "Bam Margera"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          torso = STRUCT{
+            desc = "Margera's Shirt"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          legs = STRUCT{
+            desc = "Margera's Pants"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          shoes = STRUCT{
+            desc = "Margera's"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          boardup = STRUCT{
+            desc = "Bam"
+            }
+          boarddown = STRUCT{
+            desc = "Welcome"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          height_scale = STRUCT{
+            scale = 0.97
+            }
+          weight_scale = STRUCT{
+            scale = 0.99
+            }
+          }
+
+#00638  appearance_rodney_mullen =
+#00639
+        STRUCT{
+          body_type = STRUCT{
+            value = male
+            }
+          head = STRUCT{
+            desc = "Rodney Mullen"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          torso = STRUCT{
+            desc = "Mullen's Shirt"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          legs = STRUCT{
+            desc = "Mullen's Pants"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          shoes = STRUCT{
+            desc = "Mullen's"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          boardup = STRUCT{
+            desc = "Mullen"
+            }
+          boarddown = STRUCT{
+            desc = "Rodney"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          height_scale = STRUCT{
+            scale = 0.98
+            }
+          weight_scale = STRUCT{
+            scale = 0.99
+            }
+          }
+
+#00690  appearance_chad_muska =
+#00691
+        STRUCT{
+          body_type = STRUCT{
+            value = male
+            }
+          head = STRUCT{
+            desc = "Chad Muska"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          torso = STRUCT{
+            desc = "Muska's Tank-Top"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          accessories = STRUCT{
+            desc = "Muska's Stuff"
+            }
+          legs = STRUCT{
+            desc = "Muska's Pants"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          shoes = STRUCT{
+            desc = "Muska's"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          boardup = STRUCT{
+            desc = "Muska"
+            }
+          boarddown = STRUCT{
+            desc = "Red Sun"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          special_item = STRUCT{
+            desc = "Boom Box"
+            }
+          special_item_2 = STRUCT{
+            desc = "None"
+            }
+          height_scale = STRUCT{
+            scale = 0.99
+            }
+          weight_scale = STRUCT{
+            scale = 0.98
+            }
+          }
+
+#00751  appearance_andrew_reynolds =
+#00752
+        STRUCT{
+          body_type = STRUCT{
+            value = male
+            }
+          head = STRUCT{
+            desc = "Andrew Reynolds"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          torso = STRUCT{
+            desc = "Long Sleeve - Collar"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          legs = STRUCT{
+            desc = "Reynolds' Pants"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          shoes = STRUCT{
+            desc = "Reynolds'"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          boardup = STRUCT{
+            desc = "Solid"
+            }
+          boarddown = STRUCT{
+            desc = "Green Brand Logo"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          height_scale = STRUCT{
+            scale = 1.02
+            }
+          weight_scale = STRUCT{
+            scale = 0.97
+            }
+          }
+
+#00803  appearance_geoff_rowley =
+#00804
+        STRUCT{
+          body_type = STRUCT{
+            value = male
+            }
+          head = STRUCT{
+            desc = "Geoff Rowley"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          torso = STRUCT{
+            desc = "Rowley's Shirt"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          legs = STRUCT{
+            desc = "Rowley's Pants"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          socks = STRUCT{
+            desc = "Lo"
+            h = 0
+            s = 50
+            v = 75
+            use_default_hsv = 0
+            }
+          shoes = STRUCT{
+            desc = "Rowley's"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          boardup = STRUCT{
+            desc = "Solid"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          boarddown = STRUCT{
+            desc = "Rowley 1"
+            }
+          height_scale = STRUCT{
+            scale = 0.97
+            }
+          weight_scale = STRUCT{
+            scale = 0.97
+            }
+          scaling_mode = STRUCT{
+            value = apply_rowley_mode
+            }
+          }
+
+#00865  appearance_elissa_steamer =
+#00866
+        STRUCT{
+          body_type = STRUCT{
+            value = female
+            }
+          head = STRUCT{
+            desc = "Elissa Steamer"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          torso = STRUCT{
+            desc = "Elissa's Shirt"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          legs = STRUCT{
+            desc = "Elissa's Jeans"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          shoes = STRUCT{
+            desc = "Steamer's"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          boardup = STRUCT{
+            desc = "Steamer"
+            }
+          boarddown = STRUCT{
+            desc = "Etnies 1"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          height_scale = STRUCT{
+            scale = 0.94
+            }
+          weight_scale = STRUCT{
+            scale = 0.95
+            }
+          }
+
+#00917  appearance_jamie_thomas =
+#00918
+        STRUCT{
+          body_type = STRUCT{
+            value = male
+            }
+          head = STRUCT{
+            desc = "Jamie Thomas"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          jaw = STRUCT{
+            desc = "Clean Shaven"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          legs = STRUCT{
+            desc = "Thomas' Pants"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          torso = STRUCT{
+            desc = "Thomas' Sweater"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          shoes = STRUCT{
+            desc = "Thomas'"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          boardup = STRUCT{
+            desc = "Thomas"
+            }
+          boarddown = STRUCT{
+            desc = "Thomas Skeleton"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          special_item = STRUCT{
+            desc = "Metal Glove"
+            }
+          height_scale = STRUCT{
+            scale = 0.98
+            }
+          weight_scale = STRUCT{
+            scale = 0.99
+            }
+          }
+
+#00979  appearance_custom_skater_female =
+#00980
+        STRUCT{
+          body_type = STRUCT{
+            value = female
+            }
+          head = STRUCT{
+            desc = "Light Skin 1"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          hair = STRUCT{
+            desc = "Dark Brown Long"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          torso = STRUCT{
+            desc = "Denim Jacket"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          legs = STRUCT{
+            desc = "Skirt"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          shoes = STRUCT{
+            desc = "Steamer White"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          boardup = STRUCT{
+            desc = "Generic Cut"
+            }
+          boarddown = STRUCT{
+            desc = "Red Baker Logo"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          height_scale = STRUCT{
+            scale = 1.0
+            }
+          weight_scale = STRUCT{
+            scale = 1.0
+            }
+          scaling_mode = STRUCT{
+            value = apply_normal_mode
+            }
+          }
+
+#01041  appearance_custom_skater_male =
+#01042
+        STRUCT{
+          body_type = STRUCT{
+            value = male
+            }
+          head = STRUCT{
+            desc = "Light Skin 3"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          glasses = STRUCT{
+            desc = "Aviator"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          hat = STRUCT{
+            desc = "Cap Forwards"
+            h = 204
+            s = 76
+            v = 46
+            use_default_hsv = 0
+            }
+          jaw = STRUCT{
+            desc = "Sideburns A"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          torso = STRUCT{
+            desc = "Sweat - Hood Down"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          legs = STRUCT{
+            desc = "Shorts - Camo"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          socks = STRUCT{
+            desc = "sporty"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          shoes = STRUCT{
+            desc = "Mullen's"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          boardup = STRUCT{
+            desc = "Generic Cut"
+            }
+          boarddown = STRUCT{
+            desc = "Red Baker Logo"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          scaling_mode = STRUCT{
+            value = apply_normal_mode
+            }
+          }
+
+#01118  appearance_officer_dick =
+#01119
+        STRUCT{
+          body_type = STRUCT{
+            value = male
+            }
+          head = STRUCT{
+            desc = "Officer Dick"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          glasses = STRUCT{
+            desc = "Aviator"
+            h = 285
+            s = 8
+            v = 20
+            use_default_hsv = 0
+            }
+          legs = STRUCT{
+            desc = "Dick's Pants"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          torso = STRUCT{
+            desc = "Dick's Shirt"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          shoes = STRUCT{
+            desc = "Police Issue"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          boardup = STRUCT{
+            desc = "You're a star"
+            }
+          boarddown = STRUCT{
+            desc = "Night Stick"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          height_scale = STRUCT{
+            scale = 1.0
+            }
+          weight_scale = STRUCT{
+            scale = 1.1
+            }
+          }
+
+#01177  appearance_private_carrera =
+#01178
+        STRUCT{
+          body_type = STRUCT{
+            value = female
+            }
+          head = STRUCT{
+            desc = "Corporal Carrera"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          hair = STRUCT{
+            desc = "Really Short"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          torso = STRUCT{
+            desc = "Carrera's Shirt"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          legs = STRUCT{
+            desc = "Carrera's Skirt"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          shoes = STRUCT{
+            desc = "Carrera's"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          boardup = STRUCT{
+            desc = "Ladies"
+            }
+          boarddown = STRUCT{
+            desc = "Carrera 1"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          height_scale = STRUCT{
+            scale = 0.97
+            }
+          weight_scale = STRUCT{
+            scale = 0.97
+            }
+          }
+
+#01236  appearance_demoness =
+#01237
+        STRUCT{
+          body_type = STRUCT{
+            value = demoness
+            }
+          boardup = STRUCT{
+            desc = "Bat Grip"
+            }
+          boarddown = STRUCT{
+            desc = "Fire Skull"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          special_item = STRUCT{
+            desc = "Decent"
+            }
+          special_item_2 = STRUCT{
+            desc = "None"
+            }
+          }
+
+#01260  appearance_wolverine =
+#01261
+        STRUCT{
+          body_type = STRUCT{
+            value = wolverine
+            }
+          boardup = STRUCT{
+            desc = "Scratch away"
+            }
+          boarddown = STRUCT{
+            desc = "Wolverine 1"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          height_scale = STRUCT{
+            scale = 0.89
+            }
+          weight_scale = STRUCT{
+            scale = 1.08
+            }
+          }
+
+#01284  appearance_darth_maul =
+#01285
+        STRUCT{
+          body_type = STRUCT{
+            value = darthmaul
+            }
+          boarddown = STRUCT{
+            desc = "Maul 1"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          height_scale = STRUCT{
+            scale = 0.99
+            }
+          weight_scale = STRUCT{
+            scale = 1.0
+            }
+          }
+
+#01305  appearance_kelly_slater =
+#01306
+        STRUCT{
+          body_type = STRUCT{
+            value = slater
+            }
+          head = STRUCT{
+            desc = "Kelly Slater"
+            }
+          legs = STRUCT{
+            desc = "Swim Trunks"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          shoes = STRUCT{
+            desc = "Bare Feet"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          boardup = STRUCT{
+            desc = "Slater"
+            }
+          boarddown = STRUCT{
+            desc = "Slater 1"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          height_scale = STRUCT{
+            scale = 1.01
+            }
+          weight_scale = STRUCT{
+            scale = 1.13
+            }
+          }
+
+#01346  appearance_ollie =
+#01347
+        STRUCT{
+          body_type = STRUCT{
+            value = ollie
+            }
+          boardup = STRUCT{
+            desc = "Broken"
+            }
+          boarddown = STRUCT{
+            desc = "Skate For Food"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          special_item = STRUCT{
+            desc = "Bum Sign"
+            }
+          special_item_2 = STRUCT{
+            desc = "None"
+            }
+          height_scale = STRUCT{
+            scale = 0.95
+            }
+          weight_scale = STRUCT{
+            scale = 0.98
+            }
+          }
+
+#01376  appearance_eyeball =
+#01377
+        STRUCT{
+          body_type = STRUCT{
+            value = eyeball
+            }
+          boardup = STRUCT{
+            desc = "Eyeball"
+            }
+          boarddown = STRUCT{
+            desc = "EyeBall 1"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          height_scale = STRUCT{
+            scale = 0.9
+            }
+          weight_scale = STRUCT{
+            scale = 1.09
+            }
+          }
+
+#01400  appearance_doomguy =
+#01401
+        STRUCT{
+          body_type = STRUCT{
+            value = doomguy
+            }
+          boardup = STRUCT{
+            desc = "DOOM Grip"
+            }
+          boarddown = STRUCT{
+            desc = "Cyberdemon"
+            h = 0
+            s = 50
+            v = 100
+            use_default_hsv = 1
+            }
+          height_scale = STRUCT{
+            scale = 0.95
+            }
+          weight_scale = STRUCT{
+            scale = 1.09
+            }
+          }
+
+#01424  FUNCTION init_pro_skaters
+#01425    ForEachIn master_skater_list do = add_skater_profile
+
+#01427  END FUNCTION
+
+#01429  FUNCTION add_skater_profile
+#01430    AddSkaterProfile NULL
+#01431  END FUNCTION
+
+#01433  master_skater_list = ARRAY(
+
+          STRUCT{
+            display_name = "Tony Hawk"
+            profile = appearance_tony_hawk
+            name = hawk
+            stance = goofy
+            pushstyle = never_mongo
+            trickstyle = vert
+            is_pro = 1
+            is_head_locked = 1
+            is_locked = 1
+            age = 33
+            hometown = "Carlsbad, CA"
+            points_available = 0
+            air = 10
+            hangtime = 10
+            ollie = 10
+            speed = 10
+            spin = 10
+            switch = 10
+            rail_balance = 10
+            lip_balance = 10
+            manual_balance = 10
+            sponsors = ARRAY(
+
+              birdhouse hawkshoes quicksilver hawkapp tony
+            )
+            trick_mapping = STRUCT{
+              }
+            default_trick_mapping = HawkTricks
+            max_specials = 4
+            specials = STRUCT{
+              ARRAY(
+                STRUCT{
+                  trickslot = SpGrind_L_R_Triangle
+                  trickname = Trick_NoseSlideLipSlide
+                  }
+                STRUCT{
+                  trickslot = SpAir_U_D_Circle
+                  trickname = Trick_FingerFlipAirWalk
+                  }
+                STRUCT{
+                  trickslot = SpGrind_U_D_Triangle
+                  trickname = Trick_Salad
+                  }
+                STRUCT{
+                  trickslot = SpGrind_D_U_Triangle
+                  trickname = Trick_BigHitter
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+
+              )
+              }
+            }
+          STRUCT{
+            display_name = "Steve Caballero"
+            profile = appearance_steve_caballero
+            name = caballero
+            stance = goofy
+            pushstyle = never_mongo
+            trickstyle = vert
+            is_pro = 1
+            is_head_locked = 1
+            is_locked = 1
+            age = 36
+            hometown = "Unknown"
+            points_available = 0
+            air = 10
+            hangtime = 10
+            ollie = 10
+            speed = 10
+            spin = 10
+            switch = 10
+            rail_balance = 10
+            lip_balance = 10
+            manual_balance = 10
+            sponsors = ARRAY(
+
+              brigade reddragon caballero faction steve
+            )
+            trick_mapping = STRUCT{
+              }
+            default_trick_mapping = CaballeroTricks
+            unlock_flag = CHEAT_UNLOCKED_9
+            max_specials = 4
+            specials = STRUCT{
+              ARRAY(
+                STRUCT{
+                  trickslot = SpGrind_D_U_Triangle
+                  trickname = Trick_HangTenNoseGrind
+                  }
+                STRUCT{
+                  trickslot = SpMan_U_D_Triangle
+                  trickname = Trick_Handstand
+                  }
+                STRUCT{
+                  trickslot = SpGrind_U_D_Triangle
+                  trickname = Trick_CrailSlide
+                  }
+                STRUCT{
+                  trickslot = SpMan_L_R_Triangle
+                  trickname = Trick_Truckstand
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+
+              )
+              }
+            }
+          STRUCT{
+            display_name = "Kareem Campbell"
+            profile = appearance_kareem_campbell
+            name = campbell
+            stance = regular
+            pushstyle = never_mongo
+            trickstyle = street
+            is_pro = 1
+            is_head_locked = 1
+            is_locked = 1
+            age = 30
+            hometown = "Unknown"
+            points_available = 0
+            air = 10
+            hangtime = 10
+            ollie = 10
+            speed = 10
+            spin = 10
+            switch = 10
+            rail_balance = 10
+            lip_balance = 10
+            manual_balance = 10
+            sponsors = ARRAY(
+
+              axion citystars alphanumeric kareem
+            )
+            trick_mapping = STRUCT{
+              }
+            default_trick_mapping = CampbellTricks
+            unlock_flag = CHEAT_UNLOCKED_8
+            max_specials = 4
+            specials = STRUCT{
+              ARRAY(
+                STRUCT{
+                  trickslot = SpMan_D_U_Triangle
+                  trickname = Trick_ZZZZManual
+                  }
+                STRUCT{
+                  trickslot = SpMan_L_R_Triangle
+                  trickname = Trick_Handstand
+                  }
+                STRUCT{
+                  trickslot = SpGrind_D_U_Triangle
+                  trickname = Trick_FeebleLayback
+                  }
+                STRUCT{
+                  trickslot = SpAir_D_U_Square
+                  trickname = Trick_540TailWhip
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+
+              )
+              }
+            }
+          STRUCT{
+            display_name = "Rune Glifberg"
+            profile = appearance_rune_glifberg
+            name = glifberg
+            stance = regular
+            pushstyle = never_mongo
+            trickstyle = street
+            is_pro = 1
+            is_head_locked = 1
+            is_locked = 1
+            age = 27
+            hometown = "Copenhagen, Denmark"
+            points_available = 0
+            air = 10
+            hangtime = 10
+            ollie = 10
+            speed = 10
+            spin = 10
+            switch = 10
+            rail_balance = 10
+            lip_balance = 10
+            manual_balance = 10
+            sponsors = ARRAY(
+
+              axion volcom fury rune
+            )
+            trick_mapping = STRUCT{
+              }
+            default_trick_mapping = GlifbergTricks
+            unlock_flag = CHEAT_UNLOCKED_10
+            max_specials = 4
+            specials = STRUCT{
+              ARRAY(
+                STRUCT{
+                  trickslot = SpAir_R_L_Circle
+                  trickname = Trick_2KickMadonnaFlip
+                  }
+                STRUCT{
+                  trickslot = SpGrind_R_L_Triangle
+                  trickname = Trick_Salad
+                  }
+                STRUCT{
+                  trickslot = SpAir_R_L_Square
+                  trickname = Trick_540TailWhip
+                  }
+                STRUCT{
+                  trickslot = SpMan_D_U_Triangle
+                  trickname = Trick_AntiCasper
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+
+              )
+              }
+            }
+          STRUCT{
+            display_name = "Eric Koston"
+            profile = appearance_eric_koston
+            name = koston
+            stance = goofy
+            pushstyle = mongo_when_switch
+            trickstyle = street
+            is_pro = 1
+            is_head_locked = 1
+            is_locked = 1
+            age = 25
+            hometown = "San Bernardino, CA"
+            points_available = 0
+            air = 10
+            hangtime = 10
+            ollie = 10
+            speed = 10
+            spin = 10
+            switch = 10
+            rail_balance = 10
+            lip_balance = 10
+            manual_balance = 10
+            sponsors = ARRAY(
+
+              girl es fourstar eric
+            )
+            trick_mapping = STRUCT{
+              }
+            default_trick_mapping = KostonTricks
+            unlock_flag = LEVEL_UNLOCKED_BURNSIDE
+            max_specials = 4
+            specials = STRUCT{
+              ARRAY(
+                STRUCT{
+                  trickslot = SpLip_U_D_Triangle
+                  trickname = Trick_BSNoseComply
+                  }
+                STRUCT{
+                  trickslot = SpAir_L_R_Circle
+                  trickname = Trick_FS540
+                  }
+                STRUCT{
+                  trickslot = SpAir_U_D_Square
+                  trickname = Trick_1234
+                  }
+                STRUCT{
+                  trickslot = SpAir_D_U_Square
+                  trickname = Trick_KickFlipUnderFlip
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+
+              )
+              }
+            }
+          STRUCT{
+            display_name = "Bucky Lasek"
+            profile = appearance_bucky_lasek
+            name = lasek
+            stance = regular
+            pushstyle = never_mongo
+            trickstyle = vert
+            is_pro = 1
+            is_head_locked = 1
+            is_locked = 1
+            age = 28
+            hometown = "Baltimore, MD"
+            points_available = 0
+            air = 10
+            hangtime = 10
+            ollie = 10
+            speed = 10
+            spin = 10
+            switch = 10
+            rail_balance = 10
+            lip_balance = 10
+            manual_balance = 10
+            sponsors = ARRAY(
+
+              birdhouse genetic billabong bucky
+            )
+            trick_mapping = STRUCT{
+              }
+            default_trick_mapping = LasekTricks
+            unlock_flag = CHEAT_UNLOCKED_2
+            max_specials = 4
+            specials = STRUCT{
+              ARRAY(
+                STRUCT{
+                  trickslot = SpGrind_R_L_Triangle
+                  trickname = Trick_HumanDart
+                  }
+                STRUCT{
+                  trickslot = SpAir_R_L_Square
+                  trickname = Trick_MistyFlip
+                  }
+                STRUCT{
+                  trickslot = SpMan_L_R_Triangle
+                  trickname = Trick_HandStand50Flip
+                  }
+                STRUCT{
+                  trickslot = SpGrind_U_D_Triangle
+                  trickname = Trick_Handstand5050
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+
+              )
+              }
+            }
+          STRUCT{
+            display_name = "Bam Margera"
+            profile = appearance_bam_margera
+            name = margera
+            stance = goofy
+            pushstyle = never_mongo
+            trickstyle = vert
+            is_pro = 1
+            is_head_locked = 1
+            is_locked = 1
+            age = 22
+            hometown = "Philadelphia, PA"
+            points_available = 0
+            air = 10
+            hangtime = 10
+            ollie = 10
+            speed = 10
+            spin = 10
+            switch = 10
+            rail_balance = 10
+            lip_balance = 10
+            manual_balance = 10
+            sponsors = ARRAY(
+
+              element adio volcom cky2k him bam
+            )
+            trick_mapping = STRUCT{
+              }
+            default_trick_mapping = MargeraTricks
+            unlock_flag = LEVEL_UNLOCKED_WAREHOUSE
+            max_specials = 4
+            specials = STRUCT{
+              ARRAY(
+                STRUCT{
+                  trickslot = SpLip_L_R_Triangle
+                  trickname = Trick_OneFootBlunt
+                  }
+                STRUCT{
+                  trickslot = SpAir_R_L_Square
+                  trickname = Trick_2KickMadonnaFlip
+                  }
+                STRUCT{
+                  trickslot = SpGrind_R_L_Triangle
+                  trickname = Trick_Coffin
+                  }
+                STRUCT{
+                  trickslot = SpAir_U_D_Circle
+                  trickname = Trick_KickFlipUnderFlip
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+
+              )
+              }
+            }
+          STRUCT{
+            display_name = "Rodney Mullen"
+            profile = appearance_rodney_mullen
+            name = mullen
+            stance = regular
+            pushstyle = never_mongo
+            trickstyle = vert
+            is_pro = 1
+            is_head_locked = 1
+            is_locked = 1
+            age = 32
+            hometown = "Gainsville, FL"
+            points_available = 0
+            air = 10
+            hangtime = 10
+            ollie = 10
+            speed = 10
+            spin = 10
+            switch = 10
+            rail_balance = 10
+            lip_balance = 10
+            manual_balance = 10
+            sponsors = ARRAY(
+
+              enjoi globe tensor matix rodney
+            )
+            trick_mapping = STRUCT{
+              }
+            default_trick_mapping = MullenTricks
+            unlock_flag = CHEAT_UNLOCKED_7
+            max_specials = 4
+            specials = STRUCT{
+              ARRAY(
+                STRUCT{
+                  trickslot = SpAir_U_D_Square
+                  trickname = Trick_360Hardflip
+                  }
+                STRUCT{
+                  trickslot = SpAir_R_L_Square
+                  trickname = Trick_1234
+                  }
+                STRUCT{
+                  trickslot = SpAir_L_R_Square
+                  trickname = Trick_The900
+                  }
+                STRUCT{
+                  trickslot = SpGrind_D_U_Triangle
+                  trickname = Trick_Fandangle
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+
+              )
+              }
+            }
+          STRUCT{
+            display_name = "Chad Muska"
+            profile = appearance_chad_muska
+            name = muska
+            stance = regular
+            pushstyle = never_mongo
+            trickstyle = vert
+            is_pro = 1
+            is_head_locked = 1
+            is_locked = 1
+            age = 24
+            hometown = "Loraine, OH"
+            points_available = 0
+            air = 10
+            hangtime = 10
+            ollie = 10
+            speed = 10
+            spin = 10
+            switch = 10
+            rail_balance = 10
+            lip_balance = 10
+            manual_balance = 10
+            sponsors = ARRAY(
+
+              shortys circa ghetto chad
+            )
+            trick_mapping = STRUCT{
+              }
+            default_trick_mapping = MuskaTricks
+            unlock_flag = CHEAT_UNLOCKED_6
+            max_specials = 4
+            specials = STRUCT{
+              ARRAY(
+                STRUCT{
+                  trickslot = SpAir_U_D_Square
+                  trickname = Trick_SackTap
+                  }
+                STRUCT{
+                  trickslot = SpAir_R_L_Circle
+                  trickname = Trick_540TailWhip
+                  }
+                STRUCT{
+                  trickslot = SpAir_D_U_Circle
+                  trickname = Trick_DoubleKFindy
+                  }
+                STRUCT{
+                  trickslot = SpAir_U_D_Circle
+                  trickname = Trick_KickFlipOneFootTail
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+
+              )
+              }
+            no_edit }
+          STRUCT{
+            display_name = "Andrew Reynolds"
+            profile = appearance_andrew_reynolds
+            name = reynolds
+            stance = regular
+            pushstyle = never_mongo
+            trickstyle = vert
+            is_pro = 1
+            is_head_locked = 1
+            is_locked = 1
+            age = 25
+            hometown = "Lakeland, FL"
+            points_available = 0
+            air = 10
+            hangtime = 10
+            ollie = 10
+            speed = 10
+            spin = 10
+            switch = 10
+            rail_balance = 10
+            lip_balance = 10
+            manual_balance = 10
+            sponsors = ARRAY(
+
+              baker emerica active andrew
+            )
+            trick_mapping = STRUCT{
+              }
+            default_trick_mapping = ReynoldsTricks
+            unlock_flag = CHEAT_UNLOCKED_3
+            max_specials = 4
+            specials = STRUCT{
+              ARRAY(
+                STRUCT{
+                  trickslot = SpAir_L_R_Circle
+                  trickname = Trick_StaleBackFlip
+                  }
+                STRUCT{
+                  trickslot = SpAir_D_U_Circle
+                  trickname = Trick_FingerFlipAirWalk
+                  }
+                STRUCT{
+                  trickslot = SpAir_U_D_Square
+                  trickname = Trick_540TailWhip
+                  }
+                STRUCT{
+                  trickslot = SpMan_R_L_Triangle
+                  trickname = Trick_HandStand50Flip
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+
+              )
+              }
+            }
+          STRUCT{
+            display_name = "Geoff Rowley"
+            profile = appearance_geoff_rowley
+            name = rowley
+            stance = regular
+            pushstyle = never_mongo
+            trickstyle = vert
+            is_pro = 1
+            is_head_locked = 1
+            is_locked = 1
+            age = 25
+            hometown = "Liverpool, England"
+            points_available = 0
+            air = 10
+            hangtime = 10
+            ollie = 10
+            speed = 10
+            spin = 10
+            switch = 10
+            rail_balance = 10
+            lip_balance = 10
+            manual_balance = 10
+            sponsors = ARRAY(
+
+              volcom ricta fury geoff
+            )
+            trick_mapping = STRUCT{
+              }
+            default_trick_mapping = RowleyTricks
+            unlock_flag = LEVEL_UNLOCKED_ROSWELL
+            max_specials = 4
+            specials = STRUCT{
+              ARRAY(
+                STRUCT{
+                  trickslot = SpAir_U_D_Square
+                  trickname = Trick_JudoMadonna
+                  }
+                STRUCT{
+                  trickslot = SpAir_R_L_Square
+                  trickname = Trick_GhettoBird
+                  }
+                STRUCT{
+                  trickslot = SpMan_U_D_Triangle
+                  trickname = Trick_Truckstand
+                  }
+                STRUCT{
+                  trickslot = SpGrind_R_L_Triangle
+                  trickname = Trick_CrailSlide
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+
+              )
+              }
+            }
+          STRUCT{
+            display_name = "Elissa Steamer"
+            profile = appearance_elissa_steamer
+            name = steamer
+            stance = regular
+            pushstyle = never_mongo
+            trickstyle = street
+            is_pro = 1
+            is_head_locked = 1
+            is_locked = 1
+            age = -1
+            hometown = "Fort Myers, FL"
+            points_available = 0
+            air = 10
+            hangtime = 10
+            ollie = 10
+            speed = 10
+            spin = 10
+            switch = 10
+            rail_balance = 10
+            lip_balance = 10
+            manual_balance = 10
+            sponsors = ARRAY(
+
+              etnies tsa elissa
+            )
+            trick_mapping = STRUCT{
+              }
+            default_trick_mapping = SteamerTricks
+            unlock_flag = CHEAT_UNLOCKED_4
+            max_specials = 4
+            specials = STRUCT{
+              ARRAY(
+                STRUCT{
+                  trickslot = SpAir_D_U_Circle
+                  trickname = Trick_StaleBackFlip
+                  }
+                STRUCT{
+                  trickslot = SpMan_U_D_Triangle
+                  trickname = Trick_ReemoSlide
+                  }
+                STRUCT{
+                  trickslot = SpAir_D_U_Square
+                  trickname = Trick_NollieFlipUnderflip
+                  }
+                STRUCT{
+                  trickslot = SpMan_R_L_Triangle
+                  trickname = Trick_PrimoSlide
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+
+              )
+              }
+            }
+          STRUCT{
+            display_name = "Jamie Thomas"
+            profile = appearance_jamie_thomas
+            name = thomas
+            stance = regular
+            pushstyle = never_mongo
+            trickstyle = street
+            is_pro = 1
+            is_head_locked = 1
+            is_locked = 1
+            age = 26
+            hometown = "Dotham, AL"
+            points_available = 0
+            air = 10
+            hangtime = 10
+            ollie = 10
+            speed = 10
+            spin = 10
+            switch = 10
+            rail_balance = 10
+            lip_balance = 10
+            manual_balance = 10
+            sponsors = ARRAY(
+
+              zero innes circa jamie
+            )
+            trick_mapping = STRUCT{
+              }
+            default_trick_mapping = ThomasTricks
+            unlock_flag = CHEAT_UNLOCKED_1
+            max_specials = 4
+            specials = STRUCT{
+              ARRAY(
+                STRUCT{
+                  trickslot = SpGrind_L_R_Triangle
+                  trickname = Trick_CrailSlide
+                  }
+                STRUCT{
+                  trickslot = SpAir_U_D_Square
+                  trickname = Trick_BetweenLegsSlam
+                  }
+                STRUCT{
+                  trickslot = SpMan_D_U_Triangle
+                  trickname = Trick_Handstand
+                  }
+                STRUCT{
+                  trickslot = SpGrind_R_L_Triangle
+                  trickname = Trick_TailblockSlide
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+
+              )
+              }
+            }
+          STRUCT{
+            display_name = "Darth Maul"
+            profile = appearance_darth_maul
+            name = maul
+            stance = regular
+            pushstyle = never_mongo
+            trickstyle = street
+            is_pro = 1
+            is_head_locked = 1
+            is_locked = 1
+            is_secret age = -1
+            hometown = "Iridonia"
+            points_available = 0
+            air = 10
+            hangtime = 10
+            ollie = 10
+            speed = 10
+            spin = 10
+            switch = 10
+            rail_balance = 10
+            lip_balance = 10
+            manual_balance = 10
+            sponsors = ARRAY(
+
+
+            )
+            trick_mapping = STRUCT{
+              }
+            default_trick_mapping = DarthMaulTricks
+            unlock_flag = SKATER_UNLOCKED_MAUL
+            max_specials = 4
+            no_edit specials = STRUCT{
+              ARRAY(
+                STRUCT{
+                  trickslot = SpAir_L_R_Square
+                  trickname = Trick_Jackass
+                  }
+                STRUCT{
+                  trickslot = SpLip_D_U_Triangle
+                  trickname = Trick_BSNoseComply
+                  }
+                STRUCT{
+                  trickslot = SpMan_U_D_Triangle
+                  trickname = Trick_HandStand50Flip
+                  }
+                STRUCT{
+                  trickslot = SpGrind_L_R_Triangle
+                  trickname = Trick_RowleyDarkSlide
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+
+              )
+              }
+            }
+          STRUCT{
+            display_name = "Wolverine"
+            profile = appearance_wolverine
+            name = wolverine
+            stance = regular
+            pushstyle = mongo_when_switch
+            trickstyle = street
+            is_pro = 1
+            is_head_locked = 1
+            is_locked = 1
+            is_secret age = -1
+            hometown = "Canada"
+            points_available = 0
+            air = 10
+            hangtime = 10
+            ollie = 10
+            speed = 10
+            spin = 10
+            switch = 10
+            rail_balance = 10
+            lip_balance = 10
+            manual_balance = 10
+            sponsors = ARRAY(
+
+
+            )
+            trick_mapping = STRUCT{
+              }
+            default_trick_mapping = WolverineTricks
+            unlock_flag = SKATER_UNLOCKED_WOLVERINE
+            max_specials = 4
+            specials = STRUCT{
+              ARRAY(
+                STRUCT{
+                  trickslot = SpGrind_D_U_Triangle
+                  trickname = Trick_FeebleLayback
+                  }
+                STRUCT{
+                  trickslot = SpLip_L_R_Triangle
+                  trickname = Trick_HTeethSweeper
+                  }
+                STRUCT{
+                  trickslot = SpAir_R_L_Circle
+                  trickname = Trick_FS540
+                  }
+                STRUCT{
+                  trickslot = SpMan_D_U_Triangle
+                  trickname = Trick_AntiCasper
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+
+              )
+              }
+            }
+          STRUCT{
+            display_name = "Officer Dick"
+            profile = appearance_officer_dick
+            name = dick
+            stance = goofy
+            pushstyle = always_mongo
+            trickstyle = street
+            is_pro = 1
+            is_head_locked = 1
+            is_locked = 1
+            is_secret age = -1
+            hometown = "Unknown"
+            points_available = 0
+            air = 10
+            hangtime = 10
+            ollie = 10
+            speed = 10
+            spin = 10
+            switch = 10
+            rail_balance = 10
+            lip_balance = 10
+            manual_balance = 10
+            sponsors = ARRAY(
+
+
+            )
+            trick_mapping = STRUCT{
+              }
+            default_trick_mapping = DickTricks
+            unlock_flag = SKATER_UNLOCKED_DICK
+            max_specials = 4
+            no_edit specials = STRUCT{
+              ARRAY(
+                STRUCT{
+                  trickslot = SpGrind_R_L_Triangle
+                  trickname = Trick_CrailSlide
+                  }
+                STRUCT{
+                  trickslot = SpAir_R_L_Square
+                  trickname = Trick_FS540
+                  }
+                STRUCT{
+                  trickslot = SpGrind_U_D_Triangle
+                  trickname = Trick_HangTenNoseGrind
+                  }
+                STRUCT{
+                  trickslot = SpAir_L_R_Square
+                  trickname = Trick_KickFlipUnderFlip
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+
+              )
+              }
+            }
+          STRUCT{
+            display_name = "Private Carrera"
+            profile = appearance_private_carrera
+            name = carrera
+            stance = regular
+            pushstyle = never_mongo
+            trickstyle = vert
+            is_pro = 1
+            is_head_locked = 1
+            is_locked = 1
+            is_secret age = 21
+            hometown = "Roswell, NM"
+            points_available = 0
+            air = 10
+            hangtime = 10
+            ollie = 10
+            speed = 10
+            spin = 10
+            switch = 10
+            rail_balance = 10
+            lip_balance = 10
+            manual_balance = 10
+            sponsors = ARRAY(
+
+
+            )
+            trick_mapping = STRUCT{
+              }
+            default_trick_mapping = CarreraTricks
+            unlock_flag = SKATER_UNLOCKED_CARRERA
+            max_specials = 4
+            specials = STRUCT{
+              ARRAY(
+                STRUCT{
+                  trickslot = SpAir_D_U_Circle
+                  trickname = Trick_KickFlipUnderFlip
+                  }
+                STRUCT{
+                  trickslot = SpGrind_D_U_Triangle
+                  trickname = Trick_Hurricane
+                  }
+                STRUCT{
+                  trickslot = SpAir_L_R_Square
+                  trickname = Trick_360Hardflip
+                  }
+                STRUCT{
+                  trickslot = SpAir_L_R_Circle
+                  trickname = Trick_KFSuperman
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+
+              )
+              }
+            }
+          STRUCT{
+            display_name = "Ollie the Magic Bum"
+            profile = appearance_ollie
+            name = ollie
+            stance = regular
+            pushstyle = always_mongo
+            trickstyle = vert
+            is_pro = 1
+            is_head_locked = 1
+            is_locked = 1
+            is_secret age = -1
+            hometown = "Venice, CA"
+            points_available = 0
+            air = 10
+            hangtime = 10
+            ollie = 10
+            speed = 10
+            spin = 10
+            switch = 10
+            rail_balance = 10
+            lip_balance = 10
+            manual_balance = 10
+            sponsors = ARRAY(
+
+
+            )
+            trick_mapping = STRUCT{
+              }
+            default_trick_mapping = BumTricks
+            unlock_flag = SKATER_UNLOCKED_BUM
+            max_specials = 4
+            specials = STRUCT{
+              ARRAY(
+                STRUCT{
+                  trickslot = SpAir_U_D_Circle
+                  trickname = Trick_1234
+                  }
+                STRUCT{
+                  trickslot = SpGrind_D_U_Triangle
+                  trickname = Trick_Handstand5050
+                  }
+                STRUCT{
+                  trickslot = SpAir_D_U_Square
+                  trickname = Trick_KickFlipUnderFlip
+                  }
+                STRUCT{
+                  trickslot = SpAir_L_R_Circle
+                  trickname = Trick_360Hardflip
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+
+              )
+              }
+            no_edit }
+          STRUCT{
+            display_name = "Kelly Slater"
+            profile = appearance_kelly_slater
+            name = slater
+            stance = regular
+            pushstyle = never_mongo
+            trickstyle = vert
+            is_pro = 1
+            is_head_locked = 1
+            is_locked = 1
+            is_secret age = -1
+            hometown = "Dunno"
+            points_available = 0
+            air = 10
+            hangtime = 10
+            ollie = 10
+            speed = 10
+            spin = 10
+            switch = 10
+            rail_balance = 10
+            lip_balance = 10
+            manual_balance = 10
+            sponsors = ARRAY(
+
+
+            )
+            trick_mapping = STRUCT{
+              }
+            default_trick_mapping = SlaterTricks
+            unlock_flag = SKATER_UNLOCKED_SLATER
+            max_specials = 4
+            no_edit specials = STRUCT{
+              ARRAY(
+                STRUCT{
+                  trickslot = SpAir_D_U_Square
+                  trickname = Trick_StaleFrontFlip
+                  }
+                STRUCT{
+                  trickslot = SpLip_R_L_Triangle
+                  trickname = Trick_BigSpinFliptoTail
+                  }
+                STRUCT{
+                  trickslot = SpAir_U_D_Square
+                  trickname = Trick_FS540
+                  }
+                STRUCT{
+                  trickslot = SpAir_L_R_Circle
+                  trickname = Trick_DoubleKFindy
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+
+              )
+              }
+            }
+          STRUCT{
+            display_name = "Demoness"
+            profile = appearance_demoness
+            name = demoness
+            stance = regular
+            pushstyle = mongo_when_switch
+            trickstyle = street
+            is_pro = 1
+            is_head_locked = 1
+            is_locked = 1
+            is_secret age = 666
+            hometown = "Hades"
+            points_available = 0
+            air = 10
+            hangtime = 10
+            ollie = 10
+            speed = 10
+            spin = 10
+            switch = 10
+            rail_balance = 10
+            lip_balance = 10
+            manual_balance = 10
+            sponsors = ARRAY(
+
+
+            )
+            trick_mapping = STRUCT{
+              }
+            default_trick_mapping = DemonessTricks
+            unlock_flag = SKATER_UNLOCKED_DEMONESS
+            max_specials = 4
+            specials = STRUCT{
+              ARRAY(
+                STRUCT{
+                  trickslot = SpAir_D_U_Square
+                  trickname = Trick_The900
+                  }
+                STRUCT{
+                  trickslot = SpAir_R_L_Circle
+                  trickname = Trick_StaleFrontFlip
+                  }
+                STRUCT{
+                  trickslot = SpGrind_D_U_Triangle
+                  trickname = Trick_BigHitter
+                  }
+                STRUCT{
+                  trickslot = SpMan_L_R_Triangle
+                  trickname = Trick_Casper
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+
+              )
+              }
+            }
+          STRUCT{
+            display_name = "Neversoft Eyeball"
+            profile = appearance_eyeball
+            name = eyeball
+            stance = regular
+            pushstyle = always_mongo
+            trickstyle = street
+            is_pro = 1
+            is_head_locked = 1
+            is_locked = 1
+            is_secret age = -1
+            hometown = "Woodland Hills, CA"
+            points_available = 36
+            air = 10
+            hangtime = 10
+            ollie = 10
+            speed = 10
+            spin = 10
+            switch = 10
+            rail_balance = 10
+            lip_balance = 10
+            manual_balance = 10
+            sponsors = ARRAY(
+
+
+            )
+            trick_mapping = STRUCT{
+              }
+            default_trick_mapping = EyeballTricks
+            unlock_flag = SKATER_UNLOCKED_EYEBALL
+            max_specials = 4
+            no_edit specials = STRUCT{
+              ARRAY(
+                STRUCT{
+                  trickslot = SpGrind_L_R_Triangle
+                  trickname = Trick_TailblockSlide
+                  }
+                STRUCT{
+                  trickslot = SpGrind_U_D_Triangle
+                  trickname = Trick_Fandangle
+                  }
+                STRUCT{
+                  trickslot = SpAir_R_L_Square
+                  trickname = Trick_FS540HeelFlip
+                  }
+                STRUCT{
+                  trickslot = SpLip_D_U_Triangle
+                  trickname = Trick_BigSpinFliptoTail
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+
+              )
+              }
+            }
+          STRUCT{
+            display_name = "DOOM Guy"
+            profile = appearance_doomguy
+            name = doomguy
+            stance = regular
+            pushstyle = always_mongo
+            trickstyle = vert
+            is_pro = 1
+            is_head_locked = 1
+            is_locked = 1
+            is_secret age = 10
+            hometown = "Mesquite, TX"
+            points_available = 0
+            air = 10
+            hangtime = 10
+            ollie = 10
+            speed = 10
+            spin = 10
+            switch = 10
+            rail_balance = 10
+            lip_balance = 10
+            manual_balance = 10
+            sponsors = ARRAY(
+
+
+            )
+            trick_mapping = STRUCT{
+              }
+            default_trick_mapping = DOOMGuyTricks
+            unlock_flag = SKATER_UNLOCKED_DOOMGUY
+            max_specials = 4
+            no_edit specials = STRUCT{
+              ARRAY(
+                STRUCT{
+                  trickslot = SpLip_D_U_Triangle
+                  trickname = Trick_BSNoseComply
+                  }
+                STRUCT{
+                  trickslot = SpAir_D_U_Square
+                  trickname = Trick_StaleFrontFlip
+                  }
+                STRUCT{
+                  trickslot = SpGrind_R_L_Triangle
+                  trickname = Trick_TailblockSlide
+                  }
+                STRUCT{
+                  trickslot = SpGrind_L_R_Triangle
+                  trickname = Trick_GrindOverturn
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+
+              )
+              }
+            }
+          STRUCT{
+            display_name = "Custom Skater"
+            file_name = "Unimplemented"
+            profile = appearance_custom_skater_male
+            name = custom
+            stance = regular
+            pushstyle = never_mongo
+            trickstyle = vert
+            is_pro = 0
+            is_head_locked = 0
+            is_locked = 0
+            age = 16
+            hometown = "Los Angeles, CA"
+            points_available = 0
+            air = 10
+            hangtime = 10
+            ollie = 10
+            speed = 10
+            spin = 10
+            switch = 10
+            rail_balance = 10
+            lip_balance = 10
+            manual_balance = 10
+            sponsors = ARRAY(
+
+
+            )
+            trick_mapping = STRUCT{
+              }
+            default_trick_mapping = CustomTricks
+            unlock_flag = CHEAT_UNLOCKED_5
+            max_specials = 4
+            specials = STRUCT{
+              ARRAY(
+                STRUCT{
+                  trickslot = SpAir_L_R_Square
+                  trickname = Trick_540Flip
+                  }
+                STRUCT{
+                  trickslot = SpAir_R_L_Circle
+                  trickname = Trick_Gazelle
+                  }
+                STRUCT{
+                  trickslot = SpAir_L_R_Circle
+                  trickname = Trick_LaserFlip
+                  }
+                STRUCT{
+                  trickslot = SpAir_U_D_Square
+                  trickname = Trick_1234
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+                STRUCT{
+                  trickslot = Unassigned
+                  trickname = Unassigned
+                  }
+
+              )
+              }
+            }
+
+        )
+
+#03209
