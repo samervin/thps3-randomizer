@@ -723,7 +723,7 @@ def junk_suburbia(alf):
 def unlock_trick_scores(airtricks, levels):
     # Trick types will score only 1 unless you have unlocked the corresponding level
     # TODO: Add additional trick types and unlock flags
-    unlock_trick_scores = True
+    unlock_trick_scores = False
     if unlock_trick_scores:
         airtricks = airtricks.replace("{{rando_airtricks_fliptrick_score}}", f"LEVEL_UNLOCKED_{levels[1].name_flag}")
         airtricks = airtricks.replace("{{rando_airtricks_grabtrick_score}}", f"LEVEL_UNLOCKED_{levels[2].name_flag}")
