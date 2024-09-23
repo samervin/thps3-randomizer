@@ -63,9 +63,9 @@ class Level2:
             vector = vectors.pop()
             # Random offsets for level collectables
             # TODO: Test whether this range works for all locations
-            random_x = random.randrange(-100, 100)
-            random_y = random.randrange(-100, 100)
-            random_z = random.randrange(-100, 100)
+            random_x = random.randrange(-50, 50)
+            random_y = random.randrange(-50, 50)
+            random_z = random.randrange(-50, 50)
             vector_value = f"VECTOR[{vector[0] + random_x:f}; {vector[1] + random_y:f}; {vector[2] + random_z:f}]"
             data = data.replace(vector_name, vector_value)
         return data

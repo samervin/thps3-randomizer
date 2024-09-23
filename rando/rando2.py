@@ -85,7 +85,8 @@ def get_random_level_order(end_on_comp=False):
             LevelTokyo(),
             LevelCruiseShip(),
         ]
-        return _shuffle(levels)
+        # return _shuffle(levels)
+        return levels
 
 def randomize_level_requirements(levels, mainmenu, goal_scripts):
     # randomize level order and unlock conditions
@@ -719,6 +720,71 @@ def junk_suburbia(alf):
     alf = alf.replace("{{rando_alf_thinman_hearts_skater}}", "hawk")
     return alf
 
+def randomize_foundry_trickspot_gaps(cjr):
+    # TODO: This doesn't really belong here longterm
+    # TODO: This can't yet randomize the gaps in foun.qb
+    # CJR_Foun_PipeTrickGap
+    # CJR_Foun_RailTrickGap
+    # NullScript
+    foundry_gaps = [
+        ("rando_cjr_gap01_gapscript", "Back End Rail 2 Rail"),
+        ("rando_cjr_gap02_gapscript", "Bucket o' Hot Sauce"),
+        ("rando_cjr_gap03_gapscript", "Catwalk Balancing Act"),
+        ("rando_cjr_gap04_gapscript", "Catwalk Grind"),
+        # ("rando_cjr_gap05_gapscript", "Catwalk Tight Lip"), # vanilla: CJR_Foun_Create_Porch_Talker
+        ("rando_cjr_gap06_gapscript", "CG's SKDK 2 STFK"),
+        ("rando_cjr_gap07_gapscript", "Circus Act Around The Bend!"),
+        ("rando_cjr_gap08_gapscript", "Control Booth Transfer"),
+        ("rando_cjr_gap09_gapscript", "Deep Fried Transfer"),
+        ("rando_cjr_gap10_gapscript", "Don't Look Down!"),
+        ("rando_cjr_gap11_gapscript", "Edge O' the Tub Extension"),
+        ("rando_cjr_gap12_gapscript", "From Way Down Town!"),
+        ("rando_cjr_gap13_gapscript", "Furnace Row Extension"),
+        ("rando_cjr_gap14_gapscript", "Furnace Topper Rail"),
+        ("rando_cjr_gap15_gapscript", "Furnace Walk Rail 2 Rail!"),
+        # ("rando_cjr_gap16_gapscript", "Furnace Walk"), # vanilla: foun.qb
+        ("rando_cjr_gap17_gapscript", "Generator Hop"),
+        ("rando_cjr_gap18_gapscript", "Generator Transfer"),
+        ("rando_cjr_gap19_gapscript", "Hardway over the Hot Tub"),
+        ("rando_cjr_gap20_gapscript", "High Voltage Walkway Lip"),
+        ("rando_cjr_gap21_gapscript", "Hot Tub Jump"),
+        ("rando_cjr_gap22_gapscript", "Just Passing Through"),
+        ("rando_cjr_gap23_gapscript", "Lil' Rail Hop"),
+        ("rando_cjr_gap24_gapscript", "Low Current Walkway Lip"),
+        ("rando_cjr_gap25_gapscript", "Nausea Grind!!!"),
+        ("rando_cjr_gap26_gapscript", "Nice View Up Here!"),
+        # ("rando_cjr_gap27_gapscript", "Over the Pipe!"), # vanilla: foun.qb
+        ("rando_cjr_gap28_gapscript", "Poolside Over Under Gap"),
+        ("rando_cjr_gap29_gapscript", "Porch Rail Tap"),
+        ("rando_cjr_gap30_gapscript", "Press Booth Rail 2 Rail"),
+        # ("rando_cjr_gap31_gapscript", "Press Box Kink"), # vanilla: foun.qb
+        ("rando_cjr_gap32_gapscript", "Press Walk Rail 2 Rail!"),
+        ("rando_cjr_gap33_gapscript", "Rail Hop"),
+        ("rando_cjr_gap34_gapscript", "Railin' on Furnace Row"),
+        ("rando_cjr_gap35_gapscript", "Roll In Hop"),
+        ("rando_cjr_gap36_gapscript", "Roll In Transfer"),
+        # ("rando_cjr_gap37_gapscript", "Round the Bend!!!"), # vanilla: foun.qb
+        ("rando_cjr_gap38_gapscript", "Split the Wickets!"),
+        ("rando_cjr_gap39_gapscript", "Stair Steppin'"),
+        ("rando_cjr_gap40_gapscript", "Stomp the Presses!"),
+        # ("rando_cjr_gap41_gapscript", "TC's Rail"), # vanilla: foun.qb
+        ("rando_cjr_gap42_gapscript", "Tub Rail Tap"),
+        # ("rando_cjr_gap43_gapscript", "Up And Over!!!"), # vanilla: foun.qb
+        ("rando_cjr_gap44_gapscript", "Walkin' A Thin Line!"),
+    ]
+    foundry_gaps = _shuffle(foundry_gaps)
+    vert_gap = foundry_gaps.pop()
+    street_gap = foundry_gaps.pop()
+    print(vert_gap[1])
+    print(street_gap[1])
+    cjr = cjr.replace("{{" + vert_gap[0] + "}}", "CJR_Foun_PipeTrickGap")
+    cjr = cjr.replace("{{" + street_gap[0] + "}}", "CJR_Foun_RailTrickGap")
+    cjr = cjr.replace("{{rando_cjr_trickspot_vert_gap}}", vert_gap[1])
+    cjr = cjr.replace("{{rando_cjr_trickspot_street_gap}}", street_gap[1])
+    for foundry_gap in foundry_gaps:
+        cjr = cjr.replace("{{" + foundry_gap[0] + "}}", "NullScript")
+    return cjr
+
 
 def unlock_trick_scores(airtricks, levels):
     # Trick types will score only 1 unless you have unlocked the corresponding level
@@ -785,6 +851,7 @@ if __name__ == "__main__":
     skater_profile = lock_characters(skater_profile)
 
     alf = junk_suburbia(alf)
+    cjr = randomize_foundry_trickspot_gaps(cjr)
 
     # write modified QBs
     write_script_file('airtricks', airtricks)

@@ -1273,8 +1273,8 @@
           Goal_SickScore_Text = "Get a SICK SCORE | 100,000 Points"
           Goal_Skate_Text = "Collect S-K-A-T-E"
           Goal_Tape_Text = "Get the Secret Tape"
-          Goal_TrickSpotStreet_Text = "{{rando_cjr_trickspot_street_text}} | TC's Rail"
-          Goal_TrickSpotVert_Text = "{{rando_cjr_trickspot_vert_text}}  | Over the Half Pipe"
+          Goal_TrickSpotStreet_Text = "{{rando_cjr_trickspot_street_text}}|{{rando_cjr_trickspot_street_gap}}"
+          Goal_TrickSpotVert_Text = "{{rando_cjr_trickspot_vert_text}}|{{rando_cjr_trickspot_vert_gap}}"
           Goal_Scripted1_Text = "Grind the | Molten Bucket"
           Goal_Scripted2_Text = "Un-Jam 5 Valves"
           Goal_Scripted3_Text = "Soak the Foreman"
@@ -4661,6 +4661,7 @@
 #03233    EndGap GapID = GLOBAL.ID1
           Score = 200
           Text = "Stair Steppin'"
+          GapScript = {{rando_cjr_gap39_gapscript}}
 
 #03234  END FUNCTION
 
@@ -4668,6 +4669,7 @@
 #03238    EndGap GapID = PressUp
           Score = 250
           Text = "Stomp the Presses!"
+          GapScript = {{rando_cjr_gap40_gapscript}}
 
 #03239  END FUNCTION
 
@@ -4675,6 +4677,7 @@
 #03243    EndGap GapID = CatWalks
           Score = 250
           Text = "Catwalk Grind"
+          GapScript = {{rando_cjr_gap04_gapscript}}
 
 #03244  END FUNCTION
 
@@ -4682,6 +4685,7 @@
 #03248    EndGap GapID = CatWalks_Lip
           Score = 500
           Text = "Catwalk Balancing Act"
+          GapScript = {{rando_cjr_gap03_gapscript}}
 
 #03249  END FUNCTION
 
@@ -4697,6 +4701,7 @@
 #03258    EndGap GapID = Furnace_Rail
           Score = 500
           Text = "Furnace Topper Rail"
+          GapScript = {{rando_cjr_gap14_gapscript}}
 
 #03259  END FUNCTION
 
@@ -4704,6 +4709,7 @@
 #03263    EndGap GapID = Furnace_Guard
           Score = 250
           Text = "Railin' On Furnace Row"
+          GapScript = {{rando_cjr_gap34_gapscript}}
 
 #03264  END FUNCTION
 
@@ -4711,6 +4717,7 @@
 #03268    EndGap GapID = Furnace_Guard_Lip
           Score = 500
           Text = "Furnace Row Extension"
+          GapScript = {{rando_cjr_gap13_gapscript}}
 
 #03269  END FUNCTION
 
@@ -4718,6 +4725,7 @@
 #03273    EndGap GapID = Quencher_Rails
           Score = 250
           Text = "Tub Rail Tap"
+          GapScript = {{rando_cjr_gap42_gapscript}}
 
 #03274  END FUNCTION
 
@@ -4725,6 +4733,7 @@
 #03278    EndGap GapID = Quencher_Lip
           Score = 250
           Text = "Edge O' the Tub Extension"
+          GapScript = {{rando_cjr_gap11_gapscript}}
 
 #03279  END FUNCTION
 
@@ -4732,6 +4741,7 @@
 #03283    EndGap GapID = Quencher_Air
           Score = 250
           Text = "Just Passing Through"
+          GapScript = {{rando_cjr_gap22_gapscript}}
 
 #03284  END FUNCTION
 
@@ -4739,6 +4749,7 @@
 #03288    EndGap GapID = GLOBAL.ID1
           Score = 500
           Text = "Generator Transfer"
+          GapScript = {{rando_cjr_gap18_gapscript}}
 
 #03289  END FUNCTION
 
@@ -4746,6 +4757,7 @@
 #03293    EndGap GapID = GLOBAL.ID1
           Score = 500
           Text = "Roll In Transfer"
+          GapScript = {{rando_cjr_gap36_gapscript}}
 
 #03294  END FUNCTION
 
@@ -4753,6 +4765,7 @@
 #03298    EndGap GapID = GLOBAL.ID1
           Score = 500
           Text = "Deep Fried Transfer"
+          GapScript = {{rando_cjr_gap09_gapscript}}
 
 #03299  END FUNCTION
 
@@ -4760,6 +4773,7 @@
 #03303    EndGap GapID = GLOBAL.ID1
           Score = 500
           Text = "Control Booth Transfer"
+          GapScript = {{rando_cjr_gap08_gapscript}}
 
 #03304  END FUNCTION
 
@@ -4767,6 +4781,7 @@
 #03308    EndGap GapID = Porch_Rails
           Score = 500
           Text = "Porch Rail Tap"
+          GapScript = {{rando_cjr_gap29_gapscript}}
 
 #03309  END FUNCTION
 
@@ -4774,6 +4789,7 @@
 #03313    EndGap GapID = Porch_Lip
           Score = 750
           Text = "Nice View Up Here!"
+          GapScript = {{rando_cjr_gap26_gapscript}}
 
 #03314  END FUNCTION
 
@@ -4781,6 +4797,7 @@
 #03318    EndGap GapID = Heat_Shield
           Score = 250
           Text = "CG's SKDK 2 STFK"
+          GapScript = {{rando_cjr_gap06_gapscript}}
 
 #03319  END FUNCTION
 
@@ -4788,6 +4805,7 @@
 #03323    EndGap GapID = AC_Ducts
           Score = 500
           Text = "Don't Look Down!"
+          GapScript = {{rando_cjr_gap10_gapscript}}
 
 #03324  END FUNCTION
 
@@ -4795,6 +4813,7 @@
 #03328    EndGap GapID = I_Beam
           Score = 500
           Text = "Walkin' A Thin Line!"
+          GapScript = {{rando_cjr_gap44_gapscript}}
 
 #03329  END FUNCTION
 
@@ -4802,6 +4821,7 @@
 #03333    EndGap GapID = GLOBAL.ID1
           Score = 250
           Text = "Generator Hop"
+          GapScript = {{rando_cjr_gap17_gapscript}}
 
 #03334  END FUNCTION
 
@@ -4809,6 +4829,7 @@
 #03338    EndGap GapID = GLOBAL.ID1
           Score = 150
           Text = "Hot Tub Jump"
+          GapScript = {{rando_cjr_gap21_gapscript}}
 
 #03339  END FUNCTION
 
@@ -4816,6 +4837,7 @@
 #03343    EndGap GapID = GLOBAL.ID1
           Score = 350
           Text = "Hardway Over the Hot Tub"
+          GapScript = {{rando_cjr_gap19_gapscript}}
 
 #03344  END FUNCTION
 
@@ -4823,6 +4845,7 @@
 #03348    EndGap GapID = GLOBAL.ID1
           Score = 100
           Text = "Rail Hop"
+          GapScript = {{rando_cjr_gap33_gapscript}}
 
 #03349  END FUNCTION
 
@@ -4830,6 +4853,7 @@
 #03353    EndGap GapID = GLOBAL.ID1
           Score = 50
           Text = "Lil' Rail Hop"
+          GapScript = {{rando_cjr_gap23_gapscript}}
 
 #03354  END FUNCTION
 
@@ -4837,6 +4861,7 @@
 #03358    EndGap GapID = GLOBAL.ID1
           Score = 100
           Text = "Roll In Hop"
+          GapScript = {{rando_cjr_gap35_gapscript}}
 
 #03359  END FUNCTION
 
@@ -4844,6 +4869,7 @@
 #03363    EndGap GapID = Bucket_Transfer
           Score = 250
           Text = "Bucket o' Hot Sauce!"
+          GapScript = {{rando_cjr_gap02_gapscript}}
 
 #03364  END FUNCTION
 
@@ -4851,6 +4877,7 @@
 #03368    EndGap GapID = GLOBAL.ID1
           Score = 100
           Text = "Back End Rail 2 Rail"
+          GapScript = {{rando_cjr_gap01_gapscript}}
 
 #03369  END FUNCTION
 
@@ -4858,6 +4885,7 @@
 #03373    EndGap GapID = GLOBAL.ID1
           Score = 750
           Text = "Poolside Over Under Gap"
+          GapScript = {{rando_cjr_gap28_gapscript}}
 
 #03374  END FUNCTION
 
@@ -4865,6 +4893,7 @@
 #03378    EndGap GapID = GLOBAL.ID1
           Score = 50
           Text = "Furnace Walk Rail 2 Rail!"
+          GapScript = {{rando_cjr_gap15_gapscript}}
 
 #03379  END FUNCTION
 
@@ -4872,6 +4901,7 @@
 #03383    EndGap GapID = GLOBAL.ID1
           Score = 50
           Text = "Press Walk Rail 2 Rail!"
+          GapScript = {{rando_cjr_gap32_gapscript}}
 
 #03384  END FUNCTION
 
@@ -4879,6 +4909,7 @@
 #03388    EndGap GapID = GLOBAL.ID1
           Score = 150
           Text = "Press Booth Rail 2 Rail"
+          GapScript = {{rando_cjr_gap30_gapscript}}
 
 #03389  END FUNCTION
 
@@ -4886,6 +4917,7 @@
 #03393    EndGap GapID = GLOBAL.ID1
           Score = 500
           Text = "Circus Act Around The Bend!"
+          GapScript = {{rando_cjr_gap07_gapscript}}
 
 #03394  END FUNCTION
 
@@ -4893,6 +4925,7 @@
 #03398    EndGap GapID = Wickets
           Score = 150
           Text = "Split the Wickets!"
+          GapScript = {{rando_cjr_gap38_gapscript}}
 
 #03399  END FUNCTION
 
@@ -4900,6 +4933,7 @@
 #03403    EndGap GapID = Extreme_Nausea
           Score = 1000
           Text = "Nausea Grind!!!"
+          GapScript = {{rando_cjr_gap25_gapscript}}
 
 #03404  END FUNCTION
 
@@ -4907,6 +4941,7 @@
 #03408    EndGap GapID = Walkway_Stomp
           Score = 200
           Text = "From Way Down Town!"
+          GapScript = {{rando_cjr_gap12_gapscript}}
 
 #03409  END FUNCTION
 
@@ -4914,6 +4949,7 @@
 #03413    EndGap GapID = GenLip
           Score = 250
           Text = "Low Current Walkway Lip"
+          GapScript = {{rando_cjr_gap24_gapscript}}
 
 #03414  END FUNCTION
 
@@ -4921,6 +4957,7 @@
 #03418    EndGap GapID = GenLip_Hi
           Score = 750
           Text = "High Voltage Walkway Lip"
+          GapScript = {{rando_cjr_gap20_gapscript}}
 
 #03419  END FUNCTION
 
