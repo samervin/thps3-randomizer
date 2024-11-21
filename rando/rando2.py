@@ -109,7 +109,7 @@ def randomize_level_requirements(levels, mainmenu, goal_scripts):
     for level in levels:
         match level.level_type:
             case "normal":
-                req = random.randint(3, 9)
+                req = random.randint(1, 1)# 9)
                 total_goals = total_goals + req
                 level_reqs.append((total_goals, "Goal"))
             case "comp":
@@ -188,7 +188,7 @@ def randomize_score_goals(levels, goal_scripts, comp_scripts):
     # cruise ship: 150k, 225k, 500k
 
     score_goals = []
-    score_goals.append(random.randint(15, 45))
+    score_goals.append(random.randint(1, 1))#5, 45))
     for i in range(17):
         score_goals.append(score_goals[i] + random.randint(15, 45))
 
@@ -290,7 +290,7 @@ def randomize_item_locations(levels):
 def randomize_stats(skater_profile):
     # this game lets you remap all stats for all characters, so there is not much point to random stats
     # note: these stats only apply to fresh unsaved games
-    stat_presets = ["max", "easy", "default", "hard", "impossible"]
+    stat_presets = ["max"]#, "easy", "default", "hard", "impossible"]
     stat_presets = _shuffle(stat_presets)
 
     match stat_presets[0]:
@@ -679,7 +679,7 @@ def randomize_secrets(goal_scripts):
     return goal_scripts
 
 def lock_characters(skater_profile):
-    lock_pros = True
+    lock_pros = False
     if lock_pros:
         # Lock custom skater and all non-Tony pro skaters behind a non-character global secret flag
         noncharacter_flags = Secrets().secret_flags_levels + Secrets().secret_flags_cheats
@@ -791,9 +791,9 @@ def unlock_trick_scores(airtricks, levels):
     # TODO: Add additional trick types and unlock flags
     unlock_trick_scores = False
     if unlock_trick_scores:
-        airtricks = airtricks.replace("{{rando_airtricks_fliptrick_score}}", f"LEVEL_UNLOCKED_{levels[1].name_flag}")
-        airtricks = airtricks.replace("{{rando_airtricks_grabtrick_score}}", f"LEVEL_UNLOCKED_{levels[2].name_flag}")
-        airtricks = airtricks.replace("{{rando_airtricks_flipgrabblend_score}}", f"LEVEL_UNLOCKED_{levels[2].name_flag}")
+        airtricks = airtricks.replace("{{rando_airtricks_fliptrick_score}}", "CAN_FLIP_TRICK")
+        airtricks = airtricks.replace("{{rando_airtricks_grabtrick_score}}", "CAN_FLIP_TRICK")
+        airtricks = airtricks.replace("{{rando_airtricks_flipgrabblend_score}}", "CAN_FLIP_TRICK")
     else:
         airtricks = airtricks.replace("{{rando_airtricks_fliptrick_score}}", "159")
         airtricks = airtricks.replace("{{rando_airtricks_grabtrick_score}}", "159")
@@ -818,6 +818,7 @@ if __name__ == "__main__":
     judges = read_modified_script_file('judges')
     levelsqb = read_modified_script_file('levels')
     mainmenu = read_modified_script_file('mainmenu')
+    physics = read_modified_script_file('physics')
     protricks = read_modified_script_file('protricks')
     sk3_pedscripts = read_modified_script_file('sk3_pedscripts')
     skater_profile = read_modified_script_file('skater_profile')
@@ -869,6 +870,7 @@ if __name__ == "__main__":
     write_script_file('judges', judges)
     write_script_file('levels', levelsqb)
     write_script_file('mainmenu', mainmenu)
+    write_script_file('physics', physics)
     write_script_file('protricks', protricks)
     write_script_file('sk3_pedscripts', sk3_pedscripts)
     write_script_file('skater_profile', skater_profile)
