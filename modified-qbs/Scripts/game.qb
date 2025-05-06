@@ -186,6 +186,7 @@
 #00000    END IF
 #00000  END FUNCTION
 
+#00000
 #00000  FUNCTION RefreshGameMenu
 #00000    printf "refreshing"
 #00000    helper_select_choose_back_centered
@@ -258,6 +259,12 @@
             link = cheat_menu
 
 #00000    END IF
+
+#00000    AddLine parent = game_menu
+          id = backend_view_gap_list
+          text = "View Gap List"
+          link = gap_menu
+
 #00000    AddLine parent = game_menu
           id = backend_end_run
           text = "End Run"
@@ -326,6 +333,103 @@
           "бе Select"
 #00000    SetMenuElementText id = helper_menu_2
           "м Accept"
+#00000  END FUNCTION
+
+#00000  FUNCTION gap_menu_create
+#00000    createmenu STRUCT{
+            type = verticalmenu
+            Id = gap_menu
+            x = 125.0
+            y = 70.0
+            w = 380.0
+            h = 400.0
+            just_center_x just_center_y blue_top eventhandler = STRUCT{
+              type = showeventhandler
+              target = "gap_menu_refresh"
+              }
+              children = ARRAY(
+              STRUCT{
+                type = textmenuelement
+                auto_id text = "Gap Menu"
+                static dont_gray drawer = title
+              }
+              STRUCT{
+                type = textmenuelement
+                Id = menu_gap_1
+                text = "Foo"
+              }
+              STRUCT{
+                type = textmenuelement
+                Id = menu_gap_2
+                text = "Foo"
+                static
+              }
+              STRUCT{
+                type = textmenuelement
+                Id = menu_gap_3
+                text = "Foo"
+              }
+              STRUCT{
+                type = textmenuelement
+                Id = menu_gap_4
+                text = "Foo"
+              }
+              STRUCT{
+                type = textmenuelement
+                Id = menu_gap_5
+                text = "Foo"
+              }
+              STRUCT{
+                type = textmenuelement
+                Id = menu_gaps_done
+                text = "Done"
+                target = "go_back"
+                Params = STRUCT{
+                  Id = gap_menu
+                }
+              }
+            )
+          }
+#00000    attachchild parent = contain1
+          child = gap_menu
+#00000  END FUNCTION
+
+#00000  FUNCTION gap_menu_refresh
+#00000    IF GetGlobalFlag flag = 115
+#00000      SetMenuElementText Id = menu_gap_1 "Got: Generator Transfer"
+#00000      MakeTextMenuElementStatic menu_gap_1 nonstatic = 1
+#00000    ELSE
+#00000      SetMenuElementText Id = menu_gap_1 "Not Got: Generator Transfer"
+#00000      MakeTextMenuElementStatic menu_gap_1
+#00000    END IF
+#00000    IF GetGlobalFlag flag = 116
+#00000      SetMenuElementText Id = menu_gap_2 "Got: Roll In Transfer"
+#00000      MakeTextMenuElementStatic menu_gap_2 nonstatic = 1
+#00000    ELSE
+#00000      SetMenuElementText Id = menu_gap_2 "Not Got: Roll In Transfer"
+#00000      MakeTextMenuElementStatic menu_gap_2
+#00000    END IF
+#00000    IF GetGlobalFlag flag = 117
+#00000      SetMenuElementText Id = menu_gap_3 "Got: Generator Hop"
+#00000      MakeTextMenuElementStatic menu_gap_3 nonstatic = 1
+#00000    ELSE
+#00000      SetMenuElementText Id = menu_gap_3 "Not Got: Generator Hop"
+#00000      MakeTextMenuElementStatic menu_gap_3
+#00000    END IF
+#00000    IF GetGlobalFlag flag = 118
+#00000      SetMenuElementText Id = menu_gap_4 "Got: Rail Hop"
+#00000      MakeTextMenuElementStatic menu_gap_4 nonstatic = 1
+#00000    ELSE
+#00000      SetMenuElementText Id = menu_gap_4 "Not Got: Rail Hop"
+#00000      MakeTextMenuElementStatic menu_gap_4
+#00000    END IF
+#00000    IF GetGlobalFlag flag = 119
+#00000      SetMenuElementText Id = menu_gap_5 "Got: Roll In Hop"
+#00000      MakeTextMenuElementStatic menu_gap_5 nonstatic = 1
+#00000    ELSE
+#00000      SetMenuElementText Id = menu_gap_5 "Not Got: Roll In Hop"
+#00000      MakeTextMenuElementStatic menu_gap_5
+#00000    END IF
 #00000  END FUNCTION
 
 #00000  FUNCTION Refresh_EndofRunMenu
@@ -1713,6 +1817,7 @@
 #00000    horse_menu_create
 #00000    replay_menu_create
 #00000    cheat_menu_create
+#00000    gap_menu_create
 #00000    replay_from_memcard_menu_create
 #00000    memcard_files_menu_create
 #00000  END FUNCTION

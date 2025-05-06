@@ -4749,17 +4749,33 @@
 #03288    EndGap GapID = GLOBAL.ID1
           Score = 500
           Text = "Generator Transfer"
-          GapScript = {{rando_cjr_gap18_gapscript}}
-
+          GapScript = DoYouHaveThisGap
 #03289  END FUNCTION
+
+#00000  FUNCTION DoYouHaveThisGap
+#00000    IF GetGlobalFlag flag = 115
+#00000      LaunchExtraMessage text = "Old gap"
+#00000    ELSE
+#00000      LaunchExtraMessage text = "New gap!"
+#00000      SetGlobalFlag flag = 115
+#00000    END IF
+#00000  END FUNCTION
 
 #03290  FUNCTION CJR_Foun_EndGap_RollIn_Transfer
 #03293    EndGap GapID = GLOBAL.ID1
           Score = 500
           Text = "Roll In Transfer"
-          GapScript = {{rando_cjr_gap36_gapscript}}
-
+          GapScript = DoYouHaveThisGap2
 #03294  END FUNCTION
+
+#00000  FUNCTION DoYouHaveThisGap2
+#00000    IF GetGlobalFlag flag = 116
+#00000      LaunchExtraMessage text = "Old gap"
+#00000    ELSE
+#00000      LaunchExtraMessage text = "New gap!"
+#00000      SetGlobalFlag flag = 116
+#00000    END IF
+#00000  END FUNCTION
 
 #03295  FUNCTION CJR_Foun_EndGap_Molten_Transfer
 #03298    EndGap GapID = GLOBAL.ID1
@@ -4821,9 +4837,17 @@
 #03333    EndGap GapID = GLOBAL.ID1
           Score = 250
           Text = "Generator Hop"
-          GapScript = {{rando_cjr_gap17_gapscript}}
-
+          GapScript = DoYouHaveThisGap3
 #03334  END FUNCTION
+
+#00000  FUNCTION DoYouHaveThisGap3
+#00000    IF GetGlobalFlag flag = 117
+#00000      LaunchExtraMessage text = "Old gap"
+#00000    ELSE
+#00000      LaunchExtraMessage text = "New gap!"
+#00000      SetGlobalFlag flag = 117
+#00000    END IF
+#00000  END FUNCTION
 
 #03335  FUNCTION CJR_Foun_EndGap_Molten_Hop
 #03338    EndGap GapID = GLOBAL.ID1
@@ -4845,9 +4869,17 @@
 #03348    EndGap GapID = GLOBAL.ID1
           Score = 100
           Text = "Rail Hop"
-          GapScript = {{rando_cjr_gap33_gapscript}}
-
+          GapScript = DoYouHaveThisGap4
 #03349  END FUNCTION
+
+#00000  FUNCTION DoYouHaveThisGap4
+#00000    IF GetGlobalFlag flag = 118
+#00000      LaunchExtraMessage text = "Old gap"
+#00000    ELSE
+#00000      LaunchExtraMessage text = "New gap!"
+#00000      SetGlobalFlag flag = 118
+#00000    END IF
+#00000  END FUNCTION
 
 #03350  FUNCTION CJR_Foun_EndGap_Rail_Hop_Small
 #03353    EndGap GapID = GLOBAL.ID1
@@ -4861,9 +4893,17 @@
 #03358    EndGap GapID = GLOBAL.ID1
           Score = 100
           Text = "Roll In Hop"
-          GapScript = {{rando_cjr_gap35_gapscript}}
-
+          GapScript = DoYouHaveThisGap5
 #03359  END FUNCTION
+
+#00000  FUNCTION DoYouHaveThisGap5
+#00000    IF GetGlobalFlag flag = 119
+#00000      LaunchExtraMessage text = "Old gap"
+#00000    ELSE
+#00000      LaunchExtraMessage text = "New gap!"
+#00000      SetGlobalFlag flag = 119
+#00000    END IF
+#00000  END FUNCTION
 
 #03360  FUNCTION CJR_Foun_EndGap_Bucket_Transfer
 #03363    EndGap GapID = Bucket_Transfer
