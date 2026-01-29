@@ -220,7 +220,9 @@ public class ReadQBFiles {
             "physics.qb",
             "promenu.qb",
             "protricks.qb",
-            // "qdir.txt", // Hey, this might be important
+            // "qdir.txt", // This lists all available script files.
+            // It supports folder structure, so e.g. '../new_folder/mainmenu.qb' works
+            // TODO: use this to avoid overwriting script files, simply redirect via qdir.txt index
             "rebuildlevels.qb",
             "records.qb",
             "red_flg.qb",
