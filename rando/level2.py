@@ -1,5 +1,5 @@
 import random
-import constants
+from rando import constants
 import re
 import os
 
@@ -23,7 +23,7 @@ class Level2:
         return shuffled
 
     def read_modified_level_file(self):
-        with open(f'../modified-qbs/Levels/{self.filepath}.qb', 'r') as f:
+        with open(f'modified-qbs/Levels/{self.filepath}.qb', 'r') as f:
             return f.read()
 
     def memify(self, script):

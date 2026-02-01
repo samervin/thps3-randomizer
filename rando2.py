@@ -4,21 +4,21 @@ import random
 import re
 import os
 
-from constants import *
-from level_foundry import LevelFoundry
-from level_canada import LevelCanada
-from level_rio import LevelRio
-from level_suburbia import LevelSuburbia
-from level_airport import LevelAirport
-from level_skaterisland import LevelSkaterIsland
-from level_losangeles import LevelLosAngeles
-from level_tokyo import LevelTokyo
-from level_cruiseship import LevelCruiseShip
-from tricks import Tricks
-from button_binds import ButtonBinds
-from boards import Boards
-from secrets import Secrets
-from skaters import Skaters
+from rando.constants import *
+from rando.level_foundry import LevelFoundry
+from rando.level_canada import LevelCanada
+from rando.level_rio import LevelRio
+from rando.level_suburbia import LevelSuburbia
+from rando.level_airport import LevelAirport
+from rando.level_skaterisland import LevelSkaterIsland
+from rando.level_losangeles import LevelLosAngeles
+from rando.level_tokyo import LevelTokyo
+from rando.level_cruiseship import LevelCruiseShip
+from rando.tricks import Tricks
+from rando.button_binds import ButtonBinds
+from rando.boards import Boards
+from rando.secrets import Secrets
+from rando.skaters import Skaters
 
 def _shuffle(any_list):
     shuffled = any_list.copy()
@@ -26,11 +26,11 @@ def _shuffle(any_list):
     return shuffled
 
 def read_script_file(filename):
-    with open(f'../vanilla-qbs/Scripts/{filename}.qb', 'r') as f:
+    with open(f'vanilla-qbs/Scripts/{filename}.qb', 'r') as f:
         return f.readlines()
 
 def read_modified_script_file(filename):
-    with open(f'../modified-qbs/Scripts/{filename}.qb', 'r') as f:
+    with open(f'modified-qbs/Scripts/{filename}.qb', 'r') as f:
         return f.read()
 
 def memify(script):
@@ -800,8 +800,8 @@ def unlock_trick_scores(airtricks, levels):
         airtricks = airtricks.replace("{{rando_airtricks_flipgrabblend_score}}", "159")
     return airtricks
 
-
-if __name__ == "__main__":
+def rando():
+    print("hi")
     # read modified QBs
     airtricks = read_modified_script_file('airtricks')
     ajc = read_modified_script_file('ajc_scripts')
@@ -874,3 +874,7 @@ if __name__ == "__main__":
     write_script_file('protricks', protricks)
     write_script_file('sk3_pedscripts', sk3_pedscripts)
     write_script_file('skater_profile', skater_profile)
+
+
+if __name__ == "__main__":
+    rando()
