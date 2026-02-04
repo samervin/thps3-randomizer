@@ -45,7 +45,7 @@ def memify(script):
 
 def write_script_file(filename, contents):
     contents = memify(contents)
-    full_filename = f'../outfiles/Scripts/{filename}.out'
+    full_filename = f'outfiles/Scripts/{filename}.out'
     os.makedirs(os.path.dirname(full_filename), exist_ok=True)
     with open(full_filename, 'w', newline='\n') as fout:
         fout.writelines(contents)
@@ -85,8 +85,7 @@ def get_random_level_order(end_on_comp=False):
             LevelTokyo(),
             LevelCruiseShip(),
         ]
-        # return _shuffle(levels)
-        return levels
+        return _shuffle(levels)
 
 def randomize_level_requirements(levels, mainmenu, goal_scripts):
     # randomize level order and unlock conditions
@@ -801,7 +800,6 @@ def unlock_trick_scores(airtricks, levels):
     return airtricks
 
 def rando():
-    print("hi")
     # read modified QBs
     airtricks = read_modified_script_file('airtricks')
     ajc = read_modified_script_file('ajc_scripts')

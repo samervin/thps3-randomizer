@@ -221,8 +221,10 @@ public class ReadQBFiles {
             "promenu.qb",
             "protricks.qb",
             // "qdir.txt", // This lists all available script files.
-            // It supports folder structure, so e.g. '../new_folder/mainmenu.qb' works
-            // TODO: use this to avoid overwriting script files, simply redirect via qdir.txt index
+            // It supports relative folder structure, so e.g. '../new_folder/mainmenu.qb' works
+            // It does not seem to support absolute folder structure, so 'C:/new_folder/mainmenu.qb' doesn't work
+            // While THPS3.exe checks Data/Scripts/qdir.txt in its current working directory,
+            // the filepaths are relative to the absolute location of THPS3.exe itself, NOT the current working directory
             "rebuildlevels.qb",
             "records.qb",
             "red_flg.qb",

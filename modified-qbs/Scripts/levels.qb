@@ -304,7 +304,7 @@
             far = 92000
 
 #00000    END IF
-#00000    LoadNodeArray "levels\ap\ap.qb"
+#00000    LoadNodeArray "..\rando\Data\levels\ap\ap.qb"
 #00000    LoadTerrain
 #00000    SetRenderModeVU
 #00000    SetBSPAmbientColor STRUCT{
@@ -335,7 +335,7 @@
             Pre_set = "Can"
 
 #00000    END IF
-#00000    LoadNodeArray "levels\Can\Can.qb"
+#00000    LoadNodeArray "..\rando\Data\levels\Can\Can.qb"
 #00000    LoadTerrain
 #00000    SetRenderModeVU
 #00000    SetBSPAmbientColor STRUCT{
@@ -382,7 +382,7 @@
           Sky = ""
           Pre_set = "Foun"
 
-#00000    LoadNodeArray "levels\Foun\Foun.qb"
+#00000    LoadNodeArray "..\rando\Data\levels\Foun\Foun.qb"
 #00000    LoadTerrain
 #00000    SetRenderModeVU
 #00000    IF ClipPlaneEnabled
@@ -455,7 +455,7 @@
 
 #00000      END IF
 #00000    END IF
-#00000    LoadNodeArray "levels\la\la.qb"
+#00000    LoadNodeArray "..\rando\Data\levels\la\la.qb"
 #00000    LoadTerrain
 #00000    SetRenderModeVU
 #00000    SetBSPAmbientColor STRUCT{
@@ -514,7 +514,7 @@
 
 #00000      END IF
 #00000    END IF
-#00000    LoadNodeArray "levels\Rio\Rio.qb"
+#00000    LoadNodeArray "..\rando\Data\levels\Rio\Rio.qb"
 #00000    LoadTerrain
 #00000    SetRenderModeVU
 #00000    SetBSPAmbientColor STRUCT{
@@ -575,7 +575,7 @@
 
 #00000      END IF
 #00000    END IF
-#00000    LoadNodeArray "levels\shp\shp.qb"
+#00000    LoadNodeArray "..\rando\Data\levels\shp\shp.qb"
 #00000    LoadTerrain
 #00000    SetRenderModeVU
 #00000    SetBSPAmbientColor STRUCT{
@@ -636,7 +636,7 @@
 
 #00000      END IF
 #00000    END IF
-#00000    LoadNodeArray "Levels\Si\Si.qb"
+#00000    LoadNodeArray "..\rando\Data\Levels\Si\Si.qb"
 #00000    LoadTerrain
 #00000    SetRenderModeVU
 #00000    SetBSPAmbientColor STRUCT{
@@ -695,7 +695,7 @@
 
 #00000      END IF
 #00000    END IF
-#00000    LoadNodeArray "levels\sub\sub.qb"
+#00000    LoadNodeArray "..\rando\Data\levels\sub\sub.qb"
 #00000    LoadTerrain
 #00000    SetRenderModeVU
 #00000    SetBSPAmbientColor STRUCT{
@@ -768,7 +768,7 @@
 
 #00000      END IF
 #00000    END IF
-#00000    LoadNodeArray "levels\tok\tok.qb"
+#00000    LoadNodeArray "..\rando\Data\levels\tok\tok.qb"
 #00000    LoadTerrain
 #00000    SetRenderModeVU
 #00000    SetBSPAmbientColor STRUCT{
@@ -915,7 +915,7 @@
           Sky = ""
           Pre_set = "Ware"
 
-#00000    LoadNodeArray "levels\ware\ware.qb"
+#00000    LoadNodeArray "..\rando\Data\levels\ware\ware.qb"
 #00000    LoadTerrain
 #00000    Ware_Startup
 #00000    UnloadPreFile "Ware.pre" dont_assert
@@ -966,7 +966,7 @@
 
 #00000      END IF
 #00000    END IF
-#00000    LoadNodeArray "levels\burn\burn.qb"
+#00000    LoadNodeArray "..\rando\Data\levels\burn\burn.qb"
 #00000    SetBSPAmbientColor STRUCT{
             r = 84
             g = 84
@@ -1024,7 +1024,7 @@
 
 #00000      END IF
 #00000    END IF
-#00000    LoadNodeArray "levels\ros\ros.qb"
+#00000    LoadNodeArray "..\rando\Data\levels\ros\ros.qb"
 #00000    SetBSPAmbientColor STRUCT{
             r = 84
             g = 84
@@ -1045,7 +1045,7 @@
           Sky = "Levels\Sk3Ed_Bch_Sky\Sk3Ed_Bch_Sky.bsp"
           Pre_set = "Tut"
 
-#00000    LoadNodeArray "levels\tut\tut.qb"
+#00000    LoadNodeArray "..\rando\Data\levels\tut\tut.qb"
 #00000    IF ClipPlaneEnabled
 #00000      SetupForClipPlane
 #00000    ELSE
@@ -1217,7 +1217,7 @@
           Sky = ""
           Pre_set = "SkateShop"
           KeepTexturesInMemory
-#00000    LoadNodeArray "levels\skateshop\skateshop.qb"
+#00000    LoadNodeArray "..\rando\Data\levels\skateshop\skateshop.qb"
 #00000    LoadTerrain
 #00000    IF ClipPlaneEnabled
 #00000      SetupForClipPlane

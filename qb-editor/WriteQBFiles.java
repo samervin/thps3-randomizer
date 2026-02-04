@@ -11,7 +11,7 @@ public class WriteQBFiles {
 
     private static Map<Integer, String> fields = null;
     private static SymbolListModel mainSymbolListModel = new SymbolListModel();
-    private static Path outfileFolder = Paths.get("../outfiles/");
+    private static Path outfileFolder = Paths.get("outfiles/");
     private static String dataFolder = "";
 
     public static void main(String[] args) throws IOException {
@@ -33,11 +33,15 @@ public class WriteQBFiles {
         // System.out.println("System.console().charset()                = " + System.console().charset());
 
         // In Windows CMD, run "set THPS3_DATA_FOLDER=C:/Your/Folder/" beforehand
-        dataFolder = System.getenv("THPS3_DATA_FOLDER");
+        // dataFolder = System.getenv("THPS3_DATA_FOLDER");
+        dataFolder = "C:/Users/Sam/Documents/THPS3/rando/Data/";
         System.out.println(dataFolder);
 
         // I don't get this new syntax so just make it an array
-        Path[] paths = Files.walk(outfileFolder).filter(Files::isRegularFile).toArray(Path[]::new);
+        Path[] paths = Files.walk(outfileFolder)
+            .filter(Files::isRegularFile)
+            .filter(file -> file.getFileName().toString().endsWith(".out"))
+            .toArray(Path[]::new);
         for (Path path : paths) {
             String data = readWindowsFile(path);
             writeQbFile(data, outfileFolder.relativize(path));

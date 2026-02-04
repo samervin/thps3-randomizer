@@ -38,7 +38,7 @@ class Level2:
 
     def write_level_file(self, contents):
         contents = self.memify(contents)
-        full_filepath = f'../outfiles/Levels/{self.filepath}.out'
+        full_filepath = f'outfiles/Levels/{self.filepath}.out'
         os.makedirs(os.path.dirname(full_filepath), exist_ok=True)
         with open(full_filepath, 'w', newline='\n') as fout:
             fout.writelines(contents)
