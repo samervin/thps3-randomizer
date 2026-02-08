@@ -30,8 +30,8 @@ public class ReadQBFiles {
         // System.out.println("System.getProperty(\"sun.stderr.encoding\") = " + System.getProperty("sun.stderr.encoding"));
         // System.out.println("System.console().charset()                = " + System.console().charset());
 
-        // In Windows CMD, run "set THPS3_DATA_FOLDER=C:/Your/Folder/" beforehand
-        dataFolder = System.getenv("THPS3_DATA_FOLDER");
+        // The dataFolder should be passed as the first argument, e.g. `java WriteQBFiles C:/Your/Folder/Data/`
+        dataFolder = args[0];
         System.out.println(dataFolder);
         String data;
 

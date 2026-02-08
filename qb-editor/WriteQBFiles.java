@@ -32,9 +32,8 @@ public class WriteQBFiles {
         // System.out.println("System.getProperty(\"sun.stderr.encoding\") = " + System.getProperty("sun.stderr.encoding"));
         // System.out.println("System.console().charset()                = " + System.console().charset());
 
-        // In Windows CMD, run "set THPS3_DATA_FOLDER=C:/Your/Folder/" beforehand
-        // dataFolder = System.getenv("THPS3_DATA_FOLDER");
-        dataFolder = "C:/Users/Sam/Documents/THPS3/rando/Data/";
+        // The dataFolder should be passed as the first argument, e.g. `java WriteQBFiles C:/Your/Folder/rando/Data/`
+        dataFolder = args[0];
         System.out.println(dataFolder);
 
         // I don't get this new syntax so just make it an array
