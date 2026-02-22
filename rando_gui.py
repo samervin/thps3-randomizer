@@ -21,7 +21,8 @@ thps3_directory = None
 def click_directory():
     global thps3_directory
     thps3_directory = filedialog.askdirectory(title="Select your THPS3 installation directory")
-    label_directory.config(text=f"Current THPS3 directory: {thps3_directory}")
+    if thps3_directory:
+        label_directory.config(text=f"Current THPS3 directory: {thps3_directory}")
 
 button_directory = tk.Button(
     root,
@@ -58,7 +59,16 @@ label_initialize = tk.Label(
 ###########
 def click_randomize():
     label_randomize.config(text="Randomizing...")
+    # Randomize files
     rando2.rando()
+    # Compile Java
+    subprocess.run("javac -encoding Cp1252 qb-editor/*.java", shell=True)
+    # Run Java
+    thps3_data_dir = str(Path(thps3_directory, "rando/Data"))
+    subprocess.run(f"java -cp qb-editor -Dfile.encoding=COMPAT WriteQBFiles {thps3_data_dir}/", shell=True)
+    thps3_qdir_dir = Path(thps3_directory, "rando/Data/Scripts/qdir.txt")
+    shutil.copy("outfiles/qdir.txt", thps3_qdir_dir)
+    # Done
     label_randomize.config(text="Files randomized!")
 
 button_randomize = tk.Button(
@@ -69,30 +79,6 @@ button_randomize = tk.Button(
 label_randomize = tk.Label(
     root,
     text="Ready to randomize files..."
-)
-
-############
-# Copy files
-############
-def click_copy():
-    label_copy.config(text="Copying files...")
-    # Compile
-    subprocess.run("javac -encoding Cp1252 qb-editor/*.java", shell=True)
-    # Run
-    thps3_data_dir = str(Path(thps3_directory, "rando/Data"))
-    subprocess.run(f"java -cp qb-editor -Dfile.encoding=COMPAT WriteQBFiles {thps3_data_dir}/", shell=True)
-    thps3_qdir_dir = Path(thps3_directory, "rando/Data/Scripts/qdir.txt")
-    shutil.copy("outfiles/qdir.txt", thps3_qdir_dir)
-    label_copy.config(text="Files copied!")
-
-button_copy = tk.Button(
-    root,
-    text="Copy files",
-    command=click_copy,
-)
-label_copy = tk.Label(
-    root,
-    text="Ready to copy files..."
 )
 
 #############
@@ -139,16 +125,14 @@ label_remove_intro = tk.Label(
     text="Ready to remove intro movies..."
 )
 
-button_directory.pack()
-label_directory.pack()
-button_initialize.pack()
-label_initialize.pack()
-button_randomize.pack()
-label_randomize.pack()
-button_copy.pack()
-label_copy.pack()
-button_launch.pack()
-label_launch.pack()
-button_remove_intro.pack()
-label_remove_intro.pack()
+button_directory.grid()
+label_directory.grid()
+button_initialize.grid()
+label_initialize.grid()
+button_randomize.grid()
+label_randomize.grid()
+button_launch.grid()
+label_launch.grid()
+button_remove_intro.grid()
+label_remove_intro.grid()
 root.mainloop()
