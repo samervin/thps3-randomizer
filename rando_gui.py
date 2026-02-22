@@ -125,6 +125,48 @@ label_remove_intro = tk.Label(
     text="Ready to remove intro movies..."
 )
 
+##############
+# Remove music
+##############
+def click_remove_music():
+    label_remove_music.config(text="Removing music...")
+    thps3_music_dir = Path(thps3_directory, "rando/Data/music")
+    with contextlib.suppress(FileNotFoundError):
+        Path(thps3_music_dir, "ace.mus").unlink()
+        Path(thps3_music_dir, "adol.mus").unlink()
+        Path(thps3_music_dir, "afi.mus").unlink()
+        Path(thps3_music_dir, "antfarm.mus").unlink()
+        Path(thps3_music_dir, "bodyjar.mus").unlink()
+        Path(thps3_music_dir, "chilis.mus").unlink()
+        Path(thps3_music_dir, "cky.mus").unlink()
+        Path(thps3_music_dir, "del.mus").unlink()
+        Path(thps3_music_dir, "gangsta.mus").unlink()
+        Path(thps3_music_dir, "gangsta2.mus").unlink()
+        Path(thps3_music_dir, "gutter.mus").unlink()
+        Path(thps3_music_dir, "krs.mus").unlink()
+        Path(thps3_music_dir, "mad.mus").unlink()
+        Path(thps3_music_dir, "next.mus").unlink()
+        Path(thps3_music_dir, "ozo.mus").unlink()
+        Path(thps3_music_dir, "pain.mus").unlink()
+        Path(thps3_music_dir, "ramones.mus").unlink()
+        Path(thps3_music_dir, "redman.mus").unlink()
+        Path(thps3_music_dir, "rev.mus").unlink()
+        Path(thps3_music_dir, "rollins.mus").unlink()
+        Path(thps3_music_dir, "xzibit.mus").unlink()
+        Path(thps3_music_dir, "zebra.mus").unlink()
+    
+    label_remove_music.config(text="Music removed!")
+
+button_remove_music = tk.Button(
+    root,
+    text="Remove music",
+    command=click_remove_music,
+)
+label_remove_music = tk.Label(
+    root,
+    text="Ready to remove music..."
+)
+
 button_directory.grid()
 label_directory.grid()
 button_initialize.grid()
@@ -135,4 +177,6 @@ button_launch.grid()
 label_launch.grid()
 button_remove_intro.grid()
 label_remove_intro.grid()
+button_remove_music.grid()
+label_remove_music.grid()
 root.mainloop()
