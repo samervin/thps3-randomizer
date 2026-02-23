@@ -1,15 +1,15 @@
 class Skater:
-    name = None # Name of skater
-    script_name = None # Shorthand name as defined in skater_profile
-    is_secret = False # Whether the character is a vanilla secret
+    name = None  # Name of skater
+    script_name = None  # Shorthand name as defined in skater_profile
+    is_secret = False  # Whether the character is a vanilla secret
 
     def __init__(self, name, script_name, is_secret):
         self.name = name
         self.script_name = script_name
         self.is_secret = is_secret
 
-class Skaters:
 
+class Skaters:
     all_skaters = [
         Skater("Tony Hawk", "hawk", False),
         Skater("Steve Caballero", "caballero", False),

@@ -1,15 +1,15 @@
 class Board:
-    name = None # Description as visible in skate shop
-    texture = None # Name of image file in Data/Textures/Boards
-    is_extra = False # Special or normally unused
+    name = None  # Description as visible in skate shop
+    texture = None  # Name of image file in Data/Textures/Boards
+    is_extra = False  # Special or normally unused
 
     def __init__(self, name, texture, is_extra=False):
         self.name = name
         self.texture = texture
         self.is_extra = is_extra
 
-class Boards:
 
+class Boards:
     def get_grips(self):
         return self.all_grips.copy()
 

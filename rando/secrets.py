@@ -1,13 +1,13 @@
 class Secret:
-    name = None # Name of skater, level, or cheat
-    secret_type = None # "skater", "level", or "cheat"
+    name = None  # Name of skater, level, or cheat
+    secret_type = None  # "skater", "level", or "cheat"
 
     def __init__(self, name, secret_type):
         self.name = name
         self.secret_type = secret_type
 
-class Secrets:
 
+class Secrets:
     def get_secrets(self, secret_type=None):
         if secret_type:
             return [s for s in self.all_secrets if s.secret_type == secret_type]
@@ -24,7 +24,9 @@ class Secrets:
         Secret("Kelly Slater", "skater"),
         Secret("Roswell", "level"),
         Secret("The Demoness", "skater"),
-        Secret("Snowboard Mode", "cheat"), # currently tied to Cheat menu being unlocked
+        Secret(
+            "Snowboard Mode", "cheat"
+        ),  # currently tied to Cheat menu being unlocked
         Secret("Always Special Mode", "cheat"),
         Secret("Perfect Rail Balance Mode", "cheat"),
         Secret("Super Stats Mode", "cheat"),
@@ -35,7 +37,9 @@ class Secrets:
         Secret("Moon Physics Mode", "cheat"),
         Secret("Expert Mode", "cheat"),
         Secret("Neversoft Eyeball", "skater"),
-        Secret("First Person Mode", "cheat"), # currently contains "Entire Game Complete" check
+        Secret(
+            "First Person Mode", "cheat"
+        ),  # currently contains "Entire Game Complete" check
         Secret("DOOM Guy", "skater"),
     ]
 

@@ -1,7 +1,7 @@
 from rando.level2 import Level2
 
-class LevelLosAngeles(Level2):
 
+class LevelLosAngeles(Level2):
     def __init__(self):
         self.name = "Los Angeles"
         self.name_flag = "LOSANGELES"

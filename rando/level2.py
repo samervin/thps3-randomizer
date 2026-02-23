@@ -3,13 +3,13 @@ from rando import constants
 import re
 import os
 
-class Level2:
 
-    name = None # used in level unlock message
-    name_flag = None # used in LEVEL_UNLOCKED_ flags
-    level_type = None # "normal" or "comp"
-    filepath = None # path to QB file
-    filename = None # name of QB file, used in string replacement
+class Level2:
+    name = None  # used in level unlock message
+    name_flag = None  # used in LEVEL_UNLOCKED_ flags
+    level_type = None  # "normal" or "comp"
+    filepath = None  # path to QB file
+    filename = None  # name of QB file, used in string replacement
     location_vectors = []
     extra_vectors = []
     gaps = []
@@ -23,24 +23,24 @@ class Level2:
         return shuffled
 
     def read_modified_level_file(self):
-        with open(f'qbs_modified/Levels/{self.filepath}.qb', 'r') as f:
+        with open(f"qbs_modified/Levels/{self.filepath}.qb", "r") as f:
             return f.read()
 
     def memify(self, script):
         # make one long string, then split on lines, to include modified linebreaks
-        script = ''.join(script)
+        script = "".join(script)
         script = script.splitlines(keepends=True)
         output = []
         for i, line in enumerate(script):
             # substitute any memory address like #00000 with i (the current line number) zero-padded to 5 spaces
-            output.append(re.sub(r'#\d{5}', f"#{i:05d}", line))
+            output.append(re.sub(r"#\d{5}", f"#{i:05d}", line))
         return output
 
     def write_level_file(self, contents):
         contents = self.memify(contents)
-        full_filepath = f'qbs_outfiles/Levels/{self.filepath}.out'
+        full_filepath = f"qbs_outfiles/Levels/{self.filepath}.out"
         os.makedirs(os.path.dirname(full_filepath), exist_ok=True)
-        with open(full_filepath, 'w', newline='\n') as fout:
+        with open(full_filepath, "w", newline="\n") as fout:
             fout.writelines(contents)
 
     def get_shuffled_vectors(self, include_extras=False):

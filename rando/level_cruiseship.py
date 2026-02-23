@@ -1,7 +1,7 @@
 from rando.level2 import Level2
 
-class LevelCruiseShip(Level2):
 
+class LevelCruiseShip(Level2):
     def __init__(self):
         self.name = "The Cruise Ship"
         self.name_flag = "SHIP"

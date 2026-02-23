@@ -1,8 +1,8 @@
 from rando.level2 import Level2
 import random
 
-class LevelSuburbia(Level2):
 
+class LevelSuburbia(Level2):
     def __init__(self):
         self.name = "Suburbia"
         self.name_flag = "SUBURBIA"
@@ -60,7 +60,7 @@ class LevelSuburbia(Level2):
         # thin man, axe, 5 pumpkins, 4 power line branches
         thinman_vector = [(-2078.4802, 109.50501, -1663.9464)]
         axe_vector = [(1169.342, 70.39346, -2917.8477)]
-        pumpkin_vectors = [ # squashed vectors are nearly identical
+        pumpkin_vectors = [  # squashed vectors are nearly identical
             (-348.44818, 41.118557, 1888.2429),
             (-1148.2771, 220.72224, -2312.6445),
             (-1910.3761, 203.29803, -298.4276),
@@ -110,10 +110,12 @@ class LevelSuburbia(Level2):
         for i in [1, 2, 3, 4, 5]:
             vector = vectors.pop()
             vector_value = f"VECTOR[{vector[0]}; {vector[1]}; {vector[2]}]"
-            data = data.replace("{{" + f"rando_sub_vector_pumpkin{i}" + "}}", vector_value)
+            data = data.replace(
+                "{{" + f"rando_sub_vector_pumpkin{i}" + "}}", vector_value
+            )
 
         thinman_vector = vectors.pop()
-        thinman_vector_value = f"VECTOR[{thinman_vector[0]}; {thinman_vector[1]-15}; {thinman_vector[2]}]"
+        thinman_vector_value = f"VECTOR[{thinman_vector[0]}; {thinman_vector[1] - 15}; {thinman_vector[2]}]"
         data = data.replace("{{rando_sub_vector_thin_man}}", thinman_vector_value)
 
         axe_vector = vectors.pop()

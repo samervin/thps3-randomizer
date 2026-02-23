@@ -1,13 +1,15 @@
 class ButtonBind:
-    name = None # Internal script name
-    is_easy = False # Cardinal direction flips, grabs, lips; opposite-direction specials
+    name = None  # Internal script name
+    is_easy = (
+        False  # Cardinal direction flips, grabs, lips; opposite-direction specials
+    )
 
     def __init__(self, name, is_easy=False):
         self.name = name
         self.is_easy = is_easy
 
-class ButtonBinds:
 
+class ButtonBinds:
     def _get_binds(self, binds_list, difficulty):
         match difficulty:
             case "easy":
@@ -40,7 +42,7 @@ class ButtonBinds:
     def get_special_lip_binds(self, difficulty=None):
         return self._get_binds(self.special_lip_button_binds, difficulty)
 
-    lip_button_binds = [ # Don't change the order of these for now
+    lip_button_binds = [  # Don't change the order of these for now
         ButtonBind("Lip_TriangleUL"),
         ButtonBind("Lip_TriangleUR"),
         ButtonBind("Lip_TriangleDL"),
@@ -51,7 +53,7 @@ class ButtonBinds:
         ButtonBind("Lip_TriangleU", is_easy=True),
     ]
 
-    grab_button_binds = [ # Don't change the order of these for now
+    grab_button_binds = [  # Don't change the order of these for now
         ButtonBind("Air_CircleUL"),
         ButtonBind("Air_CircleUR"),
         ButtonBind("Air_CircleDL"),
@@ -66,7 +68,7 @@ class ButtonBinds:
         ButtonBind("Air_D_D_Circle"),
     ]
 
-    flip_button_binds = [ # Don't change the order of these for now
+    flip_button_binds = [  # Don't change the order of these for now
         ButtonBind("Air_SquareUL"),
         ButtonBind("Air_SquareUR"),
         ButtonBind("Air_SquareDL"),
@@ -81,7 +83,7 @@ class ButtonBinds:
         ButtonBind("Air_D_D_Square"),
     ]
 
-    special_air_button_binds = [ # all air tricks are allowed on both buttons
+    special_air_button_binds = [  # all air tricks are allowed on both buttons
         ButtonBind("SpAir_U_R_Square"),
         ButtonBind("SpAir_U_D_Square", is_easy=True),
         ButtonBind("SpAir_U_L_Square"),

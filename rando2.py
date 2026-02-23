@@ -17,10 +17,12 @@ from rando.boards import Boards
 from rando.secrets import Secrets
 from rando.skaters import Skaters
 
+
 def _shuffle(any_list):
     shuffled = any_list.copy()
     random.shuffle(shuffled)
     return shuffled
+
 
 def display_victory_requirements(gameqb):
     # Display (dummy) victory requirements on level select menu instead of (broken) level unlock requirements
@@ -28,13 +30,16 @@ def display_victory_requirements(gameqb):
     rando_victory = "3 Golds with All Skaters"
     return gameqb.replace("{{rando_game_victory_text}}", rando_victory)
 
+
 def get_random_level_order(end_on_comp=False):
     if end_on_comp:
-        comp_levels = _shuffle([
-            LevelRio(),
-            LevelSkaterIsland(),
-            LevelTokyo(),
-        ])
+        comp_levels = _shuffle(
+            [
+                LevelRio(),
+                LevelSkaterIsland(),
+                LevelTokyo(),
+            ]
+        )
         last_level = comp_levels.pop()
         regular_levels = [
             LevelFoundry(),
@@ -59,6 +64,7 @@ def get_random_level_order(end_on_comp=False):
         ]
         return _shuffle(levels)
 
+
 def randomize_level_requirements(levels, mainmenu, goal_scripts):
     # randomize level order and unlock conditions
     # default requirements:
@@ -80,7 +86,7 @@ def randomize_level_requirements(levels, mainmenu, goal_scripts):
     for level in levels:
         match level.level_type:
             case "normal":
-                req = random.randint(1, 1)# 9)
+                req = random.randint(1, 9)
                 total_goals = total_goals + req
                 level_reqs.append((total_goals, "Goal"))
             case "comp":
@@ -110,43 +116,106 @@ def randomize_level_requirements(levels, mainmenu, goal_scripts):
             case _:
                 raise Exception("invalid level")
 
-        if level_reqs[i][1] == "first": # initial level
+        if level_reqs[i][1] == "first":  # initial level
             mainmenu = mainmenu.replace(unlock_var, "0 Goals")
-        elif level_reqs[i][0] == 1: # 1 goal or medal
-            mainmenu = mainmenu.replace(unlock_var, f"{level_reqs[i][0]} {level_reqs[i][1]}")
-        else: # More than 1 goal or medal
-            mainmenu = mainmenu.replace(unlock_var, f"{level_reqs[i][0]} {level_reqs[i][1]}s")
+        elif level_reqs[i][0] == 1:  # 1 goal or medal
+            mainmenu = mainmenu.replace(
+                unlock_var, f"{level_reqs[i][0]} {level_reqs[i][1]}"
+            )
+        else:  # More than 1 goal or medal
+            mainmenu = mainmenu.replace(
+                unlock_var, f"{level_reqs[i][0]} {level_reqs[i][1]}s"
+            )
 
     # patch to unlock the first level instead of always unlocking Foundry
-    mainmenu = mainmenu.replace("{{rando_mainmenu_first_level_unlock}}", f"LEVEL_UNLOCKED_{levels[0].name_flag}")
+    mainmenu = mainmenu.replace(
+        "{{rando_mainmenu_first_level_unlock}}", f"LEVEL_UNLOCKED_{levels[0].name_flag}"
+    )
 
     # patch end-of-run level unlock conditions
-    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_2_requirement}}", f"{level_reqs[1][1]}sGreaterThan {level_reqs[1][0]-1}")
-    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_3_requirement}}", f"{level_reqs[2][1]}sGreaterThan {level_reqs[2][0]-1}")
-    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_4_requirement}}", f"{level_reqs[3][1]}sGreaterThan {level_reqs[3][0]-1}")
-    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_5_requirement}}", f"{level_reqs[4][1]}sGreaterThan {level_reqs[4][0]-1}")
-    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_6_requirement}}", f"{level_reqs[5][1]}sGreaterThan {level_reqs[5][0]-1}")
-    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_7_requirement}}", f"{level_reqs[6][1]}sGreaterThan {level_reqs[6][0]-1}")
-    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_8_requirement}}", f"{level_reqs[7][1]}sGreaterThan {level_reqs[7][0]-1}")
-    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_9_requirement}}", f"{level_reqs[8][1]}sGreaterThan {level_reqs[8][0]-1}")
-    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_2_flag}}", f"LEVEL_UNLOCKED_{levels[1].name_flag}")
-    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_3_flag}}", f"LEVEL_UNLOCKED_{levels[2].name_flag}")
-    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_4_flag}}", f"LEVEL_UNLOCKED_{levels[3].name_flag}")
-    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_5_flag}}", f"LEVEL_UNLOCKED_{levels[4].name_flag}")
-    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_6_flag}}", f"LEVEL_UNLOCKED_{levels[5].name_flag}")
-    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_7_flag}}", f"LEVEL_UNLOCKED_{levels[6].name_flag}")
-    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_8_flag}}", f"LEVEL_UNLOCKED_{levels[7].name_flag}")
-    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_9_flag}}", f"LEVEL_UNLOCKED_{levels[8].name_flag}")
-    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_2_name}}", levels[1].name)
-    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_3_name}}", levels[2].name)
-    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_4_name}}", levels[3].name)
-    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_5_name}}", levels[4].name)
-    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_6_name}}", levels[5].name)
-    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_7_name}}", levels[6].name)
-    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_8_name}}", levels[7].name)
-    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_unlock_9_name}}", levels[8].name)
+    goal_scripts = goal_scripts.replace(
+        "{{rando_goal_scripts_unlock_2_requirement}}",
+        f"{level_reqs[1][1]}sGreaterThan {level_reqs[1][0] - 1}",
+    )
+    goal_scripts = goal_scripts.replace(
+        "{{rando_goal_scripts_unlock_3_requirement}}",
+        f"{level_reqs[2][1]}sGreaterThan {level_reqs[2][0] - 1}",
+    )
+    goal_scripts = goal_scripts.replace(
+        "{{rando_goal_scripts_unlock_4_requirement}}",
+        f"{level_reqs[3][1]}sGreaterThan {level_reqs[3][0] - 1}",
+    )
+    goal_scripts = goal_scripts.replace(
+        "{{rando_goal_scripts_unlock_5_requirement}}",
+        f"{level_reqs[4][1]}sGreaterThan {level_reqs[4][0] - 1}",
+    )
+    goal_scripts = goal_scripts.replace(
+        "{{rando_goal_scripts_unlock_6_requirement}}",
+        f"{level_reqs[5][1]}sGreaterThan {level_reqs[5][0] - 1}",
+    )
+    goal_scripts = goal_scripts.replace(
+        "{{rando_goal_scripts_unlock_7_requirement}}",
+        f"{level_reqs[6][1]}sGreaterThan {level_reqs[6][0] - 1}",
+    )
+    goal_scripts = goal_scripts.replace(
+        "{{rando_goal_scripts_unlock_8_requirement}}",
+        f"{level_reqs[7][1]}sGreaterThan {level_reqs[7][0] - 1}",
+    )
+    goal_scripts = goal_scripts.replace(
+        "{{rando_goal_scripts_unlock_9_requirement}}",
+        f"{level_reqs[8][1]}sGreaterThan {level_reqs[8][0] - 1}",
+    )
+    goal_scripts = goal_scripts.replace(
+        "{{rando_goal_scripts_unlock_2_flag}}", f"LEVEL_UNLOCKED_{levels[1].name_flag}"
+    )
+    goal_scripts = goal_scripts.replace(
+        "{{rando_goal_scripts_unlock_3_flag}}", f"LEVEL_UNLOCKED_{levels[2].name_flag}"
+    )
+    goal_scripts = goal_scripts.replace(
+        "{{rando_goal_scripts_unlock_4_flag}}", f"LEVEL_UNLOCKED_{levels[3].name_flag}"
+    )
+    goal_scripts = goal_scripts.replace(
+        "{{rando_goal_scripts_unlock_5_flag}}", f"LEVEL_UNLOCKED_{levels[4].name_flag}"
+    )
+    goal_scripts = goal_scripts.replace(
+        "{{rando_goal_scripts_unlock_6_flag}}", f"LEVEL_UNLOCKED_{levels[5].name_flag}"
+    )
+    goal_scripts = goal_scripts.replace(
+        "{{rando_goal_scripts_unlock_7_flag}}", f"LEVEL_UNLOCKED_{levels[6].name_flag}"
+    )
+    goal_scripts = goal_scripts.replace(
+        "{{rando_goal_scripts_unlock_8_flag}}", f"LEVEL_UNLOCKED_{levels[7].name_flag}"
+    )
+    goal_scripts = goal_scripts.replace(
+        "{{rando_goal_scripts_unlock_9_flag}}", f"LEVEL_UNLOCKED_{levels[8].name_flag}"
+    )
+    goal_scripts = goal_scripts.replace(
+        "{{rando_goal_scripts_unlock_2_name}}", levels[1].name
+    )
+    goal_scripts = goal_scripts.replace(
+        "{{rando_goal_scripts_unlock_3_name}}", levels[2].name
+    )
+    goal_scripts = goal_scripts.replace(
+        "{{rando_goal_scripts_unlock_4_name}}", levels[3].name
+    )
+    goal_scripts = goal_scripts.replace(
+        "{{rando_goal_scripts_unlock_5_name}}", levels[4].name
+    )
+    goal_scripts = goal_scripts.replace(
+        "{{rando_goal_scripts_unlock_6_name}}", levels[5].name
+    )
+    goal_scripts = goal_scripts.replace(
+        "{{rando_goal_scripts_unlock_7_name}}", levels[6].name
+    )
+    goal_scripts = goal_scripts.replace(
+        "{{rando_goal_scripts_unlock_8_name}}", levels[7].name
+    )
+    goal_scripts = goal_scripts.replace(
+        "{{rando_goal_scripts_unlock_9_name}}", levels[8].name
+    )
 
     return goal_scripts, mainmenu
+
 
 def randomize_score_goals(levels, goal_scripts, comp_scripts):
     # randomize score goals
@@ -159,7 +228,7 @@ def randomize_score_goals(levels, goal_scripts, comp_scripts):
     # cruise ship: 150k, 225k, 500k
 
     score_goals = []
-    score_goals.append(random.randint(1, 1))#5, 45))
+    score_goals.append(random.randint(5, 45))
     for i in range(17):
         score_goals.append(score_goals[i] + random.randint(15, 45))
 
@@ -191,77 +260,133 @@ def randomize_score_goals(levels, goal_scripts, comp_scripts):
                 foundry_high = score_goals.pop(0)
                 foundry_pro = score_goals.pop(0)
                 foundry_sick = score_goals.pop(0)
-                goal_scripts = goal_scripts.replace("{{rando_goal_scripts_foundry_high}}", f"{foundry_high}000")
-                goal_scripts = goal_scripts.replace("{{rando_goal_scripts_foundry_pro}}", f"{foundry_pro}000")
-                goal_scripts = goal_scripts.replace("{{rando_goal_scripts_foundry_sick}}", f"{foundry_sick}000")
+                goal_scripts = goal_scripts.replace(
+                    "{{rando_goal_scripts_foundry_high}}", f"{foundry_high}000"
+                )
+                goal_scripts = goal_scripts.replace(
+                    "{{rando_goal_scripts_foundry_pro}}", f"{foundry_pro}000"
+                )
+                goal_scripts = goal_scripts.replace(
+                    "{{rando_goal_scripts_foundry_sick}}", f"{foundry_sick}000"
+                )
             case "CANADA":
                 canada_high = score_goals.pop(0)
                 canada_pro = score_goals.pop(0)
                 canada_sick = score_goals.pop(0)
-                goal_scripts = goal_scripts.replace("{{rando_goal_scripts_canada_high}}", f"{canada_high}000")
-                goal_scripts = goal_scripts.replace("{{rando_goal_scripts_canada_pro}}", f"{canada_pro}000")
-                goal_scripts = goal_scripts.replace("{{rando_goal_scripts_canada_sick}}", f"{canada_sick}000")
+                goal_scripts = goal_scripts.replace(
+                    "{{rando_goal_scripts_canada_high}}", f"{canada_high}000"
+                )
+                goal_scripts = goal_scripts.replace(
+                    "{{rando_goal_scripts_canada_pro}}", f"{canada_pro}000"
+                )
+                goal_scripts = goal_scripts.replace(
+                    "{{rando_goal_scripts_canada_sick}}", f"{canada_sick}000"
+                )
             case "RIO":
                 rio_bronze = comp_goals.pop(0)
                 rio_silver = comp_goals.pop(0)
                 rio_gold = comp_goals.pop(0)
-                comp_scripts = comp_scripts.replace("{{rando_comp_scripts_rio_bronze}}", f"{rio_bronze}000")
-                comp_scripts = comp_scripts.replace("{{rando_comp_scripts_rio_silver}}", f"{rio_silver}000")
-                comp_scripts = comp_scripts.replace("{{rando_comp_scripts_rio_gold}}", f"{rio_gold}000")
+                comp_scripts = comp_scripts.replace(
+                    "{{rando_comp_scripts_rio_bronze}}", f"{rio_bronze}000"
+                )
+                comp_scripts = comp_scripts.replace(
+                    "{{rando_comp_scripts_rio_silver}}", f"{rio_silver}000"
+                )
+                comp_scripts = comp_scripts.replace(
+                    "{{rando_comp_scripts_rio_gold}}", f"{rio_gold}000"
+                )
             case "SUBURBIA":
                 suburbia_high = score_goals.pop(0)
                 suburbia_pro = score_goals.pop(0)
                 suburbia_sick = score_goals.pop(0)
-                goal_scripts = goal_scripts.replace("{{rando_goal_scripts_suburbia_high}}", f"{suburbia_high}000")
-                goal_scripts = goal_scripts.replace("{{rando_goal_scripts_suburbia_pro}}", f"{suburbia_pro}000")
-                goal_scripts = goal_scripts.replace("{{rando_goal_scripts_suburbia_sick}}", f"{suburbia_sick}000")
+                goal_scripts = goal_scripts.replace(
+                    "{{rando_goal_scripts_suburbia_high}}", f"{suburbia_high}000"
+                )
+                goal_scripts = goal_scripts.replace(
+                    "{{rando_goal_scripts_suburbia_pro}}", f"{suburbia_pro}000"
+                )
+                goal_scripts = goal_scripts.replace(
+                    "{{rando_goal_scripts_suburbia_sick}}", f"{suburbia_sick}000"
+                )
             case "AIRPORT":
                 airport_high = score_goals.pop(0)
                 airport_pro = score_goals.pop(0)
                 airport_sick = score_goals.pop(0)
-                goal_scripts = goal_scripts.replace("{{rando_goal_scripts_airport_high}}", f"{airport_high}000")
-                goal_scripts = goal_scripts.replace("{{rando_goal_scripts_airport_pro}}", f"{airport_pro}000")
-                goal_scripts = goal_scripts.replace("{{rando_goal_scripts_airport_sick}}", f"{airport_sick}000")
+                goal_scripts = goal_scripts.replace(
+                    "{{rando_goal_scripts_airport_high}}", f"{airport_high}000"
+                )
+                goal_scripts = goal_scripts.replace(
+                    "{{rando_goal_scripts_airport_pro}}", f"{airport_pro}000"
+                )
+                goal_scripts = goal_scripts.replace(
+                    "{{rando_goal_scripts_airport_sick}}", f"{airport_sick}000"
+                )
             case "SKATERISLAND":
                 skater_island_bronze = comp_goals.pop(0)
                 skater_island_silver = comp_goals.pop(0)
                 skater_island_gold = comp_goals.pop(0)
-                comp_scripts = comp_scripts.replace("{{rando_comp_scripts_si_bronze}}", f"{skater_island_bronze}000")
-                comp_scripts = comp_scripts.replace("{{rando_comp_scripts_si_silver}}", f"{skater_island_silver}000")
-                comp_scripts = comp_scripts.replace("{{rando_comp_scripts_si_gold}}", f"{skater_island_gold}000")
+                comp_scripts = comp_scripts.replace(
+                    "{{rando_comp_scripts_si_bronze}}", f"{skater_island_bronze}000"
+                )
+                comp_scripts = comp_scripts.replace(
+                    "{{rando_comp_scripts_si_silver}}", f"{skater_island_silver}000"
+                )
+                comp_scripts = comp_scripts.replace(
+                    "{{rando_comp_scripts_si_gold}}", f"{skater_island_gold}000"
+                )
             case "LOSANGELES":
                 los_angeles_high = score_goals.pop(0)
                 los_angeles_pro = score_goals.pop(0)
                 los_angeles_sick = score_goals.pop(0)
-                goal_scripts = goal_scripts.replace("{{rando_goal_scripts_la_high}}", f"{los_angeles_high}000")
-                goal_scripts = goal_scripts.replace("{{rando_goal_scripts_la_pro}}", f"{los_angeles_pro}000")
-                goal_scripts = goal_scripts.replace("{{rando_goal_scripts_la_sick}}", f"{los_angeles_sick}000")
+                goal_scripts = goal_scripts.replace(
+                    "{{rando_goal_scripts_la_high}}", f"{los_angeles_high}000"
+                )
+                goal_scripts = goal_scripts.replace(
+                    "{{rando_goal_scripts_la_pro}}", f"{los_angeles_pro}000"
+                )
+                goal_scripts = goal_scripts.replace(
+                    "{{rando_goal_scripts_la_sick}}", f"{los_angeles_sick}000"
+                )
             case "TOKYO":
                 tokyo_bronze = comp_goals.pop(0)
                 tokyo_silver = comp_goals.pop(0)
                 tokyo_gold = comp_goals.pop(0)
-                comp_scripts = comp_scripts.replace("{{rando_comp_scripts_tokyo_bronze}}", f"{tokyo_bronze}000")
-                comp_scripts = comp_scripts.replace("{{rando_comp_scripts_tokyo_silver}}", f"{tokyo_silver}000")
-                comp_scripts = comp_scripts.replace("{{rando_comp_scripts_tokyo_gold}}", f"{tokyo_gold}000")
+                comp_scripts = comp_scripts.replace(
+                    "{{rando_comp_scripts_tokyo_bronze}}", f"{tokyo_bronze}000"
+                )
+                comp_scripts = comp_scripts.replace(
+                    "{{rando_comp_scripts_tokyo_silver}}", f"{tokyo_silver}000"
+                )
+                comp_scripts = comp_scripts.replace(
+                    "{{rando_comp_scripts_tokyo_gold}}", f"{tokyo_gold}000"
+                )
             case "SHIP":
                 cruise_ship_high = score_goals.pop(0)
                 cruise_ship_pro = score_goals.pop(0)
                 cruise_ship_sick = score_goals.pop(0)
-                goal_scripts = goal_scripts.replace("{{rando_goal_scripts_ship_high}}", f"{cruise_ship_high}000")
-                goal_scripts = goal_scripts.replace("{{rando_goal_scripts_ship_pro}}", f"{cruise_ship_pro}000")
-                goal_scripts = goal_scripts.replace("{{rando_goal_scripts_ship_sick}}", f"{cruise_ship_sick}000")
+                goal_scripts = goal_scripts.replace(
+                    "{{rando_goal_scripts_ship_high}}", f"{cruise_ship_high}000"
+                )
+                goal_scripts = goal_scripts.replace(
+                    "{{rando_goal_scripts_ship_pro}}", f"{cruise_ship_pro}000"
+                )
+                goal_scripts = goal_scripts.replace(
+                    "{{rando_goal_scripts_ship_sick}}", f"{cruise_ship_sick}000"
+                )
             case _:
                 raise Exception("invalid level")
     return comp_scripts, goal_scripts
+
 
 def randomize_item_locations(levels):
     for level in levels:
         level.randomize(include_extras=True)
 
+
 def randomize_stats(skater_profile):
     # this game lets you remap all stats for all characters, so there is not much point to random stats
     # note: these stats only apply to fresh unsaved games
-    stat_presets = ["max"]#, "easy", "default", "hard", "impossible"]
+    stat_presets = ["max", "easy", "default", "hard", "impossible"]
     stat_presets = _shuffle(stat_presets)
 
     match stat_presets[0]:
@@ -278,21 +403,26 @@ def randomize_stats(skater_profile):
         case _:
             raise Exception("invalid stat preset: " + stat_presets[0])
 
-    skater_profile = skater_profile.replace("{{rando_skater_profile_global_stat}}", str(stat_num))
+    skater_profile = skater_profile.replace(
+        "{{rando_skater_profile_global_stat}}", str(stat_num)
+    )
     return skater_profile
 
+
 def _get_random_trickstyle():
-    trickstyles = ['vert', 'street']
+    trickstyles = ["vert", "street"]
     return random.choice(trickstyles)
+
 
 def randomize_trickstyle(skater_profile):
     # randomize whether each skater is street or vert
     for skater in Skaters().all_skaters:
         skater_profile = skater_profile.replace(
             "{{" + f"rando_skater_profile_{skater.script_name}_trickstyle" + "}}",
-            _get_random_trickstyle()
+            _get_random_trickstyle(),
         )
     return skater_profile
+
 
 def require_deck_for_tape(goal_scripts):
     # require the deck to be collected before the tape goal will complete
@@ -300,11 +430,16 @@ def require_deck_for_tape(goal_scripts):
     deck_required_for_tape = True
     if deck_required_for_tape:
         # Got_Secret_TapeIfDeck is a custom function added to the modified QB
-        goal_scripts = goal_scripts.replace("{{rando_goal_scripts_tape_script}}", "Got_Secret_TapeIfDeck")
+        goal_scripts = goal_scripts.replace(
+            "{{rando_goal_scripts_tape_script}}", "Got_Secret_TapeIfDeck"
+        )
     else:
         # Got_Secret_Tape2 is the default with no additional requirements
-        goal_scripts = goal_scripts.replace("{{rando_goal_scripts_tape_script}}", "Got_Secret_Tape2")
+        goal_scripts = goal_scripts.replace(
+            "{{rando_goal_scripts_tape_script}}", "Got_Secret_Tape2"
+        )
     return goal_scripts
+
 
 def require_deck_for_medal(judges, comp_scripts):
     flag_medal_req = "{{rando_judges_medal_requirement}}"
@@ -316,14 +451,19 @@ def require_deck_for_medal(judges, comp_scripts):
         # require the deck to be collected before getting any medal, or else you will lose the competition
         judges = judges.replace(flag_medal_req, "GetFlag flag = GOAL_DECK")
         comp_scripts = comp_scripts.replace(medal_message, "Must Find Deck To Medal")
-        comp_scripts = comp_scripts.replace(comp_scripts_medal_req, "GetFlag flag = GOAL_DECK")
+        comp_scripts = comp_scripts.replace(
+            comp_scripts_medal_req, "GetFlag flag = GOAL_DECK"
+        )
     else:
         # GetGlobalFlag flag = 159 will resolve to True as long as SPECIAL_HAS_SEEN_SHIP is set in mainmenu.qb
         judges = judges.replace(flag_medal_req, "GetGlobalFlag flag = 159")
         comp_scripts = comp_scripts.replace(medal_message, "Bails Hurt Scores")
-        comp_scripts = comp_scripts.replace(comp_scripts_medal_req, "GetGlobalFlag flag = 159")
+        comp_scripts = comp_scripts.replace(
+            comp_scripts_medal_req, "GetGlobalFlag flag = 159"
+        )
 
     return judges, comp_scripts
+
 
 def randomize_level_timer(gamemode):
     # randomize the time limit for normal levels
@@ -331,6 +471,7 @@ def randomize_level_timer(gamemode):
     time_limit = random.randint(90, 150)
     gamemode = gamemode.replace("{{rando_gamemode_career_time}}", str(time_limit))
     return gamemode
+
 
 def randomize_trickspot_tricks(trick_type, ajc, alf, bdj, cjr, cpf):
     # Change required tricks for the street/vert goals
@@ -340,9 +481,9 @@ def randomize_trickspot_tricks(trick_type, ajc, alf, bdj, cjr, cpf):
     n_lips = _shuffle(Tricks().get_regular_lips())
 
     match trick_type:
-        case "ignore": # do not perform randomization
+        case "ignore":  # do not perform randomization
             return
-        case "match": # randomize grinds into other grinds, flips into flips, etc.
+        case "match":  # randomize grinds into other grinds, flips into flips, etc.
             foundry_street_trick = n_grinds.pop()
             foundry_vert_trick = n_grabs.pop()
             canada_street_trick = n_grinds.pop()
@@ -355,7 +496,7 @@ def randomize_trickspot_tricks(trick_type, ajc, alf, bdj, cjr, cpf):
             la_vert_trick = n_grabs.pop()
             ship_street_trick = n_grinds.pop()
             ship_vert_trick = n_lips.pop()
-        case "wild": # randomize all normal tricks together
+        case "wild":  # randomize all normal tricks together
             n_tricks = _shuffle(n_grinds + n_grabs + n_flips + n_lips)
             foundry_street_trick = n_tricks.pop()
             foundry_vert_trick = n_tricks.pop()
@@ -372,36 +513,75 @@ def randomize_trickspot_tricks(trick_type, ajc, alf, bdj, cjr, cpf):
         case _:
             raise Exception("invalid trickspot trick type")
 
-    cjr = cjr.replace("{{rando_cjr_trickspot_street_text}}", foundry_street_trick.name_goal)
+    cjr = cjr.replace(
+        "{{rando_cjr_trickspot_street_text}}", foundry_street_trick.name_goal
+    )
     cjr = cjr.replace("{{rando_cjr_trickspot_vert_text}}", foundry_vert_trick.name_goal)
     cjr = cjr.replace("{{rando_cjr_trickspot_street_trick}}", foundry_street_trick.name)
     cjr = cjr.replace("{{rando_cjr_trickspot_vert_trick}}", foundry_vert_trick.name)
-    ajc = ajc.replace("{{rando_ajc_trickspot_street_text}}", canada_street_trick.name_goal)
+    ajc = ajc.replace(
+        "{{rando_ajc_trickspot_street_text}}", canada_street_trick.name_goal
+    )
     ajc = ajc.replace("{{rando_ajc_trickspot_vert_text}}", canada_vert_trick.name_goal)
     ajc = ajc.replace("{{rando_ajc_trickspot_street_trick}}", canada_street_trick.name)
     ajc = ajc.replace("{{rando_ajc_trickspot_vert_trick}}", canada_vert_trick.name)
-    alf = alf.replace("{{rando_alf_trickspot_street_text}}", suburbia_street_trick.name_goal)
-    alf = alf.replace("{{rando_alf_trickspot_vert_text}}", suburbia_vert_trick.name_goal)
-    alf = alf.replace("{{rando_alf_trickspot_street_trick}}", suburbia_street_trick.name)
+    alf = alf.replace(
+        "{{rando_alf_trickspot_street_text}}", suburbia_street_trick.name_goal
+    )
+    alf = alf.replace(
+        "{{rando_alf_trickspot_vert_text}}", suburbia_vert_trick.name_goal
+    )
+    alf = alf.replace(
+        "{{rando_alf_trickspot_street_trick}}", suburbia_street_trick.name
+    )
     alf = alf.replace("{{rando_alf_trickspot_vert_trick}}", suburbia_vert_trick.name)
-    cpf = cpf.replace("{{rando_cpf_airport_trickspot_street_text}}", airport_street_trick.name_goal)
-    cpf = cpf.replace("{{rando_cpf_airport_trickspot_vert_text}}", airport_vert_trick.name_goal)
-    cpf = cpf.replace("{{rando_cpf_airport_trickspot_street_trick}}", airport_street_trick.name)
-    cpf = cpf.replace("{{rando_cpf_airport_trickspot_vert_trick}}", airport_vert_trick.name)
-    cpf = cpf.replace("{{rando_cpf_la_trickspot_street_text}}", la_street_trick.name_goal)
+    cpf = cpf.replace(
+        "{{rando_cpf_airport_trickspot_street_text}}", airport_street_trick.name_goal
+    )
+    cpf = cpf.replace(
+        "{{rando_cpf_airport_trickspot_vert_text}}", airport_vert_trick.name_goal
+    )
+    cpf = cpf.replace(
+        "{{rando_cpf_airport_trickspot_street_trick}}", airport_street_trick.name
+    )
+    cpf = cpf.replace(
+        "{{rando_cpf_airport_trickspot_vert_trick}}", airport_vert_trick.name
+    )
+    cpf = cpf.replace(
+        "{{rando_cpf_la_trickspot_street_text}}", la_street_trick.name_goal
+    )
     cpf = cpf.replace("{{rando_cpf_la_trickspot_vert_text}}", la_vert_trick.name_goal)
     cpf = cpf.replace("{{rando_cpf_la_trickspot_street_trick}}", la_street_trick.name)
     cpf = cpf.replace("{{rando_cpf_la_trickspot_vert_trick}}", la_vert_trick.name)
-    bdj = bdj.replace("{{rando_bdj_trickspot_street_text}}", ship_street_trick.name_goal)
+    bdj = bdj.replace(
+        "{{rando_bdj_trickspot_street_text}}", ship_street_trick.name_goal
+    )
     bdj = bdj.replace("{{rando_bdj_trickspot_vert_text}}", ship_vert_trick.name_goal)
     bdj = bdj.replace("{{rando_bdj_trickspot_street_trick}}", ship_street_trick.name)
     bdj = bdj.replace("{{rando_bdj_trickspot_vert_trick}}", ship_vert_trick.name)
 
-    return [
-        foundry_street_trick, foundry_vert_trick, canada_street_trick, canada_vert_trick,
-        suburbia_street_trick, suburbia_vert_trick, airport_street_trick, airport_vert_trick,
-        la_street_trick, la_vert_trick, ship_street_trick, ship_vert_trick
-    ], ajc, alf, bdj, cjr, cpf
+    return (
+        [
+            foundry_street_trick,
+            foundry_vert_trick,
+            canada_street_trick,
+            canada_vert_trick,
+            suburbia_street_trick,
+            suburbia_vert_trick,
+            airport_street_trick,
+            airport_vert_trick,
+            la_street_trick,
+            la_vert_trick,
+            ship_street_trick,
+            ship_vert_trick,
+        ],
+        ajc,
+        alf,
+        bdj,
+        cjr,
+        cpf,
+    )
+
 
 def randomize_trick_sets(protricks, trickspot_tricks):
     # ensure tricks used in trickspots are shuffled into default binds
@@ -410,124 +590,335 @@ def randomize_trick_sets(protricks, trickspot_tricks):
     trickspot_grabs = [t for t in trickspot_tricks if t.trick_type == "grab"]
     trickspot_flips = [t for t in trickspot_tricks if t.trick_type == "flip"]
 
-    vert_lips = _shuffle(Tricks().get_regular_lips())[:(8-len(trickspot_lips))] # first 8 entries, fewer if trickspots exist
+    vert_lips = _shuffle(Tricks().get_regular_lips())[
+        : (8 - len(trickspot_lips))
+    ]  # first 8 entries, fewer if trickspots exist
     vert_lips = _shuffle(vert_lips + trickspot_lips)
-    protricks = protricks.replace("{{rando_protricks_vertlip_ul}}", vert_lips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_vertlip_ur}}", vert_lips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_vertlip_dl}}", vert_lips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_vertlip_dr}}", vert_lips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_vertlip_l}}", vert_lips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_vertlip_r}}", vert_lips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_vertlip_d}}", vert_lips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_vertlip_u}}", vert_lips.pop().name_script)
-    street_lips = _shuffle(Tricks().get_regular_lips())[:(8-len(trickspot_lips))] # first 8 entries, fewer if trickspots exist
+    protricks = protricks.replace(
+        "{{rando_protricks_vertlip_ul}}", vert_lips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_vertlip_ur}}", vert_lips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_vertlip_dl}}", vert_lips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_vertlip_dr}}", vert_lips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_vertlip_l}}", vert_lips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_vertlip_r}}", vert_lips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_vertlip_d}}", vert_lips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_vertlip_u}}", vert_lips.pop().name_script
+    )
+    street_lips = _shuffle(Tricks().get_regular_lips())[
+        : (8 - len(trickspot_lips))
+    ]  # first 8 entries, fewer if trickspots exist
     street_lips = _shuffle(street_lips + trickspot_lips)
-    protricks = protricks.replace("{{rando_protricks_streetlip_ul}}", street_lips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_streetlip_ur}}", street_lips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_streetlip_dl}}", street_lips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_streetlip_dr}}", street_lips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_streetlip_l}}", street_lips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_streetlip_r}}", street_lips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_streetlip_d}}", street_lips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_streetlip_u}}", street_lips.pop().name_script)
-    hawk_lips = _shuffle(Tricks().get_regular_lips())[:(8-len(trickspot_lips))] # first 8 entries, fewer if trickspots exist
+    protricks = protricks.replace(
+        "{{rando_protricks_streetlip_ul}}", street_lips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_streetlip_ur}}", street_lips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_streetlip_dl}}", street_lips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_streetlip_dr}}", street_lips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_streetlip_l}}", street_lips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_streetlip_r}}", street_lips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_streetlip_d}}", street_lips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_streetlip_u}}", street_lips.pop().name_script
+    )
+    hawk_lips = _shuffle(Tricks().get_regular_lips())[
+        : (8 - len(trickspot_lips))
+    ]  # first 8 entries, fewer if trickspots exist
     hawk_lips = _shuffle(hawk_lips + trickspot_lips)
-    protricks = protricks.replace("{{rando_protricks_hawklip_ul}}", hawk_lips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_hawklip_ur}}", hawk_lips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_hawklip_dl}}", hawk_lips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_hawklip_dr}}", hawk_lips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_hawklip_l}}", hawk_lips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_hawklip_r}}", hawk_lips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_hawklip_d}}", hawk_lips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_hawklip_u}}", hawk_lips.pop().name_script)
+    protricks = protricks.replace(
+        "{{rando_protricks_hawklip_ul}}", hawk_lips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_hawklip_ur}}", hawk_lips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_hawklip_dl}}", hawk_lips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_hawklip_dr}}", hawk_lips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_hawklip_l}}", hawk_lips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_hawklip_r}}", hawk_lips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_hawklip_d}}", hawk_lips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_hawklip_u}}", hawk_lips.pop().name_script
+    )
 
-    all_around_grabs = _shuffle(Tricks().get_regular_grabs())[:(12-len(trickspot_grabs))] # first 12 entries, fewer if trickspots exist
+    all_around_grabs = _shuffle(Tricks().get_regular_grabs())[
+        : (12 - len(trickspot_grabs))
+    ]  # first 12 entries, fewer if trickspots exist
     all_around_grabs = _shuffle(all_around_grabs + trickspot_grabs)
-    protricks = protricks.replace("{{rando_protricks_allaroundgrabs_ul}}", all_around_grabs.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_allaroundgrabs_ur}}", all_around_grabs.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_allaroundgrabs_dl}}", all_around_grabs.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_allaroundgrabs_dr}}", all_around_grabs.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_allaroundgrabs_l}}", all_around_grabs.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_allaroundgrabs_r}}", all_around_grabs.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_allaroundgrabs_d}}", all_around_grabs.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_allaroundgrabs_u}}", all_around_grabs.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_allaroundgrabs_ll}}", all_around_grabs.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_allaroundgrabs_rr}}", all_around_grabs.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_allaroundgrabs_uu}}", all_around_grabs.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_allaroundgrabs_dd}}", all_around_grabs.pop().name_script)
-    street_grabs = _shuffle(Tricks().get_regular_grabs())[:(12-len(trickspot_grabs))] # first 12 entries, fewer if trickspots exist
+    protricks = protricks.replace(
+        "{{rando_protricks_allaroundgrabs_ul}}", all_around_grabs.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_allaroundgrabs_ur}}", all_around_grabs.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_allaroundgrabs_dl}}", all_around_grabs.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_allaroundgrabs_dr}}", all_around_grabs.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_allaroundgrabs_l}}", all_around_grabs.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_allaroundgrabs_r}}", all_around_grabs.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_allaroundgrabs_d}}", all_around_grabs.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_allaroundgrabs_u}}", all_around_grabs.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_allaroundgrabs_ll}}", all_around_grabs.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_allaroundgrabs_rr}}", all_around_grabs.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_allaroundgrabs_uu}}", all_around_grabs.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_allaroundgrabs_dd}}", all_around_grabs.pop().name_script
+    )
+    street_grabs = _shuffle(Tricks().get_regular_grabs())[
+        : (12 - len(trickspot_grabs))
+    ]  # first 12 entries, fewer if trickspots exist
     street_grabs = _shuffle(street_grabs + trickspot_grabs)
-    protricks = protricks.replace("{{rando_protricks_streetgrabs_ul}}", street_grabs.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_streetgrabs_ur}}", street_grabs.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_streetgrabs_dl}}", street_grabs.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_streetgrabs_dr}}", street_grabs.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_streetgrabs_l}}", street_grabs.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_streetgrabs_r}}", street_grabs.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_streetgrabs_d}}", street_grabs.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_streetgrabs_u}}", street_grabs.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_streetgrabs_ll}}", street_grabs.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_streetgrabs_rr}}", street_grabs.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_streetgrabs_uu}}", street_grabs.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_streetgrabs_dd}}", street_grabs.pop().name_script)
-    vert_grabs = _shuffle(Tricks().get_regular_grabs())[:(12-len(trickspot_grabs))] # first 12 entries, fewer if trickspots exist
+    protricks = protricks.replace(
+        "{{rando_protricks_streetgrabs_ul}}", street_grabs.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_streetgrabs_ur}}", street_grabs.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_streetgrabs_dl}}", street_grabs.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_streetgrabs_dr}}", street_grabs.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_streetgrabs_l}}", street_grabs.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_streetgrabs_r}}", street_grabs.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_streetgrabs_d}}", street_grabs.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_streetgrabs_u}}", street_grabs.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_streetgrabs_ll}}", street_grabs.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_streetgrabs_rr}}", street_grabs.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_streetgrabs_uu}}", street_grabs.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_streetgrabs_dd}}", street_grabs.pop().name_script
+    )
+    vert_grabs = _shuffle(Tricks().get_regular_grabs())[
+        : (12 - len(trickspot_grabs))
+    ]  # first 12 entries, fewer if trickspots exist
     vert_grabs = _shuffle(vert_grabs + trickspot_grabs)
-    protricks = protricks.replace("{{rando_protricks_vertgrabs_ul}}", vert_grabs.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_vertgrabs_ur}}", vert_grabs.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_vertgrabs_dl}}", vert_grabs.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_vertgrabs_dr}}", vert_grabs.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_vertgrabs_l}}", vert_grabs.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_vertgrabs_r}}", vert_grabs.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_vertgrabs_d}}", vert_grabs.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_vertgrabs_u}}", vert_grabs.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_vertgrabs_ll}}", vert_grabs.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_vertgrabs_rr}}", vert_grabs.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_vertgrabs_uu}}", vert_grabs.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_vertgrabs_dd}}", vert_grabs.pop().name_script)
+    protricks = protricks.replace(
+        "{{rando_protricks_vertgrabs_ul}}", vert_grabs.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_vertgrabs_ur}}", vert_grabs.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_vertgrabs_dl}}", vert_grabs.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_vertgrabs_dr}}", vert_grabs.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_vertgrabs_l}}", vert_grabs.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_vertgrabs_r}}", vert_grabs.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_vertgrabs_d}}", vert_grabs.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_vertgrabs_u}}", vert_grabs.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_vertgrabs_ll}}", vert_grabs.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_vertgrabs_rr}}", vert_grabs.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_vertgrabs_uu}}", vert_grabs.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_vertgrabs_dd}}", vert_grabs.pop().name_script
+    )
 
-    vert_flips = _shuffle(Tricks().get_regular_flips())[:(12-len(trickspot_flips))] # first 12 entries, fewer if trickspots exist
+    vert_flips = _shuffle(Tricks().get_regular_flips())[
+        : (12 - len(trickspot_flips))
+    ]  # first 12 entries, fewer if trickspots exist
     vert_flips = _shuffle(vert_flips + trickspot_flips)
-    protricks = protricks.replace("{{rando_protricks_vertflips_ul}}", vert_flips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_vertflips_ur}}", vert_flips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_vertflips_dl}}", vert_flips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_vertflips_dr}}", vert_flips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_vertflips_l}}", vert_flips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_vertflips_r}}", vert_flips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_vertflips_d}}", vert_flips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_vertflips_u}}", vert_flips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_vertflips_ll}}", vert_flips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_vertflips_rr}}", vert_flips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_vertflips_uu}}", vert_flips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_vertflips_dd}}", vert_flips.pop().name_script)
-    freestyle_flips = _shuffle(Tricks().get_regular_flips())[:(12-len(trickspot_flips))] # first 12 entries, fewer if trickspots exist
+    protricks = protricks.replace(
+        "{{rando_protricks_vertflips_ul}}", vert_flips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_vertflips_ur}}", vert_flips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_vertflips_dl}}", vert_flips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_vertflips_dr}}", vert_flips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_vertflips_l}}", vert_flips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_vertflips_r}}", vert_flips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_vertflips_d}}", vert_flips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_vertflips_u}}", vert_flips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_vertflips_ll}}", vert_flips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_vertflips_rr}}", vert_flips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_vertflips_uu}}", vert_flips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_vertflips_dd}}", vert_flips.pop().name_script
+    )
+    freestyle_flips = _shuffle(Tricks().get_regular_flips())[
+        : (12 - len(trickspot_flips))
+    ]  # first 12 entries, fewer if trickspots exist
     freestyle_flips = _shuffle(freestyle_flips + trickspot_flips)
-    protricks = protricks.replace("{{rando_protricks_freestyleflips_ul}}", freestyle_flips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_freestyleflips_ur}}", freestyle_flips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_freestyleflips_dl}}", freestyle_flips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_freestyleflips_dr}}", freestyle_flips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_freestyleflips_l}}", freestyle_flips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_freestyleflips_r}}", freestyle_flips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_freestyleflips_d}}", freestyle_flips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_freestyleflips_u}}", freestyle_flips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_freestyleflips_ll}}", freestyle_flips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_freestyleflips_rr}}", freestyle_flips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_freestyleflips_uu}}", freestyle_flips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_freestyleflips_dd}}", freestyle_flips.pop().name_script)
-    street_flips = _shuffle(Tricks().get_regular_flips())[:(12-len(trickspot_flips))] # first 12 entries, fewer if trickspots exist
+    protricks = protricks.replace(
+        "{{rando_protricks_freestyleflips_ul}}", freestyle_flips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_freestyleflips_ur}}", freestyle_flips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_freestyleflips_dl}}", freestyle_flips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_freestyleflips_dr}}", freestyle_flips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_freestyleflips_l}}", freestyle_flips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_freestyleflips_r}}", freestyle_flips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_freestyleflips_d}}", freestyle_flips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_freestyleflips_u}}", freestyle_flips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_freestyleflips_ll}}", freestyle_flips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_freestyleflips_rr}}", freestyle_flips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_freestyleflips_uu}}", freestyle_flips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_freestyleflips_dd}}", freestyle_flips.pop().name_script
+    )
+    street_flips = _shuffle(Tricks().get_regular_flips())[
+        : (12 - len(trickspot_flips))
+    ]  # first 12 entries, fewer if trickspots exist
     street_flips = _shuffle(street_flips + trickspot_flips)
-    protricks = protricks.replace("{{rando_protricks_streetflips_ul}}", street_flips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_streetflips_ur}}", street_flips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_streetflips_dl}}", street_flips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_streetflips_dr}}", street_flips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_streetflips_l}}", street_flips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_streetflips_r}}", street_flips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_streetflips_d}}", street_flips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_streetflips_u}}", street_flips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_streetflips_ll}}", street_flips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_streetflips_rr}}", street_flips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_streetflips_uu}}", street_flips.pop().name_script)
-    protricks = protricks.replace("{{rando_protricks_streetflips_dd}}", street_flips.pop().name_script)
+    protricks = protricks.replace(
+        "{{rando_protricks_streetflips_ul}}", street_flips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_streetflips_ur}}", street_flips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_streetflips_dl}}", street_flips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_streetflips_dr}}", street_flips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_streetflips_l}}", street_flips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_streetflips_r}}", street_flips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_streetflips_d}}", street_flips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_streetflips_u}}", street_flips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_streetflips_ll}}", street_flips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_streetflips_rr}}", street_flips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_streetflips_uu}}", street_flips.pop().name_script
+    )
+    protricks = protricks.replace(
+        "{{rando_protricks_streetflips_dd}}", street_flips.pop().name_script
+    )
 
     return protricks
+
 
 def randomize_special_tricks(skater_profile, difficulty=None):
     for skater in Skaters().all_skaters:
@@ -540,60 +931,87 @@ def randomize_special_tricks(skater_profile, difficulty=None):
 
         for i, special in enumerate(four_specials):
             skater_profile = skater_profile.replace(
-                "{{" + f"rando_skater_profile_{skater.script_name}_special_name_{i}" + "}}",
-                special.name_script
+                "{{"
+                + f"rando_skater_profile_{skater.script_name}_special_name_{i}"
+                + "}}",
+                special.name_script,
             )
             match special.trick_type:
                 case "grind":
                     skater_profile = skater_profile.replace(
-                        "{{" + f"rando_skater_profile_{skater.script_name}_special_slot_{i}" + "}}",
-                        grind_binds.pop().name
+                        "{{"
+                        + f"rando_skater_profile_{skater.script_name}_special_slot_{i}"
+                        + "}}",
+                        grind_binds.pop().name,
                     )
                 case "grab" | "flip":
                     skater_profile = skater_profile.replace(
-                        "{{" + f"rando_skater_profile_{skater.script_name}_special_slot_{i}" + "}}",
-                        air_binds.pop().name
+                        "{{"
+                        + f"rando_skater_profile_{skater.script_name}_special_slot_{i}"
+                        + "}}",
+                        air_binds.pop().name,
                     )
                 case "lip":
                     skater_profile = skater_profile.replace(
-                        "{{" + f"rando_skater_profile_{skater.script_name}_special_slot_{i}" + "}}",
-                        lip_binds.pop().name
+                        "{{"
+                        + f"rando_skater_profile_{skater.script_name}_special_slot_{i}"
+                        + "}}",
+                        lip_binds.pop().name,
                     )
                 case "manual":
                     skater_profile = skater_profile.replace(
-                        "{{" + f"rando_skater_profile_{skater.script_name}_special_slot_{i}" + "}}",
-                        manual_binds.pop().name
+                        "{{"
+                        + f"rando_skater_profile_{skater.script_name}_special_slot_{i}"
+                        + "}}",
+                        manual_binds.pop().name,
                     )
                 case _:
                     raise Exception("invalid trick type")
     return skater_profile
 
+
 def randomize_impress_ped_scores(ajc, bdj, sk3_pedscripts):
     ped_canada_score = random.randint(2, 25) * 1000
-    ped_canada_chatter = int(ped_canada_score/2) # Used for voice lines
+    ped_canada_chatter = int(ped_canada_score / 2)  # Used for voice lines
     ped_ship_score = random.randint(2, 25) * 1000
-    ped_ship_chatter = int(ped_ship_score/2) # Used for voice lines
-    sk3_pedscripts = sk3_pedscripts.replace("{{rando_sk3_pedscripts_skater_chatter}}", str(ped_canada_chatter))
-    sk3_pedscripts = sk3_pedscripts.replace("{{rando_sk3_pedscripts_skater_score}}", str(ped_canada_score))
-    sk3_pedscripts = sk3_pedscripts.replace("{{rando_sk3_pedscripts_girl_chatter}}", str(ped_ship_chatter))
-    sk3_pedscripts = sk3_pedscripts.replace("{{rando_sk3_pedscripts_girl_score}}", str(ped_ship_score))
+    ped_ship_chatter = int(ped_ship_score / 2)  # Used for voice lines
+    sk3_pedscripts = sk3_pedscripts.replace(
+        "{{rando_sk3_pedscripts_skater_chatter}}", str(ped_canada_chatter)
+    )
+    sk3_pedscripts = sk3_pedscripts.replace(
+        "{{rando_sk3_pedscripts_skater_score}}", str(ped_canada_score)
+    )
+    sk3_pedscripts = sk3_pedscripts.replace(
+        "{{rando_sk3_pedscripts_girl_chatter}}", str(ped_ship_chatter)
+    )
+    sk3_pedscripts = sk3_pedscripts.replace(
+        "{{rando_sk3_pedscripts_girl_score}}", str(ped_ship_score)
+    )
     ajc = ajc.replace("{{rando_ajc_skater_points}}", str(ped_canada_score))
     bdj = bdj.replace("{{rando_bdj_girl_points}}", str(ped_ship_score))
     return ajc, bdj, sk3_pedscripts
+
 
 def randomize_decks(boardselect):
     # Randomize grip tape textures and skater default grip tapes
     # TODO: Changing your grip still doesn't match between the skateshop and in-level
     grips = _shuffle(Boards().get_grips())
     for i in range(32):
-        boardselect = boardselect.replace("{{" + f"rando_boardselect_grip_texture_{i}" + "}}", grips[i].texture)
-        boardselect = boardselect.replace("{{" + f"rando_boardselect_grip_description_{i}" + "}}", grips[i].name)
+        boardselect = boardselect.replace(
+            "{{" + f"rando_boardselect_grip_texture_{i}" + "}}", grips[i].texture
+        )
+        boardselect = boardselect.replace(
+            "{{" + f"rando_boardselect_grip_description_{i}" + "}}", grips[i].name
+        )
     # Randomize deck textures
     # TODO: Change the in-game names too?
     decks = _shuffle(Boards().get_decks())
     for i in range(230):
-        boardselect = boardselect.replace("{{" + f"rando_boardselect_deck_texture_{i}" + "}}", decks[i].texture)
+        boardselect = boardselect.replace(
+            "{{" + f"rando_boardselect_deck_texture_{i}" + "}}", decks[i].texture
+        )
     return boardselect
+
 
 def randomize_secrets(goal_scripts):
     # UnlockNextSecret is a builtin which keys off the SecretScripts array
@@ -605,82 +1023,211 @@ def randomize_secrets(goal_scripts):
     # It contains "Entire Game complete" logic and the last secret cannot be a skater anyway
 
     # Shuffle the remaining secrets 1-22
-    secrets = _shuffle([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22])
-    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_a}}", f"THPS3_secretScript_{secrets.pop()}")
-    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_b}}", f"THPS3_secretScript_{secrets.pop()}")
-    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_c}}", f"THPS3_secretScript_{secrets.pop()}")
-    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_d}}", f"THPS3_secretScript_{secrets.pop()}")
-    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_e}}", f"THPS3_secretScript_{secrets.pop()}")
-    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_f}}", f"THPS3_secretScript_{secrets.pop()}")
-    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_g}}", f"THPS3_secretScript_{secrets.pop()}")
-    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_h}}", f"THPS3_secretScript_{secrets.pop()}")
-    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_i}}", f"THPS3_secretScript_{secrets.pop()}")
-    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_j}}", f"THPS3_secretScript_{secrets.pop()}")
-    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_k}}", f"THPS3_secretScript_{secrets.pop()}")
-    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_l}}", f"THPS3_secretScript_{secrets.pop()}")
-    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_m}}", f"THPS3_secretScript_{secrets.pop()}")
-    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_n}}", f"THPS3_secretScript_{secrets.pop()}")
-    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_o}}", f"THPS3_secretScript_{secrets.pop()}")
-    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_p}}", f"THPS3_secretScript_{secrets.pop()}")
-    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_q}}", f"THPS3_secretScript_{secrets.pop()}")
-    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_r}}", f"THPS3_secretScript_{secrets.pop()}")
-    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_s}}", f"THPS3_secretScript_{secrets.pop()}")
-    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_t}}", f"THPS3_secretScript_{secrets.pop()}")
-    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_u}}", f"THPS3_secretScript_{secrets.pop()}")
-    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_v}}", f"THPS3_secretScript_{secrets.pop()}")
+    secrets = _shuffle(
+        [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]
+    )
+    goal_scripts = goal_scripts.replace(
+        "{{rando_goal_scripts_secret_a}}", f"THPS3_secretScript_{secrets.pop()}"
+    )
+    goal_scripts = goal_scripts.replace(
+        "{{rando_goal_scripts_secret_b}}", f"THPS3_secretScript_{secrets.pop()}"
+    )
+    goal_scripts = goal_scripts.replace(
+        "{{rando_goal_scripts_secret_c}}", f"THPS3_secretScript_{secrets.pop()}"
+    )
+    goal_scripts = goal_scripts.replace(
+        "{{rando_goal_scripts_secret_d}}", f"THPS3_secretScript_{secrets.pop()}"
+    )
+    goal_scripts = goal_scripts.replace(
+        "{{rando_goal_scripts_secret_e}}", f"THPS3_secretScript_{secrets.pop()}"
+    )
+    goal_scripts = goal_scripts.replace(
+        "{{rando_goal_scripts_secret_f}}", f"THPS3_secretScript_{secrets.pop()}"
+    )
+    goal_scripts = goal_scripts.replace(
+        "{{rando_goal_scripts_secret_g}}", f"THPS3_secretScript_{secrets.pop()}"
+    )
+    goal_scripts = goal_scripts.replace(
+        "{{rando_goal_scripts_secret_h}}", f"THPS3_secretScript_{secrets.pop()}"
+    )
+    goal_scripts = goal_scripts.replace(
+        "{{rando_goal_scripts_secret_i}}", f"THPS3_secretScript_{secrets.pop()}"
+    )
+    goal_scripts = goal_scripts.replace(
+        "{{rando_goal_scripts_secret_j}}", f"THPS3_secretScript_{secrets.pop()}"
+    )
+    goal_scripts = goal_scripts.replace(
+        "{{rando_goal_scripts_secret_k}}", f"THPS3_secretScript_{secrets.pop()}"
+    )
+    goal_scripts = goal_scripts.replace(
+        "{{rando_goal_scripts_secret_l}}", f"THPS3_secretScript_{secrets.pop()}"
+    )
+    goal_scripts = goal_scripts.replace(
+        "{{rando_goal_scripts_secret_m}}", f"THPS3_secretScript_{secrets.pop()}"
+    )
+    goal_scripts = goal_scripts.replace(
+        "{{rando_goal_scripts_secret_n}}", f"THPS3_secretScript_{secrets.pop()}"
+    )
+    goal_scripts = goal_scripts.replace(
+        "{{rando_goal_scripts_secret_o}}", f"THPS3_secretScript_{secrets.pop()}"
+    )
+    goal_scripts = goal_scripts.replace(
+        "{{rando_goal_scripts_secret_p}}", f"THPS3_secretScript_{secrets.pop()}"
+    )
+    goal_scripts = goal_scripts.replace(
+        "{{rando_goal_scripts_secret_q}}", f"THPS3_secretScript_{secrets.pop()}"
+    )
+    goal_scripts = goal_scripts.replace(
+        "{{rando_goal_scripts_secret_r}}", f"THPS3_secretScript_{secrets.pop()}"
+    )
+    goal_scripts = goal_scripts.replace(
+        "{{rando_goal_scripts_secret_s}}", f"THPS3_secretScript_{secrets.pop()}"
+    )
+    goal_scripts = goal_scripts.replace(
+        "{{rando_goal_scripts_secret_t}}", f"THPS3_secretScript_{secrets.pop()}"
+    )
+    goal_scripts = goal_scripts.replace(
+        "{{rando_goal_scripts_secret_u}}", f"THPS3_secretScript_{secrets.pop()}"
+    )
+    goal_scripts = goal_scripts.replace(
+        "{{rando_goal_scripts_secret_v}}", f"THPS3_secretScript_{secrets.pop()}"
+    )
 
     golds_required_for_secret = True
     if golds_required_for_secret:
-        goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_gold_rio}}", "GOT_GOLD_RIO")
-        goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_gold_si}}", "GOT_GOLD_SI")
-        goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_gold_tokyo}}", "GOT_GOLD_TOKYO")
+        goal_scripts = goal_scripts.replace(
+            "{{rando_goal_scripts_secret_gold_rio}}", "GOT_GOLD_RIO"
+        )
+        goal_scripts = goal_scripts.replace(
+            "{{rando_goal_scripts_secret_gold_si}}", "GOT_GOLD_SI"
+        )
+        goal_scripts = goal_scripts.replace(
+            "{{rando_goal_scripts_secret_gold_tokyo}}", "GOT_GOLD_TOKYO"
+        )
     else:
         # Flag 159 is always true
-        goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_gold_rio}}", "159")
-        goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_gold_si}}", "159")
-        goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_gold_tokyo}}", "159")
+        goal_scripts = goal_scripts.replace(
+            "{{rando_goal_scripts_secret_gold_rio}}", "159"
+        )
+        goal_scripts = goal_scripts.replace(
+            "{{rando_goal_scripts_secret_gold_si}}", "159"
+        )
+        goal_scripts = goal_scripts.replace(
+            "{{rando_goal_scripts_secret_gold_tokyo}}", "159"
+        )
 
     goals_required_for_secret = 0
-    goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_goals}}", str(goals_required_for_secret))
+    goal_scripts = goal_scripts.replace(
+        "{{rando_goal_scripts_secret_goals}}", str(goals_required_for_secret)
+    )
 
     # For normal levels, secret unlock check is moved so that all goals are not required
     # TODO: move secret unlock for comp levels as well
     return goal_scripts
 
+
 def lock_characters(skater_profile):
     lock_pros = False
     if lock_pros:
         # Lock custom skater and all non-Tony pro skaters behind a non-character global secret flag
-        noncharacter_flags = Secrets().secret_flags_levels + Secrets().secret_flags_cheats
+        noncharacter_flags = (
+            Secrets().secret_flags_levels + Secrets().secret_flags_cheats
+        )
         noncharacter_flags = _shuffle(noncharacter_flags)
-        skater_profile = skater_profile.replace("{{rando_skater_profile_caballero_unlock_flag}}", f"unlock_flag = {noncharacter_flags.pop()}")
-        skater_profile = skater_profile.replace("{{rando_skater_profile_campbell_unlock_flag}}", f"unlock_flag = {noncharacter_flags.pop()}")
-        skater_profile = skater_profile.replace("{{rando_skater_profile_glifberg_unlock_flag}}", f"unlock_flag = {noncharacter_flags.pop()}")
-        skater_profile = skater_profile.replace("{{rando_skater_profile_koston_unlock_flag}}", f"unlock_flag = {noncharacter_flags.pop()}")
-        skater_profile = skater_profile.replace("{{rando_skater_profile_lasek_unlock_flag}}", f"unlock_flag = {noncharacter_flags.pop()}")
-        skater_profile = skater_profile.replace("{{rando_skater_profile_margera_unlock_flag}}", f"unlock_flag = {noncharacter_flags.pop()}")
-        skater_profile = skater_profile.replace("{{rando_skater_profile_mullen_unlock_flag}}", f"unlock_flag = {noncharacter_flags.pop()}")
-        skater_profile = skater_profile.replace("{{rando_skater_profile_muska_unlock_flag}}", f"unlock_flag = {noncharacter_flags.pop()}")
-        skater_profile = skater_profile.replace("{{rando_skater_profile_reynolds_unlock_flag}}", f"unlock_flag = {noncharacter_flags.pop()}")
-        skater_profile = skater_profile.replace("{{rando_skater_profile_rowley_unlock_flag}}", f"unlock_flag = {noncharacter_flags.pop()}")
-        skater_profile = skater_profile.replace("{{rando_skater_profile_steamer_unlock_flag}}", f"unlock_flag = {noncharacter_flags.pop()}")
-        skater_profile = skater_profile.replace("{{rando_skater_profile_thomas_unlock_flag}}", f"unlock_flag = {noncharacter_flags.pop()}")
-        skater_profile = skater_profile.replace("{{rando_skater_profile_custom_unlock_flag}}", f"unlock_flag = {noncharacter_flags.pop()}")
+        skater_profile = skater_profile.replace(
+            "{{rando_skater_profile_caballero_unlock_flag}}",
+            f"unlock_flag = {noncharacter_flags.pop()}",
+        )
+        skater_profile = skater_profile.replace(
+            "{{rando_skater_profile_campbell_unlock_flag}}",
+            f"unlock_flag = {noncharacter_flags.pop()}",
+        )
+        skater_profile = skater_profile.replace(
+            "{{rando_skater_profile_glifberg_unlock_flag}}",
+            f"unlock_flag = {noncharacter_flags.pop()}",
+        )
+        skater_profile = skater_profile.replace(
+            "{{rando_skater_profile_koston_unlock_flag}}",
+            f"unlock_flag = {noncharacter_flags.pop()}",
+        )
+        skater_profile = skater_profile.replace(
+            "{{rando_skater_profile_lasek_unlock_flag}}",
+            f"unlock_flag = {noncharacter_flags.pop()}",
+        )
+        skater_profile = skater_profile.replace(
+            "{{rando_skater_profile_margera_unlock_flag}}",
+            f"unlock_flag = {noncharacter_flags.pop()}",
+        )
+        skater_profile = skater_profile.replace(
+            "{{rando_skater_profile_mullen_unlock_flag}}",
+            f"unlock_flag = {noncharacter_flags.pop()}",
+        )
+        skater_profile = skater_profile.replace(
+            "{{rando_skater_profile_muska_unlock_flag}}",
+            f"unlock_flag = {noncharacter_flags.pop()}",
+        )
+        skater_profile = skater_profile.replace(
+            "{{rando_skater_profile_reynolds_unlock_flag}}",
+            f"unlock_flag = {noncharacter_flags.pop()}",
+        )
+        skater_profile = skater_profile.replace(
+            "{{rando_skater_profile_rowley_unlock_flag}}",
+            f"unlock_flag = {noncharacter_flags.pop()}",
+        )
+        skater_profile = skater_profile.replace(
+            "{{rando_skater_profile_steamer_unlock_flag}}",
+            f"unlock_flag = {noncharacter_flags.pop()}",
+        )
+        skater_profile = skater_profile.replace(
+            "{{rando_skater_profile_thomas_unlock_flag}}",
+            f"unlock_flag = {noncharacter_flags.pop()}",
+        )
+        skater_profile = skater_profile.replace(
+            "{{rando_skater_profile_custom_unlock_flag}}",
+            f"unlock_flag = {noncharacter_flags.pop()}",
+        )
     else:
-        skater_profile = skater_profile.replace("{{rando_skater_profile_caballero_unlock_flag}}", "")
-        skater_profile = skater_profile.replace("{{rando_skater_profile_campbell_unlock_flag}}", "")
-        skater_profile = skater_profile.replace("{{rando_skater_profile_glifberg_unlock_flag}}", "")
-        skater_profile = skater_profile.replace("{{rando_skater_profile_koston_unlock_flag}}", "")
-        skater_profile = skater_profile.replace("{{rando_skater_profile_lasek_unlock_flag}}", "")
-        skater_profile = skater_profile.replace("{{rando_skater_profile_margera_unlock_flag}}", "")
-        skater_profile = skater_profile.replace("{{rando_skater_profile_mullen_unlock_flag}}", "")
-        skater_profile = skater_profile.replace("{{rando_skater_profile_muska_unlock_flag}}", "")
-        skater_profile = skater_profile.replace("{{rando_skater_profile_reynolds_unlock_flag}}", "")
-        skater_profile = skater_profile.replace("{{rando_skater_profile_rowley_unlock_flag}}", "")
-        skater_profile = skater_profile.replace("{{rando_skater_profile_steamer_unlock_flag}}", "")
-        skater_profile = skater_profile.replace("{{rando_skater_profile_thomas_unlock_flag}}", "")
-        skater_profile = skater_profile.replace("{{rando_skater_profile_custom_unlock_flag}}", "")
+        skater_profile = skater_profile.replace(
+            "{{rando_skater_profile_caballero_unlock_flag}}", ""
+        )
+        skater_profile = skater_profile.replace(
+            "{{rando_skater_profile_campbell_unlock_flag}}", ""
+        )
+        skater_profile = skater_profile.replace(
+            "{{rando_skater_profile_glifberg_unlock_flag}}", ""
+        )
+        skater_profile = skater_profile.replace(
+            "{{rando_skater_profile_koston_unlock_flag}}", ""
+        )
+        skater_profile = skater_profile.replace(
+            "{{rando_skater_profile_lasek_unlock_flag}}", ""
+        )
+        skater_profile = skater_profile.replace(
+            "{{rando_skater_profile_margera_unlock_flag}}", ""
+        )
+        skater_profile = skater_profile.replace(
+            "{{rando_skater_profile_mullen_unlock_flag}}", ""
+        )
+        skater_profile = skater_profile.replace(
+            "{{rando_skater_profile_muska_unlock_flag}}", ""
+        )
+        skater_profile = skater_profile.replace(
+            "{{rando_skater_profile_reynolds_unlock_flag}}", ""
+        )
+        skater_profile = skater_profile.replace(
+            "{{rando_skater_profile_rowley_unlock_flag}}", ""
+        )
+        skater_profile = skater_profile.replace(
+            "{{rando_skater_profile_steamer_unlock_flag}}", ""
+        )
+        skater_profile = skater_profile.replace(
+            "{{rando_skater_profile_thomas_unlock_flag}}", ""
+        )
+        skater_profile = skater_profile.replace(
+            "{{rando_skater_profile_custom_unlock_flag}}", ""
+        )
     return skater_profile
+
 
 def junk_suburbia(alf):
     # Increase ice cream truck from 20 mph
@@ -688,6 +1235,7 @@ def junk_suburbia(alf):
     # Make the thin man fall in love with Tony Hawk
     alf = alf.replace("{{rando_alf_thinman_hearts_skater}}", "hawk")
     return alf
+
 
 def randomize_foundry_trickspot_gaps(cjr):
     # TODO: This doesn't really belong here longterm
@@ -760,12 +1308,17 @@ def unlock_trick_scores(airtricks, levels):
     # TODO: Add additional trick types and unlock flags
     unlock_trick_scores = False
     if unlock_trick_scores:
-        airtricks = airtricks.replace("{{rando_airtricks_fliptrick_score}}", "CAN_FLIP_TRICK")
-        airtricks = airtricks.replace("{{rando_airtricks_grabtrick_score}}", "CAN_FLIP_TRICK")
-        airtricks = airtricks.replace("{{rando_airtricks_flipgrabblend_score}}", "CAN_FLIP_TRICK")
+        airtricks = airtricks.replace(
+            "{{rando_airtricks_fliptrick_score}}", "CAN_FLIP_TRICK"
+        )
+        airtricks = airtricks.replace(
+            "{{rando_airtricks_grabtrick_score}}", "CAN_FLIP_TRICK"
+        )
+        airtricks = airtricks.replace(
+            "{{rando_airtricks_flipgrabblend_score}}", "CAN_FLIP_TRICK"
+        )
     else:
         airtricks = airtricks.replace("{{rando_airtricks_fliptrick_score}}", "159")
         airtricks = airtricks.replace("{{rando_airtricks_grabtrick_score}}", "159")
         airtricks = airtricks.replace("{{rando_airtricks_flipgrabblend_score}}", "159")
     return airtricks
-

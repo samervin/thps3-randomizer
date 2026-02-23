@@ -1,8 +1,8 @@
 from rando.level2 import Level2
 import random
 
-class LevelAirport(Level2):
 
+class LevelAirport(Level2):
     def __init__(self):
         self.name = "The Airport"
         self.name_flag = "AIRPORT"
@@ -67,7 +67,7 @@ class LevelAirport(Level2):
         buddy2_offset_x = -22
         buddy2_offset_z = -56
         custom_buddy_vectors = [
-            (4232.0, -12.0, 7570.0), # Upper area on right
+            (4232.0, -12.0, 7570.0),  # Upper area on right
         ]
 
         vectors = self._shuffle(default_buddy_vector + custom_buddy_vectors)
@@ -76,5 +76,7 @@ class LevelAirport(Level2):
         vector_value = f"VECTOR[{vector[0]}; {vector[1]}; {vector[2]}]"
         vector2_value = f"VECTOR[{vector[0] + buddy2_offset_x}; {vector[1]}; {vector[2] + buddy2_offset_z}]"
         data = data.replace("{{" + "rando_ap_vector_ticket_buddy1" + "}}", vector_value)
-        data = data.replace("{{" + "rando_ap_vector_ticket_buddy2" + "}}", vector2_value)
+        data = data.replace(
+            "{{" + "rando_ap_vector_ticket_buddy2" + "}}", vector2_value
+        )
         return data
