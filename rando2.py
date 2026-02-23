@@ -1,10 +1,7 @@
 # coding: cp1252
 
 import random
-import re
-import os
 
-from rando.constants import *
 from rando.level_foundry import LevelFoundry
 from rando.level_canada import LevelCanada
 from rando.level_rio import LevelRio

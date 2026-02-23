@@ -75,6 +75,6 @@ class LevelAirport(Level2):
         vector = vectors.pop()
         vector_value = f"VECTOR[{vector[0]}; {vector[1]}; {vector[2]}]"
         vector2_value = f"VECTOR[{vector[0] + buddy2_offset_x}; {vector[1]}; {vector[2] + buddy2_offset_z}]"
-        data = data.replace("{{" + f"rando_ap_vector_ticket_buddy1" + "}}", vector_value)
-        data = data.replace("{{" + f"rando_ap_vector_ticket_buddy2" + "}}", vector2_value)
+        data = data.replace("{{" + "rando_ap_vector_ticket_buddy1" + "}}", vector_value)
+        data = data.replace("{{" + "rando_ap_vector_ticket_buddy2" + "}}", vector2_value)
         return data

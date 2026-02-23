@@ -10,8 +10,8 @@ class Secrets:
 
     def get_secrets(self, secret_type=None):
         if secret_type:
-            return [s for s in all_secrets if s.secret_type == secret_type]
-        return all_secrets.copy()
+            return [s for s in self.all_secrets if s.secret_type == secret_type]
+        return self.all_secrets.copy()
 
     all_secrets = [
         Secret("Darth Maul", "skater"),

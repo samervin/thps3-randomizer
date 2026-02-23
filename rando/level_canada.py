@@ -1,5 +1,4 @@
 from rando.level2 import Level2
-import re
 import random
 
 class LevelCanada(Level2):

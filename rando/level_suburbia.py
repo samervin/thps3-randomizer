@@ -1,6 +1,5 @@
 from rando.level2 import Level2
 import random
-import re
 
 class LevelSuburbia(Level2):
 
