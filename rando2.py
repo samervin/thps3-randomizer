@@ -25,31 +25,6 @@ def _shuffle(any_list):
     random.shuffle(shuffled)
     return shuffled
 
-def read_script_file(filename):
-    with open(f'vanilla-qbs/Scripts/{filename}.qb', 'r') as f:
-        return f.readlines()
-
-def read_modified_script_file(filename):
-    with open(f'modified-qbs/Scripts/{filename}.qb', 'r') as f:
-        return f.read()
-
-def memify(script):
-    # make one long string, then split on lines, to include modified linebreaks
-    script = ''.join(script)
-    script = script.splitlines(keepends=True)
-    output = []
-    for i, line in enumerate(script):
-        # substitute any memory address like #00000 with i (the current line number) zero-padded to 5 spaces
-        output.append(re.sub(r'#\d{5}', f"#{i:05d}", line))
-    return output
-
-def write_script_file(filename, contents):
-    contents = memify(contents)
-    full_filename = f'outfiles/Scripts/{filename}.out'
-    os.makedirs(os.path.dirname(full_filename), exist_ok=True)
-    with open(full_filename, 'w', newline='\n') as fout:
-        fout.writelines(contents)
-
 def display_victory_requirements(gameqb):
     # Display (dummy) victory requirements on level select menu instead of (broken) level unlock requirements
     # You only get about 26 characters before the message grows beyond the menu bar
@@ -657,8 +632,6 @@ def randomize_secrets(goal_scripts):
     goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_u}}", f"THPS3_secretScript_{secrets.pop()}")
     goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_v}}", f"THPS3_secretScript_{secrets.pop()}")
 
-    # TODO: Edit Cheat menu to appear when the first cheat is unlocked, rather than only Snowboard mode
-
     golds_required_for_secret = True
     if golds_required_for_secret:
         goal_scripts = goal_scripts.replace("{{rando_goal_scripts_secret_gold_rio}}", "GOT_GOLD_RIO")
@@ -799,80 +772,3 @@ def unlock_trick_scores(airtricks, levels):
         airtricks = airtricks.replace("{{rando_airtricks_flipgrabblend_score}}", "159")
     return airtricks
 
-def rando():
-    # read modified QBs
-    airtricks = read_modified_script_file('airtricks')
-    ajc = read_modified_script_file('ajc_scripts')
-    alf = read_modified_script_file('alf_scripts')
-    bdj = read_modified_script_file('bdj_scripts')
-    boardselect = read_modified_script_file('boardselect')
-    cjr = read_modified_script_file('cjr_scripts')
-    comp_scripts = read_modified_script_file('comp_scripts')
-    cpf = read_modified_script_file('cpf_scripts')
-    gameflow = read_modified_script_file('gameflow')
-    gameqb = read_modified_script_file('game')
-    gamemode = read_modified_script_file('gamemode')
-    goal_scripts = read_modified_script_file('goal_scripts')
-    judges = read_modified_script_file('judges')
-    levelsqb = read_modified_script_file('levels')
-    mainmenu = read_modified_script_file('mainmenu')
-    # physics = read_modified_script_file('physics')
-    protricks = read_modified_script_file('protricks')
-    sk3_pedscripts = read_modified_script_file('sk3_pedscripts')
-    skater_profile = read_modified_script_file('skater_profile')
-
-    # randomize QBs
-    levels = get_random_level_order(end_on_comp=False)
-    print(
-        levels[0].name, levels[1].name, levels[2].name,
-        levels[3].name, levels[4].name, levels[5].name,
-        levels[6].name, levels[7].name, levels[8].name,
-    )
-
-    gameqb = display_victory_requirements(gameqb)
-    goal_scripts, mainmenu = randomize_level_requirements(levels, mainmenu, goal_scripts)
-    comp_scripts, goal_scripts = randomize_score_goals(levels, goal_scripts, comp_scripts)
-    randomize_item_locations(levels)
-    skater_profile = randomize_stats(skater_profile)
-    skater_profile = randomize_trickstyle(skater_profile)
-    gamemode = randomize_level_timer(gamemode)
-    trickspot_tricks, ajc, alf, bdj, cjr, cpf = randomize_trickspot_tricks("wild", ajc, alf, bdj, cjr, cpf)
-    protricks = randomize_trick_sets(protricks, trickspot_tricks)
-    skater_profile = randomize_special_tricks(skater_profile, "easy")
-    ajc, bdj, sk3_pedscripts = randomize_impress_ped_scores(ajc, bdj, sk3_pedscripts)
-    boardselect = randomize_decks(boardselect)
-
-    goal_scripts = require_deck_for_tape(goal_scripts)
-    judges, comp_scripts = require_deck_for_medal(judges, comp_scripts)
-    airtricks = unlock_trick_scores(airtricks, levels)
-
-    goal_scripts = randomize_secrets(goal_scripts)
-    skater_profile = lock_characters(skater_profile)
-
-    alf = junk_suburbia(alf)
-    cjr = randomize_foundry_trickspot_gaps(cjr)
-
-    # write modified QBs
-    write_script_file('airtricks', airtricks)
-    write_script_file('alf_scripts', alf)
-    write_script_file('ajc_scripts', ajc)
-    write_script_file('bdj_scripts', bdj)
-    write_script_file('boardselect', boardselect)
-    write_script_file('cjr_scripts', cjr)
-    write_script_file('comp_scripts', comp_scripts)
-    write_script_file('cpf_scripts', cpf)
-    write_script_file('game', gameqb)
-    write_script_file('gameflow', gameflow)
-    write_script_file('gamemode', gamemode)
-    write_script_file('goal_scripts', goal_scripts)
-    write_script_file('judges', judges)
-    write_script_file('levels', levelsqb)
-    write_script_file('mainmenu', mainmenu)
-    # write_script_file('physics', physics)
-    write_script_file('protricks', protricks)
-    write_script_file('sk3_pedscripts', sk3_pedscripts)
-    write_script_file('skater_profile', skater_profile)
-
-
-if __name__ == "__main__":
-    rando()

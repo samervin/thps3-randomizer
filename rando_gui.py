@@ -1,5 +1,5 @@
 import tkinter as tk
-import rando2
+import thps3_randomizer
 import subprocess
 import shutil
 from pathlib import Path
@@ -60,7 +60,7 @@ label_initialize = tk.Label(
 def click_randomize():
     label_randomize.config(text="Randomizing...")
     # Randomize files
-    rando2.rando()
+    thps3_randomizer.randomize()
     # Compile Java
     subprocess.run("javac -encoding Cp1252 qb-editor/*.java", shell=True)
     # Run Java
