@@ -291,12 +291,12 @@ public class ReadQBFiles {
 
         for (String filename : allScriptFilenames) {
             data = readQbFile("Scripts/" + filename);
-            writeWindowsFile(data, "../vanilla-qbs/Scripts/" + filename);
+            writeWindowsFile(data, "../qbs_vanilla/Scripts/" + filename);
         }
 
         for (String filename : allLevelFilenames) {
             data = readQbFile("Levels/" + filename);
-            writeWindowsFile(data, "../vanilla-qbs/Levels/" + filename);
+            writeWindowsFile(data, "../qbs_vanilla/Levels/" + filename);
         }
     }
 

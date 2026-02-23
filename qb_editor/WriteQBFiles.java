@@ -11,7 +11,7 @@ public class WriteQBFiles {
 
     private static Map<Integer, String> fields = null;
     private static SymbolListModel mainSymbolListModel = new SymbolListModel();
-    private static Path outfileFolder = Paths.get("outfiles/");
+    private static Path outfileFolder = Paths.get("qbs_outfiles/");
     private static String dataFolder = "";
 
     public static void main(String[] args) throws IOException {

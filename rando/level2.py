@@ -23,7 +23,7 @@ class Level2:
         return shuffled
 
     def read_modified_level_file(self):
-        with open(f'modified-qbs/Levels/{self.filepath}.qb', 'r') as f:
+        with open(f'qbs_modified/Levels/{self.filepath}.qb', 'r') as f:
             return f.read()
 
     def memify(self, script):
@@ -38,7 +38,7 @@ class Level2:
 
     def write_level_file(self, contents):
         contents = self.memify(contents)
-        full_filepath = f'outfiles/Levels/{self.filepath}.out'
+        full_filepath = f'qbs_outfiles/Levels/{self.filepath}.out'
         os.makedirs(os.path.dirname(full_filepath), exist_ok=True)
         with open(full_filepath, 'w', newline='\n') as fout:
             fout.writelines(contents)

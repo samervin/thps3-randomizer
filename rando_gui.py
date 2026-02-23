@@ -62,12 +62,12 @@ def click_randomize():
     # Randomize files
     thps3_randomizer.randomize()
     # Compile Java
-    subprocess.run("javac -encoding Cp1252 qb-editor/*.java", shell=True)
+    subprocess.run("javac -encoding Cp1252 qb_editor/*.java", shell=True)
     # Run Java
     thps3_data_dir = str(Path(thps3_directory, "rando/Data"))
-    subprocess.run(f"java -cp qb-editor -Dfile.encoding=COMPAT WriteQBFiles {thps3_data_dir}/", shell=True)
+    subprocess.run(f"java -cp qb_editor -Dfile.encoding=COMPAT WriteQBFiles {thps3_data_dir}/", shell=True)
     thps3_qdir_dir = Path(thps3_directory, "rando/Data/Scripts/qdir.txt")
-    shutil.copy("outfiles/qdir.txt", thps3_qdir_dir)
+    shutil.copy("qbs_outfiles/qdir.txt", thps3_qdir_dir)
     # Done
     label_randomize.config(text="Files randomized!")
 

@@ -39,12 +39,12 @@ def memify_script(script: str) -> str:
     return output
 
 def read_modified_script_qb(filename: str) -> str:
-    with open(f'modified-qbs/Scripts/{filename}.qb', 'r') as f:
+    with open(f'qbs_modified/Scripts/{filename}.qb', 'r') as f:
         return f.read()
 
 def write_modified_script_outfile(filename: str, contents: str) -> None:
     contents = memify_script(contents)
-    full_filename = f'outfiles/Scripts/{filename}.out'
+    full_filename = f'qbs_outfiles/Scripts/{filename}.out'
     os.makedirs(os.path.dirname(full_filename), exist_ok=True)
     with open(full_filename, 'w', newline='\n') as fout:
         fout.writelines(contents)
