@@ -34,12 +34,12 @@ def memify_script(script: str) -> str:
     """Update memory addresses in a script string to prepare for writing."""
     # make one long string, then split on lines, to include modified linebreaks
     script = "".join(script)
-    script = script.splitlines(keepends=True)
+    scriptlines = script.splitlines(keepends=True)
     output = []
-    for i, line in enumerate(script):
+    for i, line in enumerate(scriptlines):
         # substitute any memory address like #00000 with i (the current line number) zero-padded to 5 spaces
         output.append(re.sub(r"#\d{5}", f"#{i:05d}", line))
-    return output
+    return "".join(output)
 
 
 def read_modified_script_qb(filename: str) -> str:
@@ -52,7 +52,7 @@ def write_modified_script_outfile(filename: str, contents: str) -> None:
     full_filename = f"qbs_outfiles/Scripts/{filename}.out"
     os.makedirs(os.path.dirname(full_filename), exist_ok=True)
     with open(full_filename, "w", newline="\n") as fout:
-        fout.writelines(contents)
+        fout.write(contents)
 
 
 def read_modified_script_qbs() -> ScriptQBs:
@@ -101,7 +101,7 @@ def read_modified_script_qbs() -> ScriptQBs:
 def write_modified_script_outfiles(script_qbs: ScriptQBs) -> None:
     write_modified_script_outfile("airtricks", script_qbs.airtricks_qb)
     write_modified_script_outfile("ajc_scripts", script_qbs.ajc_scripts_qb)
-    (write_modified_script_outfile("alf_scripts", script_qbs.alf_scripts_qb),)
+    write_modified_script_outfile("alf_scripts", script_qbs.alf_scripts_qb)
     write_modified_script_outfile("bdj_scripts", script_qbs.bdj_scripts_qb)
     write_modified_script_outfile("boardselect", script_qbs.boardselect_qb)
     write_modified_script_outfile("cjr_scripts", script_qbs.cjr_scripts_qb)
