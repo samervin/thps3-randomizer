@@ -1,1841 +1,1841 @@
-FUNCTION start_main_menu
-#00000    SetFrontEndPad 0
-#00000    Request_Level level = Load_SkateShop
-
-#00000    SetGameType SkateShop
-#00000    SetGameState on
-#00000    reset_skateshop_skater
-#00000    HideLoadingScreen
-#00000    PlaySkaterCamAnim skater = 0
-          name = "Cam_MainMenu01"
-          play_hold
-#00000    spawnscript main_menu_first_frame
-#00000  END FUNCTION
-
-#00000  DoAutoLoad = 1
-
-#00000  AutoLoadRetryContinueVisible = 0
-
-#00000  FUNCTION AutoLoad
-#00000    IF PAL
-#00000      Change MinimumSpaceNeeded = 65
-
-#00000    END IF
-#00000    IF MemCardFileExists name = "Options and Pros"
-            Type = OptionsAndPros
-
-#00000      DisplayMessage MessageScript = Message_LoadingData
-            PauseLength = MemCardMessageShortPause
-
-#00000      Change MemCardLoadFailed = 0
-
-#00000      IF LoadFromMemoryCard name = "Options and Pros"
-              Type = OptionsAndPros
-
-#00000      ELSE
-#00000        Change MemCardLoadFailed = 1
-
-#00000      END IF
-#00000      IF MemCardFileExists name = "Network settings"
-              Type = NetworkSettings
-
-#00000        IF LoadFromMemoryCard name = "Network settings"
-                Type = NetworkSettings
-
-#00000        ELSE
-#00000          Change MemCardLoadFailed = 1
-
-#00000        END IF
-#00000      END IF
-#00000      IF CurrentSkaterIsPro
-#00000      ELSE
-#00000        IF CustomSkaterFilenameDefined
-#00000          GetCustomSkaterFilename
-#00000          IF LoadFromMemoryCard name = GLOBAL.string
-                  Type = cas
-
-#00000          ELSE
-#00000            Change MemCardLoadFailed = 1
-
-#00000          END IF
-#00000        END IF
-#00000      END IF
-#00000      RemoveAllSkaters
-#00000      ToggleSkater
-#00000      FireMenuEvent Type = refreshdecktextures
-            Id = deck_menu
-            target = deck_menu
-
-#00000      PlaySkaterCamAnim skater = 0
-            name = "Cam_MainMenu01"
-            play_hold
-#00000      IF istrue MemCardLoadFailed
-#00000        DisplayMessage MessageScript = Message_LoadFailed
-              PauseLength = MemCardMessageErrorPause
-
-#00000      ELSE
-#00000        movies_menu_create
-#00000        DisplayMessage MessageScript = Message_LoadSuccessful
-
-#00000      END IF
-#00000    END IF
-#00000    SwitchToMenu menu = frontend_menu
-          DoNotMakeRoot
-#00000    Change DoAutoLoad = 0
-
-#00000    goto main_menu_first_frame
-#00000  END FUNCTION
-
-#00000  FUNCTION _ReSpawnAutoload
-#00000    EnableBackEvent
-#00000    spawnscript AutoLoad
-#00000  END FUNCTION
-
-#00000  FUNCTION _BackToMainMenuFirstFrame
-#00000    EnableBackEvent
-#00000    spawnscript BackToMainMenuFirstFrame
-#00000  END FUNCTION
-
-#00000  FUNCTION BackToMainMenuFirstFrame
-#00000    SwitchToMenu menu = frontend_menu
-          DoNotMakeRoot
-#00000    Change DoAutoLoad = 0
-
-#00000    goto main_menu_first_frame
-#00000  END FUNCTION
-
-#00000  FUNCTION main_menu_first_frame
-#00000    IF istrue run_viewer
-#00000      Change DoAutoLoad = 0
-
-#00000    END IF
-#00000    IF istrue DoAutoLoad
-#00000      goto AutoLoad
-#00000    END IF
-#00000    Change FirstTimeInSplitscreen = 1
-
-#00000    Change FirstTimeFromSkateshop = 1
-
-#00000    IF DoDeferredInternetConnect
-#00000    ELSE
-#00000      IF DeferredLaunchServer
-#00000      ELSE
-#00000        IF istrue AutoLinkToCareerScreen
-#00000          Change AutoLinkToCareerScreen = 0
-
-#00000          SetCareerMode
-#00000          SwitchToMenu menu = career_menu
-                DoNotMakeRoot
-#00000        END IF
-#00000      END IF
-#00000    END IF
-#00000  END FUNCTION
-
-#00000  FUNCTION reset_skateshop_skater
-#00000    IF CurrentSkaterProfileIs 0
-#00000      PlaySkaterCamAnim skater = 0
-            name = "Cam_MainMenu01"
-            play_hold
-#00000    END IF
-#00000    MakeSkaterGoto skater = 0
-          SkateShopDummyAI
-#00000    MakeSkaterGoto skater = 1
-          SkateShopDummyAI
-#00000  END FUNCTION
-
-#00000  FUNCTION exit_main_menu
-#00000    UninitializeFrontEndSprites
-#00000  END FUNCTION
-
-#00000  FUNCTION SkateShopDummyAI
-#00000    SwitchOnBoard
-#00000    SwitchOffAtomic special_item
-#00000    ClearExceptions
-#00000    SetQueueTricks NoTricks
-#00000    DisablePlayerInput
-#00000    SetRollingFriction 10000
-#00000    BlendPeriodOut 0
-#00000    LOOP
-#00000      IF ProfileEquals is_named = wolverine
-
-#00000        PlayAnim Anim = WolverineIdle
-              Cycle NoRestart Blendperiod = 0.0
-
-#00000      ELSE
-#00000        IF ProfileEquals is_named = demoness
-
-#00000          PlayAnim Anim = DemonessIdle
-                Cycle NoRestart Blendperiod = 0.0
-
-#00000        ELSE
-#00000          IF ProfileEquals is_named = maul
-
-#00000            IF flipped
-#00000            ELSE
-#00000              flip
-#00000            END IF
-#00000            SwitchOffAtomic special_item
-#00000            PlayAnim Anim = MaulIdle
-                  Cycle NoRestart Blendperiod = 0.0
-
-#00000            Wait 60 frames
-#00000            SwitchOnAtomic special_item
-#00000            PlaySound SaberHIT1
-#00000          ELSE
-#00000            IF ProfileEquals is_named = slater
-
-#00000              PlayAnim Anim = SlaterIdle
-                    Cycle NoRestart Blendperiod = 0.0
-
-#00000            ELSE
-#00000              IF ProfileEquals is_named = ollie
-
-#00000                PlayAnim Anim = OllieIdle
-                      Cycle NoRestart Blendperiod = 0.0
-
-#00000              ELSE
-#00000                IF ProfileEquals is_named = dick
-
-#00000                  goto DickIdle
-#00000                ELSE
-#00000                  IF ProfileEquals is_named = steamer
-
-#00000                    goto StandIdle
-#00000                  ELSE
-#00000                    IF ProfileEquals is_named = muska
-
-#00000                      IF flipped
-#00000                      ELSE
-#00000                        flip
-#00000                      END IF
-#00000                      GotoRandomScript ARRAY(
-                              MuskaIdle
+FUNCTION start_main_menu 
+#00001    SetFrontEndPad 0 
+#00002    Request_Level level = Load_SkateShop 
+          
+#00007    SetGameType SkateShop 
+#00019    SetGameState on 
+#00020    reset_skateshop_skater 
+#00021    HideLoadingScreen 
+#00022    PlaySkaterCamAnim skater = 0 
+          name = "Cam_MainMenu01" 
+          play_hold 
+#00025    spawnscript main_menu_first_frame 
+#00032  END FUNCTION
+          
+#00033  DoAutoLoad = 1 
+        
+#00037  AutoLoadRetryContinueVisible = 0 
+        
+#00039  FUNCTION AutoLoad 
+#00041    IF PAL 
+#00042      Change MinimumSpaceNeeded = 65 
+            
+#00043    END IF 
+#00044    IF MemCardFileExists name = "Options and Pros" 
+            Type = OptionsAndPros 
+            
+#00046      DisplayMessage MessageScript = Message_LoadingData 
+            PauseLength = MemCardMessageShortPause 
+            
+#00047      Change MemCardLoadFailed = 0 
+            
+#00049      IF LoadFromMemoryCard name = "Options and Pros" 
+              Type = OptionsAndPros 
+              
+#00050      ELSE 
+#00051        Change MemCardLoadFailed = 1 
+              
+#00052      END IF 
+#00053      IF MemCardFileExists name = "Network settings" 
+              Type = NetworkSettings 
+              
+#00056        IF LoadFromMemoryCard name = "Network settings" 
+                Type = NetworkSettings 
+                
+#00057        ELSE 
+#00058          Change MemCardLoadFailed = 1 
+                
+#00059        END IF 
+#00060      END IF 
+#00061      IF CurrentSkaterIsPro 
+#00063      ELSE 
+#00064        IF CustomSkaterFilenameDefined 
+#00065          GetCustomSkaterFilename 
+#00066          IF LoadFromMemoryCard name = GLOBAL.string 
+                  Type = cas 
+                  
+#00067          ELSE 
+#00068            Change MemCardLoadFailed = 1 
+                  
+#00069          END IF 
+#00070        END IF 
+#00071      END IF 
+#00072      RemoveAllSkaters 
+#00075      ToggleSkater 
+#00076      FireMenuEvent Type = refreshdecktextures 
+            Id = deck_menu 
+            target = deck_menu 
+            
+#00078      PlaySkaterCamAnim skater = 0 
+            name = "Cam_MainMenu01" 
+            play_hold 
+#00080      IF istrue MemCardLoadFailed 
+#00081        DisplayMessage MessageScript = Message_LoadFailed 
+              PauseLength = MemCardMessageErrorPause 
+              
+#00082      ELSE 
+#00083        movies_menu_create 
+#00086        DisplayMessage MessageScript = Message_LoadSuccessful 
+              
+#00087      END IF 
+#00088    END IF 
+#00089    SwitchToMenu menu = frontend_menu 
+          DoNotMakeRoot 
+#00091    Change DoAutoLoad = 0 
+          
+#00094    goto main_menu_first_frame 
+#00098  END FUNCTION
+          
+#00100  FUNCTION _ReSpawnAutoload 
+#00102    EnableBackEvent 
+#00103    spawnscript AutoLoad 
+#00104  END FUNCTION
+          
+#00105  FUNCTION _BackToMainMenuFirstFrame 
+#00107    EnableBackEvent 
+#00108    spawnscript BackToMainMenuFirstFrame 
+#00109  END FUNCTION
+          
+#00110  FUNCTION BackToMainMenuFirstFrame 
+#00112    SwitchToMenu menu = frontend_menu 
+          DoNotMakeRoot 
+#00113    Change DoAutoLoad = 0 
+          
+#00114    goto main_menu_first_frame 
+#00115  END FUNCTION
+          
+#00116  FUNCTION main_menu_first_frame 
+#00118    IF istrue run_viewer 
+#00121      Change DoAutoLoad = 0 
+            
+#00122    END IF 
+#00123    IF istrue DoAutoLoad 
+#00125      goto AutoLoad 
+#00129    END IF 
+#00130    Change FirstTimeInSplitscreen = 1 
+          
+#00136    Change FirstTimeFromSkateshop = 1 
+          
+#00137    IF DoDeferredInternetConnect 
+#00139    ELSE 
+#00140      IF DeferredLaunchServer 
+#00141      ELSE 
+#00142        IF istrue AutoLinkToCareerScreen 
+#00146          Change AutoLinkToCareerScreen = 0 
+                
+#00147          SetCareerMode 
+#00148          SwitchToMenu menu = career_menu 
+                DoNotMakeRoot 
+#00149        END IF 
+#00150      END IF 
+#00151    END IF 
+#00152  END FUNCTION
+          
+#00154  FUNCTION reset_skateshop_skater 
+#00156    IF CurrentSkaterProfileIs 0 
+#00158      PlaySkaterCamAnim skater = 0 
+            name = "Cam_MainMenu01" 
+            play_hold 
+#00159    END IF 
+#00160    MakeSkaterGoto skater = 0 
+          SkateShopDummyAI 
+#00161    MakeSkaterGoto skater = 1 
+          SkateShopDummyAI 
+#00162  END FUNCTION
+          
+#00163  FUNCTION exit_main_menu 
+#00165    UninitializeFrontEndSprites 
+#00166  END FUNCTION
+          
+#00167  FUNCTION SkateShopDummyAI 
+#00169    SwitchOnBoard 
+#00174    SwitchOffAtomic special_item 
+#00175    ClearExceptions 
+#00176    SetQueueTricks NoTricks 
+#00177    DisablePlayerInput 
+#00178    SetRollingFriction 10000 
+#00179    BlendPeriodOut 0 
+#00180    LOOP 
+#00181      IF ProfileEquals is_named = wolverine 
+              
+#00182        PlayAnim Anim = WolverineIdle 
+              Cycle NoRestart Blendperiod = 0.0 
+              
+#00183      ELSE 
+#00184        IF ProfileEquals is_named = demoness 
+                
+#00185          PlayAnim Anim = DemonessIdle 
+                Cycle NoRestart Blendperiod = 0.0 
+                
+#00186        ELSE 
+#00187          IF ProfileEquals is_named = maul 
+                  
+#00188            IF flipped 
+#00189            ELSE 
+#00190              flip 
+#00191            END IF 
+#00192            SwitchOffAtomic special_item 
+#00193            PlayAnim Anim = MaulIdle 
+                  Cycle NoRestart Blendperiod = 0.0 
+                  
+#00194            Wait 60 frames 
+#00195            SwitchOnAtomic special_item 
+#00196            PlaySound SaberHIT1 
+#00197          ELSE 
+#00198            IF ProfileEquals is_named = slater 
+                    
+#00199              PlayAnim Anim = SlaterIdle 
+                    Cycle NoRestart Blendperiod = 0.0 
+                    
+#00200            ELSE 
+#00201              IF ProfileEquals is_named = ollie 
+                      
+#00202                PlayAnim Anim = OllieIdle 
+                      Cycle NoRestart Blendperiod = 0.0 
+                      
+#00203              ELSE 
+#00204                IF ProfileEquals is_named = dick 
+                        
+#00205                  goto DickIdle 
+#00206                ELSE 
+#00207                  IF ProfileEquals is_named = steamer 
+                          
+#00208                    goto StandIdle 
+#00209                  ELSE 
+#00210                    IF ProfileEquals is_named = muska 
+                            
+#00211                      IF flipped 
+#00212                      ELSE 
+#00213                        flip 
+#00214                      END IF 
+#00215                      GotoRandomScript ARRAY(
+                              MuskaIdle 
                             )
-
-#00000                    ELSE
-#00000                      IF ProfileEquals is_named = margera
-
-#00000                        PlayAnim RANDOM[7][24; 36; 48; 60; 72; 84; 96]
-                              Anim = BoardIdle
-                              JUMP 0x5b000000 Anim = BoardIdle
-                              JUMP 0x4b000000 Anim = BoardIdle
-                              JUMP 0x3b000000 Anim = BoardIdle
-                              JUMP 0x2b000000 Anim = BamScratch
-                              JUMP 0x1b000000 Anim = BoardLook
-                              JUMP 0x0b000000 Anim = BoardMove
-                              Blendperiod = 0.0
-
-#00000                      ELSE
-#00000                        IF ProfileEquals body_type = female
-
-#00000                          GotoRandomScript ARRAY(
-                                  FemaleIdle1 FemaleIdle2
+                            
+#00216                    ELSE 
+#00217                      IF ProfileEquals is_named = margera 
+                              
+#00218                        PlayAnim RANDOM[7][24; 36; 48; 60; 72; 84; 96]
+                              Anim = BoardIdle 
+                              JUMP 0x5b000000 Anim = BoardIdle 
+                              JUMP 0x4b000000 Anim = BoardIdle 
+                              JUMP 0x3b000000 Anim = BoardIdle 
+                              JUMP 0x2b000000 Anim = BamScratch 
+                              JUMP 0x1b000000 Anim = BoardLook 
+                              JUMP 0x0b000000 Anim = BoardMove 
+                              Blendperiod = 0.0 
+                              
+#00219                      ELSE 
+#00220                        IF ProfileEquals body_type = female 
+                                
+#00221                          GotoRandomScript ARRAY(
+                                  FemaleIdle1 FemaleIdle2 
                                 )
-
-#00000                        ELSE
-#00000                          GotoRandomScript ARRAY(
-                                  StandIdle OtherIdle BoardIdle
+                                
+#00222                        ELSE 
+#00223                          GotoRandomScript ARRAY(
+                                  StandIdle OtherIdle BoardIdle 
                                 )
-
-#00000                        END IF
-#00000                      END IF
-#00000                    END IF
-#00000                  END IF
-#00000                END IF
-#00000              END IF
-#00000            END IF
-#00000          END IF
-#00000        END IF
-#00000      END IF
-#00000      WaitAnimFinished
-#00000    END LOOP
-#00000  END FUNCTION
-
-#00000  FUNCTION StandIdle
-#00000    LOOP
-#00000      PlayAnim Anim = StandIdle
-            Blendperiod = 0.0
-
-#00000      WaitAnimFinished
-#00000      PlayAnim RANDOM[7][24; 36; 48; 60; 72; 84; 96]
-            Anim = StandIdle
-            JUMP 0x5b000000 Anim = StandIdle
-            JUMP 0x4b000000 Anim = StandIdle
-            JUMP 0x3b000000 Anim = StandIdle
-            JUMP 0x2b000000 Anim = StandLeftRight
-            JUMP 0x1b000000 Anim = StandCheckBoard
-            JUMP 0x0b000000 Anim = StandShoulder
-            Blendperiod = 0.0
-
-#00000      IF AnimEquals StandSwap
-#00000        FlipAfter
-#00000        BlendPeriodOut 0.0
-#00000      END IF
-#00000      WaitAnimFinished
-#00000    END LOOP
-#00000  END FUNCTION
-
-#00000  FUNCTION MuskaIdle
-#00000    SwitchOnAtomic special_item
-#00000    PlayAnim Anim = MuskaIdle
-          Cycle Blendperiod = 0.0
-          Speed = 0.7
-
-#00000  END FUNCTION
-
-#00000  FUNCTION FemaleIdle1
-#00000    PlayAnim Anim = FemaleIdle
-          Cycle Blendperiod = 0.0
-
-#00000  END FUNCTION
-
-#00000  FUNCTION FemaleIdle2
-#00000    PlayAnim Anim = LeanIdle
-          Cycle Blendperiod = 0.0
-
-#00000  END FUNCTION
-
-#00000  FUNCTION BoardIdle
-#00000    LOOP
-#00000      PlayAnim RANDOM[7][24; 36; 48; 60; 72; 84; 96]
-            Anim = BoardIdle
-            JUMP 0x5b000000 Anim = BoardIdle
-            JUMP 0x4b000000 Anim = BoardIdle
-            JUMP 0x3b000000 Anim = BoardIdle
-            JUMP 0x2b000000 Anim = BoardIdle
-            JUMP 0x1b000000 Anim = BoardMove
-            JUMP 0x0b000000 Anim = BoardLook
-            Blendperiod = 0.0
-
-#00000      IF CurrentSkaterProfileIs 0
-#00000        IF AnimEquals BoardMove
-#00000        END IF
-#00000      END IF
-#00000      WaitAnimFinished
-#00000    END LOOP
-#00000  END FUNCTION
-
-#00000  FUNCTION BoardMove_SFX
-#00000    LOOP
-#00000      IF FrameIS 30
-#00000        PlaySound skater_boarddown vol = 30
-
-#00000      END IF
-#00000      IF FrameIS 110
-#00000        PlaySound skater_boardup vol = 40
-
-#00000        BREAK
-
-#00000      END IF
-#00000      Wait 1 Frame
-#00000    END LOOP
-#00000  END FUNCTION
-
-#00000  FUNCTION OtherIdle
-#00000    PlayAnim Anim = StartIdle
-          Cycle Blendperiod = 0.0
-
-#00000  END FUNCTION
-
-#00000  FUNCTION DickIdle
-#00000    LOOP
-#00000      IF AnimEquals DickBeckon
-#00000        PlayAnim Anim = DickIdle
-              Blendperiod = 0.0
-
-#00000      ELSE
-#00000        PlayAnim RANDOM[3][8; 20; 32]
-              Anim = DickIdle
-              JUMP 0x1b000000 Anim = DickIdle
-              JUMP 0x0b000000 Anim = DickBeckon
-              Blendperiod = 0.0
-
-#00000      END IF
-#00000      WaitAnimFinished
-#00000    END LOOP
-#00000  END FUNCTION
-
-#00000  FUNCTION reset_parkeditor_skater
-#00000    printf "reset park editor skater"
-#00000    MakeSkaterGoto skater = 0
-          FreezeSkater
-#00000    MakeSkaterGoto skater = 1
-          FreezeSkater
-#00000  END FUNCTION
-
-#00000  FUNCTION MainMenuCam
-#00000    PlaySkaterCamAnim skater = 0
-          name = "Cam_Default01"
-          play_hold
-#00000  END FUNCTION
-
-#00000  FUNCTION MainMenuToOptionsCamAnim
-#00000    PlaySkaterCamAnim skater = 0
-          name = "Cam_Options01_Anim"
-          play_hold
-#00000  END FUNCTION
-
-#00000  FUNCTION FrontEndFlash
-#00000    DoFlash duration = 1.0
-          start_r = 255
-          start_g = 255
-          start_b = 255
-          start_a = 255
-          end_r = 255
-          end_g = 255
-          end_b = 255
-          end_a = 0
-
-#00000  END FUNCTION
-
-#00000  FUNCTION OptionsToMainMenuCamAnim
-#00000    MoveMenu Id = net_network_setup_menu
-          x = 45
-
-#00000    IF istrue ReturnedFromLevelRecords
-#00000      Change ReturnedFromLevelRecords = 0
-
-#00000    ELSE
-#00000      PlaySkaterCamAnim skater = 0
-            name = "Cam_Options01_Back"
-            play_hold
-#00000    END IF
-#00000  END FUNCTION
-
-#00000  FUNCTION MainMenuToPlayer1CamAnim
-#00000    PlaySkaterCamAnim skater = 0
-          name = "Cam_MainMenu01_Anim"
-          play_hold
-#00000    EnableSkaterRotation
-#00000    SetCurrentSkaterProfile 0
-#00000  END FUNCTION
-
-#00000  FUNCTION Player1ToMainMenuCamAnim
-#00000    PlaySkaterCamAnim skater = 0
-          name = "Cam_MainMenu01_BackAnim"
-          play_hold
-#00000    ResetSkaterRotation
-#00000    DisableSkaterRotation
-#00000  END FUNCTION
-
-#00000  FUNCTION LevelSelectToPlayer1CamAnim
-#00000    PlaySkaterCamAnim skater = 0
-          name = "Cam_LevelSelect01_BackAnim"
-          play_hold
-#00000  END FUNCTION
-
-#00000  FUNCTION Player1ToLevelSelectCamAnim
-#00000    PlaySkaterCamAnim skater = 0
-          name = "Cam_LevelSelect01_Anim"
-          play_hold
-#00000    BuildCassetteMenu
-#00000    killspawnedscript name = WaitThenEnableCassettes
-
-#00000    spawnscript WaitThenEnableCassettes Params = NULL
-
-#00000  END FUNCTION
-
-#00000  FUNCTION Player1ToPlayer2CamAnim
-#00000    PlaySkaterCamAnim skater = 0
-          name = "Cam_MainMenu02_Anim"
-          play_hold
-#00000    ResetSkaterRotation
-#00000  END FUNCTION
-
-#00000  FUNCTION Player2ToPlayer1CamAnim
-#00000    PlaySkaterCamAnim skater = 0
-          name = "Cam_MainMenu02_BackAnim"
-          play_hold
-#00000    ResetSkaterRotation
-#00000  END FUNCTION
-
-#00000  FUNCTION Player2ToLevelSelectCamAnim
-#00000    PlaySkaterCamAnim skater = 0
-          name = "Cam_LevelSelect02_Anim"
-          play_hold
-#00000    BuildCassetteMenu
-#00000    killspawnedscript name = WaitThenEnableCassettes
-
-#00000    spawnscript WaitThenEnableCassettes
-#00000    DisableSkaterRotation
-#00000  END FUNCTION
-
-#00000  FUNCTION LevelSelectToPlayer2CamAnim
-#00000    PlaySkaterCamAnim skater = 0
-          name = "Cam_LevelSelect02_BackAnim"
-          play_hold
-#00000    ResetSkaterRotation
-#00000    EnableSkaterRotation
-#00000  END FUNCTION
-
-#00000  FUNCTION Player1ToBoardShopCamAnim
-#00000    PlaySkaterCamAnim skater = 0
-          name = "Cam_BoardSelect01_Anim"
-          play_hold
-#00000  END FUNCTION
-
-#00000  FUNCTION BoardShopToPlayer1CamAnim
-#00000    PlaySkaterCamAnim skater = 0
-          name = "Cam_BoardSelect01_BackAnim"
-          play_hold
-#00000  END FUNCTION
-
-#00000  FUNCTION Player2ToBoardShopCamAnim
-#00000    PlaySkaterCamAnim skater = 0
-          name = "Cam_BoardSelect02_Anim"
-          play_hold
-#00000  END FUNCTION
-
-#00000  FUNCTION BoardShopToPlayer2CamAnim
-#00000    PlaySkaterCamAnim skater = 0
-          name = "Cam_BoardSelect02_BackAnim"
-          play_hold
-#00000  END FUNCTION
-
-#00000  FUNCTION WaitThenEnableCassettes
-#00000    DisableSkaterRotation
-#00000    PollUntilFinished func = SkaterCamAnimHeld
-          skater = 0
-
-#00000    IF menuisshown cassette_menu
-#00000      FireMenuEvent Type = MAKECASSETTESFANOUT
-            Id = cassette_menu
-            target = cassette_menu
-
-#00000    END IF
-#00000  END FUNCTION
-
-#00000  ShouldShowCareerInfo = 1
-
-#00000  AutoLinkToCareerScreen = 0
-
-#00000  FUNCTION SetCareerMode
-#00000    SetNetworkMode
-#00000    SetGameType Career
-#00000    MainMenuToPlayer1CamAnim
-#00000    Change ShouldShowCareerInfo = 1
-
-#00000  END FUNCTION
-
-#00000  FUNCTION SetSingleSessionMode
-#00000    SetNetworkMode
-#00000    SetGameType SingleSession
-#00000    MainMenuToPlayer1CamAnim
-#00000    Change ShouldShowCareerInfo = 0
-
-#00000  END FUNCTION
-
-#00000  FUNCTION SetFreeSkateMode
-#00000    SetNetworkMode
-#00000    SetGameType FreeSkate
-#00000    MainMenuToPlayer1CamAnim
-#00000    Change ShouldShowCareerInfo = 0
-
-#00000  END FUNCTION
-
-#00000  FUNCTION SetFreeSkate2pMode
-#00000    SetNetworkMode
-#00000    SetGameType FreeSkate2p
-#00000    MainMenuToPlayer1CamAnim
-#00000    Change ShouldShowCareerInfo = 0
-
-#00000    SetSkaterRotationPad 0
-#00000    SyncPlayer2Profile
-#00000  END FUNCTION
-
-#00000  FUNCTION SetNetworkPlayMode
-#00000    test_network_settings
-#00000    Change ShouldShowCareerInfo = 0
-
-#00000  END FUNCTION
-
-#00000  FUNCTION Player1ToPlayer2
-#00000    Player1ToPlayer2CamAnim
-#00000    SetFrontEndPad 1
-#00000    SetSkaterRotationPad 1
-#00000    SetCurrentSkaterProfile 1
-#00000    SliderShow
-#00000    reload_cas
-#00000  END FUNCTION
-
-#00000  FUNCTION Player2ToPlayer1
-#00000    Player2ToPlayer1CamAnim
-#00000    SetFrontEndPad 0
-#00000    SetSkaterRotationPad 0
-#00000    SetCurrentSkaterProfile 0
-#00000    SliderHide
-#00000  END FUNCTION
-
-#00000  FUNCTION Player2ToLevelSelect
-#00000    UseBothPadsInFrontEnd
-#00000    Player2ToLevelSelectCamAnim
-#00000  END FUNCTION
-
-#00000  FUNCTION Player1ToBoardshop
-#00000    Player1ToBoardShopCamAnim
-#00000    MakeSkaterGoto MoveToCounter skater = 0
-
-#00000  END FUNCTION
-
-#00000  FUNCTION Player2ToBoardshop
-#00000    Player2ToBoardShopCamAnim
-#00000    MakeSkaterGoto MoveToCounter skater = 1
-
-#00000  END FUNCTION
-
-#00000  FUNCTION Player1ToChangeAppearance
-#00000    SetCurrentSkaterProfile 0
-#00000  END FUNCTION
-
-#00000  FUNCTION Player2ToChangeAppearance
-#00000    SetCurrentSkaterProfile 1
-#00000  END FUNCTION
-
-#00000  FUNCTION TutorialLaunch
-#00000    SetNetworkMode
-#00000    SetGameType FreeSkate
-#00000    SetCurrentGameType
-#00000    SetCurrentSkaterProfile 0
-#00000    LevelSelectStartGame level = Load_Tut
-
-#00000  END FUNCTION
-
-#00000  FUNCTION ParkEditorLaunch
-#00000    SetFrontEndPad 0
-#00000    SetNetworkMode
-#00000    AutoLaunch level = custom_park
-          game = parkeditor
-
-#00000  END FUNCTION
-
-#00000  FUNCTION player_one_menu_on_show
-#00000    SetFrontEndPad 0
-#00000    SliderShow
-#00000  END FUNCTION
-
-#00000  FUNCTION player_two_menu_on_show
-#00000    update_pro_display_info NULL
-#00000    SliderShow
-#00000  END FUNCTION
-
-#00000  FUNCTION frontend_menu_on_show
-#00000    IF CD
-#00000      DestroyElement Id = mainmenu_debug
-
-#00000    END IF
-#00000    UseBothPadsInFrontEnd
-#00000    SetSkaterRotationPad Both
-#00000  END FUNCTION
-
-#00000  FUNCTION CareerMenuBack
-#00000    Player1ToMainMenuCamAnim
-#00000  END FUNCTION
-
-#00000  FUNCTION free_skate_menu_on_show
-#00000    update_pro_display_info NULL
-#00000    SliderShow
-#00000  END FUNCTION
-
-#00000  FUNCTION MenuQuitGame
-#00000    QuitGame
-#00000  END FUNCTION
-
-#00000  FUNCTION single_session_menu_on_show
-#00000    update_pro_display_info NULL
-#00000    SliderShow
-#00000  END FUNCTION
-
-#00000  FUNCTION invokeUIScreen
-#00000    InvokeScreen NULL
-#00000  END FUNCTION
-
-#00000  FUNCTION get_version_number
-#00000    GetVersionNumber NULL
-#00000  END FUNCTION
-
-#00000  FUNCTION main_menu_create
-#00000    CreateAndAttachMenu STRUCT{
-            Type = verticalmenu
-            Id = frontend_menu
-            parent = contain1
-            x = 45.0
-            y = 90.0
-            w = 300.0
-            h = 400.0
+                                
+#00224                        END IF 
+#00225                      END IF 
+#00226                    END IF 
+#00227                  END IF 
+#00228                END IF 
+#00229              END IF 
+#00230            END IF 
+#00231          END IF 
+#00232        END IF 
+#00233      END IF 
+#00234      WaitAnimFinished 
+#00235    END LOOP 
+#00236  END FUNCTION
+          
+#00237  FUNCTION StandIdle 
+#00239    LOOP 
+#00240      PlayAnim Anim = StandIdle 
+            Blendperiod = 0.0 
+            
+#00241      WaitAnimFinished 
+#00242      PlayAnim RANDOM[7][24; 36; 48; 60; 72; 84; 96]
+            Anim = StandIdle 
+            JUMP 0x5b000000 Anim = StandIdle 
+            JUMP 0x4b000000 Anim = StandIdle 
+            JUMP 0x3b000000 Anim = StandIdle 
+            JUMP 0x2b000000 Anim = StandLeftRight 
+            JUMP 0x1b000000 Anim = StandCheckBoard 
+            JUMP 0x0b000000 Anim = StandShoulder 
+            Blendperiod = 0.0 
+            
+#00243      IF AnimEquals StandSwap 
+#00244        FlipAfter 
+#00245        BlendPeriodOut 0.0 
+#00246      END IF 
+#00247      WaitAnimFinished 
+#00248    END LOOP 
+#00249  END FUNCTION
+          
+#00250  FUNCTION MuskaIdle 
+#00252    SwitchOnAtomic special_item 
+#00253    PlayAnim Anim = MuskaIdle 
+          Cycle Blendperiod = 0.0 
+          Speed = 0.7 
+          
+#00254  END FUNCTION
+          
+#00255  FUNCTION FemaleIdle1 
+#00257    PlayAnim Anim = FemaleIdle 
+          Cycle Blendperiod = 0.0 
+          
+#00258  END FUNCTION
+          
+#00259  FUNCTION FemaleIdle2 
+#00261    PlayAnim Anim = LeanIdle 
+          Cycle Blendperiod = 0.0 
+          
+#00262  END FUNCTION
+          
+#00263  FUNCTION BoardIdle 
+#00265    LOOP 
+#00266      PlayAnim RANDOM[7][24; 36; 48; 60; 72; 84; 96]
+            Anim = BoardIdle 
+            JUMP 0x5b000000 Anim = BoardIdle 
+            JUMP 0x4b000000 Anim = BoardIdle 
+            JUMP 0x3b000000 Anim = BoardIdle 
+            JUMP 0x2b000000 Anim = BoardIdle 
+            JUMP 0x1b000000 Anim = BoardMove 
+            JUMP 0x0b000000 Anim = BoardLook 
+            Blendperiod = 0.0 
+            
+#00267      IF CurrentSkaterProfileIs 0 
+#00269        IF AnimEquals BoardMove 
+#00270        END IF 
+#00272      END IF 
+#00273      WaitAnimFinished 
+#00274    END LOOP 
+#00275  END FUNCTION
+          
+#00276  FUNCTION BoardMove_SFX 
+#00278    LOOP 
+#00279      IF FrameIS 30 
+#00280        PlaySound skater_boarddown vol = 30 
+              
+#00281      END IF 
+#00282      IF FrameIS 110 
+#00283        PlaySound skater_boardup vol = 40 
+              
+#00284        BREAK
+              
+#00285      END IF 
+#00286      Wait 1 Frame 
+#00287    END LOOP 
+#00288  END FUNCTION
+          
+#00289  FUNCTION OtherIdle 
+#00291    PlayAnim Anim = StartIdle 
+          Cycle Blendperiod = 0.0 
+          
+#00292  END FUNCTION
+          
+#00293  FUNCTION DickIdle 
+#00295    LOOP 
+#00296      IF AnimEquals DickBeckon 
+#00297        PlayAnim Anim = DickIdle 
+              Blendperiod = 0.0 
+              
+#00298      ELSE 
+#00299        PlayAnim RANDOM[3][8; 20; 32]
+              Anim = DickIdle 
+              JUMP 0x1b000000 Anim = DickIdle 
+              JUMP 0x0b000000 Anim = DickBeckon 
+              Blendperiod = 0.0 
+              
+#00300      END IF 
+#00301      WaitAnimFinished 
+#00302    END LOOP 
+#00303  END FUNCTION
+          
+#00304  FUNCTION reset_parkeditor_skater 
+#00306    printf "reset park editor skater" 
+#00307    MakeSkaterGoto skater = 0 
+          FreezeSkater 
+#00308    MakeSkaterGoto skater = 1 
+          FreezeSkater 
+#00309  END FUNCTION
+          
+#00310  FUNCTION MainMenuCam 
+#00318    PlaySkaterCamAnim skater = 0 
+          name = "Cam_Default01" 
+          play_hold 
+#00319  END FUNCTION
+          
+#00320  FUNCTION MainMenuToOptionsCamAnim 
+#00322    PlaySkaterCamAnim skater = 0 
+          name = "Cam_Options01_Anim" 
+          play_hold 
+#00323  END FUNCTION
+          
+#00324  FUNCTION FrontEndFlash 
+#00326    DoFlash duration = 1.0 
+          start_r = 255 
+          start_g = 255 
+          start_b = 255 
+          start_a = 255 
+          end_r = 255 
+          end_g = 255 
+          end_b = 255 
+          end_a = 0 
+          
+#00327  END FUNCTION
+          
+#00328  FUNCTION OptionsToMainMenuCamAnim 
+#00330    MoveMenu Id = net_network_setup_menu 
+          x = 45 
+          
+#00331    IF istrue ReturnedFromLevelRecords 
+#00332      Change ReturnedFromLevelRecords = 0 
+            
+#00333    ELSE 
+#00334      PlaySkaterCamAnim skater = 0 
+            name = "Cam_Options01_Back" 
+            play_hold 
+#00335    END IF 
+#00336  END FUNCTION
+          
+#00337  FUNCTION MainMenuToPlayer1CamAnim 
+#00339    PlaySkaterCamAnim skater = 0 
+          name = "Cam_MainMenu01_Anim" 
+          play_hold 
+#00340    EnableSkaterRotation 
+#00341    SetCurrentSkaterProfile 0 
+#00342  END FUNCTION
+          
+#00343  FUNCTION Player1ToMainMenuCamAnim 
+#00345    PlaySkaterCamAnim skater = 0 
+          name = "Cam_MainMenu01_BackAnim" 
+          play_hold 
+#00346    ResetSkaterRotation 
+#00347    DisableSkaterRotation 
+#00348  END FUNCTION
+          
+#00349  FUNCTION LevelSelectToPlayer1CamAnim 
+#00351    PlaySkaterCamAnim skater = 0 
+          name = "Cam_LevelSelect01_BackAnim" 
+          play_hold 
+#00352  END FUNCTION
+          
+#00353  FUNCTION Player1ToLevelSelectCamAnim 
+#00355    PlaySkaterCamAnim skater = 0 
+          name = "Cam_LevelSelect01_Anim" 
+          play_hold 
+#00356    BuildCassetteMenu 
+#00357    killspawnedscript name = WaitThenEnableCassettes 
+          
+#00359    spawnscript WaitThenEnableCassettes Params = NULL 
+          
+#00360  END FUNCTION
+          
+#00361  FUNCTION Player1ToPlayer2CamAnim 
+#00363    PlaySkaterCamAnim skater = 0 
+          name = "Cam_MainMenu02_Anim" 
+          play_hold 
+#00364    ResetSkaterRotation 
+#00365  END FUNCTION
+          
+#00366  FUNCTION Player2ToPlayer1CamAnim 
+#00368    PlaySkaterCamAnim skater = 0 
+          name = "Cam_MainMenu02_BackAnim" 
+          play_hold 
+#00369    ResetSkaterRotation 
+#00370  END FUNCTION
+          
+#00371  FUNCTION Player2ToLevelSelectCamAnim 
+#00373    PlaySkaterCamAnim skater = 0 
+          name = "Cam_LevelSelect02_Anim" 
+          play_hold 
+#00374    BuildCassetteMenu 
+#00375    killspawnedscript name = WaitThenEnableCassettes 
+          
+#00377    spawnscript WaitThenEnableCassettes 
+#00378    DisableSkaterRotation 
+#00379  END FUNCTION
+          
+#00380  FUNCTION LevelSelectToPlayer2CamAnim 
+#00382    PlaySkaterCamAnim skater = 0 
+          name = "Cam_LevelSelect02_BackAnim" 
+          play_hold 
+#00383    ResetSkaterRotation 
+#00384    EnableSkaterRotation 
+#00385  END FUNCTION
+          
+#00386  FUNCTION Player1ToBoardShopCamAnim 
+#00388    PlaySkaterCamAnim skater = 0 
+          name = "Cam_BoardSelect01_Anim" 
+          play_hold 
+#00389  END FUNCTION
+          
+#00390  FUNCTION BoardShopToPlayer1CamAnim 
+#00392    PlaySkaterCamAnim skater = 0 
+          name = "Cam_BoardSelect01_BackAnim" 
+          play_hold 
+#00393  END FUNCTION
+          
+#00394  FUNCTION Player2ToBoardShopCamAnim 
+#00396    PlaySkaterCamAnim skater = 0 
+          name = "Cam_BoardSelect02_Anim" 
+          play_hold 
+#00397  END FUNCTION
+          
+#00398  FUNCTION BoardShopToPlayer2CamAnim 
+#00400    PlaySkaterCamAnim skater = 0 
+          name = "Cam_BoardSelect02_BackAnim" 
+          play_hold 
+#00401  END FUNCTION
+          
+#00402  FUNCTION WaitThenEnableCassettes 
+#00410    DisableSkaterRotation 
+#00411    PollUntilFinished func = SkaterCamAnimHeld 
+          skater = 0 
+          
+#00412    IF menuisshown cassette_menu 
+#00414      FireMenuEvent Type = MAKECASSETTESFANOUT 
+            Id = cassette_menu 
+            target = cassette_menu 
+            
+#00417    END IF 
+#00419  END FUNCTION
+          
+#00421  ShouldShowCareerInfo = 1 
+        
+#00424  AutoLinkToCareerScreen = 0 
+        
+#00427  FUNCTION SetCareerMode 
+#00429    SetNetworkMode 
+#00431    SetGameType Career 
+#00432    MainMenuToPlayer1CamAnim 
+#00433    Change ShouldShowCareerInfo = 1 
+          
+#00434  END FUNCTION
+          
+#00435  FUNCTION SetSingleSessionMode 
+#00437    SetNetworkMode 
+#00438    SetGameType SingleSession 
+#00440    MainMenuToPlayer1CamAnim 
+#00441    Change ShouldShowCareerInfo = 0 
+          
+#00442  END FUNCTION
+          
+#00443  FUNCTION SetFreeSkateMode 
+#00445    SetNetworkMode 
+#00446    SetGameType FreeSkate 
+#00448    MainMenuToPlayer1CamAnim 
+#00449    Change ShouldShowCareerInfo = 0 
+          
+#00450  END FUNCTION
+          
+#00451  FUNCTION SetFreeSkate2pMode 
+#00453    SetNetworkMode 
+#00455    SetGameType FreeSkate2p 
+#00457    MainMenuToPlayer1CamAnim 
+#00458    Change ShouldShowCareerInfo = 0 
+          
+#00459    SetSkaterRotationPad 0 
+#00462    SyncPlayer2Profile 
+#00465  END FUNCTION
+          
+#00467  FUNCTION SetNetworkPlayMode 
+#00469    test_network_settings 
+#00470    Change ShouldShowCareerInfo = 0 
+          
+#00471  END FUNCTION
+          
+#00472  FUNCTION Player1ToPlayer2 
+#00474    Player1ToPlayer2CamAnim 
+#00475    SetFrontEndPad 1 
+#00476    SetSkaterRotationPad 1 
+#00477    SetCurrentSkaterProfile 1 
+#00478    SliderShow 
+#00479    reload_cas 
+#00484  END FUNCTION
+          
+#00486  FUNCTION Player2ToPlayer1 
+#00488    Player2ToPlayer1CamAnim 
+#00489    SetFrontEndPad 0 
+#00490    SetSkaterRotationPad 0 
+#00491    SetCurrentSkaterProfile 0 
+#00492    SliderHide 
+#00493  END FUNCTION
+          
+#00494  FUNCTION Player2ToLevelSelect 
+#00496    UseBothPadsInFrontEnd 
+#00497    Player2ToLevelSelectCamAnim 
+#00498  END FUNCTION
+          
+#00499  FUNCTION Player1ToBoardshop 
+#00501    Player1ToBoardShopCamAnim 
+#00502    MakeSkaterGoto MoveToCounter skater = 0 
+          
+#00503  END FUNCTION
+          
+#00504  FUNCTION Player2ToBoardshop 
+#00506    Player2ToBoardShopCamAnim 
+#00507    MakeSkaterGoto MoveToCounter skater = 1 
+          
+#00508  END FUNCTION
+          
+#00509  FUNCTION Player1ToChangeAppearance 
+#00511    SetCurrentSkaterProfile 0 
+#00512  END FUNCTION
+          
+#00513  FUNCTION Player2ToChangeAppearance 
+#00515    SetCurrentSkaterProfile 1 
+#00516  END FUNCTION
+          
+#00517  FUNCTION TutorialLaunch 
+#00519    SetNetworkMode 
+#00520    SetGameType FreeSkate 
+#00522    SetCurrentGameType 
+#00523    SetCurrentSkaterProfile 0 
+#00524    LevelSelectStartGame level = Load_Tut 
+          
+#00525  END FUNCTION
+          
+#00526  FUNCTION ParkEditorLaunch 
+#00528    SetFrontEndPad 0 
+#00529    SetNetworkMode 
+#00530    AutoLaunch level = custom_park 
+          game = parkeditor 
+          
+#00531  END FUNCTION
+          
+#00532  FUNCTION player_one_menu_on_show 
+#00534    SetFrontEndPad 0 
+#00535    SliderShow 
+#00536  END FUNCTION
+          
+#00537  FUNCTION player_two_menu_on_show 
+#00539    update_pro_display_info NULL 
+#00540    SliderShow 
+#00541  END FUNCTION
+          
+#00542  FUNCTION frontend_menu_on_show 
+#00544    IF CD 
+#00545      DestroyElement Id = mainmenu_debug 
+            
+#00546    END IF 
+#00547    UseBothPadsInFrontEnd 
+#00548    SetSkaterRotationPad Both 
+#00551  END FUNCTION
+          
+#00552  FUNCTION CareerMenuBack 
+#00554    Player1ToMainMenuCamAnim 
+#00555  END FUNCTION
+          
+#00556  FUNCTION free_skate_menu_on_show 
+#00558    update_pro_display_info NULL 
+#00559    SliderShow 
+#00560  END FUNCTION
+          
+#00561  FUNCTION MenuQuitGame 
+#00563    QuitGame 
+#00564  END FUNCTION
+          
+#00565  FUNCTION single_session_menu_on_show 
+#00567    update_pro_display_info NULL 
+#00568    SliderShow 
+#00569  END FUNCTION
+          
+#00570  FUNCTION invokeUIScreen 
+#00572    InvokeScreen NULL 
+#00573  END FUNCTION
+          
+#00574  FUNCTION get_version_number 
+#00576    GetVersionNumber NULL 
+#00577  END FUNCTION
+          
+#00578  FUNCTION main_menu_create 
+#00580    CreateAndAttachMenu STRUCT{
+            Type = verticalmenu 
+            Id = frontend_menu 
+            parent = contain1 
+            x = 45.0 
+            y = 90.0 
+            w = 300.0 
+            h = 400.0 
             just_center_x just_center_y blue_top eventhandler = STRUCT{
-              Type = showeventhandler
-              target = "frontend_menu_on_show"
+              Type = showeventhandler 
+              target = "frontend_menu_on_show" 
               }
             children = ARRAY(
-
+              
               STRUCT{
-                Type = textmenuelement
-                auto_id text = "THPS3 Rando"
-                static dont_gray drawer = title
+                Type = textmenuelement 
+                auto_id text = "THPS3 Rando" 
+                static dont_gray drawer = title 
                 dont_gray }
               STRUCT{
-                Type = textmenuelement
-                auto_id text = "Career"
-                link = career_menu
-                target = "SetCareerMode"
+                Type = textmenuelement 
+                auto_id text = "Career" 
+                link = career_menu 
+                target = "SetCareerMode" 
                 }
               STRUCT{
-                Type = textmenuelement
-                auto_id text = "Single Session"
-                link = single_session_menu
-                target = "SetSingleSessionMode"
+                Type = textmenuelement 
+                auto_id text = "Single Session" 
+                link = single_session_menu 
+                target = "SetSingleSessionMode" 
                 }
               STRUCT{
-                Type = textmenuelement
-                auto_id text = "Free Skate"
-                link = free_skate_menu
-                target = "SetFreeSkateMode"
+                Type = textmenuelement 
+                auto_id text = "Free Skate" 
+                link = free_skate_menu 
+                target = "SetFreeSkateMode" 
                 }
               STRUCT{
-                Type = textmenuelement
-                Id = network_play_option
-                text = "Network Play"
-                target = "SetNetworkPlayMode"
+                Type = textmenuelement 
+                Id = network_play_option 
+                text = "Network Play" 
+                target = "SetNetworkPlayMode" 
                 }
               STRUCT{
-                Type = textmenuelement
-                auto_id text = "Create-a-Skater"
-                link = pre_cas_main_menu
-                target = "link_to_cas"
+                Type = textmenuelement 
+                auto_id text = "Create-a-Skater" 
+                link = pre_cas_main_menu 
+                target = "link_to_cas" 
                 }
               STRUCT{
-                Type = textmenuelement
-                auto_id text = "Park Editor"
-                target = "ParkEditorLaunch"
+                Type = textmenuelement 
+                auto_id text = "Park Editor" 
+                target = "ParkEditorLaunch" 
                 }
               STRUCT{
-                Type = textmenuelement
-                auto_id text = "Tutorials"
-                target = "TutorialLaunch"
+                Type = textmenuelement 
+                auto_id text = "Tutorials" 
+                target = "TutorialLaunch" 
                 }
               STRUCT{
-                Type = textmenuelement
-                auto_id text = "Options"
-                target = "MainMenuToOptionsCamAnim"
-                link = options_main_menu
+                Type = textmenuelement 
+                auto_id text = "Options" 
+                target = "MainMenuToOptionsCamAnim" 
+                link = options_main_menu 
                 }
               STRUCT{
-                Type = textmenuelement
-                auto_id text = " "
-                x = -45.0
-                y = 330.0
-                w = 200
-                drawer = keyboard_property
+                Type = textmenuelement 
+                auto_id text = " " 
+                x = -45.0 
+                y = 330.0 
+                w = 200 
+                drawer = keyboard_property 
                 static dont_gray just_left_x dontdrawrect lock_layout lock_width eventhandler = STRUCT{
-                  Type = showeventhandler
-                  target = "get_version_number"
+                  Type = showeventhandler 
+                  target = "get_version_number" 
                   }
                 }
               STRUCT{
-                Type = textmenuelement
-                auto_id text = "Quit"
-                link = menuquitgame_yesno_menu
+                Type = textmenuelement 
+                auto_id text = "Quit" 
+                link = menuquitgame_yesno_menu 
                 }
               STRUCT{
-                Type = textmenuelement
-                Id = mainmenu_debug
-                text = "Debug"
-                link = debug_main_menu
+                Type = textmenuelement 
+                Id = mainmenu_debug 
+                text = "Debug" 
+                link = debug_main_menu 
                 }
-
+              
             )
             }
-
-#00000    CreateAndAttachMenu STRUCT{
-            Type = verticalmenu
-            Id = menuquitgame_yesno_menu
-            x = 170.0
-            y = 150.0
-            w = 300.0
-            h = 336.0
+          
+#00668    CreateAndAttachMenu STRUCT{
+            Type = verticalmenu 
+            Id = menuquitgame_yesno_menu 
+            x = 170.0 
+            y = 150.0 
+            w = 300.0 
+            h = 336.0 
             just_center_x just_center_y blue_top eventhandler = STRUCT{
-              Type = showeventhandler
-              target = "Select_no"
+              Type = showeventhandler 
+              target = "Select_no" 
               }
-            parent = contain1
+            parent = contain1 
             children = ARRAY(
-
+              
               STRUCT{
-                Type = textmenuelement
-                auto_id text = "Quit?"
-                static dont_gray drawer = title
+                Type = textmenuelement 
+                auto_id text = "Quit?" 
+                static dont_gray drawer = title 
                 }
               STRUCT{
-                Type = textmenuelement
-                Id = quit_yes
-                text = "Yes"
-                target = "MenuQuitGame"
+                Type = textmenuelement 
+                Id = quit_yes 
+                text = "Yes" 
+                target = "MenuQuitGame" 
                 }
               STRUCT{
-                Type = textmenuelement
-                Id = quit_no
-                text = "No"
-                link = frontend_menu
+                Type = textmenuelement 
+                Id = quit_no 
+                text = "No" 
+                link = frontend_menu 
                 }
-
+              
             )
             }
-
-#00000    createmenu STRUCT{
-            Type = verticalmenu
-            Id = player_one_menu
-            x = 45.0
-            y = 90.0
-            w = 300.0
-            h = 400.0
+          
+#00694    createmenu STRUCT{
+            Type = verticalmenu 
+            Id = player_one_menu 
+            x = 45.0 
+            y = 90.0 
+            w = 300.0 
+            h = 400.0 
             just_center_x just_center_y blue_top eventhandlers = ARRAY(
-
+              
               STRUCT{
-                Type = backeventhandler
-                target = "Player1ToMainMenuCamAnim"
+                Type = backeventhandler 
+                target = "Player1ToMainMenuCamAnim" 
                 }
               STRUCT{
-                Type = showeventhandler
-                target = "player_one_menu_on_show"
+                Type = showeventhandler 
+                target = "player_one_menu_on_show" 
                 }
               STRUCT{
-                Type = showeventhandler
-                target = "update_pro_display_info"
+                Type = showeventhandler 
+                target = "update_pro_display_info" 
                 Params = STRUCT{
-                  name_menu_item = pro_current_name_player_one
+                  name_menu_item = pro_current_name_player_one 
                   }
                 }
               STRUCT{
-                Type = hideeventhandler
-                target = "SliderHide"
+                Type = hideeventhandler 
+                target = "SliderHide" 
                 }
-
+              
             )
             children = ARRAY(
-
+              
               STRUCT{
-                Type = textmenuelement
-                auto_id text = "Player 1"
-                static dont_gray drawer = title
+                Type = textmenuelement 
+                auto_id text = "Player 1" 
+                static dont_gray drawer = title 
                 dont_gray }
               STRUCT{
-                Type = textmenuelement
-                auto_id text = "Continue"
-                link = player_two_menu
-                target = "Player1ToPlayer2"
+                Type = textmenuelement 
+                auto_id text = "Continue" 
+                link = player_two_menu 
+                target = "Player1ToPlayer2" 
                 }
               STRUCT{
-                Type = textmenuelement
-                auto_id text = "Change Appearance"
-                link = cas_menu_container
-                target = "Player1ToChangeAppearance"
+                Type = textmenuelement 
+                auto_id text = "Change Appearance" 
+                link = cas_menu_container 
+                target = "Player1ToChangeAppearance" 
                 }
               STRUCT{
-                Type = textmenuelement
-                auto_id text = "Change Board"
-                link = boardshop_menu
-                target = "Player1ToBoardshop"
+                Type = textmenuelement 
+                auto_id text = "Change Board" 
+                link = boardshop_menu 
+                target = "Player1ToBoardshop" 
                 }
               STRUCT{
-                Type = textmenuelement
-                auto_id text = "Edit Tricks"
-                link = trick_menu_container
+                Type = textmenuelement 
+                auto_id text = "Edit Tricks" 
+                link = trick_menu_container 
                 }
               STRUCT{
-                Type = textmenuelement
-                auto_id text = "-------"
+                Type = textmenuelement 
+                auto_id text = "-------" 
                 static }
               STRUCT{
-                Type = textmenuelement
-                auto_id text = "Choose Skater"
-                link = pro_menu
+                Type = textmenuelement 
+                auto_id text = "Choose Skater" 
+                link = pro_menu 
                 }
               STRUCT{
-                Type = textmenuelement
-                auto_id text = "Load Skater"
-                target = "_Player1LoadCAS"
+                Type = textmenuelement 
+                auto_id text = "Load Skater" 
+                target = "_Player1LoadCAS" 
                 }
-
+              
             )
             }
-
-#00000    createmenu STRUCT{
-            Type = verticalmenu
-            Id = player_two_menu
-            x = 295.0
-            y = 90.0
-            w = 300.0
-            h = 400.0
+          
+#00754    createmenu STRUCT{
+            Type = verticalmenu 
+            Id = player_two_menu 
+            x = 295.0 
+            y = 90.0 
+            w = 300.0 
+            h = 400.0 
             just_center_x just_center_y blue_top eventhandlers = ARRAY(
-
+              
               STRUCT{
-                Type = backeventhandler
-                target = "Player2ToPlayer1"
+                Type = backeventhandler 
+                target = "Player2ToPlayer1" 
                 }
               STRUCT{
-                Type = showeventhandler
-                target = "player_two_menu_on_show"
+                Type = showeventhandler 
+                target = "player_two_menu_on_show" 
                 Params = STRUCT{
-                  name_menu_item = pro_current_name_player_two
+                  name_menu_item = pro_current_name_player_two 
                   }
                 }
               STRUCT{
-                Type = hideeventhandler
-                target = "SliderHide"
+                Type = hideeventhandler 
+                target = "SliderHide" 
                 }
-
+              
             )
             children = ARRAY(
-
+              
               STRUCT{
-                Type = textmenuelement
-                auto_id text = "Player 2"
-                static dont_gray drawer = title
+                Type = textmenuelement 
+                auto_id text = "Player 2" 
+                static dont_gray drawer = title 
                 dont_gray }
               STRUCT{
-                Type = textmenuelement
-                auto_id text = "Continue"
-                link = cassette_menu
-                target = "Player2ToLevelSelect"
+                Type = textmenuelement 
+                auto_id text = "Continue" 
+                link = cassette_menu 
+                target = "Player2ToLevelSelect" 
                 }
               STRUCT{
-                Type = textmenuelement
-                auto_id text = "Change Appearance"
-                link = cas_menu_container
-                target = "Player2ToChangeAppearance"
+                Type = textmenuelement 
+                auto_id text = "Change Appearance" 
+                link = cas_menu_container 
+                target = "Player2ToChangeAppearance" 
                 }
               STRUCT{
-                Type = textmenuelement
-                auto_id text = "Change Board"
-                link = boardshop_menu
-                target = "Player2ToBoardshop"
+                Type = textmenuelement 
+                auto_id text = "Change Board" 
+                link = boardshop_menu 
+                target = "Player2ToBoardshop" 
                 }
               STRUCT{
-                Type = textmenuelement
-                auto_id text = "Edit Tricks"
-                link = trick_menu_container
+                Type = textmenuelement 
+                auto_id text = "Edit Tricks" 
+                link = trick_menu_container 
                 }
               STRUCT{
-                Type = textmenuelement
-                auto_id text = "-------"
+                Type = textmenuelement 
+                auto_id text = "-------" 
                 static }
               STRUCT{
-                Type = textmenuelement
-                auto_id text = "Choose Skater"
-                link = pro_menu
+                Type = textmenuelement 
+                auto_id text = "Choose Skater" 
+                link = pro_menu 
                 }
               STRUCT{
-                Type = textmenuelement
-                auto_id text = "Load Skater"
-                target = "_Player2LoadCAS"
+                Type = textmenuelement 
+                auto_id text = "Load Skater" 
+                target = "_Player2LoadCAS" 
                 }
-
+              
             )
             }
-
-#00000    createmenu STRUCT{
-            Type = verticalmenu
-            Id = career_menu
-            x = 45.0
-            y = 90.0
-            w = 300.0
-            h = 400.0
+          
+#00807    createmenu STRUCT{
+            Type = verticalmenu 
+            Id = career_menu 
+            x = 45.0 
+            y = 90.0 
+            w = 300.0 
+            h = 400.0 
             just_center_x just_center_y blue_top eventhandlers = ARRAY(
-
+              
               STRUCT{
-                Type = backeventhandler
-                target = "CareerMenuBack"
+                Type = backeventhandler 
+                target = "CareerMenuBack" 
                 }
               STRUCT{
-                Type = showeventhandler
-                target = "CareerMenuShow"
+                Type = showeventhandler 
+                target = "CareerMenuShow" 
                 }
               STRUCT{
-                Type = hideeventhandler
-                target = "CareerMenuBackOut"
+                Type = hideeventhandler 
+                target = "CareerMenuBackOut" 
                 }
               STRUCT{
-                Type = showeventhandler
-                target = "update_pro_display_info"
+                Type = showeventhandler 
+                target = "update_pro_display_info" 
                 Params = STRUCT{
-                  name_menu_item = pro_current_name_career
+                  name_menu_item = pro_current_name_career 
                   }
                 }
-
+              
             )
             children = ARRAY(
-
+              
               STRUCT{
-                Type = textmenuelement
-                auto_id text = "Career"
-                static dont_gray drawer = title
+                Type = textmenuelement 
+                auto_id text = "Career" 
+                static dont_gray drawer = title 
                 }
               STRUCT{
-                Type = textmenuelement
-                auto_id text = "Play Level"
-                link = cassette_menu
-                target = "Player1ToLevelSelectCamAnim"
+                Type = textmenuelement 
+                auto_id text = "Play Level" 
+                link = cassette_menu 
+                target = "Player1ToLevelSelectCamAnim" 
                 }
               STRUCT{
-                Type = textmenuelement
-                auto_id text = "Change Appearance"
-                link = cas_menu_container
-                target = "Player1ToChangeAppearance"
+                Type = textmenuelement 
+                auto_id text = "Change Appearance" 
+                link = cas_menu_container 
+                target = "Player1ToChangeAppearance" 
                 }
               STRUCT{
-                Type = textmenuelement
-                auto_id text = "Change Board"
-                link = boardshop_menu
-                target = "Player1ToBoardshop"
+                Type = textmenuelement 
+                auto_id text = "Change Board" 
+                link = boardshop_menu 
+                target = "Player1ToBoardshop" 
                 }
               STRUCT{
-                Type = textmenuelement
-                auto_id text = "Edit Tricks"
-                link = trick_menu_container
+                Type = textmenuelement 
+                auto_id text = "Edit Tricks" 
+                link = trick_menu_container 
                 }
               STRUCT{
-                Type = textmenuelement
-                auto_id text = "-------"
+                Type = textmenuelement 
+                auto_id text = "-------" 
                 static }
               STRUCT{
-                Type = textmenuelement
-                auto_id text = "Choose Skater"
-                link = pro_menu
+                Type = textmenuelement 
+                auto_id text = "Choose Skater" 
+                link = pro_menu 
                 }
               STRUCT{
-                Type = textmenuelement
-                auto_id text = "Load Skater"
-                target = "_CareerMenuLoadCAS"
+                Type = textmenuelement 
+                auto_id text = "Load Skater" 
+                target = "_CareerMenuLoadCAS" 
                 }
               STRUCT{
-                Type = textmenuelement
-                auto_id text = "Done"
-                target = "go_back"
+                Type = textmenuelement 
+                auto_id text = "Done" 
+                target = "go_back" 
                 Params = STRUCT{
-                  Id = career_menu
+                  Id = career_menu 
                   }
                 }
-
+              
             )
             }
-
-#00000    IF istrue run_viewer
-#00000      createmenu STRUCT{
-              Type = verticalmenu
-              Id = single_session_menu
-              x = 45.0
-              y = 90.0
-              w = 300.0
-              h = 400.0
+          
+#00869    IF istrue run_viewer 
+#00874      createmenu STRUCT{
+              Type = verticalmenu 
+              Id = single_session_menu 
+              x = 45.0 
+              y = 90.0 
+              w = 300.0 
+              h = 400.0 
               just_center_x just_center_y blue_top eventhandlers = ARRAY(
-
+                
                 STRUCT{
-                  Type = backeventhandler
-                  target = "Player1ToMainMenuCamAnim"
+                  Type = backeventhandler 
+                  target = "Player1ToMainMenuCamAnim" 
                   }
                 STRUCT{
-                  Type = showeventhandler
-                  target = "update_pro_display_info"
+                  Type = showeventhandler 
+                  target = "update_pro_display_info" 
                   Params = STRUCT{
-                    name_menu_item = pro_current_name_single_session
+                    name_menu_item = pro_current_name_single_session 
                     }
                   }
-
+                
               )
               children = ARRAY(
-
+                
                 STRUCT{
-                  Type = textmenuelement
-                  auto_id text = "Session"
-                  static dont_gray drawer = title
+                  Type = textmenuelement 
+                  auto_id text = "Session" 
+                  static dont_gray drawer = title 
                   }
                 STRUCT{
-                  Type = textmenuelement
-                  auto_id text = "Play Level"
-                  link = level_main_menu
+                  Type = textmenuelement 
+                  auto_id text = "Play Level" 
+                  link = level_main_menu 
                   }
                 STRUCT{
-                  Type = textmenuelement
-                  auto_id text = "Change Appearance"
-                  link = cas_menu_container
-                  target = "Player1ToChangeAppearance"
+                  Type = textmenuelement 
+                  auto_id text = "Change Appearance" 
+                  link = cas_menu_container 
+                  target = "Player1ToChangeAppearance" 
                   }
                 STRUCT{
-                  Type = textmenuelement
-                  auto_id text = "Change Board"
-                  link = boardshop_menu
-                  target = "Player1ToBoardshop"
+                  Type = textmenuelement 
+                  auto_id text = "Change Board" 
+                  link = boardshop_menu 
+                  target = "Player1ToBoardshop" 
                   }
                 STRUCT{
-                  Type = textmenuelement
-                  auto_id text = "Edit Tricks"
-                  link = trick_menu_container
+                  Type = textmenuelement 
+                  auto_id text = "Edit Tricks" 
+                  link = trick_menu_container 
                   }
                 STRUCT{
-                  Type = textmenuelement
-                  auto_id text = "-------"
+                  Type = textmenuelement 
+                  auto_id text = "-------" 
                   static }
                 STRUCT{
-                  Type = textmenuelement
-                  auto_id text = "Choose Skater"
-                  link = pro_menu
+                  Type = textmenuelement 
+                  auto_id text = "Choose Skater" 
+                  link = pro_menu 
                   }
                 STRUCT{
-                  Type = textmenuelement
-                  auto_id text = "Load Skater"
-                  target = "_SingleSessionLoadCAS"
+                  Type = textmenuelement 
+                  auto_id text = "Load Skater" 
+                  target = "_SingleSessionLoadCAS" 
                   }
                 STRUCT{
-                  Type = textmenuelement
-                  auto_id text = "Done"
-                  target = "go_back"
+                  Type = textmenuelement 
+                  auto_id text = "Done" 
+                  target = "go_back" 
                   Params = STRUCT{
-                    Id = single_session_menu
+                    Id = single_session_menu 
                     }
                   }
-
+                
               )
               }
-
-#00000    ELSE
-#00000      createmenu STRUCT{
-              Type = verticalmenu
-              Id = single_session_menu
-              x = 45.0
-              y = 90.0
-              w = 300.0
-              h = 400.0
+            
+#00930    ELSE 
+#00931      createmenu STRUCT{
+              Type = verticalmenu 
+              Id = single_session_menu 
+              x = 45.0 
+              y = 90.0 
+              w = 300.0 
+              h = 400.0 
               just_center_x just_center_y blue_top eventhandlers = ARRAY(
-
+                
                 STRUCT{
-                  Type = backeventhandler
-                  target = "Player1ToMainMenuCamAnim"
+                  Type = backeventhandler 
+                  target = "Player1ToMainMenuCamAnim" 
                   }
                 STRUCT{
-                  Type = showeventhandler
-                  target = "single_session_menu_on_show"
+                  Type = showeventhandler 
+                  target = "single_session_menu_on_show" 
                   Params = STRUCT{
-                    name_menu_item = pro_current_name_single_session
+                    name_menu_item = pro_current_name_single_session 
                     }
                   }
                 STRUCT{
-                  Type = hideeventhandler
-                  target = "SliderHide"
+                  Type = hideeventhandler 
+                  target = "SliderHide" 
                   }
-
+                
               )
               children = ARRAY(
-
+                
                 STRUCT{
-                  Type = textmenuelement
-                  auto_id text = "Session"
-                  static dont_gray drawer = title
+                  Type = textmenuelement 
+                  auto_id text = "Session" 
+                  static dont_gray drawer = title 
                   }
                 STRUCT{
-                  Type = textmenuelement
-                  auto_id text = "Play Level"
-                  link = cassette_menu
-                  target = "Player1ToLevelSelectCamAnim"
+                  Type = textmenuelement 
+                  auto_id text = "Play Level" 
+                  link = cassette_menu 
+                  target = "Player1ToLevelSelectCamAnim" 
                   }
                 STRUCT{
-                  Type = textmenuelement
-                  auto_id text = "Change Appearance"
-                  link = cas_menu_container
-                  target = "Player1ToChangeAppearance"
+                  Type = textmenuelement 
+                  auto_id text = "Change Appearance" 
+                  link = cas_menu_container 
+                  target = "Player1ToChangeAppearance" 
                   }
                 STRUCT{
-                  Type = textmenuelement
-                  auto_id text = "Change Board"
-                  link = boardshop_menu
-                  target = "Player1ToBoardshop"
+                  Type = textmenuelement 
+                  auto_id text = "Change Board" 
+                  link = boardshop_menu 
+                  target = "Player1ToBoardshop" 
                   }
                 STRUCT{
-                  Type = textmenuelement
-                  auto_id text = "Edit Tricks"
-                  link = trick_menu_container
+                  Type = textmenuelement 
+                  auto_id text = "Edit Tricks" 
+                  link = trick_menu_container 
                   }
                 STRUCT{
-                  Type = textmenuelement
-                  auto_id text = "-------"
+                  Type = textmenuelement 
+                  auto_id text = "-------" 
                   static }
                 STRUCT{
-                  Type = textmenuelement
-                  auto_id text = "Choose Skater"
-                  link = pro_menu
+                  Type = textmenuelement 
+                  auto_id text = "Choose Skater" 
+                  link = pro_menu 
                   }
                 STRUCT{
-                  Type = textmenuelement
-                  auto_id text = "Load Skater"
-                  target = "_SingleSessionLoadCAS"
+                  Type = textmenuelement 
+                  auto_id text = "Load Skater" 
+                  target = "_SingleSessionLoadCAS" 
                   }
                 STRUCT{
-                  Type = textmenuelement
-                  auto_id text = "Done"
-                  target = "go_back"
+                  Type = textmenuelement 
+                  auto_id text = "Done" 
+                  target = "go_back" 
                   Params = STRUCT{
-                    Id = single_session_menu
+                    Id = single_session_menu 
                     }
                   }
-
+                
               )
               }
-
-#00000    END IF
-#00000    IF istrue run_viewer
-#00000      createmenu STRUCT{
-              Type = verticalmenu
-              Id = free_skate_menu
-              x = 45.0
-              y = 90.0
-              w = 300.0
-              h = 400.0
+            
+#00989    END IF 
+#00990    IF istrue run_viewer 
+#00995      createmenu STRUCT{
+              Type = verticalmenu 
+              Id = free_skate_menu 
+              x = 45.0 
+              y = 90.0 
+              w = 300.0 
+              h = 400.0 
               just_center_x just_center_y blue_top eventhandlers = ARRAY(
-
+                
                 STRUCT{
-                  Type = backeventhandler
-                  target = "Player1ToMainMenuCamAnim"
+                  Type = backeventhandler 
+                  target = "Player1ToMainMenuCamAnim" 
                   }
                 STRUCT{
-                  Type = showeventhandler
-                  target = "update_pro_display_info"
+                  Type = showeventhandler 
+                  target = "update_pro_display_info" 
                   Params = STRUCT{
-                    name_menu_item = pro_current_name_free_skate
+                    name_menu_item = pro_current_name_free_skate 
                     }
                   }
-
+                
               )
               children = ARRAY(
-
+                
                 STRUCT{
-                  Type = textmenuelement
-                  auto_id text = "Free Skate"
-                  static dont_gray drawer = title
+                  Type = textmenuelement 
+                  auto_id text = "Free Skate" 
+                  static dont_gray drawer = title 
                   }
                 STRUCT{
-                  Type = textmenuelement
-                  auto_id text = "Play Level"
-                  link = level_main_menu
+                  Type = textmenuelement 
+                  auto_id text = "Play Level" 
+                  link = level_main_menu 
                   }
                 STRUCT{
-                  Type = textmenuelement
-                  auto_id text = "Change Appearance"
-                  link = cas_menu_container
-                  target = "Player1ToChangeAppearance"
+                  Type = textmenuelement 
+                  auto_id text = "Change Appearance" 
+                  link = cas_menu_container 
+                  target = "Player1ToChangeAppearance" 
                   }
                 STRUCT{
-                  Type = textmenuelement
-                  auto_id text = "Change Board"
-                  link = boardshop_menu
-                  target = "Player1ToBoardshop"
+                  Type = textmenuelement 
+                  auto_id text = "Change Board" 
+                  link = boardshop_menu 
+                  target = "Player1ToBoardshop" 
                   }
                 STRUCT{
-                  Type = textmenuelement
-                  auto_id text = "Edit Tricks"
-                  link = trick_menu_container
+                  Type = textmenuelement 
+                  auto_id text = "Edit Tricks" 
+                  link = trick_menu_container 
                   }
                 STRUCT{
-                  Type = textmenuelement
-                  auto_id text = "-------"
+                  Type = textmenuelement 
+                  auto_id text = "-------" 
                   static }
                 STRUCT{
-                  Type = textmenuelement
-                  auto_id text = "Choose Skater"
-                  link = pro_menu
+                  Type = textmenuelement 
+                  auto_id text = "Choose Skater" 
+                  link = pro_menu 
                   }
                 STRUCT{
-                  Type = textmenuelement
-                  auto_id text = "Load Skater"
-                  target = "_FreeSkateLoadCAS"
+                  Type = textmenuelement 
+                  auto_id text = "Load Skater" 
+                  target = "_FreeSkateLoadCAS" 
                   }
                 STRUCT{
-                  Type = textmenuelement
-                  auto_id text = "Done"
-                  target = "go_back"
+                  Type = textmenuelement 
+                  auto_id text = "Done" 
+                  target = "go_back" 
                   Params = STRUCT{
-                    Id = free_skate_menu
+                    Id = free_skate_menu 
                     }
                   }
-
+                
               )
               }
-
-#00000    ELSE
-#00000      createmenu STRUCT{
-              Type = verticalmenu
-              Id = free_skate_menu
-              x = 45.0
-              y = 90.0
-              w = 300.0
-              h = 400.0
+            
+#01050    ELSE 
+#01051      createmenu STRUCT{
+              Type = verticalmenu 
+              Id = free_skate_menu 
+              x = 45.0 
+              y = 90.0 
+              w = 300.0 
+              h = 400.0 
               just_center_x just_center_y blue_top eventhandlers = ARRAY(
-
+                
                 STRUCT{
-                  Type = backeventhandler
-                  target = "Player1ToMainMenuCamAnim"
+                  Type = backeventhandler 
+                  target = "Player1ToMainMenuCamAnim" 
                   }
                 STRUCT{
-                  Type = showeventhandler
-                  target = "free_skate_menu_on_show"
+                  Type = showeventhandler 
+                  target = "free_skate_menu_on_show" 
                   Params = STRUCT{
-                    name_menu_item = pro_current_name_free_skate
+                    name_menu_item = pro_current_name_free_skate 
                     }
                   }
                 STRUCT{
-                  Type = hideeventhandler
-                  target = "SliderHide"
+                  Type = hideeventhandler 
+                  target = "SliderHide" 
                   }
-
+                
               )
               children = ARRAY(
-
+                
                 STRUCT{
-                  Type = textmenuelement
-                  auto_id text = "Free Skate"
-                  static dont_gray drawer = title
+                  Type = textmenuelement 
+                  auto_id text = "Free Skate" 
+                  static dont_gray drawer = title 
                   }
                 STRUCT{
-                  Type = textmenuelement
-                  auto_id text = "Play Level"
-                  link = cassette_menu
-                  target = "Player1ToLevelSelectCamAnim"
+                  Type = textmenuelement 
+                  auto_id text = "Play Level" 
+                  link = cassette_menu 
+                  target = "Player1ToLevelSelectCamAnim" 
                   }
                 STRUCT{
-                  Type = textmenuelement
-                  auto_id text = "Change Appearance"
-                  link = cas_menu_container
-                  target = "Player1ToChangeAppearance"
+                  Type = textmenuelement 
+                  auto_id text = "Change Appearance" 
+                  link = cas_menu_container 
+                  target = "Player1ToChangeAppearance" 
                   }
                 STRUCT{
-                  Type = textmenuelement
-                  auto_id text = "Change Board"
-                  link = boardshop_menu
-                  target = "Player1ToBoardshop"
+                  Type = textmenuelement 
+                  auto_id text = "Change Board" 
+                  link = boardshop_menu 
+                  target = "Player1ToBoardshop" 
                   }
                 STRUCT{
-                  Type = textmenuelement
-                  auto_id text = "Edit Tricks"
-                  link = trick_menu_container
+                  Type = textmenuelement 
+                  auto_id text = "Edit Tricks" 
+                  link = trick_menu_container 
                   }
                 STRUCT{
-                  Type = textmenuelement
-                  auto_id text = "-------"
+                  Type = textmenuelement 
+                  auto_id text = "-------" 
                   static }
                 STRUCT{
-                  Type = textmenuelement
-                  auto_id text = "Choose Skater"
-                  link = pro_menu
+                  Type = textmenuelement 
+                  auto_id text = "Choose Skater" 
+                  link = pro_menu 
                   }
                 STRUCT{
-                  Type = textmenuelement
-                  auto_id text = "Load Skater"
-                  target = "_FreeSkateLoadCAS"
+                  Type = textmenuelement 
+                  auto_id text = "Load Skater" 
+                  target = "_FreeSkateLoadCAS" 
                   }
                 STRUCT{
-                  Type = textmenuelement
-                  auto_id text = "Done"
-                  target = "go_back"
+                  Type = textmenuelement 
+                  auto_id text = "Done" 
+                  target = "go_back" 
                   Params = STRUCT{
-                    Id = free_skate_menu
+                    Id = free_skate_menu 
                     }
                   }
-
+                
               )
               }
-
-#00000    END IF
-#00000    createmenu STRUCT{
-            Type = verticalmenu
-            Id = load_career_menu
-            x = 45.0
-            y = 90.0
-            w = 300.0
-            h = 400.0
+            
+#01108    END IF 
+#01109    createmenu STRUCT{
+            Type = verticalmenu 
+            Id = load_career_menu 
+            x = 45.0 
+            y = 90.0 
+            w = 300.0 
+            h = 400.0 
             just_center_x just_center_y blue_top children = ARRAY(
-
+              
               STRUCT{
-                Type = textmenuelement
-                auto_id text = "Load Skater"
-                static dont_gray drawer = title
+                Type = textmenuelement 
+                auto_id text = "Load Skater" 
+                static dont_gray drawer = title 
                 }
               STRUCT{
-                Type = textmenuelement
-                auto_id text = "Tony Hawk 1"
+                Type = textmenuelement 
+                auto_id text = "Tony Hawk 1" 
                 }
               STRUCT{
-                Type = textmenuelement
-                auto_id text = "Tony Hawk 2"
+                Type = textmenuelement 
+                auto_id text = "Tony Hawk 2" 
                 }
               STRUCT{
-                Type = textmenuelement
-                auto_id text = "Rune Glifberg"
+                Type = textmenuelement 
+                auto_id text = "Rune Glifberg" 
                 }
               STRUCT{
-                Type = textmenuelement
-                auto_id text = "Created 1"
+                Type = textmenuelement 
+                auto_id text = "Created 1" 
                 }
               STRUCT{
-                Type = textmenuelement
-                auto_id text = "Created 2"
+                Type = textmenuelement 
+                auto_id text = "Created 2" 
                 }
-
+              
             )
             }
-
-#00000    createmenu STRUCT{
-            Type = verticalmenu
-            Id = career_info
-            x = 45.0
-            y = 290.0
-            w = 300.0
-            h = 400.0
+          
+#01139    createmenu STRUCT{
+            Type = verticalmenu 
+            Id = career_info 
+            x = 45.0 
+            y = 290.0 
+            w = 300.0 
+            h = 400.0 
             just_center_x just_center_y static dont_gray children = ARRAY(
-
+              
               STRUCT{
-                Type = textmenuelement
-                Id = career_info_line_1
-                text = "Poo poo pants"
-                static dont_gray drawer = goals_text
-                drawer = title_medium
+                Type = textmenuelement 
+                Id = career_info_line_1 
+                text = "Poo poo pants" 
+                static dont_gray drawer = goals_text 
+                drawer = title_medium 
                 truncate_to_width }
               STRUCT{
-                Type = textmenuelement
-                Id = career_info_line_2
-                text = "Goals: 12 of 35"
-                static dont_gray drawer = goals_text
+                Type = textmenuelement 
+                Id = career_info_line_2 
+                text = "Goals: 12 of 35" 
+                static dont_gray drawer = goals_text 
                 }
               STRUCT{
-                Type = horizontalmenu
-                Id = career_info_horizontal_menu
+                Type = horizontalmenu 
+                Id = career_info_horizontal_menu 
                 static dont_gray children = ARRAY(
-
+                  
                   STRUCT{
-                    Type = textmenuelement
-                    Id = career_info_line_3
-                    text = "Medals:"
-                    static dont_gray drawer = goals_text
-                    lock_layout x = 40
-                    y = 8
+                    Type = textmenuelement 
+                    Id = career_info_line_3 
+                    text = "Medals:" 
+                    static dont_gray drawer = goals_text 
+                    lock_layout x = 40 
+                    y = 8 
                     }
                   STRUCT{
-                    Type = iconmenuelement
-                    Id = career_info_rio_medal_1
-                    image = "panelsprites\medal_1.png"
-                    rectScaleX = 1.3
-                    lock_layout x = 120
-                    y = 2
+                    Type = iconmenuelement 
+                    Id = career_info_rio_medal_1 
+                    image = "panelsprites\medal_1.png" 
+                    rectScaleX = 1.3 
+                    lock_layout x = 120 
+                    y = 2 
                     IconColor_Gold dontdrawrect static dont_gray }
                   STRUCT{
-                    Type = iconmenuelement
-                    Id = career_info_rio_medal_2
-                    image = "panelsprites\medal_2.png"
-                    rectScaleX = 1.3
-                    lock_layout x = 120
-                    y = 2
+                    Type = iconmenuelement 
+                    Id = career_info_rio_medal_2 
+                    image = "panelsprites\medal_2.png" 
+                    rectScaleX = 1.3 
+                    lock_layout x = 120 
+                    y = 2 
                     IconColor_Silver dontdrawrect static dont_gray }
                   STRUCT{
-                    Type = iconmenuelement
-                    Id = career_info_rio_medal_3
-                    image = "panelsprites\medal_3.png"
-                    rectScaleX = 1.3
-                    lock_layout x = 120
-                    y = 2
+                    Type = iconmenuelement 
+                    Id = career_info_rio_medal_3 
+                    image = "panelsprites\medal_3.png" 
+                    rectScaleX = 1.3 
+                    lock_layout x = 120 
+                    y = 2 
                     IconColor_Bronze dontdrawrect static dont_gray }
                   STRUCT{
-                    Type = iconmenuelement
-                    Id = career_info_rio_medal_4
-                    image = "panelsprites\medal_locked.png"
-                    rectScaleX = 1.3
-                    lock_layout x = 120
-                    y = 2
+                    Type = iconmenuelement 
+                    Id = career_info_rio_medal_4 
+                    image = "panelsprites\medal_locked.png" 
+                    rectScaleX = 1.3 
+                    lock_layout x = 120 
+                    y = 2 
                     IconColor_NoMedal dontdrawrect static dont_gray }
                   STRUCT{
-                    Type = iconmenuelement
-                    Id = career_info_si_medal_1
-                    image = "panelsprites\medal_1.png"
-                    rectScaleX = 1.3
-                    lock_layout x = 180
-                    y = 2
+                    Type = iconmenuelement 
+                    Id = career_info_si_medal_1 
+                    image = "panelsprites\medal_1.png" 
+                    rectScaleX = 1.3 
+                    lock_layout x = 180 
+                    y = 2 
                     IconColor_Gold dontdrawrect static dont_gray }
                   STRUCT{
-                    Type = iconmenuelement
-                    Id = career_info_si_medal_2
-                    image = "panelsprites\medal_2.png"
-                    rectScaleX = 1.3
-                    lock_layout x = 180
-                    y = 2
+                    Type = iconmenuelement 
+                    Id = career_info_si_medal_2 
+                    image = "panelsprites\medal_2.png" 
+                    rectScaleX = 1.3 
+                    lock_layout x = 180 
+                    y = 2 
                     IconColor_Silver dontdrawrect static dont_gray }
                   STRUCT{
-                    Type = iconmenuelement
-                    Id = career_info_si_medal_3
-                    image = "panelsprites\medal_3.png"
-                    rectScaleX = 1.3
-                    lock_layout x = 180
-                    y = 2
+                    Type = iconmenuelement 
+                    Id = career_info_si_medal_3 
+                    image = "panelsprites\medal_3.png" 
+                    rectScaleX = 1.3 
+                    lock_layout x = 180 
+                    y = 2 
                     IconColor_Bronze dontdrawrect static dont_gray }
                   STRUCT{
-                    Type = iconmenuelement
-                    Id = career_info_si_medal_4
-                    image = "panelsprites\medal_locked.png"
-                    rectScaleX = 1.3
-                    lock_layout x = 180
-                    y = 2
+                    Type = iconmenuelement 
+                    Id = career_info_si_medal_4 
+                    image = "panelsprites\medal_locked.png" 
+                    rectScaleX = 1.3 
+                    lock_layout x = 180 
+                    y = 2 
                     IconColor_NoMedal dontdrawrect static dont_gray }
                   STRUCT{
-                    Type = iconmenuelement
-                    Id = career_info_tokyo_medal_1
-                    image = "panelsprites\medal_1.png"
-                    rectScaleX = 1.3
-                    lock_layout x = 240
-                    y = 2
+                    Type = iconmenuelement 
+                    Id = career_info_tokyo_medal_1 
+                    image = "panelsprites\medal_1.png" 
+                    rectScaleX = 1.3 
+                    lock_layout x = 240 
+                    y = 2 
                     IconColor_Gold dontdrawrect static dont_gray }
                   STRUCT{
-                    Type = iconmenuelement
-                    Id = career_info_tokyo_medal_2
-                    image = "panelsprites\medal_2.png"
-                    rectScaleX = 1.3
-                    lock_layout x = 240
-                    y = 2
+                    Type = iconmenuelement 
+                    Id = career_info_tokyo_medal_2 
+                    image = "panelsprites\medal_2.png" 
+                    rectScaleX = 1.3 
+                    lock_layout x = 240 
+                    y = 2 
                     IconColor_Silver dontdrawrect static dont_gray }
                   STRUCT{
-                    Type = iconmenuelement
-                    Id = career_info_tokyo_medal_3
-                    image = "panelsprites\medal_3.png"
-                    rectScaleX = 1.3
-                    lock_layout x = 240
-                    y = 2
+                    Type = iconmenuelement 
+                    Id = career_info_tokyo_medal_3 
+                    image = "panelsprites\medal_3.png" 
+                    rectScaleX = 1.3 
+                    lock_layout x = 240 
+                    y = 2 
                     IconColor_Bronze dontdrawrect static dont_gray }
                   STRUCT{
-                    Type = iconmenuelement
-                    Id = career_info_tokyo_medal_4
-                    image = "panelsprites\medal_locked.png"
-                    rectScaleX = 1.3
-                    lock_layout x = 240
-                    y = 2
+                    Type = iconmenuelement 
+                    Id = career_info_tokyo_medal_4 
+                    image = "panelsprites\medal_locked.png" 
+                    rectScaleX = 1.3 
+                    lock_layout x = 240 
+                    y = 2 
                     IconColor_NoMedal dontdrawrect static dont_gray }
-
+                  
                 )
                 }
-
+              
             )
             }
-
-#00000    createmenu STRUCT{
-            Type = verticalmenu
-            Id = slider_info
-            x = 45.0
-            y = 290.0
-            w = 300.0
-            h = 400.0
+          
+#01281    createmenu STRUCT{
+            Type = verticalmenu 
+            Id = slider_info 
+            x = 45.0 
+            y = 290.0 
+            w = 300.0 
+            h = 400.0 
             just_center_x just_center_y children = ARRAY(
-
+              
               STRUCT{
-                Type = textmenuelement
-                Id = slider_info_line_1
-                text = "Poo poo pants"
-                static dont_gray drawer = goals_text
-                drawer = title_medium
+                Type = textmenuelement 
+                Id = slider_info_line_1 
+                text = "Poo poo pants" 
+                static dont_gray drawer = goals_text 
+                drawer = title_medium 
                 truncate_to_width }
               STRUCT{
-                Type = textmenuelement
-                Id = slider_info_line_2
-                text = "Trickstyle: Vert"
-                static dont_gray drawer = goals_text
+                Type = textmenuelement 
+                Id = slider_info_line_2 
+                text = "Trickstyle: Vert" 
+                static dont_gray drawer = goals_text 
                 }
               STRUCT{
-                Type = textmenuelement
-                Id = slider_info_line_3
-                text = "Stance: Goofy"
-                static dont_gray drawer = goals_text
+                Type = textmenuelement 
+                Id = slider_info_line_3 
+                text = "Stance: Goofy" 
+                static dont_gray drawer = goals_text 
                 }
-
+              
             )
             }
-
-#00000    CreateBoardShopMenu
-#00000    CreateDeckMenu
-#00000    CreateWheelColorMenu
-#00000    pre_cas_menu_create
-#00000    attachchild parent = contain1
-          child = career_menu
-
-#00000    attachchild parent = contain1
-          child = single_session_menu
-
-#00000    attachchild parent = contain1
-          child = free_skate_menu
-
-#00000    attachchild parent = contain1
-          child = load_career_menu
-
-#00000    attachchild parent = contain1
-          child = player_one_menu
-
-#00000    attachchild parent = contain1
-          child = player_two_menu
-
-#00000    attachchild parent = contain1
-          child = boardshop_menu
-
-#00000    attachchild parent = contain1
-          child = pre_cas_main_menu
-
-#00000    attachchild parent = contain1
-          child = deck_menu
-
-#00000    attachchild parent = contain1
-          child = career_info
-
-#00000    attachchild parent = contain1
-          child = slider_info
-
-#00000    attachchild parent = contain1
-          child = wheel_color_menu
-
-#00000    helper_menu_create
-#00000    pro_menu_create
-#00000    cassette_menu_create
-#00000  END FUNCTION
-
-#00000  FUNCTION LevelSelectBackOut
-#00000    ClearCassetteMenu
-#00000    IF CurrentSkaterProfileIs 1
-#00000      LevelSelectToPlayer2CamAnim
-#00000      SetFrontEndPad 1
-#00000    ELSE
-#00000      LevelSelectToPlayer1CamAnim
-#00000    END IF
-#00000    ResetSkaterRotation
-#00000    EnableSkaterRotation
-#00000    InitTVScreensVisibility
-#00000  END FUNCTION
-
-#00000  FUNCTION InitTVScreensVisibility
-#00000    invisible prefix = "ss_go_TV_"
-
-#00000    visible name = ss_go_TV_THPScreen
-
-#00000  END FUNCTION
-
-#00000  FUNCTION LevelSelectStartGame
-#00000    IF CurrentSkaterProfileIs 1
-#00000      SetGameType trickattack
-#00000      UseBothPadsInFrontEnd
-#00000    ELSE
-#00000    END IF
-#00000    SetCurrentSkaterProfile 0
-#00000    SetSkaterRotationPad 0
-#00000    immediately_start_game NULL
-#00000  END FUNCTION
-
-#00000  ParkEditorCassetteTurnRate = -0.05
-
-#00000  FUNCTION SwitchOffCassetteMenuHeading
-#00000    FireMenuEvent Type = HIDE
-          Id = cassette_menu_level_name
-          target = cassette_menu_level_name
-
-#00000    FireMenuEvent Type = HIDE
-          Id = cassette_menu_dummy_line
-          target = cassette_menu_dummy_line
-
-#00000  END FUNCTION
-
-#00000  FUNCTION SwitchOnCassetteMenuHeading
-#00000    FireMenuEvent Type = SHOW
-          Id = cassette_menu_level_name
-          target = cassette_menu_level_name
-
-#00000    FireMenuEvent Type = SHOW
-          Id = cassette_menu_dummy_line
-          target = cassette_menu_dummy_line
-
-#00000  END FUNCTION
-
-#00000  FUNCTION PlayCustomParkFromCassetteMenu
-#00000    ClearCassetteMenu
-#00000    immediately_start_game NULL
-#00000  END FUNCTION
-
-#00000  FUNCTION UpdateParkNameInMenuTitles
-#00000    GetParkName
-#00000    SetMenuElementText Id = cassette_menu_park_editor_menu_title
-          GLOBAL.ParkName
-
-#00000    SetMenuElementText Id = cassette_menu_dummy_line
-          GLOBAL.ParkName
-
-#00000  END FUNCTION
-
-#00000  FUNCTION cassette_menu_create
-#00000    createmenu STRUCT{
-            Type = cassettemenu
-            Id = cassette_menu
+          
+#01305    CreateBoardShopMenu 
+#01307    CreateDeckMenu 
+#01308    CreateWheelColorMenu 
+#01309    pre_cas_menu_create 
+#01310    attachchild parent = contain1 
+          child = career_menu 
+          
+#01312    attachchild parent = contain1 
+          child = single_session_menu 
+          
+#01313    attachchild parent = contain1 
+          child = free_skate_menu 
+          
+#01314    attachchild parent = contain1 
+          child = load_career_menu 
+          
+#01315    attachchild parent = contain1 
+          child = player_one_menu 
+          
+#01316    attachchild parent = contain1 
+          child = player_two_menu 
+          
+#01317    attachchild parent = contain1 
+          child = boardshop_menu 
+          
+#01318    attachchild parent = contain1 
+          child = pre_cas_main_menu 
+          
+#01319    attachchild parent = contain1 
+          child = deck_menu 
+          
+#01320    attachchild parent = contain1 
+          child = career_info 
+          
+#01321    attachchild parent = contain1 
+          child = slider_info 
+          
+#01322    attachchild parent = contain1 
+          child = wheel_color_menu 
+          
+#01323    helper_menu_create 
+#01325    pro_menu_create 
+#01326    cassette_menu_create 
+#01327  END FUNCTION
+          
+#01329  FUNCTION LevelSelectBackOut 
+#01333    ClearCassetteMenu 
+#01334    IF CurrentSkaterProfileIs 1 
+#01335      LevelSelectToPlayer2CamAnim 
+#01339      SetFrontEndPad 1 
+#01342    ELSE 
+#01343      LevelSelectToPlayer1CamAnim 
+#01347    END IF 
+#01348    ResetSkaterRotation 
+#01349    EnableSkaterRotation 
+#01350    InitTVScreensVisibility 
+#01352  END FUNCTION
+          
+#01353  FUNCTION InitTVScreensVisibility 
+#01356    invisible prefix = "ss_go_TV_" 
+          
+#01357    visible name = ss_go_TV_THPScreen 
+          
+#01358  END FUNCTION
+          
+#01359  FUNCTION LevelSelectStartGame 
+#01361    IF CurrentSkaterProfileIs 1 
+#01362      SetGameType trickattack 
+#01366      UseBothPadsInFrontEnd 
+#01368    ELSE 
+#01369    END IF 
+#01372    SetCurrentSkaterProfile 0 
+#01374    SetSkaterRotationPad 0 
+#01375    immediately_start_game NULL 
+#01376  END FUNCTION
+          
+#01377  ParkEditorCassetteTurnRate = -0.05 
+        
+#01379  FUNCTION SwitchOffCassetteMenuHeading 
+#01381    FireMenuEvent Type = HIDE 
+          Id = cassette_menu_level_name 
+          target = cassette_menu_level_name 
+          
+#01382    FireMenuEvent Type = HIDE 
+          Id = cassette_menu_dummy_line 
+          target = cassette_menu_dummy_line 
+          
+#01383  END FUNCTION
+          
+#01384  FUNCTION SwitchOnCassetteMenuHeading 
+#01386    FireMenuEvent Type = SHOW 
+          Id = cassette_menu_level_name 
+          target = cassette_menu_level_name 
+          
+#01387    FireMenuEvent Type = SHOW 
+          Id = cassette_menu_dummy_line 
+          target = cassette_menu_dummy_line 
+          
+#01388  END FUNCTION
+          
+#01389  FUNCTION PlayCustomParkFromCassetteMenu 
+#01392    ClearCassetteMenu 
+#01394    immediately_start_game NULL 
+#01395  END FUNCTION
+          
+#01396  FUNCTION UpdateParkNameInMenuTitles 
+#01398    GetParkName 
+#01399    SetMenuElementText Id = cassette_menu_park_editor_menu_title 
+          GLOBAL.ParkName 
+          
+#01400    SetMenuElementText Id = cassette_menu_dummy_line 
+          GLOBAL.ParkName 
+          
+#01401  END FUNCTION
+          
+#01402  FUNCTION cassette_menu_create 
+#01405    createmenu STRUCT{
+            Type = cassettemenu 
+            Id = cassette_menu 
             eventhandlers = ARRAY(
-
+              
               STRUCT{
-                Type = backeventhandler
-                target = "LevelSelectBackOut"
+                Type = backeventhandler 
+                target = "LevelSelectBackOut" 
                 }
               STRUCT{
-                Type = showeventhandler
-                target = "UpdateParkNameInMenuTitles"
+                Type = showeventhandler 
+                target = "UpdateParkNameInMenuTitles" 
                 }
-
+              
             )
-            AppearanceParams = CassetteMenuParams
+            AppearanceParams = CassetteMenuParams 
             }
-
-#00000    createmenu STRUCT{
-            Type = verticalmenu
-            Id = cassette_menu_park_editor_menu
-            x = 255.0
-            y = 50.0
-            w = 360.0
-            h = 230.0
+          
+#01417    createmenu STRUCT{
+            Type = verticalmenu 
+            Id = cassette_menu_park_editor_menu 
+            x = 255.0 
+            y = 50.0 
+            w = 360.0 
+            h = 230.0 
             just_center_x just_center_y blue_top eventhandler = STRUCT{
-              Type = backeventhandler
-              target = "SwitchOnCassetteMenuHeading"
+              Type = backeventhandler 
+              target = "SwitchOnCassetteMenuHeading" 
               }
             children = ARRAY(
-
+              
               STRUCT{
-                Type = textmenuelement
-                Id = cassette_menu_park_editor_menu_title
-                text = " "
-                static dont_gray drawer = title
+                Type = textmenuelement 
+                Id = cassette_menu_park_editor_menu_title 
+                text = " " 
+                static dont_gray drawer = title 
                 truncate_to_width }
               STRUCT{
-                Type = textmenuelement
-                auto_id text = "Play Park"
-                target = "PlayCustomParkFromCassetteMenu"
+                Type = textmenuelement 
+                auto_id text = "Play Park" 
+                target = "PlayCustomParkFromCassetteMenu" 
                 Params = STRUCT{
-                  level = custom_park
-                  string = "Play custom park"
+                  level = custom_park 
+                  string = "Play custom park" 
                   }
                 }
               STRUCT{
-                Type = textmenuelement
-                auto_id text = "Load Custom Park"
-                target = "_CassetteMenuParkEditorLoad"
+                Type = textmenuelement 
+                auto_id text = "Load Custom Park" 
+                target = "_CassetteMenuParkEditorLoad" 
                 }
               STRUCT{
-                Type = textmenuelement
-                auto_id text = "Pre-made parks"
-                link = cassette_menu_parked_load_menu
+                Type = textmenuelement 
+                auto_id text = "Pre-made parks" 
+                link = cassette_menu_parked_load_menu 
                 }
               STRUCT{
-                Type = textmenuelement
-                auto_id text = "Back"
-                target = "go_back"
+                Type = textmenuelement 
+                auto_id text = "Back" 
+                target = "go_back" 
                 Params = STRUCT{
-                  Id = cassette_menu_park_editor_menu
+                  Id = cassette_menu_park_editor_menu 
                   }
                 }
-
+              
             )
             }
-
-#00000    attachchild parent = contain1
-          child = cassette_menu
-
-#00000    attachchild parent = contain1
-          child = cassette_menu_park_editor_menu
-
-#00000  END FUNCTION
-
-#00000  FUNCTION _LoadParkFromDisc
-#00000    SwitchOffMenu Id = cassette_menu_parked_load_menu
-
-#00000    spawnscript LoadParkFromDisc Params = NULL
-
-#00000  END FUNCTION
-
-#00000  FUNCTION LoadParkFromDisc
-#00000    Message_LoadingParkFromDisc
-#00000    IF ParkEditorCommand command = accessDisk
-            file = GLOBAL.file
-            DoNotCleanupAndInitialize
-#00000      Message_LoadSuccessful
-#00000    ELSE
-#00000      Message_LoadParkFromDiscFailed
-#00000    END IF
-#00000    UpdateParkNameInMenuTitles
-#00000    Wait 0.5 seconds
-#00000    SwitchToMenu DoNotMakeRoot menu = cassette_menu_park_editor_menu
-
-#00000  END FUNCTION
-
-#00000  FUNCTION ClearCassetteMenu
-#00000    DestroyElement Id = cassette_menu_heading
-
-#00000    DestroyElement Id = cassette_menu_goals_left
-
-#00000    DestroyElement Id = cassette_menu_records_1
-
-#00000    DestroyElement Id = cassette_menu_records_2
-
-#00000    DestroyElement Id = cassette_menu_stat_points_text
-
-#00000    DestroyElement Id = cassette_menu_stat_points_pips
-
-#00000    DestroyElement Id = cassette_menu_got_deck_text
-
-#00000    DestroyElement Id = cassette_menu_line_1
-
-#00000    DestroyElement Id = cassette_menu_line_2
-
-#00000    DestroyElement Id = cassette_menu_best_medal_text
-
-#00000    DestroyElement Id = cassette_menu_best_medal_gold
-
-#00000    DestroyElement Id = cassette_menu_best_medal_silver
-
-#00000    DestroyElement Id = cassette_menu_best_medal_bronze
-
-#00000    DestroyElement Id = cassette_menu_best_medal_none
-
-#00000    DestroyElement Id = cassette_menu_parked_load_menu
-
-#00000    DestroyElement Id = cassette_editor
-
-#00000    DestroyElement Id = cassette_foundry
-
-#00000    DestroyElement Id = cassette_canada
-
-#00000    DestroyElement Id = cassette_rio
-
-#00000    DestroyElement Id = cassette_suburbia
-
-#00000    DestroyElement Id = cassette_airport
-
-#00000    DestroyElement Id = cassette_skater_island
-
-#00000    DestroyElement Id = cassette_los_angeles
-
-#00000    DestroyElement Id = cassette_tokyo
-
-#00000    DestroyElement Id = cassette_oil
-
-#00000    DestroyElement Id = cassette_rooftops
-
-#00000    DestroyElement Id = cassette_ship
-
-#00000    DestroyElement Id = cassette_warehouse
-
-#00000    DestroyElement Id = cassette_burnside
-
-#00000    DestroyElement Id = cassette_roswell
-
-#00000  END FUNCTION
-
-#00000  UnlockRequirements =
-#00000
+          
+#01461    attachchild parent = contain1 
+          child = cassette_menu 
+          
+#01463    attachchild parent = contain1 
+          child = cassette_menu_park_editor_menu 
+          
+#01464  END FUNCTION
+          
+#01465  FUNCTION _LoadParkFromDisc 
+#01469    SwitchOffMenu Id = cassette_menu_parked_load_menu 
+          
+#01470    spawnscript LoadParkFromDisc Params = NULL 
+          
+#01471  END FUNCTION
+          
+#01472  FUNCTION LoadParkFromDisc 
+#01475    Message_LoadingParkFromDisc 
+#01476    IF ParkEditorCommand command = accessDisk 
+            file = GLOBAL.file 
+            DoNotCleanupAndInitialize 
+#01477      Message_LoadSuccessful 
+#01478    ELSE 
+#01479      Message_LoadParkFromDiscFailed 
+#01480    END IF 
+#01481    UpdateParkNameInMenuTitles 
+#01482    Wait 0.5 seconds 
+#01483    SwitchToMenu DoNotMakeRoot menu = cassette_menu_park_editor_menu 
+          
+#01484  END FUNCTION
+          
+#01485  FUNCTION ClearCassetteMenu 
+#01489    DestroyElement Id = cassette_menu_heading 
+          
+#01490    DestroyElement Id = cassette_menu_goals_left 
+          
+#01491    DestroyElement Id = cassette_menu_records_1 
+          
+#01492    DestroyElement Id = cassette_menu_records_2 
+          
+#01493    DestroyElement Id = cassette_menu_stat_points_text 
+          
+#01494    DestroyElement Id = cassette_menu_stat_points_pips 
+          
+#01495    DestroyElement Id = cassette_menu_got_deck_text 
+          
+#01496    DestroyElement Id = cassette_menu_line_1 
+          
+#01497    DestroyElement Id = cassette_menu_line_2 
+          
+#01498    DestroyElement Id = cassette_menu_best_medal_text 
+          
+#01499    DestroyElement Id = cassette_menu_best_medal_gold 
+          
+#01500    DestroyElement Id = cassette_menu_best_medal_silver 
+          
+#01501    DestroyElement Id = cassette_menu_best_medal_bronze 
+          
+#01502    DestroyElement Id = cassette_menu_best_medal_none 
+          
+#01503    DestroyElement Id = cassette_menu_parked_load_menu 
+          
+#01504    DestroyElement Id = cassette_editor 
+          
+#01507    DestroyElement Id = cassette_foundry 
+          
+#01508    DestroyElement Id = cassette_canada 
+          
+#01509    DestroyElement Id = cassette_rio 
+          
+#01510    DestroyElement Id = cassette_suburbia 
+          
+#01511    DestroyElement Id = cassette_airport 
+          
+#01512    DestroyElement Id = cassette_skater_island 
+          
+#01513    DestroyElement Id = cassette_los_angeles 
+          
+#01514    DestroyElement Id = cassette_tokyo 
+          
+#01515    DestroyElement Id = cassette_oil 
+          
+#01516    DestroyElement Id = cassette_rooftops 
+          
+#01517    DestroyElement Id = cassette_ship 
+          
+#01518    DestroyElement Id = cassette_warehouse 
+          
+#01519    DestroyElement Id = cassette_burnside 
+          
+#01520    DestroyElement Id = cassette_roswell 
+          
+#01521  END FUNCTION
+          
+#01522  UnlockRequirements = 
+#01524  
         ARRAY(
           STRUCT{
             level = LevelNum_Foundry
             {{rando_mainmenu_unlock_foundry}} }
           STRUCT{
-            level = LevelNum_Canada
+            level = LevelNum_Canada 
             {{rando_mainmenu_unlock_canada}} }
           STRUCT{
             level = LevelNum_Rio
@@ -1858,1037 +1858,1037 @@ FUNCTION start_main_menu
           STRUCT{
             level = LevelNum_Ship
             {{rando_mainmenu_unlock_ship}} }
-
+          
         )
-
-#00000  FUNCTION BuildCassetteMenu
-#00000    createmenu STRUCT{
-            Type = verticalmenu
-            Id = cassette_menu_heading
-            x = 280.0
-            y = 50.0
-            w = 300.0
-            h = 230.0
+        
+#01534  FUNCTION BuildCassetteMenu 
+#01536    createmenu STRUCT{
+            Type = verticalmenu 
+            Id = cassette_menu_heading 
+            x = 280.0 
+            y = 50.0 
+            w = 300.0 
+            h = 230.0 
             just_center_x just_center_y blue_top children = ARRAY(
-
+              
               STRUCT{
-                Type = textmenuelement
-                Id = cassette_menu_level_name
-                text = "Custom Park"
-                static dont_gray drawer = title
+                Type = textmenuelement 
+                Id = cassette_menu_level_name 
+                text = "Custom Park" 
+                static dont_gray drawer = title 
                 }
               STRUCT{
-                Type = textmenuelement
-                Id = cassette_menu_dummy_line
-                text = " "
-                static dont_gray drawer = goals_text
+                Type = textmenuelement 
+                Id = cassette_menu_dummy_line 
+                text = " " 
+                static dont_gray drawer = goals_text 
                 }
-
+              
             )
             }
-
-#00000    createmenu STRUCT{
-            Type = textmenuelement
-            Id = cassette_menu_stat_points_text
-            text = "Stat points:"
-            just_center_x lock_layout static dont_gray drawer = goals_text
-            x = 280
-            y = 80
-            w = 150
+          
+#01558    createmenu STRUCT{
+            Type = textmenuelement 
+            Id = cassette_menu_stat_points_text 
+            text = "Stat points:" 
+            just_center_x lock_layout static dont_gray drawer = goals_text 
+            x = 280 
+            y = 80 
+            w = 150 
             }
-
-#00000    createmenu STRUCT{
-            Type = statsmenuelement
-            Id = cassette_menu_stat_points_pips
-            text = "---"
-            implemented_property just_center_x x = 430
-            y = 80
-            w = 70
-            h = 23
-            ghosted dont_gray pip_spacing = cas_pip_spacing
-            lower = 0
-            upper = 5
-            start_value = 0
+          
+#01566    createmenu STRUCT{
+            Type = statsmenuelement 
+            Id = cassette_menu_stat_points_pips 
+            text = "---" 
+            implemented_property just_center_x x = 430 
+            y = 80 
+            w = 70 
+            h = 23 
+            ghosted dont_gray pip_spacing = cas_pip_spacing 
+            lower = 0 
+            upper = 5 
+            start_value = 0 
             }
-
-#00000    createmenu STRUCT{
-            Type = textmenuelement
-            Id = cassette_menu_got_deck_text
-            text = "Deck: Yes"
-            just_center_x lock_layout x = 500
-            y = 80
-            w = 80
-            h = 23
-            static dont_gray drawer = goals_text
+          
+#01577    createmenu STRUCT{
+            Type = textmenuelement 
+            Id = cassette_menu_got_deck_text 
+            text = "Deck: Yes" 
+            just_center_x lock_layout x = 500 
+            y = 80 
+            w = 80 
+            h = 23 
+            static dont_gray drawer = goals_text 
             }
-
-#00000    createmenu STRUCT{
-            Type = textmenuelement
-            Id = cassette_menu_line_1
-            text = "Goals completed:"
-            static dont_gray drawer = goals_text
-            just_center_x x = 280
-            y = 103
-            w = 150
+          
+#01585    createmenu STRUCT{
+            Type = textmenuelement 
+            Id = cassette_menu_line_1 
+            text = "Goals completed:" 
+            static dont_gray drawer = goals_text 
+            just_center_x x = 280 
+            y = 103 
+            w = 150 
             }
-
-#00000    createmenu STRUCT{
-            Type = textmenuelement
-            Id = cassette_menu_line_2
-            text = " "
-            static dont_gray drawer = goals_text
-            just_center_x x = 430
-            y = 103
-            w = 150
+          
+#01593    createmenu STRUCT{
+            Type = textmenuelement 
+            Id = cassette_menu_line_2 
+            text = " " 
+            static dont_gray drawer = goals_text 
+            just_center_x x = 430 
+            y = 103 
+            w = 150 
             }
-
-#00000    createmenu STRUCT{
-            Type = textmenuelement
-            Id = cassette_menu_best_medal_text
-            text = "Best medal:"
-            static dont_gray drawer = goals_text
-            lock_layout just_center_x x = 320
-            y = 115
-            w = 150
+          
+#01600    createmenu STRUCT{
+            Type = textmenuelement 
+            Id = cassette_menu_best_medal_text 
+            text = "Best medal:" 
+            static dont_gray drawer = goals_text 
+            lock_layout just_center_x x = 320 
+            y = 115 
+            w = 150 
             }
-
-#00000    createmenu STRUCT{
-            Type = iconmenuelement
-            Id = cassette_menu_best_medal_gold
-            image = "panelsprites\medal_1.png"
-            rectScaleX = 1.3
-            x = 490
-            y = 110
+          
+#01608    createmenu STRUCT{
+            Type = iconmenuelement 
+            Id = cassette_menu_best_medal_gold 
+            image = "panelsprites\medal_1.png" 
+            rectScaleX = 1.3 
+            x = 490 
+            y = 110 
             IconColor_Gold dontdrawrect }
-
-#00000    createmenu STRUCT{
-            Type = iconmenuelement
-            Id = cassette_menu_best_medal_silver
-            image = "panelsprites\medal_2.png"
-            rectScaleX = 1.3
-            x = 490
-            y = 110
+          
+#01616    createmenu STRUCT{
+            Type = iconmenuelement 
+            Id = cassette_menu_best_medal_silver 
+            image = "panelsprites\medal_2.png" 
+            rectScaleX = 1.3 
+            x = 490 
+            y = 110 
             IconColor_Silver dontdrawrect }
-
-#00000    createmenu STRUCT{
-            Type = iconmenuelement
-            Id = cassette_menu_best_medal_bronze
-            image = "panelsprites\medal_3.png"
-            rectScaleX = 1.3
-            x = 490
-            y = 110
+          
+#01624    createmenu STRUCT{
+            Type = iconmenuelement 
+            Id = cassette_menu_best_medal_bronze 
+            image = "panelsprites\medal_3.png" 
+            rectScaleX = 1.3 
+            x = 490 
+            y = 110 
             IconColor_Bronze dontdrawrect }
-
-#00000    createmenu STRUCT{
-            Type = iconmenuelement
-            Id = cassette_menu_best_medal_none
-            image = "panelsprites\medal_locked.png"
-            rectScaleX = 1.3
-            x = 490
-            y = 110
+          
+#01632    createmenu STRUCT{
+            Type = iconmenuelement 
+            Id = cassette_menu_best_medal_none 
+            image = "panelsprites\medal_locked.png" 
+            rectScaleX = 1.3 
+            x = 490 
+            y = 110 
             IconColor_NoMedal dontdrawrect }
-
-#00000    createmenu STRUCT{
-            Type = verticalmenu
-            Id = cassette_menu_goals_left
-            x = 280.0
-            y = 170.0
-            w = 296.0
-            h = 250.0
+          
+#01640    createmenu STRUCT{
+            Type = verticalmenu 
+            Id = cassette_menu_goals_left 
+            x = 280.0 
+            y = 170.0 
+            w = 296.0 
+            h = 250.0 
             just_center_x just_center_y children = ARRAY(
-
+              
               STRUCT{
-                Type = textmenuelement
-                Id = cassette_goals_line_1
-                text = "Level is locked !!!"
-                static dont_gray drawer = goals_text
+                Type = textmenuelement 
+                Id = cassette_goals_line_1 
+                text = "Level is locked !!!" 
+                static dont_gray drawer = goals_text 
                 }
               STRUCT{
-                Type = textmenuelement
-                Id = cassette_goals_line_2
-                text = " "
-                static dont_gray drawer = goals_text
+                Type = textmenuelement 
+                Id = cassette_goals_line_2 
+                text = " " 
+                static dont_gray drawer = goals_text 
                 }
-
+              
             )
             }
-
-#00000    createmenu STRUCT{
-            x = 280
-            y = 80
-            w = 300
-            just_center_x just_center_y drawer = goals_text
-            Type = textmenuelement
-            Id = cassette_menu_records_1
-            text = "Records:"
+          
+#01658    createmenu STRUCT{
+            x = 280 
+            y = 80 
+            w = 300 
+            just_center_x just_center_y drawer = goals_text 
+            Type = textmenuelement 
+            Id = cassette_menu_records_1 
+            text = "Records:" 
             static dont_gray }
-
-#00000    createmenu STRUCT{
-            x = 280
-            y = 102
-            w = 300
-            just_center_x just_center_y drawer = goals_text
-            Type = textmenuelement
-            Id = cassette_menu_records_2
-            text = " "
+          
+#01667    createmenu STRUCT{
+            x = 280 
+            y = 102 
+            w = 300 
+            just_center_x just_center_y drawer = goals_text 
+            Type = textmenuelement 
+            Id = cassette_menu_records_2 
+            text = " " 
             static dont_gray }
-
-#00000    createmenu STRUCT{
-            Type = verticalmenu
-            Id = cassette_menu_parked_load_menu
-            x = 255.0
-            y = 50.0
-            w = 360.0
-            h = 230.0
+          
+#01676    createmenu STRUCT{
+            Type = verticalmenu 
+            Id = cassette_menu_parked_load_menu 
+            x = 255.0 
+            y = 50.0 
+            w = 360.0 
+            h = 230.0 
             just_center_x just_center_y blue_top children = ARRAY(
-
+              
               STRUCT{
-                Type = textmenuelement
-                auto_id text = "Pre-Made Parks"
-                static dont_gray drawer = title
+                Type = textmenuelement 
+                auto_id text = "Pre-Made Parks" 
+                static dont_gray drawer = title 
                 }
               STRUCT{
-                Type = scrollingmenu
-                auto_id x = 0.0
-                y = 0.0
-                w = 350.0
-                h = 400.0
-                just_center_x just_center_y num_visible = 9
+                Type = scrollingmenu 
+                auto_id x = 0.0 
+                y = 0.0 
+                w = 350.0 
+                h = 400.0 
+                just_center_x just_center_y num_visible = 9 
                 children = ARRAY(
-
+                  
                   STRUCT{
-                    Type = textmenuelement
-                    Id = parked_load1
-                    text = "Park 1"
-                    target = "_LoadParkFromDisc"
+                    Type = textmenuelement 
+                    Id = parked_load1 
+                    text = "Park 1" 
+                    target = "_LoadParkFromDisc" 
                     Params = STRUCT{
-                      file = 1
+                      file = 1 
                       }
                     }
                   STRUCT{
-                    Type = textmenuelement
-                    Id = parked_load2
-                    text = "Park 2"
-                    target = "_LoadParkFromDisc"
+                    Type = textmenuelement 
+                    Id = parked_load2 
+                    text = "Park 2" 
+                    target = "_LoadParkFromDisc" 
                     Params = STRUCT{
-                      file = 2
+                      file = 2 
                       }
                     }
                   STRUCT{
-                    Type = textmenuelement
-                    Id = parked_load3
-                    text = "Park 3"
-                    target = "_LoadParkFromDisc"
+                    Type = textmenuelement 
+                    Id = parked_load3 
+                    text = "Park 3" 
+                    target = "_LoadParkFromDisc" 
                     Params = STRUCT{
-                      file = 3
+                      file = 3 
                       }
                     }
                   STRUCT{
-                    Type = textmenuelement
-                    Id = parked_load4
-                    text = "Park 4"
-                    target = "_LoadParkFromDisc"
+                    Type = textmenuelement 
+                    Id = parked_load4 
+                    text = "Park 4" 
+                    target = "_LoadParkFromDisc" 
                     Params = STRUCT{
-                      file = 4
+                      file = 4 
                       }
                     }
                   STRUCT{
-                    Type = textmenuelement
-                    Id = parked_load5
-                    text = "Park 5"
-                    target = "_LoadParkFromDisc"
+                    Type = textmenuelement 
+                    Id = parked_load5 
+                    text = "Park 5" 
+                    target = "_LoadParkFromDisc" 
                     Params = STRUCT{
-                      file = 5
+                      file = 5 
                       }
                     }
                   STRUCT{
-                    Type = textmenuelement
-                    Id = parked_load6
-                    text = "Park 6"
-                    target = "_LoadParkFromDisc"
+                    Type = textmenuelement 
+                    Id = parked_load6 
+                    text = "Park 6" 
+                    target = "_LoadParkFromDisc" 
                     Params = STRUCT{
-                      file = 6
+                      file = 6 
                       }
                     }
                   STRUCT{
-                    Type = textmenuelement
-                    Id = parked_load7
-                    text = "Park 7"
-                    target = "_LoadParkFromDisc"
+                    Type = textmenuelement 
+                    Id = parked_load7 
+                    text = "Park 7" 
+                    target = "_LoadParkFromDisc" 
                     Params = STRUCT{
-                      file = 7
+                      file = 7 
                       }
                     }
                   STRUCT{
-                    Type = textmenuelement
-                    Id = parked_load8
-                    text = "Park 8"
-                    target = "_LoadParkFromDisc"
+                    Type = textmenuelement 
+                    Id = parked_load8 
+                    text = "Park 8" 
+                    target = "_LoadParkFromDisc" 
                     Params = STRUCT{
-                      file = 8
+                      file = 8 
                       }
                     }
                   STRUCT{
-                    Type = textmenuelement
-                    Id = parked_load9
-                    text = "Park 9"
-                    target = "_LoadParkFromDisc"
+                    Type = textmenuelement 
+                    Id = parked_load9 
+                    text = "Park 9" 
+                    target = "_LoadParkFromDisc" 
                     Params = STRUCT{
-                      file = 9
+                      file = 9 
                       }
                     }
                   STRUCT{
-                    Type = textmenuelement
-                    Id = parked_load10
-                    text = "Park 10"
-                    target = "_LoadParkFromDisc"
+                    Type = textmenuelement 
+                    Id = parked_load10 
+                    text = "Park 10" 
+                    target = "_LoadParkFromDisc" 
                     Params = STRUCT{
-                      file = 10
+                      file = 10 
                       }
                     }
                   STRUCT{
-                    Type = textmenuelement
-                    Id = parked_load11
-                    text = "Park 11"
-                    target = "_LoadParkFromDisc"
+                    Type = textmenuelement 
+                    Id = parked_load11 
+                    text = "Park 11" 
+                    target = "_LoadParkFromDisc" 
                     Params = STRUCT{
-                      file = 11
+                      file = 11 
                       }
                     }
                   STRUCT{
-                    Type = textmenuelement
-                    Id = parked_load12
-                    text = "Park 12"
-                    target = "_LoadParkFromDisc"
+                    Type = textmenuelement 
+                    Id = parked_load12 
+                    text = "Park 12" 
+                    target = "_LoadParkFromDisc" 
                     Params = STRUCT{
-                      file = 12
+                      file = 12 
                       }
                     }
                   STRUCT{
-                    Type = textmenuelement
-                    Id = parked_load13
-                    text = "Park 13"
-                    target = "_LoadParkFromDisc"
+                    Type = textmenuelement 
+                    Id = parked_load13 
+                    text = "Park 13" 
+                    target = "_LoadParkFromDisc" 
                     Params = STRUCT{
-                      file = 13
+                      file = 13 
                       }
                     }
                   STRUCT{
-                    Type = textmenuelement
-                    Id = parked_load14
-                    text = "Park 14"
-                    target = "_LoadParkFromDisc"
+                    Type = textmenuelement 
+                    Id = parked_load14 
+                    text = "Park 14" 
+                    target = "_LoadParkFromDisc" 
                     Params = STRUCT{
-                      file = 14
+                      file = 14 
                       }
                     }
                   STRUCT{
-                    Type = textmenuelement
-                    Id = parked_load15
-                    text = "Park 15"
-                    target = "_LoadParkFromDisc"
+                    Type = textmenuelement 
+                    Id = parked_load15 
+                    text = "Park 15" 
+                    target = "_LoadParkFromDisc" 
                     Params = STRUCT{
-                      file = 15
+                      file = 15 
                       }
                     }
                   STRUCT{
-                    Type = textmenuelement
-                    Id = parked_load16
-                    text = "Park 16"
-                    target = "_LoadParkFromDisc"
+                    Type = textmenuelement 
+                    Id = parked_load16 
+                    text = "Park 16" 
+                    target = "_LoadParkFromDisc" 
                     Params = STRUCT{
-                      file = 16
+                      file = 16 
                       }
                     }
                   STRUCT{
-                    Type = textmenuelement
-                    Id = parked_load17
-                    text = "Park 17"
-                    target = "_LoadParkFromDisc"
+                    Type = textmenuelement 
+                    Id = parked_load17 
+                    text = "Park 17" 
+                    target = "_LoadParkFromDisc" 
                     Params = STRUCT{
-                      file = 17
+                      file = 17 
                       }
                     }
                   STRUCT{
-                    Type = textmenuelement
-                    Id = parked_load18
-                    text = "Park 18"
-                    target = "_LoadParkFromDisc"
+                    Type = textmenuelement 
+                    Id = parked_load18 
+                    text = "Park 18" 
+                    target = "_LoadParkFromDisc" 
                     Params = STRUCT{
-                      file = 18
+                      file = 18 
                       }
                     }
                   STRUCT{
-                    Type = textmenuelement
-                    Id = parked_load19
-                    text = "Park 19"
-                    target = "_LoadParkFromDisc"
+                    Type = textmenuelement 
+                    Id = parked_load19 
+                    text = "Park 19" 
+                    target = "_LoadParkFromDisc" 
                     Params = STRUCT{
-                      file = 19
+                      file = 19 
                       }
                     }
                   STRUCT{
-                    Type = textmenuelement
-                    Id = parked_load20
-                    text = "Park 20"
-                    target = "_LoadParkFromDisc"
+                    Type = textmenuelement 
+                    Id = parked_load20 
+                    text = "Park 20" 
+                    target = "_LoadParkFromDisc" 
                     Params = STRUCT{
-                      file = 20
+                      file = 20 
                       }
                     }
-
+                  
                 )
                 }
-
+              
             )
             }
-
-#00000    attachchild parent = contain1
-          child = cassette_menu_heading
-
-#00000    attachchild parent = contain1
-          child = cassette_menu_goals_left
-
-#00000    attachchild parent = contain1
-          child = cassette_menu_records_1
-
-#00000    attachchild parent = contain1
-          child = cassette_menu_records_2
-
-#00000    attachchild parent = contain1
-          child = cassette_menu_parked_load_menu
-
-#00000    spawnscript PositionStatPips
-#00000    SetGlobalFlag flag = {{rando_mainmenu_first_level_unlock}}
-
-#00000    IF TestRequestedGameType Career
-#00000    ELSE
-#00000      createmenu STRUCT{
-              Type = cassettemenuelement
-              Id = cassette_editor
-              ModelName = Editor
-              TVImageName = ss_go_TV_editor
-              LockedTVImageName = ss_go_TV_editor
-              LevelName = ''
-              LevelNumber = 0
+          
+#01783    attachchild parent = contain1 
+          child = cassette_menu_heading 
+          
+#01785    attachchild parent = contain1 
+          child = cassette_menu_goals_left 
+          
+#01786    attachchild parent = contain1 
+          child = cassette_menu_records_1 
+          
+#01787    attachchild parent = contain1 
+          child = cassette_menu_records_2 
+          
+#01798    attachchild parent = contain1 
+          child = cassette_menu_parked_load_menu 
+          
+#01799    spawnscript PositionStatPips 
+#01801    SetGlobalFlag flag = {{rando_mainmenu_first_level_unlock}} 
+          
+#01806    IF TestRequestedGameType Career 
+#01808    ELSE 
+#01809      createmenu STRUCT{
+              Type = cassettemenuelement 
+              Id = cassette_editor 
+              ModelName = Editor 
+              TVImageName = ss_go_TV_editor 
+              LockedTVImageName = ss_go_TV_editor 
+              LevelName = '' 
+              LevelNumber = 0 
               parkeditor eventhandler = STRUCT{
-                Type = ChooseEventHandler
-                target = "SwitchOffCassetteMenuHeading"
-                link = cassette_menu_park_editor_menu
+                Type = ChooseEventHandler 
+                target = "SwitchOffCassetteMenuHeading" 
+                link = cassette_menu_park_editor_menu 
                 }
               }
-
-#00000      attachchild child = cassette_editor
-            parent = cassette_menu
-
-#00000    END IF
-#00000    createmenu STRUCT{
-            Type = cassettemenuelement
-            Id = cassette_foundry
-            ModelName = Foundry
-            TVImageName = ss_go_TV_foundry
-            LockedTVImageName = ss_go_TV_foundry_l
-            LevelName = 'Foundry'
+            
+#01826      attachchild child = cassette_editor 
+            parent = cassette_menu 
+            
+#01827    END IF 
+#01828    createmenu STRUCT{
+            Type = cassettemenuelement 
+            Id = cassette_foundry 
+            ModelName = Foundry 
+            TVImageName = ss_go_TV_foundry 
+            LockedTVImageName = ss_go_TV_foundry_l 
+            LevelName = 'Foundry' 
             GlobalFlag = LEVEL_UNLOCKED_FOUNDRY
-            GoalParams = FoundryGoalParams
+            GoalParams = FoundryGoalParams 
             eventhandler = STRUCT{
-              Type = ChooseEventHandler
-              target = "LevelSelectStartGame"
+              Type = ChooseEventHandler 
+              target = "LevelSelectStartGame" 
               kill_menu use_loading_screen Params = STRUCT{
-                level = Load_Foun
+                level = Load_Foun 
                 }
               }
             }
-
+          
 #00000    IF GetGlobalFlag flag = LEVEL_UNLOCKED_FOUNDRY
 #00000      attachchild child = cassette_foundry
             parent = cassette_menu
 #00000    END IF
-
-#00000    createmenu STRUCT{
-            Type = cassettemenuelement
-            Id = cassette_canada
-            ModelName = Canada
-            TVImageName = ss_go_TV_Can
-            LockedTVImageName = ss_go_TV_Can_l
-            LevelName = 'Canada'
-            GlobalFlag = LEVEL_UNLOCKED_CANADA
-            GoalParams = CanadaGoalParams
+          
+#01850    createmenu STRUCT{
+            Type = cassettemenuelement 
+            Id = cassette_canada 
+            ModelName = Canada 
+            TVImageName = ss_go_TV_Can 
+            LockedTVImageName = ss_go_TV_Can_l 
+            LevelName = 'Canada' 
+            GlobalFlag = LEVEL_UNLOCKED_CANADA 
+            GoalParams = CanadaGoalParams 
             eventhandler = STRUCT{
-              Type = ChooseEventHandler
-              target = "LevelSelectStartGame"
+              Type = ChooseEventHandler 
+              target = "LevelSelectStartGame" 
               kill_menu use_loading_screen Params = STRUCT{
-                level = Load_Can
+                level = Load_Can 
                 }
               }
             }
-
+          
 #00000    IF GetGlobalFlag flag = LEVEL_UNLOCKED_CANADA
 #00000      attachchild child = cassette_canada
             parent = cassette_menu
 #00000    END IF
-
-#00000    createmenu STRUCT{
-            Type = cassettemenuelement
-            Id = cassette_rio
-            ModelName = Rio
-            TVImageName = ss_go_TV_Rio
-            LockedTVImageName = ss_go_TV_Rio_l
-            LevelName = 'Rio'
-            GlobalFlag = LEVEL_UNLOCKED_RIO
-            GoalParams = DefaultGoalParams
+          
+#01872    createmenu STRUCT{
+            Type = cassettemenuelement 
+            Id = cassette_rio 
+            ModelName = Rio 
+            TVImageName = ss_go_TV_Rio 
+            LockedTVImageName = ss_go_TV_Rio_l 
+            LevelName = 'Rio' 
+            GlobalFlag = LEVEL_UNLOCKED_RIO 
+            GoalParams = DefaultGoalParams 
             CompetitionLevel eventhandler = STRUCT{
-              Type = ChooseEventHandler
-              target = "LevelSelectStartGame"
+              Type = ChooseEventHandler 
+              target = "LevelSelectStartGame" 
               kill_menu use_loading_screen Params = STRUCT{
-                level = Load_Rio
+                level = Load_Rio 
                 }
               }
             }
-
+          
 #00000    IF GetGlobalFlag flag = LEVEL_UNLOCKED_RIO
 #00000      attachchild child = cassette_rio
             parent = cassette_menu
 #00000    END IF
-
-#00000    createmenu STRUCT{
-            Type = cassettemenuelement
-            Id = cassette_suburbia
-            ModelName = Suburbia
-            TVImageName = ss_go_TV_Sub
-            LockedTVImageName = ss_go_TV_Sub_l
-            LevelName = 'Suburbia'
-            GlobalFlag = LEVEL_UNLOCKED_SUBURBIA
-            GoalParams = SuburbiaGoalParams
+          
+#01895    createmenu STRUCT{
+            Type = cassettemenuelement 
+            Id = cassette_suburbia 
+            ModelName = Suburbia 
+            TVImageName = ss_go_TV_Sub 
+            LockedTVImageName = ss_go_TV_Sub_l 
+            LevelName = 'Suburbia' 
+            GlobalFlag = LEVEL_UNLOCKED_SUBURBIA 
+            GoalParams = SuburbiaGoalParams 
             eventhandler = STRUCT{
-              Type = ChooseEventHandler
-              target = "LevelSelectStartGame"
+              Type = ChooseEventHandler 
+              target = "LevelSelectStartGame" 
               kill_menu use_loading_screen Params = STRUCT{
-                level = Load_Sub
+                level = Load_Sub 
                 }
               }
             }
-
+          
 #00000    IF GetGlobalFlag flag = LEVEL_UNLOCKED_SUBURBIA
 #00000      attachchild child = cassette_suburbia
             parent = cassette_menu
 #00000    END IF
-
-#00000    createmenu STRUCT{
-            Type = cassettemenuelement
-            Id = cassette_airport
-            ModelName = Airport
-            TVImageName = ss_go_TV_ap
-            LockedTVImageName = ss_go_TV_ap_l
-            LevelName = 'Airport'
-            GlobalFlag = LEVEL_UNLOCKED_AIRPORT
-            GoalParams = AirportGoalParams
+          
+#01917    createmenu STRUCT{
+            Type = cassettemenuelement 
+            Id = cassette_airport 
+            ModelName = Airport 
+            TVImageName = ss_go_TV_ap 
+            LockedTVImageName = ss_go_TV_ap_l 
+            LevelName = 'Airport' 
+            GlobalFlag = LEVEL_UNLOCKED_AIRPORT 
+            GoalParams = AirportGoalParams 
             eventhandler = STRUCT{
-              Type = ChooseEventHandler
-              target = "LevelSelectStartGame"
+              Type = ChooseEventHandler 
+              target = "LevelSelectStartGame" 
               kill_menu use_loading_screen Params = STRUCT{
-                level = Load_Ap
+                level = Load_Ap 
                 }
               }
             }
-
+          
 #00000    IF GetGlobalFlag flag = LEVEL_UNLOCKED_AIRPORT
 #00000      attachchild child = cassette_airport
             parent = cassette_menu
 #00000    END IF
-
-#00000    createmenu STRUCT{
-            Type = cassettemenuelement
-            Id = cassette_skater_island
-            ModelName = Skater_Island
-            TVImageName = ss_go_TV_si
-            LockedTVImageName = ss_go_TV_si_l
-            LevelName = 'Skater Island'
-            GlobalFlag = LEVEL_UNLOCKED_SKATERISLAND
-            GoalParams = DefaultGoalParams
+          
+#01939    createmenu STRUCT{
+            Type = cassettemenuelement 
+            Id = cassette_skater_island 
+            ModelName = Skater_Island 
+            TVImageName = ss_go_TV_si 
+            LockedTVImageName = ss_go_TV_si_l 
+            LevelName = 'Skater Island' 
+            GlobalFlag = LEVEL_UNLOCKED_SKATERISLAND 
+            GoalParams = DefaultGoalParams 
             CompetitionLevel eventhandler = STRUCT{
-              Type = ChooseEventHandler
-              target = "LevelSelectStartGame"
+              Type = ChooseEventHandler 
+              target = "LevelSelectStartGame" 
               kill_menu use_loading_screen Params = STRUCT{
-                level = Load_Si
+                level = Load_Si 
                 }
               }
             }
-
+          
 #00000    IF GetGlobalFlag flag = LEVEL_UNLOCKED_SKATERISLAND
 #00000      attachchild child = cassette_skater_island
             parent = cassette_menu
 #00000    END IF
-
-#00000    createmenu STRUCT{
-            Type = cassettemenuelement
-            Id = cassette_los_angeles
-            ModelName = Los_Angeles
-            TVImageName = ss_go_TV_la
-            LockedTVImageName = ss_go_TV_la_l
-            LevelName = 'Los Angeles'
-            GlobalFlag = LEVEL_UNLOCKED_LOSANGELES
-            GoalParams = LosAngelesGoalParams
+          
+#01962    createmenu STRUCT{
+            Type = cassettemenuelement 
+            Id = cassette_los_angeles 
+            ModelName = Los_Angeles 
+            TVImageName = ss_go_TV_la 
+            LockedTVImageName = ss_go_TV_la_l 
+            LevelName = 'Los Angeles' 
+            GlobalFlag = LEVEL_UNLOCKED_LOSANGELES 
+            GoalParams = LosAngelesGoalParams 
             eventhandler = STRUCT{
-              Type = ChooseEventHandler
-              target = "LevelSelectStartGame"
+              Type = ChooseEventHandler 
+              target = "LevelSelectStartGame" 
               kill_menu use_loading_screen Params = STRUCT{
-                level = Load_La
+                level = Load_La 
                 }
               }
             }
-
+          
 #00000    IF GetGlobalFlag flag = LEVEL_UNLOCKED_LOSANGELES
 #00000      attachchild child = cassette_los_angeles
             parent = cassette_menu
 #00000    END IF
-
-#00000    createmenu STRUCT{
-            Type = cassettemenuelement
-            Id = cassette_tokyo
-            ModelName = Tokyo
-            TVImageName = ss_go_TV_tok
-            LockedTVImageName = ss_go_TV_tok_l
-            LevelName = 'Tokyo'
-            GlobalFlag = LEVEL_UNLOCKED_TOKYO
-            GoalParams = DefaultGoalParams
+          
+#01984    createmenu STRUCT{
+            Type = cassettemenuelement 
+            Id = cassette_tokyo 
+            ModelName = Tokyo 
+            TVImageName = ss_go_TV_tok 
+            LockedTVImageName = ss_go_TV_tok_l 
+            LevelName = 'Tokyo' 
+            GlobalFlag = LEVEL_UNLOCKED_TOKYO 
+            GoalParams = DefaultGoalParams 
             CompetitionLevel eventhandler = STRUCT{
-              Type = ChooseEventHandler
-              target = "LevelSelectStartGame"
+              Type = ChooseEventHandler 
+              target = "LevelSelectStartGame" 
               kill_menu use_loading_screen Params = STRUCT{
-                level = Load_Tok
+                level = Load_Tok 
                 }
               }
             }
-
+          
 #00000    IF GetGlobalFlag flag = LEVEL_UNLOCKED_TOKYO
 #00000      attachchild child = cassette_tokyo
             parent = cassette_menu
 #00000    END IF
-
+          
 #00000    SetGlobalFlag flag = SPECIAL_HAS_SEEN_SHIP
 #00000    IF GetGlobalFlag flag = LEVEL_UNLOCKED_SHIP
 #00000      CreateShipCassette
 #00000    END IF
 
-#00000    IF TestRequestedGameType Career
-#00000    ELSE
-#00000      IF istrue AllLevelsUnlocked
-#00000        CreateWarehouseCassette
-#00000        CreateBurnsideCassette
-#00000        CreateRoswellCassette
-#00000      ELSE
-#00000        IF GetGlobalFlag flag = LEVEL_UNLOCKED_WAREHOUSE
-
-#00000          CreateWarehouseCassette
-#00000        END IF
-#00000        IF GetGlobalFlag flag = LEVEL_UNLOCKED_BURNSIDE
-
-#00000          CreateBurnsideCassette
-#00000        END IF
-#00000        IF GetGlobalFlag flag = LEVEL_UNLOCKED_ROSWELL
-
-#00000          CreateRoswellCassette
-#00000        END IF
-#00000      END IF
-#00000    END IF
-#00000    IF istrue XBox
-#00000      IF TestRequestedGameType Career
-#00000      ELSE
-#00000        createmenu STRUCT{
-                Type = cassettemenuelement
-                Id = cassette_oil
-                ModelName = Ship
-                TVImageName = ss_go_TV_THPScreen
-                LockedTVImageName = ss_go_TV_THPScreen
-                LevelName = 'Oil Rig'
-                GoalParams = DefaultGoalParams
-                SpecialLevel LevelNumber = 0
+#02015    IF TestRequestedGameType Career 
+#02017    ELSE 
+#02018      IF istrue AllLevelsUnlocked 
+#02019        CreateWarehouseCassette 
+#02020        CreateBurnsideCassette 
+#02021        CreateRoswellCassette 
+#02022      ELSE 
+#02023        IF GetGlobalFlag flag = LEVEL_UNLOCKED_WAREHOUSE 
+                
+#02024          CreateWarehouseCassette 
+#02025        END IF 
+#02026        IF GetGlobalFlag flag = LEVEL_UNLOCKED_BURNSIDE 
+                
+#02027          CreateBurnsideCassette 
+#02028        END IF 
+#02029        IF GetGlobalFlag flag = LEVEL_UNLOCKED_ROSWELL 
+                
+#02030          CreateRoswellCassette 
+#02031        END IF 
+#02032      END IF 
+#02033    END IF 
+#02034    IF istrue XBox 
+#02036      IF TestRequestedGameType Career 
+#02037      ELSE 
+#02038        createmenu STRUCT{
+                Type = cassettemenuelement 
+                Id = cassette_oil 
+                ModelName = Ship 
+                TVImageName = ss_go_TV_THPScreen 
+                LockedTVImageName = ss_go_TV_THPScreen 
+                LevelName = 'Oil Rig' 
+                GoalParams = DefaultGoalParams 
+                SpecialLevel LevelNumber = 0 
                 eventhandler = STRUCT{
-                  Type = ChooseEventHandler
-                  target = "LevelSelectStartGame"
+                  Type = ChooseEventHandler 
+                  target = "LevelSelectStartGame" 
                   kill_menu use_loading_screen Params = STRUCT{
-                    level = Load_Oil
+                    level = Load_Oil 
                     }
                   }
                 }
-
-#00000        attachchild child = cassette_oil
-              parent = cassette_menu
-
-#00000      END IF
-#00000    END IF
-#00000    IF istrue GameCube
-#00000      IF TestRequestedGameType Career
-#00000      ELSE
-#00000        createmenu STRUCT{
-                Type = cassettemenuelement
-                Id = cassette_rooftops
-                ModelName = Ship
-                TVImageName = ss_go_TV_THPScreen
-                LockedTVImageName = ss_go_TV_THPScreen
-                LevelName = 'Rooftops'
-                GoalParams = DefaultGoalParams
-                SpecialLevel LevelNumber = 0
+              
+#02060        attachchild child = cassette_oil 
+              parent = cassette_menu 
+              
+#02061      END IF 
+#02062    END IF 
+#02063    IF istrue GameCube 
+#02065      IF TestRequestedGameType Career 
+#02066      ELSE 
+#02067        createmenu STRUCT{
+                Type = cassettemenuelement 
+                Id = cassette_rooftops 
+                ModelName = Ship 
+                TVImageName = ss_go_TV_THPScreen 
+                LockedTVImageName = ss_go_TV_THPScreen 
+                LevelName = 'Rooftops' 
+                GoalParams = DefaultGoalParams 
+                SpecialLevel LevelNumber = 0 
                 eventhandler = STRUCT{
-                  Type = ChooseEventHandler
-                  target = "LevelSelectStartGame"
+                  Type = ChooseEventHandler 
+                  target = "LevelSelectStartGame" 
                   kill_menu use_loading_screen Params = STRUCT{
-                    level = Load_Roof
+                    level = Load_Roof 
                     }
                   }
                 }
-
-#00000        attachchild child = cassette_rooftops
-              parent = cassette_menu
-
-#00000      END IF
-#00000    END IF
-#00000  END FUNCTION
-
-#00000  FUNCTION CreateShipCassette
-#00000    createmenu STRUCT{
-            Type = cassettemenuelement
-            Id = cassette_ship
-            ModelName = Ship
-            TVImageName = ss_go_TV_ship
-            LockedTVImageName = ss_go_TV_ship_l
-            LevelName = 'Cruise Ship'
-            GlobalFlag = LEVEL_UNLOCKED_SHIP
-            GoalParams = DefaultGoalParams
+              
+#02089        attachchild child = cassette_rooftops 
+              parent = cassette_menu 
+              
+#02090      END IF 
+#02091    END IF 
+#02092  END FUNCTION
+          
+#02094  FUNCTION CreateShipCassette 
+#02096    createmenu STRUCT{
+            Type = cassettemenuelement 
+            Id = cassette_ship 
+            ModelName = Ship 
+            TVImageName = ss_go_TV_ship 
+            LockedTVImageName = ss_go_TV_ship_l 
+            LevelName = 'Cruise Ship' 
+            GlobalFlag = LEVEL_UNLOCKED_SHIP 
+            GoalParams = DefaultGoalParams 
             eventhandler = STRUCT{
-              Type = ChooseEventHandler
-              target = "LevelSelectStartGame"
+              Type = ChooseEventHandler 
+              target = "LevelSelectStartGame" 
               kill_menu use_loading_screen Params = STRUCT{
-                level = Load_Shp
+                level = Load_Shp 
                 }
               }
             }
-
-#00000    attachchild child = cassette_ship
-          parent = cassette_menu
-
-#00000  END FUNCTION
-
-#00000  FUNCTION CreateWarehouseCassette
-#00000    createmenu STRUCT{
-            Type = cassettemenuelement
-            Id = cassette_warehouse
-            ModelName = Special1_WH
-            TVImageName = ss_go_TV_sp1
-            LockedTVImageName = ss_go_TV_THPScreen
-            LevelName = 'Warehouse'
-            LevelNumber = LevelNum_Warehouse
-            GlobalFlag = LEVEL_UNLOCKED_WAREHOUSE
-            GoalParams = DefaultGoalParams
+          
+#02116    attachchild child = cassette_ship 
+          parent = cassette_menu 
+          
+#02117  END FUNCTION
+          
+#02118  FUNCTION CreateWarehouseCassette 
+#02120    createmenu STRUCT{
+            Type = cassettemenuelement 
+            Id = cassette_warehouse 
+            ModelName = Special1_WH 
+            TVImageName = ss_go_TV_sp1 
+            LockedTVImageName = ss_go_TV_THPScreen 
+            LevelName = 'Warehouse' 
+            LevelNumber = LevelNum_Warehouse 
+            GlobalFlag = LEVEL_UNLOCKED_WAREHOUSE 
+            GoalParams = DefaultGoalParams 
             SpecialLevel eventhandler = STRUCT{
-              Type = ChooseEventHandler
-              target = "LevelSelectStartGame"
+              Type = ChooseEventHandler 
+              target = "LevelSelectStartGame" 
               kill_menu use_loading_screen Params = STRUCT{
-                level = Load_Ware
+                level = Load_Ware 
                 }
               }
             }
-
-#00000    attachchild child = cassette_warehouse
-          parent = cassette_menu
-
-#00000  END FUNCTION
-
-#00000  FUNCTION CreateBurnsideCassette
-#00000    createmenu STRUCT{
-            Type = cassettemenuelement
-            Id = cassette_burnside
-            ModelName = Special2_BS
-            TVImageName = ss_go_TV_sp2
-            LockedTVImageName = ss_go_TV_THPScreen
-            LevelName = 'Burnside'
-            LevelNumber = LevelNum_Burnside
-            GlobalFlag = LEVEL_UNLOCKED_BURNSIDE
-            GoalParams = DefaultGoalParams
+          
+#02141    attachchild child = cassette_warehouse 
+          parent = cassette_menu 
+          
+#02142  END FUNCTION
+          
+#02143  FUNCTION CreateBurnsideCassette 
+#02145    createmenu STRUCT{
+            Type = cassettemenuelement 
+            Id = cassette_burnside 
+            ModelName = Special2_BS 
+            TVImageName = ss_go_TV_sp2 
+            LockedTVImageName = ss_go_TV_THPScreen 
+            LevelName = 'Burnside' 
+            LevelNumber = LevelNum_Burnside 
+            GlobalFlag = LEVEL_UNLOCKED_BURNSIDE 
+            GoalParams = DefaultGoalParams 
             SpecialLevel eventhandler = STRUCT{
-              Type = ChooseEventHandler
-              target = "LevelSelectStartGame"
+              Type = ChooseEventHandler 
+              target = "LevelSelectStartGame" 
               kill_menu use_loading_screen Params = STRUCT{
-                level = Load_Burn
+                level = Load_Burn 
                 }
               }
             }
-
-#00000    attachchild child = cassette_burnside
-          parent = cassette_menu
-
-#00000  END FUNCTION
-
-#00000  FUNCTION CreateRoswellCassette
-#00000    createmenu STRUCT{
-            Type = cassettemenuelement
-            Id = cassette_roswell
-            ModelName = Special3_ros
-            TVImageName = ss_go_TV_sp3
-            LockedTVImageName = ss_go_TV_THPScreen
-            LevelName = 'Roswell'
-            LevelNumber = LevelNum_Roswell
-            GlobalFlag = LEVEL_UNLOCKED_ROSWELL
-            GoalParams = DefaultGoalParams
+          
+#02166    attachchild child = cassette_burnside 
+          parent = cassette_menu 
+          
+#02167  END FUNCTION
+          
+#02168  FUNCTION CreateRoswellCassette 
+#02170    createmenu STRUCT{
+            Type = cassettemenuelement 
+            Id = cassette_roswell 
+            ModelName = Special3_ros 
+            TVImageName = ss_go_TV_sp3 
+            LockedTVImageName = ss_go_TV_THPScreen 
+            LevelName = 'Roswell' 
+            LevelNumber = LevelNum_Roswell 
+            GlobalFlag = LEVEL_UNLOCKED_ROSWELL 
+            GoalParams = DefaultGoalParams 
             SpecialLevel eventhandler = STRUCT{
-              Type = ChooseEventHandler
-              target = "LevelSelectStartGame"
+              Type = ChooseEventHandler 
+              target = "LevelSelectStartGame" 
               kill_menu use_loading_screen Params = STRUCT{
-                level = Load_Ros
+                level = Load_Ros 
                 }
               }
             }
-
-#00000    attachchild child = cassette_roswell
-          parent = cassette_menu
-
-#00000  END FUNCTION
-
-#00000  FUNCTION PositionStatPips
-#00000    MoveMenu Id = cassette_menu_stat_points_pips
-          x = 430
-          y = 80
-          w = 70
-          h = 23
-
-#00000  END FUNCTION
-
-#00000  CassetteMenuParams =
-#00000
+          
+#02191    attachchild child = cassette_roswell 
+          parent = cassette_menu 
+          
+#02192  END FUNCTION
+          
+#02193  FUNCTION PositionStatPips 
+#02198    MoveMenu Id = cassette_menu_stat_points_pips 
+          x = 430 
+          y = 80 
+          w = 70 
+          h = 23 
+          
+#02199  END FUNCTION
+          
+#02200  CassetteMenuParams = 
+#02202  
         STRUCT{
-          SourceNodeName = TRG_Videxplode
-          NumFramesToFanOut = 20
-          FanOutPause = 1
-          NumFramesToFanIn = 20
-          FanInPause = 1
-          NumVisible = 6
-          XSeparation = 90
-          NumFramesToMoveSideways = 10
-          YCoord = 330
-          UnselectedZ = 40
-          SelectedZ = 20
-          NumFramesToFlip = 50
-          BigX = 320
-          BigY = 240
-          BigZ = 5
-          NumFramesToGetBig = 20
+          SourceNodeName = TRG_Videxplode 
+          NumFramesToFanOut = 20 
+          FanOutPause = 1 
+          NumFramesToFanIn = 20 
+          FanInPause = 1 
+          NumVisible = 6 
+          XSeparation = 90 
+          NumFramesToMoveSideways = 10 
+          YCoord = 330 
+          UnselectedZ = 40 
+          SelectedZ = 20 
+          NumFramesToFlip = 50 
+          BigX = 320 
+          BigY = 240 
+          BigZ = 5 
+          NumFramesToGetBig = 20 
           }
-
-#00000  GoalInfoTopY = 60
-
-#00000  GoalInfoDY = 35
-
-#00000  FUNCTION CareerMenuShow
-#00000    IF menuisshown pro_menu
-#00000    ELSE
-#00000      MakeMenuPopOffScreen Id = career_info
-            Left
-#00000    END IF
-#00000    FireMenuEvent Type = SHOW
-          Id = career_info
-          target = career_info
-
-#00000    FireMenuEvent Type = HIDE
-          Id = career_info_rio_medal_1
-          target = career_info_rio_medal_1
-
-#00000    FireMenuEvent Type = HIDE
-          Id = career_info_rio_medal_2
-          target = career_info_rio_medal_2
-
-#00000    FireMenuEvent Type = HIDE
-          Id = career_info_rio_medal_3
-          target = career_info_rio_medal_3
-
-#00000    FireMenuEvent Type = HIDE
-          Id = career_info_rio_medal_4
-          target = career_info_rio_medal_4
-
-#00000    FireMenuEvent Type = HIDE
-          Id = career_info_si_medal_1
-          target = career_info_si_medal_1
-
-#00000    FireMenuEvent Type = HIDE
-          Id = career_info_si_medal_2
-          target = career_info_si_medal_2
-
-#00000    FireMenuEvent Type = HIDE
-          Id = career_info_si_medal_3
-          target = career_info_si_medal_3
-
-#00000    FireMenuEvent Type = HIDE
-          Id = career_info_si_medal_4
-          target = career_info_si_medal_4
-
-#00000    FireMenuEvent Type = HIDE
-          Id = career_info_tokyo_medal_1
-          target = career_info_tokyo_medal_1
-
-#00000    FireMenuEvent Type = HIDE
-          Id = career_info_tokyo_medal_2
-          target = career_info_tokyo_medal_2
-
-#00000    FireMenuEvent Type = HIDE
-          Id = career_info_tokyo_medal_3
-          target = career_info_tokyo_medal_3
-
-#00000    FireMenuEvent Type = HIDE
-          Id = career_info_tokyo_medal_4
-          target = career_info_tokyo_medal_4
-
-#00000    UpdateCareerInfoMenu
-#00000    spawnscript MaybeWhizz
-#00000  END FUNCTION
-
-#00000  FUNCTION MaybeWhizz
-#00000    IF ControllerPressed Left
-#00000      MoveMenu Id = career_info
-            x = 45
-
-#00000    ELSE
-#00000      IF ControllerPressed Right
-#00000        MoveMenu Id = career_info
-              x = 45
-
-#00000      ELSE
-#00000        MakeMenuZoomOn Id = career_info
-              FromLeft
-#00000      END IF
-#00000    END IF
-#00000  END FUNCTION
-
-#00000  FUNCTION CareerMenuBackOut
-#00000    FireMenuEvent Type = HIDE
-          Id = career_info
-          target = career_info
-
-#00000  END FUNCTION
-
-#00000  FUNCTION SetDefaultSliderPos
-#00000    IF CurrentSkaterProfileIs 1
-#00000      MoveMenu Id = slider_info
-            x = 295
-
-#00000    ELSE
-#00000      MoveMenu Id = slider_info
-            x = 45
-
-#00000    END IF
-#00000  END FUNCTION
-
-#00000  FUNCTION SliderShow
-#00000    SetDefaultSliderPos
-#00000    IF menuisshown pro_menu
-#00000    ELSE
-#00000      IF CurrentSkaterProfileIs 1
-#00000        MakeMenuPopOffScreen Id = slider_info
-              Right
-#00000      ELSE
-#00000        MakeMenuPopOffScreen Id = slider_info
-              Left
-#00000      END IF
-#00000    END IF
-#00000    FireMenuEvent Type = SHOW
-          Id = slider_info
-          target = slider_info
-
-#00000    UpdateSliderInfoMenu
-#00000    spawnscript SliderMaybeWhizz
-#00000  END FUNCTION
-
-#00000  FUNCTION SliderMaybeWhizz
-#00000    IF ControllerPressed Left
-#00000      SetDefaultSliderPos
-#00000    ELSE
-#00000      IF ControllerPressed Right
-#00000        SetDefaultSliderPos
-#00000      ELSE
-#00000        IF CurrentSkaterProfileIs 1
-#00000          MakeMenuPopOffScreen Id = slider_info
-                Right
-#00000          MakeMenuZoomOn Id = slider_info
-                FromRight
-#00000        ELSE
-#00000          MakeMenuZoomOn Id = slider_info
-                FromLeft
-#00000        END IF
-#00000      END IF
-#00000    END IF
-#00000  END FUNCTION
-
-#00000  FUNCTION SliderHide
-#00000    FireMenuEvent Type = HIDE
-          Id = slider_info
-          target = slider_info
-
-#00000  END FUNCTION
-
-#00000  TotalGoals = 54
-
-#00000  IconColor_Gold = STRUCT{
-          r = 234
-          g = 190
-          b = 92
-          a = 115
+        
+#02239  GoalInfoTopY = 60 
+        
+#02242  GoalInfoDY = 35 
+        
+#02244  FUNCTION CareerMenuShow 
+#02246    IF menuisshown pro_menu 
+#02249    ELSE 
+#02253      MakeMenuPopOffScreen Id = career_info 
+            Left 
+#02258    END IF 
+#02259    FireMenuEvent Type = SHOW 
+          Id = career_info 
+          target = career_info 
+          
+#02262    FireMenuEvent Type = HIDE 
+          Id = career_info_rio_medal_1 
+          target = career_info_rio_medal_1 
+          
+#02265    FireMenuEvent Type = HIDE 
+          Id = career_info_rio_medal_2 
+          target = career_info_rio_medal_2 
+          
+#02266    FireMenuEvent Type = HIDE 
+          Id = career_info_rio_medal_3 
+          target = career_info_rio_medal_3 
+          
+#02267    FireMenuEvent Type = HIDE 
+          Id = career_info_rio_medal_4 
+          target = career_info_rio_medal_4 
+          
+#02268    FireMenuEvent Type = HIDE 
+          Id = career_info_si_medal_1 
+          target = career_info_si_medal_1 
+          
+#02269    FireMenuEvent Type = HIDE 
+          Id = career_info_si_medal_2 
+          target = career_info_si_medal_2 
+          
+#02270    FireMenuEvent Type = HIDE 
+          Id = career_info_si_medal_3 
+          target = career_info_si_medal_3 
+          
+#02271    FireMenuEvent Type = HIDE 
+          Id = career_info_si_medal_4 
+          target = career_info_si_medal_4 
+          
+#02272    FireMenuEvent Type = HIDE 
+          Id = career_info_tokyo_medal_1 
+          target = career_info_tokyo_medal_1 
+          
+#02273    FireMenuEvent Type = HIDE 
+          Id = career_info_tokyo_medal_2 
+          target = career_info_tokyo_medal_2 
+          
+#02274    FireMenuEvent Type = HIDE 
+          Id = career_info_tokyo_medal_3 
+          target = career_info_tokyo_medal_3 
+          
+#02275    FireMenuEvent Type = HIDE 
+          Id = career_info_tokyo_medal_4 
+          target = career_info_tokyo_medal_4 
+          
+#02276    UpdateCareerInfoMenu 
+#02279    spawnscript MaybeWhizz 
+#02284  END FUNCTION
+          
+#02285  FUNCTION MaybeWhizz 
+#02287    IF ControllerPressed Left 
+#02294      MoveMenu Id = career_info 
+            x = 45 
+            
+#02295    ELSE 
+#02296      IF ControllerPressed Right 
+#02297        MoveMenu Id = career_info 
+              x = 45 
+              
+#02298      ELSE 
+#02299        MakeMenuZoomOn Id = career_info 
+              FromLeft 
+#02300      END IF 
+#02301    END IF 
+#02302  END FUNCTION
+          
+#02303  FUNCTION CareerMenuBackOut 
+#02305    FireMenuEvent Type = HIDE 
+          Id = career_info 
+          target = career_info 
+          
+#02307  END FUNCTION
+          
+#02308  FUNCTION SetDefaultSliderPos 
+#02311    IF CurrentSkaterProfileIs 1 
+#02312      MoveMenu Id = slider_info 
+            x = 295 
+            
+#02313    ELSE 
+#02314      MoveMenu Id = slider_info 
+            x = 45 
+            
+#02315    END IF 
+#02316  END FUNCTION
+          
+#02317  FUNCTION SliderShow 
+#02322    SetDefaultSliderPos 
+#02324    IF menuisshown pro_menu 
+#02326    ELSE 
+#02330      IF CurrentSkaterProfileIs 1 
+#02333        MakeMenuPopOffScreen Id = slider_info 
+              Right 
+#02334      ELSE 
+#02335        MakeMenuPopOffScreen Id = slider_info 
+              Left 
+#02336      END IF 
+#02337    END IF 
+#02338    FireMenuEvent Type = SHOW 
+          Id = slider_info 
+          target = slider_info 
+          
+#02340    UpdateSliderInfoMenu 
+#02342    spawnscript SliderMaybeWhizz 
+#02344  END FUNCTION
+          
+#02345  FUNCTION SliderMaybeWhizz 
+#02347    IF ControllerPressed Left 
+#02348      SetDefaultSliderPos 
+#02349    ELSE 
+#02350      IF ControllerPressed Right 
+#02351        SetDefaultSliderPos 
+#02352      ELSE 
+#02353        IF CurrentSkaterProfileIs 1 
+#02354          MakeMenuPopOffScreen Id = slider_info 
+                Right 
+#02356          MakeMenuZoomOn Id = slider_info 
+                FromRight 
+#02357        ELSE 
+#02358          MakeMenuZoomOn Id = slider_info 
+                FromLeft 
+#02359        END IF 
+#02360      END IF 
+#02361    END IF 
+#02362  END FUNCTION
+          
+#02363  FUNCTION SliderHide 
+#02365    FireMenuEvent Type = HIDE 
+          Id = slider_info 
+          target = slider_info 
+          
+#02366  END FUNCTION
+          
+#02367  TotalGoals = 54 
+        
+#02371  IconColor_Gold = STRUCT{
+          r = 234 
+          g = 190 
+          b = 92 
+          a = 115 
           }
-
-#00000  IconColor_Silver = STRUCT{
-          r = 167
-          g = 225
-          b = 236
-          a = 115
+        
+#02374  IconColor_Silver = STRUCT{
+          r = 167 
+          g = 225 
+          b = 236 
+          a = 115 
           }
-
-#00000  IconColor_Bronze = STRUCT{
-          r = 118
-          g = 72
-          b = 21
-          a = 115
+        
+#02375  IconColor_Bronze = STRUCT{
+          r = 118 
+          g = 72 
+          b = 21 
+          a = 115 
           }
-
-#00000  IconColor_NoMedal = STRUCT{
-          r = 67
-          g = 125
-          b = 176
-          a = 115
+        
+#02376  IconColor_NoMedal = STRUCT{
+          r = 67 
+          g = 125 
+          b = 176 
+          a = 115 
           }
-
-#00000  LeftArrowIconElement = STRUCT{
-          Type = iconmenuelement
-          image = "panelsprites\arrow_menu.png"
-          rotate = -90
-          x = 350.0
-          y = 180.0
-          lock_layout dontdrawrect dont_gray r = 255
-          g = 255
-          b = 255
-          a = 115
+        
+#02377  LeftArrowIconElement = STRUCT{
+          Type = iconmenuelement 
+          image = "panelsprites\arrow_menu.png" 
+          rotate = -90 
+          x = 350.0 
+          y = 180.0 
+          lock_layout dontdrawrect dont_gray r = 255 
+          g = 255 
+          b = 255 
+          a = 115 
           }
-
-#00000  RightArrowIconElement = STRUCT{
-          Type = iconmenuelement
-          image = "panelsprites\arrow_menu.png"
-          rotate = 90
-          x = 530.0
-          y = 180.0
-          lock_layout dontdrawrect dont_gray r = 255
-          g = 255
-          b = 255
-          a = 115
+        
+#02390  RightArrowIconElement = STRUCT{
+          Type = iconmenuelement 
+          image = "panelsprites\arrow_menu.png" 
+          rotate = 90 
+          x = 530.0 
+          y = 180.0 
+          lock_layout dontdrawrect dont_gray r = 255 
+          g = 255 
+          b = 255 
+          a = 115 
           }
-
-#00000  FUNCTION attach_back_button
-#00000    CreateAndAttachMenu STRUCT{
-            Type = textmenuelement
-            auto_id parent = GLOBAL.menu_id
-            text = "Back"
-            target = "go_back"
+        
+#02402  FUNCTION attach_back_button 
+#02404    CreateAndAttachMenu STRUCT{
+            Type = textmenuelement 
+            auto_id parent = GLOBAL.menu_id 
+            text = "Back" 
+            target = "go_back" 
             Params = STRUCT{
-              Id = GLOBAL.menu_id
+              Id = GLOBAL.menu_id 
               }
             }
-
-#00000  END FUNCTION
-
-#00000
+          
+#02411  END FUNCTION
+          
+#02413  
