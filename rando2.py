@@ -2,15 +2,6 @@
 
 import random
 
-from rando.level_foundry import LevelFoundry
-from rando.level_canada import LevelCanada
-from rando.level_rio import LevelRio
-from rando.level_suburbia import LevelSuburbia
-from rando.level_airport import LevelAirport
-from rando.level_skaterisland import LevelSkaterIsland
-from rando.level_losangeles import LevelLosAngeles
-from rando.level_tokyo import LevelTokyo
-from rando.level_cruiseship import LevelCruiseShip
 from rando.tricks import Tricks
 from rando.button_binds import ButtonBinds
 from rando.boards import Boards
@@ -29,40 +20,6 @@ def display_victory_requirements(gameqb):
     # You only get about 26 characters before the message grows beyond the menu bar
     rando_victory = "3 Golds with All Skaters"
     return gameqb.replace("{{rando_game_victory_text}}", rando_victory)
-
-
-def get_random_level_order(end_on_comp=False):
-    if end_on_comp:
-        comp_levels = _shuffle(
-            [
-                LevelRio(),
-                LevelSkaterIsland(),
-                LevelTokyo(),
-            ]
-        )
-        last_level = comp_levels.pop()
-        regular_levels = [
-            LevelFoundry(),
-            LevelCanada(),
-            LevelSuburbia(),
-            LevelAirport(),
-            LevelLosAngeles(),
-            LevelCruiseShip(),
-        ]
-        return _shuffle(regular_levels + comp_levels) + [last_level]
-    else:
-        levels = [
-            LevelFoundry(),
-            LevelCanada(),
-            LevelRio(),
-            LevelSuburbia(),
-            LevelAirport(),
-            LevelSkaterIsland(),
-            LevelLosAngeles(),
-            LevelTokyo(),
-            LevelCruiseShip(),
-        ]
-        return _shuffle(levels)
 
 
 def randomize_level_requirements(levels, mainmenu, goal_scripts):

@@ -6,7 +6,8 @@ from pathlib import Path
 from tkinter import filedialog
 import contextlib
 
-class THPS3GUI:    
+
+class THPS3GUI:
     def __init__(self, root: tk.Tk):
         self.button_directory = tk.Button(
             root,
@@ -47,6 +48,14 @@ class THPS3GUI:
             command=self.click_remove_music,
         )
         self.label_remove_music = tk.Label(root, text="Ready to remove music...")
+        self.level_order_shuffle = tk.BooleanVar()
+        self.level_order_end_on_comp = tk.BooleanVar(value=True)
+        self.checkbutton_level_order_shuffle = tk.Checkbutton(
+            root, text="Shuffle level order", variable=self.level_order_shuffle
+        )
+        self.checkbutton_level_order_end_on_comp = tk.Checkbutton(
+            root, text="End on competition level", variable=self.level_order_end_on_comp
+        )
         self.button_directory.pack()
         self.label_directory.pack()
         self.button_initialize.pack()
@@ -59,14 +68,18 @@ class THPS3GUI:
         self.label_remove_intro.pack()
         self.button_remove_music.pack()
         self.label_remove_music.pack()
-    
+        self.checkbutton_level_order_shuffle.pack()
+        self.checkbutton_level_order_end_on_comp.pack()
+
     def click_directory(self):
         self.thps3_directory = filedialog.askdirectory(
             title="Select your THPS3 installation directory"
         )
         if self.thps3_directory:
-            self.label_directory.config(text=f"Current THPS3 directory: {self.thps3_directory}")
-    
+            self.label_directory.config(
+                text=f"Current THPS3 directory: {self.thps3_directory}"
+            )
+
     def click_initialize(self):
         if self.thps3_directory:
             self.label_initialize.config(text="Initializing...")
@@ -74,12 +87,14 @@ class THPS3GUI:
             thps3_rando_dir = Path(self.thps3_directory, "rando/Data")
             shutil.copytree(thps3_data_dir, thps3_rando_dir, dirs_exist_ok=True)
             self.label_initialize.config(text=f"Files initialized in {thps3_rando_dir}")
-    
+
     def click_randomize(self):
-        if self.thps3_directory: 
+        if self.thps3_directory:
             self.label_randomize.config(text="Randomizing...")
             # Randomize files
-            thps3_randomizer.randomize()
+            thps3_randomizer.randomize(
+                self.level_order_shuffle.get(), self.level_order_end_on_comp.get()
+            )
             # Compile Java
             subprocess.run("javac -encoding Cp1252 qb_editor/*.java", shell=True)
             # Run Java
@@ -92,7 +107,7 @@ class THPS3GUI:
             shutil.copy("qbs_outfiles/qdir.txt", thps3_qdir_dir)
             # Done
             self.label_randomize.config(text="Files randomized!")
-    
+
     def click_launch(self):
         if self.thps3_directory:
             self.label_launch.config(text="Launching game...")
@@ -100,7 +115,7 @@ class THPS3GUI:
             thps3_rando_dir = Path(self.thps3_directory, "rando")
             subprocess.Popen(thps3_exe, cwd=thps3_rando_dir)
             self.label_launch.config(text="Game launched!")
-    
+
     def click_remove_intro(self):
         if self.thps3_directory:
             self.label_remove_intro.config(text="Removing intro movies...")
@@ -141,12 +156,14 @@ class THPS3GUI:
                 Path(thps3_music_dir, "zebra.mus").unlink()
             self.label_remove_music.config(text="Music removed!")
 
+
 def gui():
     root = tk.Tk()
     root.title("THPS3 Randomizer")
     root.minsize(500, 500)
-    app = THPS3GUI(root)
+    THPS3GUI(root)
     root.mainloop()
+
 
 if __name__ == "__main__":
     gui()

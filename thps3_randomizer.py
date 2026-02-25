@@ -3,7 +3,19 @@ import os
 import re
 from dataclasses import dataclass
 
+import random
+
 import rando2
+from rando.level2 import Level2
+from rando.level_foundry import LevelFoundry
+from rando.level_canada import LevelCanada
+from rando.level_rio import LevelRio
+from rando.level_suburbia import LevelSuburbia
+from rando.level_airport import LevelAirport
+from rando.level_skaterisland import LevelSkaterIsland
+from rando.level_losangeles import LevelLosAngeles
+from rando.level_tokyo import LevelTokyo
+from rando.level_cruiseship import LevelCruiseShip
 
 
 @dataclass
@@ -28,6 +40,12 @@ class ScriptQBs:
     protricks_qb: str
     sk3_pedscripts_qb: str
     skater_profile_qb: str
+
+
+def _shuffle(any_list):
+    shuffled = any_list.copy()
+    random.shuffle(shuffled)
+    return shuffled
 
 
 def memify_script(script: str) -> str:
@@ -119,11 +137,49 @@ def write_modified_script_outfiles(script_qbs: ScriptQBs) -> None:
     write_modified_script_outfile("skater_profile", script_qbs.skater_profile_qb)
 
 
-def randomize():
+def get_level_order(shuffle=False, end_on_comp=False) -> list[Level2]:
+    levels = [
+        LevelFoundry(),
+        LevelCanada(),
+        LevelRio(),
+        LevelSuburbia(),
+        LevelAirport(),
+        LevelSkaterIsland(),
+        LevelLosAngeles(),
+        LevelTokyo(),
+        LevelCruiseShip(),
+    ]
+    if not shuffle:
+        return levels
+    if not end_on_comp:
+        return _shuffle(levels)
+    else:
+        comp_levels = _shuffle(
+            [
+                LevelRio(),
+                LevelSkaterIsland(),
+                LevelTokyo(),
+            ]
+        )
+        last_level = comp_levels.pop()
+        regular_levels = [
+            LevelFoundry(),
+            LevelCanada(),
+            LevelSuburbia(),
+            LevelAirport(),
+            LevelLosAngeles(),
+            LevelCruiseShip(),
+        ]
+        return _shuffle(regular_levels + comp_levels) + [last_level]
+
+
+def randomize(level_order_shuffle: bool, level_order_end_on_comp: bool):
     script_qbs = read_modified_script_qbs()
 
     # TODO: Yep, this is really messy. We'll pass around script_qbs directly soon.
-    levels = rando2.get_random_level_order(end_on_comp=True)
+    levels = get_level_order(
+        shuffle=level_order_shuffle, end_on_comp=level_order_end_on_comp
+    )
     script_qbs.game_qb = rando2.display_victory_requirements(script_qbs.game_qb)
     script_qbs.goal_scripts_qb, script_qbs.mainmenu_qb = (
         rando2.randomize_level_requirements(
