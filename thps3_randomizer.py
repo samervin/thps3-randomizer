@@ -138,6 +138,12 @@ def write_modified_script_outfiles(script_qbs: ScriptQBs) -> None:
 
 
 def get_level_order(shuffle=False, end_on_comp=False) -> list[Level2]:
+    """
+    Get the order of levels in career mode, which will apply to all skaters. If shuffle
+    is False, the level order will be vanilla, and end_on_comp will be ignored. Else, if
+    end_on_comp is True, the final career mode level will always be one of Rio, Skater
+    Island, or Tokyo.
+    """
     levels = [
         LevelFoundry(),
         LevelCanada(),
@@ -173,14 +179,26 @@ def get_level_order(shuffle=False, end_on_comp=False) -> list[Level2]:
         return _shuffle(regular_levels + comp_levels) + [last_level]
 
 
+def display_victory_requirements(script_qbs: ScriptQBs):
+    """
+    Display victory requirements on the level select menu. The built-in display of level
+    unlock requirements doesn't work in the randomizer. You have about 26 characters
+    before the message grows beyond the UI.
+    """
+    script_qbs.game_qb = script_qbs.game_qb.replace(
+        "{{rando_game_victory_text}}", "Thanks for playing rando!"
+    )
+
+
 def randomize(level_order_shuffle: bool, level_order_end_on_comp: bool):
     script_qbs = read_modified_script_qbs()
 
-    # TODO: Yep, this is really messy. We'll pass around script_qbs directly soon.
     levels = get_level_order(
         shuffle=level_order_shuffle, end_on_comp=level_order_end_on_comp
     )
-    script_qbs.game_qb = rando2.display_victory_requirements(script_qbs.game_qb)
+    display_victory_requirements(script_qbs)
+
+    # TODO: Replace method calls below this comment with new versions
     script_qbs.goal_scripts_qb, script_qbs.mainmenu_qb = (
         rando2.randomize_level_requirements(
             levels, script_qbs.mainmenu_qb, script_qbs.goal_scripts_qb

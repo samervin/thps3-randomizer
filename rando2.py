@@ -15,13 +15,6 @@ def _shuffle(any_list):
     return shuffled
 
 
-def display_victory_requirements(gameqb):
-    # Display (dummy) victory requirements on level select menu instead of (broken) level unlock requirements
-    # You only get about 26 characters before the message grows beyond the menu bar
-    rando_victory = "3 Golds with All Skaters"
-    return gameqb.replace("{{rando_game_victory_text}}", rando_victory)
-
-
 def randomize_level_requirements(levels, mainmenu, goal_scripts):
     # randomize level order and unlock conditions
     # default requirements:
