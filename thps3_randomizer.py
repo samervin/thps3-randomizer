@@ -40,6 +40,7 @@ class ScriptQBs:
     protricks_qb: str
     sk3_pedscripts_qb: str
     skater_profile_qb: str
+    # TODO: Add method for string replacement here
 
 
 def _shuffle(any_list):
@@ -190,20 +191,98 @@ def display_victory_requirements(script_qbs: ScriptQBs):
     )
 
 
+def set_level_unlock_requirements(script_qbs: ScriptQBs, levels: list[Level2]):
+    """
+    Set the number of goals and medals required to unlock each career mode level.
+    For reference, the default requirements are as follows:
+    - Foundry: 0 goals
+    - Canada: 3 goals
+    - Rio: 10 goals
+    - Suburbia: 1 medal
+    - Airport: 18 goals
+    - Skater Island: 26 goals
+    - Los Angeles: 2 medals
+    - Tokyo: 35 goals
+    - Cruise Ship: 3 medals
+    """
+    level_reqs = [(0, "first")]
+    total_goals = 0
+    total_medals = 0
+
+    for level in levels:
+        match level.level_type:
+            case "normal":
+                # TODO: Add options to this value
+                req = random.randint(1, 9)
+                total_goals = total_goals + req
+                level_reqs.append((total_goals, "Goal"))
+            case "comp":
+                total_medals += 1
+                level_reqs.append((total_medals, "Medal"))
+    for i, level in enumerate(levels):
+        match level.name_flag:
+            case "FOUNDRY":
+                unlock_var = "{{rando_mainmenu_unlock_foundry}}"
+            case "CANADA":
+                unlock_var = "{{rando_mainmenu_unlock_canada}}"
+            case "RIO":
+                unlock_var = "{{rando_mainmenu_unlock_rio}}"
+            case "SUBURBIA":
+                unlock_var = "{{rando_mainmenu_unlock_suburbia}}"
+            case "AIRPORT":
+                unlock_var = "{{rando_mainmenu_unlock_airport}}"
+            case "SKATERISLAND":
+                unlock_var = "{{rando_mainmenu_unlock_si}}"
+            case "LOSANGELES":
+                unlock_var = "{{rando_mainmenu_unlock_la}}"
+            case "TOKYO":
+                unlock_var = "{{rando_mainmenu_unlock_tokyo}}"
+            case "SHIP":
+                unlock_var = "{{rando_mainmenu_unlock_ship}}"
+            case _:
+                raise Exception("invalid level")
+
+        if level_reqs[i][1] == "first":  # initial level
+            script_qbs.mainmenu_qb = script_qbs.mainmenu_qb.replace(
+                unlock_var, "0 Goals"
+            )
+        elif level_reqs[i][0] == 1:  # 1 goal or medal
+            script_qbs.mainmenu_qb = script_qbs.mainmenu_qb.replace(
+                unlock_var, f"{level_reqs[i][0]} {level_reqs[i][1]}"
+            )
+        else:  # More than 1 goal or medal
+            script_qbs.mainmenu_qb = script_qbs.mainmenu_qb.replace(
+                unlock_var, f"{level_reqs[i][0]} {level_reqs[i][1]}s"
+            )
+
+    # Unlock the first level instead of always unlocking Foundry
+    script_qbs.mainmenu_qb = script_qbs.mainmenu_qb.replace(
+        "{{rando_mainmenu_first_level_unlock}}", f"LEVEL_UNLOCKED_{levels[0].name_flag}"
+    )
+
+    for i in range(1, 9):
+        script_qbs.goal_scripts_qb = script_qbs.goal_scripts_qb.replace(
+            f"{{{{rando_goal_scripts_unlock_{i + 1}_requirement}}}}",
+            f"{level_reqs[i][1]}sGreaterThan {level_reqs[i][0] - 1}",
+        )
+        script_qbs.goal_scripts_qb = script_qbs.goal_scripts_qb.replace(
+            f"{{{{rando_goal_scripts_unlock_{i + 1}_flag}}}}",
+            f"LEVEL_UNLOCKED_{levels[i].name_flag}",
+        )
+        script_qbs.goal_scripts_qb = script_qbs.goal_scripts_qb.replace(
+            f"{{{{rando_goal_scripts_unlock_{i + 1}_name}}}}", levels[i].name
+        )
+
+
 def randomize(level_order_shuffle: bool, level_order_end_on_comp: bool):
     script_qbs = read_modified_script_qbs()
-
     levels = get_level_order(
         shuffle=level_order_shuffle, end_on_comp=level_order_end_on_comp
     )
     display_victory_requirements(script_qbs)
+    set_level_unlock_requirements(script_qbs, levels)
 
     # TODO: Replace method calls below this comment with new versions
-    script_qbs.goal_scripts_qb, script_qbs.mainmenu_qb = (
-        rando2.randomize_level_requirements(
-            levels, script_qbs.mainmenu_qb, script_qbs.goal_scripts_qb
-        )
-    )
     script_qbs.comp_scripts_qb, script_qbs.goal_scripts_qb = (
         rando2.randomize_score_goals(
             levels, script_qbs.goal_scripts_qb, script_qbs.comp_scripts_qb
