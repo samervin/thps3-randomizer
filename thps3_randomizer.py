@@ -138,7 +138,7 @@ def write_modified_script_outfiles(script_qbs: ScriptQBs) -> None:
     write_modified_script_outfile("skater_profile", script_qbs.skater_profile_qb)
 
 
-def get_level_order(shuffle=False, end_on_comp=False) -> list[Level2]:
+def get_level_order(shuffle: bool, end_on_comp: bool) -> list[Level2]:
     """
     Get the order of levels in career mode, which will apply to all skaters. If shuffle
     is False, the level order will be vanilla, and end_on_comp will be ignored. Else, if
@@ -191,20 +191,24 @@ def display_victory_requirements(script_qbs: ScriptQBs):
     )
 
 
-def set_level_unlock_requirements(script_qbs: ScriptQBs, levels: list[Level2]):
+def set_level_unlock_requirements(
+    script_qbs: ScriptQBs,
+    levels: list[Level2],
+    minimum_unlock_goals: int,
+    maximum_unlock_goals: int,
+):
     """
     Set the number of goals and medals required to unlock each career mode level.
-    For reference, the default requirements are as follows:
-    - Foundry: 0 goals
-    - Canada: 3 goals
-    - Rio: 10 goals
-    - Suburbia: 1 medal
-    - Airport: 18 goals
-    - Skater Island: 26 goals
-    - Los Angeles: 2 medals
-    - Tokyo: 35 goals
-    - Cruise Ship: 3 medals
+    Level order dictates which levels require goals and which require medals.
+    minimum_unlock_goals is clamped to 0 or greater, though 0 is not recommended
+    maximum_unlock_goals is clamped to 9 or fewer, as well as minimum or greater
     """
+    if minimum_unlock_goals < 0:
+        minimum_unlock_goals = 0
+    if maximum_unlock_goals > 9:
+        maximum_unlock_goals = 9
+    if maximum_unlock_goals < minimum_unlock_goals:
+        maximum_unlock_goals = minimum_unlock_goals
     level_reqs = [(0, "first")]
     total_goals = 0
     total_medals = 0
@@ -213,7 +217,7 @@ def set_level_unlock_requirements(script_qbs: ScriptQBs, levels: list[Level2]):
         match level.level_type:
             case "normal":
                 # TODO: Add options to this value
-                req = random.randint(1, 9)
+                req = random.randint(minimum_unlock_goals, maximum_unlock_goals)
                 total_goals = total_goals + req
                 level_reqs.append((total_goals, "Goal"))
             case "comp":
@@ -274,13 +278,20 @@ def set_level_unlock_requirements(script_qbs: ScriptQBs, levels: list[Level2]):
         )
 
 
-def randomize(level_order_shuffle: bool, level_order_end_on_comp: bool):
+def randomize(
+    level_order_shuffle: bool,
+    level_order_end_on_comp: bool,
+    minimum_unlock_goals: int,
+    maximum_unlock_goals: int,
+):
     script_qbs = read_modified_script_qbs()
     levels = get_level_order(
         shuffle=level_order_shuffle, end_on_comp=level_order_end_on_comp
     )
     display_victory_requirements(script_qbs)
-    set_level_unlock_requirements(script_qbs, levels)
+    set_level_unlock_requirements(
+        script_qbs, levels, minimum_unlock_goals, maximum_unlock_goals
+    )
 
     # TODO: Replace method calls below this comment with new versions
     script_qbs.comp_scripts_qb, script_qbs.goal_scripts_qb = (

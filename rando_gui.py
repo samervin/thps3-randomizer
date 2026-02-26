@@ -48,13 +48,27 @@ class THPS3GUI:
             command=self.click_remove_music,
         )
         self.label_remove_music = tk.Label(root, text="Ready to remove music...")
-        self.level_order_shuffle = tk.BooleanVar()
+        self.level_order_shuffle = tk.BooleanVar(value=False)
         self.level_order_end_on_comp = tk.BooleanVar(value=True)
         self.checkbutton_level_order_shuffle = tk.Checkbutton(
             root, text="Shuffle level order", variable=self.level_order_shuffle
         )
         self.checkbutton_level_order_end_on_comp = tk.Checkbutton(
             root, text="End on competition level", variable=self.level_order_end_on_comp
+        )
+        self.minimum_unlock_goals = tk.IntVar(value=3)
+        self.maximum_unlock_goals = tk.IntVar(value=6)
+        self.label_minimum_unlock_goals = tk.Label(
+            root, text="Minimum goals required per career level"
+        )
+        self.spinbox_minimum_unlock_goals = tk.Spinbox(
+            root, from_=0, to=9, textvariable=self.minimum_unlock_goals
+        )
+        self.label_maximum_unlock_goals = tk.Label(
+            root, text="Maximum goals required per career level"
+        )
+        self.spinbox_maximum_unlock_goals = tk.Spinbox(
+            root, from_=0, to=9, textvariable=self.maximum_unlock_goals
         )
         self.button_directory.pack()
         self.label_directory.pack()
@@ -70,6 +84,10 @@ class THPS3GUI:
         self.label_remove_music.pack()
         self.checkbutton_level_order_shuffle.pack()
         self.checkbutton_level_order_end_on_comp.pack()
+        self.label_minimum_unlock_goals.pack()
+        self.spinbox_minimum_unlock_goals.pack()
+        self.label_maximum_unlock_goals.pack()
+        self.spinbox_maximum_unlock_goals.pack()
 
     def click_directory(self):
         self.thps3_directory = filedialog.askdirectory(
@@ -93,7 +111,10 @@ class THPS3GUI:
             self.label_randomize.config(text="Randomizing...")
             # Randomize files
             thps3_randomizer.randomize(
-                self.level_order_shuffle.get(), self.level_order_end_on_comp.get()
+                self.level_order_shuffle.get(),
+                self.level_order_end_on_comp.get(),
+                self.minimum_unlock_goals.get(),
+                self.maximum_unlock_goals.get(),
             )
             # Compile Java
             subprocess.run("javac -encoding Cp1252 qb_editor/*.java", shell=True)

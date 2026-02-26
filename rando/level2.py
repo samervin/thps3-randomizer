@@ -5,7 +5,7 @@ import os
 
 
 class Level2:
-    name = None  # used in level unlock message
+    name = "none"  # used in level unlock message
     name_flag = None  # used in LEVEL_UNLOCKED_ flags
     level_type = None  # "normal" or "comp"
     filepath = None  # path to QB file
