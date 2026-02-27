@@ -88,6 +88,38 @@ class THPS3GUI:
         self.spinbox_minimum_unlock_goals.pack()
         self.label_maximum_unlock_goals.pack()
         self.spinbox_maximum_unlock_goals.pack()
+        self.score_shuffle = tk.BooleanVar(value=False)
+        self.checkbutton_score_shuffle = tk.Checkbutton(
+            root, text="Shuffle scores", variable=self.score_shuffle
+        ).pack()
+        self.min_sick_score = tk.IntVar(value=60)
+        self.max_sick_score = tk.IntVar(value=500)
+        self.min_gold_score = tk.IntVar(value=120)
+        self.max_gold_score = tk.IntVar(value=200)
+        self.label_min_sick_score = tk.Label(
+            root, text="Minimum sick score (first career level)"
+        ).pack()
+        self.spinbox_min_sick_score = tk.Spinbox(
+            root, from_=10, to=1000, textvariable=self.min_sick_score
+        ).pack()
+        self.label_max_sick_score = tk.Label(
+            root, text="Maximum sick score (last career level)"
+        ).pack()
+        self.spinbox_max_sick_score = tk.Spinbox(
+            root, from_=10, to=1000, textvariable=self.max_sick_score
+        ).pack()
+        self.label_min_gold_score = tk.Label(
+            root, text="Minimum gold score (first competition level)"
+        ).pack()
+        self.spinbox_min_gold_score = tk.Spinbox(
+            root, from_=10, to=1000, textvariable=self.min_gold_score
+        ).pack()
+        self.label_max_gold_score = tk.Label(
+            root, text="Maximum gold score (last competition level)"
+        ).pack()
+        self.spinbox_max_gold_score = tk.Spinbox(
+            root, from_=10, to=1000, textvariable=self.max_gold_score
+        ).pack()
 
     def click_directory(self):
         self.thps3_directory = filedialog.askdirectory(
@@ -115,6 +147,11 @@ class THPS3GUI:
                 self.level_order_end_on_comp.get(),
                 self.minimum_unlock_goals.get(),
                 self.maximum_unlock_goals.get(),
+                self.score_shuffle.get(),
+                self.min_sick_score.get(),
+                self.max_sick_score.get(),
+                self.min_gold_score.get(),
+                self.max_gold_score.get(),
             )
             # Compile Java
             subprocess.run("javac -encoding Cp1252 qb_editor/*.java", shell=True)

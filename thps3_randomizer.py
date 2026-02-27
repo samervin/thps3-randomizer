@@ -278,11 +278,218 @@ def set_level_unlock_requirements(
         )
 
 
+def set_score_goals(
+    script_qbs: ScriptQBs,
+    levels: list[Level2],
+    shuffle: bool,
+    min_sick_score: int,
+    max_sick_score: int,
+    min_gold_score: int,
+    max_gold_score: int,
+):
+    """
+    Set the scores required for high/pro/sick score goals as well as competition medals.
+    If shuffle is false, all scores will match vanilla (possibly in different levels if
+    level order is shuffled), and the other parameters will be ignored.
+    min_sick_score will be the sick score requirement on the first normal career level,
+    max_sick_score will be the sick score on the last level, and all other scores will
+    be calculated from those.
+    Similarly, min_gold_score sets the (approximate) score required for a gold medal on
+    the first comp level, max_gold_score sets the score required for a gold on the third,
+    and the other medals will be calculated from there.
+    Both minimum scores are clamped to 10 or greater
+    Both maximum scores are clamped to 1000 or fewer, as well as minimum or greater
+    See mod_notes for information on medal score calculation.
+    """
+    if not shuffle:
+        score_goals = [
+            10,
+            30,
+            60,
+            35,
+            70,
+            120,
+            55,
+            110,
+            200,
+            75,
+            150,
+            300,
+            100,
+            190,
+            400,
+            150,
+            225,
+            500,
+        ]
+        medal_goals = [25, 70, 120, 45, 80, 150, 100, 150, 200]
+    else:
+        if min_sick_score < 10:
+            min_sick_score = 10
+        if min_gold_score < 10:
+            min_gold_score = 10
+        if max_sick_score < min_sick_score:
+            max_sick_score = min_sick_score
+        if max_gold_score < min_gold_score:
+            max_gold_score = min_gold_score
+        sick_score_gap = int((max_sick_score - min_sick_score) / 5)
+        sick_scores = [
+            min_sick_score,
+            min_sick_score + 1 * sick_score_gap,
+            min_sick_score + 2 * sick_score_gap,
+            min_sick_score + 3 * sick_score_gap,
+            min_sick_score + 4 * sick_score_gap,
+            max_sick_score,
+        ]
+        score_goals = []
+        for sick in sick_scores:
+            score_goals.append(int(sick / 4))  # High score
+            score_goals.append(int(sick / 2))  # Pro score
+            score_goals.append(sick)  # Sick score
+        gold_scores = [
+            min_gold_score,
+            int((min_gold_score + max_gold_score) / 2),
+            max_gold_score,
+        ]
+        medal_goals = []
+        for gold in gold_scores:
+            medal_goals.append(int(gold / 4))  # Bronze medal
+            medal_goals.append(int(gold / 2))  # Silver medal
+            medal_goals.append(gold)  # Gold medal
+
+    for level in levels:
+        match level.name_flag:
+            case "FOUNDRY":
+                foundry_high = score_goals.pop(0)
+                foundry_pro = score_goals.pop(0)
+                foundry_sick = score_goals.pop(0)
+                script_qbs.goal_scripts_qb = script_qbs.goal_scripts_qb.replace(
+                    "{{rando_goal_scripts_foundry_high}}", f"{foundry_high}000"
+                )
+                script_qbs.goal_scripts_qb = script_qbs.goal_scripts_qb.replace(
+                    "{{rando_goal_scripts_foundry_pro}}", f"{foundry_pro}000"
+                )
+                script_qbs.goal_scripts_qb = script_qbs.goal_scripts_qb.replace(
+                    "{{rando_goal_scripts_foundry_sick}}", f"{foundry_sick}000"
+                )
+            case "CANADA":
+                canada_high = score_goals.pop(0)
+                canada_pro = score_goals.pop(0)
+                canada_sick = score_goals.pop(0)
+                script_qbs.goal_scripts_qb = script_qbs.goal_scripts_qb.replace(
+                    "{{rando_goal_scripts_canada_high}}", f"{canada_high}000"
+                )
+                script_qbs.goal_scripts_qb = script_qbs.goal_scripts_qb.replace(
+                    "{{rando_goal_scripts_canada_pro}}", f"{canada_pro}000"
+                )
+                script_qbs.goal_scripts_qb = script_qbs.goal_scripts_qb.replace(
+                    "{{rando_goal_scripts_canada_sick}}", f"{canada_sick}000"
+                )
+            case "RIO":
+                rio_bronze = medal_goals.pop(0)
+                rio_silver = medal_goals.pop(0)
+                rio_gold = medal_goals.pop(0)
+                script_qbs.comp_scripts_qb = script_qbs.comp_scripts_qb.replace(
+                    "{{rando_comp_scripts_rio_bronze}}", f"{rio_bronze}000"
+                )
+                script_qbs.comp_scripts_qb = script_qbs.comp_scripts_qb.replace(
+                    "{{rando_comp_scripts_rio_silver}}", f"{rio_silver}000"
+                )
+                script_qbs.comp_scripts_qb = script_qbs.comp_scripts_qb.replace(
+                    "{{rando_comp_scripts_rio_gold}}", f"{rio_gold}000"
+                )
+            case "SUBURBIA":
+                suburbia_high = score_goals.pop(0)
+                suburbia_pro = score_goals.pop(0)
+                suburbia_sick = score_goals.pop(0)
+                script_qbs.goal_scripts_qb = script_qbs.goal_scripts_qb.replace(
+                    "{{rando_goal_scripts_suburbia_high}}", f"{suburbia_high}000"
+                )
+                script_qbs.goal_scripts_qb = script_qbs.goal_scripts_qb.replace(
+                    "{{rando_goal_scripts_suburbia_pro}}", f"{suburbia_pro}000"
+                )
+                script_qbs.goal_scripts_qb = script_qbs.goal_scripts_qb.replace(
+                    "{{rando_goal_scripts_suburbia_sick}}", f"{suburbia_sick}000"
+                )
+            case "AIRPORT":
+                airport_high = score_goals.pop(0)
+                airport_pro = score_goals.pop(0)
+                airport_sick = score_goals.pop(0)
+                script_qbs.goal_scripts_qb = script_qbs.goal_scripts_qb.replace(
+                    "{{rando_goal_scripts_airport_high}}", f"{airport_high}000"
+                )
+                script_qbs.goal_scripts_qb = script_qbs.goal_scripts_qb.replace(
+                    "{{rando_goal_scripts_airport_pro}}", f"{airport_pro}000"
+                )
+                script_qbs.goal_scripts_qb = script_qbs.goal_scripts_qb.replace(
+                    "{{rando_goal_scripts_airport_sick}}", f"{airport_sick}000"
+                )
+            case "SKATERISLAND":
+                skater_island_bronze = medal_goals.pop(0)
+                skater_island_silver = medal_goals.pop(0)
+                skater_island_gold = medal_goals.pop(0)
+                script_qbs.comp_scripts_qb = script_qbs.comp_scripts_qb.replace(
+                    "{{rando_comp_scripts_si_bronze}}", f"{skater_island_bronze}000"
+                )
+                script_qbs.comp_scripts_qb = script_qbs.comp_scripts_qb.replace(
+                    "{{rando_comp_scripts_si_silver}}", f"{skater_island_silver}000"
+                )
+                script_qbs.comp_scripts_qb = script_qbs.comp_scripts_qb.replace(
+                    "{{rando_comp_scripts_si_gold}}", f"{skater_island_gold}000"
+                )
+            case "LOSANGELES":
+                los_angeles_high = score_goals.pop(0)
+                los_angeles_pro = score_goals.pop(0)
+                los_angeles_sick = score_goals.pop(0)
+                script_qbs.goal_scripts_qb = script_qbs.goal_scripts_qb.replace(
+                    "{{rando_goal_scripts_la_high}}", f"{los_angeles_high}000"
+                )
+                script_qbs.goal_scripts_qb = script_qbs.goal_scripts_qb.replace(
+                    "{{rando_goal_scripts_la_pro}}", f"{los_angeles_pro}000"
+                )
+                script_qbs.goal_scripts_qb = script_qbs.goal_scripts_qb.replace(
+                    "{{rando_goal_scripts_la_sick}}", f"{los_angeles_sick}000"
+                )
+            case "TOKYO":
+                tokyo_bronze = medal_goals.pop(0)
+                tokyo_silver = medal_goals.pop(0)
+                tokyo_gold = medal_goals.pop(0)
+                script_qbs.comp_scripts_qb = script_qbs.comp_scripts_qb.replace(
+                    "{{rando_comp_scripts_tokyo_bronze}}", f"{tokyo_bronze}000"
+                )
+                script_qbs.comp_scripts_qb = script_qbs.comp_scripts_qb.replace(
+                    "{{rando_comp_scripts_tokyo_silver}}", f"{tokyo_silver}000"
+                )
+                script_qbs.comp_scripts_qb = script_qbs.comp_scripts_qb.replace(
+                    "{{rando_comp_scripts_tokyo_gold}}", f"{tokyo_gold}000"
+                )
+            case "SHIP":
+                cruise_ship_high = score_goals.pop(0)
+                cruise_ship_pro = score_goals.pop(0)
+                cruise_ship_sick = score_goals.pop(0)
+                script_qbs.goal_scripts_qb = script_qbs.goal_scripts_qb.replace(
+                    "{{rando_goal_scripts_ship_high}}", f"{cruise_ship_high}000"
+                )
+                script_qbs.goal_scripts_qb = script_qbs.goal_scripts_qb.replace(
+                    "{{rando_goal_scripts_ship_pro}}", f"{cruise_ship_pro}000"
+                )
+                script_qbs.goal_scripts_qb = script_qbs.goal_scripts_qb.replace(
+                    "{{rando_goal_scripts_ship_sick}}", f"{cruise_ship_sick}000"
+                )
+            case _:
+                raise Exception("invalid level")
+
+
 def randomize(
     level_order_shuffle: bool,
     level_order_end_on_comp: bool,
     minimum_unlock_goals: int,
     maximum_unlock_goals: int,
+    score_shuffle: bool,
+    min_sick_score: int,
+    max_sick_score: int,
+    min_gold_score: int,
+    max_gold_score: int,
 ):
     script_qbs = read_modified_script_qbs()
     levels = get_level_order(
@@ -292,13 +499,17 @@ def randomize(
     set_level_unlock_requirements(
         script_qbs, levels, minimum_unlock_goals, maximum_unlock_goals
     )
+    set_score_goals(
+        script_qbs,
+        levels,
+        score_shuffle,
+        min_sick_score,
+        max_sick_score,
+        min_gold_score,
+        max_gold_score,
+    )
 
     # TODO: Replace method calls below this comment with new versions
-    script_qbs.comp_scripts_qb, script_qbs.goal_scripts_qb = (
-        rando2.randomize_score_goals(
-            levels, script_qbs.goal_scripts_qb, script_qbs.comp_scripts_qb
-        )
-    )
     rando2.randomize_item_locations(levels)
     script_qbs.skater_profile_qb = rando2.randomize_stats(script_qbs.skater_profile_qb)
     script_qbs.skater_profile_qb = rando2.randomize_trickstyle(
