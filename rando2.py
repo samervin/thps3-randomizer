@@ -35,14 +35,6 @@ def randomize_trickstyle(skater_profile):
     return skater_profile
 
 
-def randomize_level_timer(gamemode):
-    # randomize the time limit for normal levels
-    # the time limit for competition levels might not be scriptable
-    time_limit = random.randint(90, 150)
-    gamemode = gamemode.replace("{{rando_gamemode_career_time}}", str(time_limit))
-    return gamemode
-
-
 def randomize_trickspot_tricks(trick_type, ajc, alf, bdj, cjr, cpf):
     # Change required tricks for the street/vert goals
     n_grinds = _shuffle(Tricks().get_regular_grinds())

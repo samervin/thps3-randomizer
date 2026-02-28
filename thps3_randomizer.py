@@ -548,6 +548,24 @@ def set_deck_required_for_medal(script_qbs: ScriptQBs, require_deck_for_medal: b
         )
 
 
+def set_level_time(script_qbs: ScriptQBs, min_level_time: int, max_level_time: int):
+    """
+    Choose a random time limit for all normal levels. Does not affect competitions.
+    min_level_time is clamped to 30 or greater
+    max_level_time is clamped to 3600 or fewer, as well as minimum or greater
+    """
+    if min_level_time < 30:
+        min_level_time = 30
+    if max_level_time > 3600:
+        max_level_time = 3600
+    if max_level_time < min_level_time:
+        max_level_time = min_level_time
+    time_limit = random.randint(min_level_time, max_level_time)
+    script_qbs.gamemode_qb = script_qbs.gamemode_qb.replace(
+        "{{rando_gamemode_career_time}}", str(time_limit)
+    )
+
+
 def randomize(
     level_order_shuffle: bool,
     level_order_end_on_comp: bool,
@@ -561,6 +579,8 @@ def randomize(
     stat_default: int,
     require_deck_for_tape: bool,
     require_deck_for_medal: bool,
+    min_level_time: int,
+    max_level_time: int,
 ):
     script_qbs = read_modified_script_qbs()
     levels = get_level_order(
@@ -582,13 +602,13 @@ def randomize(
     set_starting_stats(script_qbs, stat_default)
     set_deck_required_for_tape(script_qbs, require_deck_for_tape)
     set_deck_required_for_medal(script_qbs, require_deck_for_medal)
+    set_level_time(script_qbs, min_level_time, max_level_time)
 
     # TODO: Replace method calls below this comment with new versions
     rando2.randomize_item_locations(levels)
     script_qbs.skater_profile_qb = rando2.randomize_trickstyle(
         script_qbs.skater_profile_qb
     )
-    script_qbs.gamemode_qb = rando2.randomize_level_timer(script_qbs.gamemode_qb)
     (
         trickspot_tricks,
         script_qbs.ajc_scripts_qb,

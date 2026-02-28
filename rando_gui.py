@@ -97,6 +97,12 @@ class THPS3GUI:
             text="Require deck for competition medals",
             variable=self.require_deck_for_medal,
         ).pack()
+        self.min_level_time = tk.IntVar(value=120)
+        self.max_level_time = tk.IntVar(value=120)
+        tk.Label(root, text="Minimum time limit for normal levels").pack()
+        tk.Spinbox(root, from_=30, to=3600, textvariable=self.min_level_time).pack()
+        tk.Label(root, text="Maximum time limit for normal levels").pack()
+        tk.Spinbox(root, from_=30, to=3600, textvariable=self.max_level_time).pack()
 
     def click_directory(self):
         self.thps3_directory = filedialog.askdirectory(
@@ -132,6 +138,8 @@ class THPS3GUI:
                 self.stat_default.get(),
                 self.require_deck_for_tape.get(),
                 self.require_deck_for_medal.get(),
+                self.min_level_time.get(),
+                self.max_level_time.get(),
             )
             # Compile Java
             subprocess.run("javac -encoding Cp1252 qb_editor/*.java", shell=True)
