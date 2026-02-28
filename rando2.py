@@ -20,31 +20,6 @@ def randomize_item_locations(levels):
         level.randomize(include_extras=True)
 
 
-def randomize_stats(skater_profile):
-    # this game lets you remap all stats for all characters, so there is not much point to random stats
-    # note: these stats only apply to fresh unsaved games
-    stat_presets = ["max", "easy", "default", "hard", "impossible"]
-    stat_presets = _shuffle(stat_presets)
-
-    match stat_presets[0]:
-        case "max":
-            stat_num = 10
-        case "easy":
-            stat_num = 7
-        case "default":
-            stat_num = 5
-        case "hard":
-            stat_num = 2
-        case "impossible":
-            stat_num = 0
-        case _:
-            raise Exception("invalid stat preset: " + stat_presets[0])
-
-    skater_profile = skater_profile.replace(
-        "{{rando_skater_profile_global_stat}}", str(stat_num)
-    )
-    return skater_profile
-
 
 def _get_random_trickstyle():
     trickstyles = ["vert", "street"]

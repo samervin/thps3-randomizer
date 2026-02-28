@@ -9,116 +9,109 @@ import contextlib
 
 class THPS3GUI:
     def __init__(self, root: tk.Tk):
-        self.button_directory = tk.Button(
+        tk.Button(
             root,
             text="Set THPS3 directory",
             command=self.click_directory,
-        )
+        ).pack()
         self.label_directory = tk.Label(
             root,
             text="THPS3 directory not set",
         )
-        self.button_initialize = tk.Button(
+        self.label_directory.pack()
+        tk.Button(
             root,
             text="Initialize files",
             command=self.click_initialize,
-        )
+        ).pack()
         self.label_initialize = tk.Label(root, text="Ready to initialize files...")
-        self.button_randomize = tk.Button(
+        self.label_initialize.pack()
+        tk.Button(
             root,
             text="Randomize files",
             command=self.click_randomize,
-        )
+        ).pack()
         self.label_randomize = tk.Label(root, text="Ready to randomize files...")
-        self.button_launch = tk.Button(
+        self.label_randomize.pack()
+        tk.Button(
             root,
             text="Launch game",
             command=self.click_launch,
-        )
+        ).pack()
         self.label_launch = tk.Label(root, text="Ready to launch game...")
-        self.button_remove_intro = tk.Button(
+        self.label_launch.pack()
+        tk.Button(
             root,
             text="Remove intro movies",
             command=self.click_remove_intro,
-        )
+        ).pack()
         self.label_remove_intro = tk.Label(root, text="Ready to remove intro movies...")
-        self.button_remove_music = tk.Button(
+        self.label_remove_intro.pack()
+        tk.Button(
             root,
             text="Remove music",
             command=self.click_remove_music,
-        )
+        ).pack()
         self.label_remove_music = tk.Label(root, text="Ready to remove music...")
+        self.label_remove_music.pack()
         self.level_order_shuffle = tk.BooleanVar(value=False)
         self.level_order_end_on_comp = tk.BooleanVar(value=True)
-        self.checkbutton_level_order_shuffle = tk.Checkbutton(
+        tk.Checkbutton(
             root, text="Shuffle level order", variable=self.level_order_shuffle
-        )
-        self.checkbutton_level_order_end_on_comp = tk.Checkbutton(
+        ).pack()
+        tk.Checkbutton(
             root, text="End on competition level", variable=self.level_order_end_on_comp
-        )
+        ).pack()
         self.minimum_unlock_goals = tk.IntVar(value=3)
         self.maximum_unlock_goals = tk.IntVar(value=6)
-        self.label_minimum_unlock_goals = tk.Label(
+        tk.Label(
             root, text="Minimum goals required per career level"
-        )
-        self.spinbox_minimum_unlock_goals = tk.Spinbox(
+        ).pack()
+        tk.Spinbox(
             root, from_=0, to=9, textvariable=self.minimum_unlock_goals
-        )
-        self.label_maximum_unlock_goals = tk.Label(
+        ).pack()
+        tk.Label(
             root, text="Maximum goals required per career level"
-        )
-        self.spinbox_maximum_unlock_goals = tk.Spinbox(
+        ).pack()
+        tk.Spinbox(
             root, from_=0, to=9, textvariable=self.maximum_unlock_goals
-        )
-        self.button_directory.pack()
-        self.label_directory.pack()
-        self.button_initialize.pack()
-        self.label_initialize.pack()
-        self.button_randomize.pack()
-        self.label_randomize.pack()
-        self.button_launch.pack()
-        self.label_launch.pack()
-        self.button_remove_intro.pack()
-        self.label_remove_intro.pack()
-        self.button_remove_music.pack()
-        self.label_remove_music.pack()
-        self.checkbutton_level_order_shuffle.pack()
-        self.checkbutton_level_order_end_on_comp.pack()
-        self.label_minimum_unlock_goals.pack()
-        self.spinbox_minimum_unlock_goals.pack()
-        self.label_maximum_unlock_goals.pack()
-        self.spinbox_maximum_unlock_goals.pack()
+        ).pack()
         self.score_shuffle = tk.BooleanVar(value=False)
-        self.checkbutton_score_shuffle = tk.Checkbutton(
+        tk.Checkbutton(
             root, text="Shuffle scores", variable=self.score_shuffle
         ).pack()
         self.min_sick_score = tk.IntVar(value=60)
         self.max_sick_score = tk.IntVar(value=500)
         self.min_gold_score = tk.IntVar(value=120)
         self.max_gold_score = tk.IntVar(value=200)
-        self.label_min_sick_score = tk.Label(
+        tk.Label(
             root, text="Minimum sick score (first career level)"
         ).pack()
-        self.spinbox_min_sick_score = tk.Spinbox(
+        tk.Spinbox(
             root, from_=10, to=1000, textvariable=self.min_sick_score
         ).pack()
-        self.label_max_sick_score = tk.Label(
+        tk.Label(
             root, text="Maximum sick score (last career level)"
         ).pack()
-        self.spinbox_max_sick_score = tk.Spinbox(
+        tk.Spinbox(
             root, from_=10, to=1000, textvariable=self.max_sick_score
         ).pack()
-        self.label_min_gold_score = tk.Label(
+        tk.Label(
             root, text="Minimum gold score (first competition level)"
         ).pack()
-        self.spinbox_min_gold_score = tk.Spinbox(
+        tk.Spinbox(
             root, from_=10, to=1000, textvariable=self.min_gold_score
         ).pack()
-        self.label_max_gold_score = tk.Label(
+        tk.Label(
             root, text="Maximum gold score (last competition level)"
         ).pack()
-        self.spinbox_max_gold_score = tk.Spinbox(
+        tk.Spinbox(
             root, from_=10, to=1000, textvariable=self.max_gold_score
+        ).pack()
+        self.stat_default = tk.IntVar(value=5)
+        tk.Label(root, text="Starting stat level for all characters").pack()
+        tk.Spinbox(
+            root, from_=0, to=10, textvariable=self.stat_default
         ).pack()
 
     def click_directory(self):
@@ -152,6 +145,7 @@ class THPS3GUI:
                 self.max_sick_score.get(),
                 self.min_gold_score.get(),
                 self.max_gold_score.get(),
+                self.stat_default.get()
             )
             # Compile Java
             subprocess.run("javac -encoding Cp1252 qb_editor/*.java", shell=True)

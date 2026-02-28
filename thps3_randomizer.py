@@ -479,6 +479,23 @@ def set_score_goals(
             case _:
                 raise Exception("invalid level")
 
+def set_starting_stats(script_qbs: ScriptQBs, stat_default: int):
+    """
+    Set the starting level for all stats on characters (on a new save file). Stats can
+    still be redistributed at any time.
+    stat_default is clamped between 0 and 10.
+    If stat_default is less than 5, you will not be able to reach maximum stats with
+    any character.
+    """
+    if stat_default < 0:
+        stat_default = 0
+    elif stat_default > 10:
+        stat_default = 10
+    script_qbs.skater_profile_qb = script_qbs.skater_profile_qb.replace(
+        "{{rando_skater_profile_global_stat}}", str(stat_default))
+    
+
+
 
 def randomize(
     level_order_shuffle: bool,
@@ -490,6 +507,7 @@ def randomize(
     max_sick_score: int,
     min_gold_score: int,
     max_gold_score: int,
+    stat_default: int,
 ):
     script_qbs = read_modified_script_qbs()
     levels = get_level_order(
@@ -508,10 +526,13 @@ def randomize(
         min_gold_score,
         max_gold_score,
     )
+    set_starting_stats(
+        script_qbs,
+        stat_default
+    )
 
     # TODO: Replace method calls below this comment with new versions
     rando2.randomize_item_locations(levels)
-    script_qbs.skater_profile_qb = rando2.randomize_stats(script_qbs.skater_profile_qb)
     script_qbs.skater_profile_qb = rando2.randomize_trickstyle(
         script_qbs.skater_profile_qb
     )
