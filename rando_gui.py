@@ -64,54 +64,38 @@ class THPS3GUI:
         ).pack()
         self.minimum_unlock_goals = tk.IntVar(value=3)
         self.maximum_unlock_goals = tk.IntVar(value=6)
-        tk.Label(
-            root, text="Minimum goals required per career level"
-        ).pack()
-        tk.Spinbox(
-            root, from_=0, to=9, textvariable=self.minimum_unlock_goals
-        ).pack()
-        tk.Label(
-            root, text="Maximum goals required per career level"
-        ).pack()
-        tk.Spinbox(
-            root, from_=0, to=9, textvariable=self.maximum_unlock_goals
-        ).pack()
+        tk.Label(root, text="Minimum goals required per career level").pack()
+        tk.Spinbox(root, from_=0, to=9, textvariable=self.minimum_unlock_goals).pack()
+        tk.Label(root, text="Maximum goals required per career level").pack()
+        tk.Spinbox(root, from_=0, to=9, textvariable=self.maximum_unlock_goals).pack()
         self.score_shuffle = tk.BooleanVar(value=False)
-        tk.Checkbutton(
-            root, text="Shuffle scores", variable=self.score_shuffle
-        ).pack()
+        tk.Checkbutton(root, text="Shuffle scores", variable=self.score_shuffle).pack()
         self.min_sick_score = tk.IntVar(value=60)
         self.max_sick_score = tk.IntVar(value=500)
         self.min_gold_score = tk.IntVar(value=120)
         self.max_gold_score = tk.IntVar(value=200)
-        tk.Label(
-            root, text="Minimum sick score (first career level)"
-        ).pack()
-        tk.Spinbox(
-            root, from_=10, to=1000, textvariable=self.min_sick_score
-        ).pack()
-        tk.Label(
-            root, text="Maximum sick score (last career level)"
-        ).pack()
-        tk.Spinbox(
-            root, from_=10, to=1000, textvariable=self.max_sick_score
-        ).pack()
-        tk.Label(
-            root, text="Minimum gold score (first competition level)"
-        ).pack()
-        tk.Spinbox(
-            root, from_=10, to=1000, textvariable=self.min_gold_score
-        ).pack()
-        tk.Label(
-            root, text="Maximum gold score (last competition level)"
-        ).pack()
-        tk.Spinbox(
-            root, from_=10, to=1000, textvariable=self.max_gold_score
-        ).pack()
+        tk.Label(root, text="Minimum sick score (first career level)").pack()
+        tk.Spinbox(root, from_=10, to=1000, textvariable=self.min_sick_score).pack()
+        tk.Label(root, text="Maximum sick score (last career level)").pack()
+        tk.Spinbox(root, from_=10, to=1000, textvariable=self.max_sick_score).pack()
+        tk.Label(root, text="Minimum gold score (first competition level)").pack()
+        tk.Spinbox(root, from_=10, to=1000, textvariable=self.min_gold_score).pack()
+        tk.Label(root, text="Maximum gold score (last competition level)").pack()
+        tk.Spinbox(root, from_=10, to=1000, textvariable=self.max_gold_score).pack()
         self.stat_default = tk.IntVar(value=5)
         tk.Label(root, text="Starting stat level for all characters").pack()
-        tk.Spinbox(
-            root, from_=0, to=10, textvariable=self.stat_default
+        tk.Spinbox(root, from_=0, to=10, textvariable=self.stat_default).pack()
+        self.require_deck_for_tape = tk.BooleanVar(value=False)
+        tk.Checkbutton(
+            root,
+            text="Require deck for secret tape",
+            variable=self.require_deck_for_tape,
+        ).pack()
+        self.require_deck_for_medal = tk.BooleanVar(value=False)
+        tk.Checkbutton(
+            root,
+            text="Require deck for competition medals",
+            variable=self.require_deck_for_medal,
         ).pack()
 
     def click_directory(self):
@@ -145,7 +129,9 @@ class THPS3GUI:
                 self.max_sick_score.get(),
                 self.min_gold_score.get(),
                 self.max_gold_score.get(),
-                self.stat_default.get()
+                self.stat_default.get(),
+                self.require_deck_for_tape.get(),
+                self.require_deck_for_medal.get(),
             )
             # Compile Java
             subprocess.run("javac -encoding Cp1252 qb_editor/*.java", shell=True)

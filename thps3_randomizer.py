@@ -479,6 +479,7 @@ def set_score_goals(
             case _:
                 raise Exception("invalid level")
 
+
 def set_starting_stats(script_qbs: ScriptQBs, stat_default: int):
     """
     Set the starting level for all stats on characters (on a new save file). Stats can
@@ -492,9 +493,59 @@ def set_starting_stats(script_qbs: ScriptQBs, stat_default: int):
     elif stat_default > 10:
         stat_default = 10
     script_qbs.skater_profile_qb = script_qbs.skater_profile_qb.replace(
-        "{{rando_skater_profile_global_stat}}", str(stat_default))
-    
+        "{{rando_skater_profile_global_stat}}", str(stat_default)
+    )
 
+
+def set_deck_required_for_tape(script_qbs: ScriptQBs, require_deck_for_tape: bool):
+    """
+    If require_deck_for_tape is True, collecting the secret tape before collecting the
+    secret deck will show a message and not mark the goal as complete. If you collect
+    the deck after collecting the tape in a run, you will have to retry the run for
+    the tape to appear again.
+    """
+    if require_deck_for_tape:
+        # Got_Secret_TapeIfDeck is a custom function added to the modified QB
+        script_qbs.goal_scripts_qb = script_qbs.goal_scripts_qb.replace(
+            "{{rando_goal_scripts_tape_script}}", "Got_Secret_TapeIfDeck"
+        )
+    else:
+        # Got_Secret_Tape2 is the default with no additional requirements
+        script_qbs.goal_scripts_qb = script_qbs.goal_scripts_qb.replace(
+            "{{rando_goal_scripts_tape_script}}", "Got_Secret_Tape2"
+        )
+
+
+def set_deck_required_for_medal(script_qbs: ScriptQBs, require_deck_for_medal: bool):
+    """
+    If require_deck_for_medal is True, achieving the score threshold for a medal before
+    collecting the secret deck will show a message and prevent you from earning a medal.
+    """
+    flag_medal_req = "{{rando_judges_medal_requirement}}"
+    comp_scripts_medal_req = "{{rando_comp_scripts_medal_requirement}}"
+    medal_message = "{{rando_comp_scripts_medal_message}}"
+    if require_deck_for_medal:
+        script_qbs.judges_qb = script_qbs.judges_qb.replace(
+            flag_medal_req, "GetFlag flag = GOAL_DECK"
+        )
+        script_qbs.comp_scripts_qb = script_qbs.comp_scripts_qb.replace(
+            medal_message, "Must Find Deck To Medal"
+        )
+        script_qbs.comp_scripts_qb = script_qbs.comp_scripts_qb.replace(
+            comp_scripts_medal_req, "GetFlag flag = GOAL_DECK"
+        )
+    else:
+        # GetGlobalFlag flag = 159 is always True, because the randomizer sets
+        # SPECIAL_HAS_SEEN_SHIP to True upon loading mainmenu.qb
+        script_qbs.judges_qb = script_qbs.judges_qb.replace(
+            flag_medal_req, "GetGlobalFlag flag = 159"
+        )
+        script_qbs.comp_scripts_qb = script_qbs.comp_scripts_qb.replace(
+            medal_message, "Bails Hurt Scores"
+        )
+        script_qbs.comp_scripts_qb = script_qbs.comp_scripts_qb.replace(
+            comp_scripts_medal_req, "GetGlobalFlag flag = 159"
+        )
 
 
 def randomize(
@@ -508,6 +559,8 @@ def randomize(
     min_gold_score: int,
     max_gold_score: int,
     stat_default: int,
+    require_deck_for_tape: bool,
+    require_deck_for_medal: bool,
 ):
     script_qbs = read_modified_script_qbs()
     levels = get_level_order(
@@ -526,10 +579,9 @@ def randomize(
         min_gold_score,
         max_gold_score,
     )
-    set_starting_stats(
-        script_qbs,
-        stat_default
-    )
+    set_starting_stats(script_qbs, stat_default)
+    set_deck_required_for_tape(script_qbs, require_deck_for_tape)
+    set_deck_required_for_medal(script_qbs, require_deck_for_medal)
 
     # TODO: Replace method calls below this comment with new versions
     rando2.randomize_item_locations(levels)
@@ -568,12 +620,6 @@ def randomize(
         script_qbs.sk3_pedscripts_qb,
     )
     script_qbs.boardselect_qb = rando2.randomize_decks(script_qbs.boardselect_qb)
-    script_qbs.goal_scripts_qb = rando2.require_deck_for_tape(
-        script_qbs.goal_scripts_qb
-    )
-    script_qbs.judges_qb, script_qbs.comp_scripts_qb = rando2.require_deck_for_medal(
-        script_qbs.judges_qb, script_qbs.comp_scripts_qb
-    )
     script_qbs.airtricks_qb = rando2.unlock_trick_scores(
         script_qbs.airtricks_qb, levels
     )

@@ -20,7 +20,6 @@ def randomize_item_locations(levels):
         level.randomize(include_extras=True)
 
 
-
 def _get_random_trickstyle():
     trickstyles = ["vert", "street"]
     return random.choice(trickstyles)
@@ -34,47 +33,6 @@ def randomize_trickstyle(skater_profile):
             _get_random_trickstyle(),
         )
     return skater_profile
-
-
-def require_deck_for_tape(goal_scripts):
-    # require the deck to be collected before the tape goal will complete
-    # note: as currently implemented, if you get the tape before the deck, you will have to retry the run to respawn the tape
-    deck_required_for_tape = True
-    if deck_required_for_tape:
-        # Got_Secret_TapeIfDeck is a custom function added to the modified QB
-        goal_scripts = goal_scripts.replace(
-            "{{rando_goal_scripts_tape_script}}", "Got_Secret_TapeIfDeck"
-        )
-    else:
-        # Got_Secret_Tape2 is the default with no additional requirements
-        goal_scripts = goal_scripts.replace(
-            "{{rando_goal_scripts_tape_script}}", "Got_Secret_Tape2"
-        )
-    return goal_scripts
-
-
-def require_deck_for_medal(judges, comp_scripts):
-    flag_medal_req = "{{rando_judges_medal_requirement}}"
-    comp_scripts_medal_req = "{{rando_comp_scripts_medal_requirement}}"
-    medal_message = "{{rando_comp_scripts_medal_message}}"
-
-    deck_required_for_medal = True
-    if deck_required_for_medal:
-        # require the deck to be collected before getting any medal, or else you will lose the competition
-        judges = judges.replace(flag_medal_req, "GetFlag flag = GOAL_DECK")
-        comp_scripts = comp_scripts.replace(medal_message, "Must Find Deck To Medal")
-        comp_scripts = comp_scripts.replace(
-            comp_scripts_medal_req, "GetFlag flag = GOAL_DECK"
-        )
-    else:
-        # GetGlobalFlag flag = 159 will resolve to True as long as SPECIAL_HAS_SEEN_SHIP is set in mainmenu.qb
-        judges = judges.replace(flag_medal_req, "GetGlobalFlag flag = 159")
-        comp_scripts = comp_scripts.replace(medal_message, "Bails Hurt Scores")
-        comp_scripts = comp_scripts.replace(
-            comp_scripts_medal_req, "GetGlobalFlag flag = 159"
-        )
-
-    return judges, comp_scripts
 
 
 def randomize_level_timer(gamemode):
