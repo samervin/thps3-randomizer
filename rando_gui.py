@@ -125,7 +125,7 @@ class THPS3GUI:
         if self.thps3_directory:
             self.label_randomize.config(text="Randomizing...")
             # Randomize files
-            thps3_randomizer.randomize(
+            thps3_randomizer.THPS3Randomizer().randomize(
                 self.level_order_shuffle.get(),
                 self.level_order_end_on_comp.get(),
                 self.minimum_unlock_goals.get(),

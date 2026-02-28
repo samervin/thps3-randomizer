@@ -854,8 +854,6 @@ def randomize_foundry_trickspot_gaps(cjr):
     foundry_gaps = _shuffle(foundry_gaps)
     vert_gap = foundry_gaps.pop()
     street_gap = foundry_gaps.pop()
-    print(vert_gap[1])
-    print(street_gap[1])
     cjr = cjr.replace("{{" + vert_gap[0] + "}}", "CJR_Foun_PipeTrickGap")
     cjr = cjr.replace("{{" + street_gap[0] + "}}", "CJR_Foun_RailTrickGap")
     cjr = cjr.replace("{{rando_cjr_trickspot_vert_gap}}", vert_gap[1])
