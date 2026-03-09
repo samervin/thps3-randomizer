@@ -103,6 +103,14 @@ class THPS3GUI:
         tk.Spinbox(root, from_=30, to=3600, textvariable=self.min_level_time).pack()
         tk.Label(root, text="Maximum time limit for normal levels").pack()
         tk.Spinbox(root, from_=30, to=3600, textvariable=self.max_level_time).pack()
+        self.trickspot_shuffle_type = tk.StringVar(value="vanilla")
+        tk.Label(
+            root,
+            text="Trickspot tricks: Vanilla (no changes), Match (grinds replaced with grinds, etc.), or Any (all non-special tricks are valid)",
+        ).pack()
+        tk.OptionMenu(
+            root, self.trickspot_shuffle_type, "vanilla", "match", "any"
+        ).pack()
 
     def click_directory(self):
         self.thps3_directory = filedialog.askdirectory(
@@ -140,6 +148,7 @@ class THPS3GUI:
                 self.require_deck_for_medal.get(),
                 self.min_level_time.get(),
                 self.max_level_time.get(),
+                self.trickspot_shuffle_type.get(),
             )
             # Compile Java
             subprocess.run("javac -encoding Cp1252 qb_editor/*.java", shell=True)

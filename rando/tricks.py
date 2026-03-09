@@ -1,22 +1,13 @@
 class Trick:
-    name = None  # Displayed in trick string
-    name_script = None  # Internal script name
-    name_goal = None  # Descriptive name used for trickspot goals
-    trick_type = None  # grind, grab, flip, lip, manual
-    is_special = False  # true for special tricks
-    is_extra = (
-        False  # true for weird tricks like character-specific or secret flip combos
-    )
-
     def __init__(
         self, name, name_script, name_goal, trick_type, is_special=False, is_extra=False
     ):
-        self.name = name
-        self.name_script = name_script
-        self.name_goal = name_goal
-        self.trick_type = trick_type
-        self.is_special = is_special
-        self.is_extra = is_extra
+        self.name = name  # Displayed in trick string
+        self.name_script = name_script  # Internal script name
+        self.name_goal = name_goal  # Descriptive name used for trickspot goals
+        self.trick_type = trick_type  # grind, grab, flip, lip, manual
+        self.is_special = is_special  # true for special tricks
+        self.is_extra = is_extra  # true for weird tricks like character-specific or secret flip combos
 
 
 class Tricks:

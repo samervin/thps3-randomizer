@@ -1,9 +1,9 @@
 # coding: cp1252
 import os
 import re
-from dataclasses import dataclass
 
 import random
+from typing import TypeVar, List
 
 import rando2
 from rando.level2 import Level2
@@ -16,6 +16,10 @@ from rando.level_skaterisland import LevelSkaterIsland
 from rando.level_losangeles import LevelLosAngeles
 from rando.level_tokyo import LevelTokyo
 from rando.level_cruiseship import LevelCruiseShip
+from rando.tricks import Trick, Tricks
+
+T = TypeVar("T")
+
 
 class THPS3Randomizer:
     airtricks_qb: str
@@ -38,7 +42,7 @@ class THPS3Randomizer:
     skater_profile_qb: str
 
     @staticmethod
-    def _shuffle(any_list):
+    def _shuffle(any_list: List[T]) -> List[T]:
         shuffled = any_list.copy()
         random.shuffle(shuffled)
         return shuffled
@@ -55,12 +59,10 @@ class THPS3Randomizer:
             output.append(re.sub(r"#\d{5}", f"#{i:05d}", line))
         return "".join(output)
 
-
     @staticmethod
     def read_modified_script_qb(filename: str) -> str:
         with open(f"qbs_modified/Scripts/{filename}.qb", "r") as f:
             return f.read()
-
 
     def write_modified_script_outfile(self, filename: str, contents: str) -> None:
         contents = self.memify_script(contents)
@@ -68,7 +70,6 @@ class THPS3Randomizer:
         os.makedirs(os.path.dirname(full_filename), exist_ok=True)
         with open(full_filename, "w", newline="\n") as fout:
             fout.write(contents)
-
 
     def read_modified_script_qbs(self):
         # airtricks used for trick type locking
@@ -110,7 +111,6 @@ class THPS3Randomizer:
         self.sk3_pedscripts_qb = self.read_modified_script_qb("sk3_pedscripts")
         self.skater_profile_qb = self.read_modified_script_qb("skater_profile")
 
-
     def write_modified_script_outfiles(self):
         self.write_modified_script_outfile("airtricks", self.airtricks_qb)
         self.write_modified_script_outfile("ajc_scripts", self.ajc_scripts_qb)
@@ -130,7 +130,6 @@ class THPS3Randomizer:
         self.write_modified_script_outfile("protricks", self.protricks_qb)
         self.write_modified_script_outfile("sk3_pedscripts", self.sk3_pedscripts_qb)
         self.write_modified_script_outfile("skater_profile", self.skater_profile_qb)
-
 
     def get_level_order(self, shuffle: bool, end_on_comp: bool) -> list[Level2]:
         """
@@ -173,7 +172,6 @@ class THPS3Randomizer:
             ]
             return self._shuffle(regular_levels + comp_levels) + [last_level]
 
-
     def display_victory_requirements(self):
         """
         Display victory requirements on the level select menu. The built-in display of level
@@ -183,7 +181,6 @@ class THPS3Randomizer:
         self.game_qb = self.game_qb.replace(
             "{{rando_game_victory_text}}", "Thanks for playing rando!"
         )
-
 
     def set_level_unlock_requirements(
         self,
@@ -241,9 +238,7 @@ class THPS3Randomizer:
                     raise Exception("invalid level")
 
             if level_reqs[i][1] == "first":  # initial level
-                self.mainmenu_qb = self.mainmenu_qb.replace(
-                    unlock_var, "0 Goals"
-                )
+                self.mainmenu_qb = self.mainmenu_qb.replace(unlock_var, "0 Goals")
             elif level_reqs[i][0] == 1:  # 1 goal or medal
                 self.mainmenu_qb = self.mainmenu_qb.replace(
                     unlock_var, f"{level_reqs[i][0]} {level_reqs[i][1]}"
@@ -255,7 +250,8 @@ class THPS3Randomizer:
 
         # Unlock the first level instead of always unlocking Foundry
         self.mainmenu_qb = self.mainmenu_qb.replace(
-            "{{rando_mainmenu_first_level_unlock}}", f"LEVEL_UNLOCKED_{levels[0].name_flag}"
+            "{{rando_mainmenu_first_level_unlock}}",
+            f"LEVEL_UNLOCKED_{levels[0].name_flag}",
         )
 
         for i in range(1, 9):
@@ -270,7 +266,6 @@ class THPS3Randomizer:
             self.goal_scripts_qb = self.goal_scripts_qb.replace(
                 f"{{{{rando_goal_scripts_unlock_{i + 1}_name}}}}", levels[i].name
             )
-
 
     def set_score_goals(
         self,
@@ -473,7 +468,6 @@ class THPS3Randomizer:
                 case _:
                     raise Exception("invalid level")
 
-
     def set_starting_stats(self, stat_default: int):
         """
         Set the starting level for all stats on characters (on a new save file). Stats can
@@ -489,7 +483,6 @@ class THPS3Randomizer:
         self.skater_profile_qb = self.skater_profile_qb.replace(
             "{{rando_skater_profile_global_stat}}", str(stat_default)
         )
-
 
     def set_deck_required_for_tape(self, require_deck_for_tape: bool):
         """
@@ -508,7 +501,6 @@ class THPS3Randomizer:
             self.goal_scripts_qb = self.goal_scripts_qb.replace(
                 "{{rando_goal_scripts_tape_script}}", "Got_Secret_Tape2"
             )
-
 
     def set_deck_required_for_medal(self, require_deck_for_medal: bool):
         """
@@ -541,7 +533,6 @@ class THPS3Randomizer:
                 comp_scripts_medal_req, "GetGlobalFlag flag = 159"
             )
 
-
     def set_level_time(self, min_level_time: int, max_level_time: int):
         """
         Choose a random time limit for all normal levels. Does not affect competitions.
@@ -559,6 +550,162 @@ class THPS3Randomizer:
             "{{rando_gamemode_career_time}}", str(time_limit)
         )
 
+    def set_trickspot_tricks(self, trickspot_shuffle_type: str) -> list[Trick]:
+        tricks = Tricks()
+        all_tricks = tricks.all_tricks
+        all_grinds = self._shuffle(tricks.get_regular_grinds())
+        all_grabs = self._shuffle(tricks.get_regular_grabs())
+        all_flips = self._shuffle(tricks.get_regular_flips())
+        all_lips = self._shuffle(tricks.get_regular_lips())
+        match trickspot_shuffle_type:
+            case "vanilla":
+                foundry_street_trick = next(t for t in all_tricks if t.name == "50-50")
+                foundry_vert_trick = next(
+                    t for t in all_tricks if t.name == "Cannonball"
+                )
+                canada_street_trick = next(
+                    t for t in all_tricks if t.name == "Nosegrind"
+                )
+                canada_vert_trick = next(t for t in all_tricks if t.name == "Melon")
+                suburbia_street_trick = next(
+                    t for t in all_tricks if t.name == "Heelflip"
+                )
+                suburbia_vert_trick = next(
+                    t for t in all_tricks if t.name == "Nosegrab"
+                )
+                airport_street_trick = next(
+                    t for t in all_tricks if t.name == "Crooked"
+                )
+                airport_vert_trick = next(t for t in all_tricks if t.name == "Airwalk")
+                la_street_trick = next(
+                    t for t in all_tricks if t.name == "Varial Kickflip"
+                )
+                la_vert_trick = next(
+                    t for t in all_tricks if t.name == "One Foot Japan"
+                )
+                ship_street_trick = next(
+                    t for t in all_tricks if t.name == "Nosebluntslide"
+                )
+                ship_vert_trick = next(t for t in all_tricks if t.name == "Invert")
+            case "match":
+                foundry_street_trick = all_grinds.pop()
+                foundry_vert_trick = all_grabs.pop()
+                canada_street_trick = all_grinds.pop()
+                canada_vert_trick = all_grabs.pop()
+                suburbia_street_trick = all_flips.pop()
+                suburbia_vert_trick = all_grabs.pop()
+                airport_street_trick = all_grinds.pop()
+                airport_vert_trick = all_grabs.pop()
+                la_street_trick = all_flips.pop()
+                la_vert_trick = all_grabs.pop()
+                ship_street_trick = all_grinds.pop()
+                ship_vert_trick = all_lips.pop()
+            case "any":
+                all_regular_tricks = self._shuffle(
+                    all_grinds + all_grabs + all_flips + all_lips
+                )
+                foundry_street_trick = all_regular_tricks.pop()
+                foundry_vert_trick = all_regular_tricks.pop()
+                canada_street_trick = all_regular_tricks.pop()
+                canada_vert_trick = all_regular_tricks.pop()
+                suburbia_street_trick = all_regular_tricks.pop()
+                suburbia_vert_trick = all_regular_tricks.pop()
+                airport_street_trick = all_regular_tricks.pop()
+                airport_vert_trick = all_regular_tricks.pop()
+                la_street_trick = all_regular_tricks.pop()
+                la_vert_trick = all_regular_tricks.pop()
+                ship_street_trick = all_regular_tricks.pop()
+                ship_vert_trick = all_regular_tricks.pop()
+            case _:
+                raise Exception("invalid trickspot trick type")
+
+        self.cjr_scripts_qb = self.cjr_scripts_qb.replace(
+            "{{rando_cjr_trickspot_street_text}}", foundry_street_trick.name_goal
+        )
+        self.cjr_scripts_qb = self.cjr_scripts_qb.replace(
+            "{{rando_cjr_trickspot_vert_text}}", foundry_vert_trick.name_goal
+        )
+        self.cjr_scripts_qb = self.cjr_scripts_qb.replace(
+            "{{rando_cjr_trickspot_street_trick}}", foundry_street_trick.name
+        )
+        self.cjr_scripts_qb = self.cjr_scripts_qb.replace(
+            "{{rando_cjr_trickspot_vert_trick}}", foundry_vert_trick.name
+        )
+        self.ajc_scripts_qb = self.ajc_scripts_qb.replace(
+            "{{rando_ajc_trickspot_street_text}}", canada_street_trick.name_goal
+        )
+        self.ajc_scripts_qb = self.ajc_scripts_qb.replace(
+            "{{rando_ajc_trickspot_vert_text}}", canada_vert_trick.name_goal
+        )
+        self.ajc_scripts_qb = self.ajc_scripts_qb.replace(
+            "{{rando_ajc_trickspot_street_trick}}", canada_street_trick.name
+        )
+        self.ajc_scripts_qb = self.ajc_scripts_qb.replace(
+            "{{rando_ajc_trickspot_vert_trick}}", canada_vert_trick.name
+        )
+        self.alf_scripts_qb = self.alf_scripts_qb.replace(
+            "{{rando_alf_trickspot_street_text}}", suburbia_street_trick.name_goal
+        )
+        self.alf_scripts_qb = self.alf_scripts_qb.replace(
+            "{{rando_alf_trickspot_vert_text}}", suburbia_vert_trick.name_goal
+        )
+        self.alf_scripts_qb = self.alf_scripts_qb.replace(
+            "{{rando_alf_trickspot_street_trick}}", suburbia_street_trick.name
+        )
+        self.alf_scripts_qb = self.alf_scripts_qb.replace(
+            "{{rando_alf_trickspot_vert_trick}}", suburbia_vert_trick.name
+        )
+        self.cpf_scripts_qb = self.cpf_scripts_qb.replace(
+            "{{rando_cpf_airport_trickspot_street_text}}",
+            airport_street_trick.name_goal,
+        )
+        self.cpf_scripts_qb = self.cpf_scripts_qb.replace(
+            "{{rando_cpf_airport_trickspot_vert_text}}", airport_vert_trick.name_goal
+        )
+        self.cpf_scripts_qb = self.cpf_scripts_qb.replace(
+            "{{rando_cpf_airport_trickspot_street_trick}}", airport_street_trick.name
+        )
+        self.cpf_scripts_qb = self.cpf_scripts_qb.replace(
+            "{{rando_cpf_airport_trickspot_vert_trick}}", airport_vert_trick.name
+        )
+        self.cpf_scripts_qb = self.cpf_scripts_qb.replace(
+            "{{rando_cpf_la_trickspot_street_text}}", la_street_trick.name_goal
+        )
+        self.cpf_scripts_qb = self.cpf_scripts_qb.replace(
+            "{{rando_cpf_la_trickspot_vert_text}}", la_vert_trick.name_goal
+        )
+        self.cpf_scripts_qb = self.cpf_scripts_qb.replace(
+            "{{rando_cpf_la_trickspot_street_trick}}", la_street_trick.name
+        )
+        self.cpf_scripts_qb = self.cpf_scripts_qb.replace(
+            "{{rando_cpf_la_trickspot_vert_trick}}", la_vert_trick.name
+        )
+        self.bdj_scripts_qb = self.bdj_scripts_qb.replace(
+            "{{rando_bdj_trickspot_street_text}}", ship_street_trick.name_goal
+        )
+        self.bdj_scripts_qb = self.bdj_scripts_qb.replace(
+            "{{rando_bdj_trickspot_vert_text}}", ship_vert_trick.name_goal
+        )
+        self.bdj_scripts_qb = self.bdj_scripts_qb.replace(
+            "{{rando_bdj_trickspot_street_trick}}", ship_street_trick.name
+        )
+        self.bdj_scripts_qb = self.bdj_scripts_qb.replace(
+            "{{rando_bdj_trickspot_vert_trick}}", ship_vert_trick.name
+        )
+        return [
+            foundry_street_trick,
+            foundry_vert_trick,
+            canada_street_trick,
+            canada_vert_trick,
+            suburbia_street_trick,
+            suburbia_vert_trick,
+            airport_street_trick,
+            airport_vert_trick,
+            la_street_trick,
+            la_vert_trick,
+            ship_street_trick,
+            ship_vert_trick,
+        ]
 
     def randomize(
         self,
@@ -576,6 +723,7 @@ class THPS3Randomizer:
         require_deck_for_medal: bool,
         min_level_time: int,
         max_level_time: int,
+        trickspot_shuffle_type: str,
     ):
         self.read_modified_script_qbs()
         levels = self.get_level_order(
@@ -597,27 +745,11 @@ class THPS3Randomizer:
         self.set_deck_required_for_tape(require_deck_for_tape)
         self.set_deck_required_for_medal(require_deck_for_medal)
         self.set_level_time(min_level_time, max_level_time)
+        trickspot_tricks = self.set_trickspot_tricks(trickspot_shuffle_type)
 
         # TODO: Replace method calls below this comment with new versions
         rando2.randomize_item_locations(levels)
-        self.skater_profile_qb = rando2.randomize_trickstyle(
-            self.skater_profile_qb
-        )
-        (
-            trickspot_tricks,
-            self.ajc_scripts_qb,
-            self.alf_scripts_qb,
-            self.bdj_scripts_qb,
-            self.cjr_scripts_qb,
-            self.cpf_scripts_qb,
-        ) = rando2.randomize_trickspot_tricks(
-            "wild",
-            self.ajc_scripts_qb,
-            self.alf_scripts_qb,
-            self.bdj_scripts_qb,
-            self.cjr_scripts_qb,
-            self.cpf_scripts_qb,
-        )
+        self.skater_profile_qb = rando2.randomize_trickstyle(self.skater_profile_qb)
         self.protricks_qb = rando2.randomize_trick_sets(
             self.protricks_qb, trickspot_tricks
         )
@@ -634,9 +766,7 @@ class THPS3Randomizer:
             self.sk3_pedscripts_qb,
         )
         self.boardselect_qb = rando2.randomize_decks(self.boardselect_qb)
-        self.airtricks_qb = rando2.unlock_trick_scores(
-            self.airtricks_qb, levels
-        )
+        self.airtricks_qb = rando2.unlock_trick_scores(self.airtricks_qb, levels)
         self.goal_scripts_qb = rando2.randomize_secrets(self.goal_scripts_qb)
         self.skater_profile_qb = rando2.lock_characters(self.skater_profile_qb)
         self.alf_scripts_qb = rando2.junk_suburbia(self.alf_scripts_qb)
