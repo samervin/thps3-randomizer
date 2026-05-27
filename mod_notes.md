@@ -19,3 +19,9 @@ Vanilla requirements (these numbers are never displayed in-game):
     - Rio: bronze 80 = 25k, silver 85 = 70k, gold 90 = 120k, bail = .25
     - Skater Island: bronze 85 = 45k, silver 90 = 80k, gold 93 = 150k, bail = .35
     - Tokyo: bronze 90 = 100k, silver 92.5 = 150k, gold 95 = 200k, bail = .5
+
+# Custom boards
+
+Very doable. Just put image files in Data/Textures/Boards and refer to them in the script files.
+
+The default boards are all 64x128. The game will accept files of any size (as long as it isn't too large), though they don't show up at a higher resolution in-game. The game will also accept files of any aspect ratio and will squash the texture to fit it on the board (in fact, it already does this with the built-in decks).
