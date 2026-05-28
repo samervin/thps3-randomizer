@@ -15,3 +15,5 @@ Other notes:
 - These links to various other tools are dead, but might be helpful for searching: https://thpsx.com/forums/index.php?topic=1693.0
 - DCxDemo has a small number of tools available as well: https://github.com/DCxDemo?tab=repositories
 - PARTY MAN X does some memory magic with THPS3 (for IL mode), check out all the partymods and the autosplitter: https://github.com/PARTYMANX?tab=repositories
+- "beat.exe" can be used to test and apply bps patches like the one for the keyboard, I found the Windows exe here: https://www.romhacking.net/utilities/893/
+- PreTool.exe can be used to extract files from .prx (and probably other) packed file formats, I found it on the THPSX Discord
