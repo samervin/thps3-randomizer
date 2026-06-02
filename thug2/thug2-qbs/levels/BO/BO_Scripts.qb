@@ -1,0 +1,4721 @@
+
+BO_Goal_Intro_Cameras = [ { virtual_cam 
+		targetid = world 
+		targetOffset = VECTOR(-11911.1, 2413, -4206.6) 
+		positionOffset = VECTOR(-2676.5, 171, -1092.8) 
+		frames = 500 
+		skippable = 1 
+		text = BO_Intro_Text1 
+		time = 10000 
+		cam_start_script = BO_Intro_Line1 
+	} 
+	{ virtual_cam 
+		targetid = world 
+		targetOffset = VECTOR(-11911.1, 2413, -4206.6) 
+		positionOffset = VECTOR(-2676.5, 171, -1092.8) 
+		frames = 300 
+		skippable = 1 
+		text = BO_Intro_Text2 
+		time = 5000 
+		cam_start_script = BO_Intro_Line2 
+	} 
+	{ virtual_cam 
+		targetid = world 
+		targetOffset = VECTOR(-8909.7, -284, -8990.1) 
+		positionOffset = VECTOR(-1559.5, -137.6, -2212) 
+		frames = 375 
+		skippable = 1 
+		goal = BO_Goal_Gaps12 
+		time = 3000 
+	} 
+	{ virtual_cam 
+		targetid = world 
+		targetOffset = VECTOR(-5871, -1405.7, -8645.8) 
+		positionOffset = VECTOR(1037.6, 609.6, -1702.5) 
+		frames = 370 
+		skippable = 1 
+		goal = BO_Goal_Gaps 
+		time = 6000 
+	} 
+	{ virtual_cam 
+		targetid = world 
+		targetOffset = VECTOR(12114.8, -1581.2, -3858.6) 
+		positionOffset = VECTOR(3273.4, 455.2, 346.5) 
+		frames = 370 
+		skippable = 1 
+		goal = BO_Goal_Gaps8 
+		time = 6000 
+	} 
+	{ virtual_cam 
+		targetid = world 
+		targetOffset = VECTOR(10953, -1790.3, -5100.8) 
+		positionOffset = VECTOR(2990, 100.8, 645) 
+		frames = 375 
+		skippable = 1 
+		goal = BO_Goal_Gaps7 
+		time = 6000 
+	} 
+	{ virtual_cam 
+		targetid = world 
+		targetOffset = VECTOR(5317.9, -846.2, -7326) 
+		positionOffset = VECTOR(-2664.7, 225.6, -1399.1) 
+		frames = 370 
+		skippable = 1 
+		goal = BO_Goal_TimedScoreRun 
+		time = 6000 
+	} 
+	{ virtual_cam 
+		targetid = world 
+		targetOffset = VECTOR(-3104.9, -687.1, 8586.1) 
+		positionOffset = VECTOR(-689.4, 154.6, -1081.2) 
+		frames = 370 
+		skippable = 1 
+		goal = BO_Goal_TrickBeat 
+		time = 6000 
+	} 
+	{ virtual_cam 
+		targetid = world 
+		targetOffset = VECTOR(-1012, -1458.2, -9245.3) 
+		positionOffset = VECTOR(-951, 297.7, 599.1) 
+		frames = 375 
+		skippable = 1 
+		goal = BO_Goal_Gaps5 
+		time = 6000 
+	} 
+	{ virtual_cam 
+		targetid = world 
+		{ targetOffset = VECTOR(-10744.9, -3540.7, 2882.6) 
+			positionOffset = VECTOR(-2649.2, 399.6, -1468.8) 
+		} 
+		frames = 375 
+		skippable = 1 
+		goal = bo_goal_highcombo3 
+		time = 6000 
+	} 
+	{ virtual_cam 
+		targetid = world 
+		targetOffset = VECTOR(-11911.1, 2413, -4206.6) 
+		positionOffset = VECTOR(-2676.5, 171, -1092.8) 
+		frames = 310 
+		skippable = 1 
+		text = BO_Intro_Text3 
+		time = 5000 
+		cam_start_script = BO_Intro_Line3 
+	} 
+] 
+BO_Pro_Goal_Intro_Cameras = [ { virtual_cam 
+		targetid = world 
+		targetOffset = VECTOR(-3328.7, 501.9, -7325.9) 
+		positionOffset = VECTOR(1210.1, 64.8, 1573.9) 
+		frames = 615 
+		skippable = 1 
+		text = "New goal list unlocked.  Pro goals!" 
+		time = 10000 
+		cam_start_script = FirstSwap_VO 
+	} 
+	{ virtual_cam 
+		targetid = world 
+		targetOffset = VECTOR(-3664.2, -2505.3, -7785) 
+		positionOffset = VECTOR(0.7, 160, 1129.3) 
+		frames = 200 
+		skippable = 1 
+		goal = BO_Goal_TrickObjects 
+		time = 6000 
+	} 
+	{ virtual_cam 
+		targetid = world 
+		targetOffset = VECTOR(4068.4, -914.5, -7058.4) 
+		positionOffset = VECTOR(-1105.8, 111.5, 1437.1) 
+		frames = 200 
+		skippable = 1 
+		goal = BO_Goal_Gaps4 
+		time = 6000 
+	} 
+	{ virtual_cam 
+		targetid = world 
+		targetOffset = VECTOR(-8449, -1697.8, -1919.4) 
+		positionOffset = VECTOR(585.9, 262.7, 1891.9) 
+		frames = 200 
+		skippable = 1 
+		goal = BO_Goal_Gaps6 
+		time = 6000 
+	} 
+	{ virtual_cam 
+		targetid = world 
+		targetOffset = VECTOR(-6593.1, -1857.8, 7858.3) 
+		positionOffset = VECTOR(-765.3, 320.2, 29.4) 
+		frames = 200 
+		skippable = 1 
+		goal = BO_Goal_Gaps13 
+		time = 6000 
+	} 
+	{ virtual_cam 
+		targetid = world 
+		targetOffset = VECTOR(-6681.4, 3725.2, 8989.7) 
+		positionOffset = VECTOR(-1622.4, 24, 1198.5) 
+		frames = 200 
+		skippable = 1 
+		goal = BO_Goal_HighCombo2 
+		time = 6000 
+	} 
+	{ virtual_cam 
+		targetid = world 
+		targetOffset = VECTOR(-7798.6, 917.5, -8623.3) 
+		positionOffset = VECTOR(-852.5, 312.8, -1455) 
+		frames = 200 
+		skippable = 1 
+		goal = BO_Goal_Gaps9 
+		time = 6000 
+	} 
+	{ virtual_cam 
+		targetid = world 
+		targetOffset = VECTOR(-7312.4, 2843.3, 9689.3) 
+		positionOffset = VECTOR(-1682.1, 685.3, 1711.7) 
+		frames = 200 
+		skippable = 1 
+		goal = BO_Goal_Gaps10 
+		time = 6000 
+	} 
+	{ virtual_cam 
+		targetid = world 
+		targetOffset = VECTOR(-7043.4, 340, -4676.4) 
+		positionOffset = VECTOR(2455.7, 212.3, -1555.5) 
+		frames = 200 
+		skippable = 1 
+		goal = BO_Goal_SkateTheLine2 
+		time = 6000 
+	} 
+] 
+BO_Ben_Goal_Intro_Cameras = [ { virtual_cam 
+		targetid = world 
+		targetOffset = VECTOR(6260.1, -1497.7, -10240.3) 
+		positionOffset = VECTOR(170.7, 474.6, -2557.3) 
+		frames = 615 
+		skippable = 1 
+		text = "New goal list unlocked.  Guest goals!\\nNew Special Trick - The Franklin Grind!" 
+		time = 10000 
+		cam_start_script = FirstSwap_VO 
+	} 
+	{ virtual_cam 
+		targetid = world 
+		targetOffset = VECTOR(-4386, -1904, -8506.7) 
+		positionOffset = VECTOR(2019.3, 378, -1174.4) 
+		frames = 200 
+		skippable = 1 
+		goal = BO_Goal_Gaps3 
+		time = 6000 
+	} 
+	{ virtual_cam 
+		targetid = world 
+		targetOffset = VECTOR(319, 376, 3038) 
+		positionOffset = VECTOR(226, 616, 2873) 
+		frames = 200 
+		skippable = 1 
+		goal = BO_Goal_HighCombo 
+		time = 6000 
+	} 
+	{ virtual_cam 
+		targetid = world 
+		targetOffset = VECTOR(-5563.2, 196.8, -9382.8) 
+		positionOffset = VECTOR(693.4, 390.5, -1584.2) 
+		frames = 200 
+		skippable = 1 
+		goal = BO_Goal_SkateTheLine3 
+		time = 6000 
+	} 
+	{ virtual_cam 
+		targetid = world 
+		targetOffset = VECTOR(-7160.8, -855.5, -5340.2) 
+		positionOffset = VECTOR(-28.4, 173.7, 1592.9) 
+		frames = 200 
+		skippable = 1 
+		goal = BO_Goal_Gaps11 
+		time = 6000 
+	} 
+] 
+BO_Jesse_Goal_Intro_Cameras = [ { virtual_cam 
+		targetid = world 
+		targetOffset = VECTOR(5252.4, 147.3, -9043.9) 
+		positionOffset = VECTOR(-1211.7, 197.5, -1414.3) 
+		frames = 615 
+		skippable = 1 
+		text = "New goal list unlocked.  Secret goals!" 
+		time = 10000 
+		cam_start_script = FirstSwap_VO 
+	} 
+	{ virtual_cam 
+		targetid = world 
+		targetOffset = VECTOR(10968.2, -2792.7, -1774.3) 
+		positionOffset = VECTOR(2133.1, 180.7, 1844.8) 
+		frames = 200 
+		skippable = 1 
+		goal = BO_Goal_gaps15 
+		time = 6000 
+	} 
+	{ virtual_cam 
+		targetid = world 
+		targetOffset = VECTOR(5906.1, -2055.8, 3512.2) 
+		positionOffset = VECTOR(-2516.8, 357.5, -1307.5) 
+		frames = 200 
+		skippable = 1 
+		goal = BO_Goal_Gaps14 
+		time = 6000 
+	} 
+	{ virtual_cam 
+		targetid = world 
+		targetOffset = VECTOR(-83.3, -943.2, -11344.4) 
+		positionOffset = VECTOR(3275.2, 179.5, -1992.4) 
+		frames = 200 
+		skippable = 1 
+		goal = BO_Goal_SkateTheLine4 
+		time = 6000 
+	} 
+	{ virtual_cam 
+		targetid = world 
+		targetOffset = VECTOR(4256.4, -1429.5, -7047.6) 
+		positionOffset = VECTOR(-266.3, 191.1, 1722.7) 
+		frames = 200 
+		skippable = 1 
+		goal = BO_Goal_SkateTheLine 
+		time = 6000 
+	} 
+] 
+SCRIPT BO_Intro_Line1 
+	TRG_Ped_Hawk : Obj_PlayFam BO_Intro_01_Lip vol = 160 priority = StreamPriorityHighest 
+ENDSCRIPT
+
+SCRIPT BO_Intro_Line2 
+	TRG_Ped_Hawk : Obj_PlayFam BO_Intro_02_Lip vol = 160 priority = StreamPriorityHighest 
+ENDSCRIPT
+
+SCRIPT BO_Intro_Line3 
+	TRG_Ped_Hawk : Obj_PlayFam BO_Intro_03_Lip vol = 160 priority = StreamPriorityHighest 
+ENDSCRIPT
+
+SCRIPT BO_Setup 
+	BO_CreateCars 
+	BO_CreatePeds all 
+	BO_Initializer 
+ENDSCRIPT
+
+SCRIPT BO_startup 
+	LoadAsset "levels\\BO\\CAM_ComboBench.ska" desc = CAM_ComboBench 
+	LoadAsset "levels\\BO\\CAM_SkateStoppers.ska" desc = CAM_SkateStoppers 
+	LoadAsset "levels\\BO\\CAM_Tag.ska" desc = CAM_Tag 
+	IF NOT InNetGame 
+		LoadAsset "cutscenes\\BO_SmallEvent_Scaffold.cut" desc = BO_SmallEvent_Scaffold 
+	ENDIF 
+	LoadAsset "cutscenes\\BO_SmallEvent_Ship.cut" desc = BO_SmallEvent_Ship 
+	LoadAsset "models\\gameobjects\\projectiles\\apple\\apple.tex" 
+	LoadAsset "models\\gameobjects\\projectiles\\apple\\apple.mdl" parent = %"models\gameobjects\projectiles\apple\apple.tex" 
+	IF GameModeEquals is_career 
+		LoadAsset "models\\veh\\veh_gurney\\veh_gurney.tex" 
+		LoadAsset "models\\veh\\veh_gurney\\veh_gurney.skin" parent = %"models\veh\veh_gurney\veh_gurney.tex" 
+	ENDIF 
+	IF InNetGame 
+		LoadAsset "models\\animals\\anl_pigeon\\anl_pigeon.tex" 
+		LoadAsset "models\\animals\\anl_pigeon\\anl_pigeon.skin" parent = %"models\animals\anl_pigeon\anl_pigeon.tex" 
+		animload_anl_pigeon 
+	ENDIF 
+	LoadSkeleton name = "skeletons/CS_ShipEvent_Rope_R.ske" CS_ShipEvent_Rope_R 
+	LoadSkeleton name = "skeletons/CS_ShipEvent_Rope_L.ske" CS_ShipEvent_Rope_L 
+	LoadSkeleton name = "skeletons/CS_ShipEvent_Rope_F.ske" CS_ShipEvent_Rope_F 
+	LoadSkeleton name = "skeletons/CS_ShipEvent_Rope_B.ske" CS_ShipEvent_Rope_B 
+ENDSCRIPT
+
+SCRIPT BO_KillCreate_NetGeo 
+	IF ( ( InMultiplayerGame ) | ( InNetGame ) ) 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_Goals 
+	IF InMultiplayerGame 
+		add_multiplayer_mode_goals 
+	ENDIF 
+	IF NOT InSplitScreenGame 
+		IF ( ( GameModeEquals is_classic ) | ( InNetGame ) ) 
+			printf "adding classic goals" 
+			AddGoal_HighScore { 
+				unlimited_time 
+				classic_mode_goal 
+				score = BO_Classic_HighScore 
+				goal_text = BO_Classic_HighScore_Text 
+				view_goals_text = BO_Classic_HighScore_Text 
+				view_goals_cameras = [ { 
+						name = CAM_Classic_Intro01 
+						frames = 1200 
+						skippable = 1 
+					} 
+				] 
+				difficulty_level_params = [ 
+					{ score = BO_Classic_Easy_HighScore 
+						goal_text = BO_Classic_Easy_HighScore_Text 
+						view_goals_text = BO_Classic_Easy_HighScore_Text 
+					} 
+					{ score = BO_Classic_HighScore 
+						goal_text = BO_Classic_HighScore_Text 
+						view_goals_text = BO_Classic_HighScore_Text 
+					} 
+				] 
+			} 
+			AddGoal_ProScore { 
+				unlimited_time 
+				classic_mode_goal 
+				difficulty_level_params = [ 
+					{ 
+						score = BO_Classic_Easy_ProScore 
+						goal_text = BO_Classic_Easy_ProScore_Text 
+						view_goals_text = BO_Classic_Easy_ProScore_Text 
+					} 
+					{ 
+						score = BO_Classic_ProScore 
+						goal_text = BO_Classic_ProScore_Text 
+						view_goals_text = BO_Classic_ProScore_Text 
+					} 
+				] 
+			} 
+			AddGoal_SickScore { 
+				unlimited_time 
+				classic_mode_goal 
+				difficulty_level_params = [ 
+					{ 
+						score = BO_Classic_Easy_SickScore 
+						goal_text = BO_Classic_Easy_SickScore_Text 
+						view_goals_text = BO_Classic_Easy_SickScore_Text 
+					} 
+					{ 
+						score = BO_Classic_SickScore 
+						goal_text = BO_Classic_SickScore_Text 
+						view_goals_text = BO_Classic_SickScore_Text 
+					} 
+				] 
+			} 
+			AddGoal_HighCombo { 
+				unlimited_time 
+				classic_mode_goal 
+				difficulty_level_params = [ 
+					{ 
+						score = BO_Classic_Easy_HighCombo 
+						goal_text = BO_Classic_Easy_HighCombo_Text 
+						view_goals_text = BO_Classic_Easy_HighCombo_Text 
+					} 
+					{ 
+						score = BO_Classic_HighCombo 
+						goal_text = BO_Classic_HighCombo_Text 
+						view_goals_text = BO_Classic_HighCombo_Text 
+					} 
+				] 
+			} 
+			AddGoal_Skate { 
+				unlimited_time 
+				classic_mode_goal 
+				S_obj_id = TRG_SKATE_S 
+				K_obj_id = TRG_SKATE_K 
+				A_obj_id = TRG_SKATE_A 
+				T_obj_id = TRG_SKATE_T 
+				E_obj_id = TRG_SKATE_E 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(-8423, 1358.3, 2576.2) 
+						positionOffset = VECTOR(447.1, 443.9, -1949.5) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+			} 
+			AddGoal_Combo { 
+				unlimited_time 
+				classic_mode_goal 
+				letter_info = [ 
+					{ obj_id = TRG_COMBO_C text = "C" } 
+					{ obj_id = TRG_COMBO_O text = "O" } 
+					{ obj_id = TRG_COMBO_M text = "M" } 
+					{ obj_id = TRG_COMBO_B text = "B" } 
+					{ obj_id = TRG_COMBO_O01 text = "O" } 
+				] 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(9611.7, 935.3, -3221.8) 
+						positionOffset = VECTOR(-184.1, 216.3, -1344.3) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+			} 
+			AddGoal_collect { 
+				unlimited_time 
+				classic_mode_goal 
+				collect_type = "Tea Barrels" 
+				goal_text = "Smash 5 tea barrels" 
+				view_goals_text = "Smash 5 tea barrels" 
+				use_hud_counter 
+				init_script = BO_Goal_Classic_Barrels_Init 
+				goal_deactivate_script = BO_Goal_Classic_Barrels_Deactivate 
+				hud_counter_caption = "Barrels smashed" 
+				goal_flags = [ got_1 
+					got_2 
+					got_3 
+					got_4 
+					got_5 
+				] 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(-4189.4, -202.9, 9123.5) 
+						positionOffset = VECTOR(34, 64.2, 63.2) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+			} 
+			AddGoal_SecretTape { 
+				classic_mode_goal 
+				goal_text = "Get the secret tape" 
+				view_goals_text = "Get the secret tape" 
+				goal_description = "Get the secret tape" 
+				secret_tape_id = TRG_BO_Secret_Tape 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(9771.4, -2486.2, -5731.4) 
+						positionOffset = VECTOR(1773.7, 1063.8, -890.9) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+			} 
+			AddGoal_gaps { 
+				unlimited_time 
+				classic_mode_goal 
+				version = 2 
+				goal_text = "Backflip (\\b2+\\b4+\\b4) down the Common Stairs" 
+				view_goals_text = "Backflip (\\b2+\\b4+\\b4) down the Common Stairs" 
+				goal_description = "Backflip (\\b2+\\b4+\\b4) down the Common Stairs" 
+				goal_flags = [ got_1 
+				] 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(4496.6, -1927.8, -8170.2) 
+						positionOffset = VECTOR(-1178.4, 148.5, -202.7) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+			} 
+			AddGoal_collect { 
+				classic_mode_goal 
+				unlimited_time 
+				version = 2 
+				collect_type = "pigeon rails" 
+				use_hud_counter 
+				hud_counter_caption = "pigeon rails" 
+				goal_text = "Grind the 5 pigeon rails" 
+				view_goals_text = "Grind the 5 pigeon rails" 
+				goal_description = "Grind the 5 pigeon rails" 
+				goal_flags = [ got_1 
+					got_2 
+					got_3 
+					got_4 
+					got_5 
+				] 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(-8205.8, 161.6, -6953.3) 
+						positionOffset = VECTOR(113.4, 206.1, -1404.6) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+			} 
+		ELSE 
+			IF NOT ( ( GameModeEquals is_singlesession ) | ( GameModeEquals is_creategoals ) ) 
+				IF NOT InNetGame 
+					BO_AddGoal_FindJesse 
+					BO_AddGoal_FindBen 
+					BO_AddGoal_Spat 
+					BO_AddGoal_Gurney 
+					BO_AddGoal_TimedScoreRun 
+					BO_AddGoal_TrickToTheBeat 
+					BO_AddGoal_Statues 
+					bo_addgoal_RvCombo 
+					BO_AddGoal_ComboBenches 
+					BO_AddGoal_CannonGrind 
+					BO_AddGoal_Skitchin 
+					BO_AddGoal_Washington 
+					bo_addgoal_FireCombo 
+					BO_AddGoal_SignSlap 
+					BO_AddGoal_Billboard 
+					BO_AddGoal_FinestRails 
+					BO_addgoal_Gap15 
+					BO_AddGoal_Gap14 
+					BO_AddGoal_SkateTheLine4 
+					BO_AddGoal_SkateTheLine 
+					BO_AddGoal_Gap3 
+					BO_addgoal_highcombo 
+					BO_AddGoal_SkateTheLine3 
+					BO_AddGoal_Gap11 
+				ENDIF 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_AddGoal_FindJesse 
+	AddGoal_gaps { 
+		version = 12 
+		silent_activation 
+		skater = custom 
+		reward_points = 25 
+		view_goals_text = BO_Gap12_Goal_Text 
+		goal_description = BO_Gap12_Goal_Description 
+		view_goals_tip = BO_Gap12_Goal_Tip 
+		goal_flags = [ got_1 
+		] 
+		pro = "JesseJames" 
+		full_name = "Jesse James" 
+		success_node = TRG_Restart_Jeers 
+		success_cam_anims = [ 
+			{ virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(-8345.7, -1357, -9475) 
+				positionOffset = VECTOR(-1582.5, -142.2, -2209.8) 
+				frames = 100 
+				skippable = 1 
+				pre_anim_script = BO_Gaps12_success 
+				cam_anim_text = JesseJames_BO_Goal_Gaps12_Camanim01 
+			} 
+			{ virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(-10865.3, -2949.6, 3243.9) 
+				positionOffset = VECTOR(-2625.9, 342.5, -1368.4) 
+				frames = 150 
+				skippable = 1 
+				pre_anim_script = BO_Gaps12_Post_Success1 
+				cam_anim_text = JesseJames_BO_Goal_Gaps12_Camanim02 
+			} 
+			{ virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(-10863.9, -1552.3, -673.5) 
+				positionOffset = VECTOR(-1054.1, 210.9, -1484.8) 
+				frames = 150 
+				skippable = 1 
+				pre_anim_script = BO_Gaps12_Post_Success2 
+				post_anim_script = BO_Gaps12_Exit 
+				cam_anim_text = JesseJames_BO_Goal_Gaps12_Camanim03 
+			} 
+		] 
+	} 
+ENDSCRIPT
+
+SCRIPT BO_AddGoal_Statues 
+	AddGoal_gaps { 
+		silent_activation 
+		version = 5 
+		skater = custom 
+		reward_points = 50 
+		view_goals_text = BO_Gap5_Goal_Text 
+		goal_description = BO_Gap5_Goal_Description 
+		view_goals_tip = BO_Gap5_Goal_Tip 
+		view_goals_cameras = [ 
+			{ 
+				targetOffset = VECTOR(-1012, -1458.2, -9245.3) 
+				positionOffset = VECTOR(-951, 297.7, 599.1) 
+				time = 2 
+			} 
+			{ 
+				targetOffset = VECTOR(114.8, 460.1, -12085.7) 
+				positionOffset = VECTOR(229.7, 510.7, -2086.5) 
+				time = 3 
+			} 
+		] 
+		collect_type = "Statues" 
+		use_hud_counter 
+		hud_counter_caption = "Statues\\nBeheaded" 
+		goal_flags = [ got_1 
+			got_2 
+			got_3 
+		] 
+	} 
+ENDSCRIPT
+
+SCRIPT BO_AddGoal_Gurney 
+	AddGoal_gaps { 
+		version = 7 
+		unlimited_time 
+		skater = custom 
+		reward_points = 50 
+		view_goals_text = BO_Gap7_Goal_Text 
+		goal_description = BO_Gap7_Goal_Description 
+		view_goals_tip = BO_Gap7_Goal_Tip 
+		goal_text = "Steal the gurney" 
+		goal_success_script = BO_Goal_Gap7_Success 
+		goal_deactivate_script = BO_Goal_Gap7_Deactivate 
+		success_node = TRG_Restart_Street01 
+		restart_node = TRG_Restart_Gurney 
+		can_retry_goal 
+		view_goals_cameras = [ 
+			{ targetOffset = VECTOR(10953, -1790.3, -5100.8) 
+				positionOffset = VECTOR(2990, 100.8, 645) 
+				time = 2 
+			} 
+			{ targetOffset = VECTOR(-11911.1, 2413, -4206.6) 
+				positionOffset = VECTOR(-2676.5, 171, -1092.8) 
+				time = 2 
+			} 
+		] 
+		goal_flags = [ got_1 
+		] 
+		success_cam_anims = [ 
+			{ virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(-7733.6, -3043.4, -9037.8) 
+				positionOffset = VECTOR(-2665.9, 201.7, -1051.1) 
+				frames = 100 
+				skippable = 1 
+				pre_anim_script = BO_Goal_Gap7_Pre_Success 
+				cam_anim_text = [ "Wow, it really is Tony Hawk.  Now I feel much better.  I think I\'ll go skate! " 
+				] 
+			} 
+		] 
+	} 
+ENDSCRIPT
+
+SCRIPT BO_AddGoal_FindBen 
+	AddGoal_gaps { 
+		silent_activation 
+		reward_points = 25 
+		view_goals_text = BO_Gaps_Goal_Text 
+		goal_description = BO_Gaps_Goal_Description 
+		view_goals_tip = BO_Gaps_Goal_Tip 
+		view_goals_cameras = [ 
+			{ targetOffset = VECTOR(-2755.3, 2970.3, -10698.4) positionOffset = VECTOR(975.8, 282.1, -1818.6) } 
+		] 
+		goal_flags = [ got_1 ] 
+		skater = custom 
+		success_cam_anims = [ 
+			{ virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(4202.8, -1205.8, -11270.8) 
+				positionOffset = VECTOR(140.3, 493.5, -2292.6) 
+				frames = 100 
+				skippable = 1 
+				pre_anim_script = BO_Gaps_Success 
+			} 
+		] 
+	} 
+ENDSCRIPT
+
+SCRIPT BO_AddGoal_Spat 
+	AddGoal_gaps { 
+		version = 8 
+		skater = custom 
+		silent_activation 
+		reward_points = 50 
+		collect_type = "Spat Tags" 
+		view_goals_text = BO_Gap8_Goal_Text 
+		goal_description = BO_Gap8_Goal_Description 
+		goal_success_script = BO_Gap8_Goal_Success 
+		view_goals_tip = BO_Gap8_Goal_Tip 
+		view_goals_cameras = [ 
+			{ targetOffset = VECTOR(12114.8, -1581.2, -3858.6) 
+				positionOffset = VECTOR(3273.4, 455.2, 346.5) 
+			} 
+		] 
+		goal_flags = [ got_1 
+			got_2 
+			got_3 
+			got_4 
+			got_5 
+		] 
+	} 
+ENDSCRIPT
+
+SCRIPT BO_AddGoal_TimedScoreRun 
+	AddGoal_TimedScoreRun { 
+		reward_points = 50 
+		view_goals_text = BO_TimedScoreRun_View_Goal_Text 
+		goal_text = BO_TimedScoreRun_Goal_Text 
+		goal_description = BO_TimedScoreRun_Goal_Description 
+		view_goals_cameras = [ 
+			{ targetOffset = VECTOR(6155.3, 1086.5, -6224.1) 
+				positionOffset = VECTOR(-2578.1, 182.2, -1437.6) 
+			} 
+		] 
+		time = 60 
+		skater = custom 
+		trigger_obj_id = TRG_Arcade_Machine 
+		pro = "Arcade machine" 
+		trigger_wait_script = nullscript 
+		trigger_start_script = arcade_machine_start_goal 
+		trigger_success_script = nullscript 
+		can_retry_goal 
+		restart_node = TRG_Restart01 
+		always_initialize_goal 
+		dont_kill_trigger_on_success 
+	} 
+ENDSCRIPT
+
+SCRIPT BO_AddGoal_TrickToTheBeat 
+	AddGoal_TrickBeat { 
+		dont_bounce_skater 
+		unlimited_time = 0 
+		reward_points = 50 
+		view_goals_text = BO_TrickToTheBeat_View_Goal_Text 
+		goal_text = BO_TrickToTheBeat_Goal_Text 
+		goal_description = BO_TrickToTheBeat_Goal_Description 
+		view_goals_tip = BO_TrickToTheBeat_Goal_Tip 
+		view_goals_cameras = [ 
+			{ targetOffset = VECTOR(-3104.9, -687.1, 8586.1) 
+			positionOffset = VECTOR(-689.4, 154.6, -1081.2) } 
+		] 
+		skater = custom 
+		time = 60 
+		can_retry_goal 
+		restart_node = TRG_Restart_BeatBox 
+		pro = "Boombox" 
+		trigger_obj_id = TRG_BeatBox 
+		always_initialize_goal 
+		trigger_wait_script = nullscript 
+		trigger_start_script = BeatBox_start_goal 
+		trigger_success_script = nullscript 
+		beat_window_time = 255 
+		total_to_win = 10 
+		block_size = 1 
+		goal_trick_beat_key_combos = [ 
+			Air_SquareD 
+			Air_SquareR 
+			Air_SquareL 
+			Air_SquareU 
+		] 
+		tempo = 105 
+		beat_pattern = [ 
+			{ sounds = [ { TrickBeat_Kick01 vol = ( ( BO_MUSIC_KickDrumVolume * 2 ) + RANDOM_RANGE PAIR(0.1, 4) ) pitch = ( 100 + RANDOM_RANGE PAIR(0.1, 3) ) } ] 
+			} 
+			{ } 
+			{ sounds = [ { TrickBeat_HiHat01 vol = ( BO_MUSIC_HiHatVolume + RANDOM_RANGE PAIR(0.1, 4) ) pitch = ( 100 + RANDOM_RANGE PAIR(0.1, 3) ) } ] 
+			} 
+			{ } 
+			{ pulse 
+				sounds = [ { SK6_BO_RevolutionaryDrum01 vol = ( BO_MUSIC_SnareDrumVolume + RANDOM_RANGE PAIR(0.1, 4) ) pitch = ( 160 + RANDOM_RANGE PAIR(0.1, 3) ) } ] 
+			} 
+			{ } 
+			{ sounds = [ { TrickBeat_HiHat01 vol = ( BO_MUSIC_HiHatVolume + RANDOM_RANGE PAIR(0.1, 4) ) pitch = ( 100 + RANDOM_RANGE PAIR(0.1, 3) ) } ] 
+			} 
+			{ 
+				sounds = [ { TrickBeat_Kick01 vol = ( ( BO_MUSIC_KickDrumVolume * 2 ) + RANDOM_RANGE PAIR(0.1, 4) ) pitch = ( 100 + RANDOM_RANGE PAIR(0.1, 3) ) } ] 
+			} 
+			{ 
+				sounds = [ { TrickBeat_Kick01 vol = ( ( BO_MUSIC_KickDrumVolume * 2 ) + RANDOM_RANGE PAIR(0.1, 4) ) pitch = ( 100 + RANDOM_RANGE PAIR(0.1, 3) ) } ] 
+			} 
+			{ } 
+			{ sounds = [ { TrickBeat_Kick01 vol = ( ( BO_MUSIC_KickDrumVolume * 2 ) + RANDOM_RANGE PAIR(0.1, 4) ) pitch = ( 100 + RANDOM_RANGE PAIR(0.1, 3) ) } 
+				{ TrickBeat_HiHat01 vol = ( BO_MUSIC_HiHatVolume + RANDOM_RANGE PAIR(0.1, 4) ) pitch = ( 100 + RANDOM_RANGE PAIR(0.1, 3) ) } ] 
+			} 
+			{ } 
+			{ pulse 
+				sounds = [ { SK6_BO_RevolutionaryDrum01 vol = ( BO_MUSIC_SnareDrumVolume + RANDOM_RANGE PAIR(0.1, 4) ) pitch = ( 160 + RANDOM_RANGE PAIR(0.1, 3) ) } ] 
+			} 
+			{ } 
+			{ sounds = [ { TrickBeat_HiHat01 vol = ( BO_MUSIC_HiHatVolume + RANDOM_RANGE PAIR(0.1, 4) ) pitch = ( 100 + RANDOM_RANGE PAIR(0.1, 3) ) } ] 
+			} 
+			{ } 
+		] 
+	} 
+ENDSCRIPT
+
+SCRIPT bo_addgoal_RvCombo 
+	AddGoal_HighCombo { 
+		version = 3 
+		skater = custom 
+		silent_activation 
+		no_fail_messages 
+		reward_points = 75 
+		view_goals_text = BO_RVCombo_Goal_Text 
+		view_goals_tip = BO_RVCombo_Goal_Tip 
+		difficulty_level_params = [ 
+			{ 
+				score = BO_RVCombo_Easy 
+				goal_description = BO_RVCombo_Easy_Goal_Description 
+			} 
+			{ 
+				score = BO_RVCombo_Normal 
+				goal_description = BO_RVCombo_Normal_Goal_Description 
+			} 
+			{ 
+				score = BO_RVCombo_Hard 
+				goal_description = BO_RVCombo_Hard_Goal_Description 
+			} 
+		] 
+		view_goals_cameras = [ { targetOffset = VECTOR(-10744.9, -3540.7, 2882.6) 
+				positionOffset = VECTOR(-2649.2, 399.6, -1468.8) 
+			} 
+		] 
+	} 
+ENDSCRIPT
+
+SCRIPT BO_AddGoal_Washington 
+	AddGoal_gaps { 
+		version = 13 
+		unlocked_by_another 
+		skater = pro 
+		silent_activation 
+		reward_points = 25 
+		view_goals_text = BO_Gap13_Goal_Text 
+		goal_description = BO_Gap13_Goal_Description 
+		goal_success_script = BO_Goal_Gaps13_success 
+		view_goals_tip = BO_Gap13_Goal_Tip 
+		view_goals_cameras = [ 
+			{ targetOffset = VECTOR(-6593.1, -1857.8, 7858.3) 
+			positionOffset = VECTOR(-765.3, 320.2, 29.4) } 
+		] 
+		key_combos = [ Air_CircleDL ] 
+		goal_flags = [ got_1 
+		] 
+	} 
+ENDSCRIPT
+
+SCRIPT BO_AddGoal_Billboard 
+	AddGoal_gaps { 
+		version = 10 
+		unlocked_by_another 
+		silent_activation 
+		reward_points = 50 
+		view_goals_text = BO_Gap10_Goal_Text 
+		goal_description = BO_Gap10_Goal_Description 
+		view_goals_tip = BO_Gap10_Goal_Tip 
+		goal_flags = [ got_1 
+		] 
+		skater = pro 
+		goal_success_script = BO_Gaps10_Success 
+		view_goals_cameras = [ 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(-7312.4, 2843.3, 9689.3) 
+				positionOffset = VECTOR(-1682.1, 685.3, 1711.7) 
+			} 
+		] 
+	} 
+ENDSCRIPT
+
+SCRIPT BO_AddGoal_FinestRails 
+	AddGoal_SkateTheLine { 
+		skater = pro 
+		version = 2 
+		unlocked_by_another 
+		reward_points = 50 
+		can_retry_goal 
+		restart_node = TRG_Restart_Finest 
+		view_goals_text = BO_SkateTheLine2_Goal_Text 
+		goal_description = BO_SkateTheLine2_Goal_Description 
+		goal_text = "Finest Rails in Boston" 
+		view_goals_tip = BO_SkateTheLine2_Goal_Tip 
+		goal_success_script = BO_FinestRails_Success 
+		view_goals_cameras = [ 
+			{ targetOffset = VECTOR(-7043.4, 340, -4676.4) 
+				positionOffset = VECTOR(2455.7, 212.3, -1555.5) 
+				time = 2 
+			} 
+			{ targetOffset = VECTOR(-8803.4, -716.6, -7722.9) 
+				positionOffset = VECTOR(-1181.3, 301.8, -1330.3) 
+				time = 2 
+			} 
+			{ targetOffset = VECTOR(-10132.5, -2498.2, 4339.4) 
+				positionOffset = VECTOR(-2253.8, 621.3, -970.4) 
+				time = 2 
+			} 
+		] 
+		goal_flags = [ 
+			got_1 
+			got_2 
+			got_3 
+		] 
+		unlimited_time = 0 
+		goal_objects = [ 
+			{ 
+				flag = got_1 
+				time = 20 
+				trick_objects = [ 
+					{ name = BO_Metals light_group = outdoor } 
+				] 
+			} 
+			{ 
+				text = "Finest rails in Boston\\nNext grind the rail in front of Jeers" 
+				flag = got_2 
+				time = 20 
+				trick_objects = [ 
+					{ name = BO_CheersRail light_group = outdoor } 
+				] 
+			} 
+			{ 
+				text = "Finest rails in Boston\\nFinally grind the kid\'s museum rail" 
+				flag = got_3 
+				time = 20 
+				trick_objects = [ 
+					{ name = JG_YMCA_StairRails light_group = outdoor } 
+				] 
+			} 
+		] 
+	} 
+ENDSCRIPT
+
+SCRIPT BO_AddGoal_ComboBenches 
+	AddGoal_TrickTheObjects { 
+		skater = pro 
+		unlocked_by_another 
+		reward_points = 25 
+		view_goals_text = BO_TrickTheObjects_Goal_Text 
+		goal_description = BO_TrickTheObjects_Goal_Description 
+		view_goals_tip = BO_TrickTheObjects_Goal_Tip 
+		view_goals_cameras = [ 
+			{ targetOffset = VECTOR(-3664.2, -2505.3, -7785) 
+			positionOffset = VECTOR(0.7, 160, 1129.3) } 
+		] 
+		goal_objects = [ 
+			{ cluster_id = Bench_Park01 flag = got_1 } 
+			{ cluster_id = Bench_Park02 flag = got_2 } 
+			{ cluster_id = Bench_Park04 flag = got_3 } 
+			{ cluster_id = Bench_Park06 flag = got_4 } 
+		] 
+		goal_flags = [ 
+			got_1 
+			got_2 
+			got_3 
+			got_4 
+		] 
+		trick_object_prefix = "Bench_Park" 
+		trick_object_light_group = outdoor 
+		require_combo 
+		no_fail_messages 
+	} 
+ENDSCRIPT
+
+SCRIPT BO_AddGoal_Skitchin 
+	AddGoal_gaps { 
+		version = 6 
+		skater = pro 
+		silent_activation 
+		unlocked_by_another 
+		reward_points = 25 
+		view_goals_text = BO_Gap6_Goal_Text 
+		goal_description = BO_Gap6_Goal_Description 
+		view_goals_tip = BO_Gap6_Goal_Tip 
+		goal_flags = [ got_1 
+		] 
+	} 
+ENDSCRIPT
+
+SCRIPT BO_AddGoal_SignSlap 
+	AddGoal_gaps { 
+		version = 9 
+		silent_activation 
+		skater = pro 
+		unlocked_by_another 
+		reward_points = 25 
+		view_goals_text = BO_Gap9_Goal_Text 
+		goal_description = BO_Gap9_Goal_Description 
+		view_goals_tip = BO_Gap9_Goal_Tip 
+		collect_type = "Signs" 
+		use_hud_counter 
+		hud_counter_caption = "Signs\\ndestroyed" 
+		view_goals_cameras = [ { targetOffset = VECTOR(-7798.6, 917.5, -8623.3) 
+				positionOffset = VECTOR(-852.5, 312.8, -1455) 
+				time = 2 
+			} 
+			{ targetOffset = VECTOR(-3780.3, 440.9, 4900.7) 
+				positionOffset = VECTOR(2496.1, 395.2, -2884.1) 
+				time = 2 
+			} 
+			{ targetOffset = VECTOR(8308.5, -1182.3, -5327.7) 
+				positionOffset = VECTOR(1924, 316.7, 2221.5) 
+				time = 2 
+			} 
+			{ targetOffset = VECTOR(5090.5, 58.1, -8592.7) 
+				positionOffset = VECTOR(490.2, 106.3, 286.1) 
+				time = 2 
+			} 
+		] 
+		goal_flags = [ got_1 
+			got_2 
+			got_3 
+			got_4 
+		] 
+	} 
+ENDSCRIPT
+
+SCRIPT bo_addgoal_FireCombo 
+	AddGoal_HighCombo { 
+		version = 2 
+		unlocked_by_another 
+		silent_activation 
+		no_fail_messages 
+		skater = pro 
+		reward_points = 25 
+		view_goals_text = BO_FireCombo_Goal_Text 
+		view_goals_tip = BO_FireCombo_Goal_Tip 
+		goal_success_script = BO_FireCombo_Success 
+		difficulty_level_params = [ 
+			{ 
+				score = BO_FireCombo_Easy 
+				goal_description = BO_FireCombo_Easy_Goal_Description 
+			} 
+			{ 
+				score = BO_FireCombo_Normal 
+				goal_description = BO_FireCombo_Normal_Goal_Description 
+			} 
+			{ 
+				score = BO_FireCombo_Hard 
+				goal_description = BO_FireCombo_Hard_Goal_Description 
+			} 
+		] 
+		view_goals_cameras = [ { targetOffset = VECTOR(-6681.4, 3725.2, 8989.7) 
+				positionOffset = VECTOR(-1622.4, 24, 1198.5) 
+			} 
+		] 
+	} 
+ENDSCRIPT
+
+SCRIPT BO_AddGoal_CannonGrind 
+	AddGoal_gaps { 
+		version = 4 
+		skater = pro 
+		unlocked_by_another 
+		silent_activation 
+		reward_points = 25 
+		view_goals_text = BO_Gap4_Goal_Text 
+		goal_description = BO_Gap4_Goal_Description 
+		view_goals_tip = BO_Gap4_Goal_Tip 
+		view_goals_cameras = [ 
+			{ targetOffset = VECTOR(4068.4, -914.5, -7058.4) 
+				positionOffset = VECTOR(-1105.8, 111.5, 1437.1) 
+			} 
+		] 
+		goal_flags = [ got_1 ] 
+	} 
+ENDSCRIPT
+
+SCRIPT BO_AddGoal_SkateTheLine3 
+	AddGoal_SkateTheLine { 
+		can_retry_goal 
+		restart_node = TRG_Restart_BenFranklin 
+		skater = benfranklin 
+		version = 3 
+		unlocked_by_another 
+		reward_points = 50 
+		goal_success_script = BO_SkateTheLine3_Success 
+		view_goals_text = BO_SkateTheLine3_Goal_Text 
+		view_goals_tip = BO_SkateTheLine3_Goal_Tip 
+		goal_description = BO_SkateTheLine3_Goal_Description 
+		view_goals_cameras = [ 
+			{ targetOffset = VECTOR(-5563.2, 196.8, -9382.8) 
+				positionOffset = VECTOR(693.4, 390.5, -1584.2) 
+				time = 2 
+			} 
+			{ targetOffset = VECTOR(-3916.1, 2820.7, -6022) 
+				positionOffset = VECTOR(1609.2, 90.6, 1852.8) 
+				time = 2 
+			} 
+			{ targetOffset = VECTOR(8506.5, -1393, -804.4) 
+				positionOffset = VECTOR(-368.1, 268.2, 3494.3) 
+				time = 2 
+			} 
+		] 
+		goal_flags = [ 
+			got_1 
+			got_2 
+			got_3 
+		] 
+		key_combos = [ Air_SquareD ] 
+		unlimited_time = 0 
+		goal_objects = [ 
+			{ 
+				flag = got_1 
+				time = 20 
+				trick_objects = [ 
+					{ name = StraightStair02 light_group = outdoor } 
+					{ name = StraightStair03 light_group = outdoor } 
+				] 
+			} 
+			{ 
+				text = "Skate the liberty trail\\nNext Vert Transfer a library mural" 
+				flag = got_2 
+				time = 25 
+				trick_objects = [ 
+					{ name = BO_Library_Mural light_group = outdoor } 
+					{ name = BO_Library_Mural01 light_group = outdoor } 
+				] 
+			} 
+			{ 
+				text = "Skate the liberty trail\\nFinally Acid drop (\\ml) from the crow\'s nest of Tea Party Boat" 
+				flag = got_3 
+				time = 30 
+				trick_objects = [ 
+					{ name = BO_TeaPartyLadder light_group = outdoor } 
+				] 
+			} 
+		] 
+	} 
+ENDSCRIPT
+
+SCRIPT BO_AddGoal_Gap3 
+	AddGoal_gaps { 
+		version = 3 
+		silent_activation 
+		skater = benfranklin 
+		unlocked_by_another 
+		reward_points = 50 
+		view_goals_text = BO_Gap3_Goal_Text 
+		goal_description = BO_Gap3_Goal_Description 
+		view_goals_tip = BO_Gap3_Goal_Tip 
+		view_goals_cameras = [ 
+			{ targetOffset = VECTOR(-4386, -1904, -8506.7) 
+			positionOffset = VECTOR(2019.3, 378, -1174.4) } 
+		] 
+		goal_flags = [ got_1 
+		] 
+	} 
+ENDSCRIPT
+
+SCRIPT BO_addgoal_highcombo 
+	AddGoal_HighCombo { 
+		silent_activation 
+		no_fail_messages 
+		unlocked_by_another 
+		skater = benfranklin 
+		reward_points = 50 
+		view_goals_text = BO_HighCombo_Goal_Text 
+		view_goals_cameras = [ 
+			{ targetOffset = VECTOR(319, 376, 3038) 
+			positionOffset = VECTOR(226, 616, 2873) } 
+		] 
+		difficulty_level_params = [ 
+			{ 
+				score = BO_TeaParty_HighCombo_Easy 
+				goal_description = BO_HighCombo_Goal_Description_Easy 
+			} 
+			{ 
+				score = BO_TeaParty_HighCombo_Med 
+				goal_description = BO_HighCombo_Goal_Description_Med 
+			} 
+			{ 
+				score = BO_TeaParty_HighCombo_Hard 
+				goal_description = BO_HighCombo_Goal_Description_Hard 
+			} 
+		] 
+	} 
+ENDSCRIPT
+
+SCRIPT BO_AddGoal_Gap11 
+	AddGoal_gaps { 
+		version = 11 
+		silent_activation 
+		unlocked_by_another 
+		skater = benfranklin 
+		reward_points = 50 
+		view_goals_text = BO_Gap11_Goal_Text 
+		goal_description = BO_Gap11_Goal_Description 
+		collect_type = "Blader kickflips" 
+		view_goals_tip = BO_Gap11_Goal_Tip 
+		goal_flags = [ 
+			{ skater = pro goal_flags = [ got_1 ] } 
+			{ skater = custom goal_flags = [ got_1 ] } 
+			{ skater = benfranklin goal_flags = [ got_1 ] } 
+		] 
+	} 
+ENDSCRIPT
+
+SCRIPT BO_AddGoal_Gap14 
+	AddGoal_gaps { 
+		version = 14 
+		skater = segwayrider 
+		silent_activation 
+		view_goals_text = BO_Gap14_Goal_Text 
+		unlocked_by_another 
+		reward_points = 50 
+		collect_type = "Car Hops" 
+		goal_description = BO_Gap14_Goal_Description 
+		view_goals_tip = BO_Gap14_Goal_Tip 
+		goal_flags = [ got_1 
+			got_2 
+			got_3 
+		] 
+		success_cam_anims = [ 
+			{ virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(-7050.5, -331.5, -8791.3) 
+				positionOffset = VECTOR(-1028.9, 266.5, -830) 
+				frames = 100 
+				skippable = 1 
+				pre_anim_script = BO_Goal_Gaps14_success 
+				cam_anim_text = [ "Heads up chief, here it comes.  Now bust a big combo and you\'re bitchin\'." 
+				] 
+			} 
+		] 
+	} 
+ENDSCRIPT
+
+SCRIPT BO_AddGoal_SkateTheLine4 
+	AddGoal_SkateTheLine { 
+		skater = segwayrider 
+		unlocked_by_another 
+		version = 4 
+		reward_points = 50 
+		view_goals_text = BO_SkateTheLine4_Goal_Text 
+		goal_description = BO_SkateTheLine4_Goal_Description 
+		goal_success_script = BO_SkateTheLine4_Success 
+		goal_flags = [ 
+			got_1 
+			got_2 
+			got_3 
+			got_4 
+			got_5 
+		] 
+		unlimited_time = 0 
+		view_goals_cameras = [ 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(-83.3, -943.2, -11344.4) 
+				positionOffset = VECTOR(3275.2, 179.5, -1992.4) 
+			} 
+		] 
+		goal_objects = [ 
+			{ 
+				flag = got_1 
+				time = 200 
+				trick_objects = [ 
+					{ name = BO_tz_church01 light_group = outdoor } 
+				] 
+			} 
+			{ 
+				text = "Race Paulie to the Church steps!" 
+				flag = got_2 
+				time = 200 
+				trick_objects = [ 
+					{ name = BO_BarrierQP54 light_group = outdoor } 
+				] 
+			} 
+			{ 
+				text = "Now around the library!" 
+				flag = got_3 
+				time = 200 
+				trick_objects = [ 
+					{ name = BO_Hospital_Awning light_group = outdoor } 
+				] 
+			} 
+			{ 
+				text = "Quickly to the hospital entrance!" 
+				flag = got_4 
+				time = 200 
+			} 
+			{ 
+				text = "Now back to Government Center!" 
+				flag = got_5 
+				time = 200 
+				trick_objects = [ 
+					{ name = BO_Office26 light_group = outdoor } 
+				] 
+			} 
+		] 
+	} 
+ENDSCRIPT
+
+SCRIPT BO_AddGoal_SkateTheLine 
+	AddGoal_SkateTheLine { 
+		skater = segwayrider 
+		unlocked_by_another 
+		reward_points = 50 
+		view_goals_text = BO_SkateTheLine_Goal_Text 
+		goal_description = BO_SkateTheLine_Goal_Description 
+		view_goals_tip = BO_SkateTheLine_Goal_Tip 
+		view_goals_cameras = [ 
+			{ 
+				targetOffset = VECTOR(4256.4, -1429.5, -7047.6) 
+				positionOffset = VECTOR(-266.3, 191.1, 1722.7) 
+				time = 2 
+			} 
+			{ 
+				targetOffset = VECTOR(9553.3, -1484.5, -5149.4) 
+				positionOffset = VECTOR(1917.4, 250.9, 1069.8) 
+				time = 2 
+			} 
+			{ targetOffset = VECTOR(8034.3, -4505.2, 6043.8) 
+				positionOffset = VECTOR(-169.9, 346.6, 3019.9) 
+				time = 2 
+			} 
+		] 
+		goal_flags = [ 
+			got_1 
+			got_2 
+			got_3 
+		] 
+		unlimited_time = 0 
+		goal_objects = [ 
+			{ 
+				flag = got_1 
+				time = 15 
+				trick_objects = [ 
+					{ name = bo_HospitalVolcano02 light_group = outdoor } 
+					{ name = bo_HospitalVolcano03 light_group = outdoor } 
+				] 
+			} 
+			{ 
+				text = "Spine transfer tour\\nNext Spine Transfer a hospital volcano" 
+				flag = got_2 
+				time = 15 
+			} 
+			{ 
+				text = "Spine transfer tour\\nFinally Spine Transfer into the Tea Party Boat" 
+				flag = got_3 
+				time = 15 
+				trick_objects = [ 
+					{ name = bo_BarrierQP15 light_group = outdoor } 
+					{ name = BO_tz_boat_body light_group = outdoor } 
+				] 
+			} 
+			{ 
+				trick_objects = [ 
+					{ name = bo_subwayEntrance02 light_group = outdoor } 
+					{ name = bo_subwayEntrance03 light_group = outdoor } 
+					{ name = bo_subwayEntrance01 light_group = outdoor } 
+				] 
+			} 
+		] 
+	} 
+ENDSCRIPT
+
+SCRIPT BO_addgoal_Gap15 
+	AddGoal_gaps { 
+		version = 15 
+		skater = segwayrider 
+		silent_activation 
+		view_goals_text = BO_Skatestoppers_Goal_Text 
+		unlocked_by_another 
+		reward_points = 25 
+		collect_type = "Grind Blockers" 
+		view_goals_tip = BO_Skatestoppers_Goal_Tip 
+		goal_success_script = BO_Goal_Gaps15_success 
+		goal_description = BO_Skatestoppers_Goal_Description 
+		goal_flags = [ got_1 
+			got_2 
+			got_3 
+			got_4 
+		] 
+		view_goals_cameras = [ 
+			{ virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(10968.2, -2792.7, -1774.3) 
+				positionOffset = VECTOR(2133.1, 180.7, 1844.8) 
+				frames = 100 
+				skippable = 1 
+			} 
+		] 
+	} 
+ENDSCRIPT
+
+SCRIPT BO_Goal_Intro 
+ENDSCRIPT
+
+SCRIPT BO_CreateCars 
+ENDSCRIPT
+
+SCRIPT BO_CreatePeds 
+ENDSCRIPT
+
+SCRIPT BO_KillCars 
+ENDSCRIPT
+
+SCRIPT BO_KillPeds 
+ENDSCRIPT
+
+SCRIPT BO_FireCombo_Success 
+	Kill name = TRG_Ped_Hint_Fire 
+	IF ScreenElementExists id = ped_speech_dialog 
+		DestroyScreenElement id = ped_speech_dialog 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_FinestRails_Success 
+	Kill name = TRG_Ped_Hint_Metals 
+	IF ScreenElementExists id = ped_speech_dialog 
+		DestroyScreenElement id = ped_speech_dialog 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_SkateTheLine3_Success 
+	Kill name = TRG_Ped_Hint_Liberty 
+	IF ScreenElementExists id = ped_speech_dialog 
+		DestroyScreenElement id = ped_speech_dialog 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_Gap8_Goal_Success 
+	Kill name = TRG_Ped_Hint_Graf 
+	Kill prefix = "TRGP_Graffiti_Hint" 
+	IF ScreenElementExists id = ped_speech_dialog 
+		DestroyScreenElement id = ped_speech_dialog 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_Gaps_Success 
+	printf "You Won" 
+	IF NOT IsAlive name = TRG_Ped_BenFranklin 
+		Create name = TRG_Ped_BenFranklin 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_Gaps10_Success 
+	printf "BO_Gaps10_success" 
+	KillAllTextureSplats box = { height = 20 dist = 20 width = 30 offset = VECTOR(-188, 73, 173) } 
+	play_cutscene name = "cutscenes\\BO_SmallEvent_Billboard.cut" RestartNode = TRG_Restart_Billboard 
+ENDSCRIPT
+
+SCRIPT BO_Goal_Gap7_Pre_Success 
+	PlayStream BO_Goal_Gap7_Success vol = 200 priority = 101 
+	SpawnSkaterScript reset_gurney 
+	Create name = TRG_Ped_Gap7_Success01 
+ENDSCRIPT
+
+SCRIPT BO_Goal_Gap7_Success 
+	Kill name = TRG_Ped_Gap7_Success01 
+	Kill name = TRG_Tony_Ghost 
+	Kill name = TRG_Gurney_Ghost 
+	Kill prefix = "TRG_Ped_Gurney" 
+ENDSCRIPT
+
+SCRIPT BO_Goal_Gap7_Deactivate 
+	Kill prefix = "TRG_Ped_Gurney" 
+	IF NOT GoalManager_HasWonGoal name = BO_Goal_Gaps7 
+		IF NOT IsAlive name = TRG_Gurney_Ghost 
+			Create name = TRG_Gurney_Ghost 
+		ENDIF 
+	ENDIF 
+	printf "------------1" 
+	skater : reset_gurney show_gurney 
+	printf "------------2" 
+ENDSCRIPT
+
+SCRIPT BO_Gaps12_success 
+	StopStream JesseJamesFindStream 
+	wait 1 gameframe 
+	TRG_Ped_Bum01 : Obj_PlayFam JesseJames_BO_Goal_Gaps12_Camanim01_lip vol = 200 priority = StreamPriorityHighest 
+	TODManager_SetFogActive 0 
+	TODManager_ResetLevelLights state_name = afternoon 
+	Kill name = TRG_Ped_Hint_Jeers 
+	IF ScreenElementExists id = ped_speech_dialog 
+		DestroyScreenElement id = ped_speech_dialog 
+	ENDIF 
+	IF NOT IsAlive name = TRG_HalfpipeRV 
+		Create name = TRG_HalfpipeRV 
+	ENDIF 
+	IF NOT IsAlive name = TRG_Ped_Segway 
+		Create name = TRG_Ped_Segway 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_Gaps12_Post_Success1 
+	StopStream JesseJames_BO_Goal_Gaps12_Camanim01_lip 
+	StopStream JesseJames_BO_Goal_Gaps12_Camanim01_lip 
+	StopStream JesseJames_BO_Goal_Gaps12_Camanim01_lip 
+	wait 1 gameframe 
+	PlayStream BO_Goal_Gaps12_Jesse_02 vol = 200 id = JesseJamesFindStream 
+	TODManager_SetFogActive 1 
+	TODManager_ResetLevelLights 
+ENDSCRIPT
+
+SCRIPT BO_Gaps12_Post_Success2 
+	StopStream JesseJamesFindStream 
+	wait 1 gameframe 
+	PlayStream BO_Goal_Gaps12_Jesse_03 vol = 200 id = JesseJamesFindStream 
+ENDSCRIPT
+
+SCRIPT BO_Gaps12_Exit 
+	printf "BO_Gaps12_Exit" 
+	StopStream JesseJamesFindStream 
+ENDSCRIPT
+
+SCRIPT BO_Goal_Gaps13_success 
+	Kill name = TRG_Ped_Hint_Washington 
+	IF ScreenElementExists id = ped_speech_dialog 
+		DestroyScreenElement id = ped_speech_dialog 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_Goal_Gaps14_success 
+	PlayStream BO_Goal_Gaps14_success vol = 250 
+	BO_RV_Traffic 
+ENDSCRIPT
+
+SCRIPT BO_Goal_Gaps15_success 
+	Kill name = TRG_Ped_Hint_Skatestopper 
+	Kill name = TRG_Ped_Hint_Skatestopper2 
+	IF ScreenElementExists id = ped_speech_dialog 
+		DestroyScreenElement id = ped_speech_dialog 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_RV_Traffic 
+	Kill name = TRG_HalfpipeRV 
+	Kill name = TRG_Car_Street_C01 
+	Kill name = TRG_Car_Street_C02 
+	Kill name = TRG_Car_Street_CC01 
+	Kill name = TRG_Car_Street_CC02 
+	IF NOT IsAlive name = TRG_Car_Street_CC03 
+		Create name = TRG_Car_Street_CC03 
+	ENDIF 
+	IF NOT IsAlive name = TRG_Car_Street_CC04 
+		Create name = TRG_Car_Street_CC04 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_Initializer 
+	BO_Library_Off 
+	BO_Subway_Off 
+	IF GameModeEquals is_classic 
+		Kill name = TRG_HalfpipeRV 
+		Kill prefix = "TRG_Pigeon_Normal" 
+		Kill prefix = "BO_Barrel_Boat" 
+	ENDIF 
+	IF GameModeEquals is_career 
+		Create name = TRG_Ped_Hawk 
+		Create name = TRG_Ped_TeammatePro 
+		IF GoalManager_HasWonGoal name = BO_Goal_Gaps10 
+			Create name = BO_AS_MasterPiece_final01 
+		ENDIF 
+		IF GoalManager_HasWonGoal name = BO_Goal_Gaps8 
+			Create prefix = "SPAT_COVER" 
+		ELSE 
+			Create prefix = "SPAT" 
+			Create prefix = "TRGP_Graffiti_Hint" 
+			Kill prefix = "SPAT_COVER" 
+		ENDIF 
+		IF NOT GoalManager_HasWonGoal name = BO_Goal_SkateTheLine4 
+			Create name = TRG_Race_Ped 
+			Create name = Paulie_Collision 
+		ENDIF 
+		IF GoalManager_HasWonGoal name = BO_Goal_Gaps 
+			Create name = TRG_Ped_BenFranklin 
+			Kill name = TRG_Ped_BenWaiting 
+		ELSE 
+			Create name = TRG_Ped_BenWaiting 
+		ENDIF 
+		IF GoalManager_HasWonGoal name = BO_Goal_gaps15 
+		ELSE 
+			Create prefix = "BO_SkateStopper" 
+			Create name = TRG_Ped_Hint_Skatestopper 
+		ENDIF 
+		IF GoalManager_HasWonGoal name = BO_Goal_Gaps12 
+			Create name = TRG_Ped_Segway 
+			Kill name = TRG_Ped_Hint_Jeers 
+		ELSE 
+			Create name = TRG_Ped_Hint_Jeers 
+		ENDIF 
+		IF NOT GoalManager_HasWonGoal name = BO_Goal_Gaps7 
+			Create name = TRG_Gurney_Ghost 
+			Create name = Gurney 
+			Create name = TRG_Ped_Sick_Kid 
+		ENDIF 
+		IF GoalManager_HasWonGoal name = BO_Goal_Gaps14 
+			BO_RV_Traffic 
+		ENDIF 
+		IF NOT GoalManager_HasWonGoal name = BO_Goal_Gaps8 
+			Create name = TRG_Ped_Hint_Graf 
+			Create prefix = "TRGP_Graffiti_Hint" 
+		ENDIF 
+		IF NOT GoalManager_HasWonGoal name = BO_Goal_Gaps13 
+			IF NOT GoalManager_GoalIsLocked name = BO_Goal_Gaps13 
+				IF NOT IsAlive name = TRG_Ped_Hint_Washington 
+					Create name = TRG_Ped_Hint_Washington 
+				ENDIF 
+			ENDIF 
+		ENDIF 
+		IF NOT GoalManager_HasWonGoal name = BO_Goal_HighCombo2 
+			IF NOT GoalManager_GoalIsLocked name = BO_Goal_HighCombo2 
+				IF NOT IsAlive name = TRG_Ped_Hint_Fire 
+					Create name = TRG_Ped_Hint_Fire 
+				ENDIF 
+			ENDIF 
+		ENDIF 
+		IF NOT GoalManager_HasWonGoal name = BO_Goal_SkateTheLine2 
+			IF NOT GoalManager_GoalIsLocked name = BO_Goal_SkateTheLine2 
+				IF NOT IsAlive name = TRG_Ped_Hint_Metals 
+					Create name = TRG_Ped_Hint_Metals 
+				ENDIF 
+			ENDIF 
+		ENDIF 
+		IF NOT GoalManager_HasWonGoal name = BO_Goal_SkateTheLine3 
+			IF NOT GoalManager_GoalIsLocked name = BO_Goal_SkateTheLine3 
+				IF NOT IsAlive name = TRG_Ped_Hint_Liberty 
+					Create name = TRG_Ped_Hint_Liberty 
+				ENDIF 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_Goal_Classic_Barrels_Init 
+	Create prefix = "BO_Classic_Barrel" 
+	Kill prefix = "BO_Classic_Barrel_Ring" 
+ENDSCRIPT
+
+SCRIPT BO_Goal_Classic_Barrels_Deactivate 
+	Kill prefix = "BO_Classic_Barrel" 
+	Kill prefix = "BO_Classic_Barrel_Ring" 
+ENDSCRIPT
+
+SCRIPT BO_BeatBox_Wait 
+ENDSCRIPT
+
+SCRIPT BeatBox_start_goal 
+	create_panel_message { text = "Trick to the beat!" style = goal_collect_text } 
+	GoalManager_ActivateGoal name = BO_Goal_TrickBeat 
+ENDSCRIPT
+
+SCRIPT BO_Secret_Tape 
+ENDSCRIPT
+
+SCRIPT BO_Pigeon_Rail 
+	GetTriggerArray grind onto 
+	IF Triggertype <trigger_array> 
+		IF GoalManager_GoalIsActive name = bo_classic_goal_collect2 
+			IF NOT GoalManager_HasWonGoal name = bo_classic_goal_collect2 
+				IF NOT GoalManager_GoalFlagSet name = bo_classic_goal_collect2 flag = <flag> 
+					goal_collect_got_object goal_id = bo_classic_goal_collect2 flag = <flag> 
+				ENDIF 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_Car01 
+	Car_Generic01 { 
+		DefaultSpeed = 20 
+		turndist = 100 
+		StickToGround 
+		SkaterCheckOffset = VECTOR(0, 0, 11) 
+	} 
+ENDSCRIPT
+
+SCRIPT BO_Car02 
+	Car_Generic01 { 
+		DefaultSpeed = 20 
+		turndist = 65 
+		StickToGround 
+		SkaterCheckOffset = VECTOR(0, 0, 11) 
+	} 
+ENDSCRIPT
+
+SCRIPT BO_Car_Duck01 
+	Car_Generic01 { 
+		skitch = BO_DuckSkitch 
+		DefaultSpeed = 20 
+		turndist = 100 
+		StickToGround 
+		SkaterCheckWidth = 15 
+		SkaterCheckOffset = VECTOR(0, 0, 19.5) 
+		Bus 
+	} 
+ENDSCRIPT
+
+SCRIPT BO_Car_Duck02 
+	Car_Generic01 { 
+		skitch = BO_DuckSkitch 
+		DefaultSpeed = 10 
+		turndist = 100 
+		StickToGround 
+		SkaterCheckWidth = 15 
+		SkaterCheckOffset = VECTOR(0, 0, 19.5) 
+		Bus 
+	} 
+ENDSCRIPT
+
+SCRIPT BO_Car_HalfpipeRV 
+	Car_Generic01 { 
+		DefaultSpeed = 10 
+		turndist = 100 
+		StickToGround 
+		SkaterCheckOffset = VECTOR(0, 0, 23) 
+		SkaterCheckWidth = 25 
+		SkaterCheckHeight = 35 
+		HPRV 
+	} 
+ENDSCRIPT
+
+SCRIPT BO_Hang_Test 
+ENDSCRIPT
+
+SCRIPT BO_DuckSkitch 
+	IF GameModeEquals is_career 
+		IF NOT GoalManager_GoalIsLocked name = BO_Goal_Gaps6 
+			printf "Skitching a duck" 
+			BroadcastEvent type = BO_DuckSkitch 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_DuckManager_Wait 
+	ClearExceptionGroup DuckSkitch 
+	SetException EX = BO_DuckSkitch scr = BO_DuckManager_Skitching 
+	printf "DuckManager_Wait" 
+	IF ObjectExists id = current_goal 
+		DestroyScreenElement id = current_goal 
+	ENDIF 
+	block 
+ENDSCRIPT
+
+SCRIPT BO_DuckManager_Skitching 
+	ClearExceptionGroup DuckSkitch 
+	SetException EX = SkaterExitSkitch scr = BO_DuckManager_Wait 
+	IF NOT GoalManager_HasWonGoal name = BO_Goal_Gaps6 
+		printf "DuckManager_Skitching" 
+		Skitch_Timer = 20 
+		BEGIN 
+			printf "Timer Loop" 
+			FormatText TextName = SkitchText "Skitch a Seaworthy vehicle\\n%a seconds left" a = <Skitch_Timer> 
+			Create_Panel_Block id = current_goal text = <SkitchText> style = goal_collect_text 
+			Skitch_Timer = ( <Skitch_Timer> -1 ) 
+			wait 1 second 
+		REPEAT 20 
+		IF GoalManager_GoalExists name = BO_Goal_Gaps6 
+			GoalManager_SetGoalFlag name = BO_Goal_Gaps6 got_1 1 
+		ENDIF 
+		Die 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_BenWaiting 
+	ClearExceptionGroup BenWaiting 
+	Obj_PlayAnim Anim = WStand cycle 
+	WaitForEvent type = BO_NearBen 
+	Obj_PlayStream Franklin_Escape vol = 400 dropoff = 100 priority = 100 
+	Obj_MoveToLink speed = 10 
+	Obj_CycleAnim Anim = WStandToRun 
+	Obj_PlayAnim Anim = WRun cycle 
+	Obj_WaitMove 
+	Die 
+ENDSCRIPT
+
+SCRIPT BO_BenReset 
+	IF GameModeEquals is_career 
+		IF GoalManager_HasWonGoal name = BO_Goal_Gaps 
+		ELSE 
+			Kill name = TRG_Ped_BenWaiting 
+			Create name = TRG_Ped_BenWaiting 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_NearBen 
+	BroadcastEvent type = BO_NearBen 
+ENDSCRIPT
+
+SCRIPT BO_Race_Ped 
+	Obj_SetAttentionRadius 10 
+	Ped_initAI Stand GetAttention Paulie 
+ENDSCRIPT
+
+SCRIPT BO_SkateTheLine4_Fail 
+	GoalManager_LoseGoal name = BO_Goal_SkateTheLine4 
+	Kill name = TRG_Kill_Paulie_Ghost 
+	IF NOT IsAlive name = TRG_Kill_Paulie_Ghost 
+		Create name = TRG_Kill_Paulie_Ghost 
+	ENDIF 
+	TRG_Race_Ped : Obj_StopStream SK6_BO_PaulieWheelchairGoal 
+	PlayStream SK6_BO_Paulie_Race_Fail vol = 200 priority = 102 
+ENDSCRIPT
+
+SCRIPT BO_SkateTheLine4_Success 
+	TRG_Race_Ped : Obj_StopStream SK6_BO_PaulieWheelchairGoal 
+	Kill name = TRG_Race_Ped 
+	Kill name = Paulie_Collision 
+	PlayStream SK6_BO_Paulie_Race_Win vol = 200 priority = 102 
+ENDSCRIPT
+
+SCRIPT BO_SkateTheLine4_Deactivate 
+	Kill name = TRG_Race_Ped 
+	Kill name = Paulie_Collision 
+	IF NOT IsAlive name = TRG_Race_Ped 
+		Create name = TRG_Race_Ped 
+		Create name = Paulie_Collision 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_Race_Ped_Go 
+	Obj_ClearExceptions 
+	Get_Current_Skater_Name 
+	IF NOT GoalManager_HasWonGoal name = BO_Goal_SkateTheLine4 
+		IF ( <name> = segwayrider ) 
+			TRG_Race_Ped : Obj_SetInnerRadius 0 
+			TRG_Race_Ped : Obj_SetOuterRadius 0 
+			Kill name = Paulie_Collision 
+			GoalManager_SetGoalFlag name = BO_Goal_SkateTheLine4 got_1 1 
+			StopStream SK6_BO_Paulie_Race_Fail 
+			TRG_Race_Ped : Obj_PlayStream SK6_BO_PaulieWheelchairGoal vol = 200 priority = 102 dropoff = 500 dropoff_function = exponential 
+			unpauseskaters 
+			TRG_Race_Ped : Ped_initAI skater speed = 100 skater_override_anim = Wheelchair_Idle 
+		ELSE 
+			wait 1 seconds 
+			unpauseskaters 
+			TRG_Race_Ped : Ped_SetLogicState BO_STATE_Paulie_Waiting 
+		ENDIF 
+	ELSE 
+		wait 1 seconds 
+		TRG_Race_Ped : Ped_SetLogicState BO_STATE_Paulie_Waiting 
+		unpauseskaters 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_Race_ChurchSteps 
+	GoalManager_SetGoalFlag name = BO_Goal_SkateTheLine4 got_2 1 
+ENDSCRIPT
+
+SCRIPT BO_Race_Library 
+	GoalManager_SetGoalFlag name = BO_Goal_SkateTheLine4 got_3 1 
+ENDSCRIPT
+
+SCRIPT BO_Race_Hospital 
+	GoalManager_SetGoalFlag name = BO_Goal_SkateTheLine4 got_4 1 
+ENDSCRIPT
+
+SCRIPT BO_Race_End 
+	IF GoalManager_GoalExists name = BO_Goal_SkateTheLine4 
+		GoalManager_SetGoalFlag name = BO_Goal_SkateTheLine4 got_5 1 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_Shatter_CrowsNest 
+	GetBonus score = 1000 text = "Destruction Bonus" 
+	Shatter { name = <name> 
+		area = 2000 
+		texture_swap = apm_Crate02_xploder02 
+		variance = 1.00000000000 
+		spread = 1.50000000000 
+		life = 3 
+		bounce = 0 
+		scale = 0.40000000596 
+		vel_x = 0 
+		vel_y = 60 
+		vel_z = 0 
+	} 
+	Kill name = <name> 
+	PlaySound HitTrafficBarrier vol = 200 
+ENDSCRIPT
+
+SCRIPT BO_Shatter_Barrels 
+	GetBonus score = 1000 text = "Destruction Bonus" 
+	SpawnSound BO_SFX_BarrelShatter params = { defname = <name> } 
+	Shatter { name = <name> 
+		area = 2000 
+		texture_swap = TB_BO_Barrel_Shatter_01 
+		variance = 1.00000000000 
+		spread = 1.50000000000 
+		life = 6 
+		bounce = 0.50000000000 
+		scale = 0.40000000596 
+		vel_x = 0 
+		vel_y = 60 
+		vel_z = 0 
+	} 
+	Kill name = <name> 
+	Kill name = <shadow> 
+	IF ( ( GameModeEquals is_classic ) | ( InNetGame ) ) 
+		SWITCH <name> 
+			CASE BO_Classic_Barrel_01 
+				goal_collect_got_object goal_id = bo_classic_goal_collect flag = got_1 
+			CASE BO_Classic_Barrel_02 
+				goal_collect_got_object goal_id = bo_classic_goal_collect flag = got_2 
+			CASE BO_Classic_Barrel_03 
+				goal_collect_got_object goal_id = bo_classic_goal_collect flag = got_3 
+			CASE BO_Classic_Barrel_04 
+				goal_collect_got_object goal_id = bo_classic_goal_collect flag = got_4 
+			CASE BO_Classic_Barrel_05 
+				goal_collect_got_object goal_id = bo_classic_goal_collect flag = got_5 
+		ENDSWITCH 
+	ENDIF 
+	IF NOT InMultiplayerGame 
+		IF NOT IsAlive name = <ring1> 
+			Create name = <ring1> 
+			<ring1> : Rigidbody_Kick vel = VECTOR(0.00000000000, 0.00000000000, 0.00000000000) 
+		ENDIF 
+		IF NOT IsAlive name = <ring2> 
+			Create name = <ring2> 
+			<ring2> : Rigidbody_Kick vel = VECTOR(0.00000000000, 0.00000000000, 0.00000000000) 
+		ENDIF 
+		IF NOT IsAlive name = <tea> 
+			Create name = <tea> 
+		ENDIF 
+		wait 0.25000000000 seconds 
+		IF IsAlive name = <tea> 
+			StopParticleObject name = <tea> 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_Fan_Spin 
+	Obj_RotY speed = 500 
+ENDSCRIPT
+
+SCRIPT BO_EnterJeers 
+	IF NOT IsSkaterOnVehicle 
+		GoalManager_SetGoalFlag name = BO_Goal_Gaps12 got_1 1 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_Graf_Tag 
+	GetTriggerArray graffiti onto 
+	IF Triggertype <trigger_array> 
+		printf "Graffiti" 
+		IF GoalManager_GoalExists name = BO_Goal_Gaps8 
+			IF NOT GoalManager_GoalFlagSet name = BO_Goal_Gaps8 flag = <flag> 
+				GoalManager_SetGoalFlag name = BO_Goal_Gaps8 <flag> 1 
+				IF NOT IsAlive name = <cover> 
+					Kill name = <name> 
+					Create name = <cover> 
+					Kill name = <hint> 
+				ENDIF 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_Sticker_Slap 
+	GetTriggerArray wallplant onto 
+	IF Triggertype <trigger_array> 
+		printf "Graffiti" 
+		IF GoalManager_GoalExists name = BO_Goal_Gaps9 
+			GoalManager_SetGoalFlag name = BO_Goal_Gaps9 <flag> 1 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_Graf_Masterpiece 
+	GetTriggerArray graffiti onto 
+	IF Triggertype <trigger_array> 
+		printf "Graffiti" 
+		IF GoalManager_GoalExists name = BO_Goal_Gaps10 
+			GoalManager_SetGoalFlag name = BO_Goal_Gaps10 got_1 1 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_TagChecker01 
+	ClearExceptionGroup BO_TagChecker 
+	SetException EX = SkaterExitAir scr = BO_TagCheckerLand Group = BO_TagChecker 
+	SetException EX = SkaterExitWallplant scr = BO_TagCheckerReplace01 Group = BO_TagChecker 
+	block 
+ENDSCRIPT
+
+SCRIPT BO_TagCheckerReplace01 
+	ClearExceptionGroup BO_TagChecker 
+	BroadcastEvent type = GotTag 
+	IF SkaterCurrentScorePotGreaterThan 20000 
+		Kill name = TAG_Neversoft01 
+		Kill name = THROWUP_Neversoft01 
+		IF NOT IsAlive name = PIECE_Neversoft01 
+			Create name = PIECE_Neversoft01 
+			skater : GetGap score = 500 text = "Grafitti Masterpiece" 
+		ENDIF 
+	ELSE 
+		IF SkaterCurrentScorePotGreaterThan 10000 
+			Kill name = TAG_Neversoft01 
+			IF NOT IsAlive name = PIECE_Neversoft01 
+				IF NOT IsAlive name = THROWUP_Neversoft01 
+					Create name = THROWUP_Neversoft01 
+					skater : GetGap score = 1000 text = "Grafitti Throwup" 
+				ENDIF 
+			ENDIF 
+		ELSE 
+			IF NOT IsAlive name = PIECE_Neversoft01 
+				IF NOT IsAlive name = THROWUP_Neversoft01 
+					IF NOT IsAlive name = TAG_Neversoft01 
+						Create name = TAG_Neversoft01 
+						skater : GetGap score = 100 text = "Grafitti Tag" 
+					ENDIF 
+				ENDIF 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_TagChecker02 
+	ClearExceptionGroup BO_TagChecker 
+	SetException EX = SkaterExitAir scr = BO_TagCheckerLand Group = BO_TagChecker 
+	SetException EX = SkaterExitWallplant scr = BO_TagCheckerReplace02 Group = BO_TagChecker 
+	block 
+ENDSCRIPT
+
+SCRIPT BO_TagCheckerReplace02 
+	ClearExceptionGroup BO_TagChecker 
+	BroadcastEvent type = GotTag 
+	Kill name = TAG_NoSkate02 
+	IF NOT IsAlive name = TAG_Neversoft02 
+		Create name = TAG_Neversoft02 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_TagChecker03 
+	ClearExceptionGroup BO_TagChecker 
+	SetException EX = SkaterExitAir scr = BO_TagCheckerLand Group = BO_TagChecker 
+	SetException EX = SkaterExitWallplant scr = BO_TagCheckerReplace03 Group = BO_TagChecker 
+	block 
+ENDSCRIPT
+
+SCRIPT BO_TagCheckerReplace03 
+	ClearExceptionGroup BO_TagChecker 
+	BroadcastEvent type = GotTag 
+	Kill name = TAG_NoSkate03 
+	IF NOT IsAlive name = TAG_Neversoft03 
+		Create name = TAG_Neversoft03 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_TagChecker04 
+	ClearExceptionGroup BO_TagChecker 
+	SetException EX = SkaterExitAir scr = BO_TagCheckerLand Group = BO_TagChecker 
+	SetException EX = SkaterExitWallplant scr = BO_TagCheckerReplace04 Group = BO_TagChecker 
+	block 
+ENDSCRIPT
+
+SCRIPT BO_TagCheckerReplace04 
+	ClearExceptionGroup BO_TagChecker 
+	BroadcastEvent type = GotTag 
+	Kill name = TAG_NoSkate04 
+	IF NOT IsAlive name = TAG_Neversoft04 
+		Create name = TAG_Neversoft04 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_TagCheckerLand 
+	printf "TagCheckerLand" 
+ENDSCRIPT
+
+SCRIPT BO_TagGhost 
+	ClearExceptionGroup TagGhost 
+	WaitForEvent type = GotTag 
+	PlaySound GoalDone 
+	create_panel_message { text = "Tag over the 4 No skateboarding signs!" style = goal_collect_text } 
+	ClearExceptionGroup TagGhost 
+	WaitForEvent type = GotTag 
+	PlaySound GoalDone 
+	create_panel_message { text = "2 more signs!" style = goal_collect_text } 
+	ClearExceptionGroup TagGhost 
+	WaitForEvent type = GotTag 
+	PlaySound GoalDone 
+	create_panel_message { text = "1 more sign!" style = goal_collect_text } 
+	ClearExceptionGroup TagGhost 
+	WaitForEvent type = GotTag 
+	PlaySound GapSound_11 
+	create_panel_message { text = "Tag over the 4 No skateboarding signs complete!" style = goal_collect_text } 
+ENDSCRIPT
+
+SCRIPT BO_KillSkaterSubway 
+	IF IsSkaterOnVehicle 
+		MakeSkaterGoto vehicle_bail 
+		PlayStream SK6_BO_DieBySubway vol = 200 priority = 100 
+		SK3_Killskater nodename = TRG_Restart_SubwayCenter 
+	ELSE 
+		PlayStream SK6_BO_DieBySubway vol = 200 priority = 100 
+		SK3_Killskater nodename = TRG_Restart_SubwayCenter 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_KillskaterOutOfBounds 
+	IF IsSkaterOnVehicle 
+		MakeSkaterGoto vehicle_bail 
+		SK3_Killskater nodename = <node> 
+	ELSE 
+		SK3_Killskater nodename = <node> 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_KillskaterFire 
+	IF IsSkaterOnVehicle 
+		MakeSkaterGoto vehicle_bail 
+		SK3_Killskater nodename = <node> message1 = "Extra Crispy" message2 = "Burnt to a crisp" message3 = "Fiery Death" message4 = "Hot Stuff" 
+	ELSE 
+		SK3_Killskater nodename = <node> message1 = "Extra Crispy" message2 = "Burnt to a crisp" message3 = "Fiery Death" message4 = "Hot Stuff" 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_KillskaterWater 
+	BO_AllParticlesOff 
+	IF IsSkaterOnVehicle 
+		printf "On Vehicle" 
+		MakeSkaterGoto vehicle_bail 
+		Sk3_KillSkater_Water nodename = <node> 
+	ELSE 
+		printf "Skating" 
+		Sk3_KillSkater_Water nodename = <node> 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_SkateStoppers 
+	IF NOT walking 
+		Get_Current_Skater_Name 
+		IF IsSkaterOnVehicle 
+			IF ( <name> = segwayrider ) 
+				printf "kill stopper" 
+				GoalManager_SetGoalFlag name = BO_Goal_gaps15 <flag> 1 
+				PlaySound SK6_BO_GrindblockerPop vol = 200 
+				ShatterAndDie name = <stopper> area = 2000 variance = 4 vel_x = 50 vel_y = 50 vel_z = 50 spread = 1 
+			ELSE 
+				MakeSkaterGoto vehicle_bail 
+			ENDIF 
+		ELSE 
+			MakeSkaterGoto PedKnockdown 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+FLAG_BO_SKATER_IS_SPECIAL = 1 
+FLAG_BO_SKATER_IS_WALKING = 2 
+FLAG_BO_SKATER_IS_SKATING = 3 
+FLAG_BO_SKATER_IS_ON_FIRE = 4 
+FLAG_BO_CANNON1_LIT = 5 
+FLAG_BO_CANNON2_LIT = 6 
+FLAG_BO_GOT_TRICK = 7 
+BO_FLAG_BALLPOLE1_HIT = 10 
+BO_FLAG_BALLPOLE2_HIT = 11 
+BO_FLAG_BALLPOLE3_HIT = 12 
+SCRIPT BO_SpecialDummy_NotSpecial 
+	ClearExceptionGroup BO_Special 
+	UnSetFlag flag = FLAG_BO_SKATER_IS_SPECIAL 
+	printf "I\'m not so special" 
+	SetException EX = SkaterEnterSpecial scr = BO_SpecialDummy_IsSpecial Group = BO_Special 
+	block 
+ENDSCRIPT
+
+SCRIPT BO_SpecialDummy_IsSpecial 
+	ClearExceptionGroup BO_Special 
+	SetFlag flag = FLAG_BO_SKATER_IS_SPECIAL 
+	printf "I\'m special" 
+	SetException EX = SkaterExitSpecial scr = BO_SpecialDummy_NotSpecial Group = BO_Special 
+	block 
+ENDSCRIPT
+
+SCRIPT BO_WalkingDummy_NotWalking 
+	ClearExceptionGroup BO_Walking 
+	UnSetFlag flag = FLAG_BO_SKATER_IS_WALKING 
+	printf "I\'m not Walking" 
+	SetException EX = SkaterEnterWalking scr = BO_WalkingDummy_IsWalking Group = BO_Walking 
+	block 
+ENDSCRIPT
+
+SCRIPT BO_WalkingDummy_IsWalking 
+	ClearExceptionGroup BO_Walking 
+	SetFlag flag = FLAG_BO_SKATER_IS_WALKING 
+	printf "I\'m Walking" 
+	SetException EX = SkaterExitWalking scr = BO_WalkingDummy_NotWalking Group = BO_Walking 
+	block 
+ENDSCRIPT
+
+SCRIPT BO_SkateStopper 
+	IF IsAlive name = <stopper> 
+		IF GetFlag flag = FLAG_BO_SKATER_IS_SPECIAL 
+			ShatterAndDie name = <stopper> area = 2000 variance = 4 vel_x = 50 vel_y = 50 vel_z = 50 spread = 1 
+			BroadcastEvent type = SkateStopper 
+		ELSE 
+			MakeSkaterGoto PedKnockdown 
+			create_panel_message { text = "Get special to grind off the skatestoppers!" style = goal_collect_text } 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_SkateStopperDummy 
+	ClearExceptionGroup BO_SkaterStopperDummy 
+	WaitForEvent type = SkateStopper 
+	PlaySound GoalDone 
+	create_panel_message { text = "Grind off 3 more skatestoppers!" style = goal_collect_text } 
+	ClearExceptionGroup BO_SkaterStopperDummy 
+	WaitForEvent type = SkateStopper 
+	PlaySound GoalDone 
+	create_panel_message { text = "Grind off 2 more skatestoppers!" style = goal_collect_text } 
+	ClearExceptionGroup BO_SkaterStopperDummy 
+	WaitForEvent type = SkateStopper 
+	PlaySound GoalDone 
+	create_panel_message { text = "Grind off 1 more skatestopper!" style = goal_collect_text } 
+	ClearExceptionGroup BO_SkaterStopperDummy 
+	WaitForEvent type = SkateStopper 
+	PlaySound GapSound_11 
+	create_panel_message { text = "Grind off the skatestoppers Complete!" style = goal_collect_text } 
+	SetSlomo 0.30000001192 
+	skater : setSkaterCamOverride heading = 2.00000000000 tilt = -0.10000000149 time = 0.10000000149 zoom = 0.75000000000 
+	wait 45 frames 
+	skater : ClearSkaterCamOverride 
+	SetSlomo 1.00000000000 
+ENDSCRIPT
+
+SCRIPT BO_Cop_Idle 
+	ClearExceptionGroup BO_Cop 
+	SetException EX = SkaterInArea scr = BO_Cop_WaitForSkate Group = BO_Cop 
+	printf "Cop Idle" 
+	Obj_PlayAnim Anim = Ped_Cop_Idle1 cycle 
+	block 
+ENDSCRIPT
+
+SCRIPT BO_Cop_WaitForSkate 
+	ClearExceptionGroup BO_Cop 
+	SetException EX = SkaterOutOfArea scr = BO_Cop_Idle Group = BO_Cop 
+	SetException EX = SkaterEnterSkating scr = BO_Cop_Attack Group = BO_Cop 
+	printf "Wait For Skate" 
+	Obj_PlayAnim Anim = Ped_Cop_Idle1 cycle 
+	block 
+ENDSCRIPT
+
+SCRIPT BO_Cop_Attack 
+	ClearExceptionGroup BO_Cop 
+	printf "Attack" 
+	create_panel_message { text = "Hey no skating!" style = goal_collect_text } 
+	Obj_SetInnerRadius 5 
+	Obj_SetOuterRadius 40 
+	Obj_SetException EX = ObjectInRadius scr = BO_Cop_HitSkater Group = BO_Cop 
+	Obj_SetException EX = SkaterOutOfArea scr = BO_Cop_Return Group = BO_Cop 
+	BEGIN 
+		Obj_LookAtObject type = skater time = 0.25000000000 
+		Obj_WaitRotate 
+		IF NOT Obj_GetCollision height = 0.50000000000 length = 15 
+			Obj_CycleAnim Anim = Ped_Cop_RunFromIdle from = start to = 10 
+			Obj_MoveForward dist = 300 speed = 10 acceleration = 1 
+		ELSE 
+		ENDIF 
+		Obj_CycleAnim Anim = Ped_Cop_RunFromIdle from = 11 to = end 
+		Obj_PlayAnim Anim = Ped_Cop_Run cycle 
+		Obj_WaitMove 
+		Obj_CycleAnim Anim = Ped_Cop_Idle1 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT BO_Cop_Return 
+	ClearExceptionGroup BO_Cop 
+	SetException EX = SkaterInArea scr = BO_Cop_WaitForSkate Group = BO_Cop 
+	Obj_LookAtNode name = TRG_Ped_Cop01 time = 0.50000000000 
+	Obj_WaitRotate 
+	Obj_PlayAnim Anim = Ped_Cop_Run cycle 
+	Obj_MoveToNode name = TRG_Ped_Cop01 speed = 5 
+	Obj_WaitMove 
+	Goto BO_Cop_Idle 
+ENDSCRIPT
+
+SCRIPT BO_Cop_HitSkater 
+	ClearExceptionGroup BO_Cop 
+	SetException EX = SkaterOutOfArea scr = BO_Cop_Idle Group = BO_Cop 
+	MakeSkaterGoto PedKnockdown 
+	Obj_CycleAnim Anim = Ped_Cop_Hit 
+	Obj_LookAtNode name = TRG_Ped_Cop01 time = 0.50000000000 
+	Obj_WaitRotate 
+	Obj_PlayAnim Anim = Ped_Cop_Run cycle 
+	Obj_MoveToNode name = TRG_Ped_Cop01 speed = 5 
+	Obj_WaitMove 
+	Goto BO_Cop_Attack 
+ENDSCRIPT
+
+SCRIPT BO_Toggle_Event_Geo 
+ENDSCRIPT
+
+SCRIPT BO_Cannon_Event 
+	IF IsAlive name = BO_VentHouse 
+		fadetoblack on time = 0.20000000298 alpha = 1.00000000000 
+		wait 0.21999999881 seconds 
+		Kill name = BO_VentHouse 
+		Kill prefix = "BO_VentHouse" 
+		Kill name = BO_ConstFence08 
+		Kill name = BO_ConstFence09 
+		Kill name = BO_ConstFence10 
+		Kill name = TRG_Rail_Normal01 
+		Kill name = JG_BD_SideMiscBefore 
+		Kill name = JG_BD_Woodstacks 
+		Kill prefix = "NORMAL_Girder" 
+		Kill prefix = "JG_BD_LightFlare" 
+		Kill name = JG_BD_BeforeShadow 
+		Kill prefix = "TRG_Night_LevelLight_04_BigDig" 
+		TODManager_MarkPermanentlyDead prefix = "TRG_Night_LevelLight_04_BigDig" 
+		Kill prefix = "NightOff_04_JG_BD_LightFlare" 
+		TODManager_MarkPermanentlyDead prefix = "NightOff_04_JG_BD_LightFlare" 
+		Kill prefix = "TRG_LevelLight_BDLamp" 
+		TODManager_MarkPermanentlyDead prefix = "TRG_LevelLight_BDLamp" 
+		play_cutscene name = "cutscenes\\BO_LevelEvent.cut" 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_Cannon_Event_Out 
+	Create prefix = "CANNON_QP" 
+	Create prefix = "CANNON_VentHouse" 
+	Create prefix = "CANNON_Girder" 
+	Create prefix = "CANNON_Debris" 
+	Create prefix = "CANNON_Misc" 
+	Create prefix = "CANNON_TarpHole" 
+	Create prefix = "CANNON_Water" 
+	Create prefix = "CANNON_SmokeA" 
+	Create prefix = "CANNON_SmokeB" 
+	Create prefix = "CANNON_SmokeC" 
+	Create prefix = "CANNON_SmokeD" 
+	Create prefix = "CANNON_FireA" 
+	Create name = ParticleBox_Smoke01A 
+	Create name = ParticleBox_Smoke02A 
+	Create name = CANNON_Venthouse 
+	Create prefix = "TRG_Rail_PostEvent" 
+	Create name = TRG_SFX_TrigBox_PipeAfterCollapse 
+	SpawnSkaterScript BO_FireParticlesOff 
+	UnSetFlag flag = FLAG_BO_SKATER_IS_ON_FIRE 
+	goal_highcombo_leave_area goal_id = BO_Goal_HighCombo2 
+	SpawnSkaterScript BO_SmokeParticlesOff 
+ENDSCRIPT
+
+SCRIPT BO_Small_Event 
+	printf "FUCKER FUCKER FUCKER" 
+	GetTriggerArray wallplant onto 
+	IF Triggertype <trigger_array> 
+		wait 1 frame 
+		IF GoalManager_GoalExists name = BO_Goal_Gaps9 
+			IF GoalManager_GoalFlagSet name = BO_Goal_Gaps9 flag = got_1 
+				printf "Do It" 
+				printf "Now" 
+				IF IsAlive name = BO_SmallStart01 
+					GetBonus score = 1000 text = "Destruction Bonus" 
+					Kill prefix = "BO_SmallStart" 
+					Kill prefix = "TRG_Rail_Scaff_Event" 
+					Create prefix = "TRG_Rail_After_Scaff" 
+					Kill name = BO_Scaffolding_Orng_Fence_02 
+					Kill name = BO_Barrier_QP01a01 
+					Kill name = BO_Scaffout01 
+					Kill name = BO_ScaffWoodInside01a 
+					Kill name = BO_SmallStart02a 
+					Kill name = BO_Scaffolding_Orng_Fence_02 
+					Kill prefix = "BO_Scaff_LightString" 
+					KillAllTextureSplats box = { height = 30 dist = 30 width = 30 offset = VECTOR(53.00000000000, 5.00000000000, 14.00000000000) } 
+					Kill name = NightOff_06_Bo_NoSkating 
+					TODManager_MarkPermanentlyDead name = NightOff_06_Bo_NoSkating 
+					Kill name = NightOn_06_BO_NoSkating 
+					TODManager_MarkPermanentlyDead name = NightOn_06_BO_NoSkating 
+					Kill name = NightOff_06_BO_Scaffo_Shado_01 
+					TODManager_MarkPermanentlyDead name = NightOff_06_BO_Scaffo_Shado_01 
+					Kill name = NightOn_06_ScafGroundGlow02 
+					TODManager_MarkPermanentlyDead name = NightOn_06_ScafGroundGlow02 
+					PlayObjectAnim name = BO_SmallEvent_Scaffold ExitScript = BO_SmallEventExit 
+					wait 5.50000000000 seconds 
+					IF NOT IsAlive name = Bldg_smoke_01 
+						Create name = Bldg_smoke_01 
+					ENDIF 
+					SpawnSound BO_SFX_ScaffoldingFall_01 
+				ENDIF 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_SmallEventExit 
+	printf "BO_SmallEventExit" 
+	Create prefix = "BO_SmallEnd" 
+	Create name = TRG_Rail_Broken01 
+	Create name = TRG_Rail_Broken02 
+	wait 6.00000000000 seconds 
+	printf "huh?" 
+	IF IsAlive name = Bldg_smoke_01 
+		printf "what" 
+		Spawnscript StopParticleObject params = { name = Bldg_smoke_01 } 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_ATM 
+	GetTriggerArray wallplant onto 
+	IF Triggertype <trigger_array> 
+		GetBonus score = 1000 text = "Destruction Bonus" 
+		SpawnSound BO_SFX_ATM_Hit 
+		Create prefix = "BO_ATM_Smashed" 
+		Create prefix = "ATM_CashA" 
+		Create prefix = "ATM_CashB" 
+		Create prefix = "ATM_CashC" 
+		Create prefix = "ATM_SmokeA" 
+		Create prefix = "ATM_SparkA" 
+		Kill name = BO_Bank_ATM_01 
+		KillSpawnedscript name = BO_WaitThenKillCash 
+		Spawnscript BO_WaitThenKillCash 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_WaitThenKillCash 
+	wait 1 seconds 
+	IF IsAlive name = ATM_SmokeA01 
+		StopParticleObject name = ATM_SmokeA01 
+	ENDIF 
+	IF IsAlive name = ATM_CashA01 
+		StopParticleObject name = ATM_CashA01 
+	ENDIF 
+	IF IsAlive name = ATM_CashB01 
+		StopParticleObject name = ATM_CashB01 
+	ENDIF 
+	IF IsAlive name = ATM_CashC01 
+		StopParticleObject name = ATM_CashC01 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_PortaPotty 
+	GetTriggerArray wallplant onto 
+	IF Triggertype <trigger_array> 
+		IF NOT IsAlive name = PORTAPOTTY_Rotate 
+			GetBonus score = 2000 text = "Jackass Bonus" 
+			KillAllTextureSplats box = { height = 15 dist = 10 width = 10 offset = VECTOR(68.00000000000, 5.00000000000, 254.00000000000) } 
+			SpawnSound BO_SFX_PortaPottyFallOver_01 
+			Create name = PORTAPOTTY_Rotate 
+			Kill name = PORTAPOTTY_Start 
+			Kill name = JG_BD_PortOShadow 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_PortaPotty_Rotate 
+	Obj_RotZ angle = -90 speed = 170 acceleration = 100 
+	Obj_WaitRotate 
+	IF NOT IsAlive name = PORTAPOTTY_End 
+		Create name = PORTAPOTTY_End 
+		Create prefix = "TRG_Rail_PortaPotty" 
+		Create name = JG_BD_PortOSpill 
+	ENDIF 
+	Die 
+ENDSCRIPT
+
+SCRIPT BO_Banner_Jump 
+ENDSCRIPT
+
+SCRIPT BO_Pigeon 
+	Obj_ShadowOff 
+	Obj_ClearExceptions 
+	Obj_SetException EX = ObjectInRadius scr = BO_Pigeon_Fly 
+	Obj_SetInnerRadius 10 
+	BEGIN 
+		SpawnSound BO_SFX_Pigeons01 
+		Obj_CycleAnim Anim = PeckFromIdle 
+		Obj_CycleAnim Anim = Peck numcycles = RANDOM(1, 1, 1) RANDOMCASE 1 RANDOMCASE 2 RANDOMCASE 3 RANDOMEND 
+		Obj_CycleAnim Anim = PeckToIdle 
+		Obj_CycleAnim Anim = Preen numcycles = RANDOM(1, 1, 1) RANDOMCASE 1 RANDOMCASE 2 RANDOMCASE 3 RANDOMEND 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT BO_Pigeon_Fly 
+	Obj_ClearExceptions 
+	Obj_PlayAnim Anim = Fly cycle 
+	SpawnSound BO_SFX_PigeonsFlyUp 
+	Obj_MoveToRelPos VECTOR(0.00000000000, 200.00000000000, 0.00000000000) speed = 10 acceleration = 2 
+	Obj_WaitMove 
+	Obj_SetException EX = ObjectOutofRadius scr = BO_Pigeon_Return 
+	Obj_SetOuterRadius 20 
+ENDSCRIPT
+
+SCRIPT BO_Pigeon_Return 
+	Obj_ClearExceptions 
+	Obj_PlayAnim Anim = Fly cycle 
+	Obj_MoveToRelPos VECTOR(0.00000000000, -200.00000000000, 0.00000000000) speed = 8 acceleration = 2 
+	Obj_WaitMove 
+	Goto BO_Pigeon 
+ENDSCRIPT
+
+SCRIPT BO_ShatteringGlass 
+	GetBonus score = 1000 text = "Destruction Bonus" 
+	StopSound GlassShatterSound 
+	PlaySound HitGlassPane2x id = GlassShatterSound 
+	Shatter { name = <name> 
+		area = 5000 
+		texture_swap = JG_BO_Shatter_Window3 
+		variance = 1.00000000000 
+		spread = 1.50000000000 
+		life = 3 
+		bounce = 0 
+		scale = 0.40000000596 
+		vel_x = 0 
+		vel_y = 60 
+		vel_z = 0 
+	} 
+	Kill name = <name> 
+ENDSCRIPT
+
+SCRIPT BO_ShatteringFence1 
+	GetBonus score = 1000 text = "Destruction Bonus" 
+	SpawnSound BO_SFX_Break_State_House_Fence_01 
+	Shatter { name = <name> 
+		area = 2000 
+		texture_swap = JG_BO_Shatter_SHFence 
+		variance = 1.00000000000 
+		spread = 1.50000000000 
+		life = 3 
+		bounce = 0 
+		scale = 0.40000000596 
+		vel_x = 0 
+		vel_y = 60 
+		vel_z = 0 
+	} 
+	Kill name = <name> 
+ENDSCRIPT
+
+SCRIPT BO_ShatteringFence2 
+	skater : GetBonus score = 1000 text = "Destruction Bonus" 
+	SpawnSound BO_SFX_Break_State_House_Fence_02 
+	Shatter { name = <name> 
+		area = 2000 
+		texture_swap = JG_BO_Shatter_SHFence 
+		variance = 1.00000000000 
+		spread = 1.50000000000 
+		life = 3 
+		bounce = 0 
+		scale = 0.40000000596 
+		vel_x = 0 
+		vel_y = 60 
+		vel_z = 0 
+	} 
+	Kill name = <name> 
+ENDSCRIPT
+
+SCRIPT BO_ShatteringGrate 
+	GetBonus score = 1000 text = "Destruction Bonus" 
+	ShatterAndDie name = <name> area = 500 variance = 4 vel_x = 50 vel_y = 50 vel_z = 50 spread = 1 
+	PlayStream SK6_BreakMetalFence vol = 200 
+	PlaySound HitGlassPane2x pitch = 50 
+	PlaySound HitTrafficBarrier 
+ENDSCRIPT
+
+SCRIPT BO_StateHouse_Light 
+	SpawnSound BO_SFX_LightFixtureBreak_01 
+	ShatterAndDie name = BO_ShatteringLight area = 500 variance = 4 vel_x = 50 vel_y = 50 vel_z = 50 spread = 1 
+	Kill name = JG_SH_BallTop01 
+	Kill name = JG_SH_BallTop02 
+	IF NOT IsAlive name = JG_SH_DstryArchLght 
+		GetBonus score = 1000 text = "Destruction Bonus" 
+		Create name = JG_SH_DstryArchLght 
+		Create name = ParticleBox_ArchExp01A 
+		Create name = ParticleBox_ArchSmoke01A 
+		Create name = ParticleBox_ArchSparks01A 
+		wait 2 seconds 
+		IF IsAlive name = ParticleBox_ArchExp01A 
+			StopParticleObject name = ParticleBox_ArchExp01A 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_BreakMast 
+	GetBonus score = 1000 text = "Destruction Bonus" 
+	Shatter { name = BO_ShatterMast 
+		area = 2000 
+		texture_swap = apm_Crate02_xploder02 
+		variance = 1.00000000000 
+		spread = 1.50000000000 
+		life = 3 
+		bounce = 0 
+		scale = 0.40000000596 
+		vel_x = 0 
+		vel_y = 60 
+		vel_z = 0 
+	} 
+	Kill name = BO_ShatterMast 
+	Kill name = BO_Boat_Mast 
+	SpawnSound BO_SFX_MastBreakOff 
+	Kill name = BO_BoatMast_Lights 
+	Kill name = TRGP_BrokenMast 
+	Kill name = BO_TB_Boat_Mast_Shadow 
+	Kill name = BO_Boat_RedFlag 
+	BO_Broken_Mast : Rigidbody_Kick vel = VECTOR(0.00000000000, 1.00000000000, -1.00000000000) rotVel = VECTOR(1.00000000000, -1.00000000000, 1.00000000000) 
+	IF NOT InMultiplayerGame 
+		PlayObjectAnim name = BO_SmallEvent_Ship 
+		BO_TB_Boat_Flag_01 : Rigidbody_Kick vel = VECTOR(0.00000000000, 5.00000000000, -5.00000000000) rotVel = VECTOR(-1.00000000000, 1.00000000000, 1.00000000000) 
+		BO_TB_Boat_Flag_02 : Rigidbody_Kick vel = VECTOR(5.00000000000, -5.00000000000, -5.00000000000) rotVel = VECTOR(1.00000000000, 1.00000000000, -1.00000000000) 
+		BO_TB_Boat_Flag_03 : Rigidbody_Kick vel = VECTOR(0.00000000000, -5.00000000000, 0.00000000000) rotVel = VECTOR(-1.00000000000, -1.00000000000, 1.00000000000) 
+		BO_TB_Boat_Flag_04 : Rigidbody_Kick vel = VECTOR(-5.00000000000, 0.00000000000, -5.00000000000) rotVel = VECTOR(1.00000000000, -1.00000000000, -1.00000000000) 
+		BO_TB_Boat_Flag_05 : Rigidbody_Kick vel = VECTOR(0.00000000000, 5.00000000000, -5.00000000000) rotVel = VECTOR(1.00000000000, 1.00000000000, -1.00000000000) 
+		BO_TB_Boat_Flag_06 : Rigidbody_Kick vel = VECTOR(5.00000000000, -5.00000000000, -5.00000000000) rotVel = VECTOR(-1.00000000000, 1.00000000000, -1.00000000000) 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_ShipEventExit 
+ENDSCRIPT
+
+SCRIPT BO_Church_Sign 
+	GetTriggerArray wallplant onto 
+	IF Triggertype <trigger_array> 
+		SpawnSound BO_SFX_Hit_Church_Sign_01 
+		GetGap score = 500 text = "Church Sign Slap" 
+		ShatterAndDie name = BO_TB_Church_Sign_Shatter_02 area = 500 variance = 4 vel_x = 50 vel_y = 50 vel_z = 50 spread = 1 
+		Kill name = BO_TB_Church_Sign_01 
+		IF NOT IsAlive name = BO_Church_Shatter01 
+			GetBonus score = 1000 text = "Destruction Bonus" 
+			Create name = BO_Church_Shatter01 
+			Create prefix = "Church_SmallSparkA" 
+			Create prefix = "Church_SmallSparkB" 
+			Create prefix = "Church_SmallSparkC" 
+			Create prefix = "Church_SparksA" 
+			Create prefix = "Church_SparksB" 
+			Create prefix = "Church_SparksC" 
+			wait 3 seconds 
+			BO_ChurchSparks_Off 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_Church_Sign_Shattered 
+	GetTriggerArray wallplant onto 
+	IF Triggertype <trigger_array> 
+		GetGap score = 500 text = "Church Sign Slap" 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_ChurchSparks_Off 
+	IF IsAlive name = Church_SparksA01 
+		StopParticleObject name = Church_SparksA01 
+	ENDIF 
+	IF IsAlive name = Church_SparksB01 
+		StopParticleObject name = Church_SparksB01 
+	ENDIF 
+	IF IsAlive name = Church_SparksC01 
+		StopParticleObject name = Church_SparksC01 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_TV_Plant 
+	GetTriggerArray wallplant onto 
+	IF Triggertype <trigger_array> 
+		GetBonus score = 1000 text = "Destruction Bonus" 
+		Kill name = <before> 
+		Create name = <after> 
+		Create name = <particles> 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_BluePipe_Spray 
+	IF NOT IsAlive name = <spray> 
+		SpawnSound BO_SFX_Pipe_Spray params = { DefSprayName = <spray> } 
+		Create name = <spray> 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_BoatCombo_In 
+	printf "Boat Combo In" 
+	goal_highcombo_enter_area goal_id = BO_Goal_HighCombo 
+ENDSCRIPT
+
+SCRIPT BO_BoatCombo_Out 
+	printf "Boat Combo Out" 
+	goal_highcombo_leave_area goal_id = BO_Goal_HighCombo 
+ENDSCRIPT
+
+SCRIPT BO_RVCombo_In 
+	goal_highcombo_enter_area goal_id = bo_goal_highcombo3 
+	printf "RV Combo in" 
+ENDSCRIPT
+
+SCRIPT BO_RVCombo_Out 
+	goal_highcombo_exit_area goal_id = bo_goal_highcombo3 
+	printf "RV Combo Out" 
+ENDSCRIPT
+
+SCRIPT BO_Graffiti_Hint 
+ENDSCRIPT
+
+SCRIPT BO_Library_Book 
+	IF NOT InMultiplayerGame 
+		SpawnSound BO_SFX_Library_Book_Flying params = { BookName = <book> } 
+		Kill name = <book> 
+		Create name = <book> 
+		<book> : Rigidbody_Kick vel = VECTOR(0.00000000000, 0.00000000000, 200.00000000000) rotVel = VECTOR(0.00000000000, 10.00000000000, 0.00000000000) 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_Natas_Pole 
+	IF NOT InMultiplayerGame 
+		GetTriggerArray spin onto 
+		IF Triggertype <trigger_array> 
+			YellowBall05 : Rigidbody_Kick vel = VECTOR(0.00000000000, 1.00000000000, -5.00000000000) rotVel = VECTOR(10.00000000000, 10.00000000000, 10.00000000000) 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_BallPole1 
+	IF NOT InMultiplayerGame 
+		SpawnSound BO_SFX_HitLightBallPole params = { DefPole = 1 } 
+		IF NOT GetFlag flag = BO_FLAG_BALLPOLE1_HIT 
+			YellowBall01 : Rigidbody_Kick vel = VECTOR(0.00000000000, 1.00000000000, -5.00000000000) rotVel = VECTOR(10.00000000000, 10.00000000000, 10.00000000000) 
+			YellowBall02 : Rigidbody_Kick vel = VECTOR(0.00000000000, 1.00000000000, -5.00000000000) rotVel = VECTOR(-10.00000000000, -10.00000000000, -10.00000000000) 
+			Kill name = YellowBall01_Shadow 
+			Kill name = YellowBall02_Shadow 
+			SetFlag flag = BO_FLAG_BALLPOLE1_HIT 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_BallPole2 
+	IF NOT InMultiplayerGame 
+		SpawnSound BO_SFX_HitLightBallPole params = { DefPole = 2 } 
+		IF NOT GetFlag flag = BO_FLAG_BALLPOLE2_HIT 
+			YellowBall03 : Rigidbody_Kick vel = VECTOR(0.00000000000, 1.00000000000, -5.00000000000) rotVel = VECTOR(10.00000000000, 10.00000000000, 10.00000000000) 
+			YellowBall04 : Rigidbody_Kick vel = VECTOR(0.00000000000, 1.00000000000, -5.00000000000) rotVel = VECTOR(-10.00000000000, -10.00000000000, -10.00000000000) 
+			Kill name = YellowBall03_Shadow 
+			Kill name = YellowBall04_Shadow 
+			SetFlag flag = BO_FLAG_BALLPOLE2_HIT 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_BallPole3 
+	IF NOT InMultiplayerGame 
+		SpawnSound BO_SFX_HitLightBallPole params = { DefPole = 3 } 
+		IF NOT GetFlag flag = BO_FLAG_BALLPOLE3_HIT 
+			YellowBall05 : Rigidbody_Kick vel = VECTOR(0.00000000000, 1.00000000000, -5.00000000000) rotVel = VECTOR(10.00000000000, 10.00000000000, 10.00000000000) 
+			YellowBall06 : Rigidbody_Kick vel = VECTOR(0.00000000000, 1.00000000000, -5.00000000000) rotVel = VECTOR(-10.00000000000, -10.00000000000, -10.00000000000) 
+			Kill name = YellowBall05_Shadow 
+			Kill name = YellowBall06_Shadow 
+			SetFlag flag = BO_FLAG_BALLPOLE3_HIT 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_TSign 
+	IF NOT InMultiplayerGame 
+		GetTriggerArray wallplant onto 
+		IF Triggertype <trigger_array> 
+			SpawnSound BO_SFX_Hit_TSign 
+			Create name = <bouncy_sign> 
+			Kill name = <Tsign> 
+			Kill name = <grind_node> 
+			Kill name = <shadow> 
+			GetBonus score = 1000 text = "Destruction bonus" 
+			<bouncy_sign> : Rigidbody_Kick vel = VECTOR(0.00000000000, 1.00000000000, -5.00000000000) rotVel = VECTOR(10.00000000000, 10.00000000000, 10.00000000000) 
+			KillAllTextureSplats box = { height = 7 dist = 7 width = 7 offset = VECTOR(17.00000000000, 32.00000000000, -82.00000000000) } 
+			KillAllTextureSplats box = { height = 7 dist = 7 width = 7 offset = VECTOR(17.00000000000, 22.00000000000, 117.00000000000) } 
+			KillAllTextureSplats box = { height = 9 dist = 7 width = 7 offset = VECTOR(230.00000000000, 31.00000000000, -133.00000000000) } 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_TSign_Grind 
+	IF NOT InMultiplayerGame 
+		GetTriggerArray skate off 
+		IF Triggertype <trigger_array> 
+			IF NOT IsAlive name = <bouncy_sign> 
+				Create name = <bouncy_sign> 
+				Kill name = <Tsign> 
+				Kill name = <grind_node> 
+				Kill name = <shadow> 
+				GetBonus score = 1000 text = "Destruction bonus" 
+				<bouncy_sign> : Rigidbody_Kick vel = VECTOR(0.00000000000, 1.00000000000, -5.00000000000) rotVel = VECTOR(10.00000000000, 10.00000000000, 10.00000000000) 
+				KillAllTextureSplats box = { height = 7 dist = 7 width = 7 offset = VECTOR(17.00000000000, 32.00000000000, -82.00000000000) } 
+				KillAllTextureSplats box = { height = 7 dist = 7 width = 7 offset = VECTOR(17.00000000000, 22.00000000000, 117.00000000000) } 
+				KillAllTextureSplats box = { height = 9 dist = 7 width = 7 offset = VECTOR(230.00000000000, 31.00000000000, -133.00000000000) } 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_HospitalVent 
+	SpawnSound BO_SFX_Big_Fan_Restart_Whoops 
+	TeleportSkaterToNode orient nodename = TRG_Restart_BigDig VertAir 
+	GetGap score = 500 text = "Big Dig Big Air" 
+ENDSCRIPT
+
+SCRIPT BO_Tony_Advance 
+	Obj_ClearExceptions 
+	setup_ped_speech { ped_id = TRG_Ped_Hawk 
+		activation_script = ChapterAdvanceDialog 
+		accept_text = "Tony Hawk press \\m5 to talk" 
+	} 
+	Ped_initAI Stand should_look_at_skater = 0 Cop_Ticketing 
+ENDSCRIPT
+
+SCRIPT BO_Ammo_Node 
+	Obj_ClearExceptions 
+	setup_ped_speech { ped_id = TRG_Ammo_Node 
+		accept_text = "Press \\m5 to pick up apples" 
+		activation_script = BO_Ammo_Got 
+		dont_deactivate_goals 
+	} 
+ENDSCRIPT
+
+SCRIPT BO_Ammo_Got 
+	printf "current_menu_anchor does not exist" 
+	give_skater_ammo num = 5 type = apple 
+	IF ScreenElementExists id = ped_speech_dialog 
+		DestroyScreenElement id = ped_speech_dialog 
+	ENDIF 
+	unpauseskaters 
+ENDSCRIPT
+
+SCRIPT BO_Ped_Music_On 
+	Ped_initAI Stand guitarist 
+ENDSCRIPT
+
+SCRIPT BO_Ped_LibertyHint 
+	Ped_Utils_SetupHintSpeech { 
+		ped_id = TRG_Ped_Hint_Liberty 
+		accept_text = "Press \\m5 to talk." 
+		hint_text = "The Liberty trail starts right over here." 
+		hint_text_time = 15 
+		vo = BO_Ped_Hint_Liberty_VO 
+		Volume = 250 
+		inner_radius = 8 
+		outer_radius = 30 
+		dont_deactivate_goals 
+	} 
+	Obj_SetAttentionRadius 40 
+	Ped_initAI Stand fall GetAttention 
+ENDSCRIPT
+
+SCRIPT BO_Ped_MetalsHint 
+	Ped_Utils_SetupHintSpeech { 
+		ped_id = TRG_Ped_Hint_Metals 
+		accept_text = "Press \\m5 to talk." 
+		hint_text = "You see that ugly hunk of modern art behind me?  That\'s Metals, one of the finest rails in Boston." 
+		hint_text_time = 15 
+		vo = BO_Ped_Hint_Metals_VO 
+		Volume = 250 
+		inner_radius = 8 
+		outer_radius = 30 
+		dont_deactivate_goals 
+	} 
+	Obj_SetAttentionRadius 40 
+	Ped_initAI Stand fall GetAttention 
+ENDSCRIPT
+
+SCRIPT BO_Ped_JeersHint 
+	Ped_Utils_SetupHintSpeech { 
+		ped_id = TRG_Ped_Hint_Jeers 
+		accept_text = "Press \\m5 to talk." 
+		hint_text = "Boy, am I thirsty.  Why don\'t you run downstairs and get me a drink?" 
+		hint_text_time = 15 
+		vo = BO_Ped_Hint_Jeers_VO 
+		Volume = 250 
+		inner_radius = 8 
+		outer_radius = 30 
+		dont_deactivate_goals 
+	} 
+	Obj_SetAttentionRadius 40 
+	Ped_initAI Stand fall GetAttention Bo_hintped_01_audio_assets 
+ENDSCRIPT
+
+SCRIPT BO_Ped_WashingtonHint 
+	Ped_Utils_SetupHintSpeech { 
+		ped_id = TRG_Ped_Hint_Washington 
+		accept_text = "Press \\m5 to talk." 
+		hint_text = "I\'ve been trying to do a trick (\\bc + \\b2) over this statue all day.  Why don\'t you try it?" 
+		hint_text_time = 15 
+		vo = BO_Ped_Hint_Washington_VO 
+		Volume = 250 
+		inner_radius = 8 
+		outer_radius = 30 
+		dont_deactivate_goals 
+	} 
+	Obj_SetAttentionRadius 40 
+	Ped_initAI Stand fall GetAttention 
+ENDSCRIPT
+
+SCRIPT BO_Ped_GrafHint 
+	Ped_Utils_SetupHintSpeech { 
+		ped_id = TRG_Ped_Hint_Graf 
+		accept_text = "Press \\m5 to talk." 
+		hint_text = "Look at that crap.  Spat!  Someone should do us a favor and tag over his stuff!" 
+		hint_text_time = 15 
+		vo = BO_Ped_Hint_Graf_VO 
+		Volume = 250 
+		inner_radius = 8 
+		outer_radius = 30 
+		dont_deactivate_goals 
+	} 
+	Obj_SetAttentionRadius 40 
+	Ped_initAI Stand fall GetAttention 
+ENDSCRIPT
+
+SCRIPT BO_Ped_FireHint 
+	Ped_Utils_SetupHintSpeech { 
+		ped_id = TRG_Ped_Hint_Fire 
+		accept_text = "Press \\m5 to talk." 
+		hint_text = "Light your board on fire!  Light your board on fire!  Do it!  Do it now!" 
+		hint_text_time = 15 
+		vo = BO_Ped_Hint_Fire_VO 
+		Volume = 250 
+		inner_radius = 8 
+		outer_radius = 30 
+		dont_deactivate_goals 
+	} 
+	Obj_SetAttentionRadius 40 
+	Ped_initAI Stand fall GetAttention 
+ENDSCRIPT
+
+SCRIPT BO_Ped_SkatestopperHint 
+	Ped_Utils_SetupHintSpeech { 
+		ped_id = TRG_Ped_Hint_Skatestopper 
+		accept_text = "Press \\m5 to talk." 
+		hint_text = "Man, they put grind blockers all over this thing.  Go find something with enough power to grind them off." 
+		hint_text_time = 15 
+		vo = BO_Ped_Hint_GrindBlocker_VO 
+		Volume = 250 
+		inner_radius = 8 
+		outer_radius = 30 
+		dont_deactivate_goals 
+	} 
+	Obj_SetAttentionRadius 40 
+	Ped_initAI Stand fall GetAttention 
+ENDSCRIPT
+
+SCRIPT BO_Ped_SkatestopperHint2 
+	Ped_Utils_SetupHintSpeech { 
+		ped_id = TRG_Ped_Hint_Skatestopper2 
+		accept_text = "Press \\m5 to talk." 
+		hint_text = "All right, Jesse James.  I bet that thing you\'re riding could take care of the grind blockers!" 
+		hint_text_time = 15 
+		vo = BO_Ped_Hint_GrindBlocker2_VO 
+		Volume = 250 
+		inner_radius = 8 
+		outer_radius = 30 
+		dont_deactivate_goals 
+	} 
+	Obj_SetAttentionRadius 40 
+	Ped_initAI Stand fall GetAttention 
+ENDSCRIPT
+
+SCRIPT BO_Ped_SW_Music_On 
+	Obj_SetAttentionRadius 10 
+	Ped_initAI Stand GetAttention SWKid_Sitting 
+ENDSCRIPT
+
+SCRIPT BO_SW_MusicPlay 
+	TRG_Ped_SW_On : Ped_StateLogic_RegisterTempDefaultState State = BO_STATE_SWKid_Force Table = BO_StateLogic_Table 
+	TRG_Ped_SW_On : Ped_SetLogicState BO_STATE_SWKid_Force 
+	unpauseskaters 
+ENDSCRIPT
+
+SCRIPT BO_SW_MusicStop 
+	TRG_Ped_SW_On : Ped_StateLogic_UnRegisterTempDefaultState 
+	TRG_Ped_SW_On : Ped_SetLogicState BO_STATE_SWKid_Sitting 
+	unpauseskaters 
+ENDSCRIPT
+
+SCRIPT BO_SwitchSkaters 
+	KillSpawnedscript name = BO_Spawn_SwitchSkaters 
+	SpawnSkaterScript BO_Spawn_SwitchSkaters 
+ENDSCRIPT
+
+SCRIPT BO_Spawn_SwitchSkaters 
+	wait 2 frames 
+	Kill prefix = "TRG_Ped_Gurney" 
+	pulse_blur 
+	swap_skaters_get_current_name 
+	SWITCH <name> 
+		CASE custom 
+			BO_Segway_ParticlesOff 
+			IF NOT GoalManager_HasWonGoal name = BO_Goal_Gaps7 
+				IF NOT IsAlive name = TRG_Gurney_Ghost 
+					Create name = TRG_Gurney_Ghost 
+					printf "Fuckup A" 
+				ENDIF 
+			ENDIF 
+			printf "custom" 
+			BO_Unlock_You_Goals 
+			BO_SkateStopper_Hint_Check 
+		CASE benfranklin 
+			BO_Segway_ParticlesOff 
+			SetGlobalFlag flag = GUEST_FOUND_BENFRANKLIN 
+			SetGlobalFlag flag = SKATER_UNLOCKED_BENFRANKLIN 
+			BO_Unlock_Ben_Goals 
+			printf "benfranklin" 
+			IF NOT GoalManager_HasWonGoal name = BO_Goal_Gaps7 
+				IF NOT IsAlive name = TRG_Gurney_Ghost 
+					Create name = TRG_Gurney_Ghost 
+					printf "Fuckup B" 
+				ENDIF 
+			ENDIF 
+			BO_SkateStopper_Hint_Check 
+		CASE pro_teammate 
+			SetGlobalFlag flag = PRO_FOUND_01 
+			BO_Segway_ParticlesOff 
+			BO_Unlock_Pro_Goals 
+			printf "muska" 
+			IF NOT GoalManager_HasWonGoal name = BO_Goal_Gaps7 
+				IF NOT IsAlive name = TRG_Gurney_Ghost 
+					Create name = TRG_Gurney_Ghost 
+					printf "Fuckup C" 
+				ENDIF 
+			ENDIF 
+			BO_SkateStopper_Hint_Check 
+		CASE segwayrider 
+			SetGlobalFlag flag = GUEST_FOUND_JESSEJAMES 
+			BO_Unlock_Segway_Goals 
+			IF NOT IsAlive name = TRG_BO_CarHopDummy 
+				Create name = TRG_BO_CarHopDummy 
+			ENDIF 
+			IF NOT GoalManager_HasWonGoal name = BO_Goal_SkateTheLine4 
+				IF NOT IsAlive name = TRG_Race_Ped 
+					Create name = TRG_Race_Ped 
+					Create name = Paulie_Collision 
+				ENDIF 
+			ENDIF 
+			Kill name = TRG_Gurney_Ghost 
+			printf "segwayrider" 
+			BO_SkateStopper2_Hint_Check 
+		DEFAULT 
+			BO_Segway_ParticlesOff 
+			printf "default" 
+	ENDSWITCH 
+ENDSCRIPT
+
+SCRIPT BO_SkateStopper_Hint_Check 
+	IF NOT GoalManager_GoalIsLocked name = BO_Goal_gaps15 
+		IF NOT GoalManager_HasWonGoal name = BO_Goal_gaps15 
+			Kill name = TRG_Ped_Hint_Skatestopper2 
+			IF NOT IsAlive name = TRG_Ped_Hint_Skatestopper 
+				Create name = TRG_Ped_Hint_Skatestopper 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_SkateStopper2_Hint_Check 
+	IF NOT GoalManager_GoalIsLocked name = BO_Goal_gaps15 
+		IF NOT GoalManager_HasWonGoal name = BO_Goal_gaps15 
+			Kill name = TRG_Ped_Hint_Skatestopper 
+			IF NOT IsAlive name = TRG_Ped_Hint_Skatestopper2 
+				Create name = TRG_Ped_Hint_Skatestopper2 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_Goat 
+	BEGIN 
+		Obj_CycleAnim Anim = RANDOM(1, 1) RANDOMCASE Idle RANDOMCASE Idle2 RANDOMEND numcycles = RANDOM(1, 1) RANDOMCASE 1 RANDOMCASE 2 RANDOMEND 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT BO_Segway_ParticlesOn 
+	CreateFlexibleParticleSystem name = Segway2A params_script = APM_FLAMING_seg2a_particle_params 
+	CreateFlexibleParticleSystem name = Segway2B params_script = APM_FLAMING_seg2b_particle_params 
+ENDSCRIPT
+
+SCRIPT BO_Segway_ParticlesOff 
+	DestroyFlexibleParticleSystem name = Segway2A 
+	DestroyFlexibleParticleSystem name = Segway2B 
+ENDSCRIPT
+
+SCRIPT BO_Talking 
+	Obj_CycleAnim Anim = Ped_M_Talk2_RightHere 
+	Obj_CycleAnim Anim = Ped_M_Talk2_MixIt 
+	Obj_CycleAnim Anim = Ped_M_Talk2_SureThing 
+	Obj_CycleAnim Anim = Ped_M_Talk2_Idle2 
+	Obj_CycleAnim Anim = Ped_M_Talk2_RightHere 
+	Obj_CycleAnim Anim = Ped_M_Talk2_MixIt 
+	Obj_CycleAnim Anim = Ped_M_Talk2_SureThing 
+ENDSCRIPT
+
+SCRIPT BO_Unlock_You_Goals 
+	Takeover_VO 
+ENDSCRIPT
+
+SCRIPT BO_Unlock_Pro_Goals 
+	IF GoalManager_GoalIsLocked name = BO_Goal_Gaps4 
+		IF ScreenElementExists id = ped_speech_dialog 
+			DestroyScreenElement id = ped_speech_dialog 
+		ENDIF 
+		printf "play cameras" 
+		play_swappable_pro_intro_cameras intro_cameras = BO_Pro_Goal_Intro_Cameras 
+		GoalManager_UnlockGoal name = BO_Goal_Gaps4 
+		GoalManager_UnlockGoal name = BO_Goal_Gaps13 
+		GoalManager_UnlockGoal name = BO_Goal_Gaps6 
+		GoalManager_UnlockGoal name = BO_Goal_TrickObjects 
+		GoalManager_UnlockGoal name = BO_Goal_Gaps10 
+		GoalManager_UnlockGoal name = BO_Goal_SkateTheLine2 
+		GoalManager_UnlockGoal name = BO_Goal_Gaps9 
+		GoalManager_UnlockGoal name = BO_Goal_HighCombo2 
+		IF NOT GoalManager_HasWonGoal name = BO_Goal_Gaps13 
+			IF NOT IsAlive name = TRG_Ped_Hint_Washington 
+				Create name = TRG_Ped_Hint_Washington 
+			ENDIF 
+		ENDIF 
+		IF NOT GoalManager_HasWonGoal name = BO_Goal_HighCombo2 
+			IF NOT IsAlive name = TRG_Ped_Hint_Fire 
+				Create name = TRG_Ped_Hint_Fire 
+			ENDIF 
+		ENDIF 
+		IF NOT GoalManager_HasWonGoal name = BO_Goal_SkateTheLine2 
+			IF NOT IsAlive name = TRG_Ped_Hint_Metals 
+				Create name = TRG_Ped_Hint_Metals 
+			ENDIF 
+		ENDIF 
+	ELSE 
+		Takeover_VO 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_Unlock_Ben_Goals 
+	IF GoalManager_GoalIsLocked name = BO_Goal_SkateTheLine3 
+		IF ScreenElementExists id = ped_speech_dialog 
+			DestroyScreenElement id = ped_speech_dialog 
+		ENDIF 
+		AwardNewSpecialTrickToProfile { 
+			all_profiles 
+			trick = Trick_Franklin_Grind 
+			key_combo = SpGrind_D_U_Triangle 
+		} 
+		printf "play cameras" 
+		Create name = TRG_Ped_BenFranklin_Intro 
+		PlayIntroCameras goal_intro_cameras = BO_Ben_Goal_Intro_Cameras letterbox 
+		Kill name = TRG_Ped_BenFranklin_Intro 
+		GoalManager_UnlockGoal name = BO_Goal_SkateTheLine3 
+		GoalManager_UnlockGoal name = BO_Goal_Gaps3 
+		GoalManager_UnlockGoal name = BO_Goal_Gaps11 
+		GoalManager_UnlockGoal name = BO_Goal_HighCombo 
+		IF NOT GoalManager_HasWonGoal name = BO_Goal_SkateTheLine3 
+			IF NOT IsAlive name = TRG_Ped_Hint_Liberty 
+				Create name = TRG_Ped_Hint_Liberty 
+			ENDIF 
+		ENDIF 
+	ELSE 
+		Takeover_VO 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_Unlock_Segway_Goals 
+	IF GoalManager_GoalIsLocked name = BO_Goal_Gaps14 
+		IF ScreenElementExists id = ped_speech_dialog 
+			DestroyScreenElement id = ped_speech_dialog 
+		ENDIF 
+		printf "play cameras" 
+		Create name = TRG_Ped_Segway_Intro 
+		PlayIntroCameras goal_intro_cameras = BO_Jesse_Goal_Intro_Cameras letterbox 
+		Kill name = TRG_Ped_Segway_Intro 
+		GoalManager_UnlockGoal name = BO_Goal_Gaps14 
+		GoalManager_UnlockGoal name = BO_Goal_SkateTheLine4 
+		GoalManager_UnlockGoal name = BO_Goal_SkateTheLine 
+		GoalManager_UnlockGoal name = bo_goal_highcombo3 
+		GoalManager_UnlockGoal name = BO_Goal_gaps15 
+	ELSE 
+		Takeover_VO 
+	ENDIF 
+	BO_Segway_ParticlesOn 
+ENDSCRIPT
+
+SCRIPT BO_flame 
+	IF NOT InMultiplayerGame 
+		IF NOT GetFlag flag = FLAG_BO_SKATER_IS_ON_FIRE 
+			IF NOT IsSkaterOnVehicle 
+				IF GameModeEquals is_career 
+					IF NOT GoalManager_GoalIsLocked name = BO_Goal_HighCombo2 
+						IF NOT GoalManager_HasWonGoal name = BO_Goal_HighCombo2 
+							GoalManager_GetDifficultyLevel 
+							SWITCH <difficulty_level> 
+								CASE 0 
+									Create_Panel_Block { id = VertList 
+										text = "Start and land a 5,000 point combo while on fire." 
+										rgba = { 70 , 70 , 144 , 10 } 
+										pos = PAIR(150.00000000000, 250.00000000000) 
+										time = 4500 
+										just = { left left } 
+										internal_just = { left left } 
+									} 
+								CASE 1 
+									Create_Panel_Block { id = VertList 
+										text = "Start and land a 15,000 point combo while on fire." 
+										rgba = { 70 , 70 , 144 , 10 } 
+										pos = PAIR(150.00000000000, 250.00000000000) 
+										time = 4500 
+										just = { left left } 
+										internal_just = { left left } 
+									} 
+								CASE 2 
+									Create_Panel_Block { id = VertList 
+										text = "Start and land a 50,000 point combo while on fire." 
+										rgba = { 70 , 70 , 144 , 10 } 
+										pos = PAIR(150.00000000000, 250.00000000000) 
+										time = 4500 
+										just = { left left } 
+										internal_just = { left left } 
+									} 
+							ENDSWITCH 
+						ENDIF 
+					ENDIF 
+				ENDIF 
+				SetFlag flag = FLAG_BO_SKATER_IS_ON_FIRE 
+				goal_highcombo_enter_area goal_id = BO_Goal_HighCombo2 
+				SpawnSkaterScript BO_FireParticlesOff 
+				SpawnSkaterScript BO_SmokeParticlesOff 
+				wait 1 frame 
+				SpawnSkaterScript BO_FireParticlesOn 
+				SpawnSkaterScript BO_SmokeParticlesOn 
+				wait 5 seconds 
+				printf "Wait 5 - 1" 
+				wait 5 seconds 
+				printf "Wait 5 - 2" 
+				wait 5 seconds 
+				printf "Wait 5 - 3" 
+				wait 5 seconds 
+				printf "Wait 5 - 4" 
+				wait 5 seconds 
+				printf "Wait 5 - 5" 
+				SpawnSkaterScript BO_FireParticlesOff 
+				UnSetFlag flag = FLAG_BO_SKATER_IS_ON_FIRE 
+				goal_highcombo_leave_area goal_id = BO_Goal_HighCombo2 
+				wait 3 seconds 
+				SpawnSkaterScript BO_SmokeParticlesOff 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+	UnSetFlag flag = FLAG_BO_SKATER_IS_ON_FIRE 
+ENDSCRIPT
+
+SCRIPT BO_FireParticlesOn 
+	printf "Fire" 
+	SpawnSound BO_SFX_Skater_Ignite 
+	CreateFlexibleParticleSystem name = BurnMoFo params_script = APM_flamingBOARD_particle_params 
+ENDSCRIPT
+
+SCRIPT BO_FireParticlesOff 
+	SpawnSound BO_SFX_Skater_Put_Out_Fire 
+	DestroyFlexibleParticleSystem name = BurnMoFo 
+ENDSCRIPT
+
+SCRIPT BO_SmokeParticlesOn 
+	printf "Fire" 
+	CreateFlexibleParticleSystem name = SmokeyMoFo params_script = apm_OILYsmoke_particle_params 
+ENDSCRIPT
+
+SCRIPT BO_SmokeParticlesOff 
+	DestroyFlexibleParticleSystem name = SmokeyMoFo 
+ENDSCRIPT
+
+SCRIPT BO_AllParticlesOff 
+	SpawnSound BO_SFX_Skater_Put_Out_Fire 
+	SpawnSkaterScript BO_FireParticlesOff 
+	UnSetFlag flag = FLAG_BO_SKATER_IS_ON_FIRE 
+	SpawnSkaterScript BO_SmokeParticlesOff 
+	goal_highcombo_leave_area goal_id = BO_Goal_HighCombo2 
+ENDSCRIPT
+
+SCRIPT BO_Cannon1_Lit 
+	GetTriggerArray grind off 
+	IF Triggertype <trigger_array> 
+		IF GetFlag flag = FLAG_BO_SKATER_IS_ON_FIRE 
+			IF GetFlag flag = FLAG_BO_CANNON2_LIT 
+				IF NOT IsAlive name = CANNON01_SMOKE_Start 
+					Create name = CANNON01_SMOKE_Start 
+					Create name = Cannon01_SPARKS_end_Start 
+				ENDIF 
+				Kill name = CANNON01_SMOKE_Start 
+				Kill name = Cannon01_SPARKS_end_Start 
+				Kill name = CANNON02_SMOKE_Start 
+				Kill name = Cannon02_SPARKS_Start 
+				BO_Cannon_Event 
+			ELSE 
+				SetFlag flag = FLAG_BO_CANNON1_LIT 
+				IF NOT IsAlive name = CANNON01_SMOKE_Start 
+					SpawnSound BO_SFX_Cannon_01_Fuse 
+					Create name = CANNON01_SMOKE_Start 
+					Create name = Cannon01_SPARKS_end_Start 
+				ENDIF 
+			ENDIF 
+			wait 5 seconds 
+			UnSetFlag flag = FLAG_BO_CANNON1_LIT 
+			BO_Kill_Cannon1_Particles 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_Cannon2_Lit 
+	GetTriggerArray grind off 
+	IF Triggertype <trigger_array> 
+		IF GetFlag flag = FLAG_BO_SKATER_IS_ON_FIRE 
+			IF GetFlag flag = FLAG_BO_CANNON1_LIT 
+				IF NOT IsAlive name = CANNON02_SMOKE_Start 
+					Create name = CANNON02_SMOKE_Start 
+					Create name = Cannon02_SPARKS_Start 
+				ENDIF 
+				Kill name = CANNON01_SMOKE_Start 
+				Kill name = Cannon01_SPARKS_end_Start 
+				Kill name = CANNON02_SMOKE_Start 
+				Kill name = Cannon02_SPARKS_Start 
+				BO_Cannon_Event 
+			ELSE 
+				SetFlag flag = FLAG_BO_CANNON2_LIT 
+				IF NOT IsAlive name = CANNON02_SMOKE_Start 
+					SpawnSound BO_SFX_Cannon_02_Fuse 
+					Create name = CANNON02_SMOKE_Start 
+					Create name = Cannon02_SPARKS_Start 
+				ENDIF 
+			ENDIF 
+			wait 5 seconds 
+			UnSetFlag flag = FLAG_BO_CANNON2_LIT 
+			BO_Kill_Cannon2_Particles 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_Kill_Cannon1_Particles 
+	IF IsAlive name = Cannon01_SPARKS_end_Start 
+		StopParticleObject name = Cannon01_SPARKS_end_Start 
+	ENDIF 
+	IF IsAlive name = CANNON01_SMOKE_Start 
+		StopParticleObject name = CANNON01_SMOKE_Start 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_Kill_Cannon2_Particles 
+	IF IsAlive name = Cannon02_SPARKS_Start 
+		StopParticleObject name = Cannon02_SPARKS_Start 
+	ENDIF 
+	IF IsAlive name = CANNON02_SMOKE_Start 
+		StopParticleObject name = CANNON02_SMOKE_Start 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_NatasSpin 
+	printf "Natas Check" 
+	GetTriggerArray spin onto 
+	IF Triggertype <trigger_array> 
+		printf "spin onto" 
+		SetException EX = SkaterJump scr = BO_Natas_Done 
+		SetException EX = SkaterBailed scr = BO_Natas_Done 
+		SetException EX = SkaterEnterAir scr = BO_Natas_Done 
+		wait 3 seconds 
+		IF NOT IsAlive name = <water_node> 
+			Create name = <water_node> 
+			IF ( <water_node> = JG_BO_HydrantWater03 ) 
+				Create name = JG_BO_HydrantWater03A 
+				Create name = JG_BO_HydrantWater03B 
+			ENDIF 
+			GetBonus score = 1000 text = "Hydrant Pop" 
+			SpawnSound BO_SFX_HydrantPop_01 params = { HydrantNode = <water_node> } 
+		ENDIF 
+		printf "Natas for 3" 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_Natas_Done 
+	printf "Natas done" 
+ENDSCRIPT
+
+SCRIPT BO_Decapitate_Statue01 
+	IF NOT InMultiplayerGame 
+		ClearExceptionGroup BO_Statue01 
+		GetTriggerArray lip onto 
+		IF Triggertype <trigger_array> 
+			GetBonus score = 1000 text = "Destruction Bonus" 
+			SpawnSound BO_SFX_HeadCrumble01 
+			SetException EX = SkaterExitLip scr = BO_Decapitate_Statue01_Out Group = BO_Statue01 
+			block 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_Decapitate_Statue01_Out 
+	IF NOT InMultiplayerGame 
+		ClearExceptionGroup BO_Statue01 
+		StopStream SK6_CrumblingStone 
+		SpawnSound BO_SFX_TakeOffStatueHead 
+		IF IsAlive name = BO_StatueHead01 
+			Kill name = BO_StatueHead01 
+			Kill name = TRG_Rail_Statue13 
+			Kill name = TRG_Rail_Statue14 
+			Kill name = JG_SH_StatueShadowHead02 
+			Create name = Bouncy_StatueHead01 
+			Bouncy_StatueHead01 : Rigidbody_Kick vel = VECTOR(0.00000000000, 10.00000000000, -50.00000000000) rotVel = VECTOR(10.00000000000, 10.00000000000, 10.00000000000) 
+			IF GoalManager_GoalExists name = BO_Goal_Gaps5 
+				GoalManager_SetGoalFlag name = BO_Goal_Gaps5 got_1 1 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_Decapitate_Statue02 
+	IF NOT InMultiplayerGame 
+		ClearExceptionGroup BO_Statue02 
+		GetTriggerArray lip onto 
+		IF Triggertype <trigger_array> 
+			GetBonus score = 1000 text = "Destruction Bonus" 
+			SpawnSound BO_SFX_HeadCrumble02 
+			SetException EX = SkaterExitLip scr = BO_Decapitate_Statue02_Out Group = BO_Statue02 
+			block 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_Decapitate_Statue02_Out 
+	IF NOT InMultiplayerGame 
+		ClearExceptionGroup BO_Statue02 
+		StopStream SK6_CrumblingStone 
+		SpawnSound BO_SFX_TakeOffStatueHead 
+		IF IsAlive name = BO_StatueHead02 
+			Kill name = BO_StatueHead02 
+			Kill name = TRG_Rail_Statue15 
+			Kill name = TRG_Rail_Statue16 
+			Kill name = JG_SH_StatueShadowHead01 
+			Create name = Bouncy_StatueHead02 
+			Bouncy_StatueHead02 : Rigidbody_Kick vel = VECTOR(0.00000000000, 10.00000000000, -50.00000000000) rotVel = VECTOR(10.00000000000, 10.00000000000, 10.00000000000) 
+			IF GoalManager_GoalExists name = BO_Goal_Gaps5 
+				GoalManager_SetGoalFlag name = BO_Goal_Gaps5 got_2 1 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_Decapitate_Statue03 
+	IF NOT InMultiplayerGame 
+		IF IsAlive name = BO_StatueHead03 
+			GetBonus score = 1000 text = "Destruction Bonus" 
+			SpawnSound BO_SFX_TakeOffStatueHead 
+			Kill name = BO_StatueHead03 
+			Create name = Bouncy_StatueHead03 
+			Kill name = JG_CO_StatueShadowHead 
+			Bouncy_StatueHead03 : Rigidbody_Kick vel = VECTOR(0.00000000000, 10.00000000000, -50.00000000000) rotVel = VECTOR(10.00000000000, 10.00000000000, 10.00000000000) 
+			IF GoalManager_GoalExists name = BO_Goal_Gaps5 
+				GoalManager_SetGoalFlag name = BO_Goal_Gaps5 got_3 1 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_jump_fan 
+	printf " waiting for ollie " 
+	ClearExceptionGroup BO_jumpfan 
+	SetException EX = SkaterJump scr = BO_jump_fan_ollie Group = BO_jumpfan 
+	SetException EX = SkaterOffEdge scr = BO_jump_fan_nothing Group = BO_jumpfan 
+	block 
+ENDSCRIPT
+
+SCRIPT BO_jump_fan_ollie 
+	GetTriggerArray jump off 
+	IF Triggertype <trigger_array> 
+		trigger_jump_boost speed = 500 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_jump_fan_ollie_old 
+	printf " ollie " 
+	ClearExceptionGroup BO_jumpfan 
+	trigger_jump_boost multi = 2 
+	KillSpawnedscript name = BO_jump_fan 
+ENDSCRIPT
+
+SCRIPT BO_jump_fan_nothing 
+	printf " nothing " 
+	ClearExceptionGroup BO_jumpfan 
+	KillSpawnedscript name = BO_jump_fan 
+ENDSCRIPT
+
+SCRIPT BO_Gurney 
+	Obj_ClearExceptions 
+	IF GameModeEquals is_career 
+		setup_ped_speech { ped_id = TRG_Gurney_Ghost 
+			accept_text = "Press \\m5 to take gurney." 
+			activation_script = BO_Gurney_Go 
+		} 
+	ELSE 
+		Die 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_Gurney_Go 
+	IF ScreenElementExists id = ped_speech_dialog 
+		DestroyScreenElement id = ped_speech_dialog 
+	ENDIF 
+	Get_Current_Skater_Name 
+	IF NOT IsSkaterOnVehicle 
+		IF NOT IsAlive name = TRG_Tony_Ghost 
+			Create name = TRG_Tony_Ghost 
+		ENDIF 
+		Kill prefix = "TRG_Ped_Gurney" 
+		Create prefix = "TRG_Ped_Gurney" 
+		TeleportSkaterToNode nodename = TRG_Restart_Gurney orient 
+		wait 5 frames 
+		Vehicle_Start params = gurney_params 
+		GoalManager_ActivateGoal name = BO_Goal_Gaps7 
+		Create_Panel_Block id = current_goal text = "Take the sick kid to meet Tony" style = panel_message_goal 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_Tony_Ghost 
+	Obj_ClearExceptions 
+	printf "Tony_Ghost" 
+	Obj_SetInnerRadius 10 
+	Obj_SetException EX = ObjectInRadius scr = BO_Meet_Tony_Win 
+ENDSCRIPT
+
+SCRIPT BO_Meet_Tony_Win 
+	Obj_ClearExceptions 
+	printf "Meet_Tony_Win" 
+	IF GoalManager_GoalExists name = BO_Goal_Gaps7 
+		GoalManager_SetGoalFlag name = BO_Goal_Gaps7 got_1 1 
+	ENDIF 
+	MakeSkaterGoto SkaterInit params = { walk } 
+	Die 
+ENDSCRIPT
+
+SCRIPT BO_Teapot 
+	GetTriggerArray grind onto 
+	IF Triggertype <trigger_array> 
+		SpawnSound BO_SFX_Grind_Teapot_Whistle 
+		printf "Teapot" 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_Sick_Kid 
+	Obj_PlayAnim Anim = Gurney_Stand_Idle_Rider cycle 
+ENDSCRIPT
+
+SCRIPT BO_Paramedic 
+	Obj_ClearExceptions 
+	Obj_SetInnerRadius 5 
+	SetException EX = ObjectInRadius scr = BO_Paramedic_Knock 
+	printf "BO_Paramedic" 
+ENDSCRIPT
+
+SCRIPT BO_Paramedic_Knock 
+	Obj_ClearExceptions 
+	printf "BO_Paramedic_Knock" 
+	MakeSkaterGoto vehicle_bail 
+ENDSCRIPT
+
+SCRIPT BO_Kill_Paramedics 
+	GoalManager_LoseGoal name = BO_Goal_Gaps7 
+	Kill prefix = "TRG_Ped_Gurney" 
+	wait 4 seconds 
+	Kill name = TRG_Ped_Attendant 
+	Kill name = TRG_Ped_Nurse01 
+	IF NOT IsAlive name = TRG_Ped_Attendant 
+		Create name = TRG_Ped_Attendant 
+	ENDIF 
+	IF NOT IsAlive name = TRG_Ped_Nurse01 
+		Create name = TRG_Ped_Nurse01 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_Paramedic_Idle 
+	ClearExceptionGroup BO_Paramedic 
+	Obj_SetInnerRadius 45 
+	SetException EX = ObjectInRadius scr = BO_Paramedic_Attack Group = BO_Paramedic 
+	Obj_PlayAnim Anim = Ped_M_Idle1 cycle 
+	block 
+ENDSCRIPT
+
+SCRIPT BO_Paramedic_Attack 
+	ClearExceptionGroup BO_Paramedic 
+	printf "Attack" 
+	Obj_SetInnerRadius 5 
+	Obj_SetOuterRadius 50 
+	Obj_SetException EX = ObjectInRadius scr = BO_Paramedic_HitSkater Group = BO_Paramedic 
+	Obj_SetException EX = SkaterOutOfArea scr = BO_Paramedic_Return Group = BO_Paramedic 
+	BEGIN 
+		Obj_LookAtObject type = skater time = 0.25000000000 
+		Obj_WaitRotate 
+		IF NOT Obj_GetCollision height = 0.50000000000 length = 15 
+			Obj_CycleAnim Anim = Ped_M_RunFromIdle from = start to = 10 
+			Obj_MoveForward dist = 300 speed = 10 acceleration = 1 
+		ELSE 
+		ENDIF 
+		Obj_CycleAnim Anim = Ped_M_RunFromIdle from = 11 to = end 
+		Obj_PlayAnim Anim = Ped_M_Run cycle 
+		Obj_WaitMove 
+		Obj_CycleAnim Anim = Ped_M_Idle1 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT BO_Paramedic_Return 
+	ClearExceptionGroup BO_Paramedic 
+	Obj_LookAtNode name = TRG_Ped_Gurney01 time = 0.50000000000 
+	Obj_WaitRotate 
+	Obj_PlayAnim Anim = Ped_M_Run cycle 
+	Obj_MoveToNode name = TRG_Ped_Gurney01 speed = 5 
+	Obj_WaitMove 
+	Goto BO_Paramedic_Idle 
+ENDSCRIPT
+
+SCRIPT BO_Paramedic_HitSkater 
+	ClearExceptionGroup BO_Paramedic 
+	SetException EX = SkaterOutOfArea scr = BO_Paramedic_Idle Group = BO_Paramedic 
+	MakeSkaterGoto vehicle_bail 
+	Obj_CycleAnim Anim = Ped_M_Push 
+	Obj_LookAtNode name = TRG_Ped_Gurney01 time = 0.50000000000 
+	Obj_WaitRotate 
+	Obj_PlayAnim Anim = Ped_M_Run cycle 
+	Obj_MoveToNode name = TRG_Ped_Gurney01 speed = 5 
+	Obj_WaitMove 
+	Goto BO_Paramedic_Attack 
+ENDSCRIPT
+
+SCRIPT BO_CarHop 
+	ClearExceptionGroup CarHop 
+	WaitForEvent type = SkaterCarHop 
+	printf "Hey I got a car hop" 
+	Get_Current_Skater_Name 
+	IF ( <name> = segwayrider ) 
+		IF GoalManager_GoalExists name = BO_Goal_Gaps14 
+			GoalManager_SetGoalFlag name = BO_Goal_Gaps14 got_1 1 
+		ENDIF 
+	ELSE 
+		Die 
+	ENDIF 
+	wait 30 frames 
+	ClearExceptionGroup CarHop 
+	WaitForEvent type = SkaterCarHop 
+	printf "Hey I got 2 car hops" 
+	Get_Current_Skater_Name 
+	IF ( <name> = segwayrider ) 
+		IF GoalManager_GoalExists name = BO_Goal_Gaps14 
+			GoalManager_SetGoalFlag name = BO_Goal_Gaps14 got_2 1 
+		ENDIF 
+	ELSE 
+		Die 
+	ENDIF 
+	wait 30 frames 
+	ClearExceptionGroup CarHop 
+	WaitForEvent type = SkaterCarHop 
+	printf "Hey I got 3 car hops" 
+	Get_Current_Skater_Name 
+	IF ( <name> = segwayrider ) 
+		IF GoalManager_GoalExists name = BO_Goal_Gaps14 
+			GoalManager_SetGoalFlag name = BO_Goal_Gaps14 got_3 1 
+		ENDIF 
+	ELSE 
+		Die 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_Focus 
+	ClearExceptionGroup BO_Focus 
+	WaitForEvent type = PedHitByProjectile 
+	printf "Smack that Bitch" 
+ENDSCRIPT
+
+SCRIPT BO_Subway 
+	SpawnSound BO_SFX_SubwayPassBy 
+	BEGIN 
+		Obj_MoveToNode name = <endnode> speed = RANDOM_RANGE PAIR(60.00000000000, 65.00000000000) 
+		Obj_WaitMove 
+		wait RANDOM_NO_REPEAT(1, 1, 1, 1) RANDOMCASE 3 RANDOMCASE 5 RANDOMCASE 7 RANDOMCASE 9 RANDOMEND seconds 
+		Obj_MoveToNode name = <startnode> speed = RANDOM_RANGE PAIR(60.00000000000, 65.00000000000) 
+		Obj_WaitMove 
+		wait RANDOM_NO_REPEAT(1, 1, 1, 1) RANDOMCASE 3 RANDOMCASE 5 RANDOMCASE 7 RANDOMCASE 9 RANDOMEND seconds 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT BO_Subway_Off 
+	TODManager_SetFogActive 1 
+	TODManager_ResetLevelLights 
+	Kill prefix = "TRG_Ped_Sub" 
+	Kill name = BO_Subway01 
+	Kill name = BO_Subway03 
+	Invisible prefix = "BO_Subway_Pillar" 
+	Invisible prefix = "BO_SubwayBench" 
+	Invisible prefix = "BO_SubwayExit" 
+	Invisible prefix = "JG_Sub_BlinkingLights" 
+	Invisible prefix = "JG_Sub_CarPass" 
+	Invisible prefix = "JG_Sub_Fence" 
+	Invisible prefix = "JG_Sub_FenceFrame" 
+	Invisible prefix = "JG_Sub_FenceShadow" 
+	Invisible prefix = "JG_Sub_HangingSign" 
+	Invisible prefix = "JG_Sub_PillarShadows" 
+	Invisible prefix = "JG_Sub_DirtBase" 
+	Invisible prefix = "JG_Sub_DirtSides" 
+	Invisible prefix = "JG_Sub_Side" 
+	Invisible prefix = "JG_Sub_FloorMiddle" 
+	Invisible prefix = "JG_Sub_PoleDirtSides" 
+	Invisible prefix = "JG_Sub_PoleDirtBase" 
+	Invisible prefix = "JG_Sub_RedPipes" 
+	Invisible prefix = "JG_Sub_RoofStruts" 
+	IF IsAlive name = NightOff_02_SubExt02 
+		Invisible prefix = "NightOff_02_SubExt" 
+		printf "!!!!!!!!! Ass Fucker" 
+	ELSE 
+		printf "######## Fucker Ass" 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_Subway_On 
+	TODManager_SetFogActive 0 
+	TODManager_ResetLevelLights state_name = afternoon 
+	Create prefix = "TRG_Ped_Sub" 
+	Create name = BO_Subway01 
+	Create name = BO_Subway03 
+	Visible prefix = "BO_Subway_Pillar" 
+	Visible prefix = "BO_SubwayBench" 
+	Visible prefix = "BO_SubwayExit" 
+	Visible prefix = "JG_Sub_BlinkingLights" 
+	Visible prefix = "JG_Sub_CarPass" 
+	Visible prefix = "JG_Sub_Fence" 
+	Visible prefix = "JG_Sub_FenceFrame" 
+	Visible prefix = "JG_Sub_FenceShadow" 
+	Visible prefix = "JG_Sub_HangingSign" 
+	Visible prefix = "JG_Sub_PillarShadows" 
+	Visible prefix = "JG_Sub_DirtBase" 
+	Visible prefix = "JG_Sub_DirtSides" 
+	Visible prefix = "JG_Sub_Side" 
+	Visible prefix = "JG_Sub_FloorMiddle" 
+	Visible prefix = "JG_Sub_PoleDirtSides" 
+	Visible prefix = "JG_Sub_PoleDirtBase" 
+	Visible prefix = "JG_Sub_RedPipes" 
+	Visible prefix = "JG_Sub_RoofStruts" 
+	IF IsAlive name = NightOff_02_SubExt02 
+		Visible prefix = "NightOff_02_SubExt" 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_Library_Off 
+	TODManager_SetFogActive 1 
+	TODManager_ResetLevelLights 
+	Invisible prefix = "JG_LB_Bookcase" 
+	Invisible prefix = "JG_LB_CarPass" 
+	Invisible prefix = "JG_LB_Door" 
+	Invisible prefix = "JG_LB_Light" 
+	Invisible name = JG_LB_Bookcases 
+	Invisible name = JG_LB_Columns 
+	Invisible name = JG_LB_Tables 
+	Invisible name = JG_LB_Room 
+	IF IsAlive name = NightOff_04_JG_LB_DoorExterior02 
+		Invisible name = NightOff_04_JG_LB_DoorExterior02 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_Library_On 
+	TODManager_SetFogActive 0 
+	TODManager_ResetLevelLights state_name = afternoon 
+	Visible prefix = "JG_LB_Bookcase" 
+	Visible prefix = "JG_LB_CarPass" 
+	Visible prefix = "JG_LB_Door" 
+	Visible prefix = "JG_LB_Light" 
+	Visible name = JG_LB_Bookcases 
+	Visible name = JG_LB_Columns 
+	Visible name = JG_LB_Tables 
+	Visible name = JG_LB_Room 
+	IF IsAlive name = NightOff_04_JG_LB_DoorExterior02 
+		Visible name = NightOff_04_JG_LB_DoorExterior02 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_BailDummy 
+	ClearExceptionGroup BO_SkaterBail 
+	SetException EX = SkaterEnterBail scr = BO_BailDummy_Bail 
+	printf "waiting for bail" 
+	block 
+ENDSCRIPT
+
+SCRIPT BO_BailDummy_Bail 
+	printf "Bailed" 
+	wait 1 second 
+	IF NOT IsAlive name = BOUNCY_SkaterObject01 
+		printf "Create it" 
+		Create name = BOUNCY_SkaterObject01 
+		wait 5 frames 
+		skater : Obj_GetPosition 
+		BOUNCY_SkaterObject01 : Obj_SetPosition position = <pos> 
+		wait 5 frames 
+		BOUNCY_SkaterObject01 : Rigidbody_Kick vel = VECTOR(10.00000000000, 10.00000000000, 10.00000000000) rotVel = VECTOR(10.00000000000, 10.00000000000, 10.00000000000) 
+	ENDIF 
+	Goto BO_BailDummy 
+ENDSCRIPT
+
+SCRIPT BO_LeafTriggerA 
+	KillSpawnedscript name = BO_LeavesA 
+	wait 2 frames 
+	Spawnscript BO_LeavesA 
+	SpawnSound ALL_Levels_Going_Through_Tree 
+ENDSCRIPT
+
+SCRIPT BO_LeavesA 
+	Kill prefix = "Particle_LeavesA" 
+	wait 2 frames 
+	Create prefix = "Particle_LeavesA" 
+	wait 10 seconds 
+	IF IsAlive name = Particle_LeavesA01 
+		StopParticleObject name = Particle_LeavesA01 
+	ENDIF 
+	IF IsAlive name = Particle_LeavesA04 
+		StopParticleObject name = Particle_LeavesA04 
+	ENDIF 
+	IF IsAlive name = Particle_LeavesA07 
+		StopParticleObject name = Particle_LeavesA07 
+	ENDIF 
+	IF IsAlive name = Particle_LeavesA10 
+		StopParticleObject name = Particle_LeavesA10 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_LeafTriggerB 
+	KillSpawnedscript name = BO_LeavesB 
+	wait 2 frames 
+	Spawnscript BO_LeavesB 
+	SpawnSound ALL_Levels_Going_Through_Tree 
+ENDSCRIPT
+
+SCRIPT BO_LeavesB 
+	Kill prefix = "Particle_LeavesB" 
+	wait 2 frames 
+	Create prefix = "Particle_LeavesB" 
+	wait 10 seconds 
+	IF IsAlive name = Particle_LeavesB01 
+		StopParticleObject name = Particle_LeavesB01 
+	ENDIF 
+	IF IsAlive name = Particle_LeavesB04 
+		StopParticleObject name = Particle_LeavesB04 
+	ENDIF 
+	IF IsAlive name = Particle_LeavesB07 
+		StopParticleObject name = Particle_LeavesB07 
+	ENDIF 
+	IF IsAlive name = Particle_LeavesB10 
+		StopParticleObject name = Particle_LeavesB10 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_LeafTriggerC 
+	KillSpawnedscript name = BO_LeavesC 
+	wait 2 frames 
+	Spawnscript BO_LeavesC 
+	SpawnSound ALL_Levels_Going_Through_Tree 
+ENDSCRIPT
+
+SCRIPT BO_LeavesC 
+	Kill prefix = "Particle_LeavesC" 
+	wait 2 frames 
+	Create prefix = "Particle_LeavesC" 
+	wait 10 seconds 
+	IF IsAlive name = Particle_LeavesC01 
+		StopParticleObject name = Particle_LeavesC01 
+	ENDIF 
+	IF IsAlive name = Particle_LeavesC04 
+		StopParticleObject name = Particle_LeavesC04 
+	ENDIF 
+	IF IsAlive name = Particle_LeavesC07 
+		StopParticleObject name = Particle_LeavesC07 
+	ENDIF 
+	IF IsAlive name = Particle_LeavesC10 
+		StopParticleObject name = Particle_LeavesC10 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_LeafTriggerD 
+	KillSpawnedscript name = BO_LeavesD 
+	wait 2 frames 
+	Spawnscript BO_LeavesD 
+	SpawnSound ALL_Levels_Going_Through_Tree 
+ENDSCRIPT
+
+SCRIPT BO_LeavesD 
+	Kill prefix = "Particle_LeavesD" 
+	wait 2 frames 
+	Create prefix = "Particle_LeavesD" 
+	wait 10 seconds 
+	IF IsAlive name = Particle_LeavesD01 
+		StopParticleObject name = Particle_LeavesD01 
+	ENDIF 
+	IF IsAlive name = Particle_LeavesD04 
+		StopParticleObject name = Particle_LeavesD04 
+	ENDIF 
+	IF IsAlive name = Particle_LeavesD07 
+		StopParticleObject name = Particle_LeavesD07 
+	ENDIF 
+	IF IsAlive name = Particle_LeavesD10 
+		StopParticleObject name = Particle_LeavesD10 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_LeafTriggerE 
+	KillSpawnedscript name = BO_LeavesE 
+	wait 2 frames 
+	Spawnscript BO_LeavesE 
+	SpawnSound ALL_Levels_Going_Through_Tree 
+ENDSCRIPT
+
+SCRIPT BO_LeavesE 
+	Kill prefix = "Particle_LeavesE" 
+	wait 2 frames 
+	Create prefix = "Particle_LeavesE" 
+	wait 10 seconds 
+	IF IsAlive name = Particle_LeavesE01 
+		StopParticleObject name = Particle_LeavesE01 
+	ENDIF 
+	IF IsAlive name = Particle_LeavesE04 
+		StopParticleObject name = Particle_LeavesE04 
+	ENDIF 
+	IF IsAlive name = Particle_LeavesE07 
+		StopParticleObject name = Particle_LeavesE07 
+	ENDIF 
+	IF IsAlive name = Particle_LeavesE10 
+		StopParticleObject name = Particle_LeavesE10 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_LeafTriggerF 
+	KillSpawnedscript name = BO_LeavesF 
+	wait 2 frames 
+	Spawnscript BO_LeavesF 
+	SpawnSound ALL_Levels_Going_Through_Tree 
+ENDSCRIPT
+
+SCRIPT BO_LeavesF 
+	Kill prefix = "Particle_LeavesF" 
+	wait 2 frames 
+	Create prefix = "Particle_LeavesF" 
+	wait 10 seconds 
+	IF IsAlive name = Particle_LeavesF01 
+		StopParticleObject name = Particle_LeavesF01 
+	ENDIF 
+	IF IsAlive name = Particle_LeavesF04 
+		StopParticleObject name = Particle_LeavesF04 
+	ENDIF 
+	IF IsAlive name = Particle_LeavesF07 
+		StopParticleObject name = Particle_LeavesF07 
+	ENDIF 
+	IF IsAlive name = Particle_LeavesF10 
+		StopParticleObject name = Particle_LeavesF10 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_Blader_Trick_Dummy 
+	TRG_Blader_Trick_Dummy : BO_Blader_Trick_Dummy2 
+ENDSCRIPT
+
+SCRIPT BO_Blader_Trick_Dummy2 
+	Obj_ClearExceptions 
+	ClearExceptionGroup BO_Blader_Trick_Dummy 
+	Obj_LockToObject Objectname = TRG_Ped_RollerBlader VECTOR(0.00000000000, 0.00000000000, 0.00000000000) 
+	printf "BO_Blader_Trick_Dummy" 
+	Obj_SetInnerRadius 7 
+	Obj_SetException EX = ObjectInRadius scr = BO_Blader_Trick_Near 
+ENDSCRIPT
+
+SCRIPT BO_Blader_Trick_Near 
+	Obj_ClearExceptions 
+	ClearExceptionGroup BO_Blader_Trick_Dummy 
+	UnSetFlag flag = FLAG_BO_GOT_TRICK 
+	printf "BO_Blader_Trick_Near" 
+	Obj_SetOuterRadius 8 
+	Obj_SetException EX = ObjectOutofRadius scr = BO_Blader_Trick_Dummy 
+	SetException EX = SkaterEnterAir scr = BO_Blader_Trick_InAir Group = BO_Blader_Trick_Dummy 
+ENDSCRIPT
+
+SCRIPT BO_Blader_Trick_InAir 
+	Obj_ClearExceptions 
+	ClearExceptionGroup BO_Blader_Trick_Dummy 
+	SetException EX = SkaterLanded scr = BO_Blader_Trick_Land Group = BO_Blader_Trick_Dummy 
+	skater : GetGap score = 100 text = "Blader Hop" 
+	BEGIN 
+		wait 1 frame 
+		GetNumberOfTrickOccurrences TrickText = "Kickflip" 
+		Printstruct <...> 
+		IF ( <Number_Of_Occurrences> > 0 ) 
+			printf "tricky" 
+			SetFlag flag = FLAG_BO_GOT_TRICK 
+		ENDIF 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT BO_Blader_Trick_Land 
+	Obj_ClearExceptions 
+	ClearExceptionGroup BO_Blader_Trick_Dummy 
+	printf "BO_Blader_Trick_Land" 
+	IF GameModeEquals is_career 
+		IF GetFlag flag = FLAG_BO_GOT_TRICK 
+			GetCurrentSkaterProfileIndex 
+			GetSkaterProfileInfo player = <currentSkaterProfileIndex> 
+			<Blader_Flips> = 0 
+			IF NOT GoalManager_GoalIsLocked name = BO_Goal_Gaps11 
+				IF ( <skater_family> = family_pro ) 
+					printf "Check it" 
+					IF NOT GoalManager_GoalFlagSet name = BO_Goal_Gaps11 flag = got_1 skater = pro 
+						GoalManager_SetGoalFlag name = BO_Goal_Gaps11 got_1 1 skater = pro 
+						printf "Set It" 
+					ENDIF 
+				ELSE 
+					IF ( <name> = custom ) 
+						IF NOT GoalManager_GoalFlagSet name = BO_Goal_Gaps11 flag = got_1 skater = <name> 
+							GoalManager_SetGoalFlag name = BO_Goal_Gaps11 got_1 1 skater = <name> 
+						ENDIF 
+					ELSE 
+						IF ( <name> = benfranklin ) 
+							IF NOT GoalManager_GoalFlagSet name = BO_Goal_Gaps11 flag = got_1 skater = <name> 
+								GoalManager_SetGoalFlag name = BO_Goal_Gaps11 got_1 1 skater = <name> 
+							ENDIF 
+						ENDIF 
+					ENDIF 
+				ENDIF 
+				IF GoalManager_GoalFlagSet name = BO_Goal_Gaps11 flag = got_1 skater = pro 
+					<Blader_Flips> = ( <Blader_Flips> + 1 ) 
+				ENDIF 
+				IF GoalManager_GoalFlagSet name = BO_Goal_Gaps11 flag = got_1 skater = custom 
+					<Blader_Flips> = ( <Blader_Flips> + 1 ) 
+				ENDIF 
+				IF GoalManager_GoalFlagSet name = BO_Goal_Gaps11 flag = got_1 skater = benfranklin 
+					<Blader_Flips> = ( <Blader_Flips> + 1 ) 
+				ENDIF 
+				SWITCH <Blader_Flips> 
+					CASE 0 
+						printf "0" 
+					CASE 1 
+						create_panel_message { text = "1 of 3 Blader Kickflips" style = goal_collect_text } 
+					CASE 2 
+						create_panel_message { text = "2 of 3 Blader Kickflips" style = goal_collect_text } 
+					DEFAULT 
+				ENDSWITCH 
+			ENDIF 
+			UnSetFlag flag = FLAG_BO_GOT_TRICK 
+		ENDIF 
+	ENDIF 
+	BO_Blader_Trick_Dummy 
+ENDSCRIPT
+
+SCRIPT BO_FireProxim 
+	Obj_ClearExceptions 
+	Obj_SetInnerRadius 5 
+	SetException EX = ObjectInRadius scr = BO_FireProximNear 
+	printf "Not Near Fire" 
+ENDSCRIPT
+
+SCRIPT BO_FireProximNear 
+	Obj_ClearExceptions 
+	Obj_SetOuterRadius 7 
+	SetException EX = ObjectOutofRadius scr = BO_FireProxim 
+	printf "Near Fire" 
+	BEGIN 
+		IF skater : animequals [ Standing_Tag2 ] 
+			printf "Whoosh" 
+			Create prefix = "FireB" 
+			wait 1 second 
+			Kill prefix = "FireB" 
+		ENDIF 
+		wait 2 frames 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT BO_Mystery_Guest 
+	TeleportSkaterToNode nodename = TRG_Restart_StateHouse orient 
+	IF GoalManager_GoalExists name = BO_Goal_Gaps 
+		GoalManager_SetGoalFlag name = BO_Goal_Gaps got_1 1 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_FoundMysteryGuest 
+	IF GoalManager_GoalExists name = BO_Goal_Gaps 
+		GoalManager_SetGoalFlag name = BO_Goal_Gaps got_1 1 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_DownTownBank 
+	GoalManager_SetGoalFlag name = BO_Goal_Gaps3 got_1 1 
+ENDSCRIPT
+
+SCRIPT BO_GrindOldCannon 
+	GoalManager_SetGoalFlag name = BO_Goal_Gaps4 got_1 1 
+ENDSCRIPT
+
+SCRIPT BO_SkateTheLine2_Got1 
+	IF IsSkaterOnVehicle 
+		Get_Current_Skater_Name 
+		IF ( <name> = segwayrider ) 
+			GoalManager_SetGoalFlag name = BO_Goal_SkateTheLine2 got_1 1 
+		ENDIF 
+	ELSE 
+		GoalManager_SetGoalFlag name = BO_Goal_SkateTheLine2 got_1 1 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_SkateTheLine2_Got2 
+	GoalManager_SetGoalFlag name = BO_Goal_SkateTheLine2 got_2 1 
+ENDSCRIPT
+
+SCRIPT BO_SkateTheLine2_Got3 
+	GetTriggerArray grind onto 
+	IF Triggertype <trigger_array> 
+		GoalManager_SetGoalFlag name = BO_Goal_SkateTheLine2 got_3 1 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_Gap_StateHouseSpine1 
+	StartGap GapID = StateHouseSpine1 flags = [ CANCEL_GROUND ] 
+	EndGap GapID = StateHouseSpine2 score = 250 text = "Statehouse Stair Spine" 
+ENDSCRIPT
+
+SCRIPT BO_Gap_StateHouseSpine2 
+	StartGap GapID = StateHouseSpine2 flags = [ CANCEL_GROUND ] 
+	EndGap GapID = StateHouseSpine1 score = 250 text = "Statehouse Stair Spine" 
+ENDSCRIPT
+
+SCRIPT BO_Gap_HospitalTransfer1 
+	StartGap GapID = HospitalTransfer1 flags = [ CANCEL_GROUND ] 
+	EndGap GapID = HospitalTransfer2 score = 100 text = "Hospital Transfer" 
+ENDSCRIPT
+
+SCRIPT BO_Gap_HospitalTransfer2 
+	StartGap GapID = HospitalTransfer2 flags = [ CANCEL_GROUND ] 
+	EndGap GapID = HospitalTransfer1 score = 100 text = "Hospital Transfer" 
+ENDSCRIPT
+
+SCRIPT BO_Gap_MuralRide 
+	StartGap GapID = MuralRide flags = [ CANCEL_GROUND ] 
+	wait 1 frame 
+	GetSingleTag State 
+	printf "EndGap---01" 
+	IF ( <State> = Skater_OnWall ) 
+		EndGap GapID = MuralRide score = 100 text = "Mural Ride" 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_Gap_Start_PipeClimb 
+	StartGap GapID = PipeClimb flags = [ CANCEL_GROUND , CANCEL_MANUAL ] 
+ENDSCRIPT
+
+SCRIPT BO_Gap_End_PipeClimb 
+	GetTriggerArray climb onto 
+	IF Triggertype <trigger_array> 
+		EndGap GapID = PipeClimb score = 500 text = "Yellow Pipe Climb" 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_Gap_AptTransfer1 
+	StartGap GapID = AptTransfer1 flags = [ PURE_AIR ] 
+	EndGap GapID = AptTransfer2 score = 100 text = "Brownstone Transfer" 
+ENDSCRIPT
+
+SCRIPT BO_Gap_AptTransfer2 
+	StartGap GapID = AptTransfer2 flags = [ PURE_AIR ] 
+	EndGap GapID = AptTransfer1 score = 100 text = "Brownstone Transfer" 
+ENDSCRIPT
+
+SCRIPT BO_GapStart_HighSlap 
+	StartGap GapID = HighSlap flags = [ CANCEL_RAIL , CANCEL_MANUAL , CANCEL_GROUND ] 
+ENDSCRIPT
+
+SCRIPT BO_GapEnd_HighSlap 
+	EndGap GapID = HighSlap score = 1000 text = "High Slap" 
+ENDSCRIPT
+
+SCRIPT BO_GapStart_WallSlap 
+	StartGap GapID = WallSlap flags = [ CANCEL_RAIL , CANCEL_MANUAL , CANCEL_GROUND ] 
+ENDSCRIPT
+
+SCRIPT BO_GapEnd_WallSlap 
+	EndGap GapID = WallSlap score = 500 text = "Wall Slap" 
+ENDSCRIPT
+
+SCRIPT BO_GapStart_BankDrop 
+	StartGap GapID = BankDrop flags = [ CANCEL_RAIL , CANCEL_MANUAL ] 
+ENDSCRIPT
+
+SCRIPT BO_GapEnd_BankDrop 
+	EndGap GapID = BankDrop score = 5000 text = "Bank Drop" 
+ENDSCRIPT
+
+SCRIPT BO_GapStart_RiboffLip 
+	StartGap GapID = RiboffLip flags = [ REQUIRE_LIP ] 
+ENDSCRIPT
+
+SCRIPT BO_GapEnd_RiboffLip 
+	EndGap GapID = RiboffLip score = 100 text = "Riboff Lip" 
+ENDSCRIPT
+
+SCRIPT BO_GapStart_RiboffChurch 
+	StartGap GapID = RiboffChurch flags = [ CANCEL_GROUND ] 
+ENDSCRIPT
+
+SCRIPT BO_GapEnd_RiboffChurch 
+	EndGap GapID = RiboffChurch score = 500 text = "Riboff 2 Church" 
+ENDSCRIPT
+
+SCRIPT BO_Gap_WireTransfer1 
+	StartGap GapID = WireTransfer1 flags = [ CANCEL_GROUND ] 
+	EndGap GapID = WireTransfer2 score = 250 text = "Wire Transfer" 
+ENDSCRIPT
+
+SCRIPT BO_Gap_WireTransfer2 
+	StartGap GapID = WireTransfer2 flags = [ CANCEL_GROUND ] 
+	EndGap GapID = WireTransfer1 score = 250 text = "Wire Transfer" 
+ENDSCRIPT
+
+SCRIPT BO_Gap_Start_RoofSpine1 
+	StartGap GapID = RoofSpine1 flags = [ CANCEL_GROUND ] 
+	EndGap GapID = RoofSpine2 score = 250 text = "Roof Spine" 
+ENDSCRIPT
+
+SCRIPT BO_Gap_Start_RoofSpine2 
+	StartGap GapID = RoofSpine2 flags = [ CANCEL_GROUND ] 
+	EndGap GapID = RoofSpine1 score = 250 text = "Roof Spine" 
+ENDSCRIPT
+
+SCRIPT BO_Gap_Start_Reading 
+	StartGap GapID = Reading flags = [ CANCEL_GROUND ] 
+ENDSCRIPT
+
+SCRIPT BO_Gap_End_Reading 
+	EndGap GapID = Reading score = 500 text = "Reading is Fun" 
+ENDSCRIPT
+
+SCRIPT BO_Gap_BostonByWire1 
+	StartGap GapID = BostonByWire1 flags = [ CANCEL_GROUND ] 
+	EndGap GapID = BostonByWire2 score = 500 text = "Boston By Wire" 
+ENDSCRIPT
+
+SCRIPT BO_Gap_BostonByWire2 
+	StartGap GapID = BostonByWire2 flags = [ CANCEL_GROUND ] 
+	EndGap GapID = BostonByWire1 score = 500 text = "Boston By Wire" 
+ENDSCRIPT
+
+SCRIPT BO_Gap_THTransfer1 
+	StartGap GapID = THTransfer1 flags = [ CANCEL_GROUND ] 
+	EndGap GapID = THTransfer2 score = 250 text = "TH Transfer" 
+ENDSCRIPT
+
+SCRIPT BO_Gap_THTransfer2 
+	StartGap GapID = THTransfer2 flags = [ CANCEL_GROUND ] 
+	EndGap GapID = THTransfer1 score = 250 text = "TH Transfer" 
+ENDSCRIPT
+
+SCRIPT BO_GapStart_StreetCross 
+	StartGap GapID = StreetCross flags = [ CANCEL_GROUND ] 
+ENDSCRIPT
+
+SCRIPT BO_GapEnd_StreetCross 
+	EndGap GapID = StreetCross score = 500 text = "Street Crossing" 
+ENDSCRIPT
+
+SCRIPT BO_GapStart_Disaster 
+	StartGap GapID = Disaster flags = [ CANCEL_GROUND ] 
+ENDSCRIPT
+
+SCRIPT BO_GapEnd_Disaster 
+	EndGap GapID = Disaster score = 250 text = "Flirting with Disaster" 
+ENDSCRIPT
+
+SCRIPT BO_Gap_Planter2Planter1 
+	StartGap GapID = Planter2Planter1 flags = [ CANCEL_GROUND ] 
+	EndGap GapID = Planter2Planter2 score = 50 text = "Planter 2 Planter" 
+ENDSCRIPT
+
+SCRIPT BO_Gap_Planter2Planter2 
+	StartGap GapID = Planter2Planter2 flags = [ CANCEL_GROUND ] 
+	EndGap GapID = Planter2Planter1 score = 50 text = "Planter 2 Planter" 
+ENDSCRIPT
+
+SCRIPT BO_GapStart_PlanterUp 
+	StartGap GapID = PlanterUp flags = [ CANCEL_GROUND ] 
+ENDSCRIPT
+
+SCRIPT BO_GapEnd_PlanterUp 
+	EndGap GapID = PlanterUp score = 50 text = "Planter Up" 
+ENDSCRIPT
+
+SCRIPT BO_GapStart_DumpsterUp 
+	StartGap GapID = DumpsterUp flags = [ CANCEL_GROUND ] 
+ENDSCRIPT
+
+SCRIPT BO_GapEnd_DumpsterUp 
+	EndGap GapID = DumpsterUp score = 50 text = "Dumpster Up" 
+ENDSCRIPT
+
+SCRIPT BO_GapStart_BusStop 
+	StartGap GapID = BusStop flags = [ CANCEL_GROUND ] 
+ENDSCRIPT
+
+SCRIPT BO_GapEnd_BusStop 
+	EndGap GapID = BusStop score = 50 text = "Bus Stop Pop" 
+ENDSCRIPT
+
+SCRIPT BO_GapStart_Cash 
+	StartGap GapID = Cash flags = [ CANCEL_GROUND ] 
+ENDSCRIPT
+
+SCRIPT BO_GapEnd_Cash 
+	EndGap GapID = Cash score = 200 text = "Bank Transfer" 
+ENDSCRIPT
+
+SCRIPT BO_GapStart_TeaPot 
+	StartGap GapID = Teapot flags = [ CANCEL_GROUND ] 
+ENDSCRIPT
+
+SCRIPT BO_GapEnd_Teapot 
+	EndGap GapID = Teapot score = 2000 text = "I\'m a little teapot" 
+ENDSCRIPT
+
+SCRIPT BO_Gap_AptSpine1 
+	StartGap GapID = AptSpine1 flags = [ PURE_AIR ] 
+	EndGap GapID = AptSpine2 score = 1000 text = "Apartment Spine" 
+ENDSCRIPT
+
+SCRIPT BO_Gap_AptSpine2 
+	StartGap GapID = AptSpine2 flags = [ PURE_AIR ] 
+	EndGap GapID = AptSpine1 score = 1000 text = "Apartment Spine" 
+ENDSCRIPT
+
+SCRIPT BO_Gap_SubwayManual1 
+	StartGap GapID = SubwayManual1 flags = [ CANCEL_RAIL , CANCEL_GROUND ] 
+	EndGap GapID = SubwayManual2 score = 100 text = "Subway Manual" 
+ENDSCRIPT
+
+SCRIPT BO_Gap_SubwayManual2 
+	StartGap GapID = SubwayManual2 flags = [ CANCEL_RAIL , CANCEL_GROUND ] 
+	EndGap GapID = SubwayManual1 score = 100 text = "Subway Manual" 
+ENDSCRIPT
+
+SCRIPT BO_Gap_LibraryManual1 
+	StartGap GapID = LibraryManual1 flags = [ CANCEL_RAIL , CANCEL_GROUND ] 
+	EndGap GapID = LibraryManual2 score = 100 text = "Library Manual" 
+ENDSCRIPT
+
+SCRIPT BO_Gap_LibraryManual2 
+	StartGap GapID = LibraryManual2 flags = [ CANCEL_RAIL , CANCEL_GROUND ] 
+	EndGap GapID = LibraryManual1 score = 100 text = "Library Manual" 
+ENDSCRIPT
+
+SCRIPT BO_GapStart_StateStairs 
+	StartGap GapID = StateStairs flags = [ PURE_AIR ] KeyCombo = Air_SquareD trickscript = BO_SkateTheLine3_Got1 
+ENDSCRIPT
+
+SCRIPT BO_GapEnd_StateStairs 
+	EndGap GapID = StateStairs score = 100 text = "Statehouse Stairs" 
+ENDSCRIPT
+
+SCRIPT BO_SkateTheLine3_Got1 
+	printf "SkateTheLine3_Got1" 
+	GoalManager_SetGoalFlag name = BO_Goal_SkateTheLine3 got_1 1 
+ENDSCRIPT
+
+SCRIPT BO_GapStart_CommonStairs 
+	StartGap GapID = CommonStairs flags = [ PURE_AIR ] TrickText = "Backflip" trickscript = BO_Classic_Gaps_Got1 
+ENDSCRIPT
+
+SCRIPT BO_GapEnd_CommonStairs 
+	EndGap GapID = CommonStairs score = 100 text = "Boston Common Stairs" 
+ENDSCRIPT
+
+SCRIPT BO_Classic_Gaps_Got1 
+	GoalManager_SetGoalFlag name = bo_classic_goal_gaps2 got_1 1 
+ENDSCRIPT
+
+SCRIPT BO_GapStart_LibraryMural12 
+	StartGap GapID = LibraryMural12 flags = [ PURE_AIR ] trickscript = BO_SkateTheLine3_Got2 
+	EndGap GapID = LibraryMural21 score = 100 text = "Library Mural" 
+ENDSCRIPT
+
+SCRIPT BO_GapStart_LibraryMural21 
+	StartGap GapID = LibraryMural21 flags = [ PURE_AIR ] trickscript = BO_SkateTheLine3_Got2 
+	EndGap GapID = LibraryMural12 score = 100 text = "Library Mural" 
+ENDSCRIPT
+
+SCRIPT BO_SkateTheLine3_Got2 
+	GoalManager_SetGoalFlag name = BO_Goal_SkateTheLine3 got_2 1 
+ENDSCRIPT
+
+SCRIPT BO_GapStart_TeaDrop 
+	StartGap GapID = TeaDrop flags = [ PURE_AIR ] TrickText = "Acid Drop" trickscript = BO_SkateTheLine3_Got3 
+ENDSCRIPT
+
+SCRIPT BO_GapEnd_TeaDrop 
+	EndGap GapID = TeaDrop score = 100 text = "Tea Bomb" 
+ENDSCRIPT
+
+SCRIPT BO_SkateTheLine3_Got3 
+	GoalManager_SetGoalFlag name = BO_Goal_SkateTheLine3 got_3 1 
+ENDSCRIPT
+
+SCRIPT BO_GapStart_Washington 
+	StartGap GapID = Washington flags = [ PURE_AIR ] KeyCombo = Air_CircleDL trickscript = BO_Gaps13_Got_Benihana 
+ENDSCRIPT
+
+SCRIPT BO_GapEnd_Washington 
+	EndGap GapID = Washington score = 100 text = "Washington Air" 
+ENDSCRIPT
+
+SCRIPT BO_Gaps13_Got_Benihana 
+	GoalManager_SetGoalFlag name = BO_Goal_Gaps13 got_1 1 
+ENDSCRIPT
+
+SCRIPT BO_Gap_SubwaySpine1 
+	StartGap GapID = SubwaySpine1 flags = [ PURE_AIR ] TrickText = "Spine Transfer" 
+	EndGap GapID = SubwaySpine2 score = 50 text = "Subway Spine" gapscript = BO_GotSubwaySpine 
+ENDSCRIPT
+
+SCRIPT BO_Gap_SubwaySpine2 
+	StartGap GapID = SubwaySpine2 flags = [ PURE_AIR ] TrickText = "Spine Transfer" 
+	EndGap GapID = SubwaySpine1 score = 50 text = "Subway Spine" gapscript = BO_GotSubwaySpine 
+ENDSCRIPT
+
+SCRIPT BO_GotSubwaySpine 
+	printf "hey hey hey" 
+	GoalManager_SetGoalFlag name = BO_Goal_SkateTheLine got_1 1 
+ENDSCRIPT
+
+SCRIPT BO_Gap_HospitalSpine_Start 
+	StartGap GapID = HospitalSpine flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT BO_Gap_HospitalSpine_End 
+	EndGap GapID = HospitalSpine text = "Hospital Volcano Spine" score = 50 gapscript = BO_GotHospitalSpine 
+ENDSCRIPT
+
+SCRIPT BO_GotHospitalSpine 
+	GoalManager_SetGoalFlag name = BO_Goal_SkateTheLine got_2 1 
+	Spawnscript BO_SFX_VolcanoRumble 
+ENDSCRIPT
+
+SCRIPT BO_Gap_TeaParty_Start 
+	StartGap GapID = HospitalSpine flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT BO_Gap_TeaParty_End 
+	EndGap GapID = HospitalSpine text = "Tea Party Transfer" score = 50 gapscript = BO_GotTeaPartySpine 
+ENDSCRIPT
+
+SCRIPT BO_GotTeaPartySpine 
+	GoalManager_SetGoalFlag name = BO_Goal_SkateTheLine got_3 1 
+ENDSCRIPT
+
+SCRIPT BO_Gap_Start_ConstFence_Lip 
+	StartGap GapID = ConstFence flags = [ CANCEL_GROUND ] 
+ENDSCRIPT
+
+SCRIPT BO_Gap_End_ConstFence_Lip 
+	GetTriggerArray lip onto 
+	IF Triggertype <trigger_array> 
+		EndGap GapID = ConstFence score = 50 text = "Fence Lip" gapscript = BO_GotFenceLip 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BO_GotFenceLip 
+	BroadcastEvent type = BO_GotFenceLip 
+ENDSCRIPT
+
+SCRIPT BO_2d_sign_element_create parent = menu3d_anchor 
+	IF GetGlobalFlag flag = SCREEN_MODE_WIDE 
+		<offset> = PAIR(-8.00000000000, 0.00000000000) 
+	ELSE 
+		<offset> = PAIR(0.00000000000, 0.00000000000) 
+	ENDIF 
+	CreateScreenElement { 
+		type = SpriteElement 
+		parent = <parent> 
+		texture = BO_icon_1 
+		id = BO_icon_smiley 
+		scale = PAIR(1.54999995232, 1.54999995232) 
+		rgba = [ 128 128 128 50 ] 
+		pos = ( PAIR(62.00000000000, 110.00000000000) + <offset> ) 
+		rot_angle = 0 
+		just = [ left top ] 
+		z_priority = -51 
+	} 
+	CreateScreenElement { 
+		type = SpriteElement 
+		parent = <parent> 
+		texture = BO_icon_2 
+		id = BO_icon_deck 
+		scale = PAIR(2.29999995232, 1.39999997616) 
+		rgba = [ 128 128 128 60 ] 
+		pos = ( PAIR(-23.00000000000, 208.00000000000) + <offset> ) 
+		rot_angle = 5 
+		just = [ left top ] 
+		z_priority = -51 
+	} 
+	RunScriptOnScreenElement id = BO_icon_smiley do_random_effect_paused params = { id = <id> } 
+	RunScriptOnScreenElement id = BO_icon_deck do_random_effect_paused params = { id = <id> } 
+ENDSCRIPT
+
+BO_StateLogic_Table = { 
+	BO_STATE_drummer_drumwalking = { 
+		ped_update_type = generic_move_update 
+		script_ped_state = BO_STATECONTROL_drummer_drumwalking 
+	} 
+	BO_STATE_drummer_drumstanding = { 
+		ped_update_type = no_move_update 
+		script_ped_state = BO_STATECONTROL_drummer_drumstanding 
+	} 
+	BO_STATE_rollerblading = { 
+		ped_update_type = generic_move_update 
+		script_ped_state = BO_STATECONTROL_rollerblading 
+	} 
+} 
+BO_PaulieLogic_Table = { 
+	BO_STATE_Paulie_Waiting = { 
+		script_ped_state = BO_STATECONTROL_Paulie_Waiting 
+	} 
+	STATE_getattention = { 
+		script_ped_state = BO_STATECONTROL_Paulie_GetAttention 
+	} 
+} 
+SCRIPT PEDAI_DrummerStopWaypoint 
+	Ped_SetLogicState BO_STATE_drummer_drumstanding Table = BO_StateLogic_Table 
+ENDSCRIPT
+
+SCRIPT BO_STATECONTROL_drummer_drumwalking 
+	GetTags 
+	OBJ_EnableAnimBlending enabled = 1 
+	BEGIN 
+		RANDOM(1, 1, 1, 1, 1) 
+			RANDOMCASE PlayAnimWithPartialAnimIfExists Anim = Ped_Sldr_Marching01 blendperiod = 0 
+			change DrumPartialNumber = 1 
+			RANDOMCASE PlayAnimWithPartialAnimIfExists Anim = Ped_Sldr_Marching01 PartialAnimOverlay = Ped_Sldr_Marching02_P 
+			change DrumPartialNumber = 2 
+			RANDOMCASE PlayAnimWithPartialAnimIfExists Anim = Ped_Sldr_Marching01 PartialAnimOverlay = Ped_Sldr_Marching03_P 
+			change DrumPartialNumber = 3 
+			RANDOMCASE PlayAnimWithPartialAnimIfExists Anim = Ped_Sldr_Marching01 PartialAnimOverlay = Ped_Sldr_Marching04_P 
+			change DrumPartialNumber = 4 
+			RANDOMCASE PlayAnimWithPartialAnimIfExists Anim = Ped_Sldr_Marching01 PartialAnimOverlay = Ped_Sldr_Marching06_P 
+			change DrumPartialNumber = 6 
+		RANDOMEND 
+		OBJ_waitanimfinished 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT BO_STATECONTROL_drummer_drumstanding 
+	Ped_StopMoving 
+	PlayAnimWithPartialAnimIfExists Anim = Ped_Sldr_Stop01 
+	OBJ_waitanimfinished 
+	GetRandomValue name = RepeatCount a = 3 b = 6 resolution = 3 Integer 
+	BEGIN 
+		RANDOM(1, 1, 1, 1, 1) 
+			RANDOMCASE PlayAnimWithPartialAnimIfExists Anim = Ped_Sldr_Drumming02 
+			change DrumPartialNumber = 2 
+			RANDOMCASE PlayAnimWithPartialAnimIfExists Anim = Ped_Sldr_Drumming02 PartialAnimOverlay = Ped_Sldr_Drumming04_P 
+			change DrumPartialNumber = 4 
+			RANDOMCASE PlayAnimWithPartialAnimIfExists Anim = Ped_Sldr_Drumming02 PartialAnimOverlay = Ped_Sldr_Drumming06_P 
+			change DrumPartialNumber = 6 
+			RANDOMCASE PlayAnimWithPartialAnimIfExists Anim = Ped_Sldr_Drumming02 PartialAnimOverlay = Ped_Sldr_Drumming08_P 
+			change DrumPartialNumber = 8 
+			RANDOMCASE PlayAnimWithPartialAnimIfExists Anim = Ped_Sldr_Drumming02 PartialAnimOverlay = Ped_Sldr_Drumming10_P 
+			change DrumPartialNumber = 10 
+		RANDOMEND 
+		OBJ_waitanimfinished 
+	REPEAT <RepeatCount> 
+	Ped_StartMoving 
+	PlayAnimWithPartialAnimIfExists Anim = Ped_Sldr_Start 
+	OBJ_waitanimfinished 
+	Ped_SetLogicState BO_STATE_drummer_drumwalking Table = BO_StateLogic_Table 
+ENDSCRIPT
+
+SCRIPT BO_STATECONTROL_rollerblading 
+	BEGIN 
+		RANDOM(3, 1, 1, 1, 1) 
+			RANDOMCASE PlayAnimWithPartialAnimIfExists Anim = Ped_Rollerblader_SkateCycle 
+			RANDOMCASE PlayAnimWithPartialAnimIfExists Anim = Ped_Rollerblader_HeelClick 
+			RANDOMCASE PlayAnimWithPartialAnimIfExists Anim = Ped_RollerBlader_ParadingAss 
+			RANDOMCASE PlayAnimWithPartialAnimIfExists Anim = Ped_Rollerblader_StartHipPrance 
+			OBJ_waitanimfinished 
+			GetRandomValue name = RepeatCount a = 1 b = 3 resolution = 3 Integer 
+			BEGIN 
+				PlayAnimWithPartialAnimIfExists Anim = Ped_Rollerblader_HipPrance 
+				OBJ_waitanimfinished 
+			REPEAT <RepeatCount> 
+			PlayAnimWithPartialAnimIfExists Anim = Ped_Rollerblader_StopHipPrance 
+			RANDOMCASE PlayAnimWithPartialAnimIfExists Anim = Ped_Rollerblader_Spin2Back 
+			OBJ_waitanimfinished 
+			GetRandomValue name = RepeatCount a = 1 b = 3 resolution = 3 Integer 
+			BEGIN 
+				PlayAnimWithPartialAnimIfExists Anim = Ped_Rollerblader_BackSkate 
+				OBJ_waitanimfinished 
+			REPEAT <RepeatCount> 
+			PlayAnimWithPartialAnimIfExists Anim = Ped_Rollerblader_Spin2Front 
+		RANDOMEND 
+		OBJ_waitanimfinished 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT BO_STATECONTROL_Paulie_Waiting 
+	printf "Paulie Chillin" 
+	Ped_Utils_SetMiscEventHandlers 
+	PlayAnimWithPartialAnimIfExists Anim = Wheelchair_Idle cycle 
+ENDSCRIPT
+
+SCRIPT BO_STATECONTROL_Paulie_GetAttention 
+	printf "Paulie Attention" 
+	Get_Current_Skater_Name 
+	IF ( <name> = segwayrider ) 
+		printf "Race Paulie Biotch!" 
+		setup_ped_speech { ped_id = TRG_Race_Ped 
+			inner_radius = 7 
+			outer_radius = 8 
+			accept_text = "Press \\m5 to Race." 
+			activation_script = BO_Race_Ped_Go 
+		} 
+	ELSE 
+		printf "Talk to Paulie" 
+		setup_ped_speech { ped_id = TRG_Race_Ped 
+			inner_radius = 7 
+			outer_radius = 8 
+			accept_text = "Press \\m5 to Talk." 
+			activation_script = BO_Paulie_TalkShit 
+			dont_deactivate_goals 
+		} 
+	ENDIF 
+	PlayAnimWithPartialAnimIfExists Anim = Wheelchair_Attention 
+	OBJ_waitanimfinished 
+	BEGIN 
+		IF NOT Obj_ObjectInAttentionRadius 
+			printf "Paulie losing attention" 
+			Ped_Utils_SetMiscEventHandlers 
+			Ped_StateLogic_SetDefaultState 
+			RETURN 
+		ENDIF 
+		RANDOM(1, 3) 
+			RANDOMCASE 
+			PlayAnimWithPartialAnimIfExists Anim = Wheelchair_Attention 
+			RANDOMCASE 
+			PlayAnimWithPartialAnimIfExists Anim = Wheelchair_Idle 
+		RANDOMEND 
+		OBJ_waitanimfinished 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT BO_Paulie_TalkShit 
+	printf "PUALIE TALKS SOME SHIT!!" 
+	IF ScreenElementExists id = ped_speech_dialog 
+		speech_box_exit anchor_id = ped_speech_dialog 
+	ENDIF 
+	unpauseskaters 
+	RANDOM(1, 1, 1) 
+		RANDOMCASE hint_text = "Come back when you\'re riding something with batteries, bitch." 
+		vo = Paulie_NoRace01 
+		RANDOMCASE hint_text = "A skateboard is no match for a sweet ride like mine!" 
+		vo = Paulie_NoRace02 
+		RANDOMCASE hint_text = "Come back when you\'re riding something with real power, slacker." 
+		vo = Paulie_NoRace03 
+	RANDOMEND 
+	create_speech_box { 
+		anchor_id = ped_hint_dialog 
+		text = <hint_text> 
+		no_pad_choose 
+		no_pad_start 
+		bg_rgba = [ 100 100 100 128 ] 
+		text_rgba = [ 128 128 128 128 ] 
+		pos = PAIR(320.00000000000, 400.00000000000) 
+		bg_x_scale = 1.39999997616 
+		z_priority = 5 
+	} 
+	IF GotParam vo 
+		TRG_Race_Ped : Obj_PlayStream <vo> vol = GlobalHintVOVol dropoff = GlobalHintVODropoff 
+	ENDIF 
+	TRG_Race_Ped : OBJ_waitanimfinished 
+	TRG_Race_Ped : PlayAnimWithPartialAnimIfExists Anim = Wheelchair_Idle 
+	TRG_Race_Ped : OBJ_waitanimfinished 
+	TRG_Race_Ped : PlayAnimWithPartialAnimIfExists Anim = Wheelchair_Spin 
+	TRG_Race_Ped : OBJ_waitanimfinished 
+	IF ObjectExists id = ped_hint_dialog 
+		DestroyScreenElement id = ped_hint_dialog 
+	ENDIF 
+	TRG_Race_Ped : Ped_SetLogicState BO_STATE_Paulie_Waiting Table = BO_StateLogic_Table 
+	unpauseskaters 
+ENDSCRIPT
+
+SCRIPT BO_Musicplay 
+	TRG_MusicPed_On : Ped_SetLogicState ALL_STATE_guitarist_playing Table = ALL_StateLogic_Table 
+	unpauseskaters 
+ENDSCRIPT
+
+SCRIPT BO_MusicStop 
+	TRG_MusicPed_On : Ped_SetLogicState ALL_STATE_guitarist Table = ALL_StateLogic_Table 
+	unpauseskaters 
+ENDSCRIPT
+
+SCRIPT CutKey_BO_LevelEvent_580_Safe 
+	CreateFastParticleSystem name = xploder02 params_script = apm_BOc1_xploder02_fast_particle_params attachObjID = Xploder_dummy01 
+	CreateFastParticleSystem name = xploder params_script = apm_BOc1_xploder02_fast_particle_params attachObjID = Xploder_dummy01 
+	CreateFastParticleSystem name = xploder_smoke01 params_script = apm_BOc1_xploder_smoke1_fast_particle_params attachObjID = Xploder_dummy01 
+	CreateFastParticleSystem name = xploder_Debris01 params_script = apm_BOc_xploder_debis01_fast_particle_params attachObjID = Xploder_dummy01 
+	CreateFastParticleSystem name = xploder_smoke3 params_script = apm_BOc_xploder_smoke3_fast_particle_params attachObjID = Xploder_dummy01 
+	Sparklies_dummy01 : CreateFlexibleParticleSystem name = xploder_sparklies params_script = apm_BOc_sparklies_particle_params 
+	skater : Vibrate_Controller_Safe actuator = 0 percent = 100 
+	wait 5 gameframes 
+ENDSCRIPT
+
+SCRIPT CutKey_BO_LevelEvent_591_Safe 
+	destroyfastparticlesystem name = xploder02 attachObjID = Xploder_dummy01 
+	destroyfastparticlesystem name = xploder attachObjID = Xploder_dummy01 
+	destroyfastparticlesystem name = xploder_smoke01 attachObjID = Xploder_dummy01 
+	destroyfastparticlesystem name = xploder_Debris01 attachObjID = Xploder_dummy01 
+	destroyfastparticlesystem name = xploder_Smoke4 attachObjID = Xploder_dummy01 
+	skater : Vibrate_Controller_Safe actuator = 0 percent = 0 
+ENDSCRIPT
+
+

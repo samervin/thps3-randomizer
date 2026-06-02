@@ -1,0 +1,4499 @@
+
+Tr_Goal_Intro_Cameras = [ { virtual_cam 
+		targetid = world 
+		targetOffset = VECTOR(5726.1, 40.2, -8804.1) 
+		positionOffset = VECTOR(458.1, -213.7, -308.2) 
+		frames = 615 
+		skippable = 1 
+		text = TR_Intro_Text1 
+		time = 10000 
+		cam_start_Script = Tr_Intro_Line1 
+	} 
+	{ virtual_cam 
+		targetid = world 
+		targetOffset = VECTOR(-7966.8, -805.2, -10238.6) 
+		positionOffset = VECTOR(-758.6, -699.8, -3309) 
+		frames = 375 
+		skippable = 1 
+		text = TR_Intro_Text2 
+		cam_start_Script = Tr_Intro_Line2 
+		time = 3000 
+	} 
+	{ virtual_cam 
+		targetid = world 
+		targetOffset = VECTOR(-3760.4, 251.9, -9298.5) 
+		positionOffset = VECTOR(507.3, -206.6, -267.4) 
+		frames = 375 
+		skippable = 1 
+		text = TR_Intro_Text3 
+		cam_start_Script = Tr_Intro_Line3 
+		time = 6000 
+	} 
+] 
+SCRIPT Tr_Intro_Line1 
+	TRG_G_Gap27_Pro : Obj_PlayFam TR_Intro_01_lip vol = 130 priority = StreamPriorityHighest 
+ENDSCRIPT
+
+SCRIPT Tr_Intro_Line2 
+	TRG_G_Gap27_Pro : Obj_PlayFam TR_Intro_02_lip vol = 140 priority = StreamPriorityHighest 
+ENDSCRIPT
+
+SCRIPT Tr_Intro_Line3 
+	TRG_G_Gap27_Pro : Obj_PlayFam TR_Intro_03_lip vol = 140 priority = StreamPriorityHighest 
+ENDSCRIPT
+
+SCRIPT TR_Setup 
+	TR_Initailizer 
+	TR_KillCreate_NetGeo 
+	TR_Initializer 
+ENDSCRIPT
+
+SCRIPT TR_Initializer 
+	IF GameModeEquals is_career 
+		IF GoalManager_HasWonGoal name = TR_Goal_Gaps27 
+			Kill name = TRG_G_Gap27_Pro 
+			IF NOT IsAlive name = TRG_Tony_Advance 
+				Create name = TRG_Tony_Advance 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_startup 
+	change tod_manager_inactive = 1 
+	LoadSkeleton name = "skeletons/CS_Cardboard.ske" CS_Cardboard 
+ENDSCRIPT
+
+SCRIPT TR_KillCreate_NetGeo 
+	IF ( ( InMultiplayerGame ) | ( InNetGame ) ) 
+		printf "net geo getting kill created" 
+		Kill name = g_wall_break_pre 
+		Kill name = g_WareNew_Main_windows 
+		Kill name = g_WareNew_Main_windows_02 
+		Kill name = g_roll_door_LevelGeo 
+		Create name = g_wall_break_post 
+		Create prefix = "trg_wallbreak_post_" 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_Goals 
+	IF NOT InMultiplayerGame 
+	ENDIF 
+	IF InMultiplayerGame 
+		add_multiplayer_mode_goals 
+	ENDIF 
+	IF NOT InSplitScreenGame 
+		IF ( ( GameModeEquals is_classic ) | ( InNetGame ) ) 
+			AddGoal_HighScore { 
+				unlimited_Time 
+				classic_mode_goal 
+				difficulty_level_params = [ 
+					{ score = TR_Classic_Easy_HighScore 
+						goal_text = TR_Classic_Easy_HighScore_Text 
+						view_goals_text = TR_Classic_Easy_HighScore_Text 
+					} 
+					{ score = TR_Classic_HighScore 
+						goal_text = TR_Classic_HighScore_Text 
+						view_goals_text = TR_Classic_HighScore_Text 
+					} 
+				] 
+				view_goals_cameras = [ { 
+						name = CAM_TR_Classic_Intro01 
+						frames = 1200 
+						skippable = 1 
+					} 
+				] 
+			} 
+			AddGoal_ProScore { 
+				unlimited_Time 
+				classic_mode_goal 
+				difficulty_level_params = [ 
+					{ score = TR_Classic_Easy_ProScore 
+						goal_text = TR_Classic_Easy_ProScore_Text 
+						view_goals_text = TR_Classic_Easy_ProScore_Text 
+					} 
+					{ score = TR_Classic_ProScore 
+						goal_text = TR_Classic_ProScore_Text 
+						view_goals_text = TR_Classic_ProScore_Text 
+					} 
+				] 
+			} 
+			AddGoal_SickScore { 
+				unlimited_Time 
+				classic_mode_goal 
+				difficulty_level_params = [ 
+					{ score = TR_Classic_Easy_SickScore 
+						goal_text = TR_Classic_Easy_SickScore_Text 
+						view_goals_text = TR_Classic_Easy_SickScore_Text 
+					} 
+					{ score = TR_Classic_SickScore 
+						goal_text = TR_Classic_SickScore_Text 
+						view_goals_text = TR_Classic_SickScore_Text 
+					} 
+				] 
+			} 
+			AddGoal_HighCombo { 
+				unlimited_Time 
+				classic_mode_goal 
+				difficulty_level_params = [ 
+					{ score = TR_Classic_Easy_HighCombo 
+						goal_text = TR_Classic_Easy_HighCombo_Text 
+						view_goals_text = TR_Classic_Easy_HighCombo_Text 
+					} 
+					{ score = TR_Classic_HighCombo 
+						goal_text = TR_Classic_HighCombo_Text 
+						view_goals_text = TR_Classic_HighCombo_Text 
+					} 
+				] 
+			} 
+			AddGoal_Skate { 
+				unlimited_Time 
+				classic_mode_goal 
+				S_obj_id = TRG_SKATE_S 
+				K_obj_id = TRG_SKATE_K 
+				A_obj_id = TRG_SKATE_A 
+				T_obj_id = TRG_SKATE_T 
+				E_obj_id = TRG_SKATE_E 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(5498.9, 3762, 6304) 
+						positionOffset = VECTOR(-363.8, -253.9, -731.4) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+			} 
+			AddGoal_Combo { 
+				unlimited_Time 
+				classic_mode_goal 
+				letter_info = [ 
+					{ obj_id = TRG_COMBO_C text = "C" } 
+					{ obj_id = TRG_COMBO_O text = "O" } 
+					{ obj_id = TRG_COMBO_M text = "M" } 
+					{ obj_id = TRG_COMBO_B text = "B" } 
+					{ obj_id = TRG_COMBO_O01 text = "O" } 
+				] 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(-10060.9, -1276.7, -6229.2) 
+						positionOffset = VECTOR(-597.3, -606.7, -3068.9) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+			} 
+			AddGoal_SecretTape { 
+				classic_mode_goal 
+				goal_text = "Get the secret tape" 
+				view_goals_text = "Get the secret tape" 
+				goal_deScription = "Get the secret tape" 
+				secret_tape_id = TRG_TR_Secret_Tape 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(-10825.9, 1320, -1182) 
+						positionOffset = VECTOR(-1010.8, -160.4, -2393.6) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+			} 
+			AddGoal_collect { 
+				unlimited_Time 
+				classic_mode_goal 
+				collect_type = "Sprinklers busted" 
+				use_hud_counter 
+				hud_counter_caption = "Sprinklers busted" 
+				goal_text = "Break all the sprinklers" 
+				view_goals_text = "Break all the sprinklers" 
+				goal_deScription = "Break all the sprinklers" 
+				goal_flags = [ got_1 
+					got_2 
+					got_3 
+					got_4 
+					got_5 
+					got_6 
+					got_7 
+					got_8 
+					got_9 
+					got_10 
+					got_11 
+					got_12 
+					got_13 
+					got_14 
+					got_15 
+					got_16 
+					got_17 
+					got_18 
+					got_19 
+				] 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(4326.5, -4743.7, -8834.1) 
+						positionOffset = VECTOR(-931.4, -183.6, -1653.7) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+			} 
+			AddGoal_Gaps { 
+				version = 30 
+				classic_mode_goal 
+				unlimited_Time 
+				goal_text = "\\t1 (\\k1) over the half pipe" 
+				view_goals_text = "\\t1 (\\k1) over the half pipe" 
+				goal_deScription = "\\t1 (\\k1) over the half pipe" 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(1247.7, -3664.6, -11264.6) 
+						positionOffset = VECTOR(323.5, -384.6, -1863.3) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+				key_combos = [ Air_CircleDL ] 
+			} 
+			AddGoal_collect { 
+				unlimited_Time 
+				classic_mode_goal 
+				version = 2 
+				collect_type = "Boards" 
+				use_hud_counter 
+				Init_script = TR_Goals_Collect_Init 
+				Goal_deactivate_script = TR_Goals_Collect_Deactivate 
+				hud_counter_caption = "Boards" 
+				goal_text = "Grab all the skateboards" 
+				view_goals_text = "Grab all the skateboards" 
+				goal_deScription = "Grab all the skateboards" 
+				goal_flags = [ got_1 
+					got_2 
+					got_3 
+					got_4 
+					got_5 
+				] 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(-3187.2, -244.9, -12150.5) 
+						positionOffset = VECTOR(-441.5, -221.4, -2535) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+			} 
+		ELSE 
+			IF NOT ( ( GameModeEquals is_singlesession ) | ( GameModeEquals is_creategoals ) ) 
+				IF NOT InNetGame 
+					TR_ADDGOAL_Ollie 
+					TR_ADDGOAL_Manual 
+					TR_ADDGOAL_Grind 
+					TR_ADDGOAL_NoComply 
+					TR_ADDGOAL_Boneless 
+					TR_ADDGOAL_KickFlip 
+					TR_ADDGOAL_Lip 
+					TR_ADDGOAL_LipGrind 
+					TR_ADDGOAL_Melon 
+					TR_ADDGOAL_Spin 
+					TR_ADDGOAL_BreakAir 
+					TR_ADDGOAL_Transfer 
+					TR_ADDGOAL_Wallplant 
+					TR_ADDGOAL_WallBreak 
+					TR_ADDGOAL_WallRide 
+					TR_ADDGOAL_Wallie 
+					TR_ADDGOAL_Spine 
+					TR_ADDGOAL_Hip 
+					TR_ADDGOAL_JumpGrind 
+					TR_ADDGOAL_SideJump 
+					TR_ADDGOAL_Skitchin 
+					TR_ADDGOAL_RevertManual 
+					TR_AddGoal_Special 
+					TR_ADDGOAL_CaveMan 
+					TR_ADDGOAL_Jump 
+					TR_ADDGOAL_RunJump 
+					TR_ADDGOAL_Ladder 
+					TR_ADDGOAL_Shimmy 
+					TR_ADDGOAL_AcidDrop 
+					TR_ADDGOAL_BackFlip 
+					TR_ADDGOAL_Roll 
+					TR_ADDGOAL_VertWallPlant 
+					TR_ADDGOAL_Projectiles 
+					TR_ADDGOAL_Graf 
+					TR_ADDGOAL_GrafHang 
+					TR_ADDGOAL_Focus 
+					TR_AddGoal_TimedScoreRun 
+				ENDIF 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_LavaKill 
+	sk3_killskater_Water nodename = TRG_LavaKill_restart 
+ENDSCRIPT
+
+SCRIPT TR_WallBreakToggle 
+	IF IsAlive name = g_wall_break_pre 
+		Kill name = g_wall_break_pre 
+		Kill name = g_WareNew_Main_windows 
+		Kill name = g_WareNew_Main_windows_02 
+		Create name = g_wall_break_post 
+		Create prefix = "trg_wallbreak_post_" 
+	ELSE 
+		Create name = g_WareNew_Main_windows 
+		Create name = g_wall_break_pre 
+		Create name = g_WareNew_Main_windows_02 
+		Kill name = g_wall_break_post 
+		Kill prefix = "trg_wallbreak_post" 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_Initailizer 
+	IF GameModeEquals is_career 
+		Kill prefix = "WH_Classic_Sk8brd_" 
+		IF GoalManager_HasWonGoal name = tr_goal_gaps12 
+			Kill name = g_wall_break_pre 
+			Kill name = g_WareNew_Main_windows 
+			Kill name = g_WareNew_Main_windows_02 
+			Create name = g_wall_break_post 
+			Create prefix = "trg_wallbreak_post_" 
+			Kill name = g_roll_door01 
+			Kill name = g_roll_door_LevelGeo 
+		ENDIF 
+		IF GoalManager_HasWonGoal name = tr_goal_counter5 
+			Kill prefix = "TR_Ware_2X4_" 
+			Kill prefix = "TR_Ware_Dry_" 
+			Kill name = TR_Ware_Drywall_COL 
+			Kill name = g_g_wareNew_Funbox01_door01 
+			Kill name = g_g_wareNew_Funbox01_door02 
+			Kill name = g_g_wareNew_Funbox01_door03 
+		ENDIF 
+	ELSE 
+		Kill name = g_wall_break_pre 
+		Kill name = g_WareNew_Main_windows 
+		Kill name = g_WareNew_Main_windows_02 
+		Kill name = g_roll_door01 
+		Kill name = g_roll_door_LevelGeo 
+		Create name = g_wall_break_post 
+		Create prefix = "trg_wallbreak_post_" 
+		Kill name = TR_Ware_Drywall_COL 
+		Kill prefix = "TR_Ware_2X4_" 
+		Kill prefix = "TR_Ware_2X4_" 
+		Kill prefix = "TR_Ware_Dry_" 
+		Kill name = g_g_wareNew_Funbox01_door01 
+		Kill name = g_g_wareNew_Funbox01_door02 
+		Kill name = g_g_wareNew_Funbox01_door03 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_Classic_Mctwist_Start 
+	IF ( ( GameModeEquals is_classic ) | ( InNetGame ) ) 
+		IF NOT GoalManager_HasWonGoal name = TR_classic_goal_Gaps30 
+			IF GoalManager_GoalIsActive name = TR_classic_goal_Gaps30 
+				StartGap GapID = McTwista flags = [ PURE_AIR ] keycombo = Air_CircleDL trickScript = TR_Classic_Mctwist_Win 
+				EndGap GapID = McTwistb text = "Over the Half Pipe" score = 200 
+			ENDIF 
+		ENDIF 
+	ELSE 
+		StartGap GapID = McTwista flags = [ PURE_AIR ] 
+		EndGap GapID = McTwistb text = "Over the Half Pipe" score = 200 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_Classic_Mctwist_End 
+	IF ( ( GameModeEquals is_classic ) | ( InNetGame ) ) 
+		IF NOT GoalManager_HasWonGoal name = TR_classic_goal_Gaps30 
+			IF GoalManager_GoalIsActive name = TR_classic_goal_Gaps30 
+				StartGap GapID = McTwistb flags = [ PURE_AIR ] keycombo = Air_CircleDL trickScript = TR_Classic_Mctwist_Win 
+				EndGap GapID = McTwista text = "Over the Half Pipe" score = 200 
+			ENDIF 
+		ENDIF 
+	ELSE 
+		StartGap GapID = McTwistb flags = [ PURE_AIR ] 
+		EndGap GapID = McTwista text = "Over the Half Pipe" score = 200 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_Classic_Mctwist_Win 
+	IF ( ( GameModeEquals is_classic ) | ( InNetGame ) ) 
+		IF NOT GoalManager_HasWonGoal name = TR_classic_goal_Gaps30 
+			GoalManager_WinGoal name = TR_classic_goal_Gaps30 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_Sprinklers 
+	IF NOT InNetGame 
+		IF IsAlive name = <name> 
+		ELSE 
+			Create name = <name> 
+			SpawnScript TR_SFX_BustPipe_WaterSpray params = { name = <name> } 
+		ENDIF 
+	ENDIF 
+	IF ( ( GameModeEquals is_classic ) | ( InNetGame ) ) 
+		IF GoalManager_GoalIsActive name = TR_classic_goal_collect 
+			SWITCH <name> 
+				CASE Water_SprinklerA10 
+					printf "Sprinkler 01" 
+					goal_collect_got_object goal_id = TR_classic_goal_collect flag = got_1 
+				CASE Water_SprinklerA28 
+					printf "Sprinkler 02" 
+					goal_collect_got_object goal_id = TR_classic_goal_collect flag = got_2 
+				CASE Water_SprinklerA25 
+					printf "Sprinkler 03" 
+					goal_collect_got_object goal_id = TR_classic_goal_collect flag = got_3 
+				CASE Water_SprinklerA07 
+					printf "Sprinkler 04" 
+					goal_collect_got_object goal_id = TR_classic_goal_collect flag = got_4 
+				CASE Water_SprinklerA06 
+					printf "Sprinkler 05" 
+					goal_collect_got_object goal_id = TR_classic_goal_collect flag = got_5 
+				CASE Water_SprinklerA16 
+					printf "Sprinkler 06" 
+					goal_collect_got_object goal_id = TR_classic_goal_collect flag = got_6 
+				CASE Water_SprinklerA19 
+					printf "Sprinkler 07" 
+					goal_collect_got_object goal_id = TR_classic_goal_collect flag = got_7 
+				CASE Water_SprinklerA13 
+					printf "Sprinkler 08" 
+					goal_collect_got_object goal_id = TR_classic_goal_collect flag = got_8 
+				CASE Water_SprinklerA61_Start09 
+					printf "Sprinkler 09" 
+					goal_collect_got_object goal_id = TR_classic_goal_collect flag = got_9 
+				CASE Water_SprinklerA60_Start08 
+					printf "Sprinkler 10" 
+					goal_collect_got_object goal_id = TR_classic_goal_collect flag = got_10 
+				CASE Water_SprinklerA59_Start07 
+					printf "Sprinkler 11" 
+					goal_collect_got_object goal_id = TR_classic_goal_collect flag = got_11 
+				CASE Water_SprinklerA56_Start04 
+					printf "Sprinkler 12" 
+					goal_collect_got_object goal_id = TR_classic_goal_collect flag = got_12 
+				CASE Water_SprinklerA57_Start05 
+					printf "Sprinkler 13" 
+					goal_collect_got_object goal_id = TR_classic_goal_collect flag = got_13 
+				CASE Water_SprinklerA58_Start06 
+					printf "Sprinkler 14" 
+					goal_collect_got_object goal_id = TR_classic_goal_collect flag = got_14 
+				CASE Water_SprinklerA55_Start03 
+					printf "Sprinkler 15" 
+					goal_collect_got_object goal_id = TR_classic_goal_collect flag = got_15 
+				CASE Water_SprinklerA53_Start01 
+					printf "Sprinkler 16" 
+					goal_collect_got_object goal_id = TR_classic_goal_collect flag = got_16 
+				CASE Water_SprinklerA54_Start02 
+					printf "Sprinkler 17" 
+					goal_collect_got_object goal_id = TR_classic_goal_collect flag = got_17 
+				CASE Water_SprinklerA52_Start 
+					printf "Sprinkler 18" 
+					goal_collect_got_object goal_id = TR_classic_goal_collect flag = got_18 
+				CASE Water_SprinklerA22 
+					printf "Sprinkler 19" 
+					goal_collect_got_object goal_id = TR_classic_goal_collect flag = got_19 
+			ENDSWITCH 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_Counter_Sk8Bds 
+	Obj_SetInnerRadius 10 
+	Obj_SetException ex = ObjectInRadius scr = TR_Counter_Sk8BdsGot params = { <...> } group = CollectSk8Bds 
+	IF NOT InNetGame 
+		Obj_RotY speed = RANDOM(1, 1, 1, 1) RANDOMCASE 50 RANDOMCASE -150 RANDOMCASE 200 RANDOMCASE -250 RANDOMEND 
+		Obj_Hover Amp = RANDOM(1, 1, 1) RANDOMCASE 5 RANDOMCASE 10 RANDOMCASE 15 RANDOMEND Freq = RANDOM(1, 1, 1) RANDOMCASE 0.50000000000 RANDOMCASE 1 RANDOMCASE 2 RANDOMEND 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_Counter_Sk8BdsGot 
+	ClearExceptionGroup CollectSk8Bds 
+	SWITCH <name> 
+		CASE Sk8Bds01 
+			goal_collect_got_object goal_id = tr_classic_goal_collect2 flag = got_1 
+			die 
+		CASE Sk8Bds02 
+			goal_collect_got_object goal_id = tr_classic_goal_collect2 flag = got_2 
+			die 
+		CASE Sk8Bds03 
+			goal_collect_got_object goal_id = tr_classic_goal_collect2 flag = got_3 
+			die 
+		CASE Sk8Bds04 
+			goal_collect_got_object goal_id = tr_classic_goal_collect2 flag = got_4 
+			die 
+		CASE Sk8Bds05 
+			goal_collect_got_object goal_id = tr_classic_goal_collect2 flag = got_5 
+			die 
+	ENDSWITCH 
+ENDSCRIPT
+
+SCRIPT TR_Goals_Collect_Init 
+	Create prefix = "WH_Classic_Sk8brd_" 
+ENDSCRIPT
+
+SCRIPT TR_Goals_Collect_Deactivate 
+	Kill prefix = "WH_Classic_Sk8brd_" 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Manual 
+	AddGoal_Gaps { 
+		version = 7 
+		Start_cam_anims = [ 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(-1498.90002441406, -1435.40002441406, -11871.90039062500) 
+				positionOffset = VECTOR(-266.70001220703, -659.59997558594, -1978.50000000000) 
+				frames = 100 
+				cam_anim_text = Mullen_tr_goal_gaps7_camanim01 
+				skippable = 1 
+				play_hold 
+			} 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(-1498.90002441406, -1435.40002441406, -11871.90039062500) 
+				positionOffset = VECTOR(-266.70001220703, -659.59997558594, -1978.50000000000) 
+				frames = 100 
+				cam_anim_text = "" 
+				skippable = 1 
+				play_hold 
+			} 
+		] 
+		intro_node = TRG_G_GAP7_RESTARTNODE 
+		goal_text = "Manual (\\b7 +\\b4)" 
+		view_goals_text = "Basics - Manual" 
+		goal_deScription = Mullen_tr_goal_gaps7 
+		skater = custom 
+		unlimited_Time = 1 
+		goal_flags = [ got_1 
+		] 
+		goal_intro_Script = TR_ADDGOAL_Manual_Intro 
+		goal_start_Script = TR_ADDGOAL_Manual_Start 
+		Goal_deactivate_script = TR_ADDGOAL_Manual_Deactivate 
+		goal_success_Script = TR_ADDGOAL_Manual_success 
+		pro = "Mullen" 
+		full_name = "Rodney Mullen" 
+		child = tr_goal_gaps3 
+	} 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Manual_Intro 
+	Create prefix = "g_g_manual_cones" 
+	Create prefix = "g_g_gaps7a_missed" 
+	Create name = g_g_gaps7a 
+	Create name = g_g_gaps7b 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Manual_Start 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_ManualGap01 
+	IF GoalManager_GoalIsActive name = tr_goal_gaps7 
+		GetTriggerArray through 
+		IF TriggerType <trigger_array> 
+			GetSingleTag state 
+			IF ( <state> = Skater_InManual ) 
+				StartGap GapID = TeachManual flags = [ PURE_Manual ] 
+			ELSE 
+				Create_Panel_Message ID = Goal_Message text = "Not in Manual" Style = Panel_Message_Generic_Loss 
+				skater : Killskater node = TRG_G_GAP7_RESTARTNODE 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_ManualGap02 
+	IF GoalManager_GoalIsActive name = tr_goal_gaps7 
+		GetTriggerArray through 
+		IF TriggerType <trigger_array> 
+			GetSingleTag state 
+			IF ( <state> = Skater_InManual ) 
+				EndGap GapID = TeachManual gapScript = TR_ADDGOAL_ManualGot_1 
+			ELSE 
+				Create_Panel_Message ID = Goal_Message text = "Not in Manual" Style = Panel_Message_Generic_Loss 
+				skater : Killskater node = TRG_G_GAP7_RESTARTNODE 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_ManualMissed 
+	Create_Panel_Message ID = Goal_Message text = "Missed Cones" Style = Panel_Message_Generic_Loss 
+	skater : Killskater node = TRG_G_GAP7_RESTARTNODE 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_ManualGot_1 
+	IF GoalManager_GoalIsActive name = tr_goal_gaps7 
+		GoalManager_SetGoalFlag name = tr_goal_gaps7 got_1 1 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Manual_Deactivate 
+	Kill prefix = "g_g_manual_cones" 
+	Kill prefix = "g_g_gaps7a_missed" 
+	Kill name = g_g_gaps7a 
+	Kill name = g_g_gaps7b 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Manual_success 
+	Kill prefix = "g_g_manual_cones" 
+	Kill prefix = "g_g_gaps7a_missed" 
+	Kill name = g_g_gaps7a 
+	Kill name = g_g_gaps7b 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Ollie 
+	AddGoal_Counter { 
+		Start_cam_anims = [ 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(8249.79980468750, -1381.90002441406, 291.50000000000) 
+				positionOffset = VECTOR(-981.59997558594, -716.50000000000, -3494.50000000000) 
+				frames = 100 
+				cam_anim_text = "" 
+				skippable = 1 
+			play_hold = 1 } 
+		] 
+		intro_node = TRG_G_Counter_RESTARTNODE 
+		goal_text = "Ollie (\\b3)" 
+		view_goals_text = "Basics - Learn to Ollie" 
+		goal_deScription = Mullen_tr_goal_counter 
+		skater = custom 
+		number = 3 
+		goal_intro_Script = TR_ADDGOAL_Ollie_intro 
+		goal_start_Script = TR_ADDGOAL_Ollie_start 
+		goal_success_Script = TR_ADDGOAL_Ollie_success 
+		Goal_deactivate_script = TR_ADDGOAL_Ollie_Deactivate 
+		pro = "Mullen" 
+		full_name = "Rodney Mullen" 
+		use_hud_counter 
+		hud_counter_caption = "Ollie\'s" 
+		child = tr_goal_gaps7 
+	} 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Ollie_intro 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Ollie_start 
+	SpawnScript TR_ADDGOAL_Ollie_Checker 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Ollie_Checker 
+	ClearExceptionGroup TR_ADDGOAL_Ollie01 
+	printf "Jumping+++++++++++++++" 
+	SetException ex = SkaterExitAir scr = TR_ADDGOAL_Ollie_SetFlags group = TR_ADDGOAL_Ollie01 
+	block 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Ollie_SetFlags 
+	IF NOT skater : walking 
+		ClearExceptionGroup TR_ADDGOAL_Ollie01 
+		GoalManager_GotCounterObject name = tr_goal_counter 
+		printf "====Got Ollie" 
+	ENDIF 
+	goto TR_ADDGOAL_Ollie_Checker 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Ollie_success 
+	killspawnedScript name = TR_ADDGOAL_Ollie_Checker 
+	killspawnedScript name = TR_ADDGOAL_Ollie_SetFlags 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Ollie_Deactivate 
+	killspawnedScript name = TR_ADDGOAL_Ollie_Checker 
+	killspawnedScript name = TR_ADDGOAL_Ollie_SetFlags 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_NoComply 
+	AddGoal_Gaps { 
+		Start_cam_anims = [ 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(9103.29980468750, -903.09997558594, 281.89999389648) 
+				positionOffset = VECTOR(19.10000038147, -719.40002441406, -3894.50000000000) 
+				frames = 100 
+				cam_anim_text = "" 
+				skippable = 1 
+			play_hold } 
+		] 
+		intro_node = TRG_G_GAP_RESTARTNODE 
+		goal_text = "No Comply (\\b7 + \\b3) over the taxi" 
+		view_goals_text = "Basics - No Comply over the taxi" 
+		goal_deScription = Mullen_tr_goal_gaps 
+		skater = custom 
+		unlimited_Time = 1 
+		goal_flags = [ got_1 
+		] 
+		goal_intro_Script = TR_ADDGOAL_NoComply_Intro 
+		goal_start_Script = TR_ADDGOAL_NoComply_Start 
+		goal_success_Script = TR_ADDGOAL_NoComply_success 
+		Goal_deactivate_script = TR_ADDGOAL_NoComply_Deactivate 
+		pro = "Mullen" 
+		full_name = "Rodney Mullen" 
+		child = TR_GOAL_Gaps2 
+	} 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_NoComply_Intro 
+	SpawnScript TR_ADDGOAL_NoComply_Flash params = { ObjName = SkWare_Taxi01 } 
+	killspawnedScript name = TR_ADDGOAL_Ollie_Checker 
+	killspawnedScript name = TR_ADDGOAL_Ollie_SetFlags 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_NoComply_Flash 
+	BEGIN 
+		SetObjectColor name = <ObjName> color = 10506320 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 9195600 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 7884880 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 6574160 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 5263440 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 6574160 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 7884880 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 9195600 
+		wait 10 frames 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_NoComply_Start 
+ENDSCRIPT
+
+SCRIPT TR_NoComplyGap01 
+	printf "Trigger Poly here" 
+	StartGap GapID = TR_NoComplyGapA flags = [ PURE_AIR ] tricktext = "No Comply" trickScript = TR_NoComplyGapGot_1 
+ENDSCRIPT
+
+SCRIPT TR_NoComplyGap02 
+	EndGap GapID = TR_NoComplyGapA text = "Car Hop" score = 75 
+	SpawnScript TR_SFX_TaxiHop 
+ENDSCRIPT
+
+SCRIPT TR_NoComplyGapGot_1 
+	IF GoalManager_GoalIsActive name = tr_goal_gaps 
+		GoalManager_SetGoalFlag name = tr_goal_gaps got_1 1 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_NoComply_success 
+	killspawnedScript name = TR_ADDGOAL_NoComply_Flash 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_NoComply_Deactivate 
+	killspawnedScript name = TR_ADDGOAL_NoComply_Flash 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Boneless 
+	AddGoal_Gaps { 
+		version = 2 
+		Start_cam_anims = [ 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(9103.29980468750, -903.09997558594, 281.89999389648) 
+				positionOffset = VECTOR(19.10000038147, -719.40002441406, -3894.50000000000) 
+				frames = 100 
+				cam_anim_text = "" 
+				skippable = 1 
+			play_hold } 
+		] 
+		intro_node = TRG_G_GAP2_RESTARTNODE 
+		goal_text = "Boneless\\n(\\b7 + \\b7 + \\b3)\\nover the taxi." 
+		view_goals_text = "Basics - Boneless over the taxi" 
+		goal_deScription = Mullen_tr_goal_gaps2 
+		skater = custom 
+		unlimited_Time = 1 
+		goal_flags = [ got_1 
+		] 
+		goal_intro_Script = TR_ADDGOAL_Boneless_Intro 
+		goal_start_Script = TR_ADDGOAL_Boneless_Start 
+		goal_success_Script = TR_ADDGOAL_Boneless_success 
+		Goal_deactivate_script = TR_ADDGOAL_Boneless_Deactivate 
+		pro = "Mullen" 
+		full_name = "Rodney Mullen" 
+		child = TR_Goal_Gaps5 
+	} 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Boneless_Intro 
+	Create name = g_g_Gaps02a 
+	Create name = g_g_Gaps02b 
+	Create name = g_g_Gaps02a01 
+	Create name = g_g_Gaps02b01 
+	SpawnScript TR_ADDGOAL_Boneless_Flash params = { ObjName = SkWare_Taxi01 } 
+	killspawnedScript name = TR_ADDGOAL_NoComply_Flash 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Boneless_Flash 
+	BEGIN 
+		SetObjectColor name = <ObjName> color = 10506320 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 9195600 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 7884880 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 6574160 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 5263440 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 6574160 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 7884880 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 9195600 
+		wait 10 frames 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Boneless_Start 
+ENDSCRIPT
+
+SCRIPT TR_BonelessGap01 
+	StartGap GapID = TR_BonelessGapA flags = [ PURE_AIR ] tricktext = "Boneless" trickScript = TR_BonelessGapGot_1 
+ENDSCRIPT
+
+SCRIPT TR_BonelessGap02 
+	EndGap GapID = TR_BonelessGapA 
+ENDSCRIPT
+
+SCRIPT TR_BonelessGapGot_1 
+	IF GoalManager_GoalIsActive name = TR_GOAL_Gaps2 
+		GoalManager_SetGoalFlag name = TR_GOAL_Gaps2 got_1 1 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Boneless_success 
+	killspawnedScript name = TR_ADDGOAL_Boneless_Flash 
+	Kill name = g_g_Gaps02a 
+	Kill name = g_g_Gaps02a01 
+	Kill name = g_g_Gaps02b 
+	Kill name = g_g_Gaps02b01 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Boneless_Deactivate 
+	killspawnedScript name = TR_ADDGOAL_Boneless_Flash 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_KickFlip 
+	AddGoal_Gaps { 
+		version = 5 
+		Start_cam_anims = [ 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(6957.60009765625, -2861.80004882812, -7684.10009765625) 
+				positionOffset = VECTOR(-1554.69995117188, -558.40002441406, -2968.80004882812) 
+				frames = 100 
+				cam_anim_text = "" 
+				skippable = 1 
+			play_hold } 
+		] 
+		Success_cam_anims = [ 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(7621.10009765625, -2094.69995117188, -7302.39990234375) 
+				positionOffset = VECTOR(-763.70001220703, -655.40002441406, -2046.80004882812) 
+				frames = 100 
+				cam_anim_text = Mullen_tr_goal_gaps3_Success 
+				skippable = 1 
+			play_hold } 
+		] 
+		intro_node = TRG_G_GAP5_RESTARTNODE 
+		goal_text = "(\\b6 + \\b1) while in air" 
+		view_goals_text = "Basics - KickFlip over the gap" 
+		goal_deScription = Mullen_tr_goal_gaps5 
+		skater = custom 
+		Reward_Goal = tr_goal_gaps4 
+		unlimited_Time = 1 
+		goal_flags = [ got_1 
+		] 
+		goal_intro_Script = TR_ADDGOAL_KickFlip_Intro 
+		goal_start_Script = TR_ADDGOAL_KickFlip_Start 
+		goal_success_Script = TR_ADDGOAL_KickFlip_success 
+		Goal_deactivate_script = TR_ADDGOAL_KickFlip_Deactivate 
+		pro = "Mullen" 
+		full_name = "Rodney Mullen" 
+	} 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_KickFlip_Intro 
+	SetObjectColor_CurrentTOD name = SkWare_Taxi01 
+	killspawnedScript name = TR_ADDGOAL_Boneless_Flash 
+	SpawnScript TR_ADDGOAL_KickFlip_Flash params = { ObjName = SkWare_Kicker_Wood02a } 
+	SpawnScript TR_ADDGOAL_KickFlip_Flash params = { ObjName = SkWare_Kicker_Wood02b } 
+	SpawnScript TR_ADDGOAL_KickFlip_Flash params = { ObjName = SkWare_Kicker_Block01 } 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_KickFlip_Flash 
+	BEGIN 
+		SetObjectColor name = <ObjName> color = 10506320 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 9195600 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 7884880 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 6574160 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 5263440 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 6574160 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 7884880 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 9195600 
+		wait 10 frames 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_KickFlip_Start 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_KickFlipGap01 
+	IF GoalManager_GoalIsActive name = TR_Goal_Gaps5 
+		StartGap GapID = kickflip flags = [ PURE_AIR ] tricktext = "KickFlip" trickScript = TR_ADDGOAL_KickFlipGot_1 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_KickFlipGap02 
+	IF GoalManager_GoalIsActive name = TR_Goal_Gaps5 
+		EndGap GapID = kickflip 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_KickFlipGot_1 
+	printf "WTF==============" 
+	IF GoalManager_GoalIsActive name = TR_Goal_Gaps5 
+		GoalManager_SetGoalFlag name = TR_Goal_Gaps5 got_1 1 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_KickFlip_success 
+	killspawnedScript name = TR_ADDGOAL_KickFlip_Flash 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_KickFlip_Deactivate 
+	killspawnedScript name = TR_ADDGOAL_KickFlip_Flash 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Grind 
+	AddGoal_Gaps { 
+		version = 3 
+		Start_cam_anims = [ 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(-4666.39990234375, -739.09997558594, -11330.79980468750) 
+				positionOffset = VECTOR(-522.50000000000, -708.90002441406, -2230.10009765625) 
+				frames = 100 
+				cam_anim_text = "" 
+				skippable = 1 
+			play_hold } 
+		] 
+		intro_node = TRG_G_GAP3_RESTARTNODE 
+		goal_text = "Ollie (\\b3)\\n then Grind (\\b0) near the rail." 
+		view_goals_text = "Basics - Grind the rail" 
+		goal_deScription = Muska_tr_goal_gaps3 
+		skater = custom 
+		unlimited_Time = 1 
+		goal_flags = [ got_1 
+		] 
+		goal_intro_Script = TR_ADDGOAL_Grind_Intro 
+		goal_start_Script = TR_ADDGOAL_Grind_Start 
+		goal_success_Script = TR_ADDGOAL_Grind_success 
+		Goal_deactivate_script = TR_ADDGOAL_Grind_Deactivate 
+		pro = "Muska" 
+		full_name = "Chad Muska" 
+		child = tr_goal_gaps 
+	} 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Grind_Intro 
+	killspawnedScript name = TR_ADDGOAL_NoseGrab_Flash 
+	SetObjectColor_CurrentTOD name = SkWare_Kicker_Wood02a 
+	SetObjectColor_CurrentTOD name = SkWare_Kicker_Wood02b 
+	SetObjectColor_CurrentTOD name = SkWare_Kicker_Block01 
+	Kill prefix = "g_g_nosegrab" 
+	SpawnScript TR_ADDGOAL_Grind_Flash params = { ObjName = SkWare_Rail01 } 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Grind_Flash 
+	BEGIN 
+		SetObjectColor name = <ObjName> color = 10506320 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 9195600 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 7884880 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 6574160 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 5263440 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 6574160 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 7884880 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 9195600 
+		wait 10 frames 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Grind_Start 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Grind_Active 
+	GetTriggerArray grind off 
+	IF TriggerType <trigger_array> 
+		IF GoalManager_GoalIsActive name = tr_goal_gaps3 
+			getgap gapScript = TR_GrindGapGot_1 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_GrindGapGot_1 
+	printf "WTF==============" 
+	IF GoalManager_GoalIsActive name = tr_goal_gaps3 
+		GoalManager_SetGoalFlag name = tr_goal_gaps3 got_1 1 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Grind_success 
+	killspawnedScript name = TR_ADDGOAL_Grind_Flash 
+	SetObjectColor_CurrentTOD name = SkWare_Rail01 
+	Create prefix = "TRG_RodneySkate_" 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Grind_Deactivate 
+	killspawnedScript name = TR_ADDGOAL_Grind_Flash 
+	SetObjectColor_CurrentTOD name = SkWare_Rail01 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Lip 
+	AddGoal_Gaps { 
+		version = 4 
+		Start_cam_anims = [ 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(-4803.50000000000, -386.20001220703, -10655.90039062500) 
+				positionOffset = VECTOR(962.09997558594, -797.79998779297, -2495.69995117188) 
+				frames = 100 
+				cam_anim_text = "" 
+				skippable = 1 
+			play_hold } 
+		] 
+		goal_text = "Go up the QP straight on and press (\\b0) at the top to lip." 
+		view_goals_text = "Basics - Lip the QP" 
+		goal_deScription = Burnquist_tr_goal_gaps4 
+		skater = custom 
+		unlocked_by_another 
+		unlimited_Time = 1 
+		goal_flags = [ got_1 
+		] 
+		pro = "Burnquist" 
+		full_name = "Bob Burnquist" 
+		child = TR_Goal_gaps8 
+	} 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_LipGap01 
+	StartGap GapID = TeachLip flags = [ REQUIRE_LIP ] 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_LipGap02 
+	GetTriggerArray lip off 
+	IF TriggerType <trigger_array> 
+		EndGap GapID = TeachLip score = 50 text = "Half pipe lip" gapScript = TR_ADDGOAL_LipGapGot_1 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_LipGapGot_1 
+	printf "WTF==============" 
+	IF GoalManager_GoalIsActive name = tr_goal_gaps4 
+		wait 1 second 
+		GoalManager_SetGoalFlag name = tr_goal_gaps4 got_1 1 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_LipGrind 
+	AddGoal_Gaps { 
+		version = 8 
+		Start_cam_anims = [ 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(-4803.50000000000, -386.20001220703, -10655.90039062500) 
+				positionOffset = VECTOR(962.09997558594, -797.79998779297, -2495.69995117188) 
+				Skater_Node = TRG_G_GAP8_RESTARTNODE 
+				frames = 100 
+				cam_anim_text = "" 
+				skippable = 1 
+			play_hold } 
+		] 
+		goal_text = "Go up the QP at an angle and grind (\\b0) at the top." 
+		view_goals_text = "Basics - QP grind" 
+		goal_deScription = Burnquist_tr_goal_gaps8 
+		skater = custom 
+		unlimited_Time = 1 
+		goal_flags = [ got_1 
+		] 
+		goal_intro_Script = TR_ADDGOAL_LipGrind_Intro 
+		goal_start_Script = TR_ADDGOAL_LipGrind_Start 
+		goal_success_Script = TR_ADDGOAL_LipGrind_success 
+		Goal_deactivate_script = TR_ADDGOAL_LipGrind_Deactivate 
+		pro = "Burnquist" 
+		full_name = "Bob Burnquist" 
+		child = TR_Goal_counter4 
+	} 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_LipGrind_Intro 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_LipGrind_Flash 
+	BEGIN 
+		SetObjectColor name = <ObjName> color = 10506320 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 9195600 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 7884880 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 6574160 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 5263440 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 6574160 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 7884880 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 9195600 
+		wait 10 frames 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_LipGrind_Start 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_LipGrindGap01 
+	StartGap GapID = TeachGrindLip flags = [ REQUIRE_RAIL ] 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_LipGrindGap02 
+	GetTriggerArray grind off 
+	IF TriggerType <trigger_array> 
+		EndGap GapID = TeachGrindLip gapScript = TR_ADDGOAL_LipGrindGot_1 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_LipGrindGot_1 
+	IF GoalManager_GoalIsActive name = TR_Goal_gaps8 
+		GoalManager_SetGoalFlag name = TR_Goal_gaps8 got_1 1 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_LipGrind_success 
+	killspawnedScript name = TR_ADDGOAL_LipGrind_Flash 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_LipGrind_Deactivate 
+	killspawnedScript name = TR_ADDGOAL_LipGrind_Flash 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Melon 
+	AddGoal_Counter { 
+		version = 4 
+		Start_cam_anims = [ 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(-4803.50000000000, -386.20001220703, -10655.90039062500) 
+				positionOffset = VECTOR(962.09997558594, -797.79998779297, -2495.69995117188) 
+				Skater_Node = TRG_G_Counter4_RESTARTNODE 
+				frames = 100 
+				cam_anim_text = "" 
+				skippable = 1 
+			play_hold } 
+		] 
+		goal_text = "Pull off a Melon (\\b6 + \\b2)\\n while in the air" 
+		view_goals_text = "Basics - Melon off a vert" 
+		goal_deScription = Burnquist_TR_Goal_Counter4 
+		skater = custom 
+		number = 1 
+		unlimited_Time = 1 
+		goal_start_Script = TR_ADDGOAL_Melon_Start 
+		goal_success_Script = TR_ADDGOAL_Melon_success 
+		Goal_deactivate_script = TR_ADDGOAL_Melon_Deactivate 
+		pro = "Burnquist" 
+		full_name = "Bob Burnquist" 
+		child = TR_Goal_counter2 
+	} 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Melon_Start 
+	SpawnScript TR_ADDGOAL_Melon_SpinChecker 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Melon_SpinChecker 
+	ClearExceptionGroup TR_Goal_counter4 
+	printf "MelonChecker" 
+	SetException ex = SkaterEnterAir scr = TR_ADDGOAL_MelonChecker_Air group = TR_Goal_counter4 
+	SetException ex = SkaterEnterBail scr = TR_ADDGOAL_Melon_Start group = TR_Goal_counter4 
+	block 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_MelonChecker_Air 
+	ClearExceptionGroup TR_Goal_counter4 
+	printf "MelonChecker Air" 
+	BEGIN 
+		wait 1 frame 
+		GetNumberOfTrickOccurrences tricktext = "Melon" 
+		Printstruct <...> 
+		IF ( <Number_Of_Occurrences> > 0 ) 
+			SetException ex = SkaterLanded scr = TR_ADDGOAL_MelonChecker_Land group = TR_Goal_counter4 
+			SetException ex = SkaterEnterBail scr = TR_ADDGOAL_Melon_Start group = TR_Goal_counter4 
+		ENDIF 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_MelonChecker_Land 
+	ClearExceptionGroup TR_Goal_counter4 
+	printf "MelonChecker Land" 
+	GoalManager_GotCounterObject name = TR_Goal_counter4 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Melon_success 
+	ClearExceptionGroup TR_Goal_counter4 
+	killspawnedScript name = TR_ADDGOAL_Melon_SpinChecker 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Melon_Deactivate 
+	ClearExceptionGroup TR_Goal_counter4 
+	killspawnedScript name = TR_ADDGOAL_Melon_SpinChecker 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Spin 
+	AddGoal_Counter { 
+		version = 2 
+		Start_cam_anims = [ 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(-4803.50000000000, -386.20001220703, -10655.90039062500) 
+				positionOffset = VECTOR(962.09997558594, -797.79998779297, -2495.69995117188) 
+				Skater_Node = TRG_G_Counter2_RESTARTNODE 
+				frames = 100 
+				cam_anim_text = "" 
+				skippable = 1 
+			play_hold } 
+		] 
+		goal_text = "Land a trick with at least a 360 spin.\\n(press and hold\\n\\b6 or \\b5) to spin." 
+		view_goals_text = "Basics - Learn to spin" 
+		goal_deScription = Burnquist_TR_Goal_Counter2 
+		skater = custom 
+		number = 1 
+		unlimited_Time = 1 
+		goal_intro_Script = TR_ADDGOAL_Spin_Intro 
+		goal_start_Script = TR_ADDGOAL_Spin_Start 
+		goal_success_Script = TR_ADDGOAL_Spin_success 
+		Goal_deactivate_script = TR_ADDGOAL_Spin_Deactivate 
+		pro = "Burnquist" 
+		full_name = "Bob Burnquist" 
+		child = TR_Goal_gaps10 
+	} 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Spin_Intro 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Spin_Flash 
+	BEGIN 
+		SetObjectColor name = <ObjName> color = 10506320 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 9195600 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 7884880 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 6574160 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 5263440 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 6574160 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 7884880 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 9195600 
+		wait 10 frames 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Spin_Start 
+	SpawnScript TR_ADDGOAL_Spin_SpinChecker 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Spin_SpinChecker 
+	ClearExceptionGroup TR_Counter2 
+	UnsetFlag flag = FLAG_SPIN 
+	printf "SpinChecker" 
+	SetException ex = SkaterEnterAir scr = TR_ADDGOAL_Spin_SpinChecker_Air group = TR_Counter2 
+	block 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Spin_SpinChecker_Air 
+	ClearExceptionGroup TR_Counter2 
+	printf "SpinChecker Air" 
+	SetException ex = SkaterLanded scr = TR_ADDGOAL_Spin_SpinChecker_Land group = TR_Counter2 
+	SetException ex = SkaterBailed scr = TR_ADDGOAL_Spin_SpinChecker group = TR_Counter2 
+	BEGIN 
+		wait 1 frame 
+		skater : GetSpin 
+		IF ( <spin> = 360 ) 
+			SetFlag flag = FLAG_SPIN 
+		ENDIF 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Spin_SpinChecker_Land 
+	ClearExceptionGroup TR_Counter2 
+	printf "SpinChecker Land" 
+	IF GetFlag flag = FLAG_SPIN 
+		printf "360" 
+		IF SkaterLastScoreLandedGreaterThan 0 
+			printf "set counter" 
+			GoalManager_GotCounterObject name = TR_Goal_counter2 
+		ELSE 
+			goto TR_ADDGOAL_Spin_SpinChecker 
+			UnsetFlag flag = FLAG_SPIN 
+		ENDIF 
+	ELSE 
+		goto TR_ADDGOAL_Spin_SpinChecker 
+		UnsetFlag flag = FLAG_SPIN 
+	ENDIF 
+	UnsetFlag flag = FLAG_SPIN 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Spin_success 
+	killspawnedScript name = TR_ADDGOAL_Spin_Flash 
+	ClearExceptionGroup TR_Counter2 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Spin_Deactivate 
+	ClearExceptionGroup TR_Counter2 
+	killspawnedScript name = TR_ADDGOAL_Spin_Flash 
+ENDSCRIPT
+
+FLAG_SPIN = 1 
+SCRIPT TR_ADDGOAL_BreakAir 
+	AddGoal_Gaps { 
+		version = 10 
+		Start_cam_anims = [ 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(6273.10009765625, -1139.19995117188, 5064.79980468750) 
+				positionOffset = VECTOR(258.10000610352, -786.50000000000, -2916.10009765625) 
+				Skater_Node = TRG_G_GAP10_RESTARTNODE 
+				frames = 100 
+				cam_anim_text = "" 
+				skippable = 1 
+			play_hold } 
+		] 
+		goal_text = "Get out of half pipe level out (\\ml)." 
+		view_goals_text = "Basics - Get out of a half pipe" 
+		goal_deScription = Burnquist_tr_goal_gaps10 
+		skater = custom 
+		unlimited_Time = 1 
+		goal_flags = [ got_1 
+		] 
+		goal_intro_Script = TR_ADDGOAL_BreakAir_Intro 
+		goal_start_Script = TR_ADDGOAL_BreakAir_Start 
+		goal_success_Script = TR_ADDGOAL_BreakAir_success 
+		Goal_deactivate_script = TR_ADDGOAL_BreakAir_Deactivate 
+		pro = "Burnquist" 
+		full_name = "Bob Burnquist" 
+		child = TR_Goal_gaps9 
+	} 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_BreakAir_Intro 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_BreakAir_Flash 
+	BEGIN 
+		SetObjectColor name = <ObjName> color = 10506320 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 9195600 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 7884880 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 6574160 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 5263440 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 6574160 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 7884880 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 9195600 
+		wait 10 frames 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_BreakAir_Start 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_BreakAirGap01 
+	printf "start Gap" 
+	StartGap GapID = BreakAir flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_BreakAirGap02 
+	printf "end Gap" 
+	EndGap GapID = BreakAir gapScript = TR_ADDGOAL_BreakAirGot_1 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_BreakAirGot_1 
+	GoalManager_SetGoalFlag name = TR_Goal_gaps10 got_1 1 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_BreakAir_success 
+	SetObjectColor_CurrentTOD name = SkWare_Main_8b 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_BreakAir_Deactivate 
+	SetObjectColor_CurrentTOD name = SkWare_Main_8b 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Transfer 
+	AddGoal_Gaps { 
+		version = 9 
+		Start_cam_anims = [ 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(3133.19995117188, -1336.00000000000, 6855.79980468750) 
+				positionOffset = VECTOR(-690.50000000000, -654.00000000000, -2359.10009765625) 
+				frames = 100 
+				cam_anim_text = "" 
+				skippable = 1 
+			play_hold } 
+		] 
+		intro_node = TRG_G_GAP9_RESTARTNODE 
+		goal_text = "Transfer from one QP to the other." 
+		view_goals_text = "Basics - QP transfer" 
+		goal_deScription = Burnquist_tr_goal_gaps9 
+		skater = custom 
+		Reward_Goal = tr_goal_counter3 
+		unlimited_Time = 1 
+		goal_flags = [ got_1 
+		] 
+		goal_intro_Script = TR_ADDGOAL_Transfer_Intro 
+		goal_start_Script = TR_ADDGOAL_Transfer_Start 
+		goal_success_Script = TR_ADDGOAL_Transfer_success 
+		Goal_deactivate_script = TR_ADDGOAL_Transfer_Deactivate 
+		pro = "Burnquist" 
+		full_name = "Bob Burnquist" 
+	} 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Transfer_Intro 
+	killspawnedScript name = TR_ADDGOAL_BreakAir_Flash 
+	SpawnScript TR_ADDGOAL_Transfer_Flash params = { ObjName = g_bowl_Qp_front } 
+	SpawnScript TR_ADDGOAL_Transfer_Flash params = { ObjName = TB_QP_South_Lower_02 } 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Transfer_Flash 
+	BEGIN 
+		SetObjectColor name = <ObjName> color = 10506320 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 9195600 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 7884880 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 6574160 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 5263440 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 6574160 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 7884880 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 9195600 
+		wait 10 frames 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Transfer_Start 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_TransferGap01 
+	printf "start Gap" 
+	StartGap GapID = transferA flags = [ PURE_AIR ] 
+	EndGap GapID = transferB text = "Qp transfer" score = 50 gapScript = TR_ADDGOAL_TransferGot_1 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_TransferGap02 
+	printf "end Gap" 
+	StartGap GapID = transferB flags = [ PURE_AIR ] 
+	EndGap GapID = transferA text = "Qp transfer" score = 50 gapScript = TR_ADDGOAL_TransferGot_1 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_TransferGot_1 
+	GoalManager_SetGoalFlag name = TR_Goal_gaps9 got_1 1 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Transfer_success 
+	killspawnedScript name = TR_ADDGOAL_Transfer_Flash 
+	SetObjectColor_CurrentTOD name = g_bowl_Qp_front 
+	SetObjectColor_CurrentTOD name = TB_QP_South_Lower_02 
+	SetObjectColor_CurrentTOD name = SkWare_Main_8b 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Transfer_Deactivate 
+	killspawnedScript name = TR_ADDGOAL_Transfer_Flash 
+	SetObjectColor_CurrentTOD name = g_bowl_Qp_front 
+	SetObjectColor_CurrentTOD name = TB_QP_South_Lower_02 
+	SetObjectColor_CurrentTOD name = SkWare_Main_8b 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Wallplant 
+	AddGoal_Counter { 
+		version = 3 
+		Start_cam_anims = [ 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(9718.20019531250, -855.50000000000, -2489.60009765625) 
+				positionOffset = VECTOR(-266.70001220703, -659.59997558594, -1978.50000000000) 
+				frames = 100 
+				cam_anim_text = "" 
+				skippable = 1 
+			play_hold = 1 } 
+		] 
+		Success_cam_anims = [ 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(4262.60009765625, -879.29998779297, 5534.50000000000) 
+				positionOffset = VECTOR(-1599.40002441406, -617.70001220703, -2563.00000000000) 
+				frames = 100 
+				cam_anim_text = Muska_tr_goal_counter3_Success 
+				skippable = 1 
+			play_hold = 1 } 
+		] 
+		intro_node = TRG_G_Counter3_RESTARTNODE 
+		goal_text = "Ollie (\\b3) then Sticker Slap (\\b3) when next to a wall" 
+		view_goals_text = "Novice - Sticker Slap the walls" 
+		goal_deScription = Muska_tr_goal_counter3 
+		skater = custom 
+		unlocked_by_another 
+		Reward_Goal = [ tr_goal_gaps11 TR_Goal_TimedScoreRun ] 
+		number = 5 
+		goal_intro_Script = TR_ADDGOAL_Wallplant_intro 
+		goal_start_Script = TR_ADDGOAL_Wallplant_start 
+		goal_success_Script = TR_ADDGOAL_Wallplant_success 
+		Goal_deactivate_script = TR_ADDGOAL_Wallplant_Deactivate 
+		pro = "Muska" 
+		full_name = "Chad Muska" 
+		use_hud_counter 
+		hud_counter_caption = "Sticker Slap\'s" 
+	} 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Wallplant_intro 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Wallplant_start 
+	SpawnScript TR_ADDGOAL_Wallplant_Checker 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Wallplant_Checker 
+	printf "Jumping+++++++++++++++" 
+	ClearExceptionGroup TR_ADDGOAL_Ollie01 
+	SetException ex = SkaterEnterWallplant scr = TR_ADDGOAL_Wallplant_SetFlags group = TR_ADDGOAL_Wallplant01 
+	block 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Wallplant_SetFlags 
+	printf " Set Flags==============" 
+	ClearExceptionGroup TR_ADDGOAL_Wallplant01 
+	GoalManager_GotCounterObject name = tr_goal_counter3 
+	goto TR_ADDGOAL_Wallplant_Checker 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Wallplant_success 
+	killspawnedScript name = TR_ADDGOAL_Wallplant_Checker 
+	killspawnedScript name = TR_ADDGOAL_Wallplant_SetFlags 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Wallplant_Deactivate 
+	killspawnedScript name = TR_ADDGOAL_Wallplant_Checker 
+	killspawnedScript name = TR_ADDGOAL_Wallplant_SetFlags 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_WallBreak 
+	AddGoal_Gaps { 
+		version = 11 
+		Start_cam_anims = [ 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(-9669.40039062500, -291.39999389648, -8195.79980468750) 
+				positionOffset = VECTOR(-697.29998779297, -666.50000000000, -3795.89990234375) 
+				frames = 50 
+				cam_anim_text = Valley_tr_goal_gaps11_camanim01 
+				skippable = 1 
+				play_hold 
+			} 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(-9669.40039062500, -291.39999389648, -8195.79980468750) 
+				positionOffset = VECTOR(-697.29998779297, -666.50000000000, -3795.89990234375) 
+				frames = 100 
+				cam_anim_text = "" 
+				skippable = 1 
+				play_hold 
+			} 
+		] 
+		Success_cam_anims = [ 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(6788.29980468750, -2160.39990234375, 159.39999389648) 
+				positionOffset = VECTOR(-2106.19995117188, -488.89999389648, -4094.30004882812) 
+				pre_anim_Script = TR_Goal_Gaps11_Pre_Anim 
+				frames = 100 
+				cam_anim_text = Valley_tr_goal_gaps11_success 
+				skippable = 1 
+				play_hold 
+			} 
+		] 
+		intro_node = TRG_G_GAP11_RESTARTNODE 
+		goal_text = "Grind (\\b0) the top of this Qp towards the wall. When you\'re close to the wall Ollie (\\b3) and Sticker Slap it (\\b3)." 
+		view_goals_text = "Novice - Tear down the wall" 
+		goal_deScription = Valley_tr_goal_gaps11 
+		skater = custom 
+		unlocked_by_another 
+		unlimited_Time = 1 
+		goal_flags = [ got_1 
+		] 
+		goal_intro_Script = TR_ADDGOAL_WallBreak_Intro 
+		goal_start_Script = TR_ADDGOAL_WallBreak_Start 
+		goal_success_Script = TR_ADDGOAL_WallBreak_success 
+		Goal_deactivate_script = TR_ADDGOAL_WallBreak_Deactivate 
+		pro = "Vallely" 
+		full_name = "Mike Vallely" 
+		child = tr_goal_gaps12 
+	} 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_WallBreak_Intro 
+	IF NOT IsAlive name = g_wall_break_pre 
+		Create name = g_WareNew_Main_windows 
+		Create name = g_wall_break_pre 
+		Create name = g_WareNew_Main_windows_02 
+		Kill name = g_wall_break_post 
+		Kill prefix = "trg_wallbreak_post" 
+	ENDIF 
+	SpawnScript TR_ADDGOAL_WallBreak_Flash params = { ObjName = g_wall_break_pre } 
+	SpawnScript TR_ADDGOAL_WallBreak_Flash params = { ObjName = TB_QP_North_Lower_01 } 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_WallBreak_Flash 
+	BEGIN 
+		SetObjectColor name = <ObjName> color = 10506320 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 9195600 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 7884880 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 6574160 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 5263440 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 6574160 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 7884880 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 9195600 
+		wait 10 frames 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_WallBreak_Start 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_WallBreakGap01 
+	printf "start Gap" 
+	StartGap GapID = WallBreak 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_WallBreakGap02 
+	GetTriggerArray grind 
+	IF TriggerType <trigger_array> 
+		printf "ContinueGap" 
+		EndGap GapID = WallBreak continue = { GapID = WallBreak01 } 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_WallBreakGap03 
+	GetTriggerArray Wallplant onto 
+	IF TriggerType <trigger_array> 
+		IF GoalManager_GoalIsActive name = tr_goal_gaps11 
+			printf "EndGap" 
+			EndGap GapID = WallBreak01 gapScript = TR_ADDGOAL_WallBreakGot_1 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_WallBreakGot_1 
+	GoalManager_SetGoalFlag name = tr_goal_gaps11 got_1 1 
+	SpawnScript TR_WallBreakToggle 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_WallBreak_success 
+	killspawnedScript name = TR_ADDGOAL_WallBreak_Flash 
+	killspawnedScript name = TR_WallBreakToggle 
+	SetObjectColor_CurrentTOD name = TB_QP_North_Lower_01 
+	Kill name = TRG_SFX_TrigBox_WarehouseHum_02 
+	Create name = TRG_SFX_TrigBox_WarehouseHum_02 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_WallBreak_Deactivate 
+	killspawnedScript name = TR_ADDGOAL_WallBreak_Flash 
+	killspawnedScript name = TR_WallBreakToggle 
+	SetObjectColor_CurrentTOD name = TB_QP_North_Lower_01 
+ENDSCRIPT
+
+SCRIPT TR_Goal_Gaps11_Pre_Anim 
+	SpawnScript TR_SFX_BreakStoneWall 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_WallRide 
+	AddGoal_Gaps { 
+		version = 12 
+		Start_cam_anims = [ 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(7341.70019531250, -593.50000000000, -513.79998779297) 
+				positionOffset = VECTOR(-2246.10009765625, -649.50000000000, -3354.10009765625) 
+				frames = 100 
+				cam_anim_text = "" 
+				skippable = 1 
+				play_hold 
+			} 
+		] 
+		Success_cam_anims = [ 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(6551.10009765625, 688.79998779297, -8133.10009765625) 
+				positionOffset = VECTOR(-2196.60009765625, -649.20001220703, -3476.19995117188) 
+				frames = 100 
+				pre_anim_Script = TR_Goal_Gaps12_Pre_Anim 
+				skippable = 1 
+				play_hold 
+			} 
+		] 
+		intro_node = TRG_G_GAP12_RESTARTNODE 
+		goal_text = "Approch the wall at an angle Ollie (\\b3) and Wallride (\\b0)." 
+		view_goals_text = "Novice - Open the door" 
+		goal_deScription = Valley_tr_goal_gaps12 
+		skater = custom 
+		Reward_Goal = tr_goal_counter5 
+		unlimited_Time = 1 
+		goal_flags = [ got_1 
+		] 
+		goal_intro_Script = TR_ADDGOAL_WallRide_Intro 
+		goal_start_Script = TR_ADDGOAL_WallRide_Start 
+		goal_success_Script = TR_ADDGOAL_WallRide_success 
+		Goal_deactivate_script = TR_ADDGOAL_WallRide_Deactivate 
+		pro = "Vallely" 
+		full_name = "Mike Vallely" 
+	} 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_WallRide_Intro 
+	killspawnedScript name = TR_ADDGOAL_WallBreak_Flash 
+	SetObjectColor_CurrentTOD name = TB_QP_North_Lower_01 
+	SpawnScript TR_ADDGOAL_WallRide_Flash params = { ObjName = g_wall_break_pre } 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_WallRide_Flash 
+	BEGIN 
+		SetObjectColor name = <ObjName> color = 10506320 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 9195600 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 7884880 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 6574160 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 5263440 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 6574160 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 7884880 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 9195600 
+		wait 10 frames 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_WallRide_Start 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_WallRideGap01 
+	printf "start Gap" 
+	StartGap GapID = WallRide 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_WallRideGap02 
+	GetTriggerArray through 
+	IF TriggerType <trigger_array> 
+		GetSingleTag state 
+		printf "EndGap---01" 
+		IF ( <state> = Skater_OnWall ) 
+			printf "EndGap---02" 
+			IF GoalManager_GoalIsActive name = tr_goal_gaps12 
+				printf "EndGap---03" 
+				EndGap GapID = WallRide gapScript = TR_ADDGOAL_WallRideGot_1 
+			ELSE 
+				EndGap GapID = WallRide text = "Red Button wallride" score = 50 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_WallRideGot_1 
+	GoalManager_SetGoalFlag name = tr_goal_gaps12 got_1 1 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_WallRide_success 
+	killspawnedScript name = TR_ADDGOAL_WallRide_Flash 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_WallRide_Deactivate 
+	killspawnedScript name = TR_ADDGOAL_WallRide_Flash 
+ENDSCRIPT
+
+SCRIPT TR_Goal_Gaps12_Pre_Anim 
+	Kill name = g_roll_door_LevelGeo 
+	Create name = g_roll_door01 
+	g_roll_door01 : obj_movetorelpos VECTOR(0.00000000000, 295.00000000000, 0.00000000000) time = 3.50000000000 seconds 
+	TR_SFX_GarageOpening 
+	skater : getgap text = "Red Button wallride" score = 50 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Wallie 
+	AddGoal_Counter { 
+		version = 5 
+		Start_cam_anims = [ 
+			{ 
+				virtual_cam 
+				targetOffset = VECTOR(-7647.20019531250, -1241.80004882812, 5437.39990234375) 
+				positionOffset = VECTOR(-2974.80004882812, -640.00000000000, -3383.39990234375) 
+				targetid = world 
+				cam_anim_text = Margera_tr_goal_counter5_camanim01 
+				skippable = 1 
+			play_hold } 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(-7647.20019531250, -1241.80004882812, 5437.39990234375) 
+				positionOffset = VECTOR(-2974.80004882812, -640.00000000000, -3383.39990234375) 
+				frames = 100 
+				cam_anim_text = "" 
+				skippable = 1 
+			play_hold } 
+		] 
+		intro_node = TRG_G_Counter5_RESTARTNODE 
+		goal_text = "Wallie (\\b3) and grind (\\b0) the rail" 
+		view_goals_text = "Novice - Wallie and grind the rail" 
+		goal_deScription = Margera_tr_goal_counter5 
+		skater = custom 
+		unlocked_by_another 
+		Reward_Goal = [ TR_Goal_counter7 TR_Goal_Counter6 ] 
+		number = 1 
+		unlimited_Time = 1 
+		goal_flags = [ got_1 
+		] 
+		goal_intro_Script = TR_ADDGOAL_Wallie_Intro 
+		goal_start_Script = TR_ADDGOAL_Wallie_Start 
+		goal_success_Script = TR_ADDGOAL_Wallie_success 
+		Goal_deactivate_script = TR_ADDGOAL_Wallie_Deactivate 
+		pro = "Margera" 
+		full_name = "Bam Margera" 
+	} 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Wallie_Intro 
+	killspawnedScript name = TR_ADDGOAL_WallRide_Flash 
+	SetObjectColor_CurrentTOD name = TB_QP_North_Lower_01 
+	Kill name = SkWare_Kicker_Wood02a03 
+	Kill name = SkWare_Kicker_Wood02a04 
+	SpawnScript TR_ADDGOAL_Wallie_Flash params = { ObjName = Geo_Demo_BoxBar05 } 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Wallie_Flash 
+	BEGIN 
+		SetObjectColor name = <ObjName> color = 10506320 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 9195600 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 7884880 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 6574160 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 5263440 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 6574160 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 7884880 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 9195600 
+		wait 10 frames 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Wallie_Start 
+	SpawnScript TR_ADDGOAL_WallieChecker 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_WallieChecker 
+	ClearExceptionGroup tr_goal_counter5 
+	printf "WallieChecker" 
+	SetException ex = SkaterEnterAir scr = TR_ADDGOAL_WallieChecker_Air group = tr_goal_counter5 
+	block 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_WallieChecker_Air 
+	ClearExceptionGroup tr_goal_counter5 
+	printf "WallieChecker Air" 
+	BEGIN 
+		wait 1 frame 
+		GetNumberOfTrickOccurrences tricktext = "Wallie" 
+		Printstruct <...> 
+		IF ( <Number_Of_Occurrences> > 0 ) 
+			SetException ex = SkaterEnterRail scr = TR_ADDGOAL_WallieChecker_Rail group = tr_goal_counter5 
+			SetException ex = SkaterExitCombo scr = TR_ADDGOAL_WallieChecker_Fail group = tr_goal_counter5 
+		ENDIF 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_WallieChecker_Fail 
+	create_panel_block ID = current_goal text = "Try that again\\nWallie (\\b3) and grind (\\b0) the rail" Style = panel_message_goal 
+	goto TR_ADDGOAL_WallieChecker 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_WallieChecker_Rail 
+	ClearExceptionGroup tr_goal_counter5 
+	printf "WallieChecker Rail" 
+	GoalManager_GotCounterObject name = tr_goal_counter5 
+	goto TR_ADDGOAL_WallieChecker 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Wallie_success 
+	killspawnedScript name = TR_ADDGOAL_Wallie_Flash 
+	killspawnedScript name = TR_ADDGOAL_WallieChecker 
+	SetObjectColor_CurrentTOD name = Geo_Demo_BoxBar05 
+	Kill name = TR_Ware_Drywall_COL 
+	Kill name = g_g_wareNew_Funbox01_door03 
+	Kill prefix = "TR_Ware_2X4_03_" 
+	Kill prefix = "TR_Ware_Dry_03" 
+	Create name = TB_WH_Drywall_Broke_03 
+	Create name = SkWare_Kicker_Wood02a03 
+	Create name = SkWare_Kicker_Wood02a04 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Wallie_Deactivate 
+	killspawnedScript name = TR_ADDGOAL_Wallie_Flash 
+	killspawnedScript name = TR_ADDGOAL_WallieChecker 
+	SetObjectColor_CurrentTOD name = Geo_Demo_BoxBar05 
+	Create name = SkWare_Kicker_Wood02a03 
+	Create name = SkWare_Kicker_Wood02a04 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Projectiles 
+	AddGoal_Counter { 
+		version = 6 
+		Start_cam_anims = [ 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(-2153.39990234375, -1842.40002441406, 7902.29980468750) 
+				positionOffset = VECTOR(-2944.50000000000, -646.90002441406, -1994.40002441406) 
+				frames = 100 
+				cam_anim_text = "" 
+				skippable = 1 
+			play_hold } 
+		] 
+		intro_node = TRG_G_Counter6_RESTARTNODE 
+		goal_text = "Hit him five times with these tomatoes. Just aim and Throw (\\b1)." 
+		view_goals_text = "New School - Fun with tomatoes" 
+		goal_deScription = Koston_tr_goal_counter6 
+		skater = custom 
+		unlocked_by_another 
+		number = 5 
+		unlimited_Time = 1 
+		goal_intro_Script = TR_ADDGOAL_Projectiles_Intro 
+		goal_start_Script = TR_ADDGOAL_Projectiles_Start 
+		goal_success_Script = TR_ADDGOAL_Projectiles_success 
+		Goal_deactivate_script = TR_ADDGOAL_Projectiles_Deactivate 
+		pro = "Koston" 
+		full_name = "Eric Koston" 
+		use_hud_counter 
+		hud_counter_caption = "Times hit" 
+	} 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Projectiles_Intro 
+	Create prefix = "TRG_g_pedWay_counter" 
+	Create name = TRG_g_ped_counter6 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Projectiles_Start 
+	ClearExceptionGroup Projectile 
+	SpawnScript TR_ADDGOAL_Projectiles_Checker 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Projectiles_Checker 
+	ClearExceptionGroup Projectile 
+	killspawnedScript name = TR_ADDGOAL_Projectiles_Checker_Hit 
+	SetException ex = PedHitByProjectile scr = TR_Projectile_Check group = Projectile 
+	block 
+ENDSCRIPT
+
+SCRIPT TR_Projectile_Check 
+	ClearExceptionGroup Projectile 
+	printf "BE_Projectile_Check" 
+	SWITCH projectile_last_ped_id 
+		CASE TRG_g_ped_counter6 
+			GoalManager_GotCounterObject name = TR_Goal_Counter6 
+			create_panel_block ID = current_goal text = "Got him!!" Style = panel_message_goal 
+			SpawnScript TR_SFX_Koston_Hitting_PhilM 
+	ENDSWITCH 
+	goto TR_ADDGOAL_Projectiles_Checker 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Projectiles_Checker_Hit 
+	IF projectile_last_ped_id = TRG_g_ped_counter6 
+		create_panel_block ID = current_goal text = "Got him!!" Style = panel_message_goal 
+		GoalManager_GotCounterObject name = TR_Goal_Counter6 
+		goto TR_ADDGOAL_Projectiles_Checker 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Projectiles_success 
+	printf "Don\'t get ran success" 
+	Kill prefix = "TRG_g_pedWay_counter" 
+	Kill name = TRG_g_ped_counter6 
+	ClearExceptionGroup Projectile 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Projectiles_Deactivate 
+	printf "Don\'t get ran ceacitvate" 
+	Kill prefix = "TRG_g_pedWay_counter" 
+	Kill name = TRG_g_ped_counter6 
+	ClearExceptionGroup Projectile 
+ENDSCRIPT
+
+SCRIPT TR_Ammo 
+	Obj_ClearExceptions 
+	setup_ped_speech { ped_id = <name> 
+		accept_text = "Press \\m5 to pick up tomatoes" 
+		activation_Script = TR_Ammo_Got 
+		dont_deactivate_goals 
+	} 
+ENDSCRIPT
+
+SCRIPT TR_Ammo_Got 
+	give_skater_ammo num = 10 type = Tomato 
+	IF ScreenElementExists ID = ped_speech_dialog 
+		DestroyScreenElement ID = ped_speech_dialog 
+	ENDIF 
+	UnPauseSkaters 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Spine 
+	AddGoal_Gaps { 
+		version = 13 
+		Start_cam_anims = [ 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(-1190.69995117188, -5000.20019531250, 5158.60009765625) 
+				positionOffset = VECTOR(-2893.00000000000, -317.10000610352, -3511.50000000000) 
+				frames = 100 
+				cam_anim_text = "" 
+				skippable = 1 
+			play_hold } 
+		] 
+		intro_node = TRG_G_GAP13_RESTARTNODE 
+		goal_text = "Spine Transfer\\n(\\ml) into the pool." 
+		view_goals_text = "Novice - Spine transfer the fun box" 
+		goal_deScription = Margera_tr_goal_gaps13 
+		skater = custom 
+		unlocked_by_another 
+		unlimited_Time = 1 
+		goal_flags = [ got_1 
+		] 
+		goal_intro_Script = TR_ADDGOAL_Spine_Intro 
+		goal_start_Script = TR_ADDGOAL_Spine_Start 
+		goal_success_Script = TR_ADDGOAL_Spine_success 
+		Goal_deactivate_script = TR_ADDGOAL_Spine_Deactivate 
+		pro = "Margera" 
+		full_name = "Bam Margera" 
+		child = TR_Goal_gaps14 
+	} 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Spine_Intro 
+	SpawnScript TR_ADDGOAL_Spine_Flash params = { ObjName = g_g_wareNew_Funbox } 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Spine_Flash 
+	BEGIN 
+		SetObjectColor name = <ObjName> color = 10506320 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 9195600 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 7884880 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 6574160 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 5263440 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 6574160 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 7884880 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 9195600 
+		wait 10 frames 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Spine_Start 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_SpineGap01 
+	StartGap GapID = spinea flags = [ PURE_AIR ] tricktext = "Spine Transfer" trickScript = TR_ADDGOAL_SpineGot_1 
+	EndGap GapID = spineb text = "Funbox spine" score = 75 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_SpineGap02 
+	StartGap GapID = spineb flags = [ PURE_AIR ] tricktext = "Spine Transfer" trickScript = TR_ADDGOAL_SpineGot_1 
+	EndGap GapID = spinea text = "Funbox spine" score = 75 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_SpineGot_1 
+	IF GoalManager_GoalIsActive name = tr_goal_gaps13 
+		GoalManager_SetGoalFlag name = tr_goal_gaps13 got_1 1 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Spine_success 
+	killspawnedScript name = TR_ADDGOAL_Spine_Flash 
+	SetObjectColor_CurrentTOD name = g_g_wareNew_Funbox 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Spine_Deactivate 
+	killspawnedScript name = TR_ADDGOAL_Spine_Flash 
+	SetObjectColor_CurrentTOD name = g_g_wareNew_Funbox 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Hip 
+	AddGoal_Gaps { 
+		version = 14 
+		Start_cam_anims = [ 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(5999.50000000000, -675.90002441406, -4679.00000000000) 
+				positionOffset = VECTOR(-3388.80004882812, -680.79998779297, -1235.19995117188) 
+				frames = 100 
+				cam_anim_text = "" 
+				skippable = 1 
+			play_hold } 
+		] 
+		intro_node = TRG_G_GAP14_RESTARTNODE 
+		goal_text = "Hip Transfer (\\ml)" 
+		view_goals_text = "Novice - Hip Transfer" 
+		goal_deScription = Margera_tr_goal_gaps14 
+		skater = custom 
+		unlimited_Time = 1 
+		goal_flags = [ got_1 
+		] 
+		goal_intro_Script = TR_ADDGOAL_Hip_Intro 
+		goal_start_Script = TR_ADDGOAL_Hip_Start 
+		goal_success_Script = TR_ADDGOAL_Hip_success 
+		Goal_deactivate_script = TR_ADDGOAL_Hip_Deactivate 
+		Reward_Goal = TR_Goal_Counter8 
+		pro = "Margera" 
+		full_name = "Bam Margera" 
+	} 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Hip_Intro 
+	SpawnScript TR_ADDGOAL_Hip_Flash params = { ObjName = g_spine_qp05 } 
+	SpawnScript TR_ADDGOAL_Hip_Flash params = { ObjName = g_spine_qp07 } 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Hip_Flash 
+	BEGIN 
+		SetObjectColor name = <ObjName> color = 10506320 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 9195600 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 7884880 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 6574160 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 5263440 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 6574160 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 7884880 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 9195600 
+		wait 10 frames 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Hip_Start 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_HipGap01 
+	printf "Start" 
+	StartGap GapID = hip flags = [ PURE_AIR ] tricktext = "Hip Transfer" trickScript = TR_ADDGOAL_HipGot_1 
+	EndGap GapID = hipa text = "Hippin" score = 100 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_HipGap02 
+	printf "End" 
+	StartGap GapID = hipa flags = [ PURE_AIR ] tricktext = "Hip Transfer" trickScript = TR_ADDGOAL_HipGot_1 
+	EndGap GapID = hip text = "Hippin" score = 100 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_HipGot_1 
+	IF GoalManager_GoalIsActive name = TR_Goal_gaps14 
+		printf "Got 1" 
+		GoalManager_SetGoalFlag name = TR_Goal_gaps14 got_1 1 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Hip_success 
+	killspawnedScript name = TR_ADDGOAL_Hip_Flash 
+	SetObjectColor_CurrentTOD name = g_spine_qp05 
+	SetObjectColor_CurrentTOD name = g_spine_qp07 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Hip_Deactivate 
+	killspawnedScript name = TR_ADDGOAL_Hip_Flash 
+	SetObjectColor_CurrentTOD name = g_spine_qp05 
+	SetObjectColor_CurrentTOD name = g_spine_qp07 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_CaveMan 
+	AddGoal_Counter { 
+		version = 7 
+		Start_cam_anims = [ 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(5855.89990234375, -626.00000000000, 2419.69995117188) 
+				positionOffset = VECTOR(-2513.80004882812, -721.70001220703, -3052.00000000000) 
+				frames = 100 
+				cam_anim_text = Vallely_tr_goal_counter7_camanim01 
+				skippable = 1 
+				play_hold = 1 
+			} 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(5855.89990234375, -626.00000000000, 2419.69995117188) 
+				positionOffset = VECTOR(-2513.80004882812, -721.70001220703, -3052.00000000000) 
+				frames = 100 
+				cam_anim_text = "" 
+				skippable = 1 
+				play_hold = 1 
+			} 
+		] 
+		intro_node = TRG_G_Couter7_RESTARTNODE 
+		goal_text = "Get off your board (\\mm). When off your board jump up and Caveman (\\mm)." 
+		view_goals_text = "Off board - Caveman time" 
+		goal_deScription = Vallely_tr_goal_counter7 
+		skater = custom 
+		unlocked_by_another 
+		number = 3 
+		goal_intro_Script = TR_ADDGOAL_CaveMan_intro 
+		goal_start_Script = TR_ADDGOAL_CaveMan_start 
+		goal_success_Script = TR_ADDGOAL_CaveMan_success 
+		Goal_deactivate_script = TR_ADDGOAL_CaveMan_Deactivate 
+		pro = "Vallely" 
+		full_name = "Mike Vallely" 
+		use_hud_counter 
+		hud_counter_caption = "Caveman" 
+		child = tr_goal_gaps15 
+	} 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_CaveMan_intro 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_CaveMan_start 
+	SpawnScript TR_ADDGOAL_CaveMan_Checker 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_CaveMan_Checker 
+	ClearExceptionGroup TR_Goal_counter7 
+	BEGIN 
+		GetNumberOfTrickOccurrences tricktext = "CaveMan" 
+		Printstruct <...> 
+		IF ( <Number_Of_Occurrences> > 0 ) 
+			printf "Jumping+++++++++++++++" 
+			goto TR_ADDGOAL_CaveMan_Landed 
+		ENDIF 
+		wait 10 gameframes 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_CaveMan_Landed 
+	ClearExceptionGroup TR_Goal_counter7 
+	printf "Set Exception" 
+	SetException ex = SkaterLanded scr = TR_ADDGOAL_CaveMan_SetFlag group = TR_Goal_counter7 
+	SetException ex = SkaterBailed scr = TR_ADDGOAL_CaveMan_DontSetFlag group = TR_Goal_counter7 
+	block 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_CaveMan_SetFlag 
+	ClearExceptionGroup TR_Goal_counter7 
+	printf " Set Flags==============" 
+	GoalManager_GotCounterObject name = TR_Goal_counter7 
+	goto TR_ADDGOAL_CaveMan_Checker 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_CaveMan_DontSetFlag 
+	ClearExceptionGroup TR_Goal_counter7 
+	goto TR_ADDGOAL_CaveMan_Checker 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_CaveMan_success 
+	ClearExceptionGroup TR_Goal_counter7 
+	killspawnedScript name = TR_ADDGOAL_CaveMan_Checker 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_CaveMan_Deactivate 
+	ClearExceptionGroup TR_Goal_counter7 
+	killspawnedScript name = TR_ADDGOAL_CaveMan_Checker 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Jump 
+	AddGoal_Gaps { 
+		version = 15 
+		Start_cam_anims = [ 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(7136.20019531250, -2431.30004882812, -1.29999995232) 
+				positionOffset = VECTOR(-2301.80004882812, -688.70001220703, -2810.00000000000) 
+				frames = 100 
+				cam_anim_text = Vallely_tr_goal_gaps15_camanim01 
+				skippable = 1 
+			play_hold } 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(7828.79980468750, -905.90002441406, -3542.39990234375) 
+				positionOffset = VECTOR(-2152.60009765625, -691.59997558594, -2971.39990234375) 
+				frames = 100 
+				cam_anim_text = Vallely_tr_goal_gaps15_camanim02 
+				skippable = 1 
+			play_hold } 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(7699.10009765625, -778.90002441406, -3692.80004882812) 
+				positionOffset = VECTOR(-2217.10009765625, -645.70001220703, -2408.30004882812) 
+				frames = 100 
+				cam_anim_text = "" 
+				skippable = 1 
+			play_hold } 
+		] 
+		intro_node = TRG_G_GAP15_RESTARTNODE 
+		goal_text = "Get off your board (\\mm)." 
+		view_goals_text = "Off board - Jump on the crates" 
+		goal_deScription = Vallely_tr_goal_gaps15 
+		skater = custom 
+		unlimited_Time = 1 
+		goal_flags = [ got_1 
+			got_2 
+		] 
+		goal_intro_Script = TR_ADDGOAL_Jump_Intro 
+		goal_start_Script = TR_ADDGOAL_Jump_Start 
+		pro = "Vallely" 
+		full_name = "Mike Vallely" 
+		child = TR_Goal_gaps18 
+	} 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Jump_Intro 
+	ClearExceptionGroup TR_Goal_counter7 
+	killspawnedScript name = TR_ADDGOAL_CaveMan_Checker 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Jump_Start 
+	create_panel_block ID = current_goal text = "Get off your board (\\mm)." Style = panel_message_goal 
+	waitforevent type = SkaterEnterWalking 
+	create_panel_block ID = current_goal text = "Then get near this one and jump (\\b3) and (\\b7) to jump on it." Style = panel_message_goal 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_JumpGap02A 
+	printf "Got 1" 
+	StartGap GapID = Jump02 flags = [ CANCEL_GROUND ] 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_JumpGap02B 
+	printf "Got 2" 
+	EndGap GapID = Jump02 gapScript = TR_ADDGOAL_JumpGot_1 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_JumpGap03A 
+	printf "Got 1" 
+	StartGap GapID = Jump03 flags = [ CANCEL_GROUND ] 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_JumpGap03B 
+	printf "Got 3" 
+	EndGap GapID = Jump03 gapScript = TR_ADDGOAL_JumpGot_2 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_JumpGot_1 
+	IF GoalManager_GoalIsActive name = tr_goal_gaps15 
+		GoalManager_SetGoalFlag name = tr_goal_gaps15 got_1 1 
+		create_panel_block ID = current_goal text = "Ok one more. Jump down and do a double jump up on the next one." Style = panel_message_goal 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_JumpGot_2 
+	IF GoalManager_GoalIsActive name = tr_goal_gaps15 
+		GoalManager_SetGoalFlag name = tr_goal_gaps15 got_2 1 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_RunJump 
+	AddGoal_Gaps { 
+		version = 18 
+		Start_cam_anims = [ 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(6854.79980468750, -4331.50000000000, -2720.69995117188) 
+				positionOffset = VECTOR(-2319.39990234375, -397.50000000000, -2122.89990234375) 
+				frames = 100 
+				cam_anim_text = "" 
+				skippable = 1 
+				play_hold 
+			} 
+		] 
+		intro_node = TRG_G_GAP18_RESTARTNODE 
+		goal_text = "Jump and hang on (\\bf) to the ledge." 
+		view_goals_text = "Off board - Jump and hang" 
+		goal_deScription = Vallely_tr_goal_gaps18 
+		skater = custom 
+		unlimited_Time = 1 
+		goal_flags = [ got_1 
+		] 
+		goal_intro_Script = TR_ADDGOAL_RunJump_Intro 
+		goal_start_Script = TR_ADDGOAL_RunJump_Start 
+		goal_success_Script = TR_ADDGOAL_RunJump_success 
+		Goal_deactivate_script = TR_ADDGOAL_RunJump_Deactivate 
+		pro = "Vallely" 
+		full_name = "Mike Vallely" 
+		child = TR_Goal_gaps19 
+	} 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_RunJump_Intro 
+	SpawnScript TR_ADDGOAL_RunJump_Flash params = { ObjName = g_g_warenew_island } 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_RunJump_Flash 
+	BEGIN 
+		SetObjectColor name = <ObjName> color = 10506320 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 9195600 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 7884880 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 6574160 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 5263440 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 6574160 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 7884880 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 9195600 
+		wait 10 frames 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_RunJump_Start 
+	skater : ForceToWalk 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_RunJumpGap02 
+	printf "Continue gap" 
+	IF GoalManager_GoalIsActive name = TR_Goal_gaps18 
+		Create_Panel_Message { 
+			ID = current_goal 
+			text = "Now pull (\\b7) yourself up." 
+			Style = panel_message_goal 
+		} 
+		GetTriggerArray climb off 
+		IF TriggerType <trigger_array> 
+			printf "Hang ON" 
+			StartGap GapID = runjump01 flags = [ CANCEL_GROUND CANCEL_MANUAL ] 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_RunJumpGap03 
+	IF GoalManager_GoalIsActive name = TR_Goal_gaps18 
+		printf "ENDGAP++++++++++++___01" 
+		GetTriggerArray through 
+		IF TriggerType <trigger_array> 
+			printf "ENDGAP++++++++++++___02" 
+			EndGap GapID = runjump01 gapScript = TR_ADDGOAL_RunJumpGot_1 
+			goto TR_ADDGOAL_RunJumpGot_1 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_RunJumpGot_1 
+	printf "Pre_goalManager" 
+	IF GoalManager_GoalIsActive name = TR_Goal_gaps18 
+		printf "Got_Gap" 
+		GoalManager_SetGoalFlag name = TR_Goal_gaps18 got_1 1 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_RunJump_success 
+	killspawnedScript name = TR_ADDGOAL_RunJump_Flash 
+	SetObjectColor_CurrentTOD name = g_g_warenew_island 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_RunJump_Deactivate 
+	killspawnedScript name = TR_ADDGOAL_RunJump_Flash 
+	SetObjectColor_CurrentTOD name = g_g_warenew_island 
+	skater : KillForceToWalk 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Ladder 
+	AddGoal_Gaps { 
+		version = 19 
+		Start_cam_anims = [ 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(-2915.00000000000, -9917.59960937500, -1850.09997558594) 
+				positionOffset = VECTOR(-1775.69995117188, 17.10000038147, -1874.09997558594) 
+				frames = 100 
+				cam_anim_text = "" 
+				skippable = 1 
+				play_hold 
+			} 
+		] 
+		intro_node = TRG_G_GAP19_RESTARTNODE 
+		goal_text = "Walk towards the ladder and push (\\b7) to climb." 
+		view_goals_text = "Off board - Climb the ladder" 
+		goal_deScription = Vallely_tr_goal_gaps19 
+		skater = custom 
+		unlimited_Time = 1 
+		goal_flags = [ got_1 
+		] 
+		goal_intro_Script = TR_ADDGOAL_Ladder_Intro 
+		goal_start_Script = TR_ADDGOAL_Ladder_Start 
+		goal_success_Script = TR_ADDGOAL_Ladder_success 
+		Goal_deactivate_script = TR_ADDGOAL_Ladder_Deactivate 
+		pro = "Vallely" 
+		full_name = "Mike Vallely" 
+		child = TR_Goal_gaps25 
+	} 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Ladder_Intro 
+	SpawnScript TR_ADDGOAL_Ladder_Flash params = { ObjName = g_WareNew_MainLadder } 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Ladder_Flash 
+	BEGIN 
+		SetObjectColor name = <ObjName> color = 10506320 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 9195600 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 7884880 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 6574160 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 5263440 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 6574160 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 7884880 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 9195600 
+		wait 10 frames 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Ladder_Start 
+	skater : ForceToWalk 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_LadderGap01 
+	printf "Start gap" 
+	StartGap GapID = Ladder 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_LadderGap02 
+	printf "Continue gap" 
+	IF GoalManager_GoalIsActive name = TR_Goal_gaps19 
+		EndGap GapID = Ladder gapScript = TR_ADDGOAL_LadderGot_1 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_LadderGot_1 
+	IF GoalManager_GoalIsActive name = TR_Goal_gaps19 
+		GoalManager_SetGoalFlag name = TR_Goal_gaps19 got_1 1 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Ladder_success 
+	killspawnedScript name = TR_ADDGOAL_Ladder_Flash 
+	SetObjectColor_CurrentTOD name = g_WareNew_MainLadder 
+	skater : KillForceToWalk 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Ladder_Deactivate 
+	killspawnedScript name = TR_ADDGOAL_Ladder_Flash 
+	SetObjectColor_CurrentTOD name = g_WareNew_MainLadder 
+	skater : KillForceToWalk 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Shimmy 
+	AddGoal_Gaps { 
+		version = 25 
+		Start_cam_anims = [ 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(7685.50000000000, 533.70001220703, -1214.90002441406) 
+				positionOffset = VECTOR(-2284.39990234375, -112.40000152588, -1644.00000000000) 
+				frames = 100 
+				cam_anim_text = Vallely_tr_goal_gaps25_camanim01 
+				skippable = 1 
+				play_hold 
+			} 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(7685.50000000000, 533.70001220703, -1214.90002441406) 
+				positionOffset = VECTOR(-2284.39990234375, -112.40000152588, -1644.00000000000) 
+				frames = 100 
+				cam_anim_text = "" 
+				skippable = 1 
+				play_hold 
+			} 
+		] 
+		intro_node = TRG_G_GAP25_RESTARTNODE 
+		goal_text = "Walk slowly to the edge.\\nShimmy (\\b5 and \\b6) to the opening." 
+		view_goals_text = "Off board - Shimmy to the opening" 
+		goal_deScription = Vallely_tr_goal_gaps25 
+		skater = custom 
+		unlimited_Time = 1 
+		goal_flags = [ got_1 
+		] 
+		goal_intro_Script = TR_ADDGOAL_Shimmy_Intro 
+		goal_start_Script = TR_ADDGOAL_Shimmy_Start 
+		goal_success_Script = TR_ADDGOAL_Shimmy_success 
+		Goal_deactivate_script = TR_ADDGOAL_Shimmy_Deactivate 
+		pro = "Vallely" 
+		full_name = "Mike Vallely" 
+		child = TR_Goal_gaps22 
+	} 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Shimmy_Intro 
+	killspawnedScript name = TR_ADDGOAL_Ladder_Flash 
+	SetObjectColor_CurrentTOD name = g_WareNew_MainLadder 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Shimmy_Flash 
+	BEGIN 
+		SetObjectColor name = <ObjName> color = 10506320 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 9195600 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 7884880 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 6574160 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 5263440 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 6574160 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 7884880 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 9195600 
+		wait 10 frames 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Shimmy_Start 
+	skater : ForceToWalk 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_ShimmyGap01 
+	StartGap GapID = Shimmy flags = [ CANCEL_GROUND CANCEL_MANUAL ] 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_ShimmyGap02 
+	IF GoalManager_GoalIsActive name = TR_Goal_gaps25 
+		EndGap GapID = Shimmy gapScript = TR_ADDGOAL_ShimmyGot_1 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_ShimmyGot_1 
+	IF GoalManager_GoalIsActive name = TR_Goal_gaps25 
+		GoalManager_SetGoalFlag name = TR_Goal_gaps25 got_1 1 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Shimmy_success 
+	killspawnedScript name = TR_ADDGOAL_Shimmy_Flash 
+	SetObjectColor_CurrentTOD name = g_WareNew_MainLadder 
+	skater : KillForceToWalk 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Shimmy_Deactivate 
+	killspawnedScript name = TR_ADDGOAL_Shimmy_Flash 
+	SetObjectColor_CurrentTOD name = g_WareNew_MainLadder 
+	skater : KillForceToWalk 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_JumpGrind 
+	AddGoal_Gaps { 
+		version = 16 
+		Start_cam_anims = [ 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(-12953.50000000000, -1322.80004882812, -1720.30004882812) 
+				positionOffset = VECTOR(-3156.80004882812, -657.50000000000, -3612.89990234375) 
+				frames = 100 
+				cam_anim_text = Muska_tr_goal_gaps16_camanim01 
+				skippable = 1 
+				play_hold 
+			} 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(-9543.70019531250, -1911.00000000000, 4451.10009765625) 
+				positionOffset = VECTOR(-3633.30004882812, -496.10000610352, -3490.19995117188) 
+				frames = 100 
+				cam_anim_text = Muska_tr_goal_gaps16_camanim02 
+				skippable = 1 
+				play_hold 
+			} 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(-5685.39990234375, -2268.00000000000, 7129.89990234375) 
+				positionOffset = VECTOR(-3727.80004882812, -472.60000610352, -2510.80004882812) 
+				frames = 100 
+				cam_anim_text = "" 
+				skippable = 1 
+				play_hold 
+			} 
+		] 
+		intro_node = TRG_G_GAP16_RESTARTNODE 
+		goal_text = "My first combo" 
+		view_goals_text = "Novice - My first combo" 
+		goal_deScription = Muska_tr_goal_gaps16 
+		skater = custom 
+		unlocked_by_another 
+		unlimited_Time = 1 
+		goal_flags = [ got_1 
+		] 
+		goal_intro_Script = TR_ADDGOAL_JumpGrind_Intro 
+		goal_start_Script = TR_ADDGOAL_JumpGrind_Start 
+		goal_success_Script = TR_ADDGOAL_JumpGrind_success 
+		Goal_deactivate_script = TR_ADDGOAL_JumpGrind_Deactivate 
+		pro = "Muska" 
+		full_name = "Chad Muska" 
+		child = TR_Goal_gaps17 
+	} 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_JumpGrind_Intro 
+	SpawnScript TR_ADDGOAL_JumpGrind_Flash params = { ObjName = g_g_wareNew_qp } 
+	SpawnScript TR_ADDGOAL_JumpGrind_Flash params = { ObjName = SkWare_Rail12 } 
+	SpawnScript TR_ADDGOAL_JumpGrind_Flash params = { ObjName = g_spine_qp07 } 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_JumpGrind_Flash 
+	BEGIN 
+		SetObjectColor name = <ObjName> color = 10506320 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 9195600 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 7884880 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 6574160 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 5263440 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 6574160 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 7884880 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 9195600 
+		wait 10 frames 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_JumpGrind_Start 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_JumpGrindGap01 
+	printf "Start gap" 
+	StartGap GapID = jumpgrind flags = [ CANCEL_GROUND CANCEL_MANUAL ] 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_JumpGrindGap02 
+	printf "Continue gap" 
+	EndGap GapID = jumpgrind continue = { GapID = jumpgrind01 flags = [ CANCEL_GROUND CANCEL_MANUAL ] } 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_JumpGrindGap03 
+	printf "End gap" 
+	EndGap GapID = jumpgrind01 gapScript = TR_ADDGOAL_JumpGrindGot_1 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_JumpGrindGot_1 
+	IF GoalManager_GoalIsActive name = tr_goal_gaps16 
+		GoalManager_SetGoalFlag name = tr_goal_gaps16 got_1 1 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_JumpGrindGap01a 
+	printf "Start gap" 
+	StartGap GapID = jumpgrinda flags = [ CANCEL_GROUND CANCEL_MANUAL ] 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_JumpGrindGap02a 
+	printf "Continue gap" 
+	EndGap GapID = jumpgrinda continue = { GapID = jumpgrindb flags = [ CANCEL_GROUND CANCEL_MANUAL ] } 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_JumpGrindGap03a 
+	printf "End gap" 
+	EndGap GapID = jumpgrindb gapScript = TR_ADDGOAL_JumpGrindGot_1 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_JumpGrind_success 
+	killspawnedScript name = TR_ADDGOAL_JumpGrind_Flash 
+	SetObjectColor_CurrentTOD name = SkWare_Rail12 
+	SetObjectColor_CurrentTOD name = g_g_wareNew_qp 
+	SetObjectColor_CurrentTOD name = g_spine_qp07 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_JumpGrind_Deactivate 
+	killspawnedScript name = TR_ADDGOAL_JumpGrind_Flash 
+	SetObjectColor_CurrentTOD name = SkWare_Rail12 
+	SetObjectColor_CurrentTOD name = g_g_wareNew_qp 
+	SetObjectColor_CurrentTOD name = g_spine_qp07 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_SideJump 
+	AddGoal_Gaps { 
+		version = 17 
+		Start_cam_anims = [ 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(-12953.50000000000, -1322.80004882812, -1720.30004882812) 
+				positionOffset = VECTOR(-3156.80004882812, -657.50000000000, -3612.89990234375) 
+				frames = 100 
+				cam_anim_text = Muska_tr_goal_gaps17_camanim01 
+				skippable = 1 
+				play_hold 
+			} 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(-2169.19995117188, -2991.80004882812, 5977.00000000000) 
+				positionOffset = VECTOR(-3768.30004882812, -480.00000000000, -3569.30004882812) 
+				frames = 100 
+				cam_anim_text = Muska_tr_goal_gaps17_camanim02 
+				skippable = 1 
+				play_hold 
+			} 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(-2490.80004882812, -2985.69995117188, 7116.29980468750) 
+				positionOffset = VECTOR(-3710.10009765625, -473.89999389648, -2485.89990234375) 
+				frames = 100 
+				cam_anim_text = "" 
+				skippable = 1 
+				play_hold 
+			} 
+		] 
+		intro_node = TRG_G_GAP17_RESTARTNODE 
+		goal_text = "Side jump to the rail then to the QP." 
+		view_goals_text = "Novice - Side jumping combo" 
+		goal_deScription = Muska_tr_goal_gaps17 
+		skater = custom 
+		Reward_Goal = [ tr_goal_gaps13 tr_goal_gaps21 ] 
+		unlimited_Time = 1 
+		goal_flags = [ got_1 
+		] 
+		goal_intro_Script = TR_ADDGOAL_SideJump_Intro 
+		goal_start_Script = TR_ADDGOAL_SideJump_Start 
+		goal_success_Script = TR_ADDGOAL_SideJump_success 
+		Goal_deactivate_script = TR_ADDGOAL_SideJump_Deactivate 
+		pro = "Muska" 
+		full_name = "Muska" 
+	} 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_SideJump_Intro 
+	SpawnScript TR_ADDGOAL_SideJump_Flash params = { ObjName = g_g_wareNew_qp } 
+	SpawnScript TR_ADDGOAL_SideJump_Flash params = { ObjName = g_spine_qp07 } 
+	SpawnScript TR_ADDGOAL_SideJump_Flash params = { ObjName = Geo_Demo_BoxBar09 } 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_SideJump_Flash 
+	BEGIN 
+		SetObjectColor name = <ObjName> color = 10506320 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 9195600 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 7884880 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 6574160 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 5263440 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 6574160 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 7884880 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 9195600 
+		wait 10 frames 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_SideJump_Start 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_SideJumpGap01 
+	printf "Start gap" 
+	StartGap GapID = sidejump flags = [ CANCEL_GROUND CANCEL_MANUAL ] 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_SideJumpGap02 
+	printf "Continue gap" 
+	EndGap GapID = sidejump continue = { GapID = sidejump01 flags = [ CANCEL_GROUND CANCEL_MANUAL ] } 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_SideJumpGap03 
+	printf "End gap" 
+	EndGap GapID = sidejump01 gapScript = TR_ADDGOAL_SideJumpGot_1 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_SideJumpGot_1 
+	IF GoalManager_GoalIsActive name = TR_Goal_gaps17 
+		GoalManager_SetGoalFlag name = TR_Goal_gaps17 got_1 1 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_SideJumpGap01a 
+	printf "Start gap" 
+	StartGap GapID = sidejumpa flags = [ CANCEL_GROUND CANCEL_MANUAL ] 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_SideJumpGap02a 
+	printf "Continue gap" 
+	EndGap GapID = sidejumpa continue = { GapID = sidejumpb flags = [ CANCEL_GROUND CANCEL_MANUAL ] } 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_SideJumpGap03a 
+	printf "End gap" 
+	EndGap GapID = sidejumpb gapScript = TR_ADDGOAL_SideJumpGot_1 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_SideJump_success 
+	printf "Success" 
+	killspawnedScript name = TR_ADDGOAL_SideJump_Flash 
+	SetObjectColor_CurrentTOD name = g_g_wareNew_qp 
+	SetObjectColor_CurrentTOD name = Geo_Demo_BoxBar09 
+	SetObjectColor_CurrentTOD name = g_spine_qp07 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_SideJump_Deactivate 
+	killspawnedScript name = TR_ADDGOAL_SideJump_Flash 
+	SetObjectColor_CurrentTOD name = g_g_wareNew_qp 
+	SetObjectColor_CurrentTOD name = Geo_Demo_BoxBar09 
+	SetObjectColor_CurrentTOD name = g_spine_qp07 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_RevertManual 
+	AddGoal_Gaps { 
+		version = 26 
+		Start_cam_anims = [ 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(-3538.39990234375, -757.70001220703, -13557.40039062500) 
+				positionOffset = VECTOR(-3051.60009765625, -669.09997558594, -3569.60009765625) 
+				frames = 100 
+				cam_anim_text = Margera_tr_goal_gaps26_camanim01 
+				skippable = 1 
+				play_hold 
+			} 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(-3538.39990234375, -757.70001220703, -13557.40039062500) 
+				positionOffset = VECTOR(-3051.60009765625, -669.09997558594, -3569.60009765625) 
+				frames = 100 
+				cam_anim_text = "" 
+				skippable = 1 
+				play_hold 
+			} 
+		] 
+		intro_node = TRG_G_GAP26_RESTARTNODE 
+		goal_text = "Go up the QP and do a grab move." 
+		view_goals_text = "Novice - Do a real combo" 
+		goal_deScription = Margera_tr_goal_gaps26 
+		Reward_Goal = TR_Goal_Special 
+		skater = custom 
+		unlocked_by_another 
+		unlimited_Time = 1 
+		goal_flags = [ got_1 
+		] 
+		goal_intro_Script = TR_ADDGOAL_RevertManual_Intro 
+		goal_start_Script = TR_ADDGOAL_RevertManual_Start 
+		goal_success_Script = TR_ADDGOAL_RevertManual_success 
+		Goal_deactivate_script = TR_ADDGOAL_RevertManual_Deactivate 
+		pro = "Margera" 
+		full_name = "Bam Margera" 
+	} 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_RevertManual_Intro 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_RevertManual_Start 
+	SpawnScript TR_TrickChecker_GoalStart 
+ENDSCRIPT
+
+SCRIPT TR_TrickChecker_GoalStart 
+	ClearExceptionGroup TR_TrickChecker 
+	SetException ex = SkaterEnterVertAir scr = TR_TrickChecker_InVertAir group = TR_TrickChecker 
+	block 
+ENDSCRIPT
+
+SCRIPT TR_TrickChecker_InVertAir 
+	create_panel_block ID = current_goal text = "Pull a grab trick!" Style = panel_message_goal 
+	ClearExceptionGroup TR_TrickChecker 
+	SetException ex = SkaterExitVertAir scr = TR_TrickChecker_GoalStart group = TR_TrickChecker 
+	SetException ex = SkaterEnterGrab scr = TR_TrickChecker_TriggeredGrab group = TR_TrickChecker 
+	block 
+ENDSCRIPT
+
+SCRIPT TR_TrickChecker_TriggeredGrab 
+	create_panel_block ID = current_goal text = "Great! Now Revert (\\mk) to a Manual(\\b7 +\\b4)!" Style = panel_message_goal 
+	ClearExceptionGroup TR_TrickChecker 
+	SetException ex = SkaterExitCombo scr = TR_TrickChecker_Restart group = TR_TrickChecker 
+	SetException ex = SkaterEnterRevert scr = TR_TrickChecker_InRevert group = TR_TrickChecker 
+	block 
+ENDSCRIPT
+
+SCRIPT TR_TrickChecker_InRevert 
+	ClearExceptionGroup TR_TrickChecker 
+	SetException ex = SkaterExitCombo scr = TR_TrickChecker_Restart group = TR_TrickChecker 
+	SetException ex = SkaterEnterManual scr = TR_TrickChecker_InManual group = TR_TrickChecker 
+	block 
+ENDSCRIPT
+
+SCRIPT TR_TrickChecker_InManual 
+	create_panel_block ID = current_goal text = "OK!  Now land the combo!" Style = panel_message_goal 
+	ClearExceptionGroup TR_TrickChecker 
+	SetException ex = SkaterBailed scr = TR_TrickChecker_Restart group = TR_TrickChecker 
+	SetException ex = SkaterLanded scr = TR_TrickChecker_Win group = TR_TrickChecker 
+	block 
+ENDSCRIPT
+
+SCRIPT TR_TrickChecker_Win 
+	ClearExceptionGroup TR_TrickChecker 
+	GoalManager_SetGoalFlag name = tr_goal_gaps26 got_1 1 
+ENDSCRIPT
+
+SCRIPT TR_TrickChecker_Restart 
+	create_panel_block ID = current_goal text = "Crap!  You didn\'t quite pull it off.  Try again!" Style = panel_message_goal 
+	goto TR_TrickChecker_GoalStart 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_RevertManual_success 
+	killspawnedScript name = TR_TrickChecker_GoalStart 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_RevertManual_Deactivate 
+	killspawnedScript name = TR_TrickChecker_GoalStart 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_AcidDrop 
+	AddGoal_Gaps { 
+		version = 22 
+		Start_cam_anims = [ 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(8097.60009765625, -1314.59997558594, -841.09997558594) 
+				positionOffset = VECTOR(-1812.50000000000, -103.09999847412, -1408.50000000000) 
+				frames = 100 
+				cam_anim_text = Vallely_tr_goal_gaps22_camanim01 
+				skippable = 1 
+				play_hold 
+			} 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(-7760.20019531250, -5237.79980468750, 2976.50000000000) 
+				positionOffset = VECTOR(-674.29998779297, 78.90000152588, -1662.50000000000) 
+				frames = 100 
+				cam_anim_text = "" 
+				skippable = 1 
+				play_hold 
+			} 
+		] 
+		intro_node = TRG_G_GAP22_RESTARTNODE 
+		goal_text = "Skate to the edge then jump and Acid drop (\\ml) and you will Acid drop into the pool." 
+		view_goals_text = "Off board - Acid Drop" 
+		goal_deScription = Vallely_tr_goal_gaps22 
+		skater = custom 
+		Reward_Goal = tr_goal_gaps16 
+		unlimited_Time = 1 
+		goal_flags = [ got_1 
+		] 
+		goal_intro_Script = TR_ADDGOAL_AcidDrop_Intro 
+		goal_start_Script = TR_ADDGOAL_AcidDrop_Start 
+		goal_success_Script = TR_ADDGOAL_AcidDrop_success 
+		Goal_deactivate_script = TR_ADDGOAL_AcidDrop_Deactivate 
+		pro = "Vallely" 
+		full_name = "Mike Vallely" 
+	} 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_AcidDrop_Intro 
+	SpawnScript TR_ADDGOAL_AcidDrop_Flash params = { ObjName = g_bowl } 
+	Create name = TRGP_AcidDrop 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_AcidDrop_Flash 
+	BEGIN 
+		SetObjectColor name = <ObjName> color = 10506320 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 9195600 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 7884880 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 6574160 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 5263440 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 6574160 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 7884880 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 9195600 
+		wait 10 frames 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_AcidDrop_Start 
+ENDSCRIPT
+
+SCRIPT TR_AcidDrop_Kill 
+	sk3_killskater nodename = TRG_G_GAP22_RESTARTNODE 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_AcidDrop_Missed 
+	IF GoalManager_GoalIsActive name = TR_Goal_gaps22 
+		GetNumberOfTrickOccurrences tricktext = "Acid Drop" 
+		Printstruct <...> 
+		IF ( <Number_Of_Occurrences> = 0 ) 
+			TeleportSkaterToNode nodename = TRG_G_GAP22_RESTARTNODE 
+			create_panel_block ID = current_goal text = "Skate to the edge then jump and Acid drop (\\ml) into the pool." Style = panel_message_goal 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_AcidDrop01 
+	IF GoalManager_GoalIsActive name = TR_Goal_gaps22 
+		printf "Start Gap" 
+		StartGap GapID = AcidDrop flags = [ PURE_AIR ] tricktext = "Acid Drop" trickScript = TR_ADDGOAL_AcidDropGot1 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_AcidDrop02 
+	IF GoalManager_GoalIsActive name = TR_Goal_gaps22 
+		printf "End Gap" 
+		EndGap GapID = AcidDrop 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_AcidDropGot1 
+	IF GoalManager_GoalIsActive name = TR_Goal_gaps22 
+		printf "Got Gap" 
+		GoalManager_SetGoalFlag name = TR_Goal_gaps22 got_1 1 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_AcidDrop_success 
+	killspawnedScript name = TR_ADDGOAL_AcidDrop_Flash 
+	SetObjectColor_CurrentTOD name = g_bowl 
+	Create prefix = "TRG_MikeSkate_" 
+	Kill name = TRGP_AcidDrop 
+	IF ScreenElementExists ID = panel_message_goal 
+		DestroyScreenElement ID = panel_message_goal 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_AcidDrop_Deactivate 
+	killspawnedScript name = TR_ADDGOAL_AcidDrop_Flash 
+	SetObjectColor_CurrentTOD name = g_bowl 
+	Kill name = TRGP_AcidDrop 
+	IF ScreenElementExists ID = panel_message_goal 
+		DestroyScreenElement ID = panel_message_goal 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Graf 
+	AddGoal_Gaps { 
+		version = 21 
+		Start_cam_anims = [ 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(-2966.10009765625, -1787.50000000000, -13090.90039062500) 
+				positionOffset = VECTOR(-2304.80004882812, -680.09997558594, -3174.39990234375) 
+				frames = 100 
+				cam_anim_text = Muska_tr_goal_gaps21_camanim01 
+				skippable = 1 
+				play_hold 
+			} 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(-12394.90039062500, -5029.50000000000, -3022.60009765625) 
+				positionOffset = VECTOR(-3495.89990234375, -474.10000610352, -3258.80004882812) 
+				frames = 100 
+				cam_anim_text = "" 
+				skippable = 1 
+				play_hold 
+			} 
+		] 
+		intro_node = TRG_G_GAP21_RESTARTNODE 
+		goal_text = "Walk up to the blank posters and Tag (\\b0) to make the poster pretty." 
+		view_goals_text = "New School - Tag the place" 
+		goal_deScription = Muska_tr_goal_gaps21 
+		skater = custom 
+		unlocked_by_another 
+		unlimited_Time = 1 
+		goal_flags = [ got_1 
+			got_2 
+			got_3 
+			got_4 
+			got_5 
+		] 
+		goal_intro_Script = TR_ADDGOAL_Graf_Intro 
+		goal_start_Script = TR_ADDGOAL_Graf_Start 
+		goal_success_Script = TR_ADDGOAL_Graf_success 
+		Goal_deactivate_script = TR_ADDGOAL_Graf_Deactivate 
+		use_hud_counter 
+		hud_counter_caption = "Tagged Spots" 
+		pro = "Muska" 
+		full_name = "Chad Muska" 
+		child = TR_Goal_gaps28 
+	} 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Graf_Intro 
+	SpawnScript TR_ADDGOAL_Graf_Flash params = { ObjName = g_wareNew_graf01 } 
+	SpawnScript TR_ADDGOAL_Graf_Flash params = { ObjName = g_wareNew_graf02 } 
+	SpawnScript TR_ADDGOAL_Graf_Flash params = { ObjName = g_wareNew_graf03 } 
+	SpawnScript TR_ADDGOAL_Graf_Flash params = { ObjName = g_wareNew_graf04 } 
+	SpawnScript TR_ADDGOAL_Graf_Flash params = { ObjName = g_wareNew_graf05 } 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Graf_Flash 
+	BEGIN 
+		SetObjectColor name = <ObjName> color = 10506320 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 9195600 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 7884880 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 6574160 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 5263440 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 6574160 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 7884880 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 9195600 
+		wait 10 frames 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Graf_Start 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_GrafGap01 
+	printf "Got ============1" 
+	IF GoalManager_GoalIsActive name = tr_goal_gaps21 
+		GetTriggerArray Graffiti onto 
+		IF TriggerType <trigger_array> 
+			printf "Tag 1" 
+			getgap gapScript = TR_ADDGOAL_GrafGot_1 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_GrafGap02 
+	printf "Got ============2" 
+	IF GoalManager_GoalIsActive name = tr_goal_gaps21 
+		GetTriggerArray Graffiti onto 
+		IF TriggerType <trigger_array> 
+			printf "Tag 2" 
+			getgap gapScript = TR_ADDGOAL_GrafGot_2 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_GrafGap03 
+	printf "Got ============3" 
+	IF GoalManager_GoalIsActive name = tr_goal_gaps21 
+		GetTriggerArray Graffiti onto 
+		IF TriggerType <trigger_array> 
+			printf "Tag 3" 
+			getgap gapScript = TR_ADDGOAL_GrafGot_3 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_GrafGap04 
+	printf "Got ============4" 
+	IF GoalManager_GoalIsActive name = tr_goal_gaps21 
+		GetTriggerArray Graffiti onto 
+		IF TriggerType <trigger_array> 
+			printf "Tag 4" 
+			getgap gapScript = TR_ADDGOAL_GrafGot_4 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_GrafGap05 
+	printf "Got ============5" 
+	IF GoalManager_GoalIsActive name = tr_goal_gaps21 
+		GetTriggerArray Graffiti onto 
+		IF TriggerType <trigger_array> 
+			printf "Tag 5" 
+			getgap gapScript = TR_ADDGOAL_GrafGot_5 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_GrafGot_1 
+	IF GoalManager_GoalIsActive name = tr_goal_gaps21 
+		GoalManager_SetGoalFlag name = tr_goal_gaps21 got_1 1 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_GrafGot_2 
+	IF GoalManager_GoalIsActive name = tr_goal_gaps21 
+		GoalManager_SetGoalFlag name = tr_goal_gaps21 got_2 1 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_GrafGot_3 
+	IF GoalManager_GoalIsActive name = tr_goal_gaps21 
+		GoalManager_SetGoalFlag name = tr_goal_gaps21 got_3 1 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_GrafGot_4 
+	IF GoalManager_GoalIsActive name = tr_goal_gaps21 
+		GoalManager_SetGoalFlag name = tr_goal_gaps21 got_4 1 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_GrafGot_5 
+	IF GoalManager_GoalIsActive name = tr_goal_gaps21 
+		GoalManager_SetGoalFlag name = tr_goal_gaps21 got_5 1 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Graf_success 
+	killspawnedScript name = TR_ADDGOAL_Graf_Flash 
+	SetObjectColor_CurrentTOD name = g_wareNew_graf01 
+	SetObjectColor_CurrentTOD name = g_wareNew_graf02 
+	SetObjectColor_CurrentTOD name = g_wareNew_graf03 
+	SetObjectColor_CurrentTOD name = g_wareNew_graf04 
+	SetObjectColor_CurrentTOD name = g_wareNew_graf05 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Graf_Deactivate 
+	killspawnedScript name = TR_ADDGOAL_Graf_Flash 
+	SetObjectColor_CurrentTOD name = g_wareNew_graf01 
+	SetObjectColor_CurrentTOD name = g_wareNew_graf02 
+	SetObjectColor_CurrentTOD name = g_wareNew_graf03 
+	SetObjectColor_CurrentTOD name = g_wareNew_graf04 
+	SetObjectColor_CurrentTOD name = g_wareNew_graf05 
+ENDSCRIPT
+
+SCRIPT TR_AddGoal_TimedScoreRun 
+	AddGoal_TimedScoreRun { 
+		view_goals_text = "New School - Arcade machine high score" 
+		goal_text = "Arcade machine high score" 
+		goal_deScription = "Set the high score." 
+		time = 60 
+		skater = custom 
+		dont_kill_trigger_on_success 
+		trigger_obj_id = TRG_Arcade_Machine 
+		pro = "Arcade machine" 
+		trigger_wait_Script = nullScript 
+		trigger_start_Script = arcade_machine_start_goal 
+		trigger_success_Script = nullScript 
+		restart_node = TRG_Restart_HighScore 
+		unlocked_by_another 
+	} 
+ENDSCRIPT
+
+SCRIPT TR_TonyTalk 
+	Obj_ClearExceptions 
+	setup_ped_speech { ped_id = TRG_Tony_Advance 
+		accept_text = "Press \\m5 to Talk to Tony." 
+		activation_Script = TR_Exit_level_TR 
+	} 
+	ped_initAi stand Cop_ticketing 
+ENDSCRIPT
+
+SCRIPT TR_Exit_level_TR 
+	TR_1_MoveOnDialog 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_BackFlip 
+	AddGoal_Gaps { 
+		version = 23 
+		Start_cam_anims = [ 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(-3538.39990234375, -757.70001220703, -13557.40039062500) 
+				positionOffset = VECTOR(-3051.60009765625, -669.09997558594, -3569.60009765625) 
+				frames = 100 
+				cam_anim_text = "" 
+				skippable = 1 
+				play_hold 
+			} 
+		] 
+		intro_node = TRG_G_GAP23_RESTARTNODE 
+		goal_text = "Back flip\\n(hold \\b2 then press \\b4 + \\b4)" 
+		view_goals_text = "New School - Do a Backflip" 
+		goal_deScription = Margera_tr_goal_gaps23 
+		skater = custom 
+		unlimited_Time = 1 
+		goal_flags = [ got_1 
+		] 
+		goal_intro_Script = TR_ADDGOAL_BackFlip_Intro 
+		goal_start_Script = TR_ADDGOAL_BackFlip_Start 
+		goal_success_Script = TR_ADDGOAL_BackFlip_success 
+		Goal_deactivate_script = TR_ADDGOAL_BackFlip_Deactivate 
+		reset_score 
+		pro = "Margera" 
+		full_name = "Bam Margera" 
+		child = TR_Goal_gaps24 
+	} 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_BackFlip_Intro 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_BackFlip_Start 
+	SpawnScript TR_ADDGOAL_BackFlipChecker 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_BackFlipChecker 
+	ClearExceptionGroup TR_Goal_Gaps23 
+	printf "Backfilp_Checker" 
+	SetException ex = SkaterEnterAir scr = TR_ADDGOAL_BackFlipChecker_Air group = TR_Goal_Gaps23 
+	block 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_BackFlipChecker_Air 
+	ClearExceptionGroup TR_Goal_Gaps23 
+	printf "Backfilp_Checker Air" 
+	BEGIN 
+		wait 1 frame 
+		GetNumberOfTrickOccurrences tricktext = "BackFlip" 
+		Printstruct <...> 
+		IF ( <Number_Of_Occurrences> > 0 ) 
+			SetException ex = SkaterBailed scr = TR_ADDGOAL_BackFlipChecker group = TR_Goal_Gaps23 
+			SetException ex = SkaterLanded scr = TR_ADDGOAL_BackFlipChecker_Land group = TR_Goal_Gaps23 
+		ENDIF 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_BackFlipChecker_Land 
+	ClearExceptionGroup TR_Goal_Gaps23 
+	printf "Backfilp_Checker Land" 
+	IF GoalManager_GoalIsActive name = TR_Goal_Gaps23 
+		GoalManager_SetGoalFlag name = TR_Goal_Gaps23 got_1 1 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_BackFlip_success 
+	ClearExceptionGroup TR_Goal_Gaps23 
+	killspawnedScript name = TR_ADDGOAL_BackFlip_Checker 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_BackFlip_Deactivate 
+	ClearExceptionGroup TR_Goal_Gaps23 
+	killspawnedScript name = TR_ADDGOAL_BackFlip_Checker 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Roll 
+	AddGoal_Gaps { 
+		version = 24 
+		Start_cam_anims = [ 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(-3538.39990234375, -757.70001220703, -13557.40039062500) 
+				positionOffset = VECTOR(-3051.60009765625, -669.09997558594, -3569.60009765625) 
+				frames = 100 
+				cam_anim_text = "" 
+				skippable = 1 
+				play_hold 
+			} 
+		] 
+		intro_node = TRG_G_GAP24_RESTARTNODE 
+		goal_text = "Roll\\n(hold \\b2 then press \\b5 + \\b5" 
+		view_goals_text = "New School - Do a Roll" 
+		goal_deScription = Margera_tr_goal_gaps24 
+		skater = custom 
+		reset_score 
+		unlimited_Time = 1 
+		goal_flags = [ got_1 
+		] 
+		goal_intro_Script = TR_ADDGOAL_FrontFlip_Intro 
+		goal_start_Script = TR_ADDGOAL_FrontFlip_Start 
+		goal_success_Script = TR_ADDGOAL_FrontFlip_success 
+		Goal_deactivate_script = TR_ADDGOAL_FrontFlip_Deactivate 
+		Reward_Goal = TR_Goal_Counter8 
+		pro = "Margera" 
+		full_name = "Bam Margera" 
+	} 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_FrontFlip_Intro 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_FrontFlip_Start 
+	SpawnScript TR_ADDGOAL_FrontFlipChecker 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_FrontFlipChecker 
+	ClearExceptionGroup TR_Goal_gaps24 
+	printf "Frontfilp_Checker" 
+	SetException ex = SkaterEnterAir scr = TR_ADDGOAL_FrontFlipChecker_Air group = TR_Goal_gaps24 
+	block 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_FrontFlipChecker_Air 
+	ClearExceptionGroup TR_Goal_gaps24 
+	printf "Frontfilp_Checker Air" 
+	BEGIN 
+		wait 1 frame 
+		GetNumberOfTrickOccurrences tricktext = "FS Roll" 
+		Printstruct <...> 
+		IF ( <Number_Of_Occurrences> > 0 ) 
+			SetException ex = SkaterBailed scr = TR_ADDGOAL_FrontFlipChecker group = TR_Goal_gaps24 
+			SetException ex = SkaterLanded scr = TR_ADDGOAL_FrontFlipChecker_Land group = TR_Goal_gaps24 
+		ELSE 
+			GetNumberOfTrickOccurrences tricktext = "BS Roll" 
+			Printstruct <...> 
+			IF ( <Number_Of_Occurrences> > 0 ) 
+				SetException ex = SkaterBailed scr = TR_ADDGOAL_FrontFlipChecker group = TR_Goal_gaps24 
+				SetException ex = SkaterLanded scr = TR_ADDGOAL_FrontFlipChecker_Land group = TR_Goal_gaps24 
+			ENDIF 
+		ENDIF 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_FrontFlipChecker_Land 
+	ClearExceptionGroup TR_Goal_gaps24 
+	printf "Frontfilp_Checker Land" 
+	IF GoalManager_GoalIsActive name = TR_Goal_gaps24 
+		GoalManager_SetGoalFlag name = TR_Goal_gaps24 got_1 1 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_FrontFlip_success 
+	ClearExceptionGroup TR_Goal_gaps24 
+	killspawnedScript name = TR_ADDGOAL_FrontFlip_Checker 
+	Create prefix = "TRG_BobSkate_" 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_FrontFlip_Deactivate 
+	ClearExceptionGroup TR_Goal_gaps24 
+	killspawnedScript name = TR_ADDGOAL_FrontFlip_Checker 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_VertWallPlant 
+	AddGoal_Counter { 
+		version = 8 
+		Start_cam_anims = [ 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(7348.70019531250, -48.40000152588, -3853.30004882812) 
+				positionOffset = VECTOR(-2273.00000000000, -675.90002441406, -1201.80004882812) 
+				frames = 100 
+				cam_anim_text = "" 
+				skippable = 1 
+			play_hold = 1 } 
+		] 
+		intro_node = TRG_G_Counter8_RESTARTNODE 
+		goal_text = "Vert WallPlant (\\b3) on the flat wall." 
+		view_goals_text = "New School - Vert WallPlant session" 
+		goal_deScription = Burnquist_tr_goal_counter8 
+		skater = custom 
+		unlocked_by_another 
+		Reward_Goal = tr_goal_gaps26 
+		number = 3 
+		goal_intro_Script = TR_ADDGOAL_VertWallPlant_intro 
+		goal_start_Script = TR_ADDGOAL_VertWallPlant_start 
+		goal_success_Script = TR_ADDGOAL_VertWallPlant_success 
+		Goal_deactivate_script = TR_ADDGOAL_VertWallPlant_Deactivate 
+		pro = "Burnquist" 
+		full_name = "Bob Burnquist" 
+		use_hud_counter 
+		hud_counter_caption = "Vert WallPlants" 
+	} 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_VertWallPlant_intro 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_VertWallPlant_start 
+	SpawnScript TR_ADDGOAL_VertWallPlant_Air 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_VertWallPlant_Air 
+	SetException ex = SkaterEnterAir scr = TR_ADDGOAL_VertWallPlant_PlantChecker group = TR_Goal_Counter8 
+	block 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_VertWallPlant_PlantChecker 
+	ClearExceptionGroup TR_Goal_Counter8 
+	printf "MelonChecker Air" 
+	BEGIN 
+		wait 1 frame 
+		GetNumberOfTrickOccurrences tricktext = "Vert WallPlant" 
+		Printstruct <...> 
+		IF ( <Number_Of_Occurrences> > 0 ) 
+			SetException ex = SkaterLanded scr = TR_ADDGOAL_VertWallPlant_PlantChecker_Land group = TR_Goal_Counter8 
+		ENDIF 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_VertWallPlant_PlantChecker_Land 
+	ClearExceptionGroup TR_Goal_Counter8 
+	IF GoalManager_GoalIsActive name = TR_Goal_Counter8 
+		GoalManager_GotCounterObject name = TR_Goal_Counter8 
+		goto TR_ADDGOAL_VertWallPlant_Air 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_VertWallPlant_success 
+	killspawnedScript name = TR_ADDGOAL_VertWallPlant_Air 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_VertWallPlant_Deactivate 
+	killspawnedScript name = TR_ADDGOAL_VertWallPlant_Air 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Focus 
+	AddGoal_Gaps { 
+		version = 27 
+		Start_cam_anims = [ 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(10144.70019531250, -244.39999389648, -225.80000305176) 
+				positionOffset = VECTOR(145.89999389648, -194.50000000000, -365.70001220703) 
+				frames = 100 
+				cam_anim_text = Hawk_tr_goal_gaps27 
+				skippable = 1 
+				play_hold 
+			} 
+		] 
+		intro_node = TRG_G_GAP27_RESTARTNODE 
+		goal_text = "Get Special." 
+		view_goals_text = "New School - Keep the Focus" 
+		goal_deScription = Hawk_tr_goal_gaps27 
+		skater = custom 
+		reset_score 
+		unlimited_Time = 1 
+		goal_flags = [ got_1 
+		] 
+		goal_intro_Script = TR_ADDGOAL_Focus_Intro 
+		goal_start_Script = TR_ADDGOAL_Focus_Start 
+		goal_success_Script = TR_ADDGOAL_Focus_success 
+		Goal_deactivate_script = TR_ADDGOAL_Focus_Deactivate 
+		pro = "Hawk" 
+		full_name = "Tony Hawk" 
+	} 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Focus_Intro 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Focus_Start 
+	ClearExceptionGroup TR_Goal_Gaps27 
+	create_panel_block ID = current_goal text = "Get Special" Style = panel_message_goal 
+	printf "Waiting for Special" 
+	SetException ex = SkaterEnterSpecial scr = TR_ADDGOAL_Focus_Got1 group TR_Goal_Gaps27 
+	block 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Focus_Got1 
+	printf "Got 1" 
+	ClearExceptionGroup TR_Goal_Gaps27 
+	IF GoalManager_GoalIsActive name = TR_Goal_Gaps27 
+		printf "goal flag 1 set" 
+		IF GetFlag flag = FLAG_FOCUS 
+			printf "Going to focus checker" 
+		ELSE 
+			printf "SetTags and going to focus checker" 
+			skater : SetTags InFocus = 6 
+		ENDIF 
+		goto TR_ADDGOAL_Focus_Checker 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Focus_Checker 
+	printf "in Focus checker" 
+	ClearExceptionGroup TR_Goal_Gaps27 
+	create_panel_block ID = current_goal text = "Now get Focus (\\mq)" Style = panel_message_goal 
+	SetException ex = SkaterEnterFocus scr = TR_ADDGOAL_Focus_counter group TR_Goal_Gaps27 
+	SetException ex = SkaterExitSpecial scr = TR_ADDGOAL_Focus_Start group TR_Goal_Gaps27 
+	SetException ex = SkaterEnterBail scr = TR_ADDGOAL_Focus_Start group TR_Goal_Gaps27 
+	block 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Focus_counter 
+	SetFlag flag = FLAG_FOCUS 
+	create_panel_block ID = current_goal text = "Stay Focused" Style = panel_message_goal 
+	ClearExceptionGroup TR_Goal_Gaps27 
+	SetException ex = SkaterExitFocus scr = TR_ADDGOAL_Focus_Checker group TR_Goal_Gaps27 
+	SetException ex = SkaterExitSpecial scr = TR_ADDGOAL_Focus_Start group TR_Goal_Gaps27 
+	SetException ex = SkaterEnterBail scr = TR_ADDGOAL_Focus_Start group TR_Goal_Gaps27 
+	BEGIN 
+		skater : GetTags 
+		Printstruct <...> 
+		InFocus = ( <InFocus> - 1 ) 
+		IF ( <InFocus> < 1 ) 
+			IF GoalManager_GoalIsActive name = TR_Goal_Gaps27 
+				ClearExceptionGroup TR_Goal_Gaps27 
+				create_panel_block ID = current_goal text = "Now land it" Style = panel_message_goal 
+				SetException ex = SkaterLanded scr = TR_ADDGOAL_Focus_Got2 group TR_Goal_Gaps27 
+				SetException ex = SkaterEnterBail scr = TR_ADDGOAL_Focus_Start group TR_Goal_Gaps27 
+				block 
+			ENDIF 
+		ELSE 
+			FormatText TextName = InFocusTime "%a seconds left" a = <InFocus> 
+			create_panel_block ID = current_goal text = <InFocusTime> Style = panel_message_goal 
+			skater : SetTags InFocus = <InFocus> 
+		ENDIF 
+		wait 1 second 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Focus_Got2 
+	ClearExceptionGroup TR_Goal_Gaps27 
+	IF GoalManager_GoalIsActive name = TR_Goal_Gaps27 
+		GoalManager_SetGoalFlag name = TR_Goal_Gaps27 got_1 1 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Focus_success 
+	ClearExceptionGroup TR_Goal_Gaps27 
+	TR_1_MoveOnDialog 
+	Create name = TRG_Tony_Advance 
+	TODManager_SetTempBloomParams on = 0 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Focus_Deactivate 
+	ClearExceptionGroup TR_Goal_Gaps27 
+	TODManager_SetTempBloomParams on = 0 
+ENDSCRIPT
+
+FLAG_FOCUS = 2 
+SCRIPT TR_ADDGOAL_GrafHang 
+	AddGoal_Gaps { 
+		version = 28 
+		Start_cam_anims = [ 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(7284.50000000000, 738.40002441406, -2001.90002441406) 
+				positionOffset = VECTOR(-2619.10009765625, -620.40002441406, -1733.00000000000) 
+				frames = 100 
+				cam_anim_text = "" 
+				skippable = 1 
+				play_hold 
+			} 
+		] 
+		intro_node = TRG_G_GAP28_RESTARTNODE 
+		goal_text = "Tag (\\b0) over the hanging poster" 
+		view_goals_text = "New School - Hang\'n Tag" 
+		goal_deScription = Muska_tr_goal_gaps28 
+		skater = custom 
+		unlimited_Time = 1 
+		goal_flags = [ got_1 
+		] 
+		goal_intro_Script = TR_ADDGOAL_GrafHang_Intro 
+		goal_start_Script = TR_ADDGOAL_GrafHang_Start 
+		goal_success_Script = TR_ADDGOAL_GrafHang_success 
+		Goal_deactivate_script = TR_ADDGOAL_GrafHang_Deactivate 
+		Reward_Goal = TR_Goal_Gaps29 
+		pro = "Muska" 
+		full_name = "Chad Muska" 
+	} 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_GrafHang_Intro 
+	SpawnScript TR_ADDGOAL_GrafHang_Flash params = { ObjName = g_g_warenew_island } 
+	SpawnScript TR_ADDGOAL_GrafHang_Flash params = { ObjName = g_WareNew_Main_poster } 
+	SpawnScript TR_ADDGOAL_GrafHang_Flash params = { ObjName = g_WareNew_shelves03 } 
+	SpawnScript TR_ADDGOAL_GrafHang_Flash params = { ObjName = g_WareNew_MainLadder } 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_GrafHang_Flash 
+	BEGIN 
+		SetObjectColor name = <ObjName> color = 10506320 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 9195600 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 7884880 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 6574160 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 5263440 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 6574160 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 7884880 
+		wait 10 frames 
+		SetObjectColor name = <ObjName> color = 9195600 
+		wait 10 frames 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_GrafHang_Start 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_GrafHangGap01 
+	printf "Got ============1" 
+	IF GoalManager_GoalIsActive name = TR_Goal_gaps28 
+		GetTriggerArray Graffiti onto 
+		IF TriggerType <trigger_array> 
+			printf "Tag 1" 
+			getgap gapScript = TR_ADDGOAL_GrafHangGot_1 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_GrafHangGot_1 
+	IF GoalManager_GoalIsActive name = TR_Goal_gaps28 
+		Create name = g_WareNew_Main_poster_layer01 
+		GoalManager_SetGoalFlag name = TR_Goal_gaps28 got_1 1 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_GrafHang_success 
+	killspawnedScript name = TR_ADDGOAL_GrafHang_Flash 
+	SetObjectColor_CurrentTOD name = g_g_warenew_island 
+	SetObjectColor_CurrentTOD name = g_WareNew_Main_poster 
+	skater : DisablePlayerInput AllowCameraControl 
+	wait 1 second 
+	KillAllTextureSplats box = { height = 10 dist = 40 width = 10 offset = VECTOR(-146.00000000000, -18.00000000000, -134.00000000000) } 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_GrafHang_Deactivate 
+	killspawnedScript name = TR_ADDGOAL_GrafHang_Flash 
+	SetObjectColor_CurrentTOD name = g_g_warenew_island 
+	SetObjectColor_CurrentTOD name = g_WareNew_shelves03 
+	SetObjectColor_CurrentTOD name = g_WareNew_Main_poster 
+	SetObjectColor_CurrentTOD name = g_WareNew_MainLadder 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Skitchin 
+	AddGoal_Gaps { 
+		version = 29 
+		Start_cam_anims = [ 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(8582.09960937500, -2061.69995117188, -3395.69995117188) 
+				positionOffset = VECTOR(-1251.69995117188, -684.50000000000, -2213.50000000000) 
+				frames = 100 
+				cam_anim_text = "" 
+				skippable = 1 
+				play_hold 
+			} 
+		] 
+		intro_node = TRG_G_GAP29_RESTARTNODE 
+		goal_text = "Skitch (\\b7) the forklift for 10 seconds." 
+		view_goals_text = "Novice - Skitch the forklift" 
+		goal_deScription = Muska_tr_goal_gaps29 
+		skater = custom 
+		unlocked_by_another 
+		unlimited_Time = 1 
+		goal_flags = [ got_1 
+		] 
+		goal_intro_Script = TR_ADDGOAL_Skitchin_Intro 
+		goal_start_Script = TR_ADDGOAL_Skitchin_Start 
+		goal_success_Script = TR_ADDGOAL_Skitchin_success 
+		Goal_deactivate_script = TR_ADDGOAL_Skitchin_Deactivate 
+		pro = "Muska" 
+		full_name = "Chad Muska" 
+	} 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Skitchin_Intro 
+	Create prefix = "TRG_SkitchWaypoint" 
+	Create name = TRG_SkitchATV 
+	Create name = TRG_SkitchATVDriver 
+ENDSCRIPT
+
+SCRIPT TR_SkitchDriver 
+	Obj_LockToObject ObjectName = TRG_SkitchATV VECTOR(0.00000000000, 0.00000000000, 55.00000000000) 
+	Playanim anim = Ped_Driver_Forklift cycle 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Skitchin_Start 
+	wait 1 frame 
+	TRG_SkitchATV : Obj_followPath name = TRG_SkitchWaypoint18 
+	TRG_SkitchATV : Obj_SetPathVelocity 0 Fps 
+	TRG_SkitchATV : Obj_SetPathAcceleration 20 Fps 
+	TRG_SkitchATV : Obj_SetPathDeceleration 30 Fps 
+	TRG_SkitchATV : Obj_StickToGround DisAbove = 3 DistBelow = 6 
+	skater : SetTags ATVSkitchTimeLeft = 11 
+	skater : StartGap GapID = Skitchin flags = [ ] 
+	ClearExceptionGroup TR_Goal_Gaps29 
+	waitforevent type = SkaterEnterSkitch 
+	goto TR_ADDGOAL_Skitchin_InSkitch 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Skitchin_InSkitch 
+	create_panel_block ID = current_goal text = "Hold on!" Style = panel_message_goal 
+	TRG_SkitchATV : Obj_SetPathVelocity 80 Fps 
+	ClearExceptionGroup TR_Goal_Gaps29 
+	SetException ex = SkaterExitSkitch scr = TR_ADDGOAL_Skitchin_OutOfSkitch group TR_Goal_Gaps29 
+	BEGIN 
+		skater : GetTags 
+		Printstruct <...> 
+		ATVSkitchTimeLeft = ( <ATVSkitchTimeLeft> - 1 ) 
+		IF ( <ATVSkitchTimeLeft> < 1 ) 
+			skater : EndGap GapID = Skitchin gapScript = TR_ADDGOAL_Skitchin_Wim 
+			RETURN 
+		ENDIF 
+		FormatText TextName = ATVSkitchTime "%a seconds left" a = <ATVSkitchTimeLeft> 
+		create_panel_block ID = current_goal text = <ATVSkitchTime> Style = panel_message_goal 
+		skater : SetTags ATVSkitchTimeLeft = <ATVSkitchTimeLeft> 
+		wait 1 second 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Skitchin_OutOfSkitch 
+	create_panel_block ID = current_goal text = "Get that Forklift" Style = panel_message_goal 
+	TRG_SkitchATV : Obj_SetPathVelocity 15 Fps 
+	ClearExceptionGroup TR_Goal_Gaps29 
+	waitforevent type = SkaterEnterSkitch 
+	goto TR_ADDGOAL_Skitchin_InSkitch 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Skitchin_Wim 
+	GoalManager_SetGoalFlag name = TR_Goal_Gaps29 got_1 1 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Skitchin_success 
+	Kill prefix = "TRG_SkitchWaypoint" 
+	Kill name = TRG_SkitchATV 
+	Kill name = TRG_SkitchATVDriver 
+	Create prefix = "TRG_MuskaSkate_" 
+ENDSCRIPT
+
+SCRIPT TR_ADDGOAL_Skitchin_Deactivate 
+	Kill prefix = "TRG_SkitchWaypoint" 
+	Kill name = TRG_SkitchATV 
+	Kill name = TRG_SkitchATVDriver 
+ENDSCRIPT
+
+SCRIPT TR_BigRail01 
+	StartGap GapID = TR_GrindGapA flags = [ PURE_RAIL ] 
+	EndGap GapID = TR_GrindGapB text = "Big Rail" score = 200 
+ENDSCRIPT
+
+SCRIPT TR_BigRail02 
+	StartGap GapID = TR_GrindGapB flags = [ PURE_RAIL ] 
+	EndGap GapID = TR_GrindGapA text = "Big Rail" score = 200 
+ENDSCRIPT
+
+SCRIPT TR_DryWallBreak01 
+	IF GoalManager_HasWonGoal name = tr_goal_counter5 
+		GetTriggerArray through 
+		IF TriggerType <trigger_array> 
+			printf "Break Wall============" 
+			SpawnScript TR_SFX_BreakDryWall 
+			Shatter { name = g_g_wareNew_Funbox01_door01 
+				area = 2000 
+				texture_swap = TB_WH_Drywall_Pieces_01 
+				variance = 1.00000000000 
+				spread = 1.00000000000 
+				lIfe = 6 
+				bounce = 1 
+				scale = 1.00000000000 
+				vel_x = 30 
+				vel_y = 30 
+				vel_z = 30 
+			} 
+			Kill name = g_g_wareNew_Funbox01_door01 
+			Create name = TB_WH_Drywall_Dust_00_Start 
+			Create prefix = "TR_Ware_2X4_01_" 
+			TR_Ware_2X4_01_01 : RigidBody_Kick vel = VECTOR(0.00000000000, 1.00000000000, -5.00000000000) rotVel = VECTOR(1.00000000000, 1.00000000000, 1.00000000000) 
+			TR_Ware_2X4_01_02 : RigidBody_Kick vel = VECTOR(0.00000000000, 1.00000000000, -5.00000000000) rotVel = VECTOR(1.00000000000, 1.00000000000, 1.00000000000) 
+			TR_Ware_2X4_01_03 : RigidBody_Kick vel = VECTOR(0.00000000000, 1.00000000000, -5.00000000000) rotVel = VECTOR(1.00000000000, 1.00000000000, 1.00000000000) 
+			TR_Ware_2X4_01_04 : RigidBody_Kick vel = VECTOR(0.00000000000, 1.00000000000, -5.00000000000) rotVel = VECTOR(1.00000000000, 1.00000000000, 1.00000000000) 
+			TR_Ware_2X4_01_05 : RigidBody_Kick vel = VECTOR(0.00000000000, 1.00000000000, -5.00000000000) rotVel = VECTOR(1.00000000000, 1.00000000000, 1.00000000000) 
+			TR_Ware_2X4_01_06 : RigidBody_Kick vel = VECTOR(0.00000000000, 1.00000000000, -5.00000000000) rotVel = VECTOR(1.00000000000, 1.00000000000, 1.00000000000) 
+			TR_Ware_2X4_01_07 : RigidBody_Kick vel = VECTOR(0.00000000000, 1.00000000000, -5.00000000000) rotVel = VECTOR(1.00000000000, 1.00000000000, 1.00000000000) 
+			TR_Ware_2X4_01_08 : RigidBody_Kick vel = VECTOR(0.00000000000, 1.00000000000, -5.00000000000) rotVel = VECTOR(1.00000000000, 1.00000000000, 1.00000000000) 
+			TR_Ware_2X4_01_09 : RigidBody_Kick vel = VECTOR(0.00000000000, 1.00000000000, -5.00000000000) rotVel = VECTOR(1.00000000000, 1.00000000000, 1.00000000000) 
+			Create prefix = "TR_Ware_Dry_01_" 
+			TR_Ware_Dry_01_01 : RigidBody_Kick vel = VECTOR(0.00000000000, 1.00000000000, -5.00000000000) rotVel = VECTOR(1.00000000000, 1.00000000000, 1.00000000000) 
+			TR_Ware_Dry_01_02 : RigidBody_Kick vel = VECTOR(0.00000000000, 1.00000000000, -5.00000000000) rotVel = VECTOR(1.00000000000, 1.00000000000, 1.00000000000) 
+			TR_Ware_Dry_01_03 : RigidBody_Kick vel = VECTOR(0.00000000000, 1.00000000000, -5.00000000000) rotVel = VECTOR(1.00000000000, 1.00000000000, 1.00000000000) 
+			TR_Ware_Dry_01_04 : RigidBody_Kick vel = VECTOR(0.00000000000, 1.00000000000, -5.00000000000) rotVel = VECTOR(1.00000000000, 1.00000000000, 1.00000000000) 
+			TR_Ware_Dry_01_05 : RigidBody_Kick vel = VECTOR(0.00000000000, 1.00000000000, -5.00000000000) rotVel = VECTOR(1.00000000000, 1.00000000000, 1.00000000000) 
+			TR_Ware_Dry_01_06 : RigidBody_Kick vel = VECTOR(0.00000000000, 1.00000000000, -5.00000000000) rotVel = VECTOR(1.00000000000, 1.00000000000, 1.00000000000) 
+			TR_Ware_Dry_01_07 : RigidBody_Kick vel = VECTOR(0.00000000000, 1.00000000000, -5.00000000000) rotVel = VECTOR(1.00000000000, 1.00000000000, 1.00000000000) 
+			Create name = TB_WH_Drywall_Broke_01 
+			wait 2 seconds 
+			Kill name = TB_WH_Drywall_Dust_00_Start 
+		ELSE 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_DryWallBreak02 
+	IF GoalManager_HasWonGoal name = tr_goal_counter5 
+		GetTriggerArray through 
+		IF TriggerType <trigger_array> 
+			printf "Break Wall============" 
+			SpawnScript TR_SFX_BreakDryWall 
+			Shatter { name = g_g_wareNew_Funbox01_door02 
+				area = 2000 
+				texture_swap = TB_WH_Drywall_Pieces_01 
+				variance = 1.00000000000 
+				spread = 1.00000000000 
+				lIfe = 6 
+				bounce = 1 
+				scale = 1.00000000000 
+				vel_x = 30 
+				vel_y = 30 
+				vel_z = 30 
+			} 
+			Kill name = g_g_wareNew_Funbox01_door02 
+			Create name = TB_WH_Drywall_Dust_02_Start01 
+			Create prefix = "TR_Ware_2X4_02_" 
+			TR_Ware_2X4_02_01 : RigidBody_Kick vel = VECTOR(0.00000000000, 1.00000000000, -5.00000000000) rotVel = VECTOR(1.00000000000, 1.00000000000, 1.00000000000) 
+			TR_Ware_2X4_02_02 : RigidBody_Kick vel = VECTOR(0.00000000000, 1.00000000000, -5.00000000000) rotVel = VECTOR(1.00000000000, 1.00000000000, 1.00000000000) 
+			TR_Ware_2X4_02_03 : RigidBody_Kick vel = VECTOR(0.00000000000, 1.00000000000, -5.00000000000) rotVel = VECTOR(1.00000000000, 1.00000000000, 1.00000000000) 
+			TR_Ware_2X4_02_04 : RigidBody_Kick vel = VECTOR(0.00000000000, 1.00000000000, -5.00000000000) rotVel = VECTOR(1.00000000000, 1.00000000000, 1.00000000000) 
+			TR_Ware_2X4_02_05 : RigidBody_Kick vel = VECTOR(0.00000000000, 1.00000000000, -5.00000000000) rotVel = VECTOR(1.00000000000, 1.00000000000, 1.00000000000) 
+			TR_Ware_2X4_02_10 : RigidBody_Kick vel = VECTOR(0.00000000000, 1.00000000000, -5.00000000000) rotVel = VECTOR(1.00000000000, 1.00000000000, 1.00000000000) 
+			TR_Ware_2X4_02_07 : RigidBody_Kick vel = VECTOR(0.00000000000, 1.00000000000, -5.00000000000) rotVel = VECTOR(1.00000000000, 1.00000000000, 1.00000000000) 
+			TR_Ware_2X4_02_08 : RigidBody_Kick vel = VECTOR(0.00000000000, 1.00000000000, -5.00000000000) rotVel = VECTOR(1.00000000000, 1.00000000000, 1.00000000000) 
+			TR_Ware_2X4_02_09 : RigidBody_Kick vel = VECTOR(0.00000000000, 1.00000000000, -5.00000000000) rotVel = VECTOR(1.00000000000, 1.00000000000, 1.00000000000) 
+			Create prefix = "TR_Ware_Dry_02_" 
+			TR_Ware_Dry_02_01 : RigidBody_Kick vel = VECTOR(0.00000000000, 1.00000000000, -5.00000000000) rotVel = VECTOR(1.00000000000, 1.00000000000, 1.00000000000) 
+			TR_Ware_Dry_02_02 : RigidBody_Kick vel = VECTOR(0.00000000000, 1.00000000000, -5.00000000000) rotVel = VECTOR(1.00000000000, 1.00000000000, 1.00000000000) 
+			TR_Ware_Dry_02_03 : RigidBody_Kick vel = VECTOR(0.00000000000, 1.00000000000, -5.00000000000) rotVel = VECTOR(1.00000000000, 1.00000000000, 1.00000000000) 
+			TR_Ware_Dry_02_04 : RigidBody_Kick vel = VECTOR(0.00000000000, 1.00000000000, -5.00000000000) rotVel = VECTOR(1.00000000000, 1.00000000000, 1.00000000000) 
+			TR_Ware_Dry_02_05 : RigidBody_Kick vel = VECTOR(0.00000000000, 1.00000000000, -5.00000000000) rotVel = VECTOR(1.00000000000, 1.00000000000, 1.00000000000) 
+			TR_Ware_Dry_02_06 : RigidBody_Kick vel = VECTOR(0.00000000000, 1.00000000000, -5.00000000000) rotVel = VECTOR(1.00000000000, 1.00000000000, 1.00000000000) 
+			TR_Ware_Dry_02_07 : RigidBody_Kick vel = VECTOR(0.00000000000, 1.00000000000, -5.00000000000) rotVel = VECTOR(1.00000000000, 1.00000000000, 1.00000000000) 
+			Create name = TB_WH_Drywall_Broke_02 
+			wait 2 seconds 
+			Kill name = TB_WH_Drywall_Dust_02_Start01 
+		ELSE 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_Glass_Shatter 
+	SpawnScript TR_SFX_GlassShatter 
+	Shatter { name = <name> 
+		area = 2000 
+		texture_swap = BA_APM_brokenglass01 
+		variance = 1.00000000000 
+		spread = 1.00000000000 
+		lIfe = 6 
+		bounce = 1 
+		scale = 1.00000000000 
+		vel_x = 30 
+		vel_y = 30 
+		vel_z = 30 
+	} 
+	Kill name = <name> 
+ENDSCRIPT
+
+SCRIPT TR_Electrical_Smash 
+	IF NOT InNetGame 
+		GetTriggerArray Wallplant onto 
+		IF TriggerType <trigger_array> 
+			Kill name = TB_Electrical_Upper_02 
+			Create name = TB_Electrical_Upper_02_destroyed 
+			Create name = ATM_SparkA01 
+			Create name = ATM_SmokeA01 
+			SpawnScript TR_SFX_Break_Switch 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_Lights_01 
+	IF NOT InNetGame 
+		IF IsAlive name = Fluoresent_SparkA01_Start01a 
+		ELSE 
+			Kill name = g_ware_light_01_glow_01a 
+			Kill name = g_ware_light_01_glow_01b 
+			Create name = g_ware_light_glow_01_flicker_01a 
+			Create name = g_ware_light_01_glow_flicker_01b 
+			Create name = Fluoresent_SparkA01_Start01a 
+			Create name = Fluoresent_SparkA01_Start01b 
+			Create name = g_ware_light_25_flicker01 
+			wait 10 seconds 
+			Kill name = g_ware_light_25_flicker01 
+			Kill name = g_ware_light_glow_01_flicker_01a 
+			Kill name = g_ware_light_01_glow_flicker_01b 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_Lights_02 
+	IF NOT InNetGame 
+		IF IsAlive name = Fluoresent_SparkA01_Start02a 
+		ELSE 
+			Kill name = g_ware_light_02_glow_02a 
+			Kill name = g_ware_light_02_glow_02b 
+			Create name = g_ware_light_glow_02_flicker_02a 
+			Create name = g_ware_light_glow_02_flicker_02b 
+			Create name = Fluoresent_SparkA01_Start02a 
+			Create name = Fluoresent_SparkA01_Start02b 
+			Create name = g_ware_light_25_flicker02 
+			wait 10 seconds 
+			Kill name = g_ware_light_25_flicker02 
+			Kill name = g_ware_light_glow_02_flicker_02a 
+			Kill name = g_ware_light_glow_02_flicker_02b 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_Lights_03 
+	IF NOT InNetGame 
+		IF IsAlive name = Fluoresent_SparkA01_Start03a 
+		ELSE 
+			Kill name = g_ware_light_03_glow_03a 
+			Kill name = g_ware_light_03_glow_03b 
+			Create name = g_ware_light_glow_03_flicker_03a 
+			Create name = g_ware_light_glow_03_flicker_03b 
+			Create name = Fluoresent_SparkA01_Start03a 
+			Create name = Fluoresent_SparkA01_Start03b 
+			Create name = g_ware_light_25_flicker03 
+			wait 10 seconds 
+			Kill name = g_ware_light_glow_03_flicker_03a 
+			Kill name = g_ware_light_glow_03_flicker_03b 
+			Kill name = g_ware_light_25_flicker03 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_Fan01 
+	Obj_Rotx speed = 250 
+ENDSCRIPT
+
+SCRIPT TR_RailJump01 
+	StartGap GapID = RailJump flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT TR_RailJump02 
+	EndGap GapID = RailJump text = "Upper Rail" score = 100 
+ENDSCRIPT
+
+SCRIPT TR_BeamLip01 
+	StartGap GapID = beamlip flags = [ REQUIRE_LIP CANCEL_GROUND CANCEL_MANUAL ] 
+ENDSCRIPT
+
+SCRIPT TR_BeamLip02 
+	EndGap GapID = beamlip text = "Beam Lip" score = 50 
+ENDSCRIPT
+
+SCRIPT TR_Recessed01 
+	StartGap GapID = recesssedA flags = [ PURE_AIR ] 
+	EndGap GapID = recesssedB text = "Recessed transfer" score = 100 
+ENDSCRIPT
+
+SCRIPT TR_Recessed02 
+	StartGap GapID = recesssedB flags = [ PURE_AIR ] 
+	EndGap GapID = recesssedA text = "Recessed transfer" score = 100 
+ENDSCRIPT
+
+SCRIPT TR_Goingup01 
+	StartGap GapID = goingup flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT TR_Goingup02 
+	EndGap GapID = goingup text = "Going up" score = 75 
+ENDSCRIPT
+
+SCRIPT TR_Passage01 
+	StartGap GapID = passage flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT TR_Passage02 
+	EndGap GapID = passage text = "Passage hop" score = 150 
+ENDSCRIPT
+
+SCRIPT TR_Otherside01 
+	StartGap GapID = othersidea flags = [ PURE_AIR ] 
+	EndGap GapID = othersideb text = "OtherSide 1" score = 150 
+ENDSCRIPT
+
+SCRIPT TR_Otherside02 
+	StartGap GapID = othersideb flags = [ PURE_AIR ] 
+	EndGap GapID = othersidea text = "OtherSide 1" score = 150 
+ENDSCRIPT
+
+SCRIPT TR_Otherside01a 
+	StartGap GapID = othersidec flags = [ PURE_AIR ] 
+	EndGap GapID = othersided text = "OtherSide 2" score = 150 
+ENDSCRIPT
+
+SCRIPT TR_Otherside02a 
+	StartGap GapID = othersided flags = [ PURE_AIR ] 
+	EndGap GapID = othersidec text = "OtherSide 2" score = 150 
+ENDSCRIPT
+
+SCRIPT TR_SprinklerLip01 
+	StartGap GapID = sprinklerlip flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT TR_SprinklerLip02 
+	EndGap GapID = sprinklerlip text = "Sprinkler Lip" score = 100 
+ENDSCRIPT
+
+SCRIPT TR_LightHop01 
+	StartGap GapID = lighthopa flags = [ PURE_AIR ] 
+	EndGap GapID = lighthopb text = "Light Hop" score = 75 
+	SpawnScript TR_SFX_OnLight_Gap 
+ENDSCRIPT
+
+SCRIPT TR_LightHop02 
+	StartGap GapID = lighthopb flags = [ PURE_AIR ] 
+	EndGap GapID = lighthopa text = "Light Hop" score = 75 
+	SpawnScript TR_SFX_OnLight_Gap 
+ENDSCRIPT
+
+SCRIPT TR_RailHop01 
+	StartGap GapID = RailHop flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT TR_RailHop02 
+	EndGap GapID = RailHop text = "Rail Pop" score = 25 
+ENDSCRIPT
+
+SCRIPT TR_HighLip01 
+	StartGap GapID = HighLip flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT TR_HighLip02 
+	EndGap GapID = HighLip text = "High wire" score = 150 
+ENDSCRIPT
+
+SCRIPT TR_Rail2Light01 
+	StartGap GapID = Rail2light flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT TR_Rail2Light02 
+	EndGap GapID = Rail2light text = "Rail 2 Light" score = 50 
+	SpawnScript TR_SFX_OnLight_Gap 
+ENDSCRIPT
+
+SCRIPT TR_Pool2pool01 
+	StartGap GapID = pool2poolA flags = [ PURE_AIR ] 
+	EndGap GapID = pool2poolB text = "Pool 2 Pool" score = 50 
+ENDSCRIPT
+
+SCRIPT TR_Pool2pool02 
+	StartGap GapID = pool2poolB flags = [ PURE_AIR ] 
+	EndGap GapID = pool2poolA text = "Pool 2 Pool" score = 50 
+ENDSCRIPT
+
+SCRIPT TR_Manual01 
+	StartGap GapID = Manual flags = [ PURE_Manual ] 
+ENDSCRIPT
+
+SCRIPT TR_Manual02 
+	EndGap GapID = Manual text = "Downward Manual" score = 300 
+ENDSCRIPT
+
+SCRIPT TR_BigLip01 
+	StartGap GapID = biglip flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT TR_BigLip02 
+	EndGap GapID = biglip text = "Big ole lip" score = 200 
+ENDSCRIPT
+
+SCRIPT TR_RampHop01 
+	gap_gen_transfer start GapID = Ramp01 
+ENDSCRIPT
+
+SCRIPT TR_RampHop02 
+	gap_gen_transfer end GapID = Ramp01 text = "Ramp Hop" score = 50 
+ENDSCRIPT
+
+SCRIPT TR_AddGoal_Special 
+	AddGoal_Special { 
+		goal_text = " Get SPECIAL then\\n \'McTwist\'\\n ( \\k1 )" 
+		view_goals_text = "Novice - Do a McTwist" 
+		goal_deScription = Margera_tr_goal_Special 
+		Start_cam_anims = [ 
+			{ 
+				virtual_cam 
+				frames = 100 
+				targetid = world 
+				targetOffset = VECTOR(-3538.39990234375, -757.70001220703, -13557.40039062500) 
+				positionOffset = VECTOR(-3051.60009765625, -669.09997558594, -3569.60009765625) 
+				cam_anim_text = Margera_tr_goal_Special_camanim01 
+				skippable = 1 
+				play_hold 
+			} 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(-3538.39990234375, -757.70001220703, -13557.40039062500) 
+				positionOffset = VECTOR(-3051.60009765625, -669.09997558594, -3569.60009765625) 
+				frames = 100 
+				cam_anim_text = Margera_tr_goal_Special_camanim02 
+				skippable = 1 
+				play_hold 
+			} 
+			{ 
+				virtual_cam 
+				targetid = world 
+				targetOffset = VECTOR(-3538.39990234375, -757.70001220703, -13557.40039062500) 
+				positionOffset = VECTOR(-3051.60009765625, -669.09997558594, -3569.60009765625) 
+				frames = 100 
+				cam_anim_text = "" 
+				skippable = 1 
+				play_hold 
+			} 
+		] 
+		trick_name = Trick_McTwist 
+		trick_type = AIR 
+		skater = custom 
+		unlocked_by_another 
+		pro = "Margera" 
+		full_name = "Bam Margera" 
+		child = TR_Goal_Gaps23 
+	} 
+ENDSCRIPT
+
+SCRIPT TR_2d_sign_element_create parent = menu3d_anchor 
+	IF GetGlobalFlag flag = SCREEN_MODE_WIDE 
+		<offset> = PAIR(-8.00000000000, 0.00000000000) 
+	ELSE 
+		<offset> = PAIR(0.00000000000, 0.00000000000) 
+	ENDIF 
+	CreateScreenElement { 
+		type = ContainerElement 
+		parent = <parent> 
+		ID = TR_eye_holder 
+		pos = ( PAIR(0.00000000000, 230.00000000000) + <offset> ) 
+		z_priority = -53 
+	} 
+	CreateScreenElement { 
+		type = SpriteElement 
+		parent = TR_eye_holder 
+		texture = TR_icon_1 
+		scale = 1.39999997616 
+		rgba = [ 128 128 128 80 ] 
+		pos = PAIR(-12.00000000000, 0.00000000000) 
+		rot_angle = 0 
+		just = [ left top ] 
+	} 
+	CreateScreenElement { 
+		type = SpriteElement 
+		parent = TR_eye_holder 
+		texture = TR_icon_1 
+		scale = 1.39999997616 
+		rgba = [ 128 128 128 80 ] 
+		pos = PAIR(65.00000000000, 0.00000000000) 
+		rot_angle = 0 
+		just = [ left top ] 
+	} 
+	CreateScreenElement { 
+		type = SpriteElement 
+		parent = <parent> 
+		texture = TR_icon_2 
+		ID = TR_dynomite 
+		scale = 1.79999995232 
+		rgba = [ 128 128 128 100 ] 
+		pos = ( PAIR(100.00000000000, 300.00000000000) + <offset> ) 
+		rot_angle = -55 
+		just = [ left top ] 
+		z_priority = -51 
+	} 
+	RunScriptOnScreenElement ID = TR_eye_holder do_random_effect_paused params = { ID = <ID> } 
+	RunScriptOnScreenElement ID = TR_dynomite do_random_effect_paused params = { ID = <ID> } 
+ENDSCRIPT
+
+

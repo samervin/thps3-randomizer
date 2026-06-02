@@ -1,0 +1,136 @@
+
+SCRIPT load_level_particle_textures 
+	LoadParticleTexture "particles\\jow_se2_treasure01" 
+ENDSCRIPT
+
+JOW_SE2_Treasure01_particle_params = { 
+	emitScript = emit_JOW_SE2_Treasure01_particle 
+	max = 32 
+	type = Shaded 
+	texture = JOW_SE2_Treasure01 
+	blendMode = Blend 
+	UseRandomUVQuadrants 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_SE2_Treasure01_particle 
+	setEmitRange width = 10.00000000000 height = 10.00000000000 depth = 10.00000000000 
+	setLife min = 2.00000000000 max = 3.00000000000 
+	setAngleSpread spread = 1.00000000000 
+	setSpeedRange min = 1.00000000000 max = 3.00000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = -0.05999999866 z = 0.00000000000 
+	setParticleSize sw = 3.00000000000 ew = 3.00000000000 
+	setColor corner = 0 sr = 136 sg = 136 sb = 136 sa = 255 er = 136 eg = 136 eb = 136 ea = 255 
+	setColor corner = 1 sr = 136 sg = 136 sb = 136 sa = 255 er = 136 eg = 136 eb = 136 ea = 255 
+	setColor corner = 2 sr = 136 sg = 136 sb = 136 sa = 255 er = 136 eg = 136 eb = 136 ea = 255 
+	setColor corner = 3 sr = 136 sg = 136 sb = 136 sa = 255 er = 136 eg = 136 eb = 136 ea = 255 
+	emit num = 32 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_SE2_Treasure02_particle_params = { 
+	emitScript = emit_JOW_SE2_Treasure02_particle 
+	max = 32 
+	type = Shaded 
+	texture = JOW_SE2_Treasure01 
+	blendMode = Blend 
+	UseRandomUVQuadrants 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_SE2_Treasure02_particle 
+	setEmitRange width = 10.00000000000 height = 10.00000000000 depth = 10.00000000000 
+	setLife min = 2.00000000000 max = 3.00000000000 
+	setAngleSpread spread = 1.00000000000 
+	setSpeedRange min = 1.00000000000 max = 3.00000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = -0.05999999866 z = 0.00000000000 
+	setParticleSize sw = 3.00000000000 ew = 3.00000000000 
+	setColor corner = 0 sr = 136 sg = 136 sb = 136 sa = 255 er = 136 eg = 136 eb = 136 ea = 255 
+	setColor corner = 1 sr = 136 sg = 136 sb = 136 sa = 255 er = 136 eg = 136 eb = 136 ea = 255 
+	setColor corner = 2 sr = 136 sg = 136 sb = 136 sa = 255 er = 136 eg = 136 eb = 136 ea = 255 
+	setColor corner = 3 sr = 136 sg = 136 sb = 136 sa = 255 er = 136 eg = 136 eb = 136 ea = 255 
+	emit num = 32 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_SE2_Treasure03_particle_params = { 
+	emitScript = emit_JOW_SE2_Treasure03_particle 
+	max = 32 
+	type = Shaded 
+	texture = JOW_SE2_Treasure01 
+	blendMode = Blend 
+	UseRandomUVQuadrants 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_SE2_Treasure03_particle 
+	setEmitRange width = 10.00000000000 height = 10.00000000000 depth = 10.00000000000 
+	setLife min = 2.00000000000 max = 3.00000000000 
+	setAngleSpread spread = 1.00000000000 
+	setSpeedRange min = 1.00000000000 max = 3.00000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = -0.05999999866 z = 0.00000000000 
+	setParticleSize sw = 3.00000000000 ew = 3.00000000000 
+	setColor corner = 0 sr = 136 sg = 136 sb = 136 sa = 255 er = 136 eg = 136 eb = 136 ea = 255 
+	setColor corner = 1 sr = 136 sg = 136 sb = 136 sa = 255 er = 136 eg = 136 eb = 136 ea = 255 
+	setColor corner = 2 sr = 136 sg = 136 sb = 136 sa = 255 er = 136 eg = 136 eb = 136 ea = 255 
+	setColor corner = 3 sr = 136 sg = 136 sb = 136 sa = 255 er = 136 eg = 136 eb = 136 ea = 255 
+	emit num = 32 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_SE2_Treasure04_particle_params = { 
+	emitScript = emit_JOW_SE2_Treasure04_particle 
+	max = 32 
+	type = Shaded 
+	texture = JOW_SE2_Treasure01 
+	blendMode = Blend 
+	UseRandomUVQuadrants 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_SE2_Treasure04_particle 
+	setEmitRange width = 10.00000000000 height = 10.00000000000 depth = 10.00000000000 
+	setLife min = 2.00000000000 max = 3.00000000000 
+	setAngleSpread spread = 1.00000000000 
+	setSpeedRange min = 1.00000000000 max = 3.00000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = -0.05999999866 z = 0.00000000000 
+	setParticleSize sw = 3.00000000000 ew = 3.00000000000 
+	setColor corner = 0 sr = 136 sg = 136 sb = 136 sa = 255 er = 136 eg = 136 eb = 136 ea = 255 
+	setColor corner = 1 sr = 136 sg = 136 sb = 136 sa = 255 er = 136 eg = 136 eb = 136 ea = 255 
+	setColor corner = 2 sr = 136 sg = 136 sb = 136 sa = 255 er = 136 eg = 136 eb = 136 ea = 255 
+	setColor corner = 3 sr = 136 sg = 136 sb = 136 sa = 255 er = 136 eg = 136 eb = 136 ea = 255 
+	emit num = 32 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_SE2_Treasure05_particle_params = { 
+	emitScript = emit_JOW_SE2_Treasure05_particle 
+	max = 32 
+	type = Shaded 
+	texture = JOW_SE2_Treasure01 
+	blendMode = Blend 
+	UseRandomUVQuadrants 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_SE2_Treasure05_particle 
+	setEmitRange width = 10.00000000000 height = 10.00000000000 depth = 10.00000000000 
+	setLife min = 2.00000000000 max = 3.00000000000 
+	setAngleSpread spread = 1.00000000000 
+	setSpeedRange min = 1.00000000000 max = 3.00000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = -0.05999999866 z = 0.00000000000 
+	setParticleSize sw = 3.00000000000 ew = 3.00000000000 
+	setColor corner = 0 sr = 136 sg = 136 sb = 136 sa = 255 er = 136 eg = 136 eb = 136 ea = 255 
+	setColor corner = 1 sr = 136 sg = 136 sb = 136 sa = 255 er = 136 eg = 136 eb = 136 ea = 255 
+	setColor corner = 2 sr = 136 sg = 136 sb = 136 sa = 255 er = 136 eg = 136 eb = 136 ea = 255 
+	setColor corner = 3 sr = 136 sg = 136 sb = 136 sa = 255 er = 136 eg = 136 eb = 136 ea = 255 
+	emit num = 32 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+

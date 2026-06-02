@@ -1,0 +1,1189 @@
+mainmenu_NodeArray = 
+[ 
+	{ 
+		Pos = VECTOR(144.358, 1.64831, 15.5613) 
+		Angles = VECTOR(0.209214, 0.530864, -0.15056) 
+		Name = SkWare_Light_Sign23 
+		Class = LevelGeometry 
+		CreatedAtStart 
+		CollisionMode = Geometry 
+	} 
+	{ 
+		Pos = VECTOR(-79.1447, 79.3802, 61.6846) 
+		Angles = VECTOR(0, 0.225158, 0) 
+		Name = TRG_TR_Level_Light_01 
+		Class = LevelLight 
+		CreatedAtStart 
+		RenderToViewport 
+		SelectRenderOnly 
+		ExcludeLevel 
+		Brightness = 90 
+		InnerRadius = 90 
+		OuterRadius = 650 
+		ExcludeGeometry = [ ] 
+		Color = [ 255 , 131 , 30 ] 
+	} 
+	{ 
+		Pos = VECTOR(-85.3307, 173.715, 56.1251) 
+		Angles = VECTOR(0, 0.225158, 0) 
+		Name = TRG_TR_Level_Light_02 
+		Class = LevelLight 
+		CreatedAtStart 
+		RenderToViewport 
+		SelectRenderOnly 
+		ExcludeLevel 
+		Brightness = 90 
+		InnerRadius = 300 
+		OuterRadius = 350 
+		ExcludeGeometry = [ ] 
+		Color = [ 255 , 131 , 30 ] 
+	} 
+	{ 
+		Pos = VECTOR(226.256, 0, -91.9806) 
+		Angles = VECTOR(-1.5708, 0, 0) 
+		Name = TRGP_shadowtrigger 
+		Class = LevelGeometry 
+		CreatedAtStart 
+		CollisionMode = Geometry 
+		TriggerScript = TRGP_shadowtriggerScript 
+	} 
+	{ 
+		Pos = VECTOR(23.1872, -375.671, 188.22) 
+		Angles = VECTOR(0, -0.119757, 0) 
+		Name = SS_player_restart 
+		Class = Restart 
+		Type = Player1 
+		CreatedAtStart 
+		RestartName = "P1: Restart" 
+		restart_types = [ Player1 Multiplayer Horse ] 
+		extra_anims = animload_THPS6_FrontEnd 
+	} 
+	{ 
+		Pos = VECTOR(-626.458, -40.7512, -2e-06) 
+		Angles = VECTOR(1.5708, 0, 0) 
+		Name = options_clousd_trigger 
+		Class = GameObject 
+		Type = Ghost 
+		AbsentInNetGames 
+		Model = "options_clouds\\options_clouds.mdl" 
+		SuspendDistance = 0 
+		lod_dist1 = 400 
+		lod_dist2 = 401 
+	} 
+	{ 
+		Pos = VECTOR(-626.458, -7.81029, -0) 
+		Angles = VECTOR(1.5708, 0, 0) 
+		Name = ui_bg_trigger 
+		Class = GameObject 
+		Type = Ghost 
+		AbsentInNetGames 
+		Model = "UI_bg\\UI_bg.mdl" 
+		SuspendDistance = 0 
+		lod_dist1 = 400 
+		lod_dist2 = 401 
+	} 
+	{ 
+		Pos = VECTOR(84.8329, -63.7398, 61.704) 
+		Angles = VECTOR(0, 0.00324, 0) 
+		Name = TRG_Playerrestart 
+		Class = Restart 
+		Type = Player1 
+		CreatedAtStart 
+		RestartName = "P1: Restart" 
+		restart_types = [ Player1 Multiplayer Horse ] 
+	} 
+	{ 
+		Pos = VECTOR(48.5258, -63.7551, -0.163294) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = Box01 
+		Class = LevelGeometry 
+		CreatedAtStart 
+		CollisionMode = Geometry 
+	} 
+	{ 
+		Pos = VECTOR(-0.016818, -12.5234, -0.78992) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_pie_12 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(-0.016818, -12.5234, -0.78992) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_pie_13 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(-0.016818, -12.5234, -0.78992) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_pie_11 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(-0.016818, -12.5234, -0.78992) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_pie_8 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(-0.016818, -12.5234, -0.78992) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_pie_9 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(-0.016818, -12.5234, -0.78992) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_pie_10 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(-0.016818, -12.5234, -0.78992) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_pie_7 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(-0.625804, -12.5234, -0.78992) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_pie_16 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(-0.016818, -12.5234, -0.78992) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_pie_3 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(-0.016818, -12.5234, -0.78992) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_pie_2 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(-0.016818, -12.5234, -0.78992) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_pie_1 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(-0.016818, -12.5234, -0.78992) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_pie_14 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(-0.016818, -12.5234, -0.78992) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_pie_15 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(-0.016818, -12.5234, -0.78992) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_pie_4 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(-0.016818, -12.5234, -0.78992) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_pie_6 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(-0.016818, -12.5234, -0.78992) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_pie_5 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(0, -12.7537, -7.07049) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_inner_ring 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(0.08, -12.76, -14.19) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_tag 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(-0.103467, -12.7522, -0.022441) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_outer_ring 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(0.085178, -12.7614, -14.1916) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_inner_star 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(0.08, -12.76, -14.19) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_lightbulb_1 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(0.08, -12.76, -14.19) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_lightbulb_2 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(0.08, -12.76, -14.19) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_lightbulb_3 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(0.08, -12.76, -14.19) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_lightbulb_4 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(0.080002, -12.76, -14.19) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_lightbulb_5 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(0.08, -12.76, -14.19) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_lightbulb_6 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(0.080002, -12.76, -14.19) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_lightbulb_7 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(0.080002, -12.76, -14.19) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_lightbulb_8 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(0.080002, -12.76, -14.19) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_lightbulb_9 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(0.080002, -12.76, -14.19) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_lightbulb_10 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(0.08, -12.76, -14.19) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_lightbulb_11 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(0.08, -12.76, -14.19) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_lightbulb_12 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(0.08, -12.76, -14.19) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_lightbulb_13 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(0.08, -12.76, -14.19) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_lightbulb_14 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(0.08, -12.76, -14.19) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_lightbulb_15 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(0.080002, -12.76, -14.19) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_lightbulb_16 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(0.080002, -12.76, -14.19) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_lightbulb_17 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(0.08, -12.76, -14.19) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_lightbulb_18 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(0.080002, -12.76, -14.19) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_lightbulb_19 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(0.080002, -12.76, -14.19) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_lightbulb_20 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(0.080002, -12.76, -14.19) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_lightbulb_21 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(0.080002, -12.76, -14.19) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_lightbulb_22 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(0.080002, -12.76, -14.19) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_lightbulb_23 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(0.080002, -12.76, -14.19) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_lightbulb_24 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(0.080002, -12.76, -14.19) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_lightbulb_25 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(0.080002, -12.76, -14.19) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_lightbulb_26 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(0.080002, -12.76, -14.19) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_lightbulb_27 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(0.08, -12.76, -14.19) 
+		Angles = VECTOR(0, 0, 0) 
+		Name = wol_lightbulb_28 
+		Class = LevelObject 
+		Type = Normal 
+		CreatedAtStart 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+	} 
+	{ 
+		Pos = VECTOR(-485.572, 24.0677, -534.627) 
+		Angles = VECTOR(0, 0.184518, 0) 
+		Name = SkWare_Light_Sign_MenGirls01 
+		Class = LevelGeometry 
+		CreatedAtStart 
+		CollisionMode = Geometry 
+	} 
+	{ 
+		Pos = VECTOR(-485.594, 24.0677, -534.611) 
+		Angles = VECTOR(0, 0.184518, 0) 
+		Name = SkWare_Dark_Sign_MenGirls01 
+		Class = LevelGeometry 
+		CollisionMode = Geometry 
+	} 
+	{ 
+		Pos = VECTOR(-555.445, 301.73, -909) 
+		Angles = VECTOR(0, 0.126388, 0) 
+		Name = SkWare_Roof03 
+		Class = LevelGeometry 
+		CreatedAtStart 
+		CollisionMode = Geometry 
+	} 
+	{ 
+		Pos = VECTOR(-781.634, 24.8191, -485.483) 
+		Angles = VECTOR(0, 0.126388, 0) 
+		Name = SkWare_Light_WindowFrame01 
+		Class = LevelGeometry 
+		CreatedAtStart 
+		CollisionMode = Geometry 
+	} 
+	{ 
+		Pos = VECTOR(-191.72, 24.8191, -595.586) 
+		Angles = VECTOR(0, 0.126388, 0) 
+		Name = SkWare_Light_WindowFrame02 
+		Class = LevelGeometry 
+		CreatedAtStart 
+		CollisionMode = Geometry 
+	} 
+	{ 
+		Pos = VECTOR(-338.896, 6.14054, 251.196) 
+		Angles = VECTOR(0, 0.126388, 0) 
+		Name = SkWare_Light_QP05 
+		Class = LevelGeometry 
+		CreatedAtStart 
+		CollisionMode = Geometry 
+	} 
+	{ 
+		Pos = VECTOR(399.843, -53.957, -696.887) 
+		Angles = VECTOR(0, 0.126388, 0) 
+		Name = SkWare_Dark_Wall04 
+		Class = LevelGeometry 
+		CreatedAtStart 
+		CollisionMode = Geometry 
+	} 
+	{ 
+		Pos = VECTOR(-781.651, 24.8189, -485.468) 
+		Angles = VECTOR(0, 0.126388, 0) 
+		Name = SkWare_Dark_WindowFrame01 
+		Class = LevelGeometry 
+		CollisionMode = Geometry 
+	} 
+	{ 
+		Pos = VECTOR(-191.742, 24.8189, -595.571) 
+		Angles = VECTOR(0, 0.126388, 0) 
+		Name = SkWare_Dark_WindowFrame02 
+		Class = LevelGeometry 
+		CollisionMode = Geometry 
+	} 
+	{ 
+		Pos = VECTOR(115.833, 165.745, -109.478) 
+		Angles = VECTOR(1.44435, 0.173392, 0.012835) 
+		Name = TB_Door_Roller_01 
+		Class = LevelGeometry 
+		CreatedAtStart 
+		CollisionMode = Geometry 
+	} 
+	{ 
+		Pos = VECTOR(100.496, -4.08378, -317.404) 
+		Angles = VECTOR(0, 0.176388, 0) 
+		Name = TB_Electrical_Upper_02 
+		Class = LevelGeometry 
+		CreatedAtStart 
+		CollisionMode = Geometry 
+		TriggerScript = TB_Electrical_Upper_02Script 
+	} 
+	{ 
+		Pos = VECTOR(56.7777, -66.5862, -93.9928) 
+		Angles = VECTOR(1.44435, 0.173392, 0.012835) 
+		Name = TB_WH_Floor_Warning_01 
+		Class = LevelGeometry 
+		CreatedAtStart 
+		CollisionMode = Geometry 
+	} 
+	{ 
+		Pos = VECTOR(399.843, -53.957, -696.887) 
+		Angles = VECTOR(0, 0.126388, 0) 
+		Name = TB_Floor_Upper_01 
+		Class = LevelGeometry 
+		CreatedAtStart 
+		CollisionMode = Geometry 
+	} 
+	{ 
+		Pos = VECTOR(344.971, -66.943, -433.541) 
+		Angles = VECTOR(-3.14159, 1.38628, -3.14159) 
+		Name = WH_TB_Grime_01 
+		Class = LevelGeometry 
+		CreatedAtStart 
+		CollisionMode = Geometry 
+	} 
+	{ 
+		Pos = VECTOR(146.562, 7.31479, -53.5226) 
+		Angles = VECTOR(0, 0.184518, 0) 
+		Name = G_Exit_Fence 
+		Class = LevelGeometry 
+		CreatedAtStart 
+		CollisionMode = Geometry 
+	} 
+	{ 
+		Pos = VECTOR(741.942, 42.2817, -224.823) 
+		Angles = VECTOR(0, 0.128756, 0) 
+		Name = g_entrance_door 
+		Class = LevelGeometry 
+		CreatedAtStart 
+		CollisionMode = Geometry 
+	} 
+	{ 
+		Pos = VECTOR(-933.978, 35.4776, 2.13274) 
+		Angles = VECTOR(0, 0.184518, 0) 
+		Name = TB_Ware_Graffiti_01 
+		Class = LevelGeometry 
+		CreatedAtStart 
+		CollisionMode = Geometry 
+	} 
+	{ 
+		Pos = VECTOR(43.3233, -66.5862, -133.514) 
+		Angles = VECTOR(2.70419, 1.24019, 1.08946) 
+		Name = TB_WH_Floor_Oilstains_02 
+		Class = LevelGeometry 
+		CreatedAtStart 
+		CollisionMode = Geometry 
+	} 
+	{ 
+		Pos = VECTOR(-1093.92, -59.4395, -850.472) 
+		Angles = VECTOR(0, 0.184518, 0) 
+		Name = SkWare_Fence02 
+		Class = LevelGeometry 
+		CreatedAtStart 
+		CollisionMode = Geometry 
+	} 
+	{ 
+		Pos = VECTOR(-1094.81, -59.4394, -850.305) 
+		Angles = VECTOR(0, 0.184518, 0) 
+		Name = SkWare_Fence03 
+		Class = LevelGeometry 
+		CreatedAtStart 
+		CollisionMode = Geometry 
+	} 
+	{ 
+		Pos = VECTOR(-1139.29, 94.629, -1093.62) 
+		Angles = VECTOR(3.14159, -0.221614, 3.14159) 
+		Name = SkWare_Fence02_frame 
+		Class = LevelGeometry 
+		CreatedAtStart 
+		CollisionMode = Geometry 
+		LightGroup = NoLevelLights 
+	} 
+	{ 
+		Pos = VECTOR(183.841, 35.4776, 112.37) 
+		Angles = VECTOR(0, 0.184518, 0) 
+		Name = TB_Ware_Graffiti_02 
+		Class = LevelGeometry 
+		CreatedAtStart 
+		CollisionMode = Geometry 
+	} 
+	{ 
+		Pos = VECTOR(124.152, -62.7297, 82.8189) 
+		Angles = VECTOR(0, 0.184518, 0) 
+		Name = WH_TB_Ska8brd_01 
+		Class = LevelObject 
+		Type = Bouncy_Default 
+		CreatedAtStart 
+		AbsentInNetGames 
+		bouncy 
+		CollisionMode = Geometry 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+		contacts = [ VECTOR(-12, 0, -12) VECTOR(12, 0, -12) VECTOR(-12, 0, 12) VECTOR(12, 0, 12) VECTOR(-12, 25, -12) VECTOR(12, 25, -12) VECTOR(-12, 25, 12) VECTOR(12, 25, 12) ] 
+		center_of_mass = VECTOR(0, 0, 0) 
+		coeff_restitution = 0.40000000596 
+		coeff_friction = 0.50000000000 
+		skater_collision_impulse_factor = 1.00000000000 
+		skater_collision_rotation_factor = 1.00000000000 
+		skater_collision_assent = 25.00000000000 
+		skater_collision_radius = 48.00000000000 
+	} 
+	{ 
+		Pos = VECTOR(171.79299926758, -52.14393234253, 85.55584716797) 
+		Angles = VECTOR(0.00000000000, 0.18451799452, 0.00000000000) 
+		Name = WH_TB_Sk8brd_02 
+		Class = LevelObject 
+		Type = Bouncy_Default 
+		CreatedAtStart 
+		AbsentInNetGames 
+		bouncy 
+		CollisionMode = Geometry 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+		contacts = [ VECTOR(-12.00000000000, 0.00000000000, -12.00000000000) VECTOR(12.00000000000, 0.00000000000, -12.00000000000) VECTOR(-12.00000000000, 0.00000000000, 12.00000000000) VECTOR(12.00000000000, 0.00000000000, 12.00000000000) VECTOR(-12.00000000000, 25.00000000000, -12.00000000000) VECTOR(12.00000000000, 25.00000000000, -12.00000000000) VECTOR(-12.00000000000, 25.00000000000, 12.00000000000) VECTOR(12.00000000000, 25.00000000000, 12.00000000000) ] 
+		center_of_mass = VECTOR(0.00000000000, 0.00000000000, 0.00000000000) 
+		coeff_restitution = 0.40000000596 
+		coeff_friction = 0.50000000000 
+		skater_collision_impulse_factor = 1.00000000000 
+		skater_collision_rotation_factor = 1.00000000000 
+		skater_collision_assent = 25.00000000000 
+		skater_collision_radius = 48.00000000000 
+	} 
+	{ 
+		Pos = VECTOR(175.81573486328, -66.87539672852, 84.76736450195) 
+		Angles = VECTOR(0.00000000000, 0.84164899588, 0.00000000000) 
+		Name = WH_TB_Sk8brd_02_shadow 
+		Class = LevelGeometry 
+		CreatedAtStart 
+		CollisionMode = Geometry 
+	} 
+	{ 
+		Pos = VECTOR(116.83691406250, -63.75161361694, 88.67747497559) 
+		Angles = VECTOR(3.14159297943, 0.59844601154, 3.14159297943) 
+		Name = WH_TB_Ska8brd_01_shadow 
+		Class = LevelGeometry 
+		CreatedAtStart 
+		CollisionMode = Geometry 
+	} 
+	{ 
+		Pos = VECTOR(116.83691406250, -63.75161361694, 88.67747497559) 
+		Angles = VECTOR(3.14159297943, 0.59844601154, 3.14159297943) 
+		Name = WH_TB_Ska8brd_01b_shadow 
+		Class = LevelGeometry 
+		CreatedAtStart 
+		CollisionMode = Geometry 
+	} 
+	{ 
+		Pos = VECTOR(104.59921264648, -62.68294906616, 95.25292968750) 
+		Angles = VECTOR(0.00000000000, 0.18451799452, 0.00000000000) 
+		Name = WH_TB_Ska8brd_01b 
+		Class = LevelObject 
+		Type = Bouncy_Default 
+		CreatedAtStart 
+		AbsentInNetGames 
+		bouncy 
+		CollisionMode = Geometry 
+		SuspendDistance = 0 
+		lod_dist1 = 200 
+		lod_dist2 = 201 
+		contacts = [ VECTOR(-12.00000000000, 0.00000000000, -12.00000000000) VECTOR(12.00000000000, 0.00000000000, -12.00000000000) VECTOR(-12.00000000000, 0.00000000000, 12.00000000000) VECTOR(12.00000000000, 0.00000000000, 12.00000000000) VECTOR(-12.00000000000, 25.00000000000, -12.00000000000) VECTOR(12.00000000000, 25.00000000000, -12.00000000000) VECTOR(-12.00000000000, 25.00000000000, 12.00000000000) VECTOR(12.00000000000, 25.00000000000, 12.00000000000) ] 
+		center_of_mass = VECTOR(0.00000000000, 0.00000000000, 0.00000000000) 
+		coeff_restitution = 0.40000000596 
+		coeff_friction = 0.50000000000 
+		skater_collision_impulse_factor = 1.00000000000 
+		skater_collision_rotation_factor = 1.00000000000 
+		skater_collision_assent = 25.00000000000 
+		skater_collision_radius = 48.00000000000 
+	} 
+	{ 
+		Pos = VECTOR(52.52392578125, 280.33493041992, -576.04992675781) 
+		Angles = VECTOR(0.94503998756, 0.11343099922, -0.03673100099) 
+		Name = WH_TB_Pipes_02 
+		Class = LevelGeometry 
+		CreatedAtStart 
+		CollisionMode = Geometry 
+	} 
+	{ 
+		Pos = VECTOR(452.45678710938, -183.07331848145, -2928.53369140625) 
+		Angles = VECTOR(0.00000000000, 0.18451799452, 0.00000000000) 
+		Name = WH_TB_Roof_01 
+		Class = LevelGeometry 
+		CreatedAtStart 
+		LOD_Name = SkWare_Wall02_LOD 
+		LOD_Dist = 3000 
+	} 
+	{ 
+		Pos = VECTOR(-316.61663818359, 337.89181518555, 365.20495605469) 
+		Angles = VECTOR(0.00000000000, 0.18451799452, 0.00000000000) 
+		Name = TB_Beam_Upper_01_Shadow 
+		Class = LevelGeometry 
+		CreatedAtStart 
+		CollisionMode = Geometry 
+	} 
+	{ 
+		Pos = VECTOR(100.49591064453, -4.08378076553, -317.40399169922) 
+		Angles = VECTOR(0.00000000000, 0.17638799548, 0.00000000000) 
+		Name = TB_Electrical_Upper_02_destroyed 
+		Class = LevelGeometry 
+		CollisionMode = Geometry 
+	} 
+	{ 
+		Pos = VECTOR(-316.61663818359, 337.89181518555, 365.20495605469) 
+		Angles = VECTOR(0.00000000000, 0.18451799452, 0.00000000000) 
+		Name = TB_Beam_Upper_01 
+		Class = LevelGeometry 
+		CreatedAtStart 
+		CollisionMode = Geometry 
+	} 
+	{ 
+		Pos = VECTOR(95.32220458984, -4.82026195526, -309.82751464844) 
+		Angles = VECTOR(0.00000000000, 0.16843900084, 0.00000000000) 
+		Name = ATM_SparkA01 
+		Class = ParticleObject 
+		Type = Default 
+		BoxDimsStart = VECTOR(7.60034990311, 2.05353999138, 10.92683219910) 
+		MidPosition = VECTOR(100.21472167969, -4.32624292374, -312.64276123047) 
+		BoxDimsMid = VECTOR(34.32083511353, 34.32083511353, 34.32083511353) 
+		EndPosition = VECTOR(103.27105712891, 1.89787805080, -296.56066894531) 
+		BoxDimsEnd = VECTOR(30.04693031311, 30.04693031311, 30.04693031311) 
+		Texture = apm_spark_01 
+		AbsentInNetGames 
+		UseMidPoint 
+		Type = NEWFLAT 
+		BlendMode = Add 
+		FixedAlpha = 128 
+		AlphaCutoff = 1 
+		MaxStreams = 2 
+		SuspendDistance = 0 
+		lod_dist1 = 400 
+		lod_dist2 = 401 
+		EmitRate = 12.00000000000 
+		Lifetime = 0.25000000000 
+		MidPointPCT = 50 
+		StartRadius = 20.00000000000 
+		MidRadius = 10.00000000000 
+		EndRadius = 1.00000000000 
+		StartRadiusSpread = 5.00000000000 
+		MidRadiusSpread = 5.00000000000 
+		EndRadiusSpread = 5.00000000000 
+		StartRGB = [ 191 , 250 , 255 ] 
+		StartAlpha = 95 
+		EndRGB = [ 103 , 139 , 255 ] 
+		EndAlpha = 0 
+	} 
+	{ 
+		Pos = VECTOR(-1120.89355468750, -56.26629257202, -867.07873535156) 
+		Angles = VECTOR(0.00000000000, 0.15309999883, 0.00000000000) 
+		Name = TB_WH_Sprinklerhead_06 
+		Class = LevelGeometry 
+		CreatedAtStart 
+		CollisionMode = Geometry 
+	} 
+	{ 
+		Pos = VECTOR(-316.61663818359, 337.89181518555, 365.20495605469) 
+		Angles = VECTOR(0.00000000000, 0.18451799452, 0.00000000000) 
+		Name = TB_Beam_Upper_02_grime 
+		Class = LevelGeometry 
+		CreatedAtStart 
+		CollisionMode = Geometry 
+	} 
+	{ 
+		Pos = VECTOR(84.13894653320, -2.19390392303, -320.63262939453) 
+		Angles = VECTOR(0.00000000000, 0.19493399560, 0.00000000000) 
+		Name = ATM_SmokeA01 
+		Class = ParticleObject 
+		Type = Default 
+		BoxDimsStart = VECTOR(25.41799926758, 25.41799926758, 25.41799926758) 
+		MidPosition = VECTOR(77.10942077637, 57.99119567871, -321.26647949219) 
+		BoxDimsMid = VECTOR(39.35069274902, 39.35069274902, 39.35069274902) 
+		EndPosition = VECTOR(60.06177902222, 195.80842590332, -324.23171997070) 
+		BoxDimsEnd = VECTOR(77.16815185547, 77.16815185547, 77.16815185547) 
+		Texture = ru_tb_puff_01 
+		AbsentInNetGames 
+		UseMidPoint 
+		UseColorMidTime 
+		Type = NEWFLAT 
+		BlendMode = Blend 
+		FixedAlpha = 128 
+		AlphaCutoff = 1 
+		MaxStreams = 2 
+		SuspendDistance = 0 
+		lod_dist1 = 400 
+		lod_dist2 = 401 
+		EmitRate = 6.00000000000 
+		Lifetime = 20.00000000000 
+		MidPointPCT = 50 
+		StartRadius = 30.00000000000 
+		MidRadius = 40.00000000000 
+		EndRadius = 50.00000000000 
+		StartRadiusSpread = 0.00000000000 
+		MidRadiusSpread = 0.00000000000 
+		EndRadiusSpread = 0.00000000000 
+		StartRGB = [ 71 , 63 , 56 ] 
+		StartAlpha = 0 
+		ColorMidTime = 13 
+		MidRGB = [ 60 , 49 , 47 ] 
+		MidAlpha = 71 
+		EndRGB = [ 0 , 0 , 0 ] 
+		EndAlpha = 0 
+	} 
+	{ 
+		Pos = VECTOR(198.08584594727, 124.75039672852, 241.59852600098) 
+		Angles = VECTOR(0.00000000000, 0.14808799326, 0.00000000000) 
+		Name = ParticleBox_10 
+		Class = ParticleObject 
+		Type = Default 
+		BoxDimsStart = VECTOR(8.16381931305, 4.33375692368, 8.16381931305) 
+		MidPosition = VECTOR(167.57351684570, 187.32073974609, 240.25790405273) 
+		BoxDimsMid = VECTOR(59.50305175781, 37.19781875610, 59.50305175781) 
+		EndPosition = VECTOR(89.45681762695, 326.40026855469, 191.91758728027) 
+		BoxDimsEnd = VECTOR(181.99858093262, 105.53264617920, 181.99858093262) 
+		Texture = apm_spray_01 
+		CreatedAtStart 
+		AbsentInNetGames 
+		UseMidPoint 
+		UseColorMidTime 
+		Type = NEWFLAT 
+		BlendMode = Blend 
+		FixedAlpha = 128 
+		AlphaCutoff = 0 
+		MaxStreams = 1 
+		SuspendDistance = 800 
+		lod_dist1 = 400 
+		lod_dist2 = 800 
+		EmitRate = 4.00000000000 
+		Lifetime = 5.00000000000 
+		MidPointPCT = 50 
+		StartRadius = 5.00000000000 
+		MidRadius = 75.00000000000 
+		EndRadius = 150.00000000000 
+		StartRadiusSpread = 50.00000000000 
+		MidRadiusSpread = 0.00000000000 
+		EndRadiusSpread = 30.00000000000 
+		StartRGB = [ 78 , 67 , 52 ] 
+		StartAlpha = 10 
+		ColorMidTime = 21 
+		MidRGB = [ 33 , 26 , 19 ] 
+		MidAlpha = 31 
+		EndRGB = [ 0 , 0 , 0 ] 
+		EndAlpha = 0 
+	} 
+	{ 
+		Pos = VECTOR(-485.02935791016, 39.23234939575, -531.73364257812) 
+		Angles = VECTOR(0.00000000000, 0.12638799846, 0.00000000000) 
+		Name = SkWare_Dark_Wall01 
+		Class = LevelGeometry 
+		CreatedAtStart 
+		CollisionMode = Geometry 
+	} 
+	{ 
+		Pos = VECTOR(-509.44104003906, -316.56204223633, -662.54748535156) 
+		Angles = VECTOR(0.00000000000, 0.12638799846, 0.00000000000) 
+		Name = SkWare_Dark_Floor06 
+		Class = LevelGeometry 
+		CreatedAtStart 
+		CollisionMode = Geometry 
+	} 
+	{ 
+		Pos = VECTOR(-5308.51757812500, 0.00000000000, -1806.27954101562) 
+		Angles = VECTOR(0.00000000000, 0.00000000000, 0.00000000000) 
+		Name = Plane01 
+		Class = LevelGeometry 
+		CreatedAtStart 
+		CollisionMode = Geometry 
+	} 
+	{ 
+		Pos = VECTOR(79.05760955811, 49.45666122437, -443.04528808594) 
+		Angles = VECTOR(-0.22013300657, 0.18897700310, 0.00189800002) 
+		Name = TB_Ware_Graffiti_03 
+		Class = LevelGeometry 
+		CreatedAtStart 
+		CollisionMode = Geometry 
+	} 
+	{ 
+		Pos = VECTOR(-870.76495361328, 107.76268005371, 306.59176635742) 
+		Angles = VECTOR(2.96091699600, -0.18071599305, -3.10955095291) 
+		Name = TB_Ware_Graffiti_04 
+		Class = LevelGeometry 
+		CreatedAtStart 
+		CollisionMode = Geometry 
+	} 
+	{ 
+		Pos = VECTOR(-837.95385742188, 107.76268005371, 296.01080322266) 
+		Angles = VECTOR(2.96091699600, -0.18071599305, -3.10955095291) 
+		Name = TB_Ware_Graffiti_05 
+		Class = LevelGeometry 
+		CreatedAtStart 
+		CollisionMode = Geometry 
+	} 
+	{ 
+		Pos = VECTOR(-662.59466552734, -65.91798400879, 67.21861267090) 
+		Angles = VECTOR(3.03672003746, 1.17336404324, 1.33448994160) 
+		Name = TB_WH_Floor_Oilstains_03 
+		Class = LevelGeometry 
+		CreatedAtStart 
+		CollisionMode = Geometry 
+	} 
+	{ 
+		Pos = VECTOR(-1015.94598388672, -53.95708847046, -432.64282226562) 
+		Angles = VECTOR(0.00000000000, 0.12638799846, 0.00000000000) 
+		Name = SkWare_Dark_Wall05 
+		Class = LevelGeometry 
+		CreatedAtStart 
+		CollisionMode = Geometry 
+	} 
+	{ 
+		Pos = VECTOR(-485.02935791016, 39.23234939575, -531.73364257812) 
+		Angles = VECTOR(0.00000000000, 0.12638799846, 0.00000000000) 
+		Name = SkWare_Dark_Wall02 
+		Class = LevelGeometry 
+		CreatedAtStart 
+		CollisionMode = Geometry 
+	} 
+	{ 
+		Pos = VECTOR(-743.29992675781, 25.83911132812, -1016.15240478516) 
+		Angles = VECTOR(-0.23765200377, 0.38956400752, -0.00137700001) 
+		Name = TB_Ware_Graffiti_06 
+		Class = LevelGeometry 
+		CreatedAtStart 
+		CollisionMode = Geometry 
+	} 
+] 
+SCRIPT LoadAllParticleTextures 
+	LoadParticleTexture "particles\\apm_spark_01" 
+	LoadParticleTexture "particles\\ru_tb_puff_01" 
+	LoadParticleTexture "particles\\apm_spray_01" 
+ENDSCRIPT
+
+SCRIPT TRGP_shadowtriggerScript 
+	Obj_MoveToNode Name = TRG_Playerrestart Orient NoReset 
+	ShadowSkaterOptionsTricks 
+ENDSCRIPT
+
+SCRIPT TB_Electrical_Upper_02Script 
+	TR_Electrical_Smash 
+ENDSCRIPT
+
+SCRIPT LoadTerrain 
+	LoadTerrainSounds terrain = TERRAIN_DEFAULT 
+ENDSCRIPT
+
+SCRIPT load_level_anims 
+	animload_THPS6_FrontEnd 
+ENDSCRIPT
+
+SCRIPT LoadCameras 
+	LoadAsset "levels\\mainmenu\\mainmenu_camera.ska" desc = mainmenu_camera 
+	LoadAsset "levels\\mainmenu\\mainmenu_camera02.ska" desc = mainmenu_camera02 
+	LoadAsset "levels\\mainmenu\\mainmenu_camera03.ska" desc = mainmenu_camera03 
+	LoadAsset "levels\\mainmenu\\skater_select_cam.ska" desc = skater_select_cam 
+	LoadAsset "levels\\mainmenu\\skater_select_cam01.ska" desc = skater_select_cam01 
+	LoadAsset "levels\\mainmenu\\skater_select_cam02.ska" desc = skater_select_cam02 
+	LoadAsset "levels\\mainmenu\\stationary_skater_cam.ska" desc = stationary_skater_cam 
+	LoadAsset "levels\\mainmenu\\test_cam.ska" desc = test_cam 
+	LoadAsset "levels\\mainmenu\\CAGR_cam1.ska" desc = CAGR_cam1 
+	LoadAsset "levels\\mainmenu\\level_select_cam.ska" desc = level_select_cam 
+ENDSCRIPT
+
+SCRIPT LoadObjectAnims 
+ENDSCRIPT
+
+

@@ -1,0 +1,81 @@
+
+SCRIPT SE2_LoadingSounds 
+	LoadSound "Shared\\Hits\\HitGlassPane2x" 
+	LoadSound "Shared\\Auto\\LA_Skid_11" vol = 100 dropoff = 150 
+	LoadSound "Shared\\Auto\\CarBrakeSqueal" vol = 100 dropoff = 150 
+	LoadSound "Shared\\Auto\\CarHorn_11" vol = 100 dropoff = 150 
+	LoadSound "Shared\\Hits\\HitMetalCan" vol = 100 dropoff = 150 PosUpdateWithDoppler 
+	LoadSound "Shared\\Hits\\BonkBush" vol = 100 dropoff = 0 
+	LoadSound "Shared\\Water\\FallWater" 
+	LoadSound "Shared\\Auto\\CarLoop" vol = 100 dropoff = 150 PosUpdateWithDoppler 
+	LoadSound "Vehicles\\Vehicle_Tire_Loop" 
+	LoadSound "Terrains\\BonkMetal_11" 
+	LoadSound "SE\\SK6_SE_ConveyorLoop" 
+	LoadSound "SE\\SK6_SE_HologramLoop" 
+	IF ( DebugSoundFX = 1 ) 
+		dumpheaps 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE2_SFX_DistPlanes 
+	wait 6 seconds 
+	BEGIN 
+		IF NOT IsStreamPlaying EXTDistPlane 
+			RANDOM(1, 1, 1, 1) 
+				RANDOMCASE TRG_SFX_Ghost_DistPlane01 : Obj_PlayStream RANDOM(1, 1, 1, 1) RANDOMCASE ST_MtlBox_ServoBeeps01 RANDOMCASE ST_MtlBox_ServoBeeps02 RANDOMCASE ST_MtlBox_ServoBeeps03 RANDOMCASE ST_MtlBox_ServoBeeps04 RANDOMEND vol = 200 dropoff = 800 id = EXTDistPlane 
+				RANDOMCASE TRG_SFX_Ghost_DistPlane02 : Obj_PlayStream RANDOM(1, 1, 1, 1) RANDOMCASE ST_MtlBox_ServoBeeps01 RANDOMCASE ST_MtlBox_ServoBeeps02 RANDOMCASE ST_MtlBox_ServoBeeps03 RANDOMCASE ST_MtlBox_ServoBeeps04 RANDOMEND vol = 200 dropoff = 800 id = EXTDistPlane 
+				RANDOMCASE TRG_SFX_Ghost_DistPlane03 : Obj_PlayStream RANDOM(1, 1, 1, 1) RANDOMCASE ST_MtlBox_ServoBeeps01 RANDOMCASE ST_MtlBox_ServoBeeps02 RANDOMCASE ST_MtlBox_ServoBeeps03 RANDOMCASE ST_MtlBox_ServoBeeps04 RANDOMEND vol = 200 dropoff = 800 id = EXTDistPlane 
+				RANDOMCASE TRG_SFX_Ghost_DistPlane04 : Obj_PlayStream RANDOM(1, 1, 1, 1) RANDOMCASE ST_MtlBox_ServoBeeps01 RANDOMCASE ST_MtlBox_ServoBeeps02 RANDOMCASE ST_MtlBox_ServoBeeps03 RANDOMCASE ST_MtlBox_ServoBeeps04 RANDOMEND vol = 200 dropoff = 800 id = EXTDistPlane 
+			RANDOMEND 
+		ENDIF 
+		wait 1 second 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT SE2_SFX_TurbineVent01 
+	IF NOT InNetGame 
+		Obj_PlaySound SK6_SE_ConveyorLoop emitter = TRG_SFX_SOB_TurbineVent01 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE2_SFX_TurbineVent02 
+	IF NOT InNetGame 
+		Obj_PlaySound SK6_SE_ConveyorLoop emitter = TRG_SFX_SOB_TurbineVent02 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE2_SFX_UFO_Lip 
+	Obj_PlaySound SK6_SE_HologramLoop vol = 250 pitch = 70 emitter = TRG_SFX_SOB_UFO_Lip 
+ENDSCRIPT
+
+SCRIPT SE2_SFX_UFO01 
+	Obj_PlaySound SK6_SE_HologramLoop vol = 250 pitch = 70 emitter = TRG_SFX_SOB_UFO01 
+ENDSCRIPT
+
+SCRIPT SE2_SFX_UFO02 
+	Obj_PlaySound SK6_SE_HologramLoop vol = 250 pitch = 70 emitter = TRG_SFX_SOB_UFO02 
+ENDSCRIPT
+
+SCRIPT SE2_SFX_MainRoom 
+	BEGIN 
+		BEGIN 
+			IF NOT IsStreamPlaying NerdKidSFXStream 
+				RANDOM_NO_REPEAT(1, 1, 1, 1, 1, 1, 1, 1, 1) 
+					RANDOMCASE Obj_PlayStream Ped_NerdKid_Moves02 vol = ( GlobalHintVOVol - 60 ) id = NerdKidSFXStream dropoff = 50 
+					RANDOMCASE Obj_PlayStream Ped_NerdKid_Moves03 vol = ( GlobalHintVOVol - 60 ) id = NerdKidSFXStream dropoff = 50 
+					RANDOMCASE Obj_PlayStream Ped_NerdKid_Moves04 vol = ( GlobalHintVOVol - 60 ) id = NerdKidSFXStream dropoff = 50 
+					RANDOMCASE Obj_PlayStream Ped_NerdKid_Moves05 vol = ( GlobalHintVOVol - 60 ) id = NerdKidSFXStream dropoff = 50 
+					RANDOMCASE Obj_PlayStream Ped_NerdKid_Moves06 vol = ( GlobalHintVOVol - 60 ) id = NerdKidSFXStream dropoff = 50 
+					RANDOMCASE Obj_PlayStream Ped_NerdKid_Moves07 vol = ( GlobalHintVOVol - 60 ) id = NerdKidSFXStream dropoff = 50 
+					RANDOMCASE Obj_PlayStream Ped_NerdKid_Moves08 vol = ( GlobalHintVOVol - 60 ) id = NerdKidSFXStream dropoff = 50 
+					RANDOMCASE Obj_PlayStream Ped_NerdKid_Moves09 vol = ( GlobalHintVOVol - 60 ) id = NerdKidSFXStream dropoff = 50 
+					RANDOMCASE Obj_PlayStream Ped_NerdKid_Moves10 vol = ( GlobalHintVOVol - 60 ) id = NerdKidSFXStream dropoff = 50 
+				RANDOMEND 
+			ENDIF 
+			wait 0.50000000000 seconds 
+		REPEAT 4 
+		wait 1 second 
+	REPEAT 
+ENDSCRIPT
+
+

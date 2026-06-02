@@ -1,0 +1,2230 @@
+SCRIPT SE_Setup 
+	SetFlag Flag = ElevatorIsDown 
+	UnSetFlag Flag = FighterEngine01 
+	UnSetFlag Flag = FighterEngine02 
+	UnSetFlag Flag = FighterEngine03 
+	UnSetFlag Flag = FireTrap_01 
+	UnSetFlag Flag = FireTrap_02 
+	UnSetFlag Flag = FireTrap_03 
+	UnSetFlag Flag = FireTrap_04 
+	UnSetFlag Flag = FireTrap_05 
+	UnSetFlag Flag = FireTrap_06 
+	UnSetFlag Flag = FireTrap_07 
+	UnSetFlag Flag = FireTrap_08 
+	UnSetFlag Flag = FireTrap_09 
+	UnSetFlag Flag = FireTrap_10 
+	UnSetFlag Flag = FireTrap_11 
+	UnSetFlag Flag = FireTrap_12 
+	UnSetFlag Flag = DartTrap_01 
+	UnSetFlag Flag = DartTrap_02 
+	UnSetFlag Flag = DartTrap_03 
+	UnSetFlag Flag = DartTrap_04 
+	UnSetFlag Flag = DartTrap_05 
+	UnSetFlag Flag = DartTrap_06 
+	UnSetFlag Flag = DartTrap_07 
+	UnSetFlag Flag = DartTrap_08 
+	SE_Initializer 
+ENDSCRIPT
+
+SCRIPT SE_startup 
+	spawnscript SE_particles 
+	LoadSkeleton name = "skeletons/CS_SE_SpaceWarp.ske" CS_SE_SpaceWarp 
+ENDSCRIPT
+
+SCRIPT SE_Initializer 
+	IF InMultiplayerGame 
+		Kill Prefix = "GEO_PreEvent_GatesToHell" 
+		Kill Prefix = "TRG_PreEvent_GatesToHell" 
+		Create Prefix = "GEO_PostEvent_GatesToHell" 
+		Create Prefix = "TRG_PostEvent_GatesToHell" 
+		Create name = TRG_PostEvent_GatesToHell_TeleportPlane03 
+		Kill Prefix = "GEO_PreEvent_Boulder" 
+		Kill Prefix = "TRG_PreEvent_Boulder" 
+		Create Prefix = "GEO_PostEvent_Boulder" 
+		Create Prefix = "TRG_PostEvent_Boulder" 
+		Create name = GEO_PostEvent_Spaceship_SpacePort_Kicker01 
+		Create name = GEO_PostEvent_Spaceship_Crane 
+		Create name = GEO_PostEvent_Spaceship_GreenButton01 
+		Create name = GEO_PostEvent_Spaceship_GreenButton02 
+		Create Prefix = "TRG_PostEvent_Spaceship" 
+		SetFlag Flag = Idol01 
+		SetFlag Flag = Idol02 
+		SetFlag Flag = Idol03 
+		SetFlag Flag = Idol04 
+		SetFlag Flag = Idol05 
+		destroyfastparticlesystem name = SP_sparking01 attachobjid = trg_droid_08 
+		destroyfastparticlesystem name = SP_sparking02 attachobjid = trg_droid_08 
+		destroyfastparticlesystem name = SP_shiphover 
+		Create name = GEO_PostEvent_Rib_Rib_001 
+		Create name = GEO_PostEvent_Rib_Rib_002 
+		Create name = GEO_PostEvent_Rib_QPKicker_01 
+		Create name = GEO_PostEvent_Rib_QPKicker_02 
+		Create name = GEO_PostEvent_Rib_LoungeKicker_001 
+		Create name = GEO_PostEvent_Rib_Tongue 
+		Create name = GEO_PostEvent_Rib_Mouth 
+		Create Prefix = "TRG_PostEvent_Rib" 
+		Kill name = GEO_Spaceport_Train 
+	ELSE 
+		spawnscript robosparks 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_KillCreate_NetGeo 
+	IF ( ( InMultiplayerGame ) | ( InNetGame ) ) 
+	ENDIF 
+ENDSCRIPT
+
+ElevatorIsDown = 0 
+ElevatorIsGoingUp = 1 
+ElevatorIsUp = 2 
+ElevatorIsGoingDown = 3 
+Rope01 = 4 
+Rope02 = 5 
+RedButton01 = 6 
+RedButton02 = 7 
+EnginesOn = 8 
+Engine01 = 9 
+Engine02 = 10 
+RibButton01 = 11 
+RibButton02 = 12 
+Idol01 = 13 
+Idol02 = 14 
+Idol03 = 15 
+Idol04 = 16 
+Idol05 = 17 
+FighterEngine01 = 18 
+FighterEngine02 = 19 
+FighterEngine03 = 20 
+FireTrap_01 = 21 
+FireTrap_02 = 22 
+FireTrap_03 = 23 
+FireTrap_04 = 24 
+FireTrap_05 = 25 
+FireTrap_06 = 26 
+FireTrap_07 = 27 
+FireTrap_08 = 28 
+FireTrap_09 = 29 
+FireTrap_10 = 30 
+FireTrap_11 = 31 
+FireTrap_12 = 32 
+DartTrap_01 = 33 
+DartTrap_02 = 34 
+DartTrap_03 = 35 
+DartTrap_04 = 36 
+DartTrap_05 = 37 
+DartTrap_06 = 38 
+DartTrap_07 = 39 
+DartTrap_08 = 40 
+SpaceToTempleVisible = 41 
+SpaceToHellVisible = 42 
+TempleToSpaceVisible = 43 
+TempleToHellVisible = 44 
+HellToTempleVisible = 45 
+HellToSpaceVisible = 46 
+SCRIPT SE_Goals 
+	IF NOT InMultiplayerGame 
+	ENDIF 
+	IF InMultiplayerGame 
+		add_multiplayer_mode_goals 
+	ENDIF 
+	IF NOT InSplitScreenGame 
+		IF NOT ( ( GameModeEquals is_singlesession ) | ( GameModeEquals is_creategoals ) ) 
+			IF NOT InNetGame 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_Crazy_Girl 
+	Obj_SetAttentionRadius 10 
+	Ped_InitAI stand avoid GetAttention F_MardisGras_Dance 
+ENDSCRIPT
+
+SCRIPT SE_Mayan_Weather_ON 
+	TODManager_SetTODInstant evening 
+	EnableSun 
+ENDSCRIPT
+
+SCRIPT SE_Mayan_Weather_Off 
+	TODManager_SetTODInstant afternoon 
+	DisableSun 
+ENDSCRIPT
+
+SCRIPT Shatter_1 
+	SE_SFX_BreakMetal 
+	Shatter { name = <name> 
+		area = 2000 
+		texture_swap = CG_SE_Shatter_CircleGrate 
+		variance = 1.00000000000 
+		spread = 1.50000000000 
+		life = 6 
+		bounce = 0.50000000000 
+		scale = 0.40000000596 
+		vel_x = 0 
+		vel_y = 60 
+		vel_z = 0 
+	} 
+	Kill name = <name> 
+ENDSCRIPT
+
+SCRIPT Shatter_2 
+	SE_SFX_BreakMetal 
+	Shatter { name = <name> 
+		area = 2000 
+		texture_swap = CG_SE_Shatter_Grate 
+		variance = 1.00000000000 
+		spread = 1.50000000000 
+		life = 6 
+		bounce = 0.50000000000 
+		scale = 0.40000000596 
+		vel_x = 0 
+		vel_y = 60 
+		vel_z = 0 
+	} 
+	Kill name = <name> 
+ENDSCRIPT
+
+SCRIPT SE_Temple_FireTrap 
+	IF NOT GetFlag Flag = <Flag> 
+		PlaySound FlamingFireBall01 pitch = 130 
+		SetFlag Flag = <Flag> 
+		SWITCH <Flag> 
+			CASE FireTrap_01 
+				CreateFastParticleSystem name = JOW_SE_FireTrap01 params_Script = JOW_SE_FireTrap01_fast_particle_params 
+				CreateFastParticleSystem name = JOW_SE_FireTrap01a params_Script = JOW_SE_FireTrap01a_fast_particle_params 
+			CASE FireTrap_02 
+				CreateFastParticleSystem name = JOW_SE_FireTrap02 params_Script = JOW_SE_FireTrap02_fast_particle_params 
+				CreateFastParticleSystem name = JOW_SE_FireTrap02a params_Script = JOW_SE_FireTrap02a_fast_particle_params 
+			CASE FireTrap_03 
+				CreateFastParticleSystem name = JOW_SE_FireTrap03 params_Script = JOW_SE_FireTrap03_fast_particle_params 
+				CreateFastParticleSystem name = JOW_SE_FireTrap03a params_Script = JOW_SE_FireTrap03a_fast_particle_params 
+			CASE FireTrap_04 
+				CreateFastParticleSystem name = JOW_SE_FireTrap04 params_Script = JOW_SE_FireTrap04_fast_particle_params 
+				CreateFastParticleSystem name = JOW_SE_FireTrap04a params_Script = JOW_SE_FireTrap04a_fast_particle_params 
+			CASE FireTrap_05 
+				CreateFastParticleSystem name = JOW_SE_FireTrap05 params_Script = JOW_SE_FireTrap05_fast_particle_params 
+				CreateFastParticleSystem name = JOW_SE_FireTrap05a params_Script = JOW_SE_FireTrap05a_fast_particle_params 
+			CASE FireTrap_06 
+				CreateFastParticleSystem name = JOW_SE_FireTrap06 params_Script = JOW_SE_FireTrap06_fast_particle_params 
+				CreateFastParticleSystem name = JOW_SE_FireTrap06a params_Script = JOW_SE_FireTrap06a_fast_particle_params 
+			CASE FireTrap_07 
+				CreateFastParticleSystem name = JOW_SE_FireTrap07 params_Script = JOW_SE_FireTrap07_fast_particle_params 
+				CreateFastParticleSystem name = JOW_SE_FireTrap07a params_Script = JOW_SE_FireTrap07a_fast_particle_params 
+			CASE FireTrap_08 
+				CreateFastParticleSystem name = JOW_SE_FireTrap08 params_Script = JOW_SE_FireTrap08_fast_particle_params 
+				CreateFastParticleSystem name = JOW_SE_FireTrap08a params_Script = JOW_SE_FireTrap08a_fast_particle_params 
+			CASE FireTrap_09 
+				CreateFastParticleSystem name = JOW_SE_FireTrap09 params_Script = JOW_SE_FireTrap09_fast_particle_params 
+				CreateFastParticleSystem name = JOW_SE_FireTrap09a params_Script = JOW_SE_FireTrap09a_fast_particle_params 
+			CASE FireTrap_10 
+				CreateFastParticleSystem name = JOW_SE_FireTrap10 params_Script = JOW_SE_FireTrap10_fast_particle_params 
+				CreateFastParticleSystem name = JOW_SE_FireTrap10a params_Script = JOW_SE_FireTrap10a_fast_particle_params 
+			CASE FireTrap_11 
+				CreateFastParticleSystem name = JOW_SE_FireTrap11 params_Script = JOW_SE_FireTrap11_fast_particle_params 
+				CreateFastParticleSystem name = JOW_SE_FireTrap11a params_Script = JOW_SE_FireTrap11a_fast_particle_params 
+			CASE FireTrap_12 
+				CreateFastParticleSystem name = JOW_SE_FireTrap12 params_Script = JOW_SE_FireTrap12_fast_particle_params 
+				CreateFastParticleSystem name = JOW_SE_FireTrap12a params_Script = JOW_SE_FireTrap12a_fast_particle_params 
+		ENDSWITCH 
+		Wait 3 Seconds 
+		UnSetFlag Flag = <Flag> 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_Temple_DartTrap 
+	IF NOT GetFlag Flag = <Flag> 
+		spawnscript SE_SFX_DartsShoot 
+		SetFlag Flag = <Flag> 
+		Create name = <Particle> 
+		Create name = <Particle2> 
+		SWITCH <Flag> 
+			CASE DartTrap_01 
+				CreateFastParticleSystem name = JOW_SE_Dart01 params_Script = JOW_SE_Dart01_fast_particle_params 
+				CreateFastParticleSystem name = JOW_SE_Dart01a params_Script = JOW_SE_Dart01a_fast_particle_params 
+			CASE DartTrap_02 
+				CreateFastParticleSystem name = JOW_SE_Dart02 params_Script = JOW_SE_Dart02_fast_particle_params 
+				CreateFastParticleSystem name = JOW_SE_Dart02a params_Script = JOW_SE_Dart02a_fast_particle_params 
+			CASE DartTrap_03 
+				CreateFastParticleSystem name = JOW_SE_Dart03 params_Script = JOW_SE_Dart03_fast_particle_params 
+				CreateFastParticleSystem name = JOW_SE_Dart03a params_Script = JOW_SE_Dart03a_fast_particle_params 
+			CASE DartTrap_04 
+				CreateFastParticleSystem name = JOW_SE_Dart04 params_Script = JOW_SE_Dart04_fast_particle_params 
+				CreateFastParticleSystem name = JOW_SE_Dart04a params_Script = JOW_SE_Dart04a_fast_particle_params 
+			CASE DartTrap_05 
+				CreateFastParticleSystem name = JOW_SE_Dart05 params_Script = JOW_SE_Dart05_fast_particle_params 
+				CreateFastParticleSystem name = JOW_SE_Dart05a params_Script = JOW_SE_Dart05a_fast_particle_params 
+			CASE DartTrap_06 
+				CreateFastParticleSystem name = JOW_SE_Dart06 params_Script = JOW_SE_Dart06_fast_particle_params 
+				CreateFastParticleSystem name = JOW_SE_Dart06a params_Script = JOW_SE_Dart06a_fast_particle_params 
+			CASE DartTrap_07 
+				CreateFastParticleSystem name = JOW_SE_Dart07 params_Script = JOW_SE_Dart07_fast_particle_params 
+				CreateFastParticleSystem name = JOW_SE_Dart07a params_Script = JOW_SE_Dart07a_fast_particle_params 
+			CASE DartTrap_08 
+				CreateFastParticleSystem name = JOW_SE_Dart08 params_Script = JOW_SE_Dart08_fast_particle_params 
+				CreateFastParticleSystem name = JOW_SE_Dart08a params_Script = JOW_SE_Dart08a_fast_particle_params 
+		ENDSWITCH 
+		Wait 1 Seconds 
+		Kill name = <Particle> 
+		Kill name = <Particle2> 
+		UnSetFlag Flag = <Flag> 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_Fighter_Liptrick_01 
+	GetTriggerArray Lip 
+	IF Triggertype <Trigger_Array> 
+		IF NOT InMultiplayerGame 
+			IF NOT GetFlag Flag = FighterEngine01 
+				Create name = TRG_EngineSmoke_01_Start 
+				Create name = TRG_EngineSmoke_02_Start 
+				SetFlag Flag = FighterEngine01 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_Fighter_Liptrick_02 
+	GetTriggerArray Lip 
+	IF Triggertype <Trigger_Array> 
+		IF NOT InMultiplayerGame 
+			IF NOT GetFlag Flag = FighterEngine02 
+				Create name = TRG_EngineSmoke_03_Start 
+				Create name = TRG_EngineSmoke_04_Start 
+				SetFlag Flag = FighterEngine02 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_Fighter_Liptrick_03 
+	GetTriggerArray Lip 
+	IF Triggertype <Trigger_Array> 
+		IF NOT InMultiplayerGame 
+			IF NOT GetFlag Flag = FighterEngine03 
+				Create name = TRG_EngineSmoke_05_Start 
+				Create name = TRG_EngineSmoke_06_Start 
+				SetFlag Flag = FighterEngine03 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_Ped_LS_Music_On 
+	Obj_SetAttentionRadius 10 
+	Ped_InitAI stand GetAttention LoungeSinger_Laying 
+ENDSCRIPT
+
+SCRIPT SE_Ped_TempleHint1 
+	Ped_Utils_SetupHintSpeech { 
+		ped_id = TRG_Ped_Hint_Mayan 
+		accept_text = "Press \\m5 to talk." 
+		hint_text = "The Monkey gods are quick to judge wrongdoers.  If you tag the 5 idols, you will be doomed to face the Monkey\'s wrath in Hell!" 
+		hint_text_time = 15 
+		VO = SE_Ped_Mayan_VO 
+		Volume = 250 
+		inner_radius = 8 
+		outer_radius = 30 
+		dont_deactivate_goals 
+	} 
+	Obj_SetAttentionRadius 40 
+	Ped_InitAI stand fall GetAttention 
+ENDSCRIPT
+
+SCRIPT SE_Ped_TempleHint2 
+	Ped_Utils_SetupHintSpeech { 
+		ped_id = TRG_Ped_Hint_Tikiman 
+		accept_text = "Press \\m5 to talk." 
+		hint_text = "I think the statue\'s support ropes are about to break!  Don\'t Grind near them, or something bad might happen!" 
+		hint_text_time = 15 
+		VO = SE_Ped_Tikiman_VO 
+		Volume = 250 
+		inner_radius = 8 
+		outer_radius = 30 
+		dont_deactivate_goals 
+	} 
+	Obj_SetAttentionRadius 40 
+	Ped_InitAI stand fall GetAttention 
+ENDSCRIPT
+
+SCRIPT SE_Ped_SpaceportHint1 
+	Ped_Utils_SetupHintSpeech { 
+		ped_id = TRG_Ped_Hint_Space 
+		accept_text = "Press \\m5 to talk." 
+		hint_text = "Activate the red wall circuitry on either side of the walkway behind me or face immediate probing, puny meatslave!" 
+		hint_text_time = 15 
+		VO = SE_Ped_AlienDoctor_VO 
+		Volume = 250 
+		inner_radius = 8 
+		outer_radius = 30 
+		dont_deactivate_goals 
+	} 
+	Obj_SetAttentionRadius 40 
+	Ped_InitAI stand fall GetAttention 
+ENDSCRIPT
+
+SCRIPT SE_Ped_HellHint1 
+	Ped_Utils_SetupHintSpeech { 
+		ped_id = TRG_Ped_Hint_Hell 
+		accept_text = "Press \\m5 to talk." 
+		hint_text = "Da big boss needs da runes lit up. Lip Trick on toppa da two brokin ribs to nok em ovva an den Wallplant on da two pillar runes.  Once ya do that, I\'ll let you inta da bak room so da boss kin \'gratulate you hisself." 
+		hint_text_time = 15 
+		VO = SE_Ped_Imp_VO 
+		Volume = 250 
+		inner_radius = 8 
+		outer_radius = 30 
+		dont_deactivate_goals 
+	} 
+	Obj_SetAttentionRadius 40 
+	Ped_InitAI stand fall GetAttention 
+ENDSCRIPT
+
+SCRIPT SE_TeleporterDoor_A_PlayerApproaches 
+	spawnscript SE_SFX_SpaceDoorOpen 
+	SendException Open name = GEO_LeftDoor_05 
+	SendException Open name = GEO_RightDoor_05 
+	SendException Open name = GEO_LeftDoor_03 
+	SendException Open name = GEO_RightDoor_03 
+ENDSCRIPT
+
+SCRIPT SE_TeleporterDoor_A_PlayerLeaves 
+	spawnscript SE_SFX_SpaceDoorClose 
+	SendException Close name = GEO_LeftDoor_05 
+	SendException Close name = GEO_RightDoor_05 
+	SendException Close name = GEO_LeftDoor_03 
+	SendException Close name = GEO_RightDoor_03 
+ENDSCRIPT
+
+SCRIPT SE_TeleporterDoor_B_PlayerApproaches 
+	spawnscript SE_SFX_SpaceDoorOpen 
+	SendException Open name = GEO_LeftDoor_06 
+	SendException Open name = GEO_RightDoor_06 
+	SendException Open name = GEO_LeftDoor_02 
+	SendException Open name = GEO_RightDoor_02 
+ENDSCRIPT
+
+SCRIPT SE_TeleporterDoor_B_PlayerLeaves 
+	spawnscript SE_SFX_SpaceDoorClose 
+	SendException Close name = GEO_LeftDoor_06 
+	SendException Close name = GEO_RightDoor_06 
+	SendException Close name = GEO_LeftDoor_02 
+	SendException Close name = GEO_RightDoor_02 
+ENDSCRIPT
+
+SCRIPT SE_TeleporterDoor_C_PlayerApproaches 
+	spawnscript SE_SFX_SpaceDoorOpen 
+	SendException Open name = GEO_LeftDoor_01 
+	SendException Open name = GEO_RightDoor_01 
+	SendException Open name = GEO_LeftDoor_04 
+	SendException Open name = GEO_RightDoor_04 
+ENDSCRIPT
+
+SCRIPT SE_TeleporterDoor_C_PlayerLeaves 
+	spawnscript SE_SFX_SpaceDoorClose 
+	SendException Close name = GEO_LeftDoor_01 
+	SendException Close name = GEO_RightDoor_01 
+	SendException Close name = GEO_LeftDoor_04 
+	SendException Close name = GEO_RightDoor_04 
+ENDSCRIPT
+
+SCRIPT SE_Door_Left_01 
+	Obj_ClearExceptions 
+	Obj_SetException Ex = Open Scr = SE_Door_Left_01_Open params = <...> 
+	Obj_SetException Ex = Close Scr = SE_Door_Left_01_Close params = <...> 
+ENDSCRIPT
+
+SCRIPT SE_Door_Left_01_Open 
+	Obj_MoveToNode name = TRG_LeftDoor_01_Open Speed = 15 
+	Obj_WaitMove 
+ENDSCRIPT
+
+SCRIPT SE_Door_Left_01_Close 
+	Obj_MoveToNode name = TRG_LeftDoor_01_Closed Speed = 15 
+	Obj_WaitMove 
+ENDSCRIPT
+
+SCRIPT SE_Door_Right_01 
+	Obj_ClearExceptions 
+	Obj_SetException Ex = Open Scr = SE_Door_Right_01_Open params = <...> 
+	Obj_SetException Ex = Close Scr = SE_Door_Right_01_Close params = <...> 
+ENDSCRIPT
+
+SCRIPT SE_Door_Right_01_Open 
+	Obj_MoveToNode name = TRG_RightDoor_01_Open Speed = 15 
+	Obj_WaitMove 
+ENDSCRIPT
+
+SCRIPT SE_Door_Right_01_Close 
+	Obj_MoveToNode name = TRG_RightDoor_01_Closed Speed = 15 
+	Obj_WaitMove 
+ENDSCRIPT
+
+SCRIPT SE_Door_Left_02 
+	Obj_ClearExceptions 
+	Obj_SetException Ex = Open Scr = SE_Door_Left_02_Open params = <...> 
+	Obj_SetException Ex = Close Scr = SE_Door_Left_02_Close params = <...> 
+ENDSCRIPT
+
+SCRIPT SE_Door_Left_02_Open 
+	Obj_MoveToNode name = TRG_LeftDoor_02_Open Speed = 15 
+	Obj_WaitMove 
+ENDSCRIPT
+
+SCRIPT SE_Door_Left_02_Close 
+	Obj_MoveToNode name = TRG_LeftDoor_02_Closed Speed = 15 
+	Obj_WaitMove 
+ENDSCRIPT
+
+SCRIPT SE_Door_Right_02 
+	Obj_ClearExceptions 
+	Obj_SetException Ex = Open Scr = SE_Door_Right_02_Open params = <...> 
+	Obj_SetException Ex = Close Scr = SE_Door_Right_02_Close params = <...> 
+ENDSCRIPT
+
+SCRIPT SE_Door_Right_02_Open 
+	Obj_MoveToNode name = TRG_RightDoor_02_Open Speed = 15 
+	Obj_WaitMove 
+ENDSCRIPT
+
+SCRIPT SE_Door_Right_02_Close 
+	Obj_MoveToNode name = TRG_RightDoor_02_Closed Speed = 15 
+	Obj_WaitMove 
+ENDSCRIPT
+
+SCRIPT SE_Door_Left_03 
+	Obj_ClearExceptions 
+	Obj_SetException Ex = Open Scr = SE_Door_Left_03_Open params = <...> 
+	Obj_SetException Ex = Close Scr = SE_Door_Left_03_Close params = <...> 
+ENDSCRIPT
+
+SCRIPT SE_Door_Left_03_Open 
+	Obj_MoveToNode name = TRG_LeftDoor_03_Open Speed = 15 
+	Obj_WaitMove 
+ENDSCRIPT
+
+SCRIPT SE_Door_Left_03_Close 
+	Obj_MoveToNode name = TRG_LeftDoor_03_Closed Speed = 15 
+	Obj_WaitMove 
+ENDSCRIPT
+
+SCRIPT SE_Door_Right_03 
+	Obj_ClearExceptions 
+	Obj_SetException Ex = Open Scr = SE_Door_Right_03_Open params = <...> 
+	Obj_SetException Ex = Close Scr = SE_Door_Right_03_Close params = <...> 
+ENDSCRIPT
+
+SCRIPT SE_Door_Right_03_Open 
+	Obj_MoveToNode name = TRG_RightDoor_03_Open Speed = 15 
+	Obj_WaitMove 
+ENDSCRIPT
+
+SCRIPT SE_Door_Right_03_Close 
+	Obj_MoveToNode name = TRG_RightDoor_03_Closed Speed = 15 
+	Obj_WaitMove 
+ENDSCRIPT
+
+SCRIPT SE_Door_Left_04 
+	Obj_ClearExceptions 
+	Obj_SetException Ex = Open Scr = SE_Door_Left_04_Open params = <...> 
+	Obj_SetException Ex = Close Scr = SE_Door_Left_04_Close params = <...> 
+ENDSCRIPT
+
+SCRIPT SE_Door_Left_04_Open 
+	Obj_MoveToNode name = TRG_LeftDoor_04_Open Speed = 15 
+	Obj_WaitMove 
+ENDSCRIPT
+
+SCRIPT SE_Door_Left_04_Close 
+	Obj_MoveToNode name = TRG_LeftDoor_04_Closed Speed = 15 
+	Obj_WaitMove 
+ENDSCRIPT
+
+SCRIPT SE_Door_Right_04 
+	Obj_ClearExceptions 
+	Obj_SetException Ex = Open Scr = SE_Door_Right_04_Open params = <...> 
+	Obj_SetException Ex = Close Scr = SE_Door_Right_04_Close params = <...> 
+ENDSCRIPT
+
+SCRIPT SE_Door_Right_04_Open 
+	Obj_MoveToNode name = TRG_RightDoor_04_Open Speed = 15 
+	Obj_WaitMove 
+ENDSCRIPT
+
+SCRIPT SE_Door_Right_04_Close 
+	Obj_MoveToNode name = TRG_RightDoor_04_Closed Speed = 15 
+	Obj_WaitMove 
+ENDSCRIPT
+
+SCRIPT SE_Door_Left_05 
+	Obj_ClearExceptions 
+	Obj_SetException Ex = Open Scr = SE_Door_Left_05_Open params = <...> 
+	Obj_SetException Ex = Close Scr = SE_Door_Left_05_Close params = <...> 
+ENDSCRIPT
+
+SCRIPT SE_Door_Left_05_Open 
+	Obj_MoveToNode name = TRG_LeftDoor_05_Open Speed = 15 
+	Obj_WaitMove 
+ENDSCRIPT
+
+SCRIPT SE_Door_Left_05_Close 
+	Obj_MoveToNode name = TRG_LeftDoor_05_Closed Speed = 15 
+	Obj_WaitMove 
+ENDSCRIPT
+
+SCRIPT SE_Door_Right_05 
+	Obj_ClearExceptions 
+	Obj_SetException Ex = Open Scr = SE_Door_Right_05_Open params = <...> 
+	Obj_SetException Ex = Close Scr = SE_Door_Right_05_Close params = <...> 
+ENDSCRIPT
+
+SCRIPT SE_Door_Right_05_Open 
+	Obj_MoveToNode name = TRG_RightDoor_05_Open Speed = 15 
+	Obj_WaitMove 
+ENDSCRIPT
+
+SCRIPT SE_Door_Right_05_Close 
+	Obj_MoveToNode name = TRG_RightDoor_05_Closed Speed = 15 
+	Obj_WaitMove 
+ENDSCRIPT
+
+SCRIPT SE_Door_Left_06 
+	Obj_ClearExceptions 
+	Obj_SetException Ex = Open Scr = SE_Door_Left_06_Open params = <...> 
+	Obj_SetException Ex = Close Scr = SE_Door_Left_06_Close params = <...> 
+ENDSCRIPT
+
+SCRIPT SE_Door_Left_06_Open 
+	Obj_MoveToNode name = TRG_LeftDoor_06_Open Speed = 15 
+	Obj_WaitMove 
+ENDSCRIPT
+
+SCRIPT SE_Door_Left_06_Close 
+	Obj_MoveToNode name = TRG_LeftDoor_06_Closed Speed = 15 
+	Obj_WaitMove 
+ENDSCRIPT
+
+SCRIPT SE_Door_Right_06 
+	Obj_ClearExceptions 
+	Obj_SetException Ex = Open Scr = SE_Door_Right_06_Open params = <...> 
+	Obj_SetException Ex = Close Scr = SE_Door_Right_06_Close params = <...> 
+ENDSCRIPT
+
+SCRIPT SE_Door_Right_06_Open 
+	Obj_MoveToNode name = TRG_RightDoor_06_Open Speed = 15 
+	Obj_WaitMove 
+ENDSCRIPT
+
+SCRIPT SE_Door_Right_06_Close 
+	Obj_MoveToNode name = TRG_RightDoor_06_Closed Speed = 15 
+	Obj_WaitMove 
+ENDSCRIPT
+
+SCRIPT SE_FanBlade 
+	Obj_RotZ Angle = 180 Speed = 1000 FLAG_MAX_COORDS 
+	Obj_WaitRotate 
+	Obj_RotY Speed = 200 FLAG_MAX_COORDS 
+ENDSCRIPT
+
+SCRIPT SE_HellGate_01_Approach 
+	SendException Open name = GEO_HellGate_01A 
+	SendException Open name = GEO_HellGate_01B 
+ENDSCRIPT
+
+SCRIPT SE_HellGate_01_Leave 
+	SendException Close name = GEO_HellGate_01A 
+	SendException Close name = GEO_HellGate_01B 
+ENDSCRIPT
+
+SCRIPT SE_HellGate_01A 
+	Obj_ClearExceptions 
+	Obj_SetException Ex = Open Scr = SE_HellGate_A_Open params = <...> 
+	Obj_SetException Ex = Close Scr = SE_HellGate_A_Close params = <...> 
+ENDSCRIPT
+
+SCRIPT SE_HellGate_01B 
+	Obj_ClearExceptions 
+	Obj_SetException Ex = Open Scr = SE_HellGate_B_Open params = <...> 
+	Obj_SetException Ex = Close Scr = SE_HellGate_B_Close params = <...> 
+ENDSCRIPT
+
+SCRIPT SE_HellGate_02_Approach 
+	SendException Open name = GEO_HellGate_02A 
+	SendException Open name = GEO_HellGate_02B 
+ENDSCRIPT
+
+SCRIPT SE_HellGate_02_Leave 
+	SendException Close name = GEO_HellGate_02A 
+	SendException Close name = GEO_HellGate_02B 
+ENDSCRIPT
+
+SCRIPT SE_HellGate_02A 
+	Obj_ClearExceptions 
+	Obj_SetException Ex = Open Scr = SE_HellGate_A_Open params = <...> 
+	Obj_SetException Ex = Close Scr = SE_HellGate_A_Close params = <...> 
+ENDSCRIPT
+
+SCRIPT SE_HellGate_02B 
+	Obj_ClearExceptions 
+	Obj_SetException Ex = Open Scr = SE_HellGate_B_Open params = <...> 
+	Obj_SetException Ex = Close Scr = SE_HellGate_B_Close params = <...> 
+ENDSCRIPT
+
+SCRIPT SE_HellGate_03_Approach 
+	SendException Open name = GEO_HellGate_03A 
+	SendException Open name = GEO_HellGate_03B 
+ENDSCRIPT
+
+SCRIPT SE_HellGate_03_Leave 
+	SendException Close name = GEO_HellGate_03A 
+	SendException Close name = GEO_HellGate_03B 
+ENDSCRIPT
+
+SCRIPT SE_HellGate_03A 
+	Obj_ClearExceptions 
+	Obj_SetException Ex = Open Scr = SE_HellGate_A_Open params = <...> 
+	Obj_SetException Ex = Close Scr = SE_HellGate_A_Close params = <...> 
+ENDSCRIPT
+
+SCRIPT SE_HellGate_03B 
+	Obj_ClearExceptions 
+	Obj_SetException Ex = Open Scr = SE_HellGate_B_Open params = <...> 
+	Obj_SetException Ex = Close Scr = SE_HellGate_B_Close params = <...> 
+ENDSCRIPT
+
+SCRIPT SE_HellGate_04_Approach 
+	SendException Open name = GEO_HellGate_04A 
+	SendException Open name = GEO_HellGate_04B 
+ENDSCRIPT
+
+SCRIPT SE_HellGate_04_Leave 
+	SendException Close name = GEO_HellGate_04A 
+	SendException Close name = GEO_HellGate_04B 
+ENDSCRIPT
+
+SCRIPT SE_HellGate_04A 
+	Obj_ClearExceptions 
+	Obj_SetException Ex = Open Scr = SE_HellGate_A_Open params = <...> 
+	Obj_SetException Ex = Close Scr = SE_HellGate_A_Close params = <...> 
+ENDSCRIPT
+
+SCRIPT SE_HellGate_04B 
+	Obj_ClearExceptions 
+	Obj_SetException Ex = Open Scr = SE_HellGate_B_Open params = <...> 
+	Obj_SetException Ex = Close Scr = SE_HellGate_B_Close params = <...> 
+ENDSCRIPT
+
+SCRIPT SE_HellGate_05_Approach 
+	SendException Open name = GEO_HellGate_05A 
+	SendException Open name = GEO_HellGate_05B 
+ENDSCRIPT
+
+SCRIPT SE_HellGate_05_Leave 
+	SendException Close name = GEO_HellGate_05A 
+	SendException Close name = GEO_HellGate_05B 
+ENDSCRIPT
+
+SCRIPT SE_HellGate_05A 
+	Obj_ClearExceptions 
+	Obj_SetException Ex = Open Scr = SE_HellGate_A_Open params = <...> 
+	Obj_SetException Ex = Close Scr = SE_HellGate_A_Close params = <...> 
+ENDSCRIPT
+
+SCRIPT SE_HellGate_05B 
+	Obj_ClearExceptions 
+	Obj_SetException Ex = Open Scr = SE_HellGate_B_Open params = <...> 
+	Obj_SetException Ex = Close Scr = SE_HellGate_B_Close params = <...> 
+ENDSCRIPT
+
+SCRIPT SE_HellGate_06_Approach 
+	SendException Open name = GEO_HellGate_06A 
+	SendException Open name = GEO_HellGate_06B 
+ENDSCRIPT
+
+SCRIPT SE_HellGate_06_Leave 
+	SendException Close name = GEO_HellGate_06A 
+	SendException Close name = GEO_HellGate_06B 
+ENDSCRIPT
+
+SCRIPT SE_HellGate_06A 
+	Obj_ClearExceptions 
+	Obj_SetException Ex = Open Scr = SE_HellGate_A_Open params = <...> 
+	Obj_SetException Ex = Close Scr = SE_HellGate_A_Close params = <...> 
+ENDSCRIPT
+
+SCRIPT SE_HellGate_06B 
+	Obj_ClearExceptions 
+	Obj_SetException Ex = Open Scr = SE_HellGate_B_Open params = <...> 
+	Obj_SetException Ex = Close Scr = SE_HellGate_B_Close params = <...> 
+ENDSCRIPT
+
+SCRIPT SE_HellGate_07_Approach 
+	SendException Open name = GEO_HellGate_07A 
+	SendException Open name = GEO_HellGate_07B 
+ENDSCRIPT
+
+SCRIPT SE_HellGate_07_Leave 
+	SendException Close name = GEO_HellGate_07A 
+	SendException Close name = GEO_HellGate_07B 
+ENDSCRIPT
+
+SCRIPT SE_HellGate_07A 
+	Obj_ClearExceptions 
+	Obj_SetException Ex = Open Scr = SE_HellGate_A_Open params = <...> 
+	Obj_SetException Ex = Close Scr = SE_HellGate_A_Close params = <...> 
+ENDSCRIPT
+
+SCRIPT SE_HellGate_07B 
+	Obj_ClearExceptions 
+	Obj_SetException Ex = Open Scr = SE_HellGate_B_Open params = <...> 
+	Obj_SetException Ex = Close Scr = SE_HellGate_B_Close params = <...> 
+ENDSCRIPT
+
+SCRIPT SE_HellGate_08_Approach 
+	SendException Open name = GEO_HellGate_08A 
+	SendException Open name = GEO_HellGate_08B 
+ENDSCRIPT
+
+SCRIPT SE_HellGate_08_Leave 
+	SendException Close name = GEO_HellGate_08A 
+	SendException Close name = GEO_HellGate_08B 
+ENDSCRIPT
+
+SCRIPT SE_HellGate_08A 
+	Obj_ClearExceptions 
+	Obj_SetException Ex = Open Scr = SE_HellGate_A_Open params = <...> 
+	Obj_SetException Ex = Close Scr = SE_HellGate_A_Close params = <...> 
+ENDSCRIPT
+
+SCRIPT SE_HellGate_08B 
+	Obj_ClearExceptions 
+	Obj_SetException Ex = Open Scr = SE_HellGate_B_Open params = <...> 
+	Obj_SetException Ex = Close Scr = SE_HellGate_B_Close params = <...> 
+ENDSCRIPT
+
+SCRIPT SE_HellGate_A_Open 
+	Obj_RotZ Angle = 90 Speed = 1000 FLAG_MAX_COORDS 
+ENDSCRIPT
+
+SCRIPT SE_HellGate_A_Close 
+	Obj_RotZ Angle = -90 Speed = 1000 FLAG_MAX_COORDS 
+ENDSCRIPT
+
+SCRIPT SE_HellGate_B_Open 
+	Obj_RotZ Angle = -90 Speed = 1000 FLAG_MAX_COORDS 
+ENDSCRIPT
+
+SCRIPT SE_HellGate_B_Close 
+	Obj_RotZ Angle = 90 Speed = 1000 FLAG_MAX_COORDS 
+ENDSCRIPT
+
+SCRIPT SE_Droid_Slow 
+	Car_Generic01 StickToGround NoSound TurnDist = 20 DefaultSpeed = 5 <...> 
+ENDSCRIPT
+
+SCRIPT SE_Droid_Medium 
+	Car_Generic01 StickToGround NoSound TurnDist = 20 DefaultSpeed = 10 <...> 
+ENDSCRIPT
+
+SCRIPT SE_Droid_Fast 
+	Car_Generic01 StickToGround NoSound TurnDist = 20 DefaultSpeed = 20 <...> 
+ENDSCRIPT
+
+SCRIPT SE_FlyingDroid_Slow 
+	Car_Generic01 NoSound TurnDist = 20 DefaultSpeed = 10 <...> 
+ENDSCRIPT
+
+SCRIPT SE_FlyingDroid_Medium 
+	Car_Generic01 NoSound TurnDist = 20 DefaultSpeed = 20 <...> 
+ENDSCRIPT
+
+SCRIPT SE_FlyingDroid_Fast 
+	Car_Generic01 NoSound TurnDist = 20 DefaultSpeed = 30 <...> 
+ENDSCRIPT
+
+SCRIPT SE_Train 
+	Obj_StickToGround Off 
+	Obj_SetPathVelocity 200 mph 
+	Obj_SetPathTurnDist 10 
+	Obj_PathHeading On 
+	Obj_FollowPathLinked Orient 
+	Obj_PlaySound SK6_SE_ConveyorLoop_11 dropoff = 200 
+ENDSCRIPT
+
+SCRIPT SE_Bird 
+	obj_shadowoff 
+	Obj_ClearExceptions 
+	Obj_SetException Ex = ObjectInRadius Scr = SE_Bird_Fly 
+	Obj_SetInnerRadius 15 
+	BEGIN 
+		Obj_CycleAnim Anim = Idle NumCycles = RANDOM(1, 1, 1, 1, 1, 1, 1, 1) RANDOMCASE 3 RANDOMCASE 4 RANDOMCASE 5 RANDOMCASE 6 RANDOMCASE 7 RANDOMCASE 8 RANDOMCASE 9 RANDOMCASE 10 RANDOMEND 
+		Obj_CycleAnim Anim = FlyHop NumCycles = RANDOM(1, 1, 1) RANDOMCASE 1 RANDOMCASE 2 RANDOMCASE 3 RANDOMEND 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT SE_Bird_Fly 
+	Obj_ClearExceptions 
+	Obj_PlayAnim Anim = Fly Cycle 
+	Obj_MoveToRelPos VECTOR(0.00000000000, 250.00000000000, 0.00000000000) Speed = 12 Acceleration = 2 
+	Obj_WaitMove 
+	Obj_SetOuterRadius 20 
+	Obj_SetException Ex = ObjectOutofRadius Scr = SE_Bird_Return 
+ENDSCRIPT
+
+SCRIPT SE_Bird_Return 
+	Obj_ClearExceptions 
+	Obj_PlayAnim Anim = Fly Cycle 
+	Obj_MoveToRelPos VECTOR(0.00000000000, -250.00000000000, 0.00000000000) Speed = 8 Acceleration = 2 
+	Obj_WaitMove 
+	GoTo SE_Bird 
+ENDSCRIPT
+
+SCRIPT SE_Bird2 
+	obj_shadowoff 
+	Obj_ClearExceptions 
+	Obj_SetException Ex = ObjectInRadius Scr = SE_Bird2_Fly 
+	Obj_SetInnerRadius 10 
+	BEGIN 
+		Obj_CycleAnim Anim = Idle NumCycles = RANDOM(1, 1, 1, 1, 1, 1, 1, 1) RANDOMCASE 3 RANDOMCASE 4 RANDOMCASE 5 RANDOMCASE 6 RANDOMCASE 7 RANDOMCASE 8 RANDOMCASE 9 RANDOMCASE 10 RANDOMEND 
+		Obj_CycleAnim Anim = FlyHop NumCycles = RANDOM(1, 1, 1) RANDOMCASE 1 RANDOMCASE 2 RANDOMCASE 3 RANDOMEND 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT SE_Bird2_Fly 
+	Obj_ClearExceptions 
+	Obj_PlayAnim Anim = Fly Cycle 
+	Obj_MoveToRelPos VECTOR(0.00000000000, 250.00000000000, 0.00000000000) Speed = 12 Acceleration = 2 
+	Obj_WaitMove 
+	Obj_SetOuterRadius 15 
+	Obj_SetException Ex = ObjectOutofRadius Scr = SE_Bird2_Return 
+ENDSCRIPT
+
+SCRIPT SE_Bird2_Return 
+	Obj_ClearExceptions 
+	Obj_PlayAnim Anim = Fly Cycle 
+	Obj_MoveToRelPos VECTOR(0.00000000000, -250.00000000000, 0.00000000000) Speed = 8 Acceleration = 2 
+	Obj_WaitMove 
+	GoTo SE_Bird2 
+ENDSCRIPT
+
+SCRIPT SE_FrontGateSpeedBoost 
+	GetTriggerArray Walk Onto 
+	IF Triggertype <Trigger_Array> 
+	ELSE 
+		GetTriggerArray [ { Skate Off } { Jump Off } ] 
+		IF Triggertype <Trigger_Array> 
+			Trigger_Speed_Boost Speed = 1600 DefSkaterVO = 1 
+			PrintF "TSC-----------------SpeedBoost 1 Successful" 
+		ELSE 
+			PrintF "TSC-----------------SpeedBoost 1 Failed" 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_SpeedBoost_01 
+	GetTriggerArray Walk Onto 
+	IF Triggertype <Trigger_Array> 
+	ELSE 
+		GetTriggerArray [ { Skate Off } { Jump Off } ] 
+		IF Triggertype <Trigger_Array> 
+			Trigger_Speed_Boost Speed = 1100 DefSkaterVO = 1 
+			PrintF "TSC-----------------SpeedBoost 1 Successful" 
+		ELSE 
+			PrintF "TSC-----------------SpeedBoost 1 Failed" 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_SpeedBoost_04 
+	GetTriggerArray Walk Onto 
+	IF Triggertype <Trigger_Array> 
+	ELSE 
+		GetTriggerArray [ { Skate Off } { Jump Off } ] 
+		IF Triggertype <Trigger_Array> 
+			Trigger_Speed_Boost Speed = 1100 DefSkaterVO = 1 
+			PrintF "TSC-----------------SpeedBoost 4 Successful" 
+		ELSE 
+			PrintF "TSC-----------------SpeedBoost 4 Failed" 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_SpeedBoost_05 
+	GetTriggerArray Walk Onto 
+	IF Triggertype <Trigger_Array> 
+	ELSE 
+		GetTriggerArray [ { Skate Off } { Jump Off } ] 
+		IF Triggertype <Trigger_Array> 
+			Trigger_Speed_Boost Speed = 1800 DefSkaterVO = 1 
+			PrintF "TSC-----------------SpeedBoost 5 Successful" 
+		ELSE 
+			PrintF "TSC-----------------SpeedBoost 5 Failed" 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_HellPlatformTransfer 
+	GetTriggerArray Walk Onto 
+	IF Triggertype <Trigger_Array> 
+	ELSE 
+		GetTriggerArray [ { Skate Off } { Jump Off } ] 
+		IF Triggertype <Trigger_Array> 
+			Trigger_Speed_Boost Speed = 1100 DefSkaterVO = 1 
+			PrintF "TSC-----------------SpeedBoost 4 Successful" 
+		ELSE 
+			PrintF "TSC-----------------SpeedBoost 4 Failed" 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_SpeedBoost_TemplePillars 
+	GetTriggerArray Walk Onto 
+	IF Triggertype <Trigger_Array> 
+	ELSE 
+		GetTriggerArray [ { Skate Off } { Jump Off } ] 
+		IF Triggertype <Trigger_Array> 
+			Trigger_Speed_Boost Speed = 1000 DefSkaterVO = 1 
+		ELSE 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_Teleport 
+	TeleportSkaterToNode NodeName = <Node> Orient 
+ENDSCRIPT
+
+SCRIPT SE_TempleMenu 
+	change menu3d_subicon = temple 
+	set_se2_ambient_zone zone = temple 
+	SE_SFX_Stop_All_Warping_Looping_Sounds 
+	IF GetFlag Flag = TempleToSpaceVisible 
+		SpawnSound SE_SFX_MayanToSpacePortal 
+	ENDIF 
+	IF GetFlag Flag = TempleToHellVisible 
+		SpawnSound SE_SFX_MayanToHellPortal 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_SpaceportMenu 
+	change menu3d_subicon = spaceport 
+	set_se2_ambient_zone zone = spaceport 
+	SE_SFX_Stop_All_Warping_Looping_Sounds 
+	IF GetFlag Flag = SpaceToTempleVisible 
+		SpawnSound SE_SFX_SpaceToMayanPortal 
+	ENDIF 
+	IF GetFlag Flag = SpaceToHellVisible 
+		SpawnSound SE_SFX_SpaceToHellPortal 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_HellMenu 
+	change menu3d_subicon = hell 
+	set_se2_ambient_zone zone = hell 
+	SE_SFX_Stop_All_Warping_Looping_Sounds 
+	IF GetFlag Flag = HellToTempleVisible 
+		SpawnSound SE_SFX_HellToMayanPortal 
+	ENDIF 
+	IF GetFlag Flag = HellToSpaceVisible 
+		SpawnSound SE_SFX_HellToSpacePortal 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_HoveringLight 
+	BEGIN 
+		Obj_MoveToNode name = <NodeA> Speed = 1 
+		Obj_WaitMove 
+		Obj_MoveToNode name = <NodeB> Speed = 1 
+		Obj_WaitMove 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT SE_Idol_Text 
+	<IdolsDefaced> = 0 
+	IF GetFlag Flag = Idol01 
+		<IdolsDefaced> = ( <IdolsDefaced> + 1 ) 
+	ENDIF 
+	IF GetFlag Flag = Idol02 
+		<IdolsDefaced> = ( <IdolsDefaced> + 1 ) 
+	ENDIF 
+	IF GetFlag Flag = Idol03 
+		<IdolsDefaced> = ( <IdolsDefaced> + 1 ) 
+	ENDIF 
+	IF GetFlag Flag = Idol04 
+		<IdolsDefaced> = ( <IdolsDefaced> + 1 ) 
+	ENDIF 
+	IF GetFlag Flag = Idol05 
+		<IdolsDefaced> = ( <IdolsDefaced> + 1 ) 
+	ENDIF 
+	SWITCH <IdolsDefaced> 
+		CASE 0 
+		CASE 1 
+			Create_Panel_Message { ID = Current_Goal Text = "1 of 5 Idols Defaced!" Style = Goal_Collect_Text } 
+		CASE 2 
+			Create_Panel_Message { ID = Current_Goal Text = "2 of 5 Idols Defaced!" Style = Goal_Collect_Text } 
+		CASE 3 
+			Create_Panel_Message { ID = Current_Goal Text = "3 of 5 Idols Defaced!" Style = Goal_Collect_Text } 
+		CASE 4 
+			Create_Panel_Message { ID = Current_Goal Text = "4 of 5 Idols Defaced!" Style = Goal_Collect_Text } 
+		CASE 5 
+			Create_Panel_Message { ID = Current_Goal Text = "5 of 5 Idols Defaced!" Style = Goal_Collect_Text } 
+		DEFAULT 
+	ENDSWITCH 
+ENDSCRIPT
+
+SCRIPT SE_Graf_Idol01 
+	IF NOT InMultiplayerGame 
+		GetTriggerArray graffiti Onto 
+		IF Triggertype <Trigger_Array> 
+			IF NOT GetFlag Flag = Idol01 
+				PrintF "Graffiti 01" 
+				SetFlag Flag = Idol01 
+				SE_Idol_Text 
+				IF GetFlag Flag = Idol02 
+					IF GetFlag Flag = Idol03 
+						IF GetFlag Flag = Idol04 
+							IF GetFlag Flag = Idol05 
+								ShakeCamera { 
+									duration = 4.50000000000 
+									vert_amp = 5.00000000000 
+									horiz_amp = 3.00000000000 
+									vert_vel = 10.27000045776 
+								horiz_vel = 5.92000007629 } 
+								Wait 0.50000000000 Seconds 
+								SE_IdolsCompleted 
+							ENDIF 
+						ENDIF 
+					ENDIF 
+				ENDIF 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_Graf_Idol02 
+	IF NOT InMultiplayerGame 
+		GetTriggerArray graffiti Onto 
+		IF Triggertype <Trigger_Array> 
+			IF NOT GetFlag Flag = Idol02 
+				PrintF "Graffiti 02" 
+				SetFlag Flag = Idol02 
+				SE_Idol_Text 
+				IF GetFlag Flag = Idol01 
+					IF GetFlag Flag = Idol03 
+						IF GetFlag Flag = Idol04 
+							IF GetFlag Flag = Idol05 
+								ShakeCamera { 
+									duration = 4.50000000000 
+									vert_amp = 5.00000000000 
+									horiz_amp = 3.00000000000 
+									vert_vel = 10.27000045776 
+								horiz_vel = 5.92000007629 } 
+								Wait 0.50000000000 Seconds 
+								SE_IdolsCompleted 
+							ENDIF 
+						ENDIF 
+					ENDIF 
+				ENDIF 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_Graf_Idol03 
+	IF NOT InMultiplayerGame 
+		GetTriggerArray graffiti Onto 
+		IF Triggertype <Trigger_Array> 
+			IF NOT GetFlag Flag = Idol03 
+				PrintF "Graffiti 03" 
+				SetFlag Flag = Idol03 
+				SE_Idol_Text 
+				IF GetFlag Flag = Idol01 
+					IF GetFlag Flag = Idol02 
+						IF GetFlag Flag = Idol04 
+							IF GetFlag Flag = Idol05 
+								ShakeCamera { 
+									duration = 4.50000000000 
+									vert_amp = 5.00000000000 
+									horiz_amp = 3.00000000000 
+									vert_vel = 10.27000045776 
+								horiz_vel = 5.92000007629 } 
+								Wait 0.50000000000 Seconds 
+								SE_IdolsCompleted 
+							ENDIF 
+						ENDIF 
+					ENDIF 
+				ENDIF 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_Graf_Idol04 
+	IF NOT InMultiplayerGame 
+		GetTriggerArray graffiti Onto 
+		IF Triggertype <Trigger_Array> 
+			IF NOT GetFlag Flag = Idol04 
+				PrintF "Graffiti 04" 
+				SetFlag Flag = Idol04 
+				SE_Idol_Text 
+				IF GetFlag Flag = Idol01 
+					IF GetFlag Flag = Idol02 
+						IF GetFlag Flag = Idol03 
+							IF GetFlag Flag = Idol05 
+								ShakeCamera { 
+									duration = 4.50000000000 
+									vert_amp = 5.00000000000 
+									horiz_amp = 3.00000000000 
+									vert_vel = 10.27000045776 
+								horiz_vel = 5.92000007629 } 
+								Wait 0.50000000000 Seconds 
+								SE_IdolsCompleted 
+							ENDIF 
+						ENDIF 
+					ENDIF 
+				ENDIF 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_Graf_Idol05 
+	IF NOT InMultiplayerGame 
+		GetTriggerArray graffiti Onto 
+		IF Triggertype <Trigger_Array> 
+			IF NOT GetFlag Flag = Idol05 
+				PrintF "Graffiti 05" 
+				SetFlag Flag = Idol05 
+				SE_Idol_Text 
+				IF GetFlag Flag = Idol01 
+					IF GetFlag Flag = Idol02 
+						IF GetFlag Flag = Idol03 
+							IF GetFlag Flag = Idol04 
+								ShakeCamera { 
+									duration = 4.50000000000 
+									vert_amp = 5.00000000000 
+									horiz_amp = 3.00000000000 
+									vert_vel = 10.27000045776 
+								horiz_vel = 5.92000007629 } 
+								Wait 0.50000000000 Seconds 
+								SE_IdolsCompleted 
+							ENDIF 
+						ENDIF 
+					ENDIF 
+				ENDIF 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_IdolsCompleted 
+	Kill Prefix = "GEO_PreEvent_GatesToHell" 
+	Kill Prefix = "TRG_PreEvent_GatesToHell" 
+	Create Prefix = "GEO_PostEvent_GatesToHell" 
+	Create Prefix = "TRG_PostEvent_GatesToHell" 
+	SpawnSound SE_SFX_MayanToHellPortal 
+	SetFlag Flag = TempleToHellVisible 
+	SetFlag Flag = Idol01 
+	SetFlag Flag = Idol02 
+	SetFlag Flag = Idol03 
+	SetFlag Flag = Idol04 
+	SetFlag Flag = Idol05 
+	PlaySkaterCamAnim { Virtual_Cam 
+		TargetID = World 
+		TargetOffset = VECTOR(-6985.79980468750, -3232.00000000000, -1979.90002441406) 
+		PositionOffset = VECTOR(-110.50000000000, 261.70001220703, -8345.50000000000) 
+		Frames = 240 
+	Skippable = 0 } 
+	Kill name = TRG_Ped_Hint_Mayan 
+	Wait 1 Second 
+	Create_Panel_Message { Text = "BURN IN HELL!!!" Style = Goal_Collect_Text } 
+ENDSCRIPT
+
+SCRIPT SE_Rib01_Liptrick 
+	GetTriggerArray Lip 
+	IF Triggertype <Trigger_Array> 
+		SetException Ex = SkaterExitLip Scr = SE_Rib01_LiptrickB Group = RibGroup 
+		SetException Ex = SkaterBailed Scr = SE_Rib_Bailed Group = RibGroup 
+		Block 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_Rib01_LiptrickB 
+	PrintF "TSC------------------------RIB 01 has been lip tricked on" 
+	Wait 1 Second 
+	Kill name = GEO_PreEvent_Rib_Rib_001 
+	Kill name = TRG_PreEvent_Rib_RailNode_001A 
+	Kill name = TRG_PreEvent_Rib_RailNode_001B 
+	Kill name = TRG_PreEvent_Rib_RailNode_265 
+	Kill name = TRG_PreEvent_Rib_RailNode_A 
+	Kill name = TRG_PreEvent_Rib_RailNode_B 
+	Kill name = GEO_PreEvent_Rib_QP_01 
+	Create name = GEO_PostEvent_Rib_QPKicker_02 
+	Create name = GEO_PostEvent_Rib_Rib_001 
+	Create name = TRG_PostEvent_Rib_RailNode_001A 
+	Create name = TRG_PostEvent_Rib_RailNode_001B 
+ENDSCRIPT
+
+SCRIPT SE_Rib02_Liptrick 
+	GetTriggerArray Lip 
+	IF Triggertype <Trigger_Array> 
+		SetException Ex = SkaterExitLip Scr = SE_Rib02_LiptrickB Group = RibGroup 
+		SetException Ex = SkaterBailed Scr = SE_Rib_Bailed Group = RibGroup 
+		Block 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_Rib_Bailed 
+	ClearExceptionGroup RibGroup 
+ENDSCRIPT
+
+SCRIPT SE_Rib02_LiptrickB 
+	PrintF "TSC------------------------RIB 02 has been lip tricked on" 
+	Wait 1 Second 
+	Kill name = GEO_PreEvent_Rib_Rib_002 
+	Kill name = TRG_PreEvent_Rib_RailNode_002A 
+	Kill name = TRG_PreEvent_Rib_RailNode_002B 
+	Kill name = TRG_PreEvent_Rib_RailNode_268 
+	Kill name = TRG_PreEvent_Rib_RailNode_C 
+	Kill name = TRG_PreEvent_Rib_RailNode_D 
+	Kill name = GEO_PreEvent_Rib_QP_03 
+	Create name = GEO_PostEvent_Rib_QPKicker_01 
+	Create name = GEO_PostEvent_Rib_Rib_002 
+	Create name = TRG_PostEvent_Rib_RailNode_002A 
+	Create name = TRG_PostEvent_Rib_RailNode_002B 
+ENDSCRIPT
+
+SCRIPT SE_Rib_Button01_WallPlant 
+	GetTriggerArray Wallplant Onto 
+	IF Triggertype <Trigger_Array> 
+		SendException RIBBUTTON01_PUSH name = TRG_Rib_Button01_Ghost 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_Rib_Button01_Ghost 
+	Obj_ClearExceptions 
+	Obj_SetException Ex = RIBBUTTON01_PUSH Scr = SE_Rib_Button01_Push 
+ENDSCRIPT
+
+SCRIPT SE_Rib_Button01_Push 
+	IF IsAlive name = GEO_PreEvent_Rib_Button01 
+		PrintF "TSC------------------------RIB BUTTON 01 is raised...so now press." 
+		Kill name = GEO_PreEvent_Rib_Button01 
+		Kill name = JG_Hell_ButtonShadow02 
+		SetFlag Flag = RibButton01 
+		IF GetFlag Flag = RibButton02 
+			Wait 0.50000000000 Second 
+			PrintF "TSC------------------------RIB BUTTON 02 is also pressed...so now open Lounge Portal" 
+			GoTo SE_LevelEvent_Lounge 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_Rib_Button02_WallPlant 
+	GetTriggerArray Wallplant Onto 
+	IF Triggertype <Trigger_Array> 
+		SendException RIBBUTTON02_PUSH name = TRG_Rib_Button02_Ghost 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_Rib_Button02_Ghost 
+	Obj_ClearExceptions 
+	Obj_SetException Ex = RIBBUTTON02_PUSH Scr = SE_Rib_Button02_Push 
+ENDSCRIPT
+
+SCRIPT SE_Rib_Button02_Push 
+	IF IsAlive name = GEO_PreEvent_Rib_Button02 
+		PrintF "TSC------------------------RIB BUTTON 02 is raised...so now press." 
+		Kill name = GEO_PreEvent_Rib_Button02 
+		Kill name = JG_Hell_ButtonShadow01 
+		SetFlag Flag = RibButton02 
+		IF GetFlag Flag = RibButton01 
+			Wait 0.50000000000 Second 
+			PrintF "TSC------------------------RIB BUTTON 01 is also pressed...so now open Lounge Portal" 
+			GoTo SE_LevelEvent_Lounge 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_SpacePortButton01_WallPlant 
+	IF NOT InMultiplayerGame 
+		GetTriggerArray Wallplant Onto 
+		IF Triggertype <Trigger_Array> 
+			SendException SPACEPORTBUTTON01_PUSH name = TRG_Spaceship_RedButton01_Ghost 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_SpacePortButton01_Ghost 
+	Obj_ClearExceptions 
+	Obj_SetException Ex = SPACEPORTBUTTON01_PUSH Scr = SE_SpacePortButton01_Push 
+ENDSCRIPT
+
+SCRIPT SE_SpacePortButton01_Push 
+	IF IsAlive name = GEO_PreEvent_Spaceship_RedButton01 
+		SpawnSound SE_SFX_IgniteEngine01 
+		PrintF "TSC------------------------RED BUTTON 01 is raised...so now press." 
+		Create name = GEO_PostEvent_Spaceship_GreenButton01 
+		Kill name = GEO_PreEvent_Spaceship_RedButton01 
+		PrintF "1_2" 
+		CreateFastParticleSystem name = thrusterR1 params_Script = apm_SP_thrusrter01_fast_particle_params attachobjid = GEO_PreEvent_SpaceShip_Ship_01 
+		CreateFastParticleSystem name = thrusterR2 params_Script = apm_SP_thrusrter02_fast_particle_params attachobjid = GEO_PreEvent_SpaceShip_Ship_01 
+		SetFlag Flag = RedButton01 
+		IF GetFlag Flag = RedButton02 
+			PrintF "TSC------------------------RED BUTTON 02 is also pressed...so now prepare for launch" 
+			Kill name = TRG_Ped_Hint_Space 
+			GoTo SE_LevelEvent_Spaceship 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_SpacePortButton02_WallPlant 
+	IF NOT InMultiplayerGame 
+		GetTriggerArray Wallplant Onto 
+		IF Triggertype <Trigger_Array> 
+			SendException SPACEPORTBUTTON02_PUSH name = TRG_Spaceship_RedButton02_Ghost 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_SpacePortButton02_Ghost 
+	Obj_ClearExceptions 
+	Obj_SetException Ex = SPACEPORTBUTTON02_PUSH Scr = SE_SpacePortButton02_Push 
+ENDSCRIPT
+
+SCRIPT SE_SpacePortButton02_Push 
+	IF IsAlive name = GEO_PreEvent_Spaceship_RedButton02 
+		SpawnSound SE_SFX_IgniteEngine02 
+		PrintF "TSC------------------------RED BUTTON 02 is raised...so now press." 
+		Create name = GEO_PostEvent_Spaceship_GreenButton02 
+		PrintF "3_4" 
+		CreateFastParticleSystem name = thrusterL1 params_Script = apm_SP_thrusrter03_fast_particle_params attachobjid = GEO_PreEvent_SpaceShip_Ship_01 
+		CreateFastParticleSystem name = thrusterL2 params_Script = apm_SP_thrusrter04_fast_particle_params attachobjid = GEO_PreEvent_SpaceShip_Ship_01 
+		Kill name = GEO_PreEvent_Spaceship_RedButton02 
+		SetFlag Flag = RedButton02 
+		IF GetFlag Flag = RedButton01 
+			PrintF "TSC------------------------RED BUTTON 01 is also pressed...so now prepare for launch" 
+			Kill name = TRG_Ped_Hint_Space 
+			GoTo SE_LevelEvent_Spaceship 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_BoulderRope01_Grind 
+	IF IsAlive name = GEO_PreEvent_Boulder_Rope_01 
+		PrintF "TSC---------------------------------Rope 01 has been snapped!" 
+		SpawnSound SE_SFX_RopeBreak01 
+		Kill name = GEO_PreEvent_Boulder_Rope_01 
+		SetFlag Flag = Rope01 
+		IF GetFlag Flag = Rope02 
+			PrintF "TSC------------------------Rope 02 has also been snapped...so now run level event" 
+			Wait 1 Seconds 
+			Kill name = TRG_Ped_Hint_Tikiman 
+			GoTo SE_LevelEvent_Boulder 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_BoulderRope02_Grind 
+	IF IsAlive name = GEO_PreEvent_Boulder_Rope_02 
+		PrintF "TSC---------------------------------Rope 02 has been snapped!" 
+		SpawnSound SE_SFX_RopeBreak02 
+		Kill name = GEO_PreEvent_Boulder_Rope_02 
+		SetFlag Flag = Rope02 
+		IF GetFlag Flag = Rope01 
+			PrintF "TSC------------------------Rope 01 has also been snapped...so now run level event" 
+			Wait 1 Seconds 
+			Kill name = TRG_Ped_Hint_Tikiman 
+			GoTo SE_LevelEvent_Boulder 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_Event_GatesToHell_PreNode 
+	IF NOT InMultiplayerGame 
+		Create_Panel_Message { Text = "The Monkey Gods have been appeased. The portals to Hell are now closed." Style = Goal_Collect_Text } 
+		Kill Prefix = "GEO_PostEvent_GatesToHell" 
+		Kill Prefix = "TRG_PostEvent_GatesToHell" 
+		Create Prefix = "GEO_PreEvent_GatesToHell" 
+		Create Prefix = "TRG_PreEvent_GatesToHell" 
+		UnSetFlag Flag = Idol01 
+		UnSetFlag Flag = Idol02 
+		UnSetFlag Flag = Idol03 
+		UnSetFlag Flag = Idol04 
+		UnSetFlag Flag = Idol05 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_Event_GatesToHell_PostNode 
+	IF NOT InMultiplayerGame 
+		Create_Panel_Message { Text = "BURN IN HELL!!!" Style = Goal_Collect_Text } 
+		Kill Prefix = "GEO_PreEvent_GatesToHell" 
+		Kill Prefix = "TRG_PreEvent_GatesToHell" 
+		Create Prefix = "GEO_PostEvent_GatesToHell" 
+		Create Prefix = "TRG_PostEvent_GatesToHell" 
+		SetFlag Flag = Idol01 
+		SetFlag Flag = Idol02 
+		SetFlag Flag = Idol03 
+		SetFlag Flag = Idol04 
+		SetFlag Flag = Idol05 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_LevelEvent_Lounge 
+	PrintF "TSC------------------------Lounge Portal has been opened" 
+	Kill name = GEO_PreEvent_Rib_LoungeQP_001 
+	Kill name = GEO_PreEvent_Rib_Mouth 
+	Kill name = GEO_PreEvent_Rib_Tongue 
+	Kill name = TRG_Ped_Hint_Hell 
+	Create name = GEO_PostEvent_Rib_Tongue 
+	Create name = GEO_PostEvent_Rib_Mouth 
+	Create name = TRG_PostEvent_Rib_TeleportPlane_01 
+	Create name = GEO_PostEvent_Rib_LoungeKicker_001 
+	SetFlag Flag = RibButton01 
+	SetFlag Flag = RibButton02 
+	PlayCutScene name = "CutScenes\\SE_SmallEvent_Satan.cut" RestartNode = TRG_Hell_PostEvent_Restart 
+ENDSCRIPT
+
+SCRIPT SE_Event_Rib_PreNode 
+	IF NOT InMultiplayerGame 
+		Create_Panel_Message { Text = "The Lounge Portal has not been opened yet." Style = Goal_Collect_Text } 
+		Kill Prefix = "GEO_PostEvent_Rib" 
+		Kill Prefix = "TRG_PostEvent_Rib" 
+		Create Prefix = "GEO_PreEvent_Rib" 
+		Create Prefix = "TRG_PreEvent_Rib" 
+		UnSetFlag Flag = RibButton01 
+		UnSetFlag Flag = RibButton02 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_Event_Rib_PostNode 
+	IF NOT InMultiplayerGame 
+		Create_Panel_Message { Text = "The Lounge Portal has been opened." Style = Goal_Collect_Text } 
+		Kill Prefix = "GEO_PreEvent_Rib" 
+		Kill Prefix = "TRG_PreEvent_Rib" 
+		Create Prefix = "GEO_PostEvent_Rib" 
+		Create Prefix = "TRG_PostEvent_Rib" 
+		SetFlag Flag = RibButton01 
+		SetFlag Flag = RibButton02 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_LevelEvent_Spaceship 
+	destroyfastparticlesystem name = SP_shiphover 
+	destroyfastparticlesystem name = thrusterL1 
+	destroyfastparticlesystem name = thrusterL2 
+	destroyfastparticlesystem name = thrusterR1 
+	destroyfastparticlesystem name = thrusterR2 
+	Kill Prefix = "GEO_PreEvent_Spaceship" 
+	Kill Prefix = "TRG_PreEvent_Spaceship" 
+	Create Prefix = "GEO_PostEvent_Spaceship" 
+	Create Prefix = "TRG_PostEvent_Spaceship" 
+	SetFlag Flag = SpaceToTempleVisible 
+	SetFlag Flag = TempleToSpaceVisible 
+	spawnscript SE_SFX_SpaceToMayanPortal 
+	PlayCutScene name = "CutScenes\\SE_SmallEvent_Spaceship.Cut" RestartNode = TRG_SpacePort_Restart_LevelEvent_Spaceship 
+ENDSCRIPT
+
+SCRIPT SE_Event_Spaceship_PreNode 
+	Create_Panel_Message { Text = "The Spaceship has not taken off yet." Style = Goal_Collect_Text } 
+	Kill Prefix = "GEO_PostEvent_Spaceship" 
+	Kill Prefix = "TRG_PostEvent_Spaceship" 
+	Create Prefix = "GEO_PreEvent_Spaceship" 
+	Create Prefix = "TRG_PreEvent_Spaceship" 
+	CreateFastParticleSystem name = SP_shiphover 
+ENDSCRIPT
+
+SCRIPT SE_Event_Spaceship_PostNode 
+	Create_Panel_Message { Text = "The Spaceship has left the building." Style = Goal_Collect_Text } 
+	destroyfastparticlesystem name = SP_shiphover 
+	Kill Prefix = "GEO_PreEvent_Spaceship" 
+	Kill Prefix = "TRG_PreEvent_Spaceship" 
+	Create Prefix = "GEO_PostEvent_Spaceship" 
+	Create Prefix = "TRG_PostEvent_Spaceship" 
+ENDSCRIPT
+
+SCRIPT SE_LevelEvent_Boulder 
+	Kill Prefix = "GEO_PreEvent_Boulder" 
+	Kill Prefix = "TRG_PreEvent_Boulder" 
+	Create Prefix = "GEO_PostEvent_Boulder" 
+	Create Prefix = "TRG_PostEvent_Boulder" 
+	PlayCutScene name = "CutScenes\\SE_LevelEvent.Cut" RestartNode = TRG_Temple_Restart_LevelEvent_Boulder 
+ENDSCRIPT
+
+SCRIPT SE_Event_Boulder_PreNode 
+	Create_Panel_Message { Text = "The Boulder has not fallen yet." Style = Goal_Collect_Text } 
+	Kill Prefix = "GEO_PostEvent_Boulder" 
+	Kill Prefix = "TRG_PostEvent_Boulder" 
+	Create Prefix = "GEO_PreEvent_Boulder" 
+	Create Prefix = "TRG_PreEvent_Boulder" 
+ENDSCRIPT
+
+SCRIPT SE_Event_Boulder_PostNode 
+	Create_Panel_Message { Text = "The Boulder has fallen and cracked through the floor!" Style = Goal_Collect_Text } 
+	Kill Prefix = "GEO_PreEvent_Boulder" 
+	Kill Prefix = "TRG_PreEvent_Boulder" 
+	Create Prefix = "GEO_PostEvent_Boulder" 
+	Create Prefix = "TRG_PostEvent_Boulder" 
+ENDSCRIPT
+
+SCRIPT SE_ElevatorDoor_LowerLeft 
+	Obj_ClearExceptions 
+	Obj_SetException Ex = Open Scr = SE_ElevatorDoor_LowerLeft_Open params = <...> 
+	Obj_SetException Ex = Close Scr = SE_ElevatorDoor_LowerLeft_Close params = <...> 
+ENDSCRIPT
+
+SCRIPT SE_ElevatorDoor_LowerLeft_Open 
+	PrintF "TSC-----------------Lower Left Elevator Door is Opening" 
+	Obj_MoveToNode name = TRG_ElevatorDoor_LowerLeft_Open Speed = 15 
+	Obj_WaitMove 
+ENDSCRIPT
+
+SCRIPT SE_ElevatorDoor_LowerLeft_Close 
+	PrintF "TSC-----------------Lower Left Elevator Door is Closing" 
+	Obj_MoveToNode name = TRG_ElevatorDoor_LowerLeft_Closed Speed = 15 
+	Obj_WaitMove 
+ENDSCRIPT
+
+SCRIPT SE_ElevatorDoor_LowerRight 
+	Obj_ClearExceptions 
+	Obj_SetException Ex = Open Scr = SE_ElevatorDoor_LowerRight_Open params = <...> 
+	Obj_SetException Ex = Close Scr = SE_ElevatorDoor_LowerRight_Close params = <...> 
+ENDSCRIPT
+
+SCRIPT SE_ElevatorDoor_LowerRight_Open 
+	PrintF "TSC-----------------Lower Right Elevator Door is Opening" 
+	Obj_MoveToNode name = TRG_ElevatorDoor_LowerRight_Open Speed = 15 
+	Obj_WaitMove 
+ENDSCRIPT
+
+SCRIPT SE_ElevatorDoor_LowerRight_Close 
+	PrintF "TSC-----------------Lower Right Elevator Door is Closing" 
+	Obj_MoveToNode name = TRG_ElevatorDoor_LowerRight_Closed Speed = 15 
+	Obj_WaitMove 
+ENDSCRIPT
+
+SCRIPT SE_ElevatorDoor_UpperLeft 
+	Obj_ClearExceptions 
+	Obj_SetException Ex = Open Scr = SE_ElevatorDoor_UpperLeft_Open params = <...> 
+	Obj_SetException Ex = Close Scr = SE_ElevatorDoor_UpperLeft_Close params = <...> 
+ENDSCRIPT
+
+SCRIPT SE_ElevatorDoor_UpperLeft_Open 
+	PrintF "TSC-----------------Upper Left Elevator Door is Opening" 
+	Obj_MoveToNode name = TRG_ElevatorDoor_UpperLeft_Open Speed = 15 
+	Obj_WaitMove 
+ENDSCRIPT
+
+SCRIPT SE_ElevatorDoor_UpperLeft_Close 
+	PrintF "TSC-----------------Upper Left Elevator Door is Closing" 
+	Obj_MoveToNode name = TRG_ElevatorDoor_UpperLeft_Closed Speed = 15 
+	Obj_WaitMove 
+ENDSCRIPT
+
+SCRIPT SE_ElevatorDoor_UpperRight 
+	Obj_ClearExceptions 
+	Obj_SetException Ex = Open Scr = SE_ElevatorDoor_UpperRight_Open params = <...> 
+	Obj_SetException Ex = Close Scr = SE_ElevatorDoor_UpperRight_Close params = <...> 
+ENDSCRIPT
+
+SCRIPT SE_ElevatorDoor_UpperRight_Open 
+	PrintF "TSC-----------------Upper Right Elevator Door is Opening" 
+	Obj_MoveToNode name = TRG_ElevatorDoor_UpperRight_Open Speed = 15 
+	Obj_WaitMove 
+ENDSCRIPT
+
+SCRIPT SE_ElevatorDoor_UpperRight_Close 
+	PrintF "TSC-----------------Upper Right Elevator Door is Closing" 
+	Obj_MoveToNode name = TRG_ElevatorDoor_UpperRight_Closed Speed = 15 
+	Obj_WaitMove 
+ENDSCRIPT
+
+SCRIPT SE_Elevator_001 
+	Obj_ClearExceptions 
+	Obj_SetException Ex = GoUp Scr = SE_Elevator_001_Raise params = <...> 
+	Obj_SetException Ex = GoDown Scr = SE_Elevator_001_Lower params = <...> 
+ENDSCRIPT
+
+SCRIPT SE_Elevator_001_PlayerApproachesTop 
+	IF GetFlag Flag = ElevatorIsUp 
+		PrintF "TSC-----------------Got Flag -- Elevator is Up already, opening doors" 
+		SendException Open name = GEO_ElevatorDoor_UpperLeft 
+		SendException Open name = GEO_ElevatorDoor_UpperRight 
+	ELSE 
+		IF GetFlag Flag = ElevatorIsGoingUp 
+			PrintF "TSC-----------------Got Flag -- Elevator is on its way up up, doing nothing" 
+		ELSE 
+			PrintF "TSC-----------------Didn\'t get Up or GoingUp Flags, elevator is starting on its way Up" 
+			UnSetFlag Flag = ElevatorIsDown 
+			UnSetFlag Flag = ElevatorIsUp 
+			UnSetFlag Flag = ElevatorIsGoingDown 
+			SetFlag Flag = ElevatorIsGoingUp 
+			PrintF "TSC-----------------Sending GoUp Exception" 
+			SendException GoUp name = GEO_Spaceport_Elevator_001 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_Elevator_001_Raise 
+	Wait 1 Second 
+	SendException Close name = GEO_ElevatorDoor_LowerLeft 
+	SendException Close name = GEO_ElevatorDoor_LowerRight 
+	Wait 1 Second 
+	PrintF "TSC-----------------Elevator Rising" 
+	Obj_MoveToNode name = TRG_SpacePort_Elevator001_B Speed = 25 
+	Obj_WaitMove 
+	UnSetFlag Flag = ElevatorIsDown 
+	UnSetFlag Flag = ElevatorIsGoingUp 
+	UnSetFlag Flag = ElevatorIsGoingDown 
+	PrintF "TSC-----------------Set Up Flag" 
+	SetFlag Flag = ElevatorIsUp 
+	SendException Open name = GEO_ElevatorDoor_UpperLeft 
+	SendException Open name = GEO_ElevatorDoor_UpperRight 
+ENDSCRIPT
+
+SCRIPT SE_Elevator_001_EnterTop 
+	Wait 1 Second 
+	SendException Close name = GEO_ElevatorDoor_UpperLeft 
+	SendException Close name = GEO_ElevatorDoor_UpperRight 
+	Wait 1 Second 
+	UnSetFlag Flag = ElevatorIsUp 
+	UnSetFlag Flag = ElevatorIsGoingUp 
+	UnSetFlag Flag = ElevatorIsDown 
+	SetFlag Flag = ElevatorIsGoingDown 
+	SendException GoDown name = GEO_Spaceport_Elevator_001 
+	PrintF "TSC-----------------Sending GoDown Exception" 
+ENDSCRIPT
+
+SCRIPT SE_Elevator_001_Lower 
+	Wait 1 Second 
+	SendException Close name = GEO_ElevatorDoor_UpperLeft 
+	SendException Close name = GEO_ElevatorDoor_UpperRight 
+	Wait 1 Second 
+	PrintF "TSC-----------------Elevator Lowering" 
+	Obj_MoveToNode name = TRG_SpacePort_Elevator001_A Speed = 25 
+	Obj_WaitMove 
+	UnSetFlag Flag = ElevatorIsGoingUp 
+	UnSetFlag Flag = ElevatorIsUp 
+	UnSetFlag Flag = ElevatorIsGoingDown 
+	PrintF "TSC-----------------Set Down Flag" 
+	SetFlag Flag = ElevatorIsDown 
+	SendException Open name = GEO_ElevatorDoor_LowerLeft 
+	SendException Open name = GEO_ElevatorDoor_LowerRight 
+ENDSCRIPT
+
+SCRIPT SE_Elevator_001_EnterBottom 
+	PrintF "TSC-----------------Didn\'t get Up Flag, starting Up" 
+	Wait 1 Second 
+	SendException Close name = GEO_ElevatorDoor_LowerLeft 
+	SendException Close name = GEO_ElevatorDoor_LowerRight 
+	Wait 1 Second 
+	UnSetFlag Flag = ElevatorIsUp 
+	UnSetFlag Flag = ElevatorIsGoingDown 
+	UnSetFlag Flag = ElevatorIsDown 
+	SetFlag Flag = ElevatorIsGoingUp 
+	SendException GoUp name = GEO_Spaceport_Elevator_001 
+	PrintF "TSC-----------------Sending GoUp Exception" 
+ENDSCRIPT
+
+SCRIPT SE_Elevator_001_PlayerApproachesBottom 
+	IF GetFlag Flag = ElevatorIsDown 
+		PrintF "TSC-----------------Got Flag -- Elevator is Down already, Opening Doors" 
+		SendException Open name = GEO_ElevatorDoor_LowerLeft 
+		SendException Open name = GEO_ElevatorDoor_LowerRight 
+	ELSE 
+		IF GetFlag Flag = ElevatorIsGoingDown 
+			PrintF "TSC-----------------Got Flag -- Elevator is on its way down already, doing nothing" 
+		ELSE 
+			PrintF "TSC-----------------Didn\'t get Down or GoingDown Flags, elevator is starting on its way Down" 
+			UnSetFlag Flag = ElevatorIsGoingUp 
+			UnSetFlag Flag = ElevatorIsUp 
+			UnSetFlag Flag = ElevatorIsDown 
+			SetFlag Flag = ElevatorIsGoingDown 
+			PrintF "TSC-----------------Sending GoDown Exception" 
+			SendException GoDown name = GEO_Spaceport_Elevator_001 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+Elevator = { NodeA = TRG_SpacePort_Elevator001_A NodeB = TRG_SpacePort_Elevator001_B } 
+SCRIPT SE_GapStart_RailHop 
+	StartGap GapID = <ID1> flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT SE_GapEnd_RailHop 
+	EndGap GapID = <ID1> score = 25 Text = "Rail hop" 
+ENDSCRIPT
+
+SCRIPT SE_GapStart_Entry 
+	StartGap GapID = <ID1> flags = [ CANCEL_GROUND ] 
+ENDSCRIPT
+
+SCRIPT SE_GapEnd_Entry 
+	EndGap GapID = <ID1> score = 75 Text = "Clear the Entrance" 
+ENDSCRIPT
+
+SCRIPT SE_GapStart_Pillars 
+ENDSCRIPT
+
+SCRIPT SE_GapEnd_Pillars 
+ENDSCRIPT
+
+SCRIPT SE_GapStart_Pools 
+	StartGap GapID = Pools flags = [ CANCEL_GROUND REQUIRE_GRIND ] 
+ENDSCRIPT
+
+SCRIPT SE_GapEnd_Pools 
+	EndGap GapID = Pools score = 400 Text = "Hop the Pools" 
+ENDSCRIPT
+
+SCRIPT SE_GapStart_Platforms 
+	StartGap GapID = Platforms flags = [ CANCEL_GROUND ] 
+ENDSCRIPT
+
+SCRIPT SE_GapEnd_Platforms 
+	EndGap GapID = Platforms score = 350 Text = "Temple Platforms" 
+ENDSCRIPT
+
+SCRIPT SE_GapStart_Statue 
+	StartGap GapID = <ID1> flags = [ CANCEL_GROUND ] 
+ENDSCRIPT
+
+SCRIPT SE_GapEnd_Statue 
+	EndGap GapID = <ID1> score = 750 Text = "Monkey Transfer" 
+ENDSCRIPT
+
+SCRIPT SE_GapStart_LowerPools 
+	StartGap GapID = <ID1> flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT SE_GapEnd_LowerPools 
+	EndGap GapID = <ID1> score = 600 Text = "Clear the Monkey" 
+ENDSCRIPT
+
+SCRIPT SE_GapStart_LowerPools2A 
+	StartGap GapID = <ID1> flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT SE_GapEnd_LowerPools2A 
+	EndGap GapID = <ID1> continue = SE_GapStart_LowerPools2B 
+ENDSCRIPT
+
+SCRIPT SE_GapStart_LowerPools2B 
+	StartGap GapID = <ID1> flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT SE_GapEnd_LowerPools2B 
+	EndGap GapID = <ID1> score = 200 Text = "Double Monkey" 
+ENDSCRIPT
+
+SCRIPT SE_GapStart_Ramp 
+	StartGap GapID = <ID1> flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT SE_GapEnd_Ramp 
+	EndGap GapID = <ID1> score = 100 Text = "Ramp Transfer" 
+ENDSCRIPT
+
+SCRIPT SE_GapStart_Columns 
+	StartGap GapID = Columns flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT SE_GapEnd_Columns 
+	EndGap GapID = Columns score = 150 Text = "Spinal Columns" 
+ENDSCRIPT
+
+SCRIPT SE_GapStart_Columns2 
+	StartGap GapID = Columns2 flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT SE_GapEnd_Columns2 
+	EndGap GapID = Columns2 score = 150 Text = "Spinal Columns" 
+ENDSCRIPT
+
+SCRIPT SE_GapStart_Portal 
+	StartGap GapID = <ID1> flags = [ CANCEL_GROUND ] 
+ENDSCRIPT
+
+SCRIPT SE_GapEnd_Portal 
+	EndGap GapID = <ID1> score = 50 Text = "Portal Hop" 
+ENDSCRIPT
+
+SCRIPT SE_GapStart_Rubble 
+	StartGap GapID = Rubble flags = [ CANCEL_GROUND REQUIRE_GRIND ] 
+ENDSCRIPT
+
+SCRIPT SE_GapEnd_Rubble 
+	EndGap GapID = Rubble score = 150 Text = "Rubble Jump" 
+ENDSCRIPT
+
+SCRIPT SE_GapStart_ColumnLip 
+	StartGap GapID = ColumnLip flags = [ CANCEL_GROUND ] 
+ENDSCRIPT
+
+SCRIPT SE_GapEnd_ColumnLip 
+	GetTriggerArray Lip_Onto 
+	IF Triggertype <Trigger_Array> 
+		EndGap GapID = ColumnLip score = 3500 Text = "Snake Acid Lip" 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_GapStart_Sword 
+	StartGap GapID = <ID1> flags = [ CANCEL_GROUND ] 
+ENDSCRIPT
+
+SCRIPT SE_GapEnd_Sword 
+	GetTriggerArray Lip_Onto 
+	IF Triggertype <Trigger_Array> 
+		EndGap GapID = <ID1> score = 750 Text = "Cutting Edge" 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_GapStart_WallTransfer 
+	StartGap GapID = <ID1> flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT SE_GapEnd_WallTransfer 
+	EndGap GapID = <ID1> score = 50 Text = "Temple Wall Transfer" 
+ENDSCRIPT
+
+SCRIPT SE_GapStart_Rope 
+ENDSCRIPT
+
+SCRIPT SE_GapEnd_Rope 
+	GetTriggerArray Climb_onto 
+	IF Triggertype <Trigger_Array> 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_GapStart_LandingPad 
+	StartGap GapID = LandingPad flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT SE_GapEnd_LandingPad 
+	EndGap GapID = LandingPad score = 2000 Text = "Spine Drop" 
+ENDSCRIPT
+
+SCRIPT SE_GapStart_Holo 
+	StartGap GapID = Holo flags = [ CANCEL_GROUND ] 
+ENDSCRIPT
+
+SCRIPT SE_GapEnd_Holo 
+	EndGap GapID = Holo score = 50 Text = "Holo Boy" 
+ENDSCRIPT
+
+SCRIPT SE_GapStart_Pit 
+ENDSCRIPT
+
+SCRIPT SE_GapEnd_Pit 
+ENDSCRIPT
+
+SCRIPT SE_GapStart_RailA 
+	StartGap GapID = <ID1> flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT SE_GapEnd_RailA 
+	EndGap GapID = <ID1> continue = SE_GapStart_RailB 
+ENDSCRIPT
+
+SCRIPT SE_GapStart_RailB 
+	StartGap GapID = <ID1> flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT SE_GapEnd_RailB 
+	EndGap GapID = <ID1> score = 200 Text = "Triple Rail Skip" 
+ENDSCRIPT
+
+SCRIPT SE_GapStart_FrontDoor 
+	StartGap GapID = <ID1> flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT SE_GapEnd_FrontDoor 
+	EndGap GapID = <ID1> score = 250 Text = "Space Leap" 
+ENDSCRIPT
+
+SCRIPT SE_GapStart_RailPlantA 
+	StartGap GapID = <ID1> flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT SE_GapEnd_RailPlantA 
+	EndGap GapID = <ID1> continue = SE_GapStart_RailPlantB 
+ENDSCRIPT
+
+SCRIPT SE_GapStart_RailPlantB 
+	StartGap GapID = <ID1> flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT SE_GapEnd_RailPlantB 
+	EndGap GapID = <ID1> score = 75 Text = "Cable Plant" 
+ENDSCRIPT
+
+SCRIPT SE_GapStart_CableLip 
+	StartGap GapID = <ID1> flags = [ CANCEL_GROUND ] 
+ENDSCRIPT
+
+SCRIPT SE_GapEnd_CableLip 
+	GetTriggerArray Lip_Onto 
+	IF Triggertype <Trigger_Array> 
+		EndGap GapID = <ID1> score = 750 Text = "Cable Man" 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_GapStart_CraneHop 
+ENDSCRIPT
+
+SCRIPT SE_GapEnd_CraneHop 
+	IF GetFlag Flag = EnginesOn 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_GapStart_WireHop 
+	StartGap GapID = <ID1> flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT SE_GapEnd_WireHop 
+	IF NOT GetFlag Flag = EnginesOn 
+		EndGap GapID = <ID1> score = 50 Text = "Craneless" 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_GapStart_PlatformSpine 
+	StartGap GapID = <ID1> flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT SE_GapEnd_PlatformSpine 
+	EndGap GapID = <ID1> score = 40 Text = "Spine the Landing Pad" 
+ENDSCRIPT
+
+SCRIPT SE_GapStart_HangerTransfer 
+	StartGap GapID = <ID1> flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT SE_GapEnd_HangerTransfer 
+	EndGap GapID = <ID1> score = 75 Text = "Clear the Fighter" 
+ENDSCRIPT
+
+SCRIPT SE_GapStart_RampTransfer2 
+	StartGap GapID = <ID1> flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT SE_GapEnd_RampTransfer2 
+	EndGap GapID = <ID1> score = 75 Text = "Star Transfer" 
+ENDSCRIPT
+
+SCRIPT SE_GapStart_HighBeam 
+	StartGap GapID = <ID1> flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT SE_GapEnd_HighBeam 
+	EndGap GapID = <ID1> score = 80 Text = "Hop the Hell Beams" 
+ENDSCRIPT
+
+SCRIPT SE_GapStart_HellPit 
+	StartGap GapID = <ID1> flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT SE_GapEnd_HellPit 
+	EndGap GapID = <ID1> score = 175 Text = "Go to Hell" 
+ENDSCRIPT
+
+SCRIPT robosparks 
+	IF NOT InMultiplayerGame 
+	ENDIF 
+	BEGIN 
+		<random_droid_beep_sfx> = RANDOM(1, 1, 1, 1, 1, 1, 1, 1, 1) RANDOMCASE TRG_Droid_01 RANDOMCASE TRG_Droid_02 RANDOMCASE TRG_Droid_03 RANDOMCASE TRG_Droid_04 RANDOMCASE TRG_Droid_05 RANDOMCASE TRG_Droid_06 RANDOMCASE trg_droid_08 RANDOMCASE TRG_Droid_09 RANDOMCASE TRG_Droid_10 RANDOMEND 
+		Wait 1 frame 
+		CreateFastParticleSystem name = SP_sparking01 params_Script = apm_SE_Spark01_fast_particle_params attachobjid = trg_droid_08 
+		SpawnSound SE_SFX_Robot_Beeps params = { robot = <random_droid_beep_sfx> } 
+		Wait RANDOM_RANGE PAIR(10.00000000000, 90.00000000000) Frames 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT SE_particles 
+	IF NOT InMultiplayerGame 
+		CreateFastParticleSystem name = SP_shiphover params_Script = apm_SP_ShipHover01_fast_particle_params 
+		SP_shiphover : obj_setposition position = VECTOR(-351.00000000000, -1550.00000000000, -321.00000000000) 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_2d_sign_element_create parent = menu3d_anchor 
+	IF GetGlobalFlag Flag = SCREEN_MODE_WIDE 
+		<offset> = PAIR(-8.00000000000, 0.00000000000) 
+	ELSE 
+		<offset> = PAIR(0.00000000000, 0.00000000000) 
+	ENDIF 
+	CreateScreenElement { 
+		Type = SpriteElement 
+		parent = <parent> 
+		texture = SE_icon_1 
+		ID = SE_hexagon 
+		scale = 1.50000000000 
+		rgba = [ 128 128 128 128 ] 
+		pos = ( PAIR(9.00000000000, 148.00000000000) + <offset> ) 
+		rot_angle = 0 
+		just = [ center center ] 
+		z_priority = -51 
+	} 
+	RunScriptOnScreenElement ID = SE_hexagon SE_hexagon_anim 
+ENDSCRIPT
+
+SCRIPT SE_hexagon_anim 
+	IF CheckSumEquals a = ( menu3d_subicon ) b = spaceport 
+		hex_pos = PAIR(10.00000000000, 290.00000000000) 
+	ELSE 
+		IF CheckSumEquals a = ( menu3d_subicon ) b = temple 
+			hex_pos = PAIR(150.00000000000, 260.00000000000) 
+		ELSE 
+			hex_pos = PAIR(50.00000000000, 163.00000000000) 
+		ENDIF 
+	ENDIF 
+	BEGIN 
+		DoMorph time = 0 pos = <hex_pos> time = 0 scale = 3 alpha = 1 
+		DoMorph time = 1 scale = 4.50000000000 alpha = 0 
+		Wait 0.75000000000 Seconds 
+	REPEAT 
+ENDSCRIPT
+
+SECRET_StateLogic_Table = { 
+	SECRET_State_LoungeSinger_Laying = { 
+		script_ped_state = SECRET_STATECONTROL_LoungeSinger_Laying 
+		exit_state_action = wait_anim_finished 
+	} 
+	SECRET_State_LoungeSinger_Dance = { 
+		script_ped_state = SECRET_STATECONTROL_LoungeSinger_Dance 
+		exit_state_action = wait_anim_finished 
+	} 
+	STATE_GetAttention = { 
+		script_ped_state = SECRET_STATECONTROL_LoungeSinger_GetAttention 
+		exit_state_action = wait_anim_finished 
+	} 
+} 
+SECRET_Alien_Table = { 
+	SECRET_STATE_AlienIdle = { 
+		script_ped_state = SECRET_STATECONTROL_AlienIdle 
+	} 
+	STATE_Stand = { 
+		ped_update_type = no_move_update 
+		script_ped_state = SECRET_STATECONTROL_Alien_Stand 
+		exit_state_action = wait_anim_finished 
+	} 
+	STATE_GetAttention = { 
+		script_ped_state = SECRET_STATECONTROL_Alien_GetAttention 
+		exit_state_action = wait_anim_finished 
+	} 
+} 
+SCRIPT SECRET_STATECONTROL_LoungeSinger_Laying 
+	IF ( SE_SFX_LoungeSingerMusicStatus = 1 ) 
+		SpawnSound SE_SFX_LoungeSinger_Stop 
+	ENDIF 
+	IF NOT Obj_AnimEquals Ped_LoungeSinger_Hey 
+		PlayAnimWithPartialAnimIfExists Anim = Ped_LoungeSinger_GetUp blendperiod = 1 backwards 
+		OBJ_waitanimfinished 
+	ENDIF 
+	IF ScreenElementExists ID = ped_speech_dialog 
+		speech_box_exit anchor_id = ped_speech_dialog 
+	ENDIF 
+	IF ( SE_SFX_LoungeSingerMusicStatus = 1 ) 
+		spawnscript SE_SFX_LoungeSinger_Stop02 
+	ENDIF 
+	setup_ped_speech { ped_id = TRG_Ped_LoungeSinger 
+		inner_radius = 7 
+		outer_radius = 8 
+		accept_text = "Press \\m5 to Dance with the Devil." 
+		activation_script = SECRET_Lounge_MusicPlay 
+		dont_deactivate_goals 
+	} 
+	Ped_Utils_SetMiscEventHandlers 
+	BEGIN 
+		RANDOM(2, 1) 
+			RANDOMCASE PlayAnimWithPartialAnimIfExists Anim = Ped_LoungeSinger_LayIdle1 
+			RANDOMCASE PlayAnimWithPartialAnimIfExists Anim = Ped_LoungeSinger_LayIdle2 
+		RANDOMEND 
+		OBJ_waitanimfinished 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT SECRET_STATECONTROL_LoungeSinger_GetAttention 
+	BEGIN 
+		IF NOT Obj_ObjectInAttentionRadius 
+			BREAK 
+		ENDIF 
+		PlayAnimWithPartialAnimIfExists Anim = Ped_LoungeSinger_Hey 
+		OBJ_waitanimfinished 
+	REPEAT 2 
+	Ped_Utils_SetMiscEventHandlers 
+	Ped_StateLogic_SetDefaultState 
+ENDSCRIPT
+
+SCRIPT SECRET_STATECONTROL_LoungeSinger_Dance 
+	IF ( SE_SFX_LoungeSingerMusicStatus = 0 ) 
+		SpawnSound SE_SFX_LoungeSinger_Start 
+	ENDIF 
+	PlayAnimWithPartialAnimIfExists Anim = Ped_LoungeSinger_GetUp blendperiod = 1 
+	OBJ_waitanimfinished 
+	IF ScreenElementExists ID = ped_speech_dialog 
+		speech_box_exit anchor_id = ped_speech_dialog 
+	ENDIF 
+	IF ( SE_SFX_LoungeSingerMusicStatus = 0 ) 
+		spawnscript SE_SFX_LoungeSinger_Start02 
+	ENDIF 
+	setup_ped_speech { ped_id = TRG_Ped_LoungeSinger 
+		inner_radius = 7 
+		outer_radius = 8 
+		accept_text = "Press \\m5 to stop." 
+		activation_script = SECRET_LOUNGE_MusicStop 
+		dont_deactivate_goals 
+	} 
+	BEGIN 
+		PlayAnimWithPartialAnimIfExists Anim = Ped_LoungeSinger_Dance 
+		OBJ_waitanimfinished 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT SECRET_Lounge_MusicPlay 
+	TRG_Ped_LoungeSinger : Ped_StateLogic_RegisterTempDefaultState State = SECRET_State_LoungeSinger_Dance Table = SECRET_StateLogic_Table 
+	TRG_Ped_LoungeSinger : ped_setlogicstate SECRET_State_LoungeSinger_Dance Table = SECRET_StateLogic_Table 
+	UnPauseSkaters 
+ENDSCRIPT
+
+SCRIPT SECRET_LOUNGE_MusicStop 
+	TRG_Ped_LoungeSinger : Ped_StateLogic_RegisterTempDefaultState State = SECRET_State_LoungeSinger_Laying Table = SECRET_StateLogic_Table 
+	TRG_Ped_LoungeSinger : ped_setlogicstate SECRET_State_LoungeSinger_Laying Table = SECRET_StateLogic_Table 
+	UnPauseSkaters 
+ENDSCRIPT
+
+SCRIPT SECRET_STATECONTROL_AlienIdle 
+	Obj_SetAttentionRadius 25 
+	PlayAnimWithPartialAnimIfExists Anim = Ped_Alien_Idle Cycle 
+ENDSCRIPT
+
+SCRIPT SECRET_Alien_StartAvoid 
+ENDSCRIPT
+
+SCRIPT SECRET_STATECONTROL_Alien_GetAttention 
+	PlayAnimWithPartialAnimIfExists Anim = Ped_Alien_Avoid 
+	OBJ_waitanimfinished 
+	PlayAnimWithPartialAnimIfExists Anim = Ped_Alien_Avoid_Idle Cycle 
+	BEGIN 
+		IF NOT Obj_ObjectInAttentionRadius 
+			PlayAnimWithPartialAnimIfExists Anim = Ped_Alien_Avoid backwards 
+			Ped_Utils_SetMiscEventHandlers 
+			Ped_StateLogic_SetDefaultState 
+			RETURN 
+		ENDIF 
+		Wait 1 gameframe 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT SE_SFX_Stop_All_Warping_Looping_Sounds 
+	TRG_SFX_Ghost_SpaceToTempleWarp : Obj_StopSound 
+	TRG_SFX_Ghost_SpaceToTempleWarp : Obj_StopSound 
+	TRG_SFX_Ghost_SpaceToHellWarp : Obj_StopSound 
+	TRG_SFX_Ghost_SpaceToHellWarp : Obj_StopSound 
+	TRG_SFX_Ghost_TempleToSpaceWarp : Obj_StopSound 
+	TRG_SFX_Ghost_TempleToSpaceWarp : Obj_StopSound 
+	TRG_SFX_Ghost_TempleToHellWarp : Obj_StopSound 
+	TRG_SFX_Ghost_TempleToHellWarp : Obj_StopSound 
+	TRG_SFX_Ghost_HellToTempleWarp : Obj_StopSound 
+	TRG_SFX_Ghost_HellToTempleWarp : Obj_StopSound 
+	TRG_SFX_Ghost_HellToSpaceWarp : Obj_StopSound 
+	TRG_SFX_Ghost_HellToSpaceWarp : Obj_StopSound 
+ENDSCRIPT
+
+

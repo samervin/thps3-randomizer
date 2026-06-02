@@ -1,0 +1,793 @@
+SCRIPT DJ_Setup 
+	DJ_manualcheck_init 
+ENDSCRIPT
+
+SCRIPT DJ_startup 
+ENDSCRIPT
+
+SCRIPT DJ_Goals 
+	IF InMultiplayerGame 
+		add_multiplayer_mode_goals 
+	ENDIF 
+	IF NOT InSplitScreenGame 
+		IF ( ( GameModeEquals is_classic ) | ( InNetGame ) ) 
+			printf "adding classic goals" 
+			AddGoal_HighScore { 
+				unlimited_time 
+				classic_mode_goal 
+				goal_text = DJ_Classic_HighScore_Text 
+				view_goals_cameras = [ { 
+						name = Cam_Score 
+						frames = 1200 
+						skippable = 1 
+					} 
+				] 
+				difficulty_level_params = [ 
+					{ score = DJ_Classic_Easy_HighScore 
+						goal_text = DJ_Classic_Easy_HighScore_Text 
+						view_goals_text = DJ_Classic_Easy_HighScore_Text 
+					} 
+					{ score = DJ_Classic_HighScore 
+						goal_text = DJ_Classic_HighScore_Text 
+						view_goals_text = DJ_Classic_HighScore_Text 
+					} 
+				] 
+			} 
+			AddGoal_ProScore { 
+				unlimited_time 
+				classic_mode_goal 
+				score = DJ_Classic_ProScore 
+				goal_text = DJ_Classic_ProScore_Text 
+				view_goals_text = DJ_Classic_ProScore_Text 
+				difficulty_level_params = [ 
+					{ score = DJ_Classic_Easy_Proscore 
+						goal_text = DJ_Classic_Easy_Proscore_Text 
+						view_goals_text = DJ_Classic_Easy_Proscore_Text 
+					} 
+					{ score = DJ_Classic_ProScore 
+						goal_text = DJ_Classic_ProScore_Text 
+						view_goals_text = DJ_Classic_ProScore_Text 
+					} 
+				] 
+			} 
+			AddGoal_SickScore { 
+				unlimited_time 
+				classic_mode_goal 
+				score = DJ_Classic_SickScore 
+				goal_text = DJ_Classic_SickScore_Text 
+				view_goals_text = DJ_Classic_SickScore_Text 
+				difficulty_level_params = [ 
+					{ score = DJ_Classic_Easy_Sickscore 
+						goal_text = DJ_Classic_Easy_Sickscore_Text 
+						view_goals_text = DJ_Classic_Easy_Sickscore_Text 
+					} 
+					{ score = DJ_Classic_SickScore 
+						goal_text = DJ_Classic_SickScore_Text 
+						view_goals_text = DJ_Classic_SickScore_Text 
+					} 
+				] 
+			} 
+			AddGoal_HighCombo { 
+				unlimited_time 
+				classic_mode_goal 
+				score = DJ_Classic_HighCombo 
+				goal_text = DJ_Classic_HighCombo_Text 
+				view_goals_text = DJ_Classic_HighCombo_Text 
+				difficulty_level_params = [ 
+					{ score = DJ_Classic_Easy_Highcombo 
+						goal_text = DJ_Classic_Easy_Highcombo_Text 
+						view_goals_text = DJ_Classic_Easy_Highcombo_Text 
+					} 
+					{ score = DJ_Classic_HighCombo 
+						goal_text = DJ_Classic_HighCombo_Text 
+						view_goals_text = DJ_Classic_HighCombo_Text 
+					} 
+				] 
+			} 
+			AddGoal_Skate { 
+				unlimited_time 
+				classic_mode_goal 
+				S_obj_id = TRG_SKATE_S 
+				K_obj_id = TRG_SKATE_K 
+				A_obj_id = TRG_SKATE_A 
+				T_obj_id = TRG_SKATE_T 
+				E_obj_id = TRG_SKATE_E 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(-3558.4, -2528.3, 10577.7) 
+						positionOffset = VECTOR(3494.5, -235.7, 3869.6) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+			} 
+			AddGoal_Combo { 
+				unlimited_time 
+				classic_mode_goal 
+				letter_info = [ 
+					{ obj_id = TRG_COMBO_C text = "C" } 
+					{ obj_id = TRG_COMBO_O text = "O" } 
+					{ obj_id = TRG_COMBO_M text = "M" } 
+					{ obj_id = TRG_COMBO_B text = "B" } 
+					{ obj_id = TRG_COMBO_O01 text = "O" } 
+				] 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(7455.4, -2808.8, -2486.4) 
+						positionOffset = VECTOR(1638, -615.3, 5345.9) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+			} 
+			AddGoal_collect { 
+				unlimited_time 
+				init_script = DJ_CratesCreate 
+				goal_deactivate_script = DJ_CratesKill 
+				classic_mode_goal 
+				collect_type = "Crates" 
+				goal_text = "Smash 5 Crates" 
+				view_goals_text = "Smash 5 Crates" 
+				use_hud_counter 
+				hud_counter_caption = "Crates smashed" 
+				goal_flags = [ got_1 
+					got_2 
+					got_3 
+					got_4 
+					got_5 
+				] 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(2696.3, -3475.2, 6789.5) 
+						positionOffset = VECTOR(-1254.8, -2035.6, -2283.1) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+			} 
+			AddGoal_gaps { 
+				unlimited_time 
+				classic_mode_goal 
+				version = 2 
+				goal_text = "\\t1 (\\k1) Over The Giant Grate" 
+				view_goals_text = "\\t1 (\\k1) Over The Giant Grate" 
+				goal_description = "\\t1 (\\k1) Over The Giant Grate" 
+				goal_flags = [ got_1 
+				] 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(-5941.9, -6558.1, -15006.3) 
+						positionOffset = VECTOR(-120.9, -4459.9, -7150.5) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+				key_combos = [ Air_CircleUL ] 
+			} 
+			AddGoal_collect { 
+				unlimited_time 
+				init_script = DJ_PuddlesCreate 
+				goal_deactivate_script = DJ_PuddlesKill 
+				classic_mode_goal 
+				version = 2 
+				collect_type = "Manual (\\b7+\\b4) Through The Puddles" 
+				use_hud_counter 
+				hud_counter_caption = "Manual (\\b7+\\b4) Through The Puddles" 
+				goal_text = "Manual (\\b7+\\b4) Through The Puddles" 
+				view_goals_text = "Manual (\\b7+\\b4) Through The Puddles" 
+				goal_description = "Small Puddles" 
+				goal_flags = [ got_1 
+					got_2 
+					got_3 
+					got_4 
+					got_5 
+				] 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(-986.3, -5344.1, -6098.2) 
+						positionOffset = VECTOR(-506.4, -1613.9, 3167.6) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+			} 
+			AddGoal_SecretTape { 
+				goal_text = "Get the secret tape" 
+				view_goals_text = "Get the secret tape" 
+				classic_mode_goal 
+				goal_description = "Get the secret tape" 
+				secret_tape_id = TRG_DJ_SECRETTAPE 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(2510.9, -1899.7, 8216.1) 
+						positionOffset = VECTOR(-508.4, -1986.9, -1316.8) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+			} 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT DJ_CratesCreate 
+	Create prefix = "DJ_Classic_Crate" 
+	Create prefix = "DJ_Goal" 
+ENDSCRIPT
+
+SCRIPT DJ_CratesKill 
+	printf "dj_crateskill" 
+	Kill prefix = "DJ_Classic_Crate" 
+	Kill prefix = "DJ_Goal" 
+ENDSCRIPT
+
+SCRIPT DJ_PuddlesCreate 
+	Create prefix = "CLAS_ManualPuddle" 
+	Create prefix = "CLAS_Trig_ManualPuddle" 
+ENDSCRIPT
+
+SCRIPT DJ_PuddlesKill 
+	Kill prefix = "CLAS_ManualPuddle" 
+	Kill prefix = "CLAS_Trig_ManualPuddle" 
+ENDSCRIPT
+
+SCRIPT DJ_Crate 
+	Shatteranddie name = <object> area = 5000 texture_swap = JOW_DJ_CrateShatter01 variance = 4 vel_x = 15 vel_y = 15 vel_z = 15 
+	Kill name = <name> 
+	IF NOT IsSoundPlaying HitWoodPlanks 
+		playsound HitWoodPlanks vol = 120 
+	ENDIF 
+	SWITCH <name> 
+		CASE DJ_Classic_Crate01 
+			goal_collect_got_object goal_id = dj_classic_goal_collect flag = got_1 
+			CreateFastParticleSystem name = JOW_DJ_Crates01 params_Script = JOW_DJ_Crates01_fast_particle_params 
+		CASE DJ_Classic_Crate02 
+			goal_collect_got_object goal_id = dj_classic_goal_collect flag = got_2 
+			CreateFastParticleSystem name = JOW_DJ_Crates02 params_Script = JOW_DJ_Crates02_fast_particle_params 
+		CASE DJ_Classic_Crate03 
+			goal_collect_got_object goal_id = dj_classic_goal_collect flag = got_3 
+			CreateFastParticleSystem name = JOW_DJ_Crates03 params_Script = JOW_DJ_Crates03_fast_particle_params 
+		CASE DJ_Classic_Crate04 
+			goal_collect_got_object goal_id = dj_classic_goal_collect flag = got_4 
+			CreateFastParticleSystem name = JOW_DJ_Crates04 params_Script = JOW_DJ_Crates04_fast_particle_params 
+		CASE DJ_Classic_Crate05 
+			goal_collect_got_object goal_id = dj_classic_goal_collect flag = got_5 
+			CreateFastParticleSystem name = JOW_DJ_Crates05 params_Script = JOW_DJ_Crates05_fast_particle_params 
+	ENDSWITCH 
+ENDSCRIPT
+
+SCRIPT DJ_Secret_Tape 
+ENDSCRIPT
+
+SCRIPT DJ_Secret_Tape_Got 
+ENDSCRIPT
+
+SCRIPT DJ_GapStart_JapanGrabPuddle 
+	StartGap GapID = JapGrab flags = [ PURE_AIR CANCEL_HANG ] keycombo = Air_CircleUL trickscript = DJ_Classic_Gaps_Got1 
+ENDSCRIPT
+
+SCRIPT DJ_GapEnd_JapanGrabPuddle 
+	EndGap GapID = JapGrab score = 100 text = "Over The Giant Grate!" 
+ENDSCRIPT
+
+SCRIPT DJ_Classic_Gaps_Got1 
+	GoalManager_SetGoalFlag name = DJ_classic_goal_gaps2 got_1 1 
+ENDSCRIPT
+
+FLAG_DJ_RAIL1 = 25 
+FLAG_DJ_RAIL2 = 26 
+FLAG_DJ_RAIL3 = 27 
+FLAG_DJ_RAIL4 = 28 
+FLAG_DJ_RAIL5 = 29 
+FLAG_MANUAL = 30 
+SCRIPT DJ_manualcheck_init 
+	spawnscript DJ_skater_manual 
+ENDSCRIPT
+
+SCRIPT DJ_skater_manual 
+	ClearExceptionGroup DJ_inmanual 
+	unsetFlag flag = FLAG_MANUAL 
+	SetExceptionHandler Ex = SkaterEnterManual Scr = DJ_manual_active Group = DJ_inmanual 
+	Block 
+ENDSCRIPT
+
+SCRIPT DJ_manual_active 
+	ClearExceptionGroup DJ_inmanual 
+	setFlag flag = FLAG_MANUAL 
+	SetExceptionHandler Ex = SkaterExitManual Scr = DJ_skater_manual Group = DJ_inmanual 
+	Block 
+ENDSCRIPT
+
+SCRIPT DJ_Manual_Puddle1 
+	IF NOT GetFlag flag = FLAG_DJ_RAIL1 
+		IF GetFlag flag = FLAG_MANUAL 
+			Kill name = CLAS_ManualPuddle01 
+			Kill name = CLAS_Trig_ManualPuddle01 
+			playsound FallWater 
+			goal_collect_got_object goal_id = dj_classic_goal_collect2 flag = got_1 
+			setFlag flag = FLAG_DJ_RAIL1 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT DJ_Manual_Puddle2 
+	IF NOT GetFlag flag = FLAG_DJ_RAIL2 
+		IF GetFlag flag = FLAG_MANUAL 
+			Kill name = CLAS_ManualPuddle02 
+			Kill name = CLAS_Trig_ManualPuddle02 
+			playsound FallWater 
+			goal_collect_got_object goal_id = dj_classic_goal_collect2 flag = got_2 
+			setFlag flag = FLAG_DJ_RAIL2 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT DJ_Manual_Puddle3 
+	IF NOT GetFlag flag = FLAG_DJ_RAIL3 
+		IF GetFlag flag = FLAG_MANUAL 
+			Kill name = CLAS_ManualPuddle03 
+			Kill name = CLAS_Trig_ManualPuddle03 
+			playsound FallWater 
+			goal_collect_got_object goal_id = dj_classic_goal_collect2 flag = got_3 
+			setFlag flag = FLAG_DJ_RAIL3 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT DJ_Manual_Puddle4 
+	IF NOT GetFlag flag = FLAG_DJ_RAIL4 
+		IF GetFlag flag = FLAG_MANUAL 
+			Kill name = CLAS_ManualPuddle04 
+			Kill name = CLAS_Trig_ManualPuddle04 
+			playsound FallWater 
+			goal_collect_got_object goal_id = dj_classic_goal_collect2 flag = got_4 
+			setFlag flag = FLAG_DJ_RAIL4 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT DJ_Manual_Puddle5 
+	IF NOT GetFlag flag = FLAG_DJ_RAIL5 
+		IF GetFlag flag = FLAG_MANUAL 
+			Kill name = CLAS_ManualPuddle05 
+			Kill name = CLAS_Trig_ManualPuddle05 
+			playsound FallWater 
+			goal_collect_got_object goal_id = dj_classic_goal_collect2 flag = got_5 
+			setFlag flag = FLAG_DJ_RAIL5 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT DJ_Kill_Rocks 
+	Sk3_Killskater Bail nodename = TRG_Restart_03 message1 = " DENIED!" message2 = " Good One?" message3 = " Crunch!" message4 = " Smack!" 
+ENDSCRIPT
+
+SCRIPT DJ_Kill_Rocks1 
+	Sk3_Killskater Bail nodename = TRG_Restart_04 message1 = " DENIED!" message2 = " Good One?" message3 = " Ding!" message4 = " Sucker!" 
+ENDSCRIPT
+
+SCRIPT DJ_Boost01 
+	IF NOT walking 
+		Trigger_Speed_Boost speed = 1600 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT ALC_Televator 
+	TeleportSkaterToNode nodename = TRG_Restart_05 
+	IF NOT GotParam cut 
+		create_panel_message { 
+			id = leaving_message 
+			text = "Rewind!" 
+			pos = PAIR(320, 180) 
+			rgba = [ 118 , 110 , 14 , 128 ] 
+			pulse_blur 
+			start = 200 
+			speed = 1 
+			scale = 1.00000000000 
+		} 
+	ENDIF 
+	IF GotParam sound 
+		playsound <sound> 
+	ENDIF 
+	playsound LA_Skid_11 
+	IF GotParam node 
+		sk3_teleporttonode nodename = <node> 
+	ELSE 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT ALC_Televator1 
+	TeleportSkaterToNode nodename = TRG_Restart_01 
+	IF NOT GotParam cut 
+		create_panel_message { 
+			id = leaving_message 
+			text = "Rewind!" 
+			pos = PAIR(320.00000000000, 180.00000000000) 
+			rgba = [ 118 , 110 , 14 , 128 ] 
+			pulse_blur 
+			start = 200 
+			speed = 1 
+			scale = 1.00000000000 
+		} 
+	ENDIF 
+	IF GotParam sound 
+		playsound <sound> 
+	ENDIF 
+	playsound LA_Skid_11 
+	IF GotParam node 
+		sk3_teleporttonode nodename = <node> 
+	ELSE 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT Box_Break_01 
+	Shatteranddie name = DMT_Crate01 area = 5000 variance = 4 vel_x = 50 vel_y = 50 vel_z = 50 
+	spread = 1 
+	IF NOT IsSoundPlaying HitWoodPlanks 
+		playsound HitWoodPlanks vol = 120 
+	ENDIF 
+	Kill name = DMT_Crate05_shatter 
+ENDSCRIPT
+
+SCRIPT Box_Break_02 
+	Shatteranddie name = DMT_Crate03 area = 5000 variance = 4 vel_x = 50 vel_y = 50 vel_z = 50 
+	spread = 1 
+	IF NOT IsSoundPlaying HitWoodPlanks 
+		playsound HitWoodPlanks vol = 120 
+	ENDIF 
+	Kill name = DMT_Crate05_shatter01 
+ENDSCRIPT
+
+SCRIPT Box_Break_03 
+	Shatteranddie name = DMT_Crate02 area = 5000 variance = 4 vel_x = 50 vel_y = 50 vel_z = 50 
+	spread = 1 
+	Kill name = DMT_Crate05_shatter02 
+	IF NOT IsSoundPlaying HitWoodPlanks 
+		playsound HitWoodPlanks vol = 120 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT Box_Break_04 
+	Shatteranddie name = DMT_Crate04 area = 5000 variance = 4 vel_x = 50 vel_y = 50 vel_z = 50 
+	spread = 1 
+	Kill name = DMT_Crate05_shatter03 
+	IF NOT IsSoundPlaying HitWoodPlanks 
+		playsound HitWoodPlanks vol = 120 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT DJ_Spray 
+	playsound HitMetalCan volume = 100.00000000000 pitch = 100.00000000000 
+	Kill name = spray_01 
+	Shatteranddie name = Jam_GOAL_Valve01 area = 288.00000000000 variance = 0.00000000000 spread = 1.00000000000 life = 4.00000000000 bounce = -10 , 0 scale = 1.00000000000 
+	TRG_SFX_Ghost_Water01 : Obj_PlaySound SK6_BO_RiverLoop01_11 vol = 150 dropoff = 250 pitch = 200 dropoff_function = exponential 
+	wait 1 second 
+	CreateFastParticleSystem name = JOW_DJ_ValveSpurt01 params_Script = JOW_DJ_ValveSpurt01_fast_particle_params 
+	CreateFastParticleSystem name = JOW_DJ_ValveSpurt01a params_Script = JOW_DJ_ValveSpurt01a_fast_particle_params 
+ENDSCRIPT
+
+SCRIPT DJ_Spray1 
+	Kill name = spray_02 
+	Kill name = Jam_GOAL_Valve_Flat_03 
+	Shatteranddie name = Jam_GOAL_Valve02 area = 288.00000000000 variance = 0.00000000000 spread = 1.00000000000 life = 4.00000000000 bounce = -10 , 0 scale = 1.00000000000 
+	playsound HitMetalCan volume = 100.00000000000 pitch = 100.00000000000 
+	TRG_SFX_Ghost_Water02 : Obj_PlaySound SK6_BO_RiverLoop01_11 vol = 150 dropoff = 250 pitch = 200 dropoff_function = exponential 
+	wait 1 second 
+	CreateFastParticleSystem name = JOW_DJ_ValveSpurt03 params_Script = JOW_DJ_ValveSpurt03_fast_particle_params 
+	CreateFastParticleSystem name = JOW_DJ_ValveSpurt03a params_Script = JOW_DJ_ValveSpurt03a_fast_particle_params 
+	CreateFastParticleSystem name = JOW_DJ_ValveSpurt03b params_Script = JOW_DJ_ValveSpurt03b_fast_particle_params 
+	CreateFastParticleSystem name = JOW_DJ_ValveSpurt04 params_Script = JOW_DJ_ValveSpurt04_fast_particle_params 
+	CreateFastParticleSystem name = JOW_DJ_ValveSpurt04a params_Script = JOW_DJ_ValveSpurt04a_fast_particle_params 
+	CreateFastParticleSystem name = JOW_DJ_ValveSpurt04b params_Script = JOW_DJ_ValveSpurt04b_fast_particle_params 
+ENDSCRIPT
+
+SCRIPT DJ_Spray2 
+	Kill name = spray_03 
+	Shatteranddie name = Jam_GOAL_Valve03 area = 288.00000000000 variance = 0.00000000000 spread = 1.00000000000 life = 4.00000000000 bounce = -10 , 0 scale = 1.00000000000 
+	playsound HitMetalCan volume = 100.00000000000 pitch = 100.00000000000 
+	TRG_SFX_Ghost_Water03 : Obj_PlaySound SK6_BO_RiverLoop01_11 vol = 150 dropoff = 400 pitch = 200 dropoff_function = exponential 
+	wait 1 second 
+	CreateFastParticleSystem name = JOW_DJ_DamSpurt01 params_Script = JOW_DJ_DamSpurt01_fast_particle_params 
+	CreateFastParticleSystem name = JOW_DJ_DamSpurt01a params_Script = JOW_DJ_DamSpurt01a_fast_particle_params 
+	CreateFastParticleSystem name = JOW_DJ_DamSpurt02 params_Script = JOW_DJ_DamSpurt02_fast_particle_params 
+	CreateFastParticleSystem name = JOW_DJ_DamSpurt03 params_Script = JOW_DJ_DamSpurt03_fast_particle_params 
+	CreateFastParticleSystem name = JOW_DJ_DamSpurt04 params_Script = JOW_DJ_DamSpurt04_fast_particle_params 
+	CreateFastParticleSystem name = JOW_DJ_DamSpurt05 params_Script = JOW_DJ_DamSpurt05_fast_particle_params 
+	CreateFastParticleSystem name = JOW_DJ_DamSpurt06 params_Script = JOW_DJ_DamSpurt06_fast_particle_params 
+	CreateFastParticleSystem name = JOW_DJ_DamSpurt07 params_Script = JOW_DJ_DamSpurt07_fast_particle_params 
+	CreateFastParticleSystem name = JOW_DJ_DamSpurt07a params_Script = JOW_DJ_DamSpurt07a_fast_particle_params 
+	CreateFastParticleSystem name = JOW_DJ_DamFoam01 params_Script = JOW_DJ_DamFoam01_fast_particle_params 
+ENDSCRIPT
+
+SCRIPT DJ_Spray3 
+	Kill name = spray_04 
+	Kill name = Jam_GOAL_Valve_Flat_02 
+	Shatteranddie name = Jam_GOAL_Valve05 area = 288.00000000000 variance = 0.00000000000 spread = 1.00000000000 life = 4.00000000000 bounce = -10 , 0 scale = 1.00000000000 
+	playsound HitMetalCan volume = 100.00000000000 pitch = 100.00000000000 
+	TRG_SFX_Ghost_Water06 : Obj_PlaySound SK6_BO_RiverLoop01_11 vol = 150 dropoff = 200 pitch = 200 dropoff_function = exponential 
+	wait 1 second 
+	CreateFastParticleSystem name = JOW_DJ_ValveSpurt05 params_Script = JOW_DJ_ValveSpurt05_fast_particle_params 
+	CreateFastParticleSystem name = JOW_DJ_ValveSpurt05a params_Script = JOW_DJ_ValveSpurt05a_fast_particle_params 
+	CreateFastParticleSystem name = JOW_DJ_ValveSpurt06 params_Script = JOW_DJ_ValveSpurt06_fast_particle_params 
+	CreateFastParticleSystem name = JOW_DJ_ValveSpurt06a params_Script = JOW_DJ_ValveSpurt06a_fast_particle_params 
+ENDSCRIPT
+
+SCRIPT DJ_Spray4 
+	Kill name = spray_05 
+	Kill name = Jam_GOAL_flat_01 
+	Shatteranddie name = Jam_GOAL_Valve06 area = 288.00000000000 variance = 0.00000000000 spread = 1.00000000000 life = 4.00000000000 bounce = -10 , 0 scale = 1.00000000000 
+	playsound HitMetalCan volume = 100.00000000000 pitch = 100.00000000000 
+	TRG_SFX_Ghost_Water07 : Obj_PlaySound SK6_BO_RiverLoop01_11 vol = 150 dropoff = 250 pitch = 200 dropoff_function = exponential 
+	wait 1 second 
+	CreateFastParticleSystem name = JOW_DJ_EndSpurt01 params_Script = JOW_DJ_EndSpurt01_fast_particle_params 
+	CreateFastParticleSystem name = JOW_DJ_EndSpurt02 params_Script = JOW_DJ_EndSpurt02_fast_particle_params 
+	CreateFastParticleSystem name = JOW_DJ_EndFoam01 params_Script = JOW_DJ_EndFoam01_fast_particle_params 
+ENDSCRIPT
+
+SCRIPT TOD_Script 
+	SWITCH <current_tod> 
+		CASE morning 
+		CASE day 
+		CASE evening 
+		CASE night 
+		DEFAULT 
+			printf "### no tod set ###" 
+	ENDSWITCH 
+ENDSCRIPT
+
+SCRIPT DJ_Hazard_GapS 
+	StartGap GapID = hazard flags = [ PURE_AIR CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT DJ_Hazard_GapE 
+	EndGap GapID = hazard text = "Huge Water Hazard Gap" score = 1000 
+ENDSCRIPT
+
+SCRIPT DJ_Co_Gap 
+	StartGap flags = [ Cancel_Ground CANCEL_HANG ] 
+	EndGap text = "Neversoft Elec. Co. Gap" score = 500 
+ENDSCRIPT
+
+SCRIPT DJ_25_Gap 
+	StartGap flags = [ PURE_AIR CANCEL_HANG ] 
+	EndGap text = "25ft" score = 25 
+ENDSCRIPT
+
+SCRIPT DJ_50_Gap 
+	StartGap flags = [ PURE_AIR CANCEL_HANG ] 
+	EndGap text = "50ft" score = 150 
+ENDSCRIPT
+
+SCRIPT DJ_75_Gap 
+	StartGap flags = [ PURE_AIR CANCEL_HANG ] 
+	EndGap text = "75ft" score = 450 
+ENDSCRIPT
+
+SCRIPT DJ_100_Gap 
+	StartGap flags = [ PURE_AIR CANCEL_HANG ] 
+	EndGap text = "100ft" score = 1000 
+ENDSCRIPT
+
+SCRIPT LA_Rail2RailS 
+	StartGap GapID = Fire flags = [ REQUIRE_AIR Cancel_Ground CANCEL_WALLRIDE CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT LA_Rail2RailE 
+	EndGap GapID = Fire text = "Rail 2 Rail" score = 250 
+ENDSCRIPT
+
+SCRIPT LA_Rail2RailS1 
+	StartGap GapID = rail1 flags = [ REQUIRE_AIR Cancel_Ground CANCEL_WALLRIDE CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT LA_Rail2RailE1 
+	EndGap GapID = rail1 text = "Rail 2 Rail" score = 250 
+ENDSCRIPT
+
+SCRIPT LA_Kick2RailS 
+	StartGap GapID = kick1 flags = [ REQUIRE_AIR Cancel_Ground CANCEL_WALLRIDE CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT LA_Kick2RailE 
+	EndGap GapID = kick1 text = "Rail 2 Rail" score = 250 
+ENDSCRIPT
+
+SCRIPT LA_Rail2TraingleS 
+	StartGap GapID = traingle1 flags = [ REQUIRE_AIR Cancel_Ground CANCEL_WALLRIDE CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT LA_Rail2TraingleE 
+	EndGap GapID = traingle1 text = "Pipe 2 Triangle" score = 500 
+ENDSCRIPT
+
+SCRIPT LA_QP2PipeS 
+	StartGap GapID = qp1 flags = [ REQUIRE_AIR Cancel_Ground CANCEL_WALLRIDE CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT LA_QP2PipeE 
+	EndGap GapID = qp1 text = "QP 2 Pipe" score = 4000 
+ENDSCRIPT
+
+SCRIPT LA_LipBarS 
+	StartGap GapID = lip1 flags = [ REQUIRE_LIP Cancel_Ground CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT LA_LipBarE 
+	EndGap GapID = lip1 text = "Lip Bar" score = 250 
+ENDSCRIPT
+
+SCRIPT DJ_Pipe_StartGap0 
+	StartGap GapID = GAP4_EasyStart flags = [ Cancel_Ground REQUIRE_AIR CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT DJ_Pipe_ContinueGap1 
+	EndGap GapID = GAP4_EasyStart continue = { GapID = GAP4_EasyContinue 
+	flags = [ Cancel_Ground REQUIRE_AIR CANCEL_HANG ] } 
+ENDSCRIPT
+
+SCRIPT DJ_Pipe_ContinueGap2 
+	EndGap GapID = GAP4_EasyStart continue = { GapID = GAP4_EasyContinue 
+	flags = [ Cancel_Ground REQUIRE_AIR CANCEL_HANG ] } 
+ENDSCRIPT
+
+SCRIPT DJ_Pipe_EndGap3 
+	EndGap GapID = GAP4_EasyContinue text = "Kicker 2 Pipe 2 Pipe 2 Pipe!!" score = 10000 
+ENDSCRIPT
+
+SCRIPT DJ_HigUpTransfer 
+	StartGap flags = [ PURE_AIR CANCEL_HANG ] 
+	EndGap text = "High Up Transfer" score = 800 
+ENDSCRIPT
+
+SCRIPT LA_ManualHPS 
+	StartGap GapID = Man1 flags = [ PURE_MANUAL Cancel_Ground CANCEL_WALLRIDE CANCEL_AIR CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT LA_ManualHPE 
+	EndGap GapID = Man1 text = "Manual Through The HP!" score = 100 
+ENDSCRIPT
+
+SCRIPT LA_Box2BoxS 
+	StartGap GapID = Box1 flags = [ Cancel_Ground CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT LA_Box2BoxE 
+	EndGap GapID = Box1 text = "Box 2 Box" score = 6969 
+ENDSCRIPT
+
+SCRIPT LA_SmackPoleS 
+	StartGap GapID = pole1 flags = [ Cancel_Ground CANCEL_WALLRIDE CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT LA_SmackPoleE 
+	EndGap GapID = pole1 text = "Smack The Pole" score = 1112 
+ENDSCRIPT
+
+SCRIPT LA_HitLedgeRightS 
+	StartGap GapID = ledgeR1 flags = [ Cancel_Ground CANCEL_WALLRIDE CANCEL_MANUAL CANCEL_WALK CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT LA_HitLedgeRightE 
+	EndGap GapID = ledgeR1 text = "Hit Ledge Right" score = 800 
+ENDSCRIPT
+
+SCRIPT LA_HitLedgeLeftS 
+	StartGap GapID = ledgeL1 flags = [ Cancel_Ground CANCEL_WALLRIDE CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT LA_HitLedgeLeftE 
+	EndGap GapID = ledgeL1 text = "Hit Ledge Left" score = 800 
+ENDSCRIPT
+
+SCRIPT DJ_2d_sign_element_create parent = menu3d_anchor 
+	IF GetGlobalFlag flag = SCREEN_MODE_WIDE 
+		<offset> = PAIR(-8.00000000000, 0.00000000000) 
+	ELSE 
+		<offset> = PAIR(0.00000000000, 0.00000000000) 
+	ENDIF 
+	Theme_GetPauseBarColor return_value = warning_color 
+	CreateScreenElement { 
+		Type = ContainerElement 
+		parent = <parent> 
+		id = DJ_warning 
+		pos = PAIR(0.00000000000, 0.00000000000) 
+		z_priority = -53 
+	} 
+	CreateScreenElement { 
+		Type = SpriteElement 
+		parent = DJ_warning 
+		texture = DJ_icon_1 
+		id = DJ_quad1 
+		scale = PAIR(0.80000001192, 3.20000004768) 
+		rgba = <warning_color> 
+		pos = ( PAIR(138.00000000000, 180.00000000000) + <offset> ) 
+		rot_angle = 0 
+		just = [ left top ] 
+	} 
+	CreateScreenElement { 
+		Type = SpriteElement 
+		parent = DJ_warning 
+		texture = DJ_icon_1 
+		id = DJ_quad2 
+		scale = PAIR(0.80000001192, 3.20000004768) 
+		rgba = <warning_color> 
+		pos = ( PAIR(84.00000000000, 252.00000000000) + <offset> ) 
+		rot_angle = 0 
+		just = [ left top ] 
+	} 
+	CreateScreenElement { 
+		Type = SpriteElement 
+		parent = DJ_warning 
+		texture = DJ_icon_1 
+		id = DJ_quad3 
+		scale = PAIR(0.80000001192, 3.20000004768) 
+		rgba = <warning_color> 
+		pos = ( PAIR(29.00000000000, 284.00000000000) + <offset> ) 
+		rot_angle = 0 
+		just = [ left top ] 
+		flip_v 
+	} 
+	CreateScreenElement { 
+		Type = SpriteElement 
+		parent = DJ_warning 
+		texture = DJ_icon_1 
+		id = DJ_quad4 
+		scale = PAIR(0.80000001192, 3.20000004768) 
+		rgba = <warning_color> 
+		pos = ( PAIR(-24.00000000000, 218.00000000000) + <offset> ) 
+		rot_angle = 0 
+		just = [ left top ] 
+		flip_v 
+	} 
+	CreateScreenElement { 
+		Type = SpriteElement 
+		parent = <parent> 
+		texture = DJ_icon_2 
+		id = DJ_chevron1 
+		scale = PAIR(1.79999995232, 3.59999990463) 
+		rgba = [ 128 128 128 100 ] 
+		pos = ( PAIR(59.00000000000, 220.00000000000) + <offset> ) 
+		rot_angle = 0 
+		just = [ center center ] 
+		z_priority = -51 
+	} 
+	CreateScreenElement { 
+		Type = SpriteElement 
+		parent = <parent> 
+		texture = DJ_icon_2 
+		id = DJ_chevron2 
+		scale = PAIR(1.20000004768, 2.40000009537) 
+		rgba = [ 128 128 128 40 ] 
+		pos = ( PAIR(59.00000000000, 170.00000000000) + <offset> ) 
+		rot_angle = 0 
+		just = [ center center ] 
+		z_priority = -51 
+	} 
+	RunScriptOnScreenElement id = <parent> DJ_chevron_anim 
+ENDSCRIPT
+
+SCRIPT DJ_chevron_anim 
+	BEGIN 
+		RunScriptOnScreenElement id = DJ_chevron2 DJ_chevron_flash_anim 
+		wait 0.50000000000 seconds 
+		RunScriptOnScreenElement id = DJ_chevron1 DJ_chevron_flash_anim 
+		wait 0.50000000000 seconds 
+		RunScriptOnScreenElement id = DJ_warning DJ_warning_anim 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT DJ_chevron_flash_anim 
+	DoMorph time = 0 alpha = 0 
+	DoMorph time = 0.50000000000 alpha = 1 
+	wait 0.20000000298 seconds 
+	DoMorph time = 0.50000000000 alpha = 0 
+ENDSCRIPT
+
+SCRIPT DJ_warning_anim 
+	DoMorph time = 0 alpha = 0 
+	DoMorph time = 0.25000000000 alpha = 0.50000000000 
+	wait 0.20000000298 seconds 
+	DoMorph time = 0.25000000000 alpha = 0 
+ENDSCRIPT
+
+

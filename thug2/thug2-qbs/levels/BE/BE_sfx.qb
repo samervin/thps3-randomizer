@@ -1,0 +1,937 @@
+
+BE_SFX_BirdChirpVol = 70 
+BE_SFX_SaxManMusicStatus = 0 
+BE_SFX_DJMusicStatus = 0 
+SCRIPT BE_LoadingSounds 
+	LoadSound "Shared\\Hits\\HitGlassPane2x" 
+	LoadSound "Shared\\Auto\\LA_Skid_11" vol = 100 dropoff = 150 
+	LoadSound "Shared\\Auto\\CarBrakeSqueal" vol = 100 dropoff = 150 
+	LoadSound "Shared\\Auto\\CarHorn_11" vol = 100 dropoff = 150 
+	LoadSound "Shared\\Hits\\HitMetalCan" vol = 100 dropoff = 150 PosUpdateWithDoppler 
+	LoadSound "Shared\\Hits\\BonkBush" vol = 100 dropoff = 0 
+	LoadSound "Shared\\Water\\FallWater" 
+	LoadSound "Shared\\Auto\\CarLoop" vol = 100 dropoff = 150 PosUpdateWithDoppler 
+	LoadSound "Vehicles\\Silent_Vehicle_Tire_Loop" 
+	LoadSound "Terrains\\BonkMetal_11" 
+	LoadSound "BE\\SK6_GlassCrackQuick01" 
+	LoadSound "BE\\SK6_StoneCrackQuick01" 
+	LoadSound "BE\\SK6_BreakSignQuick" 
+	LoadSound "BE\\SK6_BreakCigMachine" 
+	LoadSound "BE\\SK6_BreakGlassPane01" 
+	LoadSound "AU\\AU_PoppingStreetLight" 
+	LoadSound "BE\\SK6_BE_AssfartFountain01" 
+	LoadSound "BO\\SK6_BO_RiverLoop01_11" 
+	LoadSound "BouncyObjects\\Bouncy_ACUnitLarge01" 
+	LoadSound "BouncyObjects\\Bouncy_ACUnitLarge02" 
+	LoadSound "BouncyObjects\\Bouncy_PlantLarge01" 
+	LoadSound "BouncyObjects\\Bouncy_PlantLarge02" 
+	LoadSound "BouncyObjects\\Bouncy_PlasticGarbageHit01" 
+	LoadSound "BouncyObjects\\Bouncy_PlasticGarbageHit02" 
+	LoadSound "BouncyObjects\\Bouncy_MetalHit01" 
+	LoadSound "BouncyObjects\\Bouncy_MetalHit02" 
+	LoadSound "BouncyObjects\\Bouncy_WoodSign01" 
+	LoadSound "BouncyObjects\\Bouncy_WoodSign02" 
+	LoadSound "BouncyObjects\\Bouncy_MetalSmallHit01" 
+	LoadSound "BouncyObjects\\Bouncy_MetalSmallHit02" 
+	LoadSound "Terrains\\GrindMetalOn02" 
+	LoadSound "Shared\\Hits\\BustValve" 
+	LoadSound "Shared\\Hits\\HitTrafficBarrier" 
+	LoadSound "BO\\SK6_BO_FireLoop" 
+	LoadSound "BE\\SK6_BE_Paulie_Loop" 
+	LoadSound "BE\\SK6_BE_Paulie_Grind" 
+	LoadSound "BE\\SK6_BE_Paulie_Jump" 
+	LoadSound "BE\\SK6_BE_Paulie_Land" 
+	LoadSound "BE\\SK6_BE_ElectricShock01" 
+	LoadSound "BE\\SK6_BE_CoockooTick" 
+	LoadSound "BE\\SK6_Throw_SprayCan_11" 
+	IF ( DebugSoundFX = 1 ) 
+		dumpheaps 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SK6_BE_SFX_TankCracking 
+	TRG_SFX_Ghost_Fishtank : Obj_PlaySound SK6_GlassCrackQuick01 vol = 120 dropoff = 150 
+	TRG_SFX_Ghost_Fishtank : Obj_PlayStream SK6_GlassCracking01 vol = 120 dropoff = 150 priority = 101 
+ENDSCRIPT
+
+SCRIPT SK6_BE_SFX_TankBreakingOpen 
+	TRG_SFX_Ghost_Fishtank : Obj_PlayStream SK6_WaterRushOut01 vol = 150 dropoff = 150 priority = 101 
+	TRG_SFX_Ghost_Fishtank : Obj_PlaySound SK6_BreakGlassPane01 vol = 120 dropoff = 150 
+ENDSCRIPT
+
+SCRIPT SK6_BE_SFX_ChurchGlassPaneBreak01 
+	PlaySound SK6_BreakGlassPane01 vol = 120 pitch = RANDOM(1, 1, 1) RANDOMCASE 80 RANDOMCASE 90 RANDOMCASE 100 RANDOMEND 
+ENDSCRIPT
+
+SCRIPT BE_SFX_AssfartWaterfall01 
+	Obj_PlaySound SK6_BE_AssfartFountain01 vol = 70 emitter = TRG_SFX_SOB_AssfartWaterfall01 dropoff_function = linear 
+ENDSCRIPT
+
+SCRIPT BE_SFX_AssfartReverb01 
+	IF NOT GameIsPaused 
+		IF NOT InSplitscreenGame 
+			IF ( inside ) 
+				change InsideAdjacentReverbBox01 = 1 
+				GetValueFromVolume cdvol 
+				IF ( <value> = 0 ) 
+					SetSfxReverb 60 mode = REV_MODE_ROOM 
+				ELSE 
+					SetSfxReverb 75 mode = REV_MODE_ROOM 
+				ENDIF 
+			ELSE 
+				IF ( InsideAdjacentReverbBox02 = 0 ) 
+					SetSfxReverb 0 mode = REV_MODE_ROOM 
+				ELSE 
+					GetValueFromVolume cdvol 
+					IF ( <value> = 0 ) 
+						SetSfxReverb 60 mode = REV_MODE_ARENA 
+					ELSE 
+						SetSfxReverb 75 mode = REV_MODE_ARENA 
+					ENDIF 
+				ENDIF 
+				change InsideAdjacentReverbBox01 = 0 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BE_SFX_TreeBirds01 
+	wait RANDOM(1, 1, 1, 1) RANDOMCASE 0 RANDOMCASE 0.50000000000 RANDOMCASE 0.69999998808 RANDOMCASE 0.10000000149 RANDOMEND seconds 
+	BEGIN 
+		RANDOM_NO_REPEAT(1, 1, 1, 1, 1, 1, 1, 1, 1) 
+			RANDOMCASE Obj_PlayStream SK6_BO_Bird09 vol = BE_SFX_BirdChirpVol emitter = RANDOM_NO_REPEAT(1, 1) RANDOMCASE TRG_SFX_SOB_Birds01 RANDOMCASE TRG_SFX_SOB_Birds02 RANDOMEND priority = StreamPriorityLow 
+			wait 5 seconds 
+			RANDOMCASE Obj_PlayStream SK6_BO_Bird10 vol = BE_SFX_BirdChirpVol emitter = RANDOM_NO_REPEAT(1, 1) RANDOMCASE TRG_SFX_SOB_Birds01 RANDOMCASE TRG_SFX_SOB_Birds02 RANDOMEND priority = StreamPriorityLow 
+			wait 7 seconds 
+			RANDOMCASE Obj_PlayStream SK6_BO_Bird11 vol = BE_SFX_BirdChirpVol emitter = RANDOM_NO_REPEAT(1, 1) RANDOMCASE TRG_SFX_SOB_Birds01 RANDOMCASE TRG_SFX_SOB_Birds02 RANDOMEND priority = StreamPriorityLow 
+			wait 4 seconds 
+			RANDOMCASE Obj_PlayStream SK6_BO_Bird12 vol = BE_SFX_BirdChirpVol emitter = RANDOM_NO_REPEAT(1, 1) RANDOMCASE TRG_SFX_SOB_Birds01 RANDOMCASE TRG_SFX_SOB_Birds02 RANDOMEND priority = StreamPriorityLow 
+			wait 3 seconds 
+			RANDOMCASE Obj_PlayStream SK6_BO_Bird13 vol = BE_SFX_BirdChirpVol emitter = RANDOM_NO_REPEAT(1, 1) RANDOMCASE TRG_SFX_SOB_Birds01 RANDOMCASE TRG_SFX_SOB_Birds02 RANDOMEND priority = StreamPriorityLow 
+			wait 3 seconds 
+			RANDOMCASE Obj_PlayStream SK6_BO_Bird14 vol = BE_SFX_BirdChirpVol emitter = RANDOM_NO_REPEAT(1, 1) RANDOMCASE TRG_SFX_SOB_Birds01 RANDOMCASE TRG_SFX_SOB_Birds02 RANDOMEND priority = StreamPriorityLow 
+			wait 7 seconds 
+			RANDOMCASE Obj_PlayStream SK6_BO_Bird15 vol = BE_SFX_BirdChirpVol emitter = RANDOM_NO_REPEAT(1, 1) RANDOMCASE TRG_SFX_SOB_Birds01 RANDOMCASE TRG_SFX_SOB_Birds02 RANDOMEND priority = StreamPriorityLow 
+			wait 7 seconds 
+			RANDOMCASE Obj_PlayStream SK6_BO_Bird16 vol = BE_SFX_BirdChirpVol emitter = RANDOM_NO_REPEAT(1, 1) RANDOMCASE TRG_SFX_SOB_Birds01 RANDOMCASE TRG_SFX_SOB_Birds02 RANDOMEND priority = StreamPriorityLow 
+			wait 7 seconds 
+			RANDOMCASE Obj_PlayStream SK6_BO_Bird17 vol = BE_SFX_BirdChirpVol emitter = RANDOM_NO_REPEAT(1, 1) RANDOMCASE TRG_SFX_SOB_Birds01 RANDOMCASE TRG_SFX_SOB_Birds02 RANDOMEND priority = StreamPriorityLow 
+			wait 5 seconds 
+		RANDOMEND 
+		wait RANDOM(1, 1, 1) RANDOMCASE 0.50000000000 RANDOMCASE 1.10000002384 RANDOMCASE 1.29999995232 RANDOMEND seconds 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT BE_SFX_TreeBirds02 
+	wait RANDOM(1, 1, 1, 1) RANDOMCASE 0 RANDOMCASE 0.20000000298 RANDOMCASE 0.80000001192 RANDOMCASE 0.89999997616 RANDOMEND seconds 
+	BEGIN 
+		RANDOM_NO_REPEAT(1, 1, 1, 1, 1, 1, 1, 1) 
+			RANDOMCASE Obj_PlayStream SK6_BO_Bird01 vol = BE_SFX_BirdChirpVol emitter = RANDOM_NO_REPEAT(1, 1) RANDOMCASE TRG_SFX_SOB_Birds03 RANDOMCASE TRG_SFX_SOB_Birds04 RANDOMEND priority = StreamPriorityLow 
+			wait 4 seconds 
+			RANDOMCASE Obj_PlayStream SK6_BO_Bird02 vol = BE_SFX_BirdChirpVol emitter = RANDOM_NO_REPEAT(1, 1) RANDOMCASE TRG_SFX_SOB_Birds03 RANDOMCASE TRG_SFX_SOB_Birds04 RANDOMEND priority = StreamPriorityLow 
+			wait 5 seconds 
+			RANDOMCASE Obj_PlayStream SK6_BO_Bird03 vol = BE_SFX_BirdChirpVol emitter = RANDOM_NO_REPEAT(1, 1) RANDOMCASE TRG_SFX_SOB_Birds03 RANDOMCASE TRG_SFX_SOB_Birds04 RANDOMEND priority = StreamPriorityLow 
+			wait 4 seconds 
+			RANDOMCASE Obj_PlayStream SK6_BO_Bird04 vol = BE_SFX_BirdChirpVol emitter = RANDOM_NO_REPEAT(1, 1) RANDOMCASE TRG_SFX_SOB_Birds03 RANDOMCASE TRG_SFX_SOB_Birds04 RANDOMEND priority = StreamPriorityLow 
+			wait 5 seconds 
+			RANDOMCASE Obj_PlayStream SK6_BO_Bird05 vol = BE_SFX_BirdChirpVol emitter = RANDOM_NO_REPEAT(1, 1) RANDOMCASE TRG_SFX_SOB_Birds03 RANDOMCASE TRG_SFX_SOB_Birds04 RANDOMEND priority = StreamPriorityLow 
+			wait 8 seconds 
+			RANDOMCASE Obj_PlayStream SK6_BO_Bird06 vol = BE_SFX_BirdChirpVol emitter = RANDOM_NO_REPEAT(1, 1) RANDOMCASE TRG_SFX_SOB_Birds03 RANDOMCASE TRG_SFX_SOB_Birds04 RANDOMEND priority = StreamPriorityLow 
+			wait 9 seconds 
+			RANDOMCASE Obj_PlayStream SK6_BO_Bird07 vol = BE_SFX_BirdChirpVol emitter = RANDOM_NO_REPEAT(1, 1) RANDOMCASE TRG_SFX_SOB_Birds03 RANDOMCASE TRG_SFX_SOB_Birds04 RANDOMEND priority = StreamPriorityLow 
+			wait 4 seconds 
+			RANDOMCASE Obj_PlayStream SK6_BO_Bird08 vol = BE_SFX_BirdChirpVol emitter = RANDOM_NO_REPEAT(1, 1) RANDOMCASE TRG_SFX_SOB_Birds03 RANDOMCASE TRG_SFX_SOB_Birds04 RANDOMEND priority = StreamPriorityLow 
+			wait 5 seconds 
+		RANDOMEND 
+		wait RANDOM(1, 1, 1) RANDOMCASE 0.50000000000 RANDOMCASE 1.10000002384 RANDOMCASE 1.29999995232 RANDOMEND seconds 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT BE_SFX_TreeBirds03 
+	wait RANDOM(1, 1, 1, 1) RANDOMCASE 0 RANDOMCASE 0.50000000000 RANDOMCASE 0.69999998808 RANDOMCASE 0.10000000149 RANDOMEND seconds 
+	BEGIN 
+		RANDOM_NO_REPEAT(1, 1, 1, 1, 1, 1, 1, 1, 1) 
+			RANDOMCASE Obj_PlayStream SK6_BO_Bird09 vol = BE_SFX_BirdChirpVol emitter = RANDOM_NO_REPEAT(1, 1, 1) RANDOMCASE TRG_SFX_SOB_Birds05 RANDOMCASE TRG_SFX_SOB_Birds06 RANDOMCASE TRG_SFX_SOB_Birds07 RANDOMEND priority = StreamPriorityLow 
+			wait 5 seconds 
+			RANDOMCASE Obj_PlayStream SK6_BO_Bird10 vol = BE_SFX_BirdChirpVol emitter = RANDOM_NO_REPEAT(1, 1, 1) RANDOMCASE TRG_SFX_SOB_Birds05 RANDOMCASE TRG_SFX_SOB_Birds06 RANDOMCASE TRG_SFX_SOB_Birds07 RANDOMEND priority = StreamPriorityLow 
+			wait 7 seconds 
+			RANDOMCASE Obj_PlayStream SK6_BO_Bird11 vol = BE_SFX_BirdChirpVol emitter = RANDOM_NO_REPEAT(1, 1, 1) RANDOMCASE TRG_SFX_SOB_Birds05 RANDOMCASE TRG_SFX_SOB_Birds06 RANDOMCASE TRG_SFX_SOB_Birds07 RANDOMEND priority = StreamPriorityLow 
+			wait 4 seconds 
+			RANDOMCASE Obj_PlayStream SK6_BO_Bird12 vol = BE_SFX_BirdChirpVol emitter = RANDOM_NO_REPEAT(1, 1, 1) RANDOMCASE TRG_SFX_SOB_Birds05 RANDOMCASE TRG_SFX_SOB_Birds06 RANDOMCASE TRG_SFX_SOB_Birds07 RANDOMEND priority = StreamPriorityLow 
+			wait 3 seconds 
+			RANDOMCASE Obj_PlayStream SK6_BO_Bird13 vol = BE_SFX_BirdChirpVol emitter = RANDOM_NO_REPEAT(1, 1, 1) RANDOMCASE TRG_SFX_SOB_Birds05 RANDOMCASE TRG_SFX_SOB_Birds06 RANDOMCASE TRG_SFX_SOB_Birds07 RANDOMEND priority = StreamPriorityLow 
+			wait 3 seconds 
+			RANDOMCASE Obj_PlayStream SK6_BO_Bird14 vol = BE_SFX_BirdChirpVol emitter = RANDOM_NO_REPEAT(1, 1, 1) RANDOMCASE TRG_SFX_SOB_Birds05 RANDOMCASE TRG_SFX_SOB_Birds06 RANDOMCASE TRG_SFX_SOB_Birds07 RANDOMEND priority = StreamPriorityLow 
+			wait 7 seconds 
+			RANDOMCASE Obj_PlayStream SK6_BO_Bird15 vol = BE_SFX_BirdChirpVol emitter = RANDOM_NO_REPEAT(1, 1, 1) RANDOMCASE TRG_SFX_SOB_Birds05 RANDOMCASE TRG_SFX_SOB_Birds06 RANDOMCASE TRG_SFX_SOB_Birds07 RANDOMEND priority = StreamPriorityLow 
+			wait 7 seconds 
+			RANDOMCASE Obj_PlayStream SK6_BO_Bird16 vol = BE_SFX_BirdChirpVol emitter = RANDOM_NO_REPEAT(1, 1, 1) RANDOMCASE TRG_SFX_SOB_Birds05 RANDOMCASE TRG_SFX_SOB_Birds06 RANDOMCASE TRG_SFX_SOB_Birds07 RANDOMEND priority = StreamPriorityLow 
+			wait 7 seconds 
+			RANDOMCASE Obj_PlayStream SK6_BO_Bird17 vol = BE_SFX_BirdChirpVol emitter = RANDOM_NO_REPEAT(1, 1, 1) RANDOMCASE TRG_SFX_SOB_Birds05 RANDOMCASE TRG_SFX_SOB_Birds06 RANDOMCASE TRG_SFX_SOB_Birds07 RANDOMEND priority = StreamPriorityLow 
+			wait 5 seconds 
+		RANDOMEND 
+		wait RANDOM(1, 1, 1) RANDOMCASE 1 RANDOMCASE 2 RANDOMCASE 3 RANDOMEND seconds 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT BE_SFX_DistRiver01 
+	RANDOM_NO_REPEAT(1, 1, 1) 
+		RANDOMCASE Obj_PlayStream SK6_BE_CityTraffic01 vol = 150 emitter = TRG_SFX_SOB_DistRiver01 dropoff_function = linear 
+		RANDOMCASE Obj_PlayStream SK6_BE_CityTraffic02 vol = 150 emitter = TRG_SFX_SOB_DistRiver01 dropoff_function = linear 
+		RANDOMCASE Obj_PlayStream SK6_BE_CityTraffic03 vol = 150 emitter = TRG_SFX_SOB_DistRiver01 dropoff_function = linear 
+	RANDOMEND 
+	wait 25 seconds 
+ENDSCRIPT
+
+SCRIPT BE_SFX_DistRiver02 
+	RANDOM_NO_REPEAT(1, 1, 1) 
+		RANDOMCASE Obj_PlayStream SK6_BE_CityTraffic01 vol = 150 emitter = TRG_SFX_SOB_DistRiver02 dropoff_function = linear 
+		RANDOMCASE Obj_PlayStream SK6_BE_CityTraffic02 vol = 150 emitter = TRG_SFX_SOB_DistRiver02 dropoff_function = linear 
+		RANDOMCASE Obj_PlayStream SK6_BE_CityTraffic03 vol = 150 emitter = TRG_SFX_SOB_DistRiver02 dropoff_function = linear 
+	RANDOMEND 
+	wait 25 seconds 
+ENDSCRIPT
+
+SCRIPT BE_SFX_DistTraffic01 
+	BEGIN 
+		RANDOM_NO_REPEAT(1, 1, 1) 
+			RANDOMCASE Obj_PlayStream SK6_BE_CityTraffic01 vol = 150 emitter = TRG_SFX_SOB_DistTraffic01 dropoff_function = linear 
+			RANDOMCASE Obj_PlayStream SK6_BE_CityTraffic02 vol = 150 emitter = TRG_SFX_SOB_DistTraffic01 dropoff_function = linear 
+			RANDOMCASE Obj_PlayStream SK6_BE_CityTraffic03 vol = 150 emitter = TRG_SFX_SOB_DistTraffic01 dropoff_function = linear 
+		RANDOMEND 
+		wait 25 seconds 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT BE_SFX_DistTraffic02 
+	BEGIN 
+		RANDOM_NO_REPEAT(1, 1, 1) 
+			RANDOMCASE Obj_PlayStream SK6_BE_CityTraffic01 vol = 150 emitter = TRG_SFX_SOB_DistTraffic02 dropoff_function = linear 
+			RANDOMCASE Obj_PlayStream SK6_BE_CityTraffic02 vol = 150 emitter = TRG_SFX_SOB_DistTraffic02 dropoff_function = linear 
+			RANDOMCASE Obj_PlayStream SK6_BE_CityTraffic03 vol = 150 emitter = TRG_SFX_SOB_DistTraffic02 dropoff_function = linear 
+		RANDOMEND 
+		wait 25 seconds 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT BE_SFX_PubMusic 
+	IF NOT InSplitscreenGame 
+		wait 1 frame 
+		RANDOM_NO_REPEAT(1, 1, 1, 1) 
+			RANDOMCASE Obj_PlayStream Polka_02 vol = 150 emitter = TRG_SFX_SOB_PubMusic id = Polka_Music num_loops = -1 priority = StreamPriorityHigh 
+			RANDOMCASE Obj_PlayStream Polka_03 vol = 150 emitter = TRG_SFX_SOB_PubMusic id = Polka_Music num_loops = -1 priority = StreamPriorityHigh 
+			RANDOMCASE Obj_PlayStream Polka_04 vol = 150 emitter = TRG_SFX_SOB_PubMusic id = Polka_Music num_loops = -1 priority = StreamPriorityHigh 
+			RANDOMCASE Obj_PlayStream Polka_05 vol = 150 emitter = TRG_SFX_SOB_PubMusic id = Polka_Music num_loops = -1 priority = StreamPriorityHigh 
+		RANDOMEND 
+		Obj_AddStream Polka_Music add = Polka_01 
+		wait 1 gameframe 
+		Obj_RemoveStream Polka_Music remove = Polka_02 
+		Obj_RemoveStream Polka_Music remove = Polka_03 
+		Obj_RemoveStream Polka_Music remove = Polka_04 
+		Obj_RemoveStream Polka_Music remove = Polka_05 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BE_SFX_Music_Volume_Box_Pub 
+	IF ( StaticMusicBoxesOn = 1 ) 
+		IF skatercamanimfinished 
+			IF NOT IsTrue cutscene_is_playing 
+				IF ( inside ) 
+					IF NOT Getflag flag = FLAG_BE_EVENT_DONE 
+						IF ( InsideSmallBox = 1 ) 
+							SpawnScript SK6_Music_Fade_Out 
+							change StaticMusicBoxState = on 
+						ENDIF 
+					ENDIF 
+				ELSE 
+					SpawnScript SK6_Music_Fade_In 
+					change StaticMusicBoxState = off 
+					kill name = TRG_SFX_TrigBox_LG_PubMusic 
+					wait 1 gameframe 
+					change OutterBoxesExist = 0 
+					kill name = TRG_SFX_TrigBox_LG_PubMusicOff 
+				ENDIF 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BE_SFX_SMALL_Pub_Music_Box 
+	IF skatercamanimfinished 
+		IF NOT IsTrue cutscene_is_playing 
+			IF ( inside ) 
+				IF NOT Getflag flag = FLAG_BE_EVENT_DONE 
+					wait 1 gameframe 
+					IF ( OutterBoxesExist = 0 ) 
+						change InsideSmallBox = 1 
+						kill name = TRG_SFX_TrigBox_LG_PubMusicOff 
+						kill name = TRG_SFX_TrigBox_LG_PubMusic 
+						create name = TRG_SFX_TrigBox_LG_PubMusicOff 
+						create name = TRG_SFX_TrigBox_LG_PubMusic 
+						change OutterBoxesExist = 1 
+					ENDIF 
+				ENDIF 
+			ELSE 
+				change InsideSmallBox = 0 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BE_SFX_SkateparkMusic 
+	IF NOT InSplitscreenGame 
+		kill name = TRG_SFX_TrigBox_LG_PubMusicOff 
+		kill name = TRG_SFX_TrigBox_LG_PubMusic 
+		kill name = TRG_SFX_TrigBox_MS_SmallPub 
+		wait 1 frame 
+		RANDOM_NO_REPEAT(1, 1, 1, 1) 
+			RANDOMCASE Obj_PlayStream Chemist02 vol = 400 emitter = TRG_SFX_SOB_SkateparkMusic dropoff_function = linear id = FirstChemistStream priority = StreamPriorityHigh num_loops = -1 
+			RANDOMCASE Obj_PlayStream Chemist03 vol = 400 emitter = TRG_SFX_SOB_SkateparkMusic dropoff_function = linear id = FirstChemistStream priority = StreamPriorityHigh num_loops = -1 
+			RANDOMCASE Obj_PlayStream Chemist04 vol = 400 emitter = TRG_SFX_SOB_SkateparkMusic dropoff_function = linear id = FirstChemistStream priority = StreamPriorityHigh num_loops = -1 
+			RANDOMCASE Obj_PlayStream Chemist05 vol = 400 emitter = TRG_SFX_SOB_SkateparkMusic dropoff_function = linear id = FirstChemistStream priority = StreamPriorityHigh num_loops = -1 
+		RANDOMEND 
+		Obj_AddStream FirstChemistStream add = Chemist01 
+		wait 1 gameframe 
+		Obj_RemoveStream FirstChemistStream remove = Chemist02 
+		Obj_RemoveStream FirstChemistStream remove = Chemist03 
+		Obj_RemoveStream FirstChemistStream remove = Chemist04 
+		Obj_RemoveStream FirstChemistStream remove = Chemist05 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BE_SFX_Music_Volume_Box_Skatepark 
+	printf "!!!!!Passed a Skatepark Boundary!!!!!" 
+	IF NOT IsTrue cutscene_is_playing 
+		IF ( inside ) 
+			SpawnScript SK6_Music_Fade_Out 
+			change StaticMusicBoxState = on 
+		ELSE 
+			SpawnScript SK6_Music_Fade_In 
+			change StaticMusicBoxState = off 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BE_SFX_ChurchOrganMusic01 
+	IF NOT InSplitscreenGame 
+		wait 1 frame 
+		RANDOM_NO_REPEAT(1, 1, 1, 1) 
+			RANDOMCASE Obj_PlayStream BEOrgan_02 vol = 400 emitter = TRG_SFX_SOB_OrganMusic01 id = FirstChurchStream priority = StreamPriorityHigh num_loops = -1 
+			RANDOMCASE Obj_PlayStream BEOrgan_03 vol = 400 emitter = TRG_SFX_SOB_OrganMusic01 id = FirstChurchStream priority = StreamPriorityHigh num_loops = -1 
+			RANDOMCASE Obj_PlayStream BEOrgan_04 vol = 400 emitter = TRG_SFX_SOB_OrganMusic01 id = FirstChurchStream priority = StreamPriorityHigh num_loops = -1 
+			RANDOMCASE Obj_PlayStream BEOrgan_05 vol = 400 emitter = TRG_SFX_SOB_OrganMusic01 id = FirstChurchStream priority = StreamPriorityHigh num_loops = -1 
+		RANDOMEND 
+		Obj_AddStream FirstChurchStream add = BEOrgan_01 vol = 400 
+		wait 1 gameframe 
+		Obj_RemoveStream FirstChurchStream remove = BEOrgan_02 
+		Obj_RemoveStream FirstChurchStream remove = BEOrgan_03 
+		Obj_RemoveStream FirstChurchStream remove = BEOrgan_04 
+		Obj_RemoveStream FirstChurchStream remove = BEOrgan_05 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BE_SFX_Music_Volume_Box_ChurchOrgan 
+	IF ( StaticMusicBoxesOn = 1 ) 
+		IF skatercamanimfinished 
+			IF NOT IsTrue cutscene_is_playing 
+				IF ( inside ) 
+					IF ( InsideSmallBox = 1 ) 
+						SpawnScript SK6_Music_Fade_Out 
+						change StaticMusicBoxState = on 
+					ENDIF 
+				ELSE 
+					SpawnScript SK6_Music_Fade_In 
+					change StaticMusicBoxState = off 
+					kill name = TRG_SFX_TrigBox_LG_ChurchOrganMusic01 
+					wait 1 gameframe 
+					change OutterBoxesExist = 0 
+					kill name = TRG_SFX_TrigBox_LG_ChurchOrganMusicOff 
+				ENDIF 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BE_SFX_SMALL_OrganMusicBox 
+	IF skatercamanimfinished 
+		IF NOT IsTrue cutscene_is_playing 
+			IF ( inside ) 
+				wait 1 gameframe 
+				IF ( OutterBoxesExist = 0 ) 
+					change InsideSmallBox = 1 
+					kill name = TRG_SFX_TrigBox_LG_ChurchOrganMusicOff 
+					kill name = TRG_SFX_TrigBox_LG_ChurchOrganMusic01 
+					create name = TRG_SFX_TrigBox_LG_ChurchOrganMusicOff 
+					create name = TRG_SFX_TrigBox_LG_ChurchOrganMusic01 
+					change OutterBoxesExist = 1 
+				ENDIF 
+			ELSE 
+				change InsideSmallBox = 0 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BE_SFX_SkateparkReverb01 
+	IF NOT GameIsPaused 
+		IF NOT InSplitscreenGame 
+			IF ( inside ) 
+				change InsideAdjacentReverbBox01 = 1 
+				GetValueFromVolume cdvol 
+				IF ( <value> = 0 ) 
+					SetSfxReverb 60 mode = REV_MODE_ROOM 
+				ELSE 
+					SetSfxReverb 75 mode = REV_MODE_ROOM 
+				ENDIF 
+			ELSE 
+				IF ( InsideAdjacentReverbBox02 = 0 ) 
+					SetSfxReverb 0 mode = REV_MODE_ROOM 
+				ELSE 
+					GetValueFromVolume cdvol 
+					IF ( <value> = 0 ) 
+						SetSfxReverb 60 mode = REV_MODE_ARENA 
+					ELSE 
+						SetSfxReverb 75 mode = REV_MODE_ARENA 
+					ENDIF 
+				ENDIF 
+				change InsideAdjacentReverbBox01 = 0 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BE_SFX_RoofAirVent01 
+	IF NOT IsStreamPlaying BE_VentLoopStream 
+		Obj_PlayStream SK6_BO_Air_Vent vol = 180 emitter = TRG_SFX_SOB_RoofAirVent01 dropoff_function = exponential priority = StreamPriorityHigh num_loops = -1 id = BE_VentLoopStream 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BE_SFX_SaxManStart 
+	printf "PLAYING A SAX MAN STREAM STARTUP STREAM" 
+	Obj_PlayStream SK6_BO_ChangeDrop vol = 200 
+	RANDOM_NO_REPEAT(1, 1, 1, 1, 1, 1) 
+		RANDOMCASE Obj_PlayStream SaxMan_Start01 vol = 200 priority = StreamPriorityHigh dropoff = 150 
+		RANDOMCASE Obj_PlayStream SaxMan_Start02 vol = 200 priority = StreamPriorityHigh dropoff = 150 
+		RANDOMCASE Obj_PlayStream SaxMan_Start03 vol = 200 priority = StreamPriorityHigh dropoff = 150 
+		RANDOMCASE Obj_PlayStream SaxMan_Start04 vol = 200 priority = StreamPriorityHigh dropoff = 150 
+		RANDOMCASE Obj_PlayStream SaxMan_Start05 vol = 200 priority = StreamPriorityHigh dropoff = 150 
+		RANDOMCASE Obj_PlayStream SaxMan_Start06 vol = 200 priority = StreamPriorityHigh dropoff = 150 
+	RANDOMEND 
+ENDSCRIPT
+
+SCRIPT BE_SFX_SaxManStart02 
+	printf "CREATING THE BOXES TO START HIM PLAYING" 
+	change BE_SFX_SaxManMusicStatus = 1 
+	kill name = TRG_SFX_TrigBox_SaxManMusicOff 
+	kill name = TRG_SFX_TrigBox_SaxMan01 
+	kill name = TRG_SFX_TrigBox_SmallSaxMan 
+	create name = TRG_SFX_TrigBox_SmallSaxMan 
+ENDSCRIPT
+
+SCRIPT BE_SFX_SaxManStop 
+	printf "PLAYING A SAX MAN STREAM PISSED ABOUT ENDING" 
+	RANDOM_NO_REPEAT(1, 1, 1, 1, 1) 
+		RANDOMCASE Obj_PlayStream SaxMan_End01 vol = 200 priority = StreamPriorityHigh dropoff = 150 
+		RANDOMCASE Obj_PlayStream SaxMan_End02 vol = 200 priority = StreamPriorityHigh dropoff = 150 
+		RANDOMCASE Obj_PlayStream SaxMan_End03 vol = 200 priority = StreamPriorityHigh dropoff = 150 
+		RANDOMCASE Obj_PlayStream SaxMan_End04 vol = 200 priority = StreamPriorityHigh dropoff = 150 
+		RANDOMCASE Obj_PlayStream SaxMan_End05 vol = 200 priority = StreamPriorityHigh dropoff = 150 
+	RANDOMEND 
+ENDSCRIPT
+
+SCRIPT BE_SFX_SaxManStop02 
+	change BE_SFX_SaxManMusicStatus = 0 
+	kill name = TRG_SFX_TrigBox_SaxMan01 
+	kill name = TRG_SFX_TrigBox_SaxManMusicOff 
+	kill name = TRG_SFX_TrigBox_SmallSaxMan 
+ENDSCRIPT
+
+SCRIPT BE_SFX_Music_Volume_Box_SaxMan 
+	IF ( StaticMusicBoxesOn = 1 ) 
+		IF skatercamanimfinished 
+			IF NOT IsTrue cutscene_is_playing 
+				IF ( inside ) 
+					IF ( InsideSmallBox = 1 ) 
+						SpawnScript SK6_Music_Fade_Out 
+						change StaticMusicBoxState = on 
+					ENDIF 
+				ELSE 
+					SpawnScript SK6_Music_Fade_In 
+					change StaticMusicBoxState = off 
+					kill name = TRG_SFX_TrigBox_SaxMan01 
+					wait 1 gameframe 
+					change OutterBoxesExist = 0 
+					kill name = TRG_SFX_TrigBox_SaxManMusicOff 
+				ENDIF 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BE_SFX_SMALL_SaxMan_Music_Box 
+	IF skatercamanimfinished 
+		IF NOT IsTrue cutscene_is_playing 
+			IF ( inside ) 
+				wait 1 gameframe 
+				IF ( OutterBoxesExist = 0 ) 
+					change InsideSmallBox = 1 
+					kill name = TRG_SFX_TrigBox_SaxManMusicOff 
+					kill name = TRG_SFX_TrigBox_SaxMan01 
+					create name = TRG_SFX_TrigBox_SaxManMusicOff 
+					create name = TRG_SFX_TrigBox_SaxMan01 
+					change OutterBoxesExist = 1 
+				ENDIF 
+			ELSE 
+				change InsideSmallBox = 0 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BE_SFX_SaxMan01 
+	wait 1 gameframe 
+	BEGIN 
+		RANDOM_NO_REPEAT(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1) 
+			RANDOMCASE Obj_PlayStream BE_SaxGuy01 vol = 250 emitter = TRG_SFX_SOB_SaxMan01 dropoff_function = inv_exponential 
+			wait 3.09999990463 seconds 
+			RANDOMCASE Obj_PlayStream BE_SaxGuy02 vol = 250 emitter = TRG_SFX_SOB_SaxMan01 dropoff_function = inv_exponential 
+			wait 7.50000000000 seconds 
+			RANDOMCASE Obj_PlayStream BE_SaxGuy03 vol = 250 emitter = TRG_SFX_SOB_SaxMan01 dropoff_function = inv_exponential 
+			wait 7.80000019073 seconds 
+			RANDOMCASE Obj_PlayStream BE_SaxGuy04 vol = 250 emitter = TRG_SFX_SOB_SaxMan01 dropoff_function = inv_exponential 
+			wait 4 seconds 
+			RANDOMCASE Obj_PlayStream BE_SaxGuy05 vol = 250 emitter = TRG_SFX_SOB_SaxMan01 dropoff_function = inv_exponential 
+			wait 2.70000004768 seconds 
+			RANDOMCASE Obj_PlayStream BE_SaxGuy06 vol = 250 emitter = TRG_SFX_SOB_SaxMan01 dropoff_function = inv_exponential 
+			wait 2.59999990463 seconds 
+			RANDOMCASE Obj_PlayStream BE_SaxGuy07 vol = 250 emitter = TRG_SFX_SOB_SaxMan01 dropoff_function = inv_exponential 
+			wait 8.60000038147 seconds 
+			RANDOMCASE Obj_PlayStream BE_SaxGuy08 vol = 250 emitter = TRG_SFX_SOB_SaxMan01 dropoff_function = inv_exponential 
+			wait 2.50000000000 seconds 
+			RANDOMCASE Obj_PlayStream BE_SaxGuy09 vol = 250 emitter = TRG_SFX_SOB_SaxMan01 dropoff_function = inv_exponential 
+			wait 7.30000019073 seconds 
+			RANDOMCASE Obj_PlayStream BE_SaxGuy10 vol = 250 emitter = TRG_SFX_SOB_SaxMan01 dropoff_function = inv_exponential 
+			wait 5.30000019073 seconds 
+			RANDOMCASE Obj_PlayStream BE_SaxGuy11 vol = 250 emitter = TRG_SFX_SOB_SaxMan01 dropoff_function = inv_exponential 
+			wait 7.30000019073 seconds 
+			RANDOMCASE Obj_PlayStream BE_SaxGuy12 vol = 250 emitter = TRG_SFX_SOB_SaxMan01 dropoff_function = inv_exponential 
+			wait 9 seconds 
+			RANDOMCASE Obj_PlayStream BE_SaxGuy13 vol = 250 emitter = TRG_SFX_SOB_SaxMan01 dropoff_function = inv_exponential 
+			wait 7.59999990463 seconds 
+			RANDOMCASE Obj_PlayStream BE_SaxGuy14 vol = 250 emitter = TRG_SFX_SOB_SaxMan01 dropoff_function = inv_exponential 
+			wait 7 seconds 
+			RANDOMCASE Obj_PlayStream BE_SaxGuy15 vol = 250 emitter = TRG_SFX_SOB_SaxMan01 dropoff_function = inv_exponential 
+			wait 6.50000000000 seconds 
+			RANDOMCASE Obj_PlayStream BE_SaxGuy16 vol = 250 emitter = TRG_SFX_SOB_SaxMan01 dropoff_function = inv_exponential 
+			wait 5 seconds 
+		RANDOMEND 
+		wait 1 second 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT BE_SFX_BrokenPubTap 
+	Obj_PlaySound SK6_BO_RiverLoop01_11 pitch = 400 vol = 20 emitter = TRG_SFX_SOB_PubBrokenTap 
+ENDSCRIPT
+
+SCRIPT BE_SFX_BrokenPubElectric 
+	BEGIN 
+		RANDOM_NO_REPEAT(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1) 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark01 emitter = TRG_SFX_SOB_BrokenPubElectric dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.69999998808 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark02 emitter = TRG_SFX_SOB_BrokenPubElectric dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.64999997616 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark03 emitter = TRG_SFX_SOB_BrokenPubElectric dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.47999998927 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark04 emitter = TRG_SFX_SOB_BrokenPubElectric dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.41999998689 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark05 emitter = TRG_SFX_SOB_BrokenPubElectric dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.86000001431 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark06 emitter = TRG_SFX_SOB_BrokenPubElectric dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.09000000358 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark07 emitter = TRG_SFX_SOB_BrokenPubElectric dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.43999999762 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark08 emitter = TRG_SFX_SOB_BrokenPubElectric dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.99000000954 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark09 emitter = TRG_SFX_SOB_BrokenPubElectric dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.43000000715 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark10 emitter = TRG_SFX_SOB_BrokenPubElectric dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.66000002623 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark11 emitter = TRG_SFX_SOB_BrokenPubElectric dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.46000000834 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark12 emitter = TRG_SFX_SOB_BrokenPubElectric dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.58999997377 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark13 emitter = TRG_SFX_SOB_BrokenPubElectric dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.52999997139 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark14 emitter = TRG_SFX_SOB_BrokenPubElectric dropoff_function = exponential priority = StreamPriorityLow 
+			wait 1.00000000000 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark15 emitter = TRG_SFX_SOB_BrokenPubElectric dropoff_function = exponential priority = StreamPriorityLow 
+			wait 1.08000004292 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark16 emitter = TRG_SFX_SOB_BrokenPubElectric dropoff_function = exponential priority = StreamPriorityLow 
+			wait 1.53999996185 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark17 emitter = TRG_SFX_SOB_BrokenPubElectric dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.68000000715 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark18 emitter = TRG_SFX_SOB_BrokenPubElectric dropoff_function = exponential priority = StreamPriorityLow 
+			wait 1.22000002861 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark19 emitter = TRG_SFX_SOB_BrokenPubElectric dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.50999999046 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark20 emitter = TRG_SFX_SOB_BrokenPubElectric dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.34000000358 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark21 emitter = TRG_SFX_SOB_BrokenPubElectric dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.36000001431 seconds 
+		RANDOMEND 
+		wait 0.10000000149 seconds 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT BE_SFX_BrokenPipeTrainWall 
+	Obj_PlaySound SK6_BO_RiverLoop01_11 pitch = 200 vol = 20 emitter = TRG_SFX_SOB_BrokenPipeTrainWall 
+ENDSCRIPT
+
+SCRIPT BE_SFX_BrokenPillar01 
+	BEGIN 
+		RANDOM_NO_REPEAT(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1) 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark01 emitter = TRG_SFX_SOB_BrokenPillar01 dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.69999998808 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark02 emitter = TRG_SFX_SOB_BrokenPillar01 dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.64999997616 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark03 emitter = TRG_SFX_SOB_BrokenPillar01 dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.47999998927 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark04 emitter = TRG_SFX_SOB_BrokenPillar01 dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.41999998689 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark05 emitter = TRG_SFX_SOB_BrokenPillar01 dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.86000001431 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark06 emitter = TRG_SFX_SOB_BrokenPillar01 dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.09000000358 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark07 emitter = TRG_SFX_SOB_BrokenPillar01 dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.43999999762 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark08 emitter = TRG_SFX_SOB_BrokenPillar01 dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.99000000954 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark09 emitter = TRG_SFX_SOB_BrokenPillar01 dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.43000000715 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark10 emitter = TRG_SFX_SOB_BrokenPillar01 dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.66000002623 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark11 emitter = TRG_SFX_SOB_BrokenPillar01 dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.46000000834 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark12 emitter = TRG_SFX_SOB_BrokenPillar01 dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.58999997377 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark13 emitter = TRG_SFX_SOB_BrokenPillar01 dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.52999997139 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark14 emitter = TRG_SFX_SOB_BrokenPillar01 dropoff_function = exponential priority = StreamPriorityLow 
+			wait 1.00000000000 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark15 emitter = TRG_SFX_SOB_BrokenPillar01 dropoff_function = exponential priority = StreamPriorityLow 
+			wait 1.08000004292 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark16 emitter = TRG_SFX_SOB_BrokenPillar01 dropoff_function = exponential priority = StreamPriorityLow 
+			wait 1.53999996185 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark17 emitter = TRG_SFX_SOB_BrokenPillar01 dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.68000000715 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark18 emitter = TRG_SFX_SOB_BrokenPillar01 dropoff_function = exponential priority = StreamPriorityLow 
+			wait 1.22000002861 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark19 emitter = TRG_SFX_SOB_BrokenPillar01 dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.50999999046 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark20 emitter = TRG_SFX_SOB_BrokenPillar01 dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.34000000358 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark21 emitter = TRG_SFX_SOB_BrokenPillar01 dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.36000001431 seconds 
+		RANDOMEND 
+		wait 0.10000000149 seconds 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT BE_SFX_BrokenPillar02 
+ENDSCRIPT
+
+SCRIPT BE_SFX_PipeFire 
+	Obj_PlaySound SK6_BO_FireLoop vol = 200 emitter = TRG_SFX_SOB_PipeFire dropoff_function = exponential 
+ENDSCRIPT
+
+SCRIPT BE_SFX_Zoo 
+ENDSCRIPT
+
+SCRIPT BE_SFX_AC_Spark01 
+	BE_SFX_PlaySparksFromObject_With_Emitter emitter = TRG_SFX_SOB_AC_Sparks_Signs01 
+ENDSCRIPT
+
+SCRIPT BE_SFX_AC_Spark02 
+	BE_SFX_PlaySparksFromObject_With_Emitter emitter = TRG_SFX_SOB_AC_Sparks_Signs02 
+ENDSCRIPT
+
+SCRIPT BE_SFX_AC_Spark03 
+	BE_SFX_PlaySparksFromObject_With_Emitter emitter = TRG_SFX_SOB_AC_Sparks_Signs03 
+ENDSCRIPT
+
+SCRIPT BE_SFX_AC_Spark04 
+	BE_SFX_PlaySparksFromObject_With_Emitter emitter = TRG_SFX_SOB_AC_Sparks_Signs04 
+ENDSCRIPT
+
+SCRIPT BE_SFX_AC_Sparks05 
+	BE_SFX_PlaySparksFromObject_With_Emitter emitter = TRG_SFX_SOB_AC_Sparks_SP01 
+ENDSCRIPT
+
+SCRIPT BE_SFX_AC_Sparks06 
+	BE_SFX_PlaySparksFromObject_With_Emitter emitter = TRG_SFX_SOB_AC_Sparks_SP02 
+ENDSCRIPT
+
+SCRIPT BE_SFX_AC_Sparks07 
+	BE_SFX_PlaySparksFromObject_With_Emitter emitter = TRG_SFX_SOB_AC_Sparks_SP03 
+ENDSCRIPT
+
+SCRIPT BE_SFX_AC_Sparks08 
+	BE_SFX_PlaySparksFromObject_With_Emitter emitter = TRG_SFX_SOB_AC_Sparks_SP04 
+ENDSCRIPT
+
+SCRIPT BE_SFX_CigMachine01 
+	BE_SFX_PlaySparksFromObject_With_Emitter emitter = TRG_SFX_SOB_CigMachine01 
+ENDSCRIPT
+
+SCRIPT BE_SFX_CigMachine02 
+	BE_SFX_PlaySparksFromObject_With_Emitter emitter = TRG_SFX_SOB_CigMachine02 
+ENDSCRIPT
+
+SCRIPT BE_SFX_CigMachine03 
+	BE_SFX_PlaySparksFromObject_With_Emitter emitter = TRG_SFX_SOB_CigMachine03 
+ENDSCRIPT
+
+SCRIPT BE_SFX_BreakPipeNearAssfart 
+	TRG_SFX_Ghost_BrokenPipe : Obj_PlaySound BustValve 
+	TRG_SFX_Ghost_BrokenPipe : Obj_PlaySound SK6_BO_RiverLoop01_11 vol = 80 pitch = 200 dropoff = 110 dropoff_function = exponential 
+ENDSCRIPT
+
+SCRIPT BE_SFX_LightningAndThunder number = 1 
+	SFXGhostObject = TRG_SFX_Ghost_Lightning01 
+	SWITCH <number> 
+		CASE 1 
+			SFXGhostObject = TRG_SFX_Ghost_Lightning01 
+		CASE 2 
+			SFXGhostObject = TRG_SFX_Ghost_Lightning02 
+		CASE 3 
+			SFXGhostObject = TRG_SFX_Ghost_Lightning03 
+		CASE 4 
+			SFXGhostObject = TRG_SFX_Ghost_Lightning04 
+		CASE 5 
+			SFXGhostObject = TRG_SFX_Ghost_Lightning05 
+		CASE 6 
+			SFXGhostObject = TRG_SFX_Ghost_Lightning06 
+		CASE 7 
+			SFXGhostObject = TRG_SFX_Ghost_Lightning07 
+		CASE 8 
+			SFXGhostObject = TRG_SFX_Ghost_Lightning08 
+		CASE 9 
+			SFXGhostObject = TRG_SFX_Ghost_Lightning09 
+		CASE 10 
+			SFXGhostObject = TRG_SFX_Ghost_Lightning10 
+		DEFAULT 
+	ENDSWITCH 
+	TRG_SFX_Ghost_Lightning01 : Obj_StopStream 
+	TRG_SFX_Ghost_Lightning02 : Obj_StopStream 
+	TRG_SFX_Ghost_Lightning03 : Obj_StopStream 
+	TRG_SFX_Ghost_Lightning04 : Obj_StopStream 
+	TRG_SFX_Ghost_Lightning05 : Obj_StopStream 
+	TRG_SFX_Ghost_Lightning06 : Obj_StopStream 
+	TRG_SFX_Ghost_Lightning07 : Obj_StopStream 
+	TRG_SFX_Ghost_Lightning08 : Obj_StopStream 
+	TRG_SFX_Ghost_Lightning09 : Obj_StopStream 
+	TRG_SFX_Ghost_Lightning10 : Obj_StopStream 
+	RANDOM_NO_REPEAT(1, 1, 1, 1, 1, 1, 1, 1) 
+		RANDOMCASE <SFXGhostObject> : Obj_PlayStream SK6_BE_LightningAndThunder01 vol = 300 dropoff = 2000 id = LightningStream priority = StreamPriorityLowMid 
+		RANDOMCASE <SFXGhostObject> : Obj_PlayStream SK6_BE_LightningAndThunder02 vol = 300 dropoff = 2000 id = LightningStream priority = StreamPriorityLowMid 
+		RANDOMCASE <SFXGhostObject> : Obj_PlayStream SK6_BE_LightningAndThunder03 vol = 300 dropoff = 2000 id = LightningStream priority = StreamPriorityLowMid 
+		RANDOMCASE <SFXGhostObject> : Obj_PlayStream SK6_BE_LightningAndThunder04 vol = 300 dropoff = 2000 id = LightningStream priority = StreamPriorityLowMid 
+		RANDOMCASE <SFXGhostObject> : Obj_PlayStream SK6_BE_LightningAndThunder05 vol = 300 dropoff = 2000 id = LightningStream priority = StreamPriorityLowMid 
+		RANDOMCASE <SFXGhostObject> : Obj_PlayStream SK6_BE_LightningAndThunder06 vol = 300 dropoff = 2000 id = LightningStream priority = StreamPriorityLowMid 
+		RANDOMCASE <SFXGhostObject> : Obj_PlayStream SK6_BE_LightningAndThunder07 vol = 300 dropoff = 2000 id = LightningStream priority = StreamPriorityLowMid 
+		RANDOMCASE <SFXGhostObject> : Obj_PlayStream SK6_BE_LightningAndThunder08 vol = 300 dropoff = 2000 id = LightningStream priority = StreamPriorityLowMid 
+	RANDOMEND 
+ENDSCRIPT
+
+SCRIPT BE_SFX_CoockooTick 
+ENDSCRIPT
+
+SCRIPT BE_SFX_CoockooChime 
+ENDSCRIPT
+
+SCRIPT BE_SFX_PoliceRadio 
+	BEGIN 
+		RANDOM_NO_REPEAT(1, 1, 1, 1) 
+			RANDOMCASE Obj_PlayStream SK6_BE_PoliceRadio01 vol = 50 priority = StreamPriorityLow 
+			RANDOMCASE Obj_PlayStream SK6_BE_PoliceRadio02 vol = 50 priority = StreamPriorityLow 
+			RANDOMCASE Obj_PlayStream SK6_BE_PoliceRadio03 vol = 50 priority = StreamPriorityLow 
+			RANDOMCASE Obj_PlayStream SK6_BE_PoliceRadio04 vol = 50 priority = StreamPriorityLow 
+		RANDOMEND 
+		wait RANDOM(1, 1, 1) RANDOMCASE 6.50000000000 RANDOMCASE 8 RANDOMCASE 9 RANDOMEND seconds 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT BE_SFX_BreakHangingLight 
+ENDSCRIPT
+
+SCRIPT BE_SFX_BreakBarrierLight 
+ENDSCRIPT
+
+SCRIPT BE_SFX_Skater_On_Fire 
+	PlayStream SK6_BO_SkaterIgnite vol = 300 
+	skater : Obj_PlaySound SK6_BO_FireLoop vol = 110 pitch = 120 
+ENDSCRIPT
+
+SCRIPT BE_SFX_CopHatOnFire 
+	RANDOM(1, 1, 1, 1, 1, 1) 
+		RANDOMCASE PlayStream Ped_Security_Guard_01_Fire01 vol = 200 priority = StreamPriorityHigh 
+		RANDOMCASE PlayStream Ped_Security_Guard_01_Fire02 vol = 200 priority = StreamPriorityHigh 
+		RANDOMCASE PlayStream Ped_Security_Guard_01_Fire03 vol = 200 priority = StreamPriorityHigh 
+		RANDOMCASE PlayStream Ped_Security_Guard_01_Fire04 vol = 200 priority = StreamPriorityHigh 
+		RANDOMCASE PlayStream Ped_Security_Guard_01_Fire05 vol = 200 priority = StreamPriorityHigh 
+		RANDOMCASE PlayStream Ped_Security_Guard_01_Fire06 vol = 200 priority = StreamPriorityHigh 
+	RANDOMEND 
+	Obj_PlaySound SK6_BO_FireLoop vol = 80 dropoff = 120 dropoff_function = exponential 
+ENDSCRIPT
+
+SCRIPT BE_SFX_RevealMural 
+	wait 0.60000002384 seconds 
+	PlayStream SK6_RevealMural vol = 200 priority = 99 
+ENDSCRIPT
+
+SCRIPT BE_SFX_Break_Wooden_Barrel 
+	StopStream SK6_TeaWater 
+	IF NOT IsSoundPlaying ThisBarrelsSound01 
+		TRG_SFX_Ghost_Barrel01 : Obj_PlaySound HitTrafficBarrier vol = 200 dropoff = 150 id = ThisBarrelsSound01 
+	ENDIF 
+	IF NOT IsStreamPlaying SK6_TeaWater 
+		TRG_SFX_Ghost_Barrel01 : Obj_PlayStream SK6_TeaWater vol = 400 id = ThisBarrelsStream01 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BE_SFX_Break_Wooden_Barrel02 
+	StopStream SK6_TeaWater 
+	IF NOT IsSoundPlaying ThisBarrelsSound01 
+		TRG_SFX_Ghost_Barrel02 : Obj_PlaySound HitTrafficBarrier vol = 200 dropoff = 150 id = ThisBarrelsSound01 
+	ENDIF 
+	IF NOT IsStreamPlaying SK6_TeaWater 
+		TRG_SFX_Ghost_Barrel02 : Obj_PlayStream SK6_TeaWater vol = 400 id = ThisBarrelsStream01 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BE_SFX_ConstructionSparks01 
+ENDSCRIPT
+
+SCRIPT BE_SFX_ConstructionSparks02 
+ENDSCRIPT
+
+SCRIPT BE_SFX_ChurchStoneDoorCrack 
+	TRG_SFX_Ghost_ChurchWall : Obj_PlaySound SK6_StoneCrackQuick01 vol = 200 dropoff = 150 
+	TRG_SFX_Ghost_ChurchWall : Obj_PlayStream SK6_StoneCracking01 vol = 200 dropoff = 150 priority = 100 id = DoorBreakDownStream 
+ENDSCRIPT
+
+SCRIPT BE_SFX_ChurchStoneDoorBreakDown 
+	TRG_SFX_Ghost_ChurchWall : Obj_StopStream DoorBreakDownStream 
+	TRG_SFX_Ghost_ChurchWall : Obj_PlayStream SK6_StoneDoorBreakDown vol = 200 priority = 100 dropoff = 150 
+ENDSCRIPT
+
+SCRIPT BE_SFX_HitCigMachine01 
+	TRG_SFX_Ghost_CigMachine01 : Obj_PlaySound SK6_BreakCigMachine vol = 150 dropoff = 150 
+ENDSCRIPT
+
+SCRIPT BE_SFX_HitCigMachine02 
+	TRG_SFX_Ghost_CigMachine02 : Obj_PlaySound SK6_BreakCigMachine vol = 150 dropoff = 150 
+ENDSCRIPT
+
+SCRIPT BE_SFX_HitCigMachine03 
+	TRG_SFX_Ghost_CigMachine03 : Obj_PlaySound SK6_BreakCigMachine vol = 150 dropoff = 150 
+ENDSCRIPT
+
+SCRIPT BE_SFX_BreakSignDown01 
+	TRG_SFX_Ghost_SignBreak01 : Obj_PlaySound SK6_BreakSignQuick vol = 200 
+	TRG_SFX_Ghost_SignBreak01 : Obj_PlayStream SK6_SignBreakDown vol = 200 priority = StreamPriorityHigh 
+ENDSCRIPT
+
+SCRIPT BE_SFX_BreakSignDown02 
+	TRG_SFX_Ghost_SignBreak01 : Obj_PlaySound SK6_BreakSignQuick vol = 200 
+	TRG_SFX_Ghost_SignBreak01 : Obj_PlayStream SK6_SignBreakDown vol = 200 priority = StreamPriorityHigh 
+ENDSCRIPT
+
+SCRIPT BE_SFX_PlaySparksFromObject_With_Emitter emitter = TRG_SFX 
+	BEGIN 
+		RANDOM_NO_REPEAT(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1) 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark01 emitter = <emitter> vol = 50 dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.69999998808 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark02 emitter = <emitter> vol = 50 dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.64999997616 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark03 emitter = <emitter> vol = 50 dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.47999998927 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark04 emitter = <emitter> vol = 50 dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.41999998689 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark05 emitter = <emitter> vol = 50 dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.86000001431 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark06 emitter = <emitter> vol = 50 dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.09000000358 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark07 emitter = <emitter> vol = 50 dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.43999999762 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark08 emitter = <emitter> vol = 50 dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.99000000954 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark09 emitter = <emitter> vol = 50 dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.43000000715 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark10 emitter = <emitter> vol = 50 dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.66000002623 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark11 emitter = <emitter> vol = 50 dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.46000000834 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark12 emitter = <emitter> vol = 50 dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.58999997377 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark13 emitter = <emitter> vol = 50 dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.52999997139 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark14 emitter = <emitter> vol = 50 dropoff_function = exponential priority = StreamPriorityLow 
+			wait 1.00000000000 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark15 emitter = <emitter> vol = 50 dropoff_function = exponential priority = StreamPriorityLow 
+			wait 1.08000004292 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark16 emitter = <emitter> vol = 50 dropoff_function = exponential priority = StreamPriorityLow 
+			wait 1.53999996185 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark17 emitter = <emitter> vol = 50 dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.68000000715 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark18 emitter = <emitter> vol = 50 dropoff_function = exponential priority = StreamPriorityLow 
+			wait 1.22000002861 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark19 emitter = <emitter> vol = 50 dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.50999999046 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark20 emitter = <emitter> vol = 50 dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.34000000358 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark21 emitter = <emitter> vol = 50 dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.36000001431 seconds 
+		RANDOMEND 
+		wait 0.10000000149 seconds 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT BE_SFX_Pigeons_Idle 
+	IF skatercamanimfinished 
+		wait RANDOM(1, 1, 1) RANDOMCASE 1 RANDOMCASE 0.50000000000 RANDOMCASE 0.10000000149 RANDOMEND seconds 
+		IF NOT IsStreamPlaying PigeonFlyUpSound 
+			IF NOT IsStreamPlaying PigeonIdleSound 
+				RANDOM(2, 1, 1) 
+					RANDOMCASE 
+					RANDOMCASE Obj_PlayStream BO_Pigeon id = PigeonIdleSound vol = 50 pitch = RANDOM_RANGE PAIR(95.00000000000, 100.00000000000) priority = StreamPriorityLowMid 
+					RANDOMCASE Obj_PlayStream BO_Pigeon_02 id = PigeonIdleSound vol = 50 pitch = RANDOM_RANGE PAIR(95.00000000000, 100.00000000000) priority = StreamPriorityLowMid 
+				RANDOMEND 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BE_SFX_Pigeons_FlyUp 
+	IF IsStreamPlaying PigeonIdleSound 
+		StopStream PigeonIdleSound 
+	ENDIF 
+	IF IsStreamPlaying BO_Pigeon 
+		StopStream BO_Pigeon 
+	ENDIF 
+	StopStream BO_PigeonFly 
+	IF NOT IsStreamPlaying PigeonFlyUpSound 
+		Obj_PlayStream BO_PigeonFly id = PigeonFlyUpSound vol = 150 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BE_SFX_Bats_Loop 
+	BEGIN 
+		IF NOT IsStreamPlaying ThisBatLoopStream 
+			Obj_PlayStream SK6_BE_BatsLoopStream01 priority = StreamPriorityLowMid dropoff = 60 id = ThisBatLoopStream 
+		ENDIF 
+		wait 1 second 
+	REPEAT 
+ENDSCRIPT
+
+

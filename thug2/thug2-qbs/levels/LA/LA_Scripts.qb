@@ -1,0 +1,2529 @@
+SCRIPT LA_Setup 
+	LA_CreateCars 
+	LA_CreatePeds all 
+	LA_Main_Initializer 
+	LA_Initializer 
+	LA_manualcheck_init 
+ENDSCRIPT
+
+SCRIPT LA_startup 
+ENDSCRIPT
+
+SCRIPT LA_Initializer 
+	change kg_variable_X = 0 
+	change kg_variable_Y = 0 
+	change kg_variable_Z = 0 
+	change kg_variable_A = 0 
+	UnSetFlag flag = FLAG_LA_RAIL1 
+	UnSetFlag flag = FLAG_LA_RAIL2 
+	UnSetFlag flag = FLAG_LA_RAIL3 
+	UnSetFlag flag = FLAG_LA_RAIL4 
+	UnSetFlag flag = FLAG_LA_DID_EARTHQUAKE 
+	UnSetFlag flag = FLAG_LA_RAIL1 
+	UnSetFlag flag = FLAG_LA_RAIL2 
+	UnSetFlag flag = FLAG_LA_RAIL3 
+	UnSetFlag flag = FLAG_LA_RAIL4 
+	UnSetFlag flag = FLAG_LA_TEXT1 
+	UnSetFlag flag = FLAG_LA_TEXT2 
+	UnSetFlag flag = FLAG_LA_TEXT3 
+	UnSetFlag flag = FLAG_LA_TEXT4 
+ENDSCRIPT
+
+SCRIPT LA_Main_Initializer 
+	IF InMultiplayerGame 
+		create name = Car_Wash_BreakGO 
+		Kill name = Overpass_Good_06 
+		Kill name = GO_WireWest_Good 
+		Kill prefix = "TRG_GO_MoveTo" 
+		create name = carwash_destroyed_04 
+		create name = carwash_destroyed_05 
+		create name = carwash_destroyed_06 
+		create name = carwash_destroyed_07 
+		create name = carwash_destroyed_08 
+		create name = carwash_destroyed_01 
+		Kill name = Car_Wash_BreakGO 
+		Kill name = Overpass_Good_01 
+		Kill name = Overpass_Good_03 
+		Kill name = Overpass_Good_04 
+		Kill name = Overpass_Good_05 
+		Kill name = Overpass_Good_07 
+		Kill name = Overpass_Good_09 
+		Kill name = carwash_good_02 
+		Kill name = carwash_good_03 
+		Kill name = carwash_good_01 
+		create name = ADestroyed_01 
+		create name = ADestroyed_02 
+		create name = ADestroyed_03 
+		create name = ADestroyed_04 
+		create name = ADestroyed_06 
+		create name = ADestroyed_07 
+		create name = ADestroyed_08 
+		create name = carwash_destroyed_09 
+		create name = carwash_destroyed_02 
+		create name = carwash_destroyed_03 
+		Kill name = ADestroyed_01 
+		Kill name = ADestroyed_02 
+		Kill name = ADestroyed_03 
+		Kill name = ADestroyed_04 
+		Kill name = ADestroyed_06 
+		Kill name = ADestroyed_07 
+		Kill name = ADestroyed_08 
+		create name = Overpass_Destroyed_01 
+		create name = Overpass_Destroyed_04 
+		create name = Overpass_Destroyed_05 
+		create name = Overpass_Destroyed_06 
+		create name = Overpass_Destroyed_07 
+		create name = Overpass_Destroyed_10_Car 
+		create name = Overpass_Destroyed_11 
+		create name = Overpass_Destroyed_12 
+		create name = Overpass_Destroyed_13 
+		create prefix = "Rubble01_" 
+		create name = Overpass_Car_Rocking 
+		create name = TRG_Rail_KenCar 
+		create prefix = "TRG_Rail_Overpass" 
+		Kill prefix = "Rail_Freeway_" 
+		create name = DestroyedCar_Geometry_07 
+		create prefix = "TRG_Rail_Overpass" 
+		create name = TRGP_CarFall_E01 
+		create name = TRGP_CarFall_E02 
+		create name = TRGP_CarFall_E03 
+		create name = GO_WireWest 
+		Kill name = GO_FallingSign2 
+		Kill name = FallingSign_Rocking 
+		Kill name = GO_FallingSign03 
+		Kill name = GO_FallingSign 
+		Kill name = GO_WireEast_Hang 
+		Kill name = GO_WireEast 
+		Kill name = FallingSign01 
+		change kg_timesround = 0 
+		ClearExceptionGroup AP_CircBench_grindcheck 
+		kill_panel_message_if_it_exists id = message_circbench 
+		change kg_timesroundwall = 0 
+		change kg_circlewall = 0 
+		ClearExceptionGroup LA_CircWall_grindcheck 
+		kill_panel_message_if_it_exists id = message_circwall 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT LA_Goals 
+	IF InMultiplayerGame 
+		add_multiplayer_mode_goals 
+	ENDIF 
+	IF NOT InSplitScreenGame 
+		IF ( ( GameModeEquals is_classic ) | ( InNetGame ) ) 
+			printf "adding classic goals" 
+			AddGoal_HighScore { 
+				unlimited_time 
+				classic_mode_goal 
+				goal_text = LA_Classic_HighScore_Text 
+				view_goals_cameras = [ { 
+						name = Cam_Score 
+						frames = 1200 
+						skippable = 1 
+					} 
+				] 
+				difficulty_level_params = [ 
+					{ score = LA_Classic_Easy_HighScore 
+						goal_text = LA_Classic_Easy_HighScore_Text 
+						view_goals_text = LA_Classic_Easy_HighScore_Text 
+					} 
+					{ score = LA_Classic_HighScore 
+						goal_text = LA_Classic_HighScore_Text 
+						view_goals_text = LA_Classic_HighScore_Text 
+					} 
+				] 
+			} 
+			AddGoal_ProScore { 
+				unlimited_time 
+				classic_mode_goal 
+				score = LA_Classic_ProScore 
+				goal_text = LA_Classic_ProScore_Text 
+				view_goals_text = LA_Classic_ProScore_Text 
+				difficulty_level_params = [ 
+					{ score = LA_Classic_Easy_Proscore 
+						goal_text = LA_Classic_Easy_Proscore_Text 
+						view_goals_text = LA_Classic_Easy_Proscore_Text 
+					} 
+					{ score = LA_Classic_ProScore 
+						goal_text = LA_Classic_ProScore_Text 
+						view_goals_text = LA_Classic_ProScore_Text 
+					} 
+				] 
+			} 
+			AddGoal_SickScore { 
+				unlimited_time 
+				classic_mode_goal 
+				score = LA_Classic_SickScore 
+				goal_text = LA_Classic_SickScore_Text 
+				view_goals_text = LA_Classic_SickScore_Text 
+				difficulty_level_params = [ 
+					{ score = LA_Classic_Easy_SickScore 
+						goal_text = LA_Classic_Easy_SickScore_Text 
+						view_goals_text = LA_Classic_Easy_SickScore_Text 
+					} 
+					{ score = LA_Classic_SickScore 
+						goal_text = LA_Classic_SickScore_Text 
+						view_goals_text = LA_Classic_SickScore_Text 
+					} 
+				] 
+			} 
+			AddGoal_HighCombo { 
+				unlimited_time 
+				classic_mode_goal 
+				score = LA_Classic_HighCombo 
+				goal_text = LA_Classic_HighCombo_Text 
+				view_goals_text = LA_Classic_HighCombo_Text 
+				difficulty_level_params = [ 
+					{ score = LA_Classic_Easy_HighCombo 
+						goal_text = LA_Classic_Easy_HighCombo_Text 
+						view_goals_text = LA_Classic_Easy_HighCombo_Text 
+					} 
+					{ score = LA_Classic_HighCombo 
+						goal_text = LA_Classic_HighCombo_Text 
+						view_goals_text = LA_Classic_HighCombo_Text 
+					} 
+				] 
+			} 
+			AddGoal_Skate { 
+				unlimited_time 
+				classic_mode_goal 
+				S_obj_id = TRG_SKATE_S 
+				K_obj_id = TRG_SKATE_K 
+				A_obj_id = TRG_SKATE_A 
+				T_obj_id = TRG_SKATE_T 
+				E_obj_id = TRG_SKATE_E 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(-5154.9, -2697.8, 9817.6) 
+						positionOffset = VECTOR(-829, 274.6, 1305.8) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+			} 
+			AddGoal_Combo { 
+				unlimited_time 
+				classic_mode_goal 
+				letter_info = [ 
+					{ obj_id = TRG_COMBO_C text = "C" } 
+					{ obj_id = TRG_COMBO_O text = "O" } 
+					{ obj_id = TRG_COMBO_M text = "M" } 
+					{ obj_id = TRG_COMBO_B text = "B" } 
+					{ obj_id = TRG_COMBO_O01 text = "O" } 
+				] 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(4170.9, -1275.7, 5492.3) 
+						positionOffset = VECTOR(-4948.8, 195.9, 1662.6) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+			} 
+			AddGoal_collect { 
+				unlimited_time 
+				init_script = LA_LatteCreate 
+				goal_deactivate_script = LA_LatteKill 
+				classic_mode_goal 
+				version = 2 
+				collect_type = "Ice Latte" 
+				goal_text = "Blow Up The 5 Ice Lattes" 
+				view_goals_text = "Blow Up The 5 Ice Lattes" 
+				use_hud_counter 
+				hud_counter_caption = "Blew Up The 5 Ice Lattes!" 
+				goal_flags = [ got_1 
+					got_2 
+					got_3 
+					got_4 
+					got_5 
+				] 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(9041.1, -1377.5, 2632.7) 
+						positionOffset = VECTOR(-328.8, 153.5, -507.4) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+			} 
+			AddGoal_gaps { 
+				unlimited_time 
+				classic_mode_goal 
+				version = 2 
+				goal_text = "(\\b2+\\b6+\\b6) Roll The Purple Gap" 
+				view_goals_text = "(\\b2+\\b6+\\b6) Roll The Purple Gap" 
+				goal_description = "Roll The Purple Gap" 
+				goal_flags = [ got_1 
+				] 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(-4914, -1705.8, 12952.7) 
+						positionOffset = VECTOR(479.3, -67.1, 4692.8) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+			} 
+			AddGoal_collect { 
+				unlimited_time 
+				init_script = LA_CarbCreate 
+				goal_deactivate_script = LA_CarbKill 
+				classic_mode_goal 
+				collect_type = "Low Carb Dishes" 
+				goal_text = "Crush 5 Low Carb Dishes" 
+				view_goals_text = "Crush 5 Low Carb Dishes" 
+				use_hud_counter 
+				hud_counter_caption = "Crushed 5 Low Carb Dishes" 
+				goal_flags = [ got_1 
+					got_2 
+					got_3 
+					got_4 
+					got_5 
+				] 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(4044, -5407.7, 9052.5) 
+						positionOffset = VECTOR(-2957, -196.7, 4170.9) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+			} 
+			AddGoal_SecretTape { 
+				goal_text = "Get the secret tape" 
+				view_goals_text = "Get the secret tape" 
+				classic_mode_goal 
+				goal_description = "Get the secret tape" 
+				secret_tape_id = TRG_LA_SECRETTAPE 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(-6200.1, -2637.9, 8734.2) 
+						positionOffset = VECTOR(174.2, 1143.8, 2021.1) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+			} 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT LA_LatteCreate 
+	create prefix = "LA_Trigger_IceLatte" 
+	create prefix = "LA_IceLatte" 
+ENDSCRIPT
+
+SCRIPT LA_LatteKill 
+	Kill prefix = "LA_Trigger_IceLatte" 
+	Kill prefix = "LA_IceLatte" 
+ENDSCRIPT
+
+SCRIPT LA_CarbCreate 
+	create prefix = "LA_LowcarbPlatter" 
+	create prefix = "LA_Trigger_LowCarb" 
+ENDSCRIPT
+
+SCRIPT LA_CarbKill 
+	Kill prefix = "LA_LowcarbPlatter" 
+	Kill prefix = "LA_Trigger_LowCarb" 
+ENDSCRIPT
+
+SCRIPT LA_Lattes 
+	Shatteranddie name = <name> area = 5000 variance = 4 vel_x = 50 vel_y = 50 vel_z = 50 
+	Kill name = <Trigg> 
+	Kill name = <name> 
+	playsound Smashcake 
+	SWITCH <name> 
+		CASE LA_IceLatte01 
+			goal_collect_got_object goal_id = la_classic_goal_collect2 flag = got_1 
+		CASE LA_IceLatte02 
+			goal_collect_got_object goal_id = la_classic_goal_collect2 flag = got_2 
+		CASE LA_IceLatte03 
+			goal_collect_got_object goal_id = la_classic_goal_collect2 flag = got_3 
+		CASE LA_IceLatte04 
+			goal_collect_got_object goal_id = la_classic_goal_collect2 flag = got_4 
+		CASE LA_IceLatte05 
+			goal_collect_got_object goal_id = la_classic_goal_collect2 flag = got_5 
+	ENDSWITCH 
+	IF NOT IsAlive name = <part> 
+		create name = <part> 
+	ENDIF 
+	wait 0.05000000075 seconds 
+	IF IsAlive name = <part> 
+		StopParticleObject name = <part> 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT LA_LowCarb 
+	Kill name = <name> 
+	Kill name = <carb> 
+	playsound Smashcake 
+	SWITCH <name> 
+			printf "VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVvv" 
+		CASE LA_LowcarbPlatter01 
+			goal_collect_got_object goal_id = la_classic_goal_collect flag = got_1 
+		CASE LA_LowcarbPlatter02 
+			goal_collect_got_object goal_id = la_classic_goal_collect flag = got_2 
+		CASE LA_LowcarbPlatter03 
+			goal_collect_got_object goal_id = la_classic_goal_collect flag = got_3 
+		CASE LA_LowcarbPlatter04 
+			goal_collect_got_object goal_id = la_classic_goal_collect flag = got_4 
+		CASE LA_LowcarbPlatter05 
+			goal_collect_got_object goal_id = la_classic_goal_collect flag = got_5 
+	ENDSWITCH 
+	IF NOT IsAlive name = <part> 
+		create name = <part> 
+	ENDIF 
+	wait 0.05000000075 seconds 
+	IF IsAlive name = <part> 
+		StopParticleObject name = <part> 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT LA_GapStart_PurpleGap 
+	StartGap GapID = PurpGrab flags = [ REQUIRE_AIR CANCEL_GROUND ] 
+	StartGap GapID = PurpGrab2 flags = [ REQUIRE_AIR CANCEL_GROUND ] Tricktext = "BS Roll" trickscript = LA_Classic_Gaps_Got1 
+	StartGap GapID = PurpGrab3 flags = [ REQUIRE_AIR CANCEL_GROUND ] Tricktext = "FS Roll" trickscript = LA_Classic_Gaps_Got1 
+ENDSCRIPT
+
+SCRIPT LA_GapEnd_PurpleGap 
+	EndGap GapID = PurpGrab score = 100 text = "Purple Skippin\'" 
+	EndGap GapID = PurpGrab2 
+	EndGap GapID = PurpGrab3 
+ENDSCRIPT
+
+SCRIPT LA_Classic_Gaps_Got1 
+	GoalManager_SetGoalFlag name = LA_classic_goal_gaps2 got_1 1 
+ENDSCRIPT
+
+SCRIPT LA_Secret_Tape 
+ENDSCRIPT
+
+kg_whorecombo = 0 
+SCRIPT LA_TeleHigh01 
+	GetGap score = 500 text = "Production Drop" 
+	TeleportSkaterToNode nodename = TRG_TeleHigh01 orient 
+	IF GetFlag flag = FLAG_COMBO 
+		change kg_whorecombo = ( kg_whorecombo + 1 ) 
+		IF ( kg_whorecombo = 1 ) 
+			FormatText TextName = wcombo_text " First Whoring " 
+			create_panel_message id = message_wcombo text = <wcombo_text> style = goal_collect_text 
+		ELSE 
+			FormatText TextName = wcombo_text " Whored it %a Times" a = kg_whorecombo 
+			create_panel_message id = message_wcombo text = <wcombo_text> style = goal_collect_text 
+		ENDIF 
+	ENDIF 
+	spawnscript LA_incombo 
+	IF NOT GotParam cut 
+		create_panel_message { 
+			id = leaving_message 
+			text = "Production Drop!" 
+			pos = PAIR(320.00000000000, 180.00000000000) 
+			rgba = [ 118 , 110 , 14 , 128 ] 
+			pulse_blur 
+			start = 200 
+			speed = 1 
+			scale = 1.00000000000 
+		} 
+	ENDIF 
+	wait 5 seconds 
+	kill_panel_message_if_it_exists id = message_wcombo 
+ENDSCRIPT
+
+SCRIPT LA_Boost01 
+	IF NOT walking 
+		Trigger_Speed_Boost speed = 1300 DefSkaterVO = 1 
+	ENDIF 
+ENDSCRIPT
+
+FLAG_COMBO = 50 
+SCRIPT LA_combo_check 
+	printf "lost combo" 
+	ClearExceptionGroup LA_skaterincombo 
+	UnSetFlag flag = FLAG_COMBO 
+	killspawnedscript name = LA_incombo 
+	change kg_whorecombo = 0 
+ENDSCRIPT
+
+SCRIPT LA_incombo 
+	printf "la in combo" 
+	setflag flag = FLAG_COMBO 
+	ClearExceptionGroup LA_skaterincombo 
+	SetException EX = SkaterExitCombo scr = LA_combo_check Group = LA_skaterincombo 
+	block 
+ENDSCRIPT
+
+SCRIPT Ball_Nocomply 
+	IF NOT walking 
+		skater : boneless 
+		makeskatergoto SkaterInit 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT LA_Palms 
+	IF IsAlive name = <palm> 
+		GetTriggerArray spin onto 
+		IF TriggerType <trigger_array> 
+			GetBonus score = 10000 text = "Shredded Palm Tree!" 
+			Shatteranddie name = <palm> area = 500 variance = 4 vel_x = 50 vel_y = 50 vel_z = 50 spread = 1 texture_swap = BA_cp_grass_mow_particle 
+			Kill name = <palm> 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+kg_circlebench = 0 
+kg_timesround = 0 
+SCRIPT AP_circlebench 
+	GetTriggerArray through 
+	IF TriggerType <trigger_array> 
+		change kg_circlebench = ( kg_circlebench + 1 ) 
+		SWITCH kg_circlebench 
+			CASE 4 
+				killspawnedscript name = AP_circbench_off 
+				ClearExceptionGroup AP_CircBench_grindcheck 
+				spawnscript AP_circbench_off 
+				playsound HitPotty 
+				change kg_circlebench = 0 
+				change kg_timesround = ( kg_timesround + 1 ) 
+				FormatText TextName = circbench_text " Around The Fountain %a Times" a = kg_timesround 
+				create_panel_message id = message_circbench text = <circbench_text> style = goal_collect_text 
+				printf " bench " 
+		ENDSWITCH 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT AP_circbench_off 
+	ClearExceptionGroup AP_CircBench_grindcheck 
+	SetEventHandler EX = SkaterExitRail scr = AP_circbench_reset Group = AP_CircBench_grindcheck 
+	block 
+ENDSCRIPT
+
+SCRIPT AP_circbench_reset 
+	change kg_timesround = 0 
+	ClearExceptionGroup AP_CircBench_grindcheck 
+	kill_panel_message_if_it_exists id = message_circbench 
+ENDSCRIPT
+
+kg_circlewall = 0 
+kg_timesroundwall = 0 
+SCRIPT LA_circlewall 
+	GetTriggerArray through 
+	IF TriggerType <trigger_array> 
+		IF NOT InMultiplayerGame 
+			PlaySkaterCamAnim { virtual_cam 
+				targetid = world 
+				focus_skater 
+				targetOffset = VECTOR(8815.50000000000, -1541.40002441406, 8563.29980468750) 
+				positionOffset = VECTOR(340.29998779297, -62.40000152588, 3465.89990234375) 
+				frames = 24 
+			skippable = 0 } 
+			change kg_circlewall = ( kg_circlewall + 1 ) 
+			SWITCH kg_circlewall 
+				CASE 4 
+					killspawnedscript name = LA_circwall_off 
+					ClearExceptionGroup LA_CircWall_grindcheck 
+					spawnscript LA_circwall_off 
+					playsound HitPotty 
+					change kg_circlewall = 0 
+					change kg_timesroundwall = ( kg_timesroundwall + 1 ) 
+					FormatText TextName = circwall_text " Around The Pillar %a Times" a = kg_timesroundwall 
+					create_panel_message id = message_circwall text = <circwall_text> style = goal_collect_text 
+					printf " wall " 
+			ENDSWITCH 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT LA_circwall_off 
+	ClearExceptionGroup LA_CircWall_grindcheck 
+	SetEventHandler EX = SkaterJump scr = LA_circwall_reset Group = LA_CircWall_grindcheck 
+	SetEventHandler EX = SkaterEnterBail scr = LA_circwall_reset Group = LA_CircWall_grindcheck 
+	SetEventHandler EX = SkaterExitWall scr = LA_circwall_reset Group = LA_CircWall_grindcheck 
+	SetEventHandler EX = SkaterEnterGround scr = LA_circwall_reset Group = LA_CircWall_grindcheck 
+	SetEventHandler EX = SkaterEnterWalking scr = LA_circwall_reset Group = LA_CircWall_grindcheck 
+	block 
+ENDSCRIPT
+
+SCRIPT LA_circwall_reset 
+	pulse_blur 
+	start = 100 
+	PlaySkaterCamAnim skater = 0 stop 
+	change kg_timesroundwall = 0 
+	ClearExceptionGroup LA_CircWall_grindcheck 
+	kill_panel_message_if_it_exists id = message_circwall 
+ENDSCRIPT
+
+SCRIPT LA_Flame 
+	SpawnSkaterScript BO_FireParticlesOn 
+	SpawnSkaterScript BO_SmokeParticlesOn 
+	wait 5 seconds 
+	SpawnSkaterScript BO_FireParticlesOff 
+	SpawnSkaterScript BO_SmokeParticlesOff 
+ENDSCRIPT
+
+SCRIPT BO_FireParticlesOn 
+	printf "Fire" 
+	CreateFlexibleParticleSystem name = BurnMoFo params_script = APM_flamingBOARD_particle_params 
+ENDSCRIPT
+
+SCRIPT BO_FireParticlesOff 
+	DestroyFlexibleParticleSystem name = BurnMoFo 
+ENDSCRIPT
+
+SCRIPT BO_SmokeParticlesOn 
+	printf "Smoke" 
+	CreateFlexibleParticleSystem name = SmokeyMoFo params_script = apm_OILYsmoke_particle_params 
+ENDSCRIPT
+
+SCRIPT BO_SmokeParticlesOff 
+	DestroyFlexibleParticleSystem name = SmokeyMoFo 
+ENDSCRIPT
+
+SCRIPT LA_EasterEgg 
+	GetTriggerArray Wallplant onto 
+	IF TriggerType <trigger_array> 
+		GetGap text = "Oh Yeahh! You Are Good!" score = 10000 
+		playsound HitVideoGame1 pitch = RANDOM_RANGE PAIR(90.00000000000, 120.00000000000) 
+		nightvision_hud 
+		wait 20 frames 
+		really_kill_flicker_nightvision_hud 
+	ENDIF 
+ENDSCRIPT
+
+FLAG_MANUAL = 40 
+SCRIPT LA_manualcheck_init 
+	spawnscript LA_skater_manual 
+ENDSCRIPT
+
+SCRIPT LA_skater_manual 
+	ClearExceptionGroup LA_inmanual 
+	UnSetFlag flag = FLAG_MANUAL 
+	SetExceptionHandler EX = SkaterEnterManual scr = LA_manual_active Group = LA_inmanual 
+	block 
+ENDSCRIPT
+
+SCRIPT LA_manual_active 
+	ClearExceptionGroup LA_inmanual 
+	setflag flag = FLAG_MANUAL 
+	SetExceptionHandler EX = SkaterExitManual scr = LA_skater_manual Group = LA_inmanual 
+	block 
+ENDSCRIPT
+
+FLAG_ANDYTHPSDONE = 70 
+andythps_variable_X = 0 
+SCRIPT LA_AndyManualS 
+	StartGap GapID = Fuckoff flags = [ PURE_MANUAL CANCEL_AIR ] 
+	printf "FFFFFFUUUUCCCCCKKKKK22222" 
+ENDSCRIPT
+
+SCRIPT LA_AndyManualE 
+	EndGap GapID = Fuckoff gapscript = LA_ANDYDONE 
+	printf "FFFFFFUUUUCCCCCKKKKK111" 
+ENDSCRIPT
+
+SCRIPT LA_ANDYDONE 
+	create_panel_block { id = Earthquake_text1 
+		text = "YOU MANUALED THE ANDYTHPS BUNKER LEDGE!!!!" 
+		rgba = { 255 , 157 , 157 , 253 } 
+		style = earthquake_small_style3 
+		dims = PAIR(640.00000000000, 25.00000000000) 
+		time = 1000 
+		just = { right right } 
+		internal_just = { left left } 
+	} 
+	playsound Pcrowd16 
+	wait 60 frames 
+	playsound Pcrowd11 
+	wait 2 seconds 
+	DestroyScreenElement id = Earthquake_text1 
+ENDSCRIPT
+
+SCRIPT CPF_LA_BURN 
+	IF NOT InMultiplayerGame 
+		skater : killskater node = TRG_LA_Restart_Horse01 message1 = "Yowee!" message2 = "Burnin\' Up" message3 = "Too Hot" message4 = "Burnt" r = 250 g = 0 b = 0 
+		playsound Fire01 vol = 100 pitch = 100 
+		SetLightAmbientColor r = 0 g = 0 b = 0 
+		wait 3 seconds 
+		SetLightAmbientColor r = 50 g = 50 b = 50 
+		stopsound Fire01 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TRG_LA_Car01Script 
+	Car_Generic01 
+ENDSCRIPT
+
+SCRIPT LA_Car 
+	Car_Generic01 sticktoground TurnDist = 40 DefaultSpeed = 35 
+ENDSCRIPT
+
+SCRIPT LA_Bushes 
+	playsound BonkBush volume = 100 pitch = 100 dropoff = 5 
+ENDSCRIPT
+
+SCRIPT LA_Vibrate 
+	IF NOT InMultiplayerGame 
+		BEGIN 
+			skater : Vibrate_Controller_Safe actuator = 1 percent = 100 
+			wait 1 frames 
+		REPEAT 300 
+		skater : Vibrate_Controller_Safe actuator = 1 percent = 0 
+	ENDIF 
+ENDSCRIPT
+
+FLAG_LA_DID_CAR_FALL = 23 
+SCRIPT LA_Freeway_Break 
+	setflag flag = FLAG_LA_DID_EARTHQUAKE 
+	playsound Fencebreak 
+	ShakeCamera duration = 5 vert_amp = 10 horiz_amp = 10 vert_vel = 2 horiz_vel = 4 
+	spawnscript LA_Vibrate 
+	create name = GO_FallingSign04 
+	create prefix = "Destroyed" 
+	create name = Ground_Smoke_A30_UP 
+	create name = Ground_Smoke_A30_UP01 
+	create name = Ground_Smoke_A30_UP02 
+	create name = Ground_Smoke_A30_UP03 
+	create name = Ground_Smoke_A30_UP04 
+	create name = Ground_Smoke_A30_UP05 
+	create name = Ground_Smoke_A30_UP06 
+	create name = Ground_Smoke_A30_UP07 
+	create name = Ground_Smoke_A30_UP08 
+	create name = Ground_Smoke_A30_UP09 
+	create name = Ground_Smoke_A30_UP10 
+	create name = Ground_Smoke_A30_UP11 
+	create name = Ground_Smoke_A30_UP12 
+	create name = Ground_Smoke_A30_UP13 
+	create name = Ground_Smoke_A30_UP14 
+	create name = Ground_Smoke_A30_UP15 
+	create name = Ground_Smoke_A30_UP16 
+	create name = Ground_Smoke_A30_UP17 
+	create name = Ground_Smoke_A30_UP18 
+	create name = Ground_Smoke_A30_UP19 
+	create name = Ground_Smoke_A30_UP20 
+	create name = Ground_Smoke_A30_UP21 
+	create name = Ground_Smoke_A30_UP22 
+	create name = Ground_Smoke_A30_UP23 
+	create name = Ground_Smoke_A30_UP24 
+	create name = Ground_Smoke_A30_UP25 
+	create name = Ground_Smoke_A30_UP26 
+	create name = Ground_Smoke_A30_UP27 
+	create name = Ground_Smoke_A30_UP28 
+	create name = Ground_Smoke_A30_UP29 
+	create name = Ground_Smoke_A30_UP30 
+	create name = Ground_Smoke_A30_UP31 
+	create name = Ground_Smoke_A30_UP32 
+	create name = Ground_Smoke_A30_UP33 
+	create name = Ground_Smoke_A30_UP34 
+	create name = Ground_Smoke_A30_UP35 
+	create name = Ground_Smoke_A30_UP36 
+	create name = Ground_Smoke_A30_UP37 
+	create name = Ground_Smoke_A30_UP38 
+	create name = Ground_Smoke_A30_UP39 
+	create name = Ground_Smoke_A30_UP40 
+	create name = Ground_Smoke_A30_UP41 
+	create name = Ground_Smoke_A30_UP42 
+	create name = Ground_Smoke_A30_UP43 
+	create name = Ground_Smoke_A30_UP44 
+	create name = Ground_Smoke_A30_UP45 
+	create name = Ground_Smoke_A30_UP46 
+	create name = Ground_Smoke_A30_UP47 
+	create name = Ground_Smoke_A30_UP48 
+	create name = Ground_Smoke_A30_UP49 
+	create name = Ground_Smoke_A30_UP50 
+	create name = Ground_Smoke_A30_UP51 
+	create name = Ground_Smoke_A30_UP52 
+	create name = Ground_Smoke_A30_UP53 
+	create name = Car_Wash_BreakGO 
+	create name = Ground_Smoke_A 
+	create name = Ground_Smoke_A01 
+	create name = Ground_Smoke_A02 
+	create name = Ground_Smoke_A03 
+	create name = Ground_Smoke_A04 
+	create name = Ground_Smoke_A05 
+	create name = Ground_Smoke_A06 
+	create name = Ground_Smoke_A07 
+	create name = Ground_Smoke_A08 
+	create name = Ground_Smoke_A09 
+	create name = Ground_Smoke_A10 
+	create name = Ground_Smoke_A11 
+	create name = Ground_Smoke_A12 
+	create name = Ground_Smoke_A13 
+	create name = Ground_Smoke_A14 
+	create name = Ground_Smoke_A15 
+	create name = Ground_Smoke_A16 
+	create name = Ground_Smoke_A17 
+	create name = Ground_Smoke_A18 
+	create name = Ground_Smoke_A19 
+	create name = Ground_Smoke_A20 
+	create name = Ground_Smoke_A21 
+	create name = Ground_Smoke_A22 
+	create name = Ground_Smoke_A23 
+	create name = Ground_Smoke_A24 
+	create name = Ground_Smoke_A25 
+	create name = Ground_Smoke_A26 
+	create name = Ground_Smoke_A27 
+	create name = Ground_Smoke_A28 
+	create name = Ground_Smoke_A29 
+	VibrateOff 
+	Kill name = Overpass_Good_06 
+	Kill name = GO_WireWest_Good 
+	Kill prefix = CAR_DC_Shoe_Truck 
+	playsound HitLeaveWall 
+	create_panel_block { id = Earthquake_text 
+		font = dialog 
+		text = "Earthquake" 
+		style = earthquake_style 
+		dims = PAIR(640.00000000000, 25.00000000000) 
+		time = 1000 
+		just = { left left } 
+		internal_just = { left left } 
+	} 
+	create_panel_block { id = Earthquake_text11 
+		text = "Start The Earthquake Complete" 
+		rgba = { 255 , 50 , 50 , 253 } 
+		style = earthquake_small_style3 
+		dims = PAIR(640.00000000000, 25.00000000000) 
+		time = 1000 
+		just = { left left } 
+		internal_just = { left left } 
+	} 
+	Car_Wash_BreakGO : Obj_MoveToNode name = TRG_MOVE_CWGO02 time = 2 
+	Car_Wash_BreakGO : Obj_Rotate absolute = VECTOR(0.00000000000, -20.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	printf "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF-----1" 
+	spawnscript LA_Sign_Fall 
+	create name = carwash_destroyed_04 
+	create name = carwash_destroyed_05 
+	create name = carwash_destroyed_06 
+	create name = carwash_destroyed_07 
+	create name = carwash_destroyed_08 
+	wait_and_kill_eq_text 
+	wait_and_kill_eq_text11 
+	create name = carwash_destroyed_01 
+	Kill name = Car_Wash_BreakGO 
+	Kill name = Overpass_Good_01 
+	Kill name = Overpass_Good_03 
+	Kill name = Overpass_Good_04 
+	Kill name = Overpass_Good_05 
+	Kill name = Overpass_Good_07 
+	Kill name = Overpass_Good_09 
+	Kill name = carwash_good_02 
+	Kill name = carwash_good_03 
+	Kill name = carwash_good_01 
+	create name = ADestroyed_01 
+	create name = ADestroyed_02 
+	create name = ADestroyed_03 
+	create name = ADestroyed_04 
+	create name = ADestroyed_06 
+	create name = ADestroyed_07 
+	create name = ADestroyed_08 
+	create name = carwash_destroyed_09 
+	create name = carwash_destroyed_02 
+	create name = carwash_destroyed_03 
+	ADestroyed_08 : Obj_MoveToNode name = FREEWAY_MOVE_01 time = 2 
+	ADestroyed_08 : Obj_Rotate absolute = VECTOR(0.00000000000, -45.00000000000, 0.00000000000) time = 3 FLAG_MAX_COORDS 
+	ADestroyed_03 : Obj_Rotate absolute = VECTOR(0.00000000000, -0.69999998808, 0.00000000000) time = 6.50000000000 FLAG_MAX_COORDS 
+	ADestroyed_04 : Obj_Rotate absolute = VECTOR(-10.00000000000, -10.00000000000, 0.00000000000) time = 2.50000000000 FLAG_MAX_COORDS 
+	ADestroyed_04 : Obj_MoveToNode name = Go_Earthquake_ADestroyed_04 time = 6 
+	ADestroyed_07 : Obj_Rotate absolute = VECTOR(-5.00000000000, -25.00000000000, 17.00000000000) time = 2 FLAG_MAX_COORDS 
+	ADestroyed_07 : Obj_MoveToNode name = FREEWAY_MOVE_Back_01 time = 6 
+	wait 1 seconds 
+	Kill name = ADestroyed_01 
+	Kill name = ADestroyed_02 
+	Kill name = ADestroyed_03 
+	Kill name = ADestroyed_04 
+	Kill name = ADestroyed_06 
+	Kill name = ADestroyed_07 
+	Kill name = ADestroyed_08 
+	create name = Overpass_Destroyed_01 
+	create name = Overpass_Destroyed_04 
+	create name = Overpass_Destroyed_05 
+	create name = Overpass_Destroyed_06 
+	create name = Overpass_Destroyed_07 
+	create name = Overpass_Destroyed_10_Car 
+	create name = Overpass_Destroyed_11 
+	create name = Overpass_Destroyed_12 
+	create name = Overpass_Destroyed_13 
+	create prefix = "Rubble01_" 
+	create name = Overpass_Car_Rocking 
+	create name = TRG_Rail_KenCar 
+	create prefix = "TRG_Rail_Overpass" 
+	Kill prefix = "Rail_Freeway_" 
+	create name = DestroyedCar_Geometry_07 
+	create prefix = "TRG_Rail_Overpass" 
+	create name = TRGP_CarFall_E01 
+	create name = TRGP_CarFall_E02 
+	create name = TRGP_CarFall_E03 
+	create name = GO_WireWest 
+	spawnscript LA_Car_Rocking 
+	Kill prefix = "falling_rocks" 
+	wait 5 seconds 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP01 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP02 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP03 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP04 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP05 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP06 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP07 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP08 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP09 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP10 } 
+	wait 1 seconds 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP11 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP12 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP13 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP14 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP15 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP16 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP17 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP18 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP19 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP20 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP21 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP22 } 
+	wait 1 seconds 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP23 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP24 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP25 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP26 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP27 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP28 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP29 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP30 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP31 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP32 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP33 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP34 } 
+	wait 1 seconds 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP35 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP36 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP37 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP38 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP39 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP40 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP41 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP42 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP43 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP44 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP45 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP46 } 
+	wait 1 seconds 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP47 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP48 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP49 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP50 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP51 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP52 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A30_UP53 } 
+	wait 1 seconds 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A01 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A02 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A03 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A05 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A06 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A09 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A10 } 
+	wait 1 seconds 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A11 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A12 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A14 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A17 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A18 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A19 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A20 } 
+	wait 1 seconds 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A21 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A22 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A23 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A24 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A27 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A28 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A29 } 
+	wait 1 seconds 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A16 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A13 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A04 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A07 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A15 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A08 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A26 } 
+	spawnscript StopParticleObject params = { name = Ground_Smoke_A25 } 
+ENDSCRIPT
+
+SCRIPT LA_Rocks_Falling 
+	Obj_SetPathVelocity 7 mph 
+	Obj_PathHeading Off 
+	Obj_FollowPathLinked 
+	wait 5 seconds 
+	printf "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF1" 
+	Die 
+ENDSCRIPT
+
+SCRIPT LA_Rocks_Falling1 
+	Obj_SetPathVelocity 10 mph 
+	Obj_PathHeading Off 
+	Obj_FollowPathLinked 
+	wait 5 seconds 
+	printf "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF1" 
+	Die 
+ENDSCRIPT
+
+SCRIPT LA_Rocks_Falling2 
+	Obj_SetPathVelocity 12 mph 
+	Obj_PathHeading Off 
+	Obj_FollowPathLinked 
+	wait 5 seconds 
+	printf "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF1" 
+	Die 
+ENDSCRIPT
+
+SCRIPT LA_Rocks_Falling3 
+	Obj_SetPathVelocity 14 mph 
+	Obj_PathHeading Off 
+	Obj_FollowPathLinked 
+	wait 5 seconds 
+	printf "FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF1" 
+	Die 
+ENDSCRIPT
+
+SCRIPT LA_Car_Rocking 
+	BEGIN 
+		IF IsAlive name = Overpass_Car_Falling0001 
+			BREAK 
+		ENDIF 
+		Overpass_Car_Rocking : Obj_Rotate absolute = VECTOR(-20.00000000000, 0.00000000000, 0.00000000000) time = 1.20000004768 FLAG_MAX_COORDS 
+		Overpass_Car_Rocking : obj_waitmove 
+		wait 1.21000003815 seconds 
+		IF IsAlive name = Overpass_Car_Falling0001 
+			BREAK 
+		ENDIF 
+		Overpass_Car_Rocking : Obj_Rotate absolute = VECTOR(-20.00000000000, 0.00000000000, 0.00000000000) time = 1.20000004768 FLAG_MAX_COORDS 
+		Overpass_Car_Rocking : obj_waitmove 
+		wait 1.21000003815 seconds 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT TRG_Rail_Overpass69 
+ENDSCRIPT
+
+SCRIPT extra_gay_style 
+	SetProps rgba = [ 255 55 55 255 ] 
+	DoMorph time = 0.10000000149 pos = PAIR(320.00000000000, 250.00000000000) 
+	DoMorph time = 0.10000000149 pos = PAIR(320.00000000000, 120.00000000000) 
+	scale = 1 
+ENDSCRIPT
+
+SCRIPT earthquake_style 
+	DoMorph scale = 5 
+	BEGIN 
+		DoMorph time = 0.40000000596 pos = PAIR(320.00000000000, 250.00000000000) 
+		DoMorph time = 0.40000000596 pos = PAIR(320.00000000000, 240.00000000000) 
+		rgba = { 255 , 0 , 0 , 128 } 
+	REPEAT 5 
+ENDSCRIPT
+
+SCRIPT earthquake_small_style 
+	pos = PAIR(20.00000000000, 10.00000000000) 
+	DoMorph scale = 1.20000004768 
+	BEGIN 
+		DoMorph time = 0.30000001192 pos = PAIR(280.00000000000, 300.00000000000) 
+		DoMorph time = 0.30000001192 pos = PAIR(320.00000000000, 280.00000000000) 
+		rgba = { 255 , 50 , 50 , 128 } 
+	REPEAT 10 
+ENDSCRIPT
+
+SCRIPT earthquake_small_style1 
+	pos = PAIR(20.00000000000, 10.00000000000) 
+	DoMorph scale = 1.20000004768 
+	BEGIN 
+		DoMorph time = 0.10000000149 pos = PAIR(320.00000000000, 290.00000000000) 
+		DoMorph time = 0.10000000149 pos = PAIR(320.00000000000, 280.00000000000) 
+		rgba = { 255 , 50 , 50 , 128 } 
+	REPEAT 10 
+ENDSCRIPT
+
+SCRIPT earthquake_small_style2 
+	pos = PAIR(40.00000000000, 10.00000000000) 
+	DoMorph scale = 1.20000004768 
+	BEGIN 
+		DoMorph time = 0.10000000149 pos = PAIR(320.00000000000, 290.00000000000) 
+		DoMorph time = 0.10000000149 pos = PAIR(320.00000000000, 280.00000000000) 
+		rgba = { 255 , 50 , 50 , 128 } 
+	REPEAT 10 
+ENDSCRIPT
+
+SCRIPT earthquake_small_style3 
+	pos = PAIR(40.00000000000, 10.00000000000) 
+	DoMorph scale = 1.20000004768 
+	BEGIN 
+		DoMorph time = 0.10000000149 pos = PAIR(320.00000000000, 310.00000000000) 
+		DoMorph time = 0.10000000149 pos = PAIR(320.00000000000, 300.00000000000) 
+		rgba = { 255 , 50 , 50 , 128 } 
+	REPEAT 10 
+ENDSCRIPT
+
+SCRIPT LA_Bye_Gap 
+	create_panel_block { id = Earthquake_text 
+		text = "Bye-Bye!" 
+		rgba = { 144 , 144 , 144 , 128 } 
+		pos = PAIR(320.00000000000, 340.00000000000) 
+		dims = PAIR(640.00000000000, 25.00000000000) 
+		time = 1000 
+		just = { left left } 
+		internal_just = { left left } 
+		style = earthquake_small_style 
+	} 
+	spawnscript LA_Car_Wobble 
+	spawnscript LA_Sign_Fall_Low 
+	spawnscript wait_and_kill_eq_text 
+ENDSCRIPT
+
+SCRIPT LA_Car_Wobble 
+	printf "FUUUUCCKKKYOUUUUU1" 
+	printf "FUUUUCCKKKYOUUUUU2" 
+	create name = Overpass_Car_Falling0001 
+	Kill name = Overpass_Car_Rocking 
+	wait 0.10000000149 seconds 
+	Kill name = TRGP_CarFall_W 
+	Overpass_Car_Falling0001 : Obj_MoveToNode name = TRG_FallinCar_Nav04 time = 3 
+	wait 1 seconds 
+	Overpass_Car_Falling0001 : Obj_Rotate absolute = VECTOR(0.00000000000, 0.00000000000, -160.00000000000) time = 1 FLAG_MAX_COORDS 
+	Overpass_Car_Falling0001 : Obj_MoveToNode name = TRG_FallinCar_Nav04 time = 3 
+	wait 0.10000000149 seconds 
+	Overpass_Car_Falling0001 : Obj_MoveToNode name = TRG_FallinCar_Nav05 time = 2 
+	wait 2 seconds 
+	Kill name = Overpass_Car_Falling0001 
+	create name = DestroyedCar_Geometry_01 
+	create name = DestroyedCar_Geometry_04 
+	create name = DestroyedCar_Geometry_05 
+	create name = DestroyedCar_Geometry_06 
+	create name = DestroyedCar_Geometry_03 
+	Kill name = DestroyedCar_Geometry_07 
+	printf "FUUUUCCKKKYOUUUUU3" 
+	create name = DestroyedCar_Geometry_02 
+	Kill name = TRGP_CarFall_E01 
+	Kill name = TRGP_CarFall_E02 
+	Kill name = TRGP_CarFall_E03 
+	wait 2 seconds 
+	Kill name = TRG_Rail_KenCar 
+	Kill name = TRG_Rail_Overpass25 
+	Kill name = TRG_Rail_Overpass26 
+	Kill name = TRG_Rail_Overpass27 
+	Kill name = TRG_Rail_Overpass68 
+	Kill name = TRG_Rail_Overpass69 
+	Kill name = TRG_Rail_Overpass70 
+	Kill name = TRG_Rail_Overpass76 
+	printf "FUUUUCCKKKYOUUUUU4" 
+	create name = EARTHQUAKE04 
+	create name = EARTHQUAKE05 
+	create name = EARTHQUAKE06 
+	create name = EARTHQUAKE07 
+	create name = EARTHQUAKE08 
+	create name = EARTHQUAKE09 
+	create name = EARTHQUAKE10 
+	create name = EARTHQUAKE11 
+ENDSCRIPT
+
+SCRIPT LA_Sign_Fall 
+	Kill name = FallingSign 
+	create name = GO_FallingSign 
+	Kill name = GO_WireEast_Start 
+	GO_FallingSign : Obj_MoveToNode name = TRG_FallinSign_Nav01 time = 2 
+	Kill name = GO_WireWest 
+	wait 1.60000002384 seconds 
+	playsound HitLeaveWall 
+	Kill name = GO_FallingSign 
+	create name = GO_FallingSign2 
+	create name = FREEWAY_SIGN_TRIGER02 
+	create name = FREEWAY_SIGN_TRIGER03 
+	create name = FREEWAY_SIGN_TRIGER04 
+	create name = FREEWAY_SIGN_TRIGER05 
+	create name = TRG_SignGetToRail 
+	create name = GO_WireEast_Hang 
+	create name = GO_WireEast 
+	Kill name = GO_FallingSign04 
+	BEGIN 
+		IF IsAlive name = GO_FallingSign03 
+			BREAK 
+		ENDIF 
+		GO_FallingSign2 : Obj_Rotate absolute = VECTOR(60.00000000000, 0.00000000000, 0.00000000000) time = 1.29999995232 FLAG_MAX_COORDS 
+		GO_FallingSign2 : obj_waitmove 
+		wait 1.30999994278 seconds 
+		IF IsAlive name = GO_FallingSign03 
+			BREAK 
+		ENDIF 
+		GO_FallingSign2 : Obj_Rotate absolute = VECTOR(-60.00000000000, 0.00000000000, 0.00000000000) time = 1.29999995232 FLAG_MAX_COORDS 
+		GO_FallingSign2 : obj_waitmove 
+		wait 1.30999994278 seconds 
+		IF IsAlive name = GO_FallingSign03 
+			BREAK 
+		ENDIF 
+	REPEAT 1000 
+ENDSCRIPT
+
+SCRIPT wait_and_kill_eq_text 
+	IF NOT IsAlive name = Northern 
+		wait 1 seconds 
+		DestroyScreenElement id = Earthquake_text 
+	ENDIF 
+	IF IsAlive name = Northern 
+		DestroyScreenElement id = Earthquake_text 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT wait_and_kill_eq_text1 
+	IF NOT IsAlive name = Northern 
+		wait 1 seconds 
+		DestroyScreenElement id = Earthquake_text1 
+	ENDIF 
+	IF IsAlive name = Northern 
+		DestroyScreenElement id = Earthquake_text1 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT wait_and_kill_eq_text11 
+	IF NOT IsAlive name = Northern 
+		wait 1 seconds 
+		DestroyScreenElement id = Earthquake_text11 
+	ENDIF 
+	IF IsAlive name = Northern 
+		DestroyScreenElement id = Earthquake_text11 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT wait_and_kill_eq_text2 
+	IF NOT IsAlive name = Northern 
+		wait 1 seconds 
+		DestroyScreenElement id = Earthquake_text2 
+	ENDIF 
+	IF IsAlive name = Northern 
+		DestroyScreenElement id = Earthquake_text2 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT LA_Sign_Fall_Low 
+	spawnscript CarCam_01 
+	pauseskaters 
+	IF NOT IsAlive name = GO_FallingSign03 
+		IF IsAlive name = TRG_Rail_Overpass80 
+		ENDIF 
+		create name = GO_FallingSign03 
+		Kill name = GO_FallingSign2 
+		Kill name = GO_WireEast_Hang 
+		Kill name = GO_WireEast 
+		wait 0.10000000149 seconds 
+		GO_FallingSign03 : Obj_Rotate absolute = VECTOR(110.00000000000, 0.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+		GO_FallingSign03 : Obj_MoveToNode name = TRG_FallinSign2_Nav01 time = 2 
+		wait 2 seconds 
+		Kill name = GO_FallingSign03 
+		create name = FallingSign01 
+		create name = TRG_Looter_Rails01 
+		create name = TRG_Looter_Rails02 
+		create name = TRG_Looter_Rails03 
+		create name = TRG_Looter_Rails04 
+		create name = TRG_Sign_Fall_Low02 
+		create name = TRG_Sign_Fall_Low03 
+		create name = TRG_Sign_Fall_Low07 
+		create name = TRG_Sign_Fall_Low08 
+		create name = TRG_Sign_Fall_Low09 
+		create name = TRG_Sign_Fall_Low22 
+		create name = TRG_Sign_Fall_Low23 
+		create name = TRG_Sign_Fall_Low24 
+		create name = TRG_Sign_Fall_Low25 
+		create name = TRG_Sign_Fall_Low26 
+		create name = EARTHQUAKE13 
+		wait 2.50000000000 seconds 
+		unpauseskaters 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT CarCam_01 
+	PlaySkaterCamAnim name = Cam_carfall 
+	printf "wait" 
+	BEGIN 
+		IF SkaterCamAnimFinished name = Cam_carfall 
+			BREAK 
+		ENDIF 
+		wait 2 frames 
+	REPEAT 
+ENDSCRIPT
+
+FLAG_LA_RAIL1 = 25 
+FLAG_LA_RAIL2 = 26 
+FLAG_LA_RAIL3 = 27 
+FLAG_LA_RAIL4 = 28 
+FLAG_LA_DID_EARTHQUAKE = 30 
+FLAG_LA_TEXT1 = 31 
+FLAG_LA_TEXT2 = 32 
+FLAG_LA_TEXT3 = 33 
+FLAG_LA_TEXT4 = 35 
+SCRIPT LA_Gap_Net_NG_Start 
+	StartGap flags = [ require_rail CANCEL_GROUND cancel_manual CANCEL_HANG ] 
+	EndGap text = "NorthernTremor!" score = 100 
+ENDSCRIPT
+
+SCRIPT LA_Gap_Net_SG_Start 
+	StartGap flags = [ require_rail CANCEL_GROUND cancel_manual CANCEL_HANG ] 
+	EndGap text = "SouthernTremor!" score = 100 
+ENDSCRIPT
+
+SCRIPT LA_Gap_Net_EG_Start 
+	StartGap flags = [ require_rail CANCEL_GROUND cancel_manual CANCEL_HANG ] 
+	EndGap text = "EasternTremor!" score = 100 
+ENDSCRIPT
+
+SCRIPT LA_Gap_Net_WG_Start 
+	StartGap flags = [ require_rail CANCEL_GROUND cancel_manual CANCEL_HANG ] 
+	EndGap text = "WesternTremor!" score = 100 
+ENDSCRIPT
+
+SCRIPT LA_Gap_NG_Start 
+	StartGap GapID = ng_Start1 flags = [ require_rail CANCEL_GROUND cancel_manual CANCEL_HANG ] 
+ENDSCRIPT
+
+kg_variable_X = 0 
+SCRIPT LA_Gap_NG_End 
+	EndGap GapID = ng_Start1 text = "NorthernTremor!" score = 100 
+	IF NOT InMultiplayerGame 
+		GetBonus score = 1000 text = "CRUNCH!" 
+		printstruct <...> 
+		SWITCH kg_variable_X 
+			CASE 0 
+				printf "WHORE1!!!!!!!!!!!!" 
+				PlayStream La_quake1_rumble vol = 200 priority = StreamPriorityHigh 
+				printf "WHORE2!!!!!!!!!!!!" 
+				setflag flag = FLAG_LA_RAIL4 
+				ShakeCamera duration = 1.29999995232 vert_amp = 8 horiz_amp = 8 vert_vel = 2 horiz_vel = 4 
+				skater : vibrate percent = 75 duration = 1000 actuator = 1 
+				create_panel_block { id = Earthquake_text2 
+					text = "Northern Quake Rail!" 
+					rgba = { 255 , 50 , 50 , 253 } 
+					style = earthquake_small_style 
+					dims = PAIR(640.00000000000, 25.00000000000) 
+					time = 1000 
+					just = { left left } 
+					internal_just = { left left } 
+				} 
+				wait 1 seconds 
+				VibrateOff 
+				spawnscript wait_and_kill_eq_text2 
+				change kg_variable_X = 1 
+		ENDSWITCH 
+		IF NOT GetFlag flag = FLAG_LA_DID_EARTHQUAKE 
+			IF GetFlag flag = FLAG_LA_RAIL1 
+				IF GetFlag flag = FLAG_LA_RAIL2 
+					IF GetFlag flag = FLAG_LA_RAIL3 
+						IF GetFlag flag = FLAG_LA_RAIL4 
+							LA_Freeway_Break 
+						ENDIF 
+					ENDIF 
+				ENDIF 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+kg_variable_Y = 0 
+SCRIPT LA_Gap_SG_Start 
+	StartGap GapID = sg_Start1 flags = [ require_rail CANCEL_GROUND cancel_manual CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT LA_Gap_SG_End 
+	EndGap GapID = sg_Start1 text = "SouthernTremor!" score = 100 
+	IF NOT InMultiplayerGame 
+		GetBonus score = 1000 text = "CRUNCH!" 
+		printstruct <...> 
+		SWITCH kg_variable_Y 
+			CASE 0 
+				PlayStream La_quake1_rumble vol = 200 priority = StreamPriorityHigh 
+				setflag flag = FLAG_LA_RAIL1 
+				ShakeCamera duration = 1.29999995232 vert_amp = 8 horiz_amp = 8 vert_vel = 2 horiz_vel = 4 
+				skater : vibrate percent = 75 duration = 1000 actuator = 1 
+				create_panel_block { id = Earthquake_text1 
+					text = "Southern Quake Rail!" 
+					rgba = { 255 , 50 , 50 , 253 } 
+					style = earthquake_small_style 
+					dims = PAIR(640.00000000000, 25.00000000000) 
+					time = 1000 
+					just = { left left } 
+					internal_just = { left left } 
+				} 
+				wait 1 seconds 
+				VibrateOff 
+				spawnscript wait_and_kill_eq_text1 
+				change kg_variable_Y = 1 
+		ENDSWITCH 
+		IF NOT GetFlag flag = FLAG_LA_DID_EARTHQUAKE 
+			IF GetFlag flag = FLAG_LA_RAIL1 
+				IF GetFlag flag = FLAG_LA_RAIL2 
+					IF GetFlag flag = FLAG_LA_RAIL3 
+						IF GetFlag flag = FLAG_LA_RAIL4 
+							LA_Freeway_Break 
+						ENDIF 
+					ENDIF 
+				ENDIF 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+kg_variable_Z = 0 
+SCRIPT LA_Gap_EG_Start 
+	StartGap GapID = eg_Start1 flags = [ require_rail CANCEL_GROUND cancel_manual CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT LA_Gap_EG_End 
+	EndGap GapID = eg_Start1 text = "EasternTremor!" score = 100 
+	IF NOT InMultiplayerGame 
+		GetBonus score = 1000 text = "CRUNCH!" 
+		printstruct <...> 
+		SWITCH kg_variable_Z 
+			CASE 0 
+				PlayStream La_quake1_rumble vol = 200 priority = StreamPriorityHigh 
+				setflag flag = FLAG_LA_RAIL2 
+				ShakeCamera duration = 1.29999995232 vert_amp = 8 horiz_amp = 8 vert_vel = 2 horiz_vel = 4 
+				skater : vibrate percent = 75 duration = 1000 actuator = 1 
+				create_panel_block { id = Earthquake_text1 
+					text = "Eastern Quake Rail!" 
+					rgba = { 255 , 50 , 50 , 253 } 
+					style = earthquake_small_style 
+					dims = PAIR(640.00000000000, 25.00000000000) 
+					time = 1000 
+					just = { left left } 
+					internal_just = { left left } 
+				} 
+				wait 1 seconds 
+				VibrateOff 
+				spawnscript wait_and_kill_eq_text1 
+				change kg_variable_Z = 1 
+		ENDSWITCH 
+		IF NOT GetFlag flag = FLAG_LA_DID_EARTHQUAKE 
+			IF GetFlag flag = FLAG_LA_RAIL1 
+				IF GetFlag flag = FLAG_LA_RAIL2 
+					IF GetFlag flag = FLAG_LA_RAIL3 
+						IF GetFlag flag = FLAG_LA_RAIL4 
+							LA_Freeway_Break 
+						ENDIF 
+					ENDIF 
+				ENDIF 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+kg_variable_A = 0 
+SCRIPT LA_Gap_WG_Start 
+	StartGap GapID = wg_Start1 flags = [ require_rail CANCEL_GROUND cancel_manual CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT LA_Gap_WG_End 
+	EndGap GapID = wg_Start1 text = "WesternTremor!" score = 100 
+	IF NOT InMultiplayerGame 
+		GetBonus score = 1000 text = "CRUNCH!" 
+		SWITCH kg_variable_A 
+			CASE 0 
+				PlayStream La_quake1_rumble vol = 200 priority = StreamPriorityHigh 
+				setflag flag = FLAG_LA_RAIL3 
+				ShakeCamera duration = 1.29999995232 vert_amp = 8 horiz_amp = 8 vert_vel = 2 horiz_vel = 4 
+				skater : vibrate percent = 75 duration = 1000 actuator = 1 
+				create_panel_block { id = Earthquake_text1 
+					text = "Western Quake Rail!" 
+					rgba = { 255 , 50 , 50 , 253 } 
+					style = earthquake_small_style 
+					dims = PAIR(640.00000000000, 25.00000000000) 
+					time = 1000 
+					just = { left left } 
+					internal_just = { left left } 
+				} 
+				wait 1 seconds 
+				VibrateOff 
+				spawnscript wait_and_kill_eq_text1 
+				change kg_variable_A = 1 
+		ENDSWITCH 
+		IF NOT GetFlag flag = FLAG_LA_DID_EARTHQUAKE 
+			IF GetFlag flag = FLAG_LA_RAIL1 
+				IF GetFlag flag = FLAG_LA_RAIL2 
+					IF GetFlag flag = FLAG_LA_RAIL3 
+						IF GetFlag flag = FLAG_LA_RAIL4 
+							LA_Freeway_Break 
+						ENDIF 
+					ENDIF 
+				ENDIF 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT LA_Trash_Blown01 
+	Kill name = Blown_TRG_01 
+	playsound BonkBush volume = 100 pitch = 100 dropoff = 5 
+	create name = GO_BlownTrash34 
+	create name = GO_BlownTrash37 
+	create name = GO_BlownTrash38 
+	create name = GO_BlownTrash41 
+	create name = GO_BlownTrash42 
+	create name = GO_BlownTrash43 
+	GO_BlownTrash34 : Obj_MoveToRelPos VECTOR(0.00000000000, 30.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash37 : Obj_MoveToRelPos VECTOR(0.00000000000, 30.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash38 : Obj_MoveToRelPos VECTOR(0.00000000000, 30.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash41 : Obj_MoveToRelPos VECTOR(0.00000000000, 30.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash42 : Obj_MoveToRelPos VECTOR(0.00000000000, 30.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash43 : Obj_MoveToRelPos VECTOR(0.00000000000, 30.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash34 : Obj_Rotate absolute = VECTOR(0.00000000000, 120.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash37 : Obj_Rotate absolute = VECTOR(0.00000000000, -120.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash38 : Obj_Rotate absolute = VECTOR(0.00000000000, 120.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash41 : Obj_Rotate absolute = VECTOR(0.00000000000, -90.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash42 : Obj_Rotate absolute = VECTOR(0.00000000000, 120.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash43 : Obj_Rotate absolute = VECTOR(0.00000000000, 65.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	wait 0.50000000000 seconds 
+	GO_BlownTrash34 : Obj_Rotate absolute = VECTOR(0.00000000000, 240.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash37 : Obj_Rotate absolute = VECTOR(0.00000000000, -240.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash38 : Obj_Rotate absolute = VECTOR(0.00000000000, 240.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash41 : Obj_Rotate absolute = VECTOR(0.00000000000, -180.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash42 : Obj_Rotate absolute = VECTOR(0.00000000000, 240.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash43 : Obj_Rotate absolute = VECTOR(0.00000000000, 130.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash34 : Obj_MoveToRelPos VECTOR(0.00000000000, -60.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash37 : Obj_MoveToRelPos VECTOR(0.00000000000, -60.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash38 : Obj_MoveToRelPos VECTOR(0.00000000000, -60.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash41 : Obj_MoveToRelPos VECTOR(0.00000000000, -60.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash42 : Obj_MoveToRelPos VECTOR(0.00000000000, -60.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash43 : Obj_MoveToRelPos VECTOR(0.00000000000, -60.00000000000, 0.00000000000) speed = 5 
+	wait 1 seconds 
+	Kill name = GO_BlownTrash34 
+	Kill name = GO_BlownTrash37 
+	Kill name = GO_BlownTrash38 
+	Kill name = GO_BlownTrash41 
+	Kill name = GO_BlownTrash42 
+	Kill name = GO_BlownTrash43 
+	create name = Blown_TRG_01 
+ENDSCRIPT
+
+SCRIPT LA_Trash_Blown03 
+	playsound BonkBush volume = 100 pitch = 100 dropoff = 5 
+	Kill name = Blown_TRG_03 
+	create name = GO_BlownTrash08 
+	create name = GO_BlownTrash09 
+	create name = GO_BlownTrash11 
+	create name = GO_BlownTrash12 
+	GO_BlownTrash08 : Obj_MoveToRelPos VECTOR(0.00000000000, 30.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash09 : Obj_MoveToRelPos VECTOR(0.00000000000, 30.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash11 : Obj_MoveToRelPos VECTOR(0.00000000000, 30.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash12 : Obj_MoveToRelPos VECTOR(0.00000000000, 30.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash08 : Obj_Rotate absolute = VECTOR(0.00000000000, 120.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash09 : Obj_Rotate absolute = VECTOR(0.00000000000, -120.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash11 : Obj_Rotate absolute = VECTOR(0.00000000000, 120.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash12 : Obj_Rotate absolute = VECTOR(0.00000000000, -90.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	wait 0.50000000000 seconds 
+	GO_BlownTrash08 : Obj_Rotate absolute = VECTOR(0.00000000000, 240.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash09 : Obj_Rotate absolute = VECTOR(0.00000000000, -240.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash11 : Obj_Rotate absolute = VECTOR(0.00000000000, 240.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash12 : Obj_Rotate absolute = VECTOR(0.00000000000, -180.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash08 : Obj_MoveToRelPos VECTOR(0.00000000000, -60.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash09 : Obj_MoveToRelPos VECTOR(0.00000000000, -60.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash11 : Obj_MoveToRelPos VECTOR(0.00000000000, -60.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash12 : Obj_MoveToRelPos VECTOR(0.00000000000, -60.00000000000, 0.00000000000) speed = 5 
+	wait 1 seconds 
+	Kill name = GO_BlownTrash08 
+	Kill name = GO_BlownTrash09 
+	Kill name = GO_BlownTrash11 
+	Kill name = GO_BlownTrash12 
+	create name = Blown_TRG_03 
+ENDSCRIPT
+
+SCRIPT LA_Trash_Blown04 
+	playsound BonkBush volume = 100 pitch = 100 dropoff = 5 
+	Kill name = Blown_TRG_04 
+	create name = GO_BlownTrash47 
+	create name = GO_BlownTrash50 
+	GO_BlownTrash47 : Obj_MoveToRelPos VECTOR(0.00000000000, 30.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash50 : Obj_MoveToRelPos VECTOR(0.00000000000, 30.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash47 : Obj_Rotate absolute = VECTOR(0.00000000000, 120.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash50 : Obj_Rotate absolute = VECTOR(0.00000000000, -120.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	wait 0.50000000000 seconds 
+	GO_BlownTrash47 : Obj_Rotate absolute = VECTOR(0.00000000000, 240.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash50 : Obj_Rotate absolute = VECTOR(0.00000000000, -240.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash47 : Obj_MoveToRelPos VECTOR(0.00000000000, -60.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash50 : Obj_MoveToRelPos VECTOR(0.00000000000, -60.00000000000, 0.00000000000) speed = 5 
+	wait 1 seconds 
+	Kill name = GO_BlownTrash47 
+	Kill name = GO_BlownTrash50 
+	create name = Blown_TRG_04 
+ENDSCRIPT
+
+SCRIPT LA_Trash_Blown08 
+	playsound BonkBush volume = 100 pitch = 100 dropoff = 5 
+	Kill name = Blown_TRG_08 
+	create name = GO_BlownTrash01 
+	GO_BlownTrash01 : Obj_MoveToRelPos VECTOR(0.00000000000, 30.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash01 : Obj_Rotate absolute = VECTOR(0.00000000000, 120.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	wait 0.50000000000 seconds 
+	GO_BlownTrash01 : Obj_Rotate absolute = VECTOR(0.00000000000, 240.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash01 : Obj_MoveToRelPos VECTOR(0.00000000000, -60.00000000000, 0.00000000000) speed = 5 
+	wait 1 seconds 
+	Kill name = GO_BlownTrash01 
+	create name = Blown_TRG_08 
+ENDSCRIPT
+
+SCRIPT LA_Trash_Blown05 
+	playsound BonkBush volume = 100 pitch = 100 dropoff = 5 
+	Kill name = Blown_TRG_05 
+	create name = GO_BlownTrash53 
+	create name = GO_BlownTrash55 
+	create name = GO_BlownTrash56 
+	create name = GO_BlownTrash57 
+	create name = GO_BlownTrash58 
+	create name = GO_BlownTrash59 
+	GO_BlownTrash53 : Obj_MoveToRelPos VECTOR(0.00000000000, 30.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash55 : Obj_MoveToRelPos VECTOR(0.00000000000, 30.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash56 : Obj_MoveToRelPos VECTOR(0.00000000000, 30.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash57 : Obj_MoveToRelPos VECTOR(0.00000000000, 30.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash58 : Obj_MoveToRelPos VECTOR(0.00000000000, 30.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash59 : Obj_MoveToRelPos VECTOR(0.00000000000, 30.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash53 : Obj_Rotate absolute = VECTOR(0.00000000000, 120.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash55 : Obj_Rotate absolute = VECTOR(0.00000000000, -120.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash56 : Obj_Rotate absolute = VECTOR(0.00000000000, 120.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash57 : Obj_Rotate absolute = VECTOR(0.00000000000, -90.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash58 : Obj_Rotate absolute = VECTOR(0.00000000000, 120.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash59 : Obj_Rotate absolute = VECTOR(0.00000000000, 65.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	wait 0.50000000000 seconds 
+	GO_BlownTrash53 : Obj_Rotate absolute = VECTOR(0.00000000000, 240.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash55 : Obj_Rotate absolute = VECTOR(0.00000000000, -240.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash56 : Obj_Rotate absolute = VECTOR(0.00000000000, 240.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash57 : Obj_Rotate absolute = VECTOR(0.00000000000, -180.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash58 : Obj_Rotate absolute = VECTOR(0.00000000000, 240.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash59 : Obj_Rotate absolute = VECTOR(0.00000000000, 130.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash53 : Obj_MoveToRelPos VECTOR(0.00000000000, -60.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash55 : Obj_MoveToRelPos VECTOR(0.00000000000, -60.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash56 : Obj_MoveToRelPos VECTOR(0.00000000000, -60.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash57 : Obj_MoveToRelPos VECTOR(0.00000000000, -60.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash58 : Obj_MoveToRelPos VECTOR(0.00000000000, -60.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash59 : Obj_MoveToRelPos VECTOR(0.00000000000, -60.00000000000, 0.00000000000) speed = 5 
+	wait 1 seconds 
+	Kill name = GO_BlownTrash53 
+	Kill name = GO_BlownTrash55 
+	Kill name = GO_BlownTrash56 
+	Kill name = GO_BlownTrash57 
+	Kill name = GO_BlownTrash58 
+	Kill name = GO_BlownTrash59 
+	create name = Blown_TRG_05 
+ENDSCRIPT
+
+SCRIPT LA_Trash_Blown06 
+	playsound BonkBush volume = 100 pitch = 100 dropoff = 5 
+	Kill name = Blown_TRG_06 
+	create name = GO_BlownTrash64 
+	create name = GO_BlownTrash65 
+	create name = GO_BlownTrash67 
+	create name = GO_BlownTrash68 
+	create name = GO_BlownTrash74 
+	create name = GO_BlownTrash75 
+	GO_BlownTrash64 : Obj_MoveToRelPos VECTOR(0.00000000000, 30.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash65 : Obj_MoveToRelPos VECTOR(0.00000000000, 30.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash67 : Obj_MoveToRelPos VECTOR(0.00000000000, 30.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash68 : Obj_MoveToRelPos VECTOR(0.00000000000, 30.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash74 : Obj_MoveToRelPos VECTOR(0.00000000000, 30.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash75 : Obj_MoveToRelPos VECTOR(0.00000000000, 30.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash64 : Obj_Rotate absolute = VECTOR(0.00000000000, 120.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash65 : Obj_Rotate absolute = VECTOR(0.00000000000, -120.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash67 : Obj_Rotate absolute = VECTOR(0.00000000000, 120.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash68 : Obj_Rotate absolute = VECTOR(0.00000000000, -90.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash74 : Obj_Rotate absolute = VECTOR(0.00000000000, 120.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash75 : Obj_Rotate absolute = VECTOR(0.00000000000, 65.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	wait 0.50000000000 seconds 
+	GO_BlownTrash64 : Obj_Rotate absolute = VECTOR(0.00000000000, 240.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash65 : Obj_Rotate absolute = VECTOR(0.00000000000, -240.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash67 : Obj_Rotate absolute = VECTOR(0.00000000000, 240.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash68 : Obj_Rotate absolute = VECTOR(0.00000000000, -180.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash74 : Obj_Rotate absolute = VECTOR(0.00000000000, 240.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash75 : Obj_Rotate absolute = VECTOR(0.00000000000, 130.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash64 : Obj_MoveToRelPos VECTOR(0.00000000000, -60.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash65 : Obj_MoveToRelPos VECTOR(0.00000000000, -60.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash67 : Obj_MoveToRelPos VECTOR(0.00000000000, -60.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash68 : Obj_MoveToRelPos VECTOR(0.00000000000, -60.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash74 : Obj_MoveToRelPos VECTOR(0.00000000000, -60.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash75 : Obj_MoveToRelPos VECTOR(0.00000000000, -60.00000000000, 0.00000000000) speed = 5 
+	wait 1 seconds 
+	Kill name = GO_BlownTrash64 
+	Kill name = GO_BlownTrash65 
+	Kill name = GO_BlownTrash67 
+	Kill name = GO_BlownTrash68 
+	Kill name = GO_BlownTrash74 
+	Kill name = GO_BlownTrash75 
+	create name = Blown_TRG_06 
+ENDSCRIPT
+
+SCRIPT LA_Trash_Blown07 
+	playsound BonkBush volume = 100 pitch = 100 dropoff = 5 
+	Kill name = Blown_TRG_07 
+	create name = GO_BlownTrash81 
+	create name = GO_BlownTrash83 
+	GO_BlownTrash81 : Obj_MoveToRelPos VECTOR(0.00000000000, 30.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash83 : Obj_MoveToRelPos VECTOR(0.00000000000, 30.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash81 : Obj_Rotate absolute = VECTOR(0.00000000000, 120.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash83 : Obj_Rotate absolute = VECTOR(0.00000000000, -120.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	wait 0.50000000000 seconds 
+	GO_BlownTrash81 : Obj_Rotate absolute = VECTOR(0.00000000000, 240.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash83 : Obj_Rotate absolute = VECTOR(0.00000000000, -240.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash81 : Obj_MoveToRelPos VECTOR(0.00000000000, -60.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash83 : Obj_MoveToRelPos VECTOR(0.00000000000, -60.00000000000, 0.00000000000) speed = 5 
+	wait 1 seconds 
+	Kill name = GO_BlownTrash81 
+	Kill name = GO_BlownTrash83 
+	create name = Blown_TRG_07 
+ENDSCRIPT
+
+SCRIPT LA_Trash_Blown02 
+	playsound BonkBush volume = 100 pitch = 100 dropoff = 5 
+	Kill name = Blown_TRG_02 
+	create name = GO_BlownTrash13 
+	create name = GO_BlownTrash15 
+	create name = GO_BlownTrash17 
+	create name = GO_BlownTrash18 
+	create name = GO_BlownTrash20 
+	create name = GO_BlownTrash25 
+	create name = GO_BlownTrash26 
+	GO_BlownTrash13 : Obj_MoveToRelPos VECTOR(0.00000000000, 30.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash15 : Obj_MoveToRelPos VECTOR(0.00000000000, 30.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash17 : Obj_MoveToRelPos VECTOR(0.00000000000, 30.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash18 : Obj_MoveToRelPos VECTOR(0.00000000000, 30.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash20 : Obj_MoveToRelPos VECTOR(0.00000000000, 30.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash25 : Obj_MoveToRelPos VECTOR(0.00000000000, 30.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash26 : Obj_MoveToRelPos VECTOR(0.00000000000, 30.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash13 : Obj_Rotate absolute = VECTOR(0.00000000000, 120.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash15 : Obj_Rotate absolute = VECTOR(0.00000000000, -120.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash17 : Obj_Rotate absolute = VECTOR(0.00000000000, 120.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash18 : Obj_Rotate absolute = VECTOR(0.00000000000, -90.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash20 : Obj_Rotate absolute = VECTOR(0.00000000000, 65.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash25 : Obj_Rotate absolute = VECTOR(0.00000000000, -130.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash26 : Obj_Rotate absolute = VECTOR(0.00000000000, 65.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	wait 0.50000000000 seconds 
+	GO_BlownTrash13 : Obj_Rotate absolute = VECTOR(0.00000000000, 240.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash15 : Obj_Rotate absolute = VECTOR(0.00000000000, -240.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash17 : Obj_Rotate absolute = VECTOR(0.00000000000, 240.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash18 : Obj_Rotate absolute = VECTOR(0.00000000000, -180.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash20 : Obj_Rotate absolute = VECTOR(0.00000000000, 130.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash25 : Obj_Rotate absolute = VECTOR(0.00000000000, -260.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash26 : Obj_Rotate absolute = VECTOR(0.00000000000, 130.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+	GO_BlownTrash13 : Obj_MoveToRelPos VECTOR(0.00000000000, -60.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash15 : Obj_MoveToRelPos VECTOR(0.00000000000, -60.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash17 : Obj_MoveToRelPos VECTOR(0.00000000000, -60.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash18 : Obj_MoveToRelPos VECTOR(0.00000000000, -60.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash20 : Obj_MoveToRelPos VECTOR(0.00000000000, -60.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash25 : Obj_MoveToRelPos VECTOR(0.00000000000, -60.00000000000, 0.00000000000) speed = 5 
+	GO_BlownTrash26 : Obj_MoveToRelPos VECTOR(0.00000000000, -60.00000000000, 0.00000000000) speed = 5 
+	wait 1 seconds 
+	Kill name = GO_BlownTrash13 
+	Kill name = GO_BlownTrash15 
+	Kill name = GO_BlownTrash17 
+	Kill name = GO_BlownTrash18 
+	Kill name = GO_BlownTrash20 
+	Kill name = GO_BlownTrash25 
+	Kill name = GO_BlownTrash26 
+	create name = Blown_TRG_02 
+ENDSCRIPT
+
+SCRIPT LA_Bristle_Spin 
+	Obj_SetPathVelocity 5 mph 
+	Obj_PathHeading Off 
+	Obj_FollowPathLinked 
+	Obj_RotY speed = 1500 
+ENDSCRIPT
+
+SCRIPT CPF_GrateOpenStart 
+	StartGap GapID = Open1 flags = [ require_rail CANCEL_GROUND cancel_manual CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT CPF_GrateOpenEnd 
+	EndGap GapID = Open1 text = "They\'re GRATE!" score = 100 
+	create name = Gap_VentFrus_01 
+	create prefix = "TRG_Ledge_Grates" 
+	IF IsAlive name = GrateClosed01 
+		spawnscript CPF_GrateOpenCreate_Start 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT CPF_GrateOpenCreate_Start 
+	playsound HitPotty volume = 100.00000000000 pitch = 100.00000000000 
+	Shatteranddie name = GrateClosed01 area = 288.00000000000 variance = 0.00000000000 spread = 1.00000000000 life = 4.00000000000 bounce = -10 , 0 scale = 1.00000000000 
+	Shatteranddie name = GrateClosed02 area = 288.00000000000 variance = 0.00000000000 spread = 1.00000000000 life = 4.00000000000 bounce = -10 , 0 scale = 1.00000000000 
+	Shatteranddie name = GrateClosed03 area = 288.00000000000 variance = 0.00000000000 spread = 1.00000000000 life = 4.00000000000 bounce = -10 , 0 scale = 1.00000000000 
+	Shatteranddie name = GrateClosed04 area = 288.00000000000 variance = 0.00000000000 spread = 1.00000000000 life = 4.00000000000 bounce = -10 , 0 scale = 1.00000000000 
+ENDSCRIPT
+
+SCRIPT CPF_GrateOpenStart12 
+	StartGap GapID = Open1 flags = [ require_rail CANCEL_GROUND cancel_manual ] 
+ENDSCRIPT
+
+SCRIPT CPF_GrateOpenEnd12 
+	EndGap GapID = Open1 text = "They\'re GRATE!" score = 100 
+ENDSCRIPT
+
+SCRIPT LA_FromPurple 
+	StartGap flags = [ REQUIRE_AIR , CANCEL_GROUND , Cancel_Rail , cancel_manual , CANCEL_HANG ] 
+	EndGap text = "From Purple To Street!" score = 500 
+ENDSCRIPT
+
+SCRIPT LA_ManualUpBunk 
+	StartGap flags = [ PURE_MANUAL CANCEL_HANG ] 
+	EndGap text = "Manual Up The Bunker!" score = 1000 
+ENDSCRIPT
+
+SCRIPT LA_ManualDownBunk 
+	StartGap flags = [ PURE_MANUAL CANCEL_HANG ] 
+	EndGap text = "Manual Down The Bunker!" score = 500 
+ENDSCRIPT
+
+SCRIPT LA_HugeLaunch 
+	StartGap flags = [ REQUIRE_AIR CANCEL_WALK CANCEL_GROUND CANCEL_WALLRIDE CANCEL_HANG ] 
+	EndGap text = "Huge Launch!!!" score = 10000 
+ENDSCRIPT
+
+SCRIPT LA_FiretruckStompS 
+	StartGap GapID = Fire flags = [ REQUIRE_AIR CANCEL_GROUND CANCEL_WALLRIDE CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT LA_FiretruckStompE 
+	EndGap GapID = Fire text = "Firetruck Stomp!!" score = 10069 
+ENDSCRIPT
+
+SCRIPT LA_Post2WireS 
+	StartGap GapID = Fire flags = [ REQUIRE_AIR CANCEL_GROUND CANCEL_WALLRIDE CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT LA_Post2WireE 
+	EndGap GapID = Fire text = "Post To Wire!" score = 5000 
+ENDSCRIPT
+
+SCRIPT LA_Post2StairS 
+	StartGap GapID = Fire flags = [ REQUIRE_AIR CANCEL_GROUND CANCEL_WALLRIDE CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT LA_Post2StairE 
+	EndGap GapID = Fire text = "Post To Stair!" score = 2500 
+ENDSCRIPT
+
+SCRIPT LA_Kill_Plane 
+	sk3_killskater nodename = TRG_LA_Restart_Mult_11 message1 = "Street Pizza" message2 = "Road Kill" message3 = "Road Kill" message4 = "Road Kill" r = 250 g = 0 b = 0 
+ENDSCRIPT
+
+SCRIPT CPF_GrateOpenStart1 
+	StartGap flags = [ require_rail CANCEL_GROUND cancel_manual CANCEL_HANG ] 
+	EndGap text = "They\'re GRATE!" score = 100 
+ENDSCRIPT
+
+SCRIPT CPF_LA_Shoots 
+	StartGap flags = [ require_rail CANCEL_GROUND cancel_manual CANCEL_HANG ] 
+	EndGap text = "Shoots n\' Ladders!" score = 200 
+ENDSCRIPT
+
+SCRIPT CPF_LA_hothot 
+	StartGap GapID = LA_Fire flags = [ pure_air CANCEL_HANG ] 
+	EndGap GapID = LA_Fire text = "Hot, hot, hot!" score = 200 
+ENDSCRIPT
+
+SCRIPT CPF_LA_Illin 
+	StartGap flags = [ CANCEL_GROUND cancel_manual require_rail CANCEL_HANG ] 
+	EndGap text = "Grind Illin\'" score = 100 
+ENDSCRIPT
+
+SCRIPT CPF_LA_Burrito 
+	StartGap flags = [ CANCEL_GROUND cancel_manual CANCEL_HANG ] 
+	EndGap text = "Burrito Carnitas" score = 100 
+ENDSCRIPT
+
+SCRIPT CPF_LA_Learnin 
+	StartGap flags = [ require_rail CANCEL_GROUND cancel_manual CANCEL_HANG ] 
+	EndGap text = "Gettin a Learn On!" score = 100 
+ENDSCRIPT
+
+SCRIPT CPF_LA_LibStairs 
+	StartGap flags = [ pure_air CANCEL_HANG ] 
+	EndGap text = "Down the Stairs" score = 100 
+ENDSCRIPT
+
+SCRIPT CPF_LA_WireRidin1_Start 
+	StartGap GapID = one flags = [ require_rail CANCEL_GROUND cancel_manual CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT CPF_LA_WireRidin1_End 
+	EndGap GapID = one text = "WireRidin 1!" score = 100 
+ENDSCRIPT
+
+SCRIPT CPF_LA_WireRidin2_Start 
+	StartGap GapID = two flags = [ require_rail CANCEL_GROUND cancel_manual CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT CPF_LA_WireRidin2_End 
+	EndGap GapID = two text = "WireRidin 2!!" score = 200 
+ENDSCRIPT
+
+SCRIPT CPF_LA_WireRidin3_Start 
+	StartGap GapID = three flags = [ require_rail CANCEL_GROUND cancel_manual CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT CPF_LA_WireRidin3_End 
+	EndGap GapID = three text = "WireRidin 3!!!" score = 300 
+ENDSCRIPT
+
+SCRIPT LA_BreakGlass 
+	BloodSplat 
+	GetBonus score = 100 text = "Glass Broken" 
+	playsound HitGlassPane2x vol = 100 pitch = RANDOM(1, 1, 1, 1, 1) RANDOMCASE 75 RANDOMCASE 85 RANDOMCASE 100 RANDOMCASE 115 RANDOMCASE 125 RANDOMEND 
+	Kill name = <name> 
+	Shatteranddie name = <name> area = RANDOM(1, 1, 1) RANDOMCASE 588 RANDOMCASE 1000 RANDOMCASE 4000 RANDOMEND vibrate variance = 4.59999990463 vel_x = RANDOM(1, 1, 1) RANDOMCASE 0.00000000000 RANDOMCASE 30 RANDOMCASE -30 RANDOMEND vel_y = RANDOM(1, 1, 1) RANDOMCASE 10 RANDOMCASE 30 RANDOMCASE 50 RANDOMEND vel_z = RANDOM(1, 1, 1) RANDOMCASE 0 RANDOMCASE 30 RANDOMCASE -30 RANDOMEND spread = 1.00000000000 
+ENDSCRIPT
+
+SCRIPT CPF_LA_hungoverS 
+	StartGap flags = [ CANCEL_GROUND pure_air CANCEL_WALK CANCEL_HANG ] 
+	EndGap text = "Hung Over" score = 100 
+ENDSCRIPT
+
+SCRIPT CPF_LA_AllTheWayStart 
+	StartGap GapID = all1 flags = [ pure_air CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT CPF_LA_AllTheWayEnd 
+	EndGap GapID = all1 text = "All The Way" score = 300 
+ENDSCRIPT
+
+SCRIPT CPF_LA_NoseBleedStart 
+	StartGap GapID = NoseBleed1 flags = [ CANCEL_GROUND cancel_manual CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT CPF_LA_NoseBleedEnd 
+	EndGap GapID = NoseBleed1 text = "NoseBleed Time" score = 100 
+ENDSCRIPT
+
+SCRIPT CPF_LA_TowerpopStart 
+	StartGap GapID = Towerpop1 flags = [ CANCEL_GROUND cancel_manual CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT CPF_LA_TowerpopEnd 
+	EndGap GapID = Towerpop1 text = "Tower Poppin\'" score = 100 
+ENDSCRIPT
+
+SCRIPT CPF_LA_TowerpopStart1 
+	StartGap GapID = Towerpop11 flags = [ CANCEL_GROUND cancel_manual CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT CPF_LA_TowerpopEnd1 
+	EndGap GapID = Towerpop11 text = "Tower Poppin\'" score = 100 
+ENDSCRIPT
+
+SCRIPT CPF_LA_TowerLockStart 
+	StartGap GapID = TowerLock1 flags = [ CANCEL_GROUND cancel_manual CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT CPF_LA_TowerLockEnd 
+	EndGap GapID = TowerLock1 text = "Tower Lockin\'" score = 100 
+ENDSCRIPT
+
+SCRIPT CPF_LA_TowerLockStart1 
+	StartGap GapID = TowerLock11 flags = [ CANCEL_GROUND cancel_manual CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT CPF_LA_TowerLockEnd1 
+	EndGap GapID = TowerLock11 text = "Tower Lockin\'" score = 100 
+ENDSCRIPT
+
+SCRIPT CPF_LA_BallisticStart 
+	StartGap GapID = Ballistic1 flags = [ CANCEL_GROUND cancel_manual CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT CPF_LA_BallisticEnd 
+	EndGap GapID = Ballistic1 text = "Goin\' Ballistic" score = 100 
+ENDSCRIPT
+
+SCRIPT CPF_LA_RailSkipStart 
+	StartGap GapID = RailSkip1 flags = [ CANCEL_GROUND cancel_manual CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT CPF_LA_RailSkipEnd 
+	EndGap GapID = RailSkip1 text = "Rail Skip!" score = 100 
+ENDSCRIPT
+
+SCRIPT CPF_LA_Bunker 
+	StartGap flags = [ pure_air CANCEL_HANG ] 
+	EndGap text = "Bunker" score = 200 
+ENDSCRIPT
+
+SCRIPT CPF_LA_Washin_Start 
+	StartGap GapID = WLip1 flags = [ require_rail CANCEL_GROUND cancel_manual CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT CPF_LA_Washin_End 
+	EndGap GapID = WLip1 text = "Washin\' Windows" score = 200 
+ENDSCRIPT
+
+SCRIPT CPF_LA_WashinSLip_Start 
+	StartGap GapID = swLip1 flags = [ require_Lip CANCEL_GROUND cancel_manual CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT CPF_LA_WashinSLip_End 
+	EndGap GapID = swLip1 text = "Southern Washer Lip" score = 100 
+ENDSCRIPT
+
+SCRIPT CPF_LA_WashinNLip_Start 
+	StartGap GapID = NwLip1 flags = [ require_Lip CANCEL_GROUND cancel_manual CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT CPF_LA_WashinNLip_End 
+	EndGap GapID = NwLip1 text = "Northern Washer Lip" score = 100 
+ENDSCRIPT
+
+SCRIPT CPF_LA_Pure 
+	StartGap flags = [ pure_air CANCEL_HANG ] 
+	EndGap text = "Pure Air!" score = 100 
+ENDSCRIPT
+
+SCRIPT CPF_LA_West 
+	StartGap flags = [ pure_air CANCEL_HANG ] 
+	EndGap text = "West Side!\'" score = 100 
+ENDSCRIPT
+
+SCRIPT CPF_LA_East 
+	StartGap flags = [ pure_air CANCEL_HANG ] 
+	EndGap text = "East Side!\'" score = 100 
+ENDSCRIPT
+
+SCRIPT CPF_LA_WireDrop_Start 
+	StartGap GapID = WireDrop1 flags = [ require_rail CANCEL_GROUND cancel_manual CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT CPF_LA_WireDrop_End 
+	EndGap GapID = WireDrop1 text = "Wire Drop" score = 300 
+ENDSCRIPT
+
+SCRIPT CPF_LA_TowerRailS 
+	StartGap flags = [ require_rail CANCEL_GROUND cancel_manual CANCEL_HANG ] 
+	EndGap text = "Tower South" score = 100 
+ENDSCRIPT
+
+SCRIPT CPF_TowerRailSwapSouth_Start 
+	StartGap GapID = SwapS1 flags = [ require_rail CANCEL_GROUND cancel_manual CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT CPF_TowerRailSwapSouth_End 
+	EndGap GapID = SwapS1 text = "Tower Rail Swap!" score = 100 
+ENDSCRIPT
+
+SCRIPT CPF_LA_TowerRailsGap 
+	StartGap flags = [ require_rail CANCEL_GROUND cancel_manual CANCEL_HANG ] 
+	EndGap text = "Tower Rails Gap" score = 200 
+ENDSCRIPT
+
+SCRIPT CPF_LA_Electric_Start 
+	StartGap GapID = Electric1 flags = [ CANCEL_GROUND cancel_manual CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT CPF_LA_Electric_End 
+	EndGap GapID = Electric1 text = "Electrified!" score = 300 
+ENDSCRIPT
+
+SCRIPT CPF_LA_OverFoun_Start 
+	StartGap GapID = OverFoun1 flags = [ CANCEL_GROUND cancel_manual CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT CPF_LA_OverFoun_End 
+	EndGap GapID = OverFoun1 text = "Over The Fountain!" score = 200 
+ENDSCRIPT
+
+SCRIPT CPF_LA_OverFounHop_Start 
+	StartGap GapID = OverFounHop1 flags = [ require_rail CANCEL_GROUND cancel_manual CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT CPF_LA_OverFounHop_End 
+	EndGap GapID = OverFounHop1 text = "Fountain Hop" score = 400 
+ENDSCRIPT
+
+SCRIPT CPF_LA_OverFounHop_Start1 
+	StartGap GapID = OverFounHop11 flags = [ require_rail CANCEL_GROUND cancel_manual CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT CPF_LA_OverFounHop_End1 
+	EndGap GapID = OverFounHop11 text = "Fountain Hop" score = 400 
+ENDSCRIPT
+
+SCRIPT CPF_LA_KioskGap 
+	StartGap flags = [ CANCEL_GROUND cancel_manual CANCEL_HANG ] 
+	EndGap text = "Kiosk!" score = 100 
+ENDSCRIPT
+
+SCRIPT CPF_LA_Doorway 
+	StartGap flags = [ CANCEL_GROUND cancel_manual CANCEL_HANG ] 
+	EndGap text = "Doorway Hop" score = 50 
+ENDSCRIPT
+
+SCRIPT CPF_LA_VFrus_Start 
+	StartGap GapID = Venting Frustration1 flags = [ CANCEL_GROUND cancel_manual CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT CPF_LA_VFrus_End 
+	EndGap GapID = Venting Frustration1 text = "Venting Frustration" score = 200 
+ENDSCRIPT
+
+SCRIPT CPF_LA_ToLadd_Start 
+	StartGap GapID = ToLadd1 flags = [ CANCEL_GROUND cancel_manual CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT CPF_LA_ToLadd_End 
+	EndGap GapID = ToLadd1 text = "To The Ladder" score = 200 
+ENDSCRIPT
+
+SCRIPT CPF_LA_NiceMove_Start 
+	StartGap GapID = NiceMove1 flags = [ require_rail CANCEL_GROUND cancel_manual CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT CPF_LA_NiceMove_End 
+	EndGap GapID = NiceMove1 text = "Nice Move!" score = 300 
+ENDSCRIPT
+
+SCRIPT CPF_LA_LipWash_Start 
+	StartGap GapID = LipWash1 flags = [ require_Lip CANCEL_GROUND cancel_manual CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT CPF_LA_LipWash_End 
+	EndGap GapID = LipWash1 text = "Lip Wash" score = 100 
+ENDSCRIPT
+
+SCRIPT CPF_LA_Squeek_Start 
+	StartGap GapID = Squeek1 flags = [ require_rail CANCEL_GROUND cancel_manual CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT CPF_LA_Squeek_End 
+	EndGap GapID = Squeek1 text = "Squeaky Clean!" score = 100 
+ENDSCRIPT
+
+SCRIPT CPF_LA_Squeek_Start1 
+	StartGap GapID = Squeek11 flags = [ require_rail CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT CPF_LA_Squeek_End1 
+	EndGap GapID = Squeek11 text = "Squeaky Clean!" score = 100 
+ENDSCRIPT
+
+SCRIPT CPF_LA_Squeak_Start 
+	StartGap GapID = Squeak1 flags = [ require_rail CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT CPF_LA_Squeak_End 
+	EndGap GapID = Squeak1 text = "Squeaky Clean!" score = 100 
+ENDSCRIPT
+
+SCRIPT CPF_LA_Chillin_Start 
+	StartGap GapID = fuckyou flags = [ pure_air CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT CPF_LA_Chillin_End 
+	EndGap GapID = fuckyou text = "Cold Chillin\'" score = 100 
+ENDSCRIPT
+
+SCRIPT CPF_LA_Chillin_Start1 
+	StartGap GapID = fuckyou1 flags = [ pure_air CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT CPF_LA_Chillin_End1 
+	EndGap GapID = fuckyou1 text = "Cold Chillin\'" score = 100 
+ENDSCRIPT
+
+SCRIPT CPF_LA_BGrande_Start 
+	StartGap GapID = BGrande1 flags = [ pure_air CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT CPF_LA_BGrande_End 
+	EndGap GapID = BGrande1 text = "Burrito Grande" score = 100 
+ENDSCRIPT
+
+SCRIPT CPF_LA_BGrande_Start1 
+	StartGap GapID = BGrande11 flags = [ pure_air Cancel_Rail CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT CPF_LA_BGrande_End1 
+	EndGap GapID = BGrande11 text = "Burrito Grande" score = 100 
+ENDSCRIPT
+
+SCRIPT CPF_LA_Gas_Start 
+	StartGap GapID = Gas1 flags = [ Require_wallride CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT CPF_LA_Gas_End 
+	EndGap GapID = Gas1 text = "Passin\' Gas" score = 200 
+ENDSCRIPT
+
+SCRIPT CPF_LA_XXXr_Start 
+	StartGap GapID = XXXr1 flags = [ Require_grind CANCEL_GROUND cancel_manual CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT CPF_LA_XXXr_End 
+	EndGap GapID = XXXr1 text = "Ridin\' The XXX!" score = 200 
+ENDSCRIPT
+
+SCRIPT CPF_LA_XXX_Start 
+	StartGap GapID = XXX1 flags = [ Require_grind CANCEL_GROUND cancel_manual CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT CPF_LA_XXX_End 
+	EndGap GapID = XXX1 text = "Triple X Hop!" score = 100 
+ENDSCRIPT
+
+SCRIPT CPF_LA_Leap 
+	StartGap flags = [ cancel_manual CANCEL_HANG ] 
+	EndGap text = "Overpass Leap" score = 200 
+ENDSCRIPT
+
+SCRIPT CPF_LA_YelCutGap 
+	StartGap flags = [ CANCEL_GROUND cancel_manual CANCEL_HANG ] 
+	EndGap text = "Yellow Cutter!" score = 100 
+ENDSCRIPT
+
+SCRIPT CPF_LA_BustinC 
+	StartGap flags = [ pure_air CANCEL_HANG ] 
+	EndGap text = "Bustin Cherries!" score = 100 
+ENDSCRIPT
+
+SCRIPT CPF_LA_fall_Start 
+	StartGap GapID = fall1 flags = [ Require_grind CANCEL_GROUND cancel_manual CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT CPF_LA_fall_End 
+	EndGap GapID = fall1 text = "Don\'t Fall!!!" score = 200 
+ENDSCRIPT
+
+SCRIPT CPF_LA_Pershing1 
+	StartGap flags = [ require_rail CANCEL_GROUND cancel_manual CANCEL_HANG ] 
+	EndGap text = "Pershing Ramp" score = 100 
+ENDSCRIPT
+
+SCRIPT CPF_LA_Purple_T1 
+	StartGap flags = [ CANCEL_GROUND cancel_manual CANCEL_HANG ] 
+	EndGap text = "Purple Transfer" score = 100 
+ENDSCRIPT
+
+SCRIPT CPF_LA_HotelLip_Start 
+	StartGap GapID = HotelLip1 flags = [ require_Lip CANCEL_GROUND CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT CPF_LA_HotelLip_End 
+	EndGap GapID = HotelLip1 text = "Hotel Lip Smackin\'" score = 100 
+ENDSCRIPT
+
+SCRIPT CPF_LA_YellShack 
+	StartGap flags = [ pure_air CANCEL_HANG ] 
+	EndGap text = "Over the Yellow Stone Shack" score = 100 
+ENDSCRIPT
+
+SCRIPT CPF_LA_YellFall_Start 
+	StartGap GapID = YellFall1 flags = [ pure_air CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT CPF_LA_YellFall_End 
+	EndGap GapID = YellFall1 text = "Yellow Fall!" score = 100 
+ENDSCRIPT
+
+SCRIPT LA_Rubble_Vibration 
+	IF NOT InMultiplayerGame 
+		BEGIN 
+			skater : Vibrate_Controller_Safe actuator = 1 percent = 50 
+			wait 1 frames 
+		REPEAT 10 
+		skater : Vibrate_Controller_Safe actuator = 1 percent = 0 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT LA_Indiana_Start 
+	StartGap GapID = Indiana1 flags = [ PURE_MANUAL ] 
+ENDSCRIPT
+
+SCRIPT LA_Indiana_End 
+	EndGap GapID = Indiana1 text = "Indiana Style!" score = 100 
+ENDSCRIPT
+
+SCRIPT LA_Indiana_Start1 
+	StartGap GapID = Indiana2 flags = [ PURE_MANUAL ] 
+ENDSCRIPT
+
+SCRIPT LA_Indiana_End1 
+	EndGap GapID = Indiana2 text = "Indiana Style!" score = 100 
+ENDSCRIPT
+
+SCRIPT LA_ManualCutLedge_Gap 
+	StartGap flags = [ Require_Manual CANCEL_GROUND CANCEL_HANG ] 
+	EndGap text = "Manual Cut Ledge" score = 500 
+ENDSCRIPT
+
+SCRIPT LA_RollHump_Gap 
+	StartGap flags = [ CANCEL_GROUND REQUIRE_AIR CANCEL_HANG ] 
+	EndGap text = "Roll Hump Jump" score = 420 
+ENDSCRIPT
+
+SCRIPT LA_ManualLedgeOverPillars_Gap 
+	StartGap flags = [ Require_Manual , CANCEL_GROUND , Cancel_Rail CANCEL_HANG ] 
+	EndGap text = "Manual Deck Over Pillars" score = 2150 
+ENDSCRIPT
+
+SCRIPT LA_OrangeWallie_Start 
+	StartGap GapID = YellFall11 flags = [ Require_wallride , CANCEL_GROUND , Cancel_Rail CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT LA_OrangeWallie_End 
+	EndGap GapID = YellFall11 text = "Orange Wallie 2 Street" score = 1500 
+ENDSCRIPT
+
+SCRIPT LA_RediculousSpine_Gap 
+	StartGap flags = [ Cancel Ground CANCEL_HANG CANCEL_WALK ] 
+	EndGap text = "Ridiculous Spine" score = 800 
+ENDSCRIPT
+
+SCRIPT LA_NachosNQueso_Gap 
+	StartGap flags = [ REQUIRE_AIR , Cancel Ground CANCEL_HANG ] 
+	EndGap text = "Nachos \'n Queso y\'all" score = 500 
+ENDSCRIPT
+
+SCRIPT LA_ManualTheLedge_Start 
+	StartGap GapID = ManualLedge flags = [ Require_Manual CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT LA_ManualTheLedge_End 
+	EndGap GapID = ManualLedge text = "Morehead Ledge" score = 3000 
+ENDSCRIPT
+
+SCRIPT LA_CreateCars 
+ENDSCRIPT
+
+SCRIPT CPF_TowerTest1 
+ENDSCRIPT
+
+SCRIPT LA_CreatePeds 
+ENDSCRIPT
+
+SCRIPT CPF_LA_BlownLeaf 
+ENDSCRIPT
+
+SCRIPT CPF_QuakeChecker 
+ENDSCRIPT
+
+SCRIPT CPF_Quake_North 
+ENDSCRIPT
+
+SCRIPT CPF_Quake_West 
+ENDSCRIPT
+
+SCRIPT CPF_Quake_South 
+ENDSCRIPT
+
+SCRIPT CPF_Quake_East 
+ENDSCRIPT
+
+SCRIPT CPF_LA_FallingCar 
+ENDSCRIPT
+
+SCRIPT CPF_LA_RockingCar 
+ENDSCRIPT
+
+SCRIPT CPF_LA_ArcoLockin 
+ENDSCRIPT
+
+SCRIPT CPF_LA_ArcoCHUD 
+ENDSCRIPT
+
+SCRIPT CPF_LA_ArcoPoppin 
+ENDSCRIPT
+
+SCRIPT CPF_LA_Spinning_Bristles 
+ENDSCRIPT
+
+SCRIPT CPF_LA_Fire 
+ENDSCRIPT
+
+SCRIPT CPF_LA_WireWest 
+ENDSCRIPT
+
+SCRIPT CPF_LA_WireEast 
+ENDSCRIPT
+
+SCRIPT CPF_LA_Ball01 
+ENDSCRIPT
+
+SCRIPT CPF_LA_Ball02 
+ENDSCRIPT
+
+SCRIPT CPF_PershingRamp1 
+ENDSCRIPT
+
+SCRIPT CPF_CloseOneWest 
+ENDSCRIPT
+
+SCRIPT CPF_PershingRamp2 
+ENDSCRIPT
+
+SCRIPT CPF_CarwashNorth 
+ENDSCRIPT
+
+SCRIPT CPF_CarwashSouth 
+ENDSCRIPT
+
+SCRIPT CPF_TowerRailSwapNorth 
+ENDSCRIPT
+
+SCRIPT CPF_RailWest 
+ENDSCRIPT
+
+SCRIPT CPF_RailEast 
+ENDSCRIPT
+
+SCRIPT CPF_LA_North_Peds 
+ENDSCRIPT
+
+SCRIPT CPF_LA_South_Peds 
+ENDSCRIPT
+
+SCRIPT CPF_OverpassRumble1 
+ENDSCRIPT
+
+SCRIPT CPF_OverpassRumble2 
+ENDSCRIPT
+
+SCRIPT CPF_StartWesternQuake 
+ENDSCRIPT
+
+SCRIPT CPF_StartNorthernQuake 
+ENDSCRIPT
+
+SCRIPT CPF_StartSouthernQuake 
+ENDSCRIPT
+
+SCRIPT CPF_StartEasternQuake 
+ENDSCRIPT
+
+SCRIPT CPF_LA_KillOverCars 
+ENDSCRIPT
+
+SCRIPT CPF_LA_CreateOverCars 
+ENDSCRIPT
+
+SCRIPT CPF_StopThieves 
+ENDSCRIPT
+
+SCRIPT CPF_CloseOneEast 
+ENDSCRIPT
+
+SCRIPT CPF_FroggerSouth 
+ENDSCRIPT
+
+SCRIPT CPF_FroggerNorth 
+ENDSCRIPT
+
+SCRIPT CPF_Fountain1 
+ENDSCRIPT
+
+SCRIPT CPF_Fountain2 
+ENDSCRIPT
+
+SCRIPT CPF_TowerTest2 
+ENDSCRIPT
+
+SCRIPT CPF_TowerRailSwapSouth 
+ENDSCRIPT
+
+SCRIPT CPF_TowerDoor1 
+ENDSCRIPT
+
+SCRIPT CPF_TowerDoor2 
+ENDSCRIPT
+
+SCRIPT CPF_GapKiosk 
+ENDSCRIPT
+
+SCRIPT CPF_LA_LoadingScript 
+ENDSCRIPT
+
+SCRIPT CPF_LA_FallingSign2 
+ENDSCRIPT
+
+SCRIPT CPF_LA_FallingSign 
+ENDSCRIPT
+
+SCRIPT CPF_LA_QuakeStart 
+ENDSCRIPT
+
+SCRIPT CPF_LA_TheaterSound 
+ENDSCRIPT
+
+SCRIPT SK3_TrafficLight01 
+ENDSCRIPT
+
+SCRIPT LA_2d_sign_element_create parent = menu3d_anchor 
+	IF GetGlobalFlag flag = SCREEN_MODE_WIDE 
+		<offset> = PAIR(-8.00000000000, 0.00000000000) 
+	ELSE 
+		<offset> = PAIR(0.00000000000, 0.00000000000) 
+	ENDIF 
+	CreateScreenElement { 
+		Type = ContainerElement 
+		parent = <parent> 
+		id = LA_holder 
+		pos = PAIR(0.00000000000, 0.00000000000) 
+		z_priority = -53 
+	} 
+	CreateScreenElement { 
+		Type = SpriteElement 
+		parent = <parent> 
+		texture = LA_icon_1 
+		id = LA_ping 
+		scale = 1 
+		rgba = [ 128 128 128 100 ] 
+		pos = ( PAIR(180.00000000000, 320.00000000000) + <offset> ) 
+		rot_angle = 0 
+		just = [ center center ] 
+		z_priority = -51 
+	} 
+	CreateScreenElement { 
+		Type = SpriteElement 
+		parent = LA_holder 
+		texture = LA_icon_2 
+		id = LA_richter 
+		scale = 5 
+		rgba = [ 128 128 128 100 ] 
+		pos = ( PAIR(120.00000000000, 300.00000000000) + <offset> ) 
+		rot_angle = -30 
+		just = [ center center ] 
+	} 
+	RunScriptOnScreenElement id = LA_holder LA_main_anim 
+	RunScriptOnScreenElement id = LA_richter LA_richter_anim 
+ENDSCRIPT
+
+SCRIPT LA_richter_anim orig_pos = PAIR(120.00000000000, 300.00000000000) 
+	BEGIN 
+		x_off = RANDOM(1, 1, 1, 1, 1) RANDOMCASE PAIR(-30.00000000000, 0.00000000000) RANDOMCASE PAIR(-10.00000000000, 0.00000000000) RANDOMCASE PAIR(0.00000000000, 0.00000000000) RANDOMCASE PAIR(10.00000000000, 0.00000000000) RANDOMCASE PAIR(30.00000000000, 0.00000000000) RANDOMEND 
+		y_off = RANDOM(1, 1, 1, 1, 1) RANDOMCASE PAIR(0.00000000000, -30.00000000000) RANDOMCASE PAIR(0.00000000000, -10.00000000000) RANDOMCASE PAIR(0.00000000000, 0.00000000000) RANDOMCASE PAIR(0.00000000000, 10.00000000000) RANDOMCASE PAIR(0.00000000000, 30.00000000000) RANDOMEND 
+		DoMorph time = 0 pos = PAIR(120.00000000000, 300.00000000000) 
+		DoMorph time = 0.05000000075 pos = ( PAIR(120.00000000000, 300.00000000000) + <x_off> + <y_off> ) 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT LA_ping_anim 
+	x_off = RANDOM(1, 1, 1, 1, 1) RANDOMCASE PAIR(10.00000000000, 0.00000000000) RANDOMCASE PAIR(60.00000000000, 0.00000000000) RANDOMCASE PAIR(110.00000000000, 0.00000000000) RANDOMCASE PAIR(140.00000000000, 0.00000000000) RANDOMCASE PAIR(180.00000000000, 0.00000000000) RANDOMEND 
+	y_off = RANDOM(1, 1, 1, 1, 1, 1) RANDOMCASE PAIR(0.00000000000, 160.00000000000) RANDOMCASE PAIR(0.00000000000, 192.00000000000) RANDOMCASE PAIR(0.00000000000, 224.00000000000) RANDOMCASE PAIR(0.00000000000, 256.00000000000) RANDOMCASE PAIR(0.00000000000, 288.00000000000) RANDOMCASE PAIR(0.00000000000, 320.00000000000) RANDOMEND 
+	DoMorph time = 0 pos = ( <x_off> + <y_off> ) alpha = 1 scale = 0 
+	DoMorph time = 0.50000000000 scale = 1.50000000000 
+	DoMorph time = 2.00000000000 alpha = 0 scale = 4 
+ENDSCRIPT
+
+SCRIPT LA_fade_in_out 
+	wait 0.10000000149 seconds 
+	DoMorph time = 0 alpha = 0 
+	DoMorph time = 0.05000000075 alpha = 1 
+	wait 1.50000000000 seconds 
+	DoMorph time = 0.50000000000 alpha = 0 
+ENDSCRIPT
+
+SCRIPT LA_main_anim 
+	BEGIN 
+		RunScriptOnScreenElement id = LA_ping LA_ping_anim 
+		RunScriptOnScreenElement id = LA_holder LA_fade_in_out 
+		wait RANDOM(1, 1, 1) RANDOMCASE 5 RANDOMCASE 7 RANDOMCASE 9 RANDOMEND seconds 
+	REPEAT 
+ENDSCRIPT
+
+

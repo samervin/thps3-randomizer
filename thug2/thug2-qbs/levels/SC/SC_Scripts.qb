@@ -1,0 +1,922 @@
+SCRIPT SC_Setup 
+	IF IsCareerMode 
+	ELSE 
+	ENDIF 
+	Create_Panel_Message style = panel_message_death text = " " 
+ENDSCRIPT
+
+SCRIPT SC_startup 
+ENDSCRIPT
+
+SCRIPT TRG_SC_Car01 
+	Car_Generic01 sticktoground TurnDist = 70 DefaultSpeed = 10 
+ENDSCRIPT
+
+SCRIPT SC_Goals 
+	IF InMultiplayerGame 
+		add_multiplayer_mode_goals 
+	ENDIF 
+	IF NOT InSplitScreenGame 
+		IF ( ( GameModeEquals is_classic ) | ( InNetGame ) ) 
+			printf "adding classic goals" 
+			AddGoal_HighScore { 
+				unlimited_time 
+				classic_mode_goal 
+				goal_text = SC_Classic_HighScore_Text 
+				view_goals_cameras = [ { 
+						name = Cam_Score 
+						frames = 1200 
+						skippable = 1 
+					} 
+				] 
+				difficulty_level_params = [ 
+					{ score = SC_Classic_Easy_HighScore 
+						goal_text = SC_Classic_Easy_HighScore_Text 
+						view_goals_text = SC_Classic_Easy_HighScore_Text 
+					} 
+					{ score = SC_Classic_HighScore 
+						goal_text = SC_Classic_HighScore_Text 
+						view_goals_text = SC_Classic_HighScore_Text 
+					} 
+				] 
+			} 
+			AddGoal_ProScore { 
+				unlimited_time 
+				classic_mode_goal 
+				score = SC_Classic_ProScore 
+				goal_text = SC_Classic_ProScore_Text 
+				view_goals_text = SC_Classic_ProScore_Text 
+				difficulty_level_params = [ 
+					{ score = SC_Classic_Easy_Proscore 
+						goal_text = SC_Classic_Easy_Proscore_Text 
+						view_goals_text = SC_Classic_Easy_Proscore_Text 
+					} 
+					{ score = SC_Classic_ProScore 
+						goal_text = SC_Classic_ProScore_Text 
+						view_goals_text = SC_Classic_ProScore_Text 
+					} 
+				] 
+			} 
+			AddGoal_SickScore { 
+				unlimited_time 
+				classic_mode_goal 
+				score = SC_Classic_SickScore 
+				goal_text = SC_Classic_SickScore_Text 
+				view_goals_text = SC_Classic_SickScore_Text 
+				difficulty_level_params = [ 
+					{ score = SC_Classic_Easy_SickScore 
+						goal_text = SC_Classic_Easy_SickScore_Text 
+						view_goals_text = SC_Classic_Easy_SickScore_Text 
+					} 
+					{ score = SC_Classic_SickScore 
+						goal_text = SC_Classic_SickScore_Text 
+						view_goals_text = SC_Classic_SickScore_Text 
+					} 
+				] 
+			} 
+			AddGoal_HighCombo { 
+				unlimited_time 
+				classic_mode_goal 
+				score = SC_Classic_HighCombo 
+				goal_text = SC_Classic_HighCombo_Text 
+				view_goals_text = SC_Classic_HighCombo_Text 
+				difficulty_level_params = [ 
+					{ score = SC_Classic_Easy_HighCombo 
+						goal_text = SC_Classic_Easy_HighCombo_Text 
+						view_goals_text = SC_Classic_Easy_HighCombo_Text 
+					} 
+					{ score = SC_Classic_HighCombo 
+						goal_text = SC_Classic_HighCombo_Text 
+						view_goals_text = SC_Classic_HighCombo_Text 
+					} 
+				] 
+			} 
+			AddGoal_Skate { 
+				unlimited_time 
+				classic_mode_goal 
+				S_obj_id = TRG_SKATE_S 
+				K_obj_id = TRG_SKATE_K 
+				A_obj_id = TRG_SKATE_A 
+				T_obj_id = TRG_SKATE_T 
+				E_obj_id = TRG_SKATE_E 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(3407.6, -3013.6, 6918) 
+						positionOffset = VECTOR(-1470.7, -353.5, -1396) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+			} 
+			AddGoal_Combo { 
+				unlimited_time 
+				classic_mode_goal 
+				letter_info = [ 
+					{ obj_id = TRG_COMBO_C text = "C" } 
+					{ obj_id = TRG_COMBO_O text = "O" } 
+					{ obj_id = TRG_COMBO_M text = "M" } 
+					{ obj_id = TRG_COMBO_B text = "B" } 
+					{ obj_id = TRG_COMBO_O01 text = "O" } 
+				] 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(6477.9, -1804.9, 7037.5) 
+						positionOffset = VECTOR(-301.3, -678.5, -226.9) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+			} 
+			AddGoal_collect { 
+				unlimited_time 
+				init_script = SC_AlarmsCreate 
+				goal_deactivate_script = SC_AlarmsKill 
+				classic_mode_goal 
+				collect_type = "Fire Alarms" 
+				goal_text = "Set Off 5 Fire Alarms" 
+				view_goals_text = "Set Off 5 Fire Alarms" 
+				use_hud_counter 
+				hud_counter_caption = "5 Fire Alrams Set Off!" 
+				goal_flags = [ got_1 
+					got_2 
+					got_3 
+					got_4 
+					got_5 
+				] 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(-5087.1, -3160.8, -7619.3) 
+						positionOffset = VECTOR(-1366.6, -609.4, 1305.2) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+			} 
+			AddGoal_collect { 
+				unlimited_time 
+				init_script = SC_BooksCreate 
+				goal_deactivate_script = SC_BooksKill 
+				classic_mode_goal 
+				version = 2 
+				collect_type = "School Books" 
+				goal_text = "Smash The 5 School Books" 
+				view_goals_text = "Smash The 5 School Books" 
+				use_hud_counter 
+				hud_counter_caption = "Smash The 5 School Books" 
+				goal_flags = [ got_1 
+					got_2 
+					got_3 
+					got_4 
+					got_5 
+				] 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(1934.8, -3379.8, -8602.7) 
+						positionOffset = VECTOR(5037.6, -583.3, 483.1) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+			} 
+			AddGoal_gaps { 
+				unlimited_time 
+				classic_mode_goal 
+				version = 2 
+				goal_text = "Double Kickflip The Kicker Gap" 
+				view_goals_text = "Double Kickflip The Kicker Gap" 
+				goal_description = "Double Kickflip The Kicker Gap" 
+				goal_flags = [ got_1 
+				] 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(8564.9, -1512.6, 30) 
+						positionOffset = VECTOR(-1372.2, -604, 684.4) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+			} 
+			AddGoal_SecretTape { 
+				goal_text = "Get the secret tape" 
+				view_goals_text = "Get the secret tape" 
+				classic_mode_goal 
+				goal_description = "Get the secret tape" 
+				secret_tape_id = TRG_SC_SecretTape 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(6603.6, -4163.1, 3116) 
+						positionOffset = VECTOR(-1907.1, -28.4, -119.9) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+			} 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SC_BooksCreate 
+	Create prefix = "SC_School_Books_Pile" 
+	Create prefix = "SC_School_BooksTrigger" 
+ENDSCRIPT
+
+SCRIPT SC_BooksKill 
+	Kill prefix = "SC_School_Books_Pile" 
+	Kill prefix = "SC_School_BooksTrigger" 
+ENDSCRIPT
+
+SCRIPT SC_AlarmsCreate 
+	Create prefix = "SC_Alarms_trigger" 
+	Create prefix = "SC_Alarms" 
+ENDSCRIPT
+
+SCRIPT SC_AlarmsKill 
+	Kill prefix = "SC_Alarms" 
+	IF isalive name = SC_Alarms_trigger01 
+		Kill prefix = "SC_Alarms_trigger" 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SC_Secret_Tape 
+ENDSCRIPT
+
+SCRIPT SC_Books 
+	Kill name = <name> 
+	Kill name = <book> 
+	playsound Smashcake 
+	SWITCH <name> 
+		CASE SC_School_Books_Pile01 
+			goal_collect_got_object goal_id = sc_classic_goal_collect2 flag = got_1 
+			CreateGlobalFlexParticleSystem name = JOW_Books01 params_Script = JOW_SC_Books01_particle_params 
+			JOW_Books01 : Obj_SetPosition position = VECTOR(-2322.54, -701.431, 219.111) 
+			CreateFastParticleSystem name = JOW_Books01a params_Script = JOW_SC_Books01_fast_particle_params 
+		CASE SC_School_Books_Pile02 
+			goal_collect_got_object goal_id = sc_classic_goal_collect2 flag = got_2 
+			CreateGlobalFlexParticleSystem name = JOW_Books02 params_Script = JOW_SC_Books02_particle_params 
+			JOW_Books02 : Obj_SetPosition position = VECTOR(2903.64, -699.657, -1260.45) 
+			CreateFastParticleSystem name = JOW_Books02a params_Script = JOW_SC_Books02_fast_particle_params 
+		CASE SC_School_Books_Pile03 
+			goal_collect_got_object goal_id = sc_classic_goal_collect2 flag = got_3 
+			CreateGlobalFlexParticleSystem name = JOW_Books03 params_Script = JOW_SC_Books03_particle_params 
+			JOW_Books03 : Obj_SetPosition position = VECTOR(-2621.96, 115.213, -3446.9) 
+			CreateFastParticleSystem name = JOW_Books03a params_Script = JOW_SC_Books03_fast_particle_params 
+		CASE SC_School_Books_Pile04 
+			goal_collect_got_object goal_id = sc_classic_goal_collect2 flag = got_4 
+			CreateGlobalFlexParticleSystem name = JOW_Books04 params_Script = JOW_SC_Books04_particle_params 
+			JOW_Books04 : Obj_SetPosition position = VECTOR(4997.87, -630.193, 376.218) 
+			CreateFastParticleSystem name = JOW_Books04a params_Script = JOW_SC_Books04_fast_particle_params 
+		CASE SC_School_Books_Pile05 
+			goal_collect_got_object goal_id = sc_classic_goal_collect2 flag = got_5 
+			CreateGlobalFlexParticleSystem name = JOW_Books05 params_Script = JOW_SC_Books05_particle_params 
+			JOW_Books05 : Obj_SetPosition position = VECTOR(-674.467, -184.069, -2481.22) 
+			CreateFastParticleSystem name = JOW_Books05a params_Script = JOW_SC_Books05_fast_particle_params 
+	ENDSWITCH 
+ENDSCRIPT
+
+SCRIPT SC_Alarms 
+	Kill name = <name> 
+	Kill name = <part> 
+	Kill name = <Trig> 
+	playsound Smashcake 
+	SWITCH <name> 
+		CASE SC_Alarms01 
+			goal_collect_got_object goal_id = sc_classic_goal_collect flag = got_1 
+			CreateGlobalFlexParticleSystem name = JOW_Alarm01 params_Script = JOW_SC_Alarm01_particle_params 
+			CreateGlobalFlexParticleSystem name = JOW_Alarm01a params_Script = JOW_SC_Alarm01a_particle_params 
+			JOW_Alarm01 : Obj_SetPosition position = VECTOR(6744.19, -671.301, -1023.26) 
+			JOW_Alarm01a : Obj_SetPosition position = VECTOR(6744.19, -671.301, -1023.26) 
+		CASE SC_Alarms02 
+			goal_collect_got_object goal_id = sc_classic_goal_collect flag = got_2 
+			CreateGlobalFlexParticleSystem name = JOW_Alarm02 params_Script = JOW_SC_Alarm02_particle_params 
+			CreateGlobalFlexParticleSystem name = JOW_Alarm02a params_Script = JOW_SC_Alarm02a_particle_params 
+			JOW_Alarm02 : Obj_SetPosition position = VECTOR(2004.05, -660.653, 3661.47) 
+			JOW_Alarm02a : Obj_SetPosition position = VECTOR(2004.05, -660.653, 3661.47) 
+		CASE SC_Alarms03 
+			goal_collect_got_object goal_id = sc_classic_goal_collect flag = got_3 
+			CreateGlobalFlexParticleSystem name = JOW_Alarm03 params_Script = JOW_SC_Alarm03_particle_params 
+			CreateGlobalFlexParticleSystem name = JOW_Alarm03a params_Script = JOW_SC_Alarm03a_particle_params 
+			JOW_Alarm03 : Obj_SetPosition position = VECTOR(2739.24, -607.496, -819.838) 
+			JOW_Alarm03a : Obj_SetPosition position = VECTOR(2739.24, -607.496, -819.838) 
+		CASE SC_Alarms04 
+			goal_collect_got_object goal_id = sc_classic_goal_collect flag = got_4 
+			CreateGlobalFlexParticleSystem name = JOW_Alarm04 params_Script = JOW_SC_Alarm04_particle_params 
+			CreateGlobalFlexParticleSystem name = JOW_Alarm04a params_Script = JOW_SC_Alarm04a_particle_params 
+			JOW_Alarm04 : Obj_SetPosition position = VECTOR(-2298.25, -154.873, -3834.97) 
+			JOW_Alarm04a : Obj_SetPosition position = VECTOR(-2298.25, -154.873, -3834.97) 
+		CASE SC_Alarms05 
+			goal_collect_got_object goal_id = sc_classic_goal_collect flag = got_5 
+			CreateGlobalFlexParticleSystem name = JOW_Alarm05 params_Script = JOW_SC_Alarm05_particle_params 
+			CreateGlobalFlexParticleSystem name = JOW_Alarm05a params_Script = JOW_SC_Alarm05a_particle_params 
+			JOW_Alarm05 : Obj_SetPosition position = VECTOR(-1417.42, -662.939, 1186.79) 
+			JOW_Alarm05a : Obj_SetPosition position = VECTOR(-1417.42, -662.939, 1186.79) 
+	ENDSWITCH 
+ENDSCRIPT
+
+SCRIPT ALC_Televator { text = "Asshole!" } 
+	IF NOT GotParam cut 
+		Create_Panel_Message { 
+			id = leaving_message 
+			text = <text> 
+			pos = PAIR(320, 150) 
+			rgba = [ 118 , 110 , 14 , 128 ] 
+			pulse_blur 
+			start = 200 
+			speed = 1 
+			scale = 1.00000000000 
+		} 
+	ENDIF 
+	IF GotParam sound 
+		playsound <sound> 
+	ENDIF 
+	playsound LA_Skid_11 
+	IF GotParam node 
+		sk3_teleporttonode nodename = <node> 
+	ELSE 
+		Create_Panel_Message id = death_message text = "You forgot node=<nodename>!!" pos = PAIR(320.00000000000, 200.00000000000) 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT whatever 
+	bouncy 
+	wait 4 second 
+	Die 
+ENDSCRIPT
+
+SCRIPT basket 
+	GetBonus score = 1000 text = "Gym Backboard Shattered!!" 
+	ShatterAndDie name = School_Gym_Backboard area = 100 variance = 0.00000000000 vel_x = 50 vel_y = 50 vel_z = 50 spread = 0.50000000000 
+	playsound HitGlassPane2x volume = 100.00000000000 pitch = 100.00000000000 
+	Kill name = School_Gym_Backboard01 
+ENDSCRIPT
+
+SCRIPT SC_Secret_Entrance 
+	GetBonus score = 1000 text = "Crack!" 
+	Create name = SC_BreakeableGate_02 
+	ShatterAndDie name = SC_BreakeableGate_02 area = 100 variance = 0.00000000000 vel_x = 50 vel_y = 50 vel_z = 50 spread = 0.50000000000 texture_swap = CG_SE2_Shatter_Grate 
+	ShatterAndDie name = SC_BreakeableGate area = 100 variance = 0.00000000000 vel_x = 50 vel_y = 50 vel_z = 50 spread = 0.50000000000 texture_swap = CG_SE2_Shatter_Grate 
+	playsound HitGlassPane2x volume = 100.00000000000 pitch = 100.00000000000 
+	Kill name = SC_BreakeableGate 
+	Kill name = SC_BreakeableGateTrigg 
+	Kill name = SC_BreakeableGate_02 
+ENDSCRIPT
+
+SCRIPT SC_WoodPlank 
+	ShatterAndDie name = Skylight001 area = 5000 variance = 4 vel_x = 50 vel_y = 50 vel_z = 50 spread = 1 playsound HitGlassPane2x volume = 100.00000000000 pitch = 100.00000000000 
+	Kill name = Plank_TriggerBox01 
+	Kill name = Plank_TriggerBox02 
+ENDSCRIPT
+
+SCRIPT SC_gymdoor_move 
+	Gym_Door : Obj_MoveToNode name = TRG_MoveGymDoor speed = 65 
+ENDSCRIPT
+
+SCRIPT SC_gymdoor_move1 
+	Gym_Door : Obj_MoveToNode name = TRG_615 speed = 65 
+ENDSCRIPT
+
+SCRIPT Scoreboard_small_style 
+	pos = PAIR(20.00000000000, 10.00000000000) 
+	DoMorph scale = 1.20000004768 
+	BEGIN 
+		DoMorph time = 0.10000000149 pos = PAIR(320.00000000000, 290.00000000000) 
+		DoMorph time = 0.10000000149 pos = PAIR(320.00000000000, 280.00000000000) 
+		rgba = { 255 , 50 , 50 , 128 } 
+	REPEAT 10 
+ENDSCRIPT
+
+SCRIPT wait_and_kill_eq_text 
+	wait 1 seconds 
+	DestroyScreenElement id = Scoreboard 
+ENDSCRIPT
+
+SCRIPT NO_neon_burst 
+	playsound HitVideoGame1 pitch = RANDOM_RANGE PAIR(90.00000000000, 120.00000000000) 
+	nightvision_hud 
+	wait 1 frames 
+	really_kill_flicker_nightvision_hud 
+ENDSCRIPT
+
+SCRIPT Light_Alley_Break1 
+	printf "ShatterandDie lights" 
+	ShatterAndDie name = <name> area = 5000 variance = 4 vel_x = 50 vel_y = 50 vel_z = 50 
+	spread = 1 
+	playsound HitGlassPane2x volume = 100.00000000000 pitch = 100.00000000000 
+ENDSCRIPT
+
+SCRIPT SC_Glass_Rotate 
+	IF NOT isalive name = skylight08 
+		Create name = skylight08 
+	ENDIF 
+	Kill name = Skylight001 
+	GetBonus score = 1000 text = "Glass Broken!" 
+	skylight08 : Obj_Rotate absolute = VECTOR(0.00000000000, -42.00000000000, 0.00000000000) time = 2.50000000000 FLAG_MAX_COORDS 
+	Kill name = Plank_TriggerBox01 
+	ShatterAndDie name = Plank_TriggerBox01 area = 5000 variance = 4 vel_x = 50 vel_y = 50 vel_z = 50 
+	spread = 1 
+	obj_playsound HitMetalCan vol = 120 
+	wait 2 second 
+	Kill name = skylight08 
+	Create name = Skylight09 
+	ShatterAndDie name = Skylight09 area = 5000 variance = 4 vel_x = 50 vel_y = 50 vel_z = 50 
+	spread = 1 
+	obj_playsound HitGlassPane2x vol = 150 
+ENDSCRIPT
+
+SCRIPT TOD_Script 
+	SWITCH <current_tod> 
+		CASE morning 
+		CASE day 
+		CASE evening 
+		CASE night 
+		DEFAULT 
+			printf "### no tod set ###" 
+	ENDSWITCH 
+ENDSCRIPT
+
+SCRIPT SC_SickTrans_Gap 
+	StartGap flags = [ Cancel_Ground CANCEL_HANG ] 
+	EndGap text = "Sick Hip Transfer" score = 5000 
+ENDSCRIPT
+
+SCRIPT SC_AirConTrans_Gap 
+	StartGap flags = [ Cancel_Ground CANCEL_HANG ] 
+	EndGap text = "Air Conditioner Hip" score = 750 
+ENDSCRIPT
+
+SCRIPT SC_ManualSlope_Gap 
+	StartGap flags = [ PURE_MANUAL Cancel_Ground CANCEL_HANG ] 
+	EndGap text = "Manual The Big Slope" score = 2000 
+ENDSCRIPT
+
+SCRIPT SC_SmallTrans_GapS 
+	StartGap GapID = smalltrans flags = [ CANCEL_GRIND Cancel_Ground CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT SC_SmallTrans_GapE 
+	EndGap GapID = smalltrans text = "Small Transfer" score = 200 
+ENDSCRIPT
+
+SCRIPT SC_ManualHandi_Gap 
+	StartGap flags = [ PURE_MANUAL , Cancel_Ground CANCEL_GRIND CANCEL_AIR CANCEL_HANG ] 
+	EndGap text = "Manual The Handicap Slope" score = 1000 
+ENDSCRIPT
+
+SCRIPT SC_StrangeTrans_GapS 
+	StartGap GapID = Starnge5 flags = [ REQUIRE_AIR CANCEL_WALK CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT SC_StrangeTrans_GapE 
+	EndGap GapID = Starnge5 text = "Strange Transfer" score = 123 
+ENDSCRIPT
+
+SCRIPT SC_ToBrick_GapS 
+	StartGap GapID = Starnge flags = [ REQUIRE_AIR CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT SC_ToBrick_GapE 
+	EndGap GapID = Starnge text = "2 Brick!" score = 1750 
+ENDSCRIPT
+
+SCRIPT SC_BombDrop_Gap 
+	StartGap flags = [ Cancel_Ground REQUIRE_AIR CANCEL_HANG ] 
+	EndGap text = "Roof Bomb" score = 500 
+ENDSCRIPT
+
+SCRIPT SC_MtheAir_GapS 
+	StartGap GapID = air flags = [ Require_Manual CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT SC_MtheAir_GapE 
+	EndGap GapID = air text = "M To The Air" score = 750 
+ENDSCRIPT
+
+SCRIPT SC_LipDiver_GapS 
+	StartGap GapID = manroof flags = [ Require_Lip Cancel_Ground CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT SC_LipDiver_GapE 
+	EndGap GapID = manroof text = "Lip Diver" score = 1500 
+ENDSCRIPT
+
+SCRIPT SC_FlatRoofDrop_GapS 
+	StartGap GapID = flat1 flags = [ Cancel_Ground REQUIRE_AIR CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT SC_FlatRoofDrop_GapE 
+	EndGap GapID = flat1 text = "Flat Roof Drop" score = 800 
+ENDSCRIPT
+
+SCRIPT SC_Planter2Bench_GapS 
+	StartGap GapID = flat3 flags = [ Cancel_Ground CANCEL_WALK CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT SC_Planter2Bench_GapE 
+	EndGap GapID = flat3 text = "Planter 2 Bench" score = 200 
+ENDSCRIPT
+
+SCRIPT SC_Brick2Metal_GapS 
+	StartGap GapID = flat3 flags = [ Cancel_Ground CANCEL_WALK CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT SC_Brick2Metal_GapE 
+	EndGap GapID = flat3 text = "Brick 2 Metal" score = 150 
+ENDSCRIPT
+
+SCRIPT SC_QP2Metal_GapS 
+	StartGap GapID = flat4 flags = [ Cancel_Ground REQUIRE_AIR CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT SC_QP2Metal_GapE 
+	EndGap GapID = flat4 text = "QP 2 Metal" score = 400 
+ENDSCRIPT
+
+SCRIPT SC_Traingle_GapS 
+	StartGap GapID = flat6 flags = [ Cancel_Ground CANCEL_WALK CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT SC_Traingle_GapE 
+	EndGap GapID = flat6 text = "Triangle 2 Triangle" score = 400 
+ENDSCRIPT
+
+SCRIPT SC_Traingle_GapS1 
+	StartGap GapID = flat7 flags = [ Cancel_Ground CANCEL_WALK CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT SC_Traingle_GapE1 
+	EndGap GapID = flat7 text = "Triangle 2 Triangle" score = 400 
+ENDSCRIPT
+
+SCRIPT SC_LipKicker_GapS 
+	StartGap GapID = flat8 flags = [ Cancel_Ground Require_Lip CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT SC_LipKicker_GapE 
+	EndGap GapID = flat8 text = "Lip The Kicker Edge" score = 800 
+ENDSCRIPT
+
+SCRIPT SC_AirBridge_GapS 
+	StartGap GapID = flat9 flags = [ REQUIRE_AIR Cancel_Ground Cancel_Rail CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT SC_AirBridge_GapE 
+	EndGap GapID = flat9 text = "Air Bridge" score = 300 
+ENDSCRIPT
+
+SCRIPT SC_Rail2Rail_GapS 
+	StartGap GapID = flat10 flags = [ Cancel_Ground CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT SC_Rail2Rail_GapE 
+	EndGap GapID = flat10 text = "Rail 2 Rail" score = 300 
+ENDSCRIPT
+
+SCRIPT SC_Rail2Rail_GapS1 
+	StartGap GapID = flat10 flags = [ Cancel_Ground Cancel_Manual CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT SC_Rail2Rail_GapE1 
+	EndGap GapID = flat10 text = "Rail 2 Rail" score = 300 
+ENDSCRIPT
+
+SCRIPT SC_HugeRail2High_GapS 
+	StartGap GapID = flat11 flags = [ Cancel_Ground CANCEL_WALK CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT SC_HugeRail2High_GapE 
+	EndGap GapID = flat11 text = "Huge Ledge 2 High Rail" score = 1100 
+ENDSCRIPT
+
+SCRIPT SC_WallCorner_Gap 
+	StartGap flags = [ Cancel_Ground Require_Wallride CANCEL_HANG ] 
+	EndGap text = "Ride The Corner" score = 400 
+ENDSCRIPT
+
+SCRIPT SC_QP2PoolEdge_GapS 
+	StartGap GapID = flat10 flags = [ Cancel_Ground CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT SC_QP2PoolEdge_GapE 
+	EndGap GapID = flat10 text = "QP 2 Pool Edge" score = 1000 
+ENDSCRIPT
+
+SCRIPT SC_TLaunch2T_GapS 
+	StartGap GapID = flat10 flags = [ Cancel_Ground CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT SC_TLaunch2T_GapE 
+	EndGap GapID = flat10 text = "T Launch 2 T" score = 1250 
+ENDSCRIPT
+
+SCRIPT SC_ManualBridge_GapS 
+	StartGap GapID = flat10 flags = [ PURE_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT SC_ManualBridge_GapE 
+	EndGap GapID = flat10 text = "Manual The Bridge" score = 350 
+ENDSCRIPT
+
+SCRIPT SC_GiganticBomb_GapS 
+	StartGap GapID = flat10 flags = [ Cancel_Ground REQUIRE_AIR CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT SC_GiganticBomb_GapE 
+	EndGap GapID = flat10 text = "Drop The Giant Bomb!" score = 6000 
+ENDSCRIPT
+
+SCRIPT SC_T2Bar_GapS 
+	StartGap GapID = flat10 flags = [ Cancel_Ground Require_Rail CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT SC_T2Bar_GapE 
+	EndGap GapID = flat10 text = "T 2 Bar" score = 350 
+ENDSCRIPT
+
+SCRIPT SC_MetalTransfer_Gap 
+	StartGap flags = [ REQUIRE_AIR Cancel_Ground CANCEL_HANG ] 
+	EndGap text = "Metal Transfer" score = 500 
+ENDSCRIPT
+
+SCRIPT SC_WallButter_GapS 
+	StartGap GapID = flat10 flags = [ Require_Wall Cancel_Ground CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT SC_WallButter_GapE 
+	EndGap GapID = flat10 text = "Wallride Over Butterfinger!" score = 1250 
+ENDSCRIPT
+
+SCRIPT SC_T2Ditch_GapS 
+	StartGap GapID = flat10 flags = [ REQUIRE_AIR Cancel_Ground CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT SC_T2Ditch_GapE 
+	EndGap GapID = flat10 text = "T 2 Ditch" score = 1250 
+ENDSCRIPT
+
+SCRIPT SC_BigKick2Metal_GapS 
+	StartGap GapID = flat10 flags = [ REQUIRE_AIR Cancel_Ground CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT SC_BigKick2Metal_GapE 
+	EndGap GapID = flat10 text = "Big Kick 2 Metal!" score = 1420 
+ENDSCRIPT
+
+SCRIPT SC_Handi_Gap 
+	StartGap flags = [ Cancel_Ground CANCEL_HANG ] 
+	EndGap text = "Handicap Rail" score = 500 
+ENDSCRIPT
+
+SCRIPT SC_Gimme_GapStart 
+	StartGap GapID = gimme1 flags = [ Cancel_Ground CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT SC_Gimme_GapEnd 
+	EndGap GapID = gimme1 text = "Gimme Gap" score = 50 
+ENDSCRIPT
+
+SCRIPT SC_Dumpster_GapStart 
+	StartGap GapID = dump1 flags = [ Cancel_Ground CANCEL_HANG ] 
+	EndGap GapID = dump2 text = "Dumpster Rail Gap" score = 250 
+ENDSCRIPT
+
+SCRIPT SC_Dumpster_GapEnd 
+	StartGap GapID = dump2 flags = [ Cancel_Ground CANCEL_HANG ] 
+	EndGap GapID = dump1 text = "Dumpster Rail Gap" score = 250 
+ENDSCRIPT
+
+SCRIPT SC_Dumpster1_GapStart 
+	StartGap GapID = dump11 flags = [ Cancel_Ground CANCEL_HANG ] 
+	EndGap GapID = dump12 text = "Dumpster Rail Gap" score = 250 
+ENDSCRIPT
+
+SCRIPT SC_Dumpster1_GapEnd 
+	StartGap GapID = dump12 flags = [ Cancel_Ground CANCEL_HANG ] 
+	EndGap GapID = dump11 text = "Dumpster Rail Gap" score = 250 
+ENDSCRIPT
+
+SCRIPT SC_Planter_GapStart 
+	StartGap GapID = plant1 flags = [ Cancel_Ground CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT SC_planter_GapEnd 
+	EndGap GapID = plant1 text = "Planter Gap" score = 100 
+ENDSCRIPT
+
+SCRIPT SC_Planter1_GapStart 
+	StartGap GapID = plant11 flags = [ Cancel_Ground CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT SC_Planter1_GapEnd 
+	EndGap GapID = plant11 text = "Planter Gap" score = 100 
+ENDSCRIPT
+
+SCRIPT SC_AC_Gap 
+	StartGap flags = [ Cancel_Ground Pure_Air CANCEL_HANG ] 
+	EndGap text = "Over The Air Conditioner" score = 750 
+ENDSCRIPT
+
+SCRIPT SC_Planter2_GapStart 
+	StartGap GapID = plant22 flags = [ Cancel_Ground CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT SC_Planter2_GapEnd 
+	EndGap GapID = plant22 text = "Planter Gap" score = 100 
+ENDSCRIPT
+
+SCRIPT SC_RoofAwning_GapS 
+	StartGap GapID = RoofA flags = [ Cancel_Ground CANCEL_WALK CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT SC_RoofAwning_GapE 
+	EndGap GapID = RoofA text = "Roof 2 Awning" score = 750 
+ENDSCRIPT
+
+SCRIPT SC_Ditch_GapS 
+	StartGap GapID = ditch flags = [ CANCEL_WALK Cancel_Ground CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT SC_Ditch_GapE 
+	EndGap GapID = ditch text = "Ditch Slap" score = 250 
+ENDSCRIPT
+
+SCRIPT SC_Bridge_Gap 
+	StartGap flags = [ Pure_Air CANCEL_HANG ] 
+	EndGap text = "Over A Footbridge" score = 1000 
+ENDSCRIPT
+
+SCRIPT SC_Swim_Gap 
+	StartGap flags = [ Pure_Air CANCEL_HANG ] 
+	EndGap text = "Swim Team Gap" score = 1000 
+ENDSCRIPT
+
+SCRIPT SC_Park_Gap 
+	StartGap flags = [ Pure_Air Cancel_Ground CANCEL_HANG ] 
+	EndGap text = "Park Gap" score = 500 
+ENDSCRIPT
+
+SCRIPT SC_GapStart_KickerGap 
+	StartGap GapID = CommonStairs flags = [ Pure_Air CANCEL_HANG ] TrickText = "Double Kickflip" trickscript = SC_Classic_Gaps_Got1 
+ENDSCRIPT
+
+SCRIPT SC_GapEnd_KickerGap 
+	EndGap GapID = CommonStairs score = 100 text = "Kicker Gap" 
+ENDSCRIPT
+
+SCRIPT SC_Classic_Gaps_Got1 
+	GoalManager_SetGoalFlag name = SC_classic_goal_gaps2 got_1 1 
+ENDSCRIPT
+
+SCRIPT SC_Mini_GapStart 
+	StartGap GapID = mini1 flags = [ Cancel_Ground CANCEL_HANG ] 
+	EndGap GapID = mini2 text = "Mini Gap" score = 250 
+ENDSCRIPT
+
+SCRIPT SC_Mini_GapEnd 
+	StartGap GapID = mini2 flags = [ Cancel_Ground CANCEL_HANG ] 
+	EndGap GapID = mini1 text = "Mini Gap" score = 250 
+ENDSCRIPT
+
+SCRIPT SC_Mini1_GapStart 
+	StartGap GapID = mini11 flags = [ Cancel_Ground CANCEL_HANG ] 
+	EndGap GapID = mini12 text = "Mini Gap" score = 250 
+ENDSCRIPT
+
+SCRIPT SC_Mini1_GapEnd 
+	StartGap GapID = mini12 flags = [ Cancel_Ground CANCEL_HANG ] 
+	EndGap GapID = mini11 text = "Mini Gap" score = 250 
+ENDSCRIPT
+
+SCRIPT SC_Mini_Gap 
+	StartGap flags = [ Pure_Air , Cancel_Ground CANCEL_HANG ] 
+	EndGap text = "Mini Gap" score = 250 
+ENDSCRIPT
+
+SCRIPT SC_Mini2_GapStart 
+	StartGap GapID = mini21 flags = [ Cancel_Ground CANCEL_HANG ] 
+	EndGap GapID = mini22 text = "Mini Gap" score = 250 
+ENDSCRIPT
+
+SCRIPT SC_Mini2_GapEnd 
+	StartGap GapID = mini22 flags = [ Cancel_Ground CANCEL_HANG ] 
+	EndGap GapID = mini21 text = "Mini Gap" score = 250 
+ENDSCRIPT
+
+SCRIPT SC_Long_Gap 
+	StartGap flags = [ Cancel_Ground CANCEL_HANG ] 
+	EndGap text = "Long Ass Rail" score = 2500 
+ENDSCRIPT
+
+SCRIPT SC_play_Gap 
+	StartGap flags = [ Cancel_Ground CANCEL_HANG ] 
+	EndGap text = "Playground Rail" score = 500 
+ENDSCRIPT
+
+SCRIPT SC_Huge_GapS 
+	StartGap GapID = HugeG flags = [ Cancel_Ground CANCEL_WALK CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT SC_Huge_GapE 
+	EndGap GapID = HugeG text = "Huge Rail" score = 1000 
+ENDSCRIPT
+
+SCRIPT SC_F2R_GapStart 
+	StartGap GapID = FR1 flags = [ Cancel_Ground CANCEL_HANG ] 
+	EndGap GapID = FR2 text = "Funbox To Rail Transfer" score = 250 
+ENDSCRIPT
+
+SCRIPT SC_F2R_GapEnd 
+	StartGap GapID = FR2 flags = [ Cancel_Ground CANCEL_HANG ] 
+	EndGap GapID = FR1 text = "Funbox To Rail Transfer" score = 250 
+ENDSCRIPT
+
+SCRIPT SC_2Table_GapStart 
+	StartGap GapID = t1 flags = [ Cancel_Ground CANCEL_HANG ] 
+	EndGap GapID = t2 text = "Funbox To Table Transfer" score = 250 
+ENDSCRIPT
+
+SCRIPT SC_2Table_GapEnd 
+	StartGap GapID = t2 flags = [ Cancel_Ground CANCEL_HANG ] 
+	EndGap GapID = t1 text = "Funbox To Table Transfer" score = 250 
+ENDSCRIPT
+
+SCRIPT SC_Rail2Rail_GapStart 
+	StartGap GapID = r1 flags = [ Cancel_Ground CANCEL_HANG ] 
+	EndGap GapID = r2 text = "Rail To Rail Transfer" score = 750 
+ENDSCRIPT
+
+SCRIPT SC_Rail2Rail_GapEnd 
+	StartGap GapID = r2 flags = [ Cancel_Ground CANCEL_HANG ] 
+	EndGap GapID = r1 text = "Rail To Rail Transfer" score = 750 
+ENDSCRIPT
+
+SCRIPT SC_Rail2Rail1_GapStart 
+	StartGap GapID = r11 flags = [ Cancel_Ground CANCEL_HANG ] 
+	EndGap GapID = r12 text = "Rail To Rail Transfer" score = 750 
+ENDSCRIPT
+
+SCRIPT SC_Rail2Rail1_GapEnd 
+	StartGap GapID = r12 flags = [ Cancel_Ground CANCEL_HANG ] 
+	EndGap GapID = r11 text = "Rail To Rail Transfer" score = 750 
+ENDSCRIPT
+
+SCRIPT SC_garbage_GapStart 
+	StartGap GapID = GO flags = [ Cancel_Ground CANCEL_HANG ] 
+	EndGap GapID = GO text = "Garbage Ollie" score = 50 
+ENDSCRIPT
+
+SCRIPT SC_garbage_GapEnd 
+	StartGap GapID = GO flags = [ Cancel_Ground CANCEL_HANG ] 
+	EndGap GapID = GO text = "Garbage Ollie" score = 50 
+ENDSCRIPT
+
+SCRIPT SC_Hall_GapStart 
+	StartGap GapID = HP flags = [ Cancel_Manual Cancel_Ground CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT SC_Hall_GapEnd 
+	EndGap GapID = HP text = "Hall Pass" score = 1000 
+ENDSCRIPT
+
+SCRIPT SC_2d_sign_element_create parent = menu3d_anchor 
+	IF GetGlobalFlag flag = SCREEN_MODE_WIDE 
+		<offset> = PAIR(-8.00000000000, 0.00000000000) 
+	ELSE 
+		<offset> = PAIR(0.00000000000, 0.00000000000) 
+	ENDIF 
+	CreateScreenElement { 
+		Type = SpriteElement 
+		parent = <parent> 
+		texture = SC_icon_1 
+		id = SC_skull 
+		scale = 2.40000009537 
+		rgba = [ 128 128 128 100 ] 
+		pos = ( PAIR(62.00000000000, 235.00000000000) + <offset> ) 
+		rot_angle = 0 
+		just = [ left top ] 
+		z_priority = -51 
+	} 
+	CreateScreenElement { 
+		Type = SpriteElement 
+		parent = <parent> 
+		texture = SC_icon_2 
+		id = SC_flame 
+		scale = 2.59999990463 
+		rgba = [ 128 128 128 80 ] 
+		pos = ( PAIR(54.00000000000, 160.00000000000) + <offset> ) 
+		rot_angle = -90 
+		just = [ center center ] 
+		z_priority = -51 
+	} 
+	RunScriptOnScreenElement id = SC_skull SC_skull_anim 
+	RunScriptOnScreenElement id = SC_skull do_random_effect_paused params = { id = <id> } 
+	RunScriptOnScreenElement id = SC_flame do_random_effect_paused params = { id = <id> } 
+ENDSCRIPT
+
+SCRIPT SC_skull_anim 
+	BEGIN 
+		DoMorph time = 0 rot_angle = 0 
+		DoMorph time = 0.10000000149 rot_angle = RANDOM(1, 1, 1) RANDOMCASE -3 RANDOMCASE 0 RANDOMCASE 3 RANDOMEND 
+		wait 0.10000000149 seconds 
+	REPEAT 
+ENDSCRIPT
+
+

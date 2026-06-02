@@ -1,0 +1,296 @@
+SCRIPT TR_LoadingSounds 
+	LoadSound "Shared\\Hits\\HitGlassPane2x" 
+	LoadSound "Shared\\Auto\\LA_Skid_11" vol = 100 dropoff = 150 
+	LoadSound "Shared\\Auto\\CarBrakeSqueal" vol = 100 dropoff = 150 
+	LoadSound "Shared\\Auto\\CarHorn_11" vol = 100 dropoff = 150 
+	LoadSound "Shared\\Hits\\HitMetalCan" vol = 100 dropoff = 150 PosUpdateWithDoppler 
+	LoadSound "Shared\\Hits\\BonkBush" vol = 100 dropoff = 0 
+	LoadSound "Shared\\Water\\FallWater" 
+	LoadSound "BO\\ShoppingCartBail" 
+	LoadSound "BO\\ShoppingCartLand" 
+	LoadSound "BO\\ShoppingCartLoop" 
+	LoadSound "BO\\ShoppingCartOllie" 
+	LoadSound "BO\\SK6_BO_FireLoop" 
+	LoadSound "BO\\SK6_BO_RiverLoop01_11" 
+	LoadSound "TR\\TR_BreakDownWoodWall" 
+	LoadSound "TR\\TR_LightHum01" 
+	LoadSound "TR\\TR_BreakSwitch" 
+	LoadSound "BO\\SK6_BO_FountainLoop03_11" 
+	LoadSound "Shared\\Hits\\BustValve" 
+	LoadSound "BouncyObjects\\Bouncy_MetalBucketHit01" 
+	LoadSound "BouncyObjects\\Bouncy_MetalHit02" 
+	LoadSound "BouncyObjects\\Bouncy_MetalDrumHit02" 
+	LoadSound "BouncyObjects\\Bouncy_WoodenTableHit01" 
+	LoadSound "BouncyObjects\\Bouncy_WoodenTableHit02" 
+	LoadSound "BouncyObjects\\Bouncy_PlasticCup_Hit01" 
+	LoadSound "BouncyObjects\\Bouncy_PlasticCup_Hit02" 
+	LoadSound "BouncyObjects\\Bouncy_CardboardBoxHit01" 
+	LoadSound "BouncyObjects\\Bouncy_CardboardBoxHit02" 
+	IF ( DebugSoundFX = 1 ) 
+		dumpheaps 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_SFX_Reverb_Box_01 
+	printf "################################REVERB BOX HERE!!!!!!!!!!!!!" 
+	IF NOT IsTrue cutscene_is_playing 
+		IF NOT GameIsPaused 
+			IF NOT InSplitscreenGame 
+				IF ( inside ) 
+					change InsideAdjacentReverbBox01 = 1 
+					GetValueFromVolume cdvol 
+					IF ( InsideAdjacentReverbBox02 = 0 ) 
+						IF ( <value> = 0 ) 
+							SetSfxReverb 60 mode = REV_MODE_ARENA 
+						ELSE 
+							SetSfxReverb 75 mode = REV_MODE_ARENA 
+						ENDIF 
+					ENDIF 
+				ELSE 
+					IF ( InsideAdjacentReverbBox02 = 0 ) 
+						SetSfxReverb 0 mode = REV_MODE_ARENA 
+					ELSE 
+					ENDIF 
+					change InsideAdjacentReverbBox01 = 0 
+				ENDIF 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_SFX_TaxiHop 
+	IF NOT IsStreamPlaying TaxiHopStream 
+		printf "*************TAXI HOP STREAM!" 
+		PlayStream TR_TaxiHop id = TaxiHopStream 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_SFX_OnLight_Gap 
+	IF NOT IsStreamPlaying LightGapStream 
+		printf "*************LIGHT GAP STREAM!" 
+		PlayStream TR_LandOnLightGap id = LightGapStream 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TR_SFX_Warehouse_Hum_01 
+	printf "*************************************************PLAYING TR_LightHum01!!!!!!!!!!!!!!!" 
+	Obj_PlaySound TR_LightHum01 vol = 15 emitter = TRG_SFX_SOB_LightHum_01 dropoff = exponential id = ThisWarehouselighthum01 
+ENDSCRIPT
+
+SCRIPT TR_SFX_Warehouse_Hum_02 
+	Obj_PlaySound TR_LightHum01 vol = 15 emitter = TRG_SFX_SOB_LightHum_02 dropoff = exponential 
+ENDSCRIPT
+
+SCRIPT TR_SFX_Warehouse_Drips_01 
+	wait RANDOM(1, 1, 1, 1) RANDOMCASE 0 RANDOMCASE 0.20000000298 RANDOMCASE 0.80000001192 RANDOMCASE 0.89999997616 RANDOMEND seconds 
+	BEGIN 
+		RANDOM_NO_REPEAT(1, 1, 1, 1) 
+			RANDOMCASE Obj_PlayStream TR_Drip01 vol = TR_SFX_DripVol emitter = RANDOM_NO_REPEAT(1, 1, 1, 1) RANDOMCASE TRG_SFX_SOB_Drip01 RANDOMCASE TRG_SFX_SOB_Drip02 RANDOMCASE TRG_SFX_SOB_Drip03 RANDOMCASE TRG_SFX_SOB_Drip04 RANDOMEND priority = StreamPriorityLow 
+			wait 4 seconds 
+			RANDOMCASE Obj_PlayStream TR_Drip02 vol = TR_SFX_DripVol emitter = RANDOM_NO_REPEAT(1, 1, 1, 1) RANDOMCASE TRG_SFX_SOB_Drip01 RANDOMCASE TRG_SFX_SOB_Drip02 RANDOMCASE TRG_SFX_SOB_Drip03 RANDOMCASE TRG_SFX_SOB_Drip04 RANDOMEND priority = StreamPriorityLow 
+			wait 5 seconds 
+			RANDOMCASE Obj_PlayStream TR_Drip03 vol = TR_SFX_DripVol emitter = RANDOM_NO_REPEAT(1, 1, 1, 1) RANDOMCASE TRG_SFX_SOB_Drip01 RANDOMCASE TRG_SFX_SOB_Drip02 RANDOMCASE TRG_SFX_SOB_Drip03 RANDOMCASE TRG_SFX_SOB_Drip04 RANDOMEND priority = StreamPriorityLow 
+			wait 4 seconds 
+			RANDOMCASE Obj_PlayStream TR_Drip04 vol = TR_SFX_DripVol emitter = RANDOM_NO_REPEAT(1, 1, 1, 1) RANDOMCASE TRG_SFX_SOB_Drip01 RANDOMCASE TRG_SFX_SOB_Drip02 RANDOMCASE TRG_SFX_SOB_Drip03 RANDOMCASE TRG_SFX_SOB_Drip04 RANDOMEND priority = StreamPriorityLow 
+			wait 5 seconds 
+		RANDOMEND 
+		wait RANDOM(1, 1, 1) RANDOMCASE 0.50000000000 RANDOMCASE 1.10000002384 RANDOMCASE 1.29999995232 RANDOMEND seconds 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT TR_SFX_Warehouse_Drips_02 
+	wait RANDOM(1, 1, 1, 1) RANDOMCASE 0 RANDOMCASE 0.20000000298 RANDOMCASE 0.80000001192 RANDOMCASE 0.89999997616 RANDOMEND seconds 
+	BEGIN 
+		RANDOM_NO_REPEAT(1, 1, 1, 1) 
+			RANDOMCASE Obj_PlayStream TR_Drip05 vol = TR_SFX_DripVol emitter = RANDOM_NO_REPEAT(1, 1, 1, 1) RANDOMCASE TRG_SFX_SOB_Drip05 RANDOMCASE TRG_SFX_SOB_Drip06 RANDOMCASE TRG_SFX_SOB_Drip07 RANDOMCASE TRG_SFX_SOB_Drip08 RANDOMEND priority = StreamPriorityLow 
+			wait 4 seconds 
+			RANDOMCASE Obj_PlayStream TR_Drip06 vol = TR_SFX_DripVol emitter = RANDOM_NO_REPEAT(1, 1, 1, 1) RANDOMCASE TRG_SFX_SOB_Drip05 RANDOMCASE TRG_SFX_SOB_Drip06 RANDOMCASE TRG_SFX_SOB_Drip07 RANDOMCASE TRG_SFX_SOB_Drip08 RANDOMEND priority = StreamPriorityLow 
+			wait 5 seconds 
+			RANDOMCASE Obj_PlayStream TR_Drip07 vol = TR_SFX_DripVol emitter = RANDOM_NO_REPEAT(1, 1, 1, 1) RANDOMCASE TRG_SFX_SOB_Drip05 RANDOMCASE TRG_SFX_SOB_Drip06 RANDOMCASE TRG_SFX_SOB_Drip07 RANDOMCASE TRG_SFX_SOB_Drip08 RANDOMEND priority = StreamPriorityLow 
+			wait 4 seconds 
+			RANDOMCASE Obj_PlayStream TR_Drip08 vol = TR_SFX_DripVol emitter = RANDOM_NO_REPEAT(1, 1, 1, 1) RANDOMCASE TRG_SFX_SOB_Drip05 RANDOMCASE TRG_SFX_SOB_Drip06 RANDOMCASE TRG_SFX_SOB_Drip07 RANDOMCASE TRG_SFX_SOB_Drip08 RANDOMEND priority = StreamPriorityLow 
+			wait 5 seconds 
+		RANDOMEND 
+		wait RANDOM(1, 1, 1) RANDOMCASE 0.50000000000 RANDOMCASE 1.10000002384 RANDOMCASE 1.29999995232 RANDOMEND seconds 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT TR_SFX_BustPipe_WaterSpray 
+	SWITCH <name> 
+		CASE Water_SprinklerA10 
+			TRG_SFX_Ghost_PipeBust06 : Obj_PlaySound BustValve pitch = RANDOM_RANGE PAIR(130.00000000000, 180.00000000000) vol = 50 
+			TRG_SFX_Ghost_PipeBust06 : Obj_PlaySound SK6_BO_FountainLoop03_11 pitch = 400 vol = 20 dropoff = 64 
+		CASE Water_SprinklerA28 
+			TRG_SFX_Ghost_PipeBust07 : Obj_PlaySound BustValve pitch = RANDOM_RANGE PAIR(130.00000000000, 180.00000000000) vol = 50 
+			TRG_SFX_Ghost_PipeBust07 : Obj_PlaySound SK6_BO_FountainLoop03_11 pitch = 400 vol = 20 dropoff = 64 
+		CASE Water_SprinklerA25 
+			TRG_SFX_Ghost_PipeBust08 : Obj_PlaySound BustValve pitch = RANDOM_RANGE PAIR(130.00000000000, 180.00000000000) vol = 50 
+			TRG_SFX_Ghost_PipeBust08 : Obj_PlaySound SK6_BO_FountainLoop03_11 pitch = 400 vol = 20 dropoff = 64 
+		CASE Water_SprinklerA07 
+			TRG_SFX_Ghost_PipeBust05 : Obj_PlaySound BustValve pitch = RANDOM_RANGE PAIR(130.00000000000, 180.00000000000) vol = 50 
+			TRG_SFX_Ghost_PipeBust05 : Obj_PlaySound SK6_BO_FountainLoop03_11 pitch = 400 vol = 20 dropoff = 64 
+		CASE Water_SprinklerA06 
+			TRG_SFX_Ghost_PipeBust03 : Obj_PlaySound BustValve pitch = RANDOM_RANGE PAIR(130.00000000000, 180.00000000000) vol = 50 
+			TRG_SFX_Ghost_PipeBust03 : Obj_PlaySound SK6_BO_FountainLoop03_11 pitch = 400 vol = 20 dropoff = 64 
+		CASE Water_SprinklerA16 
+			TRG_SFX_Ghost_PipeBust02 : Obj_PlaySound BustValve pitch = RANDOM_RANGE PAIR(130.00000000000, 180.00000000000) vol = 50 
+			TRG_SFX_Ghost_PipeBust02 : Obj_PlaySound SK6_BO_FountainLoop03_11 pitch = 400 vol = 20 dropoff = 64 
+		CASE Water_SprinklerA19 
+			TRG_SFX_Ghost_PipeBust04 : Obj_PlaySound BustValve pitch = RANDOM_RANGE PAIR(130.00000000000, 180.00000000000) vol = 50 
+			TRG_SFX_Ghost_PipeBust04 : Obj_PlaySound SK6_BO_FountainLoop03_11 pitch = 400 vol = 20 dropoff = 64 
+		CASE Water_SprinklerA13 
+			TRG_SFX_Ghost_PipeBust01 : Obj_PlaySound BustValve pitch = RANDOM_RANGE PAIR(130.00000000000, 180.00000000000) vol = 50 
+			TRG_SFX_Ghost_PipeBust01 : Obj_PlaySound SK6_BO_FountainLoop03_11 pitch = 400 vol = 20 dropoff = 64 
+		CASE Water_SprinklerA61_Start09 
+			TRG_SFX_Ghost_PipeBust18 : Obj_PlaySound BustValve pitch = RANDOM_RANGE PAIR(130.00000000000, 180.00000000000) vol = 50 
+			TRG_SFX_Ghost_PipeBust18 : Obj_PlaySound SK6_BO_FountainLoop03_11 pitch = 400 vol = 20 dropoff = 64 
+		CASE Water_SprinklerA60_Start08 
+			TRG_SFX_Ghost_PipeBust19 : Obj_PlaySound BustValve pitch = RANDOM_RANGE PAIR(130.00000000000, 180.00000000000) vol = 50 
+			TRG_SFX_Ghost_PipeBust19 : Obj_PlaySound SK6_BO_FountainLoop03_11 pitch = 400 vol = 20 dropoff = 64 
+		CASE Water_SprinklerA59_Start07 
+			TRG_SFX_Ghost_PipeBust17 : Obj_PlaySound BustValve pitch = RANDOM_RANGE PAIR(130.00000000000, 180.00000000000) vol = 50 
+			TRG_SFX_Ghost_PipeBust17 : Obj_PlaySound SK6_BO_FountainLoop03_11 pitch = 400 vol = 20 dropoff = 64 
+		CASE Water_SprinklerA56_Start04 
+			TRG_SFX_Ghost_PipeBust15 : Obj_PlaySound BustValve pitch = RANDOM_RANGE PAIR(130.00000000000, 180.00000000000) vol = 50 
+			TRG_SFX_Ghost_PipeBust15 : Obj_PlaySound SK6_BO_FountainLoop03_11 pitch = 400 vol = 20 dropoff = 64 
+		CASE Water_SprinklerA57_Start05 
+			TRG_SFX_Ghost_PipeBust14 : Obj_PlaySound BustValve pitch = RANDOM_RANGE PAIR(130.00000000000, 180.00000000000) vol = 50 
+			TRG_SFX_Ghost_PipeBust14 : Obj_PlaySound SK6_BO_FountainLoop03_11 pitch = 400 vol = 20 dropoff = 64 
+		CASE Water_SprinklerA58_Start06 
+			TRG_SFX_Ghost_PipeBust16 : Obj_PlaySound BustValve pitch = RANDOM_RANGE PAIR(130.00000000000, 180.00000000000) vol = 50 
+			TRG_SFX_Ghost_PipeBust16 : Obj_PlaySound SK6_BO_FountainLoop03_11 pitch = 400 vol = 20 dropoff = 64 
+		CASE Water_SprinklerA55_Start03 
+			TRG_SFX_Ghost_PipeBust13 : Obj_PlaySound BustValve pitch = RANDOM_RANGE PAIR(130.00000000000, 180.00000000000) vol = 50 
+			TRG_SFX_Ghost_PipeBust13 : Obj_PlaySound SK6_BO_FountainLoop03_11 pitch = 400 vol = 20 dropoff = 64 
+		CASE Water_SprinklerA53_Start01 
+			TRG_SFX_Ghost_PipeBust10 : Obj_PlaySound BustValve pitch = RANDOM_RANGE PAIR(130.00000000000, 180.00000000000) vol = 50 
+			TRG_SFX_Ghost_PipeBust10 : Obj_PlaySound SK6_BO_FountainLoop03_11 pitch = 400 vol = 20 dropoff = 64 
+		CASE Water_SprinklerA54_Start02 
+			TRG_SFX_Ghost_PipeBust12 : Obj_PlaySound BustValve pitch = RANDOM_RANGE PAIR(130.00000000000, 180.00000000000) vol = 50 
+			TRG_SFX_Ghost_PipeBust12 : Obj_PlaySound SK6_BO_FountainLoop03_11 pitch = 400 vol = 20 dropoff = 64 
+		CASE Water_SprinklerA52_Start 
+			TRG_SFX_Ghost_PipeBust11 : Obj_PlaySound BustValve pitch = RANDOM_RANGE PAIR(130.00000000000, 180.00000000000) vol = 50 
+			TRG_SFX_Ghost_PipeBust11 : Obj_PlaySound SK6_BO_FountainLoop03_11 pitch = 400 vol = 20 dropoff = 64 
+		CASE Water_SprinklerA22 
+			TRG_SFX_Ghost_PipeBust09 : Obj_PlaySound BustValve pitch = RANDOM_RANGE PAIR(130.00000000000, 180.00000000000) vol = 50 
+			TRG_SFX_Ghost_PipeBust09 : Obj_PlaySound SK6_BO_FountainLoop03_11 pitch = 400 vol = 20 dropoff = 64 
+	ENDSWITCH 
+ENDSCRIPT
+
+SCRIPT TR_SFX_BustedPipe 
+	Obj_PlaySound SK6_BO_RiverLoop01_11 vol = 80 pitch = 200 emitter = TRG_SFX_SOB_BustedPipe dropoff_function = exponential 
+ENDSCRIPT
+
+SCRIPT TR_SFX_TrashFire01 
+	Obj_PlaySound SK6_BO_FireLoop emitter = TRG_SFX_SOB_TrashFire01 
+ENDSCRIPT
+
+SCRIPT TR_SFX_Break_Switch 
+	wait 1 second 
+	create name = TRG_SFX_TrigBox_SwitchBreakElectric 
+ENDSCRIPT
+
+SCRIPT TR_SFX_ElectricSparks 
+	BEGIN 
+		RANDOM_NO_REPEAT(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1) 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark01 emitter = TRG_SFX_SOB_SwitchBreakElectric dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.69999998808 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark02 emitter = TRG_SFX_SOB_SwitchBreakElectric dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.64999997616 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark03 emitter = TRG_SFX_SOB_SwitchBreakElectric dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.47999998927 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark04 emitter = TRG_SFX_SOB_SwitchBreakElectric dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.41999998689 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark05 emitter = TRG_SFX_SOB_SwitchBreakElectric dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.86000001431 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark06 emitter = TRG_SFX_SOB_SwitchBreakElectric dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.09000000358 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark07 emitter = TRG_SFX_SOB_SwitchBreakElectric dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.43999999762 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark08 emitter = TRG_SFX_SOB_SwitchBreakElectric dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.99000000954 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark09 emitter = TRG_SFX_SOB_SwitchBreakElectric dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.43000000715 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark10 emitter = TRG_SFX_SOB_SwitchBreakElectric dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.66000002623 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark11 emitter = TRG_SFX_SOB_SwitchBreakElectric dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.46000000834 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark12 emitter = TRG_SFX_SOB_SwitchBreakElectric dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.58999997377 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark13 emitter = TRG_SFX_SOB_SwitchBreakElectric dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.52999997139 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark14 emitter = TRG_SFX_SOB_SwitchBreakElectric dropoff_function = exponential priority = StreamPriorityLow 
+			wait 1.00000000000 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark15 emitter = TRG_SFX_SOB_SwitchBreakElectric dropoff_function = exponential priority = StreamPriorityLow 
+			wait 1.08000004292 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark16 emitter = TRG_SFX_SOB_SwitchBreakElectric dropoff_function = exponential priority = StreamPriorityLow 
+			wait 1.53999996185 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark17 emitter = TRG_SFX_SOB_SwitchBreakElectric dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.68000000715 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark18 emitter = TRG_SFX_SOB_SwitchBreakElectric dropoff_function = exponential priority = StreamPriorityLow 
+			wait 1.22000002861 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark19 emitter = TRG_SFX_SOB_SwitchBreakElectric dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.50999999046 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark20 emitter = TRG_SFX_SOB_SwitchBreakElectric dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.34000000358 seconds 
+			RANDOMCASE Obj_PlayStream SK6_SmSpark21 emitter = TRG_SFX_SOB_SwitchBreakElectric dropoff_function = exponential priority = StreamPriorityLow 
+			wait 0.36000001431 seconds 
+		RANDOMEND 
+		wait 0.10000000149 seconds 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT SFX_PlaneBy_01 
+	TRG_SFX_Ghost_Airplane_By_01 : Obj_MoveToNode name = TRG_AirplaneWayPoint0101 speed = 100 
+	wait 8 seconds 
+	BEGIN 
+		TRG_SFX_Ghost_Airplane_By_01 : Obj_MoveToNode name = TRG_AirplaneWayPoint0102 speed = 25 
+		RANDOM_NO_REPEAT(1, 1, 1, 1, 1) 
+			RANDOMCASE TRG_SFX_Ghost_Airplane_By_01 : Obj_PlayStream vol = 200 TR_DistHelo01 dropoff = 2000 priority = StreamPriorityHigh 
+			RANDOMCASE TRG_SFX_Ghost_Airplane_By_01 : Obj_PlayStream vol = 200 TR_DistHelo02 dropoff = 2000 priority = StreamPriorityHigh 
+			RANDOMCASE TRG_SFX_Ghost_Airplane_By_01 : Obj_PlayStream vol = 200 TR_DistPlane01 dropoff = 2000 priority = StreamPriorityHigh 
+			RANDOMCASE TRG_SFX_Ghost_Airplane_By_01 : Obj_PlayStream vol = 200 TR_DistPlane02 dropoff = 2000 priority = StreamPriorityHigh 
+			RANDOMCASE TRG_SFX_Ghost_Airplane_By_01 : Obj_PlayStream vol = 200 TR_DistPlane03 dropoff = 2000 priority = StreamPriorityHigh 
+		RANDOMEND 
+		wait RANDOM(1, 1, 1) RANDOMCASE 40 RANDOMCASE 60 RANDOMCASE 90 RANDOMEND seconds 
+		TRG_SFX_Ghost_Airplane_By_01 : Obj_MoveToNode name = TRG_AirplaneWayPoint0101 speed = 25 
+		RANDOM_NO_REPEAT(1, 1, 1, 1, 1) 
+			RANDOMCASE TRG_SFX_Ghost_Airplane_By_01 : Obj_PlayStream vol = 200 TR_DistHelo01 dropoff = 2000 priority = StreamPriorityHigh 
+			RANDOMCASE TRG_SFX_Ghost_Airplane_By_01 : Obj_PlayStream vol = 200 TR_DistHelo02 dropoff = 2000 priority = StreamPriorityHigh 
+			RANDOMCASE TRG_SFX_Ghost_Airplane_By_01 : Obj_PlayStream vol = 200 TR_DistPlane01 dropoff = 2000 priority = StreamPriorityHigh 
+			RANDOMCASE TRG_SFX_Ghost_Airplane_By_01 : Obj_PlayStream vol = 200 TR_DistPlane02 dropoff = 2000 priority = StreamPriorityHigh 
+			RANDOMCASE TRG_SFX_Ghost_Airplane_By_01 : Obj_PlayStream vol = 200 TR_DistPlane03 dropoff = 2000 priority = StreamPriorityHigh 
+		RANDOMEND 
+		wait RANDOM(1, 1, 1) RANDOMCASE 40 RANDOMCASE 60 RANDOMCASE 90 RANDOMEND seconds 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT TR_SFX_GlassShatter 
+	PlaySound HitGlassPane2x pitch = RANDOM(1, 1, 1) RANDOMCASE 95 RANDOMCASE 100 RANDOMCASE 108 RANDOMEND 
+ENDSCRIPT
+
+SCRIPT TR_SFX_Koston_Hitting_PhilM 
+	RANDOM_NO_REPEAT(1, 1, 1, 1, 1) 
+		RANDOMCASE TRG_G_COUNTER6_PRO : Obj_PlayStream TR_Koston_Goal_Laugh01 vol = 250 
+		RANDOMCASE TRG_G_COUNTER6_PRO : Obj_PlayStream TR_Koston_Goal_Laugh02 vol = 250 
+		RANDOMCASE TRG_G_COUNTER6_PRO : Obj_PlayStream TR_Koston_Goal_Laugh03 vol = 250 
+		RANDOMCASE TRG_G_COUNTER6_PRO : Obj_PlayStream TR_Koston_Goal_Laugh04 vol = 250 
+		RANDOMCASE TRG_G_COUNTER6_PRO : Obj_PlayStream TR_Koston_Goal_Laugh05 vol = 250 
+	RANDOMEND 
+ENDSCRIPT
+
+SCRIPT TR_SFX_GarageOpening 
+	printf "Playing GarageOpening!!!!!" 
+	PlayStream TR_GarageDoorOpen vol = 200 
+ENDSCRIPT
+
+SCRIPT TR_SFX_BreakStoneWall 
+	wait 0.50000000000 seconds 
+	PlaySound TR_BreakDownWoodWall 
+ENDSCRIPT
+
+SCRIPT TR_SFX_BreakDryWall 
+	PlaySound TR_BreakDownWoodWall vol = 120 
+ENDSCRIPT
+
+

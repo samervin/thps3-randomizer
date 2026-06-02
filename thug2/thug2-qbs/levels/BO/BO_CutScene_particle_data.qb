@@ -1,0 +1,237 @@
+
+SCRIPT load_cutscene_particle_textures 
+	LoadParticleTexture "particles\\apm_debis_01" 
+	LoadParticleTexture "particles\\apm_spark_01" 
+	LoadParticleTexture "particles\\apm_spray_01" 
+	LoadParticleTexture "particles\\ba_apm_smokepuff01" 
+	LoadParticleTexture "particles\\ba_apm_smokepuff01s" 
+ENDSCRIPT
+
+APM_BOc_sparklies_particle_params = { 
+	EnableRotate 
+	emitScript = emit_APM_BOc_sparklies_particle 
+	emitterIndependent = 1 
+	max = 128 
+	type = Flat 
+	texture = apm_spark_01 
+	blendMode = Add 
+} 
+SCRIPT emit_APM_BOc_sparklies_particle 
+	setEmitRange width = 1.00000000000 height = 1.00000000000 
+	setLife min = 0.50000000000 max = 2.00000000000 
+	setAngleSpread spread = 0.25000000000 
+	setSpeedRange min = 4.00000000000 max = 6.00000000000 
+	setEmitAngle x = 90.00000000000 y = 0.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = -0.03999999911 z = 0.00000000000 
+	setParticleSize sw = 33.00000000000 ew = 12.00000000000 
+	setColor sr = 255 sg = 82 sb = 46 sa = 255 er = 255 eg = 196 eb = 132 ea = 0 
+	emitRate rate = 128.00000000000 
+	wait 1.00000000000 seconds 
+	emitRate rate = 0 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+apm_BOc_BigSMOKE01_particle_params = { 
+	boneOffset = VECTOR(0.00000000000, 0.00000000000, 400.00000000000) 
+	emitScript = emit_apm_BOc_BigSMOKE01_particle 
+	max = 60 
+	type = Flat 
+	texture = apm_spray_01 
+	blendMode = Blend 
+	useGlobalColorModulation 
+} 
+SCRIPT emit_apm_BOc_BigSMOKE01_particle 
+	setEmitRange width = 100.00000000000 height = 200.00000000000 
+	setLife min = 2.00000000000 max = 6.00000000000 
+	setAngleSpread spread = 0.27777799964 
+	setSpeedRange min = 3.00000000000 max = 3.00000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00999999978 y = 0.00999999978 z = 0.00000000000 
+	setParticleSize sw = 200.00000000000 ew = 100.00000000000 
+	setColor sr = 34 sg = 39 sb = 40 sa = 0 mr = 44 mg = 44 mb = 44 ma = 255 er = 40 eg = 40 eb = 40 ea = 0 midTime = 0.20890000463 
+	emitRate rate = 60.00000000000 
+	wait 1.00000000000 seconds 
+	emitRate rate = 0 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+apm_BOc_DebrisSMOKE01_particle_params = { 
+	EnableRotate 
+	emitScript = emit_apm_BOc_DebrisSMOKE01_particle 
+	emitterIndependent = 1 
+	max = 60 
+	type = Flat 
+	texture = apm_spray_01 
+	blendMode = Blend 
+} 
+SCRIPT emit_apm_BOc_DebrisSMOKE01_particle 
+	setEmitRange width = 10.00000000000 height = 10.00000000000 
+	setLife min = 0.50000000000 max = 2.00000000000 
+	setAngleSpread spread = 0.18333299458 
+	setSpeedRange min = 3.00000000000 max = 3.00000000000 
+	setForce x = 0.00000000000 y = 0.00999999978 z = 0.00000000000 
+	setParticleSize sw = 80.00000000000 ew = 20.00000000000 
+	setColor sr = 28 sg = 32 sb = 33 sa = 255 mr = 44 mg = 44 mb = 44 ma = 128 er = 40 eg = 40 eb = 40 ea = 0 midTime = 0.36079999804 
+	emitRate rate = 60.00000000000 
+	wait 2.70000004768 seconds 
+	emitRate rate = 0 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+apm_BOc_cannonFire01_particle_params = { 
+	EnableRotate 
+	emitScript = emit_apm_BOc_cannonFire01_particle 
+	max = 128 
+	type = Flat 
+	texture = BA_APM_smokePuff01s 
+	blendMode = Add 
+} 
+SCRIPT emit_apm_BOc_cannonFire01_particle 
+	setEmitRange width = 1.00000000000 height = 1.00000000000 
+	setLife min = 0.25000000000 max = 0.50000000000 
+	setAngleSpread spread = 0.11666700244 
+	setSpeedRange min = 9.00000000000 max = 20.00000000000 
+	setEmitAngle x = 0.00000000000 y = 0.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = 0.00000000000 z = 0.00000000000 
+	setParticleSize sw = 10.00000000000 ew = 33.00000000000 
+	setColor sr = 255 sg = 77 sb = 0 sa = 191 mr = 226 mg = 100 mb = 65 ma = 119 er = 82 eg = 86 eb = 86 ea = 0 midTime = 0.34810000658 
+	emitRate rate = 128.00000000000 
+	wait 0.20000000298 seconds 
+	emitRate rate = 0 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+apm_BOc_cannonSmoke01_particle_params = { 
+	boneOffset = VECTOR(10.00000000000, 0.00000000000, 0.00000000000) 
+	EnableRotate 
+	emitScript = emit_apm_BOc_cannonSmoke01_particle 
+	emitterIndependent = 1 
+	max = 128 
+	type = Flat 
+	texture = apm_spray_01 
+	blendMode = Blend 
+	useGlobalColorModulation 
+} 
+SCRIPT emit_apm_BOc_cannonSmoke01_particle 
+	setEmitRange width = 1.00000000000 height = 1.00000000000 
+	setLife min = 0.20000000298 max = 0.50000000000 
+	setAngleSpread spread = 0.18333299458 
+	setSpeedRange min = 10.00000000000 max = 15.00000000000 
+	setForce x = 0.00000000000 y = -0.25000000000 z = -0.50000000000 
+	setParticleSize sw = 20.00000000000 ew = 75.00000000000 
+	setColor sr = 178 sg = 178 sb = 178 sa = 101 mr = 128 mg = 128 mb = 128 ma = 255 er = 82 eg = 86 eb = 86 ea = 0 midTime = 0.33539998531 
+	emitRate rate = 128.00000000000 
+	wait 0.69999998808 seconds 
+	emitRate rate = 0 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+apm_BOc_cannonSmoke02_particle_params = { 
+	EnableRotate 
+	emitScript = emit_apm_BOc_cannonSmoke02_particle 
+	max = 30 
+	type = Flat 
+	texture = BA_APM_smokePuff01 
+	blendMode = Blend 
+} 
+SCRIPT emit_apm_BOc_cannonSmoke02_particle 
+	setEmitRange width = 10.00000000000 height = 10.00000000000 
+	setLife min = 0.50000000000 max = 1.00000000000 
+	setAngleSpread spread = 0.12222199887 
+	setSpeedRange min = 1.00000000000 max = 1.00000000000 
+	setForce x = 0.00000000000 y = 0.05000000075 z = 0.00000000000 
+	setParticleSize sw = 20.00000000000 ew = 60.00000000000 
+	setColor sr = 138 sg = 138 sb = 138 sa = 101 mr = 134 mg = 134 mb = 134 ma = 193 er = 82 eg = 86 eb = 86 ea = 0 midTime = 0.33539998531 
+	emitRate rate = 30.00000000000 
+ENDSCRIPT
+
+apm_BOc_cannonSparks01_particle_params = { 
+	EnableRotate 
+	emitScript = emit_apm_BOc_cannonSparks01_particle 
+	emitterIndependent = 1 
+	max = 128 
+	type = Flat 
+	texture = apm_spark_01 
+	blendMode = Add 
+} 
+SCRIPT emit_apm_BOc_cannonSparks01_particle 
+	setEmitRange width = 1.00000000000 height = 1.00000000000 
+	setLife min = 0.10000000149 max = 1.00000000000 
+	setAngleSpread spread = 0.71111100912 
+	setSpeedRange min = 5.00000000000 max = 10.00000000000 
+	setForce x = 0.00000000000 y = -0.25000000000 z = 0.00000000000 
+	setParticleSize sw = 10.00000000000 ew = 5.00000000000 
+	setColor sr = 160 sg = 83 sb = 0 sa = 255 mr = 226 mg = 79 mb = 28 ma = 255 er = 86 eg = 57 eb = 35 ea = 0 midTime = 0.10760000348 
+	emit num = 128 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+apm_BOc_cannonballSMOKE_particle_params = { 
+	boneOffset = VECTOR(0.00000000000, 0.00000000000, 20.00000000000) 
+	EnableRotate 
+	emitScript = emit_apm_BOc_cannonballSMOKE_particle 
+	emitterIndependent = 1 
+	max = 60 
+	type = Flat 
+	texture = apm_spray_01 
+	blendMode = Blend 
+} 
+SCRIPT emit_apm_BOc_cannonballSMOKE_particle 
+	setEmitRange width = 1.00000000000 height = 1.00000000000 
+	setLife min = 0.50000000000 max = 1.00000000000 
+	setAngleSpread spread = 0.05000000075 
+	setSpeedRange min = 3.00000000000 max = 3.00000000000 
+	setForce x = 0.00000000000 y = 0.00999999978 z = 0.00000000000 
+	setParticleSize sw = 20.00000000000 ew = 10.00000000000 
+	setColor sr = 53 sg = 58 sb = 61 sa = 255 mr = 44 mg = 44 mb = 44 ma = 251 er = 40 eg = 40 eb = 40 ea = 0 midTime = 0.21389999986 
+	emitRate rate = 60.00000000000 
+ENDSCRIPT
+
+cod_potty_Debris_particle_params = { 
+	boneOffset = VECTOR(0.00000000000, -2.09999990463, 0.00000000000) 
+	emitScript = emit_cod_potty_Debris_particle 
+	emitterIndependent = 1 
+	max = 25 
+	type = Shaded 
+	texture = apm_debis_01 
+	blendMode = Blend 
+	priority = 0 
+} 
+SCRIPT emit_cod_potty_Debris_particle 
+	setEmitRange width = 10.00000000000 height = 50.00000000000 depth = 0.00000000000 
+	setLife min = 0.20000000298 max = 1.00000000000 
+	setAngleSpread spread = 0.56000000238 
+	setSpeedRange min = 0.50000000000 max = 5.00000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = -0.17000000179 z = 0.00000000000 
+	setParticleSize sw = 4.00000000000 ew = 4.00000000000 
+	setColor corner = 0 sr = 145 sg = 126 sb = 98 sa = 255 er = 128 eg = 119 eb = 99 ea = 255 
+	setColor corner = 1 sr = 145 sg = 126 sb = 98 sa = 255 er = 128 eg = 119 eb = 99 ea = 255 
+	setColor corner = 2 sr = 145 sg = 126 sb = 98 sa = 255 er = 128 eg = 119 eb = 99 ea = 255 
+	setColor corner = 3 sr = 145 sg = 126 sb = 98 sa = 255 er = 128 eg = 119 eb = 99 ea = 255 
+	applyEnvBrightness 
+	emitRate rate = 25.00000000000 
+ENDSCRIPT
+
+cod_potty_dust_particle_params = { 
+	emitScript = emit_cod_potty_dust_particle 
+	emitterIndependent = 1 
+	max = 100 
+	type = Flat 
+	texture = apm_spray_01 
+	blendMode = Blend 
+	priority = 0 
+} 
+SCRIPT emit_cod_potty_dust_particle 
+	setEmitRange width = 1.00000000000 height = 30.00000000000 depth = 0.00000000000 
+	setLife min = 0.80000001192 max = 0.80000001192 
+	setAngleSpread spread = 0.00000000000 
+	setSpeedRange min = 0.00000000000 max = 0.00000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = 0.00000000000 z = 0.00000000000 
+	setParticleSize sw = 30.00000000000 ew = 50.00000000000 
+	setColor corner = 0 sr = 75 sg = 63 sb = 48 sa = 116 mr = 77 mg = 63 mb = 47 ma = 255 er = 102 eg = 95 eb = 76 ea = 0 midTime = 0.30000001192 
+	emitRate rate = 60.00000000000 
+ENDSCRIPT
+
+

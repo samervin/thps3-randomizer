@@ -1,0 +1,1264 @@
+SCRIPT CA_Setup 
+	CA_CreateCars 
+	CA_CreatePeds all 
+	CA_Main_Initializer 
+	ST_Initializer 
+ENDSCRIPT
+
+SCRIPT CA_startup 
+ENDSCRIPT
+
+SCRIPT CA_CreateCars 
+ENDSCRIPT
+
+SCRIPT CA_CreatePeds 
+ENDSCRIPT
+
+SCRIPT CA_KillCars 
+ENDSCRIPT
+
+SCRIPT CA_KillPeds 
+ENDSCRIPT
+
+SCRIPT CA_Main_Initializer 
+	IF InMultiplayerGame 
+		kill name = TRGP_Toggle_Log_Loader02 
+		kill name = Wild_Log_Loader_Claw_Base_Low 
+		kill name = Wilderness_Steam_Gen_Lever_Low01 
+		kill name = Wild_Log_Loader_Base_Low 
+		kill name = TRG_Loader_Rail_Base_Low01 
+		kill name = Wild_Log_Loader_Claw_Press 
+		create name = Wild_Log_Loader_Base1_obj 
+		create name = Wild_Log_Loader_Claw_Base_High01 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT ST_Initializer 
+ENDSCRIPT
+
+SCRIPT CA_Goals 
+	IF InMultiplayerGame 
+		add_multiplayer_mode_goals 
+	ENDIF 
+	IF NOT InSplitScreenGame 
+		IF ( ( GameModeEquals is_classic ) | ( InNetGame ) ) 
+			printf "adding classic goals" 
+			AddGoal_HighScore { 
+				unlimited_time 
+				classic_mode_goal 
+				goal_text = CA_Classic_HighScore_Text 
+				view_goals_cameras = [ { 
+						name = Cam_Score 
+						frames = 1200 
+						skippable = 1 
+					} 
+				] 
+				difficulty_level_params = [ 
+					{ score = CA_Classic_Easy_HighScore 
+						goal_text = CA_Classic_Easy_HighScore_Text 
+						view_goals_text = CA_Classic_Easy_HighScore_Text 
+					} 
+					{ score = CA_Classic_HighScore 
+						goal_text = CA_Classic_HighScore_Text 
+						view_goals_text = CA_Classic_HighScore_Text 
+					} 
+				] 
+			} 
+			AddGoal_ProScore { 
+				unlimited_time 
+				classic_mode_goal 
+				score = CA_Classic_ProScore 
+				goal_text = CA_Classic_ProScore_Text 
+				view_goals_text = CA_Classic_ProScore_Text 
+				difficulty_level_params = [ 
+					{ score = CA_Classic_Easy_ProScore 
+						goal_text = CA_Classic_Easy_ProScore_Text 
+						view_goals_text = CA_Classic_Easy_ProScore_Text 
+					} 
+					{ score = CA_Classic_ProScore 
+						goal_text = CA_Classic_ProScore_Text 
+						view_goals_text = CA_Classic_ProScore_Text 
+					} 
+				] 
+			} 
+			AddGoal_SickScore { 
+				unlimited_time 
+				classic_mode_goal 
+				score = CA_Classic_SickScore 
+				goal_text = CA_Classic_SickScore_Text 
+				view_goals_text = CA_Classic_SickScore_Text 
+				difficulty_level_params = [ 
+					{ score = CA_Classic_Easy_SickScore 
+						goal_text = CA_Classic_Easy_SickScore_Text 
+						view_goals_text = CA_Classic_Easy_SickScore_Text 
+					} 
+					{ score = CA_Classic_SickScore 
+						goal_text = CA_Classic_SickScore_Text 
+						view_goals_text = CA_Classic_SickScore_Text 
+					} 
+				] 
+			} 
+			AddGoal_HighCombo { 
+				unlimited_time 
+				classic_mode_goal 
+				score = CA_Classic_HighCombo 
+				goal_text = CA_Classic_HighCombo_Text 
+				view_goals_text = CA_Classic_HighCombo_Text 
+				difficulty_level_params = [ 
+					{ score = CA_Classic_Easy_HighCombo 
+						goal_text = CA_Classic_Easy_HighCombo_Text 
+						view_goals_text = CA_Classic_Easy_HighCombo_Text 
+					} 
+					{ score = CA_Classic_HighCombo 
+						goal_text = CA_Classic_HighCombo_Text 
+						view_goals_text = CA_Classic_HighCombo_Text 
+					} 
+				] 
+			} 
+			AddGoal_Skate { 
+				unlimited_time 
+				classic_mode_goal 
+				S_obj_id = TRG_SKATE_S 
+				K_obj_id = TRG_SKATE_K 
+				A_obj_id = TRG_SKATE_A 
+				T_obj_id = TRG_SKATE_T 
+				E_obj_id = TRG_SKATE_E 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(-6558.1, -3968.7, 5017.9) 
+						positionOffset = VECTOR(1970.7, 244.9, 8101) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+			} 
+			AddGoal_collect { 
+				unlimited_time 
+				init_script = CA_snowmen 
+				goal_deactivate_script = CA_snowmenkill 
+				classic_mode_goal 
+				collect_type = "Snowmen" 
+				goal_text = "Smash 5 Snowmen" 
+				view_goals_text = "Smash 5 Snowmen" 
+				use_hud_counter 
+				hud_counter_caption = "Snowmen smashed" 
+				goal_flags = [ got_1 
+					got_2 
+					got_3 
+					got_4 
+					got_5 
+				] 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(-9767.2, -2399.5, 13295.3) 
+						positionOffset = VECTOR(-1017.5, -404.4, 8884.1) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+			} 
+			AddGoal_Combo { 
+				unlimited_time 
+				classic_mode_goal 
+				letter_info = [ 
+					{ obj_id = TRG_COMBO_C text = "C" } 
+					{ obj_id = TRG_COMBO_O text = "O" } 
+					{ obj_id = TRG_COMBO_M text = "M" } 
+					{ obj_id = TRG_COMBO_B text = "B" } 
+					{ obj_id = TRG_COMBO_O01 text = "O" } 
+				] 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(-4024.8, -2327.2, 7965.3) 
+						positionOffset = VECTOR(5422.9, 208.4, 5890.8) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+			} 
+			AddGoal_collect { 
+				unlimited_time 
+				init_script = CA_iceyrails 
+				goal_deactivate_script = CA_iceyrailskill 
+				classic_mode_goal 
+				version = 2 
+				collect_type = "Icy rails" 
+				use_hud_counter 
+				hud_counter_caption = "Completely Scrape The 5 Icy rails" 
+				goal_text = "Completely Scrape The 5 Icy rails" 
+				view_goals_text = "Completely Scrape The 5 Icy rails" 
+				goal_description = "Completely Scrape The 5 Icy rails" 
+				goal_flags = [ got_1 
+					got_2 
+					got_3 
+					got_4 
+					got_5 
+				] 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(-7605.4, -1902.9, 6355.7) 
+						positionOffset = VECTOR(2254.5, -282.7, 6753.4) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+			} 
+			AddGoal_gaps { 
+				unlimited_time 
+				classic_mode_goal 
+				version = 2 
+				goal_text = "FS Boardslide The Entire Log QP" 
+				view_goals_text = "FS Boardslide The Entire Log QP" 
+				goal_description = "FS Boardslide The Entire Log QP" 
+				goal_flags = [ got_1 
+				] 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(4436.3, -784.8, -6250.4) 
+						positionOffset = VECTOR(2067.7, -200.6, 3447.4) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+			} 
+			AddGoal_SecretTape { 
+				classic_mode_goal 
+				goal_text = "Get the secret tape" 
+				view_goals_text = "Get the secret tape" 
+				classic_mode_goal 
+				goal_description = "Get the secret tape" 
+				secret_tape_id = TRG_SecretTape 
+				goal_flags = [ got_1 
+				] 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(8081.7, -3524.5, 2807.5) 
+						positionOffset = VECTOR(-1423.4, -1006.4, 987.4) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+			} 
+		ELSE 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT CA_snowmen 
+	create prefix = "CA_Classic_Snowman" 
+ENDSCRIPT
+
+SCRIPT CA_snowmenkill 
+	kill prefix = "CA_Classic_Snowman" 
+ENDSCRIPT
+
+SCRIPT CA_iceyrails 
+	create prefix = "shatter_icyrail" 
+	change kg_iceyrail1 = 0 
+	change kg_iceyrail2 = 0 
+	change kg_iceyrail3 = 0 
+	change kg_iceyrail4 = 0 
+	change kg_iceyrail5 = 0 
+ENDSCRIPT
+
+SCRIPT CA_iceyrailskill 
+	kill prefix = "shatter_icyrail" 
+ENDSCRIPT
+
+SCRIPT CA_Shatter_Snowmans 
+	kill name = <name> 
+	playsound Smashcake 
+	printf "A$#@!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" 
+	SWITCH <name> 
+			printf "B$#@!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" 
+		CASE CA_Classic_Snowman01 
+			printf "C$#@!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" 
+			goal_collect_got_object goal_id = ca_classic_goal_collect flag = got_1 
+			CreateGlobalFlexParticleSystem name = JOW_CA_Snowman01 params_Script = JOW_CA_Snowman01_particle_params 
+			JOW_CA_Snowman01 : Obj_SetPosition position = VECTOR(3533.11, -330, 6660.59) 
+			CreateFastParticleSystem name = JOW_CA_Snowflake01 params_Script = JOW_CA_Snowflake01_fast_particle_params 
+		CASE CA_Classic_Snowman02 
+			goal_collect_got_object goal_id = ca_classic_goal_collect flag = got_2 
+			CreateGlobalFlexParticleSystem name = JOW_CA_Snowman02 params_Script = JOW_CA_Snowman02_particle_params 
+			JOW_CA_Snowman02 : Obj_SetPosition position = VECTOR(-1050.77, -451.507, 8894.62) 
+			CreateFastParticleSystem name = JOW_CA_Snowflake02 params_Script = JOW_CA_Snowflake02_fast_particle_params 
+		CASE CA_Classic_Snowman03 
+			goal_collect_got_object goal_id = ca_classic_goal_collect flag = got_3 
+			CreateGlobalFlexParticleSystem name = JOW_CA_Snowman03 params_Script = JOW_CA_Snowman03_particle_params 
+			JOW_CA_Snowman03 : Obj_SetPosition position = VECTOR(-1716.71, -329.12, 4431.85) 
+			CreateFastParticleSystem name = JOW_CA_Snowflake03 params_Script = JOW_CA_Snowflake03_fast_particle_params 
+		CASE CA_Classic_Snowman04 
+			goal_collect_got_object goal_id = ca_classic_goal_collect flag = got_4 
+			CreateGlobalFlexParticleSystem name = JOW_CA_Snowman04 params_Script = JOW_CA_Snowman04_particle_params 
+			JOW_CA_Snowman04 : Obj_SetPosition position = VECTOR(5454.72, -388.446, 4392.62) 
+			CreateFastParticleSystem name = JOW_CA_Snowflake04 params_Script = JOW_CA_Snowflake04_fast_particle_params 
+		CASE CA_Classic_Snowman05 
+			goal_collect_got_object goal_id = ca_classic_goal_collect flag = got_5 
+			CreateGlobalFlexParticleSystem name = JOW_CA_Snowman05 params_Script = JOW_CA_Snowman05_particle_params 
+			JOW_CA_Snowman05 : Obj_SetPosition position = VECTOR(3585.5, -379.74, 3065.02) 
+			CreateFastParticleSystem name = JOW_CA_Snowflake05 params_Script = JOW_CA_Snowflake05_fast_particle_params 
+	ENDSWITCH 
+ENDSCRIPT
+
+SCRIPT CA_Secret_Tape 
+	Obj_ClearExceptions 
+	Obj_SetException ex = ObjectInRadius scr = CA_Secret_Tape_Got 
+	Obj_SetInnerRadius 10 
+	Obj_RotY speed = 250 
+	Obj_Hover Amp = 10 Freq = 1 
+ENDSCRIPT
+
+SCRIPT CA_Secret_Tape_Got 
+	Obj_ClearExceptions 
+	GoalManager_SetGoalFlag name = ca_classic_goal_gaps got_1 1 
+	Die 
+ENDSCRIPT
+
+SCRIPT Box_Break_01 
+	shatteranddie name = DMT_Crate01 area = 1000 variance = 1 vel_x = 50 vel_y = 50 vel_z = 50 spread = 3 
+	obj_playsound HitWoodPlanks vol = 120 
+	kill name = DMT_Crate05_shatter 
+ENDSCRIPT
+
+SCRIPT Box_Break_02 
+	shatteranddie name = DMT_Crate03 area = 1000 variance = 1 vel_x = 50 vel_y = 50 vel_z = 50 spread = 3 
+	obj_playsound HitWoodPlanks vol = 120 
+	kill name = DMT_Crate05_shatter01 
+ENDSCRIPT
+
+SCRIPT Box_Break_03 
+	shatteranddie name = DMT_Crate02 area = 1000 variance = 1 vel_x = 50 vel_y = 50 vel_z = 50 spread = 3 
+	kill name = DMT_Crate05_shatter02 
+	obj_playsound HitWoodPlanks vol = 120 
+ENDSCRIPT
+
+SCRIPT Box_Break_04 
+	shatteranddie name = DMT_Crate04 area = 1000 variance = 1 vel_x = 50 vel_y = 50 vel_z = 50 spread = 3 
+	kill name = DMT_Crate05_shatter03 
+	obj_playsound HitWoodPlanks vol = 120 
+ENDSCRIPT
+
+FLAG_ICY = 25 
+kg_iceyrail1 = 0 
+kg_iceyrail2 = 0 
+kg_iceyrail3 = 0 
+kg_iceyrail4 = 0 
+kg_iceyrail5 = 0 
+SCRIPT CA_Icey_Rails 
+	GetTriggerArray through 
+	IF TriggerType <trigger_array> 
+		IF skating 
+			shatteranddie name = <rail> area = 5000 variance = 1 vel_x = 50 vel_y = 50 vel_z = 50 
+			playsound HitGlassPane2X 
+			SWITCH <group> 
+				CASE 1 
+					change kg_iceyrail1 = ( kg_iceyrail1 + 1 ) 
+					SWITCH kg_iceyrail1 
+						CASE 5 
+							goal_collect_got_object goal_id = ca_classic_goal_collect2 flag = got_1 
+					ENDSWITCH 
+				CASE 2 
+					change kg_iceyrail2 = ( kg_iceyrail2 + 1 ) 
+					SWITCH kg_iceyrail2 
+						CASE 5 
+							goal_collect_got_object goal_id = ca_classic_goal_collect2 flag = got_2 
+					ENDSWITCH 
+				CASE 3 
+					change kg_iceyrail3 = ( kg_iceyrail3 + 1 ) 
+					SWITCH kg_iceyrail3 
+						CASE 5 
+							goal_collect_got_object goal_id = ca_classic_goal_collect2 flag = got_3 
+					ENDSWITCH 
+				CASE 4 
+					change kg_iceyrail4 = ( kg_iceyrail4 + 1 ) 
+					SWITCH kg_iceyrail4 
+						CASE 5 
+							goal_collect_got_object goal_id = ca_classic_goal_collect2 flag = got_4 
+					ENDSWITCH 
+				CASE 5 
+					change kg_iceyrail5 = ( kg_iceyrail5 + 1 ) 
+					SWITCH kg_iceyrail5 
+						CASE 5 
+							goal_collect_got_object goal_id = ca_classic_goal_collect2 flag = got_5 
+					ENDSWITCH 
+				ENDIF 
+			ENDIF 
+	ENDSWITCH 
+ENDSCRIPT
+
+SCRIPT CA_Trees_Brustle 
+	playsound BonkBush 
+ENDSCRIPT
+
+SCRIPT TRG_CA_Car01 
+	Car_Generic01 sticktoground TurnDist = 70 DefaultSpeed = 35 
+ENDSCRIPT
+
+SCRIPT Scoreboard_small_style 
+	pos = PAIR(20, 10) 
+	DoMorph scale = 1.20000004768 
+	BEGIN 
+		DoMorph time = 0.10000000149 pos = PAIR(320.00000000000, 290.00000000000) 
+		DoMorph time = 0.10000000149 pos = PAIR(320.00000000000, 280.00000000000) 
+		rgba = { 255 , 255 , 255 , 128 } 
+	REPEAT 10 
+ENDSCRIPT
+
+SCRIPT CA_Kill_Rock 
+	kill_panel_message_if_it_exists id = message_rock 
+ENDSCRIPT
+
+SCRIPT CA_NailTheRock 
+	GetTriggerArray skate onto 
+	playsound hitmetalcan 
+	FormatText TextName = rock_text "WHOA DUDE! YOU NAILED THE ROCK!" 
+	create_panel_message id = message_rock text = <rock_text> rgba = { 0 , 132 , 255 , 128 } style = Scoreboard_small_style z_priority = -30 
+	wait 2 seconds 
+	spawnscript CA_Kill_Rock 
+ENDSCRIPT
+
+SCRIPT Kill_Skater_Cabin_04 
+	SK3_Killskater_water nodename = TRG_Restart_Conc02 
+ENDSCRIPT
+
+SCRIPT Kill_Skater_Rock01 
+	SK3_Killskater nodename = TRG_Restart_Conc02 NoMessage 
+	create_panel_message id = leaving_message text = "Thump!" text1 = "ha ha ha!" text = "nice shot!" 
+ENDSCRIPT
+
+SCRIPT CA_Peeing_Lip 
+	GetTriggerArray lip onto 
+	IF TriggerType <trigger_array> 
+		playsound HitWoodPlanks 
+		playsound KenHelp3 
+		TRG_PeeingKid01 : obj_movetonode name = TRG_Peeing_Move_Node01 time = 1.60000002384 
+		wait 0.50000000000 seconds 
+		TRG_PeeingKid01 : obj_movetonode name = TRG_Peeing_Move_Node02 time = 4 
+		wait 10 seconds 
+		kill name = TRG_PeeingKid01 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT CA_Move_Ramp 
+	GoalManager_PauseAllGoals 
+	hide_goal_panel_messages 
+	create name = Wilderness_Steam_Gen_Lever_Low 
+	create name = Wild_Log_Loader_Base 
+	GetBonus score = 10000 text = "Ramp Adjusted!" 
+	pauseskaters 
+	skater : hide 
+	skater : SparksOff 
+	spawnscript LeverCam_01 
+	printf "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!" 
+	Wilderness_Steam_Gen_Lever_Low : Obj_Rotate absolute = VECTOR(45.00000000000, 0.00000000000, 0.00000000000) time = 2 
+	printf "00000000000000000000000000000000000" 
+	kill name = TRGP_Toggle_Log_Loader02 
+	kill name = Wild_Log_Loader_Claw_Base_Low 
+	kill name = Wilderness_Steam_Gen_Lever_Low01 
+	kill name = Wild_Log_Loader_Base_Low 
+	kill name = TRG_Loader_Rail_Base_Low01 
+	wait 2 seconds 
+	spawnscript RampCam_01 
+	printf "wait" 
+	printf "Move pre" 
+	Wild_Log_Loader_Base : Obj_movetorelpos VECTOR(0.00000000000, 240.00000000000, 0.00000000000) time = 3 seconds 
+	printf "Move post" 
+	playsound HitWoodPlanks volume = 50 pitch = 10 
+	kill name = Wild_Log_Loader_Claw_Press 
+	wait 3 seconds 
+	playsound HitWoodPlanks volume = 100 pitch = 50 
+	wait 1 seconds 
+	create name = Wild_Log_Loader_Claw_Base_High02 
+	kill name = Wild_Log_Loader_Base 
+	create name = Wild_Log_Loader_Base1_obj 
+	Wild_Log_Loader_Claw_Base_High02 : Obj_Rotate absolute = VECTOR(-40.08913040161, 0.00000000000, 0.00000000000) time = 1 second 
+	wait 1 seconds 
+	playsound HitWoodPlanks volume = 60 pitch = 30 
+	create name = Wild_Log_Loader_Claw_Base_High01 
+	kill name = Wild_Log_Loader_Claw_Base_High02 
+	create prefix = "TRG_Loader_Rail_Base_High" 
+	wait 1 seconds 
+	unpauseskaters 
+	skater : unhide 
+	skater : SparksOn 
+	GoalManager_UnPauseAllGoals 
+	show_goal_panel_messages 
+ENDSCRIPT
+
+SCRIPT LeverCam_01 
+	PlaySkaterCamAnim name = CAM01_Lever 
+	printf "wait" 
+	BEGIN 
+		IF SkaterCamAnimFinished name = CAM01_Lever 
+			BREAK 
+		ENDIF 
+		wait 2 frames 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT RampCam_01 
+	PlaySkaterCamAnim name = CAM01_Ramp 
+	BEGIN 
+		IF SkaterCamAnimFinished name = CAM01_Ramp 
+			BREAK 
+		ENDIF 
+		wait 2 frames 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT Shatter_Wood_01 
+	GetBonus score = 500 text = "Wood Broken!" 
+	shatteranddie name = Wilderness_Lookout_Tower04 area = 9500 variance = 1 vel_x = 0 , 30 , -30 vel_y = 0 , 30 , -30 vel_z = 0 , 30 , -30 spread = 1 texture_swap = JOW_DJ_CrateShatter01 
+	playsound HitWoodPlanks volume = 100.00000000000 pitch = 100.00000000000 
+ENDSCRIPT
+
+SCRIPT Shatter_Wood_02 
+	GetBonus score = 500 text = "Wood Broken!" 
+	shatteranddie name = Wilderness_Lookout_Tower05 area = 9500 variance = 1 vel_x = 0 , 30 , -30 vel_y = 0 , 30 , -30 vel_z = 0 , 30 , -30 spread = 1 texture_swap = JOW_DJ_CrateShatter01 
+	playsound HitWoodPlanks volume = 100.00000000000 pitch = 100.00000000000 
+ENDSCRIPT
+
+SCRIPT Shatter_Wood_05 
+	GetBonus score = 500 text = "Wood Broken!" 
+	shatteranddie name = Wilderness_Lookout_Tower06 area = 9500 variance = 0.10000000149 vel_x = 0 , 30 , -30 vel_y = 0 , 30 , -30 vel_z = 0 , 30 , -30 spread = 1 texture_swap = JOW_DJ_CrateShatter01 
+	playsound HitWoodPlanks volume = 100.00000000000 pitch = 100.00000000000 
+ENDSCRIPT
+
+SCRIPT CA_GapStart_LipslideWood 
+	printf " lip slide wood start " 
+	StartGap GapID = CommonStairs flags = [ PURE_RAIL CANCEL_HANG ] TrickText = "FS Boardslide" trickscript = CA_Classic_Gaps_Got1 
+ENDSCRIPT
+
+SCRIPT CA_GapEnd_LipslideWood 
+	printf " lip slide wood end " 
+	EndGap GapID = CommonStairs score = 5000 text = "The Log QP!" 
+ENDSCRIPT
+
+SCRIPT CA_Classic_Gaps_Got1 
+	printf " lip slide wood win " 
+	GoalManager_SetGoalFlag name = CA_classic_goal_gaps2 got_1 1 
+ENDSCRIPT
+
+SCRIPT Kill_Skater_Cabin_01 
+	SK3_Killskater bail nodename = TRG_Restart_Parking_Lot01 message1 = "You like ice cubes?" message2 = "DENIED!" message3 = "Ice in your grill!" message4 = "...." 
+ENDSCRIPT
+
+SCRIPT Kill_Skater_Cabin_02 
+	SK3_Killskater_water nodename = TRG_Restart_Lake01 
+ENDSCRIPT
+
+SCRIPT Kill_Skater_Cabin_02A 
+	SK3_Killskater bail nodename = TRG_Restart_Lake01 message1 = "Brick!" message2 = "DENIED!" message3 = "Stay on the bridge!" message4 = "Mouth full of rocks!" 
+ENDSCRIPT
+
+SCRIPT Kill_Skater_Cabin_03 
+	SK3_Killskater_water nodename = TRG_Restart_Lake05 
+ENDSCRIPT
+
+SCRIPT AJC_CA_Gap_GeneratorStart 
+	StartGap GapID = CA_Generator01 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_CA_Gap_GeneratorEnd 
+	EndGap GapID = CA_Generator01 text = "Saved By The Generator" score = 1000 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Gap_Over_Mountain 
+	StartGap GapID = AJC_Can_Gap_Id_Over_The_Mountain01 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Gap_Over_Mountain1 
+	EndGap GapID = AJC_Can_Gap_Id_Over_The_Mountain02 text = "Over the Hump" score = 50 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Script_Vert_Gap 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Script_Around_The_Horn 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Fence_Trans_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Fence_Trans1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Fence_Trans_End 
+	EndGap GapID = AJC_Can_Gap_Id_Fence_Trans1 text = "Fence Transfer" score = 50 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Corner_Cut 
+	StartGap GapID = AJC_Can_Gap_Id_Corner_Cut01 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Corner_Cut1 
+	EndGap GapID = AJC_Can_Gap_Id_Corner_Cut01 text = "Cut The Corner" score = 50 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Breezy_Channel 
+	StartGap GapID = AJC_Can_GapID_Breezy_Channel01 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+	EndGap GapID = AJC_Can_GapID_Breezy_Channel02 text = "Breezy Channel Gap" score = 250 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Breezy_Channel1 
+	StartGap GapID = AJC_Can_GapID_Breezy_Channel02 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+	EndGap GapID = AJC_Can_GapID_Breezy_Channel01 text = "Breezy Channel Gap" score = 250 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Stinkin_Snow_Start 
+	StartGap GapID = Stinkin_Snow1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+	EndGap GapID = Stinkin_Snow2 text = "We Don\'t Need No Steeenking Rails" score = 50 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Stinkin_Snow_End 
+	StartGap GapID = Stinkin_Snow2 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+	EndGap GapID = Stinkin_Snow1 text = "We Don\'t Need No Steeenking Rails" score = 50 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Light_It_Up_Start 
+	StartGap GapID = Light_It_Up1 flags = [ CANCEL_GROUND CANCEL_WALK CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Light_It_Up_End 
+	EndGap GapID = Light_It_Up2 text = "Light It Up!" score = 100 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Parking_Lot_Rail_Start 
+	StartGap GapID = Parking_Lot_Rail1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+	EndGap GapID = Parking_Lot_Rail2 text = "Air Over The Blade Grind" score = 250 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Parking_Lot_Rail_End 
+	StartGap GapID = Parking_Lot_Rail2 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+	EndGap GapID = Parking_Lot_Rail1 text = "Air Over The Blade Grind" score = 250 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Dozer_Blade_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Dozer_Blade1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Dozer_Blade_End 
+	EndGap GapID = AJC_Can_Gap_Id_Dozer_Blade1 text = "Dozer Blade Gap" score = 100 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Fence_Hoppin_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Fence_Hoppin1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Fence_Hoppin_End 
+	EndGap GapID = AJC_Can_Gap_Id_Fence_Hoppin1 text = "Fence Hoppin" score = 100 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Fence_Hoppin_Start1 
+	StartGap GapID = AJC_Can_Gap_Id_Fence_Hoppin2 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Fence_Hoppin_End1 
+	EndGap GapID = AJC_Can_Gap_Id_Fence_Hoppin2 text = "Fence Hoppin" score = 100 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Fence_Hoppin_Start2 
+	StartGap GapID = AJC_Can_Gap_Id_Fence_Hoppin3 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Fence_Hoppin_End2 
+	EndGap GapID = AJC_Can_Gap_Id_Fence_Hoppin3 text = "Fence Hoppin" score = 100 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Fence_Hoppin_Start3 
+	StartGap GapID = AJC_Can_Gap_Id_Fence_Hoppin4 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Fence_Hoppin_End3 
+	EndGap GapID = AJC_Can_Gap_Id_Fence_Hoppin4 text = "Fence Hoppin" score = 100 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Curb_Hoppin_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Curb_Hoppin1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Curb_Hoppin_End 
+	EndGap GapID = AJC_Can_Gap_Id_Curb_Hoppin1 text = "Curb Hoppin" score = 100 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Curb_Hoppin1_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Curb_Hoppin2 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Curb_Hoppin1_End 
+	EndGap GapID = AJC_Can_Gap_Id_Curb_Hoppin2 text = "Curb Hoppin" score = 100 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Fence_Bomb_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Fence_Bomb1 flags = [ PURE AIR CANCEL_GROUND CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Fence_Bomb_End 
+	EndGap GapID = AJC_Can_Gap_Id_Fence_Bomb1 text = "Fence Bomb" score = 250 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Car_Gap_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Car_Gap1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Car_Gap_End 
+	EndGap GapID = AJC_Can_Gap_Id_Car_Gap1 text = "Car Gap" score = 200 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Curb_Bomb_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Curb_Bomb1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Curb_Bomb_End 
+	EndGap GapID = AJC_Can_Gap_Id_Curb_Bomb1 text = "Curb Bomb" score = 250 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Sap_Slapper_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Sap_Slapper1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Sap_Slapper_End 
+	EndGap GapID = AJC_Can_Gap_Id_Sap_Slapper1 text = "Sap Slapper" score = 250 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Over_Blade_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Over_Blade1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Over_Blade_End 
+	EndGap GapID = AJC_Can_Gap_Id_Over_Blade1 text = "Over The Blade" score = 25 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Over_Blade_Start1 
+	StartGap GapID = AJC_Can_Gap_Id_Over_Blade2 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Over_Blade_End1 
+	EndGap GapID = AJC_Can_Gap_Id_Over_Blade2 text = "Over The Blade" score = 25 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Climb_Tree_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Climb_Tree1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Climb_Tree_End 
+	EndGap GapID = AJC_Can_Gap_Id_Climb_Tree1 text = "Climb The Tree" score = 100 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Tree_Air_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Tree_Air1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Tree_Air_End 
+	EndGap GapID = AJC_Can_Gap_Id_Tree_Air1 text = "Tree Air Gap" score = 50 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Fence_Extension_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Fence_Extension1 flags = [ Require_LIP CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Fence_Extension_End 
+	EndGap GapID = AJC_Can_Gap_Id_Fence_Extension1 text = "Fence Extension" score = 100 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Manual_Transmission_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Manual_Transmission1 flags = [ Require_Manual Cancel_Air CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Manual_Transmission_End 
+	EndGap GapID = AJC_Can_Gap_Id_Manual_Transmission1 text = "Manual Transmission" score = 50 
+ENDSCRIPT
+
+SCRIPT AJC_Can_IPO_Funding_Start 
+	StartGap GapID = AJC_Can_Gap_Id_IPO_Funding1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_IPO_Funding_End 
+	EndGap GapID = AJC_Can_Gap_Id_IPO_Funding1 text = "IPO Funding" score = 50 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Banner_Dot_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Banner_Dot1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Banner_Dot_End 
+	EndGap GapID = AJC_Can_Gap_Id_Banner_Dot1 text = "Banner Ad Dot Com" score = 100 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Banner_Dot_Start1 
+	StartGap GapID = AJC_Can_Gap_Id_Banner_Dot2 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Banner_Dot_End1 
+	EndGap GapID = AJC_Can_Gap_Id_Banner_Dot2 text = "Banner Ad Dot Com" score = 100 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Bankrupt_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Bankrupt1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Bankrupt_End 
+	EndGap GapID = AJC_Can_Gap_Id_Bankrupt1 text = "...Just Went Bankrupt" score = 50 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Park_Lot_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Park_Lot1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Park_Lot_End 
+	EndGap GapID = AJC_Can_Gap_Id_Park_Lot1 text = "Park To Lot Launch" score = 250 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Park_Lot_Mini_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Park_Lot_Mini1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Park_Lot_Mini_End 
+	EndGap GapID = AJC_Can_Gap_Id_Park_Lot_Mini1 text = "Parking Lot Mini Gap" score = 50 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Park_Lot_Mini_Start1 
+	StartGap GapID = AJC_Can_Gap_Id_Park_Lot_Mini2 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Park_Lot_Mini_End1 
+	EndGap GapID = AJC_Can_Gap_Id_Park_Lot_Mini2 text = "Parking Lot Mini Gap" score = 50 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Easy_Way_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Easy_Way1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Easy_Way_End 
+	EndGap GapID = AJC_Can_Gap_Id_Easy_Way1 text = "Crossover The Easy Way" score = 250 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Easy_Way_Start1 
+	StartGap GapID = AJC_Can_Gap_Id_Easy_Way2 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Easy_Way_End1 
+	EndGap GapID = AJC_Can_Gap_Id_Easy_Way2 text = "Crossover The Easy Way" score = 250 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Hard_Way_Start 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Hard_Way_End 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Go_Long_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Go_Long1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Go_Long_End 
+	EndGap GapID = AJC_Can_Gap_Id_Go_Long1 text = "Go Long And Grind" score = 250 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Flying_Fence_Start 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Flying_Fence_End 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Big_Air_Fence_Start 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Big_Air_Fence_End 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Nice_Save_Start 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Nice_Save_End 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Video_Game_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Video_Game1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Video_Game_End 
+	EndGap GapID = AJC_Can_Gap_Id_Video_Game1 text = "Mandatory Videogame Mine Cart Ride" score = 500 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Mine_Cart_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Mine_Cart1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Mine_Cart_End 
+	EndGap GapID = AJC_Can_Gap_Id_Mine_Cart1 text = "Mine Cart Launch" score = 100 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Prospector_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Prospector1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Prospector_End 
+	EndGap GapID = AJC_Can_Gap_Id_Prospector1 text = "Prospector Path" score = 50 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Dead_Mans_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Dead_Mans1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Dead_Mans_End 
+	EndGap GapID = AJC_Can_Gap_Id_Dead_Mans1 text = "Dead Man\'s Slide" score = 50 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Glitters_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Glitters1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Glitters_End 
+	EndGap GapID = AJC_Can_Gap_Id_Glitters1 text = "All That Glitters" score = 50 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Look_Ma_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Look_Ma1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Look_Ma_End 
+	EndGap GapID = AJC_Can_Gap_Id_Look_Ma1 text = "Look, MA! No Talent" score = 50 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Around_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Around1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Around_End 
+	EndGap GapID = AJC_Can_Gap_Id_Around1 text = "Around The Horn" score = 100 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Wing_Dam_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Wing_Dam1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Wing_Dam_End 
+	EndGap GapID = AJC_Can_Gap_Id_Wing_Dam1 text = "The Old Wing Dam" score = 100 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Whoa_Cool_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Whoa_Cool1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Whoa_Cool_End 
+	EndGap GapID = AJC_Can_Gap_Id_Whoa_Cool1 text = "Whoa. That Was Cool." score = 500 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Hitch_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Hitch_Knot1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Hitch_End 
+	EndGap GapID = AJC_Can_Gap_Id_Hitch_Knot1 text = "Hitch Knot Gap" score = 100 
+ENDSCRIPT
+
+SCRIPT AJC_Can_bootleggin_Start 
+	StartGap GapID = AJC_Can_Gap_Id_bootleggin1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_bootleggin_End 
+	EndGap GapID = AJC_Can_Gap_Id_bootleggin1 text = "Still Bootleggin\'" score = 50 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Haunted_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Haunted1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Haunted_End 
+	EndGap GapID = AJC_Can_Gap_Id_Haunted1 text = "The Haunted Mine" score = 100 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Enim_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Enim1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Enim_End 
+	EndGap GapID = AJC_Can_Gap_Id_Enim1 text = "Enim Detnuah Eht" score = 100 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Chainsaw_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Chainsaw1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Chainsaw_End 
+	EndGap GapID = AJC_Can_Gap_Id_Chainsaw1 text = "Chainsaw Buzzin\'" score = 250 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Load_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Load1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Load_End 
+	EndGap GapID = AJC_Can_Gap_Id_Load1 text = "Load And Go" score = 50 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Pickaxe_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Pickaxe1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Pickaxe_End 
+	EndGap GapID = AJC_Can_Gap_Id_Pickaxe1 text = "Pickaxe Sluice" score = 100 
+ENDSCRIPT
+
+SCRIPT AJC_Can_BowlBowl_Start 
+	StartGap GapID = AJC_Can_Gap_Id_BowlBowl1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_BowlBowl_End 
+	EndGap GapID = AJC_Can_Gap_Id_BowlBowl1 text = "Bowl to Bowl" score = 50 
+ENDSCRIPT
+
+SCRIPT AJC_Can_BowlBowl_Start1 
+	StartGap GapID = AJC_Can_Gap_Id_BowlBowl2 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_BowlBowl_End1 
+	EndGap GapID = AJC_Can_Gap_Id_BowlBowl2 text = "Bowl to Bowl" score = 50 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Lightup_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Lightup1 flags = [ CANCEL_GROUND CANCEL_WALK CANCEL_MANUAL CANCEL_GRIND CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Lightup_End 
+	EndGap GapID = AJC_Can_Gap_Id_Lightup1 text = "Light It Up!" score = 100 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Lightup_Start1 
+	StartGap GapID = AJC_Can_Gap_Id_Lightup2 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_GRIND CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Lightup_End1 
+	EndGap GapID = AJC_Can_Gap_Id_Lightup2 text = "Light It Up!" score = 100 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Bowl_Rail_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Bowl_Rail1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Bowl_Rail_End 
+	EndGap GapID = AJC_Can_Gap_Id_Bowl_Rail1 text = "Bowl To Rail" score = 50 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Rail_Bowl_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Rail_Bowl1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Rail_Bowl_End 
+	EndGap GapID = AJC_Can_Gap_Id_Rail_Bowl1 text = "Rail To Bowl" score = 50 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Aurora_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Aurora1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Aurora_End 
+	EndGap GapID = AJC_Can_Gap_Id_Aurora1 text = "Aurora Burly-Alis" score = 250 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Aurora_Start1 
+	StartGap GapID = AJC_Can_Gap_Id_Aurora2 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Aurora_End1 
+	EndGap GapID = AJC_Can_Gap_Id_Aurora2 text = "Aurora Burly-Alis" score = 250 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Antenna_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Antenna1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Antenna_End 
+	EndGap GapID = AJC_Can_Gap_Id_Antenna1 text = "Antenna Stomp" score = 250 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Crooked_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Crooked1 flags = [ Require_LIP CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Crooked_End 
+	EndGap GapID = AJC_Can_Gap_Id_Crooked1 text = "Crooked Extension" score = 100 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Rail_Stomp_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Rail_Stomp1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Rail_Stomp_End 
+	EndGap GapID = AJC_Can_Gap_Id_Rail_Stomp1 text = "Rail Stomp" score = 50 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Rail_Cheater_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Cheater1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Rail_Cheater_End 
+	EndGap GapID = AJC_Can_Gap_Id_Cheater1 text = "Rail Cheater" score = 50 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Rail_Bank_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Rail_Bank1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Rail_Bank_End 
+	EndGap GapID = AJC_Can_Gap_Id_Rail_Bank1 text = "Rail Bank Shot" score = 50 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Flying_Fenceman_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Flying_Fence1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Flying_Fenceman_End 
+	EndGap GapID = AJC_Can_Gap_Id_Flying_Fence1 text = "Flying Fenceman" score = 100 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Fun_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Fun1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Fun_End 
+	EndGap GapID = AJC_Can_Gap_Id_Fun1 text = "Funbox Hop" score = 10 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Funbox_Rail_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Funbox_Rail1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Funbox_Rail_End 
+	EndGap GapID = AJC_Can_Gap_Id_Funbox_Rail1 text = "Funbox To Rail Stomp" score = 250 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Ah_Head_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Ah_Head1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Ah_Head_End 
+	EndGap GapID = AJC_Can_Gap_Id_Ah_Head1 text = "Ahhh! My Head!" score = 200 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Hump_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Hump1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Hump_End 
+	EndGap GapID = AJC_Can_Gap_Id_Hump1 text = "Over The Hump" score = 50 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Buck_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Buck1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Buck_End 
+	EndGap GapID = AJC_Can_Gap_Id_Buck1 text = "Buck Wild" score = 500 
+ENDSCRIPT
+
+SCRIPT AJC_Can_ToTree_Start 
+	StartGap GapID = AJC_Can_Gap_Id_ToTree1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_ToTree_End 
+	EndGap GapID = AJC_Can_Gap_Id_ToTree1 text = "Corral To Tree Grind" score = 100 
+ENDSCRIPT
+
+SCRIPT AJC_Can_ToCorral_Start 
+	StartGap GapID = AJC_Can_Gap_Id_ToCorral1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_ToCorral_End 
+	EndGap GapID = AJC_Can_Gap_Id_ToCorral1 text = "Tree To Corral Grind" score = 100 
+ENDSCRIPT
+
+SCRIPT AJC_Can_CorralGap_Start 
+	StartGap GapID = AJC_Can_Gap_Id_CorralGap1 flags = [ PURE_AIR CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_CorralGap_End 
+	EndGap GapID = AJC_Can_Gap_Id_CorralGap1 text = "Corral Gap Transfer" score = 100 
+ENDSCRIPT
+
+SCRIPT AJC_Can_CorralGap_Start1 
+	StartGap GapID = AJC_Can_Gap_Id_CorralGap2 flags = [ PURE_AIR CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_CorralGap_End1 
+	EndGap GapID = AJC_Can_Gap_Id_CorralGap2 text = "Corral Gap Transfer" score = 100 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Grind_Pine_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Grind_Pine1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Grind_Pine_End 
+	EndGap GapID = AJC_Can_Gap_Id_Grind_Pine1 text = "Grind The Pine" score = 100 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Gold_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Gold1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Gold_End 
+	EndGap GapID = AJC_Can_Gap_Id_Gold1 text = "There\'s Gold In Them Thar Hills" score = 200 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Gold_Start1 
+	StartGap GapID = AJC_Can_Gap_Id_Gold2 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Gold_End1 
+	EndGap GapID = AJC_Can_Gap_Id_Gold2 text = "There\'s Gold In Them Thar Hills" score = 200 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Panhandler_Start 
+	StartGap GapID = AJC_Can_Gap_Id_Panhandler1 flags = [ Require_LIP CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AJC_Can_Panhandler_End 
+	EndGap GapID = AJC_Can_Gap_Id_Panhandler1 text = "The Panhandler" score = 100 
+ENDSCRIPT
+
+SCRIPT CA_2d_sign_element_create parent = menu3d_anchor 
+	IF GetGlobalFlag flag = SCREEN_MODE_WIDE 
+		<offset> = PAIR(-8.00000000000, 0.00000000000) 
+	ELSE 
+		<offset> = PAIR(0.00000000000, 0.00000000000) 
+	ENDIF 
+	CreateScreenElement { 
+		Type = SpriteElement 
+		parent = <parent> 
+		texture = CA_icon_1 
+		id = CA_moose 
+		scale = 2.29999995232 
+		rgba = [ 128 128 128 60 ] 
+		pos = ( PAIR(15.00000000000, 235.00000000000) + <offset> ) 
+		rot_angle = 0 
+		just = [ left top ] 
+		z_priority = -51 
+	} 
+	CreateScreenElement { 
+		Type = SpriteElement 
+		parent = <parent> 
+		texture = CA_icon_2 
+		id = CA_eh 
+		scale = 1.60000002384 
+		rgba = [ 128 128 128 80 ] 
+		pos = ( PAIR(150.00000000000, 180.00000000000) + <offset> ) 
+		rot_angle = 10 
+		just = [ center center ] 
+		z_priority = -51 
+	} 
+	RunScriptOnScreenElement id = CA_moose do_random_effect_paused params = { id = <id> } 
+	RunScriptOnScreenElement id = CA_eh CA_eh_anim 
+ENDSCRIPT
+
+SCRIPT CA_eh_anim 
+	BEGIN 
+		start_pos = PAIR(150.00000000000, 180.00000000000) alpha = 0 
+		DoMorph time = 0 pos = ( <start_pos> - PAIR(250.00000000000, 0.00000000000) ) alpha = 1 
+		wait 2 seconds 
+		DoMorph time = 0.30000001192 pos = <start_pos> 
+		wait RANDOM(1, 1, 1) RANDOMCASE 2 RANDOMCASE 3 RANDOMCASE 4 RANDOMEND seconds 
+		DoMorph time = 0.30000001192 pos = ( <start_pos> - PAIR(250.00000000000, 0.00000000000) ) alpha = 0 
+		wait RANDOM(1, 1, 1) RANDOMCASE 5 RANDOMCASE 8 RANDOMCASE 3 RANDOMEND seconds 
+	REPEAT 
+ENDSCRIPT
+
+

@@ -1,0 +1,448 @@
+
+ST_WaitingLogJumpScript = 0 
+SCRIPT ST_LoadingSounds 
+	LoadSound "Shared\\Water\\BucketSplash" 
+	LoadSound "Shared\\Hits\\HitGlassPane2x" 
+	LoadSound "Shared\\Auto\\LA_Skid_11" vol = 100 dropoff = 150 
+	LoadSound "Shared\\Auto\\CarBrakeSqueal" vol = 100 dropoff = 150 
+	LoadSound "Shared\\Auto\\CarHorn_11" vol = 100 dropoff = 150 
+	LoadSound "Shared\\Hits\\HitMetalCan" vol = 100 dropoff = 150 PosUpdateWithDoppler 
+	LoadSound "Shared\\Hits\\BonkBush" vol = 100 dropoff = 0 
+	LoadSound "Shared\\Auto\\CarLoop" vol = 100 dropoff = 150 PosUpdateWithDoppler 
+	LoadSound "Vehicles\\Silent_Vehicle_Tire_Loop" 
+	LoadSound "Terrains\\BonkMetal_11" 
+	LoadSound "BO\\SK6_BO_FireLoop" 
+	LoadSound "ST\\ST_Expl_Lrg01" 
+	LoadSound "ST\\ST_Expl_Lrg02" 
+	LoadSound "ST\\ST_Expl_Lrg03" 
+	LoadSound "St\\ST_LogLaunch" 
+	LoadSound "BO\\SK6_BO_RiverLoop01_11" 
+	LoadSound "NJ\\NJ_woodbreak01" 
+	LoadSound "ST\\ST_PullyLaunch01" 
+	LoadSound "ST\\ST_BeehiveHit_Scrape" 
+	LoadSound "ST\\ST_OldSchoolJump" 
+	LoadSound "ST\\ST_BowlingStrike" 
+	LoadSound "ST\\ST_BonfireLoop" 
+	LoadSound "BouncyObjects\\Bouncy_BeachBallHit02" 
+	LoadSound "BouncyObjects\\Bouncy_PlasticGarbageHit01" 
+	LoadSound "BouncyObjects\\Bouncy_WoodenBarrelHit01" 
+	LoadSound "BouncyObjects\\Bouncy_WoodenBarrelHit02" 
+	LoadSound "BouncyObjects\\Bouncy_TombstoneHit02" 
+	LoadSound "BouncyObjects\\Bouncy_WoodenTableHit02" 
+	LoadSound "BouncyObjects\\Bouncy_MetalTableHit02" 
+	LoadSound "BouncyObjects\\Bouncy_BowlingBall_Hit01" 
+	LoadSound "BouncyObjects\\Bouncy_BowlingPin_Hit01" 
+	LoadSound "BouncyObjects\\Bouncy_MetalDrumHit02" 
+	IF ( DebugSoundFX = 1 ) 
+		dumpheaps 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT ST_SFX_Bonfire 
+	Obj_PlaySound ST_BonfireLoop vol = 130 emitter = TRG_SFX_SOB_Bonfire dropoff_function = exponential 
+ENDSCRIPT
+
+SCRIPT ST_SFX_ChickenCoop01 
+ENDSCRIPT
+
+SCRIPT ST_SFX_ChickenCoop02 
+ENDSCRIPT
+
+SCRIPT ST_SFX_WaterPipe01 
+	Obj_PlaySound SK6_BO_RiverLoop01_11 vol = 80 pitch = 200 emitter = TRG_SFX_SOB_WaterPipe01 
+ENDSCRIPT
+
+SCRIPT ST_SFX_WaterPipe02 
+	Obj_PlaySound SK6_BO_RiverLoop01_11 vol = 50 pitch = 150 emitter = TRG_SFX_SOB_WaterPipe02 
+ENDSCRIPT
+
+SCRIPT ST_SFX_Generator01 
+ENDSCRIPT
+
+SCRIPT ST_SFX_BeeHive01 
+	IF NOT IsStreamPlaying ThisBeeHiveSFX 
+		Obj_PlayStream SK6_BA_FliesOnShit emitter = TRG_SFX_SOB_BeeHive01 vol = 100 dropoff_function = linear id = ThisBeeHiveSFX num_loops = -1 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT ST_SFX_BeeHive02 
+	IF NOT IsStreamPlaying ThisBeeHiveSFX 
+		Obj_PlayStream SK6_BA_FliesOnShit emitter = TRG_SFX_SOB_BeeHive02 vol = 100 dropoff_function = linear id = ThisBeeHiveSFX num_loops = -1 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT ST_SFX_BeeHive03 
+	IF NOT IsStreamPlaying ThisBeeHiveSFX 
+		Obj_PlayStream SK6_BA_FliesOnShit emitter = TRG_SFX_SOB_BeeHive03 vol = 100 dropoff_function = linear id = ThisBeeHiveSFX num_loops = -1 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT ST_SFX_BeeHive04 
+	IF NOT IsStreamPlaying ThisBeeHiveSFX 
+		Obj_PlayStream SK6_BA_FliesOnShit emitter = TRG_SFX_SOB_BeeHive04 vol = 100 dropoff_function = linear id = ThisBeeHiveSFX num_loops = -1 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT ST_SFX_BeeHive05 
+	IF NOT IsStreamPlaying ThisBeeHiveSFX 
+		Obj_PlayStream SK6_BA_FliesOnShit emitter = TRG_SFX_SOB_BeeHive05 vol = 100 dropoff_function = linear id = ThisBeeHiveSFX num_loops = -1 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT ST_SFX_HouseBeeps01 
+	BEGIN 
+		Obj_PlayStream ST_Suitcase_ServoBeeps01 vol = 70 emitter = TRG_SFX_SOB_HouseBeeps01 
+		wait 3 seconds 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT ST_SFX_GlobeBeeps01 
+	BEGIN 
+		Obj_PlayStream ST_Suitcase_ServoBeeps01 vol = 70 emitter = TRG_SFX_SOB_GlobeBeeps01 
+		wait 3 seconds 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT ST_SFX_SuitcaseBeeps01 
+	BEGIN 
+		Obj_PlayStream ST_Suitcase_ServoBeeps01 vol = 70 emitter = TRG_SFX_TrigBox_SuitcaseBeeps01 
+		wait 3 seconds 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT ST_SFX_SuitcaseBeeps02 
+	BEGIN 
+		Obj_PlayStream ST_Suitcase_ServoBeeps01 vol = 70 emitter = TRG_SFX_SOB_SuitcaseBeeps02 
+		wait 3 seconds 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT ST_SFX_Day_Forest01 
+ENDSCRIPT
+
+SCRIPT ST_SFX_Day_Forest02 
+ENDSCRIPT
+
+SCRIPT ST_SFX_Day_Forest03 
+ENDSCRIPT
+
+SCRIPT ST_SFX_Day_Forest04 
+ENDSCRIPT
+
+SCRIPT ST_SFX_Day_Forest05 
+ENDSCRIPT
+
+SCRIPT ST_SFX_Day_Forest06 
+ENDSCRIPT
+
+SCRIPT ST_SFX_Night_Forest01 
+	IF InSplitScreenGame 
+		IF NOT IsStreamPlaying SK6_CrixLoop_01 
+			Obj_PlayStream SK6_CrixLoop_01 vol = 30 num_loops = -1 priority = StreamPriorityHigh 
+		ENDIF 
+	ELSE 
+		Obj_PlayStream SK6_CrixLoop_01 vol = 30 num_loops = -1 priority = StreamPriorityHigh 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT ST_SFX_Night_Forest02 
+	IF InSplitScreenGame 
+		IF NOT IsStreamPlaying SK6_CrixLoop_01 
+			Obj_PlayStream SK6_CrixLoop_01 vol = 30 num_loops = -1 priority = StreamPriorityHigh 
+		ENDIF 
+	ELSE 
+		Obj_PlayStream SK6_CrixLoop_01 vol = 30 num_loops = -1 priority = StreamPriorityHigh 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT ST_SFX_Night_Forest05 
+	IF InSplitScreenGame 
+		IF NOT IsStreamPlaying SK6_CrixLoop_01 
+			Obj_PlayStream SK6_CrixLoop_01 vol = 30 num_loops = -1 priority = StreamPriorityHigh 
+		ENDIF 
+	ELSE 
+		Obj_PlayStream SK6_CrixLoop_01 vol = 30 num_loops = -1 priority = StreamPriorityHigh 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT ST_SFX_Night_Forest06 
+	IF InSplitScreenGame 
+		IF NOT IsStreamPlaying SK6_CrixLoop_01 
+			Obj_PlayStream SK6_CrixLoop_01 vol = 30 num_loops = -1 priority = StreamPriorityHigh 
+		ENDIF 
+	ELSE 
+		Obj_PlayStream SK6_CrixLoop_01 vol = 30 num_loops = -1 priority = StreamPriorityHigh 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT ST_SFX_MineReverb01 
+	IF NOT GameIsPaused 
+		IF NOT InSplitScreenGame 
+			IF ( inside ) 
+				change InsideAdjacentReverbBox01 = 1 
+				GetValueFromVolume cdvol 
+				IF ( InsideAdjacentReverbBox02 = 0 ) 
+					IF ( InsideAdjacentReverbBox03 = 0 ) 
+						IF ( <value> = 0 ) 
+							SetSfxReverb 60 mode = REV_MODE_ARENA 
+						ELSE 
+							SetSfxReverb 75 mode = REV_MODE_ARENA 
+						ENDIF 
+					ENDIF 
+				ENDIF 
+			ELSE 
+				IF ( InsideAdjacentReverbBox02 = 0 ) 
+					IF ( InsideAdjacentReverbBox03 = 0 ) 
+						SetSfxReverb 0 mode = REV_MODE_ARENA 
+					ELSE 
+					ENDIF 
+				ELSE 
+				ENDIF 
+				change InsideAdjacentReverbBox01 = 0 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT ST_SFX_MineReverb02 
+	IF NOT GameIsPaused 
+		IF NOT InSplitScreenGame 
+			IF ( inside ) 
+				change InsideAdjacentReverbBox02 = 1 
+				GetValueFromVolume cdvol 
+				IF ( InsideAdjacentReverbBox01 = 0 ) 
+					IF ( InsideAdjacentReverbBox03 = 0 ) 
+						IF ( <value> = 0 ) 
+							SetSfxReverb 60 mode = REV_MODE_ARENA 
+						ELSE 
+							SetSfxReverb 75 mode = REV_MODE_ARENA 
+						ENDIF 
+					ENDIF 
+				ENDIF 
+			ELSE 
+				IF ( InsideAdjacentReverbBox01 = 0 ) 
+					IF ( InsideAdjacentReverbBox03 = 0 ) 
+						SetSfxReverb 0 mode = REV_MODE_ARENA 
+					ELSE 
+					ENDIF 
+				ELSE 
+				ENDIF 
+				change InsideAdjacentReverbBox02 = 0 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT ST_SFX_BarnReverb01 
+	IF NOT GameIsPaused 
+		IF NOT InSplitScreenGame 
+			IF ( inside ) 
+				change InsideAdjacentReverbBox01 = 1 
+				GetValueFromVolume cdvol 
+				IF ( InsideAdjacentReverbBox02 = 0 ) 
+					IF ( InsideAdjacentReverbBox03 = 0 ) 
+						IF ( <value> = 0 ) 
+							SetSfxReverb 60 mode = REV_MODE_ROOM 
+						ELSE 
+							SetSfxReverb 75 mode = REV_MODE_ROOM 
+						ENDIF 
+					ENDIF 
+				ENDIF 
+			ELSE 
+				IF ( InsideAdjacentReverbBox02 = 0 ) 
+					IF ( InsideAdjacentReverbBox03 = 0 ) 
+						SetSfxReverb 0 mode = REV_MODE_ROOM 
+					ELSE 
+					ENDIF 
+				ELSE 
+				ENDIF 
+				change InsideAdjacentReverbBox01 = 0 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT ST_SFX_ExplodingGarbage 
+	wait 0.10000000149 seconds 
+	RANDOM(1, 1, 1) 
+		RANDOMCASE PlaySound ST_Expl_Lrg01 vol = 400 
+		RANDOMCASE PlaySound ST_Expl_Lrg02 vol = 400 
+		RANDOMCASE PlaySound ST_Expl_Lrg03 vol = 400 
+	RANDOMEND 
+ENDSCRIPT
+
+SCRIPT ST_SFX_BreakWood 
+	PlaySound NJ_woodbreak01 pitch = RANDOM(1, 1, 1) RANDOMCASE 80 RANDOMCASE 100 RANDOMCASE 120 RANDOMEND 
+ENDSCRIPT
+
+SCRIPT ST_SFX_BreakMetalRoof 
+ENDSCRIPT
+
+SCRIPT ST_SFX_GrowTree 
+ENDSCRIPT
+
+SCRIPT ST_SFX_BreakOffBeeHive 
+	PlaySound ST_BeehiveHit_Scrape 
+ENDSCRIPT
+
+SCRIPT ST_SFX_Chicken_Hit01 
+	RANDOM_NO_REPEAT(1, 1, 1, 1, 1) 
+		RANDOMCASE PlayStream ST_ChickenCoopMayhem01 vol = 200 priority = StreamPriorityHigh 
+		RANDOMCASE PlayStream ST_ChickenCoopMayhem02 vol = 200 priority = StreamPriorityHigh 
+		RANDOMCASE PlayStream ST_ChickenCoopMayhem03 vol = 200 priority = StreamPriorityHigh 
+		RANDOMCASE PlayStream ST_ChickenCoopMayhem04 vol = 200 priority = StreamPriorityHigh 
+		RANDOMCASE PlayStream ST_ChickenCoopMayhem05 vol = 200 priority = StreamPriorityHigh 
+	RANDOMEND 
+ENDSCRIPT
+
+SCRIPT ST_SFX_CollectChainsaw 
+ENDSCRIPT
+
+SCRIPT ST_SFX_CollectSkunkClassic 
+ENDSCRIPT
+
+SCRIPT ST_SFX_BreakRoofAboveHalfPipe 
+	StopStream SK6_BreakMetalFence 
+	PlaySound HitGlassPane2x pitch = 50 
+	wait 1 gameframe 
+	PlayStream SK6_BreakMetalFence vol = 200 
+ENDSCRIPT
+
+SCRIPT ST_SFX_Cat_Jump_On_Skater 
+	RANDOM(1, 1) 
+		RANDOMCASE PlayStream ST_Cat_Angry01 vol = 200 priority = StreamPriorityMidHigh dropoff = 150 
+		RANDOMCASE PlayStream ST_Cat_Angry02 vol = 200 priority = StreamPriorityMidHigh dropoff = 150 
+	RANDOMEND 
+ENDSCRIPT
+
+SCRIPT ST_SFX_Hit_Bees_No_Wallride 
+	PlaySound BailSlap01 
+ENDSCRIPT
+
+SCRIPT ST_SFX_Grab_Balloon 
+ENDSCRIPT
+
+SCRIPT ST_SFX_Random_Dog_Whimper 
+	IF NOT IsStreamPlaying DogSFXStream 
+		RANDOM(3, 3, 3, 3, 3, 3, 1, 1, 1, 1, 1) 
+			RANDOMCASE Obj_PlayStream ST_DogBarks01 vol = 200 dropoff = 120 priority = StreamPriorityHigh id = DogSFXStream 
+			RANDOMCASE Obj_PlayStream ST_DogBarks02 vol = 200 dropoff = 120 priority = StreamPriorityHigh id = DogSFXStream 
+			RANDOMCASE Obj_PlayStream ST_DogBarks03 vol = 200 dropoff = 120 priority = StreamPriorityHigh id = DogSFXStream 
+			RANDOMCASE Obj_PlayStream ST_DogBarks04 vol = 200 dropoff = 120 priority = StreamPriorityHigh id = DogSFXStream 
+			RANDOMCASE Obj_PlayStream ST_DogBarks05 vol = 200 dropoff = 120 priority = StreamPriorityHigh id = DogSFXStream 
+			RANDOMCASE Obj_PlayStream ST_DogGoal_Collect vol = 200 dropoff = 120 priority = StreamPriorityHigh id = DogSFXStream 
+			RANDOMCASE Obj_PlayStream ST_DogWhimper01 vol = 200 dropoff = 120 priority = StreamPriorityHigh id = DogSFXStream 
+			RANDOMCASE Obj_PlayStream ST_DogWhimper02 vol = 200 dropoff = 120 priority = StreamPriorityHigh id = DogSFXStream 
+			RANDOMCASE Obj_PlayStream ST_DogWhimper03 vol = 200 dropoff = 120 priority = StreamPriorityHigh id = DogSFXStream 
+			RANDOMCASE Obj_PlayStream ST_DogWhimper04 vol = 200 dropoff = 120 priority = StreamPriorityHigh id = DogSFXStream 
+			RANDOMCASE Obj_PlayStream ST_DogWhimper05 vol = 200 dropoff = 120 priority = StreamPriorityHigh id = DogSFXStream 
+		RANDOMEND 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT ST_SFX_Bomb01_activated 
+	create name = TRG_SFX_TrigBox_GlobeBeeps01 
+ENDSCRIPT
+
+SCRIPT ST_SFX_Bomb02_activated 
+	create name = TRG_SFX_TrigBox_SuitcaseBeeps01 
+ENDSCRIPT
+
+SCRIPT ST_SFX_Bomb03_activated 
+	create name = TRG_SFX_TrigBox_SuitcaseBeeps02 
+ENDSCRIPT
+
+SCRIPT ST_SFX_Bomb04_activated 
+ENDSCRIPT
+
+SCRIPT ST_SFX_Bomb05_activated 
+	create name = TRG_SFX_TrigBox_HouseBeeps01 
+ENDSCRIPT
+
+SCRIPT ST_SFX_Skater_Ignite 
+	IF NOT IsSoundPlaying SK6_BO_FireLoop 
+		skater : Obj_PlaySound SK6_BO_FireLoop vol = 110 pitch = 120 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT ST_SFX_Skater_PutOutFire 
+	skater : Obj_StopSound SK6_BO_FireLoop 
+	skater : Obj_StopSound SK6_BO_FireLoop 
+ENDSCRIPT
+
+SCRIPT ST_SFX_BugZapHouse01 
+ENDSCRIPT
+
+SCRIPT ST_SFX_BugZapTop01 
+ENDSCRIPT
+
+SCRIPT ST_SFX_LogBoost 
+	PlaySound ST_LogLaunch pitch = RANDOM_RANGE PAIR(95.00000000000, 105.00000000000) 
+	wait 0.10000000149 seconds 
+	change ST_WaitingLogJumpScript = 0 
+ENDSCRIPT
+
+SCRIPT ST_SFX_EG_Fire01 
+	IF skatercamanimfinished 
+		Obj_PlaySound ST_BonfireLoop pitch = 80 vol = 200 dropoff_function = inv_exponential emitter = TRG_SFX_SOB_EG_Fire01 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT ST_SFX_EG_Fire02 
+	IF skatercamanimfinished 
+		Obj_PlaySound SK6_BO_FireLoop pitch = 70 vol = 200 dropoff_function = inv_exponential emitter = TRG_SFX_SOB_EG_Fire02 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT ST_SFX_EG_Fire03 
+	Obj_PlaySound SK6_BO_FireLoop pitch = 100 vol = 200 dropoff_function = inv_exponential emitter = TRG_SFX_SOB_EG_Fire03 
+ENDSCRIPT
+
+SCRIPT ST_SFX_EG_Fire04 
+	IF skatercamanimfinished 
+		Obj_PlaySound SK6_BO_FireLoop pitch = 120 vol = 200 dropoff_function = inv_exponential emitter = TRG_SFX_SOB_EG_Fire04 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT ST_SFX_EG_Fire05 
+	IF skatercamanimfinished 
+		Obj_PlaySound SK6_BO_FireLoop pitch = 80 vol = 200 dropoff_function = inv_exponential emitter = TRG_SFX_SOB_EG_Fire05 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT ST_SFX_EG_Fire06 
+	Obj_PlaySound ST_BonfireLoop pitch = 180 vol = 200 dropoff_function = inv_exponential emitter = TRG_SFX_SOB_EG_Fire06 
+ENDSCRIPT
+
+SCRIPT ST_SFX_EG_Fire07 
+	BEGIN 
+		IF NOT IsStreamPlaying RomanCandleSFXStream 
+			Obj_PlayStream ST_EscapeGoal02 vol = 200 dropoff_function = inv_exponential emitter = TRG_SFX_SOB_EG_Fire07 id = RomanCandleSFXStream num_loops = -1 priority = StreamPriorityHigh 
+		ENDIF 
+		wait 0.50000000000 seconds 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT ST_SFX_EG_Fire08 
+	BEGIN 
+		IF NOT IsStreamPlaying RocketsLaunchingStream 
+			Obj_PlayStream ST_EscapeGoal03 vol = 200 dropoff_function = inv_exponential emitter = TRG_SFX_SOB_EG_Fire08 id = RocketsLaunchingStream num_loops = -1 priority = StreamPriorityHigh 
+		ENDIF 
+		wait 0.50000000000 seconds 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT ST_SFX_EG_Fire09 
+	BEGIN 
+		IF NOT IsStreamPlaying SpinningFireworkStream 
+			Obj_PlayStream ST_EscapeGoal01 vol = 200 dropoff_function = inv_exponential emitter = TRG_SFX_SOB_EG_Fire09 id = SpinningFireworkStream num_loops = -1 priority = StreamPriorityHigh 
+		ENDIF 
+		wait 0.50000000000 seconds 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT ST_SFX_EG_Fire10 
+	Obj_PlaySound ST_BonfireLoop pitch = 120 vol = 200 dropoff_function = inv_exponential emitter = TRG_SFX_SOB_EG_Fire10 
+ENDSCRIPT
+
+

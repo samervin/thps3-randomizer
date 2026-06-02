@@ -1,0 +1,428 @@
+
+SCRIPT load_level_particle_textures 
+	LoadParticleTexture "particles\\jow_sc_alarm01" 
+	LoadParticleTexture "particles\\jow_sc_books01" 
+	LoadParticleTexture "particles\\jow_sc_star01" 
+ENDSCRIPT
+
+JOW_SC_Alarm01_particle_params = { 
+	emitScript = emit_JOW_SC_Alarm01_particle 
+	max = 12 
+	type = Shaded 
+	texture = JOW_SC_Alarm01 
+	blendMode = Blend 
+	UseRandomUVQuadrants 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_SC_Alarm01_particle 
+	setEmitRange width = 20.00000000000 height = 20.00000000000 depth = 20.00000000000 
+	setLife min = 2.00000000000 max = 3.00000000000 
+	setAngleSpread spread = 1.00000000000 
+	setSpeedRange min = 2.00000000000 max = 4.00000000000 
+	setEmitTarget x = -1.00000000000 y = 0.50000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = -0.07999999821 z = 0.00000000000 
+	setParticleSize sw = 8.00000000000 ew = 8.00000000000 
+	setColor corner = 0 sr = 119 sg = 119 sb = 119 sa = 255 er = 119 eg = 119 eb = 119 ea = 255 
+	setColor corner = 1 sr = 119 sg = 119 sb = 119 sa = 255 er = 119 eg = 119 eb = 119 ea = 255 
+	setColor corner = 2 sr = 119 sg = 119 sb = 119 sa = 255 er = 119 eg = 119 eb = 119 ea = 255 
+	setColor corner = 3 sr = 119 sg = 119 sb = 119 sa = 255 er = 119 eg = 119 eb = 119 ea = 255 
+	setLODParams min_particles = 0 lod_dist1 = Default_Particle_LOD_Dist1 lod_dist2 = Default_Particle_LOD_Dist2 
+	emit num = 12 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_SC_Alarm01a_particle_params = { 
+	emitScript = emit_JOW_SC_Alarm01a_particle 
+	max = 24 
+	type = FlatRibbonTail 
+	texture = JOW_SC_Star01 
+	blendMode = Blend 
+	history = 5 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_SC_Alarm01a_particle 
+	setEmitRange width = 20.00000000000 height = 20.00000000000 depth = 20.00000000000 
+	setLife min = 1.00000000000 max = 1.50000000000 
+	setAngleSpread spread = 1.00000000000 
+	setSpeedRange min = 6.00000000000 max = 6.00000000000 
+	setEmitTarget x = -1.00000000000 y = 0.50000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = -0.07999999821 z = 0.00000000000 
+	setParticleSize sw = 1.00000000000 ew = 0.00000000000 
+	setColor corner = 0 sr = 255 sg = 148 sb = 66 sa = 196 er = 255 eg = 185 eb = 95 ea = 0 
+	setColor corner = 1 sr = 255 sg = 148 sb = 66 sa = 196 er = 255 eg = 185 eb = 95 ea = 0 
+	setColor corner = 2 sr = 255 sg = 148 sb = 66 sa = 196 er = 255 eg = 185 eb = 95 ea = 0 
+	setColor corner = 3 sr = 255 sg = 148 sb = 66 sa = 196 er = 255 eg = 185 eb = 95 ea = 0 
+	setColor corner = 4 sr = 255 sg = 148 sb = 66 sa = 136 er = 255 eg = 185 eb = 95 ea = 0 
+	setColor corner = 5 sr = 255 sg = 148 sb = 66 sa = 72 er = 255 eg = 185 eb = 95 ea = 0 
+	setColor corner = 6 sr = 255 sg = 148 sb = 66 sa = 0 er = 255 eg = 185 eb = 95 ea = 0 
+	setLODParams min_particles = 0 lod_dist1 = Default_Particle_LOD_Dist1 lod_dist2 = Default_Particle_LOD_Dist2 
+	emit num = 24 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_SC_Alarm02_particle_params = { 
+	emitScript = emit_JOW_SC_Alarm02_particle 
+	max = 12 
+	type = Shaded 
+	texture = JOW_SC_Alarm01 
+	blendMode = Blend 
+	UseRandomUVQuadrants 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_SC_Alarm02_particle 
+	setEmitRange width = 20.00000000000 height = 20.00000000000 depth = 20.00000000000 
+	setLife min = 2.00000000000 max = 3.00000000000 
+	setAngleSpread spread = 1.00000000000 
+	setSpeedRange min = 2.00000000000 max = 4.00000000000 
+	setEmitTarget x = 0.00000000000 y = 0.50000000000 z = -1.00000000000 
+	setForce x = 0.00000000000 y = -0.07999999821 z = 0.00000000000 
+	setParticleSize sw = 8.00000000000 ew = 8.00000000000 
+	setColor corner = 0 sr = 119 sg = 119 sb = 119 sa = 255 er = 119 eg = 119 eb = 119 ea = 255 
+	setColor corner = 1 sr = 119 sg = 119 sb = 119 sa = 255 er = 119 eg = 119 eb = 119 ea = 255 
+	setColor corner = 2 sr = 119 sg = 119 sb = 119 sa = 255 er = 119 eg = 119 eb = 119 ea = 255 
+	setColor corner = 3 sr = 119 sg = 119 sb = 119 sa = 255 er = 119 eg = 119 eb = 119 ea = 255 
+	setLODParams min_particles = 0 lod_dist1 = Default_Particle_LOD_Dist1 lod_dist2 = Default_Particle_LOD_Dist2 
+	emit num = 12 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_SC_Alarm02a_particle_params = { 
+	emitScript = emit_JOW_SC_Alarm02a_particle 
+	max = 24 
+	type = FlatRibbonTail 
+	texture = JOW_SC_Star01 
+	blendMode = Blend 
+	history = 5 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_SC_Alarm02a_particle 
+	setEmitRange width = 20.00000000000 height = 20.00000000000 depth = 20.00000000000 
+	setLife min = 1.00000000000 max = 1.50000000000 
+	setAngleSpread spread = 1.00000000000 
+	setSpeedRange min = 6.00000000000 max = 6.00000000000 
+	setEmitTarget x = 0.00000000000 y = 0.50000000000 z = -1.00000000000 
+	setForce x = 0.00000000000 y = -0.07999999821 z = 0.00000000000 
+	setParticleSize sw = 1.00000000000 ew = 0.00000000000 
+	setColor corner = 0 sr = 255 sg = 148 sb = 66 sa = 196 er = 255 eg = 185 eb = 95 ea = 0 
+	setColor corner = 1 sr = 255 sg = 148 sb = 66 sa = 196 er = 255 eg = 185 eb = 95 ea = 0 
+	setColor corner = 2 sr = 255 sg = 148 sb = 66 sa = 196 er = 255 eg = 185 eb = 95 ea = 0 
+	setColor corner = 3 sr = 255 sg = 148 sb = 66 sa = 196 er = 255 eg = 185 eb = 95 ea = 0 
+	setColor corner = 4 sr = 255 sg = 148 sb = 66 sa = 136 er = 255 eg = 185 eb = 95 ea = 0 
+	setColor corner = 5 sr = 255 sg = 148 sb = 66 sa = 72 er = 255 eg = 185 eb = 95 ea = 0 
+	setColor corner = 6 sr = 255 sg = 148 sb = 66 sa = 0 er = 255 eg = 185 eb = 95 ea = 0 
+	setLODParams min_particles = 0 lod_dist1 = Default_Particle_LOD_Dist1 lod_dist2 = Default_Particle_LOD_Dist2 
+	emit num = 24 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_SC_Alarm03_particle_params = { 
+	emitScript = emit_JOW_SC_Alarm03_particle 
+	max = 12 
+	type = Shaded 
+	texture = JOW_SC_Alarm01 
+	blendMode = Blend 
+	UseRandomUVQuadrants 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_SC_Alarm03_particle 
+	setEmitRange width = 20.00000000000 height = 20.00000000000 depth = 20.00000000000 
+	setLife min = 2.00000000000 max = 3.00000000000 
+	setAngleSpread spread = 1.00000000000 
+	setSpeedRange min = 2.00000000000 max = 4.00000000000 
+	setEmitTarget x = 0.00000000000 y = 0.50000000000 z = -1.00000000000 
+	setForce x = 0.00000000000 y = -0.07999999821 z = 0.00000000000 
+	setParticleSize sw = 8.00000000000 ew = 8.00000000000 
+	setColor corner = 0 sr = 119 sg = 119 sb = 119 sa = 255 er = 119 eg = 119 eb = 119 ea = 255 
+	setColor corner = 1 sr = 119 sg = 119 sb = 119 sa = 255 er = 119 eg = 119 eb = 119 ea = 255 
+	setColor corner = 2 sr = 119 sg = 119 sb = 119 sa = 255 er = 119 eg = 119 eb = 119 ea = 255 
+	setColor corner = 3 sr = 119 sg = 119 sb = 119 sa = 255 er = 119 eg = 119 eb = 119 ea = 255 
+	setLODParams min_particles = 0 lod_dist1 = Default_Particle_LOD_Dist1 lod_dist2 = Default_Particle_LOD_Dist2 
+	emit num = 12 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_SC_Alarm03a_particle_params = { 
+	emitScript = emit_JOW_SC_Alarm03a_particle 
+	max = 24 
+	type = FlatRibbonTail 
+	texture = JOW_SC_Star01 
+	blendMode = Blend 
+	history = 5 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_SC_Alarm03a_particle 
+	setEmitRange width = 20.00000000000 height = 20.00000000000 depth = 20.00000000000 
+	setLife min = 1.00000000000 max = 1.50000000000 
+	setAngleSpread spread = 1.00000000000 
+	setSpeedRange min = 6.00000000000 max = 6.00000000000 
+	setEmitTarget x = 0.00000000000 y = 0.50000000000 z = -1.00000000000 
+	setForce x = 0.00000000000 y = -0.07999999821 z = 0.00000000000 
+	setParticleSize sw = 1.00000000000 ew = 0.00000000000 
+	setColor corner = 0 sr = 255 sg = 148 sb = 66 sa = 196 er = 255 eg = 185 eb = 95 ea = 0 
+	setColor corner = 1 sr = 255 sg = 148 sb = 66 sa = 196 er = 255 eg = 185 eb = 95 ea = 0 
+	setColor corner = 2 sr = 255 sg = 148 sb = 66 sa = 196 er = 255 eg = 185 eb = 95 ea = 0 
+	setColor corner = 3 sr = 255 sg = 148 sb = 66 sa = 196 er = 255 eg = 185 eb = 95 ea = 0 
+	setColor corner = 4 sr = 255 sg = 148 sb = 66 sa = 136 er = 255 eg = 185 eb = 95 ea = 0 
+	setColor corner = 5 sr = 255 sg = 148 sb = 66 sa = 72 er = 255 eg = 185 eb = 95 ea = 0 
+	setColor corner = 6 sr = 255 sg = 148 sb = 66 sa = 0 er = 255 eg = 185 eb = 95 ea = 0 
+	setLODParams min_particles = 0 lod_dist1 = Default_Particle_LOD_Dist1 lod_dist2 = Default_Particle_LOD_Dist2 
+	emit num = 24 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_SC_Alarm04_particle_params = { 
+	emitScript = emit_JOW_SC_Alarm04_particle 
+	max = 12 
+	type = Shaded 
+	texture = JOW_SC_Alarm01 
+	blendMode = Blend 
+	UseRandomUVQuadrants 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_SC_Alarm04_particle 
+	setEmitRange width = 20.00000000000 height = 20.00000000000 depth = 20.00000000000 
+	setLife min = 2.00000000000 max = 3.00000000000 
+	setAngleSpread spread = 1.00000000000 
+	setSpeedRange min = 2.00000000000 max = 4.00000000000 
+	setEmitTarget x = 0.00000000000 y = 0.50000000000 z = -1.00000000000 
+	setForce x = 0.00000000000 y = -0.07999999821 z = 0.00000000000 
+	setParticleSize sw = 8.00000000000 ew = 8.00000000000 
+	setColor corner = 0 sr = 119 sg = 119 sb = 119 sa = 255 er = 119 eg = 119 eb = 119 ea = 255 
+	setColor corner = 1 sr = 119 sg = 119 sb = 119 sa = 255 er = 119 eg = 119 eb = 119 ea = 255 
+	setColor corner = 2 sr = 119 sg = 119 sb = 119 sa = 255 er = 119 eg = 119 eb = 119 ea = 255 
+	setColor corner = 3 sr = 119 sg = 119 sb = 119 sa = 255 er = 119 eg = 119 eb = 119 ea = 255 
+	setLODParams min_particles = 0 lod_dist1 = Default_Particle_LOD_Dist1 lod_dist2 = Default_Particle_LOD_Dist2 
+	emit num = 12 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_SC_Alarm04a_particle_params = { 
+	emitScript = emit_JOW_SC_Alarm04a_particle 
+	max = 24 
+	type = FlatRibbonTail 
+	texture = JOW_SC_Star01 
+	blendMode = Blend 
+	history = 5 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_SC_Alarm04a_particle 
+	setEmitRange width = 20.00000000000 height = 20.00000000000 depth = 20.00000000000 
+	setLife min = 1.00000000000 max = 1.50000000000 
+	setAngleSpread spread = 1.00000000000 
+	setSpeedRange min = 6.00000000000 max = 6.00000000000 
+	setEmitTarget x = 0.00000000000 y = 0.50000000000 z = -1.00000000000 
+	setForce x = 0.00000000000 y = -0.07999999821 z = 0.00000000000 
+	setParticleSize sw = 1.00000000000 ew = 0.00000000000 
+	setColor corner = 0 sr = 255 sg = 148 sb = 66 sa = 196 er = 255 eg = 185 eb = 95 ea = 0 
+	setColor corner = 1 sr = 255 sg = 148 sb = 66 sa = 196 er = 255 eg = 185 eb = 95 ea = 0 
+	setColor corner = 2 sr = 255 sg = 148 sb = 66 sa = 196 er = 255 eg = 185 eb = 95 ea = 0 
+	setColor corner = 3 sr = 255 sg = 148 sb = 66 sa = 196 er = 255 eg = 185 eb = 95 ea = 0 
+	setColor corner = 4 sr = 255 sg = 148 sb = 66 sa = 136 er = 255 eg = 185 eb = 95 ea = 0 
+	setColor corner = 5 sr = 255 sg = 148 sb = 66 sa = 72 er = 255 eg = 185 eb = 95 ea = 0 
+	setColor corner = 6 sr = 255 sg = 148 sb = 66 sa = 0 er = 255 eg = 185 eb = 95 ea = 0 
+	setLODParams min_particles = 0 lod_dist1 = Default_Particle_LOD_Dist1 lod_dist2 = Default_Particle_LOD_Dist2 
+	emit num = 24 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_SC_Alarm05_particle_params = { 
+	emitScript = emit_JOW_SC_Alarm05_particle 
+	max = 12 
+	type = Shaded 
+	texture = JOW_SC_Alarm01 
+	blendMode = Blend 
+	UseRandomUVQuadrants 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_SC_Alarm05_particle 
+	setEmitRange width = 20.00000000000 height = 20.00000000000 depth = 20.00000000000 
+	setLife min = 2.00000000000 max = 3.00000000000 
+	setAngleSpread spread = 1.00000000000 
+	setSpeedRange min = 2.00000000000 max = 4.00000000000 
+	setEmitTarget x = 1.00000000000 y = 0.50000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = -0.07999999821 z = 0.00000000000 
+	setParticleSize sw = 8.00000000000 ew = 8.00000000000 
+	setColor corner = 0 sr = 119 sg = 119 sb = 119 sa = 255 er = 119 eg = 119 eb = 119 ea = 255 
+	setColor corner = 1 sr = 119 sg = 119 sb = 119 sa = 255 er = 119 eg = 119 eb = 119 ea = 255 
+	setColor corner = 2 sr = 119 sg = 119 sb = 119 sa = 255 er = 119 eg = 119 eb = 119 ea = 255 
+	setColor corner = 3 sr = 119 sg = 119 sb = 119 sa = 255 er = 119 eg = 119 eb = 119 ea = 255 
+	setLODParams min_particles = 0 lod_dist1 = Default_Particle_LOD_Dist1 lod_dist2 = Default_Particle_LOD_Dist2 
+	emit num = 12 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_SC_Alarm05a_particle_params = { 
+	emitScript = emit_JOW_SC_Alarm05a_particle 
+	max = 24 
+	type = FlatRibbonTail 
+	texture = JOW_SC_Star01 
+	blendMode = Blend 
+	history = 5 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_SC_Alarm05a_particle 
+	setEmitRange width = 20.00000000000 height = 20.00000000000 depth = 20.00000000000 
+	setLife min = 1.00000000000 max = 1.50000000000 
+	setAngleSpread spread = 1.00000000000 
+	setSpeedRange min = 6.00000000000 max = 6.00000000000 
+	setEmitTarget x = 1.00000000000 y = 0.50000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = -0.07999999821 z = 0.00000000000 
+	setParticleSize sw = 1.00000000000 ew = 0.00000000000 
+	setColor corner = 0 sr = 255 sg = 148 sb = 66 sa = 196 er = 255 eg = 185 eb = 95 ea = 0 
+	setColor corner = 1 sr = 255 sg = 148 sb = 66 sa = 196 er = 255 eg = 185 eb = 95 ea = 0 
+	setColor corner = 2 sr = 255 sg = 148 sb = 66 sa = 196 er = 255 eg = 185 eb = 95 ea = 0 
+	setColor corner = 3 sr = 255 sg = 148 sb = 66 sa = 196 er = 255 eg = 185 eb = 95 ea = 0 
+	setColor corner = 4 sr = 255 sg = 148 sb = 66 sa = 136 er = 255 eg = 185 eb = 95 ea = 0 
+	setColor corner = 5 sr = 255 sg = 148 sb = 66 sa = 72 er = 255 eg = 185 eb = 95 ea = 0 
+	setColor corner = 6 sr = 255 sg = 148 sb = 66 sa = 0 er = 255 eg = 185 eb = 95 ea = 0 
+	setLODParams min_particles = 0 lod_dist1 = Default_Particle_LOD_Dist1 lod_dist2 = Default_Particle_LOD_Dist2 
+	emit num = 24 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_SC_Books01_particle_params = { 
+	emitScript = emit_JOW_SC_Books01_particle 
+	max = 12 
+	type = Shaded 
+	texture = JOW_SC_Books01 
+	blendMode = Blend 
+	UseRandomUVQuadrants 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_SC_Books01_particle 
+	setEmitRange width = 10.00000000000 height = 10.00000000000 depth = 10.00000000000 
+	setLife min = 2.00000000000 max = 3.00000000000 
+	setAngleSpread spread = 1.00000000000 
+	setSpeedRange min = 2.00000000000 max = 3.00000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = -0.05999999866 z = 0.00000000000 
+	setParticleSize sw = 12.00000000000 ew = 12.00000000000 
+	setColor corner = 0 sr = 89 sg = 89 sb = 89 sa = 255 er = 89 eg = 89 eb = 89 ea = 255 
+	setColor corner = 1 sr = 89 sg = 89 sb = 89 sa = 255 er = 89 eg = 89 eb = 89 ea = 255 
+	setColor corner = 2 sr = 89 sg = 89 sb = 89 sa = 255 er = 89 eg = 89 eb = 89 ea = 255 
+	setColor corner = 3 sr = 89 sg = 89 sb = 89 sa = 255 er = 89 eg = 89 eb = 89 ea = 255 
+	setLODParams min_particles = 0 lod_dist1 = Default_Particle_LOD_Dist1 lod_dist2 = Default_Particle_LOD_Dist2 
+	emit num = 12 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_SC_Books02_particle_params = { 
+	emitScript = emit_JOW_SC_Books02_particle 
+	max = 12 
+	type = Shaded 
+	texture = JOW_SC_Books01 
+	blendMode = Blend 
+	UseRandomUVQuadrants 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_SC_Books02_particle 
+	setEmitRange width = 10.00000000000 height = 10.00000000000 depth = 10.00000000000 
+	setLife min = 2.00000000000 max = 3.00000000000 
+	setAngleSpread spread = 1.00000000000 
+	setSpeedRange min = 2.00000000000 max = 3.00000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = -0.05999999866 z = 0.00000000000 
+	setParticleSize sw = 12.00000000000 ew = 12.00000000000 
+	setColor corner = 0 sr = 89 sg = 89 sb = 89 sa = 255 er = 89 eg = 89 eb = 89 ea = 255 
+	setColor corner = 1 sr = 89 sg = 89 sb = 89 sa = 255 er = 89 eg = 89 eb = 89 ea = 255 
+	setColor corner = 2 sr = 89 sg = 89 sb = 89 sa = 255 er = 89 eg = 89 eb = 89 ea = 255 
+	setColor corner = 3 sr = 89 sg = 89 sb = 89 sa = 255 er = 89 eg = 89 eb = 89 ea = 255 
+	setLODParams min_particles = 0 lod_dist1 = Default_Particle_LOD_Dist1 lod_dist2 = Default_Particle_LOD_Dist2 
+	emit num = 12 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_SC_Books03_particle_params = { 
+	emitScript = emit_JOW_SC_Books03_particle 
+	max = 12 
+	type = Shaded 
+	texture = JOW_SC_Books01 
+	blendMode = Blend 
+	UseRandomUVQuadrants 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_SC_Books03_particle 
+	setEmitRange width = 10.00000000000 height = 10.00000000000 depth = 10.00000000000 
+	setLife min = 2.00000000000 max = 3.00000000000 
+	setAngleSpread spread = 1.00000000000 
+	setSpeedRange min = 2.00000000000 max = 3.00000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = -0.05999999866 z = 0.00000000000 
+	setParticleSize sw = 12.00000000000 ew = 12.00000000000 
+	setColor corner = 0 sr = 89 sg = 89 sb = 89 sa = 255 er = 89 eg = 89 eb = 89 ea = 255 
+	setColor corner = 1 sr = 89 sg = 89 sb = 89 sa = 255 er = 89 eg = 89 eb = 89 ea = 255 
+	setColor corner = 2 sr = 89 sg = 89 sb = 89 sa = 255 er = 89 eg = 89 eb = 89 ea = 255 
+	setColor corner = 3 sr = 89 sg = 89 sb = 89 sa = 255 er = 89 eg = 89 eb = 89 ea = 255 
+	setLODParams min_particles = 0 lod_dist1 = Default_Particle_LOD_Dist1 lod_dist2 = Default_Particle_LOD_Dist2 
+	emit num = 12 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_SC_Books04_particle_params = { 
+	emitScript = emit_JOW_SC_Books04_particle 
+	max = 12 
+	type = Shaded 
+	texture = JOW_SC_Books01 
+	blendMode = Blend 
+	UseRandomUVQuadrants 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_SC_Books04_particle 
+	setEmitRange width = 10.00000000000 height = 10.00000000000 depth = 10.00000000000 
+	setLife min = 2.00000000000 max = 3.00000000000 
+	setAngleSpread spread = 1.00000000000 
+	setSpeedRange min = 2.00000000000 max = 3.00000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = -0.05999999866 z = 0.00000000000 
+	setParticleSize sw = 12.00000000000 ew = 12.00000000000 
+	setColor corner = 0 sr = 89 sg = 89 sb = 89 sa = 255 er = 89 eg = 89 eb = 89 ea = 255 
+	setColor corner = 1 sr = 89 sg = 89 sb = 89 sa = 255 er = 89 eg = 89 eb = 89 ea = 255 
+	setColor corner = 2 sr = 89 sg = 89 sb = 89 sa = 255 er = 89 eg = 89 eb = 89 ea = 255 
+	setColor corner = 3 sr = 89 sg = 89 sb = 89 sa = 255 er = 89 eg = 89 eb = 89 ea = 255 
+	setLODParams min_particles = 0 lod_dist1 = Default_Particle_LOD_Dist1 lod_dist2 = Default_Particle_LOD_Dist2 
+	emit num = 12 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_SC_Books05_particle_params = { 
+	emitScript = emit_JOW_SC_Books05_particle 
+	max = 12 
+	type = Shaded 
+	texture = JOW_SC_Books01 
+	blendMode = Blend 
+	UseRandomUVQuadrants 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_SC_Books05_particle 
+	setEmitRange width = 10.00000000000 height = 10.00000000000 depth = 10.00000000000 
+	setLife min = 2.00000000000 max = 3.00000000000 
+	setAngleSpread spread = 1.00000000000 
+	setSpeedRange min = 2.00000000000 max = 3.00000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = -0.05999999866 z = 0.00000000000 
+	setParticleSize sw = 12.00000000000 ew = 12.00000000000 
+	setColor corner = 0 sr = 89 sg = 89 sb = 89 sa = 255 er = 89 eg = 89 eb = 89 ea = 255 
+	setColor corner = 1 sr = 89 sg = 89 sb = 89 sa = 255 er = 89 eg = 89 eb = 89 ea = 255 
+	setColor corner = 2 sr = 89 sg = 89 sb = 89 sa = 255 er = 89 eg = 89 eb = 89 ea = 255 
+	setColor corner = 3 sr = 89 sg = 89 sb = 89 sa = 255 er = 89 eg = 89 eb = 89 ea = 255 
+	setLODParams min_particles = 0 lod_dist1 = Default_Particle_LOD_Dist1 lod_dist2 = Default_Particle_LOD_Dist2 
+	emit num = 12 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+

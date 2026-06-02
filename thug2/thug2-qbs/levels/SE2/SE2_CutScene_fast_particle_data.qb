@@ -1,0 +1,111 @@
+
+SCRIPT load_cutscene_fast_particle_textures 
+	LoadParticleTexture "particles\\dt_nj_puff01b" 
+ENDSCRIPT
+
+JOW_SE2e1_QPDust01_fast_particle_params = { 
+	Class = ParticleObject 
+	Type = NewFlat 
+	CreatedAtStart 
+	MaxStreams = 2 
+	BoxDimsStart = VECTOR(120, 60, 120) 
+	BoxDimsMid = VECTOR(192, 144, 192) 
+	BoxDimsEnd = VECTOR(240, 192, 240) 
+	pos = VECTOR(-5552.44, 31.54, 6472.79) 
+	MidPosition = VECTOR(-5532.44, 71.77, 6476.63) 
+	EndPosition = VECTOR(-5525.48, 95.05, 6484.41) 
+	UseMidPoint 
+	SuspendDistance = Default_Fast_Particle_Suspend_Dist 
+	LOD_Dist1 = 0.00000000000 
+	LOD_Dist2 = 0.00000000000 
+	EmitRate = 150.00000000000 
+	LifeTime = 1.50000000000 
+	EmitDuration = 0.10000000149 
+	StartRadius = 128.00000000000 
+	MidRadius = 232.00000000000 
+	EndRadius = 256.00000000000 
+	priority = 0 
+	Texture = dt_nj_puff01b 
+	BlendMode = Blend 
+	AlphaCutoff = 1 
+	StartRGB = [ 255 , 143 , 0 ] 
+	StartAlpha = 61 
+	EndRGB = [ 51 , 46 , 38 ] 
+	EndAlpha = 0 
+	MidRGB = [ 51 , 46 , 39 ] 
+	MidAlpha = 64 
+	UseColorMidTime 
+	ColorMidTime = 72 
+	UseGlobalColorModulation 
+} 
+JOW_SE2e1_TunnelDust01_fast_particle_params = { 
+	Class = ParticleObject 
+	Type = NewFlat 
+	CreatedAtStart 
+	MaxStreams = 2 
+	BoxDimsStart = VECTOR(120.00000000000, 120.00000000000, 96.00000000000) 
+	BoxDimsMid = VECTOR(192.00000000000, 192.00000000000, 144.00000000000) 
+	BoxDimsEnd = VECTOR(240.00000000000, 240.00000000000, 192.00000000000) 
+	pos = VECTOR(-3763.77001953125, 179.02000427246, 5204.74023437500) 
+	MidPosition = VECTOR(-3799.11010742188, 178.86999511719, 5293.52978515625) 
+	EndPosition = VECTOR(-3809.43994140625, 186.64999389648, 5329.16992187500) 
+	UseMidPoint 
+	SuspendDistance = Default_Fast_Particle_Suspend_Dist 
+	LOD_Dist1 = 0.00000000000 
+	LOD_Dist2 = 0.00000000000 
+	EmitRate = 150.00000000000 
+	LifeTime = 1.50000000000 
+	EmitDuration = 0.10000000149 
+	StartRadius = 128.00000000000 
+	MidRadius = 232.00000000000 
+	EndRadius = 256.00000000000 
+	priority = 0 
+	Texture = dt_nj_puff01b 
+	BlendMode = Blend 
+	AlphaCutoff = 1 
+	StartRGB = [ 255 , 143 , 0 ] 
+	StartAlpha = 61 
+	EndRGB = [ 51 , 46 , 38 ] 
+	EndAlpha = 0 
+	MidRGB = [ 51 , 46 , 39 ] 
+	MidAlpha = 64 
+	UseColorMidTime 
+	ColorMidTime = 72 
+	UseGlobalColorModulation 
+} 
+JOW_SE2e1_TunnelDust02_fast_particle_params = { 
+	Class = ParticleObject 
+	Type = NewFlat 
+	CreatedAtStart 
+	MaxStreams = 2 
+	BoxDimsStart = VECTOR(120.00000000000, 120.00000000000, 96.00000000000) 
+	BoxDimsMid = VECTOR(192.00000000000, 192.00000000000, 144.00000000000) 
+	BoxDimsEnd = VECTOR(240.00000000000, 240.00000000000, 192.00000000000) 
+	pos = VECTOR(-5977.74023437500, 191.75000000000, 4390.79003906250) 
+	MidPosition = VECTOR(-6013.08007812500, 191.60000610352, 4479.58007812500) 
+	EndPosition = VECTOR(-6023.41015625000, 199.38000488281, 4515.22021484375) 
+	UseMidPoint 
+	SuspendDistance = Default_Fast_Particle_Suspend_Dist 
+	LOD_Dist1 = 0.00000000000 
+	LOD_Dist2 = 0.00000000000 
+	EmitRate = 150.00000000000 
+	LifeTime = 1.50000000000 
+	EmitDuration = 0.10000000149 
+	StartRadius = 128.00000000000 
+	MidRadius = 232.00000000000 
+	EndRadius = 256.00000000000 
+	priority = 0 
+	Texture = dt_nj_puff01b 
+	BlendMode = Blend 
+	AlphaCutoff = 1 
+	StartRGB = [ 255 , 143 , 0 ] 
+	StartAlpha = 61 
+	EndRGB = [ 51 , 46 , 38 ] 
+	EndAlpha = 0 
+	MidRGB = [ 51 , 46 , 39 ] 
+	MidAlpha = 64 
+	UseColorMidTime 
+	ColorMidTime = 72 
+	UseGlobalColorModulation 
+} 
+

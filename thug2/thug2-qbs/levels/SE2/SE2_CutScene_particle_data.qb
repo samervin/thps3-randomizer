@@ -1,0 +1,335 @@
+
+SCRIPT load_cutscene_particle_textures 
+	LoadParticleTexture "particles\\dt_nj_puff01b" 
+	LoadParticleTexture "particles\\jow_sc_star01" 
+	LoadParticleTexture "particles\\jow_se2_dirt01" 
+	LoadParticleTexture "particles\\jow_se2_qpchunks01" 
+	LoadParticleTexture "particles\\jow_se2_qpchunks02" 
+	LoadParticleTexture "particles\\jow_se2_redmetal01" 
+ENDSCRIPT
+
+JOW_SE2e1_MissileFire01_particle_params = { 
+	EnableRotate 
+	emitScript = emit_JOW_SE2e1_MissileFire01_particle 
+	emitterIndependent = 1 
+	FillPath 
+	max = 256 
+	type = Flat 
+	texture = dt_nj_puff01b 
+	blendMode = Blend 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_SE2e1_MissileFire01_particle 
+	setEmitRange width = 3.00000000000 height = 3.00000000000 depth = 3.00000000000 
+	setLife min = 1.00000000000 max = 1.00000000000 
+	setAngleSpread spread = 0.07999999821 
+	setSpeedRange min = 8.00000000000 max = 8.00000000000 
+	setForce x = 0.00000000000 y = 0.03999999911 z = 0.00000000000 
+	setParticleSize sw = 12.00000000000 ew = 48.00000000000 
+	setColor corner = 0 sr = 255 sg = 88 sb = 0 sa = 132 mr = 42 mg = 42 mb = 42 ma = 92 er = 42 eg = 42 eb = 42 ea = 0 midTime = 0.15999999642 
+	emitRate rate = 256.00000000000 
+	wait 2.40000009537 seconds 
+	emitRate rate = 0 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_SE2e1_MissileFire02_particle_params = { 
+	EnableRotate 
+	emitScript = emit_JOW_SE2e1_MissileFire02_particle 
+	emitterIndependent = 1 
+	FillPath 
+	max = 256 
+	type = Flat 
+	texture = dt_nj_puff01b 
+	blendMode = Blend 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_SE2e1_MissileFire02_particle 
+	setEmitRange width = 3.00000000000 height = 3.00000000000 depth = 3.00000000000 
+	setLife min = 1.00000000000 max = 1.00000000000 
+	setAngleSpread spread = 0.07999999821 
+	setSpeedRange min = 8.00000000000 max = 8.00000000000 
+	setForce x = 0.00000000000 y = 0.03999999911 z = 0.00000000000 
+	setParticleSize sw = 12.00000000000 ew = 48.00000000000 
+	setColor corner = 0 sr = 255 sg = 88 sb = 0 sa = 132 mr = 42 mg = 42 mb = 42 ma = 92 er = 42 eg = 42 eb = 42 ea = 0 midTime = 0.15999999642 
+	emitRate rate = 256.00000000000 
+	wait 3.90000009537 seconds 
+	emitRate rate = 0 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_SE2e1_MissileFire03_particle_params = { 
+	EnableRotate 
+	emitScript = emit_JOW_SE2e1_MissileFire03_particle 
+	emitterIndependent = 1 
+	FillPath 
+	max = 256 
+	type = Flat 
+	texture = dt_nj_puff01b 
+	blendMode = Blend 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_SE2e1_MissileFire03_particle 
+	setEmitRange width = 3.00000000000 height = 3.00000000000 depth = 3.00000000000 
+	setLife min = 1.00000000000 max = 1.00000000000 
+	setAngleSpread spread = 0.07999999821 
+	setSpeedRange min = 8.00000000000 max = 8.00000000000 
+	setForce x = 0.00000000000 y = 0.03999999911 z = 0.00000000000 
+	setParticleSize sw = 12.00000000000 ew = 48.00000000000 
+	setColor corner = 0 sr = 255 sg = 88 sb = 0 sa = 132 mr = 42 mg = 42 mb = 42 ma = 92 er = 42 eg = 42 eb = 42 ea = 0 midTime = 0.15999999642 
+	emitRate rate = 256.00000000000 
+	wait 4.84999990463 seconds 
+	emitRate rate = 0 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_SE2e1_QPChunks01_particle_params = { 
+	emitScript = emit_JOW_SE2e1_QPChunks01_particle 
+	max = 48 
+	type = Shaded 
+	texture = JOW_SE2_QPChunks01 
+	blendMode = Blend 
+	UseRandomUVQuadrants 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_SE2e1_QPChunks01_particle 
+	setEmitRange width = 200.00000000000 height = 200.00000000000 depth = 0.00000000000 
+	setLife min = 2.00000000000 max = 2.00000000000 
+	setAngleSpread spread = 1.00000000000 
+	setSpeedRange min = 4.00000000000 max = 16.00000000000 
+	setEmitTarget x = 0.92000001669 y = 0.80000001192 z = 0.38999998569 
+	setForce x = 0.00000000000 y = -0.10000000149 z = 0.00000000000 
+	setParticleSize sw = 24.00000000000 ew = 24.00000000000 
+	setColor corner = 0 sr = 115 sg = 115 sb = 115 sa = 255 er = 115 eg = 115 eb = 115 ea = 255 
+	setColor corner = 1 sr = 115 sg = 115 sb = 115 sa = 255 er = 115 eg = 115 eb = 115 ea = 255 
+	setColor corner = 2 sr = 115 sg = 115 sb = 115 sa = 255 er = 115 eg = 115 eb = 115 ea = 255 
+	setColor corner = 3 sr = 115 sg = 115 sb = 115 sa = 255 er = 115 eg = 115 eb = 115 ea = 255 
+	emit num = 48 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_SE2e1_QPChunks02_particle_params = { 
+	emitScript = emit_JOW_SE2e1_QPChunks02_particle 
+	max = 48 
+	type = Shaded 
+	texture = JOW_SE2_QPChunks02 
+	blendMode = Blend 
+	UseRandomUVQuadrants 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_SE2e1_QPChunks02_particle 
+	setEmitRange width = 200.00000000000 height = 200.00000000000 depth = 0.00000000000 
+	setLife min = 2.00000000000 max = 2.00000000000 
+	setAngleSpread spread = 1.00000000000 
+	setSpeedRange min = 4.00000000000 max = 16.00000000000 
+	setEmitTarget x = 0.92000001669 y = 0.80000001192 z = 0.38999998569 
+	setForce x = 0.00000000000 y = -0.10000000149 z = 0.00000000000 
+	setParticleSize sw = 12.00000000000 ew = 12.00000000000 
+	setColor corner = 0 sr = 140 sg = 140 sb = 140 sa = 255 er = 140 eg = 140 eb = 140 ea = 255 
+	setColor corner = 1 sr = 140 sg = 140 sb = 140 sa = 255 er = 140 eg = 140 eb = 140 ea = 255 
+	setColor corner = 2 sr = 140 sg = 140 sb = 140 sa = 255 er = 140 eg = 140 eb = 140 ea = 255 
+	setColor corner = 3 sr = 140 sg = 140 sb = 140 sa = 255 er = 140 eg = 140 eb = 140 ea = 255 
+	emit num = 48 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_SE2e1_QPStars01_particle_params = { 
+	emitScript = emit_JOW_SE2e1_QPStars01_particle 
+	max = 48 
+	type = FlatRibbonTail 
+	texture = JOW_SC_Star01 
+	blendMode = Blend 
+	history = 6 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_SE2e1_QPStars01_particle 
+	setEmitRange width = 200.00000000000 height = 200.00000000000 depth = 0.00000000000 
+	setLife min = 2.00000000000 max = 2.00000000000 
+	setAngleSpread spread = 1.00000000000 
+	setSpeedRange min = 4.00000000000 max = 16.00000000000 
+	setEmitTarget x = 0.92000001669 y = 0.80000001192 z = 0.38999998569 
+	setForce x = 0.00000000000 y = -0.10000000149 z = 0.00000000000 
+	setParticleSize sw = 2.00000000000 ew = 1.00000000000 
+	setColor corner = 0 sr = 255 sg = 121 sb = 0 sa = 51 er = 255 eg = 121 eb = 0 ea = 0 
+	setColor corner = 1 sr = 255 sg = 121 sb = 0 sa = 180 er = 255 eg = 121 eb = 0 ea = 0 
+	setColor corner = 2 sr = 255 sg = 121 sb = 0 sa = 180 er = 255 eg = 121 eb = 0 ea = 0 
+	setColor corner = 3 sr = 255 sg = 121 sb = 0 sa = 180 er = 255 eg = 121 eb = 0 ea = 0 
+	setColor corner = 4 sr = 255 sg = 121 sb = 0 sa = 180 er = 255 eg = 121 eb = 0 ea = 0 
+	setColor corner = 5 sr = 255 sg = 121 sb = 0 sa = 106 er = 255 eg = 121 eb = 0 ea = 0 
+	setColor corner = 6 sr = 255 sg = 121 sb = 0 sa = 59 er = 255 eg = 121 eb = 0 ea = 0 
+	setColor corner = 7 sr = 255 sg = 121 sb = 0 sa = 0 er = 255 eg = 121 eb = 0 ea = 0 
+	emit num = 48 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_SE2e1_TunnelDirt01_particle_params = { 
+	emitScript = emit_JOW_SE2e1_TunnelDirt01_particle 
+	max = 40 
+	type = Shaded 
+	texture = JOW_SE2_Dirt01 
+	blendMode = Blend 
+	UseRandomUVQuadrants 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_SE2e1_TunnelDirt01_particle 
+	setEmitRange width = 200.00000000000 height = 200.00000000000 depth = 0.00000000000 
+	setLife min = 2.00000000000 max = 2.00000000000 
+	setAngleSpread spread = 1.00000000000 
+	setSpeedRange min = 2.00000000000 max = 14.00000000000 
+	setEmitTarget x = -0.34999999404 y = 0.50000000000 z = 0.93999999762 
+	setForce x = 0.00000000000 y = -0.10000000149 z = 0.00000000000 
+	setParticleSize sw = 36.00000000000 ew = 36.00000000000 
+	setColor corner = 0 sr = 153 sg = 153 sb = 153 sa = 255 er = 153 eg = 153 eb = 153 ea = 255 
+	setColor corner = 1 sr = 153 sg = 153 sb = 153 sa = 255 er = 153 eg = 153 eb = 153 ea = 255 
+	setColor corner = 2 sr = 153 sg = 153 sb = 153 sa = 255 er = 153 eg = 153 eb = 153 ea = 255 
+	setColor corner = 3 sr = 153 sg = 153 sb = 153 sa = 255 er = 153 eg = 153 eb = 153 ea = 255 
+	emit num = 40 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_SE2e1_TunnelDirt02_particle_params = { 
+	emitScript = emit_JOW_SE2e1_TunnelDirt02_particle 
+	max = 40 
+	type = Shaded 
+	texture = JOW_SE2_Dirt01 
+	blendMode = Blend 
+	UseRandomUVQuadrants 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_SE2e1_TunnelDirt02_particle 
+	setEmitRange width = 200.00000000000 height = 200.00000000000 depth = 0.00000000000 
+	setLife min = 2.00000000000 max = 2.00000000000 
+	setAngleSpread spread = 1.00000000000 
+	setSpeedRange min = 2.00000000000 max = 14.00000000000 
+	setEmitTarget x = -0.34999999404 y = 0.50000000000 z = 0.93999999762 
+	setForce x = 0.00000000000 y = -0.10000000149 z = 0.00000000000 
+	setParticleSize sw = 36.00000000000 ew = 36.00000000000 
+	setColor corner = 0 sr = 153 sg = 153 sb = 153 sa = 255 er = 153 eg = 153 eb = 153 ea = 255 
+	setColor corner = 1 sr = 153 sg = 153 sb = 153 sa = 255 er = 153 eg = 153 eb = 153 ea = 255 
+	setColor corner = 2 sr = 153 sg = 153 sb = 153 sa = 255 er = 153 eg = 153 eb = 153 ea = 255 
+	setColor corner = 3 sr = 153 sg = 153 sb = 153 sa = 255 er = 153 eg = 153 eb = 153 ea = 255 
+	emit num = 40 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_SE2e1_TunnelMetal01_particle_params = { 
+	emitScript = emit_JOW_SE2e1_TunnelMetal01_particle 
+	max = 16 
+	type = Shaded 
+	texture = JOW_SE2_RedMetal01 
+	blendMode = Blend 
+	UseRandomUVQuadrants 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_SE2e1_TunnelMetal01_particle 
+	setEmitRange width = 200.00000000000 height = 200.00000000000 depth = 0.00000000000 
+	setLife min = 2.00000000000 max = 2.00000000000 
+	setAngleSpread spread = 1.00000000000 
+	setSpeedRange min = 4.00000000000 max = 16.00000000000 
+	setEmitTarget x = -0.34999999404 y = 0.50000000000 z = 0.93999999762 
+	setForce x = 0.00000000000 y = -0.10000000149 z = 0.00000000000 
+	setParticleSize sw = 20.00000000000 ew = 20.00000000000 
+	setColor corner = 0 sr = 114 sg = 114 sb = 114 sa = 255 er = 114 eg = 114 eb = 114 ea = 255 
+	setColor corner = 1 sr = 114 sg = 114 sb = 114 sa = 255 er = 114 eg = 114 eb = 114 ea = 255 
+	setColor corner = 2 sr = 114 sg = 114 sb = 114 sa = 255 er = 114 eg = 114 eb = 114 ea = 255 
+	setColor corner = 3 sr = 114 sg = 114 sb = 114 sa = 255 er = 114 eg = 114 eb = 114 ea = 255 
+	emit num = 16 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_SE2e1_TunnelMetal02_particle_params = { 
+	emitScript = emit_JOW_SE2e1_TunnelMetal02_particle 
+	max = 16 
+	type = Shaded 
+	texture = JOW_SE2_RedMetal01 
+	blendMode = Blend 
+	UseRandomUVQuadrants 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_SE2e1_TunnelMetal02_particle 
+	setEmitRange width = 200.00000000000 height = 200.00000000000 depth = 0.00000000000 
+	setLife min = 2.00000000000 max = 2.00000000000 
+	setAngleSpread spread = 1.00000000000 
+	setSpeedRange min = 4.00000000000 max = 16.00000000000 
+	setEmitTarget x = -0.37000000477 y = 0.50000000000 z = 0.93000000715 
+	setForce x = 0.00000000000 y = -0.10000000149 z = 0.00000000000 
+	setParticleSize sw = 20.00000000000 ew = 20.00000000000 
+	setColor corner = 0 sr = 114 sg = 114 sb = 114 sa = 255 er = 114 eg = 114 eb = 114 ea = 255 
+	setColor corner = 1 sr = 114 sg = 114 sb = 114 sa = 255 er = 114 eg = 114 eb = 114 ea = 255 
+	setColor corner = 2 sr = 114 sg = 114 sb = 114 sa = 255 er = 114 eg = 114 eb = 114 ea = 255 
+	setColor corner = 3 sr = 114 sg = 114 sb = 114 sa = 255 er = 114 eg = 114 eb = 114 ea = 255 
+	emit num = 16 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_SE2e1_TunnelStars01_particle_params = { 
+	emitScript = emit_JOW_SE2e1_TunnelStars01_particle 
+	max = 48 
+	type = FlatRibbonTail 
+	texture = JOW_SC_Star01 
+	blendMode = Blend 
+	history = 6 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_SE2e1_TunnelStars01_particle 
+	setEmitRange width = 200.00000000000 height = 200.00000000000 depth = 0.00000000000 
+	setLife min = 2.00000000000 max = 2.00000000000 
+	setAngleSpread spread = 1.00000000000 
+	setSpeedRange min = 4.00000000000 max = 16.00000000000 
+	setEmitTarget x = -0.34999999404 y = 0.50000000000 z = 0.93999999762 
+	setForce x = 0.00000000000 y = -0.10000000149 z = 0.00000000000 
+	setParticleSize sw = 2.00000000000 ew = 1.00000000000 
+	setColor corner = 0 sr = 255 sg = 121 sb = 0 sa = 51 er = 255 eg = 121 eb = 0 ea = 0 
+	setColor corner = 1 sr = 255 sg = 121 sb = 0 sa = 180 er = 255 eg = 121 eb = 0 ea = 0 
+	setColor corner = 2 sr = 255 sg = 121 sb = 0 sa = 180 er = 255 eg = 121 eb = 0 ea = 0 
+	setColor corner = 3 sr = 255 sg = 121 sb = 0 sa = 180 er = 255 eg = 121 eb = 0 ea = 0 
+	setColor corner = 4 sr = 255 sg = 121 sb = 0 sa = 180 er = 255 eg = 121 eb = 0 ea = 0 
+	setColor corner = 5 sr = 255 sg = 121 sb = 0 sa = 106 er = 255 eg = 121 eb = 0 ea = 0 
+	setColor corner = 6 sr = 255 sg = 121 sb = 0 sa = 59 er = 255 eg = 121 eb = 0 ea = 0 
+	setColor corner = 7 sr = 255 sg = 121 sb = 0 sa = 0 er = 255 eg = 121 eb = 0 ea = 0 
+	emit num = 48 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_SE2e1_TunnelStars02_particle_params = { 
+	emitScript = emit_JOW_SE2e1_TunnelStars02_particle 
+	max = 48 
+	type = FlatRibbonTail 
+	texture = JOW_SC_Star01 
+	blendMode = Blend 
+	history = 6 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_SE2e1_TunnelStars02_particle 
+	setEmitRange width = 200.00000000000 height = 200.00000000000 depth = 0.00000000000 
+	setLife min = 2.00000000000 max = 2.00000000000 
+	setAngleSpread spread = 1.00000000000 
+	setSpeedRange min = 4.00000000000 max = 16.00000000000 
+	setEmitTarget x = -0.33000001311 y = 0.50000000000 z = 0.93999999762 
+	setForce x = 0.00000000000 y = -0.10000000149 z = 0.00000000000 
+	setParticleSize sw = 2.00000000000 ew = 1.00000000000 
+	setColor corner = 0 sr = 255 sg = 121 sb = 0 sa = 51 er = 255 eg = 121 eb = 0 ea = 0 
+	setColor corner = 1 sr = 255 sg = 121 sb = 0 sa = 180 er = 255 eg = 121 eb = 0 ea = 0 
+	setColor corner = 2 sr = 255 sg = 121 sb = 0 sa = 180 er = 255 eg = 121 eb = 0 ea = 0 
+	setColor corner = 3 sr = 255 sg = 121 sb = 0 sa = 180 er = 255 eg = 121 eb = 0 ea = 0 
+	setColor corner = 4 sr = 255 sg = 121 sb = 0 sa = 180 er = 255 eg = 121 eb = 0 ea = 0 
+	setColor corner = 5 sr = 255 sg = 121 sb = 0 sa = 106 er = 255 eg = 121 eb = 0 ea = 0 
+	setColor corner = 6 sr = 255 sg = 121 sb = 0 sa = 59 er = 255 eg = 121 eb = 0 ea = 0 
+	setColor corner = 7 sr = 255 sg = 121 sb = 0 sa = 0 er = 255 eg = 121 eb = 0 ea = 0 
+	emit num = 48 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+

@@ -1,0 +1,1481 @@
+SCRIPT AP_Setup 
+	AP_Initializer 
+ENDSCRIPT
+
+SCRIPT AP_startup 
+ENDSCRIPT
+
+SCRIPT AP_Initializer 
+ENDSCRIPT
+
+SCRIPT AP_Goals 
+	IF InMultiplayerGame 
+		add_multiplayer_mode_goals 
+	ENDIF 
+	IF NOT InSplitScreenGame 
+		IF ( ( GameModeEquals is_classic ) | ( InNetGame ) ) 
+			printf "adding classic goals" 
+			AddGoal_HighScore { 
+				unlimited_time 
+				classic_mode_goal 
+				goal_text = AP_Classic_HighScore_Text 
+				view_goals_cameras = [ { 
+						name = Cam_Score 
+						frames = 1200 
+						skippable = 1 
+					} 
+				] 
+				difficulty_level_params = [ 
+					{ score = AP_Classic_Easy_HighScore 
+						goal_text = AP_Classic_Easy_HighScore_Text 
+						view_goals_text = AP_Classic_Easy_HighScore_Text 
+					} 
+					{ score = AP_Classic_HighScore 
+						goal_text = AP_Classic_HighScore_Text 
+						view_goals_text = AP_Classic_HighScore_Text 
+					} 
+				] 
+			} 
+			AddGoal_ProScore { 
+				unlimited_time 
+				classic_mode_goal 
+				score = AP_Classic_ProScore 
+				goal_text = AP_Classic_ProScore_Text 
+				view_goals_text = AP_Classic_ProScore_Text 
+				difficulty_level_params = [ 
+					{ score = AP_Classic_Easy_ProScore 
+						goal_text = AP_Classic_Easy_ProScore_Text 
+						view_goals_text = AP_Classic_Easy_ProScore_Text 
+					} 
+					{ score = AP_Classic_ProScore 
+						goal_text = AP_Classic_ProScore_Text 
+						view_goals_text = AP_Classic_ProScore_Text 
+					} 
+				] 
+			} 
+			AddGoal_SickScore { 
+				unlimited_time 
+				classic_mode_goal 
+				score = AP_Classic_SickScore 
+				goal_text = AP_Classic_SickScore_Text 
+				view_goals_text = AP_Classic_SickScore_Text 
+				difficulty_level_params = [ 
+					{ score = AP_Classic_Easy_SickScore 
+						goal_text = AP_Classic_Easy_SickScore_Text 
+						view_goals_text = AP_Classic_Easy_SickScore_Text 
+					} 
+					{ score = AP_Classic_SickScore 
+						goal_text = AP_Classic_SickScore_Text 
+						view_goals_text = AP_Classic_SickScore_Text 
+					} 
+				] 
+			} 
+			AddGoal_HighCombo { 
+				unlimited_time 
+				classic_mode_goal 
+				score = AP_Classic_HighCombo 
+				goal_text = AP_Classic_HighCombo_Text 
+				view_goals_text = AP_Classic_HighCombo_Text 
+				difficulty_level_params = [ 
+					{ score = AP_Classic_Easy_HighCombo 
+						goal_text = AP_Classic_Easy_HighCombo_Text 
+						view_goals_text = AP_Classic_Easy_HighCombo_Text 
+					} 
+					{ score = AP_Classic_HighCombo 
+						goal_text = AP_Classic_HighCombo_Text 
+						view_goals_text = AP_Classic_HighCombo_Text 
+					} 
+				] 
+			} 
+			AddGoal_Skate { 
+				unlimited_time 
+				classic_mode_goal 
+				S_obj_id = TRG_SKATE_S 
+				K_obj_id = TRG_SKATE_K 
+				A_obj_id = TRG_SKATE_A 
+				T_obj_id = TRG_SKATE_T 
+				E_obj_id = TRG_SKATE_E 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(269.2, -676.1, 2630.7) 
+						positionOffset = VECTOR(4852.7, 358.7, -6196.5) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+			} 
+			AddGoal_Combo { 
+				unlimited_time 
+				classic_mode_goal 
+				letter_info = [ 
+					{ obj_id = TRG_COMBO_C text = "C" } 
+					{ obj_id = TRG_COMBO_O text = "O" } 
+					{ obj_id = TRG_COMBO_M text = "M" } 
+					{ obj_id = TRG_COMBO_B text = "B" } 
+					{ obj_id = TRG_COMBO_O01 text = "O" } 
+				] 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(6125.7, -665.4, 4470.5) 
+						positionOffset = VECTOR(4429.3, 99, -5354.8) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+			} 
+			AddGoal_collect { 
+				unlimited_time 
+				init_script = AP_SuitcaseCreate 
+				goal_deactivate_script = AP_SuitcaseKill 
+				classic_mode_goal 
+				version = 2 
+				collect_type = "Suspicious Suitcases" 
+				goal_text = "Crush The Suspicious Suitcases" 
+				view_goals_text = "Crush The Suspicious Suitcases" 
+				use_hud_counter 
+				hud_counter_caption = "Suspicious Suitcases Crushed!" 
+				goal_flags = [ got_1 
+					got_2 
+					got_3 
+					got_4 
+					got_5 
+				] 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(-1484.6, -3696.4, -12967.5) 
+						positionOffset = VECTOR(3113.2, -218.6, -4797.1) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+			} 
+			AddGoal_gaps { 
+				unlimited_time 
+				classic_mode_goal 
+				version = 2 
+				goal_text = "Nose Manual The Escalator Slope (\\b4+\\b7)" 
+				view_goals_text = "Nose Manual The Escalator Slope (\\b4+\\b7)" 
+				goal_description = "Nose Manual The Escalator Slope (\\b4+\\b7)" 
+				goal_flags = [ got_1 
+				] 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(6544.6, -2660.1, 5120.3) 
+						positionOffset = VECTOR(4549.7, 126.6, -4274) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+			} 
+			AddGoal_gaps { 
+				unlimited_time 
+				classic_mode_goal 
+				goal_text = "\\t1 (\\k1) Over The Copter!" 
+				view_goals_text = "\\t1 (\\k1) Over The Copter!" 
+				goal_description = "\\t1 (\\k1) Over The Copter!" 
+				goal_flags = [ got_1 
+				] 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(11666.3, -3159, -5260.8) 
+						positionOffset = VECTOR(2590, 244.3, -7717.7) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+				key_combos = [ Air_CircleU ] 
+			} 
+			AddGoal_SecretTape { 
+				goal_text = "Get the secret tape" 
+				view_goals_text = "Get the secret tape" 
+				classic_mode_goal 
+				goal_description = "Get the secret tape" 
+				secret_tape_id = TRG_AP_SECRETTAPE 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(-10097.3, -3626.3, 6319.9) 
+						positionOffset = VECTOR(-2416.5, -476.2, 745) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+			} 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT AP_SuitcaseCreate 
+	Create prefix = "AP_Suitcase" 
+	Create prefix = "AP_SuitcaseTrigger" 
+	change kg_timesround = 0 
+	ClearExceptionGroup AP_CircBench_grindcheck 
+	kill_panel_message_if_it_exists id = message_circbench 
+ENDSCRIPT
+
+SCRIPT AP_SuitcaseKill 
+	Kill prefix = "AP_Suitcase" 
+	Kill prefix = "AP_SuitcaseTrigger" 
+ENDSCRIPT
+
+kg_circlebench = 0 
+kg_timesround = 0 
+SCRIPT AP_circlebench 
+	GetTriggerArray through 
+	IF TriggerType <trigger_array> 
+		IF OnRail 
+			change kg_circlebench = ( kg_circlebench + 1 ) 
+			SWITCH kg_circlebench 
+				CASE 4 
+					killspawnedscript name = AP_circbench_off 
+					ClearExceptionGroup AP_CircBench_grindcheck 
+					spawnscript AP_circbench_off 
+					playsound HitPotty 
+					change kg_circlebench = 0 
+					change kg_timesround = ( kg_timesround + 1 ) 
+					FormatText TextName = circbench_text "Circular Bench Grind %a Times!" a = kg_timesround 
+					create_panel_message id = message_circbench text = <circbench_text> style = goal_collect_text 
+					printf " bench " 
+			ENDSWITCH 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT AP_circbench_off 
+	ClearExceptionGroup AP_CircBench_grindcheck 
+	SetEventHandler Ex = SkaterExitRail Scr = AP_circbench_reset Group = AP_CircBench_grindcheck 
+	block 
+ENDSCRIPT
+
+SCRIPT AP_circbench_reset 
+	change kg_timesround = 0 
+	ClearExceptionGroup AP_CircBench_grindcheck 
+	kill_panel_message_if_it_exists id = message_circbench 
+ENDSCRIPT
+
+SCRIPT AP_Secret_Tape 
+ENDSCRIPT
+
+SCRIPT AP_Secret_Tape_Got 
+ENDSCRIPT
+
+SCRIPT AP_Suitcase 
+	Kill name = <name> 
+	Kill name = <suitcase> 
+	playsound HitFlag 
+	SWITCH <name> 
+		CASE AP_Suitcase01 
+			goal_collect_got_object goal_id = ap_classic_goal_collect2 flag = got_1 
+			CreateGlobalFlexParticleSystem name = JOW_Suitcase01 params_Script = JOW_AP_Suitcase01_particle_params 
+			JOW_Suitcase01 : Obj_SetPosition position = VECTOR(2992.12, 27.5535, -8545.77) 
+			CreateFastParticleSystem name = JOW_Suitcase01a params_Script = JOW_AP_Suitcase01_fast_particle_params 
+		CASE AP_Suitcase02 
+			goal_collect_got_object goal_id = ap_classic_goal_collect2 flag = got_2 
+			CreateGlobalFlexParticleSystem name = JOW_Suitcase02 params_Script = JOW_AP_Suitcase02_particle_params 
+			JOW_Suitcase02 : Obj_SetPosition position = VECTOR(3004.01, -383.402, -4987.01) 
+			CreateFastParticleSystem name = JOW_Suitcase02a params_Script = JOW_AP_Suitcase02_fast_particle_params 
+		CASE AP_Suitcase03 
+			goal_collect_got_object goal_id = ap_classic_goal_collect2 flag = got_3 
+			CreateGlobalFlexParticleSystem name = JOW_Suitcase03 params_Script = JOW_AP_Suitcase03_particle_params 
+			JOW_Suitcase03 : Obj_SetPosition position = VECTOR(3200.47, -469.604, -520.609) 
+			CreateFastParticleSystem name = JOW_Suitcase03a params_Script = JOW_AP_Suitcase03_fast_particle_params 
+		CASE AP_Suitcase04 
+			goal_collect_got_object goal_id = ap_classic_goal_collect2 flag = got_4 
+			CreateGlobalFlexParticleSystem name = JOW_Suitcase04 params_Script = JOW_AP_Suitcase04_particle_params 
+			JOW_Suitcase04 : Obj_SetPosition position = VECTOR(-1120.32, -1350.68, 4910.93) 
+			CreateFastParticleSystem name = JOW_Suitcase04a params_Script = JOW_AP_Suitcase04_fast_particle_params 
+		CASE AP_Suitcase05 
+			goal_collect_got_object goal_id = ap_classic_goal_collect2 flag = got_5 
+			CreateGlobalFlexParticleSystem name = JOW_Suitcase05 params_Script = JOW_AP_Suitcase05_particle_params 
+			JOW_Suitcase05 : Obj_SetPosition position = VECTOR(4103.41, -467.441, 3001.92) 
+			CreateFastParticleSystem name = JOW_Suitcase05a params_Script = JOW_AP_Suitcase05_fast_particle_params 
+	ENDSWITCH 
+ENDSCRIPT
+
+SCRIPT AP_GapStart_ToRail 
+	StartGap GapID = CommonStairs flags = [ PURE_MANUAL CANCEL_HANG ] trickscript = AP_Classic_Gaps_Got1 
+ENDSCRIPT
+
+SCRIPT AP_GapEnd_ToRail 
+	EndGap GapID = CommonStairs score = 5000 text = "Manual The Slope!" 
+ENDSCRIPT
+
+SCRIPT AP_Classic_Gaps_Got1 
+	GoalManager_SetGoalFlag name = AP_classic_goal_gaps2 got_1 1 
+ENDSCRIPT
+
+Flag_HeliDone = 0 
+SCRIPT AP_Heli_Move_Start2 
+	StartGap GapID = Helicopter flags = [ PURE_AIR CANCEL_HANG ] Keycombo = Air_CircleU trickscript = AP_Classic_Gaps_Got2 
+ENDSCRIPT
+
+SCRIPT AP_Heli_Move_End2 
+	EndGap GapID = Helicopter score = 2000 text = "Helicopter Hop!" 
+ENDSCRIPT
+
+SCRIPT AP_Classic_Gaps_Got2 
+	IF GoalManager_SetGoalFlag name = AP_classic_goal_gaps got_1 1 
+		Kill name = EO_Chopper01 
+		Kill name = EO_Chopper01a 
+		Kill name = EO_Chopper04 
+		Kill name = EO_Chopper03 
+		Kill name = EO_Chopper02a 
+		Kill name = GO_Chopper02a 
+		Kill name = Heli_Shadow01 
+		Kill name = EO_Chopper01b 
+		Kill name = heliGap_01 
+		Kill name = heliGap_02 
+		Kill name = TRG_RailChopper_01 
+		Kill name = TRG_RailChopper_02 
+		Kill name = TRG_RailChopper_03 
+		Kill name = TRG_RailChopper_04 
+		Kill name = TRG_RailChopper_05 
+		Kill name = TRG_RailChopper_06 
+		Create name = GO_Chopper01 
+		Create name = GO_Chopper_propeller02 
+		GO_Chopper01 : Obj_MoveToNode name = TRG_Heli_01 speed = 10 
+		GO_Chopper_propeller02 : Obj_MoveToNode name = TRG_Heli_01 speed = 10 
+		GO_Chopper_propeller02 : Obj_RotY speed = 1600 
+		playsound HitPotty volume = 100.00000000000 pitch = 100.00000000000 
+		wait 1 seconds 
+		GO_Chopper01 : Obj_Rotate absolute = VECTOR(0.00000000000, 25.00000000000, 0.00000000000) time = 2 FLAG_MAX_COORDS 
+		wait 1 seconds 
+		GO_Chopper01 : Obj_Rotate absolute = VECTOR(0.00000000000, -15.00000000000, 0.00000000000) time = 2 FLAG_MAX_COORDS 
+		wait 1 seconds 
+		GO_Chopper01 : Obj_Rotate absolute = VECTOR(0.00000000000, 20.00000000000, 0.00000000000) time = 2 FLAG_MAX_COORDS 
+		wait 1 second 
+		GO_Chopper01 : Obj_Rotate absolute = VECTOR(0.00000000000, -15.00000000000, 0.00000000000) time = 1 FLAG_MAX_COORDS 
+		wait 1 second 
+		GO_Chopper01 : Obj_Rotate absolute = VECTOR(0.00000000000, 25.00000000000, 0.00000000000) time = 5 FLAG_MAX_COORDS 
+		GO_Chopper01 : Obj_Rotate absolute = VECTOR(0.00000000000, -5.00000000000, 0.00000000000) time = 5 FLAG_MAX_COORDS 
+		GO_Chopper01 : Obj_Rotate absolute = VECTOR(0.00000000000, 5.00000000000, 0.00000000000) time = 3 FLAG_MAX_COORDS 
+		GO_Chopper01 : Obj_Rotate absolute = VECTOR(0.00000000000, -25.00000000000, 0.00000000000) time = 3 FLAG_MAX_COORDS 
+		GO_Chopper01 : Obj_MoveToNode name = TRG_Heli_02 speed = 25 
+		GO_Chopper_propeller02 : Obj_MoveToNode name = TRG_Heli_02 speed = 25 
+		GO_Chopper_propeller02 : Obj_RotY speed = 1600 
+		wait 25 seconds 
+		Kill name = GO_Chopper01 
+		Kill name = GO_Chopper_propeller02 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT CA_CreateCars 
+ENDSCRIPT
+
+SCRIPT CA_CreatePeds 
+ENDSCRIPT
+
+SCRIPT CA_KillCars 
+ENDSCRIPT
+
+SCRIPT CA_KillPeds 
+ENDSCRIPT
+
+SCRIPT AP_Shatter 
+	Shatter name = <name> area = 5000 variance = 4 vel_x = 50 vel_y = 50 vel_z = 50 
+	playsound SmashWoodQP 
+	Kill name = <name> 
+ENDSCRIPT
+
+SCRIPT AP_Door_Alarm 
+	IF NOT InMultiplayerGame 
+		skater : Vibrate_Controller_Safe actuator = 1 percent = 35 
+		wait 0.20000000298 seconds 
+		pulse_blur start = 180 speed = 3 
+		skater : Vibrate_Controller_Safe actuator = 1 percent = 0 
+		playsound VC_HockeyBuzzer01 
+		Kill name = g_ug_goalB_light_Off 
+		Create name = g_ug_goalB_light_On 
+		wait 3 seconds 
+		Kill name = g_ug_goalB_light_On 
+		Create name = g_ug_goalB_light_Off 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT AP_Light_Spin 
+	Obj_RotZ speed = 400 FLAG_MAX_COORDS 
+ENDSCRIPT
+
+SCRIPT AP_TeleTrigger 
+	IF NOT ( GameModeEquals is_ctf ) 
+		Create prefix = "AP_NotCTF" 
+		Kill prefix = "AP_YesCTF" 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TRG_TeleDown01 
+	TeleportSkaterToNode nodename = TRG_TeleDown01 orient 
+	Trigger_Speed_Boost speed = 2500 DefSkaterVO = 1 
+	playsound SK6_Menu_Fly_In 
+	IF NOT GotParam cut 
+		create_panel_message { 
+			id = leaving_message 
+			text = "Airport Drop" 
+			pos = PAIR(320.00000000000, 180.00000000000) 
+			rgba = [ 118 , 110 , 14 , 128 ] 
+			pulse_blur 
+			start = 200 
+			speed = 1 
+			scale = 1.00000000000 
+		} 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TOD_Script 
+	SWITCH <current_tod> 
+		CASE morning 
+		CASE day 
+		CASE evening 
+		CASE night 
+		DEFAULT 
+			printf "### no tod set ###" 
+	ENDSWITCH 
+ENDSCRIPT
+
+SCRIPT CPF_GapSound 
+ENDSCRIPT
+
+SCRIPT CPF_AP_GotTicket 
+ENDSCRIPT
+
+SCRIPT CPF_LightPopGap 
+ENDSCRIPT
+
+SCRIPT AP_Palms01 
+	IF isalive name = palms_01 
+		GetTriggerArray spin onto 
+		IF TriggerType <trigger_array> 
+			GetBonus score = 10000 text = "Shredded Palm Tree!" 
+			playsound SmashWoodQP 
+			shatteranddie name = <palm> area = 500 variance = 4 vel_x = 50 vel_y = 50 vel_z = 50 spread = 1 texture_swap = BA_cp_grass_mow_particle 
+			Kill name = <palm> 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT AP_Palms02 
+	IF isalive name = palms_02 
+		GetTriggerArray spin onto 
+		IF TriggerType <trigger_array> 
+			GetBonus score = 10000 text = "Shredded Palm Tree!" 
+			playsound SmashWoodQP 
+			shatteranddie name = <palm> area = 500 variance = 4 vel_x = 50 vel_y = 50 vel_z = 50 spread = 1 texture_swap = BA_cp_grass_mow_particle 
+			Kill name = <palm> 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT AP_Palms03 
+	IF isalive name = palms_03 
+		GetTriggerArray spin onto 
+		IF TriggerType <trigger_array> 
+			GetBonus score = 10000 text = "Shredded Palm Tree!" 
+			playsound SmashWoodQP 
+			shatteranddie name = <palm> area = 500 variance = 4 vel_x = 50 vel_y = 50 vel_z = 50 spread = 1 texture_swap = BA_cp_grass_mow_particle 
+			Kill name = <palm> 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT AP_Esc_Move 
+	BEGIN 
+		Obj_MoveToNode name = TRG_Move_Escalator03 time = 1 
+		Obj_WaitMove 
+		Obj_MoveToNode name = TRG_Move_Escalator01 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT AP_Esc_Move1 
+	BEGIN 
+		Obj_MoveToNode name = TRG_Move_Escalator02 time = 1 
+		Obj_WaitMove 
+		Obj_MoveToNode name = TRG_Move_Escalator01 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT AP_Esc_Move2 
+	BEGIN 
+		Obj_MoveToNode name = TRG_Move_Escalator04 time = 1 
+		Obj_WaitMove 
+		Obj_MoveToNode name = TRG_Move_Escalator06 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT AP_Esc_Move3 
+	BEGIN 
+		Obj_MoveToNode name = TRG_Move_Escalator05 time = 1 
+		Obj_WaitMove 
+		Obj_MoveToNode name = TRG_Move_Escalator06 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT AP_Esc_Move4 
+	BEGIN 
+		Obj_MoveToNode name = TRG_Move_Escalator08 time = 1 
+		Obj_WaitMove 
+		Obj_MoveToNode name = TRG_Move_Escalator07 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT AP_Esc_Move5 
+	BEGIN 
+		Obj_MoveToNode name = TRG_Move_Escalator09 time = 1 
+		Obj_WaitMove 
+		Obj_MoveToNode name = TRG_Move_Escalator07 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Xray_Start 
+	StartGap GapID = AP_Gap_Id_Xray1 flags = [ PURE_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Xray_End 
+	EndGap GapID = AP_Gap_Id_Xray1 text = "X-Ray" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_walkwayhop_Start 
+	StartGap GapID = AP_Gap_Id_walkwayhop1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_walkwayhop_End 
+	EndGap GapID = AP_Gap_Id_walkwayhop1 text = "Walkway Hop" score = 50 
+ENDSCRIPT
+
+SCRIPT AP_Gap_walkwayhop_Start1 
+	StartGap GapID = AP_Gap_Id_walkwayhop2 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_walkwayhop_End1 
+	EndGap GapID = AP_Gap_Id_walkwayhop2 text = "Walkway Hop" score = 50 
+ENDSCRIPT
+
+SCRIPT AP_Gap_walkwayride_Start 
+	StartGap GapID = AP_Gap_Id_walkwayride1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_walkwayride_End 
+	EndGap GapID = AP_Gap_Id_walkwayride1 text = "Walkway Ride1!" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Local_Start 
+	StartGap GapID = AP_Gap_Id_Local1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Local_End 
+	EndGap GapID = AP_Gap_Id_Local1 text = "Local Call" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Illuminatin_Start 
+	StartGap GapID = AP_Gap_Id_Illuminatin1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Illuminatin_End 
+	EndGap GapID = AP_Gap_Id_Illuminatin1 text = "Illuminatin\'" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_HardWay_Start 
+	StartGap GapID = AP_Gap_Id_HardWay1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_HardWay_End 
+	EndGap GapID = AP_Gap_Id_HardWay1 text = "The Hard Way Up!" score = 200 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Draining_Start 
+	StartGap GapID = AP_Gap_Id_Draining1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Draining_End 
+	EndGap GapID = AP_Gap_Id_Draining1 text = "Draining The Vein" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_HighRoad_Start 
+	StartGap GapID = AP_Gap_Id_HighRoad1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_HighRoad_End 
+	EndGap GapID = AP_Gap_Id_HighRoad1 text = "Takin\' The High Road" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_ClaimHop_Start 
+	StartGap GapID = ClaimHop1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_ClaimHop_End 
+	EndGap GapID = ClaimHop1 text = "Claim Hop!" score = 50 
+ENDSCRIPT
+
+SCRIPT AP_Gap_ClaimHop_Start1 
+	StartGap GapID = ClaimHop2 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_ClaimHop_End1 
+	EndGap GapID = ClaimHop2 text = "Claim Hop!" score = 50 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Baggage_Start 
+	StartGap GapID = AP_Gap_Id_Baggage1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Baggage_End 
+	EndGap GapID = AP_Gap_Id_Baggage1 text = "Grind Baggage Claim" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Spotted_Start 
+	StartGap GapID = AP_Gap_Id_Spotted1 flags = [ REQUIRE_LIP CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Spotted_End 
+	EndGap GapID = AP_Gap_Id_Spotted1 text = "Spotted Bags" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Situation_Start 
+	StartGap GapID = AP_Gap_Id_Situation1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Situation_End 
+	EndGap GapID = AP_Gap_Id_Situation1 text = "Escalatin\' The Situation" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Situation_Start1 
+	StartGap GapID = AP_Gap_Id_Situation2 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Situation_End1 
+	EndGap GapID = AP_Gap_Id_Situation2 text = "Escalatin\' The Situation" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Pad_Start 
+	StartGap GapID = AP_Gap_Id_Pad1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Pad_End 
+	EndGap GapID = AP_Gap_Id_Pad1 text = "Through The Pad!" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Heliport_Start 
+	StartGap GapID = AP_Gap_Id_Heliport1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Heliport_End 
+	EndGap GapID = AP_Gap_Id_Heliport1 text = "Heliport Baggage" score = 50 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Heliport_Start1 
+	StartGap GapID = AP_Gap_Id_Heliport2 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Heliport_End1 
+	EndGap GapID = AP_Gap_Id_Heliport2 text = "Heliport Baggage" score = 50 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Flying_Start 
+	StartGap GapID = AP_Gap_Id_Flying1 flags = [ CANCEL_MANUAL REQUIRE_LIP CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Flying_End 
+	EndGap GapID = AP_Gap_Id_Flying1 text = "Flying High In The Sky" score = 200 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Mulin_Start 
+	StartGap GapID = AP_Gap_Id_Mulin1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Mulin_End 
+	EndGap GapID = AP_Gap_Id_Mulin1 text = "Mulin\'" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_LookOut_Start 
+	StartGap GapID = AP_Gap_Id_LookOut1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_LookOut_End 
+	EndGap GapID = AP_Gap_Id_LookOut1 text = "Look Out!!" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_SLookOut_Start 
+	StartGap GapID = AP_Gap_Id_SLookOut1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_SLookOut_End 
+	EndGap GapID = AP_Gap_Id_SLookOut1 text = "S Look Out!!" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Droppin_Start 
+	StartGap GapID = AP_Gap_Id_Droppin1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Droppin_End 
+	EndGap GapID = AP_Gap_Id_Droppin1 text = "Droppin\' Science!" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Lighten_Start 
+	StartGap GapID = AP_Gap_Id_Lighten1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Lighten_End 
+	EndGap GapID = AP_Gap_Id_Lighten1 text = "Lighten Up!" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Long_Start 
+	StartGap GapID = AP_Gap_Id_Long1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Long_End 
+	EndGap GapID = AP_Gap_Id_Long1 text = "Long Distance" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_walkwayride2_Start 
+	StartGap GapID = AP_Gap_Id_walkwayride2 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_walkwayride2_End 
+	EndGap GapID = AP_Gap_Id_walkwayride2 text = "Walkway Ride2!" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_OA_Start 
+	StartGap GapID = AP_Gap_Id_OA1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_OA_End 
+	EndGap GapID = AP_Gap_Id_OA1 text = "O The S" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Last_Start 
+	StartGap GapID = AP_Gap_Id_Last1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Last_End 
+	EndGap GapID = AP_Gap_Id_Last1 text = "Last High Light!" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_GateHop_Start 
+	StartGap GapID = AP_Gap_Id_GateHop1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_GateHop_End 
+	EndGap GapID = AP_Gap_Id_GateHop1 text = "Gate Hop!" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_GateHop_Start1 
+	StartGap GapID = AP_Gap_Id_GateHop2 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_GateHop_End1 
+	EndGap GapID = AP_Gap_Id_GateHop2 text = "Gate Hop!" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_GateHop_Start2 
+	StartGap GapID = AP_Gap_Id_GateHop22 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_GateHop_End2 
+	EndGap GapID = AP_Gap_Id_GateHop22 text = "Gate Hop!" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_GateHop_Start3 
+	StartGap GapID = AP_Gap_Id_GateHop3 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_GateHop_End3 
+	EndGap GapID = AP_Gap_Id_GateHop3 text = "Gate Hop!" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_GateHop_Start4 
+	StartGap GapID = AP_Gap_Id_GateHop4 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_GateHop_End4 
+	EndGap GapID = AP_Gap_Id_GateHop4 text = "Gate Hop!" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_GateHop_Start5 
+	StartGap GapID = AP_Gap_Id_GateHop5 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_GateHop_End5 
+	EndGap GapID = AP_Gap_Id_GateHop5 text = "Gate Hop!" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_GateHop_Start6 
+	StartGap GapID = AP_Gap_Id_GateHop6 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_GateHop_End6 
+	EndGap GapID = AP_Gap_Id_GateHop6 text = "Gate Hop!" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_GateHop_Start7 
+	StartGap GapID = AP_Gap_Id_GateHop7 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_GateHop_End7 
+	EndGap GapID = AP_Gap_Id_GateHop7 text = "Gate Hop!" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_GateHop_Start8 
+	StartGap GapID = AP_Gap_Id_GateHop8 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_GateHop_End8 
+	EndGap GapID = AP_Gap_Id_GateHop8 text = "Gate Hop!" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_GateHop_Start9 
+	StartGap GapID = AP_Gap_Id_GateHop9 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_GateHop_End9 
+	EndGap GapID = AP_Gap_Id_GateHop9 text = "Gate Hop!" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_GateTrans_Start 
+	StartGap GapID = AP_Gap_Id_GateTrans1 flags = [ CANCEL_GROUND REQUIRE_GRIND CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_GateTrans_End 
+	EndGap GapID = AP_Gap_Id_GateTrans1 text = "Gate Transfer!" score = 300 
+ENDSCRIPT
+
+SCRIPT AP_Gap_GateTrans_Start1 
+	StartGap GapID = AP_Gap_Id_GateTrans2 flags = [ CANCEL_GROUND REQUIRE_GRIND CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_GateTrans_End1 
+	EndGap GapID = AP_Gap_Id_GateTrans2 text = "Gate Transfer!" score = 300 
+ENDSCRIPT
+
+SCRIPT AP_Gap_GateTrans_Start2 
+	StartGap GapID = AP_Gap_Id_GateTrans22 flags = [ CANCEL_GROUND REQUIRE_GRIND CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_GateTrans_End2 
+	EndGap GapID = AP_Gap_Id_GateTrans22 text = "Gate Transfer!" score = 300 
+ENDSCRIPT
+
+SCRIPT AP_Gap_GateTrans_Start3 
+	StartGap GapID = AP_Gap_Id_GateTrans3 flags = [ CANCEL_GROUND REQUIRE_GRIND CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_GateTrans_End3 
+	EndGap GapID = AP_Gap_Id_GateTrans3 text = "Gate Transfer!" score = 300 
+ENDSCRIPT
+
+SCRIPT AP_Gap_GateTrans_Start4 
+	StartGap GapID = AP_Gap_Id_GateTrans4 flags = [ CANCEL_GROUND REQUIRE_GRIND CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_GateTrans_End4 
+	EndGap GapID = AP_Gap_Id_GateTrans4 text = "Gate Transfer!" score = 300 
+ENDSCRIPT
+
+SCRIPT AP_Gap_GateTrans_Start5 
+	StartGap GapID = AP_Gap_Id_GateTrans5 flags = [ CANCEL_GROUND REQUIRE_GRIND CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_GateTrans_End5 
+	EndGap GapID = AP_Gap_Id_GateTrans5 text = "Gate Transfer!" score = 300 
+ENDSCRIPT
+
+SCRIPT AP_Gap_GateTrans_Start6 
+	StartGap GapID = AP_Gap_Id_GateTrans6 flags = [ CANCEL_GROUND REQUIRE_GRIND CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_GateTrans_End6 
+	EndGap GapID = AP_Gap_Id_GateTrans6 text = "Gate Transfer!" score = 300 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Musical_Start 
+	StartGap GapID = AP_Gap_Id_Musical1 flags = [ CANCEL_GROUND REQUIRE_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Musical_End 
+	EndGap GapID = AP_Gap_Id_Musical1 text = "Musical Chairs" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Musical_Start1 
+	StartGap GapID = AP_Gap_Id_Musical2 flags = [ CANCEL_GROUND REQUIRE_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Musical_End1 
+	EndGap GapID = AP_Gap_Id_Musical2 text = "Musical Chairs" score = 100 
+ENDSCRIPT
+
+SCRIPT BO_OfficeWindowScript 
+ENDSCRIPT
+
+SCRIPT AP_Gap_English_EndGap 
+	GetBonus score = 200 text = "Destruction Bonus" 
+	Kill name = TRGP_EndArea_Flag_England 
+	CreateGlobalFlexParticleSystem name = JOW_EnglishScraps01 params_Script = JOW_AP_FlagScraps01_particle_params 
+	JOW_EnglishScraps01 : Obj_SetPosition position = VECTOR(-469.16101074219, -920.29998779297, 7287.68017578125) 
+	create_panel_block { id = InteriorTest text = "Football? Soccer?" rgba = { 144 , 144 , 144 , 128 } pos = PAIR(320.00000000000, 380.00000000000) 
+		dims = PAIR(160.00000000000, 140.00000000000) 
+		time = 1000 
+		just = { left left } 
+		internal_just = { left left } 
+	} 
+	playsound HitPotty volume = 100.00000000000 pitch = 100.00000000000 
+	Kill name = TRGP_EndArea_Flag_Trig06 
+	Kill name = TRGP_EndArea_Flag_Trig08 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Russia_EndGap 
+	GetBonus score = 200 text = "Destruction Bonus" 
+	Kill name = TRGP_EndArea_Russia 
+	CreateGlobalFlexParticleSystem name = JOW_RussiaScraps01 params_Script = JOW_AP_FlagScraps01_particle_params 
+	JOW_RussiaScraps01 : Obj_SetPosition position = VECTOR(-890.07598876953, -920.29998779297, 7909.81005859375) 
+	create_panel_block { id = InteriorTest 
+		text = "Welcome To Mother Russia" 
+		rgba = { 144 , 144 , 144 , 128 } 
+		pos = PAIR(320.00000000000, 340.00000000000) 
+		dims = PAIR(640.00000000000, 25.00000000000) 
+		time = 1000 
+		just = { left left } 
+		internal_just = { left left } 
+	} 
+	playsound HitPotty volume = 100.00000000000 pitch = 100.00000000000 
+	Kill name = TRGP_EndArea_Flag_Trig09 
+	Kill name = TRGP_EndArea_Flag_Trig11 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Mex_EndGap 
+	GetBonus score = 200 text = "Destruction Bonus" 
+	Kill name = TRGP_EndArea_Mexico 
+	CreateGlobalFlexParticleSystem name = JOW_MexicoScraps01 params_Script = JOW_AP_FlagScraps01_particle_params 
+	JOW_MexicoScraps01 : Obj_SetPosition position = VECTOR(-1602.48999023438, -920.29998779297, 8693.66015625000) 
+	create_panel_block { id = InteriorTest 
+		text = "South Of The Border" 
+		rgba = { 144 , 144 , 144 , 128 } 
+		pos = PAIR(320.00000000000, 340.00000000000) 
+		dims = PAIR(640.00000000000, 25.00000000000) 
+		time = 1000 
+		just = { left left } 
+		internal_just = { left left } 
+	} 
+	playsound HitPotty volume = 100.00000000000 pitch = 100.00000000000 
+	Kill name = TRGP_EndArea_Flag_Trig14 
+	Kill name = TRGP_EndArea_Flag_Trig16 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Repu_EndGap 
+	GetBonus score = 200 text = "Destruction Bonus" 
+	Kill name = TRGP_EndArea_Republic 
+	CreateGlobalFlexParticleSystem name = JOW_RepublicScraps01 params_Script = JOW_AP_FlagScraps01_particle_params 
+	JOW_RepublicScraps01 : Obj_SetPosition position = VECTOR(-2677.04003906250, -920.29998779297, 8412.48046875000) 
+	create_panel_block { id = InteriorTest 
+		text = "Republique Du Tchad" 
+		rgba = { 144 , 144 , 144 , 128 } 
+		pos = PAIR(320.00000000000, 340.00000000000) 
+		dims = PAIR(640.00000000000, 25.00000000000) 
+		time = 1000 
+		just = { left left } 
+		internal_just = { left left } 
+	} 
+	playsound HitPotty volume = 100.00000000000 pitch = 100.00000000000 
+	Kill name = TRGP_EndArea_Flag_Trig17 
+	Kill name = TRGP_EndArea_Flag_Trig19 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Where_EndGap 
+	GetBonus score = 200 text = "Destruction Bonus" 
+	Kill name = TRGP_EndArea_RandomFlag 
+	CreateGlobalFlexParticleSystem name = JOW_RandomScraps01 params_Script = JOW_AP_FlagScraps01_particle_params 
+	JOW_RandomScraps01 : Obj_SetPosition position = VECTOR(-2205.01000976562, -920.29998779297, 7387.16992187500) 
+	create_panel_block { id = InteriorTest 
+		text = "Where Are We?" 
+		rgba = { 144 , 144 , 144 , 128 } 
+		pos = PAIR(320.00000000000, 340.00000000000) 
+		dims = PAIR(640.00000000000, 25.00000000000) 
+		time = 1000 
+		just = { left left } 
+		internal_just = { left left } 
+	} 
+	playsound HitPotty volume = 100.00000000000 pitch = 100.00000000000 
+	Kill name = TRGP_EndArea_Flag_Trig22 
+	Kill name = TRGP_EndArea_Flag_Trig24 
+ENDSCRIPT
+
+SCRIPT AP_Gap_French_EndGap 
+	GetBonus score = 200 text = "Destruction Bonus" 
+	Kill name = TRGP_EndArea_France 
+	CreateGlobalFlexParticleSystem name = JOW_FranceScraps01 params_Script = JOW_AP_FlagScraps01_particle_params 
+	JOW_FranceScraps01 : Obj_SetPosition position = VECTOR(-2205.02001953125, -920.29998779297, 2130.27001953125) 
+	create_panel_block { id = InteriorTest 
+		text = "Mon Dieu!" 
+		rgba = { 144 , 144 , 144 , 128 } 
+		pos = PAIR(320.00000000000, 340.00000000000) 
+		dims = PAIR(640.00000000000, 25.00000000000) 
+		time = 1000 
+		just = { left left } 
+		internal_just = { left left } 
+	} 
+	playsound HitPotty volume = 100.00000000000 pitch = 100.00000000000 
+	Kill name = TRGP_EndArea_Flag_Trig25 
+	Kill name = TRGP_EndArea_Flag_Trig27 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Aussie_EndGap 
+	GetBonus score = 200 text = "Destruction Bonus" 
+	Kill name = TRGP_EndArea_Australia 
+	CreateGlobalFlexParticleSystem name = JOW_AustraliaScraps01 params_Script = JOW_AP_FlagScraps01_particle_params 
+	JOW_AustraliaScraps01 : Obj_SetPosition position = VECTOR(-2677.05004882812, -920.29998779297, 1104.95996093750) 
+	create_panel_block { id = InteriorTest 
+		text = "Australian For Kick Ass Game, Mate!" 
+		rgba = { 144 , 144 , 144 , 128 } 
+		pos = PAIR(320.00000000000, 340.00000000000) 
+		dims = PAIR(640.00000000000, 25.00000000000) 
+		time = 1000 
+		just = { left left } 
+		internal_just = { left left } 
+	} 
+	playsound HitPotty volume = 100.00000000000 pitch = 100.00000000000 
+	Kill name = TRGP_EndArea_Flag_Trig30 
+	Kill name = TRGP_EndArea_Flag_Trig32 
+ENDSCRIPT
+
+SCRIPT AP_Gap_USA_EndGap 
+	GetBonus score = 200 text = "Destruction Bonus" 
+	Kill name = TRGP_EndArea_USA 
+	CreateGlobalFlexParticleSystem name = JOW_USAScraps01 params_Script = JOW_AP_FlagScraps01_particle_params 
+	JOW_USAScraps01 : Obj_SetPosition position = VECTOR(-1604.01000976562, -920.29998779297, 824.65197753906) 
+	create_panel_block { id = InteriorTest 
+		text = "Don\'t Mess With Texas" 
+		rgba = { 144 , 144 , 144 , 128 } 
+		pos = PAIR(320.00000000000, 340.00000000000) 
+		dims = PAIR(640.00000000000, 25.00000000000) 
+		time = 1000 
+		just = { left left } 
+		internal_just = { left left } 
+	} 
+	playsound HitPotty volume = 100.00000000000 pitch = 100.00000000000 
+	Kill name = TRGP_EndArea_Flag_Trig34 
+	Kill name = TRGP_EndArea_Flag_Trig36 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Can_EndGap 
+	GetBonus score = 200 text = "Destruction Bonus" 
+	Kill name = TRGP_EndArea_Canada 
+	CreateGlobalFlexParticleSystem name = JOW_CanadaScraps01 params_Script = JOW_AP_FlagScraps01_particle_params 
+	JOW_CanadaScraps01 : Obj_SetPosition position = VECTOR(-890.90002441406, -920.29998779297, 1608.41003417969) 
+	create_panel_block { id = InteriorTest 
+		text = "Bonjour. Eh?" 
+		rgba = { 144 , 144 , 144 , 128 } 
+		pos = PAIR(320.00000000000, 340.00000000000) 
+		dims = PAIR(640.00000000000, 25.00000000000) 
+		time = 1000 
+		just = { left left } 
+		internal_just = { left left } 
+	} 
+	playsound HitPotty volume = 100.00000000000 pitch = 100.00000000000 
+	Kill name = TRGP_EndArea_Flag_Trig37 
+	Kill name = TRGP_EndArea_Flag_Trig39 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Bahama_EndGap 
+	GetBonus score = 200 text = "Destruction Bonus" 
+	Kill name = TRGP_EndArea_TheBahamas 
+	CreateGlobalFlexParticleSystem name = JOW_BahamasScraps01 params_Script = JOW_AP_FlagScraps01_particle_params 
+	JOW_BahamasScraps01 : Obj_SetPosition position = VECTOR(-467.50399780273, -920.29998779297, 2228.40991210938) 
+	create_panel_block { id = InteriorTest 
+		text = "Bahamas... Beautiful" 
+		rgba = { 144 , 144 , 144 , 128 } 
+		pos = PAIR(320.00000000000, 340.00000000000) 
+		dims = PAIR(640.00000000000, 25.00000000000) 
+		time = 1000 
+		just = { left left } 
+		internal_just = { left left } 
+	} 
+	playsound HitPotty volume = 100.00000000000 pitch = 100.00000000000 
+	Kill name = TRGP_EndArea_Flag_Trig41 
+	Kill name = TRGP_EndArea_Flag_Trig43 
+ENDSCRIPT
+
+SCRIPT TRG_AP_Car01 
+	Car_Generic01 sticktoground TurnDist = 70 DefaultSpeed = 10 
+ENDSCRIPT
+
+SCRIPT AP_TELE_Bottom 
+	IF NOT ( GameModeEquals is_ctf ) 
+		TeleportSkaterToNode nodename = TRG_Restart_Start01 
+		GetBonus score = 5000 
+		text = "Rewind Bonus" 
+		create_panel_message { 
+			id = leaving_message 
+			text = "Rewind!" 
+			pos = PAIR(320.00000000000, 180.00000000000) 
+			rgba = [ 118 , 110 , 14 , 128 ] 
+			pulse_blur 
+			start = 200 
+			speed = 1 
+			scale = 1.00000000000 
+		} 
+		playsound LA_Skid_11 vol = 50 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT ESC_Ground 
+	Obj_SetPathVelocity 0.50000000000 mph 
+	Obj_PathHeading Off 
+	Obj_FollowPathLinked 
+ENDSCRIPT
+
+SCRIPT AP_GO_Baggage 
+	EO_LowArea_43 : Obj_RotZ speed = 50 FLAG_MAX_COORDS 
+	GO_LowArea_42 : Obj_RotZ speed = 30 FLAG_MAX_COORDS 
+	LowArea_reflection01 : Obj_RotZ speed = 30 FLAG_MAX_COORDS 
+ENDSCRIPT
+
+SCRIPT AP_Vent_Shatter1 
+	GetBonus score = 5000 text = "Roof Shattered!" 
+	shatteranddie name = TRGP_BustVent02 area = 500 variance = 4 vel_x = 50 vel_y = 50 vel_z = 50 spread = 1 
+	playsound SmashWoodQP vol = 100 
+ENDSCRIPT
+
+SCRIPT AP_Vent_Shatter2 
+	GetBonus score = 5000 text = "Roof Shattered!" 
+	shatteranddie name = TRGP_BustVent12 area = 500 variance = 4 vel_x = 50 vel_y = 50 vel_z = 50 spread = 1 
+	playsound SmashWoodQP vol = 100 
+ENDSCRIPT
+
+SCRIPT AP_Roof_Shatter1 
+	GetBonus score = 5000 text = "Roof Shattered!" 
+	shatteranddie name = AP_Shatter_Roof_03 area = 500 variance = 4 vel_x = 50 vel_y = 50 vel_z = 50 spread = 1 
+	Kill name = AP_Shatter_Roof_01 
+	playsound SmashWoodQP vol = 100 
+ENDSCRIPT
+
+SCRIPT AP_Roof_Shatter2 
+	GetBonus score = 5000 text = "Roof Shattered!" 
+	shatteranddie name = AP_Shatter_Roof_04 area = 500 variance = 4 vel_x = 50 vel_y = 50 vel_z = 50 spread = 1 
+	Kill name = AP_Shatter_Roof_02 
+	playsound SmashWoodQP vol = 100 
+ENDSCRIPT
+
+SCRIPT AP_Roof_Shatter3 
+	GetBonus score = 5000 text = "Roof Shattered!" 
+	shatteranddie name = AP_Break01 area = 500 variance = 4 vel_x = 50 vel_y = 50 vel_z = 50 spread = 1 
+	playsound SmashWoodQP vol = 100 
+	Kill name = AP_Break01 
+ENDSCRIPT
+
+SCRIPT AP_Roof_Shatter4 
+	GetBonus score = 5000 text = "Roof Shattered!" 
+	shatteranddie name = AP_Break03 area = 500 variance = 4 vel_x = 50 vel_y = 50 vel_z = 50 spread = 1 
+	playsound SmashWoodQP vol = 100 
+	Kill name = AP_Break03 
+ENDSCRIPT
+
+SCRIPT AP_Roof_Shatter5 
+	GetBonus score = 5000 text = "Roof Shattered!" 
+	shatteranddie name = AP_Break02 area = 500 variance = 4 vel_x = 50 vel_y = 50 vel_z = 50 spread = 1 
+	playsound SmashWoodQP vol = 100 
+	Kill name = AP_Break02 
+ENDSCRIPT
+
+SCRIPT AP_Police_Shatter1 
+	GetBonus score = 500 text = "Police Tape Broken!" 
+	shatteranddie name = Police_Line01 area = 500 variance = 4 vel_x = 50 vel_y = 50 vel_z = 50 spread = 1 texture_swap = police_line2 
+	Create name = Police_Line07 
+	shatteranddie name = Police_Line07 area = 500 variance = 4 vel_x = 50 vel_y = 50 vel_z = 50 spread = 1 texture_swap = police_line2 
+	playsound HitFlag vol = 100 
+ENDSCRIPT
+
+SCRIPT AP_Police_Shatter2 
+	GetBonus score = 500 text = "Police Tape Broken!" 
+	shatteranddie name = Police_Line02 area = 500 variance = 4 vel_x = 50 vel_y = 50 vel_z = 50 spread = 1 texture_swap = police_line2 
+	Create name = Police_Line07 
+	shatteranddie name = Police_Line07 area = 500 variance = 4 vel_x = 50 vel_y = 50 vel_z = 50 spread = 1 texture_swap = police_line2 
+	playsound HitFlag vol = 100 
+ENDSCRIPT
+
+SCRIPT AP_Police_Shatter3 
+	GetBonus score = 500 text = "Police Tape Broken!" 
+	shatteranddie name = Police_Line03 area = 500 variance = 4 vel_x = 50 vel_y = 50 vel_z = 50 spread = 1 texture_swap = police_line2 
+	Create name = Police_Line07 
+	shatteranddie name = Police_Line07 area = 500 variance = 4 vel_x = 50 vel_y = 50 vel_z = 50 spread = 1 texture_swap = police_line2 
+	playsound HitFlag vol = 100 
+ENDSCRIPT
+
+SCRIPT AP_Police_Shatter4 
+	GetBonus score = 500 text = "Police Tape Broken!" 
+	shatteranddie name = Police_Line04 area = 500 variance = 4 vel_x = 50 vel_y = 50 vel_z = 50 spread = 1 texture_swap = police_line2 
+	Create name = Police_Line07 
+	shatteranddie name = Police_Line07 area = 500 variance = 4 vel_x = 50 vel_y = 50 vel_z = 50 spread = 1 texture_swap = police_line2 
+	playsound HitFlag vol = 100 
+ENDSCRIPT
+
+SCRIPT AP_Police_Shatter5 
+	GetBonus score = 500 text = "Police Tape Broken!" 
+	shatteranddie name = Police_Line05 area = 500 variance = 4 vel_x = 50 vel_y = 50 vel_z = 50 spread = 1 texture_swap = police_line2 
+	Create name = Police_Line07 
+	shatteranddie name = Police_Line07 area = 500 variance = 4 vel_x = 50 vel_y = 50 vel_z = 50 spread = 1 texture_swap = police_line2 
+	playsound HitFlag vol = 100 
+ENDSCRIPT
+
+SCRIPT AP_Police_Shatter6 
+	GetBonus score = 500 text = "Police Tape Broken!" 
+	shatteranddie name = Police_Line06 area = 500 variance = 4 vel_x = 50 vel_y = 50 vel_z = 50 spread = 1 texture_swap = police_line2 
+	Create name = Police_Line07 
+	shatteranddie name = Police_Line07 area = 500 variance = 4 vel_x = 50 vel_y = 50 vel_z = 50 spread = 1 texture_swap = police_line2 
+	playsound HitFlag vol = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_RailHop_Start 
+	StartGap GapID = AP_Gap_Id_RailHop1 flags = [ CANCEL_GROUND REQUIRE_GRIND CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_RailHop_End 
+	EndGap GapID = AP_Gap_Id_RailHop1 text = "Rail Hop" score = 50 
+ENDSCRIPT
+
+SCRIPT AP_Gap_SpiralN_Start 
+	StartGap GapID = AP_Gap_Id_SpiralN1 flags = [ CANCEL_GROUND REQUIRE_GRIND CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_SpiralN_End 
+	EndGap GapID = AP_Gap_Id_SpiralN1 text = "Spiral Stairs North" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_SpiralS_Start 
+	StartGap GapID = AP_Gap_Id_SpiralS1 flags = [ CANCEL_GROUND REQUIRE_GRIND CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_SpiralS_End 
+	EndGap GapID = AP_Gap_Id_SpiralS1 text = "Spiral Stairs South" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_EconLip_Start 
+	StartGap GapID = AP_Gap_Id_EconLip1 flags = [ REQUIRE_LIP CANCEL_GROUND CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_EconLip_End 
+	EndGap GapID = AP_Gap_Id_EconLip1 text = "Economy Class Lip" score = 250 
+ENDSCRIPT
+
+SCRIPT AP_Gap_BusLip_Start 
+	StartGap GapID = AP_Gap_Id_BusLip1 flags = [ REQUIRE_LIP CANCEL_GROUND CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_BusLip_End 
+	EndGap GapID = AP_Gap_Id_BusLip1 text = "Business Class Lip!" score = 500 
+ENDSCRIPT
+
+SCRIPT AP_Gap_LightPop_Start 
+	StartGap GapID = AP_Gap_Id_LightPop1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_LightPop_End 
+	EndGap GapID = AP_Gap_Id_LightPop1 text = "Light Pop!" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_LightHop_Start 
+	StartGap GapID = AP_Gap_Id_LightHop1 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_LightHop_End 
+	EndGap GapID = AP_Gap_Id_LightHop1 text = "Light Hop!" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_LightHop_Start1 
+	StartGap GapID = AP_Gap_Id_LightHop11 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_LightHop_End1 
+	EndGap GapID = AP_Gap_Id_LightHop11 text = "Light Hop!" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_LightHop_Start2 
+	StartGap GapID = AP_Gap_Id_LightHop12 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_LightHop_End2 
+	EndGap GapID = AP_Gap_Id_LightHop12 text = "Light Hop!" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_LightHop_Start3 
+	StartGap GapID = AP_Gap_Id_LightHop13 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_LightHop_End3 
+	EndGap GapID = AP_Gap_Id_LightHop13 text = "Light Hop!" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_LightHop_Start4 
+	StartGap GapID = AP_Gap_Id_LightHop14 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_LightHop_End4 
+	EndGap GapID = AP_Gap_Id_LightHop14 text = "Light Hop!" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_LightHop_Start5 
+	StartGap GapID = AP_Gap_Id_LightHop15 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_LightHop_End5 
+	EndGap GapID = AP_Gap_Id_LightHop15 text = "Light Hop!" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_LightHop_Start6 
+	StartGap GapID = AP_Gap_Id_LightHop16 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_LightHop_End6 
+	EndGap GapID = AP_Gap_Id_LightHop16 text = "Light Hop!" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_LightHop_Start7 
+	StartGap GapID = AP_Gap_Id_LightHop17 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_LightHop_End7 
+	EndGap GapID = AP_Gap_Id_LightHop17 text = "Light Hop!" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_LightHop_Start8 
+	StartGap GapID = AP_Gap_Id_LightHop18 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_LightHop_End8 
+	EndGap GapID = AP_Gap_Id_LightHop18 text = "Light Hop!" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_LightHop_Start9 
+	StartGap GapID = AP_Gap_Id_LightHop19 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_LightHop_End9 
+	EndGap GapID = AP_Gap_Id_LightHop19 text = "Light Hop!" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_LightHop_Start10 
+	StartGap GapID = AP_Gap_Id_LightHop10 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_LightHop_End10 
+	EndGap GapID = AP_Gap_Id_LightHop10 text = "Light Hop!" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_LightHop_Start11 
+	StartGap GapID = AP_Gap_Id_LightHop111 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_LightHop_End11 
+	EndGap GapID = AP_Gap_Id_LightHop111 text = "Light Hop!" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_LightHop_Start12 
+	StartGap GapID = AP_Gap_Id_LightHop112 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_LightHop_End12 
+	EndGap GapID = AP_Gap_Id_LightHop112 text = "Light Hop!" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_LightHop_Start13 
+	StartGap GapID = AP_Gap_Id_LightHop113 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_LightHop_End13 
+	EndGap GapID = AP_Gap_Id_LightHop113 text = "Light Hop!" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_LightHop_Start14 
+	StartGap GapID = AP_Gap_Id_LightHop114 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_LightHop_End14 
+	EndGap GapID = AP_Gap_Id_LightHop114 text = "Light Hop!" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_LightHop_Start15 
+	StartGap GapID = AP_Gap_Id_LightHop115 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_LightHop_End15 
+	EndGap GapID = AP_Gap_Id_LightHop115 text = "Light Hop!" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_LightHop_Start16 
+	StartGap GapID = AP_Gap_Id_LightHop116 flags = [ CANCEL_GROUND CANCEL_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_LightHop_End16 
+	EndGap GapID = AP_Gap_Id_LightHop116 text = "Light Hop!" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Off_Start 
+	StartGap GapID = AP_Gap_Id_Off1 flags = [ CANCEL_GROUND REQUIRE_MANUAL CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Off_End 
+	EndGap GapID = AP_Gap_Id_Off1 text = "Off The Couch" score = 100 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Start_Start 
+	StartGap GapID = AP_Gap_Id_Start1 flags = [ CANCEL_GROUND CANCEL_HANG ] 
+ENDSCRIPT
+
+SCRIPT AP_Gap_Start_End 
+	EndGap GapID = AP_Gap_Id_Start1 text = "Start To Finish!!!" score = 600 
+ENDSCRIPT
+
+SCRIPT AP_2d_sign_element_create parent = menu3d_anchor 
+	IF GetGlobalFlag flag = SCREEN_MODE_WIDE 
+		<offset> = PAIR(-8.00000000000, 0.00000000000) 
+	ELSE 
+		<offset> = PAIR(0.00000000000, 0.00000000000) 
+	ENDIF 
+	CreateScreenElement { 
+		Type = SpriteElement 
+		parent = <parent> 
+		texture = AP_icon_1 
+		id = AP_guy 
+		scale = 2.70000004768 
+		rgba = [ 128 128 128 128 ] 
+		pos = ( PAIR(18.00000000000, 104.00000000000) + <offset> ) 
+		rot_angle = 0 
+		just = [ left top ] 
+		z_priority = -51 
+	} 
+	CreateScreenElement { 
+		Type = SpriteElement 
+		parent = <parent> 
+		texture = AP_icon_2 
+		id = AP_arrow 
+		scale = 1.79999995232 
+		rgba = [ 128 128 128 100 ] 
+		pos = ( PAIR(70.00000000000, 120.00000000000) + <offset> ) 
+		rot_angle = 0 
+		just = [ center top ] 
+		alpha = 0 
+		z_priority = -51 
+	} 
+	RunScriptOnScreenElement id = <parent> AP_icon_anim 
+ENDSCRIPT
+
+SCRIPT AP_icon_anim 
+	BEGIN 
+		RunScriptOnScreenElement id = AP_guy AP_guy_anim 
+		wait 0.80000001192 seconds 
+		RunScriptOnScreenElement id = AP_arrow AP_arrow_anim 
+		wait RANDOM(1, 1, 1) RANDOMCASE 5 RANDOMCASE 7 RANDOMCASE 9 RANDOMEND seconds 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT AP_guy_anim 
+	start_pos = PAIR(14.00000000000, 104.00000000000) 
+	DoMorph time = 0 pos = ( <start_pos> - PAIR(250.00000000000, 0.00000000000) ) 
+	DoMorph time = 1 pos = <start_pos> 
+	wait 1.50000000000 seconds 
+	DoMorph time = 0.30000001192 pos = ( <start_pos> - PAIR(250.00000000000, 0.00000000000) ) 
+ENDSCRIPT
+
+SCRIPT AP_arrow_anim 
+	DoMorph time = 0 alpha = 0 rot_angle = 0 
+	DoMorph time = 0.50000000000 alpha = 1 
+	DoMorph time = 0.50000000000 rot_angle = -200 
+	DoMorph time = 0.50000000000 alpha = 0 
+ENDSCRIPT
+
+

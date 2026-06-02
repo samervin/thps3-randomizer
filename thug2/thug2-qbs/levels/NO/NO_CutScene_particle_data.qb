@@ -1,0 +1,384 @@
+
+SCRIPT load_cutscene_particle_textures 
+	LoadParticleTexture "particles\\apm_flame_01" 
+	LoadParticleTexture "particles\\apm_flamequad_01" 
+	LoadParticleTexture "particles\\dt_choochoosmoke01c" 
+	LoadParticleTexture "particles\\dt_generic_flame01" 
+	LoadParticleTexture "particles\\jow_au_skidmark01" 
+	LoadParticleTexture "particles\\jow_no_burst01" 
+	LoadParticleTexture "particles\\jow_no_cauldronring01" 
+	LoadParticleTexture "particles\\jow_no_drops01" 
+ENDSCRIPT
+
+JOW_NOe1_CauldronBurst02_particle_params = { 
+	boneOffset = VECTOR(0, 0, -30) 
+	emitScript = emit_JOW_NOe1_CauldronBurst02_particle 
+	emitterIndependent = 1 
+	max = 128 
+	type = FlatRibbonTail 
+	texture = JOW_NO_Burst01 
+	blendMode = Add 
+	history = 3 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_NOe1_CauldronBurst02_particle 
+	setEmitRange width = 32.00000000000 height = 32.00000000000 depth = 0.00000000000 
+	setLife min = 1.00000000000 max = 1.50000000000 
+	setAngleSpread spread = 0.66666698456 
+	setSpeedRange min = 20.00000000000 max = 24.00000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = -0.31999999285 z = 0.00000000000 
+	setParticleSize sw = 3.00000000000 ew = 1.00000000000 
+	setColor corner = 0 sr = 255 sg = 77 sb = 0 sa = 106 mr = 255 mg = 64 mb = 0 ma = 130 er = 255 eg = 192 eb = 0 ea = 0 midTime = 0.50000000000 
+	setColor corner = 1 sr = 255 sg = 77 sb = 0 sa = 106 mr = 255 mg = 64 mb = 0 ma = 130 er = 255 eg = 192 eb = 0 ea = 0 midTime = 0.50000000000 
+	setColor corner = 2 sr = 255 sg = 77 sb = 0 sa = 106 mr = 255 mg = 64 mb = 0 ma = 130 er = 255 eg = 192 eb = 0 ea = 0 midTime = 0.50000000000 
+	setColor corner = 3 sr = 255 sg = 77 sb = 0 sa = 90 mr = 255 mg = 64 mb = 0 ma = 106 er = 255 eg = 192 eb = 0 ea = 0 midTime = 0.50000000000 
+	setColor corner = 4 sr = 255 sg = 77 sb = 0 sa = 0 mr = 255 mg = 64 mb = 0 ma = 0 er = 255 eg = 192 eb = 0 ea = 0 midTime = 0.50000000000 
+	emit num = 128 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_NOe1_CauldronRings01_particle_params = { 
+	emitScript = emit_JOW_NOe1_CauldronRings01_particle 
+	max = 16 
+	type = Shaded 
+	texture = JOW_NO_CauldronRing01 
+	blendMode = Blend 
+	align_to = VECTOR(0.00000000000, 1.00000000000, 0.00000000000) 
+	useGlobalColorModulation 
+	priority = 128 
+} 
+SCRIPT emit_JOW_NOe1_CauldronRings01_particle 
+	setEmitRange width = 90.00000000000 height = 90.00000000000 depth = 0.00000000000 
+	setCircularEmit circular = 1 
+	setLife min = 1.00000000000 max = 2.00000000000 
+	setAngleSpread spread = 0.00000000000 
+	setSpeedRange min = 0.00000000000 max = 0.00000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = 0.00000000000 z = 0.00000000000 
+	setParticleSize sw = 4.00000000000 ew = 16.00000000000 
+	setColor corner = 0 sr = 138 sg = 138 sb = 138 sa = 0 mr = 138 mg = 138 mb = 138 ma = 112 er = 132 eg = 132 eb = 132 ea = 0 midTime = 0.50000000000 
+	setColor corner = 1 sr = 138 sg = 138 sb = 138 sa = 0 mr = 138 mg = 138 mb = 138 ma = 112 er = 132 eg = 132 eb = 132 ea = 0 midTime = 0.50000000000 
+	setColor corner = 2 sr = 138 sg = 138 sb = 138 sa = 0 mr = 138 mg = 138 mb = 138 ma = 112 er = 132 eg = 132 eb = 132 ea = 0 midTime = 0.50000000000 
+	setColor corner = 3 sr = 138 sg = 138 sb = 138 sa = 0 mr = 138 mg = 138 mb = 138 ma = 112 er = 132 eg = 132 eb = 132 ea = 0 midTime = 0.50000000000 
+	emitRate rate = 8.00000000000 
+	wait 20.00000000000 seconds 
+	emitRate rate = 0 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_NOe1_SkidMark01_particle_params = { 
+	emitScript = emit_JOW_NOe1_SkidMark01_particle 
+	emitterIndependent = 1 
+	max = 225 
+	type = Shaded 
+	texture = JOW_AU_SkidMark01 
+	blendMode = Blend 
+	align_to = VECTOR(0.00000000000, 1.00000000000, 0.00000000000) 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_NOe1_SkidMark01_particle 
+	setEmitRange width = 1.00000000000 height = 1.00000000000 depth = 0.00000000000 
+	setLife min = 3.00000000000 max = 3.00000000000 
+	setAngleSpread spread = 0.25000000000 
+	setSpeedRange min = 0.00000000000 max = 0.00000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = 0.00000000000 z = 0.00000000000 
+	setParticleSize sw = 6.00000000000 ew = 6.00000000000 
+	setColor corner = 0 sr = 89 sg = 89 sb = 89 sa = 89 mr = 89 mg = 89 mb = 89 ma = 89 er = 89 eg = 89 eb = 89 ea = 0 midTime = 0.88999998569 
+	setColor corner = 1 sr = 89 sg = 89 sb = 89 sa = 89 mr = 89 mg = 89 mb = 89 ma = 89 er = 89 eg = 89 eb = 89 ea = 0 midTime = 0.88999998569 
+	setColor corner = 2 sr = 89 sg = 89 sb = 89 sa = 89 mr = 89 mg = 89 mb = 89 ma = 89 er = 89 eg = 89 eb = 89 ea = 0 midTime = 0.88999998569 
+	setColor corner = 3 sr = 89 sg = 89 sb = 89 sa = 89 mr = 89 mg = 89 mb = 89 ma = 89 er = 89 eg = 89 eb = 89 ea = 0 midTime = 0.88999998569 
+	setLODParams min_particles = 0 lod_dist1 = Default_Particle_LOD_Dist1 lod_dist2 = Default_Particle_LOD_Dist2 
+	emitRate rate = 75.00000000000 
+	wait 0.80000001192 seconds 
+	emitRate rate = 0 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_NOe1_SkullBurstDown01_particle_params = { 
+	emitScript = emit_JOW_NOe1_SkullBurstDown01_particle 
+	max = 16 
+	type = Ribbon 
+	texture = dt_generic_flame01 
+	blendMode = Add 
+	history = 4 
+	priority = 0 
+} 
+SCRIPT emit_JOW_NOe1_SkullBurstDown01_particle 
+	setEmitRange width = 6.00000000000 height = 6.00000000000 depth = 0.00000000000 
+	setLife min = 0.20000000298 max = 0.50000000000 
+	setAngleSpread spread = 1.00000000000 
+	setSpeedRange min = 8.00000000000 max = 12.00000000000 
+	setEmitTarget x = 0.00000000000 y = -1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = 0.00000000000 z = 0.00000000000 
+	setParticleSize sw = 12.00000000000 ew = 0.00000000000 
+	setColor corner = 0 sr = 255 sg = 68 sb = 68 sa = 211 er = 114 eg = 17 eb = 0 ea = 0 
+	setColor corner = 1 sr = 255 sg = 68 sb = 68 sa = 211 er = 114 eg = 17 eb = 0 ea = 0 
+	emit num = 16 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_NOe1_SkullBurstUp01_particle_params = { 
+	emitScript = emit_JOW_NOe1_SkullBurstUp01_particle 
+	max = 16 
+	type = Ribbon 
+	texture = dt_generic_flame01 
+	blendMode = Add 
+	history = 4 
+	priority = 0 
+} 
+SCRIPT emit_JOW_NOe1_SkullBurstUp01_particle 
+	setEmitRange width = 6.00000000000 height = 6.00000000000 depth = 0.00000000000 
+	setLife min = 0.20000000298 max = 0.50000000000 
+	setAngleSpread spread = 1.00000000000 
+	setSpeedRange min = 8.00000000000 max = 12.00000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = 0.00000000000 z = 0.00000000000 
+	setParticleSize sw = 12.00000000000 ew = 0.00000000000 
+	setColor corner = 0 sr = 255 sg = 68 sb = 68 sa = 211 er = 114 eg = 17 eb = 0 ea = 0 
+	setColor corner = 1 sr = 255 sg = 68 sb = 68 sa = 211 er = 114 eg = 17 eb = 0 ea = 0 
+	emit num = 16 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_NOe1_SkullFlames01_particle_params = { 
+	emitScript = emit_JOW_NOe1_SkullFlames01_particle 
+	emitterIndependent = 1 
+	FillPath 
+	max = 30 
+	type = Shaded 
+	texture = apm_flameQUAD_01 
+	blendMode = Blend 
+	UseRandomUVQuadrants 
+	priority = 0 
+} 
+SCRIPT emit_JOW_NOe1_SkullFlames01_particle 
+	setEmitRange width = 3.00000000000 height = 3.00000000000 depth = 0.00000000000 
+	setLife min = 0.15000000596 max = 0.15000000596 
+	setAngleSpread spread = -0.10999999940 
+	setSpeedRange min = 2.00000000000 max = 3.00000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = 0.00000000000 z = 0.00000000000 
+	setParticleSize sw = 10.00000000000 ew = 0.00000000000 
+	setColor corner = 0 sr = 191 sg = 152 sb = 43 sa = 153 mr = 209 mg = 67 mb = 6 ma = 204 er = 114 eg = 17 eb = 0 ea = 0 midTime = 0.31000000238 
+	setColor corner = 1 sr = 191 sg = 152 sb = 43 sa = 153 mr = 209 mg = 67 mb = 6 ma = 204 er = 114 eg = 17 eb = 0 ea = 0 midTime = 0.31000000238 
+	setColor corner = 2 sr = 191 sg = 152 sb = 43 sa = 153 mr = 209 mg = 67 mb = 6 ma = 204 er = 114 eg = 17 eb = 0 ea = 0 midTime = 0.31000000238 
+	setColor corner = 3 sr = 191 sg = 152 sb = 43 sa = 153 mr = 209 mg = 67 mb = 6 ma = 204 er = 114 eg = 17 eb = 0 ea = 0 midTime = 0.31000000238 
+	emitRate rate = 200.00000000000 
+ENDSCRIPT
+
+JOW_NOe1_SkullFlames02_particle_params = { 
+	emitScript = emit_JOW_NOe1_SkullFlames02_particle 
+	max = 24 
+	type = Shaded 
+	texture = apm_flameQUAD_01 
+	blendMode = Blend 
+	UseRandomUVQuadrants 
+	priority = 0 
+} 
+SCRIPT emit_JOW_NOe1_SkullFlames02_particle 
+	setEmitRange width = 3.00000000000 height = 3.00000000000 depth = 0.00000000000 
+	setLife min = 0.15000000596 max = 0.15000000596 
+	setAngleSpread spread = -0.10999999940 
+	setSpeedRange min = 2.00000000000 max = 3.00000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = 0.00000000000 z = 0.00000000000 
+	setParticleSize sw = 10.00000000000 ew = 0.00000000000 
+	setColor corner = 0 sr = 191 sg = 152 sb = 43 sa = 153 mr = 209 mg = 67 mb = 6 ma = 204 er = 114 eg = 17 eb = 0 ea = 0 midTime = 0.31000000238 
+	setColor corner = 1 sr = 191 sg = 152 sb = 43 sa = 153 mr = 209 mg = 67 mb = 6 ma = 204 er = 114 eg = 17 eb = 0 ea = 0 midTime = 0.31000000238 
+	setColor corner = 2 sr = 191 sg = 152 sb = 43 sa = 153 mr = 209 mg = 67 mb = 6 ma = 204 er = 114 eg = 17 eb = 0 ea = 0 midTime = 0.31000000238 
+	setColor corner = 3 sr = 191 sg = 152 sb = 43 sa = 153 mr = 209 mg = 67 mb = 6 ma = 204 er = 114 eg = 17 eb = 0 ea = 0 midTime = 0.31000000238 
+	emitRate rate = 160.00000000000 
+ENDSCRIPT
+
+JOW_NOe1_ZombieBurst01_particle_params = { 
+	boneOffset = VECTOR(0.00000000000, 0.00000000000, 40.00000000000) 
+	emitScript = emit_JOW_NOe1_ZombieBurst01_particle 
+	emitterIndependent = 1 
+	max = 16 
+	type = Ribbon 
+	texture = apm_flame_01 
+	blendMode = Add 
+	history = 3 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_NOe1_ZombieBurst01_particle 
+	setEmitRange width = 4.00000000000 height = 4.00000000000 depth = 0.00000000000 
+	setLife min = 0.20000000298 max = 0.50000000000 
+	setAngleSpread spread = 1.00000000000 
+	setSpeedRange min = 8.00000000000 max = 12.00000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = 0.00000000000 z = 0.00000000000 
+	setParticleSize sw = 24.00000000000 ew = 0.00000000000 
+	setColor corner = 0 sr = 255 sg = 192 sb = 0 sa = 172 mr = 255 mg = 88 mb = 0 ma = 172 er = 255 eg = 192 eb = 0 ea = 40 midTime = 0.50000000000 
+	setColor corner = 1 sr = 255 sg = 192 sb = 0 sa = 172 mr = 255 mg = 88 mb = 0 ma = 172 er = 255 eg = 192 eb = 0 ea = 40 midTime = 0.50000000000 
+	emit num = 16 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_NOe1_ZombieBurst02_particle_params = { 
+	boneOffset = VECTOR(0.00000000000, 0.00000000000, 40.00000000000) 
+	emitScript = emit_JOW_NOe1_ZombieBurst02_particle 
+	emitterIndependent = 1 
+	max = 16 
+	type = Ribbon 
+	texture = apm_flame_01 
+	blendMode = Add 
+	history = 3 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_NOe1_ZombieBurst02_particle 
+	setEmitRange width = 4.00000000000 height = 4.00000000000 depth = 0.00000000000 
+	setLife min = 0.20000000298 max = 0.50000000000 
+	setAngleSpread spread = 1.00000000000 
+	setSpeedRange min = 8.00000000000 max = 12.00000000000 
+	setEmitTarget x = 0.00000000000 y = -1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = 0.00000000000 z = 0.00000000000 
+	setParticleSize sw = 24.00000000000 ew = 0.00000000000 
+	setColor corner = 0 sr = 255 sg = 192 sb = 0 sa = 172 mr = 255 mg = 88 mb = 0 ma = 172 er = 255 eg = 192 eb = 0 ea = 40 midTime = 0.50000000000 
+	setColor corner = 1 sr = 255 sg = 192 sb = 0 sa = 172 mr = 255 mg = 88 mb = 0 ma = 172 er = 255 eg = 192 eb = 0 ea = 40 midTime = 0.50000000000 
+	emit num = 16 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_NOe2_LaserBurst01_particle_params = { 
+	emitScript = emit_JOW_NOe2_LaserBurst01_particle 
+	emitterIndependent = 1 
+	max = 32 
+	type = FlatRibbonTail 
+	texture = JOW_NO_Burst01 
+	blendMode = Add 
+	history = 3 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_NOe2_LaserBurst01_particle 
+	setEmitRange width = 1.00000000000 height = 1.00000000000 depth = 0.00000000000 
+	setLife min = 1.00000000000 max = 2.00000000000 
+	setAngleSpread spread = 1.00000000000 
+	setSpeedRange min = 10.00000000000 max = 12.00000000000 
+	setEmitTarget x = 0.00000000000 y = 0.00000000000 z = 1.00000000000 
+	setForce x = 0.00000000000 y = -0.03999999911 z = 0.00000000000 
+	setParticleSize sw = 1.20000004768 ew = 0.50000000000 
+	setColor corner = 0 sr = 134 sg = 221 sb = 255 sa = 119 er = 156 eg = 255 eb = 253 ea = 0 
+	setColor corner = 1 sr = 134 sg = 221 sb = 255 sa = 92 er = 156 eg = 255 eb = 253 ea = 0 
+	setColor corner = 2 sr = 178 sg = 234 sb = 255 sa = 61 er = 178 eg = 255 eb = 253 ea = 0 
+	setColor corner = 3 sr = 204 sg = 241 sb = 255 sa = 31 er = 204 eg = 255 eb = 254 ea = 0 
+	setColor corner = 4 sr = 255 sg = 255 sb = 255 sa = 0 er = 255 eg = 255 eb = 255 ea = 0 
+	setLODParams min_particles = 0 lod_dist1 = Default_Particle_LOD_Dist1 lod_dist2 = Default_Particle_LOD_Dist2 
+	emit num = 32 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_NOe2_Smoke01_particle_params = { 
+	boneOffset = VECTOR(0.00000000000, 0.00000000000, 60.00000000000) 
+	emitScript = emit_JOW_NOe2_Smoke01_particle 
+	emitterIndependent = 1 
+	FillPath 
+	max = 30 
+	type = Flat 
+	texture = dt_choochooSmoke01c 
+	blendMode = Blend 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_NOe2_Smoke01_particle 
+	setEmitRange width = 5.00000000000 height = 5.00000000000 depth = 0.00000000000 
+	setLife min = 0.30000001192 max = 0.30000001192 
+	setAngleSpread spread = 0.16666699946 
+	setSpeedRange min = 0.00000000000 max = 0.00000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = 0.12500000000 z = 0.00000000000 
+	setParticleSize sw = 32.00000000000 ew = 48.00000000000 
+	setColor corner = 0 sr = 77 sg = 77 sb = 77 sa = 18 er = 62 eg = 62 eb = 62 ea = 0 
+	emitRate rate = 100.00000000000 
+	wait 2.50000000000 seconds 
+	emitRate rate = 0 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_NOe2_Smoke02_particle_params = { 
+	emitScript = emit_JOW_NOe2_Smoke02_particle 
+	emitterIndependent = 1 
+	FillPath 
+	max = 30 
+	type = Flat 
+	texture = dt_choochooSmoke01c 
+	blendMode = Blend 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_NOe2_Smoke02_particle 
+	setEmitRange width = 5.00000000000 height = 5.00000000000 depth = 0.00000000000 
+	setLife min = 0.30000001192 max = 0.30000001192 
+	setAngleSpread spread = 0.16666699946 
+	setSpeedRange min = 0.00000000000 max = 0.00000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = 0.12500000000 z = 0.00000000000 
+	setParticleSize sw = 32.00000000000 ew = 48.00000000000 
+	setColor corner = 0 sr = 77 sg = 77 sb = 77 sa = 18 er = 62 eg = 62 eb = 62 ea = 0 
+	emitRate rate = 100.00000000000 
+	wait 2.00000000000 seconds 
+	emitRate rate = 0 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_NOe2_Splash01_particle_params = { 
+	boneOffset = VECTOR(0.00000000000, 0.00000000000, -20.00000000000) 
+	emitScript = emit_JOW_NOe2_Splash01_particle 
+	emitterIndependent = 1 
+	max = 32 
+	type = Ribbon 
+	texture = JOW_NO_Drops01 
+	blendMode = Blend 
+	history = 4 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_NOe2_Splash01_particle 
+	setEmitRange width = 5.00000000000 height = 5.00000000000 depth = 0.00000000000 
+	setLife min = 0.89999997616 max = 1.20000004768 
+	setAngleSpread spread = 0.22222200036 
+	setSpeedRange min = 10.00000000000 max = 12.00000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = -0.40000000596 z = 0.00000000000 
+	setParticleSize sw = 12.00000000000 ew = 8.00000000000 
+	setColor corner = 0 sr = 128 sg = 128 sb = 128 sa = 0 mr = 128 mg = 128 mb = 128 ma = 255 er = 112 eg = 112 eb = 112 ea = 0 midTime = 0.57590001822 
+	setColor corner = 1 sr = 128 sg = 128 sb = 128 sa = 0 mr = 128 mg = 128 mb = 128 ma = 255 er = 112 eg = 112 eb = 112 ea = 0 midTime = 0.57590001822 
+	emit num = 32 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_NOe2_Splash02_particle_params = { 
+	emitScript = emit_JOW_NOe2_Splash02_particle 
+	emitterIndependent = 1 
+	max = 72 
+	type = Ribbon 
+	texture = JOW_NO_Drops01 
+	blendMode = Blend 
+	history = 6 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_NOe2_Splash02_particle 
+	setEmitRange width = 4.00000000000 height = 4.00000000000 depth = 0.00000000000 
+	setLife min = 0.10000000149 max = 0.20000000298 
+	setAngleSpread spread = 0.16666699946 
+	setSpeedRange min = 15.00000000000 max = 15.00000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = 0.00000000000 z = 0.00000000000 
+	setParticleSize sw = 12.00000000000 ew = 8.00000000000 
+	setColor corner = 0 sr = 128 sg = 128 sb = 128 sa = 255 er = 112 eg = 112 eb = 112 ea = 0 
+	setColor corner = 1 sr = 128 sg = 128 sb = 128 sa = 255 er = 112 eg = 112 eb = 112 ea = 0 
+	emitRate rate = 360.00000000000 
+	wait 0.20000000298 seconds 
+	emitRate rate = 0 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+

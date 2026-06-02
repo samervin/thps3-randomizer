@@ -1,0 +1,613 @@
+
+SCRIPT load_cutscene_fast_particle_textures 
+	LoadParticleTexture "particles\\apm_debis_02" 
+	LoadParticleTexture "particles\\dt_nj_waterdrop05" 
+	LoadParticleTexture "particles\\ba_apm_smokepuff01s" 
+	LoadParticleTexture "particles\\jow_no_cauldronbubble01" 
+	LoadParticleTexture "particles\\apm_spray_01" 
+	LoadParticleTexture "particles\\jow_no_drops01" 
+	LoadParticleTexture "particles\\jow_no_drip01" 
+	LoadParticleTexture "particles\\apm_spark_01" 
+	LoadParticleTexture "particles\\apm_ring_02" 
+	LoadParticleTexture "particles\\jow_no_puff01" 
+	LoadParticleTexture "particles\\no_tw_vortex01" 
+	LoadParticleTexture "particles\\se_hj_spotlightglow" 
+ENDSCRIPT
+
+Apm_NOc_chopperDebris01_fast_particle_params = { 
+	Class = ParticleObject 
+	Type = NewFlat 
+	CreatedAtStart 
+	MaxStreams = 2 
+	LocalSpace 
+	BoxDimsStart = VECTOR(10, 10, 10) 
+	BoxDimsMid = VECTOR(1000, 250, 1000) 
+	BoxDimsEnd = VECTOR(2000, 60, 2000) 
+	pos = VECTOR(0, 0, 0) 
+	MidPosition = VECTOR(0, 500, 24) 
+	EndPosition = VECTOR(0, 0, 48) 
+	UseMidPoint 
+	SuspendDistance = Default_Fast_Particle_Suspend_Dist 
+	LOD_Dist1 = Default_Fast_Particle_LOD_Dist1 
+	LOD_Dist2 = Default_Fast_Particle_LOD_Dist2 
+	EmitRate = 50.00000000000 
+	LifeTime = 0.50000000000 
+	EmitDuration = 0.20000000298 
+	StartRadius = 100.00000000000 
+	MidRadius = 50.00000000000 
+	EndRadius = 50.00000000000 
+	StartRadiusSpread = 50.00000000000 
+	MidRadiusSpread = 25.00000000000 
+	EndRadiusSpread = 25.00000000000 
+	priority = 0 
+	Texture = apm_debis_02 
+	BlendMode = Blend 
+	AlphaCutoff = 1 
+	StartRGB = [ 42 , 42 , 42 ] 
+	StartAlpha = 87 
+	EndRGB = [ 66 , 66 , 66 ] 
+	EndAlpha = 128 
+	MidRGB = [ 75 , 75 , 75 ] 
+	MidAlpha = 128 
+	UseColorMidTime 
+	ColorMidTime = 50 
+	UseGlobalColorModulation 
+} 
+Apm_NOc_choppersplash01_fast_particle_params = { 
+	Class = ParticleObject 
+	Type = NewFlat 
+	CreatedAtStart 
+	MaxStreams = 2 
+	LocalSpace 
+	BoxDimsStart = VECTOR(10.00000000000, 10.00000000000, 10.00000000000) 
+	BoxDimsMid = VECTOR(500.00000000000, 250.00000000000, 500.00000000000) 
+	BoxDimsEnd = VECTOR(700.00000000000, 60.00000000000, 700.00000000000) 
+	pos = VECTOR(0.00000000000, 0.00000000000, 0.00000000000) 
+	MidPosition = VECTOR(300.00000000000, 300.00000000000, -100.00000000000) 
+	EndPosition = VECTOR(400.00000000000, 0.00000000000, -300.00000000000) 
+	UseMidPoint 
+	SuspendDistance = Default_Fast_Particle_Suspend_Dist 
+	LOD_Dist1 = Default_Fast_Particle_LOD_Dist1 
+	LOD_Dist2 = Default_Fast_Particle_LOD_Dist2 
+	EmitRate = 1000.00000000000 
+	LifeTime = 0.50000000000 
+	EmitDuration = 0.30000001192 
+	StartRadius = 100.00000000000 
+	MidRadius = 50.00000000000 
+	EndRadius = 50.00000000000 
+	priority = 0 
+	Texture = dt_nj_waterdrop05 
+	BlendMode = Blend 
+	AlphaCutoff = 1 
+	StartRGB = [ 167 , 174 , 162 ] 
+	StartAlpha = 87 
+	EndRGB = [ 186 , 196 , 176 ] 
+	EndAlpha = 94 
+	MidRGB = [ 181 , 191 , 181 ] 
+	MidAlpha = 113 
+	UseColorMidTime 
+	ColorMidTime = 50 
+	UseGlobalColorModulation 
+} 
+JOW_NOc8_ChopperSmoke01_fast_particle_params = { 
+	Class = ParticleObject 
+	Type = NewFlat 
+	CreatedAtStart 
+	MaxStreams = 2 
+	LocalSpace 
+	BoxDimsStart = VECTOR(120.00000000000, 120.00000000000, 120.00000000000) 
+	BoxDimsMid = VECTOR(300.00000000000, 120.00000000000, 300.00000000000) 
+	BoxDimsEnd = VECTOR(600.00000000000, 120.00000000000, 600.00000000000) 
+	pos = VECTOR(0.00000000000, 0.00000000000, 0.00000000000) 
+	MidPosition = VECTOR(0.00000000000, 500.00000000000, 0.00000000000) 
+	EndPosition = VECTOR(0.00000000000, 1000.00000000000, 0.00000000000) 
+	UseMidPoint 
+	SuspendDistance = Default_Fast_Particle_Suspend_Dist 
+	LOD_Dist1 = Default_Fast_Particle_LOD_Dist1 
+	LOD_Dist2 = Default_Fast_Particle_LOD_Dist2 
+	EmitRate = 32.00000000000 
+	LifeTime = 8.00000000000 
+	StartRadius = 128.00000000000 
+	MidRadius = 180.00000000000 
+	EndRadius = 256.00000000000 
+	StartRadiusSpread = 66.00000000000 
+	MidRadiusSpread = 90.00000000000 
+	EndRadiusSpread = 128.00000000000 
+	priority = 0 
+	Texture = BA_APM_smokePuff01s 
+	BlendMode = Blend 
+	AlphaCutoff = 1 
+	StartRGB = [ 185 , 88 , 39 ] 
+	StartAlpha = 31 
+	EndRGB = [ 48 , 48 , 48 ] 
+	EndAlpha = 0 
+	MidRGB = [ 68 , 68 , 68 ] 
+	MidAlpha = 48 
+	UseColorMidTime 
+	ColorMidTime = 48 
+	UseGlobalColorModulation 
+} 
+JOW_NOe1_CauldronBubbles01_fast_particle_params = { 
+	Class = ParticleObject 
+	Type = NewFlat 
+	CreatedAtStart 
+	MaxStreams = 2 
+	BoxDimsStart = VECTOR(216.00000000000, 1.20000004768, 216.00000000000) 
+	BoxDimsMid = VECTOR(20.00000000000, 20.00000000000, 20.00000000000) 
+	BoxDimsEnd = VECTOR(216.00000000000, 1.20000004768, 216.00000000000) 
+	pos = VECTOR(0.62000000477, 156.71000671387, -3525.39990234375) 
+	MidPosition = VECTOR(0.68999999762, 170.49000549316, -3525.39990234375) 
+	EndPosition = VECTOR(0.76999998093, 156.61000061035, -3525.39990234375) 
+	SuspendDistance = Default_Fast_Particle_Suspend_Dist 
+	LOD_Dist1 = 0.00000000000 
+	LOD_Dist2 = 0.00000000000 
+	EmitRate = 10.00000000000 
+	LifeTime = 0.80000001192 
+	EmitDuration = 20.00000000000 
+	StartRadius = 6.00000000000 
+	EndRadius = 16.00000000000 
+	StartRadiusSpread = 0.00000000000 
+	EndRadiusSpread = 6.00000000000 
+	priority = 0 
+	Texture = JOW_NO_CauldronBubble01 
+	BlendMode = Blend 
+	AlphaCutoff = 1 
+	StartRGB = [ 121 , 128 , 112 ] 
+	StartAlpha = 0 
+	EndRGB = [ 110 , 128 , 96 ] 
+	EndAlpha = 10 
+	MidRGB = [ 103 , 128 , 91 ] 
+	MidAlpha = 128 
+	UseColorMidTime 
+	ColorMidTime = 50 
+	UseGlobalColorModulation 
+} 
+JOW_NOe1_Exhaust01_fast_particle_params = { 
+	Class = ParticleObject 
+	Type = NewFlat 
+	CreatedAtStart 
+	MaxStreams = 2 
+	LocalSpace 
+	EnableRotate 
+	BoxDimsStart = VECTOR(3.00000000000, 3.00000000000, 3.00000000000) 
+	BoxDimsMid = VECTOR(12.00000000000, 6.00000000000, 12.00000000000) 
+	BoxDimsEnd = VECTOR(3.00000000000, 3.00000000000, 3.00000000000) 
+	pos = VECTOR(0.00000000000, 0.00000000000, 0.00000000000) 
+	MidPosition = VECTOR(0.07999999821, 13.10000038147, 0.00000000000) 
+	EndPosition = VECTOR(-0.09000000358, 58.56999969482, 0.00000000000) 
+	UseMidPoint 
+	SuspendDistance = Default_Fast_Particle_Suspend_Dist 
+	LOD_Dist1 = 0.00000000000 
+	LOD_Dist2 = 0.00000000000 
+	EmitRate = 100.00000000000 
+	LifeTime = 0.20000000298 
+	EmitDuration = 5.00000000000 
+	StartRadius = 4.00000000000 
+	MidRadius = 8.00000000000 
+	EndRadius = 2.00000000000 
+	priority = 64 
+	Texture = apm_spray_01 
+	BlendMode = Blend 
+	AlphaCutoff = 1 
+	StartRGB = [ 255 , 198 , 0 ] 
+	StartAlpha = 64 
+	EndRGB = [ 154 , 20 , 0 ] 
+	EndAlpha = 31 
+	MidRGB = [ 215 , 75 , 0 ] 
+	MidAlpha = 64 
+	UseColorMidTime 
+	ColorMidTime = 47 
+} 
+JOW_NOe1_Exhaust02_fast_particle_params = { 
+	Class = ParticleObject 
+	Type = NewFlat 
+	CreatedAtStart 
+	MaxStreams = 2 
+	LocalSpace 
+	EnableRotate 
+	BoxDimsStart = VECTOR(1.50000000000, 1.50000000000, 1.50000000000) 
+	BoxDimsMid = VECTOR(12.00000000000, 6.00000000000, 12.00000000000) 
+	BoxDimsEnd = VECTOR(3.00000000000, 3.00000000000, 3.00000000000) 
+	pos = VECTOR(0.00000000000, 0.00000000000, 0.00000000000) 
+	MidPosition = VECTOR(0.07999999821, 13.10000038147, 0.00000000000) 
+	EndPosition = VECTOR(-0.09000000358, 3.33999991417, 0.00000000000) 
+	SuspendDistance = Default_Fast_Particle_Suspend_Dist 
+	LOD_Dist1 = 0.00000000000 
+	LOD_Dist2 = 0.00000000000 
+	EmitRate = 25.00000000000 
+	LifeTime = 0.10000000149 
+	StartRadius = 8.00000000000 
+	EndRadius = 2.00000000000 
+	priority = 0 
+	Texture = apm_spray_01 
+	BlendMode = Blend 
+	AlphaCutoff = 1 
+	StartRGB = [ 255 , 88 , 0 ] 
+	StartAlpha = 64 
+	EndRGB = [ 154 , 20 , 0 ] 
+	EndAlpha = 31 
+} 
+JOW_NOe1_FireHydrant01_fast_particle_params = { 
+	Class = ParticleObject 
+	Type = NewFlat 
+	CreatedAtStart 
+	AbsentInNetGames 
+	MaxStreams = 2 
+	BoxDimsStart = VECTOR(12.00000000000, 24.00000000000, 12.00000000000) 
+	BoxDimsMid = VECTOR(96.00000000000, 36.00000000000, 96.00000000000) 
+	BoxDimsEnd = VECTOR(192.00000000000, 60.00000000000, 192.00000000000) 
+	pos = VECTOR(175.13000488281, 44.87680053711, -172.66099548340) 
+	MidPosition = VECTOR(175.23500061035, 264.84799194336, -172.66099548340) 
+	EndPosition = VECTOR(175.11000061035, 220.05299377441, -172.66099548340) 
+	UseMidPoint 
+	SuspendDistance = Default_Fast_Particle_Suspend_Dist 
+	LOD_Dist1 = Default_Fast_Particle_LOD_Dist1 
+	LOD_Dist2 = Default_Fast_Particle_LOD_Dist2 
+	EmitRate = 400.00000000000 
+	LifeTime = 1.00000000000 
+	StartRadius = 5.00000000000 
+	MidRadius = 8.00000000000 
+	EndRadius = 8.00000000000 
+	StartRadiusSpread = 2.00000000000 
+	MidRadiusSpread = 3.00000000000 
+	EndRadiusSpread = 3.00000000000 
+	Texture = JOW_NO_Drops01 
+	BlendMode = Blend 
+	AlphaCutoff = 1 
+	StartRGB = [ 128 , 128 , 128 ] 
+	StartAlpha = 33 
+	EndRGB = [ 128 , 128 , 128 ] 
+	EndAlpha = 0 
+	MidRGB = [ 128 , 128 , 128 ] 
+	MidAlpha = 125 
+	UseColorMidTime 
+	ColorMidTime = 50 
+	UseGlobalColorModulation 
+} 
+JOW_NOe1_FireHydrant02_fast_particle_params = { 
+	Class = ParticleObject 
+	Type = NewFlat 
+	CreatedAtStart 
+	AbsentInNetGames 
+	MaxStreams = 2 
+	BoxDimsStart = VECTOR(10.00000000000, 6.00000000000, 10.00000000000) 
+	BoxDimsMid = VECTOR(96.00000000000, 36.00000000000, 96.00000000000) 
+	BoxDimsEnd = VECTOR(60.00000000000, 60.00000000000, 60.00000000000) 
+	pos = VECTOR(175.13000488281, 25.36409950256, -172.66099548340) 
+	MidPosition = VECTOR(175.23500061035, 260.57800292969, -172.66099548340) 
+	EndPosition = VECTOR(175.11000061035, 235.96400451660, -172.66099548340) 
+	SuspendDistance = Default_Fast_Particle_Suspend_Dist 
+	LOD_Dist1 = Default_Fast_Particle_LOD_Dist1 
+	LOD_Dist2 = Default_Fast_Particle_LOD_Dist2 
+	EmitRate = 250.00000000000 
+	LifeTime = 0.50000000000 
+	StartRadius = 24.00000000000 
+	EndRadius = 40.00000000000 
+	StartRadiusSpread = 10.00000000000 
+	EndRadiusSpread = 6.00000000000 
+	Texture = JOW_NO_Drip01 
+	BlendMode = Blend 
+	AlphaCutoff = 1 
+	StartRGB = [ 169 , 169 , 169 ] 
+	StartAlpha = 50 
+	EndRGB = [ 176 , 176 , 176 ] 
+	EndAlpha = 0 
+	MidRGB = [ 176 , 176 , 176 ] 
+	MidAlpha = 31 
+	UseColorMidTime 
+	ColorMidTime = 50 
+	UseGlobalColorModulation 
+} 
+JOW_NOe1_Glow01_fast_particle_params = { 
+	Class = ParticleObject 
+	Type = NewFlat 
+	CreatedAtStart 
+	MaxStreams = 2 
+	BoneOffset = VECTOR(0.00000000000, -30.00000000000, 0.00000000000) 
+	LocalSpace 
+	BoxDimsStart = VECTOR(1.50000000000, 1.50000000000, 1.50000000000) 
+	BoxDimsMid = VECTOR(12.00000000000, 6.00000000000, 12.00000000000) 
+	BoxDimsEnd = VECTOR(1.50000000000, 1.50000000000, 1.50000000000) 
+	pos = VECTOR(0.00000000000, 0.00000000000, 0.00000000000) 
+	MidPosition = VECTOR(0.07999999821, 13.10000038147, 0.00000000000) 
+	EndPosition = VECTOR(0.00000000000, 0.00000000000, 0.00000000000) 
+	SuspendDistance = Default_Fast_Particle_Suspend_Dist 
+	LOD_Dist1 = 0.00000000000 
+	LOD_Dist2 = 0.00000000000 
+	EmitRate = 1.00000000000 
+	LifeTime = 3.00000000000 
+	EmitDuration = 1.00000000000 
+	StartRadius = 128.00000000000 
+	EndRadius = 128.00000000000 
+	priority = 0 
+	Texture = apm_spark_01 
+	BlendMode = Add 
+	AlphaCutoff = 1 
+	StartRGB = [ 255 , 77 , 11 ] 
+	StartAlpha = 128 
+	EndRGB = [ 255 , 207 , 130 ] 
+	EndAlpha = 0 
+} 
+JOW_NOe1_SpellEffect01_fast_particle_params = { 
+	Class = ParticleObject 
+	Type = NewFlat 
+	CreatedAtStart 
+	MaxStreams = 2 
+	BoxDimsStart = VECTOR(2.40000009537, 2.40000009537, 2.40000009537) 
+	BoxDimsMid = VECTOR(12.00000000000, 12.00000000000, 12.00000000000) 
+	BoxDimsEnd = VECTOR(60.00000000000, 12.00000000000, 60.00000000000) 
+	pos = VECTOR(0.00000000000, 0.00000000000, 0.00000000000) 
+	MidPosition = VECTOR(18.70000076294, -32.04000091553, 73.19000244141) 
+	EndPosition = VECTOR(35.65000152588, -72.66000366211, 152.25000000000) 
+	UseMidPoint 
+	MidPointPct = 50.00000000000 
+	SuspendDistance = Default_Fast_Particle_Suspend_Dist 
+	LOD_Dist1 = 0.00000000000 
+	LOD_Dist2 = 0.00000000000 
+	EmitRate = 250.00000000000 
+	LifeTime = 0.50000000000 
+	StartRadius = 4.00000000000 
+	MidRadius = 12.00000000000 
+	EndRadius = 36.00000000000 
+	priority = 0 
+	Texture = apm_ring_02 
+	BlendMode = Add 
+	AlphaCutoff = 1 
+	StartRGB = [ 3 , 123 , 0 ] 
+	StartAlpha = 81 
+	EndRGB = [ 18 , 61 , 17 ] 
+	EndAlpha = 0 
+	UseGlobalColorModulation 
+} 
+JOW_NOe1_StreetDustBot01_fast_particle_params = { 
+	Class = ParticleObject 
+	Type = NewFlat 
+	CreatedAtStart 
+	AbsentInNetGames 
+	MaxStreams = 2 
+	BoxDimsStart = VECTOR(600.00000000000, 20.00000000000, 120.00000000000) 
+	BoxDimsMid = VECTOR(600.00000000000, 20.00000000000, 180.00000000000) 
+	BoxDimsEnd = VECTOR(240.00000000000, 20.00000000000, 60.00000000000) 
+	pos = VECTOR(-0.54719501734, -15.61040019989, 1696.83996582031) 
+	MidPosition = VECTOR(-1.56054997444, -16.17539978027, 465.18301391602) 
+	EndPosition = VECTOR(-0.37755200267, -15.94820022583, 81.54109954834) 
+	UseMidPoint 
+	SuspendDistance = Default_Fast_Particle_Suspend_Dist 
+	LOD_Dist1 = Default_Fast_Particle_LOD_Dist1 
+	LOD_Dist2 = Default_Fast_Particle_LOD_Dist2 
+	EmitRate = 300.00000000000 
+	LifeTime = 4.00000000000 
+	StartRadius = 20.00000000000 
+	MidRadius = 60.00000000000 
+	EndRadius = 80.00000000000 
+	StartRadiusSpread = 10.00000000000 
+	MidRadiusSpread = 10.00000000000 
+	EndRadiusSpread = 10.00000000000 
+	Texture = JOW_NO_Puff01 
+	BlendMode = Blend 
+	AlphaCutoff = 1 
+	StartRGB = [ 20 , 22 , 23 ] 
+	StartAlpha = 0 
+	EndRGB = [ 68 , 66 , 57 ] 
+	EndAlpha = 0 
+	MidRGB = [ 75 , 74 , 70 ] 
+	MidAlpha = 13 
+	UseColorMidTime 
+	ColorMidTime = 50 
+	UseGlobalColorModulation 
+} 
+JOW_NOe1_StreetDustLeft01_fast_particle_params = { 
+	Class = ParticleObject 
+	Type = NewFlat 
+	CreatedAtStart 
+	AbsentInNetGames 
+	MaxStreams = 2 
+	BoxDimsStart = VECTOR(600.00000000000, 20.00000000000, 120.00000000000) 
+	BoxDimsMid = VECTOR(600.00000000000, 20.00000000000, 180.00000000000) 
+	BoxDimsEnd = VECTOR(240.00000000000, 20.00000000000, 60.00000000000) 
+	pos = VECTOR(-1661.72998046875, -15.61040019989, 4.44416999817) 
+	MidPosition = VECTOR(-1660.08996582031, -16.17539978027, -1160.46997070312) 
+	EndPosition = VECTOR(-1659.71997070312, -15.94820022583, -1589.69995117188) 
+	UseMidPoint 
+	SuspendDistance = Default_Fast_Particle_Suspend_Dist 
+	LOD_Dist1 = Default_Fast_Particle_LOD_Dist1 
+	LOD_Dist2 = Default_Fast_Particle_LOD_Dist2 
+	EmitRate = 300.00000000000 
+	LifeTime = 4.00000000000 
+	StartRadius = 20.00000000000 
+	MidRadius = 60.00000000000 
+	EndRadius = 80.00000000000 
+	StartRadiusSpread = 10.00000000000 
+	MidRadiusSpread = 10.00000000000 
+	EndRadiusSpread = 10.00000000000 
+	Texture = JOW_NO_Puff01 
+	BlendMode = Blend 
+	AlphaCutoff = 1 
+	StartRGB = [ 20 , 22 , 23 ] 
+	StartAlpha = 0 
+	EndRGB = [ 68 , 66 , 57 ] 
+	EndAlpha = 0 
+	MidRGB = [ 75 , 74 , 70 ] 
+	MidAlpha = 13 
+	UseColorMidTime 
+	ColorMidTime = 50 
+	UseGlobalColorModulation 
+} 
+JOW_NOe1_StreetDustRight01_fast_particle_params = { 
+	Class = ParticleObject 
+	Type = NewFlat 
+	CreatedAtStart 
+	AbsentInNetGames 
+	MaxStreams = 2 
+	BoxDimsStart = VECTOR(600.00000000000, 20.00000000000, 120.00000000000) 
+	BoxDimsMid = VECTOR(600.00000000000, 20.00000000000, 180.00000000000) 
+	BoxDimsEnd = VECTOR(240.00000000000, 20.00000000000, 60.00000000000) 
+	pos = VECTOR(1799.82995605469, -15.61040019989, 4.44400978088) 
+	MidPosition = VECTOR(1801.46997070312, -16.17539978027, 1292.25000000000) 
+	EndPosition = VECTOR(1801.83996582031, -15.94820022583, 1706.72998046875) 
+	UseMidPoint 
+	SuspendDistance = Default_Fast_Particle_Suspend_Dist 
+	LOD_Dist1 = Default_Fast_Particle_LOD_Dist1 
+	LOD_Dist2 = Default_Fast_Particle_LOD_Dist2 
+	EmitRate = 300.00000000000 
+	LifeTime = 4.00000000000 
+	StartRadius = 20.00000000000 
+	MidRadius = 60.00000000000 
+	EndRadius = 80.00000000000 
+	StartRadiusSpread = 10.00000000000 
+	MidRadiusSpread = 10.00000000000 
+	EndRadiusSpread = 10.00000000000 
+	Texture = no_tw_vortex01 
+	BlendMode = Blend 
+	AlphaCutoff = 1 
+	StartRGB = [ 20 , 22 , 23 ] 
+	StartAlpha = 0 
+	EndRGB = [ 68 , 66 , 57 ] 
+	EndAlpha = 0 
+	MidRGB = [ 75 , 74 , 70 ] 
+	MidAlpha = 13 
+	UseColorMidTime 
+	ColorMidTime = 50 
+	UseGlobalColorModulation 
+} 
+JOW_NOe1_StreetDustTop01_fast_particle_params = { 
+	Class = ParticleObject 
+	Type = NewFlat 
+	CreatedAtStart 
+	AbsentInNetGames 
+	MaxStreams = 2 
+	BoxDimsStart = VECTOR(600.00000000000, 20.00000000000, 120.00000000000) 
+	BoxDimsMid = VECTOR(600.00000000000, 20.00000000000, 180.00000000000) 
+	BoxDimsEnd = VECTOR(240.00000000000, 20.00000000000, 60.00000000000) 
+	pos = VECTOR(-0.54719501734, -15.61040019989, -1786.55004882812) 
+	MidPosition = VECTOR(-1.56054997444, -16.17539978027, -544.66302490234) 
+	EndPosition = VECTOR(-0.37755200267, -15.94820022583, -78.93990325928) 
+	UseMidPoint 
+	SuspendDistance = Default_Fast_Particle_Suspend_Dist 
+	LOD_Dist1 = Default_Fast_Particle_LOD_Dist1 
+	LOD_Dist2 = Default_Fast_Particle_LOD_Dist2 
+	EmitRate = 300.00000000000 
+	LifeTime = 4.00000000000 
+	StartRadius = 20.00000000000 
+	MidRadius = 60.00000000000 
+	EndRadius = 80.00000000000 
+	StartRadiusSpread = 10.00000000000 
+	MidRadiusSpread = 10.00000000000 
+	EndRadiusSpread = 10.00000000000 
+	Texture = no_tw_vortex01 
+	BlendMode = Blend 
+	AlphaCutoff = 1 
+	StartRGB = [ 20 , 22 , 23 ] 
+	StartAlpha = 0 
+	EndRGB = [ 68 , 66 , 57 ] 
+	EndAlpha = 0 
+	MidRGB = [ 75 , 74 , 70 ] 
+	MidAlpha = 13 
+	UseColorMidTime 
+	ColorMidTime = 50 
+	UseGlobalColorModulation 
+} 
+JOW_NOe1_Tornado01_fast_particle_params = { 
+	Class = ParticleObject 
+	Type = NewFlat 
+	CreatedAtStart 
+	AbsentInNetGames 
+	MaxStreams = 2 
+	BoxDimsStart = VECTOR(20.00000000000, 20.00000000000, 20.00000000000) 
+	BoxDimsMid = VECTOR(20.00000000000, 20.00000000000, 20.00000000000) 
+	BoxDimsEnd = VECTOR(20.00000000000, 20.00000000000, 20.00000000000) 
+	pos = VECTOR(-0.20999999344, -95.08999633789, 6.51999998093) 
+	MidPosition = VECTOR(-0.76999998093, 514.32000732422, 25.51000022888) 
+	EndPosition = VECTOR(1.42999994755, 2883.08007812500, 0.01999999955) 
+	UseMidPoint 
+	SuspendDistance = 0.00000000000 
+	LOD_Dist1 = Default_Fast_Particle_LOD_Dist1 
+	LOD_Dist2 = Default_Fast_Particle_LOD_Dist2 
+	EmitRate = 40.00000000000 
+	LifeTime = 2.00000000000 
+	StartRadius = 50.00000000000 
+	MidRadius = 250.00000000000 
+	EndRadius = 1000.00000000000 
+	StartRadiusSpread = 60.00000000000 
+	MidRadiusSpread = 250.00000000000 
+	EndRadiusSpread = 1000.00000000000 
+	priority = 0 
+	Texture = no_tw_vortex01 
+	BlendMode = Blend 
+	AlphaCutoff = 1 
+	StartRGB = [ 143 , 65 , 48 ] 
+	StartAlpha = 65 
+	EndRGB = [ 38 , 39 , 40 ] 
+	EndAlpha = 68 
+	MidRGB = [ 38 , 39 , 40 ] 
+	MidAlpha = 68 
+	UseColorMidTime 
+	ColorMidTime = 51 
+	UseGlobalColorModulation 
+} 
+JOW_NOe1_Tornado02_fast_particle_params = { 
+	Class = ParticleObject 
+	Type = NewFlat 
+	CreatedAtStart 
+	AbsentInNetGames 
+	MaxStreams = 2 
+	BoxDimsStart = VECTOR(102.88999938965, 51.34000015259, 102.88999938965) 
+	BoxDimsMid = VECTOR(164.11000061035, 62.81000137329, 164.11000061035) 
+	BoxDimsEnd = VECTOR(252.33000183105, 80.33000183105, 252.33000183105) 
+	pos = VECTOR(-0.92000001669, 25.71999931335, 3.04999995232) 
+	MidPosition = VECTOR(-3.49000000954, 24.82999992371, 7.82000017166) 
+	EndPosition = VECTOR(-0.03999999911, 77.37999725342, 40.77000045776) 
+	UseMidPoint 
+	SuspendDistance = 0.00000000000 
+	LOD_Dist1 = Default_Fast_Particle_LOD_Dist1 
+	LOD_Dist2 = Default_Fast_Particle_LOD_Dist2 
+	EmitRate = 50.00000000000 
+	LifeTime = 1.50000000000 
+	StartRadius = 20.00000000000 
+	MidRadius = 40.00000000000 
+	EndRadius = 70.00000000000 
+	priority = 0 
+	Texture = no_tw_vortex01 
+	BlendMode = Blend 
+	AlphaCutoff = 1 
+	StartRGB = [ 132 , 61 , 50 ] 
+	StartAlpha = 0 
+	EndRGB = [ 43 , 43 , 45 ] 
+	EndAlpha = 0 
+	MidRGB = [ 75 , 52 , 40 ] 
+	MidAlpha = 44 
+	UseColorMidTime 
+	ColorMidTime = 50 
+	UseGlobalColorModulation 
+} 
+JOW_NOe2_Laser01_fast_particle_params = { 
+	Class = ParticleObject 
+	Type = NewFlat 
+	CreatedAtStart 
+	AbsentInNetGames 
+	MaxStreams = 2 
+	BoxDimsStart = VECTOR(5.00000000000, 5.00000000000, 5.00000000000) 
+	BoxDimsMid = VECTOR(12.00000000000, 12.00000000000, 12.00000000000) 
+	BoxDimsEnd = VECTOR(5.00000000000, 5.00000000000, 5.00000000000) 
+	pos = VECTOR(-0.05215450004, 260.08200073242, 3112.11010742188) 
+	MidPosition = VECTOR(39.94779968262, 228.08200073242, 3112.11010742188) 
+	EndPosition = VECTOR(-27.41930007935, 220.68800354004, -3698.59008789062) 
+	SuspendDistance = Default_Fast_Particle_Suspend_Dist 
+	LOD_Dist1 = 0.00000000000 
+	LOD_Dist2 = 0.00000000000 
+	EmitRate = 3200.00000000000 
+	LifeTime = 1.00000000000 
+	EmitDuration = 1.50000000000 
+	StartRadius = 24.00000000000 
+	EndRadius = 24.00000000000 
+	priority = 0 
+	Texture = se_hj_SpotLightGlow 
+	BlendMode = Add 
+	AlphaCutoff = 1 
+	StartRGB = [ 92 , 152 , 255 ] 
+	StartAlpha = 20 
+	EndRGB = [ 92 , 152 , 255 ] 
+	EndAlpha = 20 
+	UseGlobalColorModulation 
+} 
+

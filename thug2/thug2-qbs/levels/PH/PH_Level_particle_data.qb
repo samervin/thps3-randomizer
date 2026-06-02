@@ -1,0 +1,136 @@
+
+SCRIPT load_level_particle_textures 
+	LoadParticleTexture "particles\\jow_ph_hoagie01" 
+ENDSCRIPT
+
+JOW_PH_Hoagie01_particle_params = { 
+	emitScript = emit_JOW_PH_Hoagie01_particle 
+	max = 6 
+	type = Shaded 
+	texture = JOW_PH_Hoagie01 
+	blendMode = Blend 
+	UseRandomUVQuadrants 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_PH_Hoagie01_particle 
+	setEmitRange width = 1.00000000000 height = 1.00000000000 depth = 0.00000000000 
+	setLife min = 2.00000000000 max = 2.00000000000 
+	setAngleSpread spread = 1.00000000000 
+	setSpeedRange min = 2.50000000000 max = 2.50000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = -0.07000000030 z = 0.00000000000 
+	setParticleSize sw = 12.00000000000 ew = 12.00000000000 
+	setColor corner = 0 sr = 89 sg = 89 sb = 89 sa = 255 er = 89 eg = 89 eb = 89 ea = 255 
+	setColor corner = 1 sr = 89 sg = 89 sb = 89 sa = 255 er = 89 eg = 89 eb = 89 ea = 255 
+	setColor corner = 2 sr = 89 sg = 89 sb = 89 sa = 255 er = 89 eg = 89 eb = 89 ea = 255 
+	setColor corner = 3 sr = 89 sg = 89 sb = 89 sa = 255 er = 89 eg = 89 eb = 89 ea = 255 
+	emit num = 6 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_PH_Hoagie02_particle_params = { 
+	emitScript = emit_JOW_PH_Hoagie02_particle 
+	max = 6 
+	type = Shaded 
+	texture = JOW_PH_Hoagie01 
+	blendMode = Blend 
+	UseRandomUVQuadrants 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_PH_Hoagie02_particle 
+	setEmitRange width = 1.00000000000 height = 1.00000000000 depth = 0.00000000000 
+	setLife min = 2.00000000000 max = 2.00000000000 
+	setAngleSpread spread = 1.00000000000 
+	setSpeedRange min = 2.50000000000 max = 2.50000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = -0.07000000030 z = 0.00000000000 
+	setParticleSize sw = 12.00000000000 ew = 12.00000000000 
+	setColor corner = 0 sr = 89 sg = 89 sb = 89 sa = 255 er = 89 eg = 89 eb = 89 ea = 255 
+	setColor corner = 1 sr = 89 sg = 89 sb = 89 sa = 255 er = 89 eg = 89 eb = 89 ea = 255 
+	setColor corner = 2 sr = 89 sg = 89 sb = 89 sa = 255 er = 89 eg = 89 eb = 89 ea = 255 
+	setColor corner = 3 sr = 89 sg = 89 sb = 89 sa = 255 er = 89 eg = 89 eb = 89 ea = 255 
+	emit num = 6 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_PH_Hoagie03_particle_params = { 
+	emitScript = emit_JOW_PH_Hoagie03_particle 
+	max = 6 
+	type = Shaded 
+	texture = JOW_PH_Hoagie01 
+	blendMode = Blend 
+	UseRandomUVQuadrants 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_PH_Hoagie03_particle 
+	setEmitRange width = 1.00000000000 height = 1.00000000000 depth = 0.00000000000 
+	setLife min = 2.00000000000 max = 2.00000000000 
+	setAngleSpread spread = 1.00000000000 
+	setSpeedRange min = 2.50000000000 max = 2.50000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = -0.07000000030 z = 0.00000000000 
+	setParticleSize sw = 12.00000000000 ew = 12.00000000000 
+	setColor corner = 0 sr = 89 sg = 89 sb = 89 sa = 255 er = 89 eg = 89 eb = 89 ea = 255 
+	setColor corner = 1 sr = 89 sg = 89 sb = 89 sa = 255 er = 89 eg = 89 eb = 89 ea = 255 
+	setColor corner = 2 sr = 89 sg = 89 sb = 89 sa = 255 er = 89 eg = 89 eb = 89 ea = 255 
+	setColor corner = 3 sr = 89 sg = 89 sb = 89 sa = 255 er = 89 eg = 89 eb = 89 ea = 255 
+	emit num = 6 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_PH_Hoagie04_particle_params = { 
+	emitScript = emit_JOW_PH_Hoagie04_particle 
+	max = 6 
+	type = Shaded 
+	texture = JOW_PH_Hoagie01 
+	blendMode = Blend 
+	UseRandomUVQuadrants 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_PH_Hoagie04_particle 
+	setEmitRange width = 1.00000000000 height = 1.00000000000 depth = 0.00000000000 
+	setLife min = 2.00000000000 max = 2.00000000000 
+	setAngleSpread spread = 1.00000000000 
+	setSpeedRange min = 2.50000000000 max = 2.50000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = -0.07000000030 z = 0.00000000000 
+	setParticleSize sw = 12.00000000000 ew = 12.00000000000 
+	setColor corner = 0 sr = 89 sg = 89 sb = 89 sa = 255 er = 89 eg = 89 eb = 89 ea = 255 
+	setColor corner = 1 sr = 89 sg = 89 sb = 89 sa = 255 er = 89 eg = 89 eb = 89 ea = 255 
+	setColor corner = 2 sr = 89 sg = 89 sb = 89 sa = 255 er = 89 eg = 89 eb = 89 ea = 255 
+	setColor corner = 3 sr = 89 sg = 89 sb = 89 sa = 255 er = 89 eg = 89 eb = 89 ea = 255 
+	emit num = 6 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_PH_Hoagie05_particle_params = { 
+	emitScript = emit_JOW_PH_Hoagie05_particle 
+	max = 6 
+	type = Shaded 
+	texture = JOW_PH_Hoagie01 
+	blendMode = Blend 
+	UseRandomUVQuadrants 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_PH_Hoagie05_particle 
+	setEmitRange width = 1.00000000000 height = 1.00000000000 depth = 0.00000000000 
+	setLife min = 2.00000000000 max = 2.00000000000 
+	setAngleSpread spread = 1.00000000000 
+	setSpeedRange min = 2.50000000000 max = 2.50000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = -0.07000000030 z = 0.00000000000 
+	setParticleSize sw = 12.00000000000 ew = 12.00000000000 
+	setColor corner = 0 sr = 89 sg = 89 sb = 89 sa = 255 er = 89 eg = 89 eb = 89 ea = 255 
+	setColor corner = 1 sr = 89 sg = 89 sb = 89 sa = 255 er = 89 eg = 89 eb = 89 ea = 255 
+	setColor corner = 2 sr = 89 sg = 89 sb = 89 sa = 255 er = 89 eg = 89 eb = 89 ea = 255 
+	setColor corner = 3 sr = 89 sg = 89 sb = 89 sa = 255 er = 89 eg = 89 eb = 89 ea = 255 
+	emit num = 6 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+

@@ -1,0 +1,126 @@
+
+SCRIPT load_level_fast_particle_textures 
+	LoadParticleTexture "particles\\apm_spray_01" 
+	LoadParticleTexture "particles\\apm_debis_01" 
+	LoadParticleTexture "particles\\apm_debis_02" 
+ENDSCRIPT
+
+TB_TR_DoorDust01_fast_particle_params = { 
+	Class = ParticleObject 
+	Type = NewFlat 
+	CreatedAtStart 
+	AbsentInNetGames 
+	MaxStreams = 2 
+	LocalSpace 
+	BoxDimsStart = VECTOR(10, 10, 10) 
+	BoxDimsMid = VECTOR(200, 100, 200) 
+	BoxDimsEnd = VECTOR(300, 100, 300) 
+	pos = VECTOR(0, 0, 0) 
+	MidPosition = VECTOR(0, 0, 0) 
+	EndPosition = VECTOR(0, 60, 0) 
+	UseMidPoint 
+	SuspendDistance = Default_Fast_Particle_Suspend_Dist 
+	LOD_Dist1 = 0.00000000000 
+	LOD_Dist2 = 0.00000000000 
+	EmitRate = 50.00000000000 
+	LifeTime = 5.00000000000 
+	EmitDuration = 3.00000000000 
+	StartRadius = 20.00000000000 
+	MidRadius = 60.00000000000 
+	EndRadius = 80.00000000000 
+	StartRadiusSpread = 10.00000000000 
+	MidRadiusSpread = 20.00000000000 
+	EndRadiusSpread = 10.00000000000 
+	priority = 0 
+	Texture = apm_spray_01 
+	BlendMode = Blend 
+	AlphaCutoff = 2 
+	StartRGB = [ 128 , 117 , 117 ] 
+	StartAlpha = 0 
+	EndRGB = [ 77 , 71 , 71 ] 
+	EndAlpha = 0 
+	MidRGB = [ 102 , 94 , 94 ] 
+	MidAlpha = 42 
+	UseColorMidTime 
+	ColorMidTime = 50 
+	UseGlobalColorModulation 
+} 
+apm_TR_Tomatosplatta01_fast_particle_params = { 
+	Class = ParticleObject 
+	Type = NewFlat 
+	CreatedAtStart 
+	MaxStreams = 2 
+	LocalSpace 
+	BoxDimsStart = VECTOR(1.00000000000, 1.00000000000, 1.00000000000) 
+	BoxDimsMid = VECTOR(50.00000000000, 25.00000000000, 50.00000000000) 
+	BoxDimsEnd = VECTOR(200.00000000000, 25.00000000000, 200.00000000000) 
+	pos = VECTOR(0.00000000000, 0.00000000000, 0.00000000000) 
+	MidPosition = VECTOR(0.00000000000, 0.00000000000, 0.00000000000) 
+	EndPosition = VECTOR(0.00000000000, -20.00000000000, 0.00000000000) 
+	UseMidPoint 
+	SuspendDistance = Default_Fast_Particle_Suspend_Dist 
+	LOD_Dist1 = 0.00000000000 
+	LOD_Dist2 = 0.00000000000 
+	EmitRate = 100.00000000000 
+	LifeTime = 0.30000001192 
+	EmitDuration = 0.15000000596 
+	StartRadius = 10.00000000000 
+	MidRadius = 10.00000000000 
+	EndRadius = 10.00000000000 
+	StartRadiusSpread = 5.00000000000 
+	MidRadiusSpread = 5.00000000000 
+	EndRadiusSpread = 5.00000000000 
+	priority = 0 
+	Texture = apm_debis_01 
+	BlendMode = Blend 
+	AlphaCutoff = 1 
+	StartRGB = [ 116 , 64 , 56 ] 
+	StartAlpha = 254 
+	EndRGB = [ 94 , 54 , 46 ] 
+	EndAlpha = 0 
+	MidRGB = [ 114 , 66 , 56 ] 
+	MidAlpha = 191 
+	UseColorMidTime 
+	ColorMidTime = 42 
+	UseGlobalColorModulation 
+} 
+apm_TR_Tomatosplatta02_fast_particle_params = { 
+	Class = ParticleObject 
+	Type = NewFlat 
+	CreatedAtStart 
+	MaxStreams = 2 
+	LocalSpace 
+	BoxDimsStart = VECTOR(1.00000000000, 1.00000000000, 1.00000000000) 
+	BoxDimsMid = VECTOR(50.00000000000, 25.00000000000, 50.00000000000) 
+	BoxDimsEnd = VECTOR(200.00000000000, 25.00000000000, 200.00000000000) 
+	pos = VECTOR(0.00000000000, 0.00000000000, 0.00000000000) 
+	MidPosition = VECTOR(0.00000000000, 0.00000000000, 0.00000000000) 
+	EndPosition = VECTOR(0.00000000000, -20.00000000000, 0.00000000000) 
+	UseMidPoint 
+	SuspendDistance = Default_Fast_Particle_Suspend_Dist 
+	LOD_Dist1 = 0.00000000000 
+	LOD_Dist2 = 0.00000000000 
+	EmitRate = 100.00000000000 
+	LifeTime = 0.30000001192 
+	EmitDuration = 0.10000000149 
+	StartRadius = 10.00000000000 
+	MidRadius = 10.00000000000 
+	EndRadius = 10.00000000000 
+	StartRadiusSpread = 5.00000000000 
+	MidRadiusSpread = 5.00000000000 
+	EndRadiusSpread = 5.00000000000 
+	priority = 0 
+	Texture = apm_debis_02 
+	BlendMode = Blend 
+	AlphaCutoff = 1 
+	StartRGB = [ 152 , 45 , 54 ] 
+	StartAlpha = 254 
+	EndRGB = [ 152 , 60 , 68 ] 
+	EndAlpha = 0 
+	MidRGB = [ 152 , 42 , 51 ] 
+	MidAlpha = 0 
+	UseColorMidTime 
+	ColorMidTime = 42 
+	UseGlobalColorModulation 
+} 
+

@@ -1,0 +1,357 @@
+
+SE_SFX_LoungeSingerMusicStatus = 0 
+SE_SFX_SpaceportMusicStatus = 0 
+SE_SFX_DoneWaitingSpaceport = 1 
+SCRIPT SE_LoadingSounds 
+	LoadSound "Shared\\Hits\\HitGlassPane2x" 
+	LoadSound "Shared\\Auto\\LA_Skid_11" vol = 100 dropoff = 150 
+	LoadSound "Shared\\Auto\\CarBrakeSqueal" vol = 100 dropoff = 150 
+	LoadSound "Shared\\Auto\\CarHorn_11" vol = 100 dropoff = 150 
+	LoadSound "Shared\\Hits\\HitMetalCan" vol = 100 dropoff = 150 PosUpdateWithDoppler 
+	LoadSound "Shared\\Hits\\BonkBush" vol = 100 dropoff = 0 
+	LoadSound "Shared\\Water\\FallWater" 
+	LoadSound "Shared\\Auto\\CarLoop" vol = 100 dropoff = 150 PosUpdateWithDoppler 
+	LoadSound "Vehicles\\Vehicle_Tire_Loop" 
+	LoadSound "Terrains\\BonkMetal_11" 
+	LoadSound "SE\\SK6_SE_ShipEngineLoop_11" 
+	LoadSound "SE\\SK6_SE_PressButton01" 
+	LoadSound "SE\\SK6_SE_HologramLoop" 
+	LoadSound "SE\\SK6_SE_ConveyorLoop_11" PosUpdateWithDoppler 
+	LoadSound "Vehicles\\Silent_Vehicle_Tire_Loop" 
+	LoadSound "SE\\SK6_SE_DoorsOpen" 
+	LoadSound "SE\\SK6_SE_WarpHoleLoop" 
+	LoadSound "SE\\SK6_SE_BreakMetalWall" 
+	LoadSound "SE\\SK6_SE_SnapCable" 
+	LoadSound "SE\\Sk6_SE_MonkeySwordGlow" 
+	LoadSound "BO\\SK6_BO_FireLoop" 
+	IF ( DebugSoundFX = 1 ) 
+		dumpheaps 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_SFX_FanBlades 
+	IF NOT IsStreamPlaying SK6_BO_Air_Vent 
+		Obj_PlayStream SK6_BO_Air_Vent pitch = 80 vol = 180 emitter = TRG_SFX_SOB_Airflow_Vent num_loops = -1 priority = 70 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_SFX_Spaceport_Music_Box 
+ENDSCRIPT
+
+SCRIPT SE_SFX_WaitingSpaceportMusic 
+	change SE_SFX_DoneWaitingSpaceport = 0 
+	<counter_waiting_music> = 0 
+	BEGIN 
+		printf "Waited %c seconds" c = <counter_waiting_music> 
+		wait 1 second 
+		<counter_waiting_music> = ( <counter_waiting_music> + 1 ) 
+	REPEAT 230 
+	change SE_SFX_DoneWaitingSpaceport = 1 
+ENDSCRIPT
+
+SCRIPT SE_SFX_Mayan_Music_Box 
+ENDSCRIPT
+
+SCRIPT SE_SFX_Hell_Music_Box 
+ENDSCRIPT
+
+SCRIPT SE_SFX_Garage03 
+	IF NOT GameIsPaused 
+		IF NOT InSplitscreenGame 
+			IF ( inside ) 
+				change InsideAdjacentReverbBox01 = 1 
+				GetValueFromVolume cdvol 
+				IF ( InsideAdjacentReverbBox02 = 0 ) 
+					IF ( <value> = 0 ) 
+						SetSfxReverb 60 mode = REV_MODE_ROOM 
+					ELSE 
+						SetSfxReverb 75 mode = REV_MODE_ROOM 
+					ENDIF 
+				ENDIF 
+			ELSE 
+				IF ( InsideAdjacentReverbBox02 = 0 ) 
+					SetSfxReverb 0 mode = REV_MODE_ROOM 
+				ELSE 
+				ENDIF 
+				change InsideAdjacentReverbBox01 = 0 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_SFX_Garage02 
+	IF NOT GameIsPaused 
+		IF NOT InSplitscreenGame 
+			IF ( inside ) 
+				change InsideAdjacentReverbBox01 = 1 
+				GetValueFromVolume cdvol 
+				IF ( InsideAdjacentReverbBox02 = 0 ) 
+					IF ( <value> = 0 ) 
+						SetSfxReverb 60 mode = REV_MODE_ROOM 
+					ELSE 
+						SetSfxReverb 75 mode = REV_MODE_ROOM 
+					ENDIF 
+				ENDIF 
+			ELSE 
+				IF ( InsideAdjacentReverbBox02 = 0 ) 
+					SetSfxReverb 0 mode = REV_MODE_ROOM 
+				ELSE 
+				ENDIF 
+				change InsideAdjacentReverbBox01 = 0 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_SFX_Garage01 
+	IF NOT GameIsPaused 
+		IF NOT InSplitscreenGame 
+			IF ( inside ) 
+				change InsideAdjacentReverbBox01 = 1 
+				GetValueFromVolume cdvol 
+				IF ( InsideAdjacentReverbBox02 = 0 ) 
+					IF ( <value> = 0 ) 
+						SetSfxReverb 60 mode = REV_MODE_ROOM 
+					ELSE 
+						SetSfxReverb 75 mode = REV_MODE_ROOM 
+					ENDIF 
+				ENDIF 
+			ELSE 
+				IF ( InsideAdjacentReverbBox02 = 0 ) 
+					SetSfxReverb 0 mode = REV_MODE_ROOM 
+				ELSE 
+				ENDIF 
+				change InsideAdjacentReverbBox01 = 0 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_SFX_ShipIdle01 
+	wait 5 seconds 
+	BEGIN 
+		IF ( ( IsAlive Name = GEO_PreEvent_Spaceship_RedButton01 ) ) 
+			IF ( ( IsAlive Name = GEO_PreEvent_Spaceship_RedButton02 ) ) 
+				Obj_StopSound SK6_SE_ShipEngineLoop_11 
+			ELSE 
+				Obj_PlaySound SK6_SE_ShipEngineLoop_11 emitter = TRG_SFX_SOB_ShipIdle01 
+			ENDIF 
+		ELSE 
+			IF ( ( IsAlive Name = GEO_PreEvent_Spaceship_RedButton02 ) ) 
+				Obj_PlaySound SK6_SE_ShipEngineLoop_11 emitter = TRG_SFX_SOB_ShipIdle01 
+			ELSE 
+				Obj_StopSound SK6_SE_ShipEngineLoop_11 
+				BREAK 
+			ENDIF 
+		ENDIF 
+		wait 0.50000000000 seconds 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT SE_SFX_Hologram 
+	Obj_PlaySound SK6_SE_HologramLoop emitter = TRG_SFX_SOB_Hologram 
+ENDSCRIPT
+
+SCRIPT SE_SFX_RedZap_01 
+	IF InSplitscreenGame 
+		IF NOT IsStreamPlaying RedZapper 
+			Obj_PlayStream SK6_SE_RedElectricalZappingLoop emitter = TRG_SFX_SOB_RedZap01 id = RedZapper num_loops = -1 
+		ENDIF 
+	ELSE 
+		Obj_PlayStream SK6_SE_RedElectricalZappingLoop emitter = TRG_SFX_SOB_RedZap01 id = RedZapper num_loops = -1 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_SFX_RedZap_02 
+	IF InSplitscreenGame 
+		IF NOT IsStreamPlaying RedZapper 
+			Obj_PlayStream SK6_SE_RedElectricalZappingLoop emitter = TRG_SFX_SOB_RedZap02 id = RedZapper num_loops = -1 
+		ENDIF 
+	ELSE 
+		Obj_PlayStream SK6_SE_RedElectricalZappingLoop emitter = TRG_SFX_SOB_RedZap02 id = RedZapper num_loops = -1 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_SFX_Conveyor 
+ENDSCRIPT
+
+SCRIPT SE_SFX_OutsideBG 
+ENDSCRIPT
+
+SCRIPT SE_SFX_OutsideBG02 
+ENDSCRIPT
+
+SCRIPT SE_SFX_TempleReverb 
+ENDSCRIPT
+
+SCRIPT SE_SFX_GlowingSword 
+	Obj_PlaySound SK6_SE_HologramLoop pitch = 89 
+	Obj_PlaySound SK6_BO_FireLoop vol = 20 pitch = 400 
+ENDSCRIPT
+
+SCRIPT SE_SFX_Lava01 
+ENDSCRIPT
+
+SCRIPT SE_SFX_LoungeSinger_Music_Box 
+	IF ( StaticMusicBoxesOn = 1 ) 
+		SFX_Music_Volume_Box 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_SFX_LoungeSinger 
+	IF NOT IsStreamPlaying LoungeSingerStream 
+		RANDOM_NO_REPEAT(1, 1, 1, 1) 
+			RANDOMCASE Obj_PlayStream LoungeBand02 vol = 150 emitter = TRG_SFX_SOB_LoungeSinger dropoff_function = inv_exponential id = LoungeSingerStream priority = 101 num_loops = -1 
+			RANDOMCASE Obj_PlayStream LoungeBand03 vol = 150 emitter = TRG_SFX_SOB_LoungeSinger dropoff_function = inv_exponential id = LoungeSingerStream priority = 101 num_loops = -1 
+			RANDOMCASE Obj_PlayStream LoungeBand04 vol = 150 emitter = TRG_SFX_SOB_LoungeSinger dropoff_function = inv_exponential id = LoungeSingerStream priority = 101 num_loops = -1 
+			RANDOMCASE Obj_PlayStream LoungeBand05 vol = 150 emitter = TRG_SFX_SOB_LoungeSinger dropoff_function = inv_exponential id = LoungeSingerStream priority = 101 num_loops = -1 
+		RANDOMEND 
+		Obj_AddStream LoungeSingerStream add = LoungeBand01 
+		wait 1 gameframe 
+		Obj_RemoveStream LoungeSingerStream remove = LoungeBand02 
+		Obj_RemoveStream LoungeSingerStream remove = LoungeBand03 
+		Obj_RemoveStream LoungeSingerStream remove = LoungeBand04 
+		Obj_RemoveStream LoungeSingerStream remove = LoungeBand05 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_SFX_LoungeSinger_Start 
+	RANDOM_NO_REPEAT(1, 1, 1, 1, 1, 1, 1) 
+		RANDOMCASE Obj_PlayStream Ped_LoungeSinger_Start01 vol = 200 priority = StreamPriorityHigh 
+		RANDOMCASE Obj_PlayStream Ped_LoungeSinger_Start02 vol = 200 priority = StreamPriorityHigh 
+		RANDOMCASE Obj_PlayStream Ped_LoungeSinger_Start03 vol = 200 priority = StreamPriorityHigh 
+		RANDOMCASE Obj_PlayStream Ped_LoungeSinger_Start04 vol = 200 priority = StreamPriorityHigh 
+		RANDOMCASE Obj_PlayStream Ped_LoungeSinger_Start05 vol = 200 priority = StreamPriorityHigh 
+		RANDOMCASE Obj_PlayStream Ped_LoungeSinger_Start06 vol = 200 priority = StreamPriorityHigh 
+		RANDOMCASE Obj_PlayStream Ped_LoungeSinger_Start07 vol = 200 priority = StreamPriorityHigh 
+	RANDOMEND 
+ENDSCRIPT
+
+SCRIPT SE_SFX_LoungeSinger_Start02 
+	printf "CREATING THE BOXES TO START THE BAND" 
+	change SE_SFX_LoungeSingerMusicStatus = 1 
+	kill Name = TRG_SFX_TrigBox_LoungeSinger 
+	kill Name = TRG_SFX_TrigBox_LoungeSingerMusicOff 
+	create Name = TRG_SFX_TrigBox_LoungeSinger 
+	create Name = TRG_SFX_TrigBox_LoungeSingerMusicOff 
+ENDSCRIPT
+
+SCRIPT SE_SFX_LoungeSinger_Stop 
+	printf "PLAYING A SINGER PISSED ABOUT ENDING" 
+	RANDOM_NO_REPEAT(1, 1, 1, 1, 1, 1, 1) 
+		RANDOMCASE Obj_PlayStream Ped_LoungeSinger_End01 vol = 200 priority = StreamPriorityHigh 
+		RANDOMCASE Obj_PlayStream Ped_LoungeSinger_End02 vol = 200 priority = StreamPriorityHigh 
+		RANDOMCASE Obj_PlayStream Ped_LoungeSinger_End03 vol = 200 priority = StreamPriorityHigh 
+		RANDOMCASE Obj_PlayStream Ped_LoungeSinger_End04 vol = 200 priority = StreamPriorityHigh 
+		RANDOMCASE Obj_PlayStream Ped_LoungeSinger_End05 vol = 200 priority = StreamPriorityHigh 
+		RANDOMCASE Obj_PlayStream Ped_LoungeSinger_End06 vol = 200 priority = StreamPriorityHigh 
+		RANDOMCASE Obj_PlayStream Ped_LoungeSinger_End07 vol = 200 priority = StreamPriorityHigh 
+	RANDOMEND 
+ENDSCRIPT
+
+SCRIPT SE_SFX_LoungeSinger_Stop02 
+	printf "STOPPING THE MUSIC BY KILLING BOXES" 
+	change SE_SFX_LoungeSingerMusicStatus = 0 
+	kill Name = TRG_SFX_TrigBox_LoungeSinger 
+	kill Name = TRG_SFX_TrigBox_LoungeSingerMusicOff 
+ENDSCRIPT
+
+SCRIPT SE_SFX_Spits 
+ENDSCRIPT
+
+SCRIPT SE_SFX_Robot_Beeps Robot = TRG_Droid_01 
+	RANDOM(1, 1, 1, 1, 1) 
+		RANDOMCASE <Robot> : Obj_PlayStream SK6_SE_Robot_Beep01 dropoff = 250 priority = StreamPriorityLow 
+		RANDOMCASE <Robot> : Obj_PlayStream SK6_SE_Robot_Beep02 dropoff = 250 priority = StreamPriorityLow 
+		RANDOMCASE <Robot> : Obj_PlayStream SK6_SE_Robot_Beep03 dropoff = 250 priority = StreamPriorityLow 
+		RANDOMCASE <Robot> : Obj_PlayStream SK6_SE_Robot_Beep04 dropoff = 250 priority = StreamPriorityLow 
+		RANDOMCASE <Robot> : Obj_PlayStream SK6_SE_Robot_Beep05 dropoff = 250 priority = StreamPriorityLow 
+	RANDOMEND 
+ENDSCRIPT
+
+SCRIPT SE_SFX_IgniteEngine01 
+	wait 0.10000000149 seconds 
+	IF NOT ( ( GetFlag flag = RedButton01 ) & ( GetFlag flag = RedButton02 ) ) 
+		PlaySound SK6_SE_PressButton01 vol = 160 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_SFX_IgniteEngine02 
+	wait 0.10000000149 seconds 
+	IF NOT ( ( GetFlag flag = RedButton01 ) & ( GetFlag flag = RedButton02 ) ) 
+		PlaySound SK6_SE_PressButton01 vol = 160 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_SFX_DeathByLaser 
+ENDSCRIPT
+
+SCRIPT SE_SFX_SpaceDoorOpen 
+	IF NOT IsSoundPlaying SK6_SE_DoorsOpen 
+		PlaySound SK6_SE_DoorsOpen vol = 80 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_SFX_SpaceDoorClose 
+	IF NOT IsSoundPlaying SK6_SE_PressButton01 
+		PlaySound SK6_SE_PressButton01 pitch = 50 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_SFX_DartsShoot 
+	IF NOT IsStreamPlaying SFX_Darts 
+		PlayStream SK6_SE_DartsShooting id = SFX_Darts 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE_SFX_RopeBreak01 
+	PlaySound SK6_SE_SnapCable 
+ENDSCRIPT
+
+SCRIPT SE_SFX_RopeBreak02 
+	PlaySound SK6_SE_SnapCable 
+ENDSCRIPT
+
+SCRIPT SE_SFX_LavaBurstUp 
+ENDSCRIPT
+
+SCRIPT SE_SFX_DistantScream 
+ENDSCRIPT
+
+SCRIPT SE_SFX_HellBasement 
+ENDSCRIPT
+
+SCRIPT SE_SFX_HellBasement02 
+ENDSCRIPT
+
+SCRIPT SE_SFX_Laughing 
+ENDSCRIPT
+
+SCRIPT SE_SFX_BreakMetal 
+	PlayStream SK6_BreakMetalFence vol = 200 
+	PlaySound HitGlassPane2x pitch = 50 
+ENDSCRIPT
+
+SCRIPT SE_SFX_BreakGlass 
+	PlaySound HitGlassPane2x pitch = RANDOM(1, 1, 1, 1) RANDOMCASE 85 RANDOMCASE 95 RANDOMCASE 105 RANDOMCASE 110 RANDOMEND 
+ENDSCRIPT
+
+SCRIPT SE_SFX_SpaceToMayanPortal 
+ENDSCRIPT
+
+SCRIPT SE_SFX_SpaceToHellPortal 
+ENDSCRIPT
+
+SCRIPT SE_SFX_MayanToSpacePortal 
+ENDSCRIPT
+
+SCRIPT SE_SFX_MayanToHellPortal 
+ENDSCRIPT
+
+SCRIPT SE_SFX_HellToMayanPortal 
+ENDSCRIPT
+
+SCRIPT SE_SFX_HellToSpacePortal 
+ENDSCRIPT
+
+

@@ -1,0 +1,988 @@
+SCRIPT PH_Setup 
+	PH_Main_Initializer 
+	IF IsCareerMode 
+	ELSE 
+	ENDIF 
+	Create_Panel_Message style = panel_message_death text = " " 
+ENDSCRIPT
+
+SCRIPT PH_startup 
+ENDSCRIPT
+
+SCRIPT PH_Main_Initializer 
+	IF ( ( GameModeEquals is_classic ) | ( GameModeEquals is_career ) ) 
+		create name = PH_Invisible_Fence 
+		create name = Obj_Phillyside_Fence 
+	ENDIF 
+	IF InMultiplayerGame 
+		kill name = dt_shaddy 
+		kill name = PH_Love_Water_Surface 
+		kill name = TRG_Fountain_natas02 
+		create name = TRG_Fountain_natas03 
+		kill name = PH_Love_Water_Surface01 
+		kill name = PH_Love_Water_Surface02 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TRG_LA_Car01Script 
+	Car_Generic01 StickToGround TurnDist = 70 DefaultSpeed = 35 
+ENDSCRIPT
+
+SCRIPT PH_KillPlane 
+	Sk3_Killskater Bail nodename = TRG_Restart01 message1 = " DENIED!" message2 = " Good One?" 
+ENDSCRIPT
+
+SCRIPT PH_Tunnel_Kill01 
+	Sk3_Killskater nodename = TRG_Restart_Tunnel02 
+ENDSCRIPT
+
+SCRIPT PH_Tunnel_Kill02 
+	Sk3_Killskater nodename = TRG_Restart_Tunnel01 
+ENDSCRIPT
+
+SCRIPT PH_Goals 
+	IF InMultiplayerGame 
+		add_multiplayer_mode_goals 
+	ENDIF 
+	IF NOT InSplitScreenGame 
+		IF ( ( GameModeEquals is_classic ) | ( InNetGame ) ) 
+			printf "adding classic goals" 
+			AddGoal_HighScore { 
+				unlimited_time 
+				classic_mode_goal 
+				goal_text = PH_Classic_HighScore_Text 
+				view_goals_cameras = [ { 
+						name = Cam_Score 
+						frames = 1200 
+						skippable = 1 
+					} 
+				] 
+				difficulty_level_params = [ 
+					{ score = PH_Classic_Easy_HighScore 
+						goal_text = PH_Classic_Easy_HighScore_Text 
+						view_goals_text = PH_Classic_Easy_HighScore_Text 
+					} 
+					{ score = PH_Classic_HighScore 
+						goal_text = PH_Classic_HighScore_Text 
+						view_goals_text = PH_Classic_HighScore_Text 
+					} 
+				] 
+			} 
+			AddGoal_ProScore { 
+				unlimited_time 
+				classic_mode_goal 
+				score = PH_Classic_ProScore 
+				goal_text = PH_Classic_ProScore_Text 
+				view_goals_text = PH_Classic_ProScore_Text 
+				difficulty_level_params = [ 
+					{ score = PH_Classic_Easy_ProScore 
+						goal_text = PH_Classic_Easy_ProScore_Text 
+						view_goals_text = PH_Classic_Easy_ProScore_Text 
+					} 
+					{ score = PH_Classic_ProScore 
+						goal_text = PH_Classic_ProScore_Text 
+						view_goals_text = PH_Classic_ProScore_Text 
+					} 
+				] 
+			} 
+			AddGoal_SickScore { 
+				unlimited_time 
+				classic_mode_goal 
+				score = PH_Classic_SickScore 
+				goal_text = PH_Classic_SickScore_Text 
+				view_goals_text = PH_Classic_SickScore_Text 
+				difficulty_level_params = [ 
+					{ score = PH_Classic_Easy_SickScore 
+						goal_text = PH_Classic_Easy_SickScore_Text 
+						view_goals_text = PH_Classic_Easy_SickScore_Text 
+					} 
+					{ score = PH_Classic_SickScore 
+						goal_text = PH_Classic_SickScore_Text 
+						view_goals_text = PH_Classic_SickScore_Text 
+					} 
+				] 
+			} 
+			AddGoal_HighCombo { 
+				unlimited_time 
+				classic_mode_goal 
+				score = PH_Classic_HighCombo 
+				goal_text = PH_Classic_HighCombo_Text 
+				view_goals_text = PH_Classic_HighCombo_Text 
+				difficulty_level_params = [ 
+					{ score = PH_Classic_Easy_HighCombo 
+						goal_text = PH_Classic_Easy_HighCombo_Text 
+						view_goals_text = PH_Classic_Easy_HighCombo_Text 
+					} 
+					{ score = PH_Classic_HighCombo 
+						goal_text = PH_Classic_HighCombo_Text 
+						view_goals_text = PH_Classic_HighCombo_Text 
+					} 
+				] 
+			} 
+			AddGoal_Skate { 
+				unlimited_time 
+				classic_mode_goal 
+				S_obj_id = TRG_SKATE_S 
+				K_obj_id = TRG_SKATE_K 
+				A_obj_id = TRG_SKATE_A 
+				T_obj_id = TRG_SKATE_T 
+				E_obj_id = TRG_SKATE_E 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(-4132.9, -2913.5, -7534.3) 
+						positionOffset = VECTOR(-1680.2, -1478.8, 2053.3) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+			} 
+			AddGoal_Combo { 
+				unlimited_time 
+				classic_mode_goal 
+				letter_info = [ 
+					{ obj_id = TRG_COMBO_C text = "C" } 
+					{ obj_id = TRG_COMBO_O text = "O" } 
+					{ obj_id = TRG_COMBO_M text = "M" } 
+					{ obj_id = TRG_COMBO_B text = "B" } 
+					{ obj_id = TRG_COMBO_O01 text = "O" } 
+				] 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(6336, -2712.7, -4804.3) 
+						positionOffset = VECTOR(-2431, -1489.1, -152.2) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+			} 
+			AddGoal_collect { 
+				unlimited_time 
+				init_script = PH_TrashCreate 
+				goal_deactivate_script = PH_TrashKill 
+				classic_mode_goal 
+				collect_type = "Smack The 5 Bags" 
+				goal_text = "Smack All The Bags" 
+				view_goals_text = "Smack All The Bags" 
+				use_hud_counter 
+				hud_counter_caption = "Bags Destroyed!" 
+				goal_flags = [ got_1 
+					got_2 
+					got_3 
+					got_4 
+					got_5 
+				] 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(-2627.1, -3474.5, 5432.7) 
+						positionOffset = VECTOR(900.4, -1533.5, -3720.8) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+			} 
+			AddGoal_collect { 
+				unlimited_time 
+				init_script = PH_HogeysCreate 
+				goal_deactivate_script = PH_HogeysKill 
+				classic_mode_goal 
+				version = 2 
+				collect_type = "Hogeys" 
+				goal_text = "Smash The 5 Hogeys" 
+				view_goals_text = "Smash The 5 Hogeys" 
+				use_hud_counter 
+				hud_counter_caption = "Smash The 5 Hogeys" 
+				goal_flags = [ got_1 
+					got_2 
+					got_3 
+					got_4 
+					got_5 
+				] 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(-3715.7, -3707, -8259.2) 
+						positionOffset = VECTOR(-673.1, -1531.1, 1014.5) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+			} 
+			AddGoal_gaps { 
+				unlimited_time 
+				classic_mode_goal 
+				version = 2 
+				goal_text = "Triple Heelflip Over the THPS Sign" 
+				view_goals_text = "Triple Heelflip Over the THPS Sign" 
+				goal_description = "Triple Heelflip Over the THPS Sign" 
+				goal_flags = [ got_1 
+				] 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(1970.8, -2045.8, 8356.4) 
+						positionOffset = VECTOR(-1962.4, -1471.3, -819.6) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+			} 
+			AddGoal_SecretTape { 
+				goal_text = "Get the secret tape" 
+				view_goals_text = "Get the secret tape" 
+				classic_mode_goal 
+				goal_description = "Get the secret tape" 
+				secret_tape_id = TRG_PH_SecretTape 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(4621.8, -5167.7, 1487.9) 
+						positionOffset = VECTOR(-4423.4, -1090.1, 241.1) 
+						frames = 200 
+						skippable = 1 
+					} 
+				] 
+			} 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT PH_HogeysCreate 
+	create prefix = "PH_Hogey" 
+	create prefix = "PH_Trigger_Hogey" 
+ENDSCRIPT
+
+SCRIPT PH_HogeysKill 
+	kill prefix = "PH_Hogey" 
+	kill prefix = "PH_Trigger_Hogey" 
+ENDSCRIPT
+
+SCRIPT PH_TrashCreate 
+	create prefix = "TRG_TrashTrigger" 
+	create prefix = "trash" 
+	create prefix = "TRG_Trash_Box" 
+ENDSCRIPT
+
+SCRIPT PH_TrashKill 
+	kill prefix = "trash" 
+	kill prefix = "TRG_Trash_Box" 
+	kill prefix = "TRG_TrashTrigger" 
+ENDSCRIPT
+
+FLAG_BA_TRASHCAN_SPINNING = 0 
+FLAG_LA_LATTE1 = 100 
+FLAG_LA_LATTE2 = 101 
+FLAG_LA_LATTE3 = 102 
+FLAG_LA_LATTE4 = 103 
+FLAG_LA_LATTE5 = 104 
+SCRIPT BA_TrashCan_Spinny1 
+	printf "BA_Trashcan_spinny1" 
+	Obj_GetID 
+	IF isalive name = trash14 
+		kill name = <name> 
+		Obj_SetFlag FLAG_BA_TRASHCAN_SPINNING 
+		CreateFastParticleSystem name = JOW_Trash01 params_Script = JOW_PH_Trash01_fast_particle_params 
+		trash01 : Rigidbody_Kick Vel = VECTOR(5, 5, 0) RotVel = VECTOR(10, 10, 10) 
+		trash02 : Rigidbody_Kick Vel = VECTOR(0, 5, 0) RotVel = VECTOR(10, -10, 10) 
+		trash03 : Rigidbody_Kick Vel = VECTOR(0, 0, 0) RotVel = VECTOR(-10, 10, 10) 
+		trash04 : Rigidbody_Kick Vel = VECTOR(5, 15, 0) RotVel = VECTOR(10, 10, -10) 
+		trash05 : Rigidbody_Kick Vel = VECTOR(0, 15, 0) RotVel = VECTOR(-10, -10, 10) 
+		trash06 : Rigidbody_Kick Vel = VECTOR(0, 15, 5) RotVel = VECTOR(10, -10, 10) 
+		trash07 : Rigidbody_Kick Vel = VECTOR(0, 15, 0) RotVel = VECTOR(10, 10, -10) 
+		trash08 : Rigidbody_Kick Vel = VECTOR(0, 0, 0) RotVel = VECTOR(-10, 10, -10) 
+		trash09 : Rigidbody_Kick Vel = VECTOR(5, 1, 0) RotVel = VECTOR(-10, -10, -10) 
+		trash10 : Rigidbody_Kick Vel = VECTOR(5, 0, 0) RotVel = VECTOR(10, -10, -10) 
+		trash11 : Rigidbody_Kick Vel = VECTOR(0, 15, 0) RotVel = VECTOR(10, 10, -10) 
+		trash12 : Rigidbody_Kick Vel = VECTOR(0, 0, 0) RotVel = VECTOR(-10, 10, -10) 
+		trash13 : Rigidbody_Kick Vel = VECTOR(5, 1, 0) RotVel = VECTOR(-10, -10, -10) 
+		trash14 : Rigidbody_Kick Vel = VECTOR(5, 0, 0) RotVel = VECTOR(10, -10, -10) 
+		kill name = TRG_TrashTrigger01 
+		playsound Bouncy_UmbrellaHit01 
+		wait 10 frames 
+		playsound HitMetalCan 
+		Obj_ClearFlag FLAG_BA_TRASHCAN_SPINNING 
+		goal_collect_got_object goal_id = PH_classic_goal_collect flag = got_1 
+		SetFlag flag = FLAG_LA_LATTE1 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BA_TrashCan_Spinny2 
+	printf "BA_Trashcan_spinny2" 
+	Obj_GetID 
+	printstruct <...> 
+	IF isalive name = trash28 
+		kill name = <name> 
+		Obj_SetFlag FLAG_BA_TRASHCAN_SPINNING 
+		CreateFastParticleSystem name = JOW_Trash02 params_Script = JOW_PH_Trash02_fast_particle_params 
+		trash15 : Rigidbody_Kick Vel = VECTOR(5, 5, 0) RotVel = VECTOR(10, 10, 10) 
+		trash16 : Rigidbody_Kick Vel = VECTOR(0, 5, 0) RotVel = VECTOR(10, -10, 10) 
+		trash17 : Rigidbody_Kick Vel = VECTOR(0, 0, 0) RotVel = VECTOR(-10, 10, 10) 
+		trash18 : Rigidbody_Kick Vel = VECTOR(5, 15, 0) RotVel = VECTOR(10, 10, -10) 
+		trash19 : Rigidbody_Kick Vel = VECTOR(0, 15, 0) RotVel = VECTOR(-10, -10, 10) 
+		trash20 : Rigidbody_Kick Vel = VECTOR(0, 15, 5) RotVel = VECTOR(10, -10, 10) 
+		trash21 : Rigidbody_Kick Vel = VECTOR(0, 15, 0) RotVel = VECTOR(10, 10, -10) 
+		trash22 : Rigidbody_Kick Vel = VECTOR(0, 0, 0) RotVel = VECTOR(-10, 10, -10) 
+		trash23 : Rigidbody_Kick Vel = VECTOR(5, 1, 0) RotVel = VECTOR(-10, -10, -10) 
+		trash24 : Rigidbody_Kick Vel = VECTOR(5, 0, 0) RotVel = VECTOR(10, -10, -10) 
+		trash25 : Rigidbody_Kick Vel = VECTOR(0, 15, 0) RotVel = VECTOR(10, 10, -10) 
+		trash26 : Rigidbody_Kick Vel = VECTOR(0, 0, 0) RotVel = VECTOR(-10, 10, -10) 
+		trash27 : Rigidbody_Kick Vel = VECTOR(5, 1, 0) RotVel = VECTOR(-10, -10, -10) 
+		trash28 : Rigidbody_Kick Vel = VECTOR(5, 0, 0) RotVel = VECTOR(10, -10, -10) 
+		kill name = TRG_TrashTrigger02 
+		playsound Bouncy_UmbrellaHit01 
+		wait 10 frames 
+		playsound HitMetalCan 
+		Obj_ClearFlag FLAG_BA_TRASHCAN_SPINNING 
+		goal_collect_got_object goal_id = PH_classic_goal_collect flag = got_2 
+		SetFlag flag = FLAG_LA_LATTE2 
+	ELSE 
+		printf "trash28 is not alive" 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BA_TrashCan_Spinny3 
+	printf "BA_Trashcan_spinny3" 
+	Obj_GetID 
+	IF isalive name = trash42 
+		kill name = <name> 
+		Obj_SetFlag FLAG_BA_TRASHCAN_SPINNING 
+		CreateFastParticleSystem name = JOW_Trash03 params_Script = JOW_PH_Trash03_fast_particle_params 
+		trash29 : Rigidbody_Kick Vel = VECTOR(5, 5, 0) RotVel = VECTOR(10, 10, 10) 
+		trash31 : Rigidbody_Kick Vel = VECTOR(0, 5, 0) RotVel = VECTOR(10, -10, 10) 
+		trash32 : Rigidbody_Kick Vel = VECTOR(0, 0, 0) RotVel = VECTOR(-10, 10, 10) 
+		trash33 : Rigidbody_Kick Vel = VECTOR(5, 15, 0) RotVel = VECTOR(10, 10, -10) 
+		trash34 : Rigidbody_Kick Vel = VECTOR(0, 15, 0) RotVel = VECTOR(-10, -10, 10) 
+		trash35 : Rigidbody_Kick Vel = VECTOR(0, 15, 5) RotVel = VECTOR(10, -10, 10) 
+		trash36 : Rigidbody_Kick Vel = VECTOR(0, 15, 0) RotVel = VECTOR(10, 10, -10) 
+		trash37 : Rigidbody_Kick Vel = VECTOR(0, 0, 0) RotVel = VECTOR(-10, 10, -10) 
+		trash38 : Rigidbody_Kick Vel = VECTOR(5, 1, 0) RotVel = VECTOR(-10, -10, -10) 
+		trash39 : Rigidbody_Kick Vel = VECTOR(5, 0, 0) RotVel = VECTOR(10, -10, -10) 
+		trash40 : Rigidbody_Kick Vel = VECTOR(0, 15, 0) RotVel = VECTOR(10, 10, -10) 
+		trash41 : Rigidbody_Kick Vel = VECTOR(0, 0, 0) RotVel = VECTOR(-10, 10, -10) 
+		trash42 : Rigidbody_Kick Vel = VECTOR(5, 1, 0) RotVel = VECTOR(-10, -10, -10) 
+		trash43 : Rigidbody_Kick Vel = VECTOR(5, 0, 0) RotVel = VECTOR(10, -10, -10) 
+		kill name = TRG_TrashTrigger03 
+		playsound Bouncy_UmbrellaHit01 
+		wait 10 frames 
+		playsound HitMetalCan 
+		Obj_ClearFlag FLAG_BA_TRASHCAN_SPINNING 
+		goal_collect_got_object goal_id = PH_classic_goal_collect flag = got_3 
+		SetFlag flag = FLAG_LA_LATTE3 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BA_TrashCan_Spinny4 
+	printf "BA_Trashcan_spinny4" 
+	Obj_GetID 
+	IF isalive name = trash57 
+		kill name = <name> 
+		Obj_SetFlag FLAG_BA_TRASHCAN_SPINNING 
+		CreateFastParticleSystem name = JOW_Trash04 params_Script = JOW_PH_Trash04_fast_particle_params 
+		trash44 : Rigidbody_Kick Vel = VECTOR(5, 5, 0) RotVel = VECTOR(10, 10, 10) 
+		trash45 : Rigidbody_Kick Vel = VECTOR(0, 5, 0) RotVel = VECTOR(10, -10, 10) 
+		trash46 : Rigidbody_Kick Vel = VECTOR(0, 0, 0) RotVel = VECTOR(-10, 10, 10) 
+		trash47 : Rigidbody_Kick Vel = VECTOR(5, 15, 0) RotVel = VECTOR(10, 10, -10) 
+		trash48 : Rigidbody_Kick Vel = VECTOR(0, 15, 0) RotVel = VECTOR(-10, -10, 10) 
+		trash49 : Rigidbody_Kick Vel = VECTOR(0, 15, 5) RotVel = VECTOR(10, -10, 10) 
+		trash50 : Rigidbody_Kick Vel = VECTOR(0, 15, 0) RotVel = VECTOR(10, 10, -10) 
+		trash51 : Rigidbody_Kick Vel = VECTOR(0, 0, 0) RotVel = VECTOR(-10, 10, -10) 
+		trash52 : Rigidbody_Kick Vel = VECTOR(5, 1, 0) RotVel = VECTOR(-10, -10, -10) 
+		trash53 : Rigidbody_Kick Vel = VECTOR(5, 0, 0) RotVel = VECTOR(10, -10, -10) 
+		trash54 : Rigidbody_Kick Vel = VECTOR(0, 15, 0) RotVel = VECTOR(10, 10, -10) 
+		trash55 : Rigidbody_Kick Vel = VECTOR(0, 0, 0) RotVel = VECTOR(-10, 10, -10) 
+		trash56 : Rigidbody_Kick Vel = VECTOR(5, 1, 0) RotVel = VECTOR(-10, -10, -10) 
+		trash57 : Rigidbody_Kick Vel = VECTOR(5, 0, 0) RotVel = VECTOR(10, -10, -10) 
+		kill name = TRG_TrashTrigger04 
+		playsound Bouncy_UmbrellaHit01 
+		wait 10 frames 
+		playsound HitMetalCan 
+		Obj_ClearFlag FLAG_BA_TRASHCAN_SPINNING 
+		goal_collect_got_object goal_id = PH_classic_goal_collect flag = got_4 
+		SetFlag flag = FLAG_LA_LATTE4 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT BA_TrashCan_Spinny5 
+	printf "BA_Trashcan_spinny5" 
+	Obj_GetID 
+	IF isalive name = trash70 
+		kill name = <name> 
+		Obj_SetFlag FLAG_BA_TRASHCAN_SPINNING 
+		CreateFastParticleSystem name = JOW_Trash05 params_Script = JOW_PH_Trash05_fast_particle_params 
+		trash58 : Rigidbody_Kick Vel = VECTOR(5, 5, 0) RotVel = VECTOR(10, 10, 10) 
+		trash59 : Rigidbody_Kick Vel = VECTOR(0, 5, 0) RotVel = VECTOR(10, -10, 10) 
+		trash60 : Rigidbody_Kick Vel = VECTOR(0, 0, 0) RotVel = VECTOR(-10, 10, 10) 
+		trash61 : Rigidbody_Kick Vel = VECTOR(5, 15, 0) RotVel = VECTOR(10, 10, -10) 
+		trash62 : Rigidbody_Kick Vel = VECTOR(0, 15, 0) RotVel = VECTOR(-10, -10, 10) 
+		trash63 : Rigidbody_Kick Vel = VECTOR(0, 15, 5) RotVel = VECTOR(10, -10, 10) 
+		trash64 : Rigidbody_Kick Vel = VECTOR(0, 15, 0) RotVel = VECTOR(10, 10, -10) 
+		trash65 : Rigidbody_Kick Vel = VECTOR(0, 0, 0) RotVel = VECTOR(-10, 10, -10) 
+		trash66 : Rigidbody_Kick Vel = VECTOR(5, 1, 0) RotVel = VECTOR(-10, -10, -10) 
+		trash67 : Rigidbody_Kick Vel = VECTOR(5, 0, 0) RotVel = VECTOR(10, -10, -10) 
+		trash68 : Rigidbody_Kick Vel = VECTOR(0, 15, 0) RotVel = VECTOR(10, 10, -10) 
+		trash69 : Rigidbody_Kick Vel = VECTOR(0, 0, 0) RotVel = VECTOR(-10, 10, -10) 
+		trash70 : Rigidbody_Kick Vel = VECTOR(5, 1, 0) RotVel = VECTOR(-10, -10, -10) 
+		kill name = TRG_TrashTrigger05 
+		playsound Bouncy_UmbrellaHit01 
+		wait 10 frames 
+		playsound HitMetalCan 
+		Obj_ClearFlag FLAG_BA_TRASHCAN_SPINNING 
+		goal_collect_got_object goal_id = PH_classic_goal_collect flag = got_5 
+		SetFlag flag = FLAG_LA_LATTE5 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT PH_Secret_Tape 
+ENDSCRIPT
+
+SCRIPT PH_GapStart_TripleLove 
+	printf "Start Gap" 
+	StartGap GapID = JapGrab flags = [ PURE_AIR ] TrickText = "Triple Heelflip" trickscript = PH_Classic_Gaps_Got1 
+ENDSCRIPT
+
+SCRIPT PH_GapEnd_TripleLove 
+	printf "End Gap" 
+	EndGap GapID = JapGrab score = 100 text = "THPS Sign Gap" 
+ENDSCRIPT
+
+SCRIPT PH_Classic_Gaps_Got1 
+	printf "Win Gap" 
+	GoalManager_SetGoalFlag name = PH_classic_goal_gaps2 got_1 1 
+ENDSCRIPT
+
+SCRIPT PH_Hogeys 
+	kill name = <name> 
+	kill name = <Trigg> 
+	playsound Smashcake 
+	SWITCH <name> 
+		CASE PH_Hogey01 
+			goal_collect_got_object goal_id = ph_classic_goal_collect2 flag = got_1 
+			CreateGlobalFlexParticleSystem name = JOW_Hoagie01 params_Script = JOW_PH_Hoagie01_particle_params 
+			JOW_Hoagie01 : Obj_SetPosition position = VECTOR(-4908.01, -1182.76, -1674.18) 
+			CreateFastParticleSystem name = JOW_Hoagie01a params_Script = JOW_PH_Hoagie01_fast_particle_params 
+		CASE PH_Hogey02 
+			goal_collect_got_object goal_id = ph_classic_goal_collect2 flag = got_2 
+			CreateGlobalFlexParticleSystem name = JOW_Hoagie02 params_Script = JOW_PH_Hoagie02_particle_params 
+			JOW_Hoagie02 : Obj_SetPosition position = VECTOR(-3940.61, -1542.75, 238.2) 
+			CreateFastParticleSystem name = JOW_Hoagie02a params_Script = JOW_PH_Hoagie02_fast_particle_params 
+		CASE PH_Hogey03 
+			goal_collect_got_object goal_id = ph_classic_goal_collect2 flag = got_3 
+			CreateGlobalFlexParticleSystem name = JOW_Hoagie03 params_Script = JOW_PH_Hoagie03_particle_params 
+			JOW_Hoagie03 : Obj_SetPosition position = VECTOR(-705.05, -1559.94, 932.052) 
+			CreateFastParticleSystem name = JOW_Hoagie03a params_Script = JOW_PH_Hoagie03_fast_particle_params 
+		CASE PH_Hogey04 
+			goal_collect_got_object goal_id = ph_classic_goal_collect2 flag = got_4 
+			CreateGlobalFlexParticleSystem name = JOW_Hoagie04 params_Script = JOW_PH_Hoagie04_particle_params 
+			JOW_Hoagie04 : Obj_SetPosition position = VECTOR(-1905.48, -1411.25, -668.48) 
+			CreateFastParticleSystem name = JOW_Hoagie04a params_Script = JOW_PH_Hoagie04_fast_particle_params 
+		CASE PH_Hogey05 
+			goal_collect_got_object goal_id = ph_classic_goal_collect2 flag = got_5 
+			CreateGlobalFlexParticleSystem name = JOW_Hoagie05 params_Script = JOW_PH_Hoagie05_particle_params 
+			JOW_Hoagie05 : Obj_SetPosition position = VECTOR(-2562.68, -1501.11, 2400.12) 
+			CreateFastParticleSystem name = JOW_Hoagie05a params_Script = JOW_PH_Hoagie05_fast_particle_params 
+	ENDSWITCH 
+ENDSCRIPT
+
+SCRIPT PH_PlantTHPS 
+	GetTriggerArray Wallplant onto 
+	IF TriggerType <trigger_array> 
+		GetGap text = "Sticker Slap The THPS Sign" score = 2000 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT Scoreboard_small_style 
+	pos = PAIR(20, 10) 
+	DoMorph scale = 2 
+	BEGIN 
+		DoMorph time = 0.10000000149 pos = PAIR(320.00000000000, 290.00000000000) 
+		DoMorph time = 0.10000000149 pos = PAIR(320.00000000000, 280.00000000000) 
+		DoMorph time = 0.10000000149 pos = PAIR(340.00000000000, 290.00000000000) 
+		rgba = { 255 , 255 , 255 , 128 } 
+	REPEAT 150 
+ENDSCRIPT
+
+SCRIPT wait_and_kill_eq_text 
+	wait 1 seconds 
+	DestroyScreenElement id = Scoreboard 
+ENDSCRIPT
+
+SCRIPT PH_TreeSounds 
+	playsound BonkBush 
+ENDSCRIPT
+
+SCRIPT PH_Fountain 
+	GetTriggerArray grind onto 
+	IF TriggerType <trigger_array> 
+		playsound HitMetalCan volume = 100.00000000000 pitch = 100.00000000000 
+		kill name = dt_shaddy 
+		kill name = PH_Love_Water_Surface 
+		kill prefix = "TRG_drainfountain" 
+		kill name = TRG_Fountain_natas02 
+		wait 1 second 
+		create name = TRG_Fountain_natas03 
+		kill name = PH_Love_Water_Surface01 
+		kill name = PH_Love_Water_Surface02 
+		playsound FallWater volume = 100.00000000000 pitch = 100.00000000000 
+		create_panel_block { id = Scoreboard 
+			text = "FOUNTAIN DRAINED!" 
+			rgba = { 0 , 132 , 255 , 128 } 
+			dims = PAIR(640.00000000000, 25.00000000000) 
+			style = Scoreboard_small_style 
+			just = { left left } 
+			internal_just = { left left } 
+		} 
+		spawnscript wait_and_kill_eq_text 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT TOD_Script 
+	SWITCH <current_tod> 
+		CASE morning 
+		CASE day 
+		CASE evening 
+		CASE night 
+		DEFAULT 
+			printf "### no tod set ###" 
+	ENDSWITCH 
+ENDSCRIPT
+
+SCRIPT PH_MidStairManual 
+	StartGap flags = [ Pure_Manual ] 
+	EndGap text = "Manual Mid Stair Ledge" score = 1000 
+ENDSCRIPT
+
+SCRIPT PH_SmallStairManual 
+	StartGap flags = [ Pure_Manual ] 
+	EndGap text = "Manual Small Stair Ledge" score = 5000 
+ENDSCRIPT
+
+SCRIPT PH_BigStairManual 
+	StartGap flags = [ Pure_Manual ] 
+	EndGap text = "Manual Big Stair Ledge" score = 2500 
+ENDSCRIPT
+
+SCRIPT PH_TechinToStreetManual 
+	StartGap flags = [ Pure_Manual ] 
+	EndGap text = "Flatland Techin\' To The Street!" score = 1100 
+ENDSCRIPT
+
+SCRIPT PH_AirFunbox 
+	StartGap flags = [ Cancel_Ground , Require_Air ] 
+	EndGap text = "Air The Funbox" score = 1100 
+ENDSCRIPT
+
+SCRIPT PH_LedgeToHandS 
+	StartGap GapID = Ledge23 flags = [ Cancel_Ground Cancel_Walk Cancel_Manual ] 
+ENDSCRIPT
+
+SCRIPT PH_LedgeToHandE 
+	EndGap GapID = Ledge23 text = "Ledge 2 Handrail" score = 1100 
+ENDSCRIPT
+
+SCRIPT PH_ConcreteTrans 
+	StartGap flags = [ Require_Air Cancel_Ground Cancel_Walk CANCEL_HANG ] 
+	EndGap text = "Concrete Transfer" score = 500 
+ENDSCRIPT
+
+SCRIPT PH_Boob2Box 
+	StartGap flags = [ Require_Air , Cancel_Ground ] 
+	EndGap text = "Boob to Box" score = 69 
+ENDSCRIPT
+
+SCRIPT PH_CoolQPTrans 
+	StartGap flags = [ Cancel_Ground Cancel_Walk Cancel_Manual Require_Air ] 
+	EndGap text = "Cool QP Transfer" score = 800 
+ENDSCRIPT
+
+SCRIPT PH_BehindPillar 
+	StartGap flags = [ Cancel_Ground Require_Air ] 
+	EndGap text = "Behind The Pillar" score = 2000 
+ENDSCRIPT
+
+SCRIPT Kill_Fence 
+	IF isalive name = Obj_Phillyside_Fence 
+		Shatteranddie { name = Obj_Phillyside_Fence 
+			area = 5000 
+			texture_swap = CG_Se2_Shatter_Grate 
+			variance = 4 
+			vel_x = 50 
+			vel_y = 50 
+			vel_z = 50 
+		} 
+		playsound HitGlassPane2x 
+		kill name = Kill_Fence 
+		kill name = NY_Const_Pole75 
+		kill name = PH_Invisible_Fence 
+	ENDIF 
+	KillAllTextureSplats box = { height = 25 dist = 300 width = 20 offset = VECTOR(108.00000000000, -130.00000000000, 110.00000000000) } 
+ENDSCRIPT
+
+SCRIPT PH_EasyPost_Gap 
+	StartGap flags = [ PURE_AIR ] 
+	EndGap text = "Easy Post Hop" score = 10 
+ENDSCRIPT
+
+SCRIPT PH_Post_Gap 
+	StartGap flags = [ PURE_AIR ] 
+	EndGap text = "Post Hop" score = 50 
+ENDSCRIPT
+
+SCRIPT PH_PlantDouble_GapStart 
+	StartGap GapID = Double1 flags = [ Cancel_Ground ] 
+	EndGap GapID = Double2 text = "Planter Double Pillar Gap" score = 150 
+ENDSCRIPT
+
+SCRIPT PH_PlantDouble_GapEnd 
+	StartGap GapID = Double2 flags = [ Cancel_Ground ] 
+	EndGap GapID = Double1 text = "Planter Double Pillar Gap" score = 150 
+ENDSCRIPT
+
+SCRIPT PH_Corner_Gap 
+	StartGap flags = [ Cancel_Ground ] 
+	EndGap text = "Little Corner Grind" score = 500 
+ENDSCRIPT
+
+SCRIPT PH_PlantTransfer_GapStart 
+	StartGap GapID = Plant1 flags = [ Cancel_Ground ] 
+	EndGap GapID = Plant2 text = "Planter Transfer" score = 100 
+ENDSCRIPT
+
+SCRIPT PH_PlantTransfer_GapEnd 
+	StartGap GapID = Plant2 flags = [ Cancel_Ground ] 
+	EndGap GapID = Plant1 text = "Planter Transfer" score = 100 
+ENDSCRIPT
+
+SCRIPT PH_GrindFaith_GapStart 
+	StartGap GapID = Faith1 flags = [ Cancel_Ground ] 
+	EndGap GapID = Faith2 text = "Grind Of Faith" score = 1000 
+ENDSCRIPT
+
+SCRIPT PH_GrindFaith_GapEnd 
+	StartGap GapID = Faith2 flags = [ Cancel_Ground ] 
+	EndGap GapID = Faith1 text = "Grind Of Faith" score = 1000 
+ENDSCRIPT
+
+SCRIPT PH_GrindFaith1_GapStart 
+	StartGap GapID = Faith11 flags = [ Cancel_Ground ] 
+	EndGap GapID = Faith12 text = "Grind Of Faith" score = 1000 
+ENDSCRIPT
+
+SCRIPT PH_GrindFaith1_GapEnd 
+	StartGap GapID = Faith12 flags = [ Cancel_Ground ] 
+	EndGap GapID = Faith11 text = "Grind Of Faith" score = 1000 
+ENDSCRIPT
+
+SCRIPT PH_LongStair_Gap 
+	StartGap flags = [ Cancel_Ground ] 
+	EndGap text = "Long Stair" score = 250 
+ENDSCRIPT
+
+SCRIPT PH_MediumStair_Gap 
+	StartGap flags = [ Cancel_Ground ] 
+	EndGap text = "Medium Stair" score = 250 
+ENDSCRIPT
+
+SCRIPT PH_ShortStair_Gap 
+	StartGap flags = [ Cancel_Ground ] 
+	EndGap text = "Short Stair" score = 150 
+ENDSCRIPT
+
+SCRIPT PH_StatueHop_Gap 
+	StartGap flags = [ Cancel_Ground ] 
+	EndGap text = "Statue Hop" score = 50 
+ENDSCRIPT
+
+SCRIPT PH_Bench_Gap 
+	StartGap flags = [ Cancel_Ground ] 
+	EndGap text = "Bench Gap" score = 100 
+ENDSCRIPT
+
+SCRIPT PH_WorldsObv_Gap 
+	StartGap flags = [ PURE_AIR ] 
+	EndGap text = "Worlds Most Obvious Gap" score = 100 
+ENDSCRIPT
+
+SCRIPT PH_Stair_Gap 
+	StartGap flags = [ PURE_AIR ] 
+	EndGap text = "StairSet" score = 100 
+ENDSCRIPT
+
+SCRIPT PH_Upstair_GapStart 
+	StartGap GapID = up1 flags = [ Cancel_Ground ] 
+	EndGap GapID = up2 text = "Grind Up Dem Stairs" score = 500 
+ENDSCRIPT
+
+SCRIPT PH_Upstair_GapEnd 
+	StartGap GapID = up2 flags = [ Cancel_Ground ] 
+	EndGap GapID = up1 text = "Grind Up Dem Stairs" score = 500 
+ENDSCRIPT
+
+SCRIPT PH_WorldsObv2nd_GapStart 
+	StartGap GapID = second1 flags = [ Cancel_Ground ] 
+ENDSCRIPT
+
+SCRIPT PH_WorldsObv2nd_GapEnd 
+	EndGap GapID = second1 text = "Worlds Second Most Obvious Gap" score = 750 
+ENDSCRIPT
+
+SCRIPT PH_UpSmall_Gap 
+	StartGap flags = [ PURE_AIR ] 
+	EndGap text = "Up The Small Step Set" score = 100 
+ENDSCRIPT
+
+SCRIPT PH_PhillyHop_Gap 
+	StartGap flags = [ PURE_AIR ] 
+	EndGap text = "Phillyside Hop" score = 100 
+ENDSCRIPT
+
+SCRIPT PH_HPTransfer_Gap 
+	StartGap flags = [ PURE_AIR ] 
+	EndGap text = "Philly HP Transfer" score = 250 
+ENDSCRIPT
+
+SCRIPT PH_PillarHop_Gap 
+	StartGap flags = [ PURE_AIR ] 
+	EndGap text = "Pillar Hop" score = 100 
+ENDSCRIPT
+
+SCRIPT PH_PillarFight_Gap 
+	StartGap flags = [ PURE_AIR ] 
+	EndGap text = "Pillar Fight" score = 500 
+ENDSCRIPT
+
+SCRIPT PH_thpsFountain_Gap 
+	StartGap flags = [ PURE_AIR ] 
+	EndGap text = "THPS Fountain Gap" score = 500 
+ENDSCRIPT
+
+SCRIPT PH_Chillin_Gap 
+	StartGap flags = [ PURE_AIR ] 
+	EndGap text = "Chillin On The Balcony" score = 500 
+ENDSCRIPT
+
+SCRIPT PH_TrackSmack_GapStart 
+	StartGap GapID = smack1 flags = [ Cancel_Ground ] 
+	EndGap GapID = smack2 text = "Track Smack" score = 50 
+ENDSCRIPT
+
+SCRIPT PH_TrackSmack_GapEnd 
+	StartGap GapID = smack2 flags = [ Cancel_Ground ] 
+	EndGap GapID = smack1 text = "Track Smack" score = 50 
+ENDSCRIPT
+
+SCRIPT PH_TrackSmack1_GapStart 
+	StartGap GapID = smack11 flags = [ Cancel_Ground ] 
+	EndGap GapID = smack12 text = "Track Smack" score = 50 
+ENDSCRIPT
+
+SCRIPT PH_TrackSmack1_GapEnd 
+	StartGap GapID = smack12 flags = [ Cancel_Ground ] 
+	EndGap GapID = smack11 text = "Track Smack" score = 50 
+ENDSCRIPT
+
+SCRIPT PH_TrackSmack2_GapStart 
+	StartGap GapID = smack111 flags = [ Cancel_Ground ] 
+	EndGap GapID = smack112 text = "Track Smack" score = 50 
+ENDSCRIPT
+
+SCRIPT PH_TrackSmack2_GapEnd 
+	StartGap GapID = smack112 flags = [ Cancel_Ground ] 
+	EndGap GapID = smack111 text = "Track Smack" score = 50 
+ENDSCRIPT
+
+SCRIPT PH_HoboGrind_Gap 
+	StartGap flags = [ Cancel_Ground ] 
+	EndGap text = "Hobo Grind" score = 100 
+ENDSCRIPT
+
+SCRIPT PH_Railing2Planter_Gap 
+	StartGap flags = [ Cancel_Ground Cancel_Manual Cancel_Walk ] 
+	EndGap text = "Railing To Planter" score = 100 
+ENDSCRIPT
+
+SCRIPT PH_Visiting_GapStart 
+	StartGap GapID = visiting1 flags = [ Cancel_Ground Cancel_Manual Cancel_Walk ] 
+	EndGap GapID = visiting2 text = "Just Visiting" score = 150 
+ENDSCRIPT
+
+SCRIPT PH_Visiting_GapEnd 
+	StartGap GapID = visiting2 flags = [ Cancel_Ground ] 
+	EndGap GapID = visiting1 text = "Just Visiting" score = 150 
+ENDSCRIPT
+
+SCRIPT PH_TeleCo_GapStart 
+	StartGap GapID = Tele1 flags = [ Cancel_Ground ] 
+	EndGap GapID = Tele2 text = "Telephone Co. Gap" score = 250 
+ENDSCRIPT
+
+SCRIPT PH_TeleCo_GapEnd 
+	StartGap GapID = Tele2 flags = [ Cancel_Ground ] 
+	EndGap GapID = Tele1 text = "Telephone Co. Gap" score = 250 
+ENDSCRIPT
+
+SCRIPT PH_Funbox_GapStart 
+	StartGap GapID = Fun1 flags = [ Cancel_Ground ] 
+ENDSCRIPT
+
+SCRIPT PH_Funbox_GapEnd 
+	EndGap GapID = Fun1 text = "Funbox Transfer" score = 250 
+ENDSCRIPT
+
+SCRIPT PH_Awning_GapStart 
+	StartGap GapID = aw1 flags = [ Cancel_Ground CANCEL_HANG ] 
+	EndGap GapID = aw2 text = "Awning Grind" score = 500 
+ENDSCRIPT
+
+SCRIPT PH_Awning_GapEnd 
+	StartGap GapID = aw2 flags = [ Cancel_Ground CANCEL_HANG ] 
+	EndGap GapID = aw1 text = "Awning Grind" score = 500 
+ENDSCRIPT
+
+SCRIPT PH_Flyin_GapStart 
+	StartGap flags = [ Cancel_Ground ] 
+ENDSCRIPT
+
+SCRIPT PH_Flyin_GapEnd 
+	EndGap text = "Fly By Wire" score = 500 
+ENDSCRIPT
+
+SCRIPT PH_Death_GapStart 
+	StartGap GapID = death flags = [ Cancel_Ground Cancel_Walk Cancel_Manual ] 
+ENDSCRIPT
+
+SCRIPT PH_Death_GapEnd 
+	EndGap GapID = death text = "Death From Above" score = 500 
+ENDSCRIPT
+
+SCRIPT PH_Train_Gap 
+	StartGap flags = [ Cancel_Ground ] 
+	EndGap text = "Train Hard" score = 500 
+ENDSCRIPT
+
+SCRIPT PH_Ping_GapStart 
+	StartGap GapID = ping1 flags = [ Cancel_Ground ] 
+	EndGap GapID = ping2 text = "Fountain Ping" score = 750 
+ENDSCRIPT
+
+SCRIPT PH_Ping_GapEnd 
+	StartGap GapID = ping2 flags = [ Cancel_Ground ] 
+	EndGap GapID = ping1 text = "Fountain Ping" score = 750 
+ENDSCRIPT
+
+SCRIPT PH_FunWheelie_Gap 
+	StartGap flags = [ Cancel_Air , Require_Manual ] 
+	EndGap text = "Funbox Wheelie" score = 100 
+ENDSCRIPT
+
+SCRIPT PH_Techin_Gapstart 
+	StartGap GapID = tech1 flags = [ Pure_Manual ] 
+	EndGap GapID = tech2 text = "Flatland Techin\'" score = 500 
+ENDSCRIPT
+
+SCRIPT PH_Techin_GapEnd 
+	StartGap GapID = tech2 flags = [ Pure_Manual ] 
+	EndGap GapID = tech1 text = "Flatland Techin\'" score = 500 
+ENDSCRIPT
+
+SCRIPT PH_Stimulation_Gap 
+	StartGap flags = [ Pure_Manual ] 
+	EndGap text = "Manual Stimulation" score = 500 
+ENDSCRIPT
+
+SCRIPT PH_Gap_Start_Mid 
+	StartGap GapID = mid flags = [ Cancel_Ground ] 
+ENDSCRIPT
+
+SCRIPT PH_Gap_End_Mid 
+	GetTriggerArray lip onto 
+	IF TriggerType <trigger_array> 
+		EndGap GapID = mid text = "Phillyside Mid Bowl Lip" score = 100 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT PH_Gap_Start_big 
+	StartGap GapID = big flags = [ Cancel_Ground ] 
+ENDSCRIPT
+
+SCRIPT PH_Gap_End_big 
+	GetTriggerArray lip onto 
+	IF TriggerType <trigger_array> 
+		EndGap GapID = big text = "Phillyside Big Bowl Lip" score = 100 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT PH_Gap_Start_new 
+	StartGap GapID = new1 flags = [ Cancel_Ground ] 
+ENDSCRIPT
+
+SCRIPT PH_Gap_End_new 
+	GetTriggerArray lip onto 
+	IF TriggerType <trigger_array> 
+		EndGap GapID = new1 text = "Phillyside New Bowl Lip" score = 100 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT PH_Gap_Start_HP 
+	StartGap GapID = hp1 flags = [ Cancel_Ground ] 
+ENDSCRIPT
+
+SCRIPT PH_Gap_End_HP 
+	GetTriggerArray lip onto 
+	IF TriggerType <trigger_array> 
+		EndGap GapID = hp1 text = "Phillyside HP Lip" score = 100 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT PH_Rockin_GapStart 
+	StartGap GapID = R1 flags = [ Require_Manual , Cancel_Ground ] 
+	EndGap GapID = R2 text = "Rockin\' The Stairs" score = 2500 
+ENDSCRIPT
+
+SCRIPT PH_Rockin_GapEnd 
+	StartGap GapID = R2 flags = [ Require_Manual , Cancel_Ground ] 
+	EndGap GapID = R1 text = "Rockin\' The Stairs" score = 2500 
+ENDSCRIPT
+
+SCRIPT PH_2d_sign_element_create parent = menu3d_anchor 
+	IF GetGlobalFlag flag = SCREEN_MODE_WIDE 
+		<offset> = PAIR(-8.00000000000, 0.00000000000) 
+	ELSE 
+		<offset> = PAIR(0.00000000000, 0.00000000000) 
+	ENDIF 
+	CreateScreenElement { 
+		Type = SpriteElement 
+		parent = <parent> 
+		texture = PH_icon_1 
+		id = PH_tag 
+		scale = 2.50000000000 
+		rgba = [ 128 128 128 100 ] 
+		pos = ( PAIR(20.00000000000, 80.00000000000) + <offset> ) 
+		rot_angle = 0 
+		just = [ left top ] 
+		z_priority = -51 
+	} 
+	CreateScreenElement { 
+		Type = SpriteElement 
+		parent = <parent> 
+		texture = PH_icon_2 
+		id = PH_bandaid 
+		scale = 1.79999995232 
+		rgba = [ 128 128 128 100 ] 
+		pos = ( PAIR(72.00000000000, 320.00000000000) + <offset> ) 
+		rot_angle = -90 
+		just = [ center center ] 
+		z_priority = -51 
+	} 
+	RunScriptOnScreenElement id = PH_tag PH_tag_anim 
+	RunScriptOnScreenElement id = PH_bandaid do_random_effect_paused params = { id = <id> } 
+ENDSCRIPT
+
+SCRIPT PH_tag_anim 
+	BEGIN 
+		start_pos = PAIR(20.00000000000, 80.00000000000) 
+		DoMorph time = 0 pos = ( <start_pos> - PAIR(100.00000000000, 0.00000000000) ) scale = 2.50000000000 rot_angle = 0 
+		wait 2 seconds 
+		DoMorph time = 0.30000001192 pos = <start_pos> 
+		wait RANDOM(1, 1, 1) RANDOMCASE 2 RANDOMCASE 3 RANDOMCASE 4 RANDOMEND seconds 
+		DoMorph time = 0.20000000298 pos = ( <start_pos> - PAIR(100.00000000000, 0.00000000000) ) 
+		wait RANDOM(1, 1, 1) RANDOMCASE 5 RANDOMCASE 8 RANDOMCASE 3 RANDOMEND seconds 
+	REPEAT 
+ENDSCRIPT
+
+

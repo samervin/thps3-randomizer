@@ -1,0 +1,491 @@
+
+SCRIPT load_level_particle_textures 
+	LoadParticleTexture "particles\\apm_quadfeathers" 
+	LoadParticleTexture "particles\\apm_ring_02" 
+	LoadParticleTexture "particles\\apm_spark_01" 
+	LoadParticleTexture "particles\\apm_splinters_01" 
+	LoadParticleTexture "particles\\apm_spray_01" 
+	LoadParticleTexture "particles\\ba_apm_smokepuff01s" 
+ENDSCRIPT
+
+apm_ST_BigSMOKE01_particle_params = { 
+	boneOffset = VECTOR(0, 200, 0) 
+	EnableRotate 
+	emitScript = emit_apm_ST_BigSMOKE01_particle 
+	max = 90 
+	type = Flat 
+	texture = apm_spray_01 
+	blendMode = Blend 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_apm_ST_BigSMOKE01_particle 
+	setEmitRange width = 5.00000000000 height = 100.00000000000 depth = 500.00000000000 
+	setLife min = 2.00000000000 max = 3.00000000000 
+	setAngleSpread spread = 0.27777799964 
+	setSpeedRange min = 3.00000000000 max = 3.00000000000 
+	setForce x = 0.00999999978 y = 0.02999999933 z = 0.00000000000 
+	setParticleSize sw = 200.00000000000 ew = 100.00000000000 
+	setColor corner = 0 sr = 34 sg = 39 sb = 40 sa = 0 mr = 44 mg = 44 mb = 44 ma = 255 er = 40 eg = 40 eb = 40 ea = 0 midTime = 0.20890000463 
+	emitRate rate = 30.00000000000 
+ENDSCRIPT
+
+apm_ST_Bigsplash01_particle_params = { 
+	boneOffset = VECTOR(0.00000000000, 20.00000000000, 0.00000000000) 
+	emitScript = emit_apm_ST_Bigsplash01_particle 
+	FillPath 
+	max = 45 
+	type = Shaded 
+	texture = apm_ring_02 
+	blendMode = Blend 
+	align_to = VECTOR(0.00000000000, 1.00000000000, 0.00000000000) 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_apm_ST_Bigsplash01_particle 
+	setEmitRange width = 20.00000000000 height = 20.00000000000 depth = 0.00000000000 
+	setLife min = 0.10000000149 max = 0.50000000000 
+	setAngleSpread spread = 1.00000000000 
+	setSpeedRange min = 8.00000000000 max = 8.00000000000 
+	setEmitTarget x = 0.00000000000 y = 0.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = 0.00999999978 z = 0.00000000000 
+	setParticleSize sw = 10.00000000000 ew = 200.00000000000 
+	setColor corner = 0 sr = 83 sg = 74 sb = 70 sa = 0 mr = 161 mg = 161 mb = 161 ma = 255 er = 161 eg = 161 eb = 161 ea = 0 midTime = 0.40999999642 
+	setColor corner = 1 sr = 83 sg = 74 sb = 70 sa = 0 mr = 161 mg = 161 mb = 161 ma = 255 er = 161 eg = 161 eb = 161 ea = 0 midTime = 0.40999999642 
+	setColor corner = 2 sr = 83 sg = 74 sb = 70 sa = 0 mr = 161 mg = 161 mb = 161 ma = 255 er = 161 eg = 161 eb = 161 ea = 0 midTime = 0.40999999642 
+	setColor corner = 3 sr = 83 sg = 74 sb = 70 sa = 0 mr = 161 mg = 161 mb = 161 ma = 255 er = 161 eg = 161 eb = 161 ea = 0 midTime = 0.40999999642 
+	emitRate rate = 90.00000000000 
+	wait 0.10000000149 seconds 
+	emitRate rate = 0 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+apm_ST_Boardsmoke_particle_params = { 
+	bone = Bone_Board_Root 
+	boneOffset = VECTOR(0.00000000000, 15.00000000000, 0.00000000000) 
+	emitScript = emit_apm_ST_Boardsmoke_particle 
+	emitterIndependent = 1 
+	FillPath 
+	max = 24 
+	type = Flat 
+	texture = apm_spray_01 
+	blendMode = Blend 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_apm_ST_Boardsmoke_particle 
+	setEmitRange width = 1.00000000000 height = 1.00000000000 depth = 0.00000000000 
+	setLife min = 0.30000001192 max = 0.80000001192 
+	setAngleSpread spread = 0.11999999732 
+	setSpeedRange min = 1.00000000000 max = 3.00000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = 0.02999999933 z = 0.00000000000 
+	setParticleSize sw = 10.00000000000 ew = 20.00000000000 
+	setColor corner = 0 sr = 41 sg = 46 sb = 48 sa = 125 mr = 31 mg = 31 mb = 31 ma = 251 er = 40 eg = 40 eb = 40 ea = 0 midTime = 0.20000000298 
+	emitRate rate = 30.00000000000 
+ENDSCRIPT
+
+apm_ST_CarDust01_particle_params = { 
+	emitScript = emit_apm_ST_CarDust01_particle 
+	emitterIndependent = 1 
+	FillPath 
+	updateScript = align_scale_to_vel_update 
+	params = { 
+		bone = none 
+		update_pos = 0 
+		emit_offset = VECTOR(0.00000000000, 0.50000000000, 0.00000000000) 
+		emit_scale = -1.00000000000 
+		pos_offset = VECTOR(0.00000000000, -2.00000000000, 0.00000000000) 
+		base_vel = 800.00000000000 
+		min_vel_range = 0.10000000149 
+		max_vel_range = 0.10000000149 
+		base_emit_rate = 60 
+	} 
+	max = 15 
+	type = Flat 
+	texture = apm_spray_01 
+	blendMode = Blend 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_apm_ST_CarDust01_particle 
+	setEmitRange width = 60.00000000000 height = 60.00000000000 depth = 0.00000000000 
+	setLife min = 0.50000000000 max = 0.50000000000 
+	setAngleSpread spread = 0.28000000119 
+	setSpeedRange min = 0.10000000149 max = 0.10000000149 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = 0.05000000075 z = 0.00000000000 
+	setParticleSize sw = 75.00000000000 ew = 100.00000000000 
+	setColor corner = 0 sr = 62 sg = 52 sb = 43 sa = 138 mr = 88 mg = 80 mb = 73 ma = 227 er = 89 eg = 74 eb = 62 ea = 0 midTime = 0.50000000000 
+	emitRate rate = 30.00000000000 
+ENDSCRIPT
+
+apm_ST_Frietrail01_particle_params = { 
+	boneOffset = VECTOR(0.00000000000, 33.00000000000, 0.00000000000) 
+	EnableRotate 
+	emitScript = emit_apm_ST_Frietrail01_particle 
+	emitterIndependent = 1 
+	FillPath 
+	max = 30 
+	type = Flat 
+	texture = apm_spark_01 
+	blendMode = Add 
+	priority = 1 
+} 
+SCRIPT emit_apm_ST_Frietrail01_particle 
+	setEmitRange width = 10.00000000000 height = 30.00000000000 depth = 10.00000000000 
+	setLife min = 0.10000000149 max = 0.50000000000 
+	setAngleSpread spread = 0.70999997854 
+	setSpeedRange min = 3.00000000000 max = 3.00000000000 
+	setEmitAngle x = 0.00000000000 y = 3.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = 0.00000000000 z = 0.00000000000 
+	setParticleSize sw = 10.00000000000 ew = 5.00000000000 
+	setColor corner = 0 sr = 218 sg = 98 sb = 22 sa = 255 mr = 218 mg = 56 mb = 22 ma = 255 er = 218 eg = 39 eb = 22 ea = 0 midTime = 0.50000000000 
+	emitRate rate = 60.00000000000 
+	wait 1.50000000000 seconds 
+	emitRate rate = 0 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+apm_ST_NATAS4Trees_particle_params = { 
+	emitScript = emit_apm_ST_NATAS4Trees_particle 
+	emitterIndependent = 1 
+	FillPath 
+	max = 15 
+	type = Ribbon 
+	texture = apm_splinters_01 
+	blendMode = Blend 
+	history = 3 
+	useGlobalColorModulation 
+	update_Brightness 
+	priority = 0 
+} 
+SCRIPT emit_apm_ST_NATAS4Trees_particle 
+	setEmitRange width = 10.00000000000 height = 10.00000000000 depth = 10.00000000000 
+	setLife min = 0.40000000596 max = 0.60000002384 
+	setAngleSpread spread = 0.70999997854 
+	setSpeedRange min = 5.00000000000 max = 5.00000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = -0.50000000000 z = 0.00000000000 
+	setParticleSize sw = 15.00000000000 ew = 20.00000000000 
+	setColor corner = 0 sr = 64 sg = 55 sb = 49 sa = 0 mr = 86 mg = 80 mb = 76 ma = 213 er = 86 eg = 79 eb = 75 ea = 0 midTime = 0.30000001192 
+	setColor corner = 1 sr = 64 sg = 55 sb = 49 sa = 0 mr = 86 mg = 80 mb = 76 ma = 213 er = 86 eg = 79 eb = 75 ea = 0 midTime = 0.30000001192 
+	emitRate rate = 30.00000000000 
+ENDSCRIPT
+
+apm_ST_OILYsmoke_ZIP2_particle_params = { 
+	boneOffset = VECTOR(-6.00000000000, 20.00000000000, -12.00000000000) 
+	emitScript = emit_apm_ST_OILYsmoke_ZIP2_particle 
+	emitterIndependent = 1 
+	FillPath 
+	max = 24 
+	type = Flat 
+	texture = apm_spray_01 
+	blendMode = Blend 
+	useGlobalColorModulation 
+	priority = 0 
+	suspendDistance = Default_Particle_Suspend_Dist 
+} 
+SCRIPT emit_apm_ST_OILYsmoke_ZIP2_particle 
+	setEmitRange width = 1.00000000000 height = 1.00000000000 depth = 0.00000000000 
+	setLife min = 0.30000001192 max = 0.80000001192 
+	setAngleSpread spread = 0.12222199887 
+	setSpeedRange min = 1.00000000000 max = 3.00000000000 
+	setEmitTarget x = 0.00000000000 y = -1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = 0.10000000149 z = 0.00000000000 
+	setParticleSize sw = 10.00000000000 ew = 20.00000000000 
+	setColor corner = 0 sr = 41 sg = 46 sb = 48 sa = 125 mr = 31 mg = 31 mb = 31 ma = 251 er = 40 eg = 40 eb = 40 ea = 0 midTime = 0.20000000298 
+	setLODParams min_particles = 0 lod_dist1 = Default_Particle_LOD_Dist1 lod_dist2 = Default_Particle_LOD_Dist2 
+	emitRate rate = 30.00000000000 
+ENDSCRIPT
+
+apm_ST_OILYsmoke_ZIP_particle_params = { 
+	boneOffset = VECTOR(0.00000000000, -6.00000000000, 35.00000000000) 
+	emitScript = emit_apm_ST_OILYsmoke_ZIP_particle 
+	emitterIndependent = 1 
+	FillPath 
+	max = 24 
+	type = Flat 
+	texture = apm_spray_01 
+	blendMode = Blend 
+	useGlobalColorModulation 
+	priority = 0 
+	suspendDistance = Default_Particle_Suspend_Dist 
+} 
+SCRIPT emit_apm_ST_OILYsmoke_ZIP_particle 
+	setEmitRange width = 1.00000000000 height = 1.00000000000 depth = 0.00000000000 
+	setLife min = 0.30000001192 max = 0.80000001192 
+	setAngleSpread spread = 0.12222199887 
+	setSpeedRange min = 1.00000000000 max = 3.00000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = 0.01999999955 z = 0.00000000000 
+	setParticleSize sw = 10.00000000000 ew = 20.00000000000 
+	setColor corner = 0 sr = 41 sg = 46 sb = 48 sa = 125 mr = 31 mg = 31 mb = 31 ma = 251 er = 40 eg = 40 eb = 40 ea = 0 midTime = 0.20000000298 
+	setLODParams min_particles = 0 lod_dist1 = Default_Particle_LOD_Dist1 lod_dist2 = Default_Particle_LOD_Dist2 
+	emitRate rate = 30.00000000000 
+ENDSCRIPT
+
+apm_ST_Rocket_trail01_particle_params = { 
+	EnableRotate 
+	emitScript = emit_apm_ST_Rocket_trail01_particle 
+	emitterIndependent = 1 
+	FillPath 
+	max = 60 
+	type = Flat 
+	texture = BA_APM_smokePuff01s 
+	blendMode = Blend 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_apm_ST_Rocket_trail01_particle 
+	setEmitRange width = 0.00000000000 height = 0.00000000000 depth = 10.00000000000 
+	setLife min = 2.00000000000 max = 2.00000000000 
+	setAngleSpread spread = 0.07000000030 
+	setSpeedRange min = 5.00000000000 max = 5.00000000000 
+	setEmitAngle x = 10.00000000000 y = 0.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = 0.01999999955 z = 0.00000000000 
+	setParticleSize sw = 10.00000000000 ew = 50.00000000000 
+	setColor corner = 0 sr = 88 sg = 40 sb = 9 sa = 147 mr = 50 mg = 50 mb = 51 ma = 216 er = 108 eg = 106 eb = 106 ea = 0 midTime = 0.10000000149 
+	emitRate rate = 30.00000000000 
+ENDSCRIPT
+
+apm_ST_Rocket_trail02_particle_params = { 
+	EnableRotate 
+	emitScript = emit_apm_ST_Rocket_trail02_particle 
+	max = 45 
+	type = Flat 
+	texture = apm_spark_01 
+	blendMode = Add 
+	priority = 0 
+} 
+SCRIPT emit_apm_ST_Rocket_trail02_particle 
+	setEmitRange width = 0.00000000000 height = 0.00000000000 depth = 10.00000000000 
+	setLife min = 0.50000000000 max = 0.75000000000 
+	setAngleSpread spread = 0.37000000477 
+	setSpeedRange min = 12.00000000000 max = 12.00000000000 
+	setEmitAngle x = 10.00000000000 y = 0.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = -0.05000000075 z = 0.00000000000 
+	setParticleSize sw = 50.00000000000 ew = 0.00000000000 
+	setColor corner = 0 sr = 231 sg = 71 sb = 38 sa = 255 mr = 150 mg = 62 mb = 15 ma = 255 er = 88 eg = 40 eb = 9 ea = 0 midTime = 0.10000000149 
+	emitRate rate = 60.00000000000 
+ENDSCRIPT
+
+apm_ST_Sooty01_particle_params = { 
+	id = skater 
+	bone = Bone_Pelvis 
+	EnableRotate 
+	emitScript = emit_apm_ST_Sooty01_particle 
+	emitterIndependent = 1 
+	max = 33 
+	type = Flat 
+	texture = BA_APM_smokePuff01s 
+	blendMode = Blend 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_apm_ST_Sooty01_particle 
+	setEmitRange width = 10.00000000000 height = 10.00000000000 depth = 33.00000000000 
+	setLife min = 0.50000000000 max = 0.50000000000 
+	setAngleSpread spread = 0.25000000000 
+	setSpeedRange min = 0.10000000149 max = 0.10000000149 
+	setForce x = 0.00000000000 y = 0.05000000075 z = 0.00000000000 
+	setParticleSize sw = 15.00000000000 ew = 5.00000000000 
+	setColor corner = 0 sr = 32 sg = 38 sb = 42 sa = 95 mr = 37 mg = 40 mb = 40 ma = 165 er = 16 eg = 16 eb = 17 ea = 0 midTime = 0.46000000834 
+	emitRate rate = 66.00000000000 
+ENDSCRIPT
+
+apm_ST_chickenBLAST01_particle_params = { 
+	boneOffset = VECTOR(0.00000000000, 33.00000000000, 0.00000000000) 
+	EnableRotate 
+	emitScript = emit_apm_ST_chickenBLAST01_particle 
+	FillPath 
+	max = 180 
+	type = Shaded 
+	texture = apm_QUADfeathers 
+	blendMode = Blend 
+	UseRandomUVQuadrants 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_apm_ST_chickenBLAST01_particle 
+	setEmitRange width = 10.00000000000 height = 30.00000000000 depth = 10.00000000000 
+	setLife min = 1.00000000000 max = 1.00000000000 
+	setAngleSpread spread = 0.71111100912 
+	setSpeedRange min = 4.00000000000 max = 6.00000000000 
+	setEmitAngle x = 340.00000000000 y = 0.00000000000 z = 0.00000000000 
+	setForce x = 0.50000000000 y = -0.07000000030 z = -0.40000000596 
+	setParticleSize sw = 4.00000000000 ew = 3.00000000000 
+	setColor corner = 0 sr = 125 sg = 127 sb = 128 sa = 198 mr = 198 mg = 201 mb = 202 ma = 97 er = 149 eg = 150 eb = 150 ea = 57 midTime = 0.50000000000 
+	setColor corner = 1 sr = 125 sg = 127 sb = 128 sa = 198 mr = 198 mg = 201 mb = 202 ma = 97 er = 149 eg = 150 eb = 150 ea = 57 midTime = 0.50000000000 
+	setColor corner = 2 sr = 125 sg = 127 sb = 128 sa = 198 mr = 198 mg = 201 mb = 202 ma = 97 er = 149 eg = 150 eb = 150 ea = 57 midTime = 0.50000000000 
+	setColor corner = 3 sr = 125 sg = 127 sb = 128 sa = 198 mr = 198 mg = 201 mb = 202 ma = 97 er = 149 eg = 150 eb = 150 ea = 57 midTime = 0.50000000000 
+	setLODParams min_particles = 0 lod_dist1 = Default_Particle_LOD_Dist1 lod_dist2 = Default_Particle_LOD_Dist2 
+	emitRate rate = 180.00000000000 
+	wait 0.50000000000 seconds 
+	emitRate rate = 0 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+apm_ST_smoketrail01_particle_params = { 
+	boneOffset = VECTOR(0.00000000000, 33.00000000000, 0.00000000000) 
+	emitScript = emit_apm_ST_smoketrail01_particle 
+	emitterIndependent = 1 
+	FillPath 
+	max = 15 
+	type = Flat 
+	texture = BA_APM_smokePuff01s 
+	blendMode = Blend 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_apm_ST_smoketrail01_particle 
+	setEmitRange width = 10.00000000000 height = 10.00000000000 depth = 10.00000000000 
+	setLife min = 0.40000000596 max = 0.60000002384 
+	setAngleSpread spread = 0.18000000715 
+	setSpeedRange min = 3.29999995232 max = 4.69999980927 
+	setEmitTarget x = 0.00000000000 y = 0.00000000000 z = -1.00000000000 
+	setForce x = 0.00000000000 y = 0.00000000000 z = 0.00000000000 
+	setParticleSize sw = 30.00000000000 ew = 20.00000000000 
+	setColor corner = 0 sr = 86 sg = 39 sb = 9 sa = 0 mr = 22 mg = 20 mb = 19 ma = 255 er = 18 eg = 17 eb = 17 ea = 0 midTime = 0.30000001192 
+	emitRate rate = 30.00000000000 
+	wait 2.00000000000 seconds 
+	emitRate rate = 0 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+apm_ST_spinner01_particle_params = { 
+	EnableRotate 
+	emitScript = emit_apm_ST_spinner01_particle 
+	emitterIndependent = 1 
+	FillPath 
+	max = 8 
+	type = Flat 
+	texture = apm_spark_01 
+	blendMode = Add 
+	priority = 1 
+} 
+SCRIPT emit_apm_ST_spinner01_particle 
+	setEmitRange width = 0.00000000000 height = 0.00000000000 depth = 0.00000000000 
+	setLife min = 0.10000000149 max = 1.00000000000 
+	setAngleSpread spread = 0.23999999464 
+	setSpeedRange min = 3.00000000000 max = 7.00000000000 
+	setForce x = 0.00000000000 y = -0.50000000000 z = 0.00000000000 
+	setParticleSize sw = 55.00000000000 ew = 5.00000000000 
+	setColor corner = 0 sr = 218 sg = 98 sb = 22 sa = 255 mr = 218 mg = 22 mb = 22 ma = 154 er = 218 eg = 0 eb = 0 ea = 0 midTime = 0.50000000000 
+	emitRate rate = 32.00000000000 
+ENDSCRIPT
+
+apm_ST_spinner01s_particle_params = { 
+	EnableRotate 
+	emitScript = emit_apm_ST_spinner01s_particle 
+	emitterIndependent = 1 
+	FillPath 
+	max = 12 
+	type = Flat 
+	texture = BA_APM_smokePuff01s 
+	blendMode = Blend 
+	priority = 1 
+} 
+SCRIPT emit_apm_ST_spinner01s_particle 
+	setEmitRange width = 0.00000000000 height = 0.00000000000 depth = 0.00000000000 
+	setLife min = 1.00000000000 max = 1.00000000000 
+	setAngleSpread spread = 0.23999999464 
+	setSpeedRange min = 3.00000000000 max = 4.00000000000 
+	setForce x = 0.00000000000 y = 0.10000000149 z = 0.00000000000 
+	setParticleSize sw = 10.00000000000 ew = 100.00000000000 
+	setColor corner = 0 sr = 79 sg = 40 sb = 16 sa = 255 mr = 68 mg = 64 mb = 63 ma = 187 er = 29 eg = 29 eb = 29 ea = 0 midTime = 0.50000000000 
+	emitRate rate = 12.00000000000 
+ENDSCRIPT
+
+apm_ST_spinnerF01_particle_params = { 
+	EnableRotate 
+	angles = VECTOR(0.00000000000, 3.00000000000, 0.00000000000) 
+	emitScript = emit_apm_ST_spinnerF01_particle 
+	emitterIndependent = 1 
+	FillPath 
+	max = 60 
+	type = Flat 
+	texture = apm_spark_01 
+	blendMode = Add 
+	priority = 0 
+} 
+SCRIPT emit_apm_ST_spinnerF01_particle 
+	setEmitRange width = 0.00000000000 height = 0.00000000000 depth = 10.00000000000 
+	setLife min = 0.50000000000 max = 1.00000000000 
+	setAngleSpread spread = 0.18000000715 
+	setSpeedRange min = 30.00000000000 max = 30.00000000000 
+	setForce x = 0.00000000000 y = -0.30000001192 z = 0.00000000000 
+	setParticleSize sw = 200.00000000000 ew = 0.00000000000 
+	setColor corner = 0 sr = 226 sg = 164 sb = 241 sa = 255 mr = 107 mg = 16 mb = 210 ma = 255 er = 28 eg = 9 eb = 170 ea = 0 midTime = 0.10000000149 
+	emitRate rate = 60.00000000000 
+ENDSCRIPT
+
+apm_ST_spinnerF02_particle_params = { 
+	EnableRotate 
+	angles = VECTOR(0.00000000000, 1.50000000000, 0.00000000000) 
+	emitScript = emit_apm_ST_spinnerF02_particle 
+	emitterIndependent = 1 
+	FillPath 
+	max = 60 
+	type = Flat 
+	texture = apm_spark_01 
+	blendMode = Add 
+	priority = 0 
+} 
+SCRIPT emit_apm_ST_spinnerF02_particle 
+	setEmitRange width = 0.00000000000 height = 0.00000000000 depth = 10.00000000000 
+	setLife min = 0.50000000000 max = 1.00000000000 
+	setAngleSpread spread = 0.18000000715 
+	setSpeedRange min = 20.00000000000 max = 30.00000000000 
+	setForce x = 0.00000000000 y = -0.50000000000 z = 0.00000000000 
+	setParticleSize sw = 200.00000000000 ew = 0.00000000000 
+	setColor corner = 0 sr = 226 sg = 164 sb = 241 sa = 255 mr = 107 mg = 16 mb = 210 ma = 255 er = 28 eg = 9 eb = 170 ea = 0 midTime = 0.10000000149 
+	emitRate rate = 60.00000000000 
+ENDSCRIPT
+
+apm_ST_spinnerF03_particle_params = { 
+	EnableRotate 
+	emitScript = emit_apm_ST_spinnerF03_particle 
+	emitterIndependent = 1 
+	FillPath 
+	max = 45 
+	type = Flat 
+	texture = apm_spark_01 
+	blendMode = Add 
+	priority = 0 
+} 
+SCRIPT emit_apm_ST_spinnerF03_particle 
+	setEmitRange width = 0.00000000000 height = 0.00000000000 depth = 10.00000000000 
+	setLife min = 0.50000000000 max = 0.75000000000 
+	setAngleSpread spread = 0.18000000715 
+	setSpeedRange min = 25.00000000000 max = 30.00000000000 
+	setForce x = 0.00000000000 y = -0.30000001192 z = 0.00000000000 
+	setParticleSize sw = 200.00000000000 ew = 0.00000000000 
+	setColor corner = 0 sr = 226 sg = 164 sb = 241 sa = 255 mr = 107 mg = 16 mb = 210 ma = 255 er = 28 eg = 9 eb = 170 ea = 0 midTime = 0.10000000149 
+	emitRate rate = 60.00000000000 
+ENDSCRIPT
+
+apm_ST_spinnerF04_particle_params = { 
+	EnableRotate 
+	angles = VECTOR(0.00000000000, 4.50000000000, 0.00000000000) 
+	emitScript = emit_apm_ST_spinnerF04_particle 
+	emitterIndependent = 1 
+	FillPath 
+	max = 45 
+	type = Flat 
+	texture = apm_spark_01 
+	blendMode = Add 
+	priority = 0 
+} 
+SCRIPT emit_apm_ST_spinnerF04_particle 
+	setEmitRange width = 0.00000000000 height = 0.00000000000 depth = 10.00000000000 
+	setLife min = 0.50000000000 max = 0.75000000000 
+	setAngleSpread spread = 0.18000000715 
+	setSpeedRange min = 30.00000000000 max = 30.00000000000 
+	setForce x = 0.00000000000 y = -0.50000000000 z = 0.00000000000 
+	setParticleSize sw = 200.00000000000 ew = 0.00000000000 
+	setColor corner = 0 sr = 226 sg = 164 sb = 241 sa = 255 mr = 107 mg = 16 mb = 210 ma = 255 er = 28 eg = 9 eb = 170 ea = 0 midTime = 0.10000000149 
+	emitRate rate = 60.00000000000 
+ENDSCRIPT
+
+

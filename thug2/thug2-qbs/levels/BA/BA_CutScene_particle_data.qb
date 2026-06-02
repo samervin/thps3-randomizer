@@ -1,0 +1,302 @@
+
+SCRIPT load_cutscene_particle_textures 
+	LoadParticleTexture "particles\\apm_spark_03" 
+	LoadParticleTexture "particles\\dt_browndot02" 
+	LoadParticleTexture "particles\\dt_nj_puff01b" 
+	LoadParticleTexture "particles\\jow_au_skidmark01" 
+	LoadParticleTexture "particles\\jow_ba_chunks01" 
+	LoadParticleTexture "particles\\jow_ba_trash01" 
+	LoadParticleTexture "particles\\jow_ba_trash02" 
+ENDSCRIPT
+
+JOW_BAe1_BullDirt01_particle_params = { 
+	emitScript = emit_JOW_BAe1_BullDirt01_particle 
+	emitterIndependent = 1 
+	max = 6 
+	type = Flat 
+	texture = dt_browndot02 
+	blendMode = Blend 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_BAe1_BullDirt01_particle 
+	setEmitRange width = 3.00000000000 height = 3.00000000000 depth = 0.00000000000 
+	setLife min = 1.00000000000 max = 1.00000000000 
+	setAngleSpread spread = 0.50000000000 
+	setSpeedRange min = 0.69999998808 max = 1.20000004768 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = -0.03999999911 z = 0.00000000000 
+	setParticleSize sw = 3.00000000000 ew = 3.00000000000 
+	setColor corner = 0 sr = 79 sg = 75 sb = 72 sa = 134 er = 66 eg = 62 eb = 57 ea = 0 
+	emit num = 6 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_BAe1_BullDust01_particle_params = { 
+	emitScript = emit_JOW_BAe1_BullDust01_particle 
+	emitterIndependent = 1 
+	max = 6 
+	type = Flat 
+	texture = dt_nj_puff01b 
+	blendMode = Blend 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_BAe1_BullDust01_particle 
+	setEmitRange width = 10.00000000000 height = 10.00000000000 depth = 0.00000000000 
+	setLife min = 3.00000000000 max = 3.00000000000 
+	setAngleSpread spread = 0.25000000000 
+	setSpeedRange min = 0.00000000000 max = 0.00000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = 0.00200000009 z = 0.00000000000 
+	setParticleSize sw = 16.00000000000 ew = 42.00000000000 
+	setColor corner = 0 sr = 56 sg = 52 sb = 46 sa = 38 mr = 59 mg = 54 mb = 48 ma = 51 er = 66 eg = 59 eb = 51 ea = 0 midTime = 0.30379998684 
+	emit num = 6 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_BAe1_CarDust01_particle_params = { 
+	boneOffset = VECTOR(0.00000000000, 0.00000000000, 15.00000000000) 
+	emitScript = emit_JOW_BAe1_CarDust01_particle 
+	emitterIndependent = 1 
+	max = 40 
+	type = Flat 
+	texture = dt_nj_puff01b 
+	blendMode = Blend 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_BAe1_CarDust01_particle 
+	setEmitRange width = 10.00000000000 height = 10.00000000000 depth = 0.00000000000 
+	setLife min = 4.00000000000 max = 4.00000000000 
+	setAngleSpread spread = 0.25000000000 
+	setSpeedRange min = 0.00000000000 max = 0.00000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = 0.00200000009 z = 0.00000000000 
+	setParticleSize sw = 48.00000000000 ew = 96.00000000000 
+	setColor corner = 0 sr = 70 sg = 64 sb = 58 sa = 61 mr = 68 mg = 63 mb = 56 ma = 39 er = 66 eg = 59 eb = 51 ea = 0 midTime = 0.50000000000 
+	emitRate rate = 10.00000000000 
+	wait 1.00000000000 seconds 
+	emitRate rate = 0 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_BAe1_CarSpark01_particle_params = { 
+	emitScript = emit_JOW_BAe1_CarSpark01_particle 
+	emitterIndependent = 1 
+	max = 24 
+	type = FlatRibbonTail 
+	texture = apm_spark_03 
+	blendMode = Add 
+	history = 4 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_BAe1_CarSpark01_particle 
+	setEmitRange width = 15.00000000000 height = 15.00000000000 depth = 0.00000000000 
+	setLife min = 1.00000000000 max = 1.00000000000 
+	setAngleSpread spread = 1.00000000000 
+	setSpeedRange min = 1.25000000000 max = 2.00000000000 
+	setEmitTarget x = -0.77018898726 y = 0.25000000000 z = -0.63781601191 
+	setForce x = 0.00000000000 y = -0.03999999911 z = 0.00000000000 
+	setParticleSize sw = 0.60000002384 ew = 0.15000000596 
+	setColor corner = 0 sr = 255 sg = 0 sb = 0 sa = 163 er = 255 eg = 192 eb = 0 ea = 0 
+	setColor corner = 1 sr = 255 sg = 0 sb = 0 sa = 163 er = 255 eg = 192 eb = 0 ea = 0 
+	setColor corner = 2 sr = 255 sg = 0 sb = 0 sa = 163 er = 255 eg = 192 eb = 0 ea = 0 
+	setColor corner = 3 sr = 255 sg = 0 sb = 0 sa = 106 er = 255 eg = 192 eb = 0 ea = 0 
+	setColor corner = 4 sr = 255 sg = 0 sb = 0 sa = 48 er = 255 eg = 192 eb = 0 ea = 0 
+	setColor corner = 5 sr = 255 sg = 0 sb = 0 sa = 0 er = 255 eg = 192 eb = 0 ea = 0 
+	emit num = 24 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_BAe1_CarSteam01_particle_params = { 
+	emitScript = emit_JOW_BAe1_CarSteam01_particle 
+	emitterIndependent = 1 
+	FillPath 
+	max = 256 
+	type = Flat 
+	texture = dt_nj_puff01b 
+	blendMode = Blend 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_BAe1_CarSteam01_particle 
+	setEmitRange width = 1.00000000000 height = 1.00000000000 depth = 0.00000000000 
+	setLife min = 2.00000000000 max = 2.00000000000 
+	setAngleSpread spread = 0.11111100018 
+	setSpeedRange min = 2.00000000000 max = 4.00000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = 0.00000000000 z = 0.00000000000 
+	setParticleSize sw = 6.00000000000 ew = 32.00000000000 
+	setColor corner = 0 sr = 125 sg = 125 sb = 125 sa = 0 mr = 147 mg = 147 mb = 147 ma = 51 er = 154 eg = 154 eb = 154 ea = 0 midTime = 0.20890000463 
+	emitRate rate = 128.00000000000 
+	wait 2.50000000000 seconds 
+	emitRate rate = 0 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_BAe1_ChimneyChunks01_particle_params = { 
+	emitScript = emit_JOW_BAe1_ChimneyChunks01_particle 
+	emitterIndependent = 1 
+	max = 128 
+	type = Shaded 
+	texture = JOW_BA_Chunks01 
+	blendMode = Blend 
+	UseRandomUVQuadrants 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_BAe1_ChimneyChunks01_particle 
+	setEmitRange width = 0.00000000000 height = 800.00000000000 depth = 0.00000000000 
+	setLife min = 2.00000000000 max = 2.00000000000 
+	setAngleSpread spread = 0.67000001669 
+	setSpeedRange min = 0.50000000000 max = 12.00000000000 
+	setEmitTarget x = -1.00000000000 y = 0.34999999404 z = 0.01999999955 
+	setForce x = 0.00000000000 y = -0.10000000149 z = 0.00000000000 
+	setParticleSize sw = 8.00000000000 ew = 8.00000000000 
+	setColor corner = 0 sr = 140 sg = 140 sb = 140 sa = 255 er = 140 eg = 140 eb = 140 ea = 0 
+	setColor corner = 1 sr = 140 sg = 140 sb = 140 sa = 255 er = 140 eg = 140 eb = 140 ea = 0 
+	setColor corner = 2 sr = 140 sg = 140 sb = 140 sa = 255 er = 140 eg = 140 eb = 140 ea = 0 
+	setColor corner = 3 sr = 140 sg = 140 sb = 140 sa = 255 er = 140 eg = 140 eb = 140 ea = 0 
+	emit num = 128 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_BAe1_SkidMark01_particle_params = { 
+	emitScript = emit_JOW_BAe1_SkidMark01_particle 
+	emitterIndependent = 1 
+	max = 225 
+	type = Shaded 
+	texture = JOW_AU_SkidMark01 
+	blendMode = Blend 
+	align_to = VECTOR(0.00000000000, 1.00000000000, 0.00000000000) 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_BAe1_SkidMark01_particle 
+	setEmitRange width = 1.00000000000 height = 1.00000000000 depth = 0.00000000000 
+	setLife min = 3.00000000000 max = 3.00000000000 
+	setAngleSpread spread = 0.25000000000 
+	setSpeedRange min = 0.00000000000 max = 0.00000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = 0.00000000000 z = 0.00000000000 
+	setParticleSize sw = 6.00000000000 ew = 6.00000000000 
+	setColor corner = 0 sr = 89 sg = 89 sb = 89 sa = 64 mr = 89 mg = 89 mb = 89 ma = 64 er = 89 eg = 89 eb = 89 ea = 0 midTime = 0.89240002632 
+	setColor corner = 1 sr = 89 sg = 89 sb = 89 sa = 64 mr = 89 mg = 89 mb = 89 ma = 64 er = 89 eg = 89 eb = 89 ea = 0 midTime = 0.89240002632 
+	setColor corner = 2 sr = 89 sg = 89 sb = 89 sa = 64 mr = 89 mg = 89 mb = 89 ma = 64 er = 89 eg = 89 eb = 89 ea = 0 midTime = 0.89240002632 
+	setColor corner = 3 sr = 89 sg = 89 sb = 89 sa = 64 mr = 89 mg = 89 mb = 89 ma = 64 er = 89 eg = 89 eb = 89 ea = 0 midTime = 0.89240002632 
+	emitRate rate = 75.00000000000 
+	wait 1.00000000000 seconds 
+	emitRate rate = 0 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_BAe1_TireSmoke01_particle_params = { 
+	emitScript = emit_JOW_BAe1_TireSmoke01_particle 
+	emitterIndependent = 1 
+	max = 90 
+	type = Flat 
+	texture = dt_nj_puff01b 
+	blendMode = Blend 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_BAe1_TireSmoke01_particle 
+	setEmitRange width = 1.00000000000 height = 1.00000000000 depth = 0.00000000000 
+	setLife min = 3.00000000000 max = 3.00000000000 
+	setAngleSpread spread = 0.25000000000 
+	setSpeedRange min = 0.00000000000 max = 0.00000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = 0.00999999978 z = 0.00000000000 
+	setParticleSize sw = 12.00000000000 ew = 64.00000000000 
+	setColor corner = 0 sr = 41 sg = 46 sb = 57 sa = 26 er = 42 eg = 47 eb = 57 ea = 0 
+	emitRate rate = 30.00000000000 
+	wait 2.00000000000 seconds 
+	emitRate rate = 0 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_BAe1_Trash01_particle_params = { 
+	EnableRotate 
+	emitScript = emit_JOW_BAe1_Trash01_particle 
+	max = 60 
+	type = Shaded 
+	texture = JOW_BA_Trash01 
+	blendMode = Blend 
+	UseRandomUVQuadrants 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_BAe1_Trash01_particle 
+	setEmitRange width = 80.00000000000 height = 20.00000000000 depth = 20.00000000000 
+	setLife min = 1.00000000000 max = 1.00000000000 
+	setAngleSpread spread = 0.00000000000 
+	setSpeedRange min = 1.00000000000 max = 3.00000000000 
+	setForce x = 0.00000000000 y = -0.10000000149 z = 0.00000000000 
+	setParticleSize sw = 12.00000000000 ew = 12.00000000000 
+	setColor corner = 0 sr = 66 sg = 68 sb = 77 sa = 255 mr = 66 mg = 68 mb = 77 ma = 255 er = 66 eg = 68 eb = 77 ea = 0 midTime = 0.50000000000 
+	setColor corner = 1 sr = 66 sg = 68 sb = 77 sa = 255 mr = 66 mg = 68 mb = 77 ma = 255 er = 66 eg = 68 eb = 77 ea = 0 midTime = 0.50000000000 
+	setColor corner = 2 sr = 66 sg = 68 sb = 77 sa = 255 mr = 66 mg = 68 mb = 77 ma = 255 er = 66 eg = 68 eb = 77 ea = 0 midTime = 0.50000000000 
+	setColor corner = 3 sr = 66 sg = 68 sb = 77 sa = 255 mr = 66 mg = 68 mb = 77 ma = 255 er = 66 eg = 68 eb = 77 ea = 0 midTime = 0.50000000000 
+	emitRate rate = 60.00000000000 
+	wait 0.30000001192 seconds 
+	emitRate rate = 0 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_BAe1_Trash02_particle_params = { 
+	emitScript = emit_JOW_BAe1_Trash02_particle 
+	emitterIndependent = 1 
+	max = 24 
+	type = Shaded 
+	texture = JOW_BA_Trash02 
+	blendMode = Blend 
+	UseRandomUVQuadrants 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_BAe1_Trash02_particle 
+	setEmitRange width = 20.00000000000 height = 40.00000000000 depth = 20.00000000000 
+	setLife min = 1.00000000000 max = 1.00000000000 
+	setAngleSpread spread = 0.25000000000 
+	setSpeedRange min = 2.00000000000 max = 4.00000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = -0.10000000149 z = 0.00000000000 
+	setParticleSize sw = 6.00000000000 ew = 6.00000000000 
+	setColor corner = 0 sr = 66 sg = 68 sb = 77 sa = 255 mr = 66 mg = 68 mb = 77 ma = 255 er = 66 eg = 68 eb = 77 ea = 0 midTime = 0.50000000000 
+	setColor corner = 1 sr = 66 sg = 68 sb = 77 sa = 255 mr = 66 mg = 68 mb = 77 ma = 255 er = 66 eg = 68 eb = 77 ea = 0 midTime = 0.50000000000 
+	setColor corner = 2 sr = 66 sg = 68 sb = 77 sa = 255 mr = 66 mg = 68 mb = 77 ma = 255 er = 66 eg = 68 eb = 77 ea = 0 midTime = 0.50000000000 
+	setColor corner = 3 sr = 66 sg = 68 sb = 77 sa = 255 mr = 66 mg = 68 mb = 77 ma = 255 er = 66 eg = 68 eb = 77 ea = 0 midTime = 0.50000000000 
+	emit num = 24 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_BAe1_WallChunks01_particle_params = { 
+	emitScript = emit_JOW_BAe1_WallChunks01_particle 
+	emitterIndependent = 1 
+	max = 24 
+	type = Shaded 
+	texture = JOW_BA_Chunks01 
+	blendMode = Blend 
+	UseRandomUVQuadrants 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_BAe1_WallChunks01_particle 
+	setEmitRange width = 10.00000000000 height = 10.00000000000 depth = 0.00000000000 
+	setLife min = 2.00000000000 max = 2.00000000000 
+	setAngleSpread spread = 0.66666698456 
+	setSpeedRange min = 0.50000000000 max = 4.00000000000 
+	setEmitTarget x = 0.00000000000 y = 0.25000000000 z = 1.00000000000 
+	setForce x = 0.00000000000 y = -0.10000000149 z = 0.00000000000 
+	setParticleSize sw = 5.00000000000 ew = 5.00000000000 
+	setColor corner = 0 sr = 140 sg = 140 sb = 140 sa = 255 er = 140 eg = 140 eb = 140 ea = 0 
+	setColor corner = 1 sr = 140 sg = 140 sb = 140 sa = 255 er = 140 eg = 140 eb = 140 ea = 0 
+	setColor corner = 2 sr = 140 sg = 140 sb = 140 sa = 255 er = 140 eg = 140 eb = 140 ea = 0 
+	setColor corner = 3 sr = 140 sg = 140 sb = 140 sa = 255 er = 140 eg = 140 eb = 140 ea = 0 
+	emit num = 24 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+

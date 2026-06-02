@@ -1,0 +1,28 @@
+
+SCRIPT load_level_particle_textures 
+	LoadParticleTexture "particles\\apm_flamequad_01" 
+ENDSCRIPT
+
+apm_TR_fire01_particle_params = { 
+	emitScript = emit_apm_TR_fire01_particle 
+	emitterIndependent = 1 
+	max = 70 
+	type = Shaded 
+	texture = apm_flameQUAD_01 
+	blendMode = Add 
+	UseRandomUVQuadrants 
+} 
+SCRIPT emit_apm_TR_fire01_particle 
+	setEmitRange width = 3.00000000000 height = 3.00000000000 
+	setCircularEmit circular = 1 
+	setLife min = 0.20000000298 max = 0.55000001192 
+	setAngleSpread spread = 0.12222199887 
+	setSpeedRange min = 1.00000000000 max = 2.00000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = 0.05000000075 z = 0.00000000000 
+	setParticleSize sw = 15.00000000000 ew = 2.00000000000 
+	setColor sr = 255 sg = 94 sb = 50 sa = 187 mr = 240 mg = 98 mb = 48 ma = 255 er = 154 eg = 47 eb = 31 ea = 0 midTime = 0.50000000000 
+	emitRate rate = 128.00000000000 
+ENDSCRIPT
+
+

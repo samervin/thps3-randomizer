@@ -1,0 +1,830 @@
+SCRIPT SE2_Setup 
+	SE2_Initializer 
+ENDSCRIPT
+
+SCRIPT SE2_Initializer 
+	IF ( ( InMultiplayerGame ) | ( InNetGame ) ) 
+		Kill Prefix = "Geo_PreEvent" 
+		Kill Prefix = "TRG_L_Missile" 
+		Kill Name = Missle01 
+		Kill Name = "Geo_MultiOff_UFO01" 
+		Create Name = "Geo_MultiOn_UFO01" 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT se2_startup 
+	LoadParticleTexture "bits\\CG_SE2_Shatter_Plane" 
+	LoadParticleTexture "bits\\CG_SE2_Shatter_Grate" 
+ENDSCRIPT
+
+SCRIPT SE2_Goals 
+	IF NOT InMultiplayerGame 
+	ENDIF 
+	IF InMultiplayerGame 
+		Add_MultiPlayer_Mode_Goals 
+	ENDIF 
+	IF NOT InSplitScreenGame 
+		IF ( ( GameModeEquals is_classic ) | ( InNetGame ) ) 
+			AddGoal_HighScore { 
+				unlimited_time 
+				score = SE2_Classic_HighScore 
+				goal_text = SE2_Classic_HighScore_Text 
+				view_goals_text = SE2_Classic_HighScore_Text 
+				Difficulty_Level_Params = [ 
+					{ 
+						score = SE2_Classic_Easy_HighScore 
+						goal_text = SE2_Classic_Easy_HighScore_Text 
+						view_goals_text = SE2_Classic_Easy_HighScore_Text 
+					} 
+					{ 
+						score = SE2_Classic_HighScore 
+						goal_text = SE2_Classic_HighScore_Text 
+						view_goals_text = SE2_Classic_HighScore_Text 
+					} 
+				] 
+				view_goals_cameras = [ 
+					{ 
+						Name = CAM_Classic_Intro01 
+						Frames = 301 
+						Skippable = 1 
+					} 
+				] 
+			classic_mode_goal } 
+			AddGoal_ProScore { 
+				unlimited_time 
+				score = SE2_Classic_ProScore 
+				goal_text = SE2_Classic_ProScore_Text 
+				view_goals_text = SE2_Classic_ProScore_Text 
+				Difficulty_Level_Params = [ 
+					{ 
+						score = SE2_Classic_Easy_ProScore 
+						goal_text = SE2_Classic_Easy_ProScore_Text 
+						view_goals_text = SE2_Classic_Easy_ProScore_Text 
+					} 
+					{ 
+						score = SE2_Classic_ProScore 
+						goal_text = SE2_Classic_ProScore_Text 
+						view_goals_text = SE2_Classic_ProScore_Text 
+					} 
+				] 
+			classic_mode_goal } 
+			AddGoal_SickScore { 
+				unlimited_time 
+				score = SE2_Classic_SickScore 
+				goal_text = SE2_Classic_SickScore_Text 
+				view_goals_text = SE2_Classic_SickScore_Text 
+				Difficulty_Level_Params = [ 
+					{ 
+						score = SE2_Classic_Easy_SickScore 
+						goal_text = SE2_Classic_Easy_SickScore_Text 
+						view_goals_text = SE2_Classic_Easy_SickScore_Text 
+					} 
+					{ 
+						score = SE2_Classic_SickScore 
+						goal_text = SE2_Classic_SickScore_Text 
+						view_goals_text = SE2_Classic_SickScore_Text 
+					} 
+				] 
+			classic_mode_goal } 
+			AddGoal_HighCombo { 
+				unlimited_time 
+				score = SE2_Classic_HighCombo 
+				goal_text = SE2_Classic_HighCombo_Text 
+				view_goals_text = SE2_Classic_HighCombo_Text 
+				Difficulty_Level_Params = [ 
+					{ 
+						score = SE2_Classic_Easy_HighCombo 
+						goal_text = SE2_Classic_Easy_HighCombo_Text 
+						view_goals_text = SE2_Classic_Easy_HighCombo_Text 
+					} 
+					{ 
+						score = SE2_Classic_HighCombo 
+						goal_text = SE2_Classic_HighCombo_Text 
+						view_goals_text = SE2_Classic_HighCombo_Text 
+					} 
+				] 
+			classic_mode_goal } 
+			AddGoal_Skate { 
+				unlimited_time 
+				S_obj_id = TRG_SKATE_S 
+				K_obj_id = TRG_SKATE_K 
+				A_obj_id = TRG_SKATE_A 
+				T_obj_id = TRG_SKATE_T 
+				E_obj_id = TRG_SKATE_E 
+				view_goals_cameras = [ 
+					{ 
+						virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(2869.4, -4514, 13101.9) 
+						positionOffset = VECTOR(-4377.7, 507.9, 8384.2) 
+						Frames = 200 
+						Skippable = 1 
+					} 
+				] 
+			classic_mode_goal } 
+			AddGoal_Combo { 
+				unlimited_time 
+				letter_info = [ 
+					{ obj_id = TRG_COMBO_C text = "C" } 
+					{ obj_id = TRG_COMBO_O text = "O" } 
+					{ obj_id = TRG_COMBO_M text = "M" } 
+					{ obj_id = TRG_COMBO_B text = "B" } 
+					{ obj_id = TRG_COMBO_O01 text = "O" } 
+				] 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(2247.3, -3515.7, 9768.2) 
+						positionOffset = VECTOR(-6344.1, 276.3, 6332) 
+						Frames = 200 
+						Skippable = 1 
+					} 
+				] 
+				classic_mode_goal 
+			} 
+			AddGoal_collect { 
+				unlimited_time 
+				collect_type = "Treasure Chests" 
+				goal_text = "Collect 5 Treasure Chests" 
+				view_goals_text = "Collect 5 Treasure Chests" 
+				goal_description = "Find and Collect 5 Treasure Chests" 
+				use_hud_counter 
+				hud_counter_caption = "Treasure Chests" 
+				Init_Script = SE2_ClassicTreasure_Init 
+				Goal_Deactivate_Script = SE2_ClassicTreasure_Deactivate 
+				goal_flags = [ 
+					got_1 
+					got_2 
+					got_3 
+					got_4 
+					got_5 
+				] 
+				goal_collect_objects = [ 
+					{ id = SE2_Classic_Treasure01 scr = goal_collect_got_object flag = got_1 } 
+					{ id = SE2_Classic_Treasure02 scr = goal_collect_got_object flag = got_2 } 
+					{ id = SE2_Classic_Treasure03 scr = goal_collect_got_object flag = got_3 } 
+					{ id = SE2_Classic_Treasure04 scr = goal_collect_got_object flag = got_4 } 
+					{ id = SE2_Classic_Treasure05 scr = goal_collect_got_object flag = got_5 } 
+				] 
+				view_goals_cameras = [ 
+					{ 
+						virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(-9120.3, -1484.1, 12846.7) 
+						positionOffset = VECTOR(-3215.5, 265.1, 4968.2) 
+						Frames = 200 
+						Skippable = 1 
+					} 
+				] 
+			classic_mode_goal } 
+			AddGoal_SecretTape { 
+				goal_text = "Find the secret tape" 
+				view_goals_text = "Find the secret tape" 
+				goal_description = "Find the secret tape" 
+				secret_tape_id = TRG_SecretTape 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(5546.4, 5682.2, 4504.2) 
+						positionOffset = VECTOR(-2136.7, 403.4, 8123.9) 
+						Frames = 200 
+						Skippable = 1 
+					} 
+				] 
+				classic_mode_goal 
+			} 
+			AddGoal_gaps { 
+				unlimited_time 
+				goal_text = "Activate the Triangles!" 
+				view_goals_text = "Activate the Triangles!" 
+				goal_description = "Activate the Triangles!" 
+				goal_flags = [ 
+					got_1 
+					got_2 
+					got_3 
+				] 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(-3836.8, -7379.7, 852.9) 
+						positionOffset = VECTOR(-3860.6, 787.9, 6622) 
+						Frames = 200 
+						Skippable = 1 
+					} 
+				] 
+				No_Gap_Messages 
+				classic_mode_goal 
+			} 
+			AddGoal_gaps { 
+				unlimited_time 
+				version = 2 
+				collect_type = "UFO Lip!" 
+				use_hud_counter 
+				hud_counter_caption = "UFO Lip!" 
+				goal_text = "Bust a Lip Trick on the UFO!" 
+				view_goals_text = "Bust a Lip Trick on the UFO!" 
+				goal_description = "Bust a Lip Trick on the UFO!" 
+				goal_flags = [ got_1 ] 
+				view_goals_cameras = [ { virtual_cam 
+						targetid = world 
+						targetOffset = VECTOR(-8055.1, 3479.6, -4844.7) 
+						positionOffset = VECTOR(-3272.2, 134.8, 3275.2) 
+						Frames = 200 
+						Skippable = 1 
+					} 
+				] 
+				classic_mode_goal 
+			} 
+		ELSE 
+			IF NOT ( ( GameModeEquals Is_SingleSession ) | ( GameModeEquals Is_CreateGoals ) ) 
+				IF NOT InNetGame 
+				ENDIF 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE2_ClassicTreasure_Init 
+	Create Prefix = "SE2_Classic_Treasure" 
+ENDSCRIPT
+
+SCRIPT SE2_ClassicTreasure_Deactivate 
+	Kill Prefix = "SE2_Classic_Treasure" 
+ENDSCRIPT
+
+SCRIPT SE2_Shark 
+	Obj_ShadowOff 
+	Obj_StickToGround Off 
+	Obj_SetPathVelocity 6 mph 
+	Obj_SetPathTurnDist 10 
+	Obj_PathHeading On 
+	Obj_FollowPathLinked Orient 
+	Obj_PlayAnim Anim = Swim Cycle 
+ENDSCRIPT
+
+SCRIPT SE_CliffJump 
+	Trigger_Speed_Boost Speed = 3000 DefSkaterVO = 1 
+ENDSCRIPT
+
+SCRIPT SE_TeslaMove 
+	GetTriggerArray Grind Onto 
+	IF TriggerType <Trigger_Array> 
+		IF GetFlag flag = <Tesla> 
+		ELSE 
+			SetFlag flag = <Tesla> 
+			Create Prefix = <Tesla> 
+			SendException Tesla_Grind Prefix = <Doors> 
+		ENDIF 
+	ENDIF 
+	IF ( ( GameModeEquals is_classic ) | ( InNetGame ) ) 
+		<Triangles> = 0 
+		IF NOT GoalManager_GoalFlagSet Name = SE2_Classic_Goal_Gaps flag = <flag> 
+			GoalManager_SetGoalFlag Name = SE2_Classic_Goal_Gaps <flag> 1 
+			IF GetFlag flag = Geo_Tesla01 
+				<Triangles> = ( <Triangles> + 1 ) 
+			ENDIF 
+			IF GetFlag flag = Geo_Tesla02 
+				<Triangles> = ( <Triangles> + 1 ) 
+			ENDIF 
+			IF GetFlag flag = Geo_Tesla03 
+				<Triangles> = ( <Triangles> + 1 ) 
+			ENDIF 
+			SWITCH <Triangles> 
+				CASE 0 
+				CASE 1 
+					Create_Panel_Message { text = "1 of 3 Triangles Activated" Style = Goal_Collect_Text } 
+				CASE 2 
+					Create_Panel_Message { text = "2 of 3 Triangles Activated" Style = Goal_Collect_Text } 
+				DEFAULT 
+			ENDSWITCH 
+		ENDIF 
+	ENDIF 
+	Wait 5 seconds 
+	GoToPreserveParams SE_TeslaCheck 
+ENDSCRIPT
+
+SCRIPT SE_TeslaRing 
+	Obj_MoveToNode Name = <Wypt> Speed = 5 
+	Obj_RotZ Speed = <Speed> FLAG_MAX_COORDS 
+ENDSCRIPT
+
+SCRIPT SE_TeslaPole 
+	Obj_MoveToNode Name = <Wypt> Speed = 5 
+	Obj_WaitMove 
+	Create Prefix = <Particle> 
+	Create Name = <Settle> 
+	Die 
+ENDSCRIPT
+
+SCRIPT SE2_TeslaBase_Door 
+	Obj_SetException Ex = Tesla_Grind scr = SE2_TeslaDoor_Open Params = <...> 
+ENDSCRIPT
+
+SCRIPT SE2_TeslaDoor_Open 
+	Obj_MoveToNode Name = <Down> Speed = 5 
+	Obj_WaitMove 
+	Wait 0.50000000000 seconds 
+	Obj_MoveToNode Name = <Up> Speed = 5 
+	Obj_WaitMove 
+	GoToPreserveParams SE2_TeslaBase_Door 
+ENDSCRIPT
+
+SCRIPT SE_TeslaCheck 
+	IF IsAlive Name = Geo_Static_Tesla01_Pole 
+		IF IsAlive Name = Geo_Static_Tesla02_Pole 
+			IF IsAlive Name = Geo_Static_Tesla03_Pole 
+				Kill Prefix = "TRG_TeslaBeam_A" 
+				Kill Prefix = "TRG_TeslaBeam_B" 
+				Kill Prefix = "TRG_TeslaBeam_C" 
+				Create Prefix = "TRG_TeslaBeam_D" 
+				IF NOT IsAlive Name = Geo_TeslaLine01 
+					Create Name = Geo_TeslaLine01 
+				ENDIF 
+				IF NOT IsAlive Name = Geo_TeslaLine02 
+					Create Name = Geo_TeslaLine02 
+				ENDIF 
+				IF NOT IsAlive Name = Geo_TeslaLine03 
+					Create Name = Geo_TeslaLine03 
+				ENDIF 
+			ELSE 
+				Kill Prefix = "TRG_TeslaBeam_B" 
+				Kill Prefix = "TRG_TeslaBeam_C" 
+				Kill Prefix = "TRG_TeslaBeam_D" 
+				Create Prefix = "TRG_TeslaBeam_A" 
+				IF NOT IsAlive Name = Geo_TeslaLine01 
+					Create Name = Geo_TeslaLine01 
+				ENDIF 
+			ENDIF 
+		ELSE 
+			IF IsAlive Name = Geo_Static_Tesla03_Pole 
+				Kill Prefix = "TRG_TeslaBeam_A" 
+				Kill Prefix = "TRG_TeslaBeam_B" 
+				Kill Prefix = "TRG_TeslaBeam_D" 
+				Create Prefix = "TRG_TeslaBeam_C" 
+				IF NOT IsAlive Name = Geo_TeslaLine03 
+					Create Name = Geo_TeslaLine03 
+				ENDIF 
+			ENDIF 
+		ENDIF 
+	ELSE 
+		IF IsAlive Name = Geo_Static_Tesla02_Pole 
+			IF IsAlive Name = Geo_Tesla03_Pole 
+				Kill Prefix = "TRG_TeslaBeam_A" 
+				Kill Prefix = "TRG_TeslaBeam_C" 
+				Kill Prefix = "TRG_TeslaBeam_D" 
+				Create Prefix = "TRG_TeslaBeam_B" 
+				IF NOT IsAlive Name = Geo_TeslaLine02 
+					Create Name = Geo_TeslaLine02 
+				ENDIF 
+			ENDIF 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE2_UFO_RayGun 
+	Obj_StickToGround Off 
+	Obj_SetPathVelocity 1.79999995232 mph 
+	Obj_PathHeading Off 
+	Obj_FollowPathLinked 
+	BEGIN 
+		Obj_RotZ Angle = -130 Speed = 75 FLAG_MAX_COORDS 
+		Obj_WaitRotate 
+		Create Name = <Spark02> 
+		Create Name = <Beam02> 
+		Wait 3 seconds 
+		Kill Name = <Spark02> 
+		Kill Name = <Beam02> 
+		Obj_RotZ Angle = 130 Speed = 75 FLAG_MAX_COORDS 
+		Obj_WaitRotate 
+		Create Name = <Spark01> 
+		Create Name = <Beam01> 
+		Wait 3 seconds 
+		Kill Name = <Spark01> 
+		Kill Name = <Beam01> 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT SE_UFO_Spin 
+	Obj_StickToGround Off 
+	Obj_SetPathVelocity 1.79999995232 mph 
+	Obj_PathHeading Off 
+	Obj_FollowPathLinked 
+	Obj_RotZ Speed = 250 FLAG_MAX_COORDS 
+ENDSCRIPT
+
+SCRIPT SE_UFO_Still 
+	Obj_StickToGround Off 
+	Obj_SetPathVelocity 1.79999995232 mph 
+	Obj_PathHeading Off 
+	Obj_FollowPathLinked 
+ENDSCRIPT
+
+UFO_01_Params = { 
+	Spark01 = Geo_UFO01_Spark01 
+	Spark02 = Geo_UFO01_Spark02 
+	Beam01 = Geo_UFO01_Beam01 
+Beam02 = Geo_UFO01_Beam02 } 
+UFO_02_Params = { 
+	Spark01 = Geo_UFO02_Spark01 
+	Spark02 = Geo_UFO02_Spark02 
+	Beam01 = Geo_UFO02_Beam01 
+Beam02 = Geo_UFO02_Beam02 } 
+SCRIPT SE2_AlienBlocker 
+	Obj_ShadowOff 
+	BEGIN 
+		Obj_CycleAnim Anim = Ped_Blocker_idle NumCycles = RANDOM(1, 1) RANDOMCASE 1 RANDOMCASE 2 RANDOMEND 
+		Obj_CycleAnim Anim = Ped_Blocker_idletoBlockA 
+		Obj_CycleAnim Anim = Ped_Blocker_BlockA_idle NumCycles = RANDOM(1, 1, 1) RANDOMCASE 1 RANDOMCASE 3 RANDOMCASE 5 RANDOMEND 
+		Obj_CycleAnim Anim = Ped_Blocker_BlockA2BlockB 
+		Obj_CycleAnim Anim = Ped_Blocker_BlockB_idle NumCycles = RANDOM(1, 1, 1) RANDOMCASE 1 RANDOMCASE 3 RANDOMCASE 5 RANDOMEND 
+		Obj_CycleAnim Anim = Ped_Blocker_BlockB2idle 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT TableKid 
+	Ped_SetLogicState BO_STATE_SWKid_Force Table = BO_StateLogic_Table 
+ENDSCRIPT
+
+SCRIPT SE2_Radar 
+	BEGIN 
+		Obj_RotZ Angle = <To> Speed = 30 FLAG_MAX_COORDS 
+		Obj_WaitRotate 
+		Obj_RotZ Angle = <From> Speed = 30 FLAG_MAX_COORDS 
+		Obj_WaitRotate 
+	REPEAT 
+ENDSCRIPT
+
+SCRIPT SE2_Treasure 
+	Obj_ClearExceptions 
+	Obj_SetException Ex = ObjectInRadius scr = SE2_Treasure_Got Params = <...> 
+	Obj_SetInnerRadius 5 
+ENDSCRIPT
+
+SCRIPT SE2_Treasure_Got 
+	Obj_ClearExceptions 
+	goal_collect_got_object Goal_ID = SE2_Classic_Goal_Collect flag = <flag> 
+	SWITCH <flag> 
+		CASE got_1 
+			CreateGlobalFlexParticleSystem Name = JOW_SE2_Treasure01 params_Script = JOW_SE2_Treasure01_particle_params 
+			JOW_SE2_Treasure01 : Obj_SetPosition position = VECTOR(-2414.51000976562, 211.99899291992, 3617.46997070312) 
+			CreateFastParticleSystem Name = JOW_SE2_Treasure01a params_Script = JOW_SE2_Treasure01_fast_particle_params 
+		CASE got_2 
+			CreateGlobalFlexParticleSystem Name = JOW_SE2_Treasure02 params_Script = JOW_SE2_Treasure02_particle_params 
+			JOW_SE2_Treasure02 : Obj_SetPosition position = VECTOR(-6531.77978515625, 19.97699928284, 3474.78002929688) 
+			CreateFastParticleSystem Name = JOW_SE2_Treasure02a params_Script = JOW_SE2_Treasure02_fast_particle_params 
+		CASE got_3 
+			CreateGlobalFlexParticleSystem Name = JOW_SE2_Treasure03 params_Script = JOW_SE2_Treasure03_particle_params 
+			JOW_SE2_Treasure03 : Obj_SetPosition position = VECTOR(-5410.00976562500, 197.75100708008, 8808.15039062500) 
+			CreateFastParticleSystem Name = JOW_SE2_Treasure03a params_Script = JOW_SE2_Treasure03_fast_particle_params 
+		CASE got_4 
+			CreateGlobalFlexParticleSystem Name = JOW_SE2_Treasure04 params_Script = JOW_SE2_Treasure04_particle_params 
+			JOW_SE2_Treasure04 : Obj_SetPosition position = VECTOR(-984.99102783203, 19.93000030518, 6818.12988281250) 
+			CreateFastParticleSystem Name = JOW_SE2_Treasure04a params_Script = JOW_SE2_Treasure04_fast_particle_params 
+		CASE got_5 
+			CreateGlobalFlexParticleSystem Name = JOW_SE2_Treasure05 params_Script = JOW_SE2_Treasure05_particle_params 
+			JOW_SE2_Treasure05 : Obj_SetPosition position = VECTOR(-3307.66992187500, 230.93699645996, 5112.27001953125) 
+			CreateFastParticleSystem Name = JOW_SE2_Treasure05a params_Script = JOW_SE2_Treasure05_fast_particle_params 
+	ENDSWITCH 
+	Die 
+ENDSCRIPT
+
+SCRIPT SE2_Missile_Event 
+	GetTriggerArray Grind Onto 
+	IF TriggerType <Trigger_Array> 
+		IF GetFlag flag = Ignited 
+		ELSE 
+			Wait 0.50000000000 seconds 
+			SetFlag flag = Ignited 
+			KillAllTextureSplats box = { height = 40 dist = 20 width = 40 offset = VECTOR(-500.00000000000, 13.00000000000, 366.00000000000) } 
+			KillAllTextureSplats box = { height = 40 dist = 20 width = 40 offset = VECTOR(-315.00000000000, 13.00000000000, 433.00000000000) } 
+			Play_Cutscene Name = "Cutscenes\\SE2_LevelEvent.Cut" RestartNode = TRG_Restart_BlackHawk 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE2_Missile_Event_Out 
+	Kill Prefix = "Geo_PreEvent" 
+	Kill Name = TRG_SFX_TrigBox_TurbineVent 
+	Kill Name = TRG_SFX_TrigBox_TurbineVent01 
+ENDSCRIPT
+
+SCRIPT SE2_Hatch_Wait 
+	Obj_ClearExceptions 
+	Obj_SetException Ex = GotJump scr = SE2_Hatch_Open 
+ENDSCRIPT
+
+SCRIPT SE2_Hatch_Open 
+	Obj_RotX Angle = -70 Speed = 250 FLAG_MAX_COORDS 
+	Obj_WaitRotate 
+	Obj_RotX Angle = 70 Speed = 225 FLAG_MAX_COORDS 
+	Obj_WaitRotate 
+	GoTo SE2_Hatch_Wait 
+ENDSCRIPT
+
+SCRIPT SE2_Hatch_Signal 
+	GetTriggerArray Jump Off 
+	IF TriggerType <Trigger_Array> 
+		SendException GotJump Name = Geo_FortHatch01 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE2_Grate 
+	GetBonus score = 50 text = "Destruction Bonus" 
+	Shatter { Name = <Name> 
+		area = 2000 
+		texture_swap = CG_SE2_Shatter_Grate 
+		variance = 1.00000000000 
+		spread = 1.50000000000 
+		life = 6 
+		bounce = 0.50000000000 
+		scale = 0.40000000596 
+		vel_x = 0 
+		vel_y = 60 
+		vel_z = 0 
+	use_skater_vel } 
+	Kill Name = <Name> 
+	PlayStream SK6_BreakMetalFence vol = 200 
+	PlaySound HitGlassPane2x pitch = 50 
+ENDSCRIPT
+
+SCRIPT SE2_PlaneTailBreak 
+	GetBonus score = 50 text = "Destruction Bonus" 
+	Shatter { Name = <Name> 
+		area = 2000 
+		texture_swap = CG_SE2_Shatter_Plane 
+		variance = 1.00000000000 
+		spread = 1.50000000000 
+		life = 6 
+		bounce = 0.50000000000 
+		scale = 0.40000000596 
+		vel_x = 0 
+		vel_y = 60 
+		vel_z = 0 
+	use_skater_vel } 
+	Kill Name = <Name> 
+	PlayStream SK6_BreakMetalFence vol = 180 
+	PlaySound HitGlassPane2x pitch = 50 
+ENDSCRIPT
+
+SCRIPT SE2_NerdKid_Defend 
+	BEGIN 
+		Obj_CycleAnim Anim = Ped_StarWarsKid_Clip01 NumCycles = RANDOM(1, 1) RANDOMCASE 1 RANDOMCASE 2 RANDOMEND 
+		Obj_WaitAnimFinished 
+		Obj_CycleAnim Anim = Ped_StarWarsKid_Clip02 NumCycles = RANDOM(1, 1) RANDOMCASE 1 RANDOMCASE 2 RANDOMEND 
+		Obj_WaitAnimFinished 
+	REPEAT 
+ENDSCRIPT
+
+Geo_Tesla01 = 0 
+Geo_Tesla02 = 1 
+Geo_Tesla03 = 2 
+Ignited = 3 
+SCRIPT SE2_GAP_BackWallCross_Start 
+	StartGap GapID = <ID1> Flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT SE2_Gap_BackWallCross_End 
+	EndGap GapID = <ID1> score = 50 text = "Wall Crossing" 
+ENDSCRIPT
+
+SCRIPT SE_Gap_GovHiLo_Start 
+	StartGap GapID = GovHiLo Flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT SE_Gap_GovHiLo_End 
+	EndGap GapID = GovHiLo score = 50 text = "High to Low" 
+ENDSCRIPT
+
+SCRIPT SE_Gap_GovLoHi_Start 
+	StartGap GapID = GovLoHi Flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT SE_Gap_GovLoHi_End 
+	EndGap GapID = GovLoHi score = 100 text = "Low to High" 
+ENDSCRIPT
+
+SCRIPT SE2_Gap_K2B_Start 
+	StartGap GapID = K2B Flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT SE2_Gap_K2B_End 
+	EndGap GapID = K2B score = 25 text = "Kick 2 Blade" 
+ENDSCRIPT
+
+SCRIPT SE2_Gap_WeeChannel_Start 
+	StartGap GapID = <ID1> Flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT SE2_Gap_WeeChannel_End 
+	EndGap GapID = <ID1> score = 25 text = "Wee Channel Gap" 
+ENDSCRIPT
+
+SCRIPT SE_Gap_Canyon_Start 
+	StartGap GapID = Canyon Flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT SE_Gap_Canyon_End 
+	EndGap GapID = Canyon score = 75 text = "Canyon Jump" 
+ENDSCRIPT
+
+SCRIPT SE_Gap_B2L_Start 
+	StartGap GapID = B2L Flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT SE_Gap_B2L_End 
+	EndGap GapID = B2L score = 50 text = "Blade 2 Ledge" 
+ENDSCRIPT
+
+SCRIPT SE_Gap_L2B_Start 
+	StartGap GapID = L2B Flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT SE_Gap_L2B_End 
+	EndGap GapID = L2B score = 50 text = "Ledge 2 Blade" 
+ENDSCRIPT
+
+SCRIPT SE2_Gap_ChinHole_Start 
+ENDSCRIPT
+
+SCRIPT SE2_Gap_ChinHole_End 
+ENDSCRIPT
+
+SCRIPT SE2_Gap_ChinWide_Start 
+	StartGap GapID = <ID1> Flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT SE2_Gap_ChinWide_End 
+	EndGap GapID = <ID1> score = 100 text = "Wide Chin Gap" 
+ENDSCRIPT
+
+SCRIPT SE_Gap_ChinWLedge_Start 
+	StartGap GapID = <ID1> Flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT SE_Gap_ChinWLedge_End 
+	EndGap GapID = <ID1> score = 50 text = "Crossing Your Rock Fingers!" 
+ENDSCRIPT
+
+SCRIPT SE2_Gap_ChinHip_start 
+	StartGap GapID = <ID1> Flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT se2_gap_chinhip_end 
+	EndGap GapID = <ID1> score = 50 text = "Mini Hip!" 
+ENDSCRIPT
+
+SCRIPT SE_Gap_WingLedge_Start 
+	StartGap GapID = WL Flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT SE_Gap_WingLedge_End 
+	EndGap GapID = WL score = 50 text = "Wing 2 Rock Hop!" 
+ENDSCRIPT
+
+SCRIPT SE_Gap_LedgeWing_Start 
+	StartGap GapID = LW Flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT SE_Gap_LedgeWing_End 
+	EndGap GapID = LW score = 50 text = "Wingin\' It!" 
+ENDSCRIPT
+
+SCRIPT SE2_Gap_Core_Start 
+	StartGap GapID = Core Flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT SE2_Gap_Core_End 
+	EndGap GapID = Core score = 50 text = "Into the CORE!" 
+ENDSCRIPT
+
+SCRIPT SE2_Gap_OverBoard_Start 
+	StartGap GapID = <ID1> Flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT SE2_Gap_OverBoard_End 
+	EndGap GapID = <ID1> score = 50 text = "MAN OVERBOARD!" 
+ENDSCRIPT
+
+SCRIPT SE2_Gap_LogLedge_Start 
+	StartGap GapID = LoLe Flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT SE2_Gap_LogLedge_End 
+	EndGap GapID = LoLe score = 25 text = "Log 2 Ledge" 
+ENDSCRIPT
+
+SCRIPT SE2_Gap_LedgeLog_Start 
+	StartGap GapID = LeLo Flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT SE2_Gap_LedgeLog_End 
+	EndGap GapID = LeLo score = 25 text = "Ledge 2 Log!" 
+ENDSCRIPT
+
+SCRIPT SE2_Gap_Le2Le_Start 
+	StartGap GapID = <ID1> Flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT SE2_Gap_Le2Le_End 
+	EndGap GapID = <ID1> score = 25 text = "Ledge 2 Ledge" 
+ENDSCRIPT
+
+SCRIPT SE2_Gap_L2Boat_Start 
+	StartGap GapID = <ID1> Flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT SE2_Gap_L2Boat_End 
+	EndGap GapID = <ID1> score = 25 text = "Lifeboat Gap" 
+ENDSCRIPT
+
+SCRIPT SE2_Gap_CoreLoop_Start 
+	StartGap GapID = <ID1> Flags = [ PURE_RAIL ] 
+ENDSCRIPT
+
+SCRIPT SE2_Gap_CoreLoop_End 
+	EndGap GapID = <ID1> score = 100 text = "AROUND the CORE!" 
+ENDSCRIPT
+
+SCRIPT SE2_Gap_FloorVent_Start 
+ENDSCRIPT
+
+SCRIPT SE2_Gap_FloorVent_End 
+ENDSCRIPT
+
+SCRIPT SE2_Gap_ShipLedge_Start 
+ENDSCRIPT
+
+SCRIPT SE2_Gap_ShipLedge_End 
+ENDSCRIPT
+
+SCRIPT SE2_Gap_PowerTap_Start 
+	StartGap GapID = PT Flags = [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT SE2_Gap_PowerTap_End 
+	EndGap GapID = PT score = 150 text = "Power Tap!" 
+ENDSCRIPT
+
+SCRIPT SE2_Gap_UFOLip_Start 
+	StartGap GapID = UFOLip [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT SE2_Gap_UFOLip_End 
+	GetTriggerArray Lip Onto 
+	IF TriggerType <Trigger_Array> 
+		EndGap GapID = UFOLip score = 250 text = "Mother Ship Lip" GapScript = SE2_UFOLip_Got 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE2_UFOLip_Got 
+	IF ( ( GameModeEquals is_classic ) | ( InNetGame ) ) 
+		IF NOT GoalManager_GoalFlagSet Name = SE2_Classic_Goal_gaps2 flag = got_1 
+			Printf "CR CR CR --- GOAL FLAG 01 NOT SET...so setting" 
+			GoalManager_SetGoalFlag Name = SE2_Classic_Goal_gaps2 got_1 1 
+		ENDIF 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE2_Gap_ShipLip_Start 
+	StartGap GapID = ShipLip [ PURE_AIR ] 
+ENDSCRIPT
+
+SCRIPT SE2_Gap_ShipLip_End 
+	GetTriggerArray Lip Onto 
+	IF TriggerType <Trigger_Array> 
+		EndGap GapID = ShipLip score = 100 text = "Pirate Ship Lip" 
+	ENDIF 
+ENDSCRIPT
+
+SCRIPT SE2_2d_sign_element_create parent = menu3d_anchor 
+	IF GetGlobalFlag flag = SCREEN_MODE_WIDE 
+		<offset> = PAIR(-8.00000000000, 0.00000000000) 
+	ELSE 
+		<offset> = PAIR(0.00000000000, 0.00000000000) 
+	ENDIF 
+	CreateScreenElement { 
+		Type = SpriteElement 
+		parent = <parent> 
+		texture = SE2_icon_1 
+		id = SE2_plane 
+		scale = 3.50000000000 
+		rgba = [ 128 128 128 110 ] 
+		pos = ( PAIR(150.00000000000, 220.00000000000) + <offset> ) 
+		rot_angle = 0 
+		just = [ left top ] 
+		z_priority = -51 
+	} 
+	CreateScreenElement { 
+		Type = SpriteElement 
+		parent = <parent> 
+		texture = SE2_icon_2 
+		id = SE2_alien 
+		scale = 2.00000000000 
+		rgba = [ 128 128 128 100 ] 
+		pos = ( PAIR(42.00000000000, 235.00000000000) + <offset> ) 
+		rot_angle = -90 
+		just = [ center center ] 
+		z_priority = -51 
+	} 
+	RunScriptOnScreenElement id = SE2_alien do_random_effect_paused Params = { id = <id> } 
+	RunScriptOnScreenElement id = SE2_plane do_random_effect_paused Params = { id = <id> } 
+ENDSCRIPT
+
+

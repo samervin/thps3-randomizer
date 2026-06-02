@@ -1,0 +1,217 @@
+
+SCRIPT load_cutscene_particle_textures 
+	LoadParticleTexture "particles\\apm_flamequad_01" 
+	LoadParticleTexture "particles\\apm_spark_01" 
+	LoadParticleTexture "particles\\ba_apm_smokepuff01s" 
+ENDSCRIPT
+
+APM_STc_flamingBOARD02_particle_params = { 
+	bone = Bone_Board_Root 
+	emitScript = emit_APM_STc_flamingBOARD02_particle 
+	updateScript = align_to_vel_update 
+	params = { 
+		bone = Bone_Board_Root 
+		update_pos = 0 
+		emit_offset = VECTOR(0, 0, 0) 
+		emit_scale = -1.00000000000 
+		pos_offset = VECTOR(0.00000000000, -2.00000000000, 0.00000000000) 
+	} 
+	max = 13 
+	type = Shaded 
+	texture = apm_flameQUAD_01 
+	blendMode = Add 
+	UseRandomUVQuadrants 
+	priority = 0 
+} 
+SCRIPT emit_APM_STc_flamingBOARD02_particle 
+	setEmitRange width = 0.00000000000 height = 0.00000000000 depth = 0.00000000000 
+	setLife min = 0.15000000596 max = 0.20000000298 
+	setAngleSpread spread = 0.18000000715 
+	setSpeedRange min = 0.20000000298 max = 1.00000000000 
+	setEmitTarget x = 0.00000000000 y = 0.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = 0.30000001192 z = 0.00000000000 
+	setParticleSize sw = 15.00000000000 ew = 0.00000000000 
+	setColor corner = 0 sr = 255 sg = 91 sb = 20 sa = 15 mr = 255 mg = 67 mb = 39 ma = 128 er = 114 eg = 17 eb = 0 ea = 0 midTime = 0.50999999046 
+	setColor corner = 1 sr = 255 sg = 91 sb = 20 sa = 15 mr = 255 mg = 67 mb = 39 ma = 128 er = 114 eg = 17 eb = 0 ea = 0 midTime = 0.50999999046 
+	setColor corner = 2 sr = 255 sg = 91 sb = 20 sa = 15 mr = 255 mg = 67 mb = 39 ma = 128 er = 114 eg = 17 eb = 0 ea = 0 midTime = 0.50999999046 
+	setColor corner = 3 sr = 255 sg = 91 sb = 20 sa = 15 mr = 255 mg = 67 mb = 39 ma = 128 er = 114 eg = 17 eb = 0 ea = 0 midTime = 0.50999999046 
+	emitRate rate = 66.00000000000 
+	wait 0.80000001192 seconds 
+	emitRate rate = 0 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+APM_STc_flamingBOARD_particle_params = { 
+	bone = Bone_Board_Root 
+	emitScript = emit_APM_STc_flamingBOARD_particle 
+	updateScript = align_to_vel_update 
+	params = { 
+		bone = Bone_Board_Root 
+		update_pos = 0 
+		emit_offset = VECTOR(0.00000000000, 0.00000000000, 0.00000000000) 
+		emit_scale = -1.00000000000 
+		pos_offset = VECTOR(0.00000000000, -2.00000000000, 0.00000000000) 
+	} 
+	max = 13 
+	type = Shaded 
+	texture = apm_flameQUAD_01 
+	blendMode = Add 
+	UseRandomUVQuadrants 
+	priority = 0 
+} 
+SCRIPT emit_APM_STc_flamingBOARD_particle 
+	setEmitRange width = 0.00000000000 height = 0.00000000000 depth = 0.00000000000 
+	setLife min = 0.15000000596 max = 0.20000000298 
+	setAngleSpread spread = 0.18000000715 
+	setSpeedRange min = 0.20000000298 max = 1.00000000000 
+	setEmitTarget x = 0.00000000000 y = 0.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = 0.50000000000 z = 0.00000000000 
+	setParticleSize sw = 20.00000000000 ew = 0.00000000000 
+	setColor corner = 0 sr = 255 sg = 91 sb = 20 sa = 15 mr = 255 mg = 67 mb = 39 ma = 128 er = 114 eg = 17 eb = 0 ea = 0 midTime = 0.50999999046 
+	setColor corner = 1 sr = 255 sg = 91 sb = 20 sa = 15 mr = 255 mg = 67 mb = 39 ma = 128 er = 114 eg = 17 eb = 0 ea = 0 midTime = 0.50999999046 
+	setColor corner = 2 sr = 255 sg = 91 sb = 20 sa = 15 mr = 255 mg = 67 mb = 39 ma = 128 er = 114 eg = 17 eb = 0 ea = 0 midTime = 0.50999999046 
+	setColor corner = 3 sr = 255 sg = 91 sb = 20 sa = 15 mr = 255 mg = 67 mb = 39 ma = 128 er = 114 eg = 17 eb = 0 ea = 0 midTime = 0.50999999046 
+	emitRate rate = 66.00000000000 
+	wait 1.89999997616 seconds 
+	emitRate rate = 0 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+apm_STc_Flameon01_particle_params = { 
+	boneOffset = VECTOR(0.00000000000, 100.00000000000, 75.00000000000) 
+	emitScript = emit_apm_STc_Flameon01_particle 
+	emitterIndependent = 1 
+	FillPath 
+	max = 60 
+	type = Shaded 
+	texture = apm_flameQUAD_01 
+	blendMode = Add 
+	UseRandomUVQuadrants 
+	priority = 1 
+} 
+SCRIPT emit_apm_STc_Flameon01_particle 
+	setEmitRange width = 100.00000000000 height = 100.00000000000 depth = 0.00000000000 
+	setLife min = 0.20000000298 max = 0.50000000000 
+	setAngleSpread spread = 0.18000000715 
+	setSpeedRange min = 0.10000000149 max = 1.00000000000 
+	setEmitTarget x = 0.00000000000 y = 0.00000000000 z = 1.00000000000 
+	setForce x = 0.00000000000 y = 0.50000000000 z = 0.00000000000 
+	setParticleSize sw = 50.00000000000 ew = 20.00000000000 
+	setColor corner = 0 sr = 218 sg = 102 sb = 28 sa = 0 mr = 218 mg = 56 mb = 22 ma = 255 er = 218 eg = 39 eb = 22 ea = 0 midTime = 0.50000000000 
+	setColor corner = 1 sr = 218 sg = 102 sb = 28 sa = 0 mr = 218 mg = 56 mb = 22 ma = 255 er = 218 eg = 39 eb = 22 ea = 0 midTime = 0.50000000000 
+	setColor corner = 2 sr = 218 sg = 102 sb = 28 sa = 0 mr = 218 mg = 56 mb = 22 ma = 255 er = 218 eg = 39 eb = 22 ea = 0 midTime = 0.50000000000 
+	setColor corner = 3 sr = 218 sg = 102 sb = 28 sa = 0 mr = 218 mg = 56 mb = 22 ma = 255 er = 218 eg = 39 eb = 22 ea = 0 midTime = 0.50000000000 
+	emitRate rate = 200.00000000000 
+	wait 1.00000000000 seconds 
+	emitRate rate = 0 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+apm_STc_Frietrail01_particle_params = { 
+	boneOffset = VECTOR(0.00000000000, 33.00000000000, 0.00000000000) 
+	emitScript = emit_apm_STc_Frietrail01_particle 
+	emitterIndependent = 1 
+	FillPath 
+	max = 60 
+	type = Flat 
+	texture = apm_spark_01 
+	blendMode = Add 
+	priority = 1 
+} 
+SCRIPT emit_apm_STc_Frietrail01_particle 
+	setEmitRange width = 10.00000000000 height = 30.00000000000 depth = 10.00000000000 
+	setLife min = 0.10000000149 max = 0.50000000000 
+	setAngleSpread spread = 0.70999997854 
+	setSpeedRange min = 5.00000000000 max = 6.00000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = 0.00000000000 z = 0.00000000000 
+	setParticleSize sw = 10.00000000000 ew = 5.00000000000 
+	setColor corner = 0 sr = 218 sg = 98 sb = 22 sa = 255 mr = 218 mg = 56 mb = 22 ma = 255 er = 218 eg = 39 eb = 22 ea = 0 midTime = 0.50000000000 
+	emitRate rate = 120.00000000000 
+	wait 1.50000000000 seconds 
+	emitRate rate = 0 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+apm_STc_OILYsmoke_particle_params = { 
+	bone = Bone_Board_Root 
+	boneOffset = VECTOR(0.00000000000, 0.00000000000, 15.00000000000) 
+	emitScript = emit_apm_STc_OILYsmoke_particle 
+	emitterIndependent = 1 
+	FillPath 
+	max = 24 
+	type = Flat 
+	texture = BA_APM_smokePuff01s 
+	blendMode = Blend 
+	priority = 0 
+} 
+SCRIPT emit_apm_STc_OILYsmoke_particle 
+	setEmitRange width = 1.00000000000 height = 1.00000000000 depth = 0.00000000000 
+	setLife min = 0.50000000000 max = 0.80000001192 
+	setAngleSpread spread = 0.11999999732 
+	setSpeedRange min = 1.00000000000 max = 3.00000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = 0.01999999955 z = 0.00000000000 
+	setParticleSize sw = 20.00000000000 ew = 20.00000000000 
+	setColor corner = 0 sr = 205 sg = 85 sb = 34 sa = 29 mr = 39 mg = 35 mb = 33 ma = 127 er = 51 eg = 51 eb = 51 ea = 0 midTime = 0.20000000298 
+	emitRate rate = 30.00000000000 
+	wait 2.75000000000 seconds 
+	emitRate rate = 0 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+apm_STc_smoketrail01_particle_params = { 
+	id = skater 
+	emitScript = emit_apm_STc_smoketrail01_particle 
+	emitterIndependent = 1 
+	FillPath 
+	max = 18 
+	type = Flat 
+	texture = BA_APM_smokePuff01s 
+	blendMode = Blend 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_apm_STc_smoketrail01_particle 
+	setEmitRange width = 10.00000000000 height = 10.00000000000 depth = 10.00000000000 
+	setLife min = 0.40000000596 max = 0.60000002384 
+	setAngleSpread spread = 0.18000000715 
+	setSpeedRange min = 0.50000000000 max = 1.00000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = 0.20000000298 z = 0.00000000000 
+	setParticleSize sw = 30.00000000000 ew = 50.00000000000 
+	setColor corner = 0 sr = 205 sg = 92 sb = 21 sa = 0 mr = 68 mg = 64 mb = 57 ma = 105 er = 36 eg = 38 eb = 40 ea = 0 midTime = 0.30000001192 
+	emitRate rate = 30.00000000000 
+	wait 1.00000000000 seconds 
+	emitRate rate = 0 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+apm_STc_sparks01_particle_params = { 
+	bone = Bone_Board_Root 
+	emitScript = emit_apm_STc_sparks01_particle 
+	emitterIndependent = 1 
+	FillPath 
+	max = 80 
+	type = Flat 
+	texture = apm_spark_01 
+	blendMode = Add 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_apm_STc_sparks01_particle 
+	setEmitRange width = 1.00000000000 height = 1.00000000000 depth = 0.00000000000 
+	setLife min = 0.30000001192 max = 0.80000001192 
+	setAngleSpread spread = 0.37000000477 
+	setSpeedRange min = 5.00000000000 max = 8.00000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = -0.50000000000 z = 0.00000000000 
+	setParticleSize sw = 10.00000000000 ew = 5.00000000000 
+	setColor corner = 0 sr = 220 sg = 57 sb = 23 sa = 125 mr = 233 mg = 74 mb = 30 ma = 251 er = 40 eg = 40 eb = 40 ea = 0 midTime = 0.20000000298 
+	emitRate rate = 100.00000000000 
+	wait 0.20000000298 seconds 
+	emitRate rate = 0 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+

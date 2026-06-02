@@ -1,0 +1,56 @@
+
+SCRIPT load_level_particle_textures 
+	LoadParticleTexture "particles\\apm_spray_01" 
+ENDSCRIPT
+
+APM_FLAMING_seg2a_particle_params = { 
+	bone = Bone_Board_Tail 
+	boneOffset = VECTOR(16, -9, 12) 
+	EnableRotate 
+	emitScript = emit_APM_FLAMING_seg2a_particle 
+	max = 30 
+	type = Flat 
+	texture = apm_spray_01 
+	blendMode = Blend 
+	priority = 0 
+} 
+SCRIPT emit_APM_FLAMING_seg2a_particle 
+	setEmitRange width = 0.00000000000 height = 0.00000000000 depth = 0.00000000000 
+	setCircularEmit circular = 12 
+	setLife min = 0.10000000149 max = 0.20000000298 
+	setAngleSpread spread = 0.07000000030 
+	setSpeedRange min = 6.00000000000 max = 6.00000000000 
+	setEmitAngle x = 0.00000000000 y = -90.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = 0.50000000000 z = 0.00000000000 
+	setParticleSize sw = 8.00000000000 ew = 20.00000000000 
+	setColor corner = 0 sr = 255 sg = 124 sb = 55 sa = 255 mr = 26 mg = 24 mb = 23 ma = 255 er = 48 eg = 45 eb = 43 ea = 231 midTime = 0.23000000417 
+	setLODParams min_particles = 0 lod_dist1 = Default_Particle_LOD_Dist1 lod_dist2 = Default_Particle_LOD_Dist2 
+	emitRate rate = 30.00000000000 
+ENDSCRIPT
+
+APM_FLAMING_seg2b_particle_params = { 
+	bone = Bone_Board_Nose 
+	boneOffset = VECTOR(16.00000000000, 9.00000000000, 12.00000000000) 
+	EnableRotate 
+	emitScript = emit_APM_FLAMING_seg2b_particle 
+	max = 30 
+	type = Flat 
+	texture = apm_spray_01 
+	blendMode = Blend 
+	priority = 0 
+} 
+SCRIPT emit_APM_FLAMING_seg2b_particle 
+	setEmitRange width = 0.00000000000 height = 0.00000000000 depth = 0.00000000000 
+	setCircularEmit circular = 8 
+	setLife min = 0.10000000149 max = 0.20000000298 
+	setAngleSpread spread = 0.07000000030 
+	setSpeedRange min = 6.00000000000 max = 6.00000000000 
+	setEmitAngle x = 0.20000000298 y = 90.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = 0.69999998808 z = 0.00000000000 
+	setParticleSize sw = 8.00000000000 ew = 20.00000000000 
+	setColor corner = 0 sr = 255 sg = 124 sb = 55 sa = 255 mr = 26 mg = 24 mb = 23 ma = 255 er = 48 eg = 45 eb = 43 ea = 231 midTime = 0.23000000417 
+	setLODParams min_particles = 0 lod_dist1 = Default_Particle_LOD_Dist1 lod_dist2 = Default_Particle_LOD_Dist2 
+	emitRate rate = 30.00000000000 
+ENDSCRIPT
+
+

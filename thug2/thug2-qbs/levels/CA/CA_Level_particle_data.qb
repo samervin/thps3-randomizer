@@ -1,0 +1,141 @@
+
+SCRIPT load_level_particle_textures 
+	LoadParticleTexture "particles\\jow_ca_snowman01" 
+ENDSCRIPT
+
+JOW_CA_Snowman01_particle_params = { 
+	emitScript = emit_JOW_CA_Snowman01_particle 
+	max = 8 
+	type = Shaded 
+	texture = JOW_CA_Snowman01 
+	blendMode = Blend 
+	UseRandomUVQuadrants 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_CA_Snowman01_particle 
+	setEmitRange width = 8.00000000000 height = 8.00000000000 depth = 8.00000000000 
+	setLife min = 2.00000000000 max = 2.00000000000 
+	setAngleSpread spread = 0.25000000000 
+	setSpeedRange min = 2.00000000000 max = 4.00000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = -0.05999999866 z = 0.00000000000 
+	setParticleSize sw = 10.00000000000 ew = 10.00000000000 
+	setColor corner = 0 sr = 121 sg = 121 sb = 121 sa = 255 er = 121 eg = 121 eb = 121 ea = 255 
+	setColor corner = 1 sr = 121 sg = 121 sb = 121 sa = 255 er = 121 eg = 121 eb = 121 ea = 255 
+	setColor corner = 2 sr = 121 sg = 121 sb = 121 sa = 255 er = 121 eg = 121 eb = 121 ea = 255 
+	setColor corner = 3 sr = 121 sg = 121 sb = 121 sa = 255 er = 121 eg = 121 eb = 121 ea = 255 
+	setLODParams min_particles = 0 lod_dist1 = Default_Particle_LOD_Dist1 lod_dist2 = Default_Particle_LOD_Dist2 
+	emit num = 8 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_CA_Snowman02_particle_params = { 
+	emitScript = emit_JOW_CA_Snowman02_particle 
+	max = 8 
+	type = Shaded 
+	texture = JOW_CA_Snowman01 
+	blendMode = Blend 
+	UseRandomUVQuadrants 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_CA_Snowman02_particle 
+	setEmitRange width = 8.00000000000 height = 8.00000000000 depth = 8.00000000000 
+	setLife min = 2.00000000000 max = 2.00000000000 
+	setAngleSpread spread = 0.25000000000 
+	setSpeedRange min = 2.00000000000 max = 4.00000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = -0.05999999866 z = 0.00000000000 
+	setParticleSize sw = 10.00000000000 ew = 10.00000000000 
+	setColor corner = 0 sr = 121 sg = 121 sb = 121 sa = 255 er = 121 eg = 121 eb = 121 ea = 255 
+	setColor corner = 1 sr = 121 sg = 121 sb = 121 sa = 255 er = 121 eg = 121 eb = 121 ea = 255 
+	setColor corner = 2 sr = 121 sg = 121 sb = 121 sa = 255 er = 121 eg = 121 eb = 121 ea = 255 
+	setColor corner = 3 sr = 121 sg = 121 sb = 121 sa = 255 er = 121 eg = 121 eb = 121 ea = 255 
+	setLODParams min_particles = 0 lod_dist1 = Default_Particle_LOD_Dist1 lod_dist2 = Default_Particle_LOD_Dist2 
+	emit num = 8 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_CA_Snowman03_particle_params = { 
+	emitScript = emit_JOW_CA_Snowman03_particle 
+	max = 8 
+	type = Shaded 
+	texture = JOW_CA_Snowman01 
+	blendMode = Blend 
+	UseRandomUVQuadrants 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_CA_Snowman03_particle 
+	setEmitRange width = 8.00000000000 height = 8.00000000000 depth = 8.00000000000 
+	setLife min = 2.00000000000 max = 2.00000000000 
+	setAngleSpread spread = 0.25000000000 
+	setSpeedRange min = 2.00000000000 max = 4.00000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = -0.05999999866 z = 0.00000000000 
+	setParticleSize sw = 10.00000000000 ew = 10.00000000000 
+	setColor corner = 0 sr = 121 sg = 121 sb = 121 sa = 255 er = 121 eg = 121 eb = 121 ea = 255 
+	setColor corner = 1 sr = 121 sg = 121 sb = 121 sa = 255 er = 121 eg = 121 eb = 121 ea = 255 
+	setColor corner = 2 sr = 121 sg = 121 sb = 121 sa = 255 er = 121 eg = 121 eb = 121 ea = 255 
+	setColor corner = 3 sr = 121 sg = 121 sb = 121 sa = 255 er = 121 eg = 121 eb = 121 ea = 255 
+	setLODParams min_particles = 0 lod_dist1 = Default_Particle_LOD_Dist1 lod_dist2 = Default_Particle_LOD_Dist2 
+	emit num = 8 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_CA_Snowman04_particle_params = { 
+	emitScript = emit_JOW_CA_Snowman04_particle 
+	max = 8 
+	type = Shaded 
+	texture = JOW_CA_Snowman01 
+	blendMode = Blend 
+	UseRandomUVQuadrants 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_CA_Snowman04_particle 
+	setEmitRange width = 8.00000000000 height = 8.00000000000 depth = 8.00000000000 
+	setLife min = 2.00000000000 max = 2.00000000000 
+	setAngleSpread spread = 0.25000000000 
+	setSpeedRange min = 2.00000000000 max = 4.00000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = -0.05999999866 z = 0.00000000000 
+	setParticleSize sw = 10.00000000000 ew = 10.00000000000 
+	setColor corner = 0 sr = 121 sg = 121 sb = 121 sa = 255 er = 121 eg = 121 eb = 121 ea = 255 
+	setColor corner = 1 sr = 121 sg = 121 sb = 121 sa = 255 er = 121 eg = 121 eb = 121 ea = 255 
+	setColor corner = 2 sr = 121 sg = 121 sb = 121 sa = 255 er = 121 eg = 121 eb = 121 ea = 255 
+	setColor corner = 3 sr = 121 sg = 121 sb = 121 sa = 255 er = 121 eg = 121 eb = 121 ea = 255 
+	setLODParams min_particles = 0 lod_dist1 = Default_Particle_LOD_Dist1 lod_dist2 = Default_Particle_LOD_Dist2 
+	emit num = 8 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JOW_CA_Snowman05_particle_params = { 
+	emitScript = emit_JOW_CA_Snowman05_particle 
+	max = 8 
+	type = Shaded 
+	texture = JOW_CA_Snowman01 
+	blendMode = Blend 
+	UseRandomUVQuadrants 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JOW_CA_Snowman05_particle 
+	setEmitRange width = 8.00000000000 height = 8.00000000000 depth = 8.00000000000 
+	setLife min = 2.00000000000 max = 2.00000000000 
+	setAngleSpread spread = 0.25000000000 
+	setSpeedRange min = 2.00000000000 max = 4.00000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = -0.05999999866 z = 0.00000000000 
+	setParticleSize sw = 10.00000000000 ew = 10.00000000000 
+	setColor corner = 0 sr = 121 sg = 121 sb = 121 sa = 255 er = 121 eg = 121 eb = 121 ea = 255 
+	setColor corner = 1 sr = 121 sg = 121 sb = 121 sa = 255 er = 121 eg = 121 eb = 121 ea = 255 
+	setColor corner = 2 sr = 121 sg = 121 sb = 121 sa = 255 er = 121 eg = 121 eb = 121 ea = 255 
+	setColor corner = 3 sr = 121 sg = 121 sb = 121 sa = 255 er = 121 eg = 121 eb = 121 ea = 255 
+	setLODParams min_particles = 0 lod_dist1 = Default_Particle_LOD_Dist1 lod_dist2 = Default_Particle_LOD_Dist2 
+	emit num = 8 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+

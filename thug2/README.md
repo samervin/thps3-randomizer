@@ -8,7 +8,7 @@ How to reproduce the silent hot rod (and presumably more such script changes):
 - Replace `qb_scripts.prx` in Game/Data/scripts/game/skater with an empty file with the same name
     - I got the idea to do this from the various custom skater mods in the THPSX discord, which require you to blank out the skaterparts, skaterparts_secret, and skaterparts_temp prx files
 
-I found most of these tools in the THPSX Discord. QScript claims it works for both THUG and THUG2, it certainly worked on this file. THQBEditor and QScriptEd may only work for THPS3, certainly they did not play nice with the THUG2 files. RoQ did not seem to work for THUG2 either.
+I found most of these tools in the THPSX Discord. QScript claims it works for both THUG and THUG2, it certainly worked on this file. THQBEditor and QScriptEd may only work for THPS3/4, certainly they did not play nice with the THUG2 files. RoQ did not seem to work for THUG2 either.
 
 Other notes:
 - byxor has a "NeverScript" repository that I haven't used, might be able to generate PRE/PRX files: https://github.com/byxor/NeverScript
@@ -17,3 +17,4 @@ Other notes:
 - PARTY MAN X does some memory magic with THPS3 (for IL mode), check out all the partymods and the autosplitter: https://github.com/PARTYMANX?tab=repositories
 - "beat.exe" can be used to test and apply bps patches like the one for the keyboard, I found the Windows exe here: https://www.romhacking.net/utilities/893/
 - PreTool.exe can be used to extract files from .prx (and probably other) packed file formats, I found it on the THPSX Discord
+- QScript has a GitHub repo and C++ source code: https://github.com/cuckydev/QScript

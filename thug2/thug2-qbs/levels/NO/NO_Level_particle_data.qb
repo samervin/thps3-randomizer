@@ -1,0 +1,142 @@
+
+SCRIPT load_level_particle_textures 
+	LoadParticleTexture "particles\\apm_snowflake01" 
+	LoadParticleTexture "particles\\apm_spark_01" 
+	LoadParticleTexture "particles\\apm_spray_01" 
+	LoadParticleTexture "particles\\ba_apm_smokepuff01s" 
+	LoadParticleTexture "particles\\apm_spark_02" 
+ENDSCRIPT
+
+JEG_Zombie_FlareUp_particle_params = { 
+	boneOffset = VECTOR(0, 0, 10) 
+	EnableRotate 
+	emitScript = emit_JEG_Zombie_FlareUp_particle 
+	emitterIndependent = 1 
+	max = 5 
+	type = Flat 
+	texture = apm_spark_01 
+	blendMode = Add 
+	useGlobalColorModulation 
+	priority = 0 
+} 
+SCRIPT emit_JEG_Zombie_FlareUp_particle 
+	setEmitRange width = 1.00000000000 height = 1.00000000000 depth = 0.00000000000 
+	setLife min = 0.10000000149 max = 4.00000000000 
+	setAngleSpread spread = 0.56000000238 
+	setSpeedRange min = 0.10000000149 max = 0.50000000000 
+	setForce x = 0.00000000000 y = 0.00000000000 z = 0.00000000000 
+	setParticleSize sw = 25.00000000000 ew = 3.00000000000 
+	setColor corner = 0 sr = 142 sg = 233 sb = 249 sa = 255 mr = 67 mg = 51 mb = 190 ma = 202 er = 123 eg = 50 eb = 130 ea = 83 midTime = 0.30000001192 
+	emit num = 5 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+JEG_Zombie_burst_particle_params = { 
+	bone = Bone_Pelvis 
+	emitScript = emit_JEG_Zombie_burst_particle 
+	emitterIndependent = 1 
+	max = 256 
+	type = Flat 
+	texture = apm_spark_02 
+	blendMode = Add 
+	priority = 0 
+} 
+SCRIPT emit_JEG_Zombie_burst_particle 
+	setEmitRange width = 1.00000000000 height = 1.00000000000 depth = 0.00000000000 
+	setCircularEmit circular = 1 
+	setLife min = 0.05000000075 max = 3.00000000000 
+	setAngleSpread spread = 0.82999998331 
+	setSpeedRange min = 0.50000000000 max = 3.00000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = -0.05000000075 z = 0.00000000000 
+	setParticleSize sw = 0.10000000149 ew = 3.00000000000 
+	setColor corner = 0 sr = 53 sg = 39 sb = 232 sa = 145 mr = 0 mg = 185 mb = 218 ma = 255 er = 94 eg = 9 eb = 102 ea = 0 midTime = 0.50000000000 
+	emit num = 256 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+apm_NO_Sooty01_particle_params = { 
+	id = skater 
+	bone = Bone_Pelvis 
+	EnableRotate 
+	emitScript = emit_apm_NO_Sooty01_particle 
+	emitterIndependent = 1 
+	max = 33 
+	type = Flat 
+	texture = BA_APM_smokePuff01s 
+	blendMode = Blend 
+	useGlobalColorModulation 
+} 
+SCRIPT emit_apm_NO_Sooty01_particle 
+	setEmitRange width = 10.00000000000 height = 10.00000000000 depth = 33.00000000000 
+	setLife min = 0.50000000000 max = 0.50000000000 
+	setAngleSpread spread = 0.25000000000 
+	setSpeedRange min = 0.10000000149 max = 0.10000000149 
+	setForce x = 0.00000000000 y = 0.05000000075 z = 0.00000000000 
+	setParticleSize sw = 15.00000000000 ew = 5.00000000000 
+	setColor sr = 32 sg = 38 sb = 42 sa = 95 mr = 37 mg = 40 mb = 40 ma = 165 er = 16 eg = 16 eb = 17 ea = 0 midTime = 0.45570001006 
+	emitRate rate = 66.00000000000 
+ENDSCRIPT
+
+apm_NO_freeze01_particle_params = { 
+	boneOffset = VECTOR(0.00000000000, 40.00000000000, 0.00000000000) 
+	EnableRotate 
+	angles = VECTOR(0.00000000000, 3.00000000000, 0.00000000000) 
+	emitScript = emit_apm_NO_freeze01_particle 
+	emitterIndependent = 1 
+	updateScript = align_scale_to_vel_update 
+	params = { 
+		bone = Bone_Board_Tail 
+		update_pos = 0 
+		emit_offset = VECTOR(0.00000000000, 0.50000000000, 0.00000000000) 
+		emit_scale = -1.00000000000 
+		pos_offset = VECTOR(0.00000000000, -2.00000000000, 0.00000000000) 
+		base_vel = 800.00000000000 
+		min_vel_range = 1 
+		max_vel_range = 1 
+		base_emit_rate = 30 
+	} 
+	max = 20 
+	type = Flat 
+	texture = apm_snowflake01 
+	blendMode = Add 
+	useGlobalColorModulation 
+} 
+SCRIPT emit_apm_NO_freeze01_particle 
+	setEmitRange width = 10.00000000000 height = 25.00000000000 depth = 0.00000000000 
+	setLife min = 0.50000000000 max = 0.50000000000 
+	setAngleSpread spread = 0.25000000000 
+	setSpeedRange min = 0.10000000149 max = 0.10000000149 
+	setForce x = 0.00000000000 y = 0.00000000000 z = 0.00000000000 
+	setParticleSize sw = 3.00000000000 ew = 3.00000000000 
+	setColor sr = 193 sg = 232 sb = 255 sa = 0 mr = 193 mg = 232 mb = 255 ma = 86 er = 193 eg = 232 eb = 255 ea = 0 midTime = 0.10000000149 
+	emitRate rate = 20.00000000000 
+	wait 1.00000000000 seconds 
+	emitRate rate = 0 
+	destroy ifEmpty = 1 
+ENDSCRIPT
+
+apm_NO_stinky01_particle_params = { 
+	id = skater 
+	bone = Bone_Pelvis 
+	EnableRotate 
+	emitScript = emit_apm_NO_stinky01_particle 
+	emitterIndependent = 1 
+	max = 33 
+	type = Flat 
+	texture = apm_spray_01 
+	blendMode = Blend 
+	useGlobalColorModulation 
+} 
+SCRIPT emit_apm_NO_stinky01_particle 
+	setEmitRange width = 10.00000000000 height = 10.00000000000 depth = 33.00000000000 
+	setLife min = 0.50000000000 max = 0.50000000000 
+	setAngleSpread spread = 0.25000000000 
+	setSpeedRange min = 0.10000000149 max = 0.10000000149 
+	setForce x = 0.00000000000 y = 0.05000000075 z = 0.00000000000 
+	setParticleSize sw = 22.00000000000 ew = 5.00000000000 
+	setColor sr = 82 sg = 154 sb = 78 sa = 0 mr = 101 mg = 91 mb = 44 ma = 72 er = 42 eg = 32 eb = 25 ea = 0 midTime = 0.45570001006 
+	emitRate rate = 66.00000000000 
+ENDSCRIPT
+
+

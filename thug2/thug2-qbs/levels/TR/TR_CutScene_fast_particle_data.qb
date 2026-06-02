@@ -1,0 +1,84 @@
+
+SCRIPT load_cutscene_fast_particle_textures 
+	LoadParticleTexture "particles\\apm_spark_01" 
+	LoadParticleTexture "particles\\apm_spray_01" 
+ENDSCRIPT
+
+APM_TRc_Barrel_blast_fast_particle_params = { 
+	Class = ParticleObject 
+	Type = NewFlat 
+	CreatedAtStart 
+	AbsentInNetGames 
+	MaxStreams = 2 
+	ObjID = skater 
+	LocalSpace 
+	BoxDimsStart = VECTOR(10, 10, 10) 
+	BoxDimsMid = VECTOR(80, 20, 80) 
+	BoxDimsEnd = VECTOR(100, 40, 100) 
+	pos = VECTOR(0, 0, 0) 
+	MidPosition = VECTOR(0, 80, 0) 
+	EndPosition = VECTOR(0, 40, 0) 
+	UseMidPoint 
+	SuspendDistance = Default_Fast_Particle_Suspend_Dist 
+	LOD_Dist1 = 0 
+	LOD_Dist2 = 0 
+	EmitRate = 500.00000000000 
+	LifeTime = 0.30000001192 
+	StartRadius = 20.00000000000 
+	MidRadius = 10.00000000000 
+	EndRadius = 1.00000000000 
+	StartRadiusSpread = 0.00000000000 
+	MidRadiusSpread = 10.00000000000 
+	EndRadiusSpread = 20.00000000000 
+	Texture = apm_spark_01 
+	BlendMode = Add 
+	AlphaCutoff = 1 
+	StartRGB = [ 255 , 97 , 97 ] 
+	StartAlpha = 255 
+	EndRGB = [ 255 , 110 , 0 ] 
+	EndAlpha = 0 
+	MidRGB = [ 255 , 42 , 42 ] 
+	MidAlpha = 128 
+	UseColorMidTime 
+	ColorMidTime = 50 
+	UseGlobalColorModulation 
+} 
+APM_TRc_Barrel_smoke_fast_particle_params = { 
+	Class = ParticleObject 
+	Type = NewFlat 
+	CreatedAtStart 
+	AbsentInNetGames 
+	MaxStreams = 2 
+	ObjID = skater 
+	LocalSpace 
+	BoxDimsStart = VECTOR(10.00000000000, 10.00000000000, 10.00000000000) 
+	BoxDimsMid = VECTOR(80.00000000000, 20.00000000000, 80.00000000000) 
+	BoxDimsEnd = VECTOR(100.00000000000, 60.00000000000, 100.00000000000) 
+	pos = VECTOR(0.00000000000, 0.00000000000, 0.00000000000) 
+	MidPosition = VECTOR(0.00000000000, 60.00000000000, 0.00000000000) 
+	EndPosition = VECTOR(0.00000000000, 80.00000000000, 0.00000000000) 
+	UseMidPoint 
+	SuspendDistance = Default_Fast_Particle_Suspend_Dist 
+	LOD_Dist1 = 0.00000000000 
+	LOD_Dist2 = 0.00000000000 
+	EmitRate = 500.00000000000 
+	LifeTime = 0.50000000000 
+	StartRadius = 10.00000000000 
+	MidRadius = 40.00000000000 
+	EndRadius = 40.00000000000 
+	StartRadiusSpread = 0.00000000000 
+	MidRadiusSpread = 10.00000000000 
+	EndRadiusSpread = 20.00000000000 
+	Texture = apm_spray_01 
+	BlendMode = Blend 
+	AlphaCutoff = 1 
+	StartRGB = [ 156 , 57 , 37 ] 
+	StartAlpha = 255 
+	EndRGB = [ 116 , 110 , 110 ] 
+	EndAlpha = 0 
+	MidRGB = [ 116 , 110 , 110 ] 
+	MidAlpha = 128 
+	UseColorMidTime 
+	ColorMidTime = 59 
+} 
+

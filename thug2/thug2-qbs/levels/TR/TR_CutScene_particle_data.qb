@@ -1,0 +1,166 @@
+
+SCRIPT load_cutscene_particle_textures 
+	LoadParticleTexture "particles\\apm_debis_01" 
+	LoadParticleTexture "particles\\apm_flamequad_01" 
+	LoadParticleTexture "particles\\apm_spark_01" 
+	LoadParticleTexture "particles\\apm_spray_01" 
+ENDSCRIPT
+
+Skater_Wheel_dust01_particle_params = { 
+	emitScript = emit_Skater_Wheel_dust01_particle 
+	emitterIndependent = 1 
+	max = 30 
+	type = Flat 
+	texture = apm_spray_01 
+	blendMode = Blend 
+	useGlobalColorModulation 
+} 
+SCRIPT emit_Skater_Wheel_dust01_particle 
+	setEmitRange width = 1.00000000000 height = 1.00000000000 
+	setLife min = 0.10000000149 max = 0.50000000000 
+	setAngleSpread spread = 0.12222199887 
+	setSpeedRange min = 0.10000000149 max = 2.00000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setEmitAngle x = 0.00000000000 y = 180.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = 0.00999999978 z = 0.00000000000 
+	setParticleSize sw = 10.00000000000 ew = 50.00000000000 
+	setColor sr = 88 sg = 79 sb = 60 sa = 0 mr = 88 mg = 79 mb = 60 ma = 90 er = 130 eg = 117 eb = 89 ea = 0 midTime = 0.30000001192 
+	applyEnvBrightness always_Update 
+	emitRate rate = 60.00000000000 
+ENDSCRIPT
+
+VAN_Wheel_Bitz01_particle_params = { 
+	EnableRotate 
+	emitScript = emit_VAN_Wheel_Bitz01_particle 
+	emitterIndependent = 1 
+	max = 50 
+	type = Flat 
+	texture = apm_debis_01 
+	blendMode = Blend 
+	useGlobalColorModulation 
+} 
+SCRIPT emit_VAN_Wheel_Bitz01_particle 
+	setEmitRange width = 1.00000000000 height = 1.00000000000 
+	setLife min = 0.10000000149 max = 1.00000000000 
+	setAngleSpread spread = 0.24444399774 
+	setSpeedRange min = 7.00000000000 max = 10.00000000000 
+	setEmitAngle x = 310.00000000000 y = 0.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = -0.50000000000 z = 0.00000000000 
+	setParticleSize sw = 10.00000000000 ew = 10.00000000000 
+	setColor sr = 88 sg = 79 sb = 60 sa = 0 mr = 46 mg = 45 mb = 43 ma = 255 er = 79 eg = 77 eb = 73 ea = 110 midTime = 0.50000000000 
+	emitRate rate = 50.00000000000 
+ENDSCRIPT
+
+VAN_Wheel_dust01_particle_params = { 
+	EnableRotate 
+	emitScript = emit_VAN_Wheel_dust01_particle 
+	emitterIndependent = 1 
+	max = 128 
+	type = Flat 
+	texture = apm_spray_01 
+	blendMode = Blend 
+	useGlobalColorModulation 
+} 
+SCRIPT emit_VAN_Wheel_dust01_particle 
+	setEmitRange width = 1.00000000000 height = 1.00000000000 
+	setLife min = 0.10000000149 max = 0.50000000000 
+	setAngleSpread spread = 0.12222199887 
+	setSpeedRange min = 1.00000000000 max = 5.00000000000 
+	setForce x = 0.00000000000 y = 0.00999999978 z = 0.00000000000 
+	setParticleSize sw = 10.00000000000 ew = 50.00000000000 
+	setColor sr = 88 sg = 79 sb = 60 sa = 0 mr = 88 mg = 79 mb = 60 ma = 99 er = 132 eg = 119 eb = 90 ea = 0 midTime = 0.30000001192 
+	applyEnvBrightness always_Update 
+	emitRate rate = 128.00000000000 
+ENDSCRIPT
+
+apm_TESTc_fire01_particle_params = { 
+	emitScript = emit_apm_TESTc_fire01_particle 
+	emitterIndependent = 1 
+	max = 83 
+	type = Shaded 
+	texture = apm_flameQUAD_01 
+	blendMode = Add 
+	UseRandomUVQuadrants 
+	useGlobalColorModulation 
+} 
+SCRIPT emit_apm_TESTc_fire01_particle 
+	setEmitRange width = 4.00000000000 height = 4.00000000000 
+	setCircularEmit circular = 1 
+	setLife min = 0.20000000298 max = 0.64999997616 
+	setAngleSpread spread = 0.12222199887 
+	setSpeedRange min = 1.00000000000 max = 2.00000000000 
+	setEmitTarget x = 0.00000000000 y = 1.00000000000 z = 0.00000000000 
+	setForce x = 0.00000000000 y = 0.05000000075 z = 0.00000000000 
+	setParticleSize sw = 18.00000000000 ew = 2.00000000000 
+	setColor sr = 255 sg = 94 sb = 50 sa = 187 mr = 240 mg = 98 mb = 48 ma = 255 er = 154 eg = 47 eb = 31 ea = 0 midTime = 0.50000000000 
+	emitRate rate = 128.00000000000 
+ENDSCRIPT
+
+apm_TRc_flare01_particle_params = { 
+	boneOffset = VECTOR(0.00000000000, 0.00000000000, -7.00000000000) 
+	EnableRotate 
+	angles = VECTOR(0.00000000000, 5.00000000000, 0.00000000000) 
+	emitScript = emit_apm_TRc_flare01_particle 
+	emitterIndependent = 1 
+	max = 64 
+	type = Flat 
+	texture = apm_spray_01 
+	blendMode = Blend 
+} 
+SCRIPT emit_apm_TRc_flare01_particle 
+	setEmitRange width = 1.00000000000 height = 1.00000000000 
+	setLife min = 0.50000000000 max = 1.00000000000 
+	setAngleSpread spread = 0.12222199887 
+	setSpeedRange min = 0.00999999978 max = 0.10000000149 
+	setForce x = 0.00000000000 y = 0.10000000149 z = 0.00000000000 
+	setParticleSize sw = 2.00000000000 ew = 10.00000000000 
+	setColor sr = 255 sg = 85 sb = 50 sa = 83 mr = 154 mg = 145 mb = 139 ma = 216 er = 103 eg = 101 eb = 99 ea = 0 midTime = 0.62029999495 
+	emitRate rate = 64.00000000000 
+ENDSCRIPT
+
+apm_TRc_flare02_particle_params = { 
+	boneOffset = VECTOR(0.00000000000, 0.00000000000, -7.00000000000) 
+	EnableRotate 
+	angles = VECTOR(0.00000000000, 5.00000000000, 0.00000000000) 
+	emitScript = emit_apm_TRc_flare02_particle 
+	emitterIndependent = 1 
+	max = 50 
+	type = Flat 
+	texture = apm_spark_01 
+	blendMode = Add 
+	useGlobalColorModulation 
+} 
+SCRIPT emit_apm_TRc_flare02_particle 
+	setEmitRange width = 1.00000000000 height = 1.00000000000 
+	setCircularEmit circular = 1 
+	setLife min = 0.10000000149 max = 0.20000000298 
+	setAngleSpread spread = 0.71111100912 
+	setSpeedRange min = 0.10000000149 max = 1.00000000000 
+	setForce x = 0.00000000000 y = 0.00000000000 z = 0.00000000000 
+	setParticleSize sw = 5.00000000000 ew = 3.00000000000 
+	setColor sr = 255 sg = 99 sb = 99 sa = 255 mr = 255 mg = 50 mb = 50 ma = 202 er = 255 eg = 85 eb = 50 ea = 83 midTime = 0.30000001192 
+	emitRate rate = 128.00000000000 
+ENDSCRIPT
+
+apm_trc_stuffin01_particle_params = { 
+	boneOffset = VECTOR(-10.00000000000, 0.00000000000, 0.00000000000) 
+	EnableRotate 
+	angles = VECTOR(1.50000000000, 0.00000000000, 0.00000000000) 
+	emitScript = emit_apm_trc_stuffin01_particle 
+	max = 128 
+	type = Flat 
+	texture = apm_debis_01 
+	blendMode = Blend 
+} 
+SCRIPT emit_apm_trc_stuffin01_particle 
+	setEmitRange width = 1.00000000000 height = 1.00000000000 
+	setLife min = 0.20000000298 max = 0.30000001192 
+	setAngleSpread spread = 0.36666700244 
+	setSpeedRange min = 3.00000000000 max = 3.00000000000 
+	setForce x = 0.00000000000 y = 0.05000000075 z = 0.00000000000 
+	setParticleSize sw = 2.00000000000 ew = 2.00000000000 
+	setColor sr = 130 sg = 117 sb = 117 sa = 255 mr = 167 mg = 160 mb = 157 ma = 255 er = 79 eg = 71 eb = 71 ea = 0 midTime = 0.50000000000 
+	emitRate rate = 128.00000000000 
+ENDSCRIPT
+
+
